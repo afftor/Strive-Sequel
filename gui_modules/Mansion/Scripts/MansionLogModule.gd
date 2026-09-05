@@ -57,6 +57,44 @@ const EVENT_CONFIG = {
 		icon = preload("res://assets/images/gui/gui icons/icon_recruit.png"),
 		color = Color("9edb6b"),
 	},
+	#A minor training run to its end - etiquette, letters, the courtly arms. Started by hand,
+	#finished by the clock, which is why it belongs here and the master upgrades do not.
+	"training": {
+		label = "MANSION_ACTIVITY_TYPE_TRAINING",
+		icon = preload("res://assets/Textures_v2/MANSION/icon_training_small.png"),
+		color = Color("8f9fe0"),
+	},
+	#What an event did to somebody's numbers. One row per person per hour, rewritten in place as
+	#more changes land - see globals.mansion_activity_stat_change().
+	"stat_change": {
+		label = "MANSION_ACTIVITY_TYPE_STAT",
+		icon = preload("res://assets/Textures_v2/MANSION/icon_stat_small.png"),
+		color = Color("c0c8d0"),
+	},
+	#Who the household has taken to and who it cannot stand - one entry for the lot. The icon is
+	#deliberately neutral, two people and nothing said about how they feel; which way it went is
+	#carried by the coloured status word, see RELATIONSHIP_LOG in game_party.gd.
+	"relationship": {
+		label = "MANSION_ACTIVITY_TYPE_RELATIONSHIP",
+		icon = preload("res://assets/Textures_v2/MANSION/icon_relationship_small.png"),
+		color = Color("d68fa8"),
+	},
+	#A night in the master's bed - who shared it, what it looked like, and whose training moved
+	#because of it. Written once per night by game_res.process_master_bed_night(), and stamped
+	#with the night that ended rather than the morning it is read in.
+	"bedroom": {
+		label = "MANSION_ACTIVITY_TYPE_BEDROOM",
+		icon = preload("res://assets/Textures_v2/MANSION/icon_sex_small.png"),
+		color = Color("d95d8a"),
+	},
+	#What the service task brought in over one turn - one row for the whole household, with the
+	#line per worker folded away behind it. The only entry type that has a breakdown, and the
+	#breakdown does not survive a save: see globals.mansion_activity_service().
+	"service": {
+		label = "MANSION_ACTIVITY_TYPE_SERVICE",
+		icon = preload("res://assets/images/iconsitems/gold.png"),
+		color = Color("f0c860"),
+	},
 }
 
 onready var scroll = $Margin/Layout/ScrollContainer
@@ -80,6 +118,7 @@ func add_log_message(data, scroll_to_latest = true):
 	var entry = entry_template.duplicate()
 	entry.name = "ActivityEntry"
 	entry.set_meta("activity_entry", true)
+	entry.set_meta("entry_key", entry_key(data))
 	entry.get_node("Body/Accent").color = config.color
 	entry.get_node("Body/Content/Row/Icon").texture = config.icon
 	entry.get_node("Body/Content/Row/Text/Meta").text = "%s  -  %s" % [
@@ -90,6 +129,7 @@ func add_log_message(data, scroll_to_latest = true):
 	var message = entry.get_node("Body/Content/Row/Text/Message")
 	message.bbcode_text = data.text
 	message.connect("meta_clicked", self, "_on_meta_clicked")
+	_fill_details(entry, data)
 	entry.show()
 	entries.add_child(entry)
 	entries.move_child(entry, 0)
@@ -97,6 +137,63 @@ func add_log_message(data, scroll_to_latest = true):
 	_update_empty_state()
 	if scroll_to_latest:
 		call_deferred("_scroll_to_latest")
+
+
+#What identifies a row that can still be rewritten. globals folds stat changes on
+#(type, character, stamp), so the same three name the row that fold has to find again.
+static func entry_key(data):
+	return "%s|%s|%s|%s" % [data.get("type", ""), data.get("char_id", ""),
+		data.get("date", 0), data.get("hour", 0)]
+
+
+#A folded entry grew another line. Nothing moves and no row is added - the text on the row
+#already on screen is replaced. A row trimmed off the bottom simply is not found, which is fine:
+#the message it was built from is on its way out of the log too.
+func update_log_message(data):
+	var key = entry_key(data)
+	for child in entries.get_children():
+		if !child.has_meta("activity_entry"):
+			continue
+		if child.get_meta("entry_key", "") != key:
+			continue
+		child.get_node("Body/Content/Row/Text/Message").bbcode_text = data.text
+		#The fold is refilled but never reopened or closed here: a report that grows while the
+		#player has it open gains its new lines under their eyes and stays open.
+		_fill_details(child, data)
+		return
+
+
+#The breakdown behind a report, and the button that shows it. An entry type that has no
+#breakdown - and a report loaded from a save, whose breakdown was dropped on the way in -
+#leaves the whole section hidden, so the row stays exactly as tall as every other row.
+func _fill_details(entry, data):
+	var details = entry.get_node("Body/Content/Row/Text/Details")
+	var lines = data.get("details", [])
+	details.visible = lines.size() > 0
+	if !details.visible:
+		return
+	var detail_scroll = details.get_node("DetailScroll")
+	var list = detail_scroll.get_node("DetailList")
+	input_handler.ClearContainer(list, ['DetailTemplate'])
+	for line in lines:
+		input_handler.DuplicateContainerTemplate(list, 'DetailTemplate').bbcode_text = line
+	var button = details.get_node("ExpandButton")
+	button.text = _details_button_text(detail_scroll.visible)
+	if !button.is_connected("pressed", self, "_on_details_toggled"):
+		button.connect("pressed", self, "_on_details_toggled", [entry])
+
+
+func _on_details_toggled(entry):
+	var details = entry.get_node("Body/Content/Row/Text/Details")
+	var detail_scroll = details.get_node("DetailScroll")
+	detail_scroll.visible = !detail_scroll.visible
+	details.get_node("ExpandButton").text = _details_button_text(detail_scroll.visible)
+
+
+func _details_button_text(expanded):
+	if expanded:
+		return tr("MANSION_ACTIVITY_SERVICE_COLLAPSE")
+	return tr("MANSION_ACTIVITY_SERVICE_EXPAND")
 
 
 func _on_meta_clicked(meta):

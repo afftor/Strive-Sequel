@@ -53,6 +53,7 @@ var template_direct = {
 	body_image = 'default',
 	player_selected_icon = false,
 	player_selected_body = false,
+	use_paperdoll = false, #a unique character drawn with the doll instead of their own sprites
 	unique_variation = null,
 	
 	#personality
@@ -112,7 +113,13 @@ var template_direct = {
 	body_color_tail = '', 
 	body_color_horns = '', 
 	body_color_ears = '', #empty means the ears take the hair, see get_body_color_ears()
-	body_color_animal = '', 
+	body_color_animal = '',
+	#The fur or scales the body is painted in, when the player picked the colours
+	#themselves: one "#rrggbb" per colour the pattern has, comma separated, in the order
+	#doll_coverage lists them - the base first where there is one - and '' where the
+	#artist's own colour still stands. Empty means the whole coat is the artist's. The
+	#colours belong to the pattern they were picked for, so a new skin_coverage clears them.
+	body_color_coat = '',
 	body_color_lips = '',
 	body_color_eyebrows = '',
 	#new hair, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature

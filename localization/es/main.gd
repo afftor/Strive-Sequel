@@ -2812,12 +2812,18 @@ Mejora la disposición hacia acciones de {color=yellow|Aleatorio}. Costs 5 Mana.
 	MANSION_ACTIVITY_TYPE_BUILD = """Building""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_WORK = """Estate work""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Personaje encontrado""",
+	MANSION_ACTIVITY_TYPE_RELATIONSHIP = """Relationship""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_TRAINING = """Training""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_STAT = """Stats""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_SERVICE = """Service""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s ha vuelto a la mansión.""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s ha llegado a %s.""",
 	MANSION_ACTIVITY_AUTOBUY = """%s came back from the market with %s, for %d gold.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SLEPTROUGH = """Had no place to sleep at: %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s ha terminado de fabricar %s.""",
+	MANSION_ACTIVITY_TRAINING_COMPLETE = """%s finished training %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_STAT_CHANGES = """%s: %s""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s ha completado la mejora %s.""",
 	MANSION_ACTIVITY_FOOD_DISSATISFIED = """%s no quedó satisfecho con la calidad de la comida""",
 	MANSION_ACTIVITY_INJURY_RECOVERED = """%s se ha recuperado de sus heridas.""",
@@ -2825,6 +2831,9 @@ Mejora la disposición hacia acciones de {color=yellow|Aleatorio}. Costs 5 Mana.
 	MANSION_ACTIVITY_CHARACTER_FOUND = """%s ha encontrado a %s en %s.""",
 	MANSION_ACTIVITY_LOCATION_EMPTY = """There is nobody left at %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_LOCATION_GONE = """That location is no longer accessible.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_REPORT = """Service brought in [color=#f0c860]%d[/color] gold, earned by %d of the household.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_EXPAND = """Expand""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_COLLAPSE = """Collapse""", # MISSING TRANSLATION
 	BROTHELLOGSEX = "%s ganado %s rendimiento del oro %s con un %s cliente.",
 	BROTHELLOGSEXPARTIAL = """%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.""", # MISSING TRANSLATION
 	BROTHELLOGNO_SEX = "%s ganado %s el trabajo del oro como %s.",
@@ -6159,6 +6168,7 @@ Forces target to orgasm against their will with slight impact over consent. 7 Ma
 	INTERACTION_ENTHUSIASM_ALL_CORRECT_USED = """Enforce success (complete)""", # MISSING TRANSLATION
 	INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP = """This option is incorrect.""", # MISSING TRANSLATION
 	INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP = """All of the options will result in success""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_NO_SIDES = """Select an actor and a receiver before using this opportunity.""", # MISSING TRANSLATION
 	INTERACTION_ENTHUSIASM_TOOLTIP = """[center]Training Opportunity[/center]
 
 Pick the response that matches the character's personality. A correct choice makes the moment succeed and can improve sex-skill training; a wrong choice breaks the moment and reduces sensitivity.
@@ -9777,6 +9787,8 @@ Sin embargo, puedes actualizar el archivo.
 	PROMPTTUTORIAL = """A los jugadores primerizos se les recomienda completar el tutorial para aprender los controles y mecánicas básicas.""",
 	TUTORIAL_TRAINING1 = """Este tutorial explica las mecánicas básicas de la gestión de tu mansión y tus personajes. Tu personaje {color=yellow|Amo} te representa y se encarga de gestionar a los demás.""",
 	TUTORIAL_TRAINING1_0 = """Everyone living on the estate is listed here. The list is folded down to its bar right now - click the bar to unfold it.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU1 = """Before you set out, one shortcut worth knowing. The strip along the top holds everyone with nothing to do - try a {color=yellow|right-click} on your Master's portrait there.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU2 = """A right click on any portrait puts up this menu, and it is the short way to nearly everything: their card, classes and masteries, training, their bag, their info sheet, and whatever social skills they have to hand. Every portrait in the game answers to it. Right-click again to close the menu.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING1_1 = """Haz clic en la tarjeta de tu Amo para desplegarla. La tarjeta ampliada contiene sus detalles, reglas de trabajo y habilidades sociales.""",
 	TUTORIAL_TRAINING2 = """Empecemos usando la habilidad predeterminada del Amo, Mentor, en uno de tus subordinados. Aumentará la experiencia que gana durante un día.""",
 	TUTORIAL_TRAINING3 = """Selecciona un personaje de la lista para terminar de lanzar la habilidad.""",
@@ -9871,6 +9883,10 @@ Cierra este menú.""",
 	TUTORIAL_WORK_ROOM31 = """Put her in the kitchen garden. She will bring in vegetables every turn.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM32 = """Finish the turn. What the grounds bring in is what the kitchen cooks with - that meat soup wanted vegetables.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM33 = """That is the loop the estate runs on: clear a room out, raise something in it, and put people where the work is. Go back to the mansion.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED1 = """Everyone on the estate also needs somewhere to sleep. Daisy has just lost her bed - anyone without one spends the night on the floor and suffers for it. Switch the plan to {color=yellow|Beds} to see where the household sleeps.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED2 = """The plan now shows beds instead of workplaces, and the strip above it lists everyone who has none. Click Daisy to pick her up.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED3 = """Now click a free bed in the bedroom to put her in it. Dragging her there does the same thing, and {color=yellow|Bed them down} above the strip seats everyone at once.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED4 = """She has a bed again. Switch the plan back to {color=yellow|Work} - beds only need arranging when somebody new arrives or a bedroom is built.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING0 = """Hablando de experiencia, veamos otra forma de conseguirla.""",
 	TUTORIAL_LEVELING1_0 = """What the estate owns is kept in its store room. Open it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING1 = """Selecciona Inventario para ver tus posesiones.""",
@@ -32356,6 +32372,12 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_AUTOSELL_ADD = """Add sale""", # MISSING TRANSLATION
 	MANSIONVIEW_MOVEHINT = """Pick where it goes""", # MISSING TRANSLATION
 	MANSIONVIEW_PICKHINT = """Drag them, or click to pick them up.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENUHINT = """Right click to open context menu""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_UNFOLD = """Unfold""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_LEVELING = """Leveling""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SOCIAL = """Social skills""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SKILLREFUSED = """%s cannot be used right now.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_REFUSED = """Not right now.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTBACKHINT = """In hand. Click again to set them back down.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTHINT = """Click to put them here.""", # MISSING TRANSLATION
 	MANSIONVIEW_MANSION = """Mansion""", # MISSING TRANSLATION
@@ -32583,6 +32605,7 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_PREVIEW_BUTT_SIZE = """Butt size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_SCALE = """Breast scale""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_HEIGHT = """Breast height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MUSCLE_ALPHA = """Muscle definition""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_DICK_SIZE = """Penis size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BALLS_SIZE = """Balls size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_EYES_WIDTH = """Eye spacing""", # MISSING TRANSLATION

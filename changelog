@@ -1,3 +1,23 @@
+0.16.0a
+The mansion now always opens on the character list; the view buttons on the left (Work, Beds, Tasks, Estate) bring the floorplan up over it, and pressing the one already active puts it away and gives the list back
+Character cards in the list now carry an experience bar, and the floorplan character tooltip shows experience towards the next class
+Characters standing in rooms, on tasks and on slots now show what they add per turn, both on the room card and on the floorplan tooltip
+Estate activity log now records finished minor trainings, stat changes, new friendships, rivalries and lovers, and what the service task brought in
+Service earnings are logged as one report per turn with a per-worker breakdown that can be expanded
+Crafted items are now named in the activity log in their quality colour
+Higher tier crafting is now unlocked by Workshop Expansion instead of Craft Tools; Craft Tools now only raises work speed of its room (old saves convert accordingly)
+Workshop achievements now follow the rooms: Master smith, tailor, alchemist and the new Master cook are earned by building every improvement a forge, tailor workshop, alchemy room or kitchen offers, and Master craftsman by finishing all four
+Quest tasks now state progress per turn instead of per day, matching every other figure on the card
+Fixed production figures on task cards showing work units instead of produced items for recipes that store less than one work per item
+Fixed group scenes describing the wrong participants during an enthusiasm event, and added a warning when no actor or receiver is selected
+Fixed stat names coming out blank in the log
+Fixed a room card left open behind the unfolded character list swallowing clicks meant for the list
+Retired the old tutorial panel button and its option toggle
+A date that never once made your partner wary of you now ends with a choice instead of a silent respect penalty: put them in their place, which costs part of the evening's warmth, or endorse it and lose respect
+Night companions in the master's bed now sleep with him on a chance drawn from their consent, and the estate log reports what the night was and whose sex skill it improved. A bed the companions barely consent to keeps to light play; a willing one does not
+The satisfaction everyone used to wake with for merely sharing the master's bed is now paid only for a night that actually came to something
+Harlotry now lets you train a bed partner's sex skills past Skilled all the way to Mastered
+Strapons can no longer be equipped by anyone but women
 0.16.0
 Revamped slave list 
 Completely redone paperdoll, added animations, refined face and details, improved performance and portraits

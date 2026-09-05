@@ -1,5 +1,10 @@
 extends Panel
 
+#Emitted whenever the list folds or unfolds, by whatever route - the handle, a card opening
+#over it, a lesson, the view buttons. The mansion screen listens because folding is what
+#uncovers the floorplan, so the buttons that say which view is up have to follow it.
+signal fold_changed(state)
+
 var active_person
 onready var SlaveModule = get_parent().SlaveModule
 onready var CardContainer = $ScrollContainer/CardContainer
@@ -67,6 +72,9 @@ const CARD_WORK_LABEL = CARD_WORK_STRIP + "/Content/Label"
 const CARD_LOCATION_STRIP = CARD_INFO_STRIPS + "/Location"
 const CARD_LOCATION_ICON = CARD_LOCATION_STRIP + "/Content/Icon"
 const CARD_ACTIONS = CARD_ROOT + "/Actions"
+const CARD_EXP_BAR = CARD_ROOT + "/ExpBar"
+#white while the next class is still being paid for, the level-up green once it is paid
+const CARD_EXP_COLOR = Color(1, 1, 1)
 
 const TEX_ROW_NORMAL = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars.png")
 const TEX_ROW_HOVER = preload("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover.png")
@@ -122,17 +130,16 @@ var expanded_body_build_state
 var expanded_paperdoll_cache_person_id = ""
 var expanded_paperdoll_cache_clothed = true
 #The list folds down to its title bar, which is what uncovers the mansion floorplan lying
-#behind it. Folded is how the mansion opens; the plan is a backdrop rather than a panel, so
-#the list no longer has to leave room for it - it only has to get out of the way.
+#behind it. Open is how the mansion opens: the household is the screen, and the plan is what
+#the player asks for with the view buttons down the left or with this handle. The plan is a
+#backdrop rather than a panel, so the list does not have to leave room for it - it only has
+#to get out of the way.
 const FOLD_FOLDED = 0
 const FOLD_FULL = 1
 const FOLD_GLYPHS = ["v", "^"]
 const FOLD_TOOLTIPS = ["MSLMUNFOLDLIST", "MSLMFOLDLIST"]
 
 var list_fold_state = FOLD_FULL
-#what the player last chose for the default view. Other screens force the list open, and this
-#is what they give back when the player returns.
-var list_preferred_fold = FOLD_FOLDED
 #the fold the list was in when a card was expanded over it, restored when the card closes
 var expanded_restore_fold = FOLD_FULL
 var list_unfolded_size = Vector2()
@@ -270,8 +277,8 @@ func _ready():
 	input_handler.register_btn_source("daisy_waitress", self, "tut_get_daisy_waitress")
 	input_handler.register_btn_source("default_mode", self, "tut_get_default_mode")
 	input_handler.register_btn_source("service_mode", self, "tut_get_service_mode")
-	#the fold handle is taught rather than driven: folded is how the mansion opens in normal
-	#play, and the floorplan behind the list is only reachable that way
+	#the fold handle is taught rather than driven: it is the second way to the floorplan, the
+	#first being the view buttons down the left
 	input_handler.register_btn_source("slave_list_fold_btn", self, "tut_get_list_fold_btn")
 	ListFoldButton.connect('pressed', self, '_toggle_slave_list')
 	apply_default_fold()
@@ -288,24 +295,26 @@ func _tutorial_blocks_rmb():
 	return !input_handler.hard_tutorial.is_RMB_pass()
 
 
-#Listening is armed while there is something of ours to put away: the unfolded list, or a card
-#expanded over it. Folded with no card open, this module hears nothing at all - it leaves no
-#catcher behind and eats nobody else's clicks.
+#Listening is armed only while a card is expanded, which is the one thing here that answers to
+#a click landing outside itself. The list itself does not - it is the screen the mansion opens
+#on, not a menu hanging over it - so with no card open this module hears nothing at all and eats
+#nobody else's clicks.
 func _sync_input_listening():
-	set_process_input(expanded_card != null or list_fold_state == FOLD_FULL)
+	set_process_input(expanded_card != null)
 
 
-#A click anywhere that is not ours folds the list away, the way a menu closes when you look
-#elsewhere. This runs before the GUI is dispatched, so the click that dismissed us is swallowed
-#rather than also landing on the room behind - one gesture, one result.
-func _should_dismiss(event):
+#A card stands open over the list the way a menu stands open over a screen, so looking somewhere
+#else puts it away. The list underneath is not touched: it is not a popup and has nowhere to go.
+#This runs before the GUI is dispatched, so the click that closed the card is swallowed rather
+#than also landing on whatever it was over - one gesture, one result.
+func _should_close_expanded(event):
+	if expanded_card == null:
+		return false
 	if !(event is InputEventMouseButton) or !event.pressed:
 		return false
 	if event.button_index != BUTTON_LEFT:
 		return false
-	if list_fold_state != FOLD_FULL:
-		return false
-	#a character dragged out of the list is let go somewhere else on purpose
+	#a character dragged out of the card is let go somewhere else on purpose
 	if get_viewport().gui_is_dragging():
 		return false
 	#the lesson decides what may be pressed while it is running, and the other screens raise
@@ -324,14 +333,16 @@ func _should_dismiss(event):
 func _click_is_inside(position):
 	if get_global_rect().has_point(position):
 		return true
-	if is_instance_valid(SortMenu) and SortMenu.visible 			and SortMenu.get_global_rect().has_point(position):
+	if is_instance_valid(SortMenu) and SortMenu.visible \
+			and SortMenu.get_global_rect().has_point(position):
 		return true
 	#The expanded card's body preview is authored wider than this module and hangs past its right
 	#edge - the doll's own buttons, which sit 156px inside the doll's right side, land out there.
 	#Measured against this module's rectangle alone they read as a click on the mansion, and the
-	#dismissal swallowed the press that was meant to undress the character. The preview widens
+	#card was closed by the press that was meant to undress the character. The preview widens
 	#again while the Customize menu is open, and this rect grows with it.
-	if is_instance_valid(ExpandedBodyPreview) and ExpandedBodyPreview.visible 			and ExpandedBodyPreview.get_global_rect().has_point(position):
+	if is_instance_valid(ExpandedBodyPreview) and ExpandedBodyPreview.visible \
+			and ExpandedBodyPreview.get_global_rect().has_point(position):
 		return true
 	for name in ['CharacterProgressionPopup', 'CharacterTrainingPopup']:
 		var popup = get_parent().get_node_or_null(name)
@@ -341,19 +352,11 @@ func _click_is_inside(position):
 	return false
 
 
-func _dismiss_by_outside_click():
-	if expanded_card != null:
-		close_expanded_character()
-	if is_instance_valid(SortMenu) and SortMenu.visible:
-		SortMenu.hide()
-	#never the toggle: closing an expanded card puts back the fold it was opened from, and a
-	#toggle would open the list again on the way out
-	set_slave_list_fold(FOLD_FOLDED, true, true)
-
-
 func _input(event):
-	if _should_dismiss(event):
-		_dismiss_by_outside_click()
+	if _should_close_expanded(event):
+		if is_instance_valid(SortMenu) and SortMenu.visible:
+			SortMenu.hide()
+		close_expanded_character()
 		get_viewport().set_input_as_handled()
 		return
 	if expanded_card == null or !(event is InputEventMouseButton):
@@ -754,6 +757,8 @@ func _build_expanded_body_preview(person, force_paperdoll = false):
 	# replaces the stored body image when the nudity rule is active, while the
 	# marriage sprite (when applicable) has final priority.
 	var unique_code = person.get_stat("unique")
+	if person.uses_paperdoll(): #switched to the doll, so none of their own sprites apply
+		unique_code = null
 	if unique_code != null and worlddata.pregen_character_sprites.has(unique_code):
 		var sprite_data = worlddata.pregen_character_sprites[unique_code]
 		var unique_texture
@@ -812,10 +817,36 @@ func _connect_expanded_card_doubleclicks(node, person):
 		_connect_expanded_card_doubleclicks(child, person)
 
 
+#The portrait is the handle the card was opened by, so pressing it again is what puts the card
+#away - the same gesture both ways. Everywhere else on the card a double click still opens the
+#character sheet; over the portrait that gesture cannot arrive, because the first press of it has
+#already folded the card, so the second is ignored rather than opening the sheet behind the fold.
 func _expanded_card_gui_input(event, person):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed and event.doubleclick:
+	if !(event is InputEventMouseButton) or event.button_index != BUTTON_LEFT or !event.pressed:
+		return
+	if expanded_animation_state == "closing":
+		return
+	#the lesson decides what may be pressed while it is running, the same as for a click landing
+	#outside the card - folding here would take away the very card the step is pointing at
+	if !input_handler.hard_tutorial_active and _expanded_portrait_has_point(get_global_mouse_position()):
+		get_tree().set_input_as_handled()
+		close_expanded_character()
+		return
+	if event.doubleclick:
 		get_tree().set_input_as_handled()
 		_open_character_info(person)
+
+
+#The portrait band of the enlarged copy - the picture with its frame, and the bars and icons
+#lying over it, which are the parts of that band that take a click of their own. Only the copy
+#is asked: the real card underneath is transparent and keeps its own press to open.
+func _expanded_portrait_has_point(position):
+	if !is_instance_valid(expanded_card_visual):
+		return false
+	var portrait = expanded_card_visual.get_node_or_null("Margin/Rows/Body/Portrait")
+	if portrait == null or !portrait.is_visible_in_tree():
+		return false
+	return portrait.get_global_rect().has_point(position)
 
 
 func _copy_card_tooltips(source, target):
@@ -1131,10 +1162,20 @@ func _sync_sort_menu():
 
 
 func _toggle_slave_list():
+	set_fold_from_view(list_fold_state != FOLD_FOLDED)
+
+
+#Folding as a change of view, which is what the handle does and what the mansion's own view
+#buttons do. A card standing open cannot be left hanging over an uncovered floorplan, and the
+#sort menu is asking about a list that is on its way out - both go with it. Remembered, because
+#the view the player leaves is the one they should find on the way back.
+func set_fold_from_view(folded):
+	var state = FOLD_FOLDED if folded else FOLD_FULL
+	if list_fold_state == state:
+		return
 	_close_expanded_character_immediate()
 	SortMenu.hide()
-	set_slave_list_fold(FOLD_FULL if list_fold_state == FOLD_FOLDED else FOLD_FOLDED,
-		true, true)
+	set_slave_list_fold(state)
 
 
 #Where the fold control sits when it is the only thing on the bar, and when it shares it.
@@ -1162,14 +1203,8 @@ func fold_height(state):
 	return LIST_FOLDED_HEIGHT if state == FOLD_FOLDED else list_unfolded_size.y
 
 
-#remembered says the player chose this themselves, so it is what the default view goes back to
-#when another screen has finished forcing the list open
-func set_slave_list_fold(state, animated = true, remembered = false):
+func set_slave_list_fold(state, animated = true):
 	list_fold_state = state
-	if remembered:
-		list_preferred_fold = state
-	#unfolded, the list watches for the click that puts it away again; folded, it stops watching
-	_sync_input_listening()
 	ListFoldTween.stop_all()
 	ListFoldTween.remove_all()
 	rect_clip_content = true
@@ -1190,6 +1225,15 @@ func set_slave_list_fold(state, animated = true, remembered = false):
 	var rooms = get_parent().get_node_or_null("MansionRoomsModule")
 	if rooms != null:
 		rooms.set_hud_visible(state == FOLD_FOLDED)
+		#A room card is a panel on the plan, and the sheet that catches clicks beside it covers
+		#the whole screen from a CanvasLayer that outranks everything here. Left open behind the
+		#list it would swallow every press meant for a row, with nothing on screen to explain why.
+		#So the plan going away takes its card with it.
+		if state != FOLD_FOLDED:
+			rooms.close_card()
+	#said before the tween rather than after it: what is uncovered is decided here, and the
+	#buttons that name the view must not lag a fifth of a second behind the view itself
+	emit_signal("fold_changed", state)
 	if !animated:
 		rect_size = target_size
 		rect_clip_content = state != FOLD_FULL
@@ -1203,23 +1247,20 @@ func _on_list_fold_animation_finished():
 	rect_clip_content = list_fold_state != FOLD_FULL
 
 
-#Called on the way into the mansion. The player's own choice wins unless the hard tutorial is
-#running, which points at rows inside the list and cannot reach them through a folded one.
+#Called on the way into the mansion, which always opens on the household: a floorplan the player
+#left up is not carried across a trip to a character screen, the town or a scene. They ask for it
+#again with the view buttons, which is one press.
 func apply_default_fold():
-	if input_handler.hard_tutorial_active:
-		set_slave_list_fold(FOLD_FULL, false)
-		return
-	set_slave_list_fold(list_preferred_fold, false)
+	set_slave_list_fold(FOLD_FULL, false)
 
 
-#default shares the column with the floorplan; every other state wants the whole list back
+#Every state wants the whole list - the ones that ask the player to pick somebody out of it, and
+#the default one because the list is what the mansion rests on. The exception is a lesson in
+#progress: it puts the fold where its own step needs it and nothing else may move it.
 func apply_state_fold(is_default):
-	if !is_default:
-		set_slave_list_fold(FOLD_FULL)
+	if is_default and input_handler.hard_tutorial_active:
 		return
-	if input_handler.hard_tutorial_active:
-		return
-	set_slave_list_fold(list_preferred_fold)
+	set_slave_list_fold(FOLD_FULL)
 
 
 #entry lookups for the hard tutorial. The card view has no full-width rows to clamp, so the
@@ -1305,7 +1346,7 @@ func OpenJobModule(person = null):
 func unfold_to_person(person):
 	if person == null:
 		return false
-	set_slave_list_fold(FOLD_FULL, true, true)
+	set_slave_list_fold(FOLD_FULL)
 	var card = card_of_person(person)
 	if card == null:
 		return false
@@ -1763,6 +1804,19 @@ func _set_card_location_strip(newbutton, texture, label, tooltip = ""):
 	_set_card_text_tooltip(newbutton.get_node(CARD_LOCATION_STRIP), tooltip if tooltip != "" else label)
 
 
+#The strip along the foot of the card: how much of the next class unlock is banked. It is filled
+#here rather than beside the HP and MP bars so it is refreshed by whatever refreshes the level-up
+#mark over the portrait - the two read the same two numbers and must never disagree.
+func _update_card_exp_bar(newbutton, person):
+	var bar = newbutton.get_node(CARD_EXP_BAR)
+	var current = floor(person.get_stat('base_exp'))
+	var required = max(floor(person.get_next_class_exp()), 1)
+	bar.max_value = required
+	bar.value = min(current, required)
+	bar.tint_progress = Color(variables.hexcolordict.levelup_text_color) if current >= required else CARD_EXP_COLOR
+	_set_card_text_tooltip(bar, "%s %d/%d" % [tr("STATBASE_EXP"), int(current), int(required)])
+
+
 func _set_card_action_available(button, available):
 	button.disabled = !available
 	button.material = null if available else CARD_ACTION_DISABLED_MATERIAL
@@ -1770,6 +1824,7 @@ func _set_card_action_available(button, available):
 
 func _update_card_action_states(newbutton, person):
 	newbutton.get_node(CARD_LEVELUP_INDICATOR).visible = person.get_stat('base_exp') >= person.get_next_class_exp()
+	_update_card_exp_bar(newbutton, person)
 	var progression_button = newbutton.get_node(CARD_ACTIONS + "/Progression")
 	var progression_available = person.is_avaliable()
 	_set_card_action_available(progression_button, progression_available)

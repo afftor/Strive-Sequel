@@ -39,6 +39,9 @@ var trail = null
 var trail_points = []
 var burst_nodes = []
 var rng = RandomNumberGenerator.new()
+#combat fast-forward: CombatAnimations sets this before setup() so the effect's own
+#clock runs at the same pace as the queue
+var time_rate = 1.0
 
 
 #caster_node and target_node are the two cards. Settings come from the sfx entry and the
@@ -196,7 +199,7 @@ func build_fireball():
 #--- flight -----------------------------------------------------------------------------
 
 func _process(delta):
-	elapsed += delta
+	elapsed += delta * time_rate
 	if elapsed < launch_delay: return
 	visible = true
 	var t = clamp((elapsed - launch_delay) / max(0.01, flight), 0.0, 1.0)

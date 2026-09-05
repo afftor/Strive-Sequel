@@ -1396,6 +1396,7 @@ var scenedict = {
 		text = "STARTUPGRADEBONUS",
 		common_effects = [],
 		options = [
+		{code = 'close', reqs = [], bonus_effects = [{code ='grant_room', name = 'kitchen'}], text = tr("MANSIONROOM_KITCHEN"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code ='grant_room', name = 'forge'}], text = tr("STARTUPGRADEBONUS1"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code ='grant_room', name = 'tailor_workshop'}], text = tr("STARTUPGRADEBONUS2"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code ='grant_room', name = 'alchemy_room'}], text = tr("STARTUPGRADEBONUS3"), type = 'next_dialogue'},

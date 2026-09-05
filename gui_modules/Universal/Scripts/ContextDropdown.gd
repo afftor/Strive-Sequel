@@ -22,12 +22,19 @@ func open_with_actions(title, actions, global_position):
 			add_separator(action.separator)
 			is_valid_action = true
 		if action.has("label") and action.has("callback"):
-			#a picture beside the words where the caller has one - a skill's own icon, or the
-			#mark that says it cannot be used yet
+			#a picture beside the words where the caller has one - a skill's own icon
 			if action.has("icon") and action.icon != null:
 				add_icon_item(action.icon, action.label)
 			else:
 				add_item(action.label)
+			var index = get_item_count() - 1
+			#A line that cannot be used is greyed rather than marked: the menu's own
+			#font_color_disabled is what says so, and the reason rides on the tooltip -
+			#the same way the character card states a refusal on its buttons.
+			if action.has("disabled") and action.disabled:
+				set_item_disabled(index, true)
+			if action.has("tooltip") and action.tooltip != null and action.tooltip != "":
+				set_item_tooltip(index, action.tooltip)
 			is_valid_action = true
 		if is_valid_action:
 			_actions.append(action)

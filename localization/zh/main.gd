@@ -2763,12 +2763,18 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_BUILD = """Building""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_WORK = """Estate work""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Character found""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_RELATIONSHIP = """Relationship""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_TRAINING = """Training""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_STAT = """Stats""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_SERVICE = """Service""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s returned to the mansion.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s arrived at %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_AUTOBUY = """%s came back from the market with %s, for %d gold.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SLEPTROUGH = """Had no place to sleep at: %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s finished crafting %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TRAINING_COMPLETE = """%s finished training %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_STAT_CHANGES = """%s: %s""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s completed the %s upgrade.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_FOOD_DISSATISFIED = """Wasn't satisfied by the food quality""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_INJURY_RECOVERED = """%s recovered from their injuries.""", # MISSING TRANSLATION
@@ -2776,6 +2782,9 @@ Remove all {color=aqua|Heaping Mass} on self.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CHARACTER_FOUND = """%s found %s at %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_LOCATION_EMPTY = """There is nobody left at %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_LOCATION_GONE = """That location is no longer accessible.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_REPORT = """Service brought in [color=#f0c860]%d[/color] gold, earned by %d of the household.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_EXPAND = """Expand""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_COLLAPSE = """Collapse""", # MISSING TRANSLATION
 	BROTHELLOGSEX = """%s 通过与一名 %s 客户进行 %s 服务，赚取了 %s 金币。""",
 	BROTHELLOGSEXPARTIAL = """%s 未能完全吸引客户，仅通过与 %s 客户进行 %s 服务赚取了 %s 金币。""", 
 	BROTHELLOGNO_SEX = """%s 作为 %s 工作，赚取了 %s 金币。""",
@@ -6664,6 +6673,7 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
     INTERACTION_ENTHUSIASM_ALL_CORRECT_USED = """强制成功 (已完成)""",
     INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP = """此选项不正确。""",
     INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP = """所有选项都将判定为成功""",
+	INTERACTION_ENTHUSIASM_NO_SIDES = """Select an actor and a receiver before using this opportunity.""", # MISSING TRANSLATION
     INTERACTION_ENTHUSIASM_TOOLTIP = """[center]调教机会[/center]
 
 选择符合角色性格的回应。正确的选择会让这次互动成功，并能提升性技巧训练度；错误的选择会破坏气氛并降低敏感度。
@@ -10278,6 +10288,8 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	PROMPTTUTORIAL = """对于初次游玩的玩家，建议通关教程部分以学习基本的操作与机制。""",
 	TUTORIAL_TRAINING1 = """本教程将向你解释管理府邸和角色的基本机制。你的{color=yellow|主人}角色代表你自己，并负责管理其他角色。""",
 	TUTORIAL_TRAINING1_0 = """Everyone living on the estate is listed here. The list is folded down to its bar right now - click the bar to unfold it.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU1 = """Before you set out, one shortcut worth knowing. The strip along the top holds everyone with nothing to do - try a {color=yellow|right-click} on your Master's portrait there.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU2 = """A right click on any portrait puts up this menu, and it is the short way to nearly everything: their card, classes and masteries, training, their bag, their info sheet, and whatever social skills they have to hand. Every portrait in the game answers to it. Right-click again to close the menu.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING1_1 = """Click your Master's card to unfold it. The expanded card holds their details, work rules and social skills.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING2 = """让我们先对你的一名部下使用主人的默认技能“导师（Mentor）”。这会增加他们一天内获得的经验值量。""",
 	TUTORIAL_TRAINING3 = """从列表中选择一个角色以完成技能的施放。""",
@@ -10372,6 +10384,10 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_WORK_ROOM31 = """Put her in the kitchen garden. She will bring in vegetables every turn.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM32 = """Finish the turn. What the grounds bring in is what the kitchen cooks with - that meat soup wanted vegetables.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM33 = """That is the loop the estate runs on: clear a room out, raise something in it, and put people where the work is. Go back to the mansion.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED1 = """Everyone on the estate also needs somewhere to sleep. Daisy has just lost her bed - anyone without one spends the night on the floor and suffers for it. Switch the plan to {color=yellow|Beds} to see where the household sleeps.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED2 = """The plan now shows beds instead of workplaces, and the strip above it lists everyone who has none. Click Daisy to pick her up.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED3 = """Now click a free bed in the bedroom to put her in it. Dragging her there does the same thing, and {color=yellow|Bed them down} above the strip seats everyone at once.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED4 = """She has a bed again. Switch the plan back to {color=yellow|Work} - beds only need arranging when somebody new arrives or a bedroom is built.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING0 = """说到经验值，让我们来看看另一种获取它的方法。""",
 	TUTORIAL_LEVELING1_0 = """What the estate owns is kept in its store room. Open it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING1 = """选择“背包”来查看你的财产。""",
@@ -31896,6 +31912,12 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	MANSIONVIEW_AUTOSELL_ADD = """Add sale""", # MISSING TRANSLATION
 	MANSIONVIEW_MOVEHINT = """Pick where it goes""", # MISSING TRANSLATION
 	MANSIONVIEW_PICKHINT = """Drag them, or click to pick them up.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENUHINT = """Right click to open context menu""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_UNFOLD = """Unfold""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_LEVELING = """Leveling""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SOCIAL = """Social skills""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SKILLREFUSED = """%s cannot be used right now.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_REFUSED = """Not right now.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTBACKHINT = """In hand. Click again to set them back down.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTHINT = """Click to put them here.""", # MISSING TRANSLATION
 	MANSIONVIEW_MANSION = """Mansion""", # MISSING TRANSLATION
@@ -32133,6 +32155,7 @@ Light gathers along the arrowhead, clean and pale, until the metal hums softly i
 	DOLL2_PREVIEW_BUTT_SIZE = """Butt size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_SCALE = """Breast scale""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_HEIGHT = """Breast height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MUSCLE_ALPHA = """Muscle definition""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_DICK_SIZE = """Penis size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BALLS_SIZE = """Balls size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_EYES_WIDTH = """Eye spacing""", # MISSING TRANSLATION

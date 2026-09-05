@@ -31,7 +31,6 @@ var action_data = {
 	mansion_time_1 = {context = CTX_MANSION, default = KEY_1},
 	mansion_time_2 = {context = CTX_MANSION, default = KEY_2},
 	mansion_time_3 = {context = CTX_MANSION, default = KEY_3},
-	mansion_work = {context = CTX_MANSION, default = KEY_W},
 	mansion_travels = {context = CTX_MANSION, default = KEY_T},
 	mansion_upgrades = {context = CTX_MANSION, default = KEY_U},
 	mansion_sex = {context = CTX_MANSION, default = KEY_D},

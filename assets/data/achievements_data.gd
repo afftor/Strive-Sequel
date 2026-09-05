@@ -141,11 +141,17 @@ var achievements = {
 		icon = "res://assets/images/portraits/rouge_prt/rouge_wed_prt_kind.png",
 		points = 3
 	},
+	#The workshops, finished. 'room' names the mansion room type the achievement is about, and
+	#is what achievements.check_room_achimnts() asks the estate: the old upgrade tree these hung
+	#off is gone, and a workshop is now a room on the plan with its own rows to buy. Earned when
+	#one room of that kind has every one of those rows at its top level - see
+	#MansionLayout.all_upgrades_maxed().
 	max_tailor = {
 		name = "ACHIEVEMENT_MAX_TAILOR_NAME",
 		description = "ACHIEVEMENT_MAX_TAILOR_DESC",
 		hint = "ACHIEVEMENT_MAX_TAILOR_HINT",
 		icon = "res://assets/images/gui/upgrades/tailor.png",
+		room = "tailor_workshop",
 		sub_to = "three_upgrades"
 	},
 	max_forge = {
@@ -153,6 +159,7 @@ var achievements = {
 		description = "ACHIEVEMENT_MAX_FORGE_DESC",
 		hint = "ACHIEVEMENT_MAX_FORGE_HINT",
 		icon = "res://assets/images/gui/upgrades/forge.png",
+		room = "forge",
 		sub_to = "three_upgrades"
 	},
 	max_alchemy = {
@@ -160,8 +167,22 @@ var achievements = {
 		description = "ACHIEVEMENT_MAX_ALCHEMY_DESC",
 		hint = "ACHIEVEMENT_MAX_ALCHEMY_HINT",
 		icon = "res://assets/images/gui/upgrades/alchemy.png",
+		room = "alchemy_room",
 		sub_to = "three_upgrades"
 	},
+	#The fourth craft room. It has no tiered recipes behind it the way the other three do, but
+	#it is a workshop like them - same two rows to buy - and the set is not "every workshop on
+	#the estate" while one of them is left out.
+	max_kitchen = {
+		name = "ACHIEVEMENT_MAX_KITCHEN_NAME",
+		description = "ACHIEVEMENT_MAX_KITCHEN_DESC",
+		hint = "ACHIEVEMENT_MAX_KITCHEN_HINT",
+		icon = "res://assets/images/gui/upgrades/wheat.png",
+		room = "kitchen",
+		sub_to = "three_upgrades"
+	},
+	#Kept under its old id so a player who has already earned it keeps it: what it asks has
+	#grown from three workshops to four, but an achievement is remembered by name.
 	three_upgrades = {
 		name = "ACHIEVEMENT_UPGRADES_NAME",
 		description = "ACHIEVEMENT_UPGRADES_DESC",

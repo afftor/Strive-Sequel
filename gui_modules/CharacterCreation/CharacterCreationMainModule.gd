@@ -935,6 +935,8 @@ func refresh_dependent_sliders(stat):
 			continue
 		build_possible_val_for_stat(slider)
 		build_node_for_stat(slider)
+	# the extra pair is only 'developed' while there is one: the tick box follows the count,
+	# and a count brought back to none takes the tick with it
 
 
 func unassigned_points():
@@ -1149,6 +1151,11 @@ func warm_doll_rigs():
 
 
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
+	#the panel is never freed - get_spec_node hands the same node to every character the
+	#session ever creates. A sub-panel left open by the previous character comes back with
+	#its old contents, and the race list is built from the run's unlocked races, so an
+	#abandoned New Game+ run would hand its unlocked races to the next one.
+	hide_all_dialogues()
 	preservedsettings.clear()
 	selected_class = ''
 	selected_master_relation = 'none'
@@ -1189,7 +1196,14 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 
 
 func open_freemode(char_to_open, flag = false):
+	hide_all_dialogues()
+	#the panel is a singleton: a submenu and the option tiles of the previous character would
+	#otherwise come back with this one
+	_close_visual_submenu()
+	preview_booth.forget()
 	person = char_to_open
+	selected_class = ''
+	updating_visual_controls = false
 	if person.get_upgrade_points() < 0:
 		flag = true
 	upgrades_removal = flag
@@ -1263,7 +1277,9 @@ func confirm_female():
 
 
 func confirm_final():
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('CREATECHARQUESTION')])
+	#an existing character is being edited, not made
+	var question = tr('CHARCREATE_APPLY_CHANGES_QUESTION') if mode == 'freemode' else tr('CREATECHARQUESTION')
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', question])
 
 
 func confirm_upgrades():
@@ -1328,6 +1344,10 @@ func finish_character():
 		for upg in cur_upgrades:
 			person.add_upgrade(upg)
 		person.recheck_upgrades()
+		#CharacterUpdated has no listeners; these are what refresh the doll on other screens and
+		#retire the portrait on file
+		input_handler.reshoot_portrait(person)
+		input_handler.emit_signal('update_ragdoll')
 		input_handler.emit_signal("CharacterUpdated")
 	self.hide()
 

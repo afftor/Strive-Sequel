@@ -16,13 +16,19 @@ func _ready():
 	$VBoxContainer/icon2.connect("pressed", self, "make_random_portrait")
 	$VBoxContainer/body.connect("pressed", self, "custom_icon_open", ["body"])
 	$VBoxContainer/uniquesprite.connect("pressed", self, 'unique_sprite_choose')
+	$VBoxContainer/upaperdoll.connect("pressed", self, 'toggle_paperdoll')
+	globals.connecttexttooltip($VBoxContainer/upaperdoll, tr("UPAPERDOLL_BUTTON_TOOLTIP"))
 	$Label.text = tr("DESCRIPT_BUTTON_TEXT")
 	$ConfirmButton.connect("pressed", self, "confirm")
 	custom_description_open()
 
 func show():
 	.show()
-	$VBoxContainer/uniquesprite.visible = person.get_stat('unique') != null
+	var unique = person.get_stat('unique') != null
+	$VBoxContainer/uniquesprite.visible = unique
+	#only the unique cast has artwork of their own to switch away from
+	$VBoxContainer/upaperdoll.visible = unique
+	$VBoxContainer/upaperdoll.pressed = person.get_stat('use_paperdoll')
 
 func unpress_buttons():
 	for button in $VBoxContainer.get_children():
@@ -96,6 +102,18 @@ func unique_sprite_choose():
 	details_state = 'unique_sprite'
 	$VBoxContainer/IconBlock.get_node("assignboth").pressed = true
 	
+
+#The doll instead of this character's own sprites. The choice is kept on the character, so
+#every screen that draws them follows it and it survives a save.
+func toggle_paperdoll():
+	person = input_handler.interacted_character
+	if person == null:
+		return
+	person.set_use_paperdoll($VBoxContainer/upaperdoll.pressed)
+	$VBoxContainer/upaperdoll.pressed = person.get_stat('use_paperdoll')
+	gui_controller.slavepanel.BodyModule.update()
+	gui_controller.slavepanel.SummaryModule.show_summary()
+
 
 func make_random_portrait():
 	unpress_buttons()

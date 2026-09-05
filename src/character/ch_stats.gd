@@ -291,10 +291,62 @@ const FUR_COLOURS = {
 }
 
 
+# The colours of the coat itself, when the player painted it rather than wearing
+# the artist's own: one "#rrggbb" per colour the pattern has, in the order
+# `doll_coverage` lists them, with '' where the artist's colour still stands.
+func get_coat_colours():
+	var raw = str(statlist.get('body_color_coat', ''))
+	if raw == '':
+		return []
+	return Array(raw.split(','))
+
+
+func get_coat_colour(index):
+	var list = get_coat_colours()
+	if index < 0 or index >= list.size():
+		return ''
+	return str(list[index])
+
+
+func set_coat_colour(index, value):
+	if index < 0:
+		return
+	var list = get_coat_colours()
+	while list.size() <= index:
+		list.append('')
+	list[index] = str(value)
+	#a list of nothing but the artist's own colours is no list at all
+	while !list.empty() and str(list[list.size() - 1]) == '':
+		list.remove(list.size() - 1)
+	statlist.body_color_coat = PoolStringArray(list).join(',')
+	statlist.portrait_update = true
+
+
+# Every colour back to the artist's own.
+func clear_coat_colours():
+	statlist.body_color_coat = ''
+
+
+# What a repainted coat lends the parts that take after it: its first colour,
+# which is the base where the pattern has one and the first mask where it has
+# none. '' while the coat is still the artist's, and for a body with no fur.
+func painted_coat_colour():
+	if !str(statlist.skin_coverage).begins_with('fur'):
+		return ''
+	for value in get_coat_colours():
+		if str(value) != '':
+			return str(value)
+	return ''
+
+
 func get_body_color_tail():
 	if statlist.body_color_tail != '':
 		return statlist.body_color_tail
 	if statlist.tail in FUR_TAILS:
+		#a coat the player repainted answers for the tail growing out of it
+		var painted = painted_coat_colour()
+		if painted != '':
+			return painted
 		if FUR_COLOURS.has(statlist.skin_coverage):
 			return FUR_COLOURS[statlist.skin_coverage]
 		return hair_colour_as_body_part()
@@ -423,6 +475,10 @@ func get_body_color_ears():
 	if statlist.hair_base_color_1 != "":
 		res = statlist.hair_base_color_1
 	res = res.replace('_', '')
+	#a coat the player repainted answers for the ears sticking out of it
+	var painted = painted_coat_colour()
+	if painted != '':
+		return painted
 	if statlist.skin_coverage.begins_with('fur'):
 		match statlist.skin_coverage:
 			'fur_orange':
@@ -1515,6 +1571,116 @@ func get_racial_features(race):
 		update_personality(input_handler.weightedrandom(array))
 
 
+#### the furry form ####
+
+#BeastkinX and HalfkinX are the same animal with the fur on or off: two stat-identical entries in
+#races.gd that differ only in the coat, the muzzle and the limbs. The game itself renames one to
+#the other at creation when the furry setting is off (create(), above), and these do the same
+#for a character that already exists - rewriting only what the two entries roll differently, so
+#the hair, the ears, the tail, the eyes and every chosen colour stay. Not get_racial_features():
+#that re-rolls the whole body. Data only: whoever calls it reshoots the portrait.
+
+#a head wearing any of these keeps a muzzle whatever the race says (doll_character_map.resolve)
+const FURRY_STALE_CHINS = ['beastkin', 'muzzle1', 'muzzle2', 'muzzle3']
+const FURRY_PENIS_TYPES = ['feline', 'canine']
+
+
+func is_furry_form():
+	return str(statlist.race).begins_with('Beastkin')
+
+
+#The race code of the other form, or '' when this race has no pair. Only a Beastkin entry tagged
+#has_halfkin_counterpart qualifies - Ratkin, Kobold and the rest have nothing to flip to.
+func furry_counterpart_race():
+	var race = str(statlist.race)
+	var other = ''
+	if race.begins_with('Beastkin'):
+		other = race.replace('Beastkin', 'Halfkin')
+	elif race.begins_with('Halfkin'):
+		other = race.replace('Halfkin', 'Beastkin')
+	if other == '' or !races.racelist.has(other):
+		return ''
+	var beast = race if race.begins_with('Beastkin') else other
+	if !races.racelist[beast].get('tags', []).has('has_halfkin_counterpart'):
+		return ''
+	return other
+
+
+#a race's bodyparts list as plain values - weighted entries are [value, weight] pairs
+func _race_part_values(template, stat):
+	var res = []
+	for entry in template.get('bodyparts', {}).get(stat, []):
+		res.append(entry[0] if entry is Array else entry)
+	return res
+
+
+#the same two-branch roll get_racial_features() makes
+func _pick_race_part(template, stat):
+	var list = template.bodyparts[stat]
+	if typeof(list[0]) in [TYPE_STRING, TYPE_BOOL, TYPE_INT]:
+		return input_handler.random_from_array(list)
+	return input_handler.weightedrandom(list)
+
+
+func set_furry_form(furry):
+	furry = bool(furry)
+	if is_furry_form() == furry:
+		return false
+	var target = furry_counterpart_race()
+	if target == '':
+		return false
+	update_stat('race', target, 'set')
+	var template = races.racelist[target]
+	var parts = template.get('bodyparts', {})
+	if furry:
+		#a coat the character already wears is kept when the race lists it, else one is rolled;
+		#going through the setter also gives the tail the coat's colour, as creation does
+		if parts.has('skin_coverage') and !(str(statlist.skin_coverage) in _race_part_values(template, 'skin_coverage')):
+			update_stat('skin_coverage', _pick_race_part(template, 'skin_coverage'), 'set')
+			#the paint belonged to the coat that was just replaced
+			statlist.body_color_coat = ''
+		#the muzzle and the limbs, only where the face is still a human one; a Bunny or a Tanuki
+		#lists no penis_type, so the human one stays
+		for stat in ['chin', 'nose', 'lips', 'arms', 'legs', 'penis_type']:
+			if !parts.has(stat):
+				continue
+			if str(get_stat(stat)) in _race_part_values(template, stat):
+				continue
+			update_stat(stat, _pick_race_part(template, stat), 'set')
+		if template.get('tags', []).has('multibreasts') and input_handler.globalsettings.furry_multiple_nipples:
+			statlist.multiple_tits = variables.furry_multiple_nipples_number
+	else:
+		#written raw: the coat's custom setter looks its value up in the descriptions, which have
+		#no entry for 'none' - and a bare halfkin carries exactly this
+		statlist.skin_coverage = ''
+		#pinned by the coat's bodychange; back to following the hair
+		statlist.body_color_tail = ''
+		statlist.body_color_ears = ''
+		#the paint belonged to a coat this body no longer wears
+		statlist.body_color_coat = ''
+		if str(get_stat('chin')) in FURRY_STALE_CHINS:
+			update_stat('chin', 'default', 'set')
+		#the other sex's stored face would bring the muzzle back after a swap
+		if exterior_alt is Dictionary and exterior_alt.has('chin') and str(exterior_alt.chin) in FURRY_STALE_CHINS:
+			exterior_alt.chin = 'default'
+		if str(statlist.nose) == 'beastkin':
+			update_stat('nose', 'default', 'set')
+		if str(statlist.lips).begins_with('beastkin'):
+			#the first human mouth of each sex's own table
+			update_stat('lips', 'style6' if str(statlist.sex) == 'male' else 'style1', 'set')
+		if str(statlist.penis_type) in FURRY_PENIS_TYPES:
+			update_stat('penis_type', 'human', 'set')
+		for limb in ['arms', 'legs']:
+			if str(statlist[limb]) == 'fur':
+				update_stat(limb, 'normal', 'set')
+		statlist.multiple_tits = 0
+		statlist.multiple_tits_developed = false
+	#neither race nor the coat carries the update_portrait tag, so the shot on file is retired by hand
+	statlist.portrait_update = true
+	parent.get_ref().reset_rebuild()
+	return true
+
+
 func apply_custom_bodychange(target, part, update = true):
 	if update:
 		update_stat(target, part, 'set')
@@ -1582,6 +1748,12 @@ func random_icon():
 		statlist.dynamic_portrait = false
 
 func get_icon():
+	if uses_paperdoll():
+		#the booth's shot, asked for by path rather than through icon_image, which still
+		#holds the drawn portrait for the day the toggle goes back off
+		var shot = input_handler.get_portrait(parent.get_ref().doll_portrait_path())
+		if shot != null:
+			return shot
 	if statlist.icon_image in ['', null]:
 		return null
 	if statlist.icon_image is String:
@@ -1593,6 +1765,8 @@ func get_icon():
 
 
 func get_icon_path():
+	if uses_paperdoll():
+		return parent.get_ref().doll_portrait_path()
 	if typeof(statlist.icon_image) != TYPE_STRING:
 		return null
 	if statlist.icon_image in ['', null]:
@@ -1600,8 +1774,15 @@ func get_icon_path():
 	return statlist.icon_image
 
 
-func get_stored_body_image(): 
-	var tmp 
+func uses_paperdoll():
+	var owner = parent.get_ref()
+	return owner != null and owner.uses_paperdoll()
+
+
+func get_stored_body_image():
+	if uses_paperdoll(): #no stored picture means the doll, on every screen that asks
+		return null
+	var tmp
 	if images.sprites.has(statlist.body_image):
 		tmp = input_handler.loadimage(images.sprites[statlist.body_image], 'shades')
 	else:
@@ -1830,12 +2011,10 @@ func add_tattoo(slot, code) -> bool:
 
 
 func remove_tattoo(slot):
-	if tattoo[slot] == null: 
+	if tattoo[slot] == null:
 		return
-	var arr = parent.get_ref().find_eff_by_tattoo(slot, tattoo[slot])
-	for e in arr:
-		var eff = effects_pool.get_effect_by_id(e)
-		eff.remove()
+	#the bonuses are re-derived from this dict on every rebuild (ch_dyn_stats.generate_data), so
+	#nothing is torn down by hand here
 	tattoo[slot] = null
 	parent.get_ref().reset_rebuild()
 

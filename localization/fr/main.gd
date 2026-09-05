@@ -2907,12 +2907,18 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	MANSION_ACTIVITY_TYPE_BUILD = """Building""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_WORK = """Estate work""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_CHARACTER_FOUND = """Personnage trouvé""",
+	MANSION_ACTIVITY_TYPE_RELATIONSHIP = """Relationship""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_TRAINING = """Training""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_STAT = """Stats""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_SERVICE = """Service""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s est rentré au manoir.""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s est arrivé à %s.""",
 	MANSION_ACTIVITY_AUTOBUY = """%s came back from the market with %s, for %d gold.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SLEPTROUGH = """Had no place to sleep at: %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s a terminé la fabrication de %s.""",
+	MANSION_ACTIVITY_TRAINING_COMPLETE = """%s finished training %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_STAT_CHANGES = """%s: %s""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s a terminé l'amélioration %s.""",
 	MANSION_ACTIVITY_FOOD_DISSATISFIED = """%s n'a pas été satisfait par la qualité de la nourriture""",
 	MANSION_ACTIVITY_INJURY_RECOVERED = """%s s'est remis de ses blessures.""",
@@ -2920,6 +2926,9 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	MANSION_ACTIVITY_CHARACTER_FOUND = """%s a trouvé %s à %s.""",
 	MANSION_ACTIVITY_LOCATION_EMPTY = """There is nobody left at %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_LOCATION_GONE = """That location is no longer accessible.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_REPORT = """Service brought in [color=#f0c860]%d[/color] gold, earned by %d of the household.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_EXPAND = """Expand""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_COLLAPSE = """Collapse""", # MISSING TRANSLATION
 	
 	LOGLEFTLABEL = "Main",
 	LOGLEFTTTOOLTIP = "Affiche les événements principaux",
@@ -6281,6 +6290,7 @@ Forces target to orgasm against their will with slight impact over consent. 7 Ma
 	INTERACTION_ENTHUSIASM_ALL_CORRECT_USED = """Enforce success (complete)""", # MISSING TRANSLATION
 	INTERACTION_ENTHUSIASM_INCORRECT_TOOLTIP = """This option is incorrect.""", # MISSING TRANSLATION
 	INTERACTION_ENTHUSIASM_CORRECT_TOOLTIP = """All of the options will result in success""", # MISSING TRANSLATION
+	INTERACTION_ENTHUSIASM_NO_SIDES = """Select an actor and a receiver before using this opportunity.""", # MISSING TRANSLATION
 	INTERACTION_ENTHUSIASM_TOOLTIP = """[center]Training Opportunity[/center]
 
 Pick the response that matches the character's personality. A correct choice makes the moment succeed and can improve sex-skill training; a wrong choice breaks the moment and reduces sensitivity.
@@ -9768,6 +9778,8 @@ La luxure satisfaite, vous la regardez gisant là, épuisée, brisée et sans d�
 	PROMPTTUTORIAL = """Pour les nouveaux joueurs, il est recommandé de suivre le tutoriel afin d'apprendre les commandes et mécaniques de base.""",
 	TUTORIAL_TRAINING1 = """Ce tutoriel explique les mécaniques de base de la gestion de votre manoir et de vos personnages. Votre personnage {color=yellow|Maître} vous représente et se charge de gérer les autres personnages.""",
 	TUTORIAL_TRAINING1_0 = """Everyone living on the estate is listed here. The list is folded down to its bar right now - click the bar to unfold it.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU1 = """Before you set out, one shortcut worth knowing. The strip along the top holds everyone with nothing to do - try a {color=yellow|right-click} on your Master's portrait there.""", # MISSING TRANSLATION
+	TUTORIAL_RMB_MENU2 = """A right click on any portrait puts up this menu, and it is the short way to nearly everything: their card, classes and masteries, training, their bag, their info sheet, and whatever social skills they have to hand. Every portrait in the game answers to it. Right-click again to close the menu.""", # MISSING TRANSLATION
 	TUTORIAL_TRAINING1_1 = """Cliquez sur la carte de votre Maître pour la déplier. La carte étendue contient ses détails, ses règles de travail et ses compétences sociales.""",
 	TUTORIAL_TRAINING2 = """Commençons par utiliser la compétence par défaut du Maître, Mentor, sur l'un de vos subordonnés. Elle augmentera l'expérience qu'il gagne pendant une journée.""",
 	TUTORIAL_TRAINING3 = """Sélectionnez un personnage dans la liste pour terminer l'incantation.""",
@@ -9862,6 +9874,10 @@ Fermez ce menu.""",
 	TUTORIAL_WORK_ROOM31 = """Put her in the kitchen garden. She will bring in vegetables every turn.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM32 = """Finish the turn. What the grounds bring in is what the kitchen cooks with - that meat soup wanted vegetables.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM33 = """That is the loop the estate runs on: clear a room out, raise something in it, and put people where the work is. Go back to the mansion.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED1 = """Everyone on the estate also needs somewhere to sleep. Daisy has just lost her bed - anyone without one spends the night on the floor and suffers for it. Switch the plan to {color=yellow|Beds} to see where the household sleeps.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED2 = """The plan now shows beds instead of workplaces, and the strip above it lists everyone who has none. Click Daisy to pick her up.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED3 = """Now click a free bed in the bedroom to put her in it. Dragging her there does the same thing, and {color=yellow|Bed them down} above the strip seats everyone at once.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_BED4 = """She has a bed again. Switch the plan back to {color=yellow|Work} - beds only need arranging when somebody new arrives or a bedroom is built.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING0 = """En parlant d'expérience, voyons un autre moyen d'en gagner.""",
 	TUTORIAL_LEVELING1_0 = """What the estate owns is kept in its store room. Open it.""", # MISSING TRANSLATION
 	TUTORIAL_LEVELING1 = """Sélectionnez Inventaire pour consulter vos possessions.""",
@@ -32869,6 +32885,12 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_AUTOSELL_ADD = """Add sale""", # MISSING TRANSLATION
 	MANSIONVIEW_MOVEHINT = """Pick where it goes""", # MISSING TRANSLATION
 	MANSIONVIEW_PICKHINT = """Drag them, or click to pick them up.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENUHINT = """Right click to open context menu""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_UNFOLD = """Unfold""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_LEVELING = """Leveling""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SOCIAL = """Social skills""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_SKILLREFUSED = """%s cannot be used right now.""", # MISSING TRANSLATION
+	MANSIONVIEW_MENU_REFUSED = """Not right now.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTBACKHINT = """In hand. Click again to set them back down.""", # MISSING TRANSLATION
 	MANSIONVIEW_PUTHINT = """Click to put them here.""", # MISSING TRANSLATION
 	MANSIONVIEW_MANSION = """Mansion""", # MISSING TRANSLATION
@@ -33096,6 +33118,7 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_PREVIEW_BUTT_SIZE = """Butt size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_SCALE = """Breast scale""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BREAST_HEIGHT = """Breast height""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MUSCLE_ALPHA = """Muscle definition""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_DICK_SIZE = """Penis size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_BALLS_SIZE = """Balls size""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_EYES_WIDTH = """Eye spacing""", # MISSING TRANSLATION

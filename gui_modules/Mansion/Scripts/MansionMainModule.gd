@@ -174,6 +174,8 @@ func _ready():
 		gui_controller.clock.show()
 	gui_controller.clock.update_labels()
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
+	#the old tutorial is retired: the panel stays reachable by hotkey, the button does not show
+	$TutorialButton.hide()
 	var sheen = ShaderMaterial.new()
 	sheen.shader = SHIMMER_SHADER
 	LocalTasksShimmer.material = sheen
@@ -187,7 +189,8 @@ func _ready():
 	ViewModes.get_node("Plan/ModeWork").connect('pressed', self, 'set_rooms_mode', ['work'])
 	ViewModes.get_node("Plan/ModeBeds").connect('pressed', self, 'set_rooms_mode', ['sleep'])
 	RoomsModule.connect('mode_changed', self, 'sync_view_mode_buttons')
-	RoomsModule.connect('place_changed', self, 'sync_local_tasks_button')
+	RoomsModule.connect('place_changed', self, 'on_place_changed')
+	SlaveListModule.connect('fold_changed', self, 'on_list_fold_changed')
 	sync_view_mode_buttons(RoomsModule.mode)
 	sync_local_tasks_button(RoomsModule.place)
 	globals.connecttexttooltip(LocalTasksButton, tr("MANSIONVIEW_LOCALTASKSHINT"))
@@ -216,8 +219,6 @@ func _ready():
 	ResourceScripts.game_res.ensure_mansion_layout()
 	RoomsModule.refresh()
 #	SlaveListModule.build_locations_list()
-	if !ResourceScripts.game_progress.intro_tutorial_seen:
-		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
 	$NavigationModule.tut_register_aliron_btn()
 	Journal.tut_register_minor()
@@ -331,7 +332,6 @@ func mansion_state_set(state):
 		SlaveListModule.apply_state_fold(mansion_state == "default")
 	match_state()
 	slave_list_manager()
-	get_node("TutorialButton").show()
 
 func reset_vars():
 #	input_handler.interacted_character = null
@@ -364,7 +364,7 @@ func match_state():
 		gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
-	Journal.visible = MenuModule.get_node("VBoxContainer/Journal").is_pressed()
+	Journal.visible = MenuModule.get_node("Buttons/Journal").is_pressed()
 	for node in get_children():
 		if node.get_class() == "Tween":
 			continue
@@ -373,9 +373,12 @@ func match_state():
 			continue
 		if node.name.findn(mansion_state) == -1 and ! node.name in always_show:
 			node.hide()
-	var menu_buttons = MenuModule.get_node("VBoxContainer")
+	var menu_buttons = MenuModule.get_node("Buttons")
 	for button in menu_buttons.get_children():
 		button.pressed = false
+	#the rail is built once and the craft icon depends on what stands on the plan, so it is
+	#asked again whenever the screen is looked at rather than only when a room goes up
+	MenuModule.refresh_craft_button()
 	match mansion_state:
 		"default":
 			reset_vars()
@@ -452,7 +455,6 @@ func rebuild_mansion():
 	CraftModule.rebuild_scheldue()
 	#UpgradesModule.open_queue()
 	update_legacy_slave_panel()
-	$TutorialButton.show()
 
 #same work as rebuild_mansion, but split over frames so a turn does not stall the game.
 #day_extras covers what advance_day used to rebuild on a day change
@@ -471,7 +473,6 @@ func rebuild_after_turn(day_extras):
 	CraftModule.rebuild_scheldue()
 	yield(get_tree(), 'idle_frame')
 	update_legacy_slave_panel()
-	$TutorialButton.show()
 
 
 #What a passed turn does to the floorplan. A turn advances builds, finishes tasks and can
@@ -502,18 +503,57 @@ func tut_get_mode_work_btn():
 	return ViewModes.get_node("Plan/ModeWork")
 
 
+#### which of the two views is up ####
+
+#The mansion screen is two things one behind the other: the household list, which is what it
+#opens on, and the floorplan under it. Folding the list away is what uncovers the plan, so
+#"the plan is up" and "the list is folded" are one fact - asked of the list rather than kept
+#a second time here, where the two could drift apart.
+func plan_shown():
+	if SlaveListModule == null or !is_instance_valid(SlaveListModule):
+		return false
+	return SlaveListModule.list_fold_state == SlaveListModule.FOLD_FOLDED
+
+
+#Remembered either way: the view the player is left looking at is the one the mansion gives
+#back when they return to it from a character panel, the town or a scene.
+func show_plan(shown):
+	if SlaveListModule == null or !is_instance_valid(SlaveListModule):
+		return
+	SlaveListModule.set_fold_from_view(shown)
+
+
+#Whatever moved the fold - one of these buttons, the handle on the list's own bar, a card
+#opening over it, a lesson - the buttons that name the view follow it, so what is pressed is
+#always what is on screen.
+func on_list_fold_changed(_state = null):
+	sync_local_tasks_button(RoomsModule.place)
+
+
+#Something asked this screen to show another place's work, or the estate's own. The panel that
+#answers lies under the household list, so it comes up with the ask. Being put back on the
+#estate's rooms is not that ask - that is where the screen rests when nothing is being looked
+#at, and what the mansion rests on is the list.
+func on_place_changed(_code = null):
+	if !RoomsModule.in_mansion() or RoomsModule.local_tasks:
+		show_plan(true)
+	sync_local_tasks_button(RoomsModule.place)
+
+
 #The estate is looked at one way or the other - the building itself, or the work it offers -
-#so the two buttons put each other out rather than each toggling on its own.
+#so the two buttons put each other out rather than each toggling on its own. Either one also
+#brings the plan up over the list; pressing the one that is already up puts the plan away and
+#gives the household back, which is what the whole row of four is for.
 func set_local_tasks_scope(value):
 	if !RoomsModule.in_mansion():
 		sync_local_tasks_button(RoomsModule.place)
 		return
-	#The local tasks screen fills the space the list would occupy, so opening it with the
-	#list standing up leaves the two overlapping. Folding is remembered as the player's own
-	#choice, so the list stays down until they put it back up themselves.
-	if value and SlaveListModule != null and SlaveListModule.list_fold_state != SlaveListModule.FOLD_FOLDED:
-		SlaveListModule.set_slave_list_fold(SlaveListModule.FOLD_FOLDED, true, true)
+	if plan_shown() and RoomsModule.local_tasks == value:
+		show_plan(false)
+		sync_local_tasks_button(RoomsModule.place)
+		return
 	RoomsModule.set_local_tasks(value)
+	show_plan(true)
 	sync_local_tasks_button(RoomsModule.place)
 
 
@@ -550,29 +590,62 @@ func close_sex_selection():
 	SexSelect.hide()
 
 
+#The beauty parlor's two windows: the tattoo bench, and - once the room has been improved -
+#the body editor. Two buttons on the room's card, so two windows rather than one wearing two
+#faces. Made when first asked for, like the salvage bench. Their own open() shows, raises and
+#registers them as open windows, so no win_btn_connections_handler: there is no rail button to
+#pair them with, and their hide() takes them back out of the register.
+var beauty_parlor = null
+var body_mod = null
+
+
+func open_beauty_parlor():
+	if beauty_parlor == null or !is_instance_valid(beauty_parlor):
+		beauty_parlor = load("res://gui_modules/Mansion/Modules/BeautyParlorModule.tscn").instance()
+		add_child(beauty_parlor)
+	beauty_parlor.open()
+
+
+func open_body_mod():
+	if body_mod == null or !is_instance_valid(body_mod):
+		body_mod = load("res://gui_modules/Mansion/Modules/BodyModModule.tscn").instance()
+		add_child(body_mod)
+	body_mod.open()
+
+
+#Pressed says "this is what you are looking at", so with the list up nothing is pressed: the
+#plan is not on screen, and a lit button over a covered plan claims otherwise.
 func sync_local_tasks_button(_place = null):
 	var at_mansion = RoomsModule.in_mansion()
 	var local = RoomsModule.local_tasks if at_mansion else false
+	var up = plan_shown()
 	ViewModes.get_node("Scope").visible = at_mansion
-	LocalTasksButton.pressed = local
-	ViewModes.get_node("Scope/MansionButton").pressed = !local
+	LocalTasksButton.pressed = up and local
+	ViewModes.get_node("Scope/MansionButton").pressed = up and !local
 	refresh_local_tasks_attention()
 	sync_view_mode_buttons(RoomsModule.mode)
 
 
 #The three buttons are one list: what the plan is arranging, and the estate's own work. Beds
 #are only a thing while the plan is what is drawn, and none of it belongs to another location.
+#Like the two above, pressing one brings the plan up; pressing the one already up sends it away.
 func set_rooms_mode(value):
+	if plan_shown() and RoomsModule.mode == value:
+		show_plan(false)
+		sync_view_mode_buttons(RoomsModule.mode)
+		return
 	RoomsModule.set_mode(value)
+	show_plan(true)
 	sync_view_mode_buttons(RoomsModule.mode)
 
 
 func sync_view_mode_buttons(value = null):
 	if value == null:
 		value = RoomsModule.mode
+	var up = plan_shown()
 	ViewModes.visible = RoomsModule.in_mansion()
-	ViewModes.get_node("Plan/ModeWork").pressed = value == 'work'
-	ViewModes.get_node("Plan/ModeBeds").pressed = value == 'sleep'
+	ViewModes.get_node("Plan/ModeWork").pressed = up and value == 'work'
+	ViewModes.get_node("Plan/ModeBeds").pressed = up and value == 'sleep'
 	#beds belong to the building; the estate's own work has none to arrange, so the button
 	#stays where it is and greys out rather than leaving a hole in the row
 	ViewModes.get_node("Plan/ModeBeds").disabled = !RoomsModule.showing_plan()
@@ -582,6 +655,9 @@ func rooms_after_turn():
 	RoomsModule.mode = 'work'
 	RoomsModule.refresh()
 	refresh_local_tasks_attention()
+	#set directly rather than through set_mode, so nothing was emitted to tell the row of
+	#buttons that beds is no longer what is being arranged
+	sync_view_mode_buttons(RoomsModule.mode)
 
 
 func _turn_product_texture(value):
@@ -927,8 +1003,7 @@ func test_mode():
 			})
 		else:
 			print_debug("test mode: no settlement found to place the away quest in")
-		
-#		ResourceScripts.game_res.upgrades.tattoo_set = 1
+
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)
 		character.equip(item)

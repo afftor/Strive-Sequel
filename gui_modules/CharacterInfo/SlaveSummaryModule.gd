@@ -5,7 +5,7 @@ onready var CharMainModule = get_parent()
 onready var name_button = $Name/name
 
 var selected_person
-var actions = ['leveling','relations','customization','expel','inventory','occupation','date','chat']
+var actions = ['leveling','relations','customization','expel','inventory','date','chat']
 
 var chat_button
 var date_button
@@ -14,7 +14,6 @@ var leveling_button
 var relations_button
 var customization_button
 var inventory_button
-var occupation_button
 
 var pending_date_person
 
@@ -23,7 +22,7 @@ func _ready():
 	for i in actions:
 		var newbutton = input_handler.DuplicateContainerTemplate($Actions/GridContainer)
 		newbutton.get_node("Label").text = tr('BTN' + i.to_upper())
-		if i in ['inventory','occupation','date','chat', 'expel']:
+		if i in ['inventory','date','chat', 'expel']:
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
@@ -137,13 +136,6 @@ func set_buttons_pressed(type):
 			customization_button.pressed = true
 		"siblings":
 			relations_button.pressed = true
-
-func occupation():
-	input_handler.ActivateTutorial('TUTORIALLIST4')
-	if selected_person != null:
-		gui_controller.mansion.get_node("MansionJobModule2").selected_location = selected_person.get_location()
-	gui_controller.close_scene(get_parent())
-	gui_controller.mansion.mansion_state_set("occupation")
 
 func inventory():
 	get_parent().set_state("gear")

@@ -56,6 +56,8 @@ func place_below(offset):
 func shows_for(character):
 	if character == null:
 		return false
+	if character.uses_paperdoll(): #they are drawn by the doll now, which has the buttons
+		return false
 	var unique_code = character.get_stat("unique")
 	if unique_code == null or !worlddata.pregen_character_sprites.has(unique_code):
 		return false

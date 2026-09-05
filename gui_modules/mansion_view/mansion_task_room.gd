@@ -175,7 +175,7 @@ func refresh():
 
 #A quest makes nothing, so its output line has always been blank and there was no way to see
 #how far along it was - only that it was still there. It gets the same bar a building under
-#construction gets, and the line above it says what a day's work will add.
+#construction gets, and the line above it says what a turn's work will add.
 func show_quest_progress():
 	if entry == null or !entry.get('quest', false) or entry.progress_limit <= 0:
 		return
@@ -183,9 +183,9 @@ func show_quest_progress():
 	$Progress.max_value = entry.progress_limit
 	$Progress.value = entry.progress
 	$Progress/Label.text = "%d/%d" % [int(entry.progress), int(entry.progress_limit)]
-	var per_day = LocationTasks.quest_per_day(entry.id)
-	$output.text = "" if per_day < 0 else "%s +%s" % [tr("MANSIONVIEW_PERDAY"),
-		str(stepify(per_day, 0.1))]
+	var per_turn = LocationTasks.quest_per_turn(entry.id)
+	$output.text = "" if per_turn < 0 else "%s +%s" % [tr("MANSIONVIEW_PERTURN"),
+		str(stepify(per_turn, 0.1))]
 	#the row of places stops short of the bar rather than running under it
 	$PeopleScroll.rect_size = Vector2($PeopleScroll.rect_size.x,
 		max(0.0, $Progress.rect_position.y - $PeopleScroll.rect_position.y - 6.0))
@@ -273,9 +273,9 @@ func build_tooltip(workers):
 	if entry.get('quest', false) and entry.progress_limit > 0:
 		text += "\n%s %d/%d" % [tr("MANSIONVIEW_PROGRESS"),
 			int(entry.progress), int(entry.progress_limit)]
-		var per_day = LocationTasks.quest_per_day(entry.id)
-		if per_day >= 0:
-			text += "\n%s +%s" % [tr("MANSIONVIEW_PERDAY"), str(stepify(per_day, 0.1))]
+		var per_turn = LocationTasks.quest_per_turn(entry.id)
+		if per_turn >= 0:
+			text += "\n%s +%s" % [tr("MANSIONVIEW_PERTURN"), str(stepify(per_turn, 0.1))]
 	var output = LocationTasks.production_text(entry.id)
 	if output != "":
 		text += "\n%s %s" % [tr("MANSIONVIEW_PERTURN"), output]

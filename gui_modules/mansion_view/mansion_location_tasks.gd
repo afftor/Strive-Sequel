@@ -256,19 +256,31 @@ static func production_table(task_id):
 	return res
 
 
-#What a quest gains in a day from the people on it. Each worker adds one per tick by default
-#(ch_leveling.special_tick) and a day is variables.HoursPerDay ticks. A task carrying its own
-#'function' computes its own figure, and calling that to find out would hand out the
-#experience it grants as a side effect - so those say nothing rather than guess.
-#Named for the day rather than the turn on purpose: this is the one figure on the card that
-#is not per turn, and it read as one for as long as it was called quest_per_turn.
-static func quest_per_day(task_id):
+#What a quest gains in a turn from the people on it. Each worker adds one per tick by default
+#(ch_leveling.special_tick), and a tick is a turn - the same unit everything else on the card
+#is counted in. A task carrying its own 'function' computes its own figure, and calling that
+#to find out would hand out the experience it grants as a side effect - so those say nothing
+#rather than guess.
+static func quest_per_turn(task_id):
 	if !ResourceScripts.game_res.tasks_progresses.has(task_id):
 		return -1.0
 	var data = ResourceScripts.game_res.tasks_progresses[task_id]
 	if data.has('function'):
 		return -1.0
-	return float(data.workers.size()) * float(variables.HoursPerDay)
+	return float(data.workers.size())
+
+
+#One person's share of that: the flat point CharacterClass.special_tick() adds for every hand on
+#a quest. Nothing for anything else - work that makes something is measured in what it makes
+#(production_of), and a quest carrying a function of its own is worth whatever that function
+#says, which is not ours to guess.
+static func quest_share(task_id):
+	if !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return 0.0
+	var data = ResourceScripts.game_res.tasks_progresses[task_id]
+	if data.type != 'special' or data.has('function'):
+		return 0.0
+	return 1.0
 
 
 #### production ####
@@ -299,7 +311,11 @@ static func production_of(task_id, person):
 		if job_task == null:
 			return 0.0
 		value = person.get_job_value(job_task)
-	return value / max(1.0, float(data.get('progress_limit', 1)))
+	#The work a task stores per finished item is often less than one - fishing keeps 0.73 -
+	#so this may only guard against a zero, never round the divisor up: clamping it to 1
+	#silently dropped the division and showed work units where the panel showed items.
+	var per_item = float(data.get('progress_limit', 1))
+	return value / per_item if per_item > 0 else 0.0
 
 
 static func production_per_turn(task_id):

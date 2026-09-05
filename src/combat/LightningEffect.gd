@@ -22,6 +22,9 @@ var branch_stagger = 0.10
 var effect_seed = 1
 var max_branch_delay = 0.0
 var charge_lines = []
+#combat fast-forward: CombatAnimations sets this before setup() so the effect's own
+#clock runs at the same pace as the queue
+var time_rate = 1.0
 
 
 func setup(new_caster, new_targets, settings = {}):
@@ -135,7 +138,7 @@ func _make_rays():
 
 
 func _process(delta):
-	elapsed += delta
+	elapsed += delta * time_rate
 	_update_charge()
 	for ray in rays:
 		_update_ray(ray)

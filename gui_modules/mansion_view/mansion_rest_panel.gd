@@ -45,16 +45,20 @@ func apply_layout(width):
 	var inner = max(10, width - 20)
 	$Scroll/List.columns = columns
 	$BusyScroll/BusyList.columns = columns
-	place($Title, Rect2(10, 4, 220, 24))
-	#the button sits at the right-hand end of the title line, and the warning stops short of it
-	var button_width = 260
-	var warning_width = max(10, width - 248 - (button_width + 12 if $HouseButton.visible else 0))
-	place($Warning, Rect2(238, 4, warning_width, 24))
-	if $HouseButton.visible:
-		place($HouseButton, Rect2(width - button_width - 10, 2, button_width, 28))
-	var idle = strip_height(portrait_count($Scroll/List), columns)
-	place($Scroll, Rect2(10, TITLE_HEIGHT, inner, idle))
-	var height = TITLE_HEIGHT + idle + 6
+	#With nobody idle the row is not there at all, and whatever comes next starts where its
+	#title would have: the panel is as tall as what it actually holds.
+	var height = 4
+	if $Title.visible:
+		place($Title, Rect2(10, 4, 220, 24))
+		#the button sits at the right-hand end of the title line, and the warning stops short of it
+		var button_width = 260
+		var warning_width = max(10, width - 248 - (button_width + 12 if $HouseButton.visible else 0))
+		place($Warning, Rect2(238, 4, warning_width, 24))
+		if $HouseButton.visible:
+			place($HouseButton, Rect2(width - button_width - 10, 2, button_width, 28))
+		var idle = strip_height(portrait_count($Scroll/List), columns)
+		place($Scroll, Rect2(10, TITLE_HEIGHT, inner, idle))
+		height = TITLE_HEIGHT + idle + 6
 	#the second strip takes room only when it has somebody in it
 	if $BusyTitle.visible:
 		#the row is as tall as the label's own font asks for, not a number guessed here - two
@@ -120,9 +124,41 @@ func rebuild():
 	for char_id in busy:
 		var cell = input_handler.DuplicateContainerTemplate($BusyScroll/BusyList)
 		cell.setup(view, char_id, view.embedded, true)
+	#An idle row with nobody in it is a band of nothing across the top of the screen, so it
+	#folds away and the rest of the bar closes up over it. Three things keep it:
+	#somebody idle to list, somebody in hand who has to be put down somewhere, or an empty
+	#row below it as well - a bar with both rows folded away is a sliver of frame saying
+	#nothing, and "Idle (0)" over the gap at least says what is missing.
+	set_row_shown(!ids.empty() or accepts_pick() or busy.empty())
 	#how many portraits there are is what the strip's height comes out of, so everything the
 	#screen puts below it has to be placed again now that the number has changed
 	view.lay_out_hud()
+
+
+#Whether the idle row is on screen at all. Kept apart from rebuild() because a drag has to
+#reach it too, and a drag cannot rebuild: emptying the list would free the very cell being
+#dragged. Showing the row moves nothing else, so the panel is only measured again around it.
+func set_row_shown(shown):
+	if $Title.visible == shown:
+		return false
+	$Title.visible = shown
+	$Scroll.visible = shown
+	if !shown:
+		$Warning.visible = false
+		$HouseButton.visible = false
+	return true
+
+
+#While a portrait is being dragged the strip has to be there to drop it on, even with nobody
+#idle in it - otherwise there is nowhere left to put somebody down and no way to take them
+#off work. It closes again on its own when the drag ends and the panel rebuilds.
+func set_carry_open(active):
+	if !visible:
+		return
+	#only when it actually opened or closed: laying the screen out again refits the map, and
+	#doing that under a drag that changed nothing would jolt it for no reason
+	if set_row_shown(active or portrait_count($Scroll/List) > 0):
+		view.lay_out_hud()
 
 
 func label_for_mode():

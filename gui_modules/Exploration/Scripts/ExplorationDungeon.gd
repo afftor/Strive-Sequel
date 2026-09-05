@@ -696,6 +696,7 @@ func build_location_group():
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
+		setup_levelup_indicator(newbutton, i)
 		for anim_num in range(planed_animations.size()-1, -1, -1):
 			var animation = planed_animations[anim_num]
 			if animation.person_id == i.id:
@@ -708,6 +709,32 @@ func build_location_group():
 		return
 	build_item_panel()
 #	build_spell_panel()
+
+#A traveler with enough experience banked for the next class carries the same green cross the
+#mansion card shows, and out here the cross is also the way back to that character's leveling window.
+func setup_levelup_indicator(button, person):
+	var indicator = button.get_node("LevelUpIndicator")
+	indicator.visible = person.get_stat('base_exp') >= person.get_next_class_exp()
+	if !indicator.visible:
+		return
+	globals.connecttexttooltip(indicator, tr("BTNLEVELING"))
+	indicator.connect("pressed", self, "open_levelup_menu", [person])
+	set_levelup_indicator_clickable(button, !is_in_use_state())
+
+
+#The leveling window belongs to the mansion screen, so the journey home has to finish before it can
+#be opened - return_to_mansion ends on close_all_closeable_windows, which would shut it again. It
+#only yields when there is a journey to make, hence the guard.
+func open_levelup_menu(person):
+	if gui_controller.current_screen != gui_controller.mansion:
+		yield(nav.return_to_mansion(), "completed")
+	if gui_controller.mansion == null:
+		return
+	var popup = gui_controller.mansion.get_node_or_null("CharacterProgressionPopup")
+	if popup == null:
+		return
+	popup.open(person)
+
 
 func add_rolled_chars(tarr):
 	if active_location != null:
@@ -1463,6 +1490,15 @@ func highlight_spelltar_chars_true(value, char_id = null):
 			continue
 		if !value or char_id == null or (node.dragdata != null and node.dragdata.id == char_id):
 			node.get_node("mark").visible = value
+		#while an item or a spell is being aimed the whole card is the target, so the level-up
+		#cross has to let that click through instead of answering it
+		set_levelup_indicator_clickable(node, !value)
+
+
+func set_levelup_indicator_clickable(button, clickable):
+	button.get_node("LevelUpIndicator").mouse_filter = (
+		Control.MOUSE_FILTER_STOP if clickable else Control.MOUSE_FILTER_IGNORE
+	)
 
 func highlight_spelltar_rooms():
 	highlight_spelltar_rooms_true(true)

@@ -12,6 +12,13 @@ var previous_location = ResourceScripts.game_world.mansion_location
 #sleeps, see the 'lives_in_room' condition and mansion_room_types.gd
 var work_rules = {lock = false, hide = false, ration = false, shifts = false, constrain = false, contraceptive = false, bindings = false, nudity = false, relationship = true, masturbation = false}
 
+#How much of the character the player left the doll showing.  The nudity work rule
+#above is the same choice as a bool - it only says dressed or not - and the two are
+#always written together, so a character who was stripped to their underwear comes
+#back in their underwear rather than in whatever the bool happened to draw.
+const UNDRESS_LEVELS = ['dressed', 'underwear', 'bare', 'naked']
+var undress_level = 'dressed'
+
 var priority_materials = {
 	cooking = 4,
 	smith = 3,
@@ -89,7 +96,33 @@ func check_work_rule(rule):
 func set_work_rule(rule, value):
 	if variables.work_rules.has(rule):
 		work_rules[rule] = value
+		if rule == 'nudity':
+			#dressing a character again is one level, stripping them is whichever level
+			#they were last stripped to
+			if !value:
+				undress_level = 'dressed'
+			elif undress_level == 'dressed':
+				undress_level = 'bare'
 		parent.get_ref().reset_rebuild()
+
+
+#Saves written before the level existed carry only the bool, and a character who was
+#nude in one of them comes back as 'bare' - the single undressed look that bool drew.
+func get_undress_level():
+	var stored_is_valid = typeof(undress_level) == TYPE_STRING and UNDRESS_LEVELS.has(undress_level)
+	if !stored_is_valid or (undress_level != 'dressed') != bool(check_work_rule('nudity')):
+		undress_level = 'bare' if check_work_rule('nudity') else 'dressed'
+	return undress_level
+
+
+func set_undress_level(level):
+	if !UNDRESS_LEVELS.has(level):
+		level = 'dressed'
+	if undress_level == level and bool(check_work_rule('nudity')) == (level != 'dressed'):
+		return
+	undress_level = level
+	work_rules['nudity'] = level != 'dressed'
+	parent.get_ref().reset_rebuild()
 
 
 func get_job_order(materials = true):
@@ -743,19 +776,23 @@ func select_brothel_activity():
 	
 
 func update_brothel_log(ch_name, gold, data, customer_gender = "", full_gold = true):
+	var text = ""
+	if customer_gender != "":
+		if full_gold:
+			text = tr("BROTHELLOGSEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
+		else:
+			text = tr("BROTHELLOGSEXPARTIAL")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
+		#text = tr(ch_name) + " earned " + str(gold) + " gold doing " + tr("BROTHEL" + data.code.to_upper()) + " with a " + customer_gender
+	else:
+		text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
+		#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
+	#The same line the old log was given, kept as the breakdown behind the turn's service
+	#report. This is the only place a service payout is described, so it is where the report
+	#is fed from - and it has to run whether or not the old log node is up.
+	globals.mansion_activity_service(gold, text)
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
 #		if ResourceScripts.game_globals.hour == 4:
 #			globals.log_node.clean_log()
-		var text = ""
-		if customer_gender != "":
-			if full_gold:
-				text = tr("BROTHELLOGSEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
-			else:
-				text = tr("BROTHELLOGSEXPARTIAL")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
-			#text = tr(ch_name) + " earned " + str(gold) + " gold doing " + tr("BROTHEL" + data.code.to_upper()) + " with a " + customer_gender
-		else:
-			text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
-			#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
 		globals.text_log_add('work', text)
 #		var ServiceLog = globals.log_node.get_node("ServiceLog")
 #		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()

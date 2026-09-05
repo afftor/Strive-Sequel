@@ -195,7 +195,7 @@ func open_stairs():
 #old-save conversion turn them into rooms, which is a strange road to take in a new game and
 #took the rubble's finds with it. Raised directly instead, and sparing the derelict rooms
 #that are hiding something.
-const TEST_ROOMS = ['forge', 'alchemy_room', 'ritual_room', 'bathhouse', 'practice_room']
+const TEST_ROOMS = ['forge', 'alchemy_room', 'ritual_room', 'bathhouse', 'practice_room', 'beauty_parlor']
 
 #Rooms test mode raises plain, with nothing bought on top of them. The forge is here because
 #its own upgrade row - the salvage bench above all, which waits on the workers' guild - is
@@ -443,6 +443,30 @@ func upgrade_locked(code):
 	if area == null or !area.get('factions', {}).has(gate.guild):
 		return true
 	return !area.factions[gate.guild].get('upgrades', {}).has(gate.code)
+
+
+#### taking gear apart ####
+
+#What a piece gives back when it is broken down, as the share of the materials that went into
+#it - the low and the high end of one roll. The guild lesson only opens the bench; how much
+#survives the work is what the bench itself has been improved to, so the answer is read off the
+#forge rather than off the faction.
+#
+#The estate's best bench answers. Raising a second forge with a bare bench cannot make the
+#salvage worse than the good one already does, and there is only one salvage screen to open.
+const SALVAGE_BASE = [0.5, 0.75]
+
+
+func salvage_recovery_range():
+	var bonus = 0.0
+	for entry in MansionLayout.each_room(mansion_layout):
+		if entry.room.type != 'forge':
+			continue
+		if MansionLayout.upgrade_level(entry.room, 'salvage_bench') <= 0:
+			continue
+		bonus = max(bonus, float(MansionLayout.room_effect(entry.room).get('salvage_mod', 0)))
+	#nothing comes back that did not go in, however good the bench
+	return [min(1.0, SALVAGE_BASE[0] + bonus), min(1.0, SALVAGE_BASE[1] + bonus)]
 
 
 func rooms_changed():
@@ -786,10 +810,11 @@ func master_bed_partners():
 	return res
 
 
-#A night in the master's bed with company in it. Everyone who shared it wakes satisfied, the
+#A night in the master's bed that came to something. Everyone who shared it wakes satisfied, the
 #master included - the same effect the sex minigame leaves behind, and the same 'satisfaction'
-#stack, so a night and an evening do not pile onto one another. A master who slept alone has
-#nothing to wake up to.
+#stack, so a night and an evening do not pile onto one another. Sharing the bed is not itself
+#the reward: process_master_bed_night() calls this only once its roll has landed, so a night
+#nobody was willing for pays nothing.
 func reward_master_bed_night():
 	var entry = MansionLayout.master_room(mansion_layout)
 	if entry == null or master_bed_partners() <= 0:
@@ -802,6 +827,165 @@ func reward_master_bed_night():
 		person.apply_effect_code('satisfaction_1')
 		rewarded += 1
 	return rewarded
+
+
+#What a night in that bed can teach. Light play is what two people get up to when one of them is
+#barely willing; everything else is on the table once the bed is warmer than that.
+const BED_NIGHT_LIGHT_SKILLS = ['petting', 'oral', 'tail']
+const BED_NIGHT_ALL_SKILLS = ['petting', 'oral', 'tail', 'penetration', 'pussy', 'anal']
+
+
+#The night itself. Whether anything happens is one roll for the whole bed off what the
+#companions consent to - never off the master, whose consent is pinned to 100 in
+#ch_stats.fix_serialize() and would drown the average. Called once a day from
+#game_globals.advance_day(), and it must never yield: that function is a coroutine on the
+#managed path, and anything awaited here would have to be awaited there too.
+#Pays out reward_master_bed_night() itself once the roll lands - that is the only thing that
+#calls it, so a bed nobody was willing in wakes with nothing.
+func process_master_bed_night():
+	var entry = MansionLayout.master_room(mansion_layout)
+	if entry == null:
+		return false
+	var master_ch = ResourceScripts.game_party.get_master()
+	if !(master_ch is Object) or !master_ch.is_active:
+		return false
+	var companions = []
+	for char_id in entry.room.occupants:
+		var person = ResourceScripts.game_party.characters.get(char_id, null)
+		if person is Object and person.is_active and !person.is_master():
+			companions.append(person)
+	if companions.empty():
+		return false
+	var total = 0.0
+	for person in companions:
+		total += person.get_stat('consent')
+	var average = total / companions.size()
+	if randf() >= min(average / 5.0, 1.0):
+		return false
+
+	var passionate = average > 2
+	var pool = BED_NIGHT_ALL_SKILLS if passionate else BED_NIGHT_LIGHT_SKILLS
+	var bed = [master_ch] + companions
+	var teaches_mastery = master_ch.check_trait('master_harlotry')
+	#The night is what everyone wakes up satisfied from - not the bed they were put in.
+	reward_master_bed_night()
+
+	#Who learned what. Companions always take something away; the master only half the time,
+	#since nobody in that bed is teaching him.
+	var improvements = []
+	var learned
+	for person in companions:
+		learned = _bed_night_improve(person, pool, bed, teaches_mastery)
+		if learned != null:
+			improvements.append(learned)
+	if randf() < 0.5:
+		learned = _bed_night_improve(master_ch, pool, bed, false)
+		if learned != null:
+			improvements.append(learned)
+
+	_bed_night_log(master_ch, companions, passionate, improvements)
+	_bed_night_impregnations(bed)
+	return true
+
+
+#One step up one skill, picked at random from what this body and this bed could have trained
+#tonight. Returns what was learned, or null when everything is capped or ruled out.
+func _bed_night_improve(person, pool, bed, teaches_mastery):
+	var candidates = []
+	for skill in pool:
+		if !_bed_night_anatomy_ok(person, skill, bed):
+			continue
+		var target = _bed_night_next_level(person, skill, teaches_mastery)
+		if target != null:
+			candidates.append({skill = skill, target = target})
+	if candidates.empty():
+		return null
+	var pick = input_handler.random_from_array(candidates)
+	person.set_stat('sex_training_' + pick.skill, pick.target)
+	#A fresh level starts on a fresh checklist, the way the enthusiasm path does it - see
+	#InteractionMainModule.EnthusiasmChoose().
+	person.statlist.sex_mastery_progress[pick.skill] = []
+	return {person = person, skill = pick.skill, target = pick.target}
+
+
+#Where a skill can go tonight. Novice always moves; Skilled only moves for somebody the master
+#is teaching, and only while he has Harlotry. Mastered is the end of it.
+func _bed_night_next_level(person, skill, teaches_mastery):
+	match person.get_stat('sex_training_' + skill):
+		'novice':
+			return 'skilled'
+		'skilled':
+			if teaches_mastery:
+				return 'mastered'
+	return null
+
+
+#A penis, or the strapon standing in for one - the same substitution every script in
+#src/actions makes when it tests penis_size against the member's strapon flag.
+func _bed_night_has_phallus(person):
+	if person.get_stat('penis_size') != '':
+		return true
+	return person.equipment.get_gear_type('crotch') == 'strapon'
+
+
+#Could this body, in this bed, have trained that skill tonight? Penetrating wants one of its
+#own; being penetrated wants somebody else in the bed to have one. Petting and oral never ask.
+func _bed_night_anatomy_ok(person, skill, bed):
+	match skill:
+		'tail':
+			return variables.longtails.has(person.get_stat('tail'))
+		'penetration':
+			return _bed_night_has_phallus(person)
+		'pussy':
+			return person.get_stat('has_pussy') and _bed_night_partner_phallus(person, bed)
+		'anal':
+			return _bed_night_partner_phallus(person, bed)
+	return true
+
+
+func _bed_night_partner_phallus(person, bed):
+	for other in bed:
+		if other != person and _bed_night_has_phallus(other):
+			return true
+	return false
+
+
+#One row in the estate log: who shared the bed, which of the two nights it was, and whose
+#training moved.
+func _bed_night_log(master_ch, companions, passionate, improvements):
+	var names = []
+	for person in companions:
+		names.append(person.get_short_name())
+	var key = "MANSION_ACTIVITY_BEDROOM_LIGHT"
+	if passionate:
+		key = "MANSION_ACTIVITY_BEDROOM_PASSIONATE"
+	var text = tr(key) % [master_ch.get_short_name(), PoolStringArray(names).join(", ")]
+	for entry in improvements:
+		var level = globals.get_sex_training_label(entry.target)
+		var skill = tr("CHARINFO_SEX_TRAINING_" + entry.skill.to_upper())
+		text += "\n" + tr("MANSION_ACTIVITY_BEDROOM_SKILL") % [entry.person.get_short_name(), level, skill]
+	#advance_day() has already rolled the clock over, and mansion_activity_stamp() would push it
+	#on again mid-turn, so the row would read noon of the new day. Stamp the night that ended
+	#instead - mansion_activity_log_add() merges `extra` over the stamp it computed.
+	globals.mansion_activity_log_add('bedroom', text,
+		{date = ResourceScripts.game_globals.date - 1, hour = variables.HoursPerDay})
+
+
+#Every way the night could have left somebody pregnant. globals.impregnate() runs the whole
+#check itself - womb, contraceptives, race compatibility, an existing pregnancy - so this only
+#has to name the pairs. Deliberately silent: the log says nothing, the belly says it later.
+func _bed_night_impregnations(bed):
+	for father in bed:
+		if !(father.get_stat('sex') in ['male', 'futa']) or father.get_stat('penis_size') == '':
+			continue
+		if father.get_stat('unique') in ['dog', 'horse']:
+			continue
+		for mother in bed:
+			if mother == father or !mother.get_stat('has_womb'):
+				continue
+			if mother.get_stat('unique') in ['dog', 'horse']:
+				continue
+			globals.impregnate(father, mother)
 
 
 #True while the estate has a room carrying this tag standing anywhere on the plan. The
@@ -850,6 +1034,8 @@ func character_room_has_tag(char_id, tag):
 #gone, so a room worker is an ordinary worker to the rest of the game and assign_to_task()
 #can be used against a room without any special case.
 func sync_room_tasks():
+	#before anything reads a worker list, make sure everybody on one is still alive and here
+	drop_gone_workers()
 	#a farm raised or pulled down changes how many hands the farming job may take, and the
 	#screen asks about that as soon as it redraws rather than waiting for the next day
 	_add_farm_job()
@@ -868,6 +1054,28 @@ func sync_room_tasks():
 			continue
 		if !live.has(id):
 			clean_task(id) #releases its workers before the record goes
+
+
+#Workers who are no longer in the household. A task holds ids and nothing else, and losing
+#somebody does not walk the task list - a character who died, rather than being sold or
+#released, used to leave their id sitting in the room they had been working in. The place
+#stayed taken by somebody the party could no longer name: no face, no tooltip, and no way to
+#free it, because freeing it means telling a character to leave a task and there was no
+#character left to tell. killed() lets go of the job now; this is what heals the saves where
+#it did not, and the last word on any other way an id might outlive its owner.
+func drop_gone_workers():
+	if ResourceScripts.game_party == null or ResourceScripts.game_party.characters == null:
+		return
+	#Mid-load the party is still a pile of dictionaries, but the ids are the keys either way.
+	#An empty household means the state is not up yet - never that everybody is gone.
+	if ResourceScripts.game_party.characters.empty():
+		return
+	for task in tasks_progresses.values():
+		if !(task.get('workers', null) is Array):
+			continue
+		for char_id in task.workers.duplicate():
+			if !ResourceScripts.game_party.has_char(char_id):
+				task.workers.erase(char_id)
 
 
 #What the activity log says about a scaffolding coming down. Turns pass with the mansion
@@ -1470,6 +1678,10 @@ func clean_task(id):
 		was_on_screen = !val.workers.empty()
 		for ch_id in val.workers.duplicate():
 			var tchar = characters_pool.get_char_by_id(ch_id)
+			#an id with nobody behind it is dropped where it lies - see drop_gone_workers()
+			if tchar == null:
+				val.workers.erase(ch_id)
+				continue
 			tchar.remove_from_task()
 	match val.type:
 		'progress_item':
@@ -1874,9 +2086,14 @@ func process_room_builds():
 		#read before completing: finishing is what clears the build record away
 		var done_text = finished_build_text(build)
 		var was_repair = build.kind == 'repair'
+		var was_upgrade = build.kind == 'upgrade'
 		var task_id = MansionLayout.complete_build(mansion_layout, entry.floor, entry.slot)
 		if was_repair:
 			claim_rubble_find(entry.floor, entry.slot)
+		#The only moment a room can have run out of things to buy. Asked after the build is
+		#completed, since that is what writes the new level onto the room.
+		if was_upgrade:
+			input_handler.achievements.check_room_achimnts()
 		globals.mansion_activity_log_add('build', done_text)
 		if task_id != null and tasks_progresses.has(task_id):
 			clean_task(task_id)
@@ -1963,11 +2180,26 @@ func count_rooms(room_type):
 #well-equipped forge is enough however many plain ones stand beside it. Reading the first room
 #found meant a forge raised early answered for every forge after it, so improving the second
 #one bought nothing. Craft rooms are not unique, unlike the gathering buildings above.
+#
+#Expansion is what opens the higher tiers, not Tools. Tools is work speed in the room that has
+#it and nothing else - see MansionLayout.craft_modifier(). Both ladders are two levels, so a
+#room answers 1 for standing at all and 3 fully expanded, which is the range the recipes ask.
 func craft_room_level(room_type):
-	var best = MansionLayout.best_upgrade_level(mansion_layout, room_type, 'craft_tools')
+	var best = MansionLayout.best_upgrade_level(mansion_layout, room_type, 'craft_expansion')
 	if best < 0:
 		return 0
 	return 1 + best
+
+
+#Does the estate have one room of this kind with nothing left to buy in it? The best room
+#answers, the same way craft_room_level() lets the best forge answer for every forge - the
+#question is whether the household has finished such a place, not whether every one of them
+#is finished. What the achievements ask.
+func has_fully_upgraded_room(room_type):
+	for entry in MansionLayout.each_room(mansion_layout):
+		if entry.room.type == room_type and MansionLayout.all_upgrades_maxed(entry.room):
+			return true
+	return false
 
 
 func has_ledgers():
@@ -2060,8 +2292,6 @@ func _add_build_value(curupgrade, value, character, tres = false):
 			
 			input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[curupgrade])
 			globals.mansion_activity_log_add("upgrade", tr("MANSION_ACTIVITY_UPGRADE_COMPLETE") % [character.get_short_name(), tr(tdata.name)])
-			if curupgrade == "tattoo_set":
-				input_handler.ActivateTutorial("TUTORIALLIST8")
 			tprogress.status = 'completed'
 			curupgrade = _active_task_find(crafting_lists.building)
 			return _add_build_value(curupgrade, newval, character, true)
@@ -2348,12 +2578,6 @@ func get_pop_cap():
 	return MansionLayout.total_sleep_capacity(mansion_layout)
 
 
-#The ceiling, used only to tell "go build another bedroom" apart from "there is nowhere left
-#to put one" - so it is what the mansion could hold if every slot were a full bedroom.
-func get_pop_cap_limit():
-	return MansionLayout.max_sleep_capacity(mansion_layout)
-
-
 #checks
 func if_has_money(value):
 	return (money >= value)
@@ -2436,6 +2660,7 @@ func make_item(temp, character):
 	var recipe = Items.recipes[temprecipe.id]
 	temprecipe.resources_taken = false
 	var product_name
+	var product_quality = ''
 	if recipe.resultitemtype == 'material':
 		gain_material(recipe.resultitem, recipe.resultamount)
 		product_name = tr(Items.materiallist[recipe.resultitem].name)
@@ -2452,12 +2677,16 @@ func make_item(temp, character):
 				true_item = globals.CreateGearItemCraft(item.code, temprecipe.partdict, character)
 			else:
 				true_item = globals.CreateGearItem(item.code, {})
+			product_quality = true_item.quality
 			if true_item.quality == 'legendary':
 				character.try_rise_fame('craft_legend')
 			elif true_item.quality == 'epic':
 				character.try_rise_fame('craft_epic')
 			globals.AddItemToInventory(true_item)
-	globals.mansion_activity_log_add("craft", tr("MANSION_ACTIVITY_CRAFT_COMPLETE") % [character.get_short_name(), product_name])
+	globals.mansion_activity_log_add("craft", tr("MANSION_ACTIVITY_CRAFT_COMPLETE") % [
+		character.get_short_name(),
+		globals.colorize_item_quality(product_name, product_quality),
+	])
 	var product_icon = Items.materiallist[recipe.resultitem].icon if recipe.resultitemtype == 'material' else Items.itemlist[recipe.resultitem].icon
 	globals.emit_signal("work_produced", character.id, temp, product_icon)
 

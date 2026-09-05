@@ -20,7 +20,14 @@ func _ready():
 	rng.randomize()
 
 
+#How much of a piece comes back is the forge's bench, and the bench can be improved between
+#one visit and the next - so it is asked for when the screen opens rather than kept from the
+#last time it was.
+var recovery = [0.5, 0.75]
+
+
 func open():
+	recovery = ResourceScripts.game_res.salvage_recovery_range()
 	build_list()
 
 
@@ -41,7 +48,7 @@ func _close(what):
 
 func change_number_selection(value):
 	$NumberSelection/ItemAmount.text = "x " + str($NumberSelection/HSlider.value)
-	$NumberSelection/Cost.text = str(round(selected_result_item.parts[selected_part] * 0.75 * value), '-', (selected_result_item.parts[selected_part] * value))
+	$NumberSelection/Cost.text = str(salvage_low(selected_result_item, selected_part, value), '-', salvage_high(selected_result_item, selected_part, value))
 
 var item_to_disassamble
 func confirm_number_selection():
@@ -51,24 +58,22 @@ func confirm_number_selection():
 #			item = i
 #			break
 #	item_to_disassamble = item
-	var message = str("Disassamble ", selected_result_item.name, '?\n', \
-						"You'll get between ", \
-						round(selected_result_item.parts[selected_part] * 0.75 * $NumberSelection/HSlider.value), \
-						" and ", \
-						(selected_result_item.parts[selected_part] * $NumberSelection/HSlider.value), \
-						" of ", \
-						Items.materiallist[item.parts[selected_part]].name, \
-						".")
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'disassamble', tr(message)])
+	var amount = $NumberSelection/HSlider.value
+	var message = tr("DISASSEMBLE_CONFIRM") % [
+						selected_result_item.name,
+						salvage_low(selected_result_item, selected_part, amount),
+						salvage_high(selected_result_item, selected_part, amount),
+						Items.materiallist[item.parts[selected_part]].name]
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'disassamble', message])
 
 
 func disassamble():
 	_close("info")
-	var ratio = rng.randf_range(0.75, 1.0)
+	var ratio = rng.randf_range(recovery[0], recovery[1])
 	var final_amount = round(selected_result_item.parts[selected_part] * ratio) * $NumberSelection/HSlider.value
 	var material = item_to_disassamble.parts[selected_part]
 	var loot_window = input_handler.get_spec_node(input_handler.NODE_LOOTTABLE)
-	var message = str("You've got ", final_amount, " of ", Items.materiallist[item_to_disassamble.parts[selected_part]].name, " after disassamble.")
+	var message = tr("DISASSEMBLE_RESULT") % [final_amount, Items.materiallist[item_to_disassamble.parts[selected_part]].name]
 	var data = {
 		materials = {},
 		items = {}
@@ -159,7 +164,17 @@ func select_material(icon, maxvalue, part):
 func get_part_cost(item, part):
 	var result_item = Items.itemlist[item.itembase]
 	selected_result_item = result_item
-	return str(round(result_item.parts[part] * 0.75), '-', result_item.parts[part])
+	return str(salvage_low(result_item, part, 1), '-', salvage_high(result_item, part, 1))
+
+
+#The two ends of what a stack of this many pieces gives back, rounded the same way the roll
+#in disassamble() is - so the number the player is shown is a number they can actually get.
+func salvage_low(result_item, part, count):
+	return int(round(result_item.parts[part] * recovery[0])) * int(count)
+
+
+func salvage_high(result_item, part, count):
+	return int(round(result_item.parts[part] * recovery[1])) * int(count)
 
 
 #Tooltip

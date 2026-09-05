@@ -45,7 +45,33 @@ func show_task_info():
 func _create_task_node(task_id):
 	var node = input_handler.DuplicateContainerTemplate(TaskContainer)
 	node.set_meta("task_id", str(task_id))
+	node.set_meta("tooltip", "")
+	#The card is the thing the player points at, so the card is what answers. Everything drawn on
+	#it sits over it and would take the mouse off it - which is how the card came to have two
+	#hover zones with two different tooltips, one of them a figure twenty pixels across that most
+	#players never found. Measured rather than assumed: the picture really does take the mouse.
+	for path in ['Stats', 'Stats/WorkerStat', 'Task', 'Task/TaskIcon']:
+		if node.has_node(path):
+			node.get_node(path).mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return node
+
+
+#One tooltip for the whole card, built up a piece at a time as the card is filled in. The title
+#goes to the front and everything else falls in behind it; connecttexttooltip drops the previous
+#connection, so re-hanging the fuller text as each piece arrives is what keeps it one tooltip
+#rather than several fighting over the same rectangle.
+func _add_card_tooltip(node, text, at_front = false):
+	if text == "":
+		return
+	var whole = str(node.get_meta("tooltip", ""))
+	if whole == "":
+		whole = text
+	elif at_front:
+		whole = text + "\n" + whole
+	else:
+		whole += "\n" + text
+	node.set_meta("tooltip", whole)
+	globals.connecttexttooltip(node, whole)
 
 
 func _set_worker_display(node, worker_ids, tooltip_text = ""):
@@ -56,13 +82,12 @@ func _set_worker_display(node, worker_ids, tooltip_text = ""):
 	var worker_stat = node.get_node("Stats/WorkerStat")
 	worker_stat.get_node("Workers").text = str(valid_workers.size())
 	if valid_workers.empty():
-		worker_stat.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		return
 	if tooltip_text == "":
 		tooltip_text = tr("TASKINFOWORKERS")
 		for worker_id in valid_workers:
 			tooltip_text += "\n" + ResourceScripts.game_party.characters[worker_id].get_short_name()
-	globals.connecttexttooltip(worker_stat, tooltip_text)
+	_add_card_tooltip(node, tooltip_text)
 
 
 func _set_output(node, text):
@@ -79,11 +104,14 @@ func _set_inventory_amount(node, amount):
 	amount_label.show()
 
 
+#What this piece of work is called, at the head of its card's tooltip. It used to hang on the
+#picture itself, which is a TextureRect and lets the mouse straight through - so it was never
+#shown at all.
 func _connect_task_tooltip(node, name, description = ""):
 	var text = "[center]" + tr(name) + "[/center]"
 	if description != "":
 		text += "\n" + tr(description)
-	globals.connecttexttooltip(node.get_node("Task/TaskIcon"), text)
+	_add_card_tooltip(node, text, true)
 
 
 func get_turn_animation_target(task_id):
@@ -210,7 +238,7 @@ func show_resources_info():
 			var product_text = "[center]" + tr("TASKPRODUCE") + "[/center]"
 			for product in product_names:
 				product_text += "\n" + tr(Items.materiallist[product].name)
-			globals.connecttexttooltip(newtask.get_node("Task/TaskIcon"), product_text)
+			_add_card_tooltip(newtask, product_text, true)
 	#crafting
 	for category in ['cooking_material', 'smith_material', 'alchemy_material', 'tailor_material', 'smith_item', 'alchemy_item', 'tailor_item', 'cooking_item',]:
 		for task_id in ResourceScripts.game_res.crafting_lists[category]:
@@ -259,4 +287,4 @@ func show_resources_info():
 				newtask.get_node("ProgressBar").value = work_time_init - work_time
 				_set_worker_display(newtask, [ch.id])
 				_set_output(newtask, "%d/%d" % [work_time_init - work_time, work_time_init])
-				globals.connecttexttooltip(newtask.get_node("Task/TaskIcon"), ch.get_short_name() + "\n" + tr(ch.get_work()))
+				_add_card_tooltip(newtask, ch.get_short_name() + "\n" + tr(ch.get_work()), true)

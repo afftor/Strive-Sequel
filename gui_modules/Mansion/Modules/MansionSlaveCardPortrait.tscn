@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/iconsraces/halfwolf.png" type="Texture" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_charsheet.png" type="Texture" id=73]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_charsheet_pressed.png" type="Texture" id=74]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_charsheet_hover.png" type="Texture" id=75]
+[ext_resource path="res://assets/images/gui/slavepanel/statbar.png" type="Texture" id=76]
+[ext_resource path="res://assets/images/gui/slavepanel/neutralbar.png" type="Texture" id=77]
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.105882, 0.0705882, 0.0588235, 0.96 )
@@ -448,3 +450,14 @@ texture_hover = ExtResource( 69 )
 texture_disabled = ExtResource( 67 )
 expand = true
 stretch_mode = 5
+
+[node name="ExpBar" type="TextureProgress" parent="Margin/Rows"]
+margin_top = 338.0
+margin_right = 226.0
+margin_bottom = 348.0
+rect_min_size = Vector2( 0, 10 )
+mouse_filter = 0
+value = 50.0
+texture_under = ExtResource( 76 )
+texture_progress = ExtResource( 77 )
+nine_patch_stretch = true

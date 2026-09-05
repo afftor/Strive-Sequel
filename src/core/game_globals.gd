@@ -92,6 +92,12 @@ func fix_serialization():
 		mansion_activity_log = []
 	while mansion_activity_log.size() > 50:
 		mansion_activity_log.pop_front()
+	#Older saves - and any save written before the breakdown stopped being stored - can still
+	#carry the per-worker lines behind a service report. They are turn-local by design, so a
+	#loaded log keeps the total and drops the fold. See globals.mansion_activity_service().
+	for entry in mansion_activity_log:
+		if entry is Dictionary:
+			entry.erase("details")
 	if original_version == null: #stub, technically not correct
 		original_version = globals.gameversion
 	if difficulty == 'normal':
@@ -108,7 +114,14 @@ func fix_import():
 
 
 func serialize():
-	return inst2dict(self).duplicate(true)
+	var data = inst2dict(self).duplicate(true)
+	#What each worker earned in a service turn is something the log can still unfold while the
+	#turn is on screen, not a record worth carrying: a line per worker per hour would grow the
+	#save for something nobody reads back. The total stays, the breakdown does not.
+	for entry in data.get("mansion_activity_log", []):
+		if entry is Dictionary:
+			entry.erase("details")
+	return data
 
 
 func autosave_due():
@@ -200,8 +213,9 @@ func advance_day(managed = false):
 	else:
 		ResourceScripts.game_party.advance_day()
 
-	#a night shared in the master's bed is worth something to everyone who shared it
-	ResourceScripts.game_res.reward_master_bed_night()
+	#a night in the master's bed, if the company was willing - and the satisfaction everyone
+	#wakes with when it was, which that call pays out itself
+	ResourceScripts.game_res.process_master_bed_night()
 
 	#the clerk's morning trip to market, against the standing orders the player left
 	ResourceScripts.game_res.process_autobuy()

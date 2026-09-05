@@ -78,6 +78,19 @@ func try_add_upgrade_achimnt(upgrade_id):
 	if data.has("levels") and data.levels.has(level) and data.levels[level].has("achievement"):
 		try_add_achimnt(data.levels[level].achievement)
 
+#The workshop achievements, asked of the mansion rather than of the retired upgrade tree.
+#Every entry naming a 'room' is checked at once rather than one being looked up by the upgrade
+#that finished: the caller has a build record, an upgrade code is offered by more than one kind
+#of room, and the estate may hold several of that kind - so the code alone does not say which
+#room to ask about. Four rooms with two rows each is nothing to walk.
+func check_room_achimnts():
+	for achi_name in data.achievements:
+		var achi = data.achievements[achi_name]
+		if !achi.has("room") or has_achimnt(achi_name):
+			continue
+		if ResourceScripts.game_res.has_fully_upgraded_room(achi.room):
+			try_add_achimnt(achi_name)
+
 func try_add_dungeon_achimnt(dungeon_id):
 	if DungeonData.dungeons.has(dungeon_id) and DungeonData.dungeons[dungeon_id].has("achievement"):
 		try_add_achimnt(DungeonData.dungeons[dungeon_id].achievement)

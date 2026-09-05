@@ -58,6 +58,8 @@ func hide_band():
 #are dressed and on whether the player has married them.
 func stored_person_image(person):
 	var texture = person.get_stored_body_image()
+	if person.uses_paperdoll(): #switched to the doll, so none of their own sprites apply
+		return texture
 	var unique_code = person.get_stat("unique")
 	if unique_code == null or !worlddata.pregen_character_sprites.has(unique_code):
 		return texture

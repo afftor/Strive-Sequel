@@ -35,6 +35,78 @@ var log_update_delay = 0
 var animation_delays = {}
 
 var is_busy = false
+
+#---------------------------------------------------------------------------
+#Fast forward. While the player has combat speed-up on, everything this node
+#drives runs FAST_RATE times faster: the queue locks (the delta in _process),
+#every tween it hands out (playback_speed), the sprite sheets and emitters, the
+#shakes and the two Node2D effects that integrate their own clock.
+#
+#Floating damage numbers are the exception the player asked for, and they get it
+#for free: FloatText animates on a Label of its own, whose tween never passes
+#through get_tween(). Only the moment the number is spawned moves earlier.
+const FAST_RATE = 4.0
+var rate = 1.0
+
+func fast_forward_on():
+	return input_handler.globalsettings.get("fast_combat", false)
+
+func refresh_rate():
+	var new_rate = FAST_RATE if fast_forward_on() else 1.0
+	if new_rate == rate: return
+	rate = new_rate
+	#tweens already running keep the speed they were given, so the switch has to
+	#reach them - otherwise the animation in flight finishes at the old pace
+	apply_rate_to_tweens(get_parent() if get_parent() != null else self)
+	apply_rate_to_tweens(self)
+
+func apply_rate_to_tweens(root):
+	if root == null or !is_instance_valid(root): return
+	for child in root.get_children():
+		#a floating number keeps its own pace, and an effect sprite or emitter already
+		#had its timings scaled when it was created - neither wants a second scaling
+		if child is Label or child is Node2D: continue
+		if child is Tween:
+			if child.name == 'tween': child.playback_speed = rate
+		elif child.get_child_count() > 0:
+			apply_rate_to_tweens(child)
+
+#Every tween in combat comes from here, so the rate is applied once, in one place.
+func get_tween(node):
+	var tween = input_handler.GetTweenNode(node)
+	tween.playback_speed = rate
+	return tween
+
+#The gfx wrappers shorten the effect's own timings instead of touching its tween:
+#the sprite, emitter or video is a freshly created node whose tween has never seen
+#get_tween(), so dividing here is what makes it keep pace with the queue.
+func fx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false, speed = 1.0):
+	ResourceScripts.core_animations.gfx_sprite(node, effect, fadeduration/rate,
+		delayuntilfade/rate, flip, speed*rate)
+
+#interpolate_callback carries at most five arguments, so a delayed sprite passes one dict
+func fx_sprite_args(args):
+	fx_sprite(args.node, args.effect, args.fade, args.delay, args.flip, args.speed)
+
+func fx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false):
+	ResourceScripts.core_animations.gfx_particles(node, effect, fadeduration/rate,
+		delayuntilfade/rate, flip, rate)
+
+func fx_video(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false):
+	#a VideoPlayer has no playback speed in 3.5 - only the fade can be pulled in
+	ResourceScripts.core_animations.gfx_video(node, effect, fadeduration/rate,
+		delayuntilfade/rate, flip)
+
+func fx_gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false, rotate = false):
+	ResourceScripts.core_animations.gfx(node, effect, fadeduration/rate,
+		delayuntilfade/rate, flip, rotate)
+
+#ShakeAnimation counts down in core_animations._process, which is shared with the
+#mansion, so the combat shake is shortened here rather than there
+func fx_shake(node, time = 0.5, magnitude = 5):
+	ResourceScripts.core_animations.ShakeAnimation(node, time/rate, magnitude)
+
+#---------------------------------------------------------------------------
 var devastation_states = {}
 var devastation_arcs = []
 var devastation_hp_delays = {}
@@ -123,6 +195,8 @@ func _process(delta):
 			if !is_busy: trace_tail -= delta
 			trace_clock += delta
 			trace_frame()
+	refresh_rate()
+	delta *= rate
 	for node in animation_delays:
 		animation_delays[node] -= delta
 		if animation_delays[node] <= 0:
@@ -226,13 +300,13 @@ func cast_finished():
 
 func predamage_finished():
 	emit_signal("predamage_finished")
-	var tween = input_handler.GetTweenNode(self)
+	var tween = get_tween(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
 
 func postdamage_finished():
 	emit_signal("postdamage_finished")
-	var tween = input_handler.GetTweenNode(self)
+	var tween = get_tween(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
 
@@ -245,7 +319,7 @@ func sound(node, args):
 	return 0.1
 
 func casterattack(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var playtime = 0.2
 	var delaytime = 0
 	var effectdelay = 0.4
@@ -265,7 +339,7 @@ func casterattack(node, args = null):
 
 func targetattack(node, args = null):
 	if args == null: args = {}
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var nextanimationtime = 0.4
 	#the blow only lands partway into the cast sprite - see take_pending_shot().
@@ -279,10 +353,11 @@ func targetattack(node, args = null):
 	buffs_update_delays[node] = 0.4
 	if shot > 0:
 		target_push(node, shot)
-		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
-			node, 'strike', 0.3, 0.1 / speed, get_flip_for_node(node, args), speed)
+		tween.interpolate_callback(self, shot, 'fx_sprite_args', {node = node,
+			effect = 'strike', fade = 0.3, delay = 0.1 / speed,
+			flip = get_flip_for_node(node, args), speed = speed})
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, 'strike', 0.3, 0.1 / speed,
+		fx_sprite(node, 'strike', 0.3, 0.1 / speed,
 			get_flip_for_node(node, args), speed)
 	tween.start()
 
@@ -290,7 +365,7 @@ func targetattack(node, args = null):
 
 func ranged_attack(node, args = null):
 	if args == null: args = {}
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var nextanimationtime = 0.3
 	var duration = 0.4
@@ -314,10 +389,11 @@ func ranged_attack(node, args = null):
 		buffs_update_delays[node] = 0.2
 		target_squash(node, duration, shot)
 	if shot > 0:
-		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
-			node, 'arrow', 0.3, duration, get_flip_for_node(node, args), speed)
+		tween.interpolate_callback(self, shot, 'fx_sprite_args', {node = node,
+			effect = 'arrow', fade = 0.3, delay = duration,
+			flip = get_flip_for_node(node, args), speed = speed})
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, 'arrow', 0.3, duration,
+		fx_sprite(node, 'arrow', 0.3, duration,
 			get_flip_for_node(node, args), speed)
 	tween.start()
 
@@ -428,7 +504,7 @@ func cast_with_motion(node, args, sprite_name):
 	if motion == 'maw':
 		var sheet_hit = release
 		release = MAW_LEAD / followup_speed
-		var maw_tween = input_handler.GetTweenNode(node)
+		var maw_tween = get_tween(node)
 		maw_tween.interpolate_callback(self, max(0.0, release - sheet_hit), 'maw_sprite',
 			node, sprite_name, duration, get_flip_for_node(node, args), speedup)
 		maw_tween.start()
@@ -442,7 +518,7 @@ func cast_with_motion(node, args, sprite_name):
 	var visual_node = node
 	if motion == 'execution_leap':
 		visual_node = caster_execution_leap(node, args, release)
-	ResourceScripts.core_animations.gfx_sprite(visual_node, sprite_name, 0.5, duration,
+	fx_sprite(visual_node, sprite_name, 0.5, duration,
 		get_flip_for_node(node, args), speedup)
 	if motion == 'cut':
 		caster_cut(node, release, followup_speed)
@@ -456,7 +532,7 @@ func cast_with_motion(node, args, sprite_name):
 func maw_sprite(node, sprite_name, duration, flip, speedup):
 	if node == null or !is_instance_valid(node) or !node.is_inside_tree():
 		return
-	ResourceScripts.core_animations.gfx_sprite(node, sprite_name, 0.5, duration, flip, speedup)
+	fx_sprite(node, sprite_name, 0.5, duration, flip, speedup)
 
 #FIELD-WIDE WEATHER
 #These scenes emit in a 1000 px ring, so a single instance centred on the
@@ -494,7 +570,7 @@ func field_particles(key):
 	combat.add_child(fx)
 	fx.position = FIELD_ORIGIN
 	fx.z_index = 90
-	var tween = input_handler.GetTweenNode(fx)
+	var tween = get_tween(fx)
 	#stop emitting first, then fade what is left, so nothing pops out mid-air
 	for child in fx.get_children():
 		if child is Particles2D:
@@ -531,7 +607,7 @@ func assassinate_step(node, args = null):
 	pending_shot_delay = L
 	pending_shot_timer = cur_timer
 
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	node.rect_pivot_offset = node.rect_size/2
 	node.rect_scale = Vector2(1,1)
 	node.rect_rotation = 0
@@ -608,7 +684,7 @@ func assass_cleanup(node):
 
 #the blow itself, on the target - waits for the assassin to appear
 func assassinate(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var duration = ResourceScripts.core_animations.get_gfx_sprite_time('assassinate')
 	var nextanimationtime = duration - 0.1
 	var shot = take_pending_shot()
@@ -626,7 +702,7 @@ func assassinate(node, args = null):
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
 			node, 'assassinate', 0.4, duration, flip)
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, 'assassinate', 0.4, duration, flip)
+		fx_sprite(node, 'assassinate', 0.4, duration, flip)
 	tween.start()
 
 	return shot + HIT_TAIL
@@ -638,7 +714,7 @@ func target_tilt(node, delay = 0.0):
 	node.rect_pivot_offset = node.rect_size/2
 	node.rect_scale = Vector2(1,1)
 	node.rect_rotation = 0
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var p = node.rect_position
 	var v = node.get_attack_vector().normalized() * -MOTION_DIST * TILT_SHARE
 	var tilt = TILT_ANGLE * (1 if node.get_attack_vector().x < 0 else -1)
@@ -674,7 +750,7 @@ func caster_cut(node, contact, speed = 1.0):
 	node.rect_rotation = 0
 	node.modulate.a = 1.0 #recover if a previous shadow step did not finish its return
 	assass_set_facing(node, false)
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var p = node.rect_position
 	var v = node.get_attack_vector().normalized() * MOTION_DIST
 	var draw = max(contact * CUT_DRAW, 0.05)
@@ -718,7 +794,7 @@ func caster_maw(node, contact, speed = 1.0):
 	node.rect_rotation = 0
 	node.modulate.a = 1.0
 	assass_set_facing(node, false)
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var p = node.rect_position
 	var v = node.get_attack_vector().normalized() * MAW_DIST
 	var pounce = max(contact * MAW_POUNCE, 0.06)
@@ -796,7 +872,7 @@ func caster_execution_leap(node, args, contact):
 	visual_node.rect_rotation = 0
 	visual_node.modulate.a = 1.0
 	assass_set_facing(visual_node, false)
-	var tween = input_handler.GetTweenNode(visual_node)
+	var tween = get_tween(visual_node)
 	var p = visual_node.rect_position
 	var v = node.get_attack_vector().normalized()
 	var dest = p + v*MOTION_DIST
@@ -907,10 +983,10 @@ func holy_lance_step(node, args = null):
 		dest = p + delta + v*HOLY_LANCE_PIERCE
 
 	var spear = holy_lance_spear(visual_node, v)
-	ResourceScripts.core_animations.gfx_sprite(visual_node, 'cast_light', 0.25,
+	fx_sprite(visual_node, 'cast_light', 0.25,
 		HOLY_LANCE_SPIN + HOLY_LANCE_DASH, get_flip_for_node(node, args))
 
-	var tween = input_handler.GetTweenNode(visual_node)
+	var tween = get_tween(visual_node)
 	var spin_end = HOLY_LANCE_SPIN
 	var contact = spin_end + HOLY_LANCE_DASH
 	var return_start = contact + HOLY_LANCE_HOLD
@@ -1041,7 +1117,7 @@ func devastation_dash(node, args = null):
 	var brace_time = DEVASTATION_DASH*0.18
 	var brace_position = p - direction*18.0
 	var brace_scale = Vector2(origin.scale.x*0.98, origin.scale.y*1.02)
-	var tween = input_handler.GetTweenNode(visual_node)
+	var tween = get_tween(visual_node)
 	tween.interpolate_property(visual_node, 'rect_position', p, brace_position,
 		brace_time, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.interpolate_property(visual_node, 'rect_scale', origin.scale, brace_scale,
@@ -1102,9 +1178,9 @@ func devastation_strike(node, args = null):
 	var iteration = int(args.iteration) if args.has('iteration') else 1
 	var weapon_sprite = args.weapon_sprite if args.has('weapon_sprite') else 'at_sword'
 	devastation_strike_motion(visual_node, state, caster_node, iteration)
-	ResourceScripts.core_animations.gfx_sprite(visual_node, weapon_sprite, 0.10,
+	fx_sprite(visual_node, weapon_sprite, 0.10,
 		DEVASTATION_STRIKE, !get_flip_for_node(caster_node, args), DEVASTATION_WEAPON_SPEED)
-	var tween = input_handler.GetTweenNode(visual_node)
+	var tween = get_tween(visual_node)
 	tween.interpolate_callback(self, DEVASTATION_RELEASE, 'devastation_launch_arc',
 		visual_node, node, iteration)
 	tween.interpolate_callback(self, DEVASTATION_RELEASE + DEVASTATION_ARC,
@@ -1175,7 +1251,7 @@ func devastation_launch_arc(visual_node, target_node, iteration):
 	carrier.add_child(arc)
 	arc.play()
 
-	var tween = input_handler.GetTweenNode(carrier)
+	var tween = get_tween(carrier)
 	var half = DEVASTATION_ARC*0.5
 	tween.interpolate_property(carrier, 'position', start, midpoint, half,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -1218,7 +1294,7 @@ func devastation_return(node, args = null):
 	if !is_instance_valid(visual_node):
 		devastation_restore(key)
 		return 0.0
-	var tween = input_handler.GetTweenNode(visual_node)
+	var tween = get_tween(visual_node)
 	tween.interpolate_property(visual_node, 'rect_position', visual_node.rect_position,
 		state.visual_origin, DEVASTATION_RETURN, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(visual_node, 'rect_rotation', visual_node.rect_rotation,
@@ -1252,7 +1328,7 @@ func devastation_restore(key):
 func target_push(node, delay = 0.0):
 	if !node.is_inside_tree(): return
 	if !node.has_method('get_attack_vector'): return
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var p = node.rect_position
 	#away from the target's own side, i.e. along the attacker's swing
 	var v = node.get_attack_vector().normalized() * -MOTION_DIST * PUSH_SHARE
@@ -1269,7 +1345,7 @@ func caster_recoil(node, contact, speed = 1.0):
 	node.rect_rotation = 0
 	node.modulate.a = 1.0
 	assass_set_facing(node, false)
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var p = node.rect_position
 	var v = node.get_attack_vector().normalized() * MOTION_DIST
 	var recoil_ext = RECOIL_EXT / speed
@@ -1295,7 +1371,7 @@ func target_squash(node, duration = 0.4, delay = 0.0):
 	var out_time = min(SQUASH_OUT, max(duration, 0.1) * 0.8)
 	node.rect_pivot_offset = node.rect_size/2
 	node.rect_scale = Vector2(1,1)
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	tween.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(SQUASH_SCALE, SQUASH_SCALE),
 		SQUASH_IN, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
 	tween.interpolate_property(node, 'rect_scale', Vector2(SQUASH_SCALE, SQUASH_SCALE), Vector2(1,1),
@@ -1323,7 +1399,7 @@ func default_hit_reaction(node, args = null):
 
 func firebolt(node, args = null):
 	if args == null: args = {}
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var duration = 0.4 / speed
 	var nextanimationtime = 0.2 / speed
@@ -1337,7 +1413,7 @@ func firebolt(node, args = null):
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
 			node, 'firebolt', 0.3, duration, get_flip_for_node(node, args), speed)
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, 'firebolt', 0.3, duration,
+		fx_sprite(node, 'firebolt', 0.3, duration,
 			get_flip_for_node(node, args), speed)
 	tween.start()
 	
@@ -1346,26 +1422,26 @@ func firebolt(node, args = null):
 	return nextanimationtime + aftereffectdelay
 
 func water_attack(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var nextanimationtime = 0.2
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.2
-	ResourceScripts.core_animations.gfx_sprite(node, 'water_attack', 0.3, 0.4, get_flip_for_node(node, args))
+	fx_sprite(node, 'water_attack', 0.3, 0.4, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
 
 func flame(node, args = null):
 	if args == null: args = {}
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var duration = 0.5 / speed
 	var nextanimationtime = 0.4 / speed
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
-	ResourceScripts.core_animations.gfx_sprite(node, 'flame', 0.3, duration,
+	fx_sprite(node, 'flame', 0.3, duration,
 		get_flip_for_node(node, args), speed)
 	tween.start()
 	
@@ -1373,7 +1449,7 @@ func flame(node, args = null):
 
 func earth_spike(node, args = null):
 	if args == null: args = {}
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var duration = 1.0 / speed
 	var nextanimationtime = 0.8 / speed
@@ -1387,7 +1463,7 @@ func earth_spike(node, args = null):
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
 			node, 'earth_spike', 0.7, duration, get_flip_for_node(node, args), speed)
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, 'earth_spike', 0.7, duration,
+		fx_sprite(node, 'earth_spike', 0.7, duration,
 			get_flip_for_node(node, args), speed)
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -1412,7 +1488,7 @@ func shake_target(node, args):
 	else:
 		#for now it seems thet 7 turns is repeat loop duration
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
-	ResourceScripts.core_animations.ShakeAnimation(node, duration)#, magnitude = 5
+	fx_shake(node, duration)#, magnitude = 5
 	
 	return nextanimationtime + aftereffectdelay
 
@@ -1421,7 +1497,7 @@ func gfx_video(node, args):
 	hp_update_delays[node] = 0.5
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_video(node, args.video_name, 0.7, 2, get_flip_for_node(node, args))
+	fx_video(node, args.video_name, 0.7, 2, get_flip_for_node(node, args))
 	
 	return nextanimationtime + aftereffectdelay
 
@@ -1510,6 +1586,7 @@ func fly_projectile(node, args, kind):
 	var layer = get_parent()
 	if layer == null: layer = self
 	layer.add_child(effect)
+	effect.time_rate = rate
 	effect.setup(caster_node, node, kind, {
 		flight = flight,
 		launch_delay = shot,
@@ -1567,6 +1644,7 @@ func start_lightning_effect(caster_node, hit_nodes, settings):
 	lightning_caster_charge(caster_node, settings.windup)
 	var effect = LightningEffect.new()
 	add_child(effect)
+	effect.time_rate = rate
 	effect.setup(caster_node, hit_nodes, {
 		windup = settings.windup,
 		duration = settings.duration,
@@ -1596,7 +1674,7 @@ func lightning_caster_charge(node, windup):
 	var focus_position = origin.position - direction*7.0 + Vector2(0.0, -12.0)
 	var release_position = origin.position + direction*11.0 + Vector2(0.0, -4.0)
 	var sign_value = 1.0 if direction.x > 0 else -1.0
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	tween.interpolate_property(node, 'rect_position', origin.position, gather_position,
 		gather_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.interpolate_property(node, 'rect_position', gather_position, focus_position,
@@ -1639,7 +1717,7 @@ func _on_lightning_effect_exited(effect):
 
 func prepare_lightning_impacts(hit_nodes, settings):
 	var queue_release = settings.windup + HIT_TAIL
-	var tween = input_handler.GetTweenNode(self)
+	var tween = get_tween(self)
 	for index in range(hit_nodes.size()):
 		var hit_node = hit_nodes[index]
 		if hit_node == null or !is_instance_valid(hit_node): continue
@@ -1653,7 +1731,7 @@ func lightning_target_hit(node):
 	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
 	target_push(node)
 	if node.has_node('Icon'):
-		ResourceScripts.core_animations.ShakeAnimation(node.get_node('Icon'), 0.22, LIGHTNING_SHAKE)
+		fx_shake(node.get_node('Icon'), 0.22, LIGHTNING_SHAKE)
 
 func prepare_lightning_hp_update(node):
 	if lightning_timing_plan.has(node):
@@ -1701,12 +1779,12 @@ func gfx_animsprite(node, args):
 			if hit_node != null and is_instance_valid(hit_node):
 				play_target_hit_motion(hit_node, hit_motion, duration, shot)
 	if sync_to_hit and shot > 0:
-		var tween = input_handler.GetTweenNode(node)
+		var tween = get_tween(node)
 		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
 			node, args.sprite_name, 0.5, duration, get_flip_for_node(node, args), speed)
 		tween.start()
 	else:
-		ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration,
+		fx_sprite(node, args.sprite_name, 0.5, duration,
 			get_flip_for_node(node, args), speed)
 	
 	if sync_to_hit:
@@ -1714,12 +1792,12 @@ func gfx_animsprite(node, args):
 	return nextanimationtime + aftereffectdelay
 
 func gfx_particles(node, args):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var nextanimationtime = 0.5
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, args.sprite_name, 1, 1, get_flip_for_node(node, args))
+	fx_particles(node, args.sprite_name, 1, 1, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
@@ -1738,12 +1816,12 @@ func get_flip_for_node(node, args):
 	
 
 func targetfire(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var nextanimationtime = 0.2
 	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.1)
 	buffs_update_delays[node] = 0.2
-	ResourceScripts.core_animations.gfx(node, 'fire')
+	fx_gfx(node, 'fire')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	
@@ -1751,12 +1829,12 @@ func targetfire(node, args = null):
 	#postdamagetimer = nextanimationtime + aftereffectdelay
 
 func decay(node, args):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var nextanimationtime = 1
 	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_sprite(
+	fx_sprite(
 		node.get_parent().get_parent().get_parent().get_parent(),
 		'decay', 0.5, 1.5, get_flip_for_node(node, args))
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
@@ -1766,7 +1844,7 @@ func decay(node, args):
 	#postdamagetimer = nextanimationtime + aftereffectdelay
 
 func heal(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var nextanimationtime = 0.5
 	var duration = 1
 	if args != null:
@@ -1778,35 +1856,35 @@ func heal(node, args = null):
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, 'heal', duration, duration, get_flip_for_node(node, args))
+	fx_particles(node, 'heal', duration, duration, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
 
 func buff(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var nextanimationtime = 0.5
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, 'buff', 1, 1, get_flip_for_node(node, args))
+	fx_particles(node, 'buff', 1, 1, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
 
 func debuff(node, args = null):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var nextanimationtime = 0.5
 	hp_update_delays[node] = 0 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0)
 	buffs_update_delays[node] = 0.5
-	ResourceScripts.core_animations.gfx_particles(node, 'debuff', 1, 1, get_flip_for_node(node, args))
+	fx_particles(node, 'debuff', 1, 1, get_flip_for_node(node, args))
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
 
 func miss(node, args = null):#conflicting usage of tween node!!
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.4
@@ -1825,7 +1903,7 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
 func resist(node, args = null):#conflicting usage of tween node!!
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.4
@@ -1848,7 +1926,7 @@ func buffs(node, args):
 	if buffs_update_delays.has(node): delay = buffs_update_delays[node]
 	buffs_update_delays.erase(node)
 	var delaytime = 0.01
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs')
 	tween.start()
 	return delaytime + delay
@@ -1857,7 +1935,7 @@ func c_log(node, args):
 	var delay = log_update_delay
 	log_update_delay = 0
 	var delaytime = 0.01
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	tween.interpolate_callback(node, delay, 'combatlogadd_q', args.text)
 	tween.start()
 	return delaytime + delay
@@ -1865,7 +1943,7 @@ func c_log(node, args):
 #func order(node, args):
 #	var delay = 0
 #	var delaytime = 0.1
-#	var tween = input_handler.GetTweenNode(node)
+#	var tween = get_tween(node)
 #	tween.interpolate_callback(node, delay, 'update_queue', args.queue, args.next_queue, args.current)
 #	tween.start()
 #	return delaytime + delay
@@ -1873,7 +1951,7 @@ func c_log(node, args):
 func order_move(node, args):
 	var delay = 0
 	var duration = max(abs(node.rect_position.x - args.new_x) * 0.002, 0.5)
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	node.raise()
 	tween.interpolate_property(node, 'rect_position:x', node.rect_position.x, args.new_x, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tween.start()
@@ -1883,7 +1961,7 @@ func order_move(node, args):
 func order_remove(node, args):
 	var delay = 0
 	var duration = 0.5
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	tween.interpolate_property(node, 'rect_position:y', 0, node.rect_size.y, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tween.interpolate_property(node, 'modulate:a', 1.0, 0.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tween.interpolate_callback(args.parent, duration + delay, 'remove_queue_icon', node)
@@ -1894,7 +1972,7 @@ func order_remove(node, args):
 func order_add(node, args):
 	var delay = 0
 	var duration = 0.5
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	tween.interpolate_property(node, 'rect_position:y', node.rect_size.y, 0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tween.interpolate_property(node, 'modulate:a', 0.0, 1.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tween.start()
@@ -1904,7 +1982,7 @@ func order_add(node, args):
 func bar_val_change(node, args):
 	var delay = 0
 	var duration = 0.3
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	tween.interpolate_property(node, 'value', node.value, args.value, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tween.start()
 	return duration + delay
@@ -1924,7 +2002,7 @@ var HIT_TINT_OUT = 0.35
 
 func damage_flash(node, delay = 0.0):
 	if !node.is_inside_tree(): return
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	node.modulate.g = 1.0
 	node.modulate.b = 1.0
 	tween.interpolate_property(node, 'modulate:g', 1.0, HIT_TINT, HIT_TINT_IN, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
@@ -1957,7 +2035,7 @@ func hp_update(node, args):
 		damage_flash(node, delay)
 	
 	var delaytime = 0.2
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var hpnode = node.get_node("bars/HP")
 	#float damage
 	if args.damage_float and real_damage:
@@ -1979,7 +2057,7 @@ func hp_update(node, args):
 
 func mp_update(node, args):
 	var delaytime = 0.1
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var mpnode = node.get_node("bars/MP")
 	#update mp bar
 	tween.interpolate_property(mpnode, 'value', mpnode.value, args.newmpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -1997,8 +2075,8 @@ func shield_update(node, args):
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode
 	var delaytime = 0.3
-	ResourceScripts.core_animations.gfx(node, 'slice', 0.3, delaytime)
-	var tween = input_handler.GetTweenNode(node)
+	fx_gfx(node, 'slice', 0.3, delaytime)
+	var tween = get_tween(node)
 	tween.interpolate_callback(node, delaytime, 'noq_defeat')
 	tween.start()
 	#node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
@@ -2009,7 +2087,7 @@ func defeat(node, args = null):#stub, for this was not correct in FighterNode
 
 
 func death_animation(node):
-	var tween = input_handler.GetTweenNode(node)
+	var tween = get_tween(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
 	var delaytime = 0.8
