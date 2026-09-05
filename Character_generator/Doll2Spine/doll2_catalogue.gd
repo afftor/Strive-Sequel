@@ -271,6 +271,13 @@ static func compose(selections, axis_values):
 			continue
 		for slot_name in part(part_id).get("hides", []):
 			result.erase(slot_name)
+	# Beastkin palms have their own silhouette and must stay visible as authored.
+	# Human gloves were cut around the human hands and otherwise cover or clip the
+	# Beastkin claws.  This rule lives after every outfit layer so neither a full
+	# set nor the independent hands selection can put them back on either sex.
+	if has_tag(str(selections.get("body", "")), "beastkin"):
+		result.erase("equip_hand_left")
+		result.erase("equip_hand_right")
 	return result
 
 

@@ -13,7 +13,7 @@ const SOURCE = {
 	"bone_count": 271,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "odG8CW+U6Ww",
+	"skeleton_hash": "mLlbRsoSeA0",
 	"slot_count": 78,
 	"spine_version": "4.2.43",
 }
@@ -1195,6 +1195,7 @@ const PARTS = {
 			"dick": "dick_furry_up",
 			"testicle": "testicle_furry",
 		},
+		"zones": [0],
 	},
 	"Dick_horse_up": {
 		"folders": ["13_dicks"],
@@ -1203,6 +1204,7 @@ const PARTS = {
 			"dick": "dick_horse_up__body_female_beastkin",
 			"testicle": "testicle_furry",
 		},
+		"zones": [0],
 	},
 	"Dick_human_up": {
 		"folders": ["13_dicks"],
@@ -2083,7 +2085,7 @@ const PARTS = {
 		"folders": ["06_hairs_back"],
 		"group": "hair_back",
 		"slots": {
-			"hairs_back": "hair_back_care",
+			"hairs_back": "hair_back_bobcut",
 		},
 		"zones": [0],
 	},
@@ -2182,8 +2184,8 @@ const PARTS = {
 		"folders": ["04_hairs_base"],
 		"group": "hair",
 		"slots": {
-			"hairs_base": "hair_base_kare",
-			"hairs_fringe": "hair_fringe_kare",
+			"hairs_base": "hair_base_bobcut",
+			"hairs_fringe": "hair_fringe_bobcut",
 		},
 		"zones": [0],
 	},

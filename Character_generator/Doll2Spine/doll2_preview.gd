@@ -2655,10 +2655,11 @@ func _select_ui_value(key, value):
 func _rebuild_model():
 	if !skeleton:
 		return
-	animation_attachments = _animation_attachments()
+	var authored_animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
 	var worn = _worn_selections()
 	composed = CATALOGUE.compose(worn, axis_values)
+	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
 	composed_textures = CATALOGUE.compose_textures(worn)
 	composed_unpainted = CATALOGUE.unpainted_slots(worn)
 	# A stripped character keeps the pieces of the set that are not there for
@@ -2865,6 +2866,44 @@ func _animation_attachments():
 			if found and value != null:
 				result[slot_name] = str(value)
 	return result
+
+
+# Spine stores literal attachment names in a pose timeline.  Those names belong
+# to the body that was visible while the animation was authored: female idle4
+# names the human second hands, while the male crossed-arm idle names the femboy
+# `variant_2` hands.  The timeline defines the hand SHAPE, not the character's
+# race.  Find that shape on any body, then compose the same shape from the body
+# actually being worn.  Hand armour follows the same per-side shape as the palm.
+func _match_animated_hands(authored, worn):
+	var result = authored.duplicate()
+	var paired_slots = {
+		"hand_left": "equip_hand_left",
+		"hand_right": "equip_hand_right",
+	}
+	for body_slot in paired_slots.keys():
+		if !authored.has(body_slot):
+			continue
+		var pose_value = _hand_pose_for_attachment(body_slot, str(authored[body_slot]))
+		if pose_value.empty():
+			continue
+		var posed_axes = axis_values.duplicate()
+		posed_axes["hand_pose"] = pose_value
+		var posed = CATALOGUE.compose(worn, posed_axes)
+		for slot_name in [body_slot, paired_slots[body_slot]]:
+			if posed.has(slot_name):
+				result[slot_name] = posed[slot_name]
+	return result
+
+
+func _hand_pose_for_attachment(slot_name, attachment_name):
+	for part_id in CATALOGUE.parts("body"):
+		var definition = CATALOGUE.part(part_id).get("slots", {}).get(slot_name, {})
+		if typeof(definition) != TYPE_DICTIONARY or str(definition.get("axis", "")) != "hand_pose":
+			continue
+		for pose_value in definition.get("options", {}).keys():
+			if str(definition.options[pose_value]) == attachment_name:
+				return str(pose_value)
+	return ""
 
 
 func _bake_bone_hierarchy():
