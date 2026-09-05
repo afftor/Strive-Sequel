@@ -1134,6 +1134,9 @@ func can_be_taunted(caster, target):
 
 
 func setup_autoskill(data, person):
+	var update = false
+	if autoskill != null:
+		update = true
 	autoskill = data.skill
 	if data.has('delay'):
 		autoskill_delay = data.delay
@@ -1147,7 +1150,8 @@ func setup_autoskill(data, person):
 	autoskill_dummy.combatgroup = "_" + person.combatgroup
 	autoskill_dummy.set_stat('atk', person.get_stat('atk'))
 	autoskill_dummy.set_stat('matk', person.get_stat('matk'))
-	next_turnorder.append({pos = 0, speed = 100, id = make_order_id(), autoskill = true})
+	if !update:
+		next_turnorder.append({pos = 0, speed = 100, id = make_order_id(), autoskill = true})
 
 
 var fighterhighlighted = false
