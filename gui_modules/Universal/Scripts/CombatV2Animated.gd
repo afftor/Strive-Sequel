@@ -1536,7 +1536,10 @@ func CalculateTargets(skill, target, finale = false):
 		'single':
 			var tchar = get_char_by_pos(target.position)
 			if tchar.defeated: 
-				array = []
+				if skill.target_range == 'dead':
+					array = [target]
+				else:
+					array = []
 			elif !tchar.can_be_damaged(skill) and !finale: 
 				array = []
 			else:
