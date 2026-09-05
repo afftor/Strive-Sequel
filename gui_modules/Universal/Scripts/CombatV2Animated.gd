@@ -768,7 +768,7 @@ func calculateorder():
 		order_conts = [next_turnorder]
 	for order_cont in order_conts:
 		if autoskill != null:
-			order_cont.append({pos = 0, speed = 100, id = make_order_id()})
+			order_cont.append({pos = 0, speed = 100, id = make_order_id(), autoskill = true})
 		for pos in playergroup.keys() + enemygroup.keys():
 			var tchar = get_char_by_pos(pos)
 			if tchar.defeated == true:
@@ -1007,7 +1007,9 @@ func enemy_turn(char_changed = true):
 
 
 func env_turn(char_changed = true):
-	if autoskill == null: return
+	if autoskill == null: 
+		call_deferred('select_actor')
+		return
 	if autoskill_delay_rem <= 0:
 		autoskill_delay_rem = autoskill_delay
 		turns += 1
@@ -1016,6 +1018,10 @@ func env_turn(char_changed = true):
 		use_skill(autoskill, autoskill_dummy, get_proper_target_for_autoskill(), variables.SKILL_AUTO)
 		if autoskill_times == 0: 
 			autoskill = null
+			for i in range (next_turnorder.size()):
+				if next_turnorder[i].has('autoskill'):
+					next_turnorder.remove(i)
+					break
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: 
 			yield(CombatAnimations, 'alleffectsfinished')
@@ -1139,6 +1145,9 @@ func can_be_taunted(caster, target):
 
 
 func setup_autoskill(data, person):
+	var update = false
+	if autoskill != null:
+		update = true
 	autoskill = data.skill
 	if data.has('delay'):
 		autoskill_delay = data.delay
@@ -1152,7 +1161,8 @@ func setup_autoskill(data, person):
 	autoskill_dummy.combatgroup = "_" + person.combatgroup
 	autoskill_dummy.set_stat('atk', person.get_stat('atk'))
 	autoskill_dummy.set_stat('matk', person.get_stat('matk'))
-	next_turnorder.append({pos = 0, speed = 100, id = make_order_id()})
+	if !update:
+		next_turnorder.append({pos = 0, speed = 100, id = make_order_id(), autoskill = true})
 
 
 var fighterhighlighted = false
@@ -1982,14 +1992,14 @@ func update_queue_asynch(new_turn = false):
 			var is_next_turn_icon = new_queue[i].has("next_turn")
 			if (!is_next_turn_icon
 					and (new_queue[i].pos < 0
-					or battlefield[new_queue[i].pos] == null)):
+					or new_queue[i].pos > 0 and battlefield[new_queue[i].pos] == null)):
 				continue
 			if new_queue[i].id == id and !(is_next_turn_icon and new_turn):
 				CombatAnimations.add_new_data({
 					node = queue_icon, time = turns,
 					type = 'order_move', slot = 'order',
 					params = {new_x = turn_order_step * i}})
-				if !new_queue[i].has("next_turn"):
+				if !new_queue[i].has("next_turn") and !new_queue[i].has("autoskill"):
 					var person = get_char_by_pos(new_queue[i].pos)
 					var hp_bar = queue_icon.get_node('hpbar')
 					if hp_bar.value != person.hp:
@@ -2008,7 +2018,7 @@ func update_queue_asynch(new_turn = false):
 		var is_next_turn_icon = new_queue[i].has("next_turn")
 		if (!is_next_turn_icon
 				and (new_queue[i].pos < 0
-				or battlefield[new_queue[i].pos] == null)):
+				or new_queue[i].pos > 0 and battlefield[new_queue[i].pos] == null)):
 			continue
 		var has_icon = false
 		for queue_icon in old_queue:
@@ -2037,21 +2047,28 @@ func make_new_queue_icon(order_entry, order_num):
 		tmp.get_node('icon').texture = load("res://assets/Textures_v2/craft/exchant.png")
 		tmp.get_node('hpbar').hide()
 		return tmp
-	var person = get_char_by_pos(order_entry.pos)
-	if order_entry.pos > 6:
+	var icon
+	if order_entry.pos == 0:
 		tmp.disabled = true
-	var icon = person.get_icon()
+		var skill = Skilldata.get_template_combat(autoskill, autoskill_dummy)
+		tmp.get_node('hpbar').visible = false
+		icon = skill.icon
+	else:
+		var person = get_char_by_pos(order_entry.pos)
+		if order_entry.pos > 6:
+			tmp.disabled = true
+		icon = person.get_icon()
+		if person.combatgroup == 'enemy':
+			tmp.self_modulate = Color(1.0,0.5,0.5,1.0)
+		else:
+			tmp.self_modulate = Color(0.5,1.0,0.5,1.0)
+		tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
+		tmp.get_node('hpbar').value = person.hp
+		tmp.connect("mouse_entered", self, 'FighterMouseOver', [person.id, true])
+		tmp.connect("mouse_exited", self, 'FighterMouseOverFinish', [person.id])
+	tmp.rect_position.x = turn_order_step * order_num
 	if icon != null:
 		tmp.get_node('icon').texture = icon
-	if person.combatgroup == 'enemy':
-		tmp.self_modulate = Color(1.0,0.5,0.5,1.0)
-	else:
-		tmp.self_modulate = Color(0.5,1.0,0.5,1.0)
-	tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
-	tmp.get_node('hpbar').value = person.hp
-	tmp.connect("mouse_entered", self, 'FighterMouseOver', [person.id, true])
-	tmp.connect("mouse_exited", self, 'FighterMouseOverFinish', [person.id])
-	tmp.rect_position.x = turn_order_step * order_num
 	return tmp
 
 func remove_queue_icon(node):
