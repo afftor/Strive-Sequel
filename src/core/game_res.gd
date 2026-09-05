@@ -2683,7 +2683,9 @@ func make_item(temp, character):
 			elif true_item.quality == 'epic':
 				character.try_rise_fame('craft_epic')
 			globals.AddItemToInventory(true_item)
-	globals.mansion_activity_log_add("craft", tr("MANSION_ACTIVITY_CRAFT_COMPLETE") % [
+	#Not a row of its own: the turn's crafting is one report and this is a line behind its fold.
+	#See globals.mansion_activity_craft().
+	globals.mansion_activity_craft(character, tr("MANSION_ACTIVITY_CRAFT_COMPLETE") % [
 		character.get_short_name(),
 		globals.colorize_item_quality(product_name, product_quality),
 	])

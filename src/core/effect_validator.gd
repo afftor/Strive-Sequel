@@ -75,6 +75,7 @@ var req_codes = {
 	"has_profession": true,
 	"global_profession_limit": true,
 	"class_unlocked": true,
+	"status_count": true,
 }
 
 var known_stats = {}
@@ -207,6 +208,10 @@ func _validate_sub_effects(sub_effects, context, issues):
 		var sub_context = "%s[%d]" % [context, idx]
 		if sub_effect is String:
 			_validate_effect_ref(sub_effect, sub_context, issues)
+		elif sub_effect is Dictionary and sub_effect.has("status") and !sub_effect.has("type"):
+			#{status = id, overload_target = who} - the retargeting form rebuild_template emits
+			#for its `target` argument and triggered_effect.e_apply resolves
+			_validate_effect_ref(sub_effect.status, sub_context + ".status", issues)
 		elif sub_effect is Dictionary:
 			_validate_effect_template(sub_effect, sub_context, issues)
 		else:
@@ -986,7 +991,7 @@ func _build_known_stats():
 	]:
 		for key in source:
 			stats[key] = true
-	for key in ["value", "chance", "repeat", "follow_up", "target", "hit_res", "is_drain", "shield", "shieldtype", "src", "base", "mod", "mod_2", "amount", "index", "combatgroup", "combat_position", "id", "armor_p", "alt_form"]:
+	for key in ["value", "chance", "evade", "repeat", "follow_up", "target", "hit_res", "is_drain", "shield", "shieldtype", "src", "base", "mod", "mod_2", "amount", "index", "combatgroup", "combat_position", "id", "armor_p", "alt_form"]:
 		stats[key] = true
 	return stats
 

@@ -245,6 +245,23 @@ func has_stored_status(status):
 	return effects_temp_stored.has(status)
 
 
+#how many distinct temp statuses carrying this tag the character has right now -
+#one per stack, so two stacks of shred still count as one affliction
+func count_status(status):
+	var res = 0
+	for rec in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(rec.id)
+		if eff.has_status(status):
+			res += 1
+	for st in effects_temp_real.values():
+		for id in st.get_active_effects().keys():
+			var eff = effects_pool.get_effect_by_id(id)
+			if eff.has_status(status):
+				res += 1
+				break
+	return res
+
+
 func find_temp_effect_tag(eff_tag, all_flag = false):
 	var res = []
 	for rec in effects_temp_globals_real:

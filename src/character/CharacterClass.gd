@@ -2077,6 +2077,11 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			else:
 				amount = input_handler.combat_node.get_group_amount(combatgroup)
 			check = input_handler.operate(i.operant, amount, i.value)
+		#number of distinct statuses tagged i.status (e.g. 'affliction') on this character
+		'status_count':
+			if dyn_stats.rebuild < variables.DYN_STATS_FULL:
+				dyn_stats.generate_data()
+			check = input_handler.operate(i.operant, dyn_stats.count_status(i.status), i.value)
 	return check
 
 

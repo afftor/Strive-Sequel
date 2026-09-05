@@ -359,10 +359,9 @@ var data = {
 		],
 		options = [
 			{
-				code = "quest_fight",
-				args = "dwarf_ceremony_coal",
+				code = "dwarf_ceremony_bolthar",
 				dialogue_argument = 0,
-				text = "DIALOGUEFIGHTOPTION",
+				text = "DIALOGUECONTINUE",
 				type = "next_dialogue",
 				reqs = [
 					{
@@ -384,6 +383,37 @@ var data = {
 						value = "JoinCoalition",
 						check = true
 					}
+				]
+			}
+		]
+	},
+	#refused-the-coalition branch only: Bolthar and his lieutenants step out of the ambush
+	dwarf_ceremony_bolthar = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "bolthar",
+		character2 = "dwarf_king",
+		text = [
+			{
+				text = "DWARF_CEREMONY_BOLTHAR",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "quest_fight",
+				args = "coalition_last_stand",
+				dialogue_argument = 0,
+				text = "DIALOGUEFIGHTOPTION",
+				type = "next_dialogue",
+				reqs = [
+
 				]
 			}
 		]

@@ -899,10 +899,13 @@ func build_sex_training_tooltip(person, code, state):
 	return text
 
 
+#Returns how many rows were actually drawn, so a panel that hides its whole sex block when
+#there is nothing to say does not have to repeat the skipping rules to find that out.
 func build_sex_training_rows(person, node):
 	input_handler.ClearContainer(node)
 	if person == null:
-		return
+		return 0
+	var rows = 0
 	var skills = person.get_sex_training()
 	for code in skills:
 		var state = skills[code]
@@ -918,6 +921,8 @@ func build_sex_training_rows(person, node):
 		row.get_node("ProgressBar").value = SEX_TRAINING_PROGRESS.get(state, 0)
 		row.get_node("ProgressBar/Label").text = get_sex_training_label(state)
 		connecttexttooltip(row, build_sex_training_tooltip(person, code, state))
+		rows += 1
+	return rows
 
 
 func build_sex_traits_list(person, node, capacity_label = null):
@@ -1970,38 +1975,95 @@ func mansion_activity_stat_change(character, part):
 		{char_id = character.id, parts = [part]})
 
 
+#The row a turn-wide report folds into: the newest entry of that type carrying this very stamp.
+#A report is keyed on the stamp alone and not on a person, so an entry from an earlier hour is
+#never appended to and nothing is redated - a report the turn has moved past simply is not found
+#and the next one starts its own row.
+func _mansion_activity_turn_report(report_type, stamp):
+	var entries = ResourceScripts.game_globals.mansion_activity_log
+	for i in range(entries.size() - 1, -1, -1):
+		var entry = entries[i]
+		if entry.get('type') != report_type:
+			continue
+		if entry.date != stamp.date or entry.hour != stamp.hour:
+			continue
+		return entry
+	return null
+
+
 #One entry per turn for everything the service task brought in - the estate cares about the
-#coin, not about who carried it in, so the row is keyed on the stamp alone and not on a person.
-#Each worker is folded into the row that is already on screen as they are processed, the same
-#way mansion_activity_stat_change() folds a person's stat changes.
+#coin, not about who carried it in. Each worker is folded into the row that is already on screen
+#as they are processed, the same way mansion_activity_stat_change() folds a person's stat
+#changes.
 #
 #`details` - the line per worker behind that total - is deliberately turn-local:
 #game_globals.serialize() drops it, so a report read back from a save is a total with nothing
 #left to unfold, and MansionLogModule hides the fold when it finds none.
 func mansion_activity_service(gold, detail_text):
 	var stamp = mansion_activity_stamp()
-	var entries = ResourceScripts.game_globals.mansion_activity_log
-	for i in range(entries.size() - 1, -1, -1):
-		var entry = entries[i]
-		if entry.get('type') != 'service':
-			continue
-		if entry.date != stamp.date or entry.hour != stamp.hour:
-			continue
-		entry.total = int(entry.get('total', 0)) + int(gold)
-		entry.workers = int(entry.get('workers', 0)) + 1
-		if !entry.has('details'):
-			entry.details = []
-		entry.details.append(detail_text)
-		entry.text = _service_report_text(entry.total, entry.workers)
-		if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
-			mansion_activity_log_node.update_log_message(entry)
+	var entry = _mansion_activity_turn_report('service', stamp)
+	if entry == null:
+		mansion_activity_log_add('service', _service_report_text(int(gold), 1),
+			{total = int(gold), workers = 1, details = [detail_text]})
 		return
-	mansion_activity_log_add('service', _service_report_text(int(gold), 1),
-		{total = int(gold), workers = 1, details = [detail_text]})
+	entry.total = int(entry.get('total', 0)) + int(gold)
+	entry.workers = int(entry.get('workers', 0)) + 1
+	if !entry.has('details'):
+		entry.details = []
+	entry.details.append(detail_text)
+	entry.text = _service_report_text(entry.total, entry.workers)
+	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+		mansion_activity_log_node.update_log_message(entry)
+
+
+#One entry per turn for everything the benches finished, folded exactly like the service report
+#above. A single recipe can come off the bench several times in one turn and several people can
+#be working at once, so the row counts the products and the hands behind them; who made what,
+#and in what quality, is the line kept behind the fold.
+#
+#The colour on a product name is put there by the caller - see game_res.make_item() and
+#colorize_item_quality() - so the breakdown reads in the same quality colours the inventory uses.
+func mansion_activity_craft(character, detail_text):
+	var stamp = mansion_activity_stamp()
+	var entry = _mansion_activity_turn_report('craft', stamp)
+	if entry == null:
+		mansion_activity_log_add('craft', _craft_report_text(1, 1),
+			{total = 1, crafter_ids = [character.id], details = [detail_text]})
+		return
+	entry.total = int(entry.get('total', 0)) + 1
+	if !entry.has('crafter_ids'):
+		entry.crafter_ids = []
+	if !(character.id in entry.crafter_ids):
+		entry.crafter_ids.append(character.id)
+	if !entry.has('details'):
+		entry.details = []
+	entry.details.append(detail_text)
+	entry.text = _craft_report_text(entry.total, entry.crafter_ids.size())
+	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+		mansion_activity_log_node.update_log_message(entry)
+
+
+#A locale that has not caught up with a new string gets the key itself back from tr(), and a key
+#carries no format specifiers: `%` on it does not fall back, it aborts the function outright. The
+#entry would then be stored with no text at all and the log could not draw the row - a whole
+#category of the turn's news would go missing rather than merely read badly. So an untranslated
+#key is shown as itself with its numbers after it, which is ugly and unmistakable, and the row
+#survives.
+func _report_text(key, values):
+	var line = tr(key)
+	if line == key:
+		for value in values:
+			line += " " + str(value)
+		return line
+	return line % values
 
 
 func _service_report_text(total, workers):
-	return tr("MANSION_ACTIVITY_SERVICE_REPORT") % [total, workers]
+	return _report_text("MANSION_ACTIVITY_SERVICE_REPORT", [total, workers])
+
+
+func _craft_report_text(total, crafters):
+	return _report_text("MANSION_ACTIVITY_CRAFT_REPORT", [total, crafters])
 
 
 func _stat_change_text(character, parts):

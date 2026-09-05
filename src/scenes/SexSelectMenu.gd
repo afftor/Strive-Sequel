@@ -110,7 +110,8 @@ func rebuild_list():
 
 #Consent and how far each practice has been trained, drawn the way the character screen draws
 #the same thing - a name, a bar and the level it stands at - rather than as a wall of text.
-const SEX_TRAINING_PROGRESS = {novice = 0, skilled = 50, mastered = 100}
+#The rows themselves come from globals so the tooltip here carries the same mastery hint the
+#character screen shows: which acts the character still has to be taken through.
 
 var info_person = null
 
@@ -130,51 +131,15 @@ func show_person_info(person):
 	stamina.text = tr("STATSEX_STAMINA") + ": " + str(person.get_stat('sex_stamina'))
 	globals.connecttexttooltip(stamina, "[center]" + tr("STATSEX_STAMINA") + "[/center]\n"
 		+ tr("STATSEX_STAMINADESCRIPT"))
-	var list = info.get_node("Skills/VBoxContainer")
-	input_handler.ClearContainer(list)
-	var trained = 0
-	var training = person.get_sex_training()
-	for code in training:
-		if _skill_says_nothing(person, code, training[code]):
-			continue
-		var row = input_handler.DuplicateContainerTemplate(list)
-		var level = _sex_training_label(training[code])
-		row.get_node("Label").text = tr("CHARINFO_" + code.to_upper())
-		row.get_node("ProgressBar").value = SEX_TRAINING_PROGRESS.get(training[code], 0)
-		row.get_node("ProgressBar/Label").text = level
-		var text = person.translate(tr("STAT" + code.to_upper() + "DESCRIPT"))
-		globals.connecttexttooltip(row, text + "\n" + tr("CUR_LEVEL_LABEL") + ": " + level)
-		trained += 1
+	var trained = globals.build_sex_training_rows(person, info.get_node("Skills/VBoxContainer"))
 	info.get_node("SkillsHeader").visible = trained > 0
 	info.get_node("Skills").visible = trained > 0
 	info.get_node("Empty").visible = trained == 0
 
 
-#The three that say nothing about somebody who has never been trained in them - the same three
-#the character screen leaves out.
-func _skill_says_nothing(person, code, state):
-	if state != 'novice':
-		return false
-	if code == 'sex_training_tail':
-		return true
-	if code == 'sex_training_penetration' and person.get_stat('penis_size') == '':
-		return true
-	if code == 'sex_training_pussy' and person.get_stat('sex') == 'male':
-		return true
-	return false
-
-
 func hide_person_info():
 	info_person = null
 	$Info.visible = false
-
-
-func _sex_training_label(state):
-	match state:
-		'novice': return tr('SEX_TRAINING_LEVEL_NOVICE')
-		'skilled': return tr('SEX_TRAINING_LEVEL_SKILLED')
-		'mastered': return tr('SEX_TRAINING_LEVEL_MASTERED')
-	return str(state).capitalize()
 
 
 func _on_category_pressed(category):
