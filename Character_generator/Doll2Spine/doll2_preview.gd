@@ -190,6 +190,16 @@ var animation_attachments = {}
 var animation_signature = 0
 var animation_times = {}
 var animation_durations = {}
+# What the running animations do to the bones they key, as {bone: [x, y,
+# rotation]} - the local values before any modifier has touched them.  A solve
+# runs the whole skeleton once per hair layer plus once more, and every one of
+# those passes used to sample the same 151 keyed timelines at the same instant:
+# four identical passes for one frame, 6 ms each.  The sample is taken once and
+# kept beside the moment it was taken at, so the extra passes read it instead.
+var bone_sample = {}
+var bone_sample_key = ""
+# Layer slots the last solve left alone because nothing was drawn in them.
+var skipped_layers = {}
 # A blink, on top of whatever else is playing.
 #
 # `eyesmove` is the take the artist cut for it: a quarter-second deform of the
@@ -653,6 +663,11 @@ func _load_source():
 	if shared.empty():
 		return
 	skeleton = shared.skeleton
+	# A different rig keys different bones, and the sample is keyed only by which
+	# animations are running and when - two dolls both sitting at time 0 of an
+	# animation they both name `idle1` would otherwise share one.
+	bone_sample = {}
+	bone_sample_key = ""
 	slot_data = shared.slot_data
 	skin_map = shared.skin_map
 	atlas = shared.atlas
@@ -665,14 +680,143 @@ func _load_source():
 # Solves the skeleton, plus one extra pose for every hair layer whose length is
 # off default.  A layer's meshes are skinned from its own pose, which is how two
 # layers sharing the same bones can still have different lengths.
+#
+# A layer the character is not wearing is not solved.  The pose costs a full pass
+# over 271 bones - the timelines, the modifiers, the IK - and a length is off
+# default on every character whose hair is not the middle tier, so a bald one was
+# paying for four hair poses nothing would ever read.
+#
+# `mesh_records` is the list those poses are read against: `_update_mesh_geometry`
+# walks exactly it, and it is current at both call sites - every frame from
+# `_process`, and straight after the rebuild the screens do.  The one solve that
+# runs before the first build has no records to consult at all, so an empty list
+# has to mean "solve them all" rather than "solve none".
 func _solve_pose():
 	layer_poses.clear()
+	skipped_layers.clear()
 	var layers = MODIFIERS.layer_factors(proportions, _bone_parents(), contract.CONTRACT_ID)
+	var drawn = _drawn_slot_names()
+	var wanted = []
 	for slot_name in layers.keys():
-		_build_bone_transforms(layers[slot_name])
-		layer_poses[slot_name] = _snapshot_pose()
-	# Solved last, so `bones` is left holding the ordinary pose.
+		if !drawn.empty() and !drawn.has(slot_name):
+			skipped_layers[slot_name] = true
+		else:
+			wanted.append(slot_name)
+	# Solved first now rather than last: the layers are taken off this pose
+	# instead of each solving the skeleton again from the setup pose.  `bones` is
+	# left holding it either way.
 	_build_bone_transforms()
+	if wanted.empty():
+		return
+	var world_offsets = MODIFIERS.bone_world_offsets(proportions, contract.CONTRACT_ID)
+	var base = _snapshot_pose()
+	for slot_name in wanted:
+		var factors = layers[slot_name]
+		var affected = []
+		for bone_name in factors.keys():
+			if bones.has(bone_name):
+				affected.append(bone_name)
+		if _layer_needs_a_full_solve(affected, world_offsets):
+			_build_bone_transforms(factors)
+			layer_poses[slot_name] = _snapshot_pose()
+			_build_bone_transforms()
+			continue
+		layer_poses[slot_name] = _layer_pose(base, factors, affected)
+
+
+# One layer's pose, lifted off the ordinary one rather than solved again.
+#
+# A layer scales two to six bones at the end of a hair chain, and the whole
+# difference between the two poses is those bones and the 2 to 35 that hang off
+# them - out of 271, all below `head`.  Everything else in the solve arrives at
+# the same numbers twice: the timelines, the modifiers, the IK on the limbs, the
+# hands.  Solving it all again to find that out cost 10 ms a layer, and a
+# character wearing three of them paid it three times a frame.
+#
+# Correctness rests on the layer factor reaching the bone the same way round
+# either way.  It does: the old pass multiplied it into the modifier factors and
+# set `local_scale * factor`, and the modifier factors are already in the local
+# scale of the pose this starts from, so multiplying it in here composes the same
+# product.  Nothing downstream of the modifiers writes to this subtree - no IK
+# constraint, pushable or handle reaches a hair bone - and everything they do
+# write, they write as local values, which a re-derive reproduces.
+func _layer_pose(base, layer_factors, affected):
+	if affected.empty():
+		return base
+	# The post-IK pass left every world transform computed with the parent's own
+	# limb thickness stripped out of the basis; a re-derive has to be made in the
+	# same terms or a bone under a thickened parent lands somewhere else.
+	applying_post_ik_visual_scales = !post_ik_visual_scales.empty()
+	var restore = {}
+	for bone_name in affected:
+		var bone = bones[bone_name]
+		restore[bone_name] = Vector2(float(bone.local_scale_x), float(bone.local_scale_y))
+		var factor = layer_factors[bone_name]
+		_set_bone_world(
+			bone_name,
+			float(bone.local_x), float(bone.local_y), float(bone.local_rotation),
+			float(bone.local_scale_x) * factor.x, float(bone.local_scale_y) * factor.y,
+			float(bone.local_shear_x), float(bone.local_shear_y)
+		)
+	var moved = _resolve_subtree(affected)
+	# Shallow on purpose: the bones this layer did not move keep pointing at the
+	# ordinary pose's entries, which nothing ever writes to.
+	var pose = base.duplicate()
+	for bone_name in moved.keys():
+		var bone = bones[bone_name]
+		pose[bone_name] = {"a": bone.a, "b": bone.b, "c": bone.c, "d": bone.d, "x": bone.x, "y": bone.y}
+	# and the ordinary pose put back, so the next layer starts where this one did
+	for bone_name in affected:
+		var bone = bones[bone_name]
+		var scale = restore[bone_name]
+		_set_bone_world(
+			bone_name,
+			float(bone.local_x), float(bone.local_y), float(bone.local_rotation),
+			scale.x, scale.y,
+			float(bone.local_shear_x), float(bone.local_shear_y)
+		)
+	_resolve_subtree(affected)
+	applying_post_ik_visual_scales = false
+	return pose
+
+
+# The one thing a re-derive cannot reproduce is a world offset: it is added
+# straight onto a solved position and leaves no trace in the bone's own local
+# values.  A layer carrying one inside its subtree is solved the long way.
+func _layer_needs_a_full_solve(affected, world_offsets):
+	if world_offsets.empty() or affected.empty():
+		return false
+	var parents = _bone_parents()
+	for offset_bone in world_offsets.keys():
+		var cursor = str(offset_bone)
+		var depth = 0
+		while cursor != "" and depth < 64:
+			if cursor in affected:
+				return true
+			cursor = str(parents.get(cursor, ""))
+			depth += 1
+	return false
+
+
+# The slots the doll currently draws something in, as a set.
+func _drawn_slot_names():
+	var result = {}
+	for record in mesh_records:
+		result[str(record.slot.get("name", ""))] = true
+	return result
+
+
+# Whether the doll has just put on a layer the last pose left unsolved, which is
+# the one way the skip above can be wrong: the pose was taken while the slot was
+# empty, and the meshes that have appeared in it since would be skinned from the
+# plain pose and worn at the default length.
+func _drawn_layer_was_skipped():
+	if skipped_layers.empty():
+		return false
+	for record in mesh_records:
+		if skipped_layers.has(str(record.slot.get("name", ""))):
+			return true
+	return false
 
 
 # {bone: parent} straight off the export, so a length modifier can work out where
@@ -832,7 +976,42 @@ func _display_scale():
 # 52-74 px from the hand it belongs to.  The IK pass and the modifier pass
 # already re-solve their descendants; so does this one now.
 func _apply_active_bone_timelines():
-	var touched = []
+	var sample = _sampled_bone_timelines()
+	if sample.empty():
+		return
+	for name in sample.keys():
+		if !bones.has(name):
+			continue
+		var values = sample[name]
+		var bone = bones[name]
+		_set_bone_world(
+			name, values[0], values[1], values[2],
+			float(bone.local_scale_x), float(bone.local_scale_y),
+			float(bone.local_shear_x), float(bone.local_shear_y)
+		)
+	_resolve_bone_hierarchy()
+
+
+# The keyed bones as the timelines have them at this instant, worked out once per
+# moment rather than once per pass over the skeleton.
+#
+# Order is not part of the answer.  `_set_bone_world` stores what it is given as
+# the bone's own local values and derives the world transform from whatever the
+# parent holds at that moment, and `_resolve_bone_hierarchy` above re-derives
+# every one of those world transforms from the locals, parents first - which is
+# why a keyed child could be written before its keyed parent and still come out
+# right.  Only the locals survive the pass, and those are independent of it.
+func _sampled_bone_timelines():
+	var key = ""
+	for animation_name in animation_states.keys():
+		if animation_states[animation_name]:
+			key += "%s@%.6f|" % [animation_name, float(animation_times.get(animation_name, 0.0))]
+	if key == bone_sample_key:
+		return bone_sample
+	bone_sample_key = key
+	bone_sample = {}
+	if key == "":
+		return bone_sample
 	for animation_name in animation_states.keys():
 		if !animation_states[animation_name]:
 			continue
@@ -843,7 +1022,6 @@ func _apply_active_bone_timelines():
 			var name = definition.get("name", "")
 			if !bone_timelines.has(name):
 				continue
-			var bone = bones[name]
 			var x = float(definition.get("x", 0.0))
 			var y = float(definition.get("y", 0.0))
 			var rotation = float(definition.get("rotation", 0.0))
@@ -855,14 +1033,10 @@ func _apply_active_bone_timelines():
 			if channels.has("rotate"):
 				var turn = _sample_timeline(channels.rotate, time, ["value"])
 				rotation += float(turn.get("value", 0.0))
-			_set_bone_world(
-				name, x, y, rotation,
-				float(bone.local_scale_x), float(bone.local_scale_y),
-				float(bone.local_shear_x), float(bone.local_shear_y)
-			)
-			touched.append(name)
-	if !touched.empty():
-		_resolve_bone_hierarchy()
+			# A bone two animations both key is written by the later one, which is
+			# what the pass this replaced did as well.
+			bone_sample[name] = [x, y, rotation]
+	return bone_sample
 
 
 func _sample_timeline(frames, time, fields):
@@ -1285,6 +1459,33 @@ func _update_ik_descendants(constrained_names):
 			changed[name] = true
 
 
+# The named bones and everything under them, re-derived from their own local
+# values in hierarchy order, and the set of them returned.
+#
+# Unlike `_update_ik_descendants` this re-derives the named bones too, which is
+# the difference between a pass that follows an IK solve and one that follows a
+# change of local values.  A caller that sets several bones at once can have set
+# one that hangs off another - `head5` sits three joints below `head3` and both
+# are scaled by the same hair layer - and the lower one was then composed against
+# a parent chain that had not been rebuilt yet.  Skipping it, as an IK pass must,
+# left it 22 px out and carried its whole chain with it.
+func _resolve_subtree(roots):
+	var changed = {}
+	for name in roots:
+		changed[name] = true
+	var moved = {}
+	for definition in skeleton.get("bones", []):
+		var name = definition.get("name", "")
+		if !bones.has(name):
+			continue
+		if !changed.has(name) and !changed.has(str(definition.get("parent", ""))):
+			continue
+		changed[name] = true
+		_restore_bone_world(name)
+		moved[name] = true
+	return moved
+
+
 func _initialize_handles():
 	for handle_name in handle_definitions.keys():
 		var definition = handle_definitions[handle_name]
@@ -1571,6 +1772,9 @@ func _build_interface():
 		_add_select(box, group.label, group_id, group.parts, group.optional, CATALOGUE.channels_for_group(group_id))
 	for axis in _sorted_axes():
 		var definition = CATALOGUE.axes()[axis]
+		# an axis the body decides is not the player's to pick
+		if bool(definition.get("hidden", false)):
+			continue
 		_add_axis_select(box, definition.label, axis, definition.values)
 	# A proportion picked by name reads as one of these, not as a slider stranded
 	# in the middle of the build ones.
@@ -2451,10 +2655,11 @@ func _select_ui_value(key, value):
 func _rebuild_model():
 	if !skeleton:
 		return
-	animation_attachments = _animation_attachments()
+	var authored_animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
 	var worn = _worn_selections()
 	composed = CATALOGUE.compose(worn, axis_values)
+	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
 	composed_textures = CATALOGUE.compose_textures(worn)
 	composed_unpainted = CATALOGUE.unpainted_slots(worn)
 	# A stripped character keeps the pieces of the set that are not there for
@@ -2476,6 +2681,14 @@ func _rebuild_model():
 		if attachment.empty():
 			continue
 		_add_attachment(slot, attachment)
+	# The screens all re-pose straight after a rebuild and would have caught this
+	# on that call; the preview's own rebuilds do not, so a layer that has only
+	# just been put on is solved here rather than left a frame behind.  Costs a
+	# whole frame's worth of solving, which is why it waits to be needed.
+	if _drawn_layer_was_skipped():
+		_solve_pose()
+		_update_mesh_geometry()
+		_recompute_gradient_bounds()
 	_apply_gradient_bounds()
 	# The model node is new, so the view has to be put back onto it.
 	_apply_view()
@@ -2653,6 +2866,44 @@ func _animation_attachments():
 			if found and value != null:
 				result[slot_name] = str(value)
 	return result
+
+
+# Spine stores literal attachment names in a pose timeline.  Those names belong
+# to the body that was visible while the animation was authored: female idle4
+# names the human second hands, while the male crossed-arm idle names the femboy
+# `variant_2` hands.  The timeline defines the hand SHAPE, not the character's
+# race.  Find that shape on any body, then compose the same shape from the body
+# actually being worn.  Hand armour follows the same per-side shape as the palm.
+func _match_animated_hands(authored, worn):
+	var result = authored.duplicate()
+	var paired_slots = {
+		"hand_left": "equip_hand_left",
+		"hand_right": "equip_hand_right",
+	}
+	for body_slot in paired_slots.keys():
+		if !authored.has(body_slot):
+			continue
+		var pose_value = _hand_pose_for_attachment(body_slot, str(authored[body_slot]))
+		if pose_value.empty():
+			continue
+		var posed_axes = axis_values.duplicate()
+		posed_axes["hand_pose"] = pose_value
+		var posed = CATALOGUE.compose(worn, posed_axes)
+		for slot_name in [body_slot, paired_slots[body_slot]]:
+			if posed.has(slot_name):
+				result[slot_name] = posed[slot_name]
+	return result
+
+
+func _hand_pose_for_attachment(slot_name, attachment_name):
+	for part_id in CATALOGUE.parts("body"):
+		var definition = CATALOGUE.part(part_id).get("slots", {}).get(slot_name, {})
+		if typeof(definition) != TYPE_DICTIONARY or str(definition.get("axis", "")) != "hand_pose":
+			continue
+		for pose_value in definition.get("options", {}).keys():
+			if str(definition.options[pose_value]) == attachment_name:
+				return str(pose_value)
+	return ""
 
 
 func _bake_bone_hierarchy():

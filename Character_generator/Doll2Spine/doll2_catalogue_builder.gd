@@ -1383,11 +1383,17 @@ func _public_axes():
 	var result = {}
 	for axis in _overrides.AXES.keys():
 		var definition = _overrides.AXES[axis]
-		result[axis] = {
+		var public = {
 			"values": definition.values,
 			"default": definition.default,
 			"label": definition.label,
 		}
+		# `body_tag` says the value is read off the worn body rather than picked,
+		# and `hidden` keeps the axis out of the preview's list of pickers
+		for optional in ["body_tag", "hidden"]:
+			if definition.has(optional):
+				public[optional] = definition[optional]
+		result[axis] = public
 	return result
 
 

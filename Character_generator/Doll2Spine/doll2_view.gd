@@ -243,7 +243,9 @@ func rebuild(character_to_build):
 	if character_to_build != character:
 		view_zoom = 1.0
 		view_pan = Vector2.ZERO
-		undress_level = GEAR.DRESSED
+		# how much of themselves the character was left showing is theirs rather than
+		# the screen's, so a new one is picked up on the step they were last put on
+		undress_level = _remembered_undress_level(character_to_build)
 		_close_hair_menu()
 	character = character_to_build
 	_apply()
@@ -251,8 +253,24 @@ func rebuild(character_to_build):
 
 func rebuild_cloth(value):
 	if value != null:
-		undress_level = GEAR.normalise(!bool(value))
+		# the screens still ask in dressed-or-not, and most of them ask it from the
+		# nudity rule - which is the character's own step with the detail taken out.
+		# So the remembered step answers whenever it agrees with what was asked, and
+		# only a screen asking for the opposite of it gets the plain two-way answer.
+		var wanted = GEAR.normalise(!bool(value))
+		var remembered = _remembered_undress_level(character)
+		if (remembered != GEAR.DRESSED) == (wanted != GEAR.DRESSED):
+			undress_level = remembered
+		else:
+			undress_level = wanted
 	_apply()
+
+
+# The step this character was last left on, `dressed` for anyone who carries none.
+func _remembered_undress_level(for_character):
+	if for_character == null or !for_character.has_method("get_undress_level"):
+		return GEAR.DRESSED
+	return GEAR.normalise(for_character.get_undress_level())
 
 
 # The four steps, for the screens and for the doll's own corner buttons.
@@ -281,12 +299,13 @@ func nudity_allowed():
 # What the player left the doll wearing is the rule from here on: the portrait
 # booth and the unique sprites both read the work rule rather than the doll.
 func _write_undress_rule():
-	if character == null or !character.has_method("set_work_rule"):
+	if character == null or !character.has_method("set_undress_level"):
 		return
-	var undressed = undress_level != GEAR.DRESSED
-	if bool(character.has_work_rule("nudity")) == undressed:
+	if _remembered_undress_level(character) == undress_level:
 		return
-	character.set_work_rule("nudity", undressed)
+	# the character stores the step itself; the nudity work rule is written with it,
+	# so everything that still reads the rule sees the same choice
+	character.set_undress_level(undress_level)
 	if character.has_method("update_prt"):
 		character.update_prt()
 	var handler = _singleton("input_handler")
@@ -443,21 +462,23 @@ const FACE_COLOUR_ROWS = [
 ]
 
 # Gear, which is not painted in one colour: its art is coded in three hue bands -
-# the main material, a second one and the trim - so a piece is a row of three
-# swatches, and a band the worn piece has no art in takes its swatch away.
+# the main material, a second one and the trim - and each band takes its colour
+# from the stat that feeds the channel.  This table is what says which stat.
 #
 # The stats are the old paperdoll's own and are still on every character:
 # `armor_color_base` and `armor_color_lower` dressed the two halves of the body,
 # `armor_color_underwear` the underwear and `armor_color_weapon` what is carried.
 # A preset name - `default`, `default_metal` - means "leave the bands where the
 # catalogue starts them", which is what this doll has been drawing all along; a
-# picked colour is written back as `#rrggbb,#rrggbb,#rrggbb`, one per band, an
-# empty slot for a band still on its default.
+# painted value reads `#rrggbb,#rrggbb,#rrggbb`, one per band, an empty slot for
+# a band still on its default.  The menu no longer offers swatches for these, so
+# nothing here writes them any more - but a character painted before that keeps
+# the look they were given, which is why the values are still read.
 #
-# Clothes and underwear are each two rows, because the game equips a chest and a
-# pair of legs separately and the old doll painted them apart.  `from` says which
-# of the two garments a row is about - a character shows one or the other, and
-# both halves follow whichever it is - and `half` is what the label says.
+# Clothes and underwear are each two entries, because the game equips a chest and
+# a pair of legs separately and the old doll painted them apart.  `from` says
+# which of the two garments an entry is about - a character shows one or the
+# other, and both halves follow whichever it is.
 const GEAR_COLOUR_ROWS = [
 	{"id": "underwear_colour", "stat": "armor_color_underwear", "channel": "outfit",
 		"label": "DOLL2_GEAR_UNDERWEAR", "from": "underwear", "half": "DOLL2_GEAR_HALF_TOP"},
@@ -488,8 +509,6 @@ const GEAR_CHANNEL_GROUPS = {
 	"headgear": ["headgear", "mask"],
 	"weapon": ["weapon_belt", "weapon_back"],
 }
-const GEAR_ZONE_HINTS = ["DOLL2_GEAR_ZONE_MAIN", "DOLL2_GEAR_ZONE_SECOND",
-	"DOLL2_GEAR_ZONE_TRIM"]
 
 
 func _on_hair_menu_toggled(pressed):
@@ -544,22 +563,6 @@ func _build_hair_panel():
 		else:
 			control.get_popup().theme = DOLL_DROPDOWN_THEME
 			control.connect("item_selected", self, "_on_hair_option_picked", [control_id, control])
-	# a gear row is a label and a box of swatches rather than a single control,
-	# so it is wired here instead of going through the pairs above
-	for row_data in GEAR_COLOUR_ROWS:
-		var box = rows.get_node(row_data.id)
-		var label = rows.get_node(row_data.id + "_label")
-		label.text = tr(row_data.label)
-		if row_data.has("half"):
-			label.text = "%s - %s" % [tr(row_data.label), tr(row_data.half)]
-		_hair_controls[row_data.id] = box
-		_hair_controls[row_data.id + "_label"] = label
-		for zone in range(GEAR_ZONE_HINTS.size()):
-			var picker = box.get_node("zone%d" % (zone + 1))
-			picker.hint_tooltip = tr(GEAR_ZONE_HINTS[zone])
-			picker.connect("color_changed", self, "_on_gear_colour_picked", [row_data.id, zone])
-			picker.get_popup().connect("about_to_show", self, "_place_colour_popup", [picker])
-			_hair_controls["%s_zone%d" % [row_data.id, zone]] = picker
 	_position_hair_panel()
 
 
@@ -651,7 +654,6 @@ func _refresh_hair_panel():
 	# what the doll draws, so it is what the swatch has to show
 	for row_data in FACE_COLOUR_ROWS:
 		_hair_controls[row_data.id].color = COLORS.colour_of(row_data.stat, _stat(row_data.stat))
-	_refresh_gear_rows()
 	_position_hair_panel()
 
 
@@ -726,63 +728,6 @@ func _on_hair_colour_picked(colour, control_id):
 	_apply()
 
 
-# One band of one piece.  The bands nobody has touched stay empty in the stat
-# rather than being written out at their current default: a default is the
-# catalogue's to change, and a piece left alone should follow it.
-func _on_gear_colour_picked(colour, control_id, zone):
-	_look_changed = true
-	if character == null:
-		return
-	for row_data in GEAR_COLOUR_ROWS:
-		if row_data.id != control_id:
-			continue
-		var picked = _gear_zone_colours(_stat(row_data.stat))
-		picked[zone] = colour
-		character.set_stat(row_data.stat, _gear_colour_stat_value(picked))
-	_apply()
-
-
-# The swatches follow the wardrobe rather than what is on show: the underwear
-# keeps its row while the character stands there dressed, and a piece nobody is
-# wearing at all takes its row away.
-func _refresh_gear_rows():
-	var equipment = _equipment()
-	for row_data in GEAR_COLOUR_ROWS:
-		var parts = _gear_parts_for(row_data, equipment)
-		var zones = []
-		for channel_id in _gear_channels_of(row_data):
-			for zone in CATALOGUE.channel_zones(channel_id, parts):
-				if !(zone in zones):
-					zones.append(zone)
-		zones.sort()
-		_show_hair_row(row_data.id, !zones.empty())
-		var picked = _gear_zone_colours(_stat(row_data.stat))
-		for zone in range(GEAR_ZONE_HINTS.size()):
-			var picker = _hair_controls["%s_zone%d" % [row_data.id, zone]]
-			picker.visible = zone in zones
-			picker.color = (picked[zone] if picked[zone] != null
-				else _zone_default(row_data.channel, zone))
-
-
-# What a row paints, as the {group: part} the catalogue measures zones from.
-func _gear_parts_for(row_data, equipment):
-	var doll_id = model.doll_id
-	if GEAR_CHANNEL_GROUPS.has(row_data.channel):
-		var worn = GEAR.selections_for(equipment, GEAR.DRESSED, doll_id)
-		var result = {}
-		for group_id in GEAR_CHANNEL_GROUPS[row_data.channel]:
-			if worn.has(group_id):
-				result[group_id] = worn[group_id]
-		return result
-	var level = GEAR.DRESSED if str(row_data.get("from", "")) == "clothing" else GEAR.UNDERWEAR
-	# A character with neither half equipped is dressed in their underwear, and
-	# that is the underwear rows' business rather than the clothing rows'.
-	if level == GEAR.DRESSED and _dressed_from_underwear(equipment):
-		return {}
-	var worn = GEAR.selections_for(equipment, level, doll_id)
-	return {"outfit": worn["outfit"]} if worn.has("outfit") else {}
-
-
 # Every colour channel a row paints.  Only the headgear row has more than one:
 # a hat and a mask are separate channels worn in the same slot.
 func _gear_channels_of(row_data):
@@ -820,16 +765,6 @@ func _gear_zone_colours(value):
 		var hex = str(parts[zone]).strip_edges()
 		if hex.begins_with("#") and hex.is_valid_html_color():
 			result[zone] = Color(hex)
-	return result
-
-
-func _gear_colour_stat_value(colours):
-	var result = ""
-	for zone in range(colours.size()):
-		if zone > 0:
-			result += ","
-		if colours[zone] != null:
-			result += "#" + colours[zone].to_html(false)
 	return result
 
 
