@@ -442,15 +442,22 @@ const HAIR_LAYERS = [
 const HAIR_TONES = ["DOLL2_HAIR_TONE_ROOTS", "DOLL2_HAIR_TONE_TIPS"]
 
 # Styles are named rather than spelled.  The menu used to read the part's own id
-# out loud - `hairs_base_dopple`, `hair_base_kare` - and the artist's keys are not
-# names: `kare` is a bob, `wawe` is a wave, `care` is neither of those.  Trimming
+# out loud - `hairs_base_dopple`, `hair_base_bobcut` - and the artist's keys are
+# not names. Trimming
 # the prefix off an id only hid half the problem.
 #
 # The name lives in `localization/en/main.gd` under the id itself, verbatim and in
-# capitals - `hair_base_kare` is `DOLL2_STYLE_HAIR_BASE_KARE` - so there is no
+# capitals - `hair_base_bobcut` is `DOLL2_STYLE_HAIR_BASE_BOBCUT` - so there is no
 # second list here to fall out of step with the art, and the two families the
 # export carries (`hair_base_lion` beside `hairs_base_lion`) keep separate names.
 const STYLE_NAME_PREFIX = "DOLL2_STYLE_"
+
+# Compatibility for characters saved before the atlas-path names were removed
+# from the public catalogue ids.
+const HAIR_PART_ALIASES = {
+	"hair_base_kare": "hair_base_bobcut",
+	"hair_back_care": "hair_back_bobcut",
+}
 
 # The face details that are a colour and nothing else.  Both stats already exist
 # on every character and both derive a colour when left empty - the eyebrows take
@@ -1238,6 +1245,7 @@ func _apply():
 	# id that does not follow it.
 	for layer in HAIR_LAYERS:
 		var picked = str(stats.get(layer.stat, ""))
+		picked = str(HAIR_PART_ALIASES.get(picked, picked))
 		if picked != "" and picked in CATALOGUE.parts(layer.group):
 			model.selections[layer.group] = picked
 	# How long each hair layer is worn.  A tier the doll has no factor for lands on
