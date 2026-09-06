@@ -8,6 +8,9 @@ const EVENT_CONFIG = {
 		icon = preload("res://assets/Textures_v2/MANSION/icon_travel_small.png"),
 		color = Color("72c8d9"),
 	},
+	#Everything that came off the benches over one turn - one row for the whole household, with
+	#the line per finished product, in that product's quality colour, folded away behind it.
+	#Built the same way the service report is: see globals.mansion_activity_craft().
 	"craft": {
 		label = "MANSION_ACTIVITY_TYPE_CRAFT",
 		icon = preload("res://assets/Textures_v2/MANSION/icon_craft_small.png"),
@@ -88,8 +91,8 @@ const EVENT_CONFIG = {
 		color = Color("d95d8a"),
 	},
 	#What the service task brought in over one turn - one row for the whole household, with the
-	#line per worker folded away behind it. The only entry type that has a breakdown, and the
-	#breakdown does not survive a save: see globals.mansion_activity_service().
+	#line per worker folded away behind it. Like the craft report, the breakdown does not survive
+	#a save: see globals.mansion_activity_service().
 	"service": {
 		label = "MANSION_ACTIVITY_TYPE_SERVICE",
 		icon = preload("res://assets/images/iconsitems/gold.png"),
@@ -174,13 +177,40 @@ func _fill_details(entry, data):
 		return
 	var detail_scroll = details.get_node("DetailScroll")
 	var list = detail_scroll.get_node("DetailList")
-	input_handler.ClearContainer(list, ['DetailTemplate'])
-	for line in lines:
-		input_handler.DuplicateContainerTemplate(list, 'DetailTemplate').bbcode_text = line
+	#The list is refilled once for every line a report gains, and the whole turn runs inside one
+	#frame. Clearing and rebuilding each time would cost a duplicated label per line per line -
+	#and ClearContainer's queue_free() only lands at the end of the frame, so the discarded labels
+	#would still be standing beside the new ones for the rest of it. That was cheap while the
+	#service report was the only one folding, one line per person; the benches can finish dozens
+	#of items in a turn. A report only ever gains lines, so the rows already built are kept and
+	#only the new ones are added. A list that somehow shrank is not something this can patch up,
+	#and falls back to the clean rebuild.
+	var rows = _detail_rows(list)
+	if rows.size() > lines.size():
+		input_handler.ClearContainer(list, ['DetailTemplate'])
+		rows = []
+	for i in range(rows.size()):
+		if rows[i].bbcode_text != lines[i]:
+			rows[i].bbcode_text = lines[i]
+	for i in range(rows.size(), lines.size()):
+		input_handler.DuplicateContainerTemplate(list, 'DetailTemplate').bbcode_text = lines[i]
 	var button = details.get_node("ExpandButton")
 	button.text = _details_button_text(detail_scroll.visible)
 	if !button.is_connected("pressed", self, "_on_details_toggled"):
 		button.connect("pressed", self, "_on_details_toggled", [entry])
+
+
+#The lines already standing in a fold, in the order they were added. Everything in the list but
+#the template itself is one - the template is kept hidden and pushed back to the end by
+#input_handler.DuplicateContainerTemplate(), so it is identified by node and not by name.
+func _detail_rows(list):
+	var template = list.get_node("DetailTemplate")
+	var rows = []
+	for child in list.get_children():
+		if child == template:
+			continue
+		rows.append(child)
+	return rows
 
 
 func _on_details_toggled(entry):

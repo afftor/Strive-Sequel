@@ -152,13 +152,18 @@ static func _atlas_vector(value):
 	return Vector2(values[0], values[1]) if values.size() == 2 else Vector2.ZERO
 
 
-# How long an animation runs: the last keyframe on any bone or attachment
-# timeline it carries.
+# How long an animation runs: the last keyframe on any timeline it carries.
+# Some short facial animations (notably `say`) only animate slot colours, so
+# ignoring slot timelines leaves them permanently stuck on their first frame.
 static func _animation_duration(skeleton, animation_name):
 	var duration = 0.0
 	var animation = skeleton.get("animations", {}).get(animation_name, {})
 	for bone_channels in animation.get("bones", {}).values():
 		for frames in bone_channels.values():
+			for frame in frames:
+				duration = max(duration, float(frame.get("time", 0.0)))
+	for slot_channels in animation.get("slots", {}).values():
+		for frames in slot_channels.values():
 			for frame in frames:
 				duration = max(duration, float(frame.get("time", 0.0)))
 	for skin_timelines in animation.get("attachments", {}).values():
@@ -167,4 +172,8 @@ static func _animation_duration(skeleton, animation_name):
 				for frames in attachment_timelines.values():
 					for frame in frames:
 						duration = max(duration, float(frame.get("time", 0.0)))
+	for frame in animation.get("drawOrder", []):
+		duration = max(duration, float(frame.get("time", 0.0)))
+	for frame in animation.get("events", []):
+		duration = max(duration, float(frame.get("time", 0.0)))
 	return duration

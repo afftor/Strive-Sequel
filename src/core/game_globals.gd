@@ -93,8 +93,9 @@ func fix_serialization():
 	while mansion_activity_log.size() > 50:
 		mansion_activity_log.pop_front()
 	#Older saves - and any save written before the breakdown stopped being stored - can still
-	#carry the per-worker lines behind a service report. They are turn-local by design, so a
-	#loaded log keeps the total and drops the fold. See globals.mansion_activity_service().
+	#carry the lines behind a folded report, the service takings or the turn's crafting. They are
+	#turn-local by design, so a loaded log keeps the total and drops the fold. See
+	#globals.mansion_activity_service() and globals.mansion_activity_craft().
 	for entry in mansion_activity_log:
 		if entry is Dictionary:
 			entry.erase("details")

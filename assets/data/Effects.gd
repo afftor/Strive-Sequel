@@ -1,7 +1,9 @@
 extends Node
 
 
-var effect_nolog = ['commander', 'atkpass', 'atkpass_remove', 'hide', 'default', 'warlock', 'manasiphon', 'thorns', 'vampirism', 'ench_commander', 'spell_mastery', 'flight_upkeep', 'max_stats','sanguine_instinct_listener','environmental_object', 'food','grotus_hit_mark','lost_in_darkness','ts_underwatched','melchor_session','melchor_authority_buff'] #2add more
+var effect_nolog = ['commander', 'atkpass', 'atkpass_remove', 'hide', 'default', 'warlock', 'manasiphon', 'thorns', 'vampirism', 'ench_commander', 'spell_mastery', 'flight_upkeep', 'max_stats','sanguine_instinct_listener','environmental_object', 'food','grotus_hit_mark','lost_in_darkness','ts_underwatched','melchor_session','melchor_authority_buff',
+	'coal_gnomes_wit_eff','coal_gnomes_wit_bane_eff','coal_bead_watch_eff','coal_kobold_treasure_eff','coal_toxic_salt_eff','coal_ratkin_gift_eff','coal_lit_wick_eff','coal_goblin_invention_eff','coal_assist_watch_eff','coal_dwarf_penance_eff',
+	'coal_button_pressed','coal_crumble_used','coal_eruption_lock','coal_spread_lock','coal_recovered','coal_fuse_1','coal_fuse_2','coal_fuse_3'] #2add more
 #to fix EFFECT TAGS TO TEMPLATE,
 #'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
 #'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)
@@ -2030,9 +2032,19 @@ var status_desc = {
 		text = "STATUSDESC_SHATTER",
 		icon = "res://assets/images/iconsskills/icon_elemental_protection.png"
 	},
+	paralysis = {
+		text = "STATUSDESC_PARALYSIS",
+		icon = "res://assets/images/iconsskills/Magic Shackles.png"
+	},
+	contagious_calamity = {
+		text = "STATUSDESC_CONTAGIOUS_CALAMITY",
+		icon = "res://assets/images/iconsskills/skill_vapors.png"
+	},
 }
 
 var status_desc_match = {
+	coal_paralysis = "paralysis",
+	coal_calamity = "contagious_calamity",
 	e_s_shred = "shred",
 	e_s_silence = "silence",
 	e_s_stonewall = "stonewall",

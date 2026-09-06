@@ -9,12 +9,12 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_male.atlas",
-	"attachment_count": 453,
+	"attachment_count": 455,
 	"bone_count": 263,
 	"contract": "doll2_male_v1",
 	"skeleton": "Doll2_spine4.2_male.json",
-	"skeleton_hash": "jAeilnbY2tQ",
-	"slot_count": 61,
+	"skeleton_hash": "Opkna0FCuww",
+	"slot_count": 62,
 	"spine_version": "4.2.43",
 }
 
@@ -70,6 +70,7 @@ const SLOT_ORDER = [
 	"race_head",
 	"face",
 	"lips",
+	"lips_say",
 	"bread",
 	"eyebrows",
 	"noses",
@@ -134,6 +135,7 @@ const DRAW_ORDER = [
 	"race_head",
 	"face",
 	"lips",
+	"lips_say",
 	"bread",
 	"eyebrows",
 	"noses",
@@ -340,7 +342,7 @@ const COLOR_CHANNELS = {
 		"anchor": "lips",
 		"coverage": false,
 		"gear": false,
-		"slots": ["lips"],
+		"slots": ["lips", "lips_say"],
 		"two_tone": false,
 		"zone_defaults": [],
 		"zones": false,
@@ -511,6 +513,7 @@ const SLOT_COLORS = {
 	"leg_left": "skin",
 	"leg_right": "skin",
 	"lips": "lips",
+	"lips_say": "lips",
 	"nipples": "nipples",
 	"noses": "skin",
 	"pelvis": "skin",
@@ -752,7 +755,8 @@ const GROUPS = {
 			"hair_base_disheveled",
 			"hair_base_fringe",
 			"hair_base_fringe_2",
-			"hair_base_kare",
+			"hair_base_hime",
+			"hair_base_bobcut",
 			"hair_base_parting",
 			"hair_base_straight",
 			"hair_base_undercut",
@@ -785,7 +789,7 @@ const GROUPS = {
 		"optional": true,
 		"order": 10,
 		"parts": [
-			"hair_back_care",
+			"hair_back_bobcut",
 			"hair_back_double_tail_long",
 			"hair_back_ponytail_long",
 			"hair_back_straight",
@@ -881,8 +885,9 @@ const GROUPS = {
 			"lips_orc_3",
 			"lips_s1",
 			"lips_s2",
+			"lips_s_orc",
 		],
-		"slots": ["lips"],
+		"slots": ["lips", "lips_say"],
 	},
 	"mask": {
 		"default": "",
@@ -2026,7 +2031,7 @@ const PARTS = {
 		},
 		"zones": [0],
 	},
-	"hair_back_care": {
+	"hair_back_bobcut": {
 		"folders": ["06_hairs_back"],
 		"group": "hair_back",
 		"slots": {
@@ -2125,7 +2130,16 @@ const PARTS = {
 		},
 		"zones": [0],
 	},
-	"hair_base_kare": {
+	"hair_base_hime": {
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "hair_base_hime",
+			"hairs_fringe": "hair_fringe_bobcut",
+		},
+		"zones": [0],
+	},
+	"hair_base_bobcut": {
 		"folders": ["04_hairs_base"],
 		"group": "hair",
 		"slots": {
@@ -2485,8 +2499,16 @@ const PARTS = {
 		"folders": ["12_lips"],
 		"group": "lips",
 		"slots": {
-			"lips": "12_lips/lips_s2",
+			"lips_say": "12_lips/lips_s2",
 		},
+	},
+	"lips_s_orc": {
+		"folders": ["12_lips"],
+		"group": "lips",
+		"slots": {
+			"lips_say": "12_lips/lips_s_orc",
+		},
+		"zones": [0],
 	},
 	"moustache1": {
 		"folders": ["05_beards_moustaches"],
@@ -3984,4 +4006,3 @@ const ALIASES = {
 }
 
 const UNCATEGORIZED = {}
-

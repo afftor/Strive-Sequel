@@ -236,6 +236,22 @@ func _get_target(s_name):#for chosen with _get_action() func
 	var targets = []
 	for t in skill_targets[s_name]:
 		targets.push_back([t.target, t.quality])
+	#a skill may ask for a fixed target policy instead of the weighted roll: ai_target = 'max_hp'
+	#picks the usable target with the most current HP. Read from the raw list - get_template
+	#converts legacy templates and drops keys it does not know.
+	var t_skill = Skilldata.Skilllist.get(s_name, {})
+	if t_skill.has('ai_target') and t_skill.ai_target == 'max_hp':
+		var best = null
+		var best_hp = -1
+		for t in targets:
+			if t[1] <= 0:
+				continue
+			var tchar = characters_pool.get_char_by_id(input_handler.combat_node.battlefield[t[0]])
+			if tchar != null and tchar.hp > best_hp:
+				best_hp = tchar.hp
+				best = t[0]
+		if best != null:
+			return best
 	return input_handler.weightedrandom(targets)
 
 func set_skill_rotation(rotation_array):
