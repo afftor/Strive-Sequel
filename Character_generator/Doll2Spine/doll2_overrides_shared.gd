@@ -119,10 +119,18 @@ const SLOT_ROUTES = {
 # or attached to another part through COMPANIONS.
 const CONSUMED_SLOTS = ["head_skull", "sclera", "testicle", "animal_frontbody", "hairs_fringe"]
 
+# The Spine attachments were renamed to bobcut, while their atlas source paths
+# deliberately retain the old kare/care filenames.  Catalogue ids follow the
+# attachment meaning; atlas resolution continues to use the physical paths.
+const PART_ID_OVERRIDES = {
+	"hair_base_kare": "hair_base_bobcut",
+	"hair_back_care": "hair_back_bobcut",
+}
+
 # Slots filled by pairing rather than by a choice of their own.  For every part of
 # the group, the attachment whose style matches the part's is looked up in the
-# target slot: `strip` reduces both names to that style, so `hair_base_kare` and
-# `hair_fringe_kare` meet at "kare" despite the export spelling the prefix two
+# target slot: `strip` reduces both names to that style, so `hair_base_bobcut`
+# and `hair_fringe_bobcut` meet at "bobcut" despite different prefixes.
 # ways.  A style with no counterpart simply leaves the slot empty.
 const PAIRED_SLOTS = {
 	"hair": [{"slot": "hairs_fringe", "strip": "^hairs?_(base|fringe)_"}],
@@ -154,6 +162,11 @@ const FIXED_SLOTS = {"sclera": "sklera"}
 # Extra slot assignments folded into an `options` part when it is selected.
 # The first matching rule wins; `folder` and `base_prefix` are both optional.
 const COMPANIONS = {
+	# Hime uses the bobcut fringe art deliberately.  Its export name does not
+	# share the hime style key, so the normal automatic pairing cannot find it.
+	"hair": [
+		{"base_prefix": "hair_base_hime", "slots": {"hairs_fringe": "hair_fringe_bobcut"}},
+	],
 	"head": [
 		{"folder": "01_heads", "slots": {"head_skull": "head_skull"}},
 		{"folder": "16_beastkin_heads", "slots": {"head_skull": "beastkin_skull"}},

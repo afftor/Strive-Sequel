@@ -355,6 +355,7 @@ const SLOTS = [
 	"hairs_base",
 	"ears",
 	"lips",
+	"lips_say",
 	"eyebrows",
 	"noses",
 	"blush",
