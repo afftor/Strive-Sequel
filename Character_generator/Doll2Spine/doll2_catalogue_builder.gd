@@ -619,7 +619,11 @@ func _build_option_parts(option_records, parts):
 		var records = option_records[group_id]
 		records.sort_custom(self, "_sort_records")
 		for record in records:
-			var part_id = _sanitize(record.base)
+			# Art paths can retain an old filename after the attachment has been
+			# renamed in Spine.  Keep the physical path for atlas lookup, but let the
+			# catalogue expose the current semantic id.
+			var semantic_base = str(_overrides.get("PART_ID_OVERRIDES", {}).get(record.base, record.base))
+			var part_id = _sanitize(semantic_base)
 			if parts.has(part_id):
 				var suffix = 2
 				while parts.has("%s_%d" % [part_id, suffix]):
@@ -634,7 +638,7 @@ func _build_option_parts(option_records, parts):
 			var paired = _paired_slots(group_id, record)
 			for slot_name in paired.keys():
 				slots[slot_name] = paired[slot_name]
-			parts[part_id] = _part_entry(part_id, group_id, str(_overrides.DISPLAY.get(part_id, _title(record.base))), [record.folder], folder_entry.get("tags", []), slots, {})
+			parts[part_id] = _part_entry(part_id, group_id, str(_overrides.DISPLAY.get(part_id, _title(semantic_base))), [record.folder], folder_entry.get("tags", []), slots, {})
 
 
 func _companion_slots(group_id, record):

@@ -72,9 +72,18 @@ const TITS_SLOTS = ["breasts", "breast_nipples", "equip_breasts",
 # on X.  Scaling about the middle of the top edge keeps the roots planted while
 # the extra length grows downwards.
 const HAIR_BACK_MESH_SCALE_PARTS = [
-	"hair_back_wawe", "hair_back_straight", "hair_back_care",
+	"hair_back_wawe", "hair_back_straight", "hair_back_bobcut",
 ]
 const HAIR_BACK_MESH_SLOT = "hairs_back"
+
+# `say` fades the closed and open mouth slots against one another.  The ordinary
+# open mouth is the setup attachment, while an orc needs the matching cut added
+# by the export instead of showing human lips through its face.
+const SAY_ANIMATION = "say"
+const SAY_LIPS_SLOT = "lips_say"
+const SAY_DEFAULT_LIPS_PART = "lips_s2"
+const SAY_ORC_LIPS_PART = "lips_s_orc"
+const SAY_ORC_LIPS_PREFIX = "lips_orc"
 
 var _jiggle_time = -1.0
 var _jiggle_power = 1.0
@@ -712,16 +721,20 @@ func _solve_pose():
 	var base = _snapshot_pose()
 	for slot_name in wanted:
 		var factors = layers[slot_name]
+		var turns = MODIFIERS.layer_turns(slot_name, proportions, selections, contract.CONTRACT_ID)
 		var affected = []
 		for bone_name in factors.keys():
 			if bones.has(bone_name):
 				affected.append(bone_name)
+		for bone_name in turns.keys():
+			if bones.has(bone_name) and !(bone_name in affected):
+				affected.append(bone_name)
 		if _layer_needs_a_full_solve(affected, world_offsets):
-			_build_bone_transforms(factors)
+			_build_bone_transforms(factors, turns)
 			layer_poses[slot_name] = _snapshot_pose()
 			_build_bone_transforms()
 			continue
-		layer_poses[slot_name] = _layer_pose(base, factors, affected)
+		layer_poses[slot_name] = _layer_pose(base, factors, turns, affected)
 
 
 # One layer's pose, lifted off the ordinary one rather than solved again.
@@ -740,7 +753,7 @@ func _solve_pose():
 # product.  Nothing downstream of the modifiers writes to this subtree - no IK
 # constraint, pushable or handle reaches a hair bone - and everything they do
 # write, they write as local values, which a re-derive reproduces.
-func _layer_pose(base, layer_factors, affected):
+func _layer_pose(base, layer_factors, layer_turns, affected):
 	if affected.empty():
 		return base
 	# The post-IK pass left every world transform computed with the parent's own
@@ -750,11 +763,12 @@ func _layer_pose(base, layer_factors, affected):
 	var restore = {}
 	for bone_name in affected:
 		var bone = bones[bone_name]
-		restore[bone_name] = Vector2(float(bone.local_scale_x), float(bone.local_scale_y))
-		var factor = layer_factors[bone_name]
+		restore[bone_name] = [float(bone.local_scale_x), float(bone.local_scale_y), float(bone.local_rotation)]
+		var factor = layer_factors.get(bone_name, Vector2.ONE)
 		_set_bone_world(
 			bone_name,
-			float(bone.local_x), float(bone.local_y), float(bone.local_rotation),
+			float(bone.local_x), float(bone.local_y),
+			float(bone.local_rotation) + float(layer_turns.get(bone_name, 0.0)),
 			float(bone.local_scale_x) * factor.x, float(bone.local_scale_y) * factor.y,
 			float(bone.local_shear_x), float(bone.local_shear_y)
 		)
@@ -768,11 +782,11 @@ func _layer_pose(base, layer_factors, affected):
 	# and the ordinary pose put back, so the next layer starts where this one did
 	for bone_name in affected:
 		var bone = bones[bone_name]
-		var scale = restore[bone_name]
+		var values = restore[bone_name]
 		_set_bone_world(
 			bone_name,
-			float(bone.local_x), float(bone.local_y), float(bone.local_rotation),
-			scale.x, scale.y,
+			float(bone.local_x), float(bone.local_y), values[2],
+			values[0], values[1],
 			float(bone.local_shear_x), float(bone.local_shear_y)
 		)
 	_resolve_subtree(affected)
@@ -843,7 +857,7 @@ func _pose_for(slot):
 	return layer_poses.get(slot.get("name", ""), bones)
 
 
-func _build_bone_transforms(layer_factors = {}):
+func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
 	bones.clear()
 	post_ik_visual_scales.clear()
 	applying_post_ik_visual_scales = false
@@ -863,7 +877,7 @@ func _build_bone_transforms(layer_factors = {}):
 		)
 		index += 1
 	_apply_active_bone_timelines()
-	_apply_bone_modifiers(layer_factors)
+	_apply_bone_modifiers(layer_factors, layer_turns)
 	_apply_pushables()
 	_apply_native_handle_targets()
 	var constraints = skeleton.get("ik", []).duplicate()
@@ -899,7 +913,7 @@ func _apply_post_ik_visual_scales():
 	applying_post_ik_visual_scales = false
 
 
-func _apply_bone_modifiers(layer_factors = {}):
+func _apply_bone_modifiers(layer_factors = {}, layer_turns = {}):
 	# Every active modifier contributes a multiplier and they compose, so no
 	# modifier can silently discard another one acting on the same bone.
 	var factors = MODIFIERS.bone_factors(proportions, height_tier, contract.CONTRACT_ID)
@@ -921,6 +935,8 @@ func _apply_bone_modifiers(layer_factors = {}):
 		touched[bone_name] = true
 	for bone_name in offsets.keys():
 		touched[bone_name] = true
+	for bone_name in layer_turns.keys():
+		touched[bone_name] = true
 	for bone_name in touched.keys():
 		if !bones.has(bone_name):
 			continue
@@ -930,7 +946,7 @@ func _apply_bone_modifiers(layer_factors = {}):
 		_set_bone_world(
 			bone_name,
 			float(bone.local_x) + offset.x, float(bone.local_y) + offset.y,
-			float(bone.local_rotation),
+			float(bone.local_rotation) + float(layer_turns.get(bone_name, 0.0)),
 			float(bone.local_scale_x) * factor.x,
 			float(bone.local_scale_y) * factor.y,
 			float(bone.local_shear_x), float(bone.local_shear_y)
@@ -2516,6 +2532,10 @@ func _on_select_changed(_item_index, group_id, select):
 		_refresh_coverage_pickers()
 	_refresh_all_bindings()
 	_refresh_zone_pickers()
+	# Layer poses depend on the selected cut as well as the slider value.  Re-solve
+	# before rebuilding so leaving fringe1/2 cannot retain their conditional turn.
+	if group_id == "hair":
+		_solve_pose()
 	_rebuild_and_watch_the_chest()
 
 
@@ -2643,6 +2663,7 @@ func _on_preset_selected(_item_index, select):
 	_follow_body_tag()
 	for group_id in selections.keys():
 		_select_ui_value(group_id, selections[group_id])
+	_solve_pose()
 	_rebuild_model()
 
 
@@ -2659,6 +2680,7 @@ func _rebuild_model():
 	animation_signature = _animation_signature().hash()
 	var worn = _worn_selections()
 	composed = CATALOGUE.compose(worn, axis_values)
+	_apply_say_lips(worn)
 	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
 	composed_textures = CATALOGUE.compose_textures(worn)
 	composed_unpainted = CATALOGUE.unpainted_slots(worn)
@@ -2868,6 +2890,20 @@ func _animation_attachments():
 	return result
 
 
+# Add the setup open mouth while `say` is running.  `lips_say` is a separate
+# slot in the export and the animation only keys its RGBA, so it must already
+# have a mesh for that alpha to reveal.  Orc lips use their matching open cut.
+func _apply_say_lips(worn):
+	if !bool(animation_states.get(SAY_ANIMATION, false)):
+		return
+	var lips_part = str(worn.get("lips", ""))
+	var say_selection = worn.duplicate()
+	say_selection["lips"] = SAY_ORC_LIPS_PART if lips_part.begins_with(SAY_ORC_LIPS_PREFIX) else SAY_DEFAULT_LIPS_PART
+	var say_composed = CATALOGUE.compose(say_selection, axis_values)
+	if say_composed.has(SAY_LIPS_SLOT):
+		composed[SAY_LIPS_SLOT] = say_composed[SAY_LIPS_SLOT]
+
+
 # Spine stores literal attachment names in a pose timeline.  Those names belong
 # to the body that was visible while the animation was authored: female idle4
 # names the human second hands, while the male crossed-arm idle names the femboy
@@ -3053,6 +3089,7 @@ func _update_mesh_geometry():
 		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot), true)
 		if !data.empty():
 			record.polygon.polygon = _scale_back_hair_mesh(data.points, record.slot)
+		record.polygon.color = _attachment_colour(record.slot, record.attachment)
 
 
 # Extra world-axis scale for the three broad back-hair meshes.  Bone length is
@@ -3184,9 +3221,47 @@ func _expanded_deform_frame(frame, length):
 # comes from the channel material, so the stale tint has no job left.
 func _attachment_colour(slot, _attachment):
 	var colour = _spine_colour(slot.get("color", "FFFFFFFF"))
+	colour *= _animated_slot_colour(str(slot.get("name", "")))
 	if str(slot.get("name", "")).ends_with("_muscle"):
 		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
 	return colour
+
+
+# Slot RGBA timelines are what `say` uses to cross-fade the closed lips into the
+# open-mouth slot.  As with bone timelines, a later active animation wins when
+# two animations key the same slot.
+func _animated_slot_colour(slot_name):
+	var result = Color(1, 1, 1, 1)
+	for animation_name in animation_states.keys():
+		if !animation_states[animation_name]:
+			continue
+		var slot_timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {})
+		if !slot_timelines.has(slot_name):
+			continue
+		var frames = slot_timelines[slot_name].get("rgba", [])
+		if !frames.empty():
+			result = _sample_rgba_timeline(frames, float(animation_times.get(animation_name, 0.0)))
+	return result
+
+
+func _sample_rgba_timeline(frames, time):
+	var numeric_frames = []
+	for frame in frames:
+		var colour = _spine_colour(frame.get("color", "FFFFFFFF"))
+		var numeric = {
+			"time": float(frame.get("time", 0.0)),
+			"r": colour.r, "g": colour.g, "b": colour.b, "a": colour.a,
+		}
+		if frame.has("curve"):
+			numeric["curve"] = frame.curve
+		numeric_frames.append(numeric)
+	var sampled = _sample_timeline(numeric_frames, time, ["r", "g", "b", "a"])
+	return Color(
+		clamp(float(sampled.r), 0.0, 1.0),
+		clamp(float(sampled.g), 0.0, 1.0),
+		clamp(float(sampled.b), 0.0, 1.0),
+		clamp(float(sampled.a), 0.0, 1.0)
+	)
 
 
 func _apply_muscle_alpha():
@@ -3201,9 +3276,16 @@ func _apply_muscle_alpha():
 func _spine_colour(hex_value):
 	if hex_value == null or str(hex_value).length() < 8:
 		return Color(1, 1, 1, 1)
-	# Color() requires an HTML value.  Without the leading '#', Godot 3 turns
-	# otherwise valid Spine colours into black, hiding every mesh in the editor.
-	return Color("#" + str(hex_value).substr(0, 8))
+	# Spine writes RRGGBBAA, while Godot 3 interprets an eight-digit HTML colour as
+	# AARRGGBB.  Parsing the channels explicitly keeps the alpha timelines in
+	# `say` from turning transparency into a blue/yellow colour instead.
+	var value = str(hex_value).substr(0, 8)
+	return Color(
+		float(("0x" + value.substr(0, 2)).hex_to_int()) / 255.0,
+		float(("0x" + value.substr(2, 2)).hex_to_int()) / 255.0,
+		float(("0x" + value.substr(4, 2)).hex_to_int()) / 255.0,
+		float(("0x" + value.substr(6, 2)).hex_to_int()) / 255.0
+	)
 
 
 # `points_only` is the animated path: a frame of an animation moves the vertices
