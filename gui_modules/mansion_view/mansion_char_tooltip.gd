@@ -108,12 +108,12 @@ func build_experience(who):
 	exp_label.visible = true
 
 
-#Productivity is a percentage; the other three read as what they are out of what they could be.
+#Productivity is a percentage; the other three read as what they are out of what they could be,
+#with whatever classes and gear lend on the end of it.
 func stat_text(who, code):
 	if code == "productivity":
 		return "%d%%" % int(floor(who.get_stat(code)))
-	return "%d / %d" % [int(floor(who.get_stat(code))),
-		int(floor(who.get_stat(code + "_cap") + who.get_stat(code + "_bonus")))]
+	return globals.base_stat_text(who, code)
 
 
 #Only the tools: the rest of what somebody is wearing is the inventory screen's business, and a

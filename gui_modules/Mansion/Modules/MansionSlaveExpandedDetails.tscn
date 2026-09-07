@@ -344,9 +344,9 @@ rect_min_size = Vector2( 133, 45 )
 [node name="Icon" type="TextureRect" parent="Sections/Overview/Left/BaseStats/Content/Rows/Button"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 5.0
+margin_left = 2.0
 margin_top = -17.0
-margin_right = 43.0
+margin_right = 36.0
 margin_bottom = 17.0
 mouse_filter = 2
 texture = ExtResource( 23 )
@@ -355,7 +355,7 @@ stretch_mode = 6
 
 [node name="Value" type="Label" parent="Sections/Overview/Left/BaseStats/Content/Rows/Button"]
 anchor_bottom = 1.0
-margin_left = 47.0
+margin_left = 36.0
 margin_right = 133.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -31,9 +31,7 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/CharacterProgressionPopup.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.tscn" type="PackedScene" id=41]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=42]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_job2_small.png" type="Texture" id=43]
 [ext_resource path="res://gui_modules/Mansion/Modules/CharacterTrainingPopup.tscn" type="PackedScene" id=44]
-[ext_resource path="res://assets/images/gui/icon_bed.png" type="Texture" id=47]
 [ext_resource path="res://gui_modules/Mansion/Modules/quest_attention_shimmer.shader" type="Shader" id=48]
 
 [sub_resource type="ShaderMaterial" id=7]
@@ -132,42 +130,15 @@ texture = ExtResource( 38 )
 [node name="MansionRoomsModule" parent="." instance=ExtResource( 41 )]
 embedded = true
 
-[node name="ViewModes" type="VBoxContainer" parent="."]
+[node name="ViewModes" type="Control" parent="."]
 margin_left = 17.8902
 margin_top = 296.0
 margin_right = 227.89
 margin_bottom = 424.0
-custom_constants/separation = 8
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Plan" type="HBoxContainer" parent="ViewModes"]
-margin_right = 222.0
-margin_bottom = 66.0
-custom_constants/separation = 8
-
-[node name="ModeWork" type="Button" parent="ViewModes/Plan"]
-margin_right = 66.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 66, 66 )
-mouse_default_cursor_shape = 2
-theme = ExtResource( 42 )
-toggle_mode = true
-pressed = true
-icon = ExtResource( 43 )
-expand_icon = true
-
-[node name="ModeBeds" type="Button" parent="ViewModes/Plan"]
-margin_left = 74.0
-margin_right = 140.0
-margin_bottom = 66.0
-rect_min_size = Vector2( 66, 66 )
-mouse_default_cursor_shape = 2
-theme = ExtResource( 42 )
-toggle_mode = true
-icon = ExtResource( 47 )
-expand_icon = true
 
 [node name="Scope" type="HBoxContainer" parent="ViewModes"]
 margin_top = 74.0
@@ -220,12 +191,6 @@ margin_right = 151.0
 margin_bottom = 1068.0
 theme = ExtResource( 12 )
 
-[node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
-margin_left = 320.0
-margin_top = 137.0
-margin_right = 1590.0
-margin_bottom = 1063.0
-
 [node name="MansionSlaveModule" parent="." instance=ExtResource( 11 )]
 visible = false
 margin_left = 1435.0
@@ -246,6 +211,12 @@ margin_left = 15.0
 margin_top = 608.0
 margin_right = 305.0
 margin_bottom = 860.0
+
+[node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
+margin_left = 320.0
+margin_top = 137.0
+margin_right = 1590.0
+margin_bottom = 1063.0
 
 [node name="MenuButton" type="Button" parent="."]
 visible = false

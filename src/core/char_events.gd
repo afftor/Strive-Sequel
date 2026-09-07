@@ -36,6 +36,11 @@ func advance_hour():
 func is_same_location(char1_id, char2_id):
 	var person1 = characters_pool.get_char_by_id(char1_id)
 	var person2 = characters_pool.get_char_by_id(char2_id)
+	#Being away is not a place two people can share. game_party._in_same_location() refuses a
+	#pair with anyone on a quest in it, and the romance events read location through here, so
+	#leaving it out let a couple meet while one of them was off learning or away on a job.
+	if person1.is_on_quest() or person2.is_on_quest():
+		return false
 	return person1.get_location() == person2.get_location()
 	
 
@@ -82,14 +87,21 @@ func try_start_event():
 		for id in party.characters:
 			var party_char = party.characters[id]
 			#char_reqs_precise rule should be added here somewhere
-			if !party_char.has_profession("master"):
-				if (!event_reqs
-						or !event_reqs.has('char_reqs')
-						or party_char.checkreqs(event_reqs.char_reqs)):
-					var loc = party_char.get_location()
-					if !list_by_loc.has(loc):
-						list_by_loc[loc] = []
-					list_by_loc[loc].append(id)
+			if party_char.has_profession("master"):
+				continue
+			#Nobody who is not living the household's day: a child still away at their
+			#tutelage, somebody sent off on a work quest, somebody shut away. is_on_quest()
+			#is what every other screen reads as "not here", and an event that has them
+			#wandering the mansion is an event about somebody who is not in it.
+			if party_char.is_on_quest():
+				continue
+			if (!event_reqs
+					or !event_reqs.has('char_reqs')
+					or party_char.checkreqs(event_reqs.char_reqs)):
+				var loc = party_char.get_location()
+				if !list_by_loc.has(loc):
+					list_by_loc[loc] = []
+				list_by_loc[loc].append(id)
 	
 	var char_count = 1
 	if event_reqs and event_reqs.has('char_count'):

@@ -77,6 +77,33 @@ func get_tween(node):
 	tween.playback_speed = rate
 	return tween
 
+#Where a fighter card rests. make_fighter_panel drops every card at zero inside its
+#slot Container and nothing but an animation ever moves it, so the rest position is
+#known outright and must never be sampled off the live node - FighterNode.FLOAT_HOME
+#says the same thing for the floating of the active card.
+#
+#Sampling it is what made portraits walk out of their frames: hit reactions and cast
+#motions outlive the queue lock that covers them, so the next animation on the same
+#card can start while the card is still travelling and adopt the travelling position
+#as its home. A counterattack is exactly that - the tank is hit and, a few frames
+#later, becomes the caster of its own swing - so a taunt tank collected a few pixels
+#per counter until the card and the selection frame parented to it left the slot.
+#
+#Flight copies (execution, holy lance, devastation) live outside the slots and have
+#no script, so they keep their live position - which for them is the real one.
+func card_home(node):
+	if node == null or !is_instance_valid(node): return Vector2(0, 0)
+	if node.has_method('get_attack_vector'): return Vector2(0, 0)
+	return node.rect_position
+
+#Put the card back on its mark before an animation reads from it. Only touches a card
+#that is off its mark, so an ordinary animation starts exactly as it did before.
+func settle_card(node):
+	if node == null or !is_instance_valid(node): return Vector2(0, 0)
+	var home = card_home(node)
+	if node.rect_position != home: node.rect_position = home
+	return home
+
 #The gfx wrappers shorten the effect's own timings instead of touching its tween:
 #the sprite, emitter or video is a freshly created node whose tween has never seen
 #get_tween(), so dividing here is what makes it keep pace with the queue.
@@ -104,7 +131,7 @@ func fx_gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false
 #ShakeAnimation counts down in core_animations._process, which is shared with the
 #mansion, so the combat shake is shortened here rather than there
 func fx_shake(node, time = 0.5, magnitude = 5):
-	ResourceScripts.core_animations.ShakeAnimation(node, time/rate, magnitude)
+	ResourceScripts.core_animations.ShakeAnimation(node, time/rate, magnitude, card_home(node))
 
 #---------------------------------------------------------------------------
 var devastation_states = {}
@@ -325,8 +352,9 @@ func casterattack(node, args = null):
 	var effectdelay = 0.4
 	var nextanimationtime = 0
 	
-	tween.interpolate_property(node, 'rect_position', node.get_position(), node.get_position() + node.get_attack_vector(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
-	tween.interpolate_property(node, 'rect_position', node.get_position() + node.get_attack_vector(), node.get_position(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, playtime)
+	var p = settle_card(node)
+	tween.interpolate_property(node, 'rect_position', p, p + node.get_attack_vector(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
+	tween.interpolate_property(node, 'rect_position', p + node.get_attack_vector(), p, playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, playtime)
 	tween.start()
 	
 	return effectdelay
@@ -615,7 +643,7 @@ func assassinate_step(node, args = null):
 	#For an allied assassin this already works: Panel2 is drawn after Panel, so the
 	#enemy card covers the assassin. An enemy assassin is drawn on top instead.
 
-	var p = node.rect_position
+	var p = settle_card(node)
 	var v = node.get_attack_vector().normalized()
 	var dest = p
 	if args.has('foe_node') and is_instance_valid(args.foe_node):
@@ -715,7 +743,7 @@ func target_tilt(node, delay = 0.0):
 	node.rect_scale = Vector2(1,1)
 	node.rect_rotation = 0
 	var tween = get_tween(node)
-	var p = node.rect_position
+	var p = settle_card(node)
 	var v = node.get_attack_vector().normalized() * -MOTION_DIST * TILT_SHARE
 	var tilt = TILT_ANGLE * (1 if node.get_attack_vector().x < 0 else -1)
 	var peak_position = p + v - Vector2(0,TILT_LIFT)
@@ -751,7 +779,7 @@ func caster_cut(node, contact, speed = 1.0):
 	node.modulate.a = 1.0 #recover if a previous shadow step did not finish its return
 	assass_set_facing(node, false)
 	var tween = get_tween(node)
-	var p = node.rect_position
+	var p = settle_card(node)
 	var v = node.get_attack_vector().normalized() * MOTION_DIST
 	var draw = max(contact * CUT_DRAW, 0.05)
 	var drive = max(contact - draw, 0.05)
@@ -795,7 +823,7 @@ func caster_maw(node, contact, speed = 1.0):
 	node.modulate.a = 1.0
 	assass_set_facing(node, false)
 	var tween = get_tween(node)
-	var p = node.rect_position
+	var p = settle_card(node)
 	var v = node.get_attack_vector().normalized() * MAW_DIST
 	var pounce = max(contact * MAW_POUNCE, 0.06)
 	var coil = max(contact - pounce, 0.05)
@@ -850,7 +878,7 @@ var EXEC_LAND_TILT = 4.0 #forward jolt on impact
 func caster_execution_leap(node, args, contact):
 	if !node.is_inside_tree() or !node.has_method('get_attack_vector'): return node
 	var original_parent = node.get_parent()
-	var original_position = node.rect_position
+	var original_position = card_home(node)
 	var original_global_position = node.rect_global_position
 	var flight_parent = original_parent
 	if args.has('foe_node') and is_instance_valid(args.foe_node):
@@ -873,7 +901,7 @@ func caster_execution_leap(node, args, contact):
 	visual_node.modulate.a = 1.0
 	assass_set_facing(visual_node, false)
 	var tween = get_tween(visual_node)
-	var p = visual_node.rect_position
+	var p = card_home(visual_node)
 	var v = node.get_attack_vector().normalized()
 	var dest = p + v*MOTION_DIST
 	var distance = MOTION_DIST
@@ -965,7 +993,7 @@ func holy_lance_step(node, args = null):
 		return 0.0
 
 	var origin = {
-		position = node.rect_position,
+		position = card_home(node),
 		rotation = node.rect_rotation,
 		scale = node.rect_scale,
 		pivot = node.rect_pivot_offset,
@@ -973,7 +1001,7 @@ func holy_lance_step(node, args = null):
 	}
 	var visual_node = holy_lance_flight_copy(node, args)
 	visual_node.rect_pivot_offset = visual_node.rect_size/2
-	var p = visual_node.rect_position
+	var p = card_home(visual_node)
 	var v = node.get_attack_vector().normalized()
 	var dest = p + v*(HOLY_LANCE_ROW_STEP*2.0)
 	if args.has('foe_node') and is_instance_valid(args.foe_node):
@@ -1094,7 +1122,7 @@ func devastation_dash(node, args = null):
 		devastation_restore(key)
 
 	var origin = {
-		position = node.rect_position,
+		position = card_home(node),
 		rotation = node.rect_rotation,
 		scale = node.rect_scale,
 		pivot = node.rect_pivot_offset,
@@ -1104,7 +1132,7 @@ func devastation_dash(node, args = null):
 	visual_node.rect_pivot_offset = visual_node.rect_size/2
 	visual_node.rect_rotation = origin.rotation
 	visual_node.rect_scale = origin.scale
-	var p = visual_node.rect_position
+	var p = card_home(visual_node)
 	var flight_parent = visual_node.get_parent()
 	var dest = p
 	if flight_parent is Control:
@@ -1329,7 +1357,7 @@ func target_push(node, delay = 0.0):
 	if !node.is_inside_tree(): return
 	if !node.has_method('get_attack_vector'): return
 	var tween = get_tween(node)
-	var p = node.rect_position
+	var p = settle_card(node)
 	#away from the target's own side, i.e. along the attacker's swing
 	var v = node.get_attack_vector().normalized() * -MOTION_DIST * PUSH_SHARE
 	tween.interpolate_property(node, 'rect_position', p, p + v, PUSH_IN, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
@@ -1346,7 +1374,7 @@ func caster_recoil(node, contact, speed = 1.0):
 	node.modulate.a = 1.0
 	assass_set_facing(node, false)
 	var tween = get_tween(node)
-	var p = node.rect_position
+	var p = settle_card(node)
 	var v = node.get_attack_vector().normalized() * MOTION_DIST
 	var recoil_ext = RECOIL_EXT / speed
 	var back = MOTION_BACK / speed
@@ -1377,7 +1405,7 @@ func target_squash(node, duration = 0.4, delay = 0.0):
 	tween.interpolate_property(node, 'rect_scale', Vector2(SQUASH_SCALE, SQUASH_SCALE), Vector2(1,1),
 		out_time, Tween.TRANS_ELASTIC, Tween.EASE_OUT, delay + SQUASH_IN)
 	tween.interpolate_callback(ResourceScripts.core_animations, delay, 'ShakeAnimation',
-		node, min(0.25, out_time), SQUASH_SHAKE)
+		node, min(0.25, out_time), SQUASH_SHAKE, card_home(node))
 	tween.start()
 
 #Custom hit sheets opt into a reaction; unassigned damaging hits fall back to push.
@@ -1660,7 +1688,7 @@ func lightning_caster_charge(node, windup):
 	if lightning_caster_states.has(key): lightning_caster_restore(key, true)
 	var origin = {
 		node = node,
-		position = node.rect_position,
+		position = card_home(node),
 		rotation = node.rect_rotation,
 		scale = node.rect_scale,
 		pivot = node.rect_pivot_offset,

@@ -806,8 +806,44 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-		'dopple', 'lion', 'parting', 'default', 'fringe':
+		'dopple', 'lion', 'default':
 			res.hair_style = 'straight'
+			match exterior.hair_base_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'parting':
+			res.hair_style = 'layered'
+			match exterior.hair_base_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'fringe':
+			res.hair_style = 'fringe'
+			match exterior.hair_base_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'fringe2':
+			res.hair_style = 'crownbraid'
+			match exterior.hair_base_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'disheveled':
+			res.hair_style = 'messy'
 			match exterior.hair_base_length:
 				'long':
 					length = int(max(length, 2))
@@ -836,7 +872,7 @@ func get_combined_hairs_data():
 				'short', 'default':
 					length = int(max(length, 2))
 		'irokez':
-			res.hair_style = 'irokez'
+			res.hair_style = 'straight' #nor is the irokez
 			match exterior.hair_base_length:
 				'long':
 					length = int(max(length, 1))
@@ -844,17 +880,26 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-		'kare':
-			res.hair_style = 'kare'
+		'bobcut':
+			res.hair_style = 'bob'
 			match exterior.hair_base_length:
 				'long':
 					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'hime':
+			res.hair_style = 'hime'
+			match exterior.hair_base_length:
+				'long':
+					length = int(max(length, 3))
 				'middle':
 					length = int(max(length, 2))
 				'short', 'default':
 					length = int(max(length, 2))
 		'lamb':
-			res.hair_style = 'curved'
+			res.hair_style = 'straight' #the lamb cut is not in the export any more
 			match exterior.hair_base_length:
 				'long':
 					length = int(max(length, 2))
@@ -910,7 +955,7 @@ func get_combined_hairs_data():
 		'ponytail_2', 'ponytail_3': 
 			res.hair_style = 'ponytail'
 		'twin_tails', 'twin_tails_3':
-			res.hair_style = 'twinbraids'
+			res.hair_style = 'twintails'
 			match exterior.hair_assist_length:
 				'long':
 					length = int(max(length, 3))
@@ -920,8 +965,12 @@ func get_combined_hairs_data():
 					color_parts.push_back('hair_assist_color_2')
 				'short', 'default':
 					length = int(max(length, 2))
-		'twin_tails_2', 'twin_tails_4', 'twin_tails_5':
+		'twin_braids':
 			res.hair_style = 'twinbraids'
+		'spiral':
+			res.hair_style = 'curls'
+		'twin_tails_2', 'twin_tails_4', 'twin_tails_5':
+			res.hair_style = 'twintails'
 		_:
 			color_parts.erase('hair_assist_color_1')
 	
@@ -979,11 +1028,126 @@ func get_combined_hairs_data():
 	return res
 
 
+# The styles the redrawn doll brought, as data rather than as another seven
+# copies of the match below.  The older branches each bend their pieces by length
+# in their own way and are left alone; these do not - a bob is a bob at any
+# length - so a table says the same thing in a tenth of the lines.
+#
+# `pieces` is what the style always wears.  Lengths come from the ladder below,
+# and `by_length` then overrides any of the six for the lengths where the art
+# actually changes.  The values are the doll's own: see `doll_character_map.gd`
+# for how each reaches a part.
+const HAIR_STYLES = {
+	"bob": {
+		# chin length however long the hair grows, which is what a bob is
+		"pieces": {"hair_base": "bobcut", "hair_assist": "no", "hair_back": "bobcut"},
+		"by_length": {
+			"shoulder": {"hair_base_length": "middle"},
+			"waist": {"hair_base_length": "middle", "hair_back_length": "middle"},
+			"hips": {"hair_base_length": "middle", "hair_back_length": "middle"},
+		},
+	},
+	"messy": {
+		"pieces": {"hair_base": "disheveled", "hair_assist": "no", "hair_back": "no"},
+		"by_length": {
+			"shoulder": {"hair_back": "straight"},
+			"waist": {"hair_back": "straight"},
+			"hips": {"hair_back": "wave"},
+		},
+	},
+	"layered": {
+		"pieces": {"hair_base": "parting", "hair_assist": "no", "hair_back": "no"},
+		"by_length": {
+			"shoulder": {"hair_back": "straight"},
+			"waist": {"hair_back": "straight"},
+			"hips": {"hair_back": "very_long"},
+		},
+	},
+	"fringe": {
+		"pieces": {"hair_base": "fringe", "hair_assist": "no", "hair_back": "no"},
+		"by_length": {
+			"neck": {"hair_back": "straight"},
+			"shoulder": {"hair_back": "straight"},
+			"waist": {"hair_back": "straight"},
+			"hips": {"hair_back": "very_long"},
+		},
+	},
+	"crownbraid": {
+		# the braid is drawn into the base cut, so the length only moves what hangs
+		"pieces": {"hair_base": "fringe2", "hair_assist": "no", "hair_back": "no"},
+		"by_length": {
+			"shoulder": {"hair_back": "straight"},
+			"waist": {"hair_back": "wave"},
+			"hips": {"hair_back": "very_long"},
+		},
+	},
+	"twintails": {
+		# three cuts of the same idea: tufts, short bunches, then the long pair
+		"pieces": {"hair_base": "back", "hair_assist": "twin_tails_3", "hair_back": "no"},
+		"by_length": {
+			"shoulder": {"hair_assist": "twin_tails_2"},
+			"waist": {"hair_assist": "twin_tails"},
+			"hips": {"hair_assist": "twin_tails"},
+		},
+	},
+	"hime": {
+		"pieces": {"hair_base": "hime", "hair_assist": "no", "hair_back": "no"},
+		"by_length": {
+			"neck": {"hair_back": "straight"},
+			"shoulder": {"hair_back": "straight"},
+			"waist": {"hair_back": "straight"},
+			"hips": {"hair_back": "very_long"},
+		},
+	},
+	"undercut": {
+		# short on top, shaved at the sides; the back keeps out of the way
+		"pieces": {"hair_base": "undercut", "hair_assist": "no", "hair_back": "bobcut"},
+		"by_length": {
+			"ear": {"hair_back": "no"},
+			"waist": {"hair_base_length": "short", "hair_back_length": "middle"},
+			"hips": {"hair_base_length": "short", "hair_back_length": "middle"},
+		},
+	},
+	"shaved": {
+		# the scraped-back cut; female art only, so it is offered rather than rolled
+		"pieces": {"hair_base": "slave", "hair_assist": "no", "hair_back": "no"},
+	},
+	"curls": {
+		"pieces": {"hair_base": "default", "hair_assist": "spiral", "hair_back": "no"},
+		"by_length": {
+			"shoulder": {"hair_back": "wave"},
+			"waist": {"hair_back": "wave"},
+			"hips": {"hair_back": "wave"},
+		},
+	},
+}
+
+# How long each layer is worn at a given hair length.  The older styles each
+# spell this out per branch; the new ones share one ladder.
+const HAIR_STYLE_LADDER = {
+	"ear": "short", "neck": "short", "shoulder": "middle",
+	"waist": "long", "hips": "long",
+}
+
+
+# One of the table's styles, written into the hair data the caller is building.
+func _apply_hair_style(res, style):
+	for stat in style.pieces:
+		res[stat] = style.pieces[stat]
+	var tier = str(HAIR_STYLE_LADDER.get(statlist.hair_length, "short"))
+	res.hair_base_length = tier
+	res.hair_assist_length = tier
+	res.hair_back_length = tier
+	var bent = style.get("by_length", {}).get(statlist.hair_length, {})
+	for stat in bent:
+		res[stat] = bent[stat]
+
+
 func get_hairs_data():
 	var res = {
 		hair_base = 'dopple', 
 		hair_fringe = 'dopple', 
-		hair_assist = 'bun', 
+		hair_assist = 'no', #there is no bun in the export
 		hair_back = 'very_long', 
 		hair_base_color_1 = 'blue_2', 
 		hair_fringe_color_1 = 'blue_2', 
@@ -1089,6 +1253,8 @@ func get_hairs_data():
 		res.hair_back = 'no'
 		res.hair_assist_length = 'short'
 		res.hair_back_length = 'short'
+	elif HAIR_STYLES.has(statlist.hair_style):
+		_apply_hair_style(res, HAIR_STYLES[statlist.hair_style])
 	else:
 		match statlist.hair_style:
 			'straight':
@@ -1096,7 +1262,7 @@ func get_hairs_data():
 					'ear':
 						res.hair_base = 'undercut'
 						res.hair_assist = 'no'
-						res.hair_back = 'care'
+						res.hair_back = 'bobcut'
 						res.hair_base_length = 'short'
 						res.hair_assist_length = 'short'
 						res.hair_back_length = 'short'
@@ -1158,13 +1324,13 @@ func get_hairs_data():
 						res.hair_back_length = 'short'
 					'waist':
 						res.hair_assist = 'ponytail'
-						res.hair_back = 'no'
+						res.hair_back = 'ponytail_long'
 						res.hair_base_length = 'short'
 						res.hair_assist_length = 'middle'
 						res.hair_back_length = 'middle'
 					'hips':
 						res.hair_assist = 'ponytail'
-						res.hair_back = 'no'
+						res.hair_back = 'ponytail_long'
 						res.hair_base_length = 'short'
 						res.hair_assist_length = 'long'
 						res.hair_back_length = 'long'
@@ -1175,9 +1341,11 @@ func get_hairs_data():
 						res.hair_assist_length = 'short'
 						res.hair_back_length = 'short'
 			'pigtails':
-				res.hair_base = 'lamb'
+				res.hair_base = 'back'
 				res.hair_assist = 'pigtails'
 				res.hair_back = 'no'
+				if statlist.hair_length in ['waist', 'hips']:
+					res.hair_back = 'double_tail' #past the waist the pair hangs
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_length = 'short'
@@ -1234,8 +1402,8 @@ func get_hairs_data():
 						res.hair_back_length = 'short'
 			'twinbraids':
 				res.hair_base = 'braids'
-				res.hair_assist = 'no'
-				res.hair_back = 'twin_braids'
+				res.hair_assist = 'twin_braids'
+				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_length = 'short'
@@ -1263,7 +1431,7 @@ func get_hairs_data():
 						res.hair_back_length = 'short'
 			'bun':
 				res.hair_base = 'back'
-				res.hair_assist = 'bun'
+				res.hair_assist = 'ponytail' #no bun art in the export
 				res.hair_back = 'no'
 				res.hair_base_length = 'short'
 				res.hair_assist_length = 'short'

@@ -247,6 +247,7 @@ var progress_data = {
 	seen_skills = [],
 	cheat_password = "", # password entered by the player, unlocks cheats on every save
 	supporter_prompt_dismissed = false, # player pressed "Don't show again" on the main menu notice
+	ngplus_unlocked = false, # cheat menu opened New Game+ without the act1 achievement
 	update_check_consent = null # null = not asked yet, true/false = player's answer
 } setget save_progress_data
 
@@ -377,6 +378,20 @@ func try_cheat_password(text):
 
 func unlock_cheats():
 	update_progress_data('cheat_password', BuildValidator.CHECKSUM)
+
+
+#New Game+ normally waits on the act1 achievement; this is the cheat menu's way past it.
+#The password is asked for again on every read, so a hand-edited progress file cannot turn
+#the flag on by itself, and revoking the code takes the bonus panel back with it.
+func ngplus_cheat_active():
+	return cheats_unlocked() and progress_data.ngplus_unlocked
+
+
+#update_progress_data only knows how to append to lists and replace strings, so the flag is
+#written the way supporter_prompt_dismissed is - straight into the dictionary, then stored.
+func unlock_ngplus():
+	progress_data.ngplus_unlocked = true
+	store_progress()
 
 
 func is_unique_sprite_unlocked(chara, sprite):
@@ -567,12 +582,9 @@ func _input(event):
 				continue
 		if ignore_rightclick == false:
 			if gui_controller.windows_opened.size() > 0:
+				#close_top_window() asks for the screen sweep itself now, so the panel's own X
+				#button reaches the same refresh this path always had
 				gui_controller.close_top_window()
-				for subscene in gui_controller.current_screen.get_children():
-					if subscene.get_class() == "Tween":
-						continue
-					if subscene.has_method('update'):#stub
-						subscene.update()
 				return
 			else:
 				match gui_controller.current_screen:
@@ -1374,6 +1386,11 @@ func text_form_recitation(string_array):
 
 	return text
 
+#set while a _ready builds something that talks back: the root takes no children mid-_ready
+var defer_spec_node_mount = false
+var deferred_spec_nodes = {}
+
+
 func get_spec_node(type, args = null, raise = true, unhide = true):
 	var window
 	var node = get_tree().get_root()
@@ -1387,6 +1404,8 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 	if node.has_node(ResourceScripts.node_data[type].name) and !ResourceScripts.node_data[type].has('no_return'):
 		window = node.get_node(ResourceScripts.node_data[type].name)
 		#node.remove_child(window)
+	elif window == null and is_instance_valid(deferred_spec_nodes.get(ResourceScripts.node_data[type].name)):
+		window = deferred_spec_nodes[ResourceScripts.node_data[type].name]
 	elif window == null:
 		match ResourceScripts.node_data[type].mode:
 			'scene':
@@ -1395,7 +1414,11 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 			'node':
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
-		node.add_child(window) #adding more than one sysmessages at one frame causes error here
+		if defer_spec_node_mount:
+			deferred_spec_nodes[window.name] = window
+			node.call_deferred("add_child", window)
+		else:
+			node.add_child(window) #adding more than one sysmessages at one frame causes error here
 	if raise: 
 #		print(window.name)
 		window.raise()

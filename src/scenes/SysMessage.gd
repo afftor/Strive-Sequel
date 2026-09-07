@@ -1,7 +1,10 @@
 extends Control
 
-onready var template = $VBoxContainer/Message
-onready var container = $VBoxContainer
+#On a canvas layer of its own (Top, layer 110), because a message that refuses the player
+#something has to be readable over whatever refused it - the mansion draws its room card on a
+#layer of its own too, and in Godot 3 the layer number beats tree order outright.
+onready var template = $Top/VBoxContainer/Message
+onready var container = $Top/VBoxContainer
 
 func show_message(text, time = 4):
 	#Spoken to before it is in the tree - a load, or anything else that runs before the screen

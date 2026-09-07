@@ -216,6 +216,24 @@ static func has_tag(part_id, tag):
 	return tag in part(part_id).get("tags", [])
 
 
+# The attachment nearest the size asked for, walking outwards along the axis's
+# own order of values, or "" when the axis is not a ladder or has nothing to
+# offer.  The smaller neighbour is tried first: a top cut for a smaller chest
+# sits close on a flatter one, where the larger cut would hang off it.
+static func _nearest_option(definition, options, wanted):
+	if !bool(definition.get("nearest", false)):
+		return ""
+	var order = definition.get("values", [])
+	var at = order.find(wanted)
+	if at == -1:
+		return ""
+	for step in range(1, order.size()):
+		for index in [at - step, at + step]:
+			if index >= 0 and index < order.size() and options.has(order[index]):
+				return str(options[order[index]])
+	return ""
+
+
 # Selections plus axis values -> {slot name: attachment name}.
 # Groups are applied in GROUP_ORDER, so a later group (an outfit) may replace a
 # slot an earlier one (the body) filled.  A part that declares a slot but has no
@@ -261,7 +279,15 @@ static func compose(selections, axis_values):
 			if value.options.has(axis_value):
 				result[slot_name] = value.options[axis_value]
 			else:
-				result.erase(slot_name)
+				# An axis marked `nearest` means the part is expected to cover this
+				# slot at every size, so a size it was never cut for wears the
+				# closest one instead.  Everything else keeps clearing the slot:
+				# an outfit with no maternity piece must show nothing there.
+				var stand_in = _nearest_option(definition, value.options, axis_value)
+				if stand_in.empty():
+					result.erase(slot_name)
+				else:
+					result[slot_name] = stand_in
 	# A part can replace another one rather than sit on top of it: an animal lower
 	# body takes the place of the legs, so those slots are cleared after everything
 	# has been composed - the old doll hid its `l_body` node group for exactly this.

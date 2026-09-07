@@ -2833,7 +2833,7 @@ func endencounter():
 		expgain = round(expgain * bonus)
 
 		i.person.add_stat('base_exp', expgain)
-		text += tr("INTERACTION_END_EXP_GAINED") % str(expgain)
+		text += tr("INTERACTION_END_EXP_GAINED") % str(round(expgain * i.person.get_stat('exp_gain_mod')))
 		if i.orgasms > 0:
 			var effect = 'satisfaction_1'
 			if i.orgasms >= 3:

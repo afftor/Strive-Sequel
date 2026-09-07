@@ -333,7 +333,7 @@ var bodypartsdata = {
 			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoulder',0.5],['bald',0.2]], reqs = []},
 			{code = 'hair_length', value = [['bald',1]], reqs = [{code = 'race', race = 'Kobold', check = true}]},
 			{code = 'hair_length', value = [['ear',0.5],['shoulder',2], ['waist', 2], ['hips',0.5]], reqs = [{code = 'one_of_races', value = ['Elf','DarkElf'], check = true}]},
-			{code = 'hair_style',  value = [['straight', 10], ['ponytail',1]], reqs = []},
+			{code = 'hair_style',  value = [['straight', 10], ['ponytail',1],['bob',1],['messy',1],['layered',1],['fringe',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['masculine',1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['masculine', 1]], reqs = []},
 			{code = 'has_womb', value = [[false,1]], reqs = []},
@@ -359,7 +359,7 @@ var bodypartsdata = {
 		]},
 		female = {code = 'female', name = '', chardescript = '', bodychanges = [
 			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
-			{code = 'hair_style', value = [['straight', 2],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1]], reqs = []},
+			{code = 'hair_style', value = [['straight', 4],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1],['bob',1],['messy',1],['layered',1],['fringe',1],['crownbraid',1],['twintails',1],['curls',1],['hime',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['average', 1], ['big', 1], ['huge', 1]], reqs = [{code = 'race', race = 'Taurus', check = true}]},
@@ -390,7 +390,7 @@ var bodypartsdata = {
 		]},
 		futa = {code = 'futa', name = '', chardescript = '', bodychanges = [
 			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
-			{code = 'hair_style', value = [['straight', 2],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1]], reqs = []},
+			{code = 'hair_style', value = [['straight', 4],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1],['bob',1],['messy',1],['layered',1],['fringe',1],['crownbraid',1],['twintails',1],['curls',1],['hime',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['average', 1], ['big', 1], ['huge', 1]], reqs = [{code = 'race', race = 'Taurus', check = true}]},
@@ -459,6 +459,16 @@ var bodypartsdata = {
 		braid = {code = 'braid', name = '', chardescript = '', bodychanges = []},
 		twinbraids = {code = 'twinbraids', name = '', chardescript = '', bodychanges = []},
 		bun = {code = 'bun', name = '', chardescript = '', bodychanges = []},
+		bob = {code = 'bob', name = '', chardescript = '', bodychanges = []},
+		messy = {code = 'messy', name = '', chardescript = '', bodychanges = []},
+		layered = {code = 'layered', name = '', chardescript = '', bodychanges = []},
+		fringe = {code = 'fringe', name = '', chardescript = '', bodychanges = []},
+		crownbraid = {code = 'crownbraid', name = '', chardescript = '', bodychanges = []},
+		twintails = {code = 'twintails', name = '', chardescript = '', bodychanges = []},
+		curls = {code = 'curls', name = '', chardescript = '', bodychanges = []},
+		shaved = {code = 'shaved', name = '', chardescript = '', bodychanges = []},
+		undercut = {code = 'undercut', name = '', chardescript = '', bodychanges = []},
+		hime = {code = 'hime', name = '', chardescript = '', bodychanges = []},
 	},
 	#incomplete
 	hair_back = {

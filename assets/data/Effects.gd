@@ -1062,7 +1062,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		statchanges = {mdef_add_part = -0.5},
+		statchanges = {mdef_add_part = -0.25},
 	},
 	
 	e_s_sleep = {
@@ -2414,12 +2414,15 @@ func get_effect_for_status(status):
 func fix_eff_data():
 	for eid in effect_table:
 		var eff = effect_table[eid]
+		#tags go on every entry, not just the simple ones. Readers like StatsPanel.select_stat()
+		#look tags up on this shared table, while base_effect.fix_template() only patches the
+		#duplicate that each effect instance carries.
+		if !eff.has('tags'):
+			eff.tags = []
 		if eff.type == 'simple':
 			eff.name = eid
 			if !eff.has('buffs'):
 				eff.buffs = []
-			if !eff.has('tags'):
-				eff.tags = []
 			if !eff.has('statchanges'):
 				eff.statchanges = {}
 		if eff.type == 'trigger':

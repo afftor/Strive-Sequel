@@ -41,6 +41,7 @@ var enemygroup = {}
 var currentactor
 
 var summons = [] #pos
+var dead_summons = [] #summons that died mid-fight - retired in FinishCombat, not here
 
 var activeaction
 var activeitem
@@ -304,6 +305,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'combatthem
 	global_turn = 0
 	$Combatlog/RichTextLabel.clear()
 	summons.clear()
+	dead_summons.clear()
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
@@ -349,6 +351,7 @@ func resolve_without_combat(newplayergroup, newenemygroup):
 	global_turn = 0
 	fightover = true
 	summons.clear()
+	dead_summons.clear()
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
@@ -612,6 +615,7 @@ func checkdeaths():
 			if summons.has(i):
 #				tchar.displaynode.queue_free()
 				tchar.displaynode.is_active = false
+				dead_summons.push_back(tchar.id)
 #				tchar.displaynode = null
 #				tchar.is_active = false
 				battlefield[i] = null
@@ -2209,6 +2213,18 @@ func FinishCombat(victory = true):
 		if tchar.displaynode != null:
 			tchar.displaynode.check_active()
 		tchar.is_active = false
+	#summons that died during the fight left their groups in checkdeaths(), so the loop
+	#above never reaches them. They are retired here, once check_active() has released the
+	#display node - deactivating them mid-combat would pull the character out from under
+	#effects still queued on it.
+	for id in dead_summons:
+		var summon_char = characters_pool.get_char_by_id(id)
+		if summon_char == null:
+			continue
+		if summon_char.displaynode != null and is_instance_valid(summon_char.displaynode):
+			summon_char.displaynode.check_active()
+		summon_char.is_active = false
+	dead_summons.clear()
 	if victory:
 		CombatAnimations.force_end()
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)

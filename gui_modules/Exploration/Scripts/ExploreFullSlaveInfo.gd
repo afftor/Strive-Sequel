@@ -100,16 +100,10 @@ func show_summary(person = selected_char):
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
 	
 	for i in ['physics','wits','charm','sexuals']:
-		if i != 'sexuals':
-			var color = set_color(person.get_stat(i+'_bonus'))
-			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
-			SummaryModule.get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_cap') + person.get_stat(i+"_bonus"))
-		else:
-			var color = set_color(person.get_stat(i+'_bonus'))
-			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
-			SummaryModule.get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
+		var color = set_color(person.get_stat(i+'_bonus'))
+		SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
+		SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = globals.base_stat_value_text(person, i)
+		SummaryModule.get_node("VBoxContainer2/TextureRect4/" + i + '2').text = globals.base_stat_cap_text(person, i)
 	
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
 	# for i in person.xp_module.professions:

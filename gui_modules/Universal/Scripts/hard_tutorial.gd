@@ -187,10 +187,12 @@ var tutorials = {
 			#This chapter cannot start without it: the list the mansion opens on covers the
 			#floorplan outright and takes the idle strip with it (set_slave_list_fold ->
 			#rooms.set_hud_visible), so there would be nobody to pick up and nowhere to put them.
-			#Two gestures do it - the row of view buttons down the left, and the handle on the
-			#list's own bar - so both are framed and either one lets the step through.
-			buttons = ['mansion_mode_work_btn', 'slave_list_fold_btn'],
-			highlight = ['mansion_mode_work_btn', 'slave_list_fold_btn'],
+			#The handle on the list's own bar is the whole of what does it. The work and beds tabs
+			#used to be a second way in, and were framed here beside it, but they ride on the
+			#floorplan's own strip now - so while the list is up there is nothing of them on screen
+			#to point at, and a frame was being drawn around a hidden button.
+			buttons = ['slave_list_fold_btn'],
+			highlight = ['slave_list_fold_btn'],
 			text = "TUTORIAL_WORK_ROOM1_1",
 			panel_pos = Vector2(660, 430)
 		},{

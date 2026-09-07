@@ -277,6 +277,7 @@ const AXES = {
 	"tits_size": {
 		"default": "large",
 		"label": "DOLL2_PREVIEW_BREAST_SIZE",
+		"nearest": true,
 		"values": ["flat", "small", "normal", "large", "big"],
 	},
 }

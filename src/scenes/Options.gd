@@ -2,6 +2,8 @@ extends Panel
 
 var ReloadPanel
 var SwitchLanguage
+var NGPlusButton
+var NGPlusButtonY #its place in the scene, kept so the button can be moved back to it
 
 #warning-ignore-all:return_value_discarded
 # var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
@@ -58,7 +60,11 @@ func _ready():
 	$TabContainer/Cheats/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
 	$TabContainer/Cheats/EnterCodeMenu/Activate.connect("pressed", self, "go_for_code")
 	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")
-	
+	NGPlusButton = $TabContainer/Cheats/OpenCheatsMenu/UnlockNGP
+	NGPlusButtonY = NGPlusButton.rect_position.y
+	NGPlusButton.connect("pressed", self, "unlock_ngplus")
+	globals.connecttexttooltip(NGPlusButton, tr("OPTCHEATUNLOCKNGPTOOLTIP"))
+
 
 func enable_tutorials(pressed):
 	ResourceScripts.game_progress.show_tutorial = pressed
@@ -85,6 +91,24 @@ func text_changed(_text):
 func activate_cheats():
 	$TabContainer/Cheats/EnterCodeMenu.hide()
 	$TabContainer/Cheats/OpenCheatsMenu.show()
+	update_ngplus_button()
+
+
+#Lifts the achievement gate on the New Game+ panel. It is a one-way switch, so the button
+#reports the state it left behind rather than offering to do the same thing twice.
+func unlock_ngplus():
+	input_handler.unlock_ngplus()
+	update_ngplus_button()
+
+
+func update_ngplus_button():
+	#the cheat menu button above this one is only there while a game is running - with no game
+	#the NG+ switch takes its slot instead of leaving a hole under the label
+	var cheats_button = $TabContainer/Cheats/OpenCheatsMenu/CheatsMenu
+	NGPlusButton.rect_position.y = NGPlusButtonY if cheats_button.visible else cheats_button.rect_position.y
+	var unlocked = input_handler.ngplus_cheat_active()
+	NGPlusButton.disabled = unlocked
+	NGPlusButton.get_node("Label").text = tr("OPTCHEATNGPUNLOCKED") if unlocked else tr("OPTCHEATUNLOCKNGP")
 
 
 func go_for_code():
@@ -108,6 +132,7 @@ func open():
 	#the cheat menu operates on the running game (party, resources), so it is only
 	#reachable in-game - the main menu shows the "cheats unlocked" line without the button
 	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.visible = is_instance_valid(gui_controller.mansion)
+	update_ngplus_button()
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
 	autosave_amount_change(input_handler.globalsettings.autosave_number)

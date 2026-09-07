@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.0a'
+const gameversion = '0.16.0b'
 
 #time
 signal hour_tick
@@ -13,6 +13,11 @@ signal task_removed
 #A room was raised, pulled down, upgraded or carried elsewhere. What the estate can hold and
 #how many it can sleep are read off the rooms, so whoever prints those numbers has to hear it.
 signal rooms_changed
+#What a character will be given at the end of the turn changed, without the character
+#themselves changing - a food type forbidden in the diet panel, a bed handed out or taken
+#away on the floorplan. Whoever draws a per-character upkeep warning has to hear it: nothing
+#else about that character has moved, so no other refresh is going to run.
+signal upkeep_changed
 signal work_produced(person_id, task_id, texture)
 
 var hour_turns_set = 1
@@ -592,6 +597,45 @@ func get_food_state_tooltip(person):
 	return res
 
 
+#The two warnings on a character card: what the estate is about to fail to give them when the
+#turn ends. Both are asked of state that will not change by itself before then - the larder as
+#it stands and the beds as they are laid out - so the card can promise the outcome rather than
+#report it after the fact. An empty string means there is nothing to warn about.
+func get_food_warning(person):
+	if person == null or person.food == null:
+		return ''
+	return person.food.predict_meal_problem()
+
+
+func get_sleep_warning(person):
+	if person == null:
+		return ''
+	return ResourceScripts.game_res.sleep_warning(person.id)
+
+
+func get_food_warning_tooltip(person, state):
+	if state == 'starve':
+		return "[center]{color=red|%s}[/center]\n%s" % [
+			tr("CARDWARNFOODNONE"), tr("CARDWARNFOODNONEDESCRIPT")]
+	var demand_name = tr("FOODDEMAND" + person.food.get_demand().to_upper())
+	return "[center]{color=red|%s}[/center]\n%s\n%s" % [
+		tr("CARDWARNFOODPOOR"),
+		_report_text("CARDWARNFOODPOORDESCRIPT", [demand_name]),
+		tr("TRAITEFFECTCHEAPFOOD").replace("%%", "%")]
+
+
+func get_sleep_warning_tooltip(person, state):
+	if state == 'none':
+		return "[center]{color=red|%s}[/center]\n%s\n%s" % [
+			tr("CARDWARNBEDNONE"), tr("CARDWARNBEDNONEDESCRIPT"),
+			tr("SLEPTROUGH").replace("%%", "%")]
+	var demand_name = tr("FOODDEMAND" + person.food.get_demand().to_upper())
+	return "[center]{color=red|%s}[/center]\n%s\n%s" % [
+		tr("CARDWARNBEDPOOR"),
+		_report_text("CARDWARNBEDPOORDESCRIPT", [demand_name]),
+		tr("SLEEPDEMANDUNMET")]
+
+
 func mattooltip(targetnode, material, bonustext = '', type = 'materialowned', tooltip_node = null):
 	var image
 	var node = tooltip_node
@@ -1045,6 +1089,32 @@ func build_buffs_for_char(person, node, mode):
 #				'attacks':
 #					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 		connecttexttooltip(newnode, person.translate(i.description))
+
+
+#Base stats read as the trained number out of the cap training can reach, with everything
+#classes, gear and buffs lend shown after it as its own term: '31/100 +10' rather than the old
+#'41/110'. The old pair hid both halves of what the line is asked for - how much of the cap the
+#training has actually filled, and how much of the number would walk out with the equipment.
+func base_stat_text(person, code):
+	return base_stat_value_text(person, code) + "/" + base_stat_cap_text(person, code)
+
+
+#The trained number on its own, for the panels that keep the value and the cap in two columns.
+func base_stat_value_text(person, code):
+	return str(int(floor(person.get_stat(code, true))))
+
+
+#The cap with the borrowed part behind it. Sexuals has no cap stat of its own; 100 is the
+#ceiling every panel has always printed for it.
+func base_stat_cap_text(person, code):
+	var cap = 100 if code == 'sexuals' else int(floor(person.get_stat(code + '_cap')))
+	var bonus = int(floor(person.get_stat(code + '_bonus')))
+	var text = str(cap)
+	if bonus > 0:
+		text += " +" + str(bonus)
+	elif bonus < 0:
+		text += " " + str(bonus)
+	return text
 
 
 func build_attrs_for_char(node, person):
@@ -1607,6 +1677,7 @@ func LoadGame(filename):
 	ResourceScripts.game_progress.fix_serialization()
 	loadscreen.set_progress(41)
 	yield(get_tree(), 'idle_frame')
+	characters_pool.purge_stale_summons() #drops summons leaked by pre-fix saves
 	characters_pool.cleanup()
 	characters_pool.postload()
 	loadscreen.set_progress(42)
@@ -2043,6 +2114,57 @@ func mansion_activity_craft(character, detail_text):
 		mansion_activity_log_node.update_log_message(entry)
 
 
+#One entry per turn for everything the estate's work pulled out of the ground, the water and the
+#fields - who dug it up is not what the storehouse cares about, so no worker is named at all.
+#Folded on the stamp like the service and craft reports above, and written from the one place
+#every production payout passes through: game_res._grant_production_res().
+#
+#`amounts` - material code to units, in the order the turn first saw each - is small and bounded
+#by the number of materials that exist, so unlike the per-worker breakdowns it is kept through a
+#save and a loaded report can still be unfolded. Insertion order never changes, only grows, which
+#is what lets MansionLogModule patch the icons already on screen instead of rebuilding them.
+func mansion_activity_production(res, amount):
+	amount = int(amount)
+	if amount <= 0:
+		return
+	var stamp = mansion_activity_stamp()
+	var entry = _mansion_activity_turn_report('production', stamp)
+	if entry == null:
+		mansion_activity_log_add('production', _production_report_text(amount, 1),
+			{total = amount, amounts = {res: amount}})
+		return
+	entry.total = int(entry.get('total', 0)) + amount
+	if !entry.has('amounts'):
+		entry.amounts = {}
+	entry.amounts[res] = int(entry.amounts.get(res, 0)) + amount
+	entry.text = _production_report_text(entry.total, entry.amounts.size())
+	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+		mansion_activity_log_node.update_log_message(entry)
+
+
+#One row a week for the estate's standing costs, written from game_res.subtract_taxes() once the
+#whole bill is known. Unlike the service, craft and production reports it needs no folding: the
+#week's charges are collected in one pass by game_res.collect_weekly_expenses() and arrive here
+#complete, ledger and all.
+#
+#The lines behind the fold are built here rather than by the collectors so that every one of them
+#goes through the _report_text() guard below - a source that formatted its own key would take the
+#whole row down in any locale that has not caught up with it. `details` is turn-local like every
+#other breakdown: game_globals.serialize() drops it, so a report read back from a save is a total
+#with nothing left to unfold.
+#
+#A week that costs nothing writes nothing - a household of slaves would otherwise get a row
+#saying so every seven days.
+func mansion_activity_upkeep(ledger):
+	if ledger.total <= 0:
+		return
+	var lines = []
+	for record in ledger.entries:
+		lines.append(_report_text(record.key, record.values))
+	mansion_activity_log_add('upkeep', _upkeep_report_text(ledger.total, lines.size()),
+		{total = ledger.total, details = lines})
+
+
 #A locale that has not caught up with a new string gets the key itself back from tr(), and a key
 #carries no format specifiers: `%` on it does not fall back, it aborts the function outright. The
 #entry would then be stored with no text at all and the log could not draw the row - a whole
@@ -2064,6 +2186,14 @@ func _service_report_text(total, workers):
 
 func _craft_report_text(total, crafters):
 	return _report_text("MANSION_ACTIVITY_CRAFT_REPORT", [total, crafters])
+
+
+func _production_report_text(total, kinds):
+	return _report_text("MANSION_ACTIVITY_PRODUCTION_REPORT", [total, kinds])
+
+
+func _upkeep_report_text(total, charges):
+	return _report_text("MANSION_ACTIVITY_UPKEEP_REPORT", [total, charges])
 
 
 func _stat_change_text(character, parts):

@@ -45,7 +45,11 @@ func rebuild():
 		var node = input_handler.DuplicateContainerTemplate(self)
 		node.setup(slot_plan.code, view)
 		node.rect_position = Vector2(slot_plan.rect[0], slot_plan.rect[1]) * TILE_PX
-		node.rect_size = Vector2(slot_plan.rect[2], slot_plan.rect[3]) * TILE_PX
+		#The template carries a minimum of its own and a Control never goes under one, so a slot
+		#the plan draws shorter than that kept the template's height and hung over the wall of the
+		#room beneath it. The plan is what says how big a slot is.
+		node.rect_min_size = Vector2(slot_plan.rect[2], slot_plan.rect[3]) * TILE_PX
+		node.rect_size = node.rect_min_size
 		node.update_slot()
 	update()
 
@@ -86,6 +90,10 @@ func _draw():
 	var floor_plan = view.floor_plan()
 	if floor_plan == null:
 		return
+	var ground = backdrop_rect(floor_plan)
+	var standing_on_art = ground.size.x > 0
+	if standing_on_art:
+		draw_texture_rect(backdrop_texture(floor_plan), ground, false, backdrop_shade(floor_plan))
 	#areas are painted in the order the designer wrote them, so a later 'outside'
 	#rectangle cuts a hole back out of an earlier 'floor' one
 	for area in floor_plan.areas:
@@ -93,9 +101,72 @@ func _draw():
 			Vector2(area.rect[2], area.rect[3]) * TILE_PX)
 		match area.state:
 			'floor':
-				draw_rect(rect, COLOR_FLOOR)
+				#where there is a picture it is the floor; the slab over it would only
+				#mute the thing it was put there to replace
+				if !standing_on_art:
+					draw_rect(rect, COLOR_FLOOR)
 			'blocked':
 				draw_rect(rect, COLOR_BLOCKED)
+
+
+#### the ground under the rooms ####
+
+#A floor can stand on a picture instead of on the painted slab - see 'backdrop' in
+#mansion_floor_plans.gd. It is drawn here, in the grid's own _draw() and before anything else,
+#rather than hung under the slots as a node of its own: that makes it part of this canvas item
+#and nothing else, so it takes the zoom and the pan of the rooms without being told, and the
+#viewport above clips whatever hangs over its edges.
+var backdrop_art = {}
+
+
+#How the picture is tinted on this floor. A storey above the ground is drawn through more air -
+#dimmer and a shade cooler - which is what says the player has climbed, since the drawing itself
+#is the same one. Multiplied into the picture and nothing else, so the rooms standing on it keep
+#their own colours. A floor that names no shade draws it as it is.
+func backdrop_shade(floor_plan):
+	var back = floor_plan.get('backdrop', null)
+	var shade = null if back == null else back.get('shade', null)
+	if shade == null:
+		return Color(1, 1, 1, 1)
+	return Color(shade[0], shade[1], shade[2], 1)
+
+
+func backdrop_texture(floor_plan):
+	var back = floor_plan.get('backdrop', null)
+	if back == null:
+		return null
+	if !backdrop_art.has(back.art):
+		backdrop_art[back.art] = load(back.art)
+	return backdrop_art[back.art]
+
+
+#Where that picture goes, in the field's own pixels, or an empty rect for a floor with none.
+#Its walled yard is laid on the tiles the plan gives it and the picture blown up until the yard
+#covers them: the yard is the wider shape of the two, so what covers their height overhangs
+#their width, and that overhang is the gardens to either side.
+func backdrop_rect(floor_plan):
+	var texture = backdrop_texture(floor_plan)
+	if texture == null:
+		return Rect2()
+	var on = floor_plan.backdrop.over
+	var over = Rect2(Vector2(on[0], on[1]) * TILE_PX, Vector2(on[2], on[3]) * TILE_PX)
+	if over.size.x <= 0 or over.size.y <= 0:
+		return Rect2()
+	var yard = floor_plan.backdrop.yard
+	var share_at = Vector2(yard[0], yard[1])
+	var share_size = Vector2(yard[2], yard[3])
+	var whole = texture.get_size()
+	var scale = max(over.size.x / (share_size.x * whole.x), over.size.y / (share_size.y * whole.y))
+	var size = whole * scale
+	return Rect2(over.position + over.size / 2 - (share_at + share_size / 2) * size, size)
+
+
+#What the view may pan about within, when that is the picture rather than the rooms.
+func ground_rect():
+	if view == null:
+		return Rect2()
+	var floor_plan = view.floor_plan()
+	return Rect2() if floor_plan == null else backdrop_rect(floor_plan)
 
 
 #### zoom and panning ####

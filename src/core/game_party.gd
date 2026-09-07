@@ -750,10 +750,29 @@ func get_weekly_tax():
 	return tax
 
 
-func subtract_taxes():
-	var tax = get_weekly_tax()
-#	ResourceScripts.game_res.money -= int (3 * tax / 100)#old math
-	ResourceScripts.game_res.money -= tax
+#The household's share of the week's bill, one record per person the estate actually pays for.
+#The same walk as get_weekly_tax() above with the names kept - that one stays as the cheap total
+#the clock tooltip and the character card ask for several times a frame, and it stays the only
+#place that decides whether somebody is paid for at all, so the two can never name a different
+#roster. The parts behind the sum cost a second calculate_price() per servant, once a week.
+#
+#Biggest charge first: this is read as a bill, and the line worth acting on is the top one.
+#Folded into the ledger, and from there into the log, by game_res.collect_weekly_expenses().
+func collect_weekly_upkeep():
+	var records = []
+	for ch in characters.values():
+		var amount = ch.get_weekly_tax()
+		if amount <= 0:
+			continue
+		records.append({amount = amount, key = "MANSION_ACTIVITY_UPKEEP_CHARACTER",
+			values = [ch.get_short_name(), amount, ch.get_upkeep(), ch.get_value_upkeep()]})
+	records.sort_custom(self, "_sort_by_expense")
+	return records
+
+
+func _sort_by_expense(a, b):
+	return a.amount > b.amount
+
 
 #arguable here
 func update_global_cooldowns():

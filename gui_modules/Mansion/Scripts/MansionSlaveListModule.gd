@@ -41,6 +41,8 @@ onready var ExpandedBodyImage = $ExpandedBodyPreview/StoredImage
 onready var ExpandedPaperdoll = $ExpandedBodyPreview/Paperdoll
 onready var ExpandedCloseButton = $ExpandedBodyPreview/CloseButton
 onready var ExpandedBodyTween = $ExpandedBodyPreview/Tween
+onready var ExpandedPrevButton = $ExpandedPrevCharacter
+onready var ExpandedNextButton = $ExpandedNextCharacter
 var ExpandedNudityToggle
 
 var pending_date_person
@@ -63,6 +65,9 @@ const CARD_LUST_BAR = CARD_PORTRAIT_ROOT + "/Lust"
 const CARD_SEX = CARD_PORTRAIT_ROOT + "/Sex"
 const CARD_RACE = CARD_PORTRAIT_ROOT + "/Race"
 const CARD_LEVELUP_INDICATOR = CARD_PORTRAIT_ROOT + "/LevelUpIndicator"
+const CARD_WARNINGS = CARD_PORTRAIT_ROOT + "/Warnings"
+const CARD_WARN_FOOD = CARD_WARNINGS + "/Food"
+const CARD_WARN_BED = CARD_WARNINGS + "/Bed"
 const CARD_STATUS = CARD_ROOT + "/Header/SlaveType"
 const CARD_INFO_STRIPS = CARD_BODY + "/InfoStrips"
 const CARD_WORK_STRIP = CARD_INFO_STRIPS + "/Work"
@@ -86,6 +91,11 @@ const TEX_TRAVEL_SMALL = preload("res://assets/Textures_v2/MANSION/icon_travel_s
 const TEX_NO = preload("res://assets/Textures_v2/MANSION/no.png")
 const TEX_YES = preload("res://assets/Textures_v2/MANSION/yes.png")
 const TEX_FOOD_STARVING = preload("res://assets/images/iconsitems/food_old.png")
+const TEX_WARN_FOOD_POOR = preload("res://assets/images/gui/gui icons/food_hate.png")
+const TEX_WARN_BED = preload("res://assets/images/gui/gui icons/icon_bedlimit.png")
+#The badge blinks off a shader rather than off a tween per card - see demand_warning_pulse.shader
+#for why the material is built here instead of being saved into the scene.
+const WARNING_PULSE_SHADER = preload("res://gui_modules/Mansion/Modules/demand_warning_pulse.shader")
 const TEX_WORK_REST = preload("res://assets/images/gui/icon_bed.png")
 const TEX_WORK_TRAINING = preload("res://assets/Textures_v2/MANSION/Dating/Icons/icon_discipline.png")
 const TEX_WORK_CRAFT = preload("res://assets/images/gui/icon_craft64x64.png")
@@ -234,6 +244,12 @@ func _ready():
 	)
 	ExpandedNicknameEdit.connect("text_entered", self, "_confirm_expanded_nickname")
 	ExpandedCloseButton.connect("pressed", self, "close_expanded_character")
+	ExpandedPrevButton.connect("pressed", self, "_step_expanded_character", [-1])
+	ExpandedNextButton.connect("pressed", self, "_step_expanded_character", [1])
+	globals.connecttexttooltip(ExpandedPrevButton, tr("MSMPREVCHARACTER"))
+	globals.connecttexttooltip(ExpandedNextButton, tr("MSMNEXTCHARACTER"))
+	ExpandedPrevButton.hide()
+	ExpandedNextButton.hide()
 	#The doll's undress buttons are the Nudity rule on this screen, so what the
 	#player picks there is written to the character and the portraits follow.
 	ExpandedPaperdoll.undress_is_a_rule = true
@@ -256,6 +272,12 @@ func _ready():
 	input_handler.connect('PortraitUpdate', self, 'refresh_portraits')
 	globals.connect("slave_added", self, "queue_rebuild")
 	globals.connect("task_removed", self, "queue_task_refresh")
+	#The upkeep badges are answered from the larder and the floorplan, neither of which this
+	#list owns. A bed given out on the plan beside it, or a food type forbidden in the diet
+	#panel over it, changes nothing about the character - so without these the badge would sit
+	#there stale until the next day rolled the whole list over.
+	globals.connect("rooms_changed", self, "queue_upkeep_refresh")
+	globals.connect("upkeep_changed", self, "queue_upkeep_refresh")
 	globals.connect("hour_tick", self, "update_dislocations")
 	for nd in modes.get_children():
 		nd.connect('pressed', self, 'set_mode', [nd.name])
@@ -344,6 +366,14 @@ func _click_is_inside(position):
 	if is_instance_valid(ExpandedBodyPreview) and ExpandedBodyPreview.visible \
 			and ExpandedBodyPreview.get_global_rect().has_point(position):
 		return true
+	#The step arrows flank the open card in the empty space beside it, so the left one hangs off
+	#this module the way the body preview hangs off its other side. Measured against the module's
+	#rectangle alone a press on it reads as a click on the mansion, and the card would close on
+	#the very gesture that was meant to walk it to the next character.
+	for button in [ExpandedPrevButton, ExpandedNextButton]:
+		if is_instance_valid(button) and button.visible \
+				and button.get_global_rect().has_point(position):
+			return true
 	for name in ['CharacterProgressionPopup', 'CharacterTrainingPopup']:
 		var popup = get_parent().get_node_or_null(name)
 		if popup != null and popup.visible and popup is Control:
@@ -430,20 +460,10 @@ func open_expanded_character(card):
 	expanded_restore_fold = list_fold_state
 	if list_fold_state != FOLD_FULL:
 		set_slave_list_fold(FOLD_FULL, false)
-	expanded_card = card
 	expanded_origin_rect = _expanded_rect_for_global_rect(card.get_global_rect())
 	#Keep the source card in its container. Moving it out made GridContainer rebuild the
 	#visible order twice per animation. A visual copy can move while the real slot stays put.
-	expanded_card_original_modulate = card.self_modulate
-	card.self_modulate.a = 0.0
-	card.drag_enabled = false
-	expanded_card_blocker = Control.new()
-	expanded_card_blocker.name = "ExpandedCardInputBlocker"
-	expanded_card_blocker.anchor_right = 1.0
-	expanded_card_blocker.anchor_bottom = 1.0
-	expanded_card_blocker.mouse_filter = MOUSE_FILTER_STOP
-	card.add_child(expanded_card_blocker)
-	expanded_card_blocker.raise()
+	_claim_expanded_card_source(card)
 	_create_expanded_card_visual()
 
 	#Build one section per frame while the geometry is moving. Previously the entire
@@ -465,6 +485,7 @@ func open_expanded_character(card):
 	ExpandedCharacter.rect_size = expanded_origin_rect.size
 	ExpandedCharacter.show()
 	ExpandedCharacter.raise()
+	_update_expanded_step_buttons()
 	_sync_input_listening()
 	expanded_animation_state = "opening"
 	expanded_build_person = person
@@ -491,6 +512,11 @@ func close_expanded_character():
 	set_process(false)
 	ExpandedExtra.hide()
 	ExpandedBodyPreview.hide()
+	#A step to the neighbouring character closes this card to open that one, and the arrows stay
+	#up across the swap - they are the control the player is holding down, not part of the card.
+	if expanded_pending_card == null:
+		ExpandedPrevButton.hide()
+		ExpandedNextButton.hide()
 	expanded_animation_state = "closing"
 	_play_expanded_geometry(close_rect)
 
@@ -503,6 +529,8 @@ func _close_expanded_character_immediate():
 	ExpandedNameEditor.hide()
 	if expanded_card == null:
 		return
+	ExpandedPrevButton.hide()
+	ExpandedNextButton.hide()
 	ExpandedTween.stop_all()
 	ExpandedTween.remove_all()
 	_restore_expanded_card()
@@ -619,6 +647,102 @@ func _try_reveal_expanded_character():
 	ExpandedTween.start()
 
 
+#What the arrows walk through is the list as it stands on screen: the location tabs decide which
+#characters are in it and the sorting decides their order, so a step lands on the card the player
+#would have clicked next rather than on whoever happens to be beside them in the party roster.
+func _get_expanded_step_cards():
+	var cards = []
+	for card in CardContainer.get_children():
+		if !card.has_meta('slave') or !card.visible or card.disabled:
+			continue
+		cards.append(card)
+	return cards
+
+
+#The arrows are only worth showing while there is somewhere to go, and never during a lesson -
+#the tutorial hands the player one particular character and has no way to follow them off it.
+func _update_expanded_step_buttons():
+	var can_step = expanded_card != null and !input_handler.hard_tutorial_active \
+		and _get_expanded_step_cards().size() > 1
+	ExpandedPrevButton.visible = can_step
+	ExpandedNextButton.visible = can_step
+	if can_step:
+		_raise_expanded_step_buttons()
+
+
+#A Control has no z_index in Godot 3 - inside one canvas the child list is the whole of the draw
+#order - and both the card and the doll panel raise themselves to the end of it after they open.
+#So the arrows have to be put back on top afterwards, or they end up under whatever moved last.
+func _raise_expanded_step_buttons():
+	ExpandedPrevButton.raise()
+	ExpandedNextButton.raise()
+
+
+func _step_expanded_character(direction):
+	#Both of the states left out here are a geometry tween in flight - the panel travelling to or
+	#from a row. A swap during one would take the tween's target out from under it and strand the
+	#panel at whatever size that frame had.
+	if expanded_card == null or expanded_animation_state in ["", "opening", "closing"]:
+		return
+	var cards = _get_expanded_step_cards()
+	if cards.size() < 2:
+		return
+	var index = cards.find(expanded_card)
+	if index < 0:
+		return
+	#The list is a ring here. Stopping dead at either end would leave one arrow doing nothing
+	#with nothing on screen to say why, and the ends of a sorted list are not a place the player
+	#asked to be.
+	var target = cards[wrapi(index + direction, 0, cards.size())]
+	#The panel closes back onto whichever row it belongs to, so the new row has to be somewhere
+	#on screen - stepping past the bottom of the scroll would otherwise aim that close at a
+	#card off the list.
+	$ScrollContainer.ensure_control_visible(target)
+	#the same two steps the card's own press does, in the same order: the list marks who is
+	#selected, then the panel swaps over to them
+	get_parent().set_active_person(target.get_meta('slave'))
+	_swap_expanded_character(target)
+
+
+#Stepping to the neighbour changes what the panel holds, not whether it is open. Routing it
+#through close-then-open put the screen through a whole cycle for a swap that moves nothing: the
+#panel shrank onto one row and grew out of the next, and a list the player had folded was folded
+#back and unfolded again on every press. This keeps the geometry and the fold exactly where they
+#are and rebuilds only the contents, the same staged build a fresh open uses.
+func _swap_expanded_character(card):
+	if !card.has_meta("slave"):
+		return
+	var person = card.get_meta("slave")
+	_release_expanded_card_source()
+	expanded_origin_rect = _expanded_rect_for_global_rect(card.get_global_rect())
+	_claim_expanded_card_source(card)
+	_create_expanded_card_visual()
+	ExpandedFoodPreferences.hide()
+	ExpandedSexPanel.hide()
+	ExpandedNameEditor.hide()
+	ExpandedSocialPanel.hide()
+	#A step taken while the previous one was still fading in leaves that fade running on the pane
+	#this one is about to blank, so it is stopped rather than left to drive the alpha back up.
+	ExpandedTween.stop_all()
+	ExpandedTween.remove_all()
+	ExpandedExtra.modulate.a = 0.0
+	ExpandedExtra.show()
+	_cancel_expanded_body_preview_build()
+	_clear_expanded_body_preview()
+	ExpandedBodyPreview.show()
+	ExpandedBodyPreview.modulate.a = 0.0
+	expanded_body_pending_person = person
+	expanded_build_person = person
+	ExpandedDetails.prepare_expanded_person(person)
+	expanded_build_stage = 0
+	expanded_details_ready = false
+	#the panel is already the size it opens to, so the half of the open that moves it is done
+	expanded_geometry_ready = true
+	expanded_animation_state = "waiting_details"
+	_update_expanded_step_buttons()
+	set_process(true)
+
+
 func _clear_expanded_body_preview():
 	ExpandedBodyImage.texture = null
 	ExpandedBodyImage.hide()
@@ -706,6 +830,7 @@ func _build_expanded_body_preview_deferred(person, token):
 	ExpandedBodyPreview.modulate.a = 0.0
 	ExpandedBodyPreview.show()
 	ExpandedBodyPreview.raise()
+	_raise_expanded_step_buttons()
 	_build_expanded_body_preview(person)
 	#The Viewport is UPDATE_ONCE; wait until that frame exists before fading it in.
 	yield(get_tree(), "idle_frame")
@@ -865,7 +990,24 @@ func _copy_card_tooltips(source, target):
 			_copy_card_tooltips(source_child, target.get_node(source_child.name))
 
 
-func _restore_expanded_card():
+#The row in the list the open panel stands for: hidden, undraggable and covered so it cannot be
+#pressed again from underneath. Stepping to the neighbour hands that role from one card to the
+#next without the panel closing, so claiming and letting go are their own two steps.
+func _claim_expanded_card_source(card):
+	expanded_card = card
+	expanded_card_original_modulate = card.self_modulate
+	card.self_modulate.a = 0.0
+	card.drag_enabled = false
+	expanded_card_blocker = Control.new()
+	expanded_card_blocker.name = "ExpandedCardInputBlocker"
+	expanded_card_blocker.anchor_right = 1.0
+	expanded_card_blocker.anchor_bottom = 1.0
+	expanded_card_blocker.mouse_filter = MOUSE_FILTER_STOP
+	card.add_child(expanded_card_blocker)
+	expanded_card_blocker.raise()
+
+
+func _release_expanded_card_source():
 	if expanded_card == null:
 		return
 	if is_instance_valid(expanded_card):
@@ -879,6 +1021,12 @@ func _restore_expanded_card():
 	#Keep the last visual under the now-hidden overlay. Destroying its whole card tree in
 	#the closing callback caused one last-frame spike; it is replaced before the next open.
 	expanded_card = null
+
+
+func _restore_expanded_card():
+	if expanded_card == null:
+		return
+	_release_expanded_card_source()
 	#both teardown paths come through here, so the list is put back exactly once
 	if expanded_restore_fold != FOLD_FULL:
 		set_slave_list_fold(expanded_restore_fold, false)
@@ -2001,6 +2149,7 @@ func _update_card_button(newbutton, person):
 	var card_info = newbutton.get_node(CARD_ACTIONS + "/CharInfo")
 	_set_card_action_available(card_info, true)
 	_set_card_text_tooltip(card_info, tr("MSMNAME"))
+	_update_card_warnings(newbutton, person)
 	_refresh_card_visual(newbutton)
 
 
@@ -2215,6 +2364,7 @@ func update_entry_availability(newbutton, person, refresh_visual = true):
 
 var rows_signature = ""
 var rebuild_queued = false
+var upkeep_refresh_queued = false
 var task_refresh_queued = false
 
 
@@ -2236,6 +2386,25 @@ func queue_rebuild():
 func flush_queued_rebuild():
 	rebuild_queued = false
 	rebuild()
+
+
+#One sweep however many times the signals fire - a swap between two beds moves two people and
+#a farm delivering its harvest touches a food type per crop, and each of those would otherwise
+#pay for a walk over every card on the list.
+func queue_upkeep_refresh():
+	if upkeep_refresh_queued or rebuild_queued:
+		return
+	upkeep_refresh_queued = true
+	call_deferred("flush_queued_upkeep_refresh")
+
+
+func flush_queued_upkeep_refresh():
+	if !upkeep_refresh_queued:
+		return
+	upkeep_refresh_queued = false
+	if rebuild_queued:
+		return
+	refresh_upkeep_warnings()
 
 
 #Removing a job changes work labels and availability, not the roster or the entry tree.
@@ -2839,7 +3008,72 @@ func update_button(newbutton, t_mode = mode):
 	globals.connecttexttooltip(newbutton.get_node(CARD_SEX), tr("MSLMSex") + ": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))
 	globals.connecttexttooltip(newbutton.get_node(CARD_STATUS), _get_character_type_tooltip(person))
 	globals.connecttexttooltip(newbutton.get_node(CARD_RACE), "[center]{color=green|" + races.racelist[person.get_stat('race')].name + "}[/center]\n\n" + person.show_race_description())
+	_update_card_warnings(newbutton, person)
 	_refresh_card_visual(newbutton)
+
+
+#The two badges beside the portrait: what the estate is about to fail to give this character
+#when the turn ends - a meal they will not get, or one below their demand, and the same for
+#the bed they will sleep in. Both are read from state that will not change by itself before
+#then, so the badge is a promise rather than a report of last night.
+#
+#The card tree is reused between characters, so every path out of here has to say what each
+#badge does - a badge left over from the previous occupant would warn about the wrong person.
+func _update_card_warnings(card_root, person):
+	if person == null or !is_instance_valid(card_root):
+		return
+	var food_node = _find_card_node(card_root, CARD_WARN_FOOD)
+	var bed_node = _find_card_node(card_root, CARD_WARN_BED)
+	if food_node == null or bed_node == null:
+		return
+	var food_state = globals.get_food_warning(person)
+	var bed_state = globals.get_sleep_warning(person)
+	_set_card_warning(food_node, person, food_state,
+		TEX_FOOD_STARVING if food_state == 'starve' else TEX_WARN_FOOD_POOR)
+	_set_card_warning(bed_node, person, bed_state, TEX_WARN_BED)
+
+
+#The enlarged copy of a card is the CardLayout itself rather than the button that holds one,
+#so the same badge answers to two different paths depending on which of the two is written to.
+func _find_card_node(root, path):
+	if root.has_node(path):
+		return root.get_node(path)
+	return root.get_node_or_null(path.trim_prefix("CardLayout/"))
+
+
+#Redoes only the two badges, for every card on screen and for the enlarged copy if one is
+#open. Far cheaper than update(), which rebuilds every portrait, bar and strip on the list -
+#and this runs on gestures the player repeats, like moving somebody between beds.
+func refresh_upkeep_warnings():
+	if !is_instance_valid(CardContainer):
+		return
+	for card in CardContainer.get_children():
+		#The container's first child is the template every row is duplicated from, and it never
+		#gets a character. Asking it for one is not free: get_meta with a null default still
+		#prints "does not have any 'meta' values" on every sweep before handing back the null.
+		if !card.has_meta("slave"):
+			continue
+		_update_card_warnings(card, card.get_meta("slave"))
+	if is_instance_valid(expanded_card_visual) and is_instance_valid(expanded_card):
+		_update_card_warnings(expanded_card_visual, expanded_card.get_meta("slave", null))
+
+
+func _set_card_warning(node, person, state, texture):
+	node.visible = state != ''
+	if !node.visible:
+		return
+	node.texture = texture
+	if node.material == null:
+		var pulse = ShaderMaterial.new()
+		pulse.shader = WARNING_PULSE_SHADER
+		#cards that all start together read as one flashing column rather than as several
+		#separate warnings, so each is shoved along the cycle by its own character
+		pulse.set_shader_param("phase", float(posmod(int(person.id), 17)) * 0.13)
+		node.material = pulse
+	var tooltip = globals.get_sleep_warning_tooltip(person, state)
+	if node.name == "Food":
+		tooltip = globals.get_food_warning_tooltip(person, state)
+	_set_card_text_tooltip(node, tooltip)
 
 
 func _update_card_progress(bar, label, value, max_value):

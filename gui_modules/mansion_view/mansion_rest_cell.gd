@@ -68,6 +68,11 @@ func blocked_reason():
 	#beds are for everyone; only work is refused
 	if view.mode == 'sleep':
 		return ""
+	#The strip leaves out anybody on a quest or away at a tutelage, so one standing in it is a
+	#portrait left over from before they were sent - and it is the last portrait that should be
+	#draggable, since dropping it on work is what takes the tutelage away from a child.
+	if view.busy_elsewhere(person):
+		return "ONQUESTLABEL"
 	if !person.is_worker():
 		#is_worker() refuses for two quite different reasons, and "they will not work for you"
 		#answers neither of them. A slave without a trainer is a thing the player can go and

@@ -110,13 +110,16 @@ func deserialize_stack(tmp, id):
 
 
 func cleanup():
-	for id in effects.keys().duplicate():
-		if !effects[id].is_applied:
-			remove_id(id)
-			continue
-		if effects[id].get_applied_obj() == null:
+	var doomed := {}
+	for id in effects:
+		var eff = effects[id]
+		if !eff.is_applied:
+			doomed[id] = true
+		elif eff.get_applied_obj() == null:
 			print("effect %s is removed as applied to no one" % id)
-			remove_id(id)
+			doomed[id] = true
+	if !doomed.empty():
+		remove_ids(doomed)
 	for id in stacks.keys().duplicate():
 		if stacks[id].effects.empty():
 			stacks[id].cleanup()
@@ -129,15 +132,26 @@ func postload():
 			eff.fill_sub_effects()
 
 
-func remove_id(id):
+#One pass over the pool for the whole batch. Removing effects one at a time cost a full
+#scan of every effect and every stack per removal, so a save paid dead_count x pool_size -
+#seconds of main-thread time once the pool grew.
+func remove_ids(doomed: Dictionary):
 	for eff in effects.values():
-		if typeof(eff.parent) == TYPE_STRING and eff.parent == id:
+		if typeof(eff.parent) == TYPE_STRING and doomed.has(eff.parent):
 			eff.parent = null
-		if eff.sub_effects.has(id):
-			eff.sub_effects.erase(id)
+		for i in range(eff.sub_effects.size() - 1, -1, -1):
+			if doomed.has(eff.sub_effects[i]):
+				eff.sub_effects.remove(i)
 	for stack in stacks.values():
-		stack.effects.erase(id)
-	effects.erase(id)
+		for sid in stack.effects.keys():
+			if doomed.has(sid):
+				stack.effects.erase(sid)
+	for id in doomed:
+		effects.erase(id)
+
+
+func remove_id(id):
+	remove_ids({id: true})
 
 
 func get_effects_linked_to(char_id):

@@ -447,9 +447,9 @@ __meta__ = {
 }
 
 [node name="physics2" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect4"]
-margin_left = 1.0
+margin_left = -13.0
 margin_top = 46.0
-margin_right = 51.0
+margin_right = 65.0
 margin_bottom = 81.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
@@ -458,9 +458,9 @@ align = 1
 clip_text = true
 
 [node name="wits2" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect4"]
-margin_left = 1.0
+margin_left = -13.0
 margin_top = 96.0
-margin_right = 51.0
+margin_right = 65.0
 margin_bottom = 131.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
@@ -469,9 +469,9 @@ align = 1
 clip_text = true
 
 [node name="charm2" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect4"]
-margin_left = 1.0
+margin_left = -13.0
 margin_top = 145.0
-margin_right = 51.0
+margin_right = 65.0
 margin_bottom = 180.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
@@ -481,9 +481,9 @@ clip_text = true
 
 [node name="sexuals2" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect4"]
 visible = false
-margin_left = 1.0
+margin_left = -13.0
 margin_top = 148.0
-margin_right = 51.0
+margin_right = 65.0
 margin_bottom = 183.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )

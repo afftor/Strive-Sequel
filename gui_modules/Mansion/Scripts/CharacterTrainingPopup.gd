@@ -153,6 +153,9 @@ func close():
 	set_process(false)
 	gui_controller.windows_opened.erase(self)
 	_restore_clock()
+	#trainings and upgrades bought in here move stats, traits and availability, all of which the
+	#mansion card reads - see CharacterProgressionPopup.close()
+	gui_controller.request_screen_refresh()
 
 
 func _custom_gui_controller_close():

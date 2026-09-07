@@ -892,6 +892,17 @@ static func all_upgrades_maxed(room):
 
 #Everyone in the party who has no bed. This is what blocks the end of the turn, so it
 #counts characters wherever they are on the world map.
+#Which room somebody sleeps in, or null if nowhere. The other half of the same question -
+#who sleeps nowhere at all - is answered by unhoused_characters() below.
+static func room_of_character(layout, char_id):
+	if !(layout is Dictionary) or !layout.has('floors'):
+		return null
+	for entry in each_room(layout):
+		if entry.room.occupants.has(char_id):
+			return entry.room
+	return null
+
+
 static func unhoused_characters(layout, party):
 	var res = []
 	if party == null or !(party is Dictionary):
