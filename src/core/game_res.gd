@@ -1771,8 +1771,28 @@ func _active_task_find(list):
 	return null
 
 
+#True once the household is made of characters rather than of the dictionaries a save holds.
+#globals.LoadGame runs game_res.fix_serialization() before game_party's, so everything this
+#file repairs on load happens while the party is still raw JSON - see seat_farm_workers(),
+#which turns back for the same reason. One entry answers for all of them: fix_serialization()
+#converts the whole household in one pass. An empty household is nobody to be wrong about.
+func party_is_loaded():
+	if ResourceScripts.game_party == null or !(ResourceScripts.game_party.characters is Dictionary):
+		return false
+	for id in ResourceScripts.game_party.characters:
+		return ResourceScripts.game_party.characters[id] is Object
+	return true
+
+
 func clean_task(id):
 	var val = tasks_progresses[id]
+	#Releasing a worker means telling them to leave the task, and a dictionary cannot be told
+	#anything - it crashed on the call. Erasing the record out from under them instead would
+	#leave somebody working a job that is no longer there, so the whole task is left standing:
+	#game_party.fix_serialization_postload() calls ensure_mansion_layout() again once everybody
+	#is a character, and the sweep that wanted this task gone runs then with someone to tell.
+	if val.get('workers', null) is Array and !val.workers.empty() and !party_is_loaded():
+		return
 	var was_on_screen = false
 	if val.has('workers'):
 		was_on_screen = !val.workers.empty()

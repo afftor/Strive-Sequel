@@ -702,7 +702,10 @@ func build_location_group():
 			if animation.person_id == i.id:
 				animate(newbutton, animation.skill)
 				planed_animations.remove(anim_num)
+	#input_handler.active_location is null between locations, and reading .id off it threw before
+	#the empty-group check could send the party home
 	if (counter == 0
+		&& input_handler.active_location != null
 		&& input_handler.active_location.id == active_location.id
 		&& is_visible()):#$LocationGui.is_visible()
 		nav.return_to_mansion()

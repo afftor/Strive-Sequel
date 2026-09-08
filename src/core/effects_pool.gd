@@ -82,7 +82,15 @@ func make_stack(code, store = true):
 	return res
 
 
+#A stack id the pool cannot answer for. cleanup() below sweeps every emptied stack, and tells
+#its owner to forget the id only while characters_pool can still resolve that owner - so an id
+#can outlive its stack in a character's effects_temp_stored, and indexing `stacks` unguarded
+#then threw. That id is read again on every stat rebuild of that character, so the throw was
+#not a one-off: answer null instead and let the caller drop the id for good.
 func clone_stack(id):
+	if !stacks.has(id):
+		print("stack %s not found - nothing to clone" % id)
+		return null
 	var oldstack = stacks[id]
 	var newstack = make_stack(oldstack.code, false)
 	newstack.effects = oldstack.effects.duplicate()

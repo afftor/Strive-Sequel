@@ -49,13 +49,18 @@ func update():
 			slavename += "F"
 		text = tr('TYPE_LABEL' + ': ' + "[color=yellow]") + person.translate(slavename) + "[/color]\n"
 		if person.is_players_character == true:
-			if person.get_work() != 'disabled' and person.get_work() != '' and person.get_work() != 'Assignment' and person.get_work() != 'learning':
-				var task_id = person.get_work()
-				var task = ResourceScripts.game_res.tasks_progresses[task_id]
-				text += tr(task.name)
-			else:
-				text += "Occupation: None"
-			text += "\n"
+			var task_id = person.get_work()
+			var occupation = ""
+			#'travel' is a work value like any other - ch_leveling.remove_from_task guards on it -
+			#but it never gets an entry in tasks_progresses, and indexing it threw and took the rest
+			#of the tooltip with it. Anyone on the road was hovered to a half-built card.
+			if task_id == 'travel':
+				occupation = tr("TASKTRAVEL")
+			elif ResourceScripts.game_res.tasks_progresses.has(task_id):
+				occupation = tr(ResourceScripts.game_res.tasks_progresses[task_id].name)
+			if occupation == "":
+				occupation = "Occupation: None"
+			text += occupation + "\n"
 
 		$growth.text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))]
 		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])

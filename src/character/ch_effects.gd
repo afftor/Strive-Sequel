@@ -59,13 +59,18 @@ func fix_serialize():
 			var stid = 'default'
 			if eff.template.has('stack'): 
 				stid = eff.template.stack
+			var stack = null
 			if effects_temp_stored.has(stid):
-				var stack = effects_pool.get_stack_by_id(effects_temp_stored[stid])
-				if !stack.has_effect(eff.id):
-					print("stacked effect %s / %s / %s is removed as not applied to its owner - no effect" % [eff.id, stid, str(eff.template_id)])
-					eff.is_applied = false
-			else:
+				stack = effects_pool.get_stack_by_id(effects_temp_stored[stid])
+				if stack == null:
+					#an id the pool cannot answer for is no better than no id at all, and leaving
+					#it in place would make every later reader of it throw
+					effects_temp_stored.erase(stid)
+			if stack == null:
 				print("stacked effect %s / %s is removed as not applied to its owner - no stack" % [eff.id, stid])
+				eff.is_applied = false
+			elif !stack.has_effect(eff.id):
+				print("stacked effect %s / %s / %s is removed as not applied to its owner - no effect" % [eff.id, stid, str(eff.template_id)])
 				eff.is_applied = false
 
 
@@ -81,14 +86,16 @@ func add_eff_to_stack(e_id, timestamp = null):
 		timestamp = get_timestamp()
 		if effects_temp_stored.has(stack_code):
 			stack = effects_pool.get_stack_by_id(effects_temp_stored[stack_code])
-		else:
+		#a recorded id the pool has no stack for is treated as no stack: build a fresh one and
+		#let the new id replace the dead one
+		if stack == null:
 			stack = effects_pool.make_stack(stack_code)
 			effects_temp_stored[stack_code] = stack.id
 			stack.owner = parent.get_ref().id
 	else:
 		if effects_temp_real.has(stack_code):
 			stack = effects_temp_real[stack_code]
-		else:
+		if stack == null:
 			stack = effects_pool.make_stack(stack_code, false)
 			effects_temp_real[stack_code] = stack
 			stack.owner = parent.get_ref().id
@@ -134,8 +141,12 @@ func add_stored_effect(code, dict = {}):
 
 
 func clear_nonstored_effs():
-	for rec in effects_temp_globals_real:
+	for rec in effects_temp_globals_real.duplicate():
 		var eff = effects_pool.get_effect_by_id(rec.id)
+		if eff == null:
+			print("global effect %s is gone from the pool and was dropped" % rec.id)
+			effects_temp_globals_real.erase(rec)
+			continue
 		if eff.is_stored:
 			continue
 		if eff.parent is String and eff.parent.begins_with('hid'):
@@ -349,19 +360,26 @@ func remove_effect(eff_id, internal = false):
 		rebuild = variables.DYN_STATS_REBUILD
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	var removed_injury = obj != null && obj.has_status("injury")
+	if obj == null:
+		#already gone from the pool - there is nothing left to unstack, and reading is_stored
+		#off it below would throw
+		return
 	if obj is temp_e_global:
 		remove_t_global(eff_id)
 	else:
 		if !obj.is_stored:
 			return
 		var stid = 'default'
-		if obj.template.has('stack'): 
+		if obj.template.has('stack'):
 			stid = obj.template.stack
 		if !effects_temp_stored.has(stid):
 			print('try to remove eff %s from nonexisted stack %s' % [eff_id, stid])
 			return
-		var stack = effects_temp_stored[stid]
-		effects_pool.get_stack_by_id(stack).remove_effect(eff_id)
+		var stack = effects_pool.get_stack_by_id(effects_temp_stored[stid])
+		if stack == null:
+			effects_temp_stored.erase(stid)
+			return
+		stack.remove_effect(eff_id)
 	if removed_injury && !has_status("injury"):
 		var character = parent.get_ref()
 		if character != null:

@@ -220,8 +220,15 @@ static func has_tag(part_id, tag):
 # own order of values, or "" when the axis is not a ladder or has nothing to
 # offer.  The smaller neighbour is tried first: a top cut for a smaller chest
 # sits close on a flatter one, where the larger cut would hang off it.
-static func _nearest_option(definition, options, wanted):
+#
+# `nearest_slots` narrows the rule to the slots it was meant for: a missing piece
+# is a gap in one set's wardrobe, while the same size missing from the body is
+# the body saying it draws nothing there.
+static func _nearest_option(definition, options, wanted, slot_name):
 	if !bool(definition.get("nearest", false)):
+		return ""
+	var only = definition.get("nearest_slots", [])
+	if !only.empty() and !(slot_name in only):
 		return ""
 	var order = definition.get("values", [])
 	var at = order.find(wanted)
@@ -283,7 +290,7 @@ static func compose(selections, axis_values):
 				# slot at every size, so a size it was never cut for wears the
 				# closest one instead.  Everything else keeps clearing the slot:
 				# an outfit with no maternity piece must show nothing there.
-				var stand_in = _nearest_option(definition, value.options, axis_value)
+				var stand_in = _nearest_option(definition, value.options, axis_value, slot_name)
 				if stand_in.empty():
 					result.erase(slot_name)
 				else:

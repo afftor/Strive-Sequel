@@ -1,5 +1,7 @@
 extends Node
-const gameversion = '0.16.0b'
+const gameversion = '0.16.0d'
+#pure data script, no autoloads of its own - see its header
+const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 
 #time
 signal hour_tick
@@ -1623,6 +1625,7 @@ func LoadGame(filename):
 	var loadscreen = yield(input_handler.ShowLoadScreenWithTransition(0.3), "completed")
 	yield(get_tree(), 'idle_frame')
 #	input_handler.CloseableWindowsArray.clear()
+	drop_replaced_screens()
 	gui_controller.revert_scenes_data()
 	ResourceScripts.revert_gamestate()
 	input_handler.emit_signal("clear_cashed")
@@ -1637,6 +1640,12 @@ func LoadGame(filename):
 
 	var savedict = parse_json(save_text)
 	loadscreen.set_progress(14)
+	yield(get_tree(), 'idle_frame')
+
+	#anything the save owes to a mod that is no longer loaded goes here, before the first
+	#object is built out of the dictionary
+	var sanitized = sanitize_save(savedict, filename)
+	loadscreen.set_progress(15)
 	yield(get_tree(), 'idle_frame')
 
 	for faction in savedict.game_world.areas.plains.factions:
@@ -1694,10 +1703,6 @@ func LoadGame(filename):
 	loadscreen.set_progress(45)
 	yield(get_tree(), 'idle_frame')
 
-	if is_instance_valid(gui_controller.mansion):
-		gui_controller.mansion.queue_free()
-	if is_instance_valid(gui_controller.current_screen):
-		gui_controller.current_screen.queue_free()
 	loadscreen.goto_scene(ResourceScripts.scenedict.mansion, 45, 100, true, 60)
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
@@ -1705,6 +1710,7 @@ func LoadGame(filename):
 		gui_controller.clock.set_sky_pos()
 	
 	input_handler.SystemMessage("Game Loaded")
+	report_sanitized_save(sanitized)
 	
 	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.0c'):
 		if globals.valuecheck({type = "active_quest_stage", value = 'princess_search', stage = 'stage2', state = true}):
@@ -1722,6 +1728,83 @@ func LoadGame(filename):
 			{code = 'progress_quest', value = 'erdyna_quest', stage = 'catacombs_opened'},
 			{code = 'make_quest_location', value = 'quest_empire_catacomb_entry'}
 		])
+
+
+#The screens of the game being replaced stay in the tree for the whole of a load, and both
+#LoadGame and ImportGame yield a frame between every step - so they keep drawing over a world
+#that is being taken apart underneath them. A mansion slave list redrawing in that window asks
+#characters of the old game for a price; that rebuilds their dynamic stats against the effects
+#pool the new save has just replaced, and walks stacks naming effects it has never heard of -
+#"Invalid get index 'is_stored' (on base: 'Nil')". They used to be freed at the very end of the
+#load, long after the window had opened. Taking them out of the tree stops them this frame;
+#queue_free() on its own only promises the node will be gone by the end of it.
+func drop_replaced_screens():
+	for node in [gui_controller.mansion, gui_controller.current_screen]:
+		if !is_instance_valid(node):
+			continue
+		if node.is_inside_tree():
+			node.get_parent().remove_child(node)
+		node.queue_free()
+	gui_controller.mansion = null
+	gui_controller.current_screen = null
+
+
+#A save written with mods loaded names classes and data that only that mod could supply. With
+#the mod gone the classes cannot be loaded at all - dict2inst() returns null and the load dies
+#on the first character - and the data has nothing left to describe it. Both are taken out of
+#the parsed dictionary here, before anything is built from it. See save_sanitizer.gd.
+func sanitize_save(savedict, filename = ""):
+	#Dev builds only. The sweep throws away whatever the save owes to a mod, and a player who
+	#merely forgot to re-enable one would lose their gear, craft orders and guild quests for
+	#good the moment the next autosave wrote the stripped state back to disk. A shipped game
+	#therefore refuses the save exactly as it did before; here it is the thing that lets a
+	#modded save be opened at all.
+	if !OS.has_feature('editor'):
+		return null
+	var report = SaveSanitizer.sanitize(savedict, _save_sanitizer_context())
+	if !SaveSanitizer.is_clean(report):
+		print("save %s carried mod data the game no longer has: %s" % [
+			filename, SaveSanitizer.describe(report)])
+	return report
+
+
+#A popup rather than a system message: this only ever fires in a dev build, where the save has
+#just been altered on the way in and whoever opened it has to see that before they play on and
+#save the stripped state back. sanitize_save() returns null when the gate is shut, so a shipped
+#game never reaches this. The headline is localised; the tally under it is diagnostic text.
+func report_sanitized_save(report):
+	if report == null or SaveSanitizer.is_clean(report):
+		return
+	var text = tr("SAVEMODDATASTRIPPED")
+	var tally = SaveSanitizer.describe_short(report)
+	if tally != "":
+		text += "\n\n" + tally
+	input_handler.get_spec_node(input_handler.NODE_ALERT_PANEL, [self, text, "MODOK", '', '', ''])
+
+
+#The sanitizer takes every table it reads as an argument so it stays a pure script, out of the
+#preload chain. scriptdict holds Scripts once load_scripts() has run and paths before that, and
+#its values are the live answer to "what class does this slot use", mods loaded or not.
+func _save_sanitizer_context():
+	var script_paths = {}
+	var script_files = {}
+	for key in ResourceScripts.scriptdict:
+		var entry = ResourceScripts.scriptdict[key]
+		var path = entry if entry is String else entry.resource_path
+		if !(path is String) or path == "":
+			continue
+		script_paths[key] = path
+		script_files[path.get_file().get_basename()] = key
+	return {
+		script_paths = script_paths,
+		script_files = script_files,
+		gamestate_keys = ResourceScripts.gamestate,
+		itemlist = Items.itemlist,
+		materiallist = Items.materiallist,
+		recipes = Items.recipes,
+		enchantments = Items.enchantments,
+		curses = Items.curses,
+	}
 
 
 #saves made before the password moved to progress data kept the unlock in game_globals
@@ -1750,6 +1833,7 @@ func ImportGame(filename):
 	ResourceScripts.core_animations.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 #	input_handler.CloseableWindowsArray.clear()
+	drop_replaced_screens()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
 	input_handler.emit_signal("clear_cashed")
@@ -1757,6 +1841,7 @@ func ImportGame(filename):
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
+	var sanitized = sanitize_save(savedict, filename)
 
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_res = dict2inst(savedict.game_res)
@@ -1780,16 +1865,13 @@ func ImportGame(filename):
 	
 	ResourceScripts.game_party.fix_serialization_postload()
 
-	if is_instance_valid(gui_controller.mansion):
-		gui_controller.mansion.queue_free()
-	if is_instance_valid(gui_controller.current_screen):
-		gui_controller.current_screen.queue_free()
 	input_handler.ChangeScene('mansion');
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Imported")
+	report_sanitized_save(sanitized)
 	common_effects([
 			{code = 'add_timed_event', value = "loan_event1",
 				args = [
@@ -2958,10 +3040,17 @@ func common_effects(effects, from_event = false):
 							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
 							newevent.reqs += newreq
 						'add_to_hour':
+							#the day used to roll over when the CURRENT hour was the last of the
+							#day rather than when the sum actually ran past it. Anything landing
+							#more than one turn ahead was therefore dated to an hour of today
+							#that had already gone by - a schedule the tick could never match.
+							#Every use in the data today asks for a single hour, which is the one
+							#case the old arithmetic got right, so this only ever mattered to
+							#whoever wrote the next one
 							var date = ResourceScripts.game_globals.date
-							var hour = ResourceScripts.game_globals.hour + round(rand_range(k.hour[0], k.hour[1]))
-							if hour > 4: hour = hour - 4
-							if ResourceScripts.game_globals.hour == 4:
+							var hour = int(ResourceScripts.game_globals.hour) + int(round(rand_range(k.hour[0], k.hour[1])))
+							while hour > variables.HoursPerDay:
+								hour -= variables.HoursPerDay
 								date += 1
 							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
 							newevent.reqs += newreq

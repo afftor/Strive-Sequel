@@ -772,18 +772,30 @@ func set_hair_stat(st, value):
 		statlist[st] = value
 		var tdata = get_hairs_data()
 		for h_stat in ['hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_length', 'hair_fringe_length', 'hair_back_length', 'hair_assist_length',]:
-			statlist[h_stat] = tdata[h_stat]
+			write_derived_hair(h_stat, tdata[h_stat])
 	if st in ['hair_color']: #legacy stub
 		statlist[st] = value
 		var tdata = get_hairs_data()
 		for h_stat in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
-			statlist[h_stat] = tdata[h_stat]
+			write_derived_hair(h_stat, tdata[h_stat])
 	if st.ends_with('virgin'):
 		#tot a hairs but obsolete stats
 		if value:
 			statlist[st + '_lost'] = null
 		else:
 			statlist[st + '_lost'] = 'unknown'
+
+
+#One of the stats `get_hairs_data` derives, put where that stat actually lives.
+#The four lengths are declared `container = 'exterior'` in statdata and are read
+#back out of it; the cuts and the colours sit in `statlist`.  Writing all of them
+#to `statlist` dropped every length on the floor - a style was worn at whatever
+#length the race had rolled, and `bald` never took the hair off at all.
+func write_derived_hair(h_stat, value):
+	if str(statdata.statdata[h_stat].get('container', '')) == 'exterior':
+		exterior[h_stat] = value
+	else:
+		statlist[h_stat] = value
 
 
 func get_combined_hairs_data():
@@ -1023,7 +1035,13 @@ func get_combined_hairs_data():
 	else:
 		res.hair_color = colors[0] 
 	
-	res.hair_length = lenghthes[length]
+	#A bald head cannot be read back off the cut: the cut is still named, it is
+	#simply not drawn.  The length is the only place that says so, and without
+	#this the doll showed a bare scalp while the description called it neck length.
+	if str(exterior.get('hair_base_length', '')) == 'bald':
+		res.hair_length = 'bald'
+	else:
+		res.hair_length = lenghthes[length]
 	
 	return res
 

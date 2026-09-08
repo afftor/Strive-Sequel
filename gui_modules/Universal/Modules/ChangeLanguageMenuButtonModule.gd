@@ -2,12 +2,12 @@ extends HBoxContainer
 var OkPanel
 
 var flag_textures = {
-	"en": preload("res://assets/Textures_v2/UNIVERSAL/Flags/flag_en.png"),
-	"es": preload("res://assets/Textures_v2/UNIVERSAL/Flags/flag_es.png"),
-	"fr": preload("res://assets/Textures_v2/UNIVERSAL/Flags/flag_fr.png"),
-	"it": preload("res://assets/Textures_v2/UNIVERSAL/Flags/flag_it.png"),
-	"ru": preload("res://assets/Textures_v2/UNIVERSAL/Flags/flag_ru.png"),
-	"zh": preload("res://assets/Textures_v2/UNIVERSAL/Flags/flag_zh.png"),
+	"en": preload("res://assets/Textures_v2/Universal/Flags/flag_en.png"),
+	"es": preload("res://assets/Textures_v2/Universal/Flags/flag_es.png"),
+	"fr": preload("res://assets/Textures_v2/Universal/Flags/flag_fr.png"),
+	"it": preload("res://assets/Textures_v2/Universal/Flags/flag_it.png"),
+	"ru": preload("res://assets/Textures_v2/Universal/Flags/flag_ru.png"),
+	"zh": preload("res://assets/Textures_v2/Universal/Flags/flag_zh.png"),
 }
 
 const SELECTED_COLOR = Color(1, 1, 1, 1)

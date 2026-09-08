@@ -698,9 +698,8 @@ __meta__ = {
 
 [node name="physics2" type="Label" parent="VBoxContainer2/TextureRect4"]
 light_mask = 0
-margin_left = -14.0
 margin_top = 40.0
-margin_right = 64.0
+margin_right = 50.0
 margin_bottom = 75.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 35 )
@@ -710,9 +709,8 @@ clip_text = true
 
 [node name="wits2" type="Label" parent="VBoxContainer2/TextureRect4"]
 light_mask = 0
-margin_left = -14.0
 margin_top = 73.0
-margin_right = 64.0
+margin_right = 50.0
 margin_bottom = 108.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 35 )
@@ -722,9 +720,8 @@ clip_text = true
 
 [node name="charm2" type="Label" parent="VBoxContainer2/TextureRect4"]
 light_mask = 0
-margin_left = -14.0
 margin_top = 108.0
-margin_right = 64.0
+margin_right = 50.0
 margin_bottom = 143.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 35 )
@@ -735,9 +732,8 @@ clip_text = true
 [node name="sexuals2" type="Label" parent="VBoxContainer2/TextureRect4"]
 visible = false
 light_mask = 0
-margin_left = -14.0
 margin_top = 139.0
-margin_right = 64.0
+margin_right = 50.0
 margin_bottom = 174.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 35 )

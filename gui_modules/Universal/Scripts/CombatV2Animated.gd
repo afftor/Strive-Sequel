@@ -1205,11 +1205,16 @@ func FighterMouseOver(id, no_press = false):
 
 func FighterMouseOverFinish(id):
 	var fighter = characters_pool.get_char_by_id(id)
-	var panel = fighter.displaynode
 	fighterhighlighted = false
 	$StatsPanelRight.visible = false
 	$StatsPanelLeft.visible = false
-	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
+	#The card can be gone by the time the cursor leaves it - a fighter that died under the mouse
+	#has its displaynode cleared, and the pool no longer answers for a summon that was retired.
+	#Everything below still has to run: this is where the cursor and the target glow are put back.
+	var panel = null
+	if fighter != null:
+		panel = fighter.displaynode
+	if panel != null and (variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy'):
 		panel.get_node("bars/HP/hplabel").hide()
 		panel.get_node("bars/MP/mplabel").hide()
 	Input.set_custom_mouse_cursor(images.cursors.default)
@@ -1885,31 +1890,47 @@ func SelectContainer(button):
 
 
 
+#Every "this one will not do" branch below falls back on the basic attack. The basic attack can
+#be blocked too - disarm stops any ability_type 'skill' that is not tagged disable_immunity, and
+#ranged_attack carries no such tag - and then the fallback lands back in the branch it came from
+#and defers itself again. Deferred calls pushed during a message-queue flush are handled inside
+#that same flush and their bytes are not reclaimed until it ends, so the loop never reaches a
+#frame boundary: it grows the queue until the 4MB buffer is full and the engine dies outright
+#("Message queue out of memory", 87k queued calls). Fall back only to a skill we have not just
+#refused, and otherwise leave the turn waiting on the player.
+func fallback_to_basic(refused_code):
+	var basic = activecharacter.get_skill_by_tag('basic')
+	if basic == null or basic == refused_code:
+		return
+	call_deferred('SelectSkill', basic)
+
+
 func SelectSkill(skill, user_act = true):
 	hide_popup_skill()
-	if activecharacter == null: 
+	if activecharacter == null:
 		return
-	
+
+	var requested = skill
 	skill = Skilldata.get_template_combat(skill, activecharacter)
-	
+
 	Input.set_custom_mouse_cursor(images.cursors.default)
-	
+
 	$Panel3/TextureRect.texture = skill.icon
 	$Panel3/Label.text = skill.name
 	#need to add daily restriction check
 	if !activecharacter.can_use_skill(skill)  :
 		#SelectSkill('attack')
-		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
+		fallback_to_basic(requested)
 		return
 	if !activecharacter.has_status('ignore_catalysts_for_%s' % skill.code):
 		for i in skill.catalysts:
 			if ResourceScripts.game_res.materials[i] < skill.catalysts[i]:
 				input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
-				call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'));
+				fallback_to_basic(requested)
 				break
 	if skill.charges > 0 && activecharacter.skills.combat_skill_charges.has(skill.code) && activecharacter.skills.combat_skill_charges[skill.code] >= skill.charges:
 		#input_handler.SystemMessage("No charges left: " + skill.name)
-		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
+		fallback_to_basic(requested)
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
@@ -1926,7 +1947,7 @@ func SelectSkill(skill, user_act = true):
 					return
 				else:
 					input_handler.SystemMessage(tr("NO_TARGETS"))
-					call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
+					fallback_to_basic(requested)
 					return
 	if skill.has('cursor'): 
 		customcursor = skill.cursor
@@ -1934,7 +1955,7 @@ func SelectSkill(skill, user_act = true):
 		customcursor = null
 	if skill.target == 'self':
 		if !user_act:
-			call_deferred('SelectSkill', activecharacter.get_skill_by_tag('basic'))
+			fallback_to_basic(requested)
 			return
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = activecharacter.get_skill_by_tag('basic')

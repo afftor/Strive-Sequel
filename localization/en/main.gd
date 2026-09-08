@@ -70,6 +70,7 @@ For safety, the old mods.ini was backed up to:
 %s
 
 A new empty mods.ini has been created. Please re-enable compatible mods from the Mods menu.""",
+	SAVEMODDATASTRIPPED = "This save was made with mods that are not loaded now. What they had added was taken out of it so it could be opened:",
 	MENUCREDITSNAME = "Credits",
 	MENUCREDITSDESC = """Game design, writing, programming: Maverik 
 

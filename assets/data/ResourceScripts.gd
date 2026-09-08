@@ -67,10 +67,13 @@ onready var node_data = {
 #	input_handler.NODE_DIALOGUE_T2 : {name = 'dialogue_t2', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/QuestDialogue.tscn")},
 	# input_handler.NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://src/main/Inventory.tscn"), calls = 'open'},
 	input_handler.NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},
-	input_handler.NODE_ALERT_PANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'Show'},
-	input_handler.NODE_CONFIRMPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowConfirmCancel'},
-	input_handler.NODE_YESNOPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowYesNo'},
-	input_handler.NODE_YESORNOPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowYesOrNo'},
+	#'layer' puts the window on a canvas layer of its own (input_handler.get_spec_node_parent).
+	#The questions and the game menu need it to clear the mansion's room card, which draws on
+	#layer 3; the questions sit above the menu because the menu asks one of them on the way out.
+	input_handler.NODE_ALERT_PANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'Show', layer = 15},
+	input_handler.NODE_CONFIRMPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowConfirmCancel', layer = 15},
+	input_handler.NODE_YESNOPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowYesNo', layer = 15},
+	input_handler.NODE_YESORNOPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowYesOrNo', layer = 15},
 	input_handler.NODE_SLAVESELECT : {name = 'SlaveSelectMenu', mode = 'scene', scene = preload("res://src/scenes/SlaveSelectMenu.tscn")},
 	input_handler.NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/scenes/SkillSelectMenu.tscn")},
 	input_handler.NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
@@ -97,7 +100,7 @@ onready var node_data = {
 	input_handler.NODE_EXPLORATION_CITY : {name = 'exploration_city', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationCityModule.tscn") },
 	input_handler.NODE_EXPLORATION_DUNGEON : {name = 'exploration_dungeon', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationDungeon.tscn") },
 	input_handler.NODE_EXPLORE_SLAVEINFO : {name = 'explore_slaveinfo', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExploreFullSlaveInfo.tscn") },
-	input_handler.NODE_GAMEMENU : {name = 'gamemenu', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/GameMenuPanel.tscn") },
+	input_handler.NODE_GAMEMENU : {name = 'gamemenu', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/GameMenuPanel.tscn"), layer = 10 },
 	input_handler.NODE_SEX : {name = 'sex_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/InteractionMainModule.tscn") },
 	input_handler.NODE_DATE : {name = 'date_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/date.tscn") },
 	input_handler.NODE_TUTORIAL_PANEL : {name = 'tutorial_panel', mode = 'scene', scene = preload("res://gui_modules/Mansion/Modules/Tutorial.tscn") },

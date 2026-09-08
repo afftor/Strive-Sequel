@@ -1,3 +1,10 @@
+0.16.0d
+Fixed linux version cheat menu
+Fixed chinese localization being broken
+Fixed small chest clothes not displaying correctly
+Fixed serelization issue preventing older events from triggering
+0.16.0c
+Fixed old save compatibility
 0.16.0b
 Added alternative act 3 coaliton boss
 Multiple updates and fixes to paperdoll, including a couple new hairstyles

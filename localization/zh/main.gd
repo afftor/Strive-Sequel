@@ -182,17 +182,17 @@ https://freesound.org/people/pfranzen/sounds/192072/""",
 	OPTDISABLEITEMFLIGHT = """禁用物品拾取动画""",
 	OPTITEMFLIGHT = """物品收集动画""",
 	OPTFPSMETER = """显示 FPS""",
-	OPTFASTCOMBAT = """Fast combat""", # MISSING TRANSLATION
-	COMBATFASTFORWARDTOOLTIP = """Play combat animations and delays four times faster. Damage numbers keep their usual pace.""", # MISSING TRANSLATION
+	OPTFASTCOMBAT = """快速战斗""",
+	COMBATFASTFORWARDTOOLTIP = """将战斗动画与延迟的播放速度提升至四倍。伤害数字仍保持正常速度。""",
 	OPTCHEATENTERCODE = """输入代码""",
 	OPTCHEATACTIVATE = """激活""",
 	OPTCHEATGETCODE = """获取代码""",
 	OPTCHEATPASSWORD = """密码""",
 	OPTCHEATCODEACTIVATE = """赞助者代码已激活""",
 	OPTCHEATCHEATMENU = """作弊菜单""",
-	OPTCHEATUNLOCKNGP = """Unlock New Game+""", # MISSING TRANSLATION
-	OPTCHEATNGPUNLOCKED = """New Game+ Unlocked""", # MISSING TRANSLATION
-	OPTCHEATUNLOCKNGPTOOLTIP = """Opens the New Game+ bonus panel when starting a new game, without waiting for the first act to be finished. The bonuses themselves and the points to spend on them still have to be earned.""", # MISSING TRANSLATION
+	OPTCHEATUNLOCKNGP = """解锁新游戏+""",
+	OPTCHEATNGPUNLOCKED = """已解锁新游戏+""",
+	OPTCHEATUNLOCKNGPTOOLTIP = """开启新游戏时即可直接打开“新游戏+”奖励面板，无需等待通关第一幕。但奖励本身及用于兑换的积分仍需正常获取。""",
 	LSPMODE = """模式""",
 	LSPVER = """版本""",
 	LSPGOLD = """金币""",
@@ -447,7 +447,7 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	LMMDATE = """瑟瑟""",
 	LMMINVENTORY = """库存""",
 	LMMCRAFT = """工艺""",
-	LMMCRAFTNOROOM = """Requires a workshop on the estate.""", # MISSING TRANSLATION
+	LMMCRAFTNOROOM = """需要领地内建有工坊。""",
 	LMMJOURNAL = """日志""",
 	LMMOPTIONS = """菜单""",
 	LMMWORK = """工作""",
@@ -507,8 +507,8 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	MSLMGOTOLOCATION = """前往 %s。""",
 	MSMNAME = """角色信息""",
 	MSMEXP = """经验""",
-	MSMPREVCHARACTER = """Previous character""", # MISSING TRANSLATION
-	MSMNEXTCHARACTER = """Next character""", # MISSING TRANSLATION
+	MSMPREVCHARACTER = """上一个角色""",
+	MSMNEXTCHARACTER = """下一个角色""",
 	FACTORDESCRIPTS1 = """糟糕""",
 	FACTORDESCRIPTS2 = """差""",
 	FACTORDESCRIPTS3 = """一般""",
@@ -806,14 +806,14 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	FOODSTATEUNDEAD = """无需进食""",
 	FOODSTATEUNDEADDESCRIPT = """亡灵无需进食，绝不受饥饿影响。""",
 	FOODLOGSTARVE = """%s：无法进食。尊崇度与好感度降低。""",
-	CARDWARNFOODNONE = """Will Go Hungry""", # MISSING TRANSLATION
-	CARDWARNFOODNONEDESCRIPT = """This character eats when the turn ends, and there is nothing in store they are allowed to eat. They will starve: Respect and Affection lost, and the starvation penalty until they are fed.""", # MISSING TRANSLATION
-	CARDWARNFOODPOOR = """Meal Below Demand""", # MISSING TRANSLATION
-	CARDWARNFOODPOORDESCRIPT = """This character eats when the turn ends, and the best food in store they are allowed is below their demand of %s.""", # MISSING TRANSLATION
-	CARDWARNBEDNONE = """No Bed""", # MISSING TRANSLATION
-	CARDWARNBEDNONEDESCRIPT = """Nobody has given this character a room, so they will spend the night on the floor.""", # MISSING TRANSLATION
-	CARDWARNBEDPOOR = """Lodgings Below Demand""", # MISSING TRANSLATION
-	CARDWARNBEDPOORDESCRIPT = """This character's demand of %s asks for a private room, and the one they sleep in is not.""", # MISSING TRANSLATION
+	CARDWARNFOODNONE = """即将挨饿""",
+	CARDWARNFOODNONEDESCRIPT = """该角色会在回合结束时进食，但仓库中没有其获准食用的食物。他们将会陷入饥饿：损失尊重与好感度，并在吃到食物前持续受到饥饿惩罚。""",
+	CARDWARNFOODPOOR = """伙食低于需求""",
+	CARDWARNFOODPOORDESCRIPT = """该角色会在回合结束时进食，但仓库中获准其食用的最高品质食物低于其对 %s 的需求。""",
+	CARDWARNBEDNONE = """无床位""",
+	CARDWARNBEDNONEDESCRIPT = """没有人为此角色分配房间，因此他们今晚只能睡在地板上。""",
+	CARDWARNBEDPOOR = """住所低于需求""",
+	CARDWARNBEDPOORDESCRIPT = """该角色对 %s 的需求要求拥有独立房间，而他们目前睡的地方并不满足要求。""",
 	FOODLOGBELOWDEMAND = """%s：进食了 %s，低于其饮食要求。尊崇度降低。""",
 	CURRENTLYINPOSSESSION = """目前持有""",
 	MATERIALCATEGORYFOOD = """食物""",
@@ -1944,7 +1944,7 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
     SKILLDARK_GIFT = """黑暗赠礼""",
     SKILLDARK_GIFTDESCRIPT = """对其造成相当于其当前生命值30%的伤害，并赋予他们{color=aqua|黑暗赠礼}。""",
     SKILLPUPPET_ON_A_STRING = """提线木偶""",
-    SKILLPUPPET_ON_A_STRINGDESCRIPT = """强制其对一名随机敌人造成150%的物理伤害，并承受相当于其50%的魔法反冲伤害。如果该盟友是库尔丹，则强制他改为使用{color=aqua|炼狱}，并承受相当于其当前生命值30%的伤害。""",
+    SKILLPUPPET_ON_A_STRINGDESCRIPT = """强制其对一名随机敌人造成150%的物理伤害，并承受相当于其50%的魔法反冲伤害。如果该盟友是库黛，则强制他改为使用{color=aqua|炼狱}，并承受相当于其当前生命值30%的伤害。""",
     SKILLPUPPET_ATTACK = """牵线拉扯""",
     SKILLFORCE_MARTYRDOM = """强制殉道""",
     SKILLFORCE_MARTYRDOMDESCRIPT = """锁定一名生命值低于30%的盟友，使其自爆身亡。对所有敌人造成相当于目标150%攻击力与魔法攻击力总和的伤害，并施加恐惧。""",
@@ -2043,139 +2043,139 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
     SKILLPRISMATIC_BEAMDESCRIPT = """对单一目标造成130%的魔法光属性伤害。施加致盲。""",
     SKILROCK_SLIDE = """山崩落石""", 
     SKILLROCK_SLIDEDESCRIPT = """向敌人投掷飞石，有几率造成90%的魔法{color=yellow|土属性}伤害。有几率使被击中的目标眩晕。""",
-	SKILLCOAL_PEBBLE_FIST = """Pebble Fist: Goliath Slayer""", # MISSING TRANSLATION
-	SKILLCOAL_PEBBLE_FISTDESCRIPT = """Can only be used against an enemy at full HP. Deal 200% ATK damage with an extreme amount of armor penetration. Inflicts Shock and Shred for 3 turns and Stun for 1 turn.""", # MISSING TRANSLATION
-	SKILLCOAL_IRON_MOUNTAIN_LEAN = """Iron Mountain Lean""", # MISSING TRANSLATION
-	SKILLCOAL_IRON_MOUNTAIN_LEANDESCRIPT = """Cannot be used against an enemy affected by Knock Prone. A shoulder bash that deals 120% ATK {color=yellow|Earth} damage to the target and sends them crashing into the one behind them for the same damage. Inflicts Knock Prone for 2 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_NERVE_POINT = """Nerve-point Acupressure""", # MISSING TRANSLATION
-	SKILLCOAL_NERVE_POINTDESCRIPT = """Strike 3 times for 50% ATK damage each. Every hit inflicts {color=aqua|Paralysis} for 2 turns. Deals 40% more damage against paralysed or immobilised targets.""", # MISSING TRANSLATION
-	SKILLCOAL_MIGHTY_STEP = """Mighty Step, Weighty Blow""", # MISSING TRANSLATION
-	SKILLCOAL_MIGHTY_STEPDESCRIPT = """Stomp the ground, dealing 70% MATK {color=yellow|Earth} magic damage to every non-flying enemy with a chance to inflict Knock Prone.
-Then punch the target for 150% ATK damage. If the target is affected by Knock Prone the punch deals 50% more damage and inflicts Stun.""", # MISSING TRANSLATION
-	SKILLCOAL_MIGHTY_STEP_PUNCH = """Weighty Blow""", # MISSING TRANSLATION
-	SKILLCOAL_MIGHTY_STEP_PUNCHDESCRIPT = """Punch the target for 150% ATK damage. Deals 50% more damage and inflicts Stun against a target affected by Knock Prone.""", # MISSING TRANSLATION
-	SKILLCOAL_ROCK_SLING = """Barehand Rock Sling""", # MISSING TRANSLATION
-	SKILLCOAL_ROCK_SLINGDESCRIPT = """Fling pebbles at 3 random enemies for 55% ATK {color=yellow|Earth} damage. Every hit inflicts Blind for 3 turns and has a 35% chance to inflict Bleed for 2 turns. Critical hits deal 50% more damage.""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES = """Chamesh Avanim Ultimate Art: Five Stones Flurry""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONESDESCRIPT = """Can only be used when all other allies are defeated. Targets the enemy with the most HP.
-Inflict Fear, then strike 5 times for 70% ATK damage, inflicting Shock, Shred, Shatter and {color=aqua|Paralysis} in sequence. The last hit deals 160% ATK damage and always crits.""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_2 = """Five Stones Flurry: Second Stone""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_2DESCRIPT = """70% ATK damage. Inflicts Shred for 3 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_3 = """Five Stones Flurry: Third Stone""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_3DESCRIPT = """70% ATK damage. Inflicts Shatter for 3 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_4 = """Five Stones Flurry: Fourth Stone""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_4DESCRIPT = """70% ATK damage. Inflicts {color=aqua|Paralysis} for 2 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_5 = """Five Stones Flurry: Fifth Stone""", # MISSING TRANSLATION
-	SKILLCOAL_FIVE_STONES_5DESCRIPT = """160% ATK damage. Always a critical hit.""", # MISSING TRANSLATION
-	SKILLCOAL_BOLTHAR_COUNTER = """Flash Counter""", # MISSING TRANSLATION
-	SKILLCOAL_BOLTHAR_COUNTERDESCRIPT = """A punch thrown at whoever Bolthar just dodged. Deals 80% ATK damage.""", # MISSING TRANSLATION
-	SKILLCOAL_GNOMES_WIT_ALLIES = """Unity of the Coalition: Gnome's Wit""", # MISSING TRANSLATION
-	SKILLCOAL_GNOMES_WIT_ALLIESDESCRIPT = """While Bolthar is alive, all allies gain +15% critical chance.""", # MISSING TRANSLATION
-	SKILLCOAL_GNOMES_WIT_ENEMIES = """Gnome's Wit: Bane""", # MISSING TRANSLATION
-	SKILLCOAL_GNOMES_WIT_ENEMIESDESCRIPT = """While Bolthar is alive, all enemies lose 10% critical chance.""", # MISSING TRANSLATION
-	SKILLCOAL_MAGMA_PENDANT = """Scavenged Artifact: Magma Pendant""", # MISSING TRANSLATION
-	SKILLCOAL_MAGMA_PENDANTDESCRIPT = """Deal 110% MATK {color=yellow|Fire} damage to 1-2 random enemies and inflict Burn for 3 turns. If the caster is Wet, the cast dries them off but the damage is halved.""", # MISSING TRANSLATION
-	SKILLCOAL_FAN_O_FLAME = """Scavenged Artifact: Fan O' Flame""", # MISSING TRANSLATION
-	SKILLCOAL_FAN_O_FLAMEDESCRIPT = """Deal 45% MATK {color=yellow|Air} damage to all enemies with a 30% chance to inflict Blind for 1 turn.
-On hitting a burning enemy the flames erupt: 70% MATK {color=yellow|Fire} damage to that enemy and 50% MATK to 1-2 other random enemies, spreading Burn for 2 turns. Once per cast.""", # MISSING TRANSLATION
-	SKILLCOAL_FLAME_ERUPTION = """Flame Eruption""", # MISSING TRANSLATION
-	SKILLCOAL_FLAME_ERUPTIONDESCRIPT = """The flames on a burning enemy erupt for 70% MATK {color=yellow|Fire} damage, then spread to 1-2 other random enemies.""", # MISSING TRANSLATION
-	SKILLCOAL_FLAME_SPREAD = """Spreading Flames""", # MISSING TRANSLATION
-	SKILLCOAL_FLAME_SPREADDESCRIPT = """50% MATK {color=yellow|Fire} damage to 1-2 random enemies. Inflicts Burn for 2 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_CURSED_FLINT = """Scavenged Artifact: Cursed Flint & Meteorite Steel""", # MISSING TRANSLATION
-	SKILLCOAL_CURSED_FLINTDESCRIPT = """Can only be used against a burning enemy. Deal 120% MATK {color=yellow|Dark} damage, then turn every Burn on the enemy party into Dark Flame for 4 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_FLINT_CONVERT = """Dark Kindling""", # MISSING TRANSLATION
-	SKILLCOAL_FLINT_CONVERTDESCRIPT = """Every burning enemy has their Burn replaced with Dark Flame for 4 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_LAVA_SPILL = """Command: Lava Spill""", # MISSING TRANSLATION
-	SKILLCOAL_LAVA_SPILLDESCRIPT = """Nearby kobolds toss buckets of molten rock at 4 random enemies with an 80% hit chance, dealing 90% MATK {color=yellow|Fire} damage and inflicting Shatter for 3 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_THROAT_SPRAY = """Scavenged Medicine: Throat Spray""", # MISSING TRANSLATION
-	SKILLCOAL_THROAT_SPRAYDESCRIPT = """Can be used while Silenced, and only while Silenced or below 60% HP. Restore 15% of max HP, remove Silence and gain Clarity for 4 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_DRAGON_TONIC = """Super Rare Scavenged Artifact: Dragon's Breath Tonic""", # MISSING TRANSLATION
-	SKILLCOAL_DRAGON_TONICDESCRIPT = """Can only be used when all other allies are defeated.
-Breathe fire for 180% MATK {color=yellow|Fire} damage on every enemy, 50% more against burning targets. Inflicts Shred and Burn for 3 turns and grants {color=aqua|Dragon Might} for the rest of the battle.""", # MISSING TRANSLATION
-	SKILLCOAL_BEAD_HEAL = """Scavenged Artifact: Bead of Healing""", # MISSING TRANSLATION
-	SKILLCOAL_BEAD_HEALDESCRIPT = """Heal an ally for 12% of their max HP and cure their Bleed.""", # MISSING TRANSLATION
-	SKILLCOAL_BEAD_WATCH = """Bead of Healing""", # MISSING TRANSLATION
-	SKILLCOAL_BEAD_WATCHDESCRIPT = """The kobold keeps an eye on wounded allies.""", # MISSING TRANSLATION
-	SKILLCOAL_KOBOLD_TREASURE = """Unity of the Coalition: Kobold's Treasure""", # MISSING TRANSLATION
-	SKILLCOAL_KOBOLD_TREASUREDESCRIPT = """While the Kobold Coalitionist is alive, all allies gain +20 resistance to every element and are immune to Burn.""", # MISSING TRANSLATION
-	SKILLCOAL_POISON_VAPORS = """Poison Vapors""", # MISSING TRANSLATION
-	SKILLCOAL_POISON_VAPORSDESCRIPT = """Deal 35% MATK {color=yellow|Water} damage to a column of enemies and inflict Poison for 3 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_PARALYTIC_REACTION = """Paralytic Reaction""", # MISSING TRANSLATION
-	SKILLCOAL_PARALYTIC_REACTIONDESCRIPT = """Can only target a poisoned enemy. Deal 160% MATK {color=yellow|Water} damage and inflict {color=aqua|Paralysis} for 2 turns. Removes Poison, unless the target carries {color=aqua|Contagious Calamity}, which keeps everything in place.""", # MISSING TRANSLATION
-	SKILLCOAL_RODENT_AGILITY = """Rodent Agility""", # MISSING TRANSLATION
-	SKILLCOAL_RODENT_AGILITYDESCRIPT = """Cannot be used while hasted. Gain Haste for 3 turns and In The Shadows until the ratkin attacks openly. Below 50% HP, follows up with Dip Poison on a random enemy.""", # MISSING TRANSLATION
-	SKILLCOAL_DIP_POISON_RANDOM = """Dip Poison""", # MISSING TRANSLATION
-	SKILLCOAL_DIP_POISON_RANDOMDESCRIPT = """Strike a random enemy for 100% ATK damage and inflict Poison for 4 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_HAZARDOUS_OUTBURST = """Hazardous Outburst""", # MISSING TRANSLATION
-	SKILLCOAL_HAZARDOUS_OUTBURSTDESCRIPT = """Lash out 6 times at random enemies for 35% ATK damage, inflicting Poison for 3 turns. Deals 40% more damage to poisoned targets. Hitting an enemy affected by {color=aqua|Contagious Calamity} spreads it to 2 other enemies.""", # MISSING TRANSLATION
-	SKILLCOAL_EPIDEMIC_BEGIN = """Epidemic Begin""", # MISSING TRANSLATION
-	SKILLCOAL_EPIDEMIC_BEGINDESCRIPT = """Can only be used when all other allies are defeated.
-Inflict {color=aqua|Contagious Calamity} on 2 random enemies for 3 turns. Gain Last Stand for 1 turn and In The Shadows until the ratkin attacks openly.""", # MISSING TRANSLATION
-	SKILLCOAL_CALAMITY_CARRIER = """Contagion""", # MISSING TRANSLATION
-	SKILLCOAL_CALAMITY_CARRIERDESCRIPT = """The plague jumps to up to 2 other allies of its victim.""", # MISSING TRANSLATION
-	SKILLCOAL_CALAMITY_SPREAD = """Contagion""", # MISSING TRANSLATION
-	SKILLCOAL_CALAMITY_SPREADDESCRIPT = """The plague spreads to 2 more enemies.""", # MISSING TRANSLATION
-	SKILLCOAL_DIP_POISON_REACTION = """Dip Poison""", # MISSING TRANSLATION
-	SKILLCOAL_DIP_POISON_REACTIONDESCRIPT = """Toxic Salt to the Wound: strike the enemy an ally just crit for 100% ATK damage and inflict Poison for 4 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_TOXIC_SALT_WATCH = """Toxic Salt to the Wound""", # MISSING TRANSLATION
-	SKILLCOAL_TOXIC_SALT_WATCHDESCRIPT = """The ratkin waits for an ally to land a critical hit.""", # MISSING TRANSLATION
-	SKILLCOAL_RATKIN_GIFT = """Unity of the Coalition: Ratkin's Gift""", # MISSING TRANSLATION
-	SKILLCOAL_RATKIN_GIFTDESCRIPT = """While the Ratkin Coalitionist is alive, all allies regenerate 50 HP per turn and are immune to Poison.""", # MISSING TRANSLATION
-	SKILLCOAL_FRAG_GRENADE = """Fragmentation Grenade""", # MISSING TRANSLATION
-	SKILLCOAL_FRAG_GRENADEDESCRIPT = """Disabled by Disarm instead of Silence. Deal 100% MATK {color=yellow|Fire} damage and inflict Bleed for 2 turns. 3-5 fragments fly out at other random enemies with a 70% hit chance, dealing 50% ATK damage and inflicting Bleed.""", # MISSING TRANSLATION
-	SKILLCOAL_FRAG_SHRAPNEL = """Shrapnel""", # MISSING TRANSLATION
-	SKILLCOAL_FRAG_SHRAPNELDESCRIPT = """50% ATK damage to 3-5 random enemies with a 70% hit chance. Inflicts Bleed for 2 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_FLASH_GRENADE = """Flash Grenade""", # MISSING TRANSLATION
-	SKILLCOAL_FLASH_GRENADEDESCRIPT = """Disabled by Disarm instead of Silence. Deal 50% MATK {color=yellow|Fire} damage and inflict Blind for 2 turns. Every other enemy has a 30% chance to be blinded as well.""", # MISSING TRANSLATION
-	SKILLCOAL_FLASH_BURST = """Flash""", # MISSING TRANSLATION
-	SKILLCOAL_FLASH_BURSTDESCRIPT = """30% chance to inflict Blind for 2 turns on every other enemy.""", # MISSING TRANSLATION
-	SKILLCOAL_INCENDIARY_GRENADE = """Incendiary Grenade""", # MISSING TRANSLATION
-	SKILLCOAL_INCENDIARY_GRENADEDESCRIPT = """Disabled by Disarm instead of Silence. Deal 160% MATK {color=yellow|Fire} damage and inflict Burn for 3 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_LAND_MINE = """Proximity Land Mine""", # MISSING TRANSLATION
-	SKILLCOAL_LAND_MINEDESCRIPT = """Disabled by Disarm instead of Silence. Give 2 random allies {color=aqua|Land Mine Deterrence}.""", # MISSING TRANSLATION
-	SKILLCOAL_RELOADING = """Reloading""", # MISSING TRANSLATION
-	SKILLCOAL_RELOADINGDESCRIPT = """Can only be used while Disarmed. Remove Disarm and reset the cooldown of every skill.""", # MISSING TRANSLATION
-	SKILLCOAL_BIG_RED_BUTTON = """Big Red Button""", # MISSING TRANSLATION
-	SKILLCOAL_BIG_RED_BUTTONDESCRIPT = """Can only be used when all other allies are defeated, and only once.
-Summon the Mother of All Bombs.""", # MISSING TRANSLATION
-	SKILLCOAL_SUMMON_MOAB = """Mother of All Bombs""", # MISSING TRANSLATION
-	SKILLCOAL_SUMMON_MOABDESCRIPT = """Wheels in the Mother of All Bombs.""", # MISSING TRANSLATION
-	SKILLCOAL_LIT_WICK_THROW = """Lit Wick for the Rested""", # MISSING TRANSLATION
-	SKILLCOAL_LIT_WICK_THROWDESCRIPT = """A random grenade thrown at an enemy who was just healed.""", # MISSING TRANSLATION
-	SKILLCOAL_LIT_WICK_WATCH = """Lit Wick for the Rested""", # MISSING TRANSLATION
-	SKILLCOAL_LIT_WICK_WATCHDESCRIPT = """The goblin waits for an enemy to be healed.""", # MISSING TRANSLATION
-	SKILLCOAL_GOBLIN_INVENTION = """Unity of the Coalition: Goblin's Invention""", # MISSING TRANSLATION
-	SKILLCOAL_GOBLIN_INVENTIONDESCRIPT = """While the Goblin Coalitionist is alive, all allies deal 10% more damage and are immune to Blind.""", # MISSING TRANSLATION
-	SKILLCOAL_CHOP_OFF = """Chop Off the Limb""", # MISSING TRANSLATION
-	SKILLCOAL_CHOP_OFFDESCRIPT = """Deal 120% ATK damage and inflict Bleed for 3 turns. 40% chance to inflict Disarm for 2 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_YIELD_MY_FLESH = """Yield My Flesh""", # MISSING TRANSLATION
-	SKILLCOAL_YIELD_MY_FLESHDESCRIPT = """Gain {color=aqua|To Claim Their Bone} until the start of the next turn.""", # MISSING TRANSLATION
-	SKILLCOAL_BONE_COUNTER = """To Claim Their Bone""", # MISSING TRANSLATION
-	SKILLCOAL_BONE_COUNTERDESCRIPT = """An unmissable counter for 220% ATK damage that inflicts Bleed for 3 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_MOUNTAIN_CRUMBLE = """Til Mountain Crumble to Dust""", # MISSING TRANSLATION
-	SKILLCOAL_MOUNTAIN_CRUMBLEDESCRIPT = """Can only be used when all other allies are defeated, and only once.
-Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soothe for 4 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_ASSIST_WATCH = """Assist Defence""", # MISSING TRANSLATION
-	SKILLCOAL_ASSIST_WATCHDESCRIPT = """The dwarf keeps watch over his allies.""", # MISSING TRANSLATION
-	SKILLCOAL_DWARF_PENANCE = """Unity of the Coalition: Dwarf's Penance""", # MISSING TRANSLATION
-	SKILLCOAL_DWARF_PENANCEDESCRIPT = """While the Dwarf Coalitionist is alive, all other allies take 70% less damage from area attacks.""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_TICK_1 = """IT'S GONNA BLOW UP!""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_TICK_1DESCRIPT = """The time before this thing explodes becomes shorter. 50% chance to inflict Fear on every enemy for 1 turn.""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_TICK_2 = """IT'S GONNA BLOW UP!!""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_TICK_2DESCRIPT = """The time before this thing explodes becomes shorter. 50% chance to inflict Fear on every enemy for 1 turn.""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_TICK_3 = """IT'S GONNA BLOW UP!!!""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_TICK_3DESCRIPT = """The time before this thing explodes becomes shorter. 50% chance to inflict Fear on every enemy for 1 turn.""", # MISSING TRANSLATION
-	SKILLCOAL_FRAG_GRENADE_WICK = """Fragmentation Grenade""", # MISSING TRANSLATION
-	SKILLCOAL_FRAG_GRENADE_WICKDESCRIPT = """Deal 100% MATK {color=yellow|Fire} damage and inflict Bleed for 2 turns. 3-5 fragments fly out at other random enemies with a 70% hit chance, dealing 50% ATK damage and inflicting Bleed.""", # MISSING TRANSLATION
-	SKILLCOAL_FLASH_GRENADE_WICK = """Flash Grenade""", # MISSING TRANSLATION
-	SKILLCOAL_FLASH_GRENADE_WICKDESCRIPT = """Deal 50% MATK {color=yellow|Fire} damage and inflict Blind for 2 turns. Every other enemy has a 30% chance to be blinded as well.""", # MISSING TRANSLATION
-	SKILLCOAL_INCENDIARY_GRENADE_WICK = """Incendiary Grenade""", # MISSING TRANSLATION
-	SKILLCOAL_INCENDIARY_GRENADE_WICKDESCRIPT = """Deal 160% MATK {color=yellow|Fire} damage and inflict Burn for 3 turns.""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_BOOM = """Birth of a Mushroom Cloud""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_BOOMDESCRIPT = """Cannot miss. Removes Last Stand, then deals a catastrophic amount of {color=yellow|True} damage to every unit on the field.""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_BOOM_ALLIES = """Mushroom Cloud""", # MISSING TRANSLATION
-	SKILLCOAL_MOAB_BOOM_ALLIESDESCRIPT = """The blast reaches its own side as well.""", # MISSING TRANSLATION
+	SKILLCOAL_PEBBLE_FIST = """飞石拳：弑巨者""",
+	SKILLCOAL_PEBBLE_FISTDESCRIPT = """只能对满血敌人使用。造成 200% ATK 的伤害，且附带极高的护甲穿透。施加触电与撕裂效果，持续 3 回合；施加眩晕效果，持续 1 回合。""",
+	SKILLCOAL_IRON_MOUNTAIN_LEAN = """铁山靠""",
+	SKILLCOAL_IRON_MOUNTAIN_LEANDESCRIPT = """无法对处于击倒状态的敌人使用。施展肩撞，对目标造成 120% ATK 的{color=yellow|土属性}伤害，并将其撞向身后的敌人，造成同等伤害。施加击倒效果，持续 2 回合。""",
+	SKILLCOAL_NERVE_POINT = """穴位点穴""",
+	SKILLCOAL_NERVE_POINTDESCRIPT = """连续打击 3 次，每次造成 50% ATK 的伤害。每次命中都会施加{color=aqua|麻痹}效果，持续 2 回合。对处于麻痹或定身状态的目标造成的伤害提升 40%。""",
+	SKILLCOAL_MIGHTY_STEP = """撼地步·沉重一击""",
+	SKILLCOAL_MIGHTY_STEPDESCRIPT = """猛踏地面，对所有非飞行类敌人造成 70% MATK 的{color=yellow|土属性}魔法伤害，并有几率施加击倒。
+随后出拳轰击目标，造成 150% ATK 的伤害。若目标处于击倒状态，该重拳造成的伤害提升 50% 并施加眩晕。""",
+	SKILLCOAL_MIGHTY_STEP_PUNCH = """沉重一击""",
+	SKILLCOAL_MIGHTY_STEP_PUNCHDESCRIPT = """出拳轰击目标，造成 150% ATK 的伤害。对处于击倒状态的目标造成的伤害提升 50% 并施加眩晕。""",
+	SKILLCOAL_ROCK_SLING = """徒手投石""",
+	SKILLCOAL_ROCK_SLINGDESCRIPT = """向 3 名随机敌人投掷碎石，造成 55% ATK 的{color=yellow|土属性}伤害。每次命中均会施加失明，持续 3 回合，并有 35% 几率施加流血，持续 2 回合。暴击造成的伤害提升 50%。""",
+	SKILLCOAL_FIVE_STONES = """哈梅什·阿瓦尼姆奥义：五石连击""",
+	SKILLCOAL_FIVE_STONESDESCRIPT = """只能在所有其他盟友被击败时使用。以生命值最高的敌人为目标。
+施加恐惧，随后连续打击 5 次，每次造成 70% ATK 的伤害，并依次施加触电、撕裂、碎裂与{color=aqua|麻痹}。最后一击造成 160% ATK 的伤害且必定暴击。""",
+	SKILLCOAL_FIVE_STONES_2 = """五石连击：第二石""",
+	SKILLCOAL_FIVE_STONES_2DESCRIPT = """造成 70% ATK 的伤害。施加撕裂，持续 3 回合。""",
+	SKILLCOAL_FIVE_STONES_3 = """五石连击：第三石""",
+	SKILLCOAL_FIVE_STONES_3DESCRIPT = """造成 70% ATK 的伤害。施加碎裂，持续 3 回合。""",
+	SKILLCOAL_FIVE_STONES_4 = """五石连击：第四石""",
+	SKILLCOAL_FIVE_STONES_4DESCRIPT = """造成 70% ATK 的伤害。施加{color=aqua|麻痹}，持续 2 回合。""",
+	SKILLCOAL_FIVE_STONES_5 = """五石连击：第五石""",
+	SKILLCOAL_FIVE_STONES_5DESCRIPT = """造成 160% ATK 的伤害。必定暴击。""",
+	SKILLCOAL_BOLTHAR_COUNTER = """闪电反击""",
+	SKILLCOAL_BOLTHAR_COUNTERDESCRIPT = """博尔瑟对刚刚闪避的目标挥出的一拳。造成 80% ATK 的伤害。""",
+	SKILLCOAL_GNOMES_WIT_ALLIES = """联盟阵线：地精机智""",
+	SKILLCOAL_GNOMES_WIT_ALLIESDESCRIPT = """只要博尔瑟存活，所有盟友获得 +15% 暴击率。""",
+	SKILLCOAL_GNOMES_WIT_ENEMIES = """地精机智：克星""",
+	SKILLCOAL_GNOMES_WIT_ENEMIESDESCRIPT = """只要博尔瑟存活，所有敌人降低 10% 暴击率。""",
+	SKILLCOAL_MAGMA_PENDANT = """搜刮到的遗物：熔岩吊坠""",
+	SKILLCOAL_MAGMA_PENDANTDESCRIPT = """对 1-2 名随机敌人造成 110% MATK 的{color=yellow|火属性}伤害并施加灼烧，持续 3 回合。若施法者处于潮湿状态，施法会清除其潮湿，但造成的伤害减半。""",
+	SKILLCOAL_FAN_O_FLAME = """搜刮到的遗物：煽火扇""",
+	SKILLCOAL_FAN_O_FLAMEDESCRIPT = """对所有敌人造成 45% MATK 的{color=yellow|风属性}伤害，并有 30% 几率施加失明，持续 1 回合。
+当命中处于灼烧状态的敌人时，火焰将爆发：对该敌人造成 70% MATK 的{color=yellow|火属性}伤害，并对 1-2 名其他随机敌人造成 50% MATK 的伤害，传播灼烧效果并持续 2 回合。每次施法仅限触发一次。""",
+	SKILLCOAL_FLAME_ERUPTION = """火焰爆发""",
+	SKILLCOAL_FLAME_ERUPTIONDESCRIPT = """处于灼烧状态敌人身上的火焰爆发，造成 70% MATK 的{color=yellow|火属性}伤害，随后蔓延至 1-2 名其他随机敌人。""",
+	SKILLCOAL_FLAME_SPREAD = """烈焰蔓延""",
+	SKILLCOAL_FLAME_SPREADDESCRIPT = """对 1-2 名随机敌人造成 50% MATK 的{color=yellow|火属性}伤害。施加灼烧，持续 2 回合。""",
+	SKILLCOAL_CURSED_FLINT = """搜刮到的遗物：诅咒打火石与陨铁""",
+	SKILLCOAL_CURSED_FLINTDESCRIPT = """只能对处于灼烧状态的敌人使用。造成 120% MATK 的{color=yellow|暗属性}伤害，随后将敌方队伍身上所有的灼烧转化为暗焰，持续 4 回合。""",
+	SKILLCOAL_FLINT_CONVERT = """暗黑引火""",
+	SKILLCOAL_FLINT_CONVERTDESCRIPT = """所有处于灼烧状态的敌人身上的灼烧效果将被替换为暗焰，持续 4 回合。""",
+	SKILLCOAL_LAVA_SPILL = """号令：岩浆倾泻""",
+	SKILLCOAL_LAVA_SPILLDESCRIPT = """附近的狗头人向 4 名随机敌人泼洒熔岩桶，拥有 80% 命中率，造成 90% MATK 的{color=yellow|火属性}伤害并施加碎裂，持续 3 回合。""",
+	SKILLCOAL_THROAT_SPRAY = """搜刮到的药物：润喉喷雾""",
+	SKILLCOAL_THROAT_SPRAYDESCRIPT = """可在处于沉默状态下使用，且仅限在处于沉默状态或生命值低于 60% 时使用。恢复 15% 最大生命值，清除沉默状态并获得清心，持续 4 回合。""",
+	SKILLCOAL_DRAGON_TONIC = """极罕见搜刮遗物：龙息药剂""",
+	SKILLCOAL_DRAGON_TONICDESCRIPT = """只能在所有其他盟友被击败时使用。
+喷吐火焰对所有敌人造成 180% MATK 的{color=yellow|火属性}伤害，对处于灼烧状态的目标造成的伤害提升 50%。施加撕裂与灼烧效果，持续 3 回合，并在本场战斗剩余时间内获得{color=aqua|巨龙威能}。""",
+	SKILLCOAL_BEAD_HEAL = """搜刮到的遗物：治疗珠""",
+	SKILLCOAL_BEAD_HEALDESCRIPT = """为一名盟友恢复 12% 最大生命值并治愈其流血状态。""",
+	SKILLCOAL_BEAD_WATCH = """治疗珠""",
+	SKILLCOAL_BEAD_WATCHDESCRIPT = """狗头人密切关注着受创的盟友。""",
+	SKILLCOAL_KOBOLD_TREASURE = """联盟阵线：狗头人的宝藏""",
+	SKILLCOAL_KOBOLD_TREASUREDESCRIPT = """只要狗头人盟军成员存活，所有盟友获得全元素抗性 +20 并免疫灼烧。""",
+	SKILLCOAL_POISON_VAPORS = """毒性蒸气""",
+	SKILLCOAL_POISON_VAPORSDESCRIPT = """对一列敌人造成 35% MATK 的{color=yellow|水属性}伤害并施加中毒，持续 3 回合。""",
+	SKILLCOAL_PARALYTIC_REACTION = """麻痹反应""",
+	SKILLCOAL_PARALYTIC_REACTIONDESCRIPT = """只能以处于中毒状态的敌人为目标。造成 160% MATK 的{color=yellow|水属性}伤害并施加{color=aqua|麻痹}，持续 2 回合。移除中毒状态，除非目标携带有{color=aqua|传染性灾祸}（该效果会保留所有状态）。""",
+	SKILLCOAL_RODENT_AGILITY = """鼠辈敏捷""",
+	SKILLCOAL_RODENT_AGILITYDESCRIPT = """在处于加速状态时无法使用。获得加速，持续 3 回合；并获得【潜于阴影】，直到鼠人发动公开攻击。生命值低于 50% 时，对一名随机敌人追加使用【涂毒】。""",
+	SKILLCOAL_DIP_POISON_RANDOM = """涂毒""",
+	SKILLCOAL_DIP_POISON_RANDOMDESCRIPT = """攻击一名随机敌人造成 100% ATK 的伤害，并施加中毒，持续 4 回合。""",
+	SKILLCOAL_HAZARDOUS_OUTBURST = """剧毒爆发""",
+	SKILLCOAL_HAZARDOUS_OUTBURSTDESCRIPT = """向随机敌人猛烈攻击 6 次，每次造成 35% ATK 的伤害并施加中毒，持续 3 回合。对处于中毒状态的目标造成的伤害提升 40%。命中受{color=aqua|传染性灾祸}影响的敌人时，会将该效果传播给另外 2 名敌人。""",
+	SKILLCOAL_EPIDEMIC_BEGIN = """瘟疫始发""",
+	SKILLCOAL_EPIDEMIC_BEGINDESCRIPT = """只能在所有其他盟友被击败时使用。
+对 2 名随机敌人施加{color=aqua|传染性灾祸}，持续 3 回合。获得【背水一战】，持续 1 回合；并获得【潜于阴影】，直到鼠人发动公开攻击。""",
+	SKILLCOAL_CALAMITY_CARRIER = """传染""",
+	SKILLCOAL_CALAMITY_CARRIERDESCRIPT = """瘟疫会跳跃蔓延至受害者最多 2 名其他盟友身上。""",
+	SKILLCOAL_CALAMITY_SPREAD = """传染""",
+	SKILLCOAL_CALAMITY_SPREADDESCRIPT = """瘟疫扩散给另外 2 名敌人。""",
+	SKILLCOAL_DIP_POISON_REACTION = """涂毒""",
+	SKILLCOAL_DIP_POISON_REACTIONDESCRIPT = """毒上加霜：攻击盟友刚刚暴击的敌人，造成 100% ATK 的伤害，并施加中毒，持续 4 回合。""",
+	SKILLCOAL_TOXIC_SALT_WATCH = """毒上加霜""",
+	SKILLCOAL_TOXIC_SALT_WATCHDESCRIPT = """鼠人静待盟友打出暴击。""",
+	SKILLCOAL_RATKIN_GIFT = """联盟阵线：鼠人的赠礼""",
+	SKILLCOAL_RATKIN_GIFTDESCRIPT = """只要鼠人盟军成员存活，所有盟友每回合恢复 50 点生命值并免疫中毒。""",
+	SKILLCOAL_FRAG_GRENADE = """破片手榴弹""",
+	SKILLCOAL_FRAG_GRENADEDESCRIPT = """会被【缴械】而非【沉默】禁用。造成 100% MATK 的{color=yellow|火属性}伤害并施加流血，持续 2 回合。飞出 3-5 个碎片攻击其他随机敌人（70% 命中率），造成 50% ATK 的伤害并施加流血。""",
+	SKILLCOAL_FRAG_SHRAPNEL = """弹片""",
+	SKILLCOAL_FRAG_SHRAPNELDESCRIPT = """对 3-5 名随机敌人造成 50% ATK 的伤害（70% 命中率）。施加流血，持续 2 回合。""",
+	SKILLCOAL_FLASH_GRENADE = """闪光弹""",
+	SKILLCOAL_FLASH_GRENADEDESCRIPT = """会被【缴械】而非【沉默】禁用。造成 50% MATK 的{color=yellow|火属性}伤害并施加失明，持续 2 回合。所有其他敌人各有 30% 几率同时陷入失明。""",
+	SKILLCOAL_FLASH_BURST = """致盲闪光""",
+	SKILLCOAL_FLASH_BURSTDESCRIPT = """有 30% 几率对所有其他敌人施加失明，持续 2 回合。""",
+	SKILLCOAL_INCENDIARY_GRENADE = """燃烧弹""",
+	SKILLCOAL_INCENDIARY_GRENADEDESCRIPT = """会被【缴械】而非【沉默】禁用。造成 160% MATK 的{color=yellow|火属性}伤害并施加灼烧，持续 3 回合。""",
+	SKILLCOAL_LAND_MINE = """感应地雷""",
+	SKILLCOAL_LAND_MINEDESCRIPT = """会被【缴械】而非【沉默】禁用。给予 2 名随机盟友{color=aqua|地雷威慑}。""",
+	SKILLCOAL_RELOADING = """重新装填""",
+	SKILLCOAL_RELOADINGDESCRIPT = """只能在处于缴械状态时使用。移除缴械效果并重置所有技能的冷却时间。""",
+	SKILLCOAL_BIG_RED_BUTTON = """大红按钮""",
+	SKILLCOAL_BIG_RED_BUTTONDESCRIPT = """只能在所有其他盟友被击败时使用，且仅限一次。
+召唤炸弹之母。""",
+	SKILLCOAL_SUMMON_MOAB = """炸弹之母""",
+	SKILLCOAL_SUMMON_MOABDESCRIPT = """推入“炸弹之母”。""",
+	SKILLCOAL_LIT_WICK_THROW = """休整者的引信""",
+	SKILLCOAL_LIT_WICK_THROWDESCRIPT = """向刚刚接受治疗的敌人投掷一枚随机手榴弹。""",
+	SKILLCOAL_LIT_WICK_WATCH = """休整者的引信""",
+	SKILLCOAL_LIT_WICK_WATCHDESCRIPT = """哥布林静待敌人接受治疗。""",
+	SKILLCOAL_GOBLIN_INVENTION = """联盟阵线：哥布林的发明""",
+	SKILLCOAL_GOBLIN_INVENTIONDESCRIPT = """只要哥布林盟军成员存活，所有盟友造成的伤害提升 10% 并免疫失明。""",
+	SKILLCOAL_CHOP_OFF = """断肢斩""",
+	SKILLCOAL_CHOP_OFFDESCRIPT = """造成 120% ATK 的伤害并施加流血，持续 3 回合。有 40% 几率施加缴械，持续 2 回合。""",
+	SKILLCOAL_YIELD_MY_FLESH = """舍肉""",
+	SKILLCOAL_YIELD_MY_FLESHDESCRIPT = """获得{color=aqua|取骨}，持续至下一回合开始。""",
+	SKILLCOAL_BONE_COUNTER = """取骨""",
+	SKILLCOAL_BONE_COUNTERDESCRIPT = """必中的反击，造成 220% ATK 的伤害并施加流血，持续 3 回合。""",
+	SKILLCOAL_MOUNTAIN_CRUMBLE = """直至山岳化为尘埃""",
+	SKILLCOAL_MOUNTAIN_CRUMBLEDESCRIPT = """只能在所有其他盟友被击败时使用，且仅限一次。
+完全恢复生命值。获得【石墙】，持续 3 回合；获得【大地之盾】，持续 5 回合；获得【舒缓】，持续 4 回合。""",
+	SKILLCOAL_ASSIST_WATCH = """协助防御""",
+	SKILLCOAL_ASSIST_WATCHDESCRIPT = """矮人密切护卫着他的盟友。""",
+	SKILLCOAL_DWARF_PENANCE = """联盟阵线：矮人的赎罪""",
+	SKILLCOAL_DWARF_PENANCEDESCRIPT = """只要矮人盟军成员存活，所有其他盟友受到的范围攻击伤害降低 70%。""",
+	SKILLCOAL_MOAB_TICK_1 = """要爆炸了！""",
+	SKILLCOAL_MOAB_TICK_1DESCRIPT = """距离这玩意爆炸的时间变短了。有 50% 几率对所有敌人施加恐惧，持续 1 回合。""",
+	SKILLCOAL_MOAB_TICK_2 = """要爆炸了！！""",
+	SKILLCOAL_MOAB_TICK_2DESCRIPT = """距离这玩意爆炸的时间变短了。有 50% 几率对所有敌人施加恐惧，持续 1 回合。""",
+	SKILLCOAL_MOAB_TICK_3 = """要爆炸了！！！""",
+	SKILLCOAL_MOAB_TICK_3DESCRIPT = """距离这玩意爆炸的时间变短了。有 50% 几率对所有敌人施加恐惧，持续 1 回合。""",
+	SKILLCOAL_FRAG_GRENADE_WICK = """破片手榴弹""",
+	SKILLCOAL_FRAG_GRENADE_WICKDESCRIPT = """造成 100% MATK 的{color=yellow|火属性}伤害并施加流血，持续 2 回合。飞出 3-5 个碎片攻击其他随机敌人（70% 命中率），造成 50% ATK 的伤害并施加流血。""",
+	SKILLCOAL_FLASH_GRENADE_WICK = """闪光弹""",
+	SKILLCOAL_FLASH_GRENADE_WICKDESCRIPT = """造成 50% MATK 的{color=yellow|火属性}伤害并施加失明，持续 2 回合。所有其他敌人各有 30% 几率同时陷入失明。""",
+	SKILLCOAL_INCENDIARY_GRENADE_WICK = """燃烧弹""",
+	SKILLCOAL_INCENDIARY_GRENADE_WICKDESCRIPT = """造成 160% MATK 的{color=yellow|火属性}伤害并施加灼烧，持续 3 回合。""",
+	SKILLCOAL_MOAB_BOOM = """蘑菇云降临""",
+	SKILLCOAL_MOAB_BOOMDESCRIPT = """必中。移除【背水一战】，随后对战场上的所有单位造成毁灭性的{color=yellow|真实}伤害。""",
+	SKILLCOAL_MOAB_BOOM_ALLIES = """蘑菇云""",
+	SKILLCOAL_MOAB_BOOM_ALLIESDESCRIPT = """爆炸波及到了己方队伍。""",
     SKILLACCELERATING_PLUNGE = """极速坠击""", 
     SKILLACCELERATING_PLUNGEDESCRIPT = """如果该单位没有受到定身效果影响，则获得1层[{color=aqua|灾难动能}]。
 否则，净化所有定身效果。""",
@@ -2498,8 +2498,8 @@ Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soot
 	STATUSDESC_POISON = """中毒：每回合受到 10% 最大生命值的真实伤害。""",
 	STATUSDESC_BURN = """灼烧：每回合受到 8% 最大生命值的火系伤害。""",
 	STATUSDESC_SHRED = """粉碎：防御力降低 25%。最多可叠加 2 层。""",
-	STATUSDESC_PARALYSIS = """Paralysed: -50 Speed, -80 Evasion and -75 Hitrate. Counts as an affliction.""", # MISSING TRANSLATION
-	STATUSDESC_CONTAGIOUS_CALAMITY = """Contagious Calamity: counts as Poison. Healing received is halved. 25% of max HP is lost and spreads to up to 2 random allies every turn. """, # MISSING TRANSLATION
+	STATUSDESC_PARALYSIS = """麻痹：速度 -50、闪避 -80、命中率 -75。视为苦难状态。""",
+	STATUSDESC_CONTAGIOUS_CALAMITY = """传染性灾祸：视为中毒。受到的治疗效果减半。每回合损失 25% 最大生命值，并蔓延至最多 2 名随机盟友。""",
 	STATUSDESC_FEAR = """恐惧：造成的伤害降低 25%。""",
 	STATUSDESC_TAUNT = """嘲讽：强制攻击施法者""",
 	STATUSDESC_PROVOKE = """挑衅：强制攻击施法者，且只能使用单体技能。""",
@@ -2918,15 +2918,15 @@ Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soot
 	MANSION_ACTIVITY_TYPE_TRAINING = """调教""",
 	MANSION_ACTIVITY_TYPE_STAT = """属性""",
 	MANSION_ACTIVITY_TYPE_SERVICE = """侍奉""",
-	MANSION_ACTIVITY_TYPE_PRODUCTION = """Gathering""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_UPKEEP = """Upkeep""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_PRODUCTION = """采集""",
+	MANSION_ACTIVITY_TYPE_UPKEEP = """日常维护""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s 返回了宅邸。""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s 返回了 %s。""",
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s 抵达了 %s。""",
 	MANSION_ACTIVITY_AUTOBUY = """%s 从集市采买回来，带回了 %s，花费 %d 金币。""",
 	MANSION_ACTIVITY_SLEPTROUGH = """在 %s 无处安眠。""",
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s 完成了 %s 的制作。""",
-	MANSION_ACTIVITY_CRAFT_REPORT = """The workshops finished [color=#e8aa55]%d[/color] craft(s), made by %d of the household.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_CRAFT_REPORT = """工坊共完成了 [color=#e8aa55]%d[/color] 件制作产物，由府上 %d 人共同完成。""",
 	MANSION_ACTIVITY_TRAINING_COMPLETE = """%s 完成了对 %s 的调教。""",
 	MANSION_ACTIVITY_STAT_CHANGES = """%s：%s""",
 	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s 完成了 %s 升级。""",
@@ -2937,16 +2937,16 @@ Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soot
 	MANSION_ACTIVITY_LOCATION_EMPTY = """%s 已经空无一人。""",
 	MANSION_ACTIVITY_LOCATION_GONE = """该地点已无法前往。""",
 	MANSION_ACTIVITY_SERVICE_REPORT = """侍奉服务共带来 [color=#f0c860]%d[/color] 金币收益，由府上 %d 人共同赚取。""",
-	MANSION_ACTIVITY_PRODUCTION_REPORT = """Work brought in [color=#6fc0b0]%d[/color] resource(s), of %d kind(s).""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_UPKEEP_REPORT = """Weekly upkeep cost the estate [color=#d05f5f]%d[/color] gold, over %d charge(s).""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_UPKEEP_CHARACTER = """%s: [color=#d05f5f]%d[/color] gold (%d fame + %d value).""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_UPKEEP_UPGRADES = """Taxes on upgrades: [color=#d05f5f]%d[/color] gold.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_PRODUCTION_REPORT = """生产劳作共带来 [color=#6fc0b0]%d[/color] 份资源，涵盖 %d 个种类。""",
+	MANSION_ACTIVITY_UPKEEP_REPORT = """每周维护共消耗领地 [color=#d05f5f]%d[/color] 金币，涉及 %d 项开支。""",
+	MANSION_ACTIVITY_UPKEEP_CHARACTER = """%s：[color=#d05f5f]%d[/color] 金币（%d 声望 + %d 价值）。""",
+	MANSION_ACTIVITY_UPKEEP_UPGRADES = """设施升级税：[color=#d05f5f]%d[/color] 金币。""",
 	MANSION_ACTIVITY_SERVICE_EXPAND = """展开""",
 	MANSION_ACTIVITY_SERVICE_COLLAPSE = """折叠""",
-	MANSION_ACTIVITY_TYPE_BEDROOM = """Bedroom""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_BEDROOM_LIGHT = """%s and %s had some light fun at night.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_BEDROOM_PASSIONATE = """%s and %s spent a passionate night together.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_BEDROOM_SKILL = """%s is now [color=#d95d8a]%s[/color] at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_BEDROOM = """卧房""",
+	MANSION_ACTIVITY_BEDROOM_LIGHT = """%s 与 %s 在夜里享受了一段小小的欢愉。""",
+	MANSION_ACTIVITY_BEDROOM_PASSIONATE = """%s 和 %s 共同度过了一个激情洋溢的夜晚。""",
+	MANSION_ACTIVITY_BEDROOM_SKILL = """%s 现已达到 [color=#d95d8a]%s[/color] 级别的 %s 水平。""",
 	BROTHELLOGSEX = """%s 通过与一名 %s 客户进行 %s 服务，赚取了 %s 金币。""",
 	BROTHELLOGSEXPARTIAL = """%s 未能完全吸引客户，仅通过与 %s 客户进行 %s 服务赚取了 %s 金币。""", 
 	BROTHELLOGNO_SEX = """%s 作为 %s 工作，赚取了 %s 金币。""",
@@ -4170,8 +4170,8 @@ Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soot
 	ICON2_BUTTON_TEXT = """随机生成头像""",
 	BODY_BUTTON_TEXT = """选择自定义身体""",
 	USPRITE_BUTTON_TEXT = """选择独特立绘""",
-	UPAPERDOLL_BUTTON_TEXT = """Use Paperdoll""", # MISSING TRANSLATION
-	UPAPERDOLL_BUTTON_TOOLTIP = """Draw this character with the paperdoll instead of their own sprites. Their artwork is kept and comes back when this is switched off. Has no effect while paperdolls are turned off in the options.""", # MISSING TRANSLATION
+	UPAPERDOLL_BUTTON_TEXT = """使用纸娃娃""",
+	UPAPERDOLL_BUTTON_TOOLTIP = """使用纸娃娃渲染该角色，取代其专属立绘。角色原本的立绘会被保留，在此选项关闭后恢复显示。若在设置中关闭了纸娃娃系统，则此功能不会生效。""",
 	DETAILS_LABEL = """详情""",
 	DESCRIPT2_BUTTON_TEXT = """添加自定义描述（以 # 开头可隐藏）""",
 	DESCRIPT_LABEL = """描述""",
@@ -4521,27 +4521,27 @@ Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soot
 	DATING_AFFECTIONATE_RESULT_1 = """
 
 {color=green|深情氛围}：这段共度时光让[name]感觉与你更加亲密。""",
-    DATING_LOW_FEAR_WARNING = """,
-	DATING_PRESUMPTION_ASK = """[name] has been entirely at ease in your company. There is a new familiarity in the way [he] speaks to you, and you find yourself thinking [he] has grown presumptuous.""", # MISSING TRANSLATION
-	DATING_PRESUMPTION_DISCIPLINE = """Put [him] in [his] place""", # MISSING TRANSLATION
-	DATING_PRESUMPTION_ENDORSE = """Endorse it""", # MISSING TRANSLATION
+	DATING_LOW_FEAR_WARNING = """{color=yellow|[name]在你身边感到过于放松，削弱了[his]对你的尊重。}""",
+	DATING_PRESUMPTION_ASK = """[name] 在你身边时显得十分轻松自在。[he] 说话间多了一份新滋生的亲近感，而你察觉到 [he] 似乎变得有些放肆起来。""",
+	DATING_PRESUMPTION_DISCIPLINE = """让[him]摆正位置""",
+	DATING_PRESUMPTION_ENDORSE = """予以纵容""",
 	DATING_PRESUMPTION_DISCIPLINE_RESULT = """
 
-{color=yellow|You remind [name] exactly where [he] stands. [He] takes the correction, and the date ends on a cooler note than it began.}""", # MISSING TRANSLATION
+{color=yellow|你清楚地提醒了 [name] [his]的本分所在。[He] 接受了纠正，约会在比开始时更加冷淡的气氛中落幕。}""",
 	DATING_PRESUMPTION_ENDORSE_RESULT = """
 
-{color=yellow|You decide to play along, showing your willingness to let [name] treat you with less respect.}""", # MISSING TRANSLATION
+{color=yellow|你决定顺水推舟，表现出你愿意允许 [name] 对你不那么恭敬的态度。}
 {color=yellow|[name]在你身边感到过于放松，削弱了[his]对你的尊重。}""",
-    DATING_FEARFUL_RESULT_1 = """
+	DATING_FEARFUL_RESULT_1 = """
 
 {color=red|恐惧氛围}：这次约会让[name]心有余悸，但也更加清楚地意识到了你的力量。""",
-    DATING_RESULT_AFFECTION_GAIN = """
+	DATING_RESULT_AFFECTION_GAIN = """
 好感度：+""",
-    DATING_RESULT_RESPECT_GAIN = """
+	DATING_RESULT_RESPECT_GAIN = """
 尊重：+""",
-    DATING_RESULT_RESPECT_LOSS = """
+	DATING_RESULT_RESPECT_LOSS = """
 尊重：-""",
-    DATING_RESULT_NO_CHANGE = """
+	DATING_RESULT_NO_CHANGE = """
 关系无变化。""",
 	DATING_SEX_OFFER_1 = """
 
@@ -5565,55 +5565,55 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔力。""",
 被击杀时：如果击杀者是矮人，击杀者将获得晋升""", 
     EFFECTNAME_DWARF_PROMOTION = "晋升", 
     EFFECT_DWARF_PROMOTION = "造成的伤害+20%。命中率+50。暴击率+30%。速度+10。", 
-	EFFECTNAME_COAL_PARALYSIS = """Paralysis""", # MISSING TRANSLATION
-	EFFECT_COAL_PARALYSIS = """Paralysed: -50 Speed, -80 Evasion and -75 Hitrate. Counts as an affliction.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_CALAMITY = """Contagious Calamity""", # MISSING TRANSLATION
-	EFFECT_COAL_CALAMITY = """Contagious Calamity: counts as Poison. Healing received is halved and 20% of max HP is lost every turn.
-When it runs its course it spreads to up to 2 other allies.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_LAND_MINE = """Land Mine Deterrence""", # MISSING TRANSLATION
-	EFFECT_COAL_LAND_MINE = """A melee attack on this unit sets the mine off: the attacker takes heavy {color=yellow|Fire} damage and is Shredded for 2 turns. Any party-wide attack clears the mine harmlessly.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_CLAIM_BONE = """To Claim Their Bone""", # MISSING TRANSLATION
-	EFFECT_COAL_CLAIM_BONE = """HP cannot drop below 10% and damage taken is halved. The next melee hit that lands is answered with an unmissable counter that inflicts Bleed. Lasts one hit or one turn.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_DRAGON_MIGHT = """Dragon Might""", # MISSING TRANSLATION
-	EFFECT_COAL_DRAGON_MIGHT = """+25% damage dealt and +25% armor for the rest of the battle.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_GNOMES_WIT = """Gnome's Wit""", # MISSING TRANSLATION
-	EFFECT_COAL_GNOMES_WIT = """+15% critical chance while Bolthar is alive.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_GNOMES_WIT_BANE = """Gnome's Wit""", # MISSING TRANSLATION
-	EFFECT_COAL_GNOMES_WIT_BANE = """-10% critical chance while Bolthar is alive.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_KOBOLD_TREASURE = """Kobold's Treasure""", # MISSING TRANSLATION
-	EFFECT_COAL_KOBOLD_TREASURE = """+20 resistance to every element and immunity to Burn while the Kobold Coalitionist is alive.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_RATKIN_GIFT = """Ratkin's Gift""", # MISSING TRANSLATION
-	EFFECT_COAL_RATKIN_GIFT = """Regenerates 50 HP per turn and immune to Poison while the Ratkin Coalitionist is alive.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_GOBLIN_INVENTION = """Goblin's Invention""", # MISSING TRANSLATION
-	EFFECT_COAL_GOBLIN_INVENTION = """+10% damage dealt and immunity to Blind while the Goblin Coalitionist is alive.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_DWARF_PENANCE = """Dwarf's Penance""", # MISSING TRANSLATION
-	EFFECT_COAL_DWARF_PENANCE = """70% less damage taken from area attacks while the Dwarf Coalitionist is alive.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_BEAD_WATCH = """Bead of Healing""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_TOXIC_SALT = """Toxic Salt to the Wound""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_LIT_WICK = """Lit Wick for the Rested""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_ASSIST_DEFENCE = """Assist Defence""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_BUTTON_PRESSED = """Button Pressed""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_CRUMBLE_USED = """Mountain Crumbled""", # MISSING TRANSLATION
-	EFFECT_COAL_EARTH_SHIELD = """Earth Shield: +150 Armor and +120 MDEF.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_ERUPTION_LOCK = """Flames Spent""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_SPREAD_LOCK = """Plague Spread""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_RECOVERED = """Recovered""", # MISSING TRANSLATION
-	TRAIT_COAL_FLASH_STEP = """Flash Step Mastery: melee attacks from the back row lose no damage.
-Single-target spells can be dodged with half of this unit's Evasion.""", # MISSING TRANSLATION
-	TRAIT_COAL_CHAMESH_AVANIM = """Practitioner of Chamesh Avanim: immune to Disarm.
-Attacks against a target with 5 or more afflictions always crit.
-Flash-steps in to counterattack whenever an attack is dodged, up to 5 times per turn.""", # MISSING TRANSLATION
-	TRAIT_COAL_BEAD_OF_HEALING = """Scavenged Artifact: Bead of Healing. Once per turn, when an ally ends their turn below 25% HP and this unit is neither immobilised nor Silenced, heal that ally and cure their Bleed.""", # MISSING TRANSLATION
-	TRAIT_COAL_TOXIC_SALT = """Toxic Salt to the Wound: once per turn, when an ally lands a critical hit and this unit is neither immobilised nor Blinded, follow up with Dip Poison on the victim.""", # MISSING TRANSLATION
-	TRAIT_COAL_LIT_WICK = """Lit Wick for the Rested: once per turn, when an enemy is healed and this unit is neither immobilised nor Disarmed, throw a random grenade at them.""", # MISSING TRANSLATION
-	TRAIT_COAL_ASSIST_DEFENCE = """Assist Defence: once per turn, while this unit is neither immobilised nor Ensnared, a single-target attack aimed at an ally below 50% HP is taken by this unit instead.""", # MISSING TRANSLATION
-	TRAIT_COAL_FINAL_COUNTDOWN = """Final Countdown: three warnings, then it explodes on its fourth turn. Destroy it before it wipes you and everything around it off the map! Freezing it buys time; nothing resets the fuse.""", # MISSING TRANSLATION
-	EFFECT_COAL_FUSE_1 = """Fuse lit: the bomb explodes in 3 turns.""", # MISSING TRANSLATION
-	EFFECT_COAL_FUSE_2 = """Fuse burning down: the bomb explodes in 2 turns.""", # MISSING TRANSLATION
-	EFFECT_COAL_FUSE_3 = """Fuse almost out: the bomb explodes on its next turn.""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_FUSE_1 = """Fuse""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_FUSE_2 = """Fuse""", # MISSING TRANSLATION
-	EFFECTNAME_COAL_FUSE_3 = """Fuse""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_PARALYSIS = """麻痹""",
+	EFFECT_COAL_PARALYSIS = """麻痹：速度 -50、闪避 -80、命中率 -75。视为苦难状态。""",
+	EFFECTNAME_COAL_CALAMITY = """传染性灾祸""",
+	EFFECT_COAL_CALAMITY = """传染性灾祸：视为中毒。受到的治疗效果减半，且每回合损失 20% 最大生命值。
+当持续时间结束时，会蔓延至最多 2 名其他盟友。""",
+	EFFECTNAME_COAL_LAND_MINE = """地雷威慑""",
+	EFFECT_COAL_LAND_MINE = """对该单位发起的近战攻击将引爆地雷：攻击者受到大量{color=yellow|火属性}伤害并被撕裂，持续 2 回合。任何针对全队范围的攻击都会安全地清除该地雷。""",
+	EFFECTNAME_COAL_CLAIM_BONE = """取骨""",
+	EFFECT_COAL_CLAIM_BONE = """生命值不会低于 10%，且受到的伤害减半。下一次命中的近战攻击将触发必中的反击并施加流血。生效一次或持续一回合。""",
+	EFFECTNAME_COAL_DRAGON_MIGHT = """巨龙威能""",
+	EFFECT_COAL_DRAGON_MIGHT = """在本场战斗剩余时间内，造成的伤害 +25%，护甲 +25%。""",
+	EFFECTNAME_COAL_GNOMES_WIT = """地精机智""",
+	EFFECT_COAL_GNOMES_WIT = """只要博尔瑟存活，暴击率 +15%。""",
+	EFFECTNAME_COAL_GNOMES_WIT_BANE = """地精机智""",
+	EFFECT_COAL_GNOMES_WIT_BANE = """只要博尔瑟存活，暴击率 -10%。""",
+	EFFECTNAME_COAL_KOBOLD_TREASURE = """狗头人的宝藏""",
+	EFFECT_COAL_KOBOLD_TREASURE = """只要狗头人盟军成员存活，全元素抗性 +20 并免疫灼烧。""",
+	EFFECTNAME_COAL_RATKIN_GIFT = """鼠人的赠礼""",
+	EFFECT_COAL_RATKIN_GIFT = """只要鼠人盟军成员存活，每回合恢复 50 点生命值并免疫中毒。""",
+	EFFECTNAME_COAL_GOBLIN_INVENTION = """哥布林的发明""",
+	EFFECT_COAL_GOBLIN_INVENTION = """只要哥布林盟军成员存活，造成的伤害 +10% 并免疫失明。""",
+	EFFECTNAME_COAL_DWARF_PENANCE = """矮人的赎罪""",
+	EFFECT_COAL_DWARF_PENANCE = """只要矮人盟军成员存活，受到的范围攻击伤害降低 70%。""",
+	EFFECTNAME_COAL_BEAD_WATCH = """治疗珠""",
+	EFFECTNAME_COAL_TOXIC_SALT = """毒上加霜""",
+	EFFECTNAME_COAL_LIT_WICK = """休整者的引信""",
+	EFFECTNAME_COAL_ASSIST_DEFENCE = """协助防御""",
+	EFFECTNAME_COAL_BUTTON_PRESSED = """按钮已按下""",
+	EFFECTNAME_COAL_CRUMBLE_USED = """山岳崩垮""",
+	EFFECT_COAL_EARTH_SHIELD = """大地之盾：护甲 +150，魔抗 +120。""",
+	EFFECTNAME_COAL_ERUPTION_LOCK = """火焰耗尽""",
+	EFFECTNAME_COAL_SPREAD_LOCK = """瘟疫扩散""",
+	EFFECTNAME_COAL_RECOVERED = """已复原""",
+	TRAIT_COAL_FLASH_STEP = """瞬步精通：来自后排的近战攻击不会降低伤害。
+可以利用该单位一半的闪避率来闪避单体法术。""",
+	TRAIT_COAL_CHAMESH_AVANIM = """哈梅什·阿瓦尼姆习练者：免疫缴械。
+对带有 5 个或更多苦难状态的目标发起的攻击必定暴击。
+每当闪避攻击时，会施展瞬步发动反击，每回合最多 5 次。""",
+	TRAIT_COAL_BEAD_OF_HEALING = """搜刮到的遗物：治疗珠。每回合一次，当一名盟友在生命值低于 25% 的状态下结束回合且该单位未处于定身或沉默状态时，治疗该盟友并治愈其流血状态。""",
+	TRAIT_COAL_TOXIC_SALT = """毒上加霜：每回合一次，当一名盟友打出暴击且该单位未处于定身或失明状态时，对受害者追加使用【涂毒】。""",
+	TRAIT_COAL_LIT_WICK = """休整者的引信：每回合一次，当一名敌人获得治疗且该单位未处于定身或缴械状态时，向其投掷一枚随机手榴弹。""",
+	TRAIT_COAL_ASSIST_DEFENCE = """协助防御：每回合一次，当该单位未处于定身或束缚状态时，替代生命值低于 50% 的盟友承受一次针对其发起的单体攻击。""",
+	TRAIT_COAL_FINAL_COUNTDOWN = """终极倒计时：三次警告，随后在第四个回合爆破。在其将你及周围的一切抹去之前将其摧毁！冰冻它可以争取时间；没有任何手段能重置引信。""",
+	EFFECT_COAL_FUSE_1 = """引信已点燃：炸弹将在 3 回合后爆炸。""",
+	EFFECT_COAL_FUSE_2 = """引信快速燃烧：炸弹将在 2 回合后爆炸。""",
+	EFFECT_COAL_FUSE_3 = """引信即将烧尽：炸弹将在下一回合爆炸。""",
+	EFFECTNAME_COAL_FUSE_1 = """引信""",
+	EFFECTNAME_COAL_FUSE_2 = """引信""",
+	EFFECTNAME_COAL_FUSE_3 = """引信""",
     EFFECTNAME_OVERLOADED_GOLEM_CORE = "过载的魔像核心", 
     EFFECT_OVERLOADED_GOLEM_CORE = """所有攻击现在有70%几率附加点燃。
 回合结束时：对所有敌人造成微量火焰伤害。
@@ -6183,16 +6183,16 @@ Flash-steps in to counterattack whenever an attack is dodged, up to 5 times per 
 	BODYPARTHAIR_STYLEBRAID = """单辫""",
 	BODYPARTHAIR_STYLETWINBRAIDS = """双辫""",
 	BODYPARTHAIR_STYLEBUN = """发髻""",
-	BODYPARTHAIR_STYLEBOB = """bob""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEMESSY = """messy""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLELAYERED = """layered""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEFRINGE = """fringe""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLECROWNBRAID = """crown braid""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLETWINTAILS = """twin tails""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLECURLS = """curls""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLESHAVED = """scraped back""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEUNDERCUT = """undercut""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEHIME = """hime cut""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEBOB = """波波头""",
+	BODYPARTHAIR_STYLEMESSY = """凌乱发""",
+	BODYPARTHAIR_STYLELAYERED = """层次发""",
+	BODYPARTHAIR_STYLEFRINGE = """齐刘海""",
+	BODYPARTHAIR_STYLECROWNBRAID = """冠状编发""",
+	BODYPARTHAIR_STYLETWINTAILS = """双马尾""",
+	BODYPARTHAIR_STYLECURLS = """卷发""",
+	BODYPARTHAIR_STYLESHAVED = """梳后发""",
+	BODYPARTHAIR_STYLEUNDERCUT = """削边发""",
+	BODYPARTHAIR_STYLEHIME = """姬发式""",
 	BODYPARTEYE_COLORDEFAULT = """默认""",
 	BODYPARTEYE_SHAPENORMAL = """正常""",
 	BODYPARTEYE_SHAPESLIT = """竖瞳""",
@@ -6371,16 +6371,16 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
     BODYPARTHAIR_STYLEBRAIDDESCRIPT = """头发被编成了一根[url=hair][color=aqua]麻花辫[/color][/url]。""",
     BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = """头发被编成了[url=hair][color=aqua]两根辫子[/color][/url]。""",
     BODYPARTHAIR_STYLEBUNDESCRIPT = """头发被盘成了一个整齐的[url=hair][color=aqua]发髻[/color][/url]。""",
-	BODYPARTHAIR_STYLEBOBDESCRIPT = """It is cut into a neat [url=hair][color=aqua]bob[/color][/url].""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEMESSYDESCRIPT = """It falls in a [url=hair][color=aqua]dishevelled[/color][/url] tangle.""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLELAYEREDDESCRIPT = """It is cut in [url=hair][color=aqua]layers[/color][/url] that frame [his] face.""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEFRINGEDESCRIPT = """It is swept into a long [url=hair][color=aqua]side fringe[/color][/url].""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLECROWNBRAIDDESCRIPT = """It is gathered back behind a [url=hair][color=aqua]braided crown[/color][/url].""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLETWINTAILSDESCRIPT = """It is gathered into [url=hair][color=aqua]twin tails[/color][/url].""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLECURLSDESCRIPT = """It falls in loose [url=hair][color=aqua]ringlets[/color][/url].""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLESHAVEDDESCRIPT = """It is [url=hair][color=aqua]scraped back[/color][/url] tight against [his] skull.""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEUNDERCUTDESCRIPT = """The sides are shaved into an [url=hair][color=aqua]undercut[/color][/url].""", # MISSING TRANSLATION
-	BODYPARTHAIR_STYLEHIMEDESCRIPT = """It is cut in a blunt fringe with long straight [url=hair][color=aqua]side locks[/color][/url].""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEBOBDESCRIPT = """修剪成了整齐的[url=hair][color=aqua]波波头[/color][/url]。""",
+	BODYPARTHAIR_STYLEMESSYDESCRIPT = """散落成[url=hair][color=aqua]蓬乱纠缠[/color][/url]的一团。""",
+	BODYPARTHAIR_STYLELAYEREDDESCRIPT = """修剪出修饰 [his] 脸型的[url=hair][color=aqua]层次感[/color][/url]。""",
+	BODYPARTHAIR_STYLEFRINGEDESCRIPT = """梳成了长长的[url=hair][color=aqua]斜刘海[/color][/url]。""",
+	BODYPARTHAIR_STYLECROWNBRAIDDESCRIPT = """盘成[url=hair][color=aqua]冠状编发[/color][/url]并收于脑后。""",
+	BODYPARTHAIR_STYLETWINTAILSDESCRIPT = """扎成了[url=hair][color=aqua]双马尾[/color][/url]。""",
+	BODYPARTHAIR_STYLECURLSDESCRIPT = """散落成蓬松的[url=hair][color=aqua]螺旋发卷[/color][/url]。""",
+	BODYPARTHAIR_STYLESHAVEDDESCRIPT = """紧贴着 [his] 的头骨[url=hair][color=aqua]向后紧紧梳起[/color][/url]。""",
+	BODYPARTHAIR_STYLEUNDERCUTDESCRIPT = """两侧剃短，形成了[url=hair][color=aqua]削边发[/color][/url]。""",
+	BODYPARTHAIR_STYLEHIMEDESCRIPT = """剪成了齐刘海，两侧留有长直的[url=hair][color=aqua]鬓发[/color][/url]。""",
 	HAIRCOLOR_GRADIENT = """五颜六色""",
 	HAIRCOLOR_BROWN = """棕色""",
 	HAIRCOLOR_ORANGE = """橙色""",
@@ -9461,12 +9461,12 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ENEMYDWARVEN_SKIRMISHER = "矮人散兵",
 	ENEMYDWARVEN_SHIELDER = "矮人盾卫",
 	ENEMYOBSIDIAN_GOLEM = "黑曜石魔像",
-	ENEMYCOAL_BOLTHAR = """Bolthar""", # MISSING TRANSLATION
-	ENEMYCOAL_KOBOLD = """Kobold Coalitionist""", # MISSING TRANSLATION
-	ENEMYCOAL_RATKIN = """Ratkin Coalitionist""", # MISSING TRANSLATION
-	ENEMYCOAL_GOBLIN = """Goblin Coalitionist""", # MISSING TRANSLATION
-	ENEMYCOAL_DWARF = """Dwarf Coalitionist""", # MISSING TRANSLATION
-	ENEMYCOAL_MOAB = """Mother of All Bombs""", # MISSING TRANSLATION
+	ENEMYCOAL_BOLTHAR = """博尔瑟""",
+	ENEMYCOAL_KOBOLD = """狗头人盟军成员""",
+	ENEMYCOAL_RATKIN = """鼠人盟军成员""",
+	ENEMYCOAL_GOBLIN = """哥布林盟军成员""",
+	ENEMYCOAL_DWARF = """矮人盟军成员""",
+	ENEMYCOAL_MOAB = """炸弹之母""",
 	ENEMYKURO = """珂洛""",
 	ENEMYERDYNA = """厄尔迪娜""",
 	ENEMYNIXX = """尼克斯""",
@@ -9610,7 +9610,7 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
     ITEMSEXSWAP_POTION = """性别转换药水""",
 	ITEMSEXSWAP_POTIONDESCRIPT = """将角色的性别改变为异性。对特殊角色无效。""",
 	ITEMUSECONFIRM = """你确定要使用{color=yellow|%s}吗？""",
-	ITEMUSEAMOUNT = """Use %s""", # MISSING TRANSLATION
+	ITEMUSEAMOUNT = """使用 %s""",
 	DIALOGUEEVENTMINORUSSELECT = """选择要缩小[name]的哪个身体部位。""",
 	DIALOGUEEVENTMAJORUSSELECT = """选择要增大[name]的哪个身体部位。""",
 	DIALOGUEPOTIONNOEFFECT = """很遗憾，这瓶药水完全没有发挥任何效果。""",
@@ -9725,9 +9725,9 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ACHIEVEMENT_WED_KURO_NAME = """珂洛""",
 	ACHIEVEMENT_WED_KURO_DESC = """与珂洛成婚""",
 	ACHIEVEMENT_WED_KURO_HINT = """迎娶珂洛""",
-	ACHIEVEMENT_WED_ANA_NAME = """阿纳斯塔西娅""",
-	ACHIEVEMENT_WED_ANA_DESC = """与阿纳斯塔西娅成婚""",
-	ACHIEVEMENT_WED_ANA_HINT = """迎娶阿纳斯塔西娅""",
+	ACHIEVEMENT_WED_ANA_NAME = """安娜斯塔西娅""",
+	ACHIEVEMENT_WED_ANA_DESC = """与安娜斯塔西娅成婚""",
+	ACHIEVEMENT_WED_ANA_HINT = """迎娶安娜斯塔西娅""",
 	ACHIEVEMENT_WED_ZEPHYRA_NAME = """泽菲拉""",
 	ACHIEVEMENT_WED_ZEPHYRA_DESC = """与泽菲拉成婚""",
 	ACHIEVEMENT_WED_ZEPHYRA_HINT = """迎娶泽菲拉""",
@@ -9755,9 +9755,9 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ACHIEVEMENT_MAX_ALCHEMY_NAME = """炼金大师""",
 	ACHIEVEMENT_MAX_ALCHEMY_DESC = """炼金室升级至3级""",
 	ACHIEVEMENT_MAX_ALCHEMY_HINT = """将炼金室升级至3级""",
-	ACHIEVEMENT_MAX_KITCHEN_NAME = """Master cook""", # MISSING TRANSLATION
-	ACHIEVEMENT_MAX_KITCHEN_DESC = """A Kitchen with every improvement built""", # MISSING TRANSLATION
-	ACHIEVEMENT_MAX_KITCHEN_HINT = """Build every improvement a Kitchen offers""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_KITCHEN_NAME = """特级厨师""",
+	ACHIEVEMENT_MAX_KITCHEN_DESC = """建造了所有升级设施的厨房""",
+	ACHIEVEMENT_MAX_KITCHEN_HINT = """建造厨房的所有升级设施""",
 	ACHIEVEMENT_UPGRADES_NAME = """工匠大师""",
 	ACHIEVEMENT_UPGRADES_DESC = """完成全部三个工坊的升级""",
 	ACHIEVEMENT_UPGRADES_HINT = """将三个工坊全部升级至3级""",
@@ -9829,9 +9829,9 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ACHIBONUS_CALI_START = """携手卡莉开局""",
 	ACHIBONUS_CALI_START_DESC = """在拥有卡莉的情况下开始新游戏""",
 	ACHIBONUS_CALI_START_HINT = """获得卡莉""",
-	ACHIBONUS_ANA_START = """携手阿纳斯塔西娅开局""",
-	ACHIBONUS_ANA_START_DESC = """在拥有阿纳斯塔西娅的情况下开始新游戏""",
-	ACHIBONUS_ANA_START_HINT = """获得阿纳斯塔西娅""",
+	ACHIBONUS_ANA_START = """携手安娜斯塔西娅开局""",
+	ACHIBONUS_ANA_START_DESC = """在拥有安娜斯塔西娅的情况下开始新游戏""",
+	ACHIBONUS_ANA_START_HINT = """获得安娜斯塔西娅""",
 	ACHIBONUS_AMELIA_START = """携手阿梅莉亚开局""",
 	ACHIBONUS_AMELIA_START_DESC = """在拥有阿梅莉亚的情况下开始新游戏""",
 	ACHIBONUS_AMELIA_START_HINT = """获得阿梅莉亚""",
@@ -10551,7 +10551,7 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_TRAINING7 = """点击某种食物以允许或禁止该角色食用。""",
 	TUTORIAL_TRAINING8 = """完成设置后，让我们切换回默认菜单。""",
 	TUTORIAL_TRAINING8_1 = """在任意位置右键点击即可重新折叠卡片，以便查看列表中的其他内容。""",
-	TUTORIAL_TRAINING9 = """选择黛西（Daisy）以查看她的详细信息。""",
+	TUTORIAL_TRAINING9 = """选择黛西（黛西）以查看她的详细信息。""",
 	TUTORIAL_TRAINING10 = """你可以通过双击或使用“角色信息”按钮来打开角色窗口。""",
 	TUTORIAL_TRAINING11 = """黛西被归类为未经训练的奴隶，需要一名训练师来监督和进行她的训练。未经训练的奴隶在没有训练师的情况下是不会工作的。""",
 	TUTORIAL_TRAINING12 = """选择你的主人，将其指定为她的训练师。""",
@@ -10709,7 +10709,7 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 
 ALIRONELECTIONSFINISH_LINE2 = """{color=aqua|Sigmund: — 你确定那小娘们真是公主？没准是个冒牌货。这在咱们矮人野外起内讧时可是常用招数。}
 
-{color=yellow|Amelia: — 我们基本可以确定她就是本人。她的相貌与最小的孩子相符，而且她身上的气息毫无疑问属于皇家血脉。我们现在不知道的是谁在背后支持她。如果帝国也插手了这件事……}""",
+{color=yellow|艾米莉亚: — 我们基本可以确定她就是本人。她的相貌与最小的孩子相符，而且她身上的气息毫无疑问属于皇家血脉。我们现在不知道的是谁在背后支持她。如果帝国也插手了这件事……}""",
 
 ALIRONELECTIONSFINISH_LINE3 = """{color=aqua|Duncan: — 过去几个月里，我们的侦察兵一直在报告叛军活动频繁。就在我们说话的时候，同情者和叛军部队正在向前推进。我不得不宣布进入紧急状态。}
 
@@ -10724,7 +10724,7 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 {color=yellow|Myr: — 我们？！凭什么？不对，法师公会能从这场叛军的闹剧里捞到什么好处？}
 
 {color=aqua|Duncan: — 不管怎样，我们都会查出元凶，所有的帮凶都将被彻底清算。管他是你、仆从组织，还是我们自己人。}""",
-	ALIRONELECTIONSFINISH_LINE5 = """会议一结束，你便走向阿梅莉亚（Amelia），商讨接下来的打算。
+	ALIRONELECTIONSFINISH_LINE5 = """会议一结束，你便走向阿梅莉亚（艾米莉亚），商讨接下来的打算。
 
 {color=yellow|— 哦，这太糟糕了。在暴动被平息之前，战士公会将会用铁腕统治这里。对你来说，坏消息是选举自然被搁置了。好消息是，你的债务也同样被搁置了。看来仆从公会已经被坐冷板凳了，尤其是我的处境。}""",
 	ALIRONELECTIONSFINISH_QUESTION1 = """为什么你什么都做不了？""",
@@ -10935,64 +10935,64 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	RETURNTODUNCAN_EXTRA1 = """{color=yellow|—— 这显然是那些法师的责任。米尔应该知道谁该为这事负责。一旦你揪出那个家伙，我们绝不会手软，必定给予应有的严惩。}""",
 	INTERMISSION2INTRO1 = """叛军的军队矗立在一片刚刚沦为血腥战场的村落前。
 
-{color=yellow|阿纳斯塔西娅：—— 叔叔！你为什么在进攻前不让我先去和他们谈谈？！}
+{color=yellow|安娜斯塔西娅：—— 叔叔！你为什么在进攻前不让我先去和他们谈谈？！}
 
 {color=aqua|格雷格：—— 那些可都是公会训练有素的走狗爪牙。}
 
-{color=yellow|阿纳斯塔西娅：—— 可是他们之前明明要求见我本人的。我们本来完全可以避免这一切伤亡和毁灭的！}""",
-	INTERMISSION2INTRO2 = """尽管格雷格根本不想回答，但由于阿纳斯塔西娅是在那么多叛军士兵面前提出抗议的，他不得不谨慎措辞。
+{color=yellow|安娜斯塔西娅：—— 可是他们之前明明要求见我本人的。我们本来完全可以避免这一切伤亡和毁灭的！}""",
+	INTERMISSION2INTRO2 = """尽管格雷格根本不想回答，但由于安娜斯塔西娅是在那么多叛军士兵面前提出抗议的，他不得不谨慎措辞。
 
 {color=aqua|格雷格：—— 你太天真了，公主殿下。那些人里很可能藏着单纯为了取你项上人头而来的刺客。我们的敌人都是些狡诈的投机分子，这就是他们的行事风格。}
 
-{color=yellow|阿纳斯塔西娅：—— ……不应该是这样的。如果人们在被解放的过程中死去了，那把他们从暴政中拯救出来还有什么意义？我们必须避免伤害无辜，以及这种无谓的牺牲。}""",
-	INTERMISSION2INTRO3 = """{color=yellow|阿纳斯塔西娅：—— 我已经决定了。放了那些幸存者，让他们回家。}
+{color=yellow|安娜斯塔西娅：—— ……不应该是这样的。如果人们在被解放的过程中死去了，那把他们从暴政中拯救出来还有什么意义？我们必须避免伤害无辜，以及这种无谓的牺牲。}""",
+	INTERMISSION2INTRO3 = """{color=yellow|安娜斯塔西娅：—— 我已经决定了。放了那些幸存者，让他们回家。}
 
 {color=aqua|格雷格：—— 什么！？}
 
-{color=yellow|阿纳斯塔西娅：—— 这是我们现在起码能做的，以此来展示我们的善意与高尚意图。}
+{color=yellow|安娜斯塔西娅：—— 这是我们现在起码能做的，以此来展示我们的善意与高尚意图。}
 
 {color=aqua|格雷格：—— ……行吧，但你别自欺欺人了。光靠仁慈和温柔，你是不可能夺回王位的。}""",
-	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|阿纳斯塔西娅：—— 有爱蕊的消息吗？她还没回来吗？}
+	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|安娜斯塔西娅：—— 有爱蕊的消息吗？她还没回来吗？}
 
 {color=aqua|侍从：—— 恐怕没有，殿下。她至今仍未归来。}
 
-{color=yellow|阿纳斯塔西娅：—— 啊……爱蕊，我现在真的很需要你陪在身边。希望你平安无事。}""",
-	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|阿纳斯塔西娅：—— 你觉得我要求释放他们错了吗？}
+{color=yellow|安娜斯塔西娅：—— 啊……爱蕊，我现在真的很需要你陪在身边。希望你平安无事。}""",
+	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|安娜斯塔西娅：—— 你觉得我要求释放他们错了吗？}
 
 {color=aqua|爱蕊：—— 抱歉，殿下，这不是我该妄加评判的事。}
 
-{color=yellow|阿纳斯塔西娅：—— 爱蕊，别跟我这么见外。}
+{color=yellow|安娜斯塔西娅：—— 爱蕊，别跟我这么见外。}
 
 {color=aqua|爱蕊：—— 我只是您的工具，殿下。对我而言，您的意志高于一切。}
 
 注意到公主愤怒的注视，爱蕊赶忙补充道。
 
 {color=aqua|爱蕊：—— 不过，我想如果我处在他们的位置上，我应该也会渴望能够回到家乡。}""",
-	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|阿纳斯塔西娅：—— 我之前还没机会问，你上一次的任务进展得怎么样了？你自从回来后就一直闷闷不乐的。是不是发生什么糟糕的事了？}
+	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|安娜斯塔西娅：—— 我之前还没机会问，你上一次的任务进展得怎么样了？你自从回来后就一直闷闷不乐的。是不是发生什么糟糕的事了？}
 
 公主注意到，面对这个问题，爱蕊的身体瞬间紧绷了起来。
 
 {color=aqua|爱蕊：—— ……没什么值得向您提起的。}""",
-	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|阿纳斯塔西娅：—— 你没有再受伤吧？}
+	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|安娜斯塔西娅：—— 你没有再受伤吧？}
 
 {color=aqua|爱蕊：—— 我没事，只要能继续为您效劳，这点程度根本不算什么。}
 
-{color=yellow|阿纳斯塔西娅：—— 嗯……我很好奇是不是所有精灵都像你这样隐忍顺从。}""",
-	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """{color=yellow|阿纳斯塔西娅：—— 我还没机会问你呢，上个任务进展得怎么样？你自从回来后就一直挺有精神的，我现在正需要听点好消息换换心情。}
+{color=yellow|安娜斯塔西娅：—— 嗯……我很好奇是不是所有精灵都像你这样隐忍顺从。}""",
+	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """{color=yellow|安娜斯塔西娅：—— 我还没机会问你呢，上个任务进展得怎么样？你自从回来后就一直挺有精神的，我现在正需要听点好消息换换心情。}
 
 {color=aqua|爱蕊：—— 噢，是的。其实，这次我差点就彻底栽在里面了。}""",
-	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|阿纳斯塔西娅：—— 爱蕊！你明明答应过我会小心的。你明明……等等，既然那么危险，你为什么还这么高兴？}
+	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|安娜斯塔西娅：—— 爱蕊！你明明答应过我会小心的。你明明……等等，既然那么危险，你为什么还这么高兴？}
 
 {color=aqua|爱蕊：—— 我……那个，其实我被人救了。}
 
-{color=yellow|阿纳斯塔西娅：—— 救命恩人？快跟我说说。}
+{color=yellow|安娜斯塔西娅：—— 救命恩人？快跟我说说。}
 
 {color=aqua|爱蕊：—— 我对 [name] 其实不太了解，我记得 [name] 名字叫 [name]。[name] 看起来像是一个……嗯，我觉得是个挺温柔的人。}""",
-	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|阿纳斯塔西娅：—— [name]？等这堆烂摊子结束之后，我们应该好好赏赐 [name] 一番。}
+	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|安娜斯塔西娅：—— [name]？等这堆烂摊子结束之后，我们应该好好赏赐 [name] 一番。}
 
 {color=aqua|爱蕊：—— 安娜，你真没必要特意这么做的。}
 
-{color=yellow|阿纳斯塔西娅：—— 别傻了，不管怎么说我起码得向 [name] 表达谢意。毕竟你陪了我这么久，你要是回不来，我都不知道该怎么办了。}
+{color=yellow|安娜斯塔西娅：—— 别傻了，不管怎么说我起码得向 [name] 表达谢意。毕竟你陪了我这么久，你要是回不来，我都不知道该怎么办了。}
 
 {color=aqua|爱蕊：—— ……}""",
 	SIGMUNDOPTION = """{color=yellow|—— 噢？听到你这么说俺就放心了。想必你是来打听详细情况的吧？俺们的一座矿山已经被那帮叛军给强占了。}""",
@@ -11232,50 +11232,50 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	SKILLBILE_CORROSIVE = """腐蚀毒胆""",
 	AIRE_AMELIA1 = """艾米莉亚走进爱蕊的牢房，手里提着一个精致的黑色皮包，脸上挂着一抹笑意。
 
-{color=aqua|Amelia: — 嗨，亲爱的。你是叫爱蕊对吧？希望那些狱卒对你还算温柔。看来我们的调查进度还是太慢了，所以上面让我来发挥点特长，撬开你的小嘴。}
+{color=aqua|艾米莉亚: — 嗨，亲爱的。你是叫爱蕊对吧？希望那些狱卒对你还算温柔。看来我们的调查进度还是太慢了，所以上面让我来发挥点特长，撬开你的小嘴。}
 
 听到她的话，爱蕊扫了一眼那个皮包，脑海中浮现出里面可能装满的各种刀具和倒钩，随后又困惑地看向这位穿着暴露的猫娘。
 
-{color=yellow|Aire: — 我什么都不会透露的，不管是对你还是对任何人，不论你耍什么手段。}
+{color=yellow|爱蕊: — 我什么都不会透露的，不管是对你还是对任何人，不论你耍什么手段。}
 
-{color=aqua|Amelia: — 真是可爱。我相信你是个优秀的战士，能挺过肉体上的折磨，但我自有我的调教手段。}""",
+{color=aqua|艾米莉亚: — 真是可爱。我相信你是个优秀的战士，能挺过肉体上的折磨，但我自有我的调教手段。}""",
 	AIRE_AMELIA2 = """艾米莉亚掏出一个装有蜂蜜色液体的小药瓶，将其倒扣在手帕上浸湿了一会儿，然后重新塞上瓶塞。爱蕊挣扎着站起身，试图尽其所能地反抗，以免被毒害，但双手被缚的她，过去受过的所有战斗训练在此刻都毫无用处。艾米莉亚粗暴地拽着她的束缚带和项圈将她扭转过来，随后用一只手臂死死圈住她，将手帕强行捂在她的口鼻上。
 
-{color=aqua|Amelia: — 乖乖深呼吸。这不会伤到你的。}""",
+{color=aqua|艾米莉亚: — 乖乖深呼吸。这不会伤到你的。}""",
 	AIRE_AMELIA3 = """爱蕊屏住呼吸长达一分多钟。在此期间她一直在拼命挣扎，而艾米莉亚则死死按住她，同时像朋友般闲聊着，但爱蕊肺部的灼烧感很快就变得难以忍受，最终她不得不绝望地大口吞咽着夹杂着催情药物的空气。艾米莉亚就这么一直禁锢着她，直到她的呼吸变得平稳，身体也开始渐渐发软。
 
-{color=aqua|Amelia: — 现在，我知道你听过一些关于我和我同事的恶劣传闻，但其实我们对合作伙伴一直都很慷慨。比如，我刚刚和你分享的这种好东西，平时在这里不管花多少钱都买不到。据说其中的成分之一，可是真正的阿尔劳妮阿修罗花蜜呢。}
+{color=aqua|艾米莉亚: — 现在，我知道你听过一些关于我和我同事的恶劣传闻，但其实我们对合作伙伴一直都很慷慨。比如，我刚刚和你分享的这种好东西，平时在这里不管花多少钱都买不到。据说其中的成分之一，可是真正的阿尔劳妮阿修罗花蜜呢。}
 
 爱蕊的心脏开始狂跳，她的身体变得敏感得无可救药。艾米莉亚漫不经心地揉弄着她被五花大绑的丰满乳房，时不时地掐弄一下她的乳头，激得这位精灵少女一阵阵地惊叫抽搐，随后娇喘声逐渐变成了淫靡的呻吟。
 
-{color=aqua|Amelia: — 我看你的声音已经变得越来越兴奋了。为什么不乖乖把我们想知道的告诉我们呢？能这样一直坚持抵抗……你一定很爱慕你的主人吧？或者说，你们之间甚至有着更亲密的肉体关系？}""",
-	AIRE_AMELIA4 = """{color=yellow|Aire: — 不是……你想的……那样……}
+{color=aqua|艾米莉亚: — 我看你的声音已经变得越来越兴奋了。为什么不乖乖把我们想知道的告诉我们呢？能这样一直坚持抵抗……你一定很爱慕你的主人吧？或者说，你们之间甚至有着更亲密的肉体关系？}""",
+	AIRE_AMELIA4 = """{color=yellow|爱蕊: — 不是……你想的……那样……}
 
 艾米莉亚将自己的酥胸紧紧压在爱蕊身上，用一种肉体紧贴的姿势倚着她，逼得爱蕊不得不张开双腿、弓起细腰来保持平衡。当艾米莉亚那长着细软绒毛的尾巴顺着爱蕊的大腿缓慢向上滑动时，爱蕊只觉得浑身泛起一股酥麻触电般的战栗。
 
-{color=aqua|Amelia: — 啊，又是一个纯洁的精灵处女！我都快开始怀念以前亲自调教新人的日子了。}
+{color=aqua|艾米莉亚: — 啊，又是一个纯洁的精灵处女！我都快开始怀念以前亲自调教新人的日子了。}
 
 艾米莉亚的嫩尾已经一路探到了爱蕊那被内裤包裹着的私密敏感处，并开始左右挑弄，隔着布料不断刺激着她此刻已经充血肿胀的阴蒂。爱蕊现在脑子里一片混乱，根本无法思考。
 
-{color=aqua|Amelia: — 瞧瞧你，下面都湿透了，还在不停地发抖。拷问这么一个可爱的女孩子真让我心疼。你现在，一定非常渴望让我来帮你结束这场煎熬吧。}""",
-		AIRE_AMELIA5 = """{color=yellow|Aire: — 是的……}
+{color=aqua|艾米莉亚: — 瞧瞧你，下面都湿透了，还在不停地发抖。拷问这么一个可爱的女孩子真让我心疼。你现在，一定非常渴望让我来帮你结束这场煎熬吧。}""",
+		AIRE_AMELIA5 = """{color=yellow|爱蕊: — 是的……}
 
 爱蕊的眼中满是屈辱的泪水，她再也无法抗拒那排山倒海般袭来的强烈快感。
 
-{color=aqua|Amelia: — 看来我们想要的是同一件事。你知道该怎么做才能解脱，告诉我安娜斯塔西亚在哪里。}
+{color=aqua|艾米莉亚: — 看来我们想要的是同一件事。你知道该怎么做才能解脱，告诉我安娜斯塔西亚在哪里。}
 
 艾米莉亚的一只手从爱蕊的胸口顺势下滑，将她的内裤拨到了一边，手指轻柔地在她那早已泥泞不堪的私密缝隙间上下摩挲。在强效催情药的影响下，爱蕊的翘臀完全违背了自己的理智，主动迎合着那作恶的手指不断挺弄。
 
 她汇聚起全身最后的意志，试图扭动身体挣脱开来，但艾米莉亚一把将她死死按住，同时将两根手指狠狠地捅进了她那紧致的肉道里，把那泥泞的蜜穴当成了稳固身形的手柄。爱蕊瞬间瘫软下来，身体开始剧烈地颤抖，然而艾米莉亚却坏心思地抽出了手指，重新开始挑逗爱蕊的阴唇，故意把她吊在崩溃的边缘。
 
-{color=yellow|Aire: — 啊……求……求你……}""",
-	AIRE_AMELIA6 = """{color=aqua|Amelia: — 只要说出一个字，你就能得到你想要的。}
+{color=yellow|爱蕊: — 啊……求……求你……}""",
+	AIRE_AMELIA6 = """{color=aqua|艾米莉亚: — 只要说出一个字，你就能得到你想要的。}
 
-{color=yellow|Aire: — ……好……好滴。}
+{color=yellow|爱蕊: — ……好……好滴。}
 
 爱蕊扭过头，吐气如兰地低声呢喃。当这位精灵少女在她耳边沉重地喘息时，艾米莉亚的猫耳微微抖动了一下，随即露出了灿烂的笑容。
 
-{color=aqua|Amelia: — 乖女孩。现在，这是给你的奖励。}
+{color=aqua|艾米莉亚: — 乖女孩。现在，这是给你的奖励。}
 
 艾米莉亚将她那条长长的尾巴再次顺着爱蕊的大腿缠绕而上，来回扭动着，最终慢慢没入了她那早已蜜汁泛滥、泥泞不堪的桃源深处。纯粹的肉体本能让爱蕊娇喘连连，徒劳地迎着艾米莉亚的丰臀不断挺翘着，但艾米莉亚却只是故意保持着缓慢而磨人的节奏。爱蕊急促地吸气，就在她即将高潮缴械的瞬间，艾米莉亚的尾巴开始在她体内疯狂抽插起来，力道虽不及男人，速度却快得惊人。
 
@@ -11283,7 +11283,7 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 
 艾米莉亚温柔地将这个还在不断抽搐痉挛的女孩放倒在地，擦拭干净后，拎起了自己的皮包。
 
-{color=aqua|Amelia: — 瞧，这有很难吗？希望下次我们在更好的情况下见面。}
+{color=aqua|艾米莉亚: — 瞧，这有很难吗？希望下次我们在更好的情况下见面。}
 
 她娇媚地哼着歌，在出门时风骚地扭动着丰臀，向狱卒下达了后续命令，随即便动身去汇报这个好消息了。""",
 	HELP_SIGMUND_OPTION_0 = """我是来帮你的。""",
@@ -11380,14 +11380,14 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 {color=yellow|— 甭指望那只恶魔婊子了，兄弟们，老子们绝不束手就擒！}""",
 	PRE_FINAL_BOSS_8 = """{color=aqua|Demon: — 哟，打算装英雄装到底对吧？那你怎么看呢……如果我没记错的话，你叫库黛？你大老远跑到这儿来，不就是为了寻找无上的觉悟吗？}
 
-{color=yellow|Kurdan: — 看来我是被猪油蒙了心。这一次，我决定站在 [name] 这边。}
+{color=yellow|库黛: — 看来我是被猪油蒙了心。这一次，我决定站在 [name] 这边。}
 
 {color=aqua|Demon: — 哎呀，是这样吗……那可真让人遗憾。好吧，不过老娘现在正好缺个调教干活的帮手，你身上还留着那枚邀请印记对吧？}""",
 	PRE_FINAL_BOSS_PALADIN_OPTION = """[Paladin] 我绝不会接受如此肮脏卑劣的交易，弱小无辜的身体由我来守护。""",
 	PRE_FINAL_BOSS_KNIGHT_OPTION = """[Knight] 我绝不会接受如此肮脏卑劣的交易，弱小无辜的身体由我来守护。""",
 	PRE_FINAL_BOSS_PALADIN_KNIGHT = """{color=aqua|Demon: — ……老娘真不敢相信，你居然这么古板不开窍。很好，等会儿我会让你在无尽的悔恨中哭着求饶的。喂，那边的—}
 
-{color=yellow|Kurdan: — 恶魔，我绝不会助纣为虐。这位 [man] 的执着与信念深深打动了我，我想亲眼见识 [name] 战斗时的英姿。}
+{color=yellow|库黛: — 恶魔，我绝不会助纣为虐。这位 [man] 的执着与信念深深打动了我，我想亲眼见识 [name] 战斗时的英姿。}
 
 {color=aqua|Demon: — 哼，随你们便，对付你们，老娘根本不需要借助额外的力量。}
 """,
@@ -11506,11 +11506,11 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	AFTER_MINES_CONVOY_13 = """{color=yellow|— 很好，[name]。看来你已经圆满完成了这次任务。老子总算难得有个能派上用场的得力手下，不错。}""",
 	AFTER_MINES_CONVOY_14 = """在城镇围墙之内，叛军们正为了即将来临的决战加固防御工事。
 
-{color=yellow|Aire: — 公会那边的联军正准备发起猛攻。他们大约有两千人马，全是久经沙场的精锐战士和施法者。即便以我们现在的防御态势，我怀疑我们根本撑不了多久。}
+{color=yellow|爱蕊: — 公会那边的联军正准备发起猛攻。他们大约有两千人马，全是久经沙场的精锐战士和施法者。即便以我们现在的防御态势，我怀疑我们根本撑不了多久。}
 
 {color=aqua|Greg: — 这里还轮不到你来质疑什么。回到你的岗位上去，准备迎接战斗。我们的人手足以守住这个阴暗破败的城镇，更何况老子手里还藏着几张能翻盘的底牌。}
 
-{color=yellow|Aire: — ……是，长官。}""",
+{color=yellow|爱蕊: — ……是，长官。}""",
 	AFTER_MINES_CONVOY_14_AIRE_DEAD = """聚落城墙之内，反抗军一直在加固防线，为即将到来的战斗做准备。
 
 {color=yellow|反抗军军官：—— 公会的军队正在准备发起进攻。大约有两千兵力，全都是训练有素的士兵和法师。就算依靠我们目前的阵地，恐怕也坚持不了多久。}
@@ -11522,17 +11522,17 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 {color=aqua|格雷格：—— 别管那个精灵了。如果她到现在还没回来，那就再也不会回来了。}""",
 	AFTER_MINES_CONVOY_15 = """在距离城镇围墙几百英尺远的地方，按照战前的惯例，邓肯与安娜斯塔西亚进行了最后一次对峙谈判。
 
-{color=aqua|Anastasia: — 看到人民因为我们的所作所为而受苦，我心中深感愧疚，但我们绝不会放下手中的武器。}
+{color=aqua|安娜斯塔西娅: — 看到人民因为我们的所作所为而受苦，我心中深感愧疚，但我们绝不会放下手中的武器。}
 
 {color=yellow|Duncan: — 这话留到我们大获全胜之后再说吧。距离老子上次亲手染血开战，已经过去太久了，老子都快憋坏了。}""",
 	AFTER_MINES_CONVOY_16 = """安娜斯塔西亚向邓肯投去了一道愤怒的目光。
 
-{color=aqua|Anastasia: — 这就是你现在唯一想说的话吗？在你杀了我父亲之后？}
+{color=aqua|安娜斯塔西娅: — 这就是你现在唯一想说的话吗？在你杀了我父亲之后？}
 
 {color=yellow|Duncan: — 对于你这种乳臭未干的小毛孩，此时此刻老子没什么好说的。赶紧把这场戏演完吧。}""",
 	AFTER_MINES_CONVOY_17 = """尽管心中怒火中烧，安娜斯塔西亚还是强行压制住了情绪，以符合皇家礼仪的冷静姿态给予了回应。
 
-{color=aqua|Anastasia: — 很好。众神自会审判公正与邪恶。}
+{color=aqua|安娜斯塔西娅: — 很好。众神自会审判公正与邪恶。}
 
 {color=yellow|Duncan: — 众神自会审判公正与邪恶。}""",
 	BETRAYAL_CONFIRMED_ADVANCE = """战场上充满了刀剑碰撞的铿锵声，无数箭矢划破空气呼啸而过。没过多久，一支敌军便冲向了你们的侧翼。""",
@@ -11893,38 +11893,38 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 {color=yellow|安娜斯塔西娅：— 这不对，我不能把大家丢下。}
 
 {color=aqua|格雷格：— 够了，我们在浪费时间。爱蕊！把公主送走，然后立刻回到我身边。}""",
-	GUILD_ATTACK_ON_HIDEOUT_3 = """{color=yellow|Aire: — ……我明白了。这边请，殿下。}
+	GUILD_ATTACK_ON_HIDEOUT_3 = """{color=yellow|爱蕊: — ……我明白了。这边请，殿下。}
 
-{color=aqua|Anastasia: — 不，在那之后我该怎么办？}
+{color=aqua|安娜斯塔西娅: — 不，在那之后我该怎么办？}
 
-{color=yellow|Aire: — 别担心，我们已经为您准备好了逃生计划……一旦击退入侵者，我们就会与您汇合，带您回来。}
+{color=yellow|爱蕊: — 别担心，我们已经为您准备好了逃生计划……一旦击退入侵者，我们就会与您汇合，带您回来。}
 
 {color=aqua|Greg: — 没听到她说的吗，安娜？快点动起来。}
 
-{color=aqua|Anastasia: — ……}""",
-	GUILD_ATTACK_ON_HIDEOUT_4_1 = """{color=yellow|Aire: — 完成了。}
+{color=aqua|安娜斯塔西娅: — ……}""",
+	GUILD_ATTACK_ON_HIDEOUT_4_1 = """{color=yellow|爱蕊: — 完成了。}
 
 {color=aqua|Greg: — 很好，你总算干了点有用的事。现在拿起武器，准备防守。}
 
-{color=yellow|Aire: — ……明白。}
+{color=yellow|爱蕊: — ……明白。}
 
 {color=aqua|Greg: — 该死，整个计划全他妈搞砸了。}""",
 	GUILD_ATTACK_ON_HIDEOUT_4_2 = """反抗军藏身处深处的一间房内，格雷格闯进了安娜斯塔西亚所在的房间。
 
 {color=aqua|Greg: — 我们遭到袭击了。公会的人发现了我们。}
 
-{color=aqua|Anastasia: — 这么快！？我们该怎么办？}
+{color=aqua|安娜斯塔西娅: — 这么快！？我们该怎么办？}
 
 {color=aqua|Greg: — 你必须逃走。走你那个精灵为你准备的逃生路线。}""",
-	GUILD_ATTACK_ON_HIDEOUT_4_3 = """{color=yellow|Anastasia: — 逃跑？不，我……我做不到……}
+	GUILD_ATTACK_ON_HIDEOUT_4_3 = """{color=yellow|安娜斯塔西娅: — 逃跑？不，我……我做不到……}
 
 {color=aqua|Greg: — 他们的目标肯定是你，没了你，革命就完了。}
 
-{color=yellow|Anastasia: — 这不对，我不能抛下大家不管。}
+{color=yellow|安娜斯塔西娅: — 这不对，我不能抛下大家不管。}
 
 {color=aqua|Greg: — 这没得商量。如果你落入他们手中，只会被处决。现在走，我们会挡住他们，让他们没法来追你。}
 
-{color=yellow|Anastasia: — ……}""",
+{color=yellow|安娜斯塔西娅: — ……}""",
 	FINAL_BOSS_1 = """你一路杀出长长的隧道，穿过一道拱门，快步走了进去。你进入了一个相当大的房间，这里以前可能曾是个储藏室。
 
 迅速环顾四周，只见几个反抗军正匆忙地搬运着板条箱。在房间后方，一个男人正在指挥着反抗军的行动。
@@ -11952,18 +11952,18 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 	AIRE_COMBAT_ON_WIN_2 = """精灵因力竭与剧痛瘫倒在地。当你结束战斗环顾四周时，正好看到邓肯一行人从侧门冲了进来。
 
 {color=yellow|Duncan: — 干得漂亮。但恐怕这里已经没其他人了，连那个公主也不见踪影。不过这婊子肯定知道些什么。}""",
-	AIRE_COMBAT_ON_WIN_3 = """{color=yellow|Aire: — 该死……你休想抓到她！}
+	AIRE_COMBAT_ON_WIN_3 = """{color=yellow|爱蕊: — 该死……你休想抓到她！}
 
 {color=aqua|Duncan: — 闭嘴，精灵。你既没守住这儿，也没护住那个公主。她会得到她应有的下场，你也一样。}
 
-{color=yellow|Aire: — 混蛋……啊——}
+{color=yellow|爱蕊: — 混蛋……啊——}
 
 在她还没来得及再说别的，邓肯的手下就抓住她，用东西堵住了她的嘴。""",
-	AIRE_COMBAT_ON_WIN_3_1 = """{color=yellow|Aire: — 该死……你休想抓到她！}
+	AIRE_COMBAT_ON_WIN_3_1 = """{color=yellow|爱蕊: — 该死……你休想抓到她！}
 
 {color=aqua|Duncan: — 闭嘴，精灵。你既没守住这儿，也没护住那个公主。她会得到她应有的下场，你也一样。}
 
-{color=yellow|Aire: — 混蛋……啊——}
+{color=yellow|爱蕊: — 混蛋……啊——}
 
 在她还没来得及再说别的，邓肯的手下就抓住她，用东西堵住了她的嘴。""",
 	GREG_COMBAT_ON_WIN_1 = """男人踉跄后退，大口喘着粗气。你环顾四周，看到邓肯砍倒了你身后的一个反抗军，走到你身边，与你一同面对这个藏身处的首领。
@@ -12047,18 +12047,18 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 
 {color=yellow|— 不过话说回来，你或许可以找Myr帮帮忙。魔法这玩意儿，用处可是多得很呢。}""",
 	SEARCH_SERVANTS_OPTION = """谢了，我这就去办。""",
-	SEARCH_DUNGEON_1 = """你走到地牢入口。守卫递给你钥匙，并指了指关押Aire的牢房方向。
+	SEARCH_DUNGEON_1 = """你走到地牢入口。守卫递给你钥匙，并指了指关押爱蕊的牢房方向。
 
-令你惊讶的是，Amelia正站在牢房外，她注意到了你，并向你走来。""",
-	SEARCH_DUNGEON_OPTION_1 = """Amelia？你怎么在这儿？""",
+令你惊讶的是，艾米莉亚正站在牢房外，她注意到了你，并向你走来。""",
+	SEARCH_DUNGEON_OPTION_1 = """艾米莉亚？你怎么在这儿？""",
 	SEARCH_DUNGEON_2_1 = """{color=yellow|— 哦，只是来看看我给你的建议执行得怎么样。很高兴看到至少还有人会把我的话当回事。}""",
 	SEARCH_DUNGEON_2_2 = """{color=yellow|— 有只小鸟告诉我，你正要去探访我们的一位“新客人”。我想，或许我能过来给你出点主意。}""",
-	SEARCH_DUNGEON_2_3 = """她叫Aire，要是你还不知道的话。看起来她应该知道我们想要的确切情报。
+	SEARCH_DUNGEON_2_3 = """她叫爱蕊，要是你还不知道的话。看起来她应该知道我们想要的确切情报。
 
 {color=yellow|— 我相信以你如此迷人的魅力，一定能撬开她的嘴。不过，如果她表现得……有些棘手，我倒是可以亲自试试我的那些手段。}""",
 	SEARCH_DUNGEON_OPTION_2 = """我会考虑一下的。""",
 	SEARCH_DUNGEON_OPTION_3 = """希望没必要做到那种地步。""",
-	SEARCH_DUNGEON_3_1 = """当你走进Aire的牢房时，感觉到她锐利的目光扫了过来，她认出是你了。那个精灵女孩蜷缩在冰冷的墙角，双手被反铐在身后。
+	SEARCH_DUNGEON_3_1 = """当你走进爱蕊的牢房时，感觉到她锐利的目光扫了过来，她认出是你了。那个精灵女孩蜷缩在冰冷的墙角，双手被反铐在身后。
 
 {color=yellow|— 又是你。你觉得能从我这儿套出什么话来？}""",
 	SEARCH_DUNGEON_OPTION_4 = """看来你还记得我啊。""",
@@ -12082,10 +12082,10 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 	SEARCH_DUNGEON_OPTION_14 = """等我抓到她的时候，你会后悔当初没好好配合的。""",
 	SEARCH_DUNGEON_6_2 = """{color=yellow|— 你要是敢碰她一下，我发誓就算追到天涯海角也要宰了你。}""",
 	SEARCH_DUNGEON_OPTION_15 = """行吧，那就好好在这牢里烂着吧。""",
-	SEARCH_DUNGEON_6_3 = """Aire对你的话毫无反应，但不知为何，她似乎对你的气急败坏感到很满意。""",
+	SEARCH_DUNGEON_6_3 = """爱蕊对你的话毫无反应，但不知为何，她似乎对你的气急败坏感到很满意。""",
 	SEARCH_DUNGEON_OPTION_16 = """*狠狠打她*""",
 	SEARCH_DUNGEON_6_4 = """*啪*
-你重重一巴掌甩在Aire的脸颊上，她的脸瞬间红肿起来，但神情却毫无波澜。
+你重重一巴掌甩在爱蕊的脸颊上，她的脸瞬间红肿起来，但神情却毫无波澜。
 
 {color=yellow|— 哼，真不愧是你们这种下作[man]才干得出来的事。}""",
 	SEARCH_DUNGEON_OPTION_LEAVE = """*离开*""",
@@ -12093,7 +12093,7 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 
 {color=yellow|— ……如果你觉得能从我这儿问出什么，那你就白费力气了。}""",
 	SEARCH_DUNGEON_OPTION_17 = """*打招呼*""",
-	SEARCH_DUNGEON_7_1 = """Aire好奇地转过身来。当她认出你的脸时，语气变得有些紧张。
+	SEARCH_DUNGEON_7_1 = """爱蕊好奇地转过身来。当她认出你的脸时，语气变得有些紧张。
 
 {color=yellow|— ……哦，是你啊。来嘲笑我的吗？}""",
 	SEARCH_DUNGEON_OPTION_18 = """*保持沉默*""",
@@ -12103,8 +12103,8 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 	SEARCH_DUNGEON_OPTION_19 = """其实，我想问几个问题。""",
 	SEARCH_DUNGEON_OPTION_20 = """废话少说：告诉我公主躲在哪儿。""",
 	SEARCH_DUNGEON_OPTION_21 = """我得走了。""",
-	SEARCH_DUNGEON_8_1 = """{color=yellow|— 我不会告诉你Anastasia在哪，无论是对你，还是城里的任何其他人。不过除此之外，我不介意有人陪我聊聊。}""",
-	SEARCH_DUNGEON_8_1_IF_MET = """{color=yellow|— 我不会告诉你Anastasia在哪，无论是对你，还是城里的任何其他人。不过除此之外，我不介意有人陪我聊聊。而且我至少知道你不是个坏人。}""",
+	SEARCH_DUNGEON_8_1 = """{color=yellow|— 我不会告诉你安娜斯塔西娅在哪，无论是对你，还是城里的任何其他人。不过除此之外，我不介意有人陪我聊聊。}""",
+	SEARCH_DUNGEON_8_1_IF_MET = """{color=yellow|— 我不会告诉你安娜斯塔西娅在哪，无论是对你，还是城里的任何其他人。不过除此之外，我不介意有人陪我聊聊。而且我至少知道你不是个坏人。}""",
 	SEARCH_DUNGEON_OPTION_22 = """为什么你对公主这么忠诚？""",
 	SEARCH_DUNGEON_OPTION_23 = """你在叛军里扮演什么角色？""",
 	SEARCH_DUNGEON_OPTION_24 = """你觉得我这人怎么样？""",
@@ -12137,8 +12137,8 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 	SEARCH_DUNGEON_12_3 = """{color=yellow|— 如果是这样，那你就不需要我的帮助了，事情自然会按你们预想的那样发展。}""",
 	SEARCH_DUNGEON_OPTION_34 = """如果你不配合，我相信其他的审讯者可不会像我这么客气……""",
 	SEARCH_DUNGEON_12_4 = """{color=yellow|— 尽管试试吧。无论你还是别人威胁要对我做什么，我都绝不会背叛她的信任。}""",
-	SEARCH_DUNGEON_OPTION_35 = """我可以向你保证，我会尽力保全Anastasia的安全。""",
-	SEARCH_DUNGEON_13 = """Aire沉默了片刻，似乎在仔细斟酌你的话。
+	SEARCH_DUNGEON_OPTION_35 = """我可以向你保证，我会尽力保全安娜斯塔西娅的安全。""",
+	SEARCH_DUNGEON_13 = """爱蕊沉默了片刻，似乎在仔细斟酌你的话。
 
 {color=yellow|— 虽然你的话确实有点分量，而且你在这儿似乎也有不少特权，但我真的能信任你吗？你到底有什么理由帮她？}""",
 	SEARCH_DUNGEON_OPTION_36 = """其实我是站在你们这边的。如果你帮我，我就帮她保住性命。""",
@@ -12154,14 +12154,14 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 	SEARCH_DUNGEON_OPTION_41 = """她在政治层面还是有些利用价值的。""",
 	SEARCH_DUNGEON_14_3 = """{color=yellow|— 不可能。她的存在对公会来说就是威胁，我们俩都很清楚这一点。只要他们抓到她，她就死定了。}""",
 	SEARCH_DUNGEON_OPTION_42 = """她会是我后宫里绝佳的补充。""",
-	SEARCH_DUNGEON_14_4 = """Aire突然大笑起来。
+	SEARCH_DUNGEON_14_4 = """爱蕊突然大笑起来。
 
 {color=yellow|— 这是你蹩脚的笑话吗？如果你是认真的，那这动机可真够烂的。在这种情况下，我甚至不知道究竟是落在你手里更糟，还是落在公会手里更糟。}""",
 	SEARCH_DUNGEON_7_7 = """{color=yellow|— 抱歉，我想我终究还是无法信任你。Ana离开这里会更好，哪怕她继续过着逃亡的生活，甚至陷入贫困。}""",
-	SEARCH_DUNGEON_15 = """Aire沉默了许久，脸上交织着复杂的情绪。最终，她长叹了一口气。
+	SEARCH_DUNGEON_15 = """爱蕊沉默了许久，脸上交织着复杂的情绪。最终，她长叹了一口气。
 
 {color=yellow|— 好吧，我相信你。如果这儿有谁能为了她的利益着想，那肯定就是你了。她逃往精灵领地了。多亏了我的血统，我设法帮她在那儿争取到了一个藏身处。你可以从大祭司那里了解更多，前提是她愿意见你，不过眼下我觉得这应该难不倒你。}""",
-	SEARCH_DUNGEON_16 = """当你走出地牢时，看到Amelia依然在牢房入口处等着，她朝你招了招手。
+	SEARCH_DUNGEON_16 = """当你走出地牢时，看到艾米莉亚依然在牢房入口处等着，她朝你招了招手。
 
 {color=yellow|— 怎么样了？}""",
 	SEARCH_DUNGEON_OPTION_43 = """我已经查到公主的下落了。""",
@@ -12175,7 +12175,7 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 	SEARCH_DUNGEON_19_2 = """{color=yellow|— 好吧，我明白了。如果你回心转意了，随时来找我。}""",
 	SEARCH_DUNGEON_OPTION_47 = """其实，我只是想跟她谈谈，我已经有其他办法找到公主了。""",
 	SEARCH_DUNGEON_19_3 = """{color=yellow|— 哦？好吧，如果你只是想看看精灵被锁链捆绑的样子，随时来就行，我们这儿时不时会抓到些货色。总之，我的提议依然有效，如果你改变主意了就来找我。}""",
-	SEARCH_DUNGEON_OPTION_48 = """谢了，Amelia。""",
+	SEARCH_DUNGEON_OPTION_48 = """谢了，艾米莉亚。""",
 	FINAL_OPERATION_MESSAGE = """早上，你收到一名信使的传话，让你去见Duncan。事情似乎相当紧急，他应该有新的任务要交给你。""",
 	LOOKING_FOR_PRINCESS_1 = """{color=yellow|— 许多叛军现在要么死了，要么被关在我们的监狱里。遗憾的是，我们在突袭中没能抓到公主，也没什么线索表明她去了哪里。对囚犯的审讯也没问出什么有价值的东西。}""",
 	LOOKING_FOR_PRINCESS_2 = """{color=yellow|— 别以为我忘了你在突袭中的英勇表现。拿着，这是你的奖励。我相信我可以继续指望你，你已经证明了自己非常能干。}""",
@@ -12236,20 +12236,20 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 仔细检查后，你确认这一定是皇室之物，是时候把它交给Myr了。""",
 	LOOKING_FOR_PRINCESS_18 = """当你把金币递给狗头人时，他交出手镯，拿着钱迅速溜走了。仔细检查后，你确认这一定是皇室之物，是时候把它交给Myr了。""",
 	LOOKING_FOR_PRINCESS_OPTION_19 = """我买到了手镯""",
-	LOOKING_FOR_PRINCESS_19 = """你把手镯交给Amelia，她仔细端详了片刻。
+	LOOKING_FOR_PRINCESS_19 = """你把手镯交给艾米莉亚，她仔细端详了片刻。
 
-{color=yellow|Amelia: — 干得好。这绝对是皇室之物。上面的刻字是写给最小的女儿的。}
+{color=yellow|艾米莉亚: — 干得好。这绝对是皇室之物。上面的刻字是写给最小的女儿的。}
 
 {color=aqua|Myr: — 好了，让我们快点结束吧。}
 
 Myr从桌上拿出一个小勋章。当她念起咒语时，她手中的勋章开始发光。大约一分钟后，她完成了法术，转过身看向你。""",
 	LOOKING_FOR_PRINCESS_20 = """{color=aqua|Myr: — 好了，这会指向前主人的方向。把它拿在手里，你会感觉到轻微的震动。}
 
-{color=yellow|Amelia: — 真妙。现在你能追踪到我们要找的那个小麻烦了。嘿，我很好奇当她出现在面前时，这东西还会不会继续震动……}
+{color=yellow|艾米莉亚: — 真妙。现在你能追踪到我们要找的那个小麻烦了。嘿，我很好奇当她出现在面前时，这东西还会不会继续震动……}
 
 {color=aqua|Myr: — 除非你想被赶出去，否则别把你那些职业怪癖带到这儿来。}
 
-{color=yellow|Amelia: — 好吧好吧，反正我也该走了。祝你好运，[name]，等着听你的好消息。}""",
+{color=yellow|艾米莉亚: — 好吧好吧，反正我也该走了。祝你好运，[name]，等着听你的好消息。}""",
 	LOOKING_FOR_PRINCESS_21 = """测试完勋章后，你认定它指向精灵森林的方向。你现在的目标应该是去那里看看。""",
 	LOOKING_FOR_PRINCESS_22 = """你请求觐见精灵大祭司，她似乎是精灵之都的最高统治者。尽管她们天生讨厌外来者，但你的身份迫使精灵们接受了你的觐见请求。""",
 	LOOKING_FOR_PRINCESS_23 = """勋章一直指向精灵之都，所以你别无选择，只能去见那位精灵大祭司，她是精灵之都的最高统治者。尽管她们天生讨厌外来者，但你的身份迫使精灵们接受了你的觐见请求。""",
@@ -12268,9 +12268,9 @@ Myr从桌上拿出一个小勋章。当她念起咒语时，她手中的勋章�
 	LOOKING_FOR_PRINCESS_28 = """{color=yellow|— 我们对你们人类的纷争不感兴趣。这个女人是来寻求庇护的，但我们又不是慈善机构。一旦你带走她，我希望你们立刻离开此地。}
 
 大祭司命令守卫把公主带出来。""",
-	LOOKING_FOR_PRINCESS_29 = """当Anastasia看到你时，她意识到自己被带到这里的原因，脸色瞬间变得惨白。
+	LOOKING_FOR_PRINCESS_29 = """当安娜斯塔西娅看到你时，她意识到自己被带到这里的原因，脸色瞬间变得惨白。
 
-{color=aqua|Anastasia: — 不……搞什么鬼？！你们不能这样对我！}
+{color=aqua|安娜斯塔西娅: — 不……搞什么鬼？！你们不能这样对我！}
 
 {color=yellow|Priestess: — 别像个孩子一样大吵大闹，人类。如果你真是皇室成员，就表现得像点样。}""",
 	LOOKING_FOR_PRINCESS_OPTION_26 = """很荣幸见到你，公主殿下。""",
@@ -12278,25 +12278,25 @@ Myr从桌上拿出一个小勋章。当她念起咒语时，她手中的勋章�
 	LOOKING_FOR_PRINCESS_OPTION_28 = """我可是等这一刻等很久了。""",
 	LOOKING_FOR_PRINCESS_30 = """公主根本没理会你的话，继续对大祭司发难，而大祭司看起来变得越来越恼火。
 
-{color=aqua|Anastasia: — 他们会杀了我，就像杀了我父亲一样。还有你背叛了我。我本以为可以信任你的！}""",
+{color=aqua|安娜斯塔西娅: — 他们会杀了我，就像杀了我父亲一样。还有你背叛了我。我本以为可以信任你的！}""",
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*保持沉默*""",
 	LOOKING_FOR_PRINCESS_OPTION_30 = """[Physics Factor] *扇公主一巴掌让她闭嘴*""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """别这么快下结论，我们肯定能好好谈谈。""",
 	LOOKING_FOR_PRINCESS_31 = """{color=green|成功}
 
-在她还没来得及再说更多之前，你猛地扑向Anastasia，狠狠甩了她一巴掌。没料到这一点的她震惊地摔倒在地。你抓住时机将她制服，塞住她的嘴，并向大祭司致歉。
+在她还没来得及再说更多之前，你猛地扑向安娜斯塔西娅，狠狠甩了她一巴掌。没料到这一点的她震惊地摔倒在地。你抓住时机将她制服，塞住她的嘴，并向大祭司致歉。
 
 {color=aqua|大祭司：— 这次我就当没看见这种不成体统的行为。现在离开吧，记住我们之间的交易。}
 
-说完，大祭司便离开了大厅，卫兵带着你走向出口。Anastasia说不出话也动弹不得，只能任由你拖走。""",
+说完，大祭司便离开了大厅，卫兵带着你走向出口。安娜斯塔西娅说不出话也动弹不得，只能任由你拖走。""",
 	LOOKING_FOR_PRINCESS_32_f = """{color=red|失败}
 
 """,
-	LOOKING_FOR_PRINCESS_32 = """{color=aqua|Anastasia：— 卑鄙的叛徒，你们比这些人渣还要恶心！你和那烂透了的芙蕾雅本该……}
+	LOOKING_FOR_PRINCESS_32 = """{color=aqua|安娜斯塔西娅：— 卑鄙的叛徒，你们比这些人渣还要恶心！你和那烂透了的芙蕾雅本该……}
 
 *啪*
 
-在你还没碰到Anastasia之前，大祭司亲自狠狠给了她一巴掌，把她打得震惊地跌倒在地。""",
+在你还没碰到安娜斯塔西娅之前，大祭司亲自狠狠给了她一巴掌，把她打得震惊地跌倒在地。""",
 	LOOKING_FOR_PRINCESS_OPTION_32 = """没必要动粗。""",
 	LOOKING_FOR_PRINCESS_OPTION_33 = """换做是我也会这么做。""",
 	LOOKING_FOR_PRINCESS_OPTION_34 = """好了，到此为止吧。""",
@@ -12309,12 +12309,12 @@ Myr从桌上拿出一个小勋章。当她念起咒语时，她手中的勋章�
 
 {color=aqua|大祭司：— 如果你只是侮辱我们，我或许还能原谅你这个愚蠢的人类，但在这个神庙里侮辱女神是不可饶恕的重罪。如果你是个精灵平民，现在舌头早就被割下来了。}
 
-{color=yellow|Anastasia：— ……}""",
+{color=yellow|安娜斯塔西娅：— ……}""",
 	LOOKING_FOR_PRINCESS_35 = """{color=aqua|女祭司: — 而你，必须以命抵罪。卫兵！}
 
-{color=yellow|阿纳斯塔西娅: — 什么？不……}
+{color=yellow|安娜斯塔西娅: — 什么？不……}
 
-遵照命令，卫兵们当即扣押了阿纳斯塔西娅，同时也封锁了你的去路，不让你插手。面对这突如其来的变故，公主仍处于震惊之中，难以置信这一切竟会发生在自己身上。""",
+遵照命令，卫兵们当即扣押了安娜斯塔西娅，同时也封锁了你的去路，不让你插手。面对这突如其来的变故，公主仍处于震惊之中，难以置信这一切竟会发生在自己身上。""",
 	LOOKING_FOR_PRINCESS_OPTION_35 = """*反抗*""",
 	LOOKING_FOR_PRINCESS_OPTION_36 = """*任由她被处决*""",
 	LOOKING_FOR_PRINCESS_36 = """你告诉女祭司，无论如何你都需要活着的公主。观察着惊恐万状的公主，女祭司显得冷漠而又不可动摇。
@@ -12338,11 +12338,11 @@ Myr从桌上拿出一个小勋章。当她念起咒语时，她手中的勋章�
 	LOOKING_FOR_PRINCESS_42 = """{color=aqua|女祭司: — 很好，我可以准许你献祭一名追随者来替她受罚。}""",
 	LOOKING_FOR_PRINCESS_OPTION_43 = """*接受*""",
 	LOOKING_FOR_PRINCESS_OPTION_44 = """*拒绝*""",
-	LOOKING_FOR_PRINCESS_43 = """你选择了通过献祭来代替阿纳斯塔西娅受罚。当你与[name]分别时，你知道再也见不到[name]了。
+	LOOKING_FOR_PRINCESS_43 = """你选择了通过献祭来代替安娜斯塔西娅受罚。当你与[name]分别时，你知道再也见不到[name]了。
 
 {color=aqua|女祭司: — 滚吧，回去告诉你的主子，我们依然信守协议。}
 
-阿纳斯塔西娅静静地看着[name]被带走，或许她正为又一条生命的逝去而自责。""",
+安娜斯塔西娅静静地看着[name]被带走，或许她正为又一条生命的逝去而自责。""",
 	LOOKING_FOR_PRINCESS_44 = """{color=aqua|女祭司: — 那么，我们就按原计划执行。}
 
 """,
@@ -12378,7 +12378,7 @@ Myr从桌上拿出一个小勋章。当她念起咒语时，她手中的勋章�
 	LOOKING_FOR_PRINCESS_49 = """{color=yellow|— 确实，为什么人们总是那么古板呢？你不觉得阿里奥斯在处理这种琐事时如此随性，是一件很棒的事吗？啊，抱歉，我不是想说教。}""",
 	LOOKING_FOR_PRINCESS_50 = """{color=yellow|— 我不知道，也许她是个守贞者。刚才在那场闹剧中她看起来确实挺冷淡的，但也可能只是装出来的。或许，我们永远也不会知道了。}""",
 	LOOKING_FOR_PRINCESS_51 = """{color=yellow|— 哎呀，谢谢夸奖！等等，你说的“出乎意料”是什么意思？如果你要逗我，还把我当小孩子看，那我就真的会表现得像个孩子哦。你肯定不想那样吧？}""",
-	LOOKING_FOR_PRINCESS_52 = """卫兵们没有浪费时间，迅速将阿纳斯塔西娅绑在了圣所中央的那棵大树上。仪式开始前你被强行赶走，这让你免于直视公主那恳求的脸庞。大约半小时后，她苍白的尸体被送了出来。
+	LOOKING_FOR_PRINCESS_52 = """卫兵们没有浪费时间，迅速将安娜斯塔西娅绑在了圣所中央的那棵大树上。仪式开始前你被强行赶走，这让你免于直视公主那恳求的脸庞。大约半小时后，她苍白的尸体被送了出来。
 
 是时候回家了。""",
 	PRE_ANASTASIA_EXECUTION_1 = """当你向邓肯展示公主的尸体时，他痛苦地皱了皱眉。在你向他解释发生了什么之后，他看起来很失望，但也接受了现实。
@@ -12544,7 +12544,7 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 
 扎莉从她的存货里摸出一枚小戒指。当她吟唱控制咒语时，戒指和药水泛起了暗色的光芒。""",
 	MIND_CONTROL_20 = """{color=yellow|— 搞定。让你那受害者喝下这个，然后把戒指戴在她身上，这样你就能命令她了。再提醒一次，她们的心智会被永久性地破坏。到时别求我修复，我做不到。}""",
-	ANASTASIA_EXECUTION_1 = """一周后。阿利隆的市民们聚集在中心广场，准备观看阿纳斯塔西娅的处决。围绕着为此次场合准备的高台，四周挂着帷幕。尽管情感上有些纠结，艾米莉亚还是邀请了你。
+	ANASTASIA_EXECUTION_1 = """一周后。阿利隆的市民们聚集在中心广场，准备观看安娜斯塔西娅的处决。围绕着为此次场合准备的高台，四周挂着帷幕。尽管情感上有些纠结，艾米莉亚还是邀请了你。
 
 
 {color=yellow|— 嘿，今天天气不错，不是吗？对于这样悲伤的场合来说，或许有些太好了。但振作点，毕竟你很快就要成为市长了。在公众面前露面，对你的形象很重要。}""",
@@ -12557,18 +12557,18 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	ANASTASIA_EXECUTION_4 = """
 
 哦，看，要开始了。""",
-	ANASTASIA_EXECUTION_5 = """在阿利隆的中心广场，搭建了一个巨大的高台，四周挂着帷幕。市民们一早就开始聚集，对于阿纳斯塔西娅的处决方式，人群中充满了兴奋的猜测。
+	ANASTASIA_EXECUTION_5 = """在阿利隆的中心广场，搭建了一个巨大的高台，四周挂着帷幕。市民们一早就开始聚集，对于安娜斯塔西娅的处决方式，人群中充满了兴奋的猜测。
 
-行会领袖们抵达了，坐在你旁边，人群中安静了下来，充满了期待。中央高台的帷幕落下，看到完全赤裸的阿纳斯塔西娅时，聚集的市民们发出了呼喊，她弯着腰，头和手被锁在一套木制枷锁中。她沉重的双乳在清晨凉爽的空气中自由摇晃。
+行会领袖们抵达了，坐在你旁边，人群中安静了下来，充满了期待。中央高台的帷幕落下，看到完全赤裸的安娜斯塔西娅时，聚集的市民们发出了呼喊，她弯着腰，头和手被锁在一套木制枷锁中。她沉重的双乳在清晨凉爽的空气中自由摇晃。
 
 当数百双眼睛盯着她，审视着她赤裸且毫无防备的身体的每一寸时，公主的脸涨得通红。一名传令官站在她身边，拿着一张长卷，开始详细宣读她的多项罪名，持续了几分钟，公主只能无助地扭动着身体。""",
-	ANASTASIA_EXECUTION_6 = """{color=yellow|传令官： — ……鉴于犯下这些多项罪恶行径，叛逆公主阿纳斯塔西娅被判处……}
+	ANASTASIA_EXECUTION_6 = """{color=yellow|传令官： — ……鉴于犯下这些多项罪恶行径，叛逆公主安娜斯塔西娅被判处……}
 
 传令官停顿了一下，以制造戏剧效果。
 
 {color=yellow|传令官： — ……公开羞辱。她将用她纯洁身体的清白来偿还她对我们美好城市所犯下的罪行。每位公民都可以随意使用她。我们的治疗师随时待命，以防造成严重的身体伤害。}
 
-{color=yellow|阿纳斯塔西娅： — 什么……？}
+{color=yellow|安娜斯塔西娅： — 什么……？}
 
 公主的脸上写满了恐惧和困惑，她不知道该为保住性命而感到高兴，还是宁愿选择死也不愿面对即将到来的残酷凌辱。当人群中响起一阵淫秽的欢呼声时，她的眼眶里涌出了泪水。
 
@@ -12581,31 +12581,31 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 
 {color=yellow|艾米莉亚: — 别摆出那副震惊的样子！我只是说服了邓肯他们，经过这次，没人会再把她当皇室看待了。她会被彻底“中和”，变得安全。至少在身体上是这样，不过，在被城里每一根鸡巴操过之后，她的精神状态会变成什么样，我可不敢保证……}
 
-高台上，第一个男人已经爬上台阶，用他肮脏的手指检查着公主那处女的阴道，周围人群起哄嘲弄。阿纳斯塔西娅双腿紧紧并拢，徒劳地试图阻止那男人对她未经开垦的私处的粗暴检查。那男人反而粗暴地将一根手指捅进了她的肛门，疼得公主尖叫出声。""",
+高台上，第一个男人已经爬上台阶，用他肮脏的手指检查着公主那处女的阴道，周围人群起哄嘲弄。安娜斯塔西娅双腿紧紧并拢，徒劳地试图阻止那男人对她未经开垦的私处的粗暴检查。那男人反而粗暴地将一根手指捅进了她的肛门，疼得公主尖叫出声。""",
 	ANASTASIA_EXECUTION_OPTION_3 = """真是高明。""",
 	ANASTASIA_EXECUTION_OPTION_4 = """这更过分了，提醒我千万别惹你生气。""",
 	ANASTASIA_EXECUTION_OPTION_5 = """这听起来不太有说服力。""",
 	ANASTASIA_EXECUTION_8 = """{color=aqua|艾米莉亚: — 我说过我怜悯她，对吧？而且这样看着也更有趣。}""",
 	ANASTASIA_EXECUTION_9 = """{color=aqua|艾米莉亚: — *轻笑* 嗯，功劳不全在我。你想过有多少领主、富人和贵族想蹂躏这位唯一的公主吗？当这个念头在他们脑海里扎根后，我们便以破纪录的速度通过了投票。不过，队伍里这几个家伙要是能伪装一下自己就好了。}""",
 	ANASTASIA_EXECUTION_10 = """{color=aqua|艾米莉亚: — 你肯定不信吧？即便如此，其实这也是她的选择。昨天，我通知过她，她将遭受无法挽回的屈辱而不是被处决，我还给了她一个无痛自杀的选择，但她没接受，虽然我本来也没指望她会接受。况且，我知道不止一个女人不介意取代她的位置，只要不会有什么后果的话。}""",
-	ANASTASIA_EXECUTION_11 = """他那肮脏的手指还插在阿纳斯塔西娅的屁眼里，他粗暴地踢开她的双腿，将她大敞开。公主在枷锁中哀嚎扭动，被侵犯了紧闭的括约肌让她倍感屈辱。人群发出阵阵期待的咆哮，那男人从裤子里掏出他那巨大的鸡巴，开始在公主柔软的大腿间摩擦。
+	ANASTASIA_EXECUTION_11 = """他那肮脏的手指还插在安娜斯塔西娅的屁眼里，他粗暴地踢开她的双腿，将她大敞开。公主在枷锁中哀嚎扭动，被侵犯了紧闭的括约肌让她倍感屈辱。人群发出阵阵期待的咆哮，那男人从裤子里掏出他那巨大的鸡巴，开始在公主柔软的大腿间摩擦。
 
 {color=yellow|市民: — 你这该死的婊子。我弟弟死在你发动的战争里了！}
 
-{color=aqua|阿纳斯塔西娅: — 对不起！求求你，不要！别伤害我！}
+{color=aqua|安娜斯塔西娅: — 对不起！求求你，不要！别伤害我！}
 
 {color=yellow|市民: — 现在求饶太晚了，公主婊子。该让你尝尝报应了。}
 
-男人残忍地拍打着阿纳斯塔西娅圆润的屁股，直到她的臀瓣变得通红淤肿。她哭喊着，屁股绝望地扭动着想要逃离他残忍的击打，这更加刺激了哄笑的人群。
+男人残忍地拍打着安娜斯塔西娅圆润的屁股，直到她的臀瓣变得通红淤肿。她哭喊着，屁股绝望地扭动着想要逃离他残忍的击打，这更加刺激了哄笑的人群。
 
 {color=yellow|市民: — 好了。这下把你弄得够热了吧？准备好迎接你的受辱时刻了吗？}
 
-{color=aqua|阿纳斯塔西娅: — 不……求求你……我还是处女啊！}
+{color=aqua|安娜斯塔西娅: — 不……求求你……我还是处女啊！}
 
 随着公主绝望的恳求，广场上响起了淫邪的笑声。 """,
 	ANASTASIA_EXECUTION_12 = """{color=yellow|Citizen: — 现在求饶也没用了，公主婊子。像我这样的平民可不是每天都能破了皇室处女的身子。要是我不做，后面还有一百个男人等着呢，所以你最好还是识相点接受现实吧。}这个男人一把掐住安娜斯塔西娅的屁股蛋子，指甲狠狠地陷入她娇嫩的皮肉，随即将她的小穴掰开。他往她的小穴上吐了一口唾沫，引得周围人群一阵狂吼。安娜斯塔西娅在刑架上拼命扭动着头，想看清身后那个男人的脸，但她那一头金色长发挡住了视线。男人将自己的肉棒抵在她的小穴口，死死按住。{color=yellow|Citizen: — 这是替我弟弟海拉尔德报仇的，你这婊子，我希望他在某个地方能看到这一幕。}男人强行将肉棒插进她的体内，随着公主因被强暴而发出的尖叫声，她的处女膜瞬间被捅破。人群在堕落的狂欢中欢呼雀跃，这个粗壮的平民正在强暴公主的贞操，暴力地蹂躏着她那血淋淋的小穴，而她只能在痛苦和耻辱中哀嚎。""",
 	DUNCANS_DECLARATION_START = """人群聚集在广场，等待着战争结束的宣告。邓肯站在政府大楼的阳台上。他宣布反叛军领袖最终落败，并受到了应有的惩罚。民众欢呼雀跃。{color=yellow|— 没人能否认 [Sir] [name] [surname] 在确保我们胜利方面所做的贡献。为了表彰[name]的功绩，他已被授予阿里隆市长的职位。}""",
-	ANASTASIA_EXECUTION_13 = """没过多久，那男人就射了，他紧紧抓着她纤细的腰肢，狠狠地顶弄，将精液灌进她的体内。他转身向人群鞠躬，引发了暴徒们又一阵疯狂的欢呼，精液顺着安娜斯塔西娅的双腿流了下来。{color=yellow|Amelia: — 我说过我同情她吗？我说过，可怜的小东西。但这看着可比干什么都有趣多了。}你转过身，看见艾米莉亚一只手伸进了裙子，放在两腿之间。她的手臂在有节奏地抽动。{color=yellow|Amelia: — 你知道吗，如果你打算参与进来，最好在她还没被玩烂之前赶紧去。我觉得过不了一个小时她就没这么好玩了。}第二个男人爬上了台。他围着公主转了一圈，抓住她的头发把她的头抬起来。{color=yellow|Citizen 2: — 嘿，公主，干嘛不让我们也用用你这张漂亮的嘴呢？在你满足我们所有人之前，你还有很多活儿要干呢。}""",
+	ANASTASIA_EXECUTION_13 = """没过多久，那男人就射了，他紧紧抓着她纤细的腰肢，狠狠地顶弄，将精液灌进她的体内。他转身向人群鞠躬，引发了暴徒们又一阵疯狂的欢呼，精液顺着安娜斯塔西娅的双腿流了下来。{color=yellow|艾米莉亚: — 我说过我同情她吗？我说过，可怜的小东西。但这看着可比干什么都有趣多了。}你转过身，看见艾米莉亚一只手伸进了裙子，放在两腿之间。她的手臂在有节奏地抽动。{color=yellow|艾米莉亚: — 你知道吗，如果你打算参与进来，最好在她还没被玩烂之前赶紧去。我觉得过不了一个小时她就没这么好玩了。}第二个男人爬上了台。他围着公主转了一圈，抓住她的头发把她的头抬起来。{color=yellow|Citizen 2: — 嘿，公主，干嘛不让我们也用用你这张漂亮的嘴呢？在你满足我们所有人之前，你还有很多活儿要干呢。}""",
 	ANASTASIA_EXECUTION_14 = """安娜斯塔西娅无言以对，只能任由这些变态摆布。那男人从裤子里掏出软塌塌的肉棒，直接怼到安娜斯塔西娅脸上。她急忙张嘴含住，为了讨好人群，卖力地舔弄吸吮。闻到那个农民没洗过的鸡巴味儿，她干呕了一下，但那根肉棒很快就硬了，随着他抓着她的头发，粗暴地捅进了她的喉咙深处。他把肉棒从她吸吮的嘴里抽出来，看着她一脸茫然的样子。他走到她身后...""",
 	ANASTASIA_EXECUTION_15 = """几个小时后，安娜斯塔西娅几乎看不出当初那个差点推翻阿里隆公会、意气风发的公主样了。她曾经光滑的皮肤现在被鞭打得青一块紫一块，伤痕累累，浑身沾满了城里几十个男人的精液。治疗师已经出手救了她好几次，免得她休克或昏死过去。排队轮奸她的人几乎没怎么少过，其中一些尝过甜头的人甚至又排了一次队。安娜斯塔西娅的哭喊和求饶已经变成了嘶哑的啜泣和偶尔痛苦的呻吟，因为又有男人进入了她那残破的小穴或后穴。人群的欢呼声逐渐演变成一种有规律的节奏。安娜斯塔西娅在广场上被展示了一周，期间她的小穴和后穴从未停止过被肉棒玷污。她被城里的每一个男人当作教训，用来杀鸡儆猴，警示任何敢挑战公会的人。最终，她那遍体鳞伤、惨遭蹂躏的身体从刑架上消失了。""",
 	ANASTASIA_PERSUASION_1 = """你走进一间相当舒适的牢房，里面关押着唯一的未束缚囚犯：前叛军领袖，安娜斯塔西娅公主。尽管身处此境，她仍用锐利的目光盯着你，却保持沉默。看起来她自抵达后并没有真正受到刑讯逼供，但也没那个必要。""",
@@ -12659,17 +12659,17 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	ANASTASIA_PERSUASION_24 = """{color=yellow|— 闭嘴！}""",
 	ANASTASIA_PERSUASION_25 = """{color=yellow|— 你根本不懂。}""",
 	ANASTASIA_PERSUASION_26 = """我父亲被杀后，我被迫一直过着东躲西藏、担惊受怕的日子。我们到底做错了什么，要落得如此下场？""",
-	ANASTASIA_PERSUASION_27 = """艾米莉亚几乎悄无声息地出现在房间里，示意她愿意帮你。{color=yellow|Amelia: — 让我来吧。只要你愿意相信我，我可以解释。阿尔伯国王是一个冷酷残暴的人。}{color=aqua|Anastasia: — 你在撒谎！父亲对我总是很慈祥的。}{color=yellow|Amelia: — 我没理由撒谎，他死的时候我还没到能从他倒台受益的年纪。他或许对亲人很慈祥，但对他的子民却不然。}{color=aqua|Anastasia: — ...}""",
-	ANASTASIA_PERSUASION_28 = """{color=yellow|Amelia: — 你听说过布罗德里克家族吗？李·布罗德里克曾是个成功的商人，有一天他送了一本书给国王作为礼物。国王读完后，认为这是一种隐晦的侮辱，甚至可能是诅咒。他的家人和孩子都被判处绞刑，一个接一个。有些人设法逃跑了，但被抓了回来，他们的同伙也都被绞死了。}{color=aqua|Anastasia: — ...}{color=yellow|Amelia: — 曾经有个小宗教派别被命令放弃信仰或离开城市。他们拒绝了，结果在城市广场被活活烧死。还有那些倒霉的妓女，每隔几个月就被鞭笞致死。这我可是亲眼见过两次。}""",
-	ANASTASIA_PERSUASION_29 = """{color=aqua|Anastasia: — 够了……}{color=yellow|Amelia: — ‘格雷格叔叔’没跟你提起过这些吗？}{color=aqua|Anastasia: — 没有。}安娜斯塔西娅垂下眼帘，散发出一种抑郁的气息。{color=yellow|Amelia: — 我不怪你，每个孩子都想为父母感到骄傲，但这不该蒙蔽你的双眼。}{color=aqua|Anastasia: — 如果我一直都错了吗……那这场抗争还有什么意义？我一直坚信我是为了人民在尽我所能。}""",
+	ANASTASIA_PERSUASION_27 = """艾米莉亚几乎悄无声息地出现在房间里，示意她愿意帮你。{color=yellow|艾米莉亚: — 让我来吧。只要你愿意相信我，我可以解释。阿尔伯国王是一个冷酷残暴的人。}{color=aqua|安娜斯塔西娅: — 你在撒谎！父亲对我总是很慈祥的。}{color=yellow|艾米莉亚: — 我没理由撒谎，他死的时候我还没到能从他倒台受益的年纪。他或许对亲人很慈祥，但对他的子民却不然。}{color=aqua|安娜斯塔西娅: — ...}""",
+	ANASTASIA_PERSUASION_28 = """{color=yellow|艾米莉亚: — 你听说过布罗德里克家族吗？李·布罗德里克曾是个成功的商人，有一天他送了一本书给国王作为礼物。国王读完后，认为这是一种隐晦的侮辱，甚至可能是诅咒。他的家人和孩子都被判处绞刑，一个接一个。有些人设法逃跑了，但被抓了回来，他们的同伙也都被绞死了。}{color=aqua|安娜斯塔西娅: — ...}{color=yellow|艾米莉亚: — 曾经有个小宗教派别被命令放弃信仰或离开城市。他们拒绝了，结果在城市广场被活活烧死。还有那些倒霉的妓女，每隔几个月就被鞭笞致死。这我可是亲眼见过两次。}""",
+	ANASTASIA_PERSUASION_29 = """{color=aqua|安娜斯塔西娅: — 够了……}{color=yellow|艾米莉亚: — ‘格雷格叔叔’没跟你提起过这些吗？}{color=aqua|安娜斯塔西娅: — 没有。}安娜斯塔西娅垂下眼帘，散发出一种抑郁的气息。{color=yellow|艾米莉亚: — 我不怪你，每个孩子都想为父母感到骄傲，但这不该蒙蔽你的双眼。}{color=aqua|安娜斯塔西娅: — 如果我一直都错了吗……那这场抗争还有什么意义？我一直坚信我是为了人民在尽我所能。}""",
 	ANASTASIA_PERSUASION_OPTION_26 = """你已经尽力去做你认为正确的事了。""",
 	ANASTASIA_PERSUASION_OPTION_27 = """你错了，现在是弥补的时候了。""",
 	ANASTASIA_PERSUASION_OPTION_28 = """别再无病呻吟了。""",
-	ANASTASIA_PERSUASION_30 = """{color=aqua|Anastasia: — 我觉得我现在没资格为任何人做决定了。}""",
+	ANASTASIA_PERSUASION_30 = """{color=aqua|安娜斯塔西娅: — 我觉得我现在没资格为任何人做决定了。}""",
 	ANASTASIA_PERSUASION_OPTION_29 = """如果非要说的话，你活着总比死了更能帮到大家。""",
 	ANASTASIA_PERSUASION_OPTION_30 = """这是你的错，但你可以通过帮助我们来赎罪。你只需要臣服并承认我们的统治。""",
 	ANASTASIA_PERSUASION_OPTION_31 = """如果你配合，你的罪行依然可以被赦免。""",
-	ANASTASIA_PERSUASION_31 = """{color=aqua|Anastasia: — ……对不起，求你了，让我一个人静一静，我需要时间想想。}艾米莉亚示意你答应这个请求，你们两人随即离开了房间。""",
+	ANASTASIA_PERSUASION_31 = """{color=aqua|安娜斯塔西娅: — ……对不起，求你了，让我一个人静一静，我需要时间想想。}艾米莉亚示意你答应这个请求，你们两人随即离开了房间。""",
 	ANASTASIA_PERSUASION_32 = """{color=yellow|— 她的心理防线已经崩溃了，但你是否成功说服了她，还得等到明天才知道。}""",
 	ANASTASIA_PERSUASION_OPTION_32 = """多谢帮忙.""", 
 	ANASTASIA_PERSUAN_OPTION_32 = """多谢帮忙。""",
@@ -12691,13 +12691,13 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	ANASTASIA_PERSUASION_OPTION_37 = """我想归还属于你的某样东西。""",
 	ANASTASIA_PERSUASION_OPTION_38 = """我们迟早得达成共识。""",
 	ANASTASIA_PERSUASION_OPTION_39 = """我待会儿再来。""",
-	ANASTASIA_PERSUASION_43 = """安娜斯塔西娅困惑地看着你。片刻之后，守卫在艾米莉亚的命令下将精灵女孩押送到了牢房。{color=aqua|Anastasia: — 爱蕊……？你还活着！} {color=yellow|Aire: — 安娜……} 两个女孩紧紧相拥，轻声抽泣了好一会儿。然而，她们都意识到这次重逢不会持续太久。{color=aqua|Anastasia: — 你看起来……很憔悴。} {color=yellow|Aire: — 别担心，我没事。我经历过更糟的情况。}""",
-	ANASTASIA_PERSUASION_44 = """爱蕊转向你，你依然能从她眼中察觉到恨意。{color=yellow|Aire: — 抱歉，但这个[man]毫无荣誉可言。你绝不能落入[name]手中。} {color=aqua|Anastasia: — 什……什么？为什么？} {color=yellow|Aire: — 对不起，但请相信我。[name]只不过是个禽兽。我不相信[name]会以任何方式尊重你。} 安娜斯塔西娅保持沉默，分析着朋友的话。看来她对你的信任大打折扣。又交谈了几句后，爱蕊被守卫带走了。公主收敛了情绪，强行压抑住占据她面容的希望与悲伤。""",
+	ANASTASIA_PERSUASION_43 = """安娜斯塔西娅困惑地看着你。片刻之后，守卫在艾米莉亚的命令下将精灵女孩押送到了牢房。{color=aqua|安娜斯塔西娅: — 爱蕊……？你还活着！} {color=yellow|爱蕊: — 安娜……} 两个女孩紧紧相拥，轻声抽泣了好一会儿。然而，她们都意识到这次重逢不会持续太久。{color=aqua|安娜斯塔西娅: — 你看起来……很憔悴。} {color=yellow|爱蕊: — 别担心，我没事。我经历过更糟的情况。}""",
+	ANASTASIA_PERSUASION_44 = """爱蕊转向你，你依然能从她眼中察觉到恨意。{color=yellow|爱蕊: — 抱歉，但这个[man]毫无荣誉可言。你绝不能落入[name]手中。} {color=aqua|安娜斯塔西娅: — 什……什么？为什么？} {color=yellow|爱蕊: — 对不起，但请相信我。[name]只不过是个禽兽。我不相信[name]会以任何方式尊重你。} 安娜斯塔西娅保持沉默，分析着朋友的话。看来她对你的信任大打折扣。又交谈了几句后，爱蕊被守卫带走了。公主收敛了情绪，强行压抑住占据她面容的希望与悲伤。""",
 	ANASTASIA_PERSUASION_45 = """当爱蕊离开房间时，安娜斯塔西娅保持着沉默。""",
-	ANASTASIA_PERSUASION_46 = """爱蕊转向你。她的脸上流露出一种困惑与对你敬畏交织的神情。{color=aqua|Anastasia: — 爱蕊……我、我已经……被说服了。我的意思是，这个[man]提出要我成为[name]的所有物，以换取我的性命。} {color=yellow|Aire: — 原来是这样……} 爱蕊深沉地叹了口气，陷入沉思。""",
-	ANASTASIA_PERSUASION_47 = """{color=yellow|Aire: — 我请求你救救自己。这个[man]，虽然曾经是我们的敌人，却是我所知道的为数不多真正正直的人之一。如果[name]能为你争取到活命的机会，我认为你应该接受。} {color=aqua|Anastasia: — 你竟然会这样推崇一个人，真是罕见。} {color=yellow|Aire: — 是啊，但是……你现在不能死。你是我所认识的最善良的人。}""",
-	ANASTASIA_PERSUASION_48 = """{color=yellow|Aire: — 我不能说我为这个[man]作担保，但到目前为止[name]待我还算公正。如果[name]能为你争取到活命的机会，我认为你应该接受。}""",
-	ANASTASIA_PERSUASION_49 = """{color=aqua|Anastasia: — 爱蕊，可是你知道的，我从未……如果我无法满足[name]的要求怎么办？} {color=yellow|Aire: — 我……我想你会没事的，毕竟你如此优雅美丽。} ……又聊了几分钟后，爱蕊终于被带走了。""",
+	ANASTASIA_PERSUASION_46 = """爱蕊转向你。她的脸上流露出一种困惑与对你敬畏交织的神情。{color=aqua|安娜斯塔西娅: — 爱蕊……我、我已经……被说服了。我的意思是，这个[man]提出要我成为[name]的所有物，以换取我的性命。} {color=yellow|爱蕊: — 原来是这样……} 爱蕊深沉地叹了口气，陷入沉思。""",
+	ANASTASIA_PERSUASION_47 = """{color=yellow|爱蕊: — 我请求你救救自己。这个[man]，虽然曾经是我们的敌人，却是我所知道的为数不多真正正直的人之一。如果[name]能为你争取到活命的机会，我认为你应该接受。} {color=aqua|安娜斯塔西娅: — 你竟然会这样推崇一个人，真是罕见。} {color=yellow|爱蕊: — 是啊，但是……你现在不能死。你是我所认识的最善良的人。}""",
+	ANASTASIA_PERSUASION_48 = """{color=yellow|爱蕊: — 我不能说我为这个[man]作担保，但到目前为止[name]待我还算公正。如果[name]能为你争取到活命的机会，我认为你应该接受。}""",
+	ANASTASIA_PERSUASION_49 = """{color=aqua|安娜斯塔西娅: — 爱蕊，可是你知道的，我从未……如果我无法满足[name]的要求怎么办？} {color=yellow|爱蕊: — 我……我想你会没事的，毕竟你如此优雅美丽。} ……又聊了几分钟后，爱蕊终于被带走了。""",
 	ANASTASIA_PERSUASION_50 = """{color=yellow|— 谢谢你让我见她，你真是大度。}""",
 	ANASTASIA_PERSUASION_51 = """你把在废弃基地找到的手链递给安娜斯塔西娅。{color=yellow|— 这是……我以为我已经弄丢了。你在哪找到的？你竟然专门跑回那个藏身处……} {color=yellow|— 谢谢你。这条手链是我父亲给我的礼物。我知道他不是个好国王，但是……多年来这一直是我唯一的纪念品。}""",
 	ANASTASIA_PERSUASION_52 = """{color=yellow|— 我知道，但我真的不知道该不该信任你。}""",
@@ -12709,7 +12709,7 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	ANASTASIA_PERSUASION_55 = """你离开牢房，发现艾米莉亚在等你。{color=yellow|— 被拒绝了，是吗？真遗憾。看来我们现在没多少选择了。好吧，如果你需要什么，你知道去哪找我。}""",
 	ANASTASIA_PERSUASION_56 = """{color=yellow|— 我……我接受你的要求。我会宣布公会对我的一切支持，而且我……我会成为你的人。毕竟你是对的，继续为民众服务是我的职责，即便我不再是皇室成员了。}""",
 	ANASTASIA_PERSUASION_57 = """{color=yellow|— 但我有一个条件。你能叫那个公会女首领过来吗？}""",
-	ANASTASIA_PERSUASION_58 = """话音刚落，牢房门就开了，艾米莉亚走了进来。看起来她一直在徘徊，等待你们谈话的结果。{color=aqua|Amelia: — 我能为您做些什么？} {color=yellow|Anastasia: — 我要你承诺保证爱蕊的安全。不，等等，我还要你让我们偶尔能见见面。} {color=aqua|Amelia: — 成交。至于这件事，我们可以把你那个精灵小友调到[name]的麾下。我想你不会拒绝多一个仆人的，对吧？} {color=yellow|Anastasia: — ……这正合我意。}""",
+	ANASTASIA_PERSUASION_58 = """话音刚落，牢房门就开了，艾米莉亚走了进来。看起来她一直在徘徊，等待你们谈话的结果。{color=aqua|艾米莉亚: — 我能为您做些什么？} {color=yellow|安娜斯塔西娅: — 我要你承诺保证爱蕊的安全。不，等等，我还要你让我们偶尔能见见面。} {color=aqua|艾米莉亚: — 成交。至于这件事，我们可以把你那个精灵小友调到[name]的麾下。我想你不会拒绝多一个仆人的，对吧？} {color=yellow|安娜斯塔西娅: — ……这正合我意。}""",
 	ANASTASIA_PERSUASION_59 = """{color=yellow|— 哎呀呀，看来你成功了。你居然说服了那位高傲的公主。真让我印象深刻。我们会让她准备演讲，然后安排一次正式声明。}""",
 	ANASTASIA_PERSUASION_OPTION_43 = """没有你我可做不到。""",
 	ANASTASIA_PERSUASION_OPTION_44 = """她一定是被我迷住了。""",
@@ -13812,21 +13812,21 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	MARRIAGE_WORKERS_COMPLETE_1 = """当你和裁缝谈妥后，他们为你量了尺寸，并立即派人去找你的伴侣。他们承诺会尽快完成制作。""",
 	MARRIAGE_FINAL_INIT = """{color=yellow|— 太棒了！既然这样，我们明天就开始。}""",
 	MARRIAGE_FINAL_1 = """第二天早上，你开始接待信使和宾客。艾米莉亚提供的各种音乐家和几位艺术家带着工具等待派对开始。厨房里堆满了精美的新鲜食物和食材。最早到来的宾客通过提前送礼试图讨好你。随着正午临近，你前往教堂。""",
-	MARRIAGE_ANASTASIA_1 = """阿纳斯塔西娅正在为即将到来的仪式做准备，爱蕊试图安抚她。
+	MARRIAGE_ANASTASIA_1 = """安娜斯塔西娅正在为即将到来的仪式做准备，爱蕊试图安抚她。
 {color=yellow|爱蕊：— 你脸太红了，安娜。}
 
-{color=aqua|阿纳斯塔西娅：— 我当然红了！你难道没意识到这一切有多吓人吗？}
+{color=aqua|安娜斯塔西娅：— 我当然红了！你难道没意识到这一切有多吓人吗？}
 
 {color=yellow|爱蕊：— 总比被公会军队追捕要好。}""",
-	MARRIAGE_ANASTASIA_2 = """阿纳斯塔西娅：— ……我穿这个合适吗？在当了这么多年的逃犯后，穿上这么华丽的衣服真是太奇怪了。
+	MARRIAGE_ANASTASIA_2 = """安娜斯塔西娅：— ……我穿这个合适吗？在当了这么多年的逃犯后，穿上这么华丽的衣服真是太奇怪了。
 
 爱蕊：— 你看起来很美。不过我从没想过真的能看到你穿婚纱的样子。
 
-阿纳斯塔西娅：— 你知道，总有一天你也会穿上它的。
+安娜斯塔西娅：— 你知道，总有一天你也会穿上它的。
 
 爱蕊：— 哼，我怀疑[name]永远不会给我这样的自由。
 
-阿纳斯塔西娅：— 嘿，别说[name]的坏话。""",
+安娜斯塔西娅：— 嘿，别说[name]的坏话。""",
 	MARRIAGE_FINAL_2 = """鉴于教堂规模相当朴素，你的许多宾客中只有少数几位被允许进入。这座建筑为了你的婚礼重新装饰了一番，吉尼已经准备好扮演牧师的角色了。""",
 	MARRIAGE_FINAL_3 = """当[spousename]被带到教堂时，[spousehe]看起来有些紧张，但依然回以你一个微笑和眼神。当[spousehe]走到祭坛前，吉尼开始了仪式。
 
@@ -14111,7 +14111,7 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 
 其中有一行字提到，下一个最近的线索正指向精灵族的领地。
 
-你拿不准对Zephyra的警告应该信任几分。不过，威力强大的神圣遗物向来不会沉寂太久。在更糟糕的家伙染指它们之前，亲自去调查一番或许确实很值得。""",
+你拿不准对泽菲拉的警告应该信任几分。不过，威力强大的神圣遗物向来不会沉寂太久。在更糟糕的家伙染指它们之前，亲自去调查一番或许确实很值得。""",
     ZEPHYRA_RECRUITMENT_3_OPTION_1 = "这件事可能有点问题……",
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = """这把剑已经不在我们手里了。""",
 	ZEPHYRA_RECRUITMENT_4 = """你向泽菲拉解释了内战初期发生的事情。
@@ -14788,7 +14788,7 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	AFTER_TEMPLE_PRIESTESS_2 = """{color=yellow|— 那你最好别考验我的耐心。拿到之后再回来。}""",
 	AFTER_TEMPLE_PRIESTESS_3 = """大祭司出乎意料地爽快地接受了你的请求。当你走进她的寝室时，当你递给她装满圣水的瓶子时，她看起来几乎欣喜若狂。
 
-{color=yellow| — 你真的做到了，[name]。对于一个外来者来说，这表现太出色了……我想我没法再把你当成单纯的外来者了，对吧？说到这个，我的名字是海莉维尔（Heleviel），现在你可以直呼其名了。终于，我们可以举行仪式了……}""",
+{color=yellow| — 你真的做到了，[name]。对于一个外来者来说，这表现太出色了……我想我没法再把你当成单纯的外来者了，对吧？说到这个，我的名字是赫莉薇儿（赫莉薇儿），现在你可以直呼其名了。终于，我们可以举行仪式了……}""",
 	AFTER_TEMPLE_PRIESTESS_3_OPTION_1 = """那我们的约定呢？""",
 	AFTER_TEMPLE_PRIESTESS_3_OPTION_2 = """我想你应该欠我点什么。""",
 	AFTER_TEMPLE_PRIESTESS_4 = """{color=yellow| — 是的，当然，我没忘记，但仪式对我们来说目前优先级更高。一旦完成，我以弗蕾亚的名义起誓，定会协助你完成任务。在此之前，你就把我这里当作你的尊贵客房吧。}""",
@@ -14797,11 +14797,11 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	AFTER_TEMPLE_PRIESTESS_4_OPTION_3 = """我会等到那时候的。""",
 	AFTER_TEMPLE_PRIESTESS_5_1_1 = """{color=green|成功}
 
-海莉维尔在打量你的外表时，向你投来更亲昵的目光，随后她的脸上绽放出难得的浅笑。
+赫莉薇儿在打量你的外表时，向你投来更亲昵的目光，随后她的脸上绽放出难得的浅笑。
 
 {color=yellow| — 也许可以。你知道的，弗蕾亚的大祭司是不允许被男人的触碰所玷污的，所以如果你是男性，我就只能拒绝了。但这里没有男人……}
 
-海莉维尔一边盯着你看，一边风情万种地走向那张精致的床铺。她慢慢地脱下了自己优雅的礼服。""",
+赫莉薇儿一边盯着你看，一边风情万种地走向那张精致的床铺。她慢慢地脱下了自己优雅的礼服。""",
 	AFTER_TEMPLE_PRIESTESS_5_1_2 = """{color=yellow|— 得到许多男人梦寐以求的东西，你感到高兴吗？来吧，收下你的奖励。}
 
 你没有放过这个机会，确实拿到了奖励。当你爬上床时，才意识到床是多么柔软，而当你触碰到她时，更是印象深刻。她的皮肤柔软细腻，带着一种远离繁重劳作的人才有的丝滑触感。
@@ -15006,7 +15006,7 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	JEAN_INTRO_5_1 = """{color=yellow|— 哼，那还不错。行吧，告诉我我睡哪儿，我们到时候在那儿见。} 你给了让去你宅邸的路线，然后把她留在那儿了。""",
 	JEAN_INTRO_5_2 = """{color=yellow|— 随你便。行吧，告诉我我睡哪儿，我们到时候在那儿见。} 你给了让去你宅邸的路线，然后把她留在那儿了。""",
 	JEAN_INTRO_5_3 = """让脸红得厉害，狠狠地扇了你一巴掌，声音响得让你怀疑米尔会不会从办公室里跑出来查看情况。 {color=yellow| — 你脑子里就在想这种事？变态！我告诉你，我才不会做你梦里那种‘服务’！现在告诉我我以后睡哪儿，然后赶紧滚。} 你给了让去你宅邸的路线，然后把她留在那儿了。""",
-	LILIA_INTRO = """当你穿过村庄时，偶尔有精灵和妖精在观察你，你注意到大多数居民都非常谨慎，一旦你望向他们，他们就会转过身去。当然，除了一个有着一头长红发、非常好奇的小妖精。当她意识到自己引起了你的注意后，便冲向你，完全无视任何礼节。 {color=yellow| — 嗨！我是莉莉亚。你叫什么名字？你是冒险家吗？你好大只啊！我们这儿很少见你这样的人。是什么风把你吹来的？}""",
+	LILIA_INTRO = """当你穿过村庄时，偶尔有精灵和妖精在观察你，你注意到大多数居民都非常谨慎，一旦你望向他们，他们就会转过身去。当然，除了一个有着一头长红发、非常好奇的小妖精。当她意识到自己引起了你的注意后，便冲向你，完全无视任何礼节。 {color=yellow| — 嗨！我是莉莉娅。你叫什么名字？你是冒险家吗？你好大只啊！我们这儿很少见你这样的人。是什么风把你吹来的？}""",
 	LILIA_INTRO_OPTION_1 = """幸会，我是[name]。""",
 	LILIA_INTRO_OPTION_2 = """哇，慢点。""",
 	LILIA_INTRO_OPTION_3 = """你还真是一点礼貌都不懂，是吧？""",
@@ -16539,22 +16539,22 @@ LILIA_STARTING_2_2 = """{color=yellow|— 嘿，嘿，你到底是为了什么�
 {color=magenta|泽菲拉: — 今天，我将为大家讲述一个戴着红兜帽的纯洁少女，以及她那充满肉欲与摧残的悲惨故事。}""",
 	HALLOWEEN_EVENT1 = """{color=magenta|泽菲拉: — 一个娇嫩的少女正穿过森林。那是一片幽深、阴暗的森林，她手里正提着一个装满肉包子的篮子，准备去探望她那卧病在床的祖母。}
 
-{color=aqua|Anastasia: — 这真是太让人羞耻了……我当初真不该答应演这个……}
+{color=aqua|安娜斯塔西娅: — 这真是太让人羞耻了……我当初真不该答应演这个……}
 
 {color=magenta|泽菲拉: — 尽管她年纪尚轻，内心充满了恐惧，但她依然勇敢地踏上了这段旅途。然而，这只天真的小羔羊根本不知道，前方正有什么样贪婪而残酷的肉欲危险在等待着她。}""",
-	HALLOWEEN_EVENT2 = """{color=aqua|Anastasia: — 这不就是那个女孩子被大灰狼吃掉（各种意义上）的故事吗？！为什么偏偏要让我来演这种角色啊……}
+	HALLOWEEN_EVENT2 = """{color=aqua|安娜斯塔西娅: — 这不就是那个女孩子被大灰狼吃掉（各种意义上）的故事吗？！为什么偏偏要让我来演这种角色啊……}
 
 {color=magenta|泽菲拉: — 如果她遇到了心怀不轨的恶徒，她的天真工艺无疑会成为最好的催情剂。而极其不幸的是，她确实撞见他们了。几个强盗看到她独自一人在林中行走，立刻满眼淫邪地朝她围了过来。}""",
 	HALLOWEEN_EVENT3 = """{color=aqua|Bandit: — 哟，瞧瞧这小美人，你这是要上哪儿去啊？}
 
-{color=aqua|Anastasia: *咽口水* — 我、我要去我生病的祖母家，给她送肉包子……}
+{color=aqua|安娜斯塔西娅: *咽口水* — 我、我要去我生病的祖母家，给她送肉包子……}
 
 {color=aqua|Bandit: — 哇哦，听到没有？不仅有送上门的小美妞，还自带外卖，简直是双重享受！小妹妹，你穿成这样来这林子里，想必是专门来找哥几个寻开心的吧？}
 
-{color=aqua|Anastasia: — 我-我听不懂你们在说什么。求求你们，让我过去吧……}
+{color=aqua|安娜斯塔西娅: — 我-我听不懂你们在说什么。求求你们，让我过去吧……}
 
 {color=aqua|Bandit: — 那可不行，这绝对说不过去。不过你要是肯为我们做点什么，哥几个倒是可以考虑放你一马。比如……先让我们开开眼，把衣服脱了，露出你那对大奶子来瞧瞧怎么样？}""",
-	HALLOWEEN_EVENT4 = """{color=aqua|Anastasia: — 不要，放开我，把你们的脏手拿开！这到底是个什么羞耻的烂剧本啊？！}
+	HALLOWEEN_EVENT4 = """{color=aqua|安娜斯塔西娅: — 不要，放开我，把你们的脏手拿开！这到底是个什么羞耻的烂剧本啊？！}
 
 {color=aqua|Bandit: — 乖乖别乱动，你这个愚蠢的小妞，在这片漆黑荒凉的林子里，可没有任何人能来救你！}
 
@@ -16566,78 +16566,78 @@ LILIA_STARTING_2_2 = """{color=yellow|— 嘿，嘿，你到底是为了什么�
 {color=aqua|Bandit: — 什么——啊啊啊！不，别杀我们！}
 
 {color=magenta|泽菲拉 — 宛如一只真正的凶猛巨兽，大好狼咆哮着朝强盗们扑了过去，而那群恶棍则在即将被生吞活剥的恐惧中落荒而逃。}""",
-	HALLOWEEN_EVENT6 = """{color=aqua|Anastasia: — 哇啊，你穿成这样……真的一点都不会觉得羞耻吗……？}
+	HALLOWEEN_EVENT6 = """{color=aqua|安娜斯塔西娅: — 哇啊，你穿成这样……真的一点都不会觉得羞耻吗……？}
 
 {color=yellow|卡莉: — 什么意思嘛？我可是一只狼，这本来就是我的样子啊。}
 
-{color=aqua|Anastasia: — 唔……可能是我太容易害羞、想太多了吧……}
+{color=aqua|安娜斯塔西娅: — 唔……可能是我太容易害羞、想太多了吧……}
 
 {color=yellow|卡莉: — 没差啦，人类女孩。话说回来，你孤身一人跑来我的森林，是有什么企图吗？}""",
 	HALLOWEEN_EVENT7 = """{color=magenta|泽菲拉: — 这只大灰狼对眼前这个从未见过的娇嫩少女产生了浓厚的兴趣。不论是福是祸，这个单纯的小妞倒是坦诚得很。}
 
-{color=aqua|Anastasia: — 我、我是要去探望我的祖母。}
+{color=aqua|安娜斯塔西娅: — 我、我是要去探望我的祖母。}
 
 {color=yellow|卡莉: — 为什么要大老远跑去干那个？像你这样细皮嫩肉的小姑娘，一个人赶路可是非常危险的。}
 
-{color=aqua|Anastasia: — 我明白，但我肩负着必须给她送一些肉包子的重要任务。}
+{color=aqua|安娜斯塔西娅: — 我明白，但我肩负着必须给她送一些肉包子的重要任务。}
 
 {color=yellow|卡莉: — 哇哦，肉包子！？嚯——那这可是本大狼绝对不能错过的美味了！}""",
 	HALLOWEEN_EVENT8 = """{color=yellow|卡莉: — 那些肉包子……一定格外的鲜嫩多汁吧？快拿出来，本大狼现在就要开开眼界！}
 
-{color=aqua|Anastasia: — ……唔，它们就装在这个篮子里……}
+{color=aqua|安娜斯塔西娅: — ……唔，它们就装在这个篮子里……}
 
-{color=aqua|Anastasia: — 咦，怎么变空了……难道是刚才那些强盗趁我不注意偷走了？}
+{color=aqua|安娜斯塔西娅: — 咦，怎么变空了……难道是刚才那些强盗趁我不注意偷走了？}
 
 {color=yellow|卡莉: — 本大狼说想看肉包子，而且我已经闻到那股诱人的奶香味了。你该不会是想用这种拙劣的借口欺骗我这只纯洁的大好狼吧？}
 
 {color=yellow|卡莉: — 既然如此，那我只能亲自在你的身体上好好“搜查”一番了！}""",
-	HALLOWEEN_EVENT9 = """{color=aqua|Anastasia: — 不要，等一下！啊哈—}
+	HALLOWEEN_EVENT9 = """{color=aqua|安娜斯塔西娅: — 不要，等一下！啊哈—}
 
 {color=yellow|卡莉: — 唔，你该不会是把它们藏在这里了吧？等等，你的胸部是怎么回事，这也太大、太饱满了吧！真是让人嫉妒死了……}
 
-{color=aqua|Anastasia: — 别、别揉捏那里……不要用这么大的力气……太粗暴了……}
+{color=aqua|安娜斯塔西娅: — 别、别揉捏那里……不要用这么大的力气……太粗暴了……}
 
 {color=yellow|卡莉: — 哈啊……摸起来的触感真的太棒了。虽然和真正的肉包子不太一样……但不知为何，却极其勾人心魄，让人彻底着迷了……}""",
-	HALLOWEEN_EVENT10 = """{color=aqua|Anastasia: — 嗯啊……求你……放开它们……}
+	HALLOWEEN_EVENT10 = """{color=aqua|安娜斯塔西娅: — 嗯啊……求你……放开它们……}
 
 {color=yellow|卡莉: — 放开它们？原来这就是你嘴里说的“肉包子”啊？我就知道，这味道虽然不太一样，但同样好闻得很。}
 
 {color=yellow|卡莉: — 呼呼，既然没有别的选择，那本大狼可就要好好品尝一番了！}
 
-{color=aqua|Anastasia: — 等等，这不对……停-停下-啊哈……哈啊……}""",
+{color=aqua|安娜斯塔西娅: — 等等，这不对……停-停下-啊哈……哈啊……}""",
 	HALLOWEEN_EVENT11 = """{color=magenta|泽菲拉: — 遗憾的是，在这片漆黑孤寂的林子里，根本没有任何人能听到她那绝望的呼救。}
 
 {color=magenta|泽菲拉: — 在那个恐怖而淫靡的夜晚，可怜的小红帽就这样被大灰狼彻底吃干抹净了。}""",
-	HALLOWEEN_EVENT12 = """{color=aqua|Anastasia: — 那个故事……原本真的是这样发展的吗？}
+	HALLOWEEN_EVENT12 = """{color=aqua|安娜斯塔西娅: — 那个故事……原本真的是这样发展的吗？}
 
 {color=yellow|卡莉: — 我也不知道，不过演起来感觉挺顺理成章的嘛。}
 
-{color=aqua|Anastasia: — 至少我分到的这套戏服还不算太暴露……}
+{color=aqua|安娜斯塔西娅: — 至少我分到的这套戏服还不算太暴露……}
 
 {color=yellow|卡莉: — 啊，不过你知道这些衣服以后就归我们了吗？希望[Master]会喜欢我们这副打扮。}
 
-{color=aqua|Anastasia: — 唔-嗯，只要[Master]喜欢的话，我想我并不介意一直穿着它……}""",
+{color=aqua|安娜斯塔西娅: — 唔-嗯，只要[Master]喜欢的话，我想我并不介意一直穿着它……}""",
 	HELEVIEL_MANSION_1 = """要是换作平时，你或许会把新到手的奴隶带去她们的房间，或者干脆带回你的卧室，但赫蕾维尔那傲慢反抗的态度让不得不采取另一种调教手段。你任由她对你和你的仆人们百般恶毒地咒骂，而是选择直接将她带往房间下方的暗道，拽着这位沦陷的堕落女祭司顺着狭窄的阶梯一路拖进你的地下囚牢。
 
 走到阶梯尽头，你不太清楚她原本在幻想些什么，但当眼前出现一座专门为了玩弄、虐待奴隶而配备了各种极品刑具的奢华调教地牢时，这残酷的画面显然远远超出了她的心理预期。
 
-{color=yellow|Heleviel: — 住手！我绝不是你这区区卑贱雄性的玩物，我可是至高无上的女祭司—}""",
+{color=yellow|赫莉薇儿: — 住手！我绝不是你这区区卑贱雄性的玩物，我可是至高无上的女祭司—}""",
 	HELEVIEL_MANSION_2 = """随着一声清脆的耳光响彻石墙，你一巴掌直接将她抽翻在地，强行让她闭了嘴。火把摇曳的昏暗囚室里陷入了漫长的死寂，只有你伸手拎起铁链时发出的冰冷金属摩擦声。她拼命想要掩饰内心的震惊，或许这能瞒过绝大多数人，但在你这位见多识广的奴隶主眼里，比她演技更逼真、伪装更倔强的女人你都调教过无数个。
 
 赫蕾维尔一路上还在徒劳地剧烈挣扎，直到被你死死拽到墙上一个巨大的金属铁环前。她惊恐地瞪大双眼企图作最后一搏，结果换来的只有狠狠的一记耳光，接着是第三掌。被彻底抽懵的她再也无力反抗，任由你将锁链狠狠扣在铁环上，将这个满身反骨的麻烦奴隶彻底囚禁在墙上。""",
-	HELEVIEL_MANSION_3 = """{color=yellow|Heleviel: 我-我绝不是—}
+	HELEVIEL_MANSION_3 = """{color=yellow|赫莉薇儿: 我-我绝不是—}
 
 这个精灵奴隶结结巴巴地抗拒着，然而当你一把死死掐住她的喉咙、强迫她那双泛起屈辱泪光的眼睛直视你时，无情的现实彻底击碎了她的自欺欺人。正当她试图重新勉强维持冷静时，你的手已经粗暴地抚上了她丰腴的大腿，狠命地掐弄着，激得她疯狂地扭动挣扎。当你的大手一把探入她那条奢华的丝绸内裤时，她挣扎得愈发歇斯底里。将那件精美的布料从她白皙娇嫩的肌肤上狠狠撕碎时，你心中甚至闪过了一丝破坏如此艺术品的遗憾，但紧接着这缕思绪便被暴虐的快感取代——布料撕裂的脆响瞬间被她绝望而凄厉的尖叫声彻底淹没。""",
 	HELEVIEL_MANSION_4 = """你用言语无情地摧毁着她的心理防线，看着她的眼中溢满震惊，恐惧再度将她吞噬。你俯下身去，一把扯开了她礼服的前襟，将原本身居高位的她彻底剥光暴露在空气中。她那对乳房饱满丰腴，却依然保持着少女般惊人的挺拔与活力。你带着强烈的占有欲狠狠掐住其中一侧乳肉，贪婪地审视着你的新藏品。她试图抗议，但当你一把掐住她敏感的乳头并残忍地用力拧转时，所有的声音都化作了一声凄厉的娇啼。随着你一把死死揪住她的秀发，痛楚让她忍不住放声呜咽起来。赫蕾维尔还在做着无谓的挣扎，而你只是冷笑着任由她折腾，好让她彻底耗尽体能。  """,
 	HELEVIEL_MANSION_5 = """她的身体活动受限，只能眼睁睁地看着你扯开她礼服的裙摆，将下面那大片完美无瑕的肌肤彻底暴露出来，长途跋涉流下的香汗在她细腻的肉体上闪烁着诱人的光泽。随着你厚实的大手覆上去肆意揉捏，他在锁链中无助扭动挣扎的力道开始变得越来越微弱。
 
-{color=yellow|Heleviel: — 我-我不是……}
+{color=yellow|赫莉薇儿: — 我-我不是……}
 
 赫蕾维尔失神地喃喃自语，面对这残酷疯狂的境遇，她的精神已然濒临崩溃。紧接着你当着慢的面解开了裤子，看着你那根青筋暴起、不断跳动的狰狞肉棒挺立在面前，这个傲慢精灵的眼神瞬间从难以置信变成了极度惊恐，最终化为了绝望的顺从。晶莹的先驱分泌液正挂在饱满的马眼顶部，你再次死死揪住她柔顺的头发，在发丝于指缝间崩断的脆响中，强行将她的脑袋朝你的跨间狠狠按了过去。
 
 赫蕾维尔痛苦地拼命摆动头部挣扎了几下，泪水如断线的珍珠般从眼中疯狂溢出。然而，当她刚颤抖着张开嘴想要发出最后的抗议时，你那硕大粗壮的巨刃便顺势蛮横地一挺到底，将她所有的哭喊狠狠堵死在喉咙里。那粗暴贯穿的极度震惊显然吓傻了她，让她死死咬紧的牙关不敢有丝毫妄动。
 
-{color=yellow|Heleviel: — 唔唔……唔嗯……}""",
+{color=yellow|赫莉薇儿: — 唔唔……唔嗯……}""",
 	HELEVIEL_MANSION_6 = """只需一个严厉的眼神作为警告，就足以彻底击碎她最后的坚持。当你的分身狠狠插进她的喉咙时，她的尊严彻底崩溃了。你强迫这个精灵含着你的肉棒窒息吞咽，剥夺了她呼吸的权利以惩罚她的放肆，她的身体只能无助地扭动。她双腿乱踢、拼命挣扎，却根本无法将你顶出，因为你始终死死顶在她喉咙深处。直到她的视线开始模糊、身体近乎瘫软时，你才稍微抽出来一点，让她能用鼻子贪婪地、拼命地喘息。泪水夺眶而出，她在束缚中痛苦地咳嗽、扭动着。
 
 当赫莉薇儿刚恢复清醒，你便再次狠狠挺进她的喉咙，她只能再次惊恐地仰起头。你在她的口中疯狂抽插，不给她一丝喘息的余地，尽情地在她身上发泄着欲望。当她再次达到极限时，你又会恰到好处地抽离一点。这个精灵的嘴角挂着亮晶晶的口水，顺着下巴滴落。你一次又一次地重复着这个残酷的循环，每次都将她逼到窒息的边缘，却又突然退后，给她一种一切已经结束的虚假希望。 """,
@@ -16646,25 +16646,25 @@ LILIA_STARTING_2_2 = """{color=yellow|— 嘿，嘿，你到底是为了什么�
 她挣扎了好一会儿才顺从地服从。她闭上双眼，身体剧烈颤抖着，将你的精液咽下。泪水与精疲力竭让她的双眼一片空洞。当你终于将肉棒从她瘫软的嘴里抽出来时，慢条斯理地她的下颌已经累得无法完全合拢。在这将近一个小时里，她的嘴第一次被放空。""",
 	HELEVIEL_MANSION_8 = """赫莉薇儿剧烈地咳嗽着，低垂着头，泪水仍不断从眼眶中滴落。你居高临下地俯视着这个女性，看着她瘫倒在你的脚边——这正是属于她的卑微位置。终于，你弯下腰再次狠狠揪住她的头发，强迫她与你对视。你看着这位彻底沦陷的女祭司，脸上露出了玩味的笑容。然而 decorative 在她空洞的眼神背后，似乎还压抑着某种情绪——那是对自身处境的狂怒。愤怒扭曲了她满是泪痕的面庞，但她最终还是先移开了视线，眼中再次泛起泪光，声音颤抖着。
 
-{color=yellow|Heleviel: — 不……不要了……不、不要了……住手，你这个恶、恶魔……}
+{color=yellow|赫莉薇儿: — 不……不要了……不、不要了……住手，你这个恶、恶魔……}
 
 赫莉薇儿在急促的喘息和剧烈的抽噎中重复着这句话，她的眼神一片迷茫，身子无力地瘫软在冰冷的地板上。随着无尽的疲惫潮水般涌来，她的身体无助地瘫在那里，沙哑的抗议声渐渐化作了精疲力竭的呢喃。你依然在她身前站了几分钟，欣赏着自己的杰作，随后才转身离去。你在心里暗暗记下：要彻底驯服她，恐怕比你其他的奴仆需要花更多的时间。  """,
 	LIRA_MANSION_1 = """莉拉老老实实地跟在牵绳的另一端，低垂着头，把脸深深地埋在斗篷的兜帽里。虽然你的宅邸平时很安静，但此时却是一天中少有的忙碌时刻，仆人们正穿梭不停地处理着日常家务。她显得极为羞怯，当你牵着她走向宅邸深处时，她不止一次惊慌地扭过头去，试图躲避偶尔经过的仆人们投来的目光。
 
-{color=yellow|Lira: — 我、我们要去哪里？}
+{color=yellow|莉拉: — 我、我们要去哪里？}
 
 
 莉拉一边小声问你，一边继续试图隐藏自己，时不时惊恐地环顾四周。她的目光紧紧盯着周围的一举一动，仿佛每个角落里都藏着什么可怕的怪物。终于，你带着她在一扇手工雕刻的木门前停了下来。木门的设计繁复而精致，她也停下脚步，愣愣地盯着它。  """,
 	LIRA_MANSION_2 = """你很快便贴到了她的身后，大手抚上她的脖颈。她瞬间浑身一僵，像只受惊的兔子一样剧烈颤抖起来。她的喉咙紧张地吞咽着，丰臀不安地扭动，似乎随时都准备挣扎或逃跑。然而，当她注意到不止一个仆人停下了手中的活计，正看着你将她禁锢在此处时，她的脸瞬间变得血红。你轻而易举地将她转了个身，让她面对着那群围观的人。
 
-{color=yellow|Lira: — 你、你在干什么！？我……我不是……}
+{color=yellow|莉拉: — 你、你在干什么！？我……我不是……}
 
 随着你一把猛地扯下她长袍的前襟，她的质问瞬间变成了一声尖叫。她浑身冻结，双眼圆睁，饱满的乳房就这么弹了出来，暴露在众人的目光中。在仆人们的围观下，她拼命左右扭动着身体，却根本无法从你的掌控中脱身。很快，她的内裤也随之滑落，和长袍一起堆叠在她的脚边。她的肌肤烫得惊人，羞耻得几乎在微微发抖。过了好一会儿，她才哽咽着挤出了一句话：
 
-{color=yellow|Lira: — [name]……求你……别、别这样。}""",
+{color=yellow|莉拉: — [name]……求你……别、别这样。}""",
 	LIRA_MANSION_3 = """在仆人们的围观下，你继续旁若无人地亵玩着她。这个精灵羞耻得几乎无法动弹，极致的羞怯让她整个人都麻木了。很快，你微微侧身打开了房间的门，随后再次用力一拽牵绳。猛烈的拉扯让她一个踉跄，不得不顺从地跟着你走进了房间。
 
-{color=yellow|Lira: — 啊！你不需要——}
+{color=yellow|莉拉: — 啊！你不需要——}
 
 当你不由分说地再次死死掐住替换她的脖子时，她的双眼蓦然睁大。这一次你掐得更紧，让她止不住地颤抖。你的大手强行将她的头向后扳去，直到她的兜帽滑落。你将唇凑到她的耳畔，低声说道""",
 	LIRA_MANSION_3_OPTION_1 = """如果你再继续乱扭，我们就在城市广场上当众做这件事。""",
@@ -16672,35 +16672,35 @@ LILIA_STARTING_2_2 = """{color=yellow|— 嘿，嘿，你到底是为了什么�
 	LIRA_MANSION_4_1 = """听了你的话，莉拉明显蔫了下去，她的身体仍在颤抖，但现在停止了挣扎。当你引导她走向床榻，强行将她拉到你的大腿上，让这个精灵趴在你身上时，她变得十分顺从。当你伸手在下面掏出自己的肉刃时，莉拉没有再反抗你的触碰。""",
 	LIRA_MANSION_4_2 = """莉拉一动不动地呆了几秒以缓过神来。最终，她在你的掌控中稍微放松了些，让你能够轻易地引导她走向新床。当你掏出肉刃时，她依然羞涩地扭动着，当你调整她的姿势时，她私处的炽热紧紧贴着你的根部。""",
 	LIRA_MANSION_4 = """
-{color=yellow|Lira: — 这、这是？！我从、从没见过这种东西……}""",
+{color=yellow|莉拉: — 这、这是？！我从、从没见过这种东西……}""",
 	LIRA_MANSION_5 = """你狠狠地扇了莉拉的屁股一巴掌，作为让她学会放尊重的提醒，同时将她向下按去，让她的身子贴近你的根部。随着你肉刃的顶端在别无遮拦的入口处摩擦，这个精灵开始娇喘起来。莉拉现在感觉湿漉漉的，你突然意识到，在所有的羞耻和尴尬之下，她的身体已经背叛了她。
 
-{color=yellow|Lira: — 好烫……这、这里面怎么这么热？}
+{color=yellow|莉拉: — 好烫……这、这里面怎么这么热？}
 
 
 莉拉用半迷糊的声音呢喃着，时不时还试图从你身边逃开。你的双手死死按在她的翘臀上，将她拉回自己身边。随着莉拉的抗议，由于你粗暴的抓握，她的私处被微微扯开。片刻后，当你的龟头滑过她的入口时，年轻的精灵瞬间冻结了。
 
-{color=yellow|Lira: — 不、不要！你不能这样！}""",
+{color=yellow|莉拉: — 不、不要！你不能这样！}""",
 	LIRA_MANSION_6 = """莉拉剧烈挣扎，直到你用强有力的手劲死死按住这个奴隶，将她强行按在自己的分身之上。随着她惊呼一声并死死夹紧，她的双眼蓦然睁大，这让她的初次承欢变得更加紧窒。在大脑一片空白、轻声抗议并扭动了几下之后，你一把揪住她的头发，强迫她看着你。
 
-{color=yellow|Lira: 那、那个……不行……}
+{color=yellow|莉拉: 那、那个……不行……}
 
 你一寸一寸地挺进这紧致的精灵体内，在此期间，她一直在你的大腿上疯狂挣扎扭动。几分钟后，她开始剧烈喘息，整个人已经被你完全贯穿。最终，你开始抱着这个精灵在你的肉刃上起伏抽插，那绝妙的紧致感近乎完美，而她则在你身下无助地呜咽，双手死死抓着你身侧的床单。她已经放弃了抵抗，反正她也根本无法阻止你。
 
 你就这样继续享用了莉拉几分钟，随着她被上下顶弄，你的肉刃上沾染了她处女的落红，她的入口在你的分身周围疯狂地脉动、抽搐着。莉拉本人一言不发，她的脸很快就被兜帽遮住了，将它当作最后的安全感来源，而你则为了发泄自己的欲望而尽情占有着这个紧凑的小口。你再次扯下遮住她脸部的布料，她发出一声抗议的尖叫，而她私处那滑腻的春潮很快便吸引了你的注意。 """,
 	LIRA_MANSION_7 = """当你放松对她的禁锢准备换个姿势时，却迎来了意料之外的惊喜——莉拉竟然自己开始在你身上摇摆起来。她的节奏虽慢，却极其笃定，主动套弄着你的肉刃。她移开视线，不止一次试图拉起兜帽遮住自己的脸，每当你阻止她时，她都会发出委屈的呜咽声。
 
-{color=yellow|Lira: — [name]，求、求你别看着我……}
+{color=yellow|莉拉: — [name]，求、求你别看着我……}
 
 很快，莉拉在你身上摇摆得愈发疯狂，她即便不是出于顺从，也是沦陷在了盲目的渴望之中。她将丰臀狠狠地在你的肉刃上起伏套弄，那刻意的节奏让她在体验到快感时，口中漏出一连串如猫叫般的娇哼。她紧致的包裹让你不得不拼命忍住射精的冲动。你尽可能地坚持着，莉拉似乎察觉到了这一点，她的腰肢摆动得更快了，同时拒绝与你对视，侧脸因羞耻而变得血红。当她感受到你的肉刃在她体内剧烈痉挛、滚烫的精液一股股射进这个精灵处女的体内时，她那羞耻的面庞瞬间被震惊所取代，你彻底将她据为己有。""",
 	LIRA_MANSION_8 = """莉拉的内壁仍在持续紧夹，羞耻感爬满了她的面庞。片刻之后，这种羞耻便被抛到了一边，因为这个女孩的身体骤然绷紧，浸润她内壁的滚烫精液将她推向了极限。她绝顶了，在瘫软下来时漏出了一声近乎愉悦的娇啼。在短暂的放松与极乐之后，她的双眼蓦然圆睁，看着你，而她的脸竟然还能变得比刚才更红。
 
-{color=yellow|Lira: — 你是不是——射在、射在里面了？}
+{color=yellow|莉拉: — 你是不是——射在、射在里面了？}
 
 莉拉似乎惊慌失措了几秒钟，在你的分身上剧烈扭动了几下才拔出来。几分钟后，她向你仓促地鞠了一躬，然后一路小跑逃进了你们在来她房间路上经过的浴室。你提醒自己，按照这个进度，对她的服从训练必须变成每天的必修课了。""",
 	LIRA_MANSION_9 = """几分钟后，莉拉回到了房间，身上穿得整整齐齐。这简直毫无道理。你突然想到，在脱掉她的长袍后，衣服确实被踢进房间里了。然而，你并不记得看到过她把衣服捡起来。你警惕地看了莉拉一眼，当她移开视线时，眼中闪过一丝微光，因为她知道你已经看穿了，她的双颊依然血红。
 
-{color=yellow|Lira: — 今晚……就这些了吗……[Master]？}
+{color=yellow|莉拉: — 今晚……就这些了吗……[Master]？}
 
 最后一个词从她嘴里吐出来，听起来像是试图平息你的好奇心。你考虑过追问这个女孩究竟是什么时候拿走长袍的，但最终还是作罢，反而觉得最好让宅邸更频繁地进行清点。如果莉拉能如此神不知鬼不觉地拿走东西，看来她对你而言可能比想象中更有用。""",
 	EXCALIBUR_QUEST_1 = """你来到一片小空地，正中央有一块巨大的岩石。当你走近仔细观察时，你发现一块石头里埋着一把剑，露出了剑柄。尽管处于这种状态，这把剑看起来依然完好无损。然而，想要把它拔出来似乎并不容易……""",
@@ -16712,40 +16712,40 @@ LILIA_STARTING_2_2 = """{color=yellow|— 嘿，嘿，你到底是为了什么�
 泽菲拉: — 今天我们将为你讲述一个关于孤独女孩的故事，她唯一的愿望就是获得一点点幸福……请尽情享受吧。}""",
 	CHRISTMAS_EVENT_INTRO = """一个年轻可怜的女孩在寒冬中流落街头。孤苦无依的她试图通过售卖一些生命碎片来维持生计。
 
-{color=yellow|Daisy: — 求求你们了……买下这些闪亮的石头吧……}
+{color=yellow|黛西: — 求求你们了……买下这些闪亮的石头吧……}
 
 {color=aqua|Stranger: — 你不知道吗？因为数量严重过剩，这些东西的市场已经崩盘了。}
 
-{color=yellow|Daisy: — 呜呜……怎么会这样……我花光了最后的钱，本想着把它们转卖出去的……}""",
+{color=yellow|黛西: — 呜呜……怎么会这样……我花光了最后的钱，本想着把它们转卖出去的……}""",
 	CHRISTMAS_EVENT_1 = """今晚是平安夜，但她想赚点钱至少换取个落脚之地的希望却落空了。
 
 她眼中含着泪水蹲了下来，点燃了那些碎片并仔细端详着，试图驱散刺骨的寒意。在那微弱的光芒中，她开始回忆起往事……""",
 	CHRISTMAS_EVENT_2 = """{color=aqua|Rudolph: — 嘿，你这是打算自寻短见吗？这可不管用，要知道这些可是治疗碎片。}
 
-{color=yellow|Daisy: — 你、你是谁？}
+{color=yellow|黛西: — 你、你是谁？}
 
 {color=aqua|Rudolph: — 我是这个剧本的特邀嘉宾……啊，你是按字面意思问的。你可以把我当成节日精灵。我是来给你提供一份工作的。}
 
-{color=yellow|Daisy: — 但、但是，我不是那种女孩子……}
+{color=yellow|黛西: — 但、但是，我不是那种女孩子……}
 
 {color=aqua|Rudolph: — 我又不是皮条客，你这个笨蛋。这只是份正经工作。快来吧，你也不想在这里过夜，对吧？}""",
 	CHRISTMAS_EVENT_3 = """{color=aqua|Rudolph: — 过来，我有点东西要给你。哦对了，把衣服脱了。}
 
-{color=yellow|Daisy: — 等、等等，脱衣服？！但你刚才还说……}
+{color=yellow|黛西: — 等、等等，脱衣服？！但你刚才还说……}
 
 {color=aqua|Rudolph: — 闭嘴，快点过来。}""",
-CHRISTMAS_EVENT_4 = """{color=yellow|Daisy: — 这、这、这是什么衣服啊？}
+CHRISTMAS_EVENT_4 = """{color=yellow|黛西: — 这、这、这是什么衣服啊？}
 
 {color=aqua|Rudolph: — 俗话说得好，有时候你必须亲自变成你最开始所需要的那种存在。}
 
-{color=yellow|Daisy: — 但是……这条裙子也太短了吧，而且里面竟然连内裤都没穿！}
+{color=yellow|黛西: — 但是……这条裙子也太短了吧，而且里面竟然连内裤都没穿！}
 
 {color=aqua|Rudolph: — 现在的圣诞节都流行这种制服，我也无能为力。不过别瞎操心了，你现在看起来可迷人得很。}""",
-	CHRISTMAS_EVENT_5 = """{color=yellow|Daisy: — 但我现在该做什么呢……？}
+	CHRISTMAS_EVENT_5 = """{color=yellow|黛西: — 但我现在该做什么呢……？}
 
 {color=aqua|Rudolph: — 我不是说了吗？你得亲自去干点圣诞老人的活儿。现在，拿上这个袋子跟我来。}
 
-{color=yellow|Daisy: — 诶诶诶……？}
+{color=yellow|黛西: — 诶诶诶……？}
 
 少女放弃了抗议，乖乖地跟在她的新雇主身后。""",
 	CHRISTMAS_EVENT_6 = """让少女感到意外的是，她不得不走访许多普通百姓的家，这些家庭有着不同程度的贫困。当父母和孩子们向她打招呼时，她觉得这是一种极其新鲜的体验。
@@ -16754,31 +16754,31 @@ CHRISTMAS_EVENT_4 = """{color=yellow|Daisy: — 这、这、这是什么衣服�
 
 {color=aqua|Child: — 圣诞老人！是真的圣诞老人吗？}
 
-{color=yellow|Daisy: — 我、我不是真正的圣诞老人，但他现在太忙了，所以我是来帮忙的。}""",
+{color=yellow|黛西: — 我、我不是真正的圣诞老人，但他现在太忙了，所以我是来帮忙的。}""",
 	CHRISTMAS_EVENT_7 = """快乐的孩子们围在这个少女身边，这种突如其来的热情款待是她以前极少能在别处体验到的，这让她感到有些受宠若惊。她花了一些时间陪孩子们玩耍。
 
 有那么几次，她差点在一群大男孩面前露馅，但好在最后总算是有惊无险地糊弄了过去。""",
 	CHRISTMAS_EVENT_8 = """{color=aqua|Younger child: — 谢谢你来看我们，圣诞老人的小助手！}
 
-{color=yellow|Daisy: — 哈啊……呼，终于结束了吗？}
+{color=yellow|黛西: — 哈啊……呼，终于结束了吗？}
 
 {color=aqua|Rudolph: — 辛苦了。既然你表现得这么棒，这就是给你的礼物。不管你信不信，我知道你圣诞节最想要的是什么。}
 
-{color=yellow|Daisy: — 你、你知道？}""",
+{color=yellow|黛西: — 你、你知道？}""",
 	CHRISTMAS_EVENT_9 = """作为劳动的回报，黛西收到了一个色彩斑斓的小盒子作为礼物。她迫不及待地拆开了它。
 
-{color=yellow|Daisy: — 这是……一个项圈？}
+{color=yellow|黛西: — 这是……一个项圈？}
 
 {color=aqua|Rudolph: — 从现在起，你将拥有一个家，还有一位[Master]。这正是你内心真正渴望的，不是吗？我相信你们在一起会创造出许多美好的回忆。}
 
 少女不知道该如何作答，但还是礼貌地表达了谢意。""",
 	CHRISTMAS_EVENT_10 = """{color=aqua|Rudolph: — 尽管未来的日子可能会很艰难，但你依然要竭尽全力。}
 
-{color=yellow|Daisy: — 也许世事总是不尽如人意，但我们依然可以珍视这些来之不易的宁静与幸福。}
+{color=yellow|黛西: — 也许世事总是不尽如人意，但我们依然可以珍视这些来之不易的宁静与幸福。}
 
 {color=aqua|Rudolph: — 说得好，孩子。看来为了走到今天这一步，你确实经历了不少磨难。}
 
-{color=yellow|Daisy: — 我、我们大家衷心祝愿所有人圣诞快乐，节日快乐！}""",
+{color=yellow|黛西: — 我、我们大家衷心祝愿所有人圣诞快乐，节日快乐！}""",
 	ZCEVENT_1 = """当你穿过宅邸时，注意到你的两位住客——泽菲拉和卡莉正在聊天。
 
 {color=aqua|泽菲拉: — 你知道吗，我以前还没注意到，其实我们有很多共同点。}
@@ -18526,22 +18526,22 @@ AMELIA_TRIAL_NORMAL_5_OPTION_3 = """我没有其他异议了。""",
 {color=aqua|卡莉：—— 我会……继续努力的，大概吧。只是别对我期望太高，好吗？}
 
 还没等你回答，她就匆忙离开，换回了自己平时的衣服。""",
-	CALI_SERVANTS_NEW_LEADER_6 = """{color=yellow|Amelia: — 我看到你的培训了，你叫卡莉对吧？很高兴认识你。}
+	CALI_SERVANTS_NEW_LEADER_6 = """{color=yellow|艾米莉亚: — 我看到你的培训了，你叫卡莉对吧？很高兴认识你。}
 
 {color=aqua|卡莉: — 你好……你又是谁？}
 
-{color=yellow|Amelia: — 就把我当成一个想给你提点建议的无名之辈吧。很抱歉我这双耳朵好像不小心偷听到了你们的对话，但说实话，我觉得你采取的方法稍微有点走错方向了。}
+{color=yellow|艾米莉亚: — 就把我当成一个想给你提点建议的无名之辈吧。很抱歉我这双耳朵好像不小心偷听到了你们的对话，但说实话，我觉得你采取的方法稍微有点走错方向了。}
 
 {color=aqua|卡莉: — 你这是什么意思？}""",
-	CALI_SERVANTS_NEW_LEADER_7 = """{color=yellow|Amelia: — 你是个女孩，而且想让自己看起来更有女人味一些，我说的没错吧？然而，正如你已经注意到的那样，你和别的女孩子不太一样。}
+	CALI_SERVANTS_NEW_LEADER_7 = """{color=yellow|艾米莉亚: — 你是个女孩，而且想让自己看起来更有女人味一些，我说的没错吧？然而，正如你已经注意到的那样，你和别的女孩子不太一样。}
 
 听到这话，卡莉脸上肉眼可见地闪过一丝沮丧，但阿梅莉亚并没有就此停下。
 
-{color=yellow|Amelia: — 不过，这并不意味着你就该放弃。如果有些方法对你行不通，也许其他方法会有效呢。}
+{color=yellow|艾米莉亚: — 不过，这并不意味着你就该放弃。如果有些方法对你行不通，也许其他方法会有效呢。}
 
 {color=aqua|卡莉: — 我还是不太明白。}
 
-{color=yellow|Amelia: — 你介意我耽误你一点时间吗？这不会收取你任何费用的。如果你就这样抱憾离开我们这里，我心里也会过意不去的。}""",
+{color=yellow|艾米莉亚: — 你介意我耽误你一点时间吗？这不会收取你任何费用的。如果你就这样抱憾离开我们这里，我心里也会过意不去的。}""",
 	CALI_SERVANTS_NEW_LEADER_8 = """片刻之后，卡莉同意了，随后阿蜜莉雅便将她带离了你的身边。在你等待了大约半小时后，卡莉重新出现在你的眼前，她的心情看起来比离开时要好上太多。你一时间有些说不出她到底哪里变了，但当她朝你走来时，那曼妙的身姿却不知为何在瞬间勾牢了你的视线，牢牢吸引了你全部的注意。
 
 {color=aqua|卡莉: — [Master]! 抱歉，让你久等了...}
@@ -19288,7 +19288,7 @@ AMELIA_TRIAL_NORMAL_5_OPTION_3 = """我没有其他异议了。""",
 {color=yellow|莉莉娅：—— 这感觉真是太棒了。我从未感到如此美妙……而且如此强大……更何况，您刚才也完全没有避讳地和我做了呢，[Master]。}""",
 	LILIA_TRANSFORM_9 = """那个声音宣布了仪式的终结。
 
-{color=yellow|声音：—— 从此你获得新生，你需要一个新的名字。我宣布，你就是莉莉丝（Lilith），我的冠军斗士。}
+{color=yellow|声音：—— 从此你获得新生，你需要一个新的名字。我宣布，你就是莉莉丝（莉莉丝），我的冠军斗士。}
 
 随着话音落下，魔法封印与触手瞬间消散，只剩下你和莉莉丝待在原地，她对自己的新形态似乎非常满意。""",
 	LILITH_BLOW_1 = """莉莉丝用她那双稚嫩的乳房夹住你的肉棒，小巧的胸脯根本无法完全覆盖住你粗大的长物。她身体的温度与往常略有不同，变得更加火热，甚至让你感到有一种奇妙的酥麻感，你的肉棒在摩擦她的皮肤时不断充血勃起。她挺起乳头，随着胸口的起伏不断蹭弄着你，制造出的阵阵摩擦感让你愈发期待接下来更刺激的欢愉。
@@ -20160,7 +20160,7 @@ DWARF_PALACE_REPLY_IMPORTANT2 = """{color=yellow|守卫2：— 在这期间你�
 {color=yellow|海拉——考虑到他们是强行把我绑来这儿的，待遇倒也还凑合。他们还算有点分寸，没把我锁在地牢或者什么鬼地方。但我可不想在这儿久留了，跟在矮人那里能享受到的比起来，这儿的破伙食和服务简直烂透了。}""",
 	BOLTHAR_HARA_REPLY_TOKING = """{color=yellow|海拉——很好。所以我们这算谈妥了？}
 
-Hara看向Bolthar，后者一直在一旁默默观察着你们的对话。
+海拉看向Bolthar，后者一直在一旁默默观察着你们的对话。
 
 {color=yellow|Bolthar：——对，你可以去收拾东西准备动身了。与此同时，我想私下和你谈谈，[name]。}""",
 	BOLTHAR_RETURN_RECRUIT = """Bolthar将你领进另一个看起来像办公室的房间。他坐了下来，一边开口，一边仔细打量着你的反应。
@@ -20200,7 +20200,7 @@ Bolthar似乎并不惊讶，仿佛他早料到这事迟早会发生。
 
 {color=yellow|珂洛：——我清楚这一点，但你现在不还是待在这儿吗？彻底解决掉你，这才符合我的利益。即便我不这么想，国王的军队也早就手痒难耐，迫不及待想打一场了。}""",
 	COALBASE_ATTACK_OPT_HARMED = """[Wits Factor] 如果你非要开战，海拉在混乱中可能会受到伤害的。""",
-	COALBASE_ATTACK_OPT_ZEPHYRA = """*向Zephyra求助*""",
+	COALBASE_ATTACK_OPT_ZEPHYRA = """*向泽菲拉求助*""",
 	COALBASE_ATTACK_OPT_FIGHT = """挑衅我将是你犯下最大的错误。""",
 	COALBASE_ATTACK_REPLY_HARMED_SUC = """{color=green|成功}
 
@@ -20210,7 +20210,7 @@ Bolthar似乎并不惊讶，仿佛他早料到这事迟早会发生。
 	COALBASE_ATTACK_REPLY_HARMED_FAIL = """{color=red|失败}""",
 	COALBASE_ATTACK_REPLY_ZEPHYRA = """{color=yellow|泽菲拉——噢，嗨，珂洛。好久不见啦。}
 
-看到Zephyra从后面走出来，珂洛的脸色明显沉了一下。尽管这终于让她的脸上有了些情绪起伏，但姐姐的出现似乎并没带来什么好苗头。
+看到泽菲拉从后面走出来，珂洛的脸色明显沉了一下。尽管这终于让她的脸上有了些情绪起伏，但姐姐的出现似乎并没带来什么好苗头。
 
 {color=yellow|珂洛：——姐姐。你来干什么？}
 
@@ -20219,7 +20219,7 @@ Bolthar似乎并不惊讶，仿佛他早料到这事迟早会发生。
 {color=yellow|珂洛：——收起你那套多管闲事的圣母心吧，我现在最不需要的就是你那愚蠢的道德说教。}""",
 	COALBASE_ATTACK_REPLY_ZEPHYRA2 = """{color=yellow|泽菲拉——好吧，对不起啦，是我太笨。不过你能不能稍微考虑一下，别伤害我们呀？[name]可是我为了这场伟大试炼而特意选中的专属命定之人呢。}
 
-听到Zephyra这天真无邪的提议，珂洛冷笑了一声。
+听到泽菲拉这天真无邪的提议，珂洛冷笑了一声。
 
 {color=yellow|珂洛：——那我就更有理由在这里直接把他给彻底干掉了。}
 
@@ -20229,7 +20229,7 @@ Bolthar似乎并不惊讶，仿佛他早料到这事迟早会发生。
 泽菲拉别这么心急嘛，好妹妹~
 """,
 	KURO_BOSSFIGHT_BANTER_2 = """
-由于Zephyra的恶作剧，珂洛失去了消逝之光！
+由于泽菲拉的恶作剧，珂洛失去了消逝之光！
 """,
 	KURO_BOSSFIGHT_BANTER_3 = """
 珂洛：快。停。下。""",
@@ -20312,7 +20312,7 @@ Bolthar似乎并不惊讶，仿佛他早料到这事迟早会发生。
 	ELF_CAPITAL_SACRED_SAP = """索要神圣树液""",
 	SACRED_SAP_HELEVIEL_START = """{color=yellow|— 你这要求可真够大的，[race]。我们绝不会让任何人靠近我们的圣树，更别提去伤害或采集它了。按规矩，光是你动了这种念头，我就该把你处死，但是……}
 
-海勒薇尔（Heleviel）停顿了片刻，似乎在心底权衡着什么。
+海勒薇尔（赫莉薇儿）停顿了片刻，似乎在心底权衡着什么。
 
 {color=yellow|— 我想，我们可以做笔交易。}""",
 	SACRED_SAP_HELEVIEL_2 = """{color=yellow|— 我有两名斥候被你们那边的艾利隆人抓走了。把她们毫发无损地放回来，毕竟我可没法跟你们那些只会动武的战士达成任何协议。}""",
@@ -20350,7 +20350,7 @@ Bolthar似乎并不惊讶，仿佛他早料到这事迟早会发生。
 	SACRED_SAP_HELEVIEL_4 = """{color=yellow|— 你诚实地履行了交易的约定，[race]。我很敬佩这一点。这是你向我们索求的物品，拿去吧，但别对外声张你是怎么换到它的。}""",
 	SACRED_SAP_ERLEN_START = """{color=yellow|— 等一下，[name]。想聊两句吗？}
 
-{color=yellow|— 你是要去见莉拉（Lira）吗？你知道的，自从她成为新任大祭司后，就一直被公务缠身……}
+{color=yellow|— 你是要去见莉拉（莉拉）吗？你知道的，自从她成为新任大祭司后，就一直被公务缠身……}
 
 {color=yellow|— 你觉得，也许……我不该去打扰她吧？}""",
 	SACRED_SAP_ERLEN_START_OPT1 = """别胡说八道，她肯定还想见你""",
@@ -20409,7 +20409,7 @@ DKING2TASK_HARA_8 = """{color=yellow|— 哇，这可真是不少。你没往里
 一个由魔法构成的狐族女性影像在你面前浮现。
 
 {color=yellow|— 噢，真是出乎意料。你是那种跑腿的小跟班吗？抱歉，这东西只留给我那个讨人厌的亲戚。}""",
-	CAPACITOR_MOLTEN_START_OPT1 = """*看着泽菲拉（Zephyra）*""",
+	CAPACITOR_MOLTEN_START_OPT1 = """*看着泽菲拉（泽菲拉）*""",
 	CAPACITOR_MOLTEN_START_OPT2 = """不知道你指的谁""",
 	CAPACITOR_MOLTEN_Z_1 = """你疑惑地看向泽菲拉，她从见到那个女人的那一刻起就一直表现得很怪异。她向前迈了一步，但又微微靠近你，仿佛试图躲在你身后寻求保护。
 
@@ -20485,16 +20485,16 @@ DKING2TASK_HARA_8 = """{color=yellow|— 哇，这可真是不少。你没往里
 {color=yellow|— 在你追问它们起源之前，还是省省吧。我既没兴趣讲这一课，也不认为你能听得懂。}""",
 	KURO_QUESTIONS_REPLAY_ZEPH = """{color=yellow|— 我们是姐妹。不是生物学意义上的，而是灵魂层面的那种。这种联系并非像朋友那样是我们选择的结果，而是我们生来如此。这很自然，就是这样。}
 
-{color=yellow|— 我也好，我们的三妹露丝（Rouge）也好，都不怎么喜欢她。我想这就和你跟亲生兄弟姐妹的关系差不多吧，即便你并不喜欢他们，但无论好坏，他们终究是你生命中挥之不去的一部分。}""",
+{color=yellow|— 我也好，我们的三妹露丝（露琪）也好，都不怎么喜欢她。我想这就和你跟亲生兄弟姐妹的关系差不多吧，即便你并不喜欢他们，但无论好坏，他们终究是你生命中挥之不去的一部分。}""",
 	KURO_QUESTIONS_REPLAY_POWER = """{color=yellow|— 我的力量就像你看上去的那样。或者你是说非物理层面的能力？你能想到这一层去研究敌人，真是出人意料地聪明。我可以操纵阴影，并通过躲进影子里隐藏自己的气息。在影子里移动时我自然不受束缚，而且我的影子无法被光驱散。}
 
-{color=yellow|— 我算不上什么格斗好手，也不喜欢打架，但我对付泽菲拉（Zephyra）应该绰绰有余。}""",
+{color=yellow|— 我算不上什么格斗好手，也不喜欢打架，但我对付泽菲拉（泽菲拉）应该绰绰有余。}""",
 	KURO_QUESTIONS_REPLAY_LIKE = """{color=yellow|— 这是什么奇怪的问题？你在试图泡我吗？我喜欢看书，讨厌蠢货。}
 
 珂洛停顿了一下，似乎意识到这个答案对你来说还不够满意。
 
 {color=yellow|— 我大概喜欢吃鹿肉和葡萄。在矮人城市这些东西很难弄到，哪怕是皇室通过贸易得来的，也常常不太新鲜。另外，我很讨厌别人碰我的尾巴，所以你最好把你的爪子放老实点。}""",
-	KURO_QUESTIONS_REPLAY_RED = """{color=yellow|— 露丝（Rouge）。她是咱们三姐妹里的暴力狂，所以你最好别惹她不快。倒不是说她有什么好相处的面孔。她明明有自己的活儿要干，却非要跑来折磨我的神经，这确实像是她会干出来的事。}
+	KURO_QUESTIONS_REPLAY_RED = """{color=yellow|— 露丝（露琪）。她是咱们三姐妹里的暴力狂，所以你最好别惹她不快。倒不是说她有什么好相处的面孔。她明明有自己的活儿要干，却非要跑来折磨我的神经，这确实像是她会干出来的事。}
 
 {color=yellow|— 我说得够多了，不想再在她身上浪费口舌，你最好也祈祷自己别跟她扯上什么关系。}""",
 	KURO_QUESTIONS_END = """
@@ -20565,16 +20565,14 @@ DKING2TASK_HARA_8 = """{color=yellow|— 哇，这可真是不少。你没往里
 当她转过身去时，一群一直埋伏在暗处、只等国王出现的联合部队冲了出来。
 
 {color=yellow|国王: — 那贱人竟然背着我跟联合部队勾结！把他们都给我收拾掉，抓住她！}""",
-	DWARF_CEREMONY_CAUGHTUP_CULT = """,
-	DWARF_CEREMONY_BOLTHAR = """The ambushers part, and a gnome in a plain robe steps out of their ranks with his hands open at his sides. Bolthar. Behind him come the ones who hold his coalition together: a kobold weighed down with scavenged trinkets, a ratkin who keeps to the edge of the torchlight, a goblin with a bandolier of crude grenades, and a dwarf resting a double-bitted axe on his shoulder.
+	DWARF_CEREMONY_CAUGHTUP_CULT = """当她转身离开时，一群邪教徒出现在街上，挡住了你去追她的去路。""",
+	DWARF_CEREMONY_BOLTHAR = """伏击者们纷纷向两侧让开，一名身穿素色长袍的地精从人群中走了出来，双手摊开垂在身侧。是博尔瑟。在他身后跟随着的，正是将他的联盟凝聚在一起的核心成员：一个挂满搜刮来的饰物的狗头人，一个缩在火光边缘的鼠人，一个斜挎着一排粗糙手榴弹的哥布林，以及一名将双面战斧扛在肩上的矮人。
 
-{color=yellow|Bolthar: — I offered you a place among us once. You chose the crown instead, and now the crown has brought you here, to the one fight I hoped to spare you.}
+{color=yellow|博尔瑟：——我曾向你伸出橄榄枝，邀请你加入我们。但你却选择了王冠，而如今正是这顶王冠把你带到了这里——带到了这场我本希望能让你幸免的战斗之中。}
 
-{color=aqua|The King: — Enough talk. Cut them down!}
+{color=aqua|国王：——废话少说。给我把他们砍倒！}
 
-{color=yellow|Bolthar: — Stand together, friends. Whatever they take from us, they take from all of us at once.}""", # MISSING TRANSLATION
-
-当她转身离开时，一群邪教徒出现在街上，挡住了你去追她的去路。""",
+{color=yellow|博尔瑟：——团结一致，朋友们。无论他们想从我们身上夺走什么，都是在同时掠夺我们所有人。}""",
 	KURO_RESOLUTION_INTRO = """你循着珂洛的踪迹追到了附近的洞穴，她正带着神器逃离。穿过几条不寻常的小径后，你很快来到了一片荒芜之地。
 
 显然这里的一切早已布置妥当，只见珂洛正站在一个仪式法阵中央，准备开启传送门。在更大的一圈外围，整个区域被一层半透明的结界封锁，看起来和你之前在米尔福德（Millford）遇到的那种很像，但这道结界颜色深得多。""",
@@ -20632,12 +20630,12 @@ DKING2TASK_HARA_8 = """{color=yellow|— 哇，这可真是不少。你没往里
 	KURORES_FINALE_HELPKURO2 = """珂洛因剧痛而昏死过去，全靠你的奋力施救才勉强吊住她的一口气。然而Ketch已经带着神器逃之夭夭，现在再也没有机会夺回它了。""",
 	KURORES_FINALE_ZEPHHIT = """珂洛向那个精灵发起攻击，但对方的速度远超于她。他手中的匕首眼看就要深深捅进珂洛的娇躯，然而……
 
-在千钧一发之际，独自穿过结界的Zephyra用自己的身体挡下了这致命一击，匕首直直刺入了她的心脏。双方都被这一幕惊呆了，随着结界彻底碎裂，你们一行人终于得以冲上前来。
+在千钧一发之际，独自穿过结界的泽菲拉用自己的身体挡下了这致命一击，匕首直直刺入了她的心脏。双方都被这一幕惊呆了，随着结界彻底碎裂，你们一行人终于得以冲上前来。
 
 {color=yellow|Ketch: — 操……无所谓了，弄死哪个婊子都一样，老子先溜了！}
 
-Ketch迅速闪身逃离，只留下珂洛呆立在原地，震惊地看着濒死的Zephyra。""",
-	KURORES_FINALE_OPT_HELPZEPH = """冲向Zephyra""",
+Ketch迅速闪身逃离，只留下珂洛呆立在原地，震惊地看着濒死的泽菲拉。""",
+	KURORES_FINALE_OPT_HELPZEPH = """冲向泽菲拉""",
 	KURORES_FINALE_HELPZEPH = """{color=yellow|珂洛: — 该死……为什么？！这明明是对我犯下过错的惩罚，而不是……}
 
 这是你极少见到的画面，珂洛低头看着泽菲拉，脸上交织着真正的狂怒与绝望的泪水。
@@ -20650,11 +20648,11 @@ Ketch迅速闪身逃离，只留下珂洛呆立在原地，震惊地看着濒死
 	KURORES_FINALE_OPT_PRAY = """*向神明祈祷*""",
 	KURORES_FINALE_REPLY_CANT = """{color=yellow|珂洛: — 不……这……不是……我想要的……}
 
-你们俩默默地看着Zephyra那毫无生气的娇躯躺在你们之间。珂洛已经彻底丧失了战斗或反抗你的意志，让你得以毫不费力地把她捆绑起来再离开。""",
-	KURORES_FINALE_REPLY_POWER = """你卓越的治愈法术造诣以及倾注的全部魔力，刚好足以防止Zephyra受损的心脏彻底衰竭，你正缓慢地让它恢复跳动。当你俯在Zephyra的身体上方耗尽心力时，珂洛咬紧牙关，死死地盯着你。
+你们俩默默地看着泽菲拉那毫无生气的娇躯躺在你们之间。珂洛已经彻底丧失了战斗或反抗你的意志，让你得以毫不费力地把她捆绑起来再离开。""",
+	KURORES_FINALE_REPLY_POWER = """你卓越的治愈法术造诣以及倾注的全部魔力，刚好足以防止泽菲拉受损的心脏彻底衰竭，你正缓慢地让它恢复跳动。当你俯在泽菲拉的身体上方耗尽心力时，珂洛咬紧牙关，死死地盯着你。
 
 你感觉自己完全是凭一己之力扭转了必死的定局。珂洛难以置信地看着这一幕，在这个房间里，她完全陷入了沉默与无力之中；而她的姐姐勉强保住了性命，你则是浑身湿透、不停颤抖。""",
-	KURORES_FINALE_REPLY_PRAY = """为了从必死的绝境中救下Zephyra，你倾尽所有、微弱地呼唤着公义，而出乎在场所有人意料的是，她的身体上方竟浮现出一抹微光。奔涌的鲜血止住了，她周围的伤口奇迹般地愈合结痂。
+	KURORES_FINALE_REPLY_PRAY = """为了从必死的绝境中救下泽菲拉，你倾尽所有、微弱地呼唤着公义，而出乎在场所有人意料的是，她的身体上方竟浮现出一抹微光。奔涌的鲜血止住了，她周围的伤口奇迹般地愈合结痂。
 
 你感觉自己成功扭转了定局，但也为此付出了代价——你感到身体正在迅速虚弱，阵阵眩晕袭来。珂洛难以置信地看着这一幕，在这个房间里，她完全陷入了沉默与无力之中；她的姐姐勉强保住了性命，而她的救命恩人却完成了不可能的奇迹。""",
 	KURORES_FINALE_CHASE = """你无视了珂洛，径直冲出去追击Ketch，他拼命想在狭窄的隧道里甩掉你，但他高大的体型在这里根本施展不开。转过几个弯后，你终于追上了他，并狠狠地擦中了他一击。
@@ -20675,7 +20673,7 @@ Ketch迅速闪身逃离，只留下珂洛呆立在原地，震惊地看着濒死
 
 你意识到，国王肯定是害怕把这件神器继续留在他城堡附近了，既然联盟对他不再构成任何威胁，他便顺水推舟做个人情。""",
 	DWARF_AFTERMATCH_KING_NOKURO2 = """{color=yellow|The King: — 这些归你了。我们希望能与Aliron在未来建立积极的外交关系，但也别指望能像那个邪教徒那样把我们当猴耍。}""",
-	DWARF_AFTERMATCH_KING = """当国王的部队接近你时，他们立刻拿下了Kuro并将她关进大牢。不久后你得知，剩余的邪教徒和叛军都已被国王的部队清剿干净。几个小时后，整个地方就被彻底扫荡一空，仿佛什么事情都没发生过一样。你回到国王身边，他已经准备好接见你了。
+	DWARF_AFTERMATCH_KING = """当国王的部队接近你时，他们立刻拿下了珂洛并将她关进大牢。不久后你得知，剩余的邪教徒和叛军都已被国王的部队清剿干净。几个小时后，整个地方就被彻底扫荡一空，仿佛什么事情都没发生过一样。你回到国王身边，他已经准备好接见你了。
 
 {color=yellow|The King: — 这一路上你确实犯过一些错，但我不能怪你。我们……同样也错付了信任。更何况，你促成了那些叛军的覆灭，还解决掉了那个把我们引入歧途的肮脏叛徒。 }
 
@@ -20752,7 +20750,7 @@ Ketch迅速闪身逃离，只留下珂洛呆立在原地，震惊地看着濒死
 {color=yellow|琴: — 我简直不敢相信……该死，好吧。反正我现在也没别的好去处。但你要记住了，只要你敢动什么歪心思，我就把你烤成焦炭。}""",
 	JEAN_RECRUIT_REPLY_FIX = """{color=yellow|琴: — 你这人真是不可理喻！随便吧，我这就走。祈祷我们别再见面，否则我可能会为了这件事好好跟你清算一番。}
 
-Jean转身离去，仿佛生怕你会反悔一样。""",
+琴转身离去，仿佛生怕你会反悔一样。""",
 	HARA_RECRUIT_START = """你在海拉的老工作室里找到了她，她似乎正在打包最重要的工具，准备搬家。
 
 {color=yellow|海拉: — 噢，是你啊，大块头。干得漂亮，不得不说你是我这些年来遇到过最靠谱的搭档。所以……我猜你来这儿不只是为了看我一眼吧？}""",
@@ -21432,14 +21430,14 @@ DIVINE_SYMBOL_STAGE_4 = """邓肯让你去干掉那个捍卫者并摧毁守护�
 	PRINCESS_SEARCH_STAGE_4 = """遗憾的是，公主已经去世，但你已经收回了她的遗体。回到邓肯身边结束这一切吧。""",
 	PRINCESS_SEARCH_STAGE_5 = """你已经亲自活捉了公主。是时候把她带回给邓肯了。""",
 	PRINCESS_PERSUASION_NAME = """落难佳人""",
-	PRINCESS_PERSUASION_SUMMARY = """前叛军领袖阿纳斯塔西娅（Anastasia）公主现已落入公会之手。但你反对处决她。鉴于你的声望，你被允许尝试劝说她向公会屈服，如果成功，她将归你处置。""",
-	PRINCESS_PERSUASION_STAGE_1 = """你已被允许劝说阿纳斯塔西娅向公会屈服。找到一种方法来达成目的，或者同意执行处决。""",
+	PRINCESS_PERSUASION_SUMMARY = """前叛军领袖安娜斯塔西娅（安娜斯塔西娅）公主现已落入公会之手。但你反对处决她。鉴于你的声望，你被允许尝试劝说她向公会屈服，如果成功，她将归你处置。""",
+	PRINCESS_PERSUASION_STAGE_1 = """你已被允许劝说安娜斯塔西娅向公会屈服。找到一种方法来达成目的，或者同意执行处决。""",
 	FINAL_WORDS_NAME = """感谢游玩""",
 	FINAL_WORDS_SUMMARY = """你已完成了当前主线剧情的所有内容。感谢游玩，敬请期待下一版本更新。""",
 	DAISY_CLOTHES_NAME = """黛西：新装""",
-	DAISY_CLOTHES_SUMMARY = """你的奴隶黛西（Daisy）需要一套新衣服。""",
+	DAISY_CLOTHES_SUMMARY = """你的奴隶黛西（黛西）需要一套新衣服。""",
 	DAISY_CLOTHES_STAGE_1 = """和西格蒙德谈谈黛西的新衣服。""",
-	DAISY_CLOTHES_STAGE_2 = """和艾米莉亚（Amelia）谈谈黛西的新衣服。""",
+	DAISY_CLOTHES_STAGE_2 = """和艾米莉亚（艾米莉亚）谈谈黛西的新衣服。""",
 	DAISY_CLOTHES_STAGE_3 = """等待黛西的新衣服制作完成。""",
 	DAISY_TRAINING_NAME = """黛西：培训""",
 	DAISY_TRAINING_SUMMARY = """你的奴隶黛西需要接受一些专业的仆从培训。""",
@@ -21468,7 +21466,7 @@ DIVINE_SYMBOL_STAGE_4 = """邓肯让你去干掉那个捍卫者并摧毁守护�
 	MARRIAGE_WORKERS_NAME = """婚姻：一套漂亮的礼服""",
 	MARRIAGE_WORKERS_STAGE_1 = """向工人公会的裁缝交付 150 份丝绸、50 份魔法布和 1000 金币。""",
 	GRYPHON_QUEST_NAME = """爱蕊：力量证明""",
-	GRYPHON_QUEST_SUMMARY = """你决定向爱蕊（Aire）证明自己，好让她对阿纳斯塔西娅的安全放心。""",
+	GRYPHON_QUEST_SUMMARY = """你决定向爱蕊（爱蕊）证明自己，好让她对安娜斯塔西娅的安全放心。""",
 	GRYPHON_QUEST_STAGE_1 = """与西格蒙德谈谈关于长者格里芬（Elder Gryphon）可能出没的地点。""",
 	GRYPHON_QUEST_STAGE_2 = """在阿利龙与德里克（Derek）交谈。""",
 	GRYPHON_QUEST_STAGE_3 = """搜寻格里芬灌木丛，寻找长者格里芬的踪迹。""",
@@ -21484,7 +21482,7 @@ DIVINE_SYMBOL_STAGE_4 = """邓肯让你去干掉那个捍卫者并摧毁守护�
 	SWORD_ARTIFACT_QUEST_STAGE_4 = """拜访兽人部落的小屋""",
 	SWORD_ARTIFACT_QUEST_STAGE_5 = """给萨夫拉（Savra）带去 2000 份肉和鱼""",
 	SWORD_ARTIFACT_QUEST_STAGE_6 = """一天后回到兽人部落""",
-	SWORD_ARTIFACT_QUEST_STAGE_7 = """在森林中寻找梅（Mae）""",
+	SWORD_ARTIFACT_QUEST_STAGE_7 = """在森林中寻找梅（梅）""",
 	SWORD_ARTIFACT_QUEST_STAGE_77 = """第二天与梅一起进行仪式""",
 	SWORD_ARTIFACT_QUEST_STAGE_8 = """在兽人部落寻找莱昂（Leon）""",
 	SWORD_ARTIFACT_QUEST_STAGE_9 = """在森林区域寻找莱昂""",
@@ -21495,18 +21493,18 @@ DIVINE_SYMBOL_STAGE_4 = """邓肯让你去干掉那个捍卫者并摧毁守护�
 	SWORD_ARTIFACT_QUEST_STAGE_14 = """追踪白鹿""",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = """在精灵之都与厄伦（Erlen）交谈""",
 	TEMPLE_QUEST_NAME = """古老精灵神殿""",
-	TEMPLE_QUEST_SUMMARY = """芙蕾雅的高阶女祭司赫莱维尔（Heleviel）让你为她带回仪式所需的圣水。""",
+	TEMPLE_QUEST_SUMMARY = """芙蕾雅的高阶女祭司赫莱维尔（赫莉薇儿）让你为她带回仪式所需的圣水。""",
 	TEMPLE_QUEST_STAGE_1 = """前往古老精灵神殿获取圣水""",
 	TEMPLE_QUEST_STAGE_2 = """带着圣水回到赫莱维尔身边""",
 	GETTING_LIRA_QUEST_NAME = """启示""",
 	GETTING_LIRA_QUEST_SUMMARY = """一切准备就绪后，你必须与厄伦联手，设法对付赫莱维尔。""",
 	GETTING_LIRA_QUEST_STAGE_1 = """寻找厄伦""",
 	GETTING_LIRA_QUEST_STAGE_2 = """找到一种方法，把年轻的祭司从精灵之都带到厄伦那里""",
-	GETTING_LIRA_QUEST_STAGE_3 = """弄到 10 瓶威士忌，把莉拉（Lira）从神殿引出来""",
+	GETTING_LIRA_QUEST_STAGE_3 = """弄到 10 瓶威士忌，把莉拉（莉拉）从神殿引出来""",
 	GETTING_LIRA_QUEST_STAGE_4 = """带着莉拉回到厄伦身边""",
 	GETTING_LIRA_QUEST_STAGE_5 = """在精灵之都与厄伦汇合""",
 	CALI_FIGHTERS_QUEST_NAME = """卡莉：娇小而勇敢""",
-	CALI_FIGHTERS_QUEST_SUMMARY = """你的仆人卡莉（Cali）想要更有用一些，决定加入战士公会。""",
+	CALI_FIGHTERS_QUEST_SUMMARY = """你的仆人卡莉（卡莉）想要更有用一些，决定加入战士公会。""",
 	CALI_FIGHTERS_QUEST_STAGE_1 = """前往战士公会为卡莉注册""",
 	CALI_FIGHTERS_QUEST_STAGE_2 = """去村庄协助卡莉清理哥布林""",
 	CALI_FIGHTERS_QUEST_STAGE_3 = """回战士公会汇报""",
@@ -21606,20 +21604,20 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	LILITH_PATRON_QUEST_STAGE_13 = """拜访扎里""",
 	LILITH_PATRON_QUEST_STAGE_14 = """请求莉莉丝与她的赞助人见面""",
 	LILITH_PATRON_QUEST_STAGE_15 = """探索废弃的隐秘树林""",
-	ANASTASIA_QUEST_NAME = """阿纳斯塔西娅：代理美德""",
-	ANASTASIA_QUEST_SUMMARY = """阿纳斯塔西娅收到了一封求助信，她无法坐视不管。她指派你去提供帮助。""",
+	ANASTASIA_QUEST_NAME = """安娜斯塔西娅：代理美德""",
+	ANASTASIA_QUEST_SUMMARY = """安娜斯塔西娅收到了一封求助信，她无法坐视不管。她指派你去提供帮助。""",
 	ANASTASIA_QUEST_STAGE0 = """取信""",
 	ANASTASIA_QUEST_STAGE1 = """阅读信件""",
 	ANASTASIA_QUEST_STAGE2 = """在阿利龙会见莉奥拉（Liora）""",
 	ANASTASIA_QUEST_STAGE3 = """前往灰烬山脊""",
 	ANASTASIA_QUEST_STAGE4 = """探索哥布林洞穴""",
 	ANASTASIA_QUEST_STAGE5 = """回到阿利龙找莉奥拉""",
-	ANASTASIA_QUEST_STAGE6 = """与阿纳斯塔西娅交谈""",
+	ANASTASIA_QUEST_STAGE6 = """与安娜斯塔西娅交谈""",
 	ANASTASIA_QUEST_STAGE7 = """""",
-	ANASTASIA_QUEST2_NAME = """阿纳斯塔西娅：忠诚证明""",
+	ANASTASIA_QUEST2_NAME = """安娜斯塔西娅：忠诚证明""",
 	ANASTASIA_QUEST2_SUMMARY = """你接到了邓肯的一项任务……这似乎与叛军有关。""",
 	ANASTASIA_QUEST_STAGE8 = """与邓肯会面""",
-	ANASTASIA_QUEST_STAGE9 = """与阿纳斯塔西娅交谈""",
+	ANASTASIA_QUEST_STAGE9 = """与安娜斯塔西娅交谈""",
 	ANASTASIA_QUEST_STAGE10 = """前往叛军堡垒""",
 	ANASTASIA_QUEST_STAGE11 = """解决堡垒守军""",
 	ANASTASIA_QUEST_STAGE12 = """解决雷恩（Reyan）""",
@@ -21705,25 +21703,25 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	KURO_QUEST_3_CRAFT = """制作黄昏之笼（Vesperine Cage），然后与珂洛交谈。""",
 	KURO_QUEST_3_DEPTHS = """在水晶深渊（Crystaldepths）中搜寻""",
 	KURO_QUEST_3_DUNGEON = """在哀嚎大厅（Wailing Halls）解决尼克斯（Nixx）""",
-	DIALOGUEANAINITIATELP = """阿纳斯塔西娅满脸羞涩地向你问好。看来她还没有真正习惯这个新角色。
+	DIALOGUEANAINITIATELP = """安娜斯塔西娅满脸羞涩地向你问好。看来她还没有真正习惯这个新角色。
 
 {color=yellow|— 你、你好，[Master]……您今天过得好吗？}""",
-	DIALOGUEANAINITIATELN = """阿纳斯塔西娅神情冷酷地来见你。也许你得想办法提升一下她的积极性了。她一言不发，对你无话可说。
+	DIALOGUEANAINITIATELN = """安娜斯塔西娅神情冷酷地来见你。也许你得想办法提升一下她的积极性了。她一言不发，对你无话可说。
 
 {color=yellow|— ……}""",
-	DIALOGUEANAINITIATEHP = """阿纳斯塔西娅微笑着向你问好。尽管她没有表现出来，但她看起来相当满足。
+	DIALOGUEANAINITIATEHP = """安娜斯塔西娅微笑着向你问好。尽管她没有表现出来，但她看起来相当满足。
 
 {color=yellow|— [Master]。您还好吗？有什么我可以为您效劳的吗？}""",
-	DIALOGUEANAINITIATEHN = """阿纳斯塔西娅以顺从的姿态向你问好。看来她终于放弃了过去的生活，接受了这个角色。
+	DIALOGUEANAINITIATEHN = """安娜斯塔西娅以顺从的姿态向你问好。看来她终于放弃了过去的生活，接受了这个角色。
 
 {color=yellow|— [Master]！我该怎么服、服侍您？}""",
-	DIALOGUEANAINITIATEM = """你的妻子，阿纳斯塔西娅温柔地向你微笑。
+	DIALOGUEANAINITIATEM = """你的妻子，安娜斯塔西娅温柔地向你微笑。
 
 {color=yellow|— 亲爱的，你叫我？}""",
-	DIALOGUEANAINITIATEB = """当阿纳斯塔西娅回应你的召唤时，她的眼神几乎是空洞的。
+	DIALOGUEANAINITIATEB = """当安娜斯塔西娅回应你的召唤时，她的眼神几乎是空洞的。
 
 {color=yellow|— 您的命令是什么，[Master]？}""",
-	DIALOGUEAIREINITIATELN = """你收押的精灵奴隶爱蕊（Aire）默默地看着你，眼中满是厌恶。她的姿态散发着抗拒的气息。""",
+	DIALOGUEAIREINITIATELN = """你收押的精灵奴隶爱蕊（爱蕊）默默地看着你，眼中满是厌恶。她的姿态散发着抗拒的气息。""",
 	DIALOGUEAIREINITIATEHN = """你的精灵奴隶爱蕊已经屈服于你的所有权，现在正耐心地等待你的命令。
 
 {color=yellow|— 您的命令是什么，[Master]？}""",
@@ -21733,7 +21731,7 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	DIALOGUEAIREINITIATEHP = """你的精灵奴隶爱蕊应召而来。看来尽管她表面上是奴隶身份，却对你产生了相当的信任。
 
 {color=yellow|— [Master]。你想见我？希望你对安娜放尊重些。}""",
-	DIALOGUEZEPHINITIATEL = """一如既往神秘的泽菲拉（Zephyra）悄无声息地出现在你面前。
+	DIALOGUEZEPHINITIATEL = """一如既往神秘的泽菲拉（泽菲拉）悄无声息地出现在你面前。
 
 {color=yellow|— 向您致候，[Master]。您是想找我作伴吗？}""",
 	DIALOGUEZEPHINITIATEH = """狐狸娘泽菲拉漫不经心地出现在你面前。
@@ -21746,7 +21744,7 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 {color=yellow|— 亲爱的！你有没有想我呀？}
 
 她亲昵地用尾巴缠住了你的腿……""",
-	DIALOGUEDAISYINITIATEL = """你最近的收获：一个害羞的兔耳娘，黛西（Daisy）在你召唤她时出现了。
+	DIALOGUEDAISYINITIATEL = """你最近的收获：一个害羞的兔耳娘，黛西（黛西）在你召唤她时出现了。
 
 {color=yellow|— 是、是的，[Master]。我、我能做什么？}
 
@@ -21757,7 +21755,7 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	DIALOGUEDAISYINITIATEM = """你的妻子兼奴隶黛西站在你面前。
 
 {color=yellow|— [Master]，您今天过得怎么样？您是想先吃饭，先洗澡，还是……先吃我？抱歉，有人告诉我这样问候您是很棒的方式！}""",
-	DIALOGUECALIINITIATELP = """狼娘卡莉（Cali）迅速出现，没有表现出丝毫的恐惧或羞涩。
+	DIALOGUECALIINITIATELP = """狼娘卡莉（卡莉）迅速出现，没有表现出丝毫的恐惧或羞涩。
 
 {color=yellow|— 嘿，怎么了？！}""",
 	DIALOGUECALIINITIATELN = """当你召唤她时，狼娘卡莉极不情愿地走过来。她几乎按捺不住想要顶嘴的冲动。
@@ -21772,7 +21770,7 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	DIALOGUECALIINITIATEM = """你年轻的妻子卡莉在你去看她时扑向了你。看来已婚的身份并没有真正改变她的性格。
 
 {color=yellow|— [Master]！我们今天要做什么？想一起玩点什么吗？}""",
-	DIALOGUELILIAINITIATEL = """莉莉娅（Lilia）开心地微笑着出现在你面前。
+	DIALOGUELILIAINITIATEL = """莉莉娅（莉莉娅）开心地微笑着出现在你面前。
 
 {color=yellow|— [Master]？你在做什么？你是来陪我玩的吗？}""",
 	DIALOGUELILIAINITIATEH = """当你召唤她时，这个小妖精急不可耐地扑向了你。
@@ -21820,9 +21818,9 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	METRICS_SPELLUSED_NAME = """使用法术 %d/%d""",
 	METRICS_HEALUSED_NAME = """使用治疗技能 %d/%d""",
 	ANASTASIA_MARRIAGE_AGREED_TEXT = """按照我们的约定……我已经准备好成为你的妻子了。""",
-	ANASTASIA_MARRIAGE_AGREED_DESCRIPTION = """阿纳斯塔西娅的脸微微一红，但在回答前还是设法像位淑女一样保持了镇定。""",
+	ANASTASIA_MARRIAGE_AGREED_DESCRIPTION = """安娜斯塔西娅的脸微微一红，但在回答前还是设法像位淑女一样保持了镇定。""",
 	ANASTASIA_ENSLAVEMENT_AGREED_TEXT = """抱歉，这是不可能的，即使你这么说，我也不被允许嫁给你。""",
-	ANASTASIA_ENSLAVEMENT_AGREED_DESCRIPTION = """尽管阿纳斯塔西娅显然对你的话感到惊讶，但她还是尽力保持着面容的平静。""",
+	ANASTASIA_ENSLAVEMENT_AGREED_DESCRIPTION = """尽管安娜斯塔西娅显然对你的话感到惊讶，但她还是尽力保持着面容的平静。""",
 	AIRE_ANA_ALIVE_TEXT = """不管我对你感觉如何，我都不能同意。你必须娶安娜，而不是我。""",
 	AIRE_ANA_ALIVE_DESCRIPTION = """面对你的求婚，爱蕊面无表情。""",
 	AIRE_ANA_DEAD_TEXT = """别白费力气了。在安娜身上发生那样的事之后，我永远不会同意的。""",
@@ -21856,7 +21854,7 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	KURO_QUEST_FINISHED_TEXT = """这可是你可能会严重后悔的求婚。这就是为什么我要让你信守诺言。 """,
 	KURO_QUEST_FINISHED_DESCRIPTION = """珂洛看着你的眼神与以往截然不同。她的表情几乎如梦似幻……""",
 	MAE_PROPOSAL_FINISHED_TEXT = """我、我？做你的妻子？……我从没想过有人会这样选择我……如果你真心希望如此，那我愿意留在你身边。""",
-	MAE_PROPOSAL_FINISHED_DESCRIPT = """梅（Mae）僵住了一会儿。她的尾巴紧张地摇晃着，然后垂下视线，带着静谧的真诚微笑起来。""",
+	MAE_PROPOSAL_FINISHED_DESCRIPT = """梅（梅）僵住了一会儿。她的尾巴紧张地摇晃着，然后垂下视线，带着静谧的真诚微笑起来。""",
 	MAE_PROPOSAL_UNFINISHED_TEXT = """对、对不起……我觉得我还不能接受这样的事，这对我来说太早了。""",
 	MAE_PROPOSAL_UNFINISHED_DESCRIPT = """梅局促不安地摆弄着手指，避开了你的视线。""",
 	JEAN_PROPOSAL_FINISHED_TEXT = """结、结婚？你不是认真的吧！这一切太……是的，我愿意！""",
@@ -22429,14 +22427,14 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	DATE_SCOLD3 = """对不起，请别生气。""",
 	DATE_SCOLD4 = """住口，我不该受这样的对待！""",
 	DATE_SCOLD5 = """很抱歉让你有这种感觉。""",
-	DATE_PRESUMPTUOUS1 = """So... [Master] likes it like this? Hehe.""", # MISSING TRANSLATION
-	DATE_PRESUMPTUOUS2 = """[Master], you really spoiling me like that...""", # MISSING TRANSLATION
-	DATE_PRESUMPTUOUS3 = """You are quite a softy, [Master]""", # MISSING TRANSLATION
-	DATE_PRESUMPTUOUS4 = """Haah, I wonder how much I will be able to get away with now.""", # MISSING TRANSLATION
-	DATE_PUT_IN_PLACE1 = """...Forgive me, [Master]. I forgot myself.""", # MISSING TRANSLATION
-	DATE_PUT_IN_PLACE2 = """I'm sorry. It won't happen again.""", # MISSING TRANSLATION
-	DATE_PUT_IN_PLACE3 = """Of course, [Master], I know my place.""", # MISSING TRANSLATION
-	DATE_PUT_IN_PLACE4 = """As you say, [Master].""", # MISSING TRANSLATION
+	DATE_PRESUMPTUOUS1 = """所以……[Master]喜欢这样吗？嘿嘿。""",
+	DATE_PRESUMPTUOUS2 = """[Master]，你这样真是太宠我了……""",
+	DATE_PRESUMPTUOUS3 = """[Master]，你其实挺心软的呢。""",
+	DATE_PRESUMPTUOUS4 = """哈啊，真好奇我现在能得寸进尺到什么地步呢。""",
+	DATE_PUT_IN_PLACE1 = """……请原谅我，[Master]。是我忘乎所以了。""",
+	DATE_PUT_IN_PLACE2 = """对不起，绝不会再有下次了。""",
+	DATE_PUT_IN_PLACE3 = """好的，[Master]，我很清楚自己的分寸。""",
+	DATE_PUT_IN_PLACE4 = """如您所言，[Master]。""",
 	MIMIC_EAT1 = """哦不！它是活的！""",
 	MIMIC_EAT2 = """不！它抓住我了！救命！""",
 	MIMIC_EAT3 = """呃，我挣脱不了！""",
@@ -22537,9 +22535,9 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	CAPITALEMPIRE = """帝国首都""",
 	CAPITALBEASTKIN = """兽族部落""",
 	WORKERSDISASSEMBLE = """拆解""",
-	DISASSEMBLE_CONFIRM = """Disassemble %s?
-You'll get between %s and %s of %s.""", # MISSING TRANSLATION
-	DISASSEMBLE_RESULT = """You've got %s of %s after disassemble.""", # MISSING TRANSLATION
+	DISASSEMBLE_CONFIRM = """分解 %s？
+你将获得 %s 至 %s 个 %s。""",
+	DISASSEMBLE_RESULT = """分解后，你获得了 %s 个 %s。""",
 	AREACAPITALS = """王都""",
 	AREASETTLEMENTS = """村落""",
 	AREAQUESTS = """任务""",
@@ -23758,26 +23756,26 @@ ANA_TRAVEL_INITIATE = """你向安娜斯塔西娅说明了接下来的任务，�
 
 {color=yellow|叛军领袖：——你们是谁？你们是公会的增援，却不和他们一起作战？}
 
-阿纳斯塔西娅从你们的队伍中站出来，自报家门。
+安娜斯塔西娅从你们的队伍中站出来，自报家门。
 
-{color=yellow|阿纳斯塔西娅：——我是公主阿纳斯塔西娅，你们曾经的领袖，我恳请你们为了最好的结局投降吧。}""",
+{color=yellow|安娜斯塔西娅：——我是公主安娜斯塔西娅，你们曾经的领袖，我恳请你们为了最好的结局投降吧。}""",
 	ANA_FORT_4 = """士兵们看起来略显惊讶，但他们的姿态并未缓和。
 
 {color=yellow|叛军领袖：——看来传言是真的，公主殿下。我是乔丹爵士，是我带领这些人发动了叛乱。得知叛军终究还是输了，真是遗憾。然而，恐怕我们现在不能投降。}
 
-{color=yellow|阿纳斯塔西娅：——但是为什么？！这场战斗只会导致你们的灭亡。}
+{color=yellow|安娜斯塔西娅：——但是为什么？！这场战斗只会导致你们的灭亡。}
 
 {color=yellow|乔丹：——撇开荣誉不谈，我们不相信现在投降，落到公会军队手中会有什么更好的下场。}""",
-	ANA_FORT_5 = """阿纳斯塔西娅转向你，表情痛苦而乞求。
+	ANA_FORT_5 = """安娜斯塔西娅转向你，表情痛苦而乞求。
 
-{color=yellow|阿纳斯塔西娅：——不、不，应该有办法保证他们的安全，对吧？}
+{color=yellow|安娜斯塔西娅：——不、不，应该有办法保证他们的安全，对吧？}
 
 {color=yellow|乔丹：——如果我的部下能因这次叛乱被赦免，我愿意向你们投降，但我不认为公会到目前为止对此感兴趣。}""",
 	ANA_FORT_5_OPTION_1 = """我保证他们的安全，以阻止不必要的流血冲突""",
 	ANA_FORT_5_OPTION_2 = """不，他们必须为反对公会的叛国行为接受法律制裁""",
-	ANA_FORT_6 = """听到你的宣告，阿纳斯塔西娅明显高兴起来。
+	ANA_FORT_6 = """听到你的宣告，安娜斯塔西娅明显高兴起来。
 
-{color=yellow|阿纳斯塔西娅：——是的，[name]是阿利隆的市长，[name]的话值得信赖，我也保证会尽我所能为你们争取公平的对待，乔丹爵士。}
+{color=yellow|安娜斯塔西娅：——是的，[name]是阿利隆的市长，[name]的话值得信赖，我也保证会尽我所能为你们争取公平的对待，乔丹爵士。}
 
 当乔丹爵士命令手下放下武器时，叛军士兵们看起来疲惫但如释重负。看来这场漫长的战斗确实让他们筋疲力尽了。""",
 	ANA_FORT_7 = """{color=yellow|乔丹：——我明白了。那么，我们将战斗到底。}""",
@@ -23786,9 +23784,9 @@ ANA_TRAVEL_INITIATE = """你向安娜斯塔西娅说明了接下来的任务，�
 {color=yellow|雷扬：——干得漂亮，市长。终于结束了，我们很快就能回家了，真好。不过……}""",
 	ANA_FORT_9 = """{color=yellow|雷扬：——有件事我一直放不下，既然公主落到了我们手里，我们觉得可不能白白错过这个机会。}
 
-话音未落，雷扬拔出了双剑，将其中一把指向了阿纳斯塔西娅。
+话音未落，雷扬拔出了双剑，将其中一把指向了安娜斯塔西娅。
 
-{color=yellow|阿纳斯塔西娅：——嗯？我不明白……}
+{color=yellow|安娜斯塔西娅：——嗯？我不明白……}
 
 {color=yellow|雷扬：——你就是这几个月战乱的根源，想到你能逃过任何真正的惩罚，真是让人火大。而现在正是我们为自己讨回公道的大好机会。别担心，市长，我们会上报说前公主被流箭射中，伤重不治。}""",
 	ANA_FORT_9_OPTION_1 = """这是叛国，你这混蛋""",
@@ -23796,43 +23794,43 @@ ANA_TRAVEL_INITIATE = """你向安娜斯塔西娅说明了接下来的任务，�
 	ANA_FORT_10 = """{color=yellow|雷扬：——哼，看来这场小冲突的牺牲者可不只是公主一个人了。}
 
 雷扬一伙人拔出武器，准备开战。""",
-	ANA_FORT_11 = """雷扬败亡后不久，他身边的大部分亲信丢下武器逃跑了，远处更多的公会部队听到打斗声赶来。简单解释了几句后，你跨过雷扬的尸体，走向刚从突如其来的危险中回过神来的阿纳斯塔西娅。
+	ANA_FORT_11 = """雷扬败亡后不久，他身边的大部分亲信丢下武器逃跑了，远处更多的公会部队听到打斗声赶来。简单解释了几句后，你跨过雷扬的尸体，走向刚从突如其来的危险中回过神来的安娜斯塔西娅。
 
-{color=yellow|阿纳斯塔西娅：——谢、谢谢你……很抱歉事情变成了这样，我以为只要我尽力而为就能换来和平，可是……}""",
+{color=yellow|安娜斯塔西娅：——谢、谢谢你……很抱歉事情变成了这样，我以为只要我尽力而为就能换来和平，可是……}""",
 	ANA_FORT_11_OPTION_1 = """有些人即使你尽了最大努力去弥补，也会心怀不合理的怨恨。""",
 	ANA_FORT_11_OPTION_2 = """他是个叛徒混蛋，这不是你的错""",
-	ANA_FORT_12 = """阿纳斯塔西娅缓缓点头，她的眼神更添了几分忧伤，她的心已经成熟了。但当她的目光与你相遇时，也流露出一丝欣慰和感激。
+	ANA_FORT_12 = """安娜斯塔西娅缓缓点头，她的眼神更添了几分忧伤，她的心已经成熟了。但当她的目光与你相遇时，也流露出一丝欣慰和感激。
 
 她牵起你的手，你能感受到她的温暖，此刻她更加主动且依恋，这股情绪正是被你刚刚将她救出的危险所点燃。
 
 这里没什么可做的了，你决定离开。""",
-	ANA_FINAL_1 = """经过漫长的归途，你和阿纳斯塔西娅回到了战士公会汇报任务。出乎你意料的是，邓肯亲自在主厅迎接你们。当他走近时，你看到他的脸色比平时更加阴沉，看来在你们回来之前他已经收到了报告。阿纳斯塔西娅在他高大的身影前打了个寒颤，微微挪到了你身后。
+	ANA_FINAL_1 = """经过漫长的归途，你和安娜斯塔西娅回到了战士公会汇报任务。出乎你意料的是，邓肯亲自在主厅迎接你们。当他走近时，你看到他的脸色比平时更加阴沉，看来在你们回来之前他已经收到了报告。安娜斯塔西娅在他高大的身影前打了个寒颤，微微挪到了你身后。
 
 {color=yellow|邓肯：——[name]市长，公主殿下……}
 
 突然，邓肯低下头道歉。
 
 {color=yellow|邓肯：——我对雷扬的背叛深感懊悔，恳请宽恕，尤其是您，公主殿下。尽管您怀着最美好的意愿，我们还是辜负了您的信任。}""",
-	ANA_FINAL_2 = """阿纳斯塔西娅一时语塞，但长久以来的礼仪修养让她很快恢复了镇定。
+	ANA_FINAL_2 = """安娜斯塔西娅一时语塞，但长久以来的礼仪修养让她很快恢复了镇定。
 
-{color=yellow|阿纳斯塔西娅：——不、不，这不是您的错，邓肯爵士，我明白这种事难免会发生……}
+{color=yellow|安娜斯塔西娅：——不、不，这不是您的错，邓肯爵士，我明白这种事难免会发生……}
 
 她的声音因这位昔日敌人出人意料的礼遇而变得更加轻快、放松。她向前迈了一步，向这位身经百战的战士伸出了手。""",
 	ANA_FINAL_2_OPTION_1 = """你该多留意一下你的手下。""",
 	ANA_FINAL_2_OPTION_2 = """没出什么事……毕竟有我在。""",
-	ANA_FINAL_3 = """做完报告，终于回到你的宅邸后，就只剩下你和阿纳斯塔西娅两人了。她突然扑向你，紧紧抱住了你。
+	ANA_FINAL_3 = """做完报告，终于回到你的宅邸后，就只剩下你和安娜斯塔西娅两人了。她突然扑向你，紧紧抱住了你。
 
 {color=yellow|——谢、谢谢你……我是说，为这事我必须谢谢你。谢谢你保护了我。我现在明白了，选择……把自己献给你，是正确的。}""",
-	ANA_BLOW_1 = """你等在宅邸那间灯光昏暗的卧室里，摇曳的烛光在家具上投下斑驳的阴影。沉重的橡木门吱呀一声开了，阿纳斯塔西娅缓缓走了进来。
+	ANA_BLOW_1 = """你等在宅邸那间灯光昏暗的卧室里，摇曳的烛光在家具上投下斑驳的阴影。沉重的橡木门吱呀一声开了，安娜斯塔西娅缓缓走了进来。
 
 她那长长的波浪金发披散在肩头，衬托着她精致的脸庞。她迎上你的目光，眼中交织着感激与紧张期待。她已脱下皇家礼服，换上了一件私密得多的装束——一件半透明的睡裙，几乎遮不住下面那玲珑有致的身体。丝绸料子紧贴着她丰满的双乳，轮廓清晰可见，她朝你款步走来。
 
 {color=yellow|——我、我换上这身衣服，听说你会喜欢这样的……}
 
-阿纳斯塔西娅姿态优雅地走近你坐着的地方。她生涩的迟疑步态显露了她的青涩，但神情中却有一种难以否认的渴望。她一言不发，在你面前跪了下来。""",
+安娜斯塔西娅姿态优雅地走近你坐着的地方。她生涩的迟疑步态显露了她的青涩，但神情中却有一种难以否认的渴望。她一言不发，在你面前跪了下来。""",
 	ANA_BLOW_2 = """她纤纤玉指伸向你的裤子，略有些笨拙地摸索着系带。公主咬着下唇，专注地解着。当你的肉棒被释放出来时，她的眼睛微微睁大，神情中掠过一丝惊叹与决心。
 
-阿纳斯塔西娅用纤细的手指环住你的柱身，她那柔软白皙的肌肤与你的肉棒形成了鲜明的视觉对比。她试探性地套弄着，每一下动作都在观察你的反应。她的触碰小心翼翼，青涩却惹人怜爱。
+安娜斯塔西娅用纤细的手指环住你的柱身，她那柔软白皙的肌肤与你的肉棒形成了鲜明的视觉对比。她试探性地套弄着，每一下动作都在观察你的反应。她的触碰小心翼翼，青涩却惹人怜爱。
 
 {color=yellow|——对不起，我以前没做过，但我听说这样能让男人舒服……}
 
@@ -24133,7 +24131,7 @@ ANA_TRAVEL_INITIATE = """你向安娜斯塔西娅说明了接下来的任务，�
 我听闻了许多关于你的传闻和你最近的壮举，我想也是时候让我们坦诚相对、见上一面了。我诚挚地邀请你前往伟大的帝国首都——绝无仅有的一处圣地。我向你保证，对于像你这样的人来说，那里绝对是一场视觉盛宴，而且……也是你染指那件梦寐以求的神器的绝佳机会。
 
 迷恋你的，
-Rouge”""",
+露琪”""",
 	EMP_CITY_ENTER_0 = """你伫立在雄伟的帝国皇城高耸的城门前。这里排着由旅行者、商贾以及各色陌生人组成的长龙，正等待着进城前的盘查。在苦苦等待了一个多小时后，你终于挪步上前，却立刻被守卫拦了下来。比起艾利隆的寒酸样，他们身上那套价值连城、闪闪发光的铠甲，彰显着其作为精英禁卫的身份。
 
 """,
@@ -24149,10 +24147,10 @@ Rouge”""",
 {color=yellow|— 是-是的，格罗图斯大人。[name]现在由您负责了。}""",
 	EMP_CITY_ENTER_2 = """当格罗图斯领着你穿过城门时，你听到他在那低声抱怨。
 
-{color=yellow|— Rouge大人命令我来接引你。这是她的邀请函。真搞不懂她为什么会关心像你这种货色。感恩戴德吧，要是没有这个，你这辈子都别想进来！}
+{color=yellow|— 露琪大人命令我来接引你。这是她的邀请函。真搞不懂她为什么会关心像你这种货色。感恩戴德吧，要是没有这个，你这辈子都别想进来！}
 他递给你一份正式的邀请函。仔细端详后，你惊讶地发现它竟然出自皇帝的宫廷。你有些迟疑地回头看向那个男人。
 
-{color=yellow|— 没错，你被邀请去参加陛下的庆典。怎么，你是外地来的什么大人物吗？Rouge大人说她也会去。还有，到时候你可千万别敢穿着身上这套像肮脏乡巴佬一样的衣服出席。}""",
+{color=yellow|— 没错，你被邀请去参加陛下的庆典。怎么，你是外地来的什么大人物吗？露琪大人说她也会去。还有，到时候你可千万别敢穿着身上这套像肮脏乡巴佬一样的衣服出席。}""",
 	EMP_CITY_ENTER_2_OPTION_1 = """谢谢你的邀请""",
 	EMP_CITY_ENTER_2_OPTION_2 = """也许我会去赏光""",
 	EMP_CITY_ENTER_2_OPTION_3 = """*默默接过信件*""",
@@ -24161,7 +24159,7 @@ Rouge”""",
 格罗图斯头也不回地大步离去，连句再见都没说，留你在盛典开幕前独自在这座雄伟的城市里探索。""",
 	EMP_CEREMONY_INIT = """参加大典""",
 	EMP_CEREMONY_1 = """你走向皇家宫殿，这座宏伟的建筑高耸入云，俯瞰着周围的一切，其巨大的规模足以容纳一座小镇。无数外邦宾客与你一同涌入其中。守卫们除了核对邀请函外，对你们没有表现出任何多余的兴趣。""",
-	EMP_CEREMONY_2 = """你在人群中捕捉到了Rouge和格罗图斯的身影，但随着守卫重新调整队列，你无法再向他们靠近。Rouge投来若有若无的一瞥，算是回应了你的存在。
+	EMP_CEREMONY_2 = """你在人群中捕捉到了露琪和格罗图斯的身影，但随着守卫重新调整队列，你无法再向他们靠近。露琪投来若有若无的一瞥，算是回应了你的存在。
 
 身旁的一位宾客注意到了你渴望的眼神，漫不经心地随口一说，顿时勾起了你的好奇心。
 
@@ -24171,7 +24169,7 @@ Rouge”""",
 {color=yellow|— 这一天，必将永载我们辉煌帝国的史册！……}""",
 	EMP_CEREMONY_4 = """典礼冗长地进行着，不过是一场用奢华与宏大堆砌出来的标准庆典。最终，来自各个地区的达官显贵被陆续传唤前去进行私下觐见。令你意想不到的是，你竟然也在名单之中。
 
-当你再次穿过宫殿大门时，你捕捉到Rouge那充满掠夺性、妖娆挑逗的迷人微笑，正死死勾在你的身上。""",
+当你再次穿过宫殿大门时，你捕捉到露琪那充满掠夺性、妖娆挑逗的迷人微笑，正死死勾在你的身上。""",
 	EMP_CEREMONY_5_0 = """终于，一名守卫将你领进了皇帝的办公室。虽然毫无防备，但你意识到这是一个留下深刻印象的绝佳机会。皇帝用严厉的目光审视着你，但你仍能敏锐地察觉到他眼神深处藏着的一丝玩味。
 
 {color=yellow|— 让我看看……[name]，阿隆的镇长？不对……是艾利隆，对吧？那个可怜兮兮的鼻屎小国。我手下的一个心腹非要坚持让我见见你。说吧，你有什么值得浪费我时间的东西吗？}""",
@@ -24201,56 +24199,56 @@ Rouge”""",
 {color=yellow|— 哦？那看来我们算是一类人了。也许你并不像我最初想的那样可怜，甚至比这周围的那些胆小鬼还要大胆。可惜现在还不是揭晓答案的时候。这次觐见结束了，自己出去吧。}
 
 皇帝挥了挥手，你便被领了出去，接下来只能靠你自己了……""",
-	EMP_CEREMONY_7 = """当你走出大殿时，一个狐狸般妖娆的女人——也就是让你来到这里的罪魁祸首Rouge——突然迎面走来，让你有些猝不及防。
+	EMP_CEREMONY_7 = """当你走出大殿时，一个狐狸般妖娆的女人——也就是让你来到这里的罪魁祸首露琪——突然迎面走来，让你有些猝不及防。
 
 {color=yellow|— 啊呀，你脸上那是失望的神情吗，还是我眼花了？难道我们伟大的皇帝陛下还不够威严，无法满足你吗？要是放在过去，你表现得这么不长心，早就被拉去处决了。能活在这个时代可真是太美好了！}""",
 	EMP_CEREMONY_7_1 = """……不过我瞧见你带了些不太受欢迎的同伴呢。""",
 	EMP_CEREMONY_7_OPTION_1 = """我应该为这份邀请向你道谢""",
 	EMP_CEREMONY_7_OPTION_2 = """你总算现身了""",
-	EMP_FOXES_1 = """Zephyra从你身后走了出来，她意识到自己已经藏不住了。而Kuro则依旧保持着冷淡，尽管你能感觉到她其实浑身都紧绷了起来。
+	EMP_FOXES_1 = """泽菲拉从你身后走了出来，她意识到自己已经藏不住了。而珂洛则依旧保持着冷淡，尽管你能感觉到她其实浑身都紧绷了起来。
 
 {color=yellow|泽菲拉: — 嗨，姐姐……最近过得怎么样？}
 
 {color=yellow|珂洛: — ……}
 
 {color=yellow|泽菲拉: — 挺有趣的典礼，对吧？}""",
-	EMP_FOXES_2 = """尽管Zephyra试图缓和气氛，Rouge还是将目光死死锁在了Kuro身上。
+	EMP_FOXES_2 = """尽管泽菲拉试图缓和气氛，露琪还是将目光死死锁在了珂洛身上。
 
-{color=yellow|Rouge: — 既然你们两个都在这，那我有个绝妙的提议要送给你们。}
+{color=yellow|露琪: — 既然你们两个都在这，那我有个绝妙的提议要送给你们。}
 
 {color=yellow|珂洛: — 那我可真是迫不及待想听听了。}
 
-{color=yellow|Rouge: — 其实很简单。滚远点，离[name]远一点。你们知道我的手段，绝对不会想亲自领教一下的。}
+{color=yellow|露琪: — 其实很简单。滚远点，离[name]远一点。你们知道我的手段，绝对不会想亲自领教一下的。}
 
 {color=yellow|珂洛: — ……}
 
 这突如其来的敌意让你们之间陷入了一片令人不安的死寂。""",
 	EMP_FOXES_3 = """{color=yellow|泽菲拉: — 把[name]让给你？你要是觉得那种软弱的虚张声势就能让我乖乖退出，那你可真是疯了。}
 
-Rouge微微睁大了眼睛，显然对被一个她根本没当人看的家伙公然挑衅感到十分惊讶。
+露琪微微睁大了眼睛，显然对被一个她根本没当人看的家伙公然挑衅感到十分惊讶。
 
-Zephyra抓住机会，紧紧握住你的手，宣示着她的主权，也进一步激怒了Rouge。
+泽菲拉抓住机会，紧紧握住你的手，宣示着她的主权，也进一步激怒了露琪。
 
-{color=yellow|Rouge: — 这可能会成为你这辈子最让你后悔的一句话。}""",
-	EMP_FOXES_4 = """尽管Rouge的恼怒显而易见，但她依旧保持着优雅的从容，将注意力转向了Kuro。
+{color=yellow|露琪: — 这可能会成为你这辈子最让你后悔的一句话。}""",
+	EMP_FOXES_4 = """尽管露琪的恼怒显而易见，但她依旧保持着优雅的从容，将注意力转向了珂洛。
 
-{color=yellow|Rouge: — 你肯定一直被蒙在鼓里吧。}
+{color=yellow|露琪: — 你肯定一直被蒙在鼓里吧。}
 
 {color=yellow|珂洛: — 我想你可以把这称作一种讽刺。}
 
-{color=yellow|Rouge: — 一个毫无魅力的书呆子，加上一个干瘪的壁花小姐。在把你们俩彻底碾碎的时候，我大概还会施舍一点怜悯给你们呢。}
+{color=yellow|露琪: — 一个毫无魅力的书呆子，加上一个干瘪的壁花小姐。在把你们俩彻底碾碎的时候，我大概还会施舍一点怜悯给你们呢。}
 
-与Zephyra不同，Kuro保持着沉默，似乎正在全神戒备着随时可能袭来的攻击。万幸的是，Rouge的攻击性仅仅停留在口头上。""",
+与泽菲拉不同，珂洛保持着沉默，似乎正在全神戒备着随时可能袭来的攻击。万幸的是，露琪的攻击性仅仅停留在口头上。""",
 	EMP_CEREMONY_8_1 = """{color=yellow|— 不，是我该感谢你的大驾光临。在听说了你的那些光辉事迹后，我早晚都得亲自见见你的。}""",
 	EMP_CEREMONY_8_2 = """{color=yellow|— 呵呵，你就这么渴望见到我吗？抱歉哦，男人们可是得付出点汗水才能挣得这份特权的。}""",
 	EMP_CEREMONY_8 = """{color=yellow|— 不过今天漫长得很，你看起来也累了。不如我们去个更刺激的地方放松一下怎么样？}""",
 	EMP_CEREMONY_9 = """{color=yellow|— 我想带你领略一下我们这座雄伟的首都。去大竞技场找我吧——那可是个再好不过的去处了。好好陪我，把我伺候开心了，我就会告诉你一些关于你正在寻找的那个东西的线索。这交易听起来很公平吧？}
 
-Rouge的笑容几乎能让人感到一丝暖意，但还没等你看个真切，她就已经转过身款款离去。
+露琪的笑容几乎能让人感到一丝暖意，但还没等你看个真切，她就已经转过身款款离去。
 
 {color=yellow|— 明天，我会在我的包厢露台上等你。守卫会为你带路的。}""",
 	EMP_ARENA_1 = """你走近这座宏伟壮观的竞技场，这座高耸的建筑里举办着各种各样的血腥厮杀。在正门处，一名主管认出了你，并引导你向内走去。出乎意料的是，你并没有被带往主大厅，而是在迷宫般的储藏室中穿梭。""",
-	EMP_ARENA_2 = """你来到了一个较小的后场竞技区。守卫们带着不怀好意的冷笑，毫无解释地就把你推进了一个被铁栅栏死死围住的紧凑擂台里。你试图向他们质问，却只得到了他们正在奉Rouge大人的命令办事的答复。
+	EMP_ARENA_2 = """你来到了一个较小的后场竞技区。守卫们带着不怀好意的冷笑，毫无解释地就把你推进了一个被铁栅栏死死围住的紧凑擂台里。你试图向他们质问，却只得到了他们正在奉露琪大人的命令办事的答复。
 
 几十个观众正带着些许兴奋的目光注视着这里。在擂台的另一端，笼中的猛兽正躁动不安，你这才恍然大悟：他们是想让你在这里浴血奋战。""",
 	EMP_ARENA_3 = """在高高的包厢露台上，一位衣着华贵的年迈贵族正俯视着下方的竞技场。作为这里的合法主人，梅尔乔总理大臣今天似乎感到有些心神不宁。
@@ -24259,7 +24257,7 @@ Rouge的笑容几乎能让人感到一丝暖意，但还没等你看个真切，
 
 他的仆人手忙脚乱地翻找着文件，试图找出答案。
 
-{color=yellow|Servant: — 梅、梅尔乔大人，好像是Rouge小姐预订了那里……}""",
+{color=yellow|Servant: — 梅、梅尔乔大人，好像是露琪小姐预订了那里……}""",
 	EMP_ARENA_4 = """{color=yellow|Melchor: — 什么？！我明令禁止过把场地预订给陌生人和非贵族。那个女人是怎么做到的？}
 
 仆人继续手忙脚乱地翻找着文件。
@@ -24267,26 +24265,26 @@ Rouge的笑容几乎能让人感到一丝暖意，但还没等你看个真切，
 {color=yellow|Servant: — 场地是被二公爵的儿子预订的，但他把它转让给了她。}
 
 {color=yellow|Melchor: — 确保这种事绝不会再发生！那个贱女人迟早会给我们招来灭顶之灾。}""",
-	EMP_ARENA_5 = """Rouge出现在铁栅栏外，显然对你此刻的窘境感到兴奋不已。
+	EMP_ARENA_5 = """露琪出现在铁栅栏外，显然对你此刻的窘境感到兴奋不已。
 
 {color=yellow|— 原谅我的这点小把戏，但男人总得在战斗中证明自己的价值，不是吗？鉴于你过去的那些光辉事迹，这对你来说应该只是小菜一碟。}
-还没等你回应，牢笼便被打开，猛兽倾巢而出。在Rouge热切的注视下，你摆好架势准备迎战。""",
+还没等你回应，牢笼便被打开，猛兽倾巢而出。在露琪热切的注视下，你摆好架势准备迎战。""",
 	EMP_ARENA_6 = """{color=yellow|— 不愧是我看中的人。不过我们还没完呢。按照竞技场的传统，总得有一场盛大的压轴戏，我们为你准备了点特别的惊喜。}""",
 	EMP_ARENA_7 = """你认出了被扔进擂台的那个男人——格雷格，艾利隆内战的罪魁祸首。他看起来和你一样震惊。
 
 {color=yellow|Greg: — 你这狐狸精，这到底是什么意思？你向我保证过会得到皇帝的支持的！}
 
-{color=yellow|Rouge: — 你会得到的——前提是你能赢。总是躲在别人身后，从不亲自面对危险，这难道不是太不公平了吗？}
+{color=yellow|露琪: — 你会得到的——前提是你能赢。总是躲在别人身后，从不亲自面对危险，这难道不是太不公平了吗？}
 
 {color=yellow|Greg: — 你要逼我和[name]决斗？我们说好的可不是这样！}""",
-	EMP_ARENA_8 = """Rouge的脸色沉了下来，活像个被剥夺了乐趣的娇惯小孩。
+	EMP_ARENA_8 = """露琪的脸色沉了下来，活像个被剥夺了乐趣的娇惯小孩。
 
-{color=yellow|Rouge: — 别抱怨了。你到底是不是男人？男人就该为了女人的兴致而战。你夹着尾巴从艾利隆逃跑，现在你有机会通过一场决斗扭转乾坤了。自己都在谷底了，就别再好高骛远了。}
+{color=yellow|露琪: — 别抱怨了。你到底是不是男人？男人就该为了女人的兴致而战。你夹着尾巴从艾利隆逃跑，现在你有机会通过一场决斗扭转乾坤了。自己都在谷底了，就别再好高骛远了。}
 
-格雷格陷入了沉默，无言以对。他紧紧握住武器，眼神变得坚定。四周欢呼雀跃的人群，加上Rouge那嗜血的目光，都再清楚不过地表明——现在已经没有商量的余地了。""",
-	EMP_ARENA_9 = """你击倒了格雷格，尽管他上了年纪，却依然打得很凶猛。在人群的咆哮声中，Rouge满含笑意，显得十分满意。
+格雷格陷入了沉默，无言以对。他紧紧握住武器，眼神变得坚定。四周欢呼雀跃的人群，加上露琪那嗜血的目光，都再清楚不过地表明——现在已经没有商量的余地了。""",
+	EMP_ARENA_9 = """你击倒了格雷格，尽管他上了年纪，却依然打得很凶猛。在人群的咆哮声中，露琪满含笑意，显得十分满意。
 
-{color=yellow|Rouge: — 相当精彩的表演，[name]。现在我可以将你视作贵宾，好好地欢迎你一番了。}""",
+{color=yellow|露琪: — 相当精彩的表演，[name]。现在我可以将你视作贵宾，好好地欢迎你一番了。}""",
 	EMP_ARENA_9_OPTION_1 = """我必须感谢你，让我终于有机会能亲手宰了他""",
 	EMP_ARENA_9_OPTION_2 = """我不喜欢被人当枪使""",
 	EMP_ARENA_9_OPTION_3 = """是你逼我杀了他""",
@@ -24300,7 +24298,7 @@ Rouge的笑容几乎能让人感到一丝暖意，但还没等你看个真切，
 	EMP_ARENA_10_OPTION_3 = """实际上我需要在这里找到那件神器……""",
 	EMP_ARENA_11 = """{color=yellow|— 彼此彼此，但我现在还没有什么线索可以分享。不如我们来场比赛吧？谁先找到，谁就能统治整个帝国！哈，开个玩笑。我很期待你的下一场表演，[name]。}
 
-说罢，Rouge大步走出了竞技场，她那笨手笨脚的仆人紧跟在身后。""",
+说罢，露琪大步走出了竞技场，她那笨手笨脚的仆人紧跟在身后。""",
 	EMP_ERDYNA_INTRO = """""",
 	EMP_ERDYNA_INTRO_1 = """当你在首都那些见不得光的街区穿行时，你感觉到黑暗中有眼睛在盯着你。你按兵不动，但在经过下一个拐角后，一群面目狰狞的家伙挡住了你的去路。你回头瞥了一眼，发现更多的暴徒已经封死了你的退路。""",
 	EMP_ERDYNA_INTRO_2 = """一个女人从人群中走了出来，她长着蜥蜴般的尾巴，皮肤布满鳞片，头上长角，彰显着她作为头目的身份。她死死盯着你，嘴角挂着掠食者般的笑容。
@@ -24348,12 +24346,12 @@ Rouge的笑容几乎能让人感到一丝暖意，但还没等你看个真切，
 
 {color=yellow|Guard: — 妈的，这只杂种母狗又出来惹事了？我以为上次就已经结案了呢！}
 
-{color=yellow|Erdyna: — 毕竟不是每天都有看起来这么有钱的冤大头跑进贫民窟的嘛，你们懂的……}
+{color=yellow|艾迪娜: — 毕竟不是每天都有看起来这么有钱的冤大头跑进贫民窟的嘛，你们懂的……}
 
 {color=yellow|Guard: — 操你妈，赶紧给我滚。}""",
 	EMP_ERDYNA_INTRO_9_1 = """你厉声质问他们为什么不逮捕她，但守卫们就像打发讨钱的乞丐一样冲你摆了摆手，他们转过身，军靴在鹅卵石路面上踩出清脆的回响。艾迪娜转头看向你，黄色的眼眸里闪烁着心照不宣的坏笑。
 
-{color=yellow|Erdyna: — 你还真是个彻头彻尾的外乡人，对大帝国一无所知。他们才不会为了这点鸡毛蒜皮的小事冒着得罪我的风险强出头呢。在这底下，唯一的生存法则就是保护好你自己的后背。把这话牢牢记在心里吧。}""",
+{color=yellow|艾迪娜: — 你还真是个彻头彻尾的外乡人，对大帝国一无所知。他们才不会为了这点鸡毛蒜皮的小事冒着得罪我的风险强出头呢。在这底下，唯一的生存法则就是保护好你自己的后背。把这话牢牢记在心里吧。}""",
 	EMP_ERDYNA_INTRO_9_2 = """首都远处的喧嚣被小巷的高墙阻隔，变得沉闷而模糊。艾迪娜倚靠在一个木条箱上，对刚才的冲突毫不在意。
 
 {color=yellow|— 要是没点精明的手腕，你可没法在这些街道上活下来。别把我当成那种不入流的小混混。}""",
@@ -24396,12 +24394,12 @@ Rouge的笑容几乎能让人感到一丝暖意，但还没等你看个真切，
 	KURO3_DIALOGUE_2_OPTION_1 = """那这跟收集神器这档子破事有什么关系？""",
 	KURO3_DIALOGUE_2_OPTION_2 = """我对这些文绉绉的狗屁神学没什么兴趣。""",
 	KURO3_DIALOGUE_3_1 = """{color=yellow|——因果律决定了万物皆有其始。虽然有些神明是骑在上一代神性实体的头上篡位的，有些是凡人脱胎换骨飞升的，但这世界本身总得有个源头。那个邪教，包括你，正饥渴难耐地追寻的那些神器，似乎都和这世上的“第一位神明”紧紧纠缠在一起，而在我们这个不断沉沦的世界里，那位神的名字甚至早就被遗忘了。}""",
-	KURO3_DIALOGUE_3_2 = """{color=yellow|——祂曾有过许多名字，但这现在已经不重要了。无论如何，你眼下真正的麻烦是那个邪教——更要命的，是那个大姐头，Rouge。}""",
+	KURO3_DIALOGUE_3_2 = """{color=yellow|——祂曾有过许多名字，但这现在已经不重要了。无论如何，你眼下真正的麻烦是那个邪教——更要命的，是那个大姐头，露琪。}""",
 	KURO3_DIALOGUE_3_3 = """{color=yellow|——没什么好说的；她就跟她看上去一样。一个只崇尚暴力的母暴君，有时候甚至跟一只发情的野兽没两样。她那原始的肉体力量是无与伦比的。就算把我分出五六个分身来，也很难在她面前硬撑下去，所以如果可以的话，最好别去招惹她。}""",
 	KURO3_DIALOGUE_3_4 = """{color=yellow|——很明显，她和我都是站在你这边的，但既然她是个只靠本能行事的笨女人……我虽然很讨厌，但她犯起蠢来的本事简直不可理喻。不，我这样说可能不太准确。关键是，绝对不能轻视她的本能，况且她这人其实挺“好用”的。}""",
 	KURO3_DIALOGUE_3_OPTION_1 = """所以，你知道那个神叫什么名字？""",
 	KURO3_DIALOGUE_3_OPTION_2 = """能跟我说说陆琪的事吗？""",
-	KURO3_DIALOGUE_3_OPTION_3 = """那Zephyra呢？""",
+	KURO3_DIALOGUE_3_OPTION_3 = """那泽菲拉呢？""",
 	KURO3_DIALOGUE_3_OPTION_4 = """你们三个到底跟我有什么深层关系""",
 	KURO3_DIALOGUE_3_OPTION_5 = """谢了，这情报很有用。""",
 	KURO3_DIALOGUE_4_1 = """珂洛在回答前，嘴角勾起一抹玩味的媚笑。
@@ -24429,7 +24427,7 @@ Rouge的笑容几乎能让人感到一丝暖意，但还没等你看个真切，
 	KURO3_INIT_1_2 = """{color=yellow|——是的。我刚才不是说过了吗？我们现在可没多少选择。跟我不同，她可不会背叛邪教联盟倒戈向你。我当初加入她的时候就看得很清楚了。即使上次把她耍了一通，任由她放任自流也实在太危险了。再说了，我还打算把她的力量榨干，拿来给我们自己用呢。}""",
 	KURO3_INIT_1_3 = """黑故意夸张地叹了口气，微微翻了个白眼。
 
-{color=yellow|——好吧，听着。打从骨子里，我就不可能背叛你，Zephyra也一样。你是时候接受这个事实，赶紧把心思放在这任务上了。}""",
+{color=yellow|——好吧，听着。打从骨子里，我就不可能背叛你，泽菲拉也一样。你是时候接受这个事实，赶紧把心思放在这任务上了。}""",
 	KURO3_INIT_1_OPTION_1 = """你打算背叛她吗？""",
 	KURO3_INIT_1_OPTION_2 = """我真的能相信你吗？""",
 	KURO3_INIT_1_OPTION_3 = """就算你成功说服我了。那我们要做什么？""",
@@ -24496,7 +24494,7 @@ Cerab死死地别过头去，用动作表明他拒不开口。黑不爽地瞪着
 	KURO3_DEPTHS_10_1 = """{color=yellow|黑：——看来在经历过上一次之后，她已经起了疑心。那片遗迹可没那么容易探索。}""",
 	KURO3_DEPTHS_10_2 = """{color=yellow|黑：——他对我们已经没有威胁了。一旦我们把Nixx办了，其他的信徒就会把背叛的罪名扣 affection 在他头上，到那时候，他只会受尽更惨无人道的折磨。}""",
 	KURO3_DEPTHS_10_3 = """{color=yellow|黑：——也许吧。但必须得这么做。任由Nixx当邪教的盟友实在太危险了。更何况，你早就知道如果我能把她的力量纳为己用，我们能干出什么美妙的大事了，不是吗？}""",
-	KURO3_DEPTHS_10_4 = """{color=yellow|黑：——Nixx曾是执掌永夜的神明——直到所有的光明彻底熄灭，她才堕落成了如今这副模样。黑暗中隐藏着太多让人欲罢不能的秘密，这也是我当初选择加入她的部分原因，当然，她那强大的力量也确实让人着迷。凡事皆有代价，像Zephyra那种纯洁的家伙，是绝对没资格成为她的神选冠军的。}""",
+	KURO3_DEPTHS_10_4 = """{color=yellow|黑：——Nixx曾是执掌永夜的神明——直到所有的光明彻底熄灭，她才堕落成了如今这副模样。黑暗中隐藏着太多让人欲罢不能的秘密，这也是我当初选择加入她的部分原因，当然，她那强大的力量也确实让人着迷。凡事皆有代价，像泽菲拉那种纯洁的家伙，是绝对没资格成为她的神选冠军的。}""",
 	KURO3_DEPTHS_10_OPTION_1 = """我们不顺手把那个男人解决掉吗？""",
 	KURO3_DEPTHS_10_OPTION_2 = """你刚才的做法实在是有些太过火了。""",
 	KURO3_DEPTHS_10_OPTION_3 = """能跟我多说说关于她的事吗？""",
@@ -24540,7 +24538,7 @@ Cerab死死地别过头去，用动作表明他拒不开口。黑不爽地瞪着
 	KURO3_DUNGEON_7 = """黑对你的话几乎没有什么反应。她似乎对这里的能量吸取更为敏感，表现得就像酩酊大醉一般——她吐字含糊不清，娇软的声线在黑暗的压制下显得有些迷离无力。
 
 {color=yellow|黑：——对不起，[name]。我本该做得更好的……真的很难……集中精神……}""",
-	KURO3_DUNGEON_8 = """{color=yellow|黑：——真的……一直以来，我一个人真的好寂寞……这么长的时间……Zephyra和Rouge……她们两个到头来竟然什么都不记得……}
+	KURO3_DUNGEON_8 = """{color=yellow|黑：——真的……一直以来，我一个人真的好寂寞……这么长的时间……泽菲拉和露琪……她们两个到头来竟然什么都不记得……}
 
 在没有任何参照物的无尽虚无中，时间不知不觉地流逝，而你自己也开始感到一阵强烈的眩晕与瘫软。""",
 	KURO3_DUNGEON_9_1 = """你感受到了一股熟悉的存在，它超凡脱俗，却又仿佛与这片领域有着千丝万缕的联系。一个轻柔的声音在你耳畔响起。
@@ -24700,17 +24698,17 @@ Cerab死死地别过头去，用动作表明他拒不开口。黑不爽地瞪着
 你颇觉有趣地打量着赫列维尔在这种场合下的表现。虽然她算不上有多热情，但很明显，她已经卸下了不少防备。""",
 	HELEVIEL_QUEST_12_OPTION_1 = """*把手放在她的大腿上*""",
 	HELEVIEL_QUEST_12_OPTION_2 = """*什么也不做*""",
-	HELEVIEL_QUEST_13 = """在酒客们的陪伴下，这个夜晚平静地继续着，直到夜深人静，所有人都散去。当周围再无他人时，带着几分醉意的Heleviel在下班前向你嘟囔了一句。
+	HELEVIEL_QUEST_13 = """在酒客们的陪伴下，这个夜晚平静地继续着，直到夜深人静，所有人都散去。当周围再无他人时，带着几分醉意的赫莉薇儿在下班前向你嘟囔了一句。
 
-{color=yellow|Heleviel: — 我想这感觉……倒也还不算太糟。不过，你那群朋友对精灵族女人发情的痴汉嘴脸真是恶心透了。}""",
-	HELEVIEL_SLAVE_CHURCH_INIT = """随着时间的推移，Heleviel已经越来越习惯在你手下做奴隶的生活了。她的顶嘴与反抗已基本消失。昨天你收到了艾利隆教会的求助，这似乎是安排Heleviel进行下一步工作的绝佳去处，正好能进一步调教并改善她对当地文化的适应性。""",
-	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """你带着Heleviel来到教会，发现Ginny正在她平时工作的地方。
+{color=yellow|赫莉薇儿: — 我想这感觉……倒也还不算太糟。不过，你那群朋友对精灵族女人发情的痴汉嘴脸真是恶心透了。}""",
+	HELEVIEL_SLAVE_CHURCH_INIT = """随着时间的推移，赫莉薇儿已经越来越习惯在你手下做奴隶的生活了。她的顶嘴与反抗已基本消失。昨天你收到了艾利隆教会的求助，这似乎是安排赫莉薇儿进行下一步工作的绝佳去处，正好能进一步调教并改善她对当地文化的适应性。""",
+	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """你带着赫莉薇儿来到教会，发现Ginny正在她平时工作的地方。
 
-{color=yellow|Heleviel: — 哼，这就是Celena的神殿啊，那你一定就是她在这里的祭司了。真是寒酸的装饰。怪不得跟Freya大人比起来，Celena只是个信徒寥寥无几的卑微从神。}
+{color=yellow|赫莉薇儿: — 哼，这就是Celena的神殿啊，那你一定就是她在这里的祭司了。真是寒酸的装饰。怪不得跟Freya大人比起来，Celena只是个信徒寥寥无几的卑微从神。}
 
 {color=aqua|Ginny: — Freya确实比Celena更受人尊崇，这不假，但我是这座镇上她最虔诚的信徒。Celena是一位仁慈的女神，她想要帮助那些有需要的人。}
 
-{color=yellow|Heleviel: — 她的教会都这般微不足道了，帮不帮又有什么区别呢？我敢发誓，Freya的信徒绝对不会堕落到这种地步。}
+{color=yellow|赫莉薇儿: — 她的教会都这般微不足道了，帮不帮又有什么区别呢？我敢发誓，Freya的信徒绝对不会堕落到这种地步。}
 
 {color=aqua|Ginny: — 也许吧，但我的目标就是援助他人，哪怕是异教徒也一样。}
 
@@ -24719,55 +24717,55 @@ Cerab死死地别过头去，用动作表明他拒不开口。黑不爽地瞪着
 	HELEVIEL_SLAVE_CHURCH_OPTION_2 = """更强大的信众势力确实更能赢得他人的敬畏""",
 	HELEVIEL_SLAVE_CHURCH_OPTION_3 = """信仰神明早已是过去的老黄历了""",
 	HELEVIEL_SLAVE_CHURCH_REPLY_1 = """{color=aqua|Ginny: — 我真的很高兴我们的镇长也能有同样的想法。}
-	Heleviel什么也没说。她只是撅起嘴巴，决定不再继续争辩。""",
-	HELEVIEL_SLAVE_CHURCH_REPLY_2 = """{color=yellow|Heleviel: — 哼，这倒是实话。也许你该考虑在这里给Freya建个神龛。当然了，她本身肯定看不上这种破地方，但这可以作为第一步……}
+	赫莉薇儿什么也没说。她只是撅起嘴巴，决定不再继续争辩。""",
+	HELEVIEL_SLAVE_CHURCH_REPLY_2 = """{color=yellow|赫莉薇儿: — 哼，这倒是实话。也许你该考虑在这里给Freya建个神龛。当然了，她本身肯定看不上这种破地方，但这可以作为第一步……}
 	
-	Ginny强颜欢笑着，耐着性子等Heleviel把话说完。""",
-	HELEVIEL_SLAVE_CHURCH_REPLY_3 = """由于Heleviel和Ginny都没能从你这里得到偏袒，听到你的话后，她们俩都陷入了沉默。""",
+	Ginny强颜欢笑着，耐着性子等赫莉薇儿把话说完。""",
+	HELEVIEL_SLAVE_CHURCH_REPLY_3 = """由于赫莉薇儿和Ginny都没能从你这里得到偏袒，听到你的话后，她们俩都陷入了沉默。""",
 	HELEVIEL_SLAVE_CHURCH_ASSIGN_TEXT = """{color=aqua|Ginny: — 总、总而言之，我想你们是来帮忙的吧？最近战士公会送来的伤员增加了不少，我们实在缺乏必要的治疗师。}
 
-{color=yellow|Heleviel: — 哈？你居然指望我动用我——还有Freya大人的——力量，去干这种下贱的护士活儿？简直荒谬。}
+{color=yellow|赫莉薇儿: — 哈？你居然指望我动用我——还有Freya大人的——力量，去干这种下贱的护士活儿？简直荒谬。}
 
-在转头看了你一眼后，Heleviel意识到自己无论如何也逃不掉，只能小声认栽，挫败地垂下了肩膀。
+在转头看了你一眼后，赫莉薇儿意识到自己无论如何也逃不掉，只能小声认栽，挫败地垂下了肩膀。
 
-{color=yellow|Heleviel: — *叹气* 我现在到底还得堕落到什么地步啊……}""",
+{color=yellow|赫莉薇儿: — *叹气* 我现在到底还得堕落到什么地步啊……}""",
 	HELEVIEL_SLAVE_CHURCH_HEALING_TEXT = """转移到医务室后，这位前任女祭司被安排去治疗伤员。当她不得不去照顾男性战士时，脸上的鄙夷之色尤为明显。然而她的精神似乎并未被彻底击垮；多年严苛教规所锻造出的坚定意志依然存在。""",
 	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT = """下一位病人是一个受了重伤的男性精灵士兵。
 
 {color=aqua|Elf: — 哎、哎哟，你就不能轻点吗。}
 
-{color=yellow|Heleviel: — 受点小伤就别在那哭爹喊娘的。沦落到要伺候你们这种臭男人就已经够让我作呕的了。我可没闲工夫听你在这无病呻吟。}
+{color=yellow|赫莉薇儿: — 受点小伤就别在那哭爹喊娘的。沦落到要伺候你们这种臭男人就已经够让我作呕的了。我可没闲工夫听你在这无病呻吟。}
 
 {color=aqua|Elf: — 等等，你看起来很眼熟。我敢发誓你长得就像Freya大人的最高女祭司。怎么可能是那种高高在上的大人物在这儿给伤兵治病。}
 
-被认出来后，Heleviel显得有些局促不安，但她依然没有表现出任何想要在这场对话中屈尊降贵的姿态。""",
-	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT2 = """{color=yellow|Heleviel: — 哼，Freya大人的指引有时会让我们身处最艰险的困境。}
+被认出来后，赫莉薇儿显得有些局促不安，但她依然没有表现出任何想要在这场对话中屈尊降贵的姿态。""",
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT2 = """{color=yellow|赫莉薇儿: — 哼，Freya大人的指引有时会让我们身处最艰险的困境。}
 
 {color=aqua|Elf: — 哈，你现在不过就是个被迫伺候人类的奴隶母狗罢了。}
 
-{color=yellow|Heleviel: — 这、这只是Freya大人引导我重返更高阶位之前的一场短暂苦修！但像你这种未开化的蠢货肯定是没法理解的。}
+{color=yellow|赫莉薇儿: — 这、这只是Freya大人引导我重返更高阶位之前的一场短暂苦修！但像你这种未开化的蠢货肯定是没法理解的。}
 
 {color=aqua|Elf: — 给我闭嘴。要不是因为你，我才不会离开森林，被迫沦落到去给人类卖命。正是你对男性的仇视和你们定的那些破规矩，逼得我们变成了毫无权利的下等人。}""",
-	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT3 = """{color=yellow|Heleviel: — 你好大的胆子！我只是追随Freya大人的宏图并服从她的命令！就算我们的规矩再严苛，那也绝对是合情合理的。}
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT3 = """{color=yellow|赫莉薇儿: — 你好大的胆子！我只是追随Freya大人的宏图并服从她的命令！就算我们的规矩再严苛，那也绝对是合情合理的。}
 
 {color=aqua|Elf: — 合情合理，你说是吧？我喜欢这个词。那你沦为奴隶也是合情合理的报应。现在你不光要伺候你的主子，还得伺候你的同族——一个你过去向来瞧不起的贱民。}
 
-Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
+赫莉薇儿没有作声；然而，她脸上的怒火却在不断积聚。""",
 	HELEVIEL_SLAVE_CHURCH_FOOT_TEXT = """{color=aqua|Elf: — 我的伤感觉好多了，但仔细想想，你干嘛不顺便帮我洗洗脚呢？走了那么多路，我的脚可是酸痛得很呢。}
 
-{color=yellow|Heleviel: — 你、你这下贱的家伙竟敢！！}
+{color=yellow|赫莉薇儿: — 你、你这下贱的家伙竟敢！！}
 
 这位前任最高女祭司气得浑身发抖，但她心里很清楚，在这种境地下她什么反抗也做不了。""",
 	HELEVIEL_SLAVE_CHURCH_FOOT_OPTION_1 = """这主意不错，毕竟她得学会认清并接受自己的新身份""",
 	HELEVIEL_SLAVE_CHURCH_FOOT_OPTION_2 = """她不会这么做的，还有其他病人需要照顾""",
-	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_1 = """Heleviel的耳朵因羞愤而变得通红，但深知自己无路可退，她只好强忍着屈辱去完成这项任务，在男性精灵那残忍的狞笑声中，感受着自己仅存的尊严一丝丝地剥落。""",
-	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_2 = """听到你的话，Heleviel如释重负地松垮下肩膀，终于免遭了这项充满屈辱的差事。精灵士兵不爽地啧了一声，但没有抗议。在刻意向你——而不是Heleviel——道谢后，他离开了，给下一位病人腾出了位置。""",
-	HELEVIEL_SLAVE_CHURCH_AFTER_FOOT = """在让这位曾经高高在上的祭司受尽屈辱之后，精灵士兵发出一声轻笑转身离去。在迎接下一位病人之前，你给了Heleviel一点休息喘息的时间。""",
-	HELEVIEL_SLAVE_CHURCH_POISON_TEXT = """过了一会儿，Heleviel走出医务室来到你身边。
+	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_1 = """赫莉薇儿的耳朵因羞愤而变得通红，但深知自己无路可退，她只好强忍着屈辱去完成这项任务，在男性精灵那残忍的狞笑声中，感受着自己仅存的尊严一丝丝地剥落。""",
+	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_2 = """听到你的话，赫莉薇儿如释重负地松垮下肩膀，终于免遭了这项充满屈辱的差事。精灵士兵不爽地啧了一声，但没有抗议。在刻意向你——而不是赫莉薇儿——道谢后，他离开了，给下一位病人腾出了位置。""",
+	HELEVIEL_SLAVE_CHURCH_AFTER_FOOT = """在让这位曾经高高在上的祭司受尽屈辱之后，精灵士兵发出一声轻笑转身离去。在迎接下一位病人之前，你给了赫莉薇儿一点休息喘息的时间。""",
+	HELEVIEL_SLAVE_CHURCH_POISON_TEXT = """过了一会儿，赫莉薇儿走出医务室来到你身边。
 
-{color=yellow|Heleviel: — 最后那位病人中了银叶草的毒。恐怕我的魔法对此无能为力，但是……我相信森林里或许能找到解救的法子。}
+{color=yellow|赫莉薇儿: — 最后那位病人中了银叶草的毒。恐怕我的魔法对此无能为力，但是……我相信森林里或许能找到解救的法子。}
 
-你感觉到Heleviel在谈论这个问题时有些闪烁其词，但你还是示意她继续说下去。""",
+你感觉到赫莉薇儿在谈论这个问题时有些闪烁其词，但你还是示意她继续说下去。""",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_1 = """是有什么事在困扰你吗？""",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_2 = """看起来你对去那里并没有什么兴致""",
 	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_1 = """{color=yellow|海勒维尔：—— 精灵从没和他们处得来。他们不信奉芙蕾雅，不过是一群只知道像野兽一样交配的野蛮生物罢了。}""",
@@ -25023,26 +25021,26 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 {color=yellow|梅：— 嘿……你好，你今天过得怎么样？}""",
 	MAE_QUEST_INITIATE_OPTION_1 = """挺好的""",
 	MAE_QUEST_INITIATE_OPTION_2 = """有什么事想问我吗？""",
-	MAE_QUEST_INITIATE_REPLY_1 = """{color=yellow|Mae: — 真……真的吗？那太好了。}
+	MAE_QUEST_INITIATE_REPLY_1 = """{color=yellow|梅: — 真……真的吗？那太好了。}
 
 听梅的语气，经历过那些事后，她依然不太习惯这城市豪宅里的奢侈生活。""",
-	MAE_QUEST_INITIATE_REPLY_2 = """{color=yellow|Mae: — 是……是的，抱歉，我不知道该怎么开口……}""",
-	MAE_QUEST_INITIATE_FAVOR = """{color=yellow|Mae: — 总之，我有件事想请你帮忙。嗯，你看，我……在森林里住久了，有点吃不惯这儿的食物……总觉得……味道不太对劲。}""",
+	MAE_QUEST_INITIATE_REPLY_2 = """{color=yellow|梅: — 是……是的，抱歉，我不知道该怎么开口……}""",
+	MAE_QUEST_INITIATE_FAVOR = """{color=yellow|梅: — 总之，我有件事想请你帮忙。嗯，你看，我……在森林里住久了，有点吃不惯这儿的食物……总觉得……味道不太对劲。}""",
 	MAE_QUEST_INITIATE_FAVOR_OPTION_1 = """我记得你跟大家一起吃得挺开心的""",
 	MAE_QUEST_INITIATE_FAVOR_OPTION_2 = """所以你想要我做什么？""",
 	MAE_QUEST_INITIATE_FAVOR_RETURN = """梅的脸微微泛红，开始结结巴巴地加快语速。
 
-{color=yellow|Mae: — 是……是的，我是吃了，但我总不能表现出嫌弃吧？}""",
-	MAE_QUEST_INITIATE_REQUEST = """{color=yellow|Mae: — 我想去趟本地的市场，只是……我不太习惯在这儿买东西。哦，如果顺便的话，我还能去买点做仪式用的稀有草药。}""",
+{color=yellow|梅: — 是……是的，我是吃了，但我总不能表现出嫌弃吧？}""",
+	MAE_QUEST_INITIATE_REQUEST = """{color=yellow|梅: — 我想去趟本地的市场，只是……我不太习惯在这儿买东西。哦，如果顺便的话，我还能去买点做仪式用的稀有草药。}""",
 	MAE_QUEST_INITIATE_REQUEST_OPTION_1 = """好吧，我可以带你逛逛""",
 	MAE_QUEST_INITIATE_REQUEST_OPTION_2 = """等我有空再说吧""",
-	MAE_QUEST_INITIATE_CLOSE = """{color=yellow|Mae: — 谢谢你，希望不会占用你太长时间……}""",
+	MAE_QUEST_INITIATE_CLOSE = """{color=yellow|梅: — 谢谢你，希望不会占用你太长时间……}""",
 	MAE_MARKET_START = """你领着梅来到市场，缓缓引导她穿过各个摊位，她瞪大眼睛打量着四周。
 
-{color=yellow|Mae: — 哇，我上次来这儿才过了几年，没想到变化这么大……}""",
+{color=yellow|梅: — 哇，我上次来这儿才过了几年，没想到变化这么大……}""",
 	MAE_MARKET_FRUIT_INTRO = """你领着梅穿梭在摊位间，一抹鲜亮的颜色抓住了她的眼球。她猛地停下脚步，耳朵竖了起来。
 
-{color=yellow|Mae: — 噢……那个果子……}
+{color=yellow|梅: — 噢……那个果子……}
 
 天鹅绒布上堆着一堆色泽光亮、琥珀色外皮的果子，每一颗都浑圆饱满，还带着刚采摘般淡淡的温热。
 
@@ -25050,7 +25048,7 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 
 梅看了一眼标价，立刻缩回了手。
 
-{color=yellow|Mae: — 这……这也太贵了。在林子里我们只是……偶尔才能捡到像这样的。}
+{color=yellow|梅: — 这……这也太贵了。在林子里我们只是……偶尔才能捡到像这样的。}
 
 她盯着看了好一会儿，咽了咽口水，然后带着犹豫而羞涩的微笑看向你。""",
 	MAE_MARKET_FRUIT_OPTION_BUY = """*买给她*（250金币）""",
@@ -25064,28 +25062,28 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	MAE_MARKET_FRUIT_STEAL = """你观察着摊贩的姿态、人群的流动，以及摊位边缘如何形成了一个视觉盲区。摊贩转过身去，正和另一位顾客争论称重和计量的问题。
 
 但你的手已经伸向了绒布和果子之间。动作一气呵成，你顺手将一颗太阳李滑进了袖袋里。""",
-	MAE_MARKET_FRUIT_AFTER = """{color=yellow|Mae: — 真……真的吗？给我的吗？……谢谢你……}
+	MAE_MARKET_FRUIT_AFTER = """{color=yellow|梅: — 真……真的吗？给我的吗？……谢谢你……}
 
 她小心翼翼地咬了一口。双眼蓦地睁大，尾巴不由自主地轻摇了一下。
 
 自从来到城里后，这是她第一次露出真正放松的神情。""",
 	MAE_MARKET_FRUIT_MOVE_ON = """梅被自己留恋的目光吓了一跳，随后强行点头致意。
 
-{color=yellow|Mae: — 是……是的……你说得对。我刚才有些出神了。}
+{color=yellow|梅: — 是……是的……你说得对。我刚才有些出神了。}
 
 她最后看了一眼，便匆忙跟上你的脚步，仿佛怕自己会改变主意。""",
 	MAE_MARKET_SHELIA_INTRO = """你们在市场上穿行时，一对兽人突然走上前来。其中那名女性兽人仔细打量了梅一番，神情惊讶。
 
 {color=aqua|陌生兽人：— 哦，梅，是你吗？}
 
-{color=yellow|Mae: — 嗨……谢莉亚，好久不见。}
+{color=yellow|梅: — 嗨……谢莉亚，好久不见。}
 
 {color=aqua|谢莉亚：— 这身打扮，看来你真的去森林里生活了？}
 
-{color=yellow|Mae: — 嗯，说来话长……}""",
+{color=yellow|梅: — 嗯，说来话长……}""",
 	MAE_MARKET_SHELIA_TALK = """{color=aqua|谢莉亚：— 不会吧，你现在是部落萨满了？而且还住在镇长家里。你是他亲密的伴侣吗？哈哈。}
 
-{color=yellow|Mae: — 不……不是那样的……}""",
+{color=yellow|梅: — 不……不是那样的……}""",
 	MAE_MARKET_SHELIA_REL_OPTION_1 = """我们的关系纯属工作关系""",
 	MAE_MARKET_SHELIA_REL_OPTION_2 = """你说的倒也没错……""",
 	MAE_MARKET_SHELIA_REQUEST = """{color=aqua|谢莉亚：— 好吧，我懂了，一个拥有遥远森林知识的人确实很有价值……}
@@ -25146,21 +25144,21 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 她的身体明显在颤抖，看起来因为压制那与之抗争的实体而精疲力竭。""",
 	MAE_SEARCH_COMPLETE_OPTION_1 = """它到底做了什么？""",
 	MAE_SEARCH_COMPLETE_OPTION_2 = """我该怎么帮你？""",
-	MAE_SEARCH_COMPLETE_VOICE_1 = """{color=yellow|Mae: — 它……它控制不了我，但是……它想要这么做……}
+	MAE_SEARCH_COMPLETE_VOICE_1 = """{color=yellow|梅: — 它……它控制不了我，但是……它想要这么做……}
 
 {color=aqua|Voice: — 如果你没来找我，你这肮脏的兽人！我现在就要把你脑子里那些困扰你的龌龊秘密全抖落出来。}
 
-{color=yellow|Mae: — 不……求你……别听它胡说！}""",
+{color=yellow|梅: — 不……求你……别听它胡说！}""",
 	MAE_SEARCH_COMPLETE_VOICE_2 = """{color=aqua|Voice: — 你这可怜又无用的存在，只配遭受这种痛苦，没钱、没家，真是可悲！}
 
 梅闭上眼睛，用爪子羞愧地捂住脸，因为你是在场唯一目睹她受辱的人。
 
-{color=yellow|Mae: — 这……这些又不是我能决定的！}
+{color=yellow|梅: — 这……这些又不是我能决定的！}
 
 {color=aqua|Voice: — 而且还很胖！看看你有多肥！这正是你试图掩盖的，你吃得太多了！哪怕仅仅是改变饮食习惯又能改变什么呢！}""",
 	MAE_SEARCH_COMPLETE_VOICE_3 = """在当前局势和你的审视下，梅的声音终于变得更加烦躁，她的身体紧绷起来。
 
-{color=yellow|Mae: — 够了……闭嘴！这都是谎言，你只是个寄生虫，靠……折磨我为食……}
+{color=yellow|梅: — 够了……闭嘴！这都是谎言，你只是个寄生虫，靠……折磨我为食……}
 
 灵体完全无视了她的哀求。它似乎纯粹出于本能行动，除了用嘲讽贬低梅之外，没有任何知觉。
 
@@ -25174,7 +25172,7 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	MAE_SEARCH_COMPLETE_STAND = """你让梅喘了口气，直到她能自己站起来。你带着她回到豪宅，她一言不发，但你能明显感觉到她渴望忘记所发生的一切。""",
 	MAE_SEARCH_COMPLETE_HOME = """回到家后，梅终于平静下来，她双手紧握，缓缓开口。
 
-{color=yellow|Mae: — 啊，这都是因为我……仪式前我忘了拉上窗帘，所以它才会逃出来……真的很抱歉……}""",
+{color=yellow|梅: — 啊，这都是因为我……仪式前我忘了拉上窗帘，所以它才会逃出来……真的很抱歉……}""",
 	MAE_SEARCH_COMPLETE_HOME_OPTION_1 = """没关系，你平安无事就好""",
 	MAE_SEARCH_COMPLETE_HOME_OPTION_2 = """没事的，毕竟这是你第一次""",
 	MAE_SEARCH_COMPLETE_HOME_OPTION_3 = """你犯的错确实让我浪费了不少时间""",
@@ -25215,15 +25213,15 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	MATERIALSPIRIT_POTIONDESCRIPT = """一种能让梅更好地与灵体沟通的特殊药剂。""",
 	MAE_DRUID_EVENT_START = """午后，梅找到了你，看起来对某件事很兴奋。
 
-{color=yellow|Mae: — 嘿，[name]……我在翻看你的书库时，发现了一张便条，上面写着你认识一位来自精灵森林的德鲁伊。我在想……你能带我去见他吗？}""",
+{color=yellow|梅: — 嘿，[name]……我在翻看你的书库时，发现了一张便条，上面写着你认识一位来自精灵森林的德鲁伊。我在想……你能带我去见他吗？}""",
 	MAE_DRUID_EVENT_OPTION_1 = """你为什么想去那儿？""",
 	MAE_DRUID_EVENT_OPTION_2 = """怎么突然对这个感兴趣了？""",
-	MAE_DRUID_EVENT_FOLLOWUP = """{color=yellow|Mae: — 我从萨夫拉那儿听说过德鲁伊。他们也与自然有着联系，但他们会去学习和钻研自然，而不是仅仅单纯地去感知它。我在想我能不能从他们那儿学到点什么。}""",
+	MAE_DRUID_EVENT_FOLLOWUP = """{color=yellow|梅: — 我从萨夫拉那儿听说过德鲁伊。他们也与自然有着联系，但他们会去学习和钻研自然，而不是仅仅单纯地去感知它。我在想我能不能从他们那儿学到点什么。}""",
 	MAE_DRUID_EVENT_FOLLOWUP_OPTION_1 = """我会看看能做些什么。""",
 	MAE_DRUID_EVENT_FOLLOWUP_OPTION_2 = """好吧……如果我有时间的话。""",
 	MAE_DRUID_LORIEN_INTRO = """你带着梅去找洛里恩，他在观测台谨慎地接待了你们。当你介绍梅时，她恭敬地鞠了一躬。
 
-{color=yellow|Mae: — 您好，洛里恩先生……我知道这很不合礼数，但我真心想学习更多关于你们研究自然和魔法的方式。}""",
+{color=yellow|梅: — 您好，洛里恩先生……我知道这很不合礼数，但我真心想学习更多关于你们研究自然和魔法的方式。}""",
 	MAE_DRUID_LORIEN_TIME = """过了一段时间，梅与洛里恩相处融洽，分享着对自然研究的热情。
 
 {color=aqua|Lorien: — 我必须承认，你有足够的亲和力来获得成为德鲁伊的殊荣……}""",
@@ -25243,14 +25241,14 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_HIGH = """好吧，我付（2000金币）""",
 	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_LOW = """好吧，我付（500金币）""",
 	MAE_DRUID_LORIEN_OFFER_OPTION_THINK = """我会考虑一下。""",
-	MAE_DRUID_LORIEN_INVESTMENT = """{color=yellow|Mae: — 我……我明白……但是……我可能再也不会有这样的机会了。我发誓，之后你想让我做什么都行。}""",
+	MAE_DRUID_LORIEN_INVESTMENT = """{color=yellow|梅: — 我……我明白……但是……我可能再也不会有这样的机会了。我发誓，之后你想让我做什么都行。}""",
 	MAE_DRUID_LORIEN_PAID = """梅的脸庞亮了起来，不停地向你道谢。你暂时把她留在了洛里恩那里。""",
 	MAE_DRUID_LORIEN_REINITIATE = """你再次见到了洛里恩。他的提议依然有效。""",
 	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_HIGH_SHORT = """好吧，我付（2000金币）""",
 	MAE_DRUID_LORIEN_OFFER_OPTION_PAY_LOW_SHORT = """好吧，我付（500金币）""",
 	MAE_DRUID_RETURN = """几天后，梅终于完成了训练回到了豪宅。她看起来真的很高兴再次见到你。
 
-{color=yellow|Mae: — [name]！真的太感谢你了。我学到了好多新东西……}""",
+{color=yellow|梅: — [name]！真的太感谢你了。我学到了好多新东西……}""",
 	MAE_DRUID_RETURN_OPTION_1 = """我想你可以用比这更好的方式来感谢我……""",
 	MAE_DRUID_RETURN_OPTION_2 = """我也很想你。""",
 	MAE_DRUID_RETURN_OPTION_3 = """那你最好赶紧去干活。""",
@@ -25258,33 +25256,33 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	MAE_DRUID_RETURN_WORK = """梅默默地点了点头，有点失望地回房间了。""",
 	MAE_SPIRIT_QUEST_INITIATE = """早晨，梅向你走来，请求你帮个忙。
 
-{color=yellow|Mae: — 早上好，[name]。我该回去看看我们的村子了。我得完成下一次灵性连接的仪式，所以……如果你不介意的话，我想请你陪我一起去。}""",
+{color=yellow|梅: — 早上好，[name]。我该回去看看我们的村子了。我得完成下一次灵性连接的仪式，所以……如果你不介意的话，我想请你陪我一起去。}""",
 	MAE_SPIRIT_QUEST_INITIATE_OPTION_1 = """当然，我很乐意帮忙。""",
 	MAE_SPIRIT_QUEST_INITIATE_OPTION_2 = """你一定是想念那天晚上的大家了？""",
 	MAE_SPIRIT_QUEST_INITIATE_OPTION_3 = """也许我有时间的话吧。""",
-	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_1 = """{color=yellow|Mae: — 谢谢你。我随时准备着，你决定好时间就告诉我。}""",
-	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_2 = """{color=yellow|Mae: — 你……你在说什么呀？才不是那样。想到那天我还觉得挺尴尬的。求你到时候别提那晚的事。我真的会羞愧致死的。}""",
-	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_3 = """{color=yellow|Mae: — 我明白了。那我就等着了。这事儿不急，但终究还是得完成的。}""",
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_1 = """{color=yellow|梅: — 谢谢你。我随时准备着，你决定好时间就告诉我。}""",
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_2 = """{color=yellow|梅: — 你……你在说什么呀？才不是那样。想到那天我还觉得挺尴尬的。求你到时候别提那晚的事。我真的会羞愧致死的。}""",
+	MAE_SPIRIT_QUEST_INITIATE_RESPONSE_3 = """{color=yellow|梅: — 我明白了。那我就等着了。这事儿不急，但终究还是得完成的。}""",
 	MAE_SPIRIT_FOLLOW_START = """当梅小心翼翼地走进熟悉的环境时，你注意到周围的人比往常少了些。你看到萨夫拉正从森林里回来。她邀请你们进屋，准备听听梅的故事。""",
 	MAE_SPIRIT_FOLLOW_SAVRA = """{color=aqua|Savra: — 怎么样，在和我们一起生活后，回到城市生活感觉如何？}
 
-{color=yellow|Mae: — 有点别扭，不过我想也没那么糟。}""",
+{color=yellow|梅: — 有点别扭，不过我想也没那么糟。}""",
 	MAE_SPIRIT_FOLLOW_SAVRA_2 = """
-{color=yellow|Mae: — 嗯，我在想是不是该我进行灵契仪式的时候了。}
+{color=yellow|梅: — 嗯，我在想是不是该我进行灵契仪式的时候了。}
 
 {color=aqua|Savra: — 当然。你来这儿不就是为了这个吗？你是个聪明的女孩，居然能记得住我老是忘掉的那些事。}
 
 {color=aqua|Savra: — 你必须走进森林，去我冬游时带你去过的那片特殊场地。等到午夜，月亮升起的时候。}
 
 梅急切地点了点头。她仔细记下萨夫拉的叮嘱，然后离开了。""",
-	MAE_SPIRIT_FOLLOW_MIDNIGHT = """{color=yellow|Mae: — 说实话，我有点紧张……你能陪我一起去吗？虽然我很熟悉森林，但我可不想撞见什么野兽。}""",
+	MAE_SPIRIT_FOLLOW_MIDNIGHT = """{color=yellow|梅: — 说实话，我有点紧张……你能陪我一起去吗？虽然我很熟悉森林，但我可不想撞见什么野兽。}""",
 	MAE_SPIRIT_FOLLOW_OPTION_1 = """我还怕你不开口呢。""",
 	MAE_SPIRIT_FOLLOW_OPTION_2 = """我想，我也不能把你这种没用的人丢下不管。""",
 	MAE_SPIRIT_FOLLOW_OPTION_3 = """这真是越来越麻烦了……""",
 	MAE_SPIRIT_FOLLOW_RESPONSE_1 = """梅听到你的回答后精神振奋，忧虑似乎也消散了。""",
 	MAE_SPIRIT_FOLLOW_RESPONSE_2 = """梅尴尬地笑了笑。
 
-{color=yellow|Mae: — 谢……谢谢……抱歉。我希望将来能变得更有用些。}""",
+{color=yellow|梅: — 谢……谢谢……抱歉。我希望将来能变得更有用些。}""",
 	MAE_SPIRIT_FOLLOW_RESPONSE_3 = """梅移开视线，沮丧地搓着手，一言不发。""",
 	MAE_SPIRIT_RITUAL_START = """随着梅开始准备仪式，夜色变得浓稠，雾气遮蔽了大部分视野。
 
@@ -25296,7 +25294,7 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 {color=aqua|White Stag: — 这可不行。你太弱了。你的灵魂不足以成为一名萨满。告诉萨夫拉，我反对。}
 
 梅的脸色变得苍白，但当白鹿转身离开时，她稳住了心神。""",
-	MAE_SPIRIT_RITUAL_STAG_CHALLENGE = """{color=yellow|Mae: — 等……等等。我不弱。为了成为萨满，我学习了很多。你不能就这样拒绝我。}
+	MAE_SPIRIT_RITUAL_STAG_CHALLENGE = """{color=yellow|梅: — 等……等等。我不弱。为了成为萨满，我学习了很多。你不能就这样拒绝我。}
 
 {color=aqua|White Stag: — 你无法通过学习来掌握自然，孩子。你只能与它融为一体，而我在你身上没看到这一点。}
 
@@ -25312,7 +25310,7 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 {color=aqua|White Stag: — 也罢。或许还有一两个灵体愿意与你缔结契约。给我带一张祖灵兽皮来。这样我们才会知道你是认真的。}
 
 白鹿消失在雾气中，留你们两个独自待在这里。""",
-	MAE_SPIRIT_RITUAL_STAG_HIDE_2 = """{color=yellow|Mae: — 祖灵兽皮吗……可以用稀有皮革和简单的魔法仪式制作。希望这不会太麻烦你。}""",
+	MAE_SPIRIT_RITUAL_STAG_HIDE_2 = """{color=yellow|梅: — 祖灵兽皮吗……可以用稀有皮革和简单的魔法仪式制作。希望这不会太麻烦你。}""",
 	MAE_SPIRIT_HIDE_RETURN = """梅再次召唤了白鹿，并递上了你制作的物品。
 
 {color=aqua|White Stag: — 你果然回来了。你履行了交易的承诺，那么我也会履行我的。说实话，虽然你的心智远非理想，但你的身体对于契约来说确实是个不错的筹码。}""",
@@ -25320,9 +25318,9 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	{color=aqua|White Stag: — 还有另一位也表现出了兴趣。“维尔霍恩（Velhorn）”，一个吵闹的萨特精灵，希望能成为你的伙伴。}""",
 	MAE_SPIRIT_WHITE_STAG_CONTINUATION_2 = """{color=aqua|White Stag: — 而且……令人惊讶的是，你还引起了“诺克塔拉（Noctara）”——一位睿智的猫头鹰灵的兴趣。}""",
 	MAE_SPIRIT_WHITE_STAG_CONTINUATION_3 = """梅心中已经有了决定，但因为对自己说的话不够确定，她还是轻声向你询问。""",
-	MAE_SPIRIT_WHITE_STAG_MAE_OWL = """{color=yellow|Mae: — 你觉得猫头鹰灵适合我吗……？}""",
-	MAE_SPIRIT_WHITE_STAG_MAE_SAFE = """{color=yellow|Mae: — 我觉得壁炉獠牙应该挺适合我……虽然选择不多，但感觉很安全。}""",
-	MAE_SPIRIT_WHITE_STAG_MAE_SATYR = """{color=yellow|Mae: — 那个萨特精灵听起来……挺有意思的，你不觉得吗？}""",
+	MAE_SPIRIT_WHITE_STAG_MAE_OWL = """{color=yellow|梅: — 你觉得猫头鹰灵适合我吗……？}""",
+	MAE_SPIRIT_WHITE_STAG_MAE_SAFE = """{color=yellow|梅: — 我觉得壁炉獠牙应该挺适合我……虽然选择不多，但感觉很安全。}""",
+	MAE_SPIRIT_WHITE_STAG_MAE_SATYR = """{color=yellow|梅: — 那个萨特精灵听起来……挺有意思的，你不觉得吗？}""",
 	MAE_SPIRIT_CHOICE_SUPPORT = """这是你的选择，我会支持你的。""",
 	MAE_SPIRIT_CHOICE_HEARTH = """壁炉獠牙听起来是个安全的选择。""",
 	MAE_SPIRIT_CHOICE_VELHORN = """你应该选维尔霍恩。听起来更有趣。""",
@@ -25332,61 +25330,61 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 {color=aqua|White Stag: — 既然如此。完成仪式，事情就成了。}
 
 白鹿如来时一般，消失在雾气中。""",
-	MAE_SPIRIT_AFTER_CHOICE = """{color=yellow|Mae: — 快完成了，但我需要一个能量更强的地方……我知道附近有一些古代遗迹，感觉就是那个地方了。}
+	MAE_SPIRIT_AFTER_CHOICE = """{color=yellow|梅: — 快完成了，但我需要一个能量更强的地方……我知道附近有一些古代遗迹，感觉就是那个地方了。}
 
-{color=yellow|Mae: — 只希望这对我们来说不会太危险。}""",
+{color=yellow|梅: — 只希望这对我们来说不会太危险。}""",
 	MAE_SPIRIT_AFTER_CHOICE_OPTION_1 = """你得做好面对危险的准备。你不再只是个学徒了。""",
 	MAE_SPIRIT_AFTER_CHOICE_OPTION_2 = """有我在，就不会那么危险。""",
 	MAE_SPIRIT_AFTER_CHOICE_OPTION_3 = """你刚才面对鸡巴的时候可比这紧张多了。""",
-	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_1 = """{color=yellow|Mae: — 你说得对。我能做到的……嗯，至少有你在帮我。}""",
-	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_2 = """{color=yellow|Mae: — 谢谢你，[name]。很高兴你站在我这边。}""",
-	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_3 = """{color=yellow|Mae: — 嘿，别这么说。我是认真的。""",
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_1 = """{color=yellow|梅: — 你说得对。我能做到的……嗯，至少有你在帮我。}""",
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_2 = """{color=yellow|梅: — 谢谢你，[name]。很高兴你站在我这边。}""",
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_3 = """{color=yellow|梅: — 嘿，别这么说。我是认真的。""",
 	MAE_SPIRIT_AFTER_CHOICE_LEAVE = """你和梅一起离开，准备完成这项任务。""",
 	MAE_ANCIENT_JUNGLE_START = """你在一个偏僻、杂草丛生的房间里发现了一个半毁的小祭坛。梅赞许地点了点头。
 
-{color=yellow|Mae: — 是的。我感觉到了。这里的魔法异常强大。这在过去一定曾被用作祭祀室。}""",
+{color=yellow|梅: — 是的。我感觉到了。这里的魔法异常强大。这在过去一定曾被用作祭祀室。}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_CHOICE = """当梅开始准备，进入冥想姿势时，你感到无聊，便借着火光研究起墙壁。几个似乎未被时间磨损的浮雕吸引了你的目光。它们暗示着这里曾经举行的仪式性质要淫秽得多。
 
 梅注意到了你的兴趣，提高了声音。
 
-{color=yellow|Mae: — [name]？墙上有什么东西吗？}""",
+{color=yellow|梅: — [name]？墙上有什么东西吗？}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_OPTION_1 = """也许你应该举行一个稍微不同的仪式……""",
 	MAE_ANCIENT_JUNGLE_RITUAL_OPTION_2 = """不，没什么。""",
 	MAE_ANCIENT_JUNGLE_RITUAL_LEWD = """梅走近些，仔细看着那些淫秽的图像。
 
-{color=yellow|Mae: — 噢……天呐……看来这个地方曾被用于某种不同的仪式。像这样的仪式肯定能让它更强大……}
+{color=yellow|梅: — 噢……天呐……看来这个地方曾被用于某种不同的仪式。像这样的仪式肯定能让它更强大……}
 
 起初她还有些犹豫，但很快就屈服于尝试一种与原计划不同的仪式的想法。
 
-{color=yellow|Mae: — 你不会把我要在这里做的事情告诉任何人吧？}""",
+{color=yellow|梅: — 你不会把我要在这里做的事情告诉任何人吧？}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_OPTION_1 = """说你发情了，干了点坏事？别担心。""",
 	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_OPTION_2 = """这可能是你目前为止经历过的最不奇怪的事情了。""",
-	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_1 = """{color=yellow|Mae: — 唉……我真的变奇怪了，居然对这种事情感到兴奋……}""",
+	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_1 = """{color=yellow|梅: — 唉……我真的变奇怪了，居然对这种事情感到兴奋……}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_LEWD_RESPONSE_2 = """梅向你撅起嘴。
 
-{color=yellow|Mae: — 得了吧。这都怪你，自从遇见你之后，我身上发生了这么多事……}""",
+{color=yellow|梅: — 得了吧。这都怪你，自从遇见你之后，我身上发生了这么多事……}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_SCENE = """梅缓缓脱掉衣服，躺在祭坛上摆好姿势。她双腿大张，开始了仪式。""",
 	MAE_ANCIENT_JUNGLE_RITUAL_FINISH = """仪式结束时，微弱的光芒环绕着梅。""",
-	MAE_ANCIENT_JUNGLE_RITUAL_HEARTHTUSK = """一股温暖、沉稳的力量笼罩了Mae，宛如大地深处搏动的心跳。强大的力量回应了她的呼唤，沉静而忠诚，向她许下能在未来的道路上坚韧不拔、备受庇护的承诺。
+	MAE_ANCIENT_JUNGLE_RITUAL_HEARTHTUSK = """一股温暖、沉稳的力量笼罩了梅，宛如大地深处搏动的心跳。强大的力量回应了她的呼唤，沉静而忠诚，向她许下能在未来的道路上坚韧不拔、备受庇护的承诺。
 
 {color=aqua|Hearthtusk: — 你的根基将坚不可摧，你的步伐永不屈服。哪怕连大地都在抗拒你，我也将与你并肩而立。}
 
-{color=yellow|Mae: — 我感受到了……如此沉稳而温暖。我绝不会动摇。我保证。}""",
+{color=yellow|梅: — 我感受到了……如此沉稳而温暖。我绝不会动摇。我保证。}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_HEARTHSTUSK = """一股温暖而稳定的存在感在梅周围沉淀下来，如同大地深处的心跳。力量回应了她的呼唤，沉稳且忠诚，预示着未来道路上的坚韧与守护。
 
 {color=aqua|Hearthtusk: — 你的根基将深植于此，你的步伐不会动摇。当大地本身阻挠你时，我会与你并肩而立。}
 
-{color=yellow|Mae: — 我感觉到了……温暖而稳定。我不会动摇的。我保证。}""",
+{color=yellow|梅: — 我感觉到了……温暖而稳定。我不会动摇的。我保证。}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_VELHORN = """轻柔的笑声在废墟中回荡，狂野的能量缠绕着她的灵魂。激情与冲动交织在一起，催促着梅去大胆地生活，在实践而非克制中学习。
 
 {color=aqua|Velhorn: — 尽情地生活，深刻地感受，不要否认内心涌动的一切。通过激情，你的灵魂将变得强大。}
 
-{color=yellow|Mae: — 我的心跳得好快……但这种感觉很对。我再也不会害怕真实的自己了。}""",
+{color=yellow|梅: — 我的心跳得好快……但这种感觉很对。我再也不会害怕真实的自己了。}""",
 	MAE_ANCIENT_JUNGLE_RITUAL_NOCTARA = """光芒暗淡下来，冷静的智慧随之降临，轻盈且耐心。洞察力在寂静中扎根，在阴影笼罩的夜晚提供清晰的视野、预见和警觉的指引。
 
 {color=aqua|Noctara: — 在寂静中，真理展现其羽翼。我赐予你超越恐惧的视界和超越怀疑的耐心。}
 
-{color=yellow|Mae: — 现在好平静……我会倾听，我会学习。}""",
+{color=yellow|梅: — 现在好平静……我会倾听，我会学习。}""",
 	MAE_SPIRIT_VISIT_SAVRA = """当黎明从树丛间渗出时，你和梅回到了村庄。萨夫拉静静地听着梅讲述仪式的经过，尽管梅经历了一切，她的声音依然稳健。当梅讲完后，萨夫拉闭眼良久，随后点了点头。
 
 {color=aqua|Savra: — 你做得很好。契约守护灵并非易事，尤其是对于走上你这条路的人来说。你不再仅仅是我的学徒了。}
@@ -25397,29 +25395,29 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 
 梅转向你，在开口前仔细端详着你的神情。
 
-{color=yellow|Mae: — 我……我想去。但我不会撒谎。这让我有点害怕。}""",
+{color=yellow|梅: — 我……我想去。但我不会撒谎。这让我有点害怕。}""",
 	MAE_SPIRIT_VISIT_SAVRA_OPTION_1 = """当然，我们会帮他们的。这对你很重要。""",
 	MAE_SPIRIT_VISIT_SAVRA_OPTION_2 = """我们是可以去，但我可不喜欢卷入未知的麻烦。""",
 	MAE_SPIRIT_VISIT_SAVRA_RESPONSE = """梅的耳朵竖了起来，热切地点了点头。
 
-{color=yellow|Mae: — 谢谢你。只要你在我身边，我想我就能应对那里等待着我们的一切。}""",
+{color=yellow|梅: — 谢谢你。只要你在我身边，我想我就能应对那里等待着我们的一切。}""",
 	MAE_NORTHERN_TRIBE_START = """傍晚时分，你们抵达了北部森林部落。这个定居点在很多方面看起来都很眼熟，缠绕着藤蔓和护身符的木屋，半掩在苔藓下的石制图腾。但空气感觉有些不同，似乎沉重了一些。
 
 你们走在主路上，梅放慢了脚步。几个年轻的男性兽人滞留在附近，假装在忙碌，但他们的目光总是不自觉地往她身上瞟。当梅回头时，他们迅速移开视线，耳朵紧张地抖动着。
 
 梅有些不自在地挪动身体，压低声音说道。
 
-{color=yellow|Mae: — 他……他们都在盯着我看吗……？}""",
+{color=yellow|梅: — 他……他们都在盯着我看吗……？}""",
 	MAE_NORTHERN_TRIBE_DIRECTIONS = """最终，一名村民走了过来。简单交谈后，他告诉了你们当地萨满住所的方向。他犹豫了一下，又开口说道。
 
 {color=aqua|村民：— 我们的萨满最近身体不太好。他已经卧床好几天了。}
 
 梅礼貌地点点头，脸上闪过一丝担忧。
 
-{color=yellow|Mae: — 我现在明白为什么我们要来这儿了。}""",
+{color=yellow|梅: — 我现在明白为什么我们要来这儿了。}""",
 	MAE_NORTHERN_TRIBE_SHAMAN = """在萨满的屋子里，空气温暖，弥漫着浓重的草药味。一位年长的狮人兽人坐在火堆旁，他的鬃毛因岁月而褪色，但姿态依然挺拔。当他抬起头时，你立刻注意到了那份相像。
 
-{color=yellow|Mae: — 他看起来像里昂。}
+{color=yellow|梅: — 他看起来像里昂。}
 
 {color=aqua|萨满：— 哈。你没看错。我是拉卡，他哥哥。一个留下来与灵魂一同老去，而不是在刀刃上度日的人。感谢隆达斯，你们来了。}""",
 	MAE_NORTHERN_TRIBE_REQUEST = """拉卡示意你们坐下，尽管处境艰难，他的语气却很平静，甚至有些随意。
@@ -25428,22 +25426,22 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 
 梅因为担忧而表情变得紧绷。
 
-{color=yellow|Mae: — 那些仪式对他们很重要……}""",
+{color=yellow|梅: — 那些仪式对他们很重要……}""",
 	MAE_NORTHERN_TRIBE_REQUEST_2 = """{color=aqua|拉卡：— 没错。灵魂会变得急躁，年轻小伙子们也是。他们想成为合格的战士和猎人。这就是我寻求帮助的原因。萨夫拉对你评价很高，梅。我还看出你最近契约了一个守护灵。}
 
-{color=yellow|Mae: — 是的……但我还在学习中。}""",
+{color=yellow|梅: — 是的……但我还在学习中。}""",
 	MAE_NORTHERN_TRIBE_REQUEST_3 = """{color=aqua|拉卡：— 我希望你代替我主持成人礼。习俗必须遵循，比起在我这种状态下仓促行事，我更愿意信任一位谨慎的局外人。}
 
 梅缓缓呼出一口气，看了你一眼，然后点了点头。
 
-{color=yellow|Mae: — 我明白了。我无法拒绝像您这样地位的萨满的请求。}""",
+{color=yellow|梅: — 我明白了。我无法拒绝像您这样地位的萨满的请求。}""",
 	MAE_NORTHERN_TRIBE_REQUEST_OPTION_1 = """那么，这个庆典具体是什么样的？""",
 	MAE_NORTHERN_TRIBE_REQUEST_OPTION_2 = """别急着答应。""",
 	MAE_NORTHERN_TRIBE_OFFER = """拉卡清了清嗓子，带着疲惫而诚恳的叹息靠向椅背。
 
 {color=aqua|拉卡：— 我们部落的成人礼是……群体的。这是一个关于活力与结合的仪式。梅将站在中心，与受礼者及一位同伴一起。}
 
-{color=yellow|Mae: — 群……群体……？你是说……像那样？}
+{color=yellow|梅: — 群……群体……？你是说……像那样？}
 
 {color=aqua|拉卡：— 我相信你不久前刚做过类似的事情。}""",
 	MAE_NORTHERN_TRIBE_OFFER_2 = """梅脸红了，记忆在脑海中闪过。
@@ -25452,17 +25450,17 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	MAE_NORTHERN_TRIBE_OFFER_OPTION_1 = """[性因素] 那个仪式听起来很有趣，梅。我们做吧。（仅限一次）""",
 	MAE_NORTHERN_TRIBE_OFFER_OPTION_2 = """我们还是算了吧。""",
 	MAE_NORTHERN_TRIBE_OFFER_OPTION_3 = """我们错过了什么吗？""",
-	MAE_NORTHERN_RITUAL_ACCEPT = """{color=yellow|Mae: — 嗯……好吧……我想这也是一种习俗。}
+	MAE_NORTHERN_RITUAL_ACCEPT = """{color=yellow|梅: — 嗯……好吧……我想这也是一种习俗。}
 
 {color=aqua|拉卡：— 很好。我就知道我能指望这些新鲜血液。让我来教你……}""",
-	MAE_NORTHERN_RITUAL_REFUSE = """{color=yellow|Mae: — 不……抱歉。我想我做不到。}
+	MAE_NORTHERN_RITUAL_REFUSE = """{color=yellow|梅: — 不……抱歉。我想我做不到。}
 
 拉卡看起来很失望，但梅的紧张让他没有继续强求。""",
 	MAE_NORTHERN_RITUAL_AFTER = """第二天，你和梅在离开前最后一次拜访了拉卡。
 
 {color=aqua|拉卡：— 啊，你们带来的成人礼真是精彩绝伦。我相信他们绝不会忘记的。}
 
-{color=yellow|Mae: — 是……是的……还不算太糟。我想我开始习惯这种事了。你确定你会慢慢恢复吗？}
+{color=yellow|梅: — 是……是的……还不算太糟。我想我开始习惯这种事了。你确定你会慢慢恢复吗？}
 
 {color=aqua|拉卡：— 当然。我还有大把时光。顺便说一句，我有一份小小的临别礼物要送给你们。}""",
 	MAE_NORTHERN_RITUAL_GIFT = """拉卡递给梅一顶华丽的皮革头饰。
@@ -25471,30 +25469,30 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 
 当你们离开小屋时，梅转向你。
 
-{color=yellow|Mae: — 谢谢你，[name]。没有你，我什么都做不成。你真的帮我成长了许多。}""",
+{color=yellow|梅: — 谢谢你，[name]。没有你，我什么都做不成。你真的帮我成长了许多。}""",
 	MAE_NORTHERN_DECLINE = """拉卡看起来非常失望，甚至比一个像他这样年长睿智的人所表现出的失望更甚。
 
 {color=aqua|Rakar: — 真遗憾……那你能不能让我稍微看一眼你那奢华的胸部呢？我真的很希望能在那场仪式中大饱眼福……}
 
-{color=yellow|Mae: — 啊……？什么！？}
+{color=yellow|梅: — 啊……？什么！？}
 
 {color=aqua|Rakar: — 开玩笑的。别担心。你想怎么做都行。交给你们了。}""",
 	MAE_NORTHERN_DECLINE_2 = """当你们离开小屋时，梅小声对你说。
 
-{color=yellow|Mae: — 我可以举行当年我被部落接纳时，为我举行过的那种仪式。我想那样就足够了。}""",
+{color=yellow|梅: — 我可以举行当年我被部落接纳时，为我举行过的那种仪式。我想那样就足够了。}""",
 	MAE_NORTHERN_DECLINE_FESTIVAL = """庆典筹备完成后，仪式进行得很顺利。梅保持着稳重与端庄，几乎没有结巴，正如她的身份所要求的那样。""",
 	MAE_NORTHERN_DECLINE_GIFT = """第二天，你和梅在离开前最后一次拜访了拉卡。
 
 {color=aqua|Rakar: — 啊，你们做得很好。虽然不是我最想看到的场面，但也算达成目的了。}
 
-{color=yellow|Mae: — 谢谢你。你确定你会慢慢恢复吗？}
+{color=yellow|梅: — 谢谢你。你确定你会慢慢恢复吗？}
 
 {color=aqua|Rakar: — 当然。我还有大把时光。顺便说一句，我有一份小小的临别礼物要送给你们。}""",
-	MAE_NORTHERN_MISSED = """{color=yellow|Mae: — 嗯。你能再多跟我说说你的病情吗？}
+	MAE_NORTHERN_MISSED = """{color=yellow|梅: — 嗯。你能再多跟我说说你的病情吗？}
 
 梅听着拉卡描述他的症状，随着他的讲述，她的脸色明亮起来。
 
-{color=yellow|Mae: — 哦……我知道这是什么了。洛里恩教过我。你最近是不是只吃熟肉了？}
+{color=yellow|梅: — 哦……我知道这是什么了。洛里恩教过我。你最近是不是只吃熟肉了？}
 
 {color=aqua|Rakar: — 嗯，上了年纪之后，吃生食对我来说确实挺困难的……}""",
 	MAE_NORTHERN_MISSED_AFTER = """在花了不少时间帮拉卡尔处理药草和饮食建议后，他的身体状况有了显著好转。
@@ -26538,15 +26536,15 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 她将目光转回散乱的笔记上。
 
 {color=yellow|琴: — ……我觉得它不再那么重要了。}""",
-	JEAN_SYLAS_HELP_PROMPT = """Jean直视着你。
+	JEAN_SYLAS_HELP_PROMPT = """琴直视着你。
 	
 {color=yellow|琴: — 相反，我现在唯一关心的是阻止这一切背后的幕后黑手，这样就不会再有人变成这些怪物了。那么，你会帮我吗？}""",
 	JEAN_SYLAS_HELP_OPTION_WITH_YOU = """你不会孤身一人的""",
 	JEAN_SYLAS_HELP_OPTION_FAVOR = """只因为我也希望未来能得到回报""",
-	JEAN_SYLAS_HELP_RESPONSE_WITH_YOU = """Jean明显放松了下来，脸上绽放出笑容。
+	JEAN_SYLAS_HELP_RESPONSE_WITH_YOU = """琴明显放松了下来，脸上绽放出笑容。
 	
 {color=yellow|琴: — 谢谢你。我会记住的。}""",
-	JEAN_SYLAS_HELP_RESPONSE_FAVOR = """Jean眨了眨眼。然后挺直了身子。
+	JEAN_SYLAS_HELP_RESPONSE_FAVOR = """琴眨了眨眼。然后挺直了身子。
 	
 {color=yellow|琴: — 有道理。帮我完成这件事，我就欠你一个人情。}""",
 	JEAN_SYLAS_GUILD_SUGGESTION = """简单商量了一番后，很明显，关于那个幕后黑手的线索，唯一指向的就是帝国的首都。但在出发前，琴提出了一个建议。
@@ -27396,7 +27394,7 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 
 {color=yellow|露琪: — 这两者是相辅相成的，不是吗？不管怎样，别坏了我的兴致，你知道这样做的人从来没有好下场。}
 
-{color=aqua|弥拉娜: — 你明白就好。别犯和珂洛（Kuro）一样的错误。}
+{color=aqua|弥拉娜: — 你明白就好。别犯和珂洛（珂洛）一样的错误。}
 
 这番话听起来像是一种毫不掩饰的威胁，但这位狐女并未在意。她内心对这种比较感到更加烦躁。
 
@@ -27785,7 +27783,7 @@ Heleviel没有作声；然而，她脸上的怒火却在不断积聚。""",
 	ROUGE_REPORT_OPTION_WHAT_DOING = """你在这里做什么？""",
 #   ROUGE_REPORT_OPTION_CAPITAL = """Aren't you supposed to stay away from the capital?""",
 	ROUGE_REPORT_HENCHMAN_WHAT_HAPPENED = """{color=yellow|露琪：— 当然是在四处看看。这些狂信徒在脚底下藏了不止一个秘密，我很好奇他们究竟在这里藏了些什么。}""",
-#   ROUGE_REPORT_KETCH_CAPITAL = """Rouge: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.""",
+#   ROUGE_REPORT_KETCH_CAPITAL = """露琪: — Fufu, I suppose I may have bent one little promise — you won't tell on me though, will you? I'll stay well clear of this from now on.""",
 	ROUGE_REPORT_HENCHMAN_BASEMENT_1 = """露琪示意你跟上。她带你深入地下，穿过满是垃圾和脏破布的狭窄房间。你一开始还没明白怎么回事，直到在一个房间里看到了惨状：许多人类的尸体和残肢堆在一起，被掏空了内脏，血液也被放干。一种对这些受害者莫名熟悉的怪异感涌上心头。你感觉在那个房间里连呼吸都喘不过气来。
 
 露琪的脸色变得凝重，这是你第一次见到她如此严肃。
@@ -28285,7 +28283,7 @@ He leans in just a little, lowering his voice.
     LIRA_QUEST3_CARAVAN_PREPARE_4 = """商队终于整装待发。""",
 	LIRA_QUEST3_CARAVAN_AMBUSH_1 = """旅途充满了紧张的气氛。几天过去了，一路上平安无事。山丘越来越近，树木也愈发茂密。你甚至开始怀疑强盗们是不是已经转移了。
 然而这一刻终于还是来了。就在第一辆马车经过一段两侧皆是密林的狭窄山路时，一棵参天大树在前方轰然倒塌，巨大的树干死死挡住了去路。
-{color=yellow|Lira: — [master]！快看那边！}
+{color=yellow|莉拉: — [master]！快看那边！}
 两侧顿时爆发出一阵喧嚣的喊杀声。强盗们高举着兵刃，从林线中蜂拥而出。他们的脸上写满了贪婪，自以为逮到了一只任人宰割的肥羊，却压根不知道自己才是那个自投罗网的猎物。""",
     LIRA_QUEST3_CARAVAN_AMBUSH_2 = """出其不意的奇袭让形势对你极为有利。你飞身跃下马车，直接杀入了强盗的主力军中。""",
     LIRA_QUEST3_CARAVAN_AMBUSH_3 = """你雇佣的佣兵也证明了自己的价值。他们围绕着货车迅速筑起了坚固的盾墙，无情地斩杀任何敢于靠近的敌人。强盗们甚至连商队的边都没能摸到。短短几分钟内，这场袭击便彻底崩溃了。""",
@@ -28299,7 +28297,7 @@ He leans in just a little, lowering his voice.
 {color=aqua|Bandit: — 别怕嘛，小乖乖。哥哥们会好好“疼爱”你的。只要你待会儿在床上也识相点，加倍卖力伺候我们就行了，嘿嘿……}
 这群蠢货压根没察觉到你的逼近，一路上满嘴喷粪地污言秽语，直到你潜行到了他们身侧。眼看着其中一人的脏手就要抓上莉拉娇嫩的身体，你如猎豹般暴起，悍然发起攻击。""",
     LIRA_QUEST3_ROAD_POSTFIGHT_1 = """转瞬之间，三名强盗便惨叫着倒地。但在你与第四名强盗缠斗之时，最后一名强盗竟趁乱一把抓住了莉拉，强行将她温软的娇躯掳到了马鞍上。
-{color=yellow|Lira: — [master]！救我！}
+{color=yellow|莉拉: — [master]！救我！}
 强盗猛地一夹马腹，胯下烈马长嘶一声，沿着山路狂奔而去，扬起漫天尘土，将你远远地抛在了身后。""",
     LIRA_QUEST3_ROAD_POSTFIGHT_2 = """你转过身，冷冷地看着倒在地上苟延残喘的强盗们。两个已经昏死过去，还有一个正捂着断臂痛苦地呻吟。他死死地瞪着你，却连逃跑的力气都没有了。""",
     LIRA_QUEST3_ROAD_POSTFIGHT_OPTION_1 = """盘问他关于营地的位置""",
@@ -29741,7 +29739,7 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 {color=yellow|莉拉：— 啊，现在管不了那么多了！我见过您战斗的样子，您能对付它们，对吧？我会帮您的！}""",
 	LIRA_QUEST_1_OPTION_STAY_BACK_AND_HELP = """待在后面提供力所能及的帮助就行。战斗交给我。""",
 	LIRA_QUEST_1_OPTION_WE_FIGHT_TOGETHER = """我们并肩作战。你不仅仅能站在我身后，你也有战斗的能力。""",
-#	LIRA_QUEST_1_FIGHT_PLAN = """The centipedes keep circling closer while Lira steadies herself beside you, waiting to hear how you want to handle the fight.""",
+#	LIRA_QUEST_1_FIGHT_PLAN = """The centipedes keep circling closer while 莉拉 steadies herself beside you, waiting to hear how you want to handle the fight.""",
 	LIRA_QUEST_1_FIGHT_READY = """{color=yellow|莉拉：— 明白了！}""",
 	
 	LIRA_QUEST_1_FIGHT_AFTERMATH = """你们合力杀死了这些富有攻击性的野兽。
@@ -30072,22 +30070,22 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	ACT4_CATACOMB_DEEPER_1_OPTION_EXAMINE = """检查这些文字。""",
 	ACT4_CATACOMB_DOORS_HELEVIEL_0 = """这些字母既尖锐又优雅，每一笔都刻得有着非自然的精确感。即便看不懂它们，其形态中也透着一种刻意与严厉，仿佛这些铭文从来就不是为了欢迎任何人进入而刻的。
 
-还没等你开口，海莉维尔就从你身边走过，停在大门前。这是进入地下深处以来，她第一次收起往日的沉稳，露出明显的惊讶。
+还没等你开口，赫莉薇儿就从你身边走过，停在大门前。这是进入地下深处以来，她第一次收起往日的沉稳，露出明显的惊讶。
 
-{color=yellow|海莉维尔：— 等等。}""",
-	ACT4_CATACOMB_DOORS_HELEVIEL_0B = """{color=yellow|海莉维尔：— 这是古精灵语……但不是大多数学者能读懂的那种形式。它属于与猎龙人相关的传统。}
+{color=yellow|赫莉薇儿：— 等等。}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_0B = """{color=yellow|赫莉薇儿：— 这是古精灵语……但不是大多数学者能读懂的那种形式。它属于与猎龙人相关的传统。}
 
 艾迪娜猛地转向她。
 
 {color=aqua|艾迪娜：— 猎龙人？}
 
-海莉维尔缓慢地点了点头，目光依然盯着大门。
+赫莉薇儿缓慢地点了点头，目光依然盯着大门。
 
-{color=yellow|海莉维尔：— 精灵古老传统中的一个精英氏族。即使以我们的标准来看，他们也是神秘、傲慢且深切关注保存自己遗产的氏族。他们至今在我们的土地上仍占有一席之地。}""",
-	ACT4_CATACOMB_DOORS_HELEVIEL_1 = """{color=yellow|海莉维尔：— 有关联，几乎可以肯定。他们是建造了这里、封印了这里，还是仅仅后来占据了这里，我无法断言。但这些文字绝非意外地刻在这里。}""",
-	ACT4_CATACOMB_DOORS_HELEVIEL_2 = """海莉维尔的目光在铭文上又停留了一会儿，才轻轻叹了口气。
+{color=yellow|赫莉薇儿：— 精灵古老传统中的一个精英氏族。即使以我们的标准来看，他们也是神秘、傲慢且深切关注保存自己遗产的氏族。他们至今在我们的土地上仍占有一席之地。}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_1 = """{color=yellow|赫莉薇儿：— 有关联，几乎可以肯定。他们是建造了这里、封印了这里，还是仅仅后来占据了这里，我无法断言。但这些文字绝非意外地刻在这里。}""",
+	ACT4_CATACOMB_DOORS_HELEVIEL_2 = """赫莉薇儿的目光在铭文上又停留了一会儿，才轻轻叹了口气。
 
-{color=yellow|海莉维尔：— 还没完全读懂。我认得这种传统，但并非所有古语变体都懂。不过，知道这是人为故意所为已经足够了。}""",
+{color=yellow|赫莉薇儿：— 还没完全读懂。我认得这种传统，但并非所有古语变体都懂。不过，知道这是人为故意所为已经足够了。}""",
 	ACT4_CATACOMB_DOORS_HELEVIEL_3 = """艾迪娜抱起双臂，虽然不满意，但已不再怀疑。
 
 {color=aqua|艾迪娜：— 那这就是我们的下一个线索了。}
@@ -32023,8 +32021,8 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONROOM_FORESTRYDESCRIPT = """领地木材砍伐工作位基础1个，配备【扩建木屋】后最多可达5个。【珍稀木材】可额外新增铁木，随后新增魔导木。""",
 	MANSIONROOM_HUNTING_CABIN = """猎人小屋""",
 	MANSIONROOM_HUNTING_CABINDESCRIPT = """领地肉类猎取工作位基础1个，配备【扩建木屋】后最多可达5个。【屠宰加工】可额外新增皮革，随后新增骨骼。""",
-	MANSIONROOM_BEAUTY_PARLOR = """Beauty Parlor""", # MISSING TRANSLATION
-	MANSIONROOM_BEAUTY_PARLORDESCRIPT = """Inks, needles and mirrors. Tattoos are applied here with inks brewed in the alchemy room; with Body modifications a body can be reshaped as well.""", # MISSING TRANSLATION
+	MANSIONROOM_BEAUTY_PARLOR = """美容室""",
+	MANSIONROOM_BEAUTY_PARLORDESCRIPT = """墨水、细针与镜子。这里可以使用炼金室调制的颜料施加纹身；借助肉体改造，还能重塑身形。""",
 	MANSIONUPG_FARM_HANDS = """农场人手""",
 	MANSIONUPG_FARM_HANDSDESCRIPT = """增加该农场的工作位。""",
 	MANSIONUPG_FARM_HANDSBONUS1 = """工作位 +1""",
@@ -32100,9 +32098,9 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONUPG_BUILDERS = """第二脚手架""",
 	MANSIONUPG_BUILDERSDESCRIPT = """为此房间的建造与升级增加一个建筑工位。""",
 	MANSIONUPG_BUILDERSBONUS1 = """建筑工 +1""",
-	MANSIONUPG_BODY_MODIFICATIONS = """Body modifications""", # MISSING TRANSLATION
-	MANSIONUPG_BODY_MODIFICATIONSDESCRIPT = """Tools and tonics for reshaping anyone in the household: any feature, any colour, fur on or off. Changes are free and take effect at once.""", # MISSING TRANSLATION
-	MANSIONUPG_BODY_MODIFICATIONSBONUS1 = """Appearance can be changed freely here""", # MISSING TRANSLATION
+	MANSIONUPG_BODY_MODIFICATIONS = """肉体改造""",
+	MANSIONUPG_BODY_MODIFICATIONSDESCRIPT = """用于重塑府内成员身形的工具与药剂：任何特征、颜色以及毛发开关皆可自由设定。修改完全免费且立即生效。""",
+	MANSIONUPG_BODY_MODIFICATIONSBONUS1 = """可在此处自由修改外貌""",
 	MANSIONVIEW_REST = """闲置""",
 	MANSIONVIEW_ATWORK = """工作中""",
 	MANSIONVIEW_HOUSEALL = """安排住宿""",
@@ -32212,14 +32210,14 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONVIEW_BUILDINGHINT = """将人手安排至脚手架上，建造便会自动推进。""",
 	MANSIONVIEW_PROGRESS = """进度""",
 	MANSIONVIEW_SALVAGE = """拆解装备""",
-	MANSIONVIEW_TATTOO = """Tattoo application""", # MISSING TRANSLATION
-	MANSIONVIEW_BODYMOD = """Body modifications""", # MISSING TRANSLATION
+	MANSIONVIEW_TATTOO = """纹身绘制""",
+	MANSIONVIEW_BODYMOD = """肉体改造""",
 	MANSIONVIEW_UPGRADELOCKED = """此项由工匠公会传授。请先去那里购买。""",
 	MANSIONUPG_SALVAGE_BENCH = """拆解台""",
 	MANSIONUPG_SALVAGE_BENCHDESCRIPT = """用于拆解旧装备的工作台。建造前需先在工匠公会习得相关知识。""",
 	MANSIONUPG_SALVAGE_BENCHBONUS1 = """可在此处拆解装备""",
-	MANSIONUPG_SALVAGE_BENCHBONUS2 = """65-90% of the materials recovered""", # MISSING TRANSLATION
-	MANSIONUPG_SALVAGE_BENCHBONUS3 = """75-100% of the materials recovered""", # MISSING TRANSLATION
+	MANSIONUPG_SALVAGE_BENCHBONUS2 = """回收 65-90% 的材料""",
+	MANSIONUPG_SALVAGE_BENCHBONUS3 = """回收 75-100% 的材料""",
 	MANSIONVIEW_WORKCOST = """工作量""",
 	MANSIONVIEW_BUILDERS = """建筑工""",
 	MANSIONVIEW_DAYSLEFT = """约剩 %d 天""",
@@ -32250,8 +32248,8 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONVIEW_ERR_NOTWORKER = """他们不会为你工作：他们不属于你的工人。""",
 	MANSIONVIEW_ERR_NOTRAINER = """奴隶只有在训练师监督下才会工作，而这名奴隶没有训练师。请在其角色面板上指定一名训练师。""",
 	MANSIONVIEW_ERR_FIXEDROOM = """楼梯是宅邸结构本身的一部分。""",
-	MANSIONVIEW_ERR_NOTUTOR = """[name] is no trainer, and that place asks for one.""", # MISSING TRANSLATION
-	MANSIONVIEW_ERR_TUTORTAKEN = """Somebody is already teaching here.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_NOTUTOR = """[name] 并不是导师，而该地点需要一名导师。""",
+	MANSIONVIEW_ERR_TUTORTAKEN = """已经有人在此进行教学了。""",
 	MANSIONVIEW_SWAPHINT = """放置于此处可调换槽位。""",
 	MANSIONVIEW_TESTQUESTAWAY = """途中的传言""",
 	MANSIONVIEW_TESTQUESTAWAYDESCRIPT = """镇外有人一直在打听领地的消息。""",
@@ -32300,25 +32298,25 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONUPG_ACCOUNTANT = """会计""",
 	MANSIONUPG_ACCOUNTANTDESCRIPT = """增加一个工作位。有人在此工作时，交付的超额物资将按市场价售出，而非直接损失。""",
 	MANSIONUPG_ACCOUNTANTBONUS1 = """工作位 +1，且超额物资将售出而非丢失""",
-	BEAUTYPARLOR_TITLE = """Beauty Parlor""", # MISSING TRANSLATION
-	BEAUTYPARLOR_INKS = """Inks""", # MISSING TRANSLATION
-	BEAUTYPARLOR_CHARACTERS = """Characters""", # MISSING TRANSLATION
-	BEAUTYPARLOR_HINT = """Pick a character, then an ink and a lit body part. Press a filled part with no ink picked to remove its tattoo. Ink is not refunded.""", # MISSING TRANSLATION
-	BODYMOD_TITLE = """Body modifications""", # MISSING TRANSLATION
-	BODYMOD_COLOUR_AUTO = """Auto""", # MISSING TRANSLATION
-	BODYMOD_COAT_COLOUR = """Coat colour""", # MISSING TRANSLATION
-	BEAUTYPARLOR_PICKCHAR = """Pick a character first.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_AWAY = """Away on a quest.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_NOTHERE = """Not at the estate.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_UNIQUE = """This character's drawn body cannot be reshaped. Switch them to the paperdoll first.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_NODOLLS = """Paperdolls are disabled in the options, so there is nothing to reshape.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_NOINK = """None in stock. Inks are brewed in the alchemy room.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_ASK_ADD = """Apply %s on the %s of %s?""", # MISSING TRANSLATION
-	BEAUTYPARLOR_ASK_REPLACE = """Replace %s on the %s of %s with %s? The old ink is not returned.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_ASK_REMOVE = """Remove %s from the %s of %s? The ink is not returned.""", # MISSING TRANSLATION
-	BEAUTYPARLOR_FURRY = """Furry look""", # MISSING TRANSLATION
-	BEAUTYPARLOR_FURRY_TOOLTIP = """Switch between the beastkin and the halfkin look. Coat, muzzle and animal features come and go together; the race's talents do not change.""", # MISSING TRANSLATION
-	CHARCREATE_APPLY_CHANGES_QUESTION = """Apply the changes?""", # MISSING TRANSLATION
+	BEAUTYPARLOR_TITLE = """美容室""",
+	BEAUTYPARLOR_INKS = """墨水""",
+	BEAUTYPARLOR_CHARACTERS = """角色""",
+	BEAUTYPARLOR_HINT = """先选择一名角色，再选择一种墨水和亮起的身体部位。在未选择墨水的情况下点击已有纹身的部位可将其移除。墨水不会退还。""",
+	BODYMOD_TITLE = """肉体改造""",
+	BODYMOD_COLOUR_AUTO = """自动""",
+	BODYMOD_COAT_COLOUR = """毛色""",
+	BEAUTYPARLOR_PICKCHAR = """请先选择一名角色。""",
+	BEAUTYPARLOR_AWAY = """正在外出执行任务。""",
+	BEAUTYPARLOR_NOTHERE = """不在宅邸中。""",
+	BEAUTYPARLOR_UNIQUE = """该角色的手绘立绘无法进行肉体改造。请先将其切换为纸娃娃模式。""",
+	BEAUTYPARLOR_NODOLLS = """设置中已禁用纸娃娃系统，因此无法进行肉体改造。""",
+	BEAUTYPARLOR_NOINK = """无库存。墨水可在炼金室中调制。""",
+	BEAUTYPARLOR_ASK_ADD = """是否使用 %s 绘制在 %s（%s）？""",
+	BEAUTYPARLOR_ASK_REPLACE = """将 %s（位于 %s，%s）替换为 %s？旧墨水不会退还。""",
+	BEAUTYPARLOR_ASK_REMOVE = """移除 %s（位于 %s，%s）？墨水不会退还。""",
+	BEAUTYPARLOR_FURRY = """兽人外貌""",
+	BEAUTYPARLOR_FURRY_TOOLTIP = """在兽人与亚人外貌之间切换。毛色、口鼻部与兽类特征将同步变更；种族天赋不会改变。""",
+	CHARCREATE_APPLY_CHANGES_QUESTION = """是否应用修改？""",
 	MANSIONVIEW_ERR_ENOUGH = """你拥有的数量已足以满足领地需求。""",
 	MANSIONVIEW_EMPTYPLOT = """空地""",
 	MANSIONVIEW_ORDERHEADER = """工作队列""",
@@ -32406,15 +32404,15 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	DOLL2_STYLE_HAIR_BASE_DEFAULT = """中分""",
 	DOLL2_STYLE_HAIR_BASE_FRINGE = """侧分刘海""",
 	DOLL2_STYLE_HAIR_BASE_FRINGE_2 = """发冠编发""",
-	DOLL2_STYLE_HAIR_BASE_BOBCUT = """Bob cut""", # MISSING TRANSLATION
-	DOLL2_STYLE_HAIR_BASE_HIME = """Hime cut""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_BOBCUT = """波波头""",
+	DOLL2_STYLE_HAIR_BASE_HIME = """姬发式""",
 	DOLL2_STYLE_HAIR_BASE_KARE = """波波头""",
 	DOLL2_STYLE_HAIR_BASE_PARTING = """层次剪发""",
 	DOLL2_STYLE_HAIR_BASE_SLAVE = """紧梳后发""",
 	DOLL2_STYLE_HAIR_BASE_STRAIGHT = """长直发""",
 	DOLL2_STYLE_HAIR_BASE_UNDERCUT = """铲边头""",
 	DOLL2_STYLE_HAIRS_BASE_DOPPLE = """中分长刘海""",
-	DOLL2_STYLE_HAIR_BACK_BOBCUT = """Chin length""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BACK_BOBCUT = """齐颔发""",
 	DOLL2_STYLE_HAIR_BACK_CARE = """及颔短发""",
 	DOLL2_STYLE_HAIR_BACK_DOUBLE_TAIL_LONG = """长双马尾""",
 	DOLL2_STYLE_HAIR_BACK_PONYTAIL_LONG = """长单马尾""",

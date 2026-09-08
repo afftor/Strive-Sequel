@@ -278,6 +278,7 @@ const AXES = {
 		"default": "large",
 		"label": "DOLL2_PREVIEW_BREAST_SIZE",
 		"nearest": true,
+		"nearest_slots": ["equip_breasts"],
 		"values": ["flat", "small", "normal", "large", "big"],
 	},
 }

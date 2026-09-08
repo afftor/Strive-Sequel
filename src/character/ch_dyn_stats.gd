@@ -125,8 +125,16 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	#stored effects_duplicating
 	effects_real = effects_stored.duplicate()
 	effects_temp_real.clear()
-	for stack in effects_temp_stored:
-		effects_temp_real[stack] = effects_pool.clone_stack(effects_temp_stored[stack])
+	#Where a dangling stack id is finally dropped. Storing the failed clone would have put a null
+	#into effects_temp_real, and everything below reads that dictionary unguarded - add_eff_to_stack,
+	#process_effects_expand, has_status, clear_nonstored_effs all called straight into it.
+	for stack in effects_temp_stored.keys():
+		var clone = effects_pool.clone_stack(effects_temp_stored[stack])
+		if clone == null:
+			print("stack %s of %s is gone from the pool and was dropped" % [effects_temp_stored[stack], stack])
+			effects_temp_stored.erase(stack)
+			continue
+		effects_temp_real[stack] = clone
 	effects_temp_globals_real = effects_temp_globals.duplicate()
 	
 	var race = parent.get_ref().get_stat('race')

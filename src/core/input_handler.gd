@@ -1190,6 +1190,16 @@ func start_event(code, type, args):
 		data = code
 		active_event_code = ''
 	else:
+		#last line of defence for a code nothing answers to. The callers that queue events now
+		#drop such codes themselves, but reaching the lookup below with one used to abort this
+		#function and leave event_is_active set, which stops every later event from opening.
+		#start_event_attempt() is deliberately not re-entered here - it has not struck this
+		#entry off dialogue_array yet, so calling it would pick the same code straight back up
+		if !scenedata.scenedict.has(code):
+			print("event requested with no scene for code: " + str(code))
+			event_is_active = false
+			active_event_code = ''
+			return
 		data = scenedata.scenedict[code].duplicate(true)
 		active_event_code = code
 		if !ResourceScripts.game_progress.seen_events.has(code):
@@ -1389,11 +1399,40 @@ func text_form_recitation(string_array):
 #set while a _ready builds something that talks back: the root takes no children mid-_ready
 var defer_spec_node_mount = false
 var deferred_spec_nodes = {}
+var spec_node_layers = {}
+
+
+#A window that has to clear the mansion's room card needs a canvas layer of its own: the card
+#sits on layer 3 (mansion_view.tscn's Overlay) and in Godot 3 the layer number beats tree order
+#outright, so raise() among the root's children can never lift a window past it. An entry in
+#node_data asks for one with 'layer'; the layer becomes the window's parent rather than a node
+#inside its scene, because a CanvasLayer has no visibility of its own in this engine - hung
+#inside the window it would leave show() and hide() controlling nothing.
+func get_spec_node_parent(type):
+	var root = get_tree().get_root()
+	var data = ResourceScripts.node_data[type]
+	if !data.has('layer'):
+		return root
+	var holder_name = data.name + '_layer'
+	var holder = root.get_node_or_null(holder_name)
+	#The holder is asked for again before it is in the tree whenever the mount is deferred.
+	if holder == null and is_instance_valid(spec_node_layers.get(holder_name)):
+		holder = spec_node_layers[holder_name]
+	if holder == null:
+		holder = CanvasLayer.new()
+		holder.name = holder_name
+		spec_node_layers[holder_name] = holder
+		if defer_spec_node_mount:
+			root.call_deferred("add_child", holder)
+		else:
+			root.add_child(holder)
+	holder.layer = data.layer
+	return holder
 
 
 func get_spec_node(type, args = null, raise = true, unhide = true):
 	var window
-	var node = get_tree().get_root()
+	var node = get_spec_node_parent(type)
 	for n in modding_core.gui_nodes:
 		if n.name == ResourceScripts.node_data[type].name and !ResourceScripts.node_data[type].has('no_return'):
 			window = n

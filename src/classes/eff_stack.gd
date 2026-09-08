@@ -142,9 +142,18 @@ func get_active_effects():
 	return res
 
 
+#First thing a dynamic-stat rebuild does, and so the gate the rest of the rebuild trusts: an
+#id the pool cannot answer for is dropped here rather than left for the next reader to walk
+#into. That happens when the pool is swapped under a stack that outlived it - a screen of a
+#game that has just been replaced by a load, say - and every reader after this one indexes
+#the effect unguarded.
 func clear_nonstored_effs():
-	for eid in effects:
+	for eid in effects.keys():
 		var eff = effects_pool.get_effect_by_id(eid)
+		if eff == null:
+			print("effect %s is gone from the pool and was dropped from stack %s" % [eid, code])
+			effects.erase(eid)
+			continue
 		if eff.is_stored:
 			continue
 		if eff.parent is String and eff.parent.begins_with('hid'):

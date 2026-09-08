@@ -196,3 +196,25 @@ static func shape_signature(floor_plan):
 	for slot in floor_plan.slots:
 		parts.append("%s:%d,%d,%d,%d" % [slot.code, slot.rect[0], slot.rect[1], slot.rect[2], slot.rect[3]])
 	return PoolStringArray(parts).join(";")
+
+
+#The slots a floor is made of, as a sorted list of codes. This - not the signature above - is
+#what says whether a saved floor still fits the plan: a slot IS its code, and the rect beside
+#it only says where the room is drawn. Moving the house around its backdrop rewrites every
+#rect and changes nothing about which rooms exist, so comparing the full signature condemned
+#a floor for a change of picture. Read out of the stored shape rather than kept separately,
+#so a save written before this distinction existed answers the same list.
+static func shape_codes(shape):
+	var codes = []
+	for part in str(shape).split(";", false):
+		codes.append(part.split(":")[0])
+	codes.sort()
+	return codes
+
+
+static func slot_codes(floor_plan):
+	var codes = []
+	for slot in floor_plan.slots:
+		codes.append(slot.code)
+	codes.sort()
+	return codes

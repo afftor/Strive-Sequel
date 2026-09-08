@@ -1394,7 +1394,7 @@ func _public_axes():
 		}
 		# `body_tag` says the value is read off the worn body rather than picked,
 		# and `hidden` keeps the axis out of the preview's list of pickers
-		for optional in ["body_tag", "hidden", "nearest"]:
+		for optional in ["body_tag", "hidden", "nearest", "nearest_slots"]:
 			if definition.has(optional):
 				public[optional] = definition[optional]
 		result[axis] = public
