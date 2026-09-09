@@ -750,13 +750,17 @@ const GROUPS = {
 		"order": 8,
 		"parts": [
 			"hair_base_back",
+			"hair_base_bobcut",
 			"hair_base_braids",
 			"hair_base_default",
 			"hair_base_disheveled",
 			"hair_base_fringe",
 			"hair_base_fringe_2",
 			"hair_base_hime",
+<<<<<<< HEAD
+=======
 			"hair_base_bobcut",
+>>>>>>> 5d4c66bd2508ea1ae17cfbf6dcde59fe33f18c12
 			"hair_base_parting",
 			"hair_base_straight",
 			"hair_base_undercut",
@@ -2087,6 +2091,15 @@ const PARTS = {
 		},
 		"zones": [0],
 	},
+	"hair_base_bobcut": {
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "hair_base_bobcut",
+			"hairs_fringe": "hair_fringe_bobcut",
+		},
+		"zones": [0],
+	},
 	"hair_base_braids": {
 		"folders": ["04_hairs_base"],
 		"group": "hair",
@@ -2131,6 +2144,8 @@ const PARTS = {
 		"zones": [0],
 	},
 	"hair_base_hime": {
+<<<<<<< HEAD
+=======
 		"folders": ["04_hairs_base"],
 		"group": "hair",
 		"slots": {
@@ -2140,10 +2155,11 @@ const PARTS = {
 		"zones": [0],
 	},
 	"hair_base_bobcut": {
+>>>>>>> 5d4c66bd2508ea1ae17cfbf6dcde59fe33f18c12
 		"folders": ["04_hairs_base"],
 		"group": "hair",
 		"slots": {
-			"hairs_base": "hair_base_bobcut",
+			"hairs_base": "hair_base_hime",
 			"hairs_fringe": "hair_fringe_bobcut",
 		},
 		"zones": [0],

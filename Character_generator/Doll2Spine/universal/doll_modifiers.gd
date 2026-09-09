@@ -443,12 +443,28 @@ const LAYER_MODIFIERS = {
 		# Spine bones extend along local X. In this rig that is the visible strand
 		# length even though the finished hair grows vertically on screen.
 		"axis": "x",
+<<<<<<< HEAD
+		# These two cuts need their hair3 controls to grow in thickness as well as
+		# length.  Every other cut keeps the ordinary X-only factor; changing the
+		# selection therefore restores local Y to its authored scale immediately.
+		"conditional_axis": {
+			"selection_group": "hair",
+			"parts": ["hair_base_fringe", "hair_base_fringe_2"],
+			"axis": "both",
+		},
+		# Only the shortening half of the slider turns the side strands inward.
+		# At the rest value and throughout the growth half the turn is exactly zero.
+		"conditional_turn": {
+			"selection_group": "hair",
+			"parts": ["hair_base_fringe", "hair_base_fringe_2"],
+=======
 		# These two cuts close towards the centre when shortened and open when
 		# lengthened.  The renderer applies the turn only to this layer's pose, so
 		# hair4 remains at its authored rotation for every other base hairstyle.
 		"conditional_turn": {
 			"selection_group": "hair",
 			"parts": ["hair_base_fringe1", "hair_base_fringe2"],
+>>>>>>> 5d4c66bd2508ea1ae17cfbf6dcde59fe33f18c12
 			"degrees": 10.0,
 			"bones": {"hair4_r": 1.0, "hair4_l": -1.0},
 		},
@@ -589,17 +605,23 @@ static func step_factor(modifier_id, step_name):
 # {slot name: {bone: Vector2}} for the layers that are off their default length.
 # A slot missing from the result is posed by the ordinary skeleton, so a doll with
 # every slider at rest costs no extra work at all.
-static func layer_factors(values, parents = {}, contract_id = DEFAULT_CONTRACT):
+static func layer_factors(values, parents = {}, contract_id = DEFAULT_CONTRACT, selections = {}):
 	var result = {}
 	for modifier_id in LAYER_MODIFIERS.keys():
 		var modifier = LAYER_MODIFIERS[modifier_id]
 		var value = float(values.get(modifier_id, modifier.range.default))
 		if value == modifier.range.default:
 			continue
+		var axis = str(modifier.get("axis", "both"))
+		if modifier.has("conditional_axis"):
+			var condition = modifier.conditional_axis
+			var selected = str(selections.get(str(condition.get("selection_group", "")), ""))
+			if selected in condition.get("parts", []):
+				axis = str(condition.get("axis", axis))
 		var factor = Vector2(value, value)
-		if modifier.get("axis", "both") == "x":
+		if axis == "x":
 			factor = Vector2(value, 1.0)
-		elif modifier.get("axis", "both") == "y":
+		elif axis == "y":
 			factor = Vector2(1.0, value)
 		var factors = {}
 		var affected = []
@@ -625,16 +647,39 @@ static func layer_factors(values, parents = {}, contract_id = DEFAULT_CONTRACT):
 	return result
 
 
+<<<<<<< HEAD
+# {slot name: {bone: degrees}} for conditional turns driven by layer sliders.
+# Turns are deliberately one-sided: they fade from their maximum at the slider
+# minimum to zero at the rest value, and never continue into the growth half.
+=======
 # Local rotation offsets for a particular independently solved hair layer.
 # A short fringe turns right counter-clockwise and left clockwise; a long one
 # reverses both.  The value is measured independently on either side of rest so
 # asymmetric slider ranges still reach the authored number at both ends.
+>>>>>>> 5d4c66bd2508ea1ae17cfbf6dcde59fe33f18c12
 static func layer_turns(slot_name, values, selections, contract_id = DEFAULT_CONTRACT):
 	var result = {}
 	for modifier_id in LAYER_MODIFIERS.keys():
 		var modifier = LAYER_MODIFIERS[modifier_id]
 		if !(slot_name in modifier.get("slots", [])) or !modifier.has("conditional_turn"):
 			continue
+<<<<<<< HEAD
+		var condition = modifier.conditional_turn
+		var selected = str(selections.get(str(condition.get("selection_group", "")), ""))
+		if !(selected in condition.get("parts", [])):
+			continue
+		var rest = float(modifier.range.default)
+		var value = float(values.get(modifier_id, rest))
+		if value >= rest:
+			continue
+		var minimum = float(modifier.range.minimum)
+		var amount = clamp((rest - value) / max(rest - minimum, 0.0001), 0.0, 1.0)
+		var degrees = float(condition.get("degrees", 0.0)) * amount
+		for bone_name in condition.get("bones", {}).keys():
+			var rig_name = rig_bone(bone_name, contract_id)
+			if rig_name != "" and rig_name in contract_bones(contract_id):
+				result[rig_name] = degrees * float(condition.bones[bone_name])
+=======
 		var turn = modifier.conditional_turn
 		var selected = str(selections.get(str(turn.get("selection_group", "")), ""))
 		if !(selected in turn.get("parts", [])):
@@ -656,6 +701,7 @@ static func layer_turns(slot_name, values, selections, contract_id = DEFAULT_CON
 				result[rig_name] = amount * float(turn.bones[bone_name])
 			else:
 				push_warning("Doll2 modifiers: unknown turn bone `%s` in contract %s" % [bone_name, contract_id])
+>>>>>>> 5d4c66bd2508ea1ae17cfbf6dcde59fe33f18c12
 	return result
 
 
