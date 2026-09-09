@@ -2533,12 +2533,8 @@ func _on_select_changed(_item_index, group_id, select):
 	_refresh_all_bindings()
 	_refresh_zone_pickers()
 	# Layer poses depend on the selected cut as well as the slider value.  Re-solve
-<<<<<<< HEAD
 	# before rebuilding so leaving the two fringe cuts cannot retain their
 	# second scale axis.
-=======
-	# before rebuilding so leaving fringe1/2 cannot retain their conditional turn.
->>>>>>> 5d4c66bd2508ea1ae17cfbf6dcde59fe33f18c12
 	if group_id == "hair":
 		_solve_pose()
 	_rebuild_and_watch_the_chest()
