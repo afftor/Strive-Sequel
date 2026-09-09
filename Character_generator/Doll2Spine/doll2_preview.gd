@@ -703,7 +703,7 @@ func _load_source():
 func _solve_pose():
 	layer_poses.clear()
 	skipped_layers.clear()
-	var layers = MODIFIERS.layer_factors(proportions, _bone_parents(), contract.CONTRACT_ID)
+	var layers = MODIFIERS.layer_factors(proportions, _bone_parents(), contract.CONTRACT_ID, selections)
 	var drawn = _drawn_slot_names()
 	var wanted = []
 	for slot_name in layers.keys():
@@ -2533,7 +2533,8 @@ func _on_select_changed(_item_index, group_id, select):
 	_refresh_all_bindings()
 	_refresh_zone_pickers()
 	# Layer poses depend on the selected cut as well as the slider value.  Re-solve
-	# before rebuilding so leaving fringe1/2 cannot retain their conditional turn.
+	# before rebuilding so leaving the two fringe cuts cannot retain their
+	# second scale axis.
 	if group_id == "hair":
 		_solve_pose()
 	_rebuild_and_watch_the_chest()
