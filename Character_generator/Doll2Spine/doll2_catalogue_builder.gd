@@ -1410,7 +1410,9 @@ func _emit(catalogue):
 	var keys = ["SCHEMA_VERSION", "SOURCE", "SLOT_ORDER", "DRAW_ORDER", "DRAW_ORDER_FIXES", "GROUP_ORDER", "AXES", "FIXED_SLOTS", "COLOR_CHANNELS", "SLOT_COLORS", "ZONE_HUES", "ZONE_DISTANCE", "ZONE_DEFAULTS", "GROUPS", "PARTS", "PRESETS", "ALIASES", "UNCATEGORIZED"]
 	for key in keys:
 		text += "const %s = %s\n\n" % [key, _literal(catalogue[key], 0)]
-	return text
+	# Keep exactly one newline at EOF.  Two make every regenerated catalogue
+	# fail `git diff --check` with "new blank line at EOF".
+	return text.substr(0, text.length() - 1)
 
 
 func _literal(value, indent):
