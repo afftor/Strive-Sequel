@@ -311,6 +311,11 @@ static func compose(selections, axis_values):
 	if has_tag(str(selections.get("body", "")), "beastkin"):
 		result.erase("equip_hand_left")
 		result.erase("equip_hand_right")
+	# A nipple piercing belongs under the breast clothing, never over it. Test
+	# the composed slot rather than the outfit selection: not every outfit has a
+	# breast piece for every size.
+	if result.has("equip_breasts"):
+		result.erase("piercing_nipple_1_0")
 	return result
 
 

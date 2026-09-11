@@ -139,7 +139,7 @@ mouse_filter = 2
 custom_constants/separation = 4
 
 [node name="dressed" type="Button" parent="UndressLevels"]
-margin_right = 116.0
+margin_right = 150.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
@@ -158,7 +158,7 @@ clip_text = true
 
 [node name="underwear" type="Button" parent="UndressLevels"]
 margin_top = 32.0
-margin_right = 116.0
+margin_right = 150.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
@@ -177,7 +177,7 @@ clip_text = true
 
 [node name="bare" type="Button" parent="UndressLevels"]
 margin_top = 64.0
-margin_right = 116.0
+margin_right = 150.0
 margin_bottom = 92.0
 rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
@@ -196,7 +196,7 @@ clip_text = true
 
 [node name="naked" type="Button" parent="UndressLevels"]
 margin_top = 96.0
-margin_right = 116.0
+margin_right = 150.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )

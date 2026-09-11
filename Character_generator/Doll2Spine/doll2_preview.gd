@@ -27,41 +27,10 @@ const ANIMATION_LABELS = {
 	"idle": "DOLL2_PREVIEW_ANIMATION_IDLE",
 	"eyesmove": "DOLL2_PREVIEW_ANIMATION_EYES",
 }
-# The chest swings when it is poked and when its size changes.  Both halves of
-# it are the old paperdoll's: these four numbers are what `ragdoll_builder.gd`
-# ran, down to the decay, and the shape below is its shader's.
-#     wave = sin(t * TAU * FREQ) * SHIFT * power * exp(-t * DECAY)
-const TITS_JIGGLE_TIME = 0.9
-const TITS_JIGGLE_FREQ = 3.4
-const TITS_JIGGLE_DECAY = 4.0
-const TITS_JIGGLE_SHIFT = 16.0 # pixels the nipple travels on the first swing
-# The deformation is the old paperdoll's, formula for formula.  Its shader ran
-#     dist = length(VERTEX - anchor)
-#     if (dist < range) offset += move * (range - dist) * power / range
-# per anchor, and the jiggle drove two of them - one per breast - with `move`
-# straight down.  So a vertex is pulled hardest at the anchor and not at all
-# past `range`, falling off in a straight line between the two, and the pulls
-# from both breasts add up where they overlap.  That is what makes the weight
-# sit low and central instead of the whole shape growing.
-const TITS_JIGGLE_RANGE = 110.0 # the old doll's radius, in pixels of art canvas
-# The one thing the old shader did not do: hold the top edge.  Its anchors were
-# placed by hand so the falloff had died before the chest, and ours are read off
-# the nipples, so without this the whole breast - the join included - rides up
-# and down with the wave.  The pull fades in over the top of the breast instead.
-# Nothing moves in the top sixth, everything moves in the bottom quarter, and
-# the pull eases in between the two rather than ramping straight up - a linear
-# ramp still left the join travelling a few pixels.
-const TITS_HOLD_FROM = 0.18 # depth where the breast starts to answer at all
-const TITS_HOLD_TO = 0.78 # depth from which it answers in full
-# Slots that are a breast rather than something drawn on one.  A flat chest has
-# only the nipple mask, and a mask stretching by itself reads as a twitch, so a
-# doll with none of these does not swing at all.
-const TITS_BODY_SLOTS = ["breasts", "breasts_beastkin"]
-# Where the anchors are read from, when the doll is bare enough to show them.
-const TITS_NIPPLE_SLOTS = ["breast_nipples", "beastkin_pregnancy_nipple"]
+const TITJUMP_ANIMATION = "titjump"
 
-# Everything drawn on the chest, so the nipples and the clothes over them swing
-# with the breast instead of sliding off it.
+# Slots used only to decide whether a click landed on the chest. The motion
+# itself comes entirely from the authored titjump animation.
 const TITS_SLOTS = ["breasts", "breast_nipples", "equip_breasts",
 	"breasts_beastkin", "breasts_beastkin_pregnancy", "beastkin_pregnancy_nipple",
 	"breasts_beastkin_many"]
@@ -84,13 +53,6 @@ const SAY_LIPS_SLOT = "lips_say"
 const SAY_DEFAULT_LIPS_PART = "lips_s2"
 const SAY_ORC_LIPS_PART = "lips_s_orc"
 const SAY_ORC_LIPS_PREFIX = "lips_orc"
-
-var _jiggle_time = -1.0
-var _jiggle_power = 1.0
-var _jiggle_meshes = [] # what is drawn on the chest, and how it rests
-var _jiggle_pivot = Vector2.ZERO # the top of the breast: the stretch hangs here
-var _jiggle_height = 1.0
-var _jiggle_anchors = [] # one per breast, where the pull is hardest
 
 const ZOOM_MIN = 0.4
 const ZOOM_MAX = 4.0
@@ -200,7 +162,8 @@ var animation_signature = 0
 var animation_times = {}
 var animation_durations = {}
 # What the running animations do to the bones they key, as {bone: [x, y,
-# rotation]} - the local values before any modifier has touched them.  A solve
+# rotation, scale_x, scale_y]} - the local values before any modifier has
+# touched them. A solve
 # runs the whole skeleton once per hair layer plus once more, and every one of
 # those passes used to sample the same 151 keyed timelines at the same instant:
 # four identical passes for one frame, 6 ms each.  The sample is taken once and
@@ -286,7 +249,10 @@ func _process(delta):
 	# animations that gets a share of this frame
 	_advance_blink(delta)
 	var pose_changed = _advance_pushables(delta)
+	pose_changed = _advance_titjump(delta) or pose_changed
 	for animation_name in animation_states.keys():
+		if animation_name == TITJUMP_ANIMATION:
+			continue
 		if animation_states[animation_name]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
 			animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
@@ -298,9 +264,31 @@ func _process(delta):
 			_rebuild_model()
 		else:
 			_update_animated_pose()
-	# After the pose, never before it: an animated frame rewrites the very
-	# points the swing is bending, so bending them first would be undone.
-	_advance_jiggle(delta)
+
+
+# The authored breast take is an overlay and runs once. It is kept out of the
+# ordinary animation loop above, which deliberately wraps poses with fmod().
+func _advance_titjump(delta):
+	if !bool(animation_states.get(TITJUMP_ANIMATION, false)):
+		return false
+	var duration = float(animation_durations.get(TITJUMP_ANIMATION, 0.0))
+	var next_time = float(animation_times.get(TITJUMP_ANIMATION, 0.0)) + delta
+	if duration <= 0.0 or next_time >= duration:
+		animation_states[TITJUMP_ANIMATION] = false
+		animation_times[TITJUMP_ANIMATION] = 0.0
+	else:
+		animation_times[TITJUMP_ANIMATION] = next_time
+	bone_sample_key = ""
+	return true
+
+
+func play_titjump():
+	if !animation_states.has(TITJUMP_ANIMATION):
+		return
+	animation_times[TITJUMP_ANIMATION] = 0.0
+	animation_states[TITJUMP_ANIMATION] = true
+	bone_sample_key = ""
+	set_process(true)
 
 
 # Whether the doll blinks by itself.  Turned on beside the idle and off with it.
@@ -497,162 +485,7 @@ func _rebuild_and_watch_the_chest():
 	var was_covered = chest_is_covered()
 	_rebuild_model()
 	if chest_is_covered() != was_covered:
-		jiggle_tits()
-
-
-# A swing of the chest.  `power` scales the first one.
-func jiggle_tits(power = 1.0):
-	stop_tits_jiggle()
-	var has_a_breast = false
-	for record in mesh_records:
-		if !is_instance_valid(record.polygon):
-			continue
-		var slot_name = str(record.slot.get("name", ""))
-		if !(slot_name in TITS_SLOTS):
-			continue
-		if slot_name in TITS_BODY_SLOTS:
-			has_a_breast = true
-		var box = _polygon_bounds(record.polygon)
-		if box.size.y <= 0.0:
-			continue
-		if slot_name in TITS_BODY_SLOTS:
-			# the breast decides where the middle is, which is how the two anchors
-			# are told apart
-			_jiggle_pivot = Vector2(box.position.x + box.size.x * 0.5, box.position.y)
-			_jiggle_height = box.size.y
-		_jiggle_meshes.append({"polygon": record.polygon, "rest": record.polygon.polygon})
-	if !has_a_breast or _jiggle_meshes.empty() or _jiggle_height <= 0.0:
-		# a flat chest, a male rig, or a nipple mask with nothing under it
-		_jiggle_meshes = []
-		return
-	# Every vertex on the chest is weighed against the same two anchors rather
-	# than against its own mesh: that is what keeps the nipples and the clothing
-	# moving with the breast under them.
-	_find_jiggle_anchors()
-	if _jiggle_anchors.empty():
-		_jiggle_meshes = []
-		return
-	var strongest = 0.0
-	for entry in _jiggle_meshes:
-		entry["offsets"] = _sag_offsets(entry.rest)
-		for offset in entry.offsets:
-			strongest = max(strongest, offset.y)
-	if strongest > 1.0:
-		# The two zones overlap and the shader added them up, so between the
-		# breasts the pull came to more than one and the chest travelled further
-		# than `SHIFT` says.  Dividing the whole chest by its strongest pull puts
-		# that number back in charge without changing the shape.
-		for entry in _jiggle_meshes:
-			var scaled = PoolVector2Array()
-			scaled.resize(entry.offsets.size())
-			for i in range(entry.offsets.size()):
-				scaled[i] = entry.offsets[i] / strongest
-			entry["offsets"] = scaled
-	_jiggle_time = 0.0
-	_jiggle_power = clamp(power, 0.1, 2.0)
-	set_process(true)
-
-
-# How far each vertex travels on a full swing: down by how low and how central
-# it is, out to the side by how far off centre.  One swing is this times the
-# wave, so the shape of the sag never changes, only its size.
-# How far each vertex travels on a full swing, by the old shader's rule: the
-# linear falloff from each anchor, added together.  A swing is this times the
-# wave, so the shape never changes - only how hard it is pulled.
-func _sag_offsets(points):
-	var result = PoolVector2Array()
-	result.resize(points.size())
-	for i in range(points.size()):
-		var pull = 0.0
-		for anchor in _jiggle_anchors:
-			var distance = points[i].distance_to(anchor)
-			if distance < TITS_JIGGLE_RANGE:
-				pull += (TITS_JIGGLE_RANGE - distance) / TITS_JIGGLE_RANGE
-		# nothing moves where the breast meets the chest; the pull eases in below
-		var depth = (points[i].y - _jiggle_pivot.y) / max(_jiggle_height, 1.0)
-		pull *= smoothstep(TITS_HOLD_FROM, TITS_HOLD_TO, depth)
-		result[i] = Vector2(0.0, pull)
-	return result
-
-
-# Where the old doll hung its two anchors: on the nipples, one per breast.  They
-# are read off the nipple mesh, split left and right about the breast's middle;
-# a doll whose nipples are hidden under gear falls back to the breast itself.
-func _find_jiggle_anchors():
-	_jiggle_anchors = []
-	var left = Vector2.ZERO
-	var right = Vector2.ZERO
-	var left_count = 0
-	var right_count = 0
-	for record in mesh_records:
-		if !is_instance_valid(record.polygon):
-			continue
-		var slot_name = str(record.slot.get("name", ""))
-		if !(slot_name in TITS_NIPPLE_SLOTS) and !(slot_name in TITS_BODY_SLOTS):
-			continue
-		var prefer_nipples = slot_name in TITS_NIPPLE_SLOTS
-		if !prefer_nipples and left_count + right_count > 0:
-			continue # the nipples were found already
-		for point in record.polygon.polygon:
-			if point.x < _jiggle_pivot.x:
-				left += point
-				left_count += 1
-			else:
-				right += point
-				right_count += 1
-		if prefer_nipples:
-			break
-	if left_count > 0:
-		_jiggle_anchors.append(left / left_count)
-	if right_count > 0:
-		_jiggle_anchors.append(right / right_count)
-
-
-func _polygon_bounds(polygon):
-	var minimum = Vector2(1e9, 1e9)
-	var maximum = Vector2(-1e9, -1e9)
-	for point in polygon.polygon:
-		minimum.x = min(minimum.x, point.x)
-		minimum.y = min(minimum.y, point.y)
-		maximum.x = max(maximum.x, point.x)
-		maximum.y = max(maximum.y, point.y)
-	if minimum.x > maximum.x:
-		return Rect2()
-	return Rect2(minimum, maximum - minimum)
-
-
-# Everything back where it rests.  The mesh nodes do not survive a rebuild, so
-# this runs before one rather than after.
-func stop_tits_jiggle():
-	for entry in _jiggle_meshes:
-		if is_instance_valid(entry.polygon):
-			entry.polygon.polygon = entry.rest
-	_jiggle_meshes = []
-	_jiggle_time = -1.0
-
-
-# One frame of the swing: a sine that dies away, moving the chest meshes and
-# nothing else.  Returns false when there is nothing left to do.
-func _advance_jiggle(delta):
-	if _jiggle_meshes.empty():
-		return false
-	_jiggle_time += delta
-	if _jiggle_time >= TITS_JIGGLE_TIME:
-		stop_tits_jiggle()
-		return false
-	var wave = sin(_jiggle_time * TAU * TITS_JIGGLE_FREQ) * TITS_JIGGLE_SHIFT * _jiggle_power
-	wave *= exp(-_jiggle_time * TITS_JIGGLE_DECAY)
-	for entry in _jiggle_meshes:
-		if !is_instance_valid(entry.polygon):
-			continue
-		var rest = entry.rest
-		var offsets = entry.offsets
-		var points = PoolVector2Array()
-		points.resize(rest.size())
-		for i in range(rest.size()):
-			points[i] = rest[i] + offsets[i] * wave
-		entry.polygon.polygon = points
-	return true
+		play_titjump()
 
 
 func _load_source():
@@ -1002,7 +835,7 @@ func _apply_active_bone_timelines():
 		var bone = bones[name]
 		_set_bone_world(
 			name, values[0], values[1], values[2],
-			float(bone.local_scale_x), float(bone.local_scale_y),
+			values[3], values[4],
 			float(bone.local_shear_x), float(bone.local_shear_y)
 		)
 	_resolve_bone_hierarchy()
@@ -1028,7 +861,13 @@ func _sampled_bone_timelines():
 	bone_sample = {}
 	if key == "":
 		return bone_sample
-	for animation_name in animation_states.keys():
+	var animation_names = animation_states.keys()
+	# titjump is an authored overlay on the current pose. Apply it last so its
+	# nipple-bone keys cannot be overwritten by the looping idle pose.
+	if bool(animation_states.get(TITJUMP_ANIMATION, false)):
+		animation_names.erase(TITJUMP_ANIMATION)
+		animation_names.append(TITJUMP_ANIMATION)
+	for animation_name in animation_names:
 		if !animation_states[animation_name]:
 			continue
 		var animation = skeleton.get("animations", {}).get(animation_name, {})
@@ -1041,6 +880,8 @@ func _sampled_bone_timelines():
 			var x = float(definition.get("x", 0.0))
 			var y = float(definition.get("y", 0.0))
 			var rotation = float(definition.get("rotation", 0.0))
+			var scale_x = float(definition.get("scaleX", 1.0))
+			var scale_y = float(definition.get("scaleY", 1.0))
 			var channels = bone_timelines[name]
 			if channels.has("translate"):
 				var translation = _sample_timeline(channels.translate, time, ["x", "y"])
@@ -1049,16 +890,20 @@ func _sampled_bone_timelines():
 			if channels.has("rotate"):
 				var turn = _sample_timeline(channels.rotate, time, ["value"])
 				rotation += float(turn.get("value", 0.0))
+			if channels.has("scale"):
+				var scale = _sample_timeline(channels.scale, time, ["x", "y"], 1.0)
+				scale_x *= float(scale.get("x", 1.0))
+				scale_y *= float(scale.get("y", 1.0))
 			# A bone two animations both key is written by the later one, which is
 			# what the pass this replaced did as well.
-			bone_sample[name] = [x, y, rotation]
+			bone_sample[name] = [x, y, rotation, scale_x, scale_y]
 	return bone_sample
 
 
-func _sample_timeline(frames, time, fields):
+func _sample_timeline(frames, time, fields, default_value = 0.0):
 	var result = {}
 	for field in fields:
-		result[field] = 0.0
+		result[field] = default_value
 	if frames.empty():
 		return result
 	var current = frames[0]
@@ -1072,18 +917,18 @@ func _sample_timeline(frames, time, fields):
 			break
 	for field_index in range(fields.size()):
 		var field = fields[field_index]
-		result[field] = _sample_curve_value(current, next, time, field, field_index)
+		result[field] = _sample_curve_value(current, next, time, field, field_index, default_value)
 	return result
 
 
 # Spine 4.2 stores cubic control points as absolute time/value pairs. Translate
 # timelines contain one group of four numbers per field, so X and Y can use
 # different easing curves instead of sharing a linear percentage.
-func _sample_curve_value(current, next, time, field, field_index):
-	var first_value = float(current.get(field, 0.0))
+func _sample_curve_value(current, next, time, field, field_index, default_value = 0.0):
+	var first_value = float(current.get(field, default_value))
 	if next == null:
 		return first_value
-	var second_value = float(next.get(field, 0.0))
+	var second_value = float(next.get(field, default_value))
 	var start_time = float(current.get("time", 0.0))
 	var end_time = float(next.get("time", start_time))
 	var curve = current.get("curve", "")
@@ -1766,7 +1611,7 @@ func _build_interface():
 	# later export shows up on its own instead of being invisible until someone
 	# remembers to add a line.
 	for animation_name in _sorted_animations():
-		if animation_name == BLINK_ANIMATION:
+		if animation_name == BLINK_ANIMATION or animation_name == TITJUMP_ANIMATION:
 			continue # the blink runs it on its own timer, see the toggle below
 		_add_animation_toggle(box, ANIMATION_LABELS.get(animation_name, ""), animation_name)
 	var blink_toggle = CheckButton.new()
@@ -2504,7 +2349,7 @@ func _on_proportion_changed(value, key):
 	# Bone scales feed the solver, so the pose has to be worked out again.
 	_update_animated_pose()
 	if key == "breast_scale":
-		jiggle_tits()
+		play_titjump()
 
 
 func _update_proportion_label(key):
@@ -2600,7 +2445,7 @@ func _poke_tits(screen_point):
 		return false
 	if !box.has_point(_to_doll_space(to_local(screen_point))):
 		return false
-	jiggle_tits()
+	play_titjump()
 	return true
 
 
@@ -2653,7 +2498,7 @@ func _on_axis_changed(_item_index, axis, select):
 	# The size just changed under the player's eyes; the chest reacts to that
 	# here the same way it does in character creation.
 	if str(axis) == "tits_size":
-		jiggle_tits()
+		play_titjump()
 
 
 func _on_preset_selected(_item_index, select):

@@ -395,6 +395,7 @@ func _build_parts(records, slot_order):
 	var parts = {}
 	_build_option_parts(option_records, parts)
 	_build_set_parts(set_records, parts)
+	_build_part_variants(parts)
 	# Carried into the catalogue so the doll can see it without the overrides.
 	# The list is shared by both rigs and they do not hold the same sets - the
 	# maid dress is the male doll's `outfit_servant` - so a name this doll has
@@ -618,6 +619,10 @@ func _build_option_parts(option_records, parts):
 	for group_id in group_ids:
 		var records = option_records[group_id]
 		records.sort_custom(self, "_sort_records")
+		var axis_pattern = str(_overrides.get("OPTION_AXIS_GROUPS", {}).get(group_id, ""))
+		if !axis_pattern.empty():
+			_build_axis_option_parts(group_id, records, axis_pattern, parts)
+			continue
 		for record in records:
 			# Art paths can retain an old filename after the attachment has been
 			# renamed in Spine.  Keep the physical path for atlas lookup, but let the
@@ -639,6 +644,57 @@ func _build_option_parts(option_records, parts):
 			for slot_name in paired.keys():
 				slots[slot_name] = paired[slot_name]
 			parts[part_id] = _part_entry(part_id, group_id, str(_overrides.DISPLAY.get(part_id, _title(semantic_base))), [record.folder], folder_entry.get("tags", []), slots, {})
+
+
+# Several pictures can be one option when the last token is not a style but an
+# axis value. Bucket those records by the name left after stripping the token,
+# then use the same checked axis builder as set parts.
+func _build_axis_option_parts(group_id, records, axis_pattern, parts):
+	var buckets = {}
+	for record in records:
+		var semantic_base = str(_overrides.get("PART_ID_OVERRIDES", {}).get(record.base, record.base))
+		var style = _style_key(semantic_base, axis_pattern)
+		var part_id = _sanitize(style)
+		if !buckets.has(part_id):
+			buckets[part_id] = {"group": group_id, "folders": {}, "slots": {}}
+		var source = buckets[part_id]
+		source.folders[record.folder] = true
+		if !source.slots.has(record.slot):
+			source.slots[record.slot] = []
+		source.slots[record.slot].append(record)
+	var part_ids = buckets.keys()
+	part_ids.sort()
+	for part_id in part_ids:
+		if parts.has(part_id):
+			_problem("axis option part id %s is already in use" % part_id)
+			continue
+		parts[part_id] = _make_set_part(part_id, buckets[part_id], buckets[part_id].slots)
+
+
+# Creates an additional selectable choice from an already generated part while
+# replacing only the slots named by the override. This is useful when several
+# UI choices share one base attachment but deliberately use different companion
+# art, such as two fringe combinations of the same hairstyle.
+func _build_part_variants(parts):
+	var variant_ids = _overrides.get("PART_VARIANTS", {}).keys()
+	variant_ids.sort()
+	for variant_id in variant_ids:
+		var definition = _overrides.PART_VARIANTS[variant_id]
+		var source_id = str(definition.get("source", ""))
+		if !parts.has(source_id):
+			_problem("PART_VARIANTS[%s]: source part `%s` does not exist" % [variant_id, source_id])
+			continue
+		if parts.has(variant_id):
+			_problem("PART_VARIANTS[%s]: part id is already in use" % variant_id)
+			continue
+		var variant = parts[source_id].duplicate(true)
+		if definition.has("display"):
+			variant["display"] = str(definition.display)
+		for slot_name in definition.get("slots", {}).keys():
+			var assignment = _explicit_slot(str(variant_id), str(slot_name), definition.slots[slot_name], [])
+			if !assignment.empty():
+				variant.slots[slot_name] = assignment.value
+		parts[variant_id] = variant
 
 
 func _companion_slots(group_id, record):
@@ -1599,7 +1655,9 @@ func _sort_records(first, second):
 func _sort_by_order(group_ids, groups):
 	var keyed = []
 	for group_id in group_ids:
-		keyed.append("%04d_%s" % [int(groups[group_id].order), group_id])
+		# Millisteps leave room for a doll-specific group between two shared
+		# controls without renumbering every group in both rigs.
+		keyed.append("%08d_%s" % [int(round(float(groups[group_id].order) * 1000.0)), group_id])
 	keyed.sort()
 	var result = []
 	for entry in keyed:

@@ -9,12 +9,12 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 698,
-	"bone_count": 271,
+	"attachment_count": 719,
+	"bone_count": 272,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "BUM8IZPlCEE",
-	"slot_count": 79,
+	"skeleton_hash": "wxFdVlIDrNE",
+	"slot_count": 81,
 	"spine_version": "4.2.43",
 }
 
@@ -70,6 +70,7 @@ const SLOT_ORDER = [
 	"breasts_beastkin_pregnancy",
 	"beastkin_pregnancy_nipple",
 	"tatoos",
+	"piercing_belly",
 	"dick",
 	"equip_pregnancy_low",
 	"equip_pregnancy_up",
@@ -77,6 +78,7 @@ const SLOT_ORDER = [
 	"breasts",
 	"breasts_beastkin",
 	"breast_nipples",
+	"piercing_nipple_1_0",
 	"race_torso",
 	"equip_breasts",
 	"hairs_assist",
@@ -154,12 +156,14 @@ const DRAW_ORDER = [
 	"pregnancy_belly",
 	"breasts_beastkin_pregnancy",
 	"beastkin_pregnancy_nipple",
+	"piercing_belly",
 	"equip_pregnancy_low",
 	"equip_pregnancy_up",
 	"weapon_belt",
 	"breasts",
 	"breasts_beastkin",
 	"breast_nipples",
+	"piercing_nipple_1_0",
 	"equip_breasts",
 	"hairs_assist",
 	"head_skull",
@@ -231,6 +235,8 @@ const GROUP_ORDER = [
 	"face_markings",
 	"genitals",
 	"tattoo",
+	"piercing_belly",
+	"piercing_nipple",
 	"outfit",
 	"outfit_legs",
 	"outfit_hands",
@@ -827,6 +833,7 @@ const GROUPS = {
 			"hair_base_braids",
 			"hair_base_default",
 			"hair_base_disheveled",
+			"hair_base_disheveled_eyehide",
 			"hair_base_fringe",
 			"hair_base_fringe_2",
 			"hair_base_hime",
@@ -1076,6 +1083,24 @@ const GROUPS = {
 		],
 		"slots": ["equip_leg_left", "equip_leg_right", "equip_pelvis", "equip_pregnancy_low"],
 	},
+	"piercing_belly": {
+		"default": "",
+		"kind": "options",
+		"label": "Belly piercing",
+		"optional": true,
+		"order": 19.4,
+		"parts": ["piercing_belly_1", "piercing_belly_2", "piercing_belly_3"],
+		"slots": ["piercing_belly"],
+	},
+	"piercing_nipple": {
+		"default": "",
+		"kind": "options",
+		"label": "Nipple piercing",
+		"optional": true,
+		"order": 19.5,
+		"parts": ["piercing_nipple_1", "piercing_nipple_2", "piercing_nipple_3"],
+		"slots": ["piercing_nipple_1_0"],
+	},
 	"race_overlay": {
 		"default": "",
 		"kind": "set",
@@ -1202,6 +1227,7 @@ const PARTS = {
 			"dick": "dick_furry_up",
 			"testicle": "testicle_furry",
 		},
+		"zones": [0],
 	},
 	"Dick_horse_up": {
 		"folders": ["13_dicks"],
@@ -1210,6 +1236,7 @@ const PARTS = {
 			"dick": "dick_horse_up__body_female_beastkin",
 			"testicle": "testicle_furry",
 		},
+		"zones": [0],
 	},
 	"Dick_human_up": {
 		"folders": ["13_dicks"],
@@ -1575,7 +1602,7 @@ const PARTS = {
 	"body_female_beastkin": {
 		"display": "Female beastkin body",
 		"extra_options": {
-			"breast_nipples": ["beastkin_nipples_large"],
+			"breast_nipples": ["15_beastkin_body_nude/beastkin_torso_nipples_mask"],
 			"breasts_beastkin": ["beastkin_tits1"],
 		},
 		"folders": ["15_beastkin_body_nude"],
@@ -1604,9 +1631,9 @@ const PARTS = {
 				"axis": "tits_size",
 				"options": {
 					"big": "beastkin_tits_nipples_big",
-					"large": "beastkin_tits_nipples_large",
+					"large": "beastkin_nipples_large",
 					"normal": "beastkin_tits_nipples",
-					"small": "beastkin_tits_nipples_small__body_female_beastkin",
+					"small": "beastkin_tits_nipples_small__2",
 				},
 			},
 			"breasts_beastkin": {
@@ -2174,6 +2201,16 @@ const PARTS = {
 		"slots": {
 			"hairs_base": "04_hairs_base/hair_base_disheveled",
 			"hairs_fringe": "04_hairs_fringe/hair_fringe_disheveled",
+		},
+		"zones": [0],
+	},
+	"hair_base_disheveled_eyehide": {
+		"display": "Hair base disheveled (eyehide)",
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "04_hairs_base/hair_base_disheveled",
+			"hairs_fringe": "04_hairs_fringe/hair_fringe_eyehide",
 		},
 		"zones": [0],
 	},
@@ -4140,6 +4177,97 @@ const PARTS = {
 		},
 		"zones": [0, 1],
 	},
+	"piercing_belly_1": {
+		"folders": ["97_piercing"],
+		"group": "piercing_belly",
+		"slots": {
+			"piercing_belly": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "97_piercing/piercing_belly_1_2",
+					"mid": "97_piercing/piercing_belly_1_1",
+					"none": "97_piercing/piercing_belly_1_0",
+				},
+			},
+		},
+	},
+	"piercing_belly_2": {
+		"folders": ["97_piercing"],
+		"group": "piercing_belly",
+		"slots": {
+			"piercing_belly": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "97_piercing/piercing_belly_2_2",
+					"mid": "97_piercing/piercing_belly_2_1",
+					"none": "97_piercing/piercing_belly_2_0",
+				},
+			},
+		},
+	},
+	"piercing_belly_3": {
+		"folders": ["97_piercing"],
+		"group": "piercing_belly",
+		"slots": {
+			"piercing_belly": {
+				"axis": "pregnancy",
+				"options": {
+					"big": "97_piercing/piercing_belly_3_2",
+					"mid": "97_piercing/piercing_belly_3_1",
+					"none": "97_piercing/piercing_belly_3_0",
+				},
+			},
+		},
+	},
+	"piercing_nipple_1": {
+		"folders": ["97_piercing"],
+		"group": "piercing_nipple",
+		"slots": {
+			"piercing_nipple_1_0": {
+				"axis": "tits_size",
+				"options": {
+					"big": "97_piercing/piercing_nipple_1_4",
+					"flat": "97_piercing/piercing_nipple_1_0",
+					"large": "97_piercing/piercing_nipple_1_3",
+					"normal": "97_piercing/piercing_nipple_1_2",
+					"small": "97_piercing/piercing_nipple_1_1",
+				},
+			},
+		},
+	},
+	"piercing_nipple_2": {
+		"folders": ["97_piercing"],
+		"group": "piercing_nipple",
+		"slots": {
+			"piercing_nipple_1_0": {
+				"axis": "tits_size",
+				"options": {
+					"big": "97_piercing/piercing_nipple_2_4",
+					"flat": "97_piercing/piercing_nipple_2_0",
+					"large": "97_piercing/piercing_nipple_2_3",
+					"normal": "97_piercing/piercing_nipple_2_2",
+					"small": "97_piercing/piercing_nipple_2_1",
+				},
+			},
+		},
+		"zones": [1],
+	},
+	"piercing_nipple_3": {
+		"folders": ["97_piercing"],
+		"group": "piercing_nipple",
+		"slots": {
+			"piercing_nipple_1_0": {
+				"axis": "tits_size",
+				"options": {
+					"big": "97_piercing/piercing_nipple_3_4",
+					"flat": "97_piercing/piercing_nipple_3_0",
+					"large": "97_piercing/piercing_nipple_3_3",
+					"normal": "97_piercing/piercing_nipple_3_2",
+					"small": "97_piercing/piercing_nipple_3_1",
+				},
+			},
+		},
+	},
 	"pigtails": {
 		"folders": ["05_hairs_assist"],
 		"group": "hair_assist",
@@ -4712,12 +4840,6 @@ const PRESETS = {
 }
 
 const ALIASES = {
-	"breast_nipples": {
-		"beastkin_tits_nipples__body_female_beastkin": "beastkin_tits_nipples",
-		"beastkin_tits_nipples_big__body_female_beastkin": "beastkin_tits_nipples_big",
-		"beastkin_tits_nipples_small": "tits_nipples_normal",
-		"beastkin_tits_nipples_small__2": "beastkin_tits_nipples_small__body_female_beastkin",
-	},
 	"dick": {
 		"dick_furry_up__body_female_beastkin": "dick_furry_up",
 		"dick_human_up": "dick_horse_up",

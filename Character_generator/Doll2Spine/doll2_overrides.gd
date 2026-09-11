@@ -24,6 +24,14 @@ extends Reference
 
 const SHARED = preload("res://Character_generator/Doll2Spine/doll2_overrides_shared.gd")
 
+# Piercing is female-only in the current exports. Belly and nipple piercings
+# are separate optional pickers, so one style from each group can be active at
+# the same time. Each part selects its authored mesh from its matching size axis.
+const GROUP_DEFS = {
+	"piercing_belly": {"kind": "options", "optional": true, "order": 19.4, "label": "Belly piercing"},
+	"piercing_nipple": {"kind": "options", "optional": true, "order": 19.5, "label": "Nipple piercing"},
+}
+
 # --------------------------------------------------------------- routing ----
 
 # The female bodies and the armour sets cut for them.
@@ -35,7 +43,6 @@ const FOLDER_MAP = {
 	"150_armory_acces_collars": {"group": "collar"},
 	"23_dragon_female": {"group": "race_overlay", "part": "race_dragon"},
 	"24_kobold_female": {"group": "race_overlay", "part": "race_kobold"},
-
 	"99_armory_set_maidu": {"group": "outfit", "part": "outfit_maid"},
 	"101_armory_set_cloth_female": {"group": "outfit", "part": "outfit_cloth"},
 	"101_armory_set_cloth3_female": {"group": "outfit", "part": "outfit_cloth3"},
@@ -74,6 +81,8 @@ const AXES = {
 # attachment in that slot; a single attachment is always assigned directly.
 const SLOT_AXES = {
 	"belly": "belly_shape",
+	"piercing_belly": "pregnancy",
+	"piercing_nipple_1_0": "tits_size",
 	"breasts": "tits_size",
 	"breasts_beastkin": "tits_size",
 	"breast_nipples": "tits_size",
@@ -94,6 +103,34 @@ const SLOT_AXES = {
 # Exceptions the name parser cannot infer, keyed by slot and then by the source
 # art name (the last element of the attachment `path`).
 const AXIS_OVERRIDES = {
+	"piercing_belly": {
+		"piercing_belly_1_0": "none",
+		"piercing_belly_1_1": "mid",
+		"piercing_belly_1_2": "big",
+		"piercing_belly_2_0": "none",
+		"piercing_belly_2_1": "mid",
+		"piercing_belly_2_2": "big",
+		"piercing_belly_3_0": "none",
+		"piercing_belly_3_1": "mid",
+		"piercing_belly_3_2": "big",
+	},
+	"piercing_nipple_1_0": {
+		"piercing_nipple_1_0": "flat",
+		"piercing_nipple_1_1": "small",
+		"piercing_nipple_1_2": "normal",
+		"piercing_nipple_1_3": "large",
+		"piercing_nipple_1_4": "big",
+		"piercing_nipple_2_0": "flat",
+		"piercing_nipple_2_1": "small",
+		"piercing_nipple_2_2": "normal",
+		"piercing_nipple_2_3": "large",
+		"piercing_nipple_2_4": "big",
+		"piercing_nipple_3_0": "flat",
+		"piercing_nipple_3_1": "small",
+		"piercing_nipple_3_2": "normal",
+		"piercing_nipple_3_3": "large",
+		"piercing_nipple_3_4": "big",
+	},
 	"equip_breasts": {
 		# Variant-2 sets name their flat piece after the set, not after the size.
 		"tits_leather_2": "flat",
@@ -113,6 +150,33 @@ const AXIS_OVERRIDES = {
 		# The split upper mesh keeps the same misleading source-art name.
 		"Pregnancy_skin_leather": "big",
 	},
+}
+
+# Both piercing families share one source folder, so route them by their actual
+# Spine slots instead. This keeps the two UI choices independent.
+const SLOT_ROUTES = {
+	"piercing_belly": "piercing_belly",
+	"piercing_nipple_1_0": "piercing_nipple",
+}
+
+# Extra choices derived from an existing generated part. The original
+# disheveled entry keeps its automatically paired disheveled fringe; this copy
+# shares the same base mesh and replaces only the fringe.
+const PART_VARIANTS = {
+	"hair_base_disheveled_eyehide": {
+		"source": "hair_base_disheveled",
+		"display": "Hair base disheveled (eyehide)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_eyehide"},
+	},
+}
+
+# Option attachments whose last numeric suffix is an axis value are collapsed
+# into one selectable style instead of appearing as a separate choice per size.
+# piercing_nipple_2_0..4, for example, becomes the single part
+# piercing_nipple_2 with a tits_size assignment.
+const OPTION_AXIS_GROUPS = {
+	"piercing_belly": "_[0-9]+$",
+	"piercing_nipple": "_[0-9]+$",
 }
 
 # Attachments dropped from the catalogue entirely.  This one is duplicate art
@@ -165,7 +229,7 @@ const PART_SLOTS = {
 		"breast_nipples": {
 			"small": "beastkin_tits_nipples_small__2",
 			"normal": "beastkin_tits_nipples",
-			"large": "beastkin_tits_nipples_large",
+			"large": "beastkin_nipples_large",
 			"big": "beastkin_tits_nipples_big",
 		},
 	},
