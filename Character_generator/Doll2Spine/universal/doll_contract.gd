@@ -281,6 +281,7 @@ const BONES = [
 	"lips",
 	"lips2",
 	"lips3",
+	"spine127",
 ]
 
 const SLOTS = [
@@ -335,6 +336,7 @@ const SLOTS = [
 	"breasts_beastkin_pregnancy",
 	"beastkin_pregnancy_nipple",
 	"tatoos",
+	"piercing_belly",
 	"dick",
 	"equip_pregnancy_low",
 	"equip_pregnancy_up",
@@ -342,6 +344,7 @@ const SLOTS = [
 	"breasts",
 	"breasts_beastkin",
 	"breast_nipples",
+	"piercing_nipple_1_0",
 	"race_torso",
 	"equip_breasts",
 	"hairs_assist",
