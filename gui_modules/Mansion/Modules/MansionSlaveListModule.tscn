@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -59,6 +59,10 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/LineEdit.tres" type="StyleBox" id=82]
 [ext_resource path="res://Character_generator/Doll2Spine/Doll2View.tscn" type="PackedScene" id=83]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveSexPanel.tscn" type="PackedScene" id=84]
+[ext_resource path="res://assets/images/gui/universal/arrowleft.png" type="Texture" id=85]
+[ext_resource path="res://assets/images/gui/universal/arrowlefthl.png" type="Texture" id=86]
+[ext_resource path="res://assets/images/gui/universal/arrowright.png" type="Texture" id=87]
+[ext_resource path="res://assets/images/gui/universal/arrowrighthl.png" type="Texture" id=88]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -1852,9 +1856,9 @@ margin_bottom = 908.0
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_bottom = 1.0
-margin_left = 747.0
+margin_left = 810.0
 margin_top = 60.0
-margin_right = 1373.0
+margin_right = 1436.0
 margin_bottom = -11.0
 rect_clip_content = true
 mouse_filter = 2
@@ -1890,3 +1894,45 @@ margin_bottom = 38.0
 mouse_default_cursor_shape = 2
 
 [node name="Tween" type="Tween" parent="ExpandedBodyPreview"]
+
+[node name="ExpandedPrevCharacter" type="TextureButton" parent="."]
+visible = false
+margin_left = -48.0
+margin_top = 60.0
+margin_right = 0.0
+margin_bottom = 915.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 85 )
+texture_pressed = ExtResource( 86 )
+texture_hover = ExtResource( 86 )
+expand = true
+stretch_mode = 5
+
+[node name="Background" type="Panel" parent="ExpandedPrevCharacter"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+
+[node name="ExpandedNextCharacter" type="TextureButton" parent="."]
+visible = false
+margin_left = 752.0
+margin_top = 60.0
+margin_right = 800.0
+margin_bottom = 915.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 87 )
+texture_pressed = ExtResource( 88 )
+texture_hover = ExtResource( 88 )
+expand = true
+stretch_mode = 5
+
+[node name="Background" type="Panel" parent="ExpandedNextCharacter"]
+self_modulate = Color( 1, 1, 1, 0.75 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )

@@ -1,4 +1,8 @@
 extends Control
+#The console sits on a canvas layer of its own (Top, layer 120) so it opens over everything
+#the game can put on screen - the system message is on 110, the tutorial panel on 100, the
+#mansion's room card on 3. In Godot 3 the layer number beats tree order outright, so a
+#debug window on layer 0 could not be raised above any of them.
 const DecisionsData = preload("res://assets/data/Decisions.gd")
 
 var IsActive = false
@@ -6,16 +10,17 @@ var history = []
 var history_index = -1
 var decisions_data = DecisionsData.new()
 var COMMANDS = ["/help", "/do", "/add_item", "/start_event", "/decision", "/validate_events", "/validate_effects"]
-onready var _RichTextLabel = get_node("Console/RichTextLabel")
-onready var _TextEdit = get_node("Console/TextEdit")
+onready var _RichTextLabel = get_node("Top/Screen/Console/RichTextLabel")
+onready var _TextEdit = get_node("Top/Screen/Console/TextEdit")
+onready var _Screen = get_node("Top/Screen")
 
 func _ready():
 	if log_alert != null and is_instance_valid(log_alert):
 		log_alert.set_alert_node(self)
-		$log_alert_panel.show()
-		$log_alert_panel/CheckBox.connect("toggled", self, "on_hide_errors_toggled")
-		$log_alert_panel/CheckBox.pressed = input_handler.globalsettings.stop_log_alert
-		$log_alert_panel/close.connect("pressed", self, "close")
+		$Top/Screen/log_alert_panel.show()
+		$Top/Screen/log_alert_panel/CheckBox.connect("toggled", self, "on_hide_errors_toggled")
+		$Top/Screen/log_alert_panel/CheckBox.pressed = input_handler.globalsettings.stop_log_alert
+		$Top/Screen/log_alert_panel/close.connect("pressed", self, "close")
 
 func _input(event):
 	if event.is_action_pressed("ConsoleOpenButton"):
@@ -42,19 +47,18 @@ func _input(event):
 #	pass
 
 func open():
-	raise()
 #	var place = get_tree().root.get_child_count()
 #	get_tree().root.call_deferred("move_child",self,place)
 	
 #	if IsActive: return
 	#get_tree().root.set_disable_input(true)
 	IsActive = true
-	visible = true
+	_Screen.visible = true
 
 func close():
 #	if !IsActive: return
 	#get_tree().root.set_disable_input(false)
-	visible = false
+	_Screen.visible = false
 	IsActive = false
 
 func _on_TextEdit_text_entered(new_text):

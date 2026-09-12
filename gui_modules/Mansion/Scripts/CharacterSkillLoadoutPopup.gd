@@ -48,6 +48,7 @@ func close():
 	_refresh_external_skillbar()
 	activecharacter = null
 	emit_signal("closing")
+	gui_controller.request_screen_refresh()
 
 
 func _custom_gui_controller_close():

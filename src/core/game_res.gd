@@ -202,6 +202,17 @@ const TEST_ROOMS = ['forge', 'alchemy_room', 'ritual_room', 'bathhouse', 'practi
 #what wants looking at, and a forge handed over finished has no row left to press.
 const TEST_ROOMS_UNUPGRADED = ['forge']
 
+#A second room of one of these types, handed over finished, standing beside the plain one
+#TEST_ROOMS_UNUPGRADED left. What it is there to show is that a recipe is unlocked by the
+#estate rather than by the room the player happens to be standing in: the best workshop
+#answers for every workshop of its kind (craft_room_level()), so a forge at 1 and a forge at
+#3 offer the same recipes, and both offer everything the expanded one opened.
+#
+#The plain one is raised first on purpose. Reading the first forge found - the mistake this
+#is here to catch - would answer 1 and leave the higher recipes locked, so getting it wrong
+#looks different from getting it right rather than the same either way.
+const TEST_ROOMS_SECOND_MAXED = ['forge']
+
 
 func build_test_rooms():
 	var built = []
@@ -222,6 +233,21 @@ func build_test_rooms():
 		if entry.room.type in TEST_ROOMS_UNUPGRADED:
 			continue
 		MansionLayout.max_out_upgrades(entry.room)
+	#The second of each TEST_ROOMS_SECOND_MAXED, raised after that sweep because the sweep
+	#skips these types by name and would have left this one plain too. The new room is picked
+	#out by the task id it was just given, so it is the one improved however the plan is laid
+	#out - first_room_of_type() would hand back the plain one built above.
+	for type_code in TEST_ROOMS_SECOND_MAXED:
+		var standing = {}
+		for entry in MansionLayout.each_room(mansion_layout):
+			if entry.room.type == type_code:
+				standing[entry.room.task_id] = true
+		if !grant_room(type_code, true):
+			continue
+		for entry in MansionLayout.each_room(mansion_layout):
+			if entry.room.type == type_code and !standing.has(entry.room.task_id):
+				MansionLayout.max_out_upgrades(entry.room)
+		built.append(type_code)
 	sync_room_tasks()
 	rooms_changed()
 	return built
@@ -560,6 +586,18 @@ func gain_material(res, amount):
 #a delivery spill.
 func storage_limit():
 	return MansionLayout.total_storage(mansion_layout)
+
+
+#Whether any one material has already filled its share of the shelves. Everything gained past
+#that spills, so the counter says so in advance rather than letting a delivery go missing.
+func has_capped_material():
+	var limit = storage_limit()
+	if limit <= 0:
+		return false
+	for code in materials:
+		if int(materials[code]) >= limit:
+			return true
+	return false
 
 
 #The materials nearest to filling their share of the shelves, most full first. What the counter
@@ -1024,6 +1062,29 @@ func sleep_demand_met(char_id):
 	return character_room_has_tag(char_id, 'luxury') or character_room_has_tag(char_id, 'master_bed')
 
 
+#Where this character will spend the coming night, as one answer for the card warning.
+#Housing does not change by itself at the end of the turn, so what stands now is what they
+#will sleep in - no prediction is needed beyond reading the plan.
+#	''       - nothing to warn about
+#	'none'   - nobody has put them in a room at all; they sleep on the floor
+#	'poor'   - they have a bed, but it is below what they have come to expect
+func sleep_warning(char_id):
+	var person = ResourceScripts.game_party.characters.get(char_id, null)
+	if !(person is Object) or person.food == null:
+		return ''
+	if !(mansion_layout is Dictionary) or mansion_layout.empty():
+		return ''
+	if MansionLayout.get_slot_of_character(mansion_layout, char_id) == null:
+		return 'none'
+	#sleep_demand_met() deliberately reads the tier stored at the last meal - it is answered
+	#on every stat rebuild and may not go recomputing 'price'. This is a one-off ui call, so
+	#it can afford the refresh, and the warning is about what the character wants now
+	person.food.get_demand()
+	if !sleep_demand_met(char_id):
+		return 'poor'
+	return ''
+
+
 #True while the character sleeps in a room carrying the given tag - what drives the
 #private-room bonus that used to be the 'luxury' work rule.
 func character_room_has_tag(char_id, tag):
@@ -1232,9 +1293,48 @@ func fix_tax():
 					tax += ldata.tax
 
 
+#Everything the week takes out of the treasury, gathered before a single coin moves. This is the
+#one place the estate's standing costs are added up, and adding a new one is one more collector
+#call here and nothing else.
+#
+#A collector returns records of {amount, key, values} - the charge, and the localization key and
+#arguments for the line describing it. The total is the sum of what was actually folded in, so
+#the money taken and the report written can never disagree.
+#
+#Sources, present and waiting:
+# - the household's upkeep, game_party.collect_weekly_upkeep() - the only one with data today;
+# - the taxes on built upgrades, _collect_upgrade_taxes() below;
+# - room upkeep, which mansion_layout.summary() already counts off the floorplan and nothing yet
+#   charges for. It joins as one more collector here once RoomTypes carries a non-zero upkeep.
+func collect_weekly_expenses():
+	var ledger = {total = 0, entries = []}
+	_add_expenses(ledger, ResourceScripts.game_party.collect_weekly_upkeep())
+	_add_expenses(ledger, _collect_upgrade_taxes())
+	return ledger
+
+
+#One source's share folded into the ledger. A charge of nothing is not written down at all, so a
+#source with nothing to take needs no guard of its own - it simply reports a zero.
+func _add_expenses(ledger, records):
+	for record in records:
+		record.amount = int(record.amount)
+		if record.amount <= 0:
+			continue
+		ledger.total += record.amount
+		ledger.entries.append(record)
+
+
+#The standing charge on what the estate has built. fix_tax() keeps `tax` up to date from the
+#upgrade tree, but no upgrade in upgradedata.gd carries a `tax` field yet - so this pays out
+#nothing and writes no line until one does.
+func _collect_upgrade_taxes():
+	return [{amount = tax, key = "MANSION_ACTIVITY_UPKEEP_UPGRADES", values = [int(tax)]}]
+
+
 func subtract_taxes():
-	ResourceScripts.game_party.subtract_taxes()
-	money -= tax
+	var ledger = collect_weekly_expenses()
+	money -= ledger.total
+	globals.mansion_activity_upkeep(ledger)
 	if money < 0:
 		input_handler.interactive_message('money_lose_scene', '', {})
 
@@ -1671,8 +1771,28 @@ func _active_task_find(list):
 	return null
 
 
+#True once the household is made of characters rather than of the dictionaries a save holds.
+#globals.LoadGame runs game_res.fix_serialization() before game_party's, so everything this
+#file repairs on load happens while the party is still raw JSON - see seat_farm_workers(),
+#which turns back for the same reason. One entry answers for all of them: fix_serialization()
+#converts the whole household in one pass. An empty household is nobody to be wrong about.
+func party_is_loaded():
+	if ResourceScripts.game_party == null or !(ResourceScripts.game_party.characters is Dictionary):
+		return false
+	for id in ResourceScripts.game_party.characters:
+		return ResourceScripts.game_party.characters[id] is Object
+	return true
+
+
 func clean_task(id):
 	var val = tasks_progresses[id]
+	#Releasing a worker means telling them to leave the task, and a dictionary cannot be told
+	#anything - it crashed on the call. Erasing the record out from under them instead would
+	#leave somebody working a job that is no longer there, so the whole task is left standing:
+	#game_party.fix_serialization_postload() calls ensure_mansion_layout() again once everybody
+	#is a character, and the sweep that wanted this task gone runs then with someone to tell.
+	if val.get('workers', null) is Array and !val.workers.empty() and !party_is_loaded():
+		return
 	var was_on_screen = false
 	if val.has('workers'):
 		was_on_screen = !val.workers.empty()
@@ -2455,6 +2575,9 @@ func _grant_production_res(res, amount, task_id, character, count_metrics = true
 		gain_material(res, amount)
 	if count_metrics:
 		character.add_metric_for_outcome(res, amount)
+	#The turn's haul, all of it on one row and nobody named on it - a seam's gold included, since
+	#that is the same payout under a different name. See globals.mansion_activity_production().
+	globals.mansion_activity_production(res, amount)
 	var product_icon = "res://assets/images/iconsitems/gold.png" if res == 'gold' else Items.materiallist[res].icon
 	globals.emit_signal("work_produced", character.id, task_id, product_icon)
 
@@ -2639,6 +2762,10 @@ func update_materials(operant, material, value):
 		'=':
 			materials[material] = value
 	globals.emit_signal("update_clock")
+	#the last sack of the good stuff sold is the moment a demanding household stops being fed
+	#what it expects, and the warning on their cards has to say so before the day ends
+	if Items.materiallist.has(material) and Items.materiallist[material].type == 'food':
+		globals.emit_signal("upkeep_changed")
 
 
 func get_item_id_by_code(itembase):

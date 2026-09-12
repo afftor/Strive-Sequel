@@ -214,7 +214,7 @@ func tut_get_rest_servant():
 func tut_get_garden_place():
 	if !local_tasks or !location_panel.visible:
 		return null
-	for card_node in location_panel.get_node("Rooms").get_children():
+	for card_node in location_rooms().get_children():
 		if card_node.is_queued_for_deletion() or !card_node.visible:
 			continue
 		if card_node.get_meta('plot', '') != TUTORIAL_PLOT:
@@ -237,8 +237,9 @@ func on_visibility_changed():
 	#card is not enough on its own: the layer itself is put away with the plan.
 	$Overlay.visible = is_visible_in_tree()
 	if is_visible_in_tree():
-		#a room granted while this screen was away leaves it drawing the old house
-		if layout_signature() != built_signature:
+		#a room granted while this screen was away leaves it drawing the old house, and
+		#anything that moved somebody while it was away left a refresh owed
+		if refresh_missed or layout_signature() != built_signature:
 			queue_refresh()
 		return
 	close_card()
@@ -555,9 +556,16 @@ func set_hud_visible(shown):
 	rest_panel.rebuild()
 
 
+#Everything the plan is drawn across, in the same coordinates the pan is measured in. In the
+#panel that is the band below; on the mansion screen the plan runs the width and height of the
+#screen and only the open band is kept clear of the HUD.
+func drawn_rect():
+	return Rect2(Vector2.ZERO, $GridViewport.rect_size)
+
+
 func open_rect():
 	if !embedded:
-		return Rect2(Vector2.ZERO, $GridViewport.rect_size)
+		return drawn_rect()
 	var top = hud_bottom + 8
 	return Rect2(EMBEDDED_OPEN_LEFT, top,
 		EMBEDDED_OPEN_RIGHT - EMBEDDED_OPEN_LEFT, EMBEDDED_OPEN_BOTTOM - top)
@@ -579,7 +587,7 @@ func rebuild_location_panel(location_code):
 	panel.get_node("LocalFrame").visible = local_tasks
 	panel.get_node("Title").text = tr("MANSIONVIEW_LOCALTASKS") if local_tasks 		else LocationTasks.location_name(location_code)
 	var entries = LocationTasks.tasks_for(location_code)
-	var rooms = panel.get_node("Rooms")
+	var rooms = location_rooms()
 	input_handler.ClearContainer(rooms)
 	for entry in entries:
 		input_handler.DuplicateContainerTemplate(rooms).setup(self, entry)
@@ -593,11 +601,18 @@ func rebuild_location_panel(location_code):
 
 
 func refresh_location_places():
-	for node in location_panel.get_node("Rooms").get_children():
+	for node in location_rooms().get_children():
 		if node.is_queued_for_deletion():
 			continue
 		if node.has_meta('task') or node.has_meta('plot'):
 			node.refresh()
+
+
+#The cards of whatever place is being looked at. They live inside a scroll, because a household
+#with enough guild quests has more of them than the panel is tall - so this is the one place that
+#knows where they are, and nothing else has to spell the path out.
+func location_rooms():
+	return $LocationPanel/RoomsScroll/Rooms
 
 
 func lay_out_location_panel(room):
@@ -610,7 +625,7 @@ func lay_out_location_panel(room):
 			room.size - Vector2(EMBEDDED_RAIL_WIDTH, 0))
 	place_child($LocationPanel, panel_room)
 	var inner = panel_room.size.x - 48
-	var rooms = $LocationPanel/Rooms
+	var rooms = location_rooms()
 	var columns = int(min(LOCATION_GRID_MAX_COLUMNS,
 		max(1, floor(inner / LOCATION_CARD_WIDTH))))
 	rooms.columns = columns
@@ -626,8 +641,13 @@ func lay_out_location_panel(room):
 	#place is the subject of this screen, and what the estate has dug out of it is reported
 	#elsewhere, at the bottom of the screen
 	var grid_left = max(24, round((panel_room.size.x - grid_width) / 2.0))
-	place_child(rooms, Rect2(grid_left, LOCATION_GRID_TOP, grid_width,
-		min(grid_height, panel_room.size.y - LOCATION_GRID_TOP - 24)))
+	#The scroll takes all the room there is; the grid inside it is as tall as its rows actually
+	#need. Sizing the grid itself to what fits is what used to leave a household with a dozen
+	#guild quests unable to reach the plots on the bottom row at all.
+	var visible_height = max(LOCATION_CARD_HEIGHT, panel_room.size.y - LOCATION_GRID_TOP - 24)
+	place_child($LocationPanel/RoomsScroll,
+		Rect2(grid_left, LOCATION_GRID_TOP, grid_width, visible_height))
+	rooms.rect_min_size = Vector2(grid_width, grid_height)
 	place_child($LocationPanel/Title, Rect2(24, 12, min(800, inner), 40))
 	place_child($LocationPanel/Empty, Rect2(24, 64, min(900, inner), 36))
 
@@ -844,13 +864,30 @@ func unhoused_count():
 	return MansionLayout.unhoused_characters(layout(), party()).size()
 
 
-func assign_worker(slot_code, char_id):
+#Somebody the household cannot put on anything: away on a work quest, shut away, or a child
+#still at their tutelage. Their work is spoken for by something that is not a task, and
+#assign_to_task() would quietly write over it - a child dragged onto a job that way loses the
+#tutelage they were sent to, because the day tick then no longer finds them learning.
+#The strip and the room card leave these people out already; this is the door itself, so a
+#portrait left over from before the assignment cannot be carried through it either.
+func busy_elsewhere(person):
+	return person != null and person.is_on_quest()
+
+
+#"as_tutor" says which of the room's two kinds of place is being filled. A practice room holds
+#pupils and one teacher, and the room's task holds them together with one limit over the lot -
+#so measuring an ordinary drop against that limit let the pupils eat the teacher's chair: four
+#people in three desks, with the tutor's place still showing free beside them.
+func assign_worker(slot_code, char_id, as_tutor = false):
 	var room = get_room(slot_code)
 	if room == null or room.task_id == null:
 		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_VOID"))
 		return false
 	var person = get_character(char_id)
 	if person == null:
+		return false
+	if busy_elsewhere(person):
+		input_handler.SystemMessage(person.translate(tr("ONQUESTLABEL")))
 		return false
 	if !is_present(person):
 		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_AWAY")))
@@ -860,8 +897,20 @@ func assign_worker(slot_code, char_id):
 		return false
 	ResourceScripts.game_res.sync_room_tasks()
 	var task = tasks()[room.task_id]
-	if task.workers.size() >= task.max_workers:
-		var absent = first_absent_worker(room)
+	#Already at this work. Putting somebody where they already stand is not a refusal, and
+	#promoting a pupil to teacher comes through here with the room at its limit.
+	if task.workers.has(char_id):
+		return true
+	var limit = int(task.max_workers)
+	var taken = task.workers.size()
+	var pupils = null
+	if !as_tutor:
+		limit -= MansionLayout.special_work_slots(room)
+		pupils = room_pupils(room)
+		taken = pupils.size()
+	if taken >= limit:
+		#and the seat freed has to be one of the kind being asked for
+		var absent = first_absent_worker(room, pupils)
 		if absent == null:
 			input_handler.SystemMessage(tr("MANSIONVIEW_ERR_FULL"))
 			return false
@@ -871,8 +920,19 @@ func assign_worker(slot_code, char_id):
 	return true
 
 
-func first_absent_worker(room):
+#Everyone at work in the room except whoever it calls its teacher. The teacher holds a place of
+#their own, so counting them among the pupils is what made the room's own card read "4/3".
+func room_pupils(room):
+	var tutor = special_worker(room)
+	var res = []
 	for char_id in room_workers(room):
+		if char_id != tutor:
+			res.append(char_id)
+	return res
+
+
+func first_absent_worker(room, among = null):
+	for char_id in (room_workers(room) if among == null else among):
 		var person = get_character(char_id)
 		if person != null and !is_present(person):
 			return char_id
@@ -882,6 +942,9 @@ func first_absent_worker(room):
 func assign_location_worker(task_id, char_id):
 	var person = get_character(char_id)
 	if person == null or !tasks().has(task_id):
+		return false
+	if busy_elsewhere(person):
+		input_handler.SystemMessage(person.translate(tr("ONQUESTLABEL")))
 		return false
 	if !person.check_location(place, true) and !(place == LocationTasks.MANSION_CODE and is_present(person)):
 		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_AWAY")))
@@ -924,7 +987,20 @@ func assign_tutor(slot_code, char_id):
 	var room = get_room(slot_code)
 	if room == null:
 		return false
-	if !assign_worker(slot_code, char_id):
+	var person = get_character(char_id)
+	if person == null:
+		return false
+	#game_res.practice_trainer() reads the trait before it will let the room teach anything, so
+	#naming somebody without it names a teacher the room then ignores - a place that quietly does
+	#nothing, which is the one thing this chair must never be.
+	if !person.check_trait('trainer'):
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_NOTUTOR")))
+		return false
+	var standing = special_worker(room)
+	if standing != null and standing != char_id:
+		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_TUTORTAKEN"))
+		return false
+	if !assign_worker(slot_code, char_id, true):
 		return false
 	room.practice.trainer = char_id
 	refresh_people()
@@ -950,13 +1026,16 @@ func master_id():
 	return master.id if master != null else null
 
 
+#Answers whether the bed was actually freed: the master cannot be turned out of his own, and a
+#caller that follows this with something else needs to know it was refused.
 func unassign_resident(char_id):
 	if is_pinned(char_id):
 		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_MASTERPINNED"))
-		return
+		return false
 	MansionLayout.unassign_character(layout(), char_id)
 	ResourceScripts.game_res.rooms_changed()
 	refresh_people()
+	return true
 
 
 func is_pinned(char_id):
@@ -1067,7 +1146,29 @@ func person_yield_text(character, place_kind, place_holder, place_floor = -1):
 	var made = person_yield_at(character, place_kind, place_holder, place_floor)
 	if made <= 0:
 		return ""
-	return "%s +%s" % [tr("MANSIONVIEW_PERTURN"), str(stepify(made, 0.1))]
+	var text = "%s +%s" % [tr("MANSIONVIEW_PERTURN"), str(stepify(made, 0.1))]
+	#Work that ends can also be said as a share of that end, which is the question actually being
+	#asked of a building site: a number of points a turn means nothing on its own, and how many
+	#more turns this will take is what the player wants out of it.
+	var whole = work_total(place_kind, place_holder, place_floor)
+	if whole > 0:
+		text += " (%d%%)" % int(round(made * 100.0 / whole))
+	return text
+
+
+#How much work this place wants in all, or 0 for work that never finishes. Making things and
+#gathering them go on for ever - there is no whole for a smith's turn to be a share of - so only
+#a build and a quest answer with anything.
+func work_total(place_kind, place_holder, place_floor = -1):
+	if place_kind == 'build':
+		var build = MansionLayout.get_build(floor_data_at(place_floor), place_holder)
+		return 0.0 if build == null else float(build.limit)
+	if place_kind == 'task':
+		var data = tasks().get(place_holder, null)
+		if data == null or data.get('type', '') != 'special':
+			return 0.0
+		return float(data.get('progress_limit', 0))
+	return 0.0
 
 
 func place_character(kind, holder, char_id, resident_id, holder_floor = -1):
@@ -1083,6 +1184,11 @@ func place_character(kind, holder, char_id, resident_id, holder_floor = -1):
 			return assign_builder(holder, char_id, holder_floor)
 		'task':
 			return assign_location_worker(holder, char_id)
+		#The teacher's chair. Without this the drop fell through to an ordinary place and the
+		#room never learned it had a teacher: assign_tutor() was reachable from the room card and
+		#from nowhere else, so a trainer dragged onto the chair became one more pupil.
+		'work_special':
+			return assign_tutor(holder, char_id)
 	return assign_worker(holder, char_id)
 
 
@@ -1345,6 +1451,8 @@ func refresh_marks():
 
 var built_signature = ""
 var refresh_queued = false
+#a refresh that was asked for while this screen was behind something else, still owed
+var refresh_missed = false
 
 
 func update():
@@ -1363,7 +1471,12 @@ func queue_refresh():
 func flush_queued_refresh():
 	refresh_queued = false
 	if !is_visible_in_tree():
+		#Behind a scene or a character sheet. Dropping the request here is what left a stale
+		#idle strip behind a birth scene: on the way back only a changed floorplan is looked
+		#for, and who is idle is not part of that. Held instead, and spent on the way back.
+		refresh_missed = true
 		return
+	refresh_missed = false
 	if layout_signature() == built_signature:
 		refresh_people()
 		return
@@ -1538,13 +1651,26 @@ func clamp_pan():
 	var room = open_rect()
 	#The limits are about where the rooms end up rather than where the field does, so the
 	#content's offset is taken off both ends - see mansion_floor_grid.content_rect().
-	var content = grid.content_rect()
-	var origin = room.position - content.position * zoom
-	var slack = room.size - content.size * zoom
-	pan.x = clamp(pan.x, origin.x + min(0.0, slack.x) - PAN_MARGIN,
-		origin.x + max(0.0, slack.x) + PAN_MARGIN)
-	pan.y = clamp(pan.y, origin.y + min(0.0, slack.y) - PAN_MARGIN,
-		origin.y + max(0.0, slack.y) + PAN_MARGIN)
+	var held = grid.ground_rect()
+	var margin = 0.0
+	if held.size.x <= 0:
+		#Nothing but the rooms to hold on to, so a little slack past them keeps the corner
+		#ones off the edge of the panel.
+		held = grid.content_rect()
+		margin = PAN_MARGIN
+	else:
+		#A floor standing on a picture is dragged about inside that picture: its edge is the
+		#end of the world and cannot be pulled past. Measured against everything the plan is
+		#drawn into rather than against the band the rooms are centred in - on the mansion
+		#screen the plan lies under the whole HUD, and holding only the band to the picture
+		#let its corner be dragged into the open beside the rail.
+		room = drawn_rect()
+	var origin = room.position - held.position * zoom
+	var slack = room.size - held.size * zoom
+	pan.x = clamp(pan.x, origin.x + min(0.0, slack.x) - margin,
+		origin.x + max(0.0, slack.x) + margin)
+	pan.y = clamp(pan.y, origin.y + min(0.0, slack.y) - margin,
+		origin.y + max(0.0, slack.y) + margin)
 
 
 func set_mode(value):
@@ -1909,6 +2035,9 @@ func assign_builder(slot_code, char_id, floor_id = -1):
 	var person = get_character(char_id)
 	if person == null:
 		return false
+	if busy_elsewhere(person):
+		input_handler.SystemMessage(person.translate(tr("ONQUESTLABEL")))
+		return false
 	if !is_present(person):
 		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_AWAY")))
 		return false
@@ -1931,29 +2060,31 @@ func build_workers(build):
 
 #Turns rather than days for a job of a set length: its whole point is that it takes two turns
 #or three, and rounding that into days would hide the very number that was chosen.
+#How many turns this build still wants, or null when nobody is on it. A turn is what the player
+#presses - four of them make one of the clock's days - so this is counted in those and not
+#converted into days on the way out, which is what left the card saying "About 1 days left" for
+#anything between one turn and four.
 func build_turns_left(build):
-	if build == null or !build.get('fixed', false):
-		return null
-	for char_id in build_workers(build):
-		var person = get_character(char_id)
-		#the same question the tick asks - somebody here and willing, not somebody strong
-		if person != null and is_present(person) 					and ResourceScripts.game_res.can_work_fixed(person):
-			return int(max(1, ceil(build.limit - build.progress)))
-	return null
-
-
-func build_days_left(build):
 	if build == null:
 		return null
-	var per_tick = 0.0
+	var remaining = max(0.0, build.limit - build.progress)
+	#A repair the estate does for itself advances a flat point a turn however many hands are on
+	#it, so the question is only whether anybody is working - see the fixed branch in game_res.
+	if build.get('fixed', false):
+		for char_id in build_workers(build):
+			var person = get_character(char_id)
+			#the same question the tick asks - somebody here and willing, not somebody strong
+			if person != null and is_present(person) 						and ResourceScripts.game_res.can_work_fixed(person):
+				return int(max(1, ceil(remaining)))
+		return null
+	var per_turn = 0.0
 	for char_id in build_workers(build):
 		var person = get_character(char_id)
 		if person != null and is_present(person):
-			per_tick += person.get_job_value('building')
-	if per_tick <= 0:
+			per_turn += person.get_job_value('building')
+	if per_turn <= 0:
 		return null
-	var ticks = ceil((build.limit - build.progress) / per_tick)
-	return int(max(1, ceil(ticks / float(variables.HoursPerDay))))
+	return int(max(1, ceil(remaining / per_turn)))
 
 
 func build_label(build):
@@ -1969,15 +2100,10 @@ func build_label(build):
 
 
 func build_eta_text(build):
-	if build != null and build.get('fixed', false):
-		var turns = build_turns_left(build)
-		if turns == null:
-			return tr("MANSIONVIEW_NOBUILDER")
-		return tr("MANSIONVIEW_TURNSLEFT") % turns
-	var days = build_days_left(build)
-	if days == null:
+	var turns = build_turns_left(build)
+	if turns == null:
 		return tr("MANSIONVIEW_NOBUILDER")
-	return tr("MANSIONVIEW_DAYSLEFT") % days
+	return tr("MANSIONVIEW_TURNSLEFT") % turns
 
 
 func demolish(slot_code):

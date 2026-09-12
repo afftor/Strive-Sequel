@@ -565,7 +565,10 @@ func first_free_kind():
 		return null
 	if view.mode == 'sleep':
 		return 'sleep' if room.occupants.size() < MansionLayout.sleep_capacity(room) else null
-	return 'work' if view.room_workers(room).size() < MansionLayout.work_capacity(room) else null
+	#Against the pupils' desks, not against the room's whole roll: the teacher's chair is aimed
+	#at, never fallen into, so a body drop that counted it offered a place it could not fill.
+	var desks = MansionLayout.work_capacity(room) - MansionLayout.special_work_slots(room)
+	return 'work' if view.room_pupils(room).size() < desks else null
 
 
 func drop_data(_position, data):

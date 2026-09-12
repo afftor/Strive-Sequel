@@ -1164,7 +1164,7 @@ var data = {
 		reqs = [
 
 		],
-		text = "JEAN_SIDEQUEST_RYNN_INTRO_1",
+		text = "JEAN_SIDEQUEST_RYNN_INTRO_2",
 		options = [
 			{
 				code = "jean_sidequest_mansion_rynn_chat_1",

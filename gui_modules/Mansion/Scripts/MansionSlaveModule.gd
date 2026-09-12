@@ -145,11 +145,10 @@ func build_legacy_info():
 	$growth.text = tr(ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))])
 	$growth.set("custom_colors/font_color", variables.hexcolordict['factor' + str(int(floor(person.get_stat('growth_factor'))))])
 	for stat_code in ['physics', 'wits', 'charm']:
-		var bonus = person.get_stat(stat_code + "_bonus")
-		var color = set_color(bonus)
-		get_node(stat_code).text = str(floor(person.get_stat(stat_code)))
+		var color = set_color(person.get_stat(stat_code + "_bonus"))
+		get_node(stat_code).text = globals.base_stat_value_text(person, stat_code)
 		get_node(stat_code).set("custom_colors/font_color", color)
-		get_node(stat_code + '2').text = str(person.get_stat(stat_code + '_cap') + bonus)
+		get_node(stat_code + '2').text = globals.base_stat_cap_text(person, stat_code)
 		get_node(stat_code + '2').set("custom_colors/font_color", color)
 	var productivity_text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\n" + tr("TOTALPRODUCTIVITY") + ": " + str(floor(person.get_stat('productivity')))
 	for mod_code in variables.productivity_mods:
@@ -194,9 +193,7 @@ func build_overview():
 		if code == "productivity":
 			value = str(int(floor(person.get_stat(code)))) + "%"
 		else:
-			var current_value = int(floor(person.get_stat(code)))
-			var maximum_value = int(floor(person.get_stat(code + "_cap") + person.get_stat(code + "_bonus")))
-			value = str(current_value) + " / " + str(maximum_value)
+			value = globals.base_stat_text(person, code)
 		var row = input_handler.DuplicateContainerTemplate($ExpandedStats/BaseStats/Rows)
 		setup_overview_row(row, code, value, false)
 

@@ -18,7 +18,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
-[node name="Console" type="Panel" parent="."]
+[node name="Top" type="CanvasLayer" parent="."]
+layer = 120
+
+[node name="Screen" type="Control" parent="Top"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Console" type="Panel" parent="Top/Screen"]
 modulate = Color( 1, 1, 1, 0.862745 )
 anchor_right = 1.0
 anchor_bottom = 0.495
@@ -30,7 +38,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Console"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Top/Screen/Console"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -60.402
@@ -42,7 +50,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextEdit" type="LineEdit" parent="Console"]
+[node name="TextEdit" type="LineEdit" parent="Top/Screen/Console"]
 anchor_top = 0.879
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,7 +62,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="log_alert_panel" type="Panel" parent="."]
+[node name="log_alert_panel" type="Panel" parent="Top/Screen"]
 visible = false
 modulate = Color( 1, 1, 1, 0.862745 )
 margin_left = 40.0
@@ -62,7 +70,7 @@ margin_top = 555.0
 margin_right = 1213.0
 margin_bottom = 651.0
 
-[node name="close" type="Button" parent="log_alert_panel"]
+[node name="close" type="Button" parent="Top/Screen/log_alert_panel"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -150.0
@@ -72,7 +80,7 @@ margin_bottom = 78.0
 custom_fonts/font = SubResource( 3 )
 text = "Close"
 
-[node name="CheckBox" type="CheckBox" parent="log_alert_panel"]
+[node name="CheckBox" type="CheckBox" parent="Top/Screen/log_alert_panel"]
 margin_left = 17.0
 margin_top = 17.0
 margin_right = 346.0
@@ -81,4 +89,4 @@ theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Hide errors"
 
-[connection signal="text_entered" from="Console/TextEdit" to="." method="_on_TextEdit_text_entered"]
+[connection signal="text_entered" from="Top/Screen/Console/TextEdit" to="." method="_on_TextEdit_text_entered"]

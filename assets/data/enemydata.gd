@@ -408,7 +408,7 @@ var enemygroups = {
 		reqs = [], units = {jarl_boss = [1,1], castellan_boss = [1,1], bounty_hunter_boss = [1,1], warlock_boss = [1,1]}
 		},
 
-		_test_boss = {reqs = [], units = {test_boss = [1,1], test_summon = [5,5]}}, #test
+		_test_boss = {reqs = [], units = {coal_moab = [1,1],}}, #test
 	}
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -3767,9 +3767,9 @@ var enemies = {
 		descript = '',
 		hpmax = 2000,
 		armor = 90,
-		mdef = 260,
+		mdef = 150,
 		hitrate = 165,
-		evasion = 80,
+		evasion = 60,
 		armorpenetration = 80,
 		atk = 65,
 		matk = 60,
@@ -3791,7 +3791,7 @@ var enemies = {
 			['coal_five_stones', 'coal_pebble_fist', 'coal_rock_sling'],
 			['coal_five_stones', 'coal_mighty_step'],
 		],
-		ai_position = ['melee'],
+		ai_position = ['ranged'],
 		xpreward = 150,
 		need_req = true,
 	},
@@ -3800,8 +3800,8 @@ var enemies = {
 		name = '',
 		descript = '',
 		hpmax = 1500,
-		armor = 70,
-		mdef = 240,
+		armor = 40,
+		mdef = 200,
 		hitrate = 150,
 		evasion = 30,
 		armorpenetration = 20,
@@ -3831,8 +3831,8 @@ var enemies = {
 		name = '',
 		descript = '',
 		hpmax = 1400,
-		armor = 130,
-		mdef = 130,
+		armor = 60,
+		mdef = 70,
 		hitrate = 160,
 		evasion = 75,
 		armorpenetration = 40,
@@ -3863,13 +3863,13 @@ var enemies = {
 		name = '',
 		descript = '',
 		hpmax = 1500,
-		armor = 180,
+		armor = 120,
 		mdef = 90,
-		hitrate = 155,
+		hitrate = 135,
 		evasion = 25,
 		armorpenetration = 30,
 		atk = 50,
-		matk = 95,
+		matk = 70,
 		speed = 55,
 		resists = {fire = 30, water = -25, mind = -25},
 		status_resists = {},
@@ -3892,8 +3892,8 @@ var enemies = {
 		name = '',
 		descript = '',
 		hpmax = 2200,
-		armor = 260,
-		mdef = 80,
+		armor = 200,
+		mdef = 40,
 		hitrate = 155,
 		evasion = 20,
 		armorpenetration = 50,
@@ -3917,7 +3917,7 @@ var enemies = {
 		need_req = true,
 	},
 	#the goblin's summon: a pile of explosives on a 3-warning fuse (self-applied marks gate the
-	#skills, see coalition.gd), immune to everything but Freeze so freezing is the only way to hold it
+	#skills, see coalition.gd), immune to everything but Wet and Freeze so freezing is the only way to hold it
 	coal_moab = {
 		code = 'coal_moab',
 		name = '',
@@ -3932,15 +3932,19 @@ var enemies = {
 		matk = 320,
 		speed = 40,
 		resists = {mind = 100, fire = 100, air = 70, water = -50, earth = -50},
-		status_resists = {stun = 100, disarm = 100, silence = 100, confuse = 100, bleed = 100, poison = 100, shock = 100, fear = 100, cursed = 100, sleep = 100, blind = 100, burn = 100, shred = 100, shatter = 100, wet = 100},
+		status_resists = {stun = 100, disarm = 100, silence = 100, confuse = 100, bleed = 100, poison = 100, shock = 100, fear = 100, cursed = 100, sleep = 100, blind = 100, burn = 100, shred = 100, shatter = 100,},
 		race = 'mech',
 		loot = 'guardian_golem_loot',
 		icon = "res://assets/images/iconsskills/icon_earthquake.png",
 		skills = ['coal_moab_tick_1', 'coal_moab_tick_2', 'coal_moab_tick_3', 'coal_moab_boom'],
 		traits = ['coal_moab_trait'],
 		tags = ['mech'],
-		#no 'basic'/'damage' bucket on purpose: the auto-added default 'attack' must never outweigh
-		#the fuse skills (exactly one of them is usable each turn)
+		skill_rotation = [
+			['coal_moab_tick_1'],
+			['coal_moab_tick_2'],
+			['coal_moab_tick_3'],
+			['coal_moab_boom'],
+		],
 		ai = [['debuff', 100], ['ultimate', 100]],
 		ai_position = ['ranged'],
 		xpreward = 30,

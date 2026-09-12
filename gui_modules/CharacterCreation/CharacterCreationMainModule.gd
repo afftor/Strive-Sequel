@@ -4,6 +4,8 @@ const DOLL_COLORS = preload("res://Character_generator/Doll2Spine/universal/doll
 const DOLL_SOURCE = preload("res://Character_generator/Doll2Spine/doll2_source.gd")
 const DOLL_LIST = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
 const LAYOUT = preload("res://gui_modules/CharacterCreation/creation_layout.gd")
+const DOLL_CATALOGUE = preload("res://Character_generator/Doll2Spine/doll2_catalogue.gd")
+const DOLL_MAP = preload("res://Character_generator/Doll2Spine/universal/doll_character_map.gd")
 
 export var testmode = false
 
@@ -416,17 +418,55 @@ func has_selected_personality():
 
 
 # The values a stat may be given on this screen, minus the ones nobody is allowed
-# to pick - see LAYOUT.NEVER_OFFERED.  The list is filtered here, once, rather
-# than in each of the four places below that build one.
+# to pick - see LAYOUT.NEVER_OFFERED - and the ones this rig has no art for.  The
+# list is filtered here, once, rather than in each of the four places below that
+# build one.
 func build_possible_val_for_stat(stat):
 	_collect_possible_vals(stat)
-	if !possible_vals.has(stat) or !LAYOUT.NEVER_OFFERED.has(stat):
+	if !possible_vals.has(stat):
 		return
+	var current = "" if person == null else str(person.get_stat(stat))
 	var offered = []
 	for value in possible_vals[stat]:
-		if LAYOUT.offered(stat, value):
+		# Whatever the two rules below say, a character keeps what they already are
+		# on the list.  A row that prints a word its own control cannot reach is a
+		# dead row: `bald` is off the hair-length ladder, and without this a man the
+		# generator had made bald read `bald` on a slider that would not move.
+		if str(value) == current:
 			offered.append(value)
+			continue
+		if !LAYOUT.offered(stat, value):
+			continue
+		if !value_has_art(stat, value):
+			continue
+		offered.append(value)
 	possible_vals[stat] = offered
+
+
+# Whether the rig this character is drawn on was given the art a value stands for.
+#
+# The screen builds its lists from the old transform tables and from the race
+# data, neither of which knows what the doll can draw, and the two halves of the
+# screen then answer a missing part differently: `doll2_option_previews._shoot`
+# photographs the tile with the group emptied - on purpose, so the picture is of
+# the value rather than of whatever the character is wearing - while the live doll
+# leaves the group on the catalogue's default.  The tile therefore promised one
+# thing and the doll showed another.  `hair_base` `slave` is the one that reached
+# a player: female-only art, offered to men, photographed as a bald head and worn
+# as the default long straight cut.
+func value_has_art(stat, value):
+	if person == null:
+		return true
+	var group_id = str(DOLL_MAP.FEEDS.get(str(stat), ""))
+	if group_id == "":
+		return true #not something the doll picks a part for
+	# resolved the same way the option pictures resolve it, so the list and the
+	# pictures cannot disagree about what is on offer
+	var part_id = str(DOLL_MAP.resolve(str(stat), str(value)))
+	if part_id == "":
+		return true #a value that means "nothing" is drawn as nothing on purpose
+	DOLL_CATALOGUE.use("male" if str(person.get_stat('sex')) == "male" else "female")
+	return part_id in DOLL_CATALOGUE.parts(group_id)
 
 
 func _collect_possible_vals(stat):

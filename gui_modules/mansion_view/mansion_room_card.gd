@@ -245,12 +245,6 @@ func build_details():
 	#showing here would also show whatever state the last room left on them.
 	detail("Actions").visible = room_data != null and (detail("Actions/MoveButton").visible
 		or !detail("Actions/DemolishButton").disabled)
-	var hint = "" if room_data == null else tr(RoomTypes.get_descript_key(room_data.type))
-	var help = $Body/Columns/LeftScroll/LeftColumn/TitleRow/HelpButton
-	#only the rooms that ask for it - see 'help' in mansion_room_types.gd
-	help.visible = hint != "" and RoomTypes.shows_help(room_data.type)
-	if help.visible:
-		globals.connecttexttooltip(help, hint, true, view.get_node("Overlay/TextTooltip"))
 	#Rubble has nothing to say here - no bonuses, nothing to move or pull down, nothing to
 	#improve - and an empty panel standing beside the card is worse than no panel. Asked of the
 	#sections themselves rather than of the slot's state, so a room that happens to have none
@@ -288,9 +282,10 @@ func rebuild():
 		$Body/Columns/LeftScroll/LeftColumn/TattooButton.visible = false
 	if has_node("Body/Columns/LeftScroll/LeftColumn/BodyModButton"):
 		$Body/Columns/LeftScroll/LeftColumn/BodyModButton.visible = false
-	#Set again by build_details() for a room that asks for it. Cleared here because that runs
-	#only when there is a room to explain: on empty ground the card is a catalogue, and the
-	#mark was left standing beside "Build here" from whatever was opened before it.
+	#Nothing shows the help mark any more: what it had to say is the room's description, and the
+	#card prints that a couple of lines below the name - so the mark opened a panel over the card
+	#to repeat what was already on it. The node is left in the scene, and this one line is what
+	#keeps it down, so putting it back is a decision rather than a rebuild.
 	$Body/Columns/LeftScroll/LeftColumn/TitleRow/HelpButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = false
@@ -563,7 +558,6 @@ func build_for_room(current):
 	build_people(current)
 	build_order_list(current)
 	build_upgrade_list(current)
-	build_residents(current)
 
 
 #Which disciplines have a craft screen is the craft screen's own list, not a copy of it kept
@@ -822,7 +816,7 @@ func call_standing_order_change(field, changed_method, changed_args):
 #A theme on the container would replace the gold theme for every control inside it. Scoping
 #the mansion's existing scroll theme to the generated bar keeps both resources in their lanes.
 func style_standing_order_scrollbar(scroll):
-	var source = view.get_node("LocationPanel/Rooms/Button/PeopleScroll")
+	var source = view.location_rooms().get_node("Button/PeopleScroll")
 	scroll.get_v_scrollbar().theme = source.theme
 
 
@@ -1255,9 +1249,17 @@ func upgrade_hint(code, level, next_level, room_code = null):
 	return PoolStringArray(parts).join("\n")
 
 
+#A room with beds and no work is a bedroom whichever way the plan is being arranged: what its
+#card is for is who sleeps there. Drawing that one way under one tab and another way under the
+#other gave the same click two different meanings - and one of the two was a list of faces that
+#could only be read, so a bed could not be freed from the card at all.
+func beds_are_the_point(current):
+	return MansionLayout.sleep_capacity(current) > 0 and MansionLayout.work_capacity(current) <= 0
+
+
 #Whoever is in the room, in whichever sense the current mode cares about.
 func build_people(current):
-	var sleeping = view.mode == 'sleep'
+	var sleeping = view.mode == 'sleep' or beds_are_the_point(current)
 	var occupants = current.occupants if sleeping else view.room_workers(current)
 	var capacity = MansionLayout.sleep_capacity(current) if sleeping else MansionLayout.work_capacity(current)
 	#A building raised to gather something holds its hands on that job, not on a room task of
@@ -1637,14 +1639,60 @@ func build_order_list(current):
 		button.disabled = true
 
 
-#The recipe's name, with its place in this room's list in front of it when it is on one.
+#The recipe's name, with its place in this room's list in front of it when it is on one and
+#how much of it the estate wants after it.
 func order_label(current, task_id):
 	var task = ResourceScripts.game_res.tasks_progresses.get(task_id, null)
-	var name = tr(task.name) if task != null and task.has('name') else task_id
+	var name = craft_task_name(task, task_id)
+	var wanted = craft_task_amount(task)
+	if wanted != "":
+		name += ": " + wanted
 	var place = current.craft_rules.find(task_id)
 	if place < 0:
 		return "  %s" % name
 	return "%d. %s" % [place + 1, name]
+
+
+#What a queued recipe is called. A crafting task carries the code of the recipe rather than a
+#name of its own - the name belongs to the thing it makes - so the product is what has to be
+#asked, the same way the craft screen and game_res.make_item ask it. Only the standing tasks
+#(crafting, farming) and the estate's works carry a name of their own, and those answer first.
+#Anything that cannot be named at all falls back to its id, which is what the whole list used
+#to show.
+func craft_task_name(task, task_id):
+	if task == null:
+		return task_id
+	if task.has('name'):
+		return tr(task.name)
+	var recipe = Items.recipes.get(task.get('id', ''), null)
+	if recipe == null:
+		return task_id
+	var product = Items.materiallist if recipe.resultitemtype == 'material' else Items.itemlist
+	if !product.has(recipe.resultitem):
+		return task_id
+	return tr(product[recipe.resultitem].name)
+
+
+#How much of it is wanted, written as the craft screen writes it: a fixed number of runs, for
+#ever, or up to a ceiling with what is in store already beside it.
+func craft_task_amount(task):
+	if task == null:
+		return ""
+	if task.has('repeat'):
+		return str(task.repeat)
+	if task.has('continuous'):
+		return "∞"
+	if !task.has('cap_up'):
+		return ""
+	var recipe = Items.recipes.get(task.get('id', ''), null)
+	if recipe == null:
+		return str(task.cap_up)
+	var have = 0
+	if recipe.resultitemtype == 'material':
+		have = ResourceScripts.game_res.materials.get(recipe.resultitem, 0)
+	else:
+		have = ResourceScripts.game_res.get_item_amount(recipe.resultitem)
+	return "%d / %d" % [task.cap_up, have]
 
 
 func toggle_order(task_id):
@@ -1658,76 +1706,6 @@ func toggle_order(task_id):
 	rebuild()
 
 
-#### who sleeps here ####
-
-#A bedroom has no workplaces, so while work is being arranged its card says nothing about the
-#people it is actually for. Their faces go under the improvements: hovering one tells you who
-#they are, and clicking opens them in the slave list.
-#Beds mode already puts them in the people column, where they can be moved and turned out, so
-#this stays out of its way.
-func build_residents(current):
-	var header = $Body/Columns/LeftScroll/LeftColumn/ResidentsHeader
-	var grid = $Body/Columns/LeftScroll/LeftColumn/ResidentsGrid
-	var companion_header = $Body/Columns/LeftScroll/LeftColumn/CompanionHeader
-	var companion_grid = $Body/Columns/LeftScroll/LeftColumn/CompanionGrid
-	var beds = MansionLayout.sleep_capacity(current)
-	var shown = view.mode != 'sleep' and beds > 0
-	#The master's own bed is never anybody else's, however many are added beside it, so his
-	#room is drawn as two groups rather than one row where his bed is merely the first tile.
-	var master_room = RoomTypes.get_type(current.type).master_only
-	header.visible = shown
-	grid.visible = shown
-	companion_header.visible = shown and master_room
-	companion_grid.visible = shown and master_room
-	if !shown:
-		return
-	if !master_room:
-		header.text = "%s %d/%d" % [tr("MANSIONVIEW_BEDS"), current.occupants.size(), beds]
-		fill_beds(grid, current.occupants, beds)
-		return
-	var master = null
-	var others = []
-	for char_id in current.occupants:
-		var character = view.get_character(char_id)
-		if character == null:
-			continue
-		if master == null and character.is_master():
-			master = char_id
-		else:
-			others.append(char_id)
-	header.text = tr("MANSIONVIEW_MASTERBED")
-	fill_beds(grid, [] if master == null else [master], 1)
-	companion_header.text = "%s %d/%d" % [tr("MANSIONVIEW_NIGHTCOMPANIONS"), others.size(),
-		max(0, beds - 1)]
-	fill_beds(companion_grid, others, max(0, beds - 1))
-
-
-#One row of bed tiles: a face for everyone in them, then a bare frame for every bed still free.
-#The empty ones are inert - beds are arranged in beds mode, and this section is here to be read.
-func fill_beds(grid, char_ids, beds):
-	input_handler.ClearContainer(grid, ['Button'])
-	var drawn = 0
-	for char_id in char_ids:
-		var character = view.get_character(char_id)
-		if character == null:
-			continue
-		var button = input_handler.DuplicateContainerTemplate(grid, 'Button')
-		var portrait = character.get_icon()
-		if portrait == null:
-			portrait = character.get_class_icon()
-		input_handler.queue_portrait(character)
-		button.get_node('Portrait').texture = portrait
-		globals.connectslavetooltip(button, character, slave_tooltip())
-		button.connect("pressed", self, "open_in_slave_list", [char_id])
-		drawn += 1
-	for _i in range(max(0, beds - drawn)):
-		var free_bed = input_handler.DuplicateContainerTemplate(grid, 'Button')
-		#An empty tile, not a tile with a question mark in it: the row of frames already reads
-		#as beds, and a mark in every spare one made the room look full of strangers.
-		free_bed.self_modulate = Color(0.62, 0.62, 0.62, 1)
-		free_bed.get_node('Portrait').texture = null
-		globals.connecttexttooltip(free_bed, tr("MANSIONVIEW_EMPTYSLOT"), true,
-			view.get_node("Overlay/TextTooltip"))
 
 
 #The shared slave tooltip is added at the tree root, and this card sits on a CanvasLayer, which
@@ -1746,36 +1724,6 @@ func slave_tooltip():
 
 #The slave list is a screen of the mansion module, not of the floorplan, so the card asks the
 #module it is embedded in. Run as its own screen there is no module and nothing happens.
-func open_in_slave_list(char_id):
-	var character = view.get_character(char_id)
-	var mansion = view.get_parent()
-	if character == null or mansion == null or !mansion.has_method('set_active_person'):
-		return
-	view.close_card()
-	#The list shares its space with the floorplan and sits folded down to its title bar while
-	#the rooms are being looked at, so naming somebody changed nothing anybody could see. It is
-	#opened first, then told who to show.
-	var list = mansion.get_node_or_null("MansionSlaveListModule")
-	if list != null and list.has_method('set_slave_list_fold'):
-		list.set_slave_list_fold(list.FOLD_FULL)
-	mansion.set_active_person(character)
-	if list != null:
-		call_deferred("expand_in_slave_list", list, character)
-
-
-#Opening the list only names the person; their own card is a separate thing the list expands.
-#Deferred because the cards are built by the rebuild the line above sets going - the one to
-#open does not exist yet at the moment it is asked for.
-func expand_in_slave_list(list, character):
-	if !is_instance_valid(list) or !list.has_method('_on_card_expand_requested'):
-		return
-	var container = list.get("CardContainer")
-	if container == null:
-		return
-	for node in container.get_children():
-		if node.has_meta("slave") and node.get_meta("slave") == character:
-			list._on_card_expand_requested(node)
-			return
 
 
 #### picking somebody for a free place ####
@@ -1825,7 +1773,34 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll.visible = true
 	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
 	var offered = 0
-	for char_id in view.resting_characters():
+	var current = room()
+	#Who this place may be offered to, in the order the player wants to read them in.
+	var pool = []
+	if sleeping:
+		#A bed is given to anybody in the house, not only to somebody who has none of their own:
+		#taking one person out of a room and putting another in is how a household is arranged, and
+		#the move frees the bed they came from by itself. Those who sleep nowhere head the list -
+		#they are what an empty bed is for - and everyone else falls in behind them in the
+		#household's own order.
+		#
+		#Asked of the layout rather than of resting_characters(), which answers about whichever
+		#arrangement the plan is showing: a bedroom offers beds under either tab now, so "free" here
+		#has to mean "sleeps nowhere" even while the plan is arranging work.
+		pool = MansionLayout.unhoused_characters(view.layout(), view.party())
+		for char_id in ResourceScripts.game_party.character_order:
+			if !pool.has(char_id):
+				pool.append(char_id)
+	else:
+		pool = view.resting_characters()
+		if tutor_slot:
+			#The teacher's chair is filled from the room as well as from the idle: somebody already
+			#at a desk here is exactly who the player means to promote, and offering only the idle
+			#left a trainer sitting in the room with no way at all to be named its teacher.
+			for worker_id in view.room_workers(current):
+				if !pool.has(worker_id):
+					pool.append(worker_id)
+	var master_room = current != null and RoomTypes.get_type(current.type).master_only
+	for char_id in pool:
 		var character = view.get_character(char_id)
 		if character == null:
 			continue
@@ -1835,11 +1810,15 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 		#offering a place that quietly does nothing
 		if tutor_slot and !character.check_trait('trainer'):
 			continue
+		if sleeping and !bed_candidate(character, current, master_room):
+			continue
 		var button = input_handler.DuplicateContainerTemplate(
 			$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
 		#drawn the way a resident is, by the same call - a face is how the player tells them
 		#apart, and a column of bare names is a column of strangers
 		setup_occupant_button(button, character)
+		if sleeping:
+			mark_current_bed(button, character)
 		#what they would be worth on this particular work, so the choice is made on something
 		#other than the order they happen to be listed in
 		show_person_yield(button, character, sleeping, tutor_slot, job_id, builder)
@@ -1859,6 +1838,36 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 	settle_body()
 	fit_to_body()
 
+
+
+#Whether this bed may be offered to this person at all: the refusals assign_resident would make,
+#asked before the offer rather than after it. They are in this room already; or they are the
+#master, whose own bed is not one he may be moved out of; or the bed is one of the master's and
+#they have not agreed to share it, which is what the night companions' places ask.
+func bed_candidate(character, current, master_room):
+	if current == null or character == null:
+		return false
+	if current.occupants.has(character.id):
+		return false
+	if view.is_pinned(character.id):
+		return false
+	if master_room and !ResourceScripts.game_res.shares_master_bed(character):
+		return false
+	return true
+
+
+#Where a candidate sleeps now, so that giving them this bed is not a blind trade - the bed they
+#leave is freed by the move. Somebody away from the estate is said to be away instead: of the
+#two facts that is the one that changes what the player should do about them.
+func mark_current_bed(button, character):
+	var status = button.get_node('Status')
+	if status.visible:
+		return
+	var bed = MansionLayout.room_of_character(view.layout(), character.id)
+	if bed == null:
+		return
+	status.visible = true
+	status.text = tr(RoomTypes.get_name_key(bed.type))
 
 func pick_candidate(char_id, sleeping, tutor_slot = false, job_id = null, builder = false):
 	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll.visible = false

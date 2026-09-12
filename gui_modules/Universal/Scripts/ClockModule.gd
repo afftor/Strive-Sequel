@@ -34,6 +34,11 @@ const TURN_SHINE_START_X = -36.0
 const TURN_SHINE_END_X = 144.0
 const TURN_SIMULATION_PROGRESS_SHARE = 0.94
 const COUNTER_SEPARATION = 4.0
+#the gold the three estate counters are authored in (variables.hexcolordict.k_yellow) and the
+#red of the same palette (k_red) a full store room is called out in. Literals rather than the
+#dict because a const cannot read an autoload, and the scene spells the gold out the same way.
+const COUNTER_COLOR = Color(0.976471, 0.882353, 0.505882, 1)
+const COUNTER_COLOR_FULL = Color(0.996078, 0.317647, 0.364706, 1)
 
 var atlas_pos = {
 	0: 28,
@@ -477,6 +482,10 @@ func refresh_estate_counters():
 	$Counters/StorageIcon.visible = limit > 0
 	if limit > 0:
 		$Counters/Storage.text = str(limit)
+		#a material that has reached the limit turns every further delivery of it into spillage,
+		#and the counter is the only place that is visible before the sacks go missing
+		$Counters/Storage.add_color_override("font_color",
+			COUNTER_COLOR_FULL if res.has_capped_material() else COUNTER_COLOR)
 		var text = tr("MSLMSTORAGELIMIT") % limit
 		for row in res.fullest_materials(3):
 			text += "\n%s: %d/%d" % [tr(Items.materiallist[row[0]].name), row[1], limit]

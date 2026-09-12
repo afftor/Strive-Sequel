@@ -28,6 +28,7 @@ var current_screen #reference to the current scene visible (Mansion, Exploration
 var previous_screen #reference to the just-closed scene (Mansion, Exploration, etc.). Sometimes needed gui_controller to handle modules visibility.
 var windows_opened = [] #an array of references to opened sub-modules (MansionJournal, GameMenu, etc.)
 var window_button_connections = {} #a dictionary that contains pairs of sub-modules and corresponding buttons. A depth explanation can be found below.
+var screen_refresh_queued = false #see request_screen_refresh()
 
 signal screen_changed # You can call this if you need to force mudules update
 
@@ -65,6 +66,7 @@ func revert_scenes_data():
 	previous_screen = null
 	windows_opened.clear()
 	window_button_connections.clear()
+	screen_refresh_queued = false
 	if dialogue and is_instance_valid(dialogue):
 		dialogue.dialogue_window_type = 1
 		dialogue.is_just_started = true
@@ -113,6 +115,39 @@ func update_modules():
 		if subscene == nav_panel:
 			nav_panel.update_buttons()
 	clock_visibility()
+
+
+#Closing a window can leave the screen underneath showing what was true before it opened - a class
+#bought in the progression popup still carries its level-up mark on the mansion card. RMB and ESC
+#always swept the screen after closing the top window; a panel's own X button closes the panel
+#directly and never did. Both routes ask here instead. The ask is deferred and folded into one, so
+#a close that takes several panels down with it still pays for a single sweep.
+func request_screen_refresh():
+	if screen_refresh_queued:
+		return
+	screen_refresh_queued = true
+	call_deferred("flush_screen_refresh")
+
+
+func flush_screen_refresh():
+	if !screen_refresh_queued:
+		return
+	screen_refresh_queued = false
+	refresh_current_screen()
+
+
+#The sweep itself: the same one the RMB path has always run. Deliberately not update_modules() -
+#that one also re-judges the clock, which the popups hide and put back themselves.
+func refresh_current_screen():
+	if current_screen == null or !is_instance_valid(current_screen):
+		return
+	if current_screen == combat:
+		return
+	for subscene in current_screen.get_children():
+		if subscene.get_class() == "Tween":
+			continue
+		if subscene.has_method("update"):
+			subscene.update()
 
 
 func clock_visibility():
@@ -190,13 +225,16 @@ func close_scene(scene):
 			&& window_button_connections[scene] != null
 			&& is_instance_valid(window_button_connections[scene])):
 		window_button_connections[scene].pressed = false
+		request_screen_refresh()
 		return
 	if scene.has_method("_custom_gui_controller_close"):
 		scene._custom_gui_controller_close()
+		request_screen_refresh()
 		return
 	scene.hide()
 	if windows_opened.has(scene):
 		windows_opened.erase(scene)
+		request_screen_refresh()
 		return
 	if previous_screen != null && (previous_screen in [mansion, slavepanel]):
 		current_screen = previous_screen
@@ -263,6 +301,7 @@ func close_top_window():
 	if window_button_connections.keys().has(node) && is_instance_valid(window_button_connections[node]):
 		window_button_connections[node].pressed = false
 		windows_opened.erase(node)
+		request_screen_refresh()
 		return
 	if typeof(node) == TYPE_STRING:
 		return
@@ -270,10 +309,12 @@ func close_top_window():
 #        return
 	if node.has_method("_custom_gui_controller_close"):
 		node._custom_gui_controller_close()
+		request_screen_refresh()
 		return
 	if node != null:
 		node.hide()
 	windows_opened.erase(node)
+	request_screen_refresh()
 	#CloseableWindowsArray.pop_back(); #i think this is required #It's not, breaks multiple windows order
 
 

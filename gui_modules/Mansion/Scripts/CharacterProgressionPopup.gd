@@ -80,6 +80,10 @@ func close():
 	#is away
 	portrait_band.hide_band()
 	_restore_clock()
+	#a class or mastery bought in here changes what the mansion card shows - the level-up mark,
+	#the experience strip, the class icons. The X button closes the popup on its own, so it has
+	#to ask for the refresh the RMB route gets from gui_controller
+	gui_controller.request_screen_refresh()
 
 
 func _custom_gui_controller_close():

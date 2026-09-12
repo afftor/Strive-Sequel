@@ -54,6 +54,26 @@ func cleanup(on_exit = false):
 			ResourceScripts.game_party.babies.erase(id)
 			remove_id(id)
 
+#Saves written before the summon-retirement fix leaked every dead combat summon: checkdeaths()
+#pulled them off the battlefield without clearing is_active, and cleanup() only releases inactive
+#entries, so each corpse stayed in the pool forever holding its stored effects. An arena run spawned
+#one per free slot per round, which is why those saves kept growing and saving kept getting slower.
+#A load always lands in the mansion and never resumes a fight, so any summon still in the pool at
+#that point is a leftover. Effects are only unmarked here - effects_pool.cleanup(), which runs right
+#after this on the load path, sweeps them out in a single pass.
+func purge_stale_summons():
+	var doomed = []
+	for id in characters:
+		if characters[id].src == 'combat_summon':
+			doomed.push_back(id)
+	for id in doomed:
+		effects_pool.clean_effects_for_char(id)
+		characters.erase(id) #summons live only in the pool, never in game_party
+	if !doomed.empty():
+		print("purged %d leaked combat summons left by an older save" % doomed.size())
+	return doomed.size()
+
+
 func postload():
 	if input_handler.slave_list_node != null: 
 		input_handler.slave_list_node.update_dislocations() #temporal, needs remake

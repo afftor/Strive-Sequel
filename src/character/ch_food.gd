@@ -278,6 +278,36 @@ func get_state():
 	return {state = 'poor' if last_meal_poor else 'fed', fed = fed, meal = last_meal}
 
 
+#What the coming meal will be, asked before it happens - this is what the warning on the
+#character card reads. It has to answer exactly what tick() and get_food() will do: nobody
+#eats until their ration runs out, and what they get is the best allowed food the storage
+#actually holds.
+#	''         - nothing to warn about
+#	'starve'   - they will eat this turn and there is nothing left they may eat
+#	'poor'     - they will eat this turn and the best that is left is below their demand
+func predict_meal_problem():
+	var person = parent.get_ref()
+	if person == null or person.check_trait('undead'):
+		return ''
+	#away from the estate they neither eat nor grow hungry, so there is nothing to promise
+	if person.is_unavaliable():
+		return ''
+	#tick() drops the ration first and only eats once it is spent
+	if fed - get_drain() > 0:
+		return ''
+	var forager = person.check_trait('forager')
+	update_demand()
+	var demand_rank = get_demand_rank()
+	var ignore_demand = ignores_demand()
+	for code in build_meal_order():
+		if !forager and ResourceScripts.game_res.materials[code] < 1:
+			continue
+		if !ignore_demand and get_food_rank(code) < demand_rank:
+			return 'poor'
+		return ''
+	return 'starve'
+
+
 func predict_food():
 	if parent.get_ref().check_trait('undead'):
 		return {}
@@ -299,6 +329,9 @@ func toggle_food(foodcode):
 	if !food_filter.has(foodcode):
 		food_filter[foodcode] = true
 	food_filter[foodcode] = !food_filter[foodcode]
+	#what they may be served just changed, and so may the warning on their card - see the
+	#signal's own note for why nothing else would refresh it
+	globals.emit_signal("upkeep_changed")
 
 
 func get_filter_for_food(code):

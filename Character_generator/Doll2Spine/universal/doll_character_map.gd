@@ -133,9 +133,13 @@ const VALUES = {
 		# `dopple` is the one the re-export kept under the older spelling; the
 		# lion, the lamb and the irokez went with that pass and have no art left.
 		"fringe2": "hair_base_fringe_2", "dopple": "hairs_base_dopple",
+		# renamed by the September export to match the art it always drew, so a
+		# character saved before it still finds their cut
+		"kare": "hair_base_bobcut",
 	},
 	"hair_back": {
 		"wave": "hair_back_wawe", "very_long": "hair_back_verylong1",
+		"care": "hair_back_bobcut", #renamed with the base cut above
 		"double_tail": "hair_back_double_tail_long",
 		"twin_braids": "hair_back_twin_braids", "no": "",
 	},

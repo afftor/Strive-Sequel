@@ -4590,7 +4590,7 @@ var data = {
 		custom_background = "jean_dream_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		text = "JEAN_DREAM_1",
+		text = "JEAN_DREAM_2",
 		options = [
 			{code = "jean_dream_3", text = "DIALOGUECONTINUE", type = "next_dialogue", reqs = [], dialogue_argument = 1}
 		]

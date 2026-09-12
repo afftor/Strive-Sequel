@@ -2581,6 +2581,13 @@ func affect_char(template, manifest = false):
 		'set_tutelage':
 			xp_module.assign_to_learning(template.value)
 			input_handler.rebuild_slave_list()
+			#This is chosen in the scene that follows a birth, with the mansion behind it, and
+			#it takes the newborn straight back out of the household's day. Only the list heard
+			#about it: the floorplan went on showing the child in its idle strip, and dropping
+			#that portrait on work overwrote the tutelage they had just been sent to.
+			if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion) \
+					and gui_controller.mansion.has_method('try_refresh_rooms'):
+				gui_controller.mansion.try_refresh_rooms()
 		'add_counter':
 			if dyn_stats.counters.size() <= template.index + 1:
 				dyn_stats.counters.resize(template.index + 1)

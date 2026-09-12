@@ -112,10 +112,13 @@ func _ready():
 		$MansionSlaveModule.hide()
 #	input_handler.CurrentScene = self
 	if test_mode && OS.has_feature('editor'):
+		#this builds a world from _ready, and the world answers in system messages
+		input_handler.defer_spec_node_mount = true
 		modding_core.handle_test_mode()
 		test_mode()
 		in_test_mode = true
 		mansion_state_set("default")
+		input_handler.defer_spec_node_mount = false
 	add_season_events()
 	var is_new_game = false
 #	globals.connect('slave_arrived', $NavigationModule, "build_accessible_locations")
@@ -183,11 +186,14 @@ func _ready():
 	LocalTasksButton.connect('pressed', self, 'set_local_tasks_scope', [true])
 	ViewModes.get_node("Scope/MansionButton").text = tr("MANSIONVIEW_SCOPEMANSION")
 	ViewModes.get_node("Scope/MansionButton").connect('pressed', self, 'set_local_tasks_scope', [false])
-	#the two squares say what they are by their picture, so what they are called is a hint
-	globals.connecttexttooltip(ViewModes.get_node("Plan/ModeWork"), tr("MANSIONVIEW_MODEWORK"))
-	globals.connecttexttooltip(ViewModes.get_node("Plan/ModeBeds"), tr("MANSIONVIEW_MODEBEDS"))
-	ViewModes.get_node("Plan/ModeWork").connect('pressed', self, 'set_rooms_mode', ['work'])
-	ViewModes.get_node("Plan/ModeBeds").connect('pressed', self, 'set_rooms_mode', ['sleep'])
+	#Named rather than drawn: they are tabs now, and a tab says what it is in words - the same way
+	#the scope pair beside them does. The tooltip goes with the picture it was standing in for: a
+	#hint that repeats the label already on the button is a panel opened over the screen to say
+	#nothing.
+	mode_tab("ModeWork").text = tr("MANSIONVIEW_MODEWORK")
+	mode_tab("ModeBeds").text = tr("MANSIONVIEW_MODEBEDS")
+	mode_tab("ModeWork").connect('pressed', self, 'set_rooms_mode', ['work'])
+	mode_tab("ModeBeds").connect('pressed', self, 'set_rooms_mode', ['sleep'])
 	RoomsModule.connect('mode_changed', self, 'sync_view_mode_buttons')
 	RoomsModule.connect('place_changed', self, 'on_place_changed')
 	SlaveListModule.connect('fold_changed', self, 'on_list_fold_changed')
@@ -498,9 +504,24 @@ func tut_get_mansion_scope_btn():
 #than one toggle, so the lesson that hands out beds points at one on the way in and the other
 #on the way back.
 func tut_get_mode_beds_btn():
-	return ViewModes.get_node("Plan/ModeBeds")
+	return mode_tab("ModeBeds")
 func tut_get_mode_work_btn():
-	return ViewModes.get_node("Plan/ModeWork")
+	return mode_tab("ModeWork")
+
+
+#### the two tabs on the strip ####
+
+#They stand on the floorplan's own idle strip (RestPanel in mansion_view.tscn) rather than on this
+#screen, and they stand before its labels in that panel's children - which is the whole of what
+#makes the warning it writes across that row draw over them instead of being cut in half by them.
+#A Control has no z_index in Godot 3; tree order is the only word on what covers what.
+#
+#They come and go with the strip by being part of it, so nothing here has to hide them. Asked for
+#by name in one place, so moving them again is one edit rather than nine.
+func mode_tab(tab_name):
+	if RoomsModule == null or !is_instance_valid(RoomsModule) or RoomsModule.rest_panel == null:
+		return null
+	return RoomsModule.rest_panel.get_node_or_null(tab_name)
 
 
 #### which of the two views is up ####
@@ -613,8 +634,9 @@ func open_body_mod():
 	body_mod.open()
 
 
-#Pressed says "this is what you are looking at", so with the list up nothing is pressed: the
-#plan is not on screen, and a lit button over a covered plan claims otherwise.
+#The scope pair does say what is on screen: with the list up neither is pressed, because
+#neither the estate's rooms nor its errands are being looked at. The mode tabs above are a
+#different kind of button - see sync_view_mode_buttons.
 func sync_local_tasks_button(_place = null):
 	var at_mansion = RoomsModule.in_mansion()
 	var local = RoomsModule.local_tasks if at_mansion else false
@@ -626,15 +648,14 @@ func sync_local_tasks_button(_place = null):
 	sync_view_mode_buttons(RoomsModule.mode)
 
 
-#The three buttons are one list: what the plan is arranging, and the estate's own work. Beds
-#are only a thing while the plan is what is drawn, and none of it belongs to another location.
-#Like the two above, pressing one brings the plan up; pressing the one already up sends it away.
+#These two are tabs, not switches: one of them is always the one pressed, and what they choose
+#between is what the plan is arranging. There is no un-press - pressing the tab that is already
+#down changes nothing and, above all, never puts the plan away, because the list is not what
+#this pair is about. Putting the plan away is the scope pair's business (set_local_tasks_scope).
 func set_rooms_mode(value):
-	if plan_shown() and RoomsModule.mode == value:
-		show_plan(false)
-		sync_view_mode_buttons(RoomsModule.mode)
-		return
 	RoomsModule.set_mode(value)
+	#A press asks to see that arrangement, so it uncovers the plan if the list was over it. Only
+	#a press does this; there is nothing here that can fold the list open again.
 	show_plan(true)
 	sync_view_mode_buttons(RoomsModule.mode)
 
@@ -642,13 +663,19 @@ func set_rooms_mode(value):
 func sync_view_mode_buttons(value = null):
 	if value == null:
 		value = RoomsModule.mode
-	var up = plan_shown()
 	ViewModes.visible = RoomsModule.in_mansion()
-	ViewModes.get_node("Plan/ModeWork").pressed = up and value == 'work'
-	ViewModes.get_node("Plan/ModeBeds").pressed = up and value == 'sleep'
+	var work = mode_tab("ModeWork")
+	var beds = mode_tab("ModeBeds")
+	if work == null or beds == null:
+		return
+	#One of the pair is always down: they name which of the two arrangements the plan is in, and
+	#the plan is always in one of them. What is on screen over it is a different question, and
+	#the scope pair on the rail answers that one.
+	work.pressed = value == 'work'
+	beds.pressed = value == 'sleep'
 	#beds belong to the building; the estate's own work has none to arrange, so the button
 	#stays where it is and greys out rather than leaving a hole in the row
-	ViewModes.get_node("Plan/ModeBeds").disabled = !RoomsModule.showing_plan()
+	beds.disabled = !RoomsModule.showing_plan()
 
 
 func rooms_after_turn():
@@ -741,6 +768,17 @@ func play_turn_production_animations(layout, production_events):
 func try_rebuild_slave_list():
 	if gui_controller.current_screen != self: return
 	SlaveListModule.rebuild()
+
+
+#The floorplan keeps its own list of who is idle and who is at work, and nothing in the model
+#tells it when that changed. Whatever moves somebody in or out of work from off this screen -
+#a scene sending a child to their tutelage, most of all - has to say so, or the idle strip goes
+#on offering a portrait for work the character has already been taken away from.
+#No current_screen guard, unlike the list above: this is asked for exactly when the plan is
+#behind a scene, and the refresh waits for the plan to be looked at again on its own.
+func try_refresh_rooms():
+	if RoomsModule == null or !is_instance_valid(RoomsModule): return
+	RoomsModule.queue_refresh()
 
 func rebuild_task_info():
 	var char_on_quest = false

@@ -42,7 +42,7 @@ var skills = {
 			{code = 'assassinate_step', target = 'caster', period = 'windup'},
 			{code = 'strike', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = 'dodge', strike = 'punch', hit = null},
-		value = 1.6,
+		value = 2.0,
 	},
 	coal_iron_mountain_lean = {
 		code = 'coal_iron_mountain_lean',
@@ -1005,6 +1005,8 @@ var skills = {
 		target = 'ally',
 		target_number = 'x_random',
 		number_rnd_targets = 2,
+		keep_target = variables.TARGET_NOKEEP,
+		next_target = variables.NT_OTHER_ALLY,
 		target_range = 'any',
 		damage_type = 'water',
 		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}],
@@ -1534,7 +1536,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'normal',
-		sfx = [{code = 'blood_boil', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'last_stand', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'groan', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -1747,7 +1749,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_meteor.png",
 		type = 'combat',
 		ability_type = 'spell',
-		tags = ['damage', 'aoe', 'ultimate', 'disable_immunity', 'noreduce', 'noevade', 'nodef', 'ignore_taunt'],
+		tags = ['damage', 'aoe', 'ultimate', 'disable_immunity', 'noreduce', 'noevade', 'nodef', 'ignore_taunt','recognizable'],
 		reqs = [{code = 'has_status', status = 'coal_fuse_3', check = true}],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({trigger = variables.TR_PREHIT, effect = Effectdata.rebuild_remove_effect('last_stand')})],
@@ -1764,7 +1766,7 @@ var skills = {
 		chance = 999,
 		sfx = [
 			{code = 'earthquake', target = 'target_group', period = 'windup'},
-			{code = 'magic_vortex', target = 'full_screen', period = 'predamage'}],
+			{code = 'disintegrate', target = 'target', period = 'predamage'},],
 		sounddata = {initiate = 'spell_explosion', strike = null, hit = 'explosion', hittype = 'absolute'},
 		value = [['caster.matk', '*4']],
 		follow_up = 'coal_moab_boom_allies',
@@ -1828,6 +1830,8 @@ var effects = {
 	#melee from the backrow is halved while the own front rank stands - double it back. (Checks
 	#only the row: Bolthar starts in the front rank and enemies never move, so the front-rank
 	#half of the engine test is not worth a new req code.)
+	#Garden: Oh the frontrow check can be bypass with checking the unity of the coalition of the frontline member.
+	#I figure this effect would be possible without more code via such trick since the design phrase
 	coal_flash_step_backline = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -1836,6 +1840,10 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['target_range', 'eq', 'melee']},
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'caster', value = [{code = 'or_list', or_list = [
+				{code = 'has_status', status = 'coal_dwarf_penance', check = true},
+				{code = 'has_status', status = 'coal_ratkin_gift', check = true},
+			]}]},
 			{type = 'caster', value = [{code = 'is_in_ranged_zone', check = true}]},
 		],
 		args = {
@@ -2401,7 +2409,7 @@ var effects = {
 					args = {
 						value = {obj = 'owner', func = 'stat', stat = 'hpmax'},
 						src = {obj = 'self', func = 'src', src = 'normal'},
-						mod = {obj = 'self', func = 'src', src = 0.2},
+						mod = {obj = 'self', func = 'src', src = 0.25},
 					},
 					atomic = ['a_damage_new'],
 				}],
@@ -2409,6 +2417,20 @@ var effects = {
 			#last tick: triggers run before the tick that removes the status, so buff_number == 1
 			#means "this is the turn it runs out" - the victim passes it on and is marked recovered
 			#so the carrier cannot pick them again
+			#Garden: The spread is too slow if it only jump ship when expire. Gotta make it go fast
+			{
+				type = 'trigger',
+				trigger = [variables.TR_TURN_F],
+				req_skill = false,
+				conditions = [],
+				sub_effects = [{
+					type = 'oneshot',
+					target = 'owner',
+					atomic = [
+						{type = 'use_combat_skill', skill = 'coal_calamity_carrier'},
+					],
+				}],
+			},
 			{
 				type = 'trigger',
 				trigger = [variables.TR_TURN_F],
@@ -2419,7 +2441,6 @@ var effects = {
 					target = 'owner',
 					atomic = [
 						{type = 'effect', value = 'coal_recovered'},
-						{type = 'use_combat_skill', skill = 'coal_calamity_carrier'},
 					],
 				}],
 			},
@@ -2928,7 +2949,7 @@ var effects = {
 	coal_fuse_2 = {
 		type = 'temp_s',
 		target = 'target',
-		stack = 'coal_fuse_2',
+		stack = 'coal_fuse_1',
 		tick_event = [variables.TR_NONE],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['coal_fuse_2'],
@@ -2938,7 +2959,7 @@ var effects = {
 	coal_fuse_3 = {
 		type = 'temp_s',
 		target = 'target',
-		stack = 'coal_fuse_3',
+		stack = 'coal_fuse_1',
 		tick_event = [variables.TR_NONE],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['coal_fuse_3'],
@@ -3046,7 +3067,5 @@ var stacks = {
 	coal_spread_lock = {}, #stack 1
 	coal_recovered = {}, #stack 1
 	coal_fuse_1 = {}, #stack 1
-	coal_fuse_2 = {}, #stack 1
-	coal_fuse_3 = {}, #stack 1
 	coal_crumble_used = {}, #stack 1
 }

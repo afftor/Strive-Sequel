@@ -234,7 +234,9 @@ func open_newgame():
 	newgame_bonuses.clear()
 	ResourceScripts.game_globals.all_starting_races = false
 	var NGPButton = newgame_node.get_node("NGPButton")
-	var show_newgame_plus = OS.has_feature('editor') or (
+	#the cheat opens the panel only - the points and the unlocked bonuses stay whatever the
+	#player actually earned, so with nothing earned yet the panel shows up with nothing to spend
+	var show_newgame_plus = OS.has_feature('editor') or input_handler.ngplus_cheat_active() or (
 		max_bonus_points > 0
 		and input_handler.achievements.has_achimnt("act1"))
 	NGPButton.hide()

@@ -1,5 +1,7 @@
 extends Node
-const gameversion = '0.16.0a'
+const gameversion = '0.16.0d'
+#pure data script, no autoloads of its own - see its header
+const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 
 #time
 signal hour_tick
@@ -13,6 +15,11 @@ signal task_removed
 #A room was raised, pulled down, upgraded or carried elsewhere. What the estate can hold and
 #how many it can sleep are read off the rooms, so whoever prints those numbers has to hear it.
 signal rooms_changed
+#What a character will be given at the end of the turn changed, without the character
+#themselves changing - a food type forbidden in the diet panel, a bed handed out or taken
+#away on the floorplan. Whoever draws a per-character upkeep warning has to hear it: nothing
+#else about that character has moved, so no other refresh is going to run.
+signal upkeep_changed
 signal work_produced(person_id, task_id, texture)
 
 var hour_turns_set = 1
@@ -592,6 +599,45 @@ func get_food_state_tooltip(person):
 	return res
 
 
+#The two warnings on a character card: what the estate is about to fail to give them when the
+#turn ends. Both are asked of state that will not change by itself before then - the larder as
+#it stands and the beds as they are laid out - so the card can promise the outcome rather than
+#report it after the fact. An empty string means there is nothing to warn about.
+func get_food_warning(person):
+	if person == null or person.food == null:
+		return ''
+	return person.food.predict_meal_problem()
+
+
+func get_sleep_warning(person):
+	if person == null:
+		return ''
+	return ResourceScripts.game_res.sleep_warning(person.id)
+
+
+func get_food_warning_tooltip(person, state):
+	if state == 'starve':
+		return "[center]{color=red|%s}[/center]\n%s" % [
+			tr("CARDWARNFOODNONE"), tr("CARDWARNFOODNONEDESCRIPT")]
+	var demand_name = tr("FOODDEMAND" + person.food.get_demand().to_upper())
+	return "[center]{color=red|%s}[/center]\n%s\n%s" % [
+		tr("CARDWARNFOODPOOR"),
+		_report_text("CARDWARNFOODPOORDESCRIPT", [demand_name]),
+		tr("TRAITEFFECTCHEAPFOOD").replace("%%", "%")]
+
+
+func get_sleep_warning_tooltip(person, state):
+	if state == 'none':
+		return "[center]{color=red|%s}[/center]\n%s\n%s" % [
+			tr("CARDWARNBEDNONE"), tr("CARDWARNBEDNONEDESCRIPT"),
+			tr("SLEPTROUGH").replace("%%", "%")]
+	var demand_name = tr("FOODDEMAND" + person.food.get_demand().to_upper())
+	return "[center]{color=red|%s}[/center]\n%s\n%s" % [
+		tr("CARDWARNBEDPOOR"),
+		_report_text("CARDWARNBEDPOORDESCRIPT", [demand_name]),
+		tr("SLEEPDEMANDUNMET")]
+
+
 func mattooltip(targetnode, material, bonustext = '', type = 'materialowned', tooltip_node = null):
 	var image
 	var node = tooltip_node
@@ -1045,6 +1091,32 @@ func build_buffs_for_char(person, node, mode):
 #				'attacks':
 #					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 		connecttexttooltip(newnode, person.translate(i.description))
+
+
+#Base stats read as the trained number out of the cap training can reach, with everything
+#classes, gear and buffs lend shown after it as its own term: '31/100 +10' rather than the old
+#'41/110'. The old pair hid both halves of what the line is asked for - how much of the cap the
+#training has actually filled, and how much of the number would walk out with the equipment.
+func base_stat_text(person, code):
+	return base_stat_value_text(person, code) + "/" + base_stat_cap_text(person, code)
+
+
+#The trained number on its own, for the panels that keep the value and the cap in two columns.
+func base_stat_value_text(person, code):
+	return str(int(floor(person.get_stat(code, true))))
+
+
+#The cap with the borrowed part behind it. Sexuals has no cap stat of its own; 100 is the
+#ceiling every panel has always printed for it.
+func base_stat_cap_text(person, code):
+	var cap = 100 if code == 'sexuals' else int(floor(person.get_stat(code + '_cap')))
+	var bonus = int(floor(person.get_stat(code + '_bonus')))
+	var text = str(cap)
+	if bonus > 0:
+		text += " +" + str(bonus)
+	elif bonus < 0:
+		text += " " + str(bonus)
+	return text
 
 
 func build_attrs_for_char(node, person):
@@ -1553,6 +1625,7 @@ func LoadGame(filename):
 	var loadscreen = yield(input_handler.ShowLoadScreenWithTransition(0.3), "completed")
 	yield(get_tree(), 'idle_frame')
 #	input_handler.CloseableWindowsArray.clear()
+	drop_replaced_screens()
 	gui_controller.revert_scenes_data()
 	ResourceScripts.revert_gamestate()
 	input_handler.emit_signal("clear_cashed")
@@ -1567,6 +1640,12 @@ func LoadGame(filename):
 
 	var savedict = parse_json(save_text)
 	loadscreen.set_progress(14)
+	yield(get_tree(), 'idle_frame')
+
+	#anything the save owes to a mod that is no longer loaded goes here, before the first
+	#object is built out of the dictionary
+	var sanitized = sanitize_save(savedict, filename)
+	loadscreen.set_progress(15)
 	yield(get_tree(), 'idle_frame')
 
 	for faction in savedict.game_world.areas.plains.factions:
@@ -1607,6 +1686,7 @@ func LoadGame(filename):
 	ResourceScripts.game_progress.fix_serialization()
 	loadscreen.set_progress(41)
 	yield(get_tree(), 'idle_frame')
+	characters_pool.purge_stale_summons() #drops summons leaked by pre-fix saves
 	characters_pool.cleanup()
 	characters_pool.postload()
 	loadscreen.set_progress(42)
@@ -1623,10 +1703,6 @@ func LoadGame(filename):
 	loadscreen.set_progress(45)
 	yield(get_tree(), 'idle_frame')
 
-	if is_instance_valid(gui_controller.mansion):
-		gui_controller.mansion.queue_free()
-	if is_instance_valid(gui_controller.current_screen):
-		gui_controller.current_screen.queue_free()
 	loadscreen.goto_scene(ResourceScripts.scenedict.mansion, 45, 100, true, 60)
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
@@ -1634,6 +1710,7 @@ func LoadGame(filename):
 		gui_controller.clock.set_sky_pos()
 	
 	input_handler.SystemMessage("Game Loaded")
+	report_sanitized_save(sanitized)
 	
 	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.0c'):
 		if globals.valuecheck({type = "active_quest_stage", value = 'princess_search', stage = 'stage2', state = true}):
@@ -1651,6 +1728,83 @@ func LoadGame(filename):
 			{code = 'progress_quest', value = 'erdyna_quest', stage = 'catacombs_opened'},
 			{code = 'make_quest_location', value = 'quest_empire_catacomb_entry'}
 		])
+
+
+#The screens of the game being replaced stay in the tree for the whole of a load, and both
+#LoadGame and ImportGame yield a frame between every step - so they keep drawing over a world
+#that is being taken apart underneath them. A mansion slave list redrawing in that window asks
+#characters of the old game for a price; that rebuilds their dynamic stats against the effects
+#pool the new save has just replaced, and walks stacks naming effects it has never heard of -
+#"Invalid get index 'is_stored' (on base: 'Nil')". They used to be freed at the very end of the
+#load, long after the window had opened. Taking them out of the tree stops them this frame;
+#queue_free() on its own only promises the node will be gone by the end of it.
+func drop_replaced_screens():
+	for node in [gui_controller.mansion, gui_controller.current_screen]:
+		if !is_instance_valid(node):
+			continue
+		if node.is_inside_tree():
+			node.get_parent().remove_child(node)
+		node.queue_free()
+	gui_controller.mansion = null
+	gui_controller.current_screen = null
+
+
+#A save written with mods loaded names classes and data that only that mod could supply. With
+#the mod gone the classes cannot be loaded at all - dict2inst() returns null and the load dies
+#on the first character - and the data has nothing left to describe it. Both are taken out of
+#the parsed dictionary here, before anything is built from it. See save_sanitizer.gd.
+func sanitize_save(savedict, filename = ""):
+	#Dev builds only. The sweep throws away whatever the save owes to a mod, and a player who
+	#merely forgot to re-enable one would lose their gear, craft orders and guild quests for
+	#good the moment the next autosave wrote the stripped state back to disk. A shipped game
+	#therefore refuses the save exactly as it did before; here it is the thing that lets a
+	#modded save be opened at all.
+	if !OS.has_feature('editor'):
+		return null
+	var report = SaveSanitizer.sanitize(savedict, _save_sanitizer_context())
+	if !SaveSanitizer.is_clean(report):
+		print("save %s carried mod data the game no longer has: %s" % [
+			filename, SaveSanitizer.describe(report)])
+	return report
+
+
+#A popup rather than a system message: this only ever fires in a dev build, where the save has
+#just been altered on the way in and whoever opened it has to see that before they play on and
+#save the stripped state back. sanitize_save() returns null when the gate is shut, so a shipped
+#game never reaches this. The headline is localised; the tally under it is diagnostic text.
+func report_sanitized_save(report):
+	if report == null or SaveSanitizer.is_clean(report):
+		return
+	var text = tr("SAVEMODDATASTRIPPED")
+	var tally = SaveSanitizer.describe_short(report)
+	if tally != "":
+		text += "\n\n" + tally
+	input_handler.get_spec_node(input_handler.NODE_ALERT_PANEL, [self, text, "MODOK", '', '', ''])
+
+
+#The sanitizer takes every table it reads as an argument so it stays a pure script, out of the
+#preload chain. scriptdict holds Scripts once load_scripts() has run and paths before that, and
+#its values are the live answer to "what class does this slot use", mods loaded or not.
+func _save_sanitizer_context():
+	var script_paths = {}
+	var script_files = {}
+	for key in ResourceScripts.scriptdict:
+		var entry = ResourceScripts.scriptdict[key]
+		var path = entry if entry is String else entry.resource_path
+		if !(path is String) or path == "":
+			continue
+		script_paths[key] = path
+		script_files[path.get_file().get_basename()] = key
+	return {
+		script_paths = script_paths,
+		script_files = script_files,
+		gamestate_keys = ResourceScripts.gamestate,
+		itemlist = Items.itemlist,
+		materiallist = Items.materiallist,
+		recipes = Items.recipes,
+		enchantments = Items.enchantments,
+		curses = Items.curses,
+	}
 
 
 #saves made before the password moved to progress data kept the unlock in game_globals
@@ -1679,6 +1833,7 @@ func ImportGame(filename):
 	ResourceScripts.core_animations.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 #	input_handler.CloseableWindowsArray.clear()
+	drop_replaced_screens()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
 	input_handler.emit_signal("clear_cashed")
@@ -1686,6 +1841,7 @@ func ImportGame(filename):
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
+	var sanitized = sanitize_save(savedict, filename)
 
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_res = dict2inst(savedict.game_res)
@@ -1709,16 +1865,13 @@ func ImportGame(filename):
 	
 	ResourceScripts.game_party.fix_serialization_postload()
 
-	if is_instance_valid(gui_controller.mansion):
-		gui_controller.mansion.queue_free()
-	if is_instance_valid(gui_controller.current_screen):
-		gui_controller.current_screen.queue_free()
 	input_handler.ChangeScene('mansion');
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Imported")
+	report_sanitized_save(sanitized)
 	common_effects([
 			{code = 'add_timed_event', value = "loan_event1",
 				args = [
@@ -2043,6 +2196,57 @@ func mansion_activity_craft(character, detail_text):
 		mansion_activity_log_node.update_log_message(entry)
 
 
+#One entry per turn for everything the estate's work pulled out of the ground, the water and the
+#fields - who dug it up is not what the storehouse cares about, so no worker is named at all.
+#Folded on the stamp like the service and craft reports above, and written from the one place
+#every production payout passes through: game_res._grant_production_res().
+#
+#`amounts` - material code to units, in the order the turn first saw each - is small and bounded
+#by the number of materials that exist, so unlike the per-worker breakdowns it is kept through a
+#save and a loaded report can still be unfolded. Insertion order never changes, only grows, which
+#is what lets MansionLogModule patch the icons already on screen instead of rebuilding them.
+func mansion_activity_production(res, amount):
+	amount = int(amount)
+	if amount <= 0:
+		return
+	var stamp = mansion_activity_stamp()
+	var entry = _mansion_activity_turn_report('production', stamp)
+	if entry == null:
+		mansion_activity_log_add('production', _production_report_text(amount, 1),
+			{total = amount, amounts = {res: amount}})
+		return
+	entry.total = int(entry.get('total', 0)) + amount
+	if !entry.has('amounts'):
+		entry.amounts = {}
+	entry.amounts[res] = int(entry.amounts.get(res, 0)) + amount
+	entry.text = _production_report_text(entry.total, entry.amounts.size())
+	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+		mansion_activity_log_node.update_log_message(entry)
+
+
+#One row a week for the estate's standing costs, written from game_res.subtract_taxes() once the
+#whole bill is known. Unlike the service, craft and production reports it needs no folding: the
+#week's charges are collected in one pass by game_res.collect_weekly_expenses() and arrive here
+#complete, ledger and all.
+#
+#The lines behind the fold are built here rather than by the collectors so that every one of them
+#goes through the _report_text() guard below - a source that formatted its own key would take the
+#whole row down in any locale that has not caught up with it. `details` is turn-local like every
+#other breakdown: game_globals.serialize() drops it, so a report read back from a save is a total
+#with nothing left to unfold.
+#
+#A week that costs nothing writes nothing - a household of slaves would otherwise get a row
+#saying so every seven days.
+func mansion_activity_upkeep(ledger):
+	if ledger.total <= 0:
+		return
+	var lines = []
+	for record in ledger.entries:
+		lines.append(_report_text(record.key, record.values))
+	mansion_activity_log_add('upkeep', _upkeep_report_text(ledger.total, lines.size()),
+		{total = ledger.total, details = lines})
+
+
 #A locale that has not caught up with a new string gets the key itself back from tr(), and a key
 #carries no format specifiers: `%` on it does not fall back, it aborts the function outright. The
 #entry would then be stored with no text at all and the log could not draw the row - a whole
@@ -2064,6 +2268,14 @@ func _service_report_text(total, workers):
 
 func _craft_report_text(total, crafters):
 	return _report_text("MANSION_ACTIVITY_CRAFT_REPORT", [total, crafters])
+
+
+func _production_report_text(total, kinds):
+	return _report_text("MANSION_ACTIVITY_PRODUCTION_REPORT", [total, kinds])
+
+
+func _upkeep_report_text(total, charges):
+	return _report_text("MANSION_ACTIVITY_UPKEEP_REPORT", [total, charges])
 
 
 func _stat_change_text(character, parts):
@@ -2828,10 +3040,17 @@ func common_effects(effects, from_event = false):
 							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
 							newevent.reqs += newreq
 						'add_to_hour':
+							#the day used to roll over when the CURRENT hour was the last of the
+							#day rather than when the sum actually ran past it. Anything landing
+							#more than one turn ahead was therefore dated to an hour of today
+							#that had already gone by - a schedule the tick could never match.
+							#Every use in the data today asks for a single hour, which is the one
+							#case the old arithmetic got right, so this only ever mattered to
+							#whoever wrote the next one
 							var date = ResourceScripts.game_globals.date
-							var hour = ResourceScripts.game_globals.hour + round(rand_range(k.hour[0], k.hour[1]))
-							if hour > 4: hour = hour - 4
-							if ResourceScripts.game_globals.hour == 4:
+							var hour = int(ResourceScripts.game_globals.hour) + int(round(rand_range(k.hour[0], k.hour[1])))
+							while hour > variables.HoursPerDay:
+								hour -= variables.HoursPerDay
 								date += 1
 							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
 							newevent.reqs += newreq

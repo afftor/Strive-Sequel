@@ -48,7 +48,10 @@ var racelist = {
 			body_shape = ['humanoid'],
 			hair_color = ['blond','red','auburn','brown','black'],
 			eye_color = ['blue','green','grey','brown','black'],
-			hair_length = ['bald','ear','neck','shoulder','waist','hips'],
+			#hair_length is rolled per sex in descriptions.gd, with weights and a
+			#shorter cut for men.  Rolling it here as well overwrote that - and did
+			#it after the style had already been expanded from the first roll, so
+			#the layers a character wore were cut for a length they no longer had.
 			eye_shape = ['normal'],
 			penis_type = ['human'],
 			penis_size = ['small','average','big'],

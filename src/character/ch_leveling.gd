@@ -1085,7 +1085,11 @@ func get_job_value(temptask, count_crit = false):
 	
 	if count_crit == true && randf() <= get_task_crit_chance():
 		value = value * 2
-	if location.has('gather_mod'): #maybe 2fix, idk if non-dungeons still has their gather mods intact
+	#get_location_from_code answers null for a code that is not in location_links, and the throw
+	#here left the whole function returning Nil - which the mansion card then multiplied
+	#(mansion_view.person_yield_in_room) and concatenated (mansion_char_slot.refresh), so the slot
+	#lost its tooltip and half its contents to an error three frames away from its cause.
+	if location != null and location.has('gather_mod'): #maybe 2fix, idk if non-dungeons still has their gather mods intact
 		value *= location.gather_mod
 	return value
 
@@ -1103,6 +1107,8 @@ func get_progress_resource(tempresource, count_crit = false): #do not like this 
 	
 	if count_crit == true && randf() <= get_task_crit_chance():
 		value = value * 2
+	if location == null:
+		return value #same unresolvable location code as in get_job_value, above
 	if location.type == 'dungeon':
 		value *= Items.get_loot().get_gather_mod_from_loc(location, tempresource)
 	elif location.has('gather_mod'): #2fix

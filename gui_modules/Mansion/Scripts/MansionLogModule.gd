@@ -98,7 +98,31 @@ const EVENT_CONFIG = {
 		icon = preload("res://assets/images/iconsitems/gold.png"),
 		color = Color("f0c860"),
 	},
+	#Everything the estate's work pulled out of the ground, the water and the fields over one
+	#turn. Nobody is named on it - the storehouse does not care who carried it in - and the fold
+	#behind it is the haul itself: an icon per material with what came of it written on it.
+	#Written by globals.mansion_activity_production().
+	"production": {
+		label = "MANSION_ACTIVITY_TYPE_PRODUCTION",
+		icon = preload("res://assets/images/gui/inventory/tool_pickaxe.png"),
+		color = Color("6fc0b0"),
+	},
+	#What the estate's standing costs took out of the treasury over the week - the household's
+	#upkeep today, the taxes on upgrades and the room upkeep when those get data - with the line
+	#per charge folded away behind the total. The only row here that is money leaving rather than
+	#arriving, which is what the red is for; the icon is the clock's own gold counter, since that
+	#tooltip is where the same figure is quoted ahead of time. Written once a week by
+	#game_res.subtract_taxes(); see globals.mansion_activity_upkeep().
+	"upkeep": {
+		label = "MANSION_ACTIVITY_TYPE_UPKEEP",
+		icon = preload("res://assets/Textures_v2/ClockModule/icon_money_timer.png"),
+		color = Color("d05f5f"),
+	},
 }
+
+#A seam pays out in coin as readily as in ore, so the icon fold has to be able to draw gold as
+#one of the materials even though the material list holds no such entry.
+const GOLD_ICON = preload("res://assets/images/iconsitems/gold.png")
 
 onready var scroll = $Margin/Layout/ScrollContainer
 onready var entries = $Margin/Layout/ScrollContainer/Entries
@@ -169,23 +193,40 @@ func update_log_message(data):
 #The breakdown behind a report, and the button that shows it. An entry type that has no
 #breakdown - and a report loaded from a save, whose breakdown was dropped on the way in -
 #leaves the whole section hidden, so the row stays exactly as tall as every other row.
+#
+#Two kinds of breakdown share the one button. A report carrying an amount per material unfolds
+#into the icon grid; everything else unfolds into the list of lines. Which one this row uses is
+#stamped on the row itself, because the button is handed nothing but the row when it is pressed.
 func _fill_details(entry, data):
 	var details = entry.get_node("Body/Content/Row/Text/Details")
 	var lines = data.get("details", [])
-	details.visible = lines.size() > 0
+	var amounts = data.get("amounts", {})
+	details.visible = lines.size() > 0 or amounts.size() > 0
 	if !details.visible:
 		return
-	var detail_scroll = details.get_node("DetailScroll")
-	var list = detail_scroll.get_node("DetailList")
-	#The list is refilled once for every line a report gains, and the whole turn runs inside one
-	#frame. Clearing and rebuilding each time would cost a duplicated label per line per line -
-	#and ClearContainer's queue_free() only lands at the end of the frame, so the discarded labels
-	#would still be standing beside the new ones for the rest of it. That was cheap while the
-	#service report was the only one folding, one line per person; the benches can finish dozens
-	#of items in a turn. A report only ever gains lines, so the rows already built are kept and
-	#only the new ones are added. A list that somehow shrank is not something this can patch up,
-	#and falls back to the clean rebuild.
-	var rows = _detail_rows(list)
+	if lines.size() > 0:
+		entry.set_meta("details_body", "DetailScroll")
+		_fill_detail_lines(details.get_node("DetailScroll/DetailList"), lines)
+	else:
+		entry.set_meta("details_body", "IconGrid")
+		_fill_detail_icons(details.get_node("IconGrid"), amounts)
+	var body = _details_body(entry)
+	var button = details.get_node("ExpandButton")
+	button.text = _details_button_text(body.visible)
+	if !button.is_connected("pressed", self, "_on_details_toggled"):
+		button.connect("pressed", self, "_on_details_toggled", [entry])
+
+
+#The list is refilled once for every line a report gains, and the whole turn runs inside one
+#frame. Clearing and rebuilding each time would cost a duplicated label per line per line -
+#and ClearContainer's queue_free() only lands at the end of the frame, so the discarded labels
+#would still be standing beside the new ones for the rest of it. That was cheap while the
+#service report was the only one folding, one line per person; the benches can finish dozens
+#of items in a turn. A report only ever gains lines, so the rows already built are kept and
+#only the new ones are added. A list that somehow shrank is not something this can patch up,
+#and falls back to the clean rebuild.
+func _fill_detail_lines(list, lines):
+	var rows = _detail_rows(list, "DetailTemplate")
 	if rows.size() > lines.size():
 		input_handler.ClearContainer(list, ['DetailTemplate'])
 		rows = []
@@ -194,17 +235,54 @@ func _fill_details(entry, data):
 			rows[i].bbcode_text = lines[i]
 	for i in range(rows.size(), lines.size()):
 		input_handler.DuplicateContainerTemplate(list, 'DetailTemplate').bbcode_text = lines[i]
-	var button = details.get_node("ExpandButton")
-	button.text = _details_button_text(detail_scroll.visible)
-	if !button.is_connected("pressed", self, "_on_details_toggled"):
-		button.connect("pressed", self, "_on_details_toggled", [entry])
 
 
-#The lines already standing in a fold, in the order they were added. Everything in the list but
+#The haul, one tile per material with its count written across the bottom. Patched in place for
+#the same reason the line list is: a gathering turn walks every worker and pays out material by
+#material, so this is refilled dozens of times inside the one frame the turn runs in.
+#
+#The dictionary is what makes that safe. Its keys stay in the order the turn first saw each
+#material and it only ever gains keys, so tile i is the same material it was a moment ago and
+#only its number has moved. A grid holding more tiles than there are materials is not something
+#that can be patched up, and falls back to the clean rebuild.
+func _fill_detail_icons(grid, amounts):
+	var codes = amounts.keys()
+	var tiles = _detail_rows(grid, "IconTemplate")
+	if tiles.size() > codes.size():
+		input_handler.ClearContainer(grid, ['IconTemplate'])
+		tiles = []
+	for i in range(tiles.size()):
+		_fill_detail_icon(tiles[i], codes[i], amounts[codes[i]])
+	for i in range(tiles.size(), codes.size()):
+		_fill_detail_icon(input_handler.DuplicateContainerTemplate(grid, 'IconTemplate'),
+			codes[i], amounts[codes[i]])
+
+
+#One tile. The count is rewritten every pass; the picture and the tooltip behind it are settled
+#the first time the tile is given a material and never touched again, which is what keeps the
+#refill down to a string assignment for a tile whose number merely grew.
+func _fill_detail_icon(tile, code, amount):
+	tile.get_node("Amount").text = str(int(amount))
+	if tile.get_meta("material_code", "") == code:
+		return
+	tile.set_meta("material_code", code)
+	if code == 'gold':
+		tile.texture = GOLD_ICON
+		globals.connecttexttooltip(tile, "GOLD")
+		return
+	var material = Items.materiallist.get(code, null)
+	if material == null:
+		tile.texture = null
+		return
+	tile.texture = material.icon
+	globals.connectmaterialtooltip(tile, material)
+
+
+#What is already standing in a fold, in the order it was added. Everything in the container but
 #the template itself is one - the template is kept hidden and pushed back to the end by
 #input_handler.DuplicateContainerTemplate(), so it is identified by node and not by name.
-func _detail_rows(list):
-	var template = list.get_node("DetailTemplate")
+func _detail_rows(list, template_name):
+	var template = list.get_node(template_name)
 	var rows = []
 	for child in list.get_children():
 		if child == template:
@@ -213,11 +291,17 @@ func _detail_rows(list):
 	return rows
 
 
-func _on_details_toggled(entry):
+#The fold this row unfolds into - see _fill_details(). A row whose fold was never filled carries
+#no stamp and answers with the list, which is the one that was there before there were two.
+func _details_body(entry):
 	var details = entry.get_node("Body/Content/Row/Text/Details")
-	var detail_scroll = details.get_node("DetailScroll")
-	detail_scroll.visible = !detail_scroll.visible
-	details.get_node("ExpandButton").text = _details_button_text(detail_scroll.visible)
+	return details.get_node(entry.get_meta("details_body", "DetailScroll"))
+
+
+func _on_details_toggled(entry):
+	var body = _details_body(entry)
+	body.visible = !body.visible
+	entry.get_node("Body/Content/Row/Text/Details/ExpandButton").text = _details_button_text(body.visible)
 
 
 func _details_button_text(expanded):

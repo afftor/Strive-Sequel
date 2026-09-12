@@ -892,6 +892,17 @@ static func all_upgrades_maxed(room):
 
 #Everyone in the party who has no bed. This is what blocks the end of the turn, so it
 #counts characters wherever they are on the world map.
+#Which room somebody sleeps in, or null if nowhere. The other half of the same question -
+#who sleeps nowhere at all - is answered by unhoused_characters() below.
+static func room_of_character(layout, char_id):
+	if !(layout is Dictionary) or !layout.has('floors'):
+		return null
+	for entry in each_room(layout):
+		if entry.room.occupants.has(char_id):
+			return entry.room
+	return null
+
+
 static func unhoused_characters(layout, party):
 	var res = []
 	if party == null or !(party is Dictionary):
@@ -1031,11 +1042,16 @@ static func validate(layout, party = null):
 			continue
 		var floor_plan = plan.floors[floor_index]
 		var floor_data = layout.floors[floor_index]
-		#the designer moved or resized the slots - rebuild rather than guess
-		if !floor_data.has('shape') or floor_data.shape != FloorPlans.shape_signature(floor_plan):
+		#The designer added or took away slots - a floor this save cannot be fitted to, so
+		#rebuild rather than guess. Slots merely moved or resized are not that: where a room
+		#is drawn belongs to the picture behind it, not to the house, and redrawing the manor
+		#used to condemn every floor under it and hand the player back a bare plan.
+		if !floor_data.has('shape') or FloorPlans.shape_codes(floor_data.shape) != FloorPlans.slot_codes(floor_plan):
 			print_debug("mansion_layout: floor %d level map changed, rebuilding" % floor_index)
 			layout.floors[floor_index] = build_floor(floor_plan)
 			continue
+		#same house, new drawing - take the rects on so the save carries what is on screen now
+		floor_data.shape = FloorPlans.shape_signature(floor_plan)
 		validate_floor(floor_plan, floor_data)
 
 	#the plan gained floors since this layout was created

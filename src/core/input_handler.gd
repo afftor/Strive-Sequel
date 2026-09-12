@@ -247,6 +247,7 @@ var progress_data = {
 	seen_skills = [],
 	cheat_password = "", # password entered by the player, unlocks cheats on every save
 	supporter_prompt_dismissed = false, # player pressed "Don't show again" on the main menu notice
+	ngplus_unlocked = false, # cheat menu opened New Game+ without the act1 achievement
 	update_check_consent = null # null = not asked yet, true/false = player's answer
 } setget save_progress_data
 
@@ -377,6 +378,20 @@ func try_cheat_password(text):
 
 func unlock_cheats():
 	update_progress_data('cheat_password', BuildValidator.CHECKSUM)
+
+
+#New Game+ normally waits on the act1 achievement; this is the cheat menu's way past it.
+#The password is asked for again on every read, so a hand-edited progress file cannot turn
+#the flag on by itself, and revoking the code takes the bonus panel back with it.
+func ngplus_cheat_active():
+	return cheats_unlocked() and progress_data.ngplus_unlocked
+
+
+#update_progress_data only knows how to append to lists and replace strings, so the flag is
+#written the way supporter_prompt_dismissed is - straight into the dictionary, then stored.
+func unlock_ngplus():
+	progress_data.ngplus_unlocked = true
+	store_progress()
 
 
 func is_unique_sprite_unlocked(chara, sprite):
@@ -567,12 +582,9 @@ func _input(event):
 				continue
 		if ignore_rightclick == false:
 			if gui_controller.windows_opened.size() > 0:
+				#close_top_window() asks for the screen sweep itself now, so the panel's own X
+				#button reaches the same refresh this path always had
 				gui_controller.close_top_window()
-				for subscene in gui_controller.current_screen.get_children():
-					if subscene.get_class() == "Tween":
-						continue
-					if subscene.has_method('update'):#stub
-						subscene.update()
 				return
 			else:
 				match gui_controller.current_screen:
@@ -1178,6 +1190,16 @@ func start_event(code, type, args):
 		data = code
 		active_event_code = ''
 	else:
+		#last line of defence for a code nothing answers to. The callers that queue events now
+		#drop such codes themselves, but reaching the lookup below with one used to abort this
+		#function and leave event_is_active set, which stops every later event from opening.
+		#start_event_attempt() is deliberately not re-entered here - it has not struck this
+		#entry off dialogue_array yet, so calling it would pick the same code straight back up
+		if !scenedata.scenedict.has(code):
+			print("event requested with no scene for code: " + str(code))
+			event_is_active = false
+			active_event_code = ''
+			return
 		data = scenedata.scenedict[code].duplicate(true)
 		active_event_code = code
 		if !ResourceScripts.game_progress.seen_events.has(code):
@@ -1374,9 +1396,43 @@ func text_form_recitation(string_array):
 
 	return text
 
+#set while a _ready builds something that talks back: the root takes no children mid-_ready
+var defer_spec_node_mount = false
+var deferred_spec_nodes = {}
+var spec_node_layers = {}
+
+
+#A window that has to clear the mansion's room card needs a canvas layer of its own: the card
+#sits on layer 3 (mansion_view.tscn's Overlay) and in Godot 3 the layer number beats tree order
+#outright, so raise() among the root's children can never lift a window past it. An entry in
+#node_data asks for one with 'layer'; the layer becomes the window's parent rather than a node
+#inside its scene, because a CanvasLayer has no visibility of its own in this engine - hung
+#inside the window it would leave show() and hide() controlling nothing.
+func get_spec_node_parent(type):
+	var root = get_tree().get_root()
+	var data = ResourceScripts.node_data[type]
+	if !data.has('layer'):
+		return root
+	var holder_name = data.name + '_layer'
+	var holder = root.get_node_or_null(holder_name)
+	#The holder is asked for again before it is in the tree whenever the mount is deferred.
+	if holder == null and is_instance_valid(spec_node_layers.get(holder_name)):
+		holder = spec_node_layers[holder_name]
+	if holder == null:
+		holder = CanvasLayer.new()
+		holder.name = holder_name
+		spec_node_layers[holder_name] = holder
+		if defer_spec_node_mount:
+			root.call_deferred("add_child", holder)
+		else:
+			root.add_child(holder)
+	holder.layer = data.layer
+	return holder
+
+
 func get_spec_node(type, args = null, raise = true, unhide = true):
 	var window
-	var node = get_tree().get_root()
+	var node = get_spec_node_parent(type)
 	for n in modding_core.gui_nodes:
 		if n.name == ResourceScripts.node_data[type].name and !ResourceScripts.node_data[type].has('no_return'):
 			window = n
@@ -1387,6 +1443,8 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 	if node.has_node(ResourceScripts.node_data[type].name) and !ResourceScripts.node_data[type].has('no_return'):
 		window = node.get_node(ResourceScripts.node_data[type].name)
 		#node.remove_child(window)
+	elif window == null and is_instance_valid(deferred_spec_nodes.get(ResourceScripts.node_data[type].name)):
+		window = deferred_spec_nodes[ResourceScripts.node_data[type].name]
 	elif window == null:
 		match ResourceScripts.node_data[type].mode:
 			'scene':
@@ -1395,7 +1453,11 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 			'node':
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
-		node.add_child(window) #adding more than one sysmessages at one frame causes error here
+		if defer_spec_node_mount:
+			deferred_spec_nodes[window.name] = window
+			node.call_deferred("add_child", window)
+		else:
+			node.add_child(window) #adding more than one sysmessages at one frame causes error here
 	if raise: 
 #		print(window.name)
 		window.raise()

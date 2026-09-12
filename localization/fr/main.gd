@@ -190,6 +190,8 @@ Les touches du manoir et du combat sont indépendantes : une même touche peut s
 	OPTDISABLEITEMFLIGHT = """Désactiver l'animation de ramassage d'objets""",
 	OPTITEMFLIGHT = """Animations de ramassage d'objets""",
 	OPTFPSMETER = """Show FPS""", # MISSING TRANSLATION
+	OPTFASTCOMBAT = """Fast combat""", # MISSING TRANSLATION
+	COMBATFASTFORWARDTOOLTIP = """Play combat animations and delays four times faster. Damage numbers keep their usual pace.""", # MISSING TRANSLATION
 	
 	OPTCHEATENTERCODE = "Saisir le code",
 	OPTCHEATACTIVATE = "Activer",
@@ -197,6 +199,9 @@ Les touches du manoir et du combat sont indépendantes : une même touche peut s
 	OPTCHEATPASSWORD = "Mot de passe",
 	OPTCHEATCODEACTIVATE = "Code du supporteur activé",
 	OPTCHEATCHEATMENU = """Menu de triches""",
+	OPTCHEATUNLOCKNGP = """Unlock New Game+""", # MISSING TRANSLATION
+	OPTCHEATNGPUNLOCKED = """New Game+ Unlocked""", # MISSING TRANSLATION
+	OPTCHEATUNLOCKNGPTOOLTIP = """Opens the New Game+ bonus panel when starting a new game, without waiting for the first act to be finished. The bonuses themselves and the points to spend on them still have to be earned.""", # MISSING TRANSLATION
 	
 	#loadsavepanel
 	LSPMODE = "Mode",
@@ -473,6 +478,7 @@ Les touches du manoir et du combat sont indépendantes : une même touche peut s
 	LMMDATE = "Date",
 	LMMINVENTORY = "Inventaire",
 	LMMCRAFT = "Artisanat",
+	LMMCRAFTNOROOM = """Requires a workshop on the estate.""", # MISSING TRANSLATION
 	LMMJOURNAL = "Journal",
 	LMMOPTIONS = """Menu""", # MISSING TRANSLATION
 	LMMWORK = """Work""", # MISSING TRANSLATION
@@ -535,6 +541,8 @@ Les touches du manoir et du combat sont indépendantes : une même touche peut s
 	#MansionSlaveModule
 	MSMNAME = """Informations du personnage""",
 	MSMEXP = "EXP",
+	MSMPREVCHARACTER = """Previous character""", # MISSING TRANSLATION
+	MSMNEXTCHARACTER = """Next character""", # MISSING TRANSLATION
 	
 	#factor_descripts
 	FACTORDESCRIPTS1 = "Terrible",
@@ -868,6 +876,14 @@ Cependant, bien qu'il semble que les propriétaires terriens n'aient que du mép
 	FOODSTATEUNDEAD = """Ne mange pas""",
 	FOODSTATEUNDEADDESCRIPT = """Les morts-vivants n'ont pas besoin de nourriture et ne souffrent jamais de la faim.""",
 	FOODLOGSTARVE = """%s : n'a pas pu manger. Respect et Affection réduits.""",
+	CARDWARNFOODNONE = """Will Go Hungry""", # MISSING TRANSLATION
+	CARDWARNFOODNONEDESCRIPT = """This character eats when the turn ends, and there is nothing in store they are allowed to eat. They will starve: Respect and Affection lost, and the starvation penalty until they are fed.""", # MISSING TRANSLATION
+	CARDWARNFOODPOOR = """Meal Below Demand""", # MISSING TRANSLATION
+	CARDWARNFOODPOORDESCRIPT = """This character eats when the turn ends, and the best food in store they are allowed is below their demand of %s.""", # MISSING TRANSLATION
+	CARDWARNBEDNONE = """No Bed""", # MISSING TRANSLATION
+	CARDWARNBEDNONEDESCRIPT = """Nobody has given this character a room, so they will spend the night on the floor.""", # MISSING TRANSLATION
+	CARDWARNBEDPOOR = """Lodgings Below Demand""", # MISSING TRANSLATION
+	CARDWARNBEDPOORDESCRIPT = """This character's demand of %s asks for a private room, and the one they sleep in is not.""", # MISSING TRANSLATION
 	FOODLOGBELOWDEMAND = """%s : a reçu %s, ce qui est en dessous de ses standards. Respect réduit.""",
 
 
@@ -2015,6 +2031,139 @@ TOUT LE MONDE, alliés et lanceur compris, subit Brûlure.""",
 	SKILLPRISMATIC_BEAMDESCRIPT = """Inflige 130 % de l'ATQM en dégâts de Lumière à une cible unique. Applique Aveuglement.""",
 	SKILROCK_SLIDE = """Éboulement""",
 	SKILLROCK_SLIDEDESCRIPT = """Envoie des rochers sur les ennemis, avec une chance d'infliger 90 % de l'ATQM en dégâts {color=yellow|Terre}. Peut étourdir les cibles touchées.""",
+	SKILLCOAL_PEBBLE_FIST = """Pebble Fist: Goliath Slayer""", # MISSING TRANSLATION
+	SKILLCOAL_PEBBLE_FISTDESCRIPT = """Can only be used against an enemy at full HP. Deal 200% ATK damage with an extreme amount of armor penetration. Inflicts Shock and Shred for 3 turns and Stun for 1 turn.""", # MISSING TRANSLATION
+	SKILLCOAL_IRON_MOUNTAIN_LEAN = """Iron Mountain Lean""", # MISSING TRANSLATION
+	SKILLCOAL_IRON_MOUNTAIN_LEANDESCRIPT = """Cannot be used against an enemy affected by Knock Prone. A shoulder bash that deals 120% ATK {color=yellow|Earth} damage to the target and sends them crashing into the one behind them for the same damage. Inflicts Knock Prone for 2 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_NERVE_POINT = """Nerve-point Acupressure""", # MISSING TRANSLATION
+	SKILLCOAL_NERVE_POINTDESCRIPT = """Strike 3 times for 50% ATK damage each. Every hit inflicts {color=aqua|Paralysis} for 2 turns. Deals 40% more damage against paralysed or immobilised targets.""", # MISSING TRANSLATION
+	SKILLCOAL_MIGHTY_STEP = """Mighty Step, Weighty Blow""", # MISSING TRANSLATION
+	SKILLCOAL_MIGHTY_STEPDESCRIPT = """Stomp the ground, dealing 70% MATK {color=yellow|Earth} magic damage to every non-flying enemy with a chance to inflict Knock Prone.
+Then punch the target for 150% ATK damage. If the target is affected by Knock Prone the punch deals 50% more damage and inflicts Stun.""", # MISSING TRANSLATION
+	SKILLCOAL_MIGHTY_STEP_PUNCH = """Weighty Blow""", # MISSING TRANSLATION
+	SKILLCOAL_MIGHTY_STEP_PUNCHDESCRIPT = """Punch the target for 150% ATK damage. Deals 50% more damage and inflicts Stun against a target affected by Knock Prone.""", # MISSING TRANSLATION
+	SKILLCOAL_ROCK_SLING = """Barehand Rock Sling""", # MISSING TRANSLATION
+	SKILLCOAL_ROCK_SLINGDESCRIPT = """Fling pebbles at 3 random enemies for 55% ATK {color=yellow|Earth} damage. Every hit inflicts Blind for 3 turns and has a 35% chance to inflict Bleed for 2 turns. Critical hits deal 50% more damage.""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES = """Chamesh Avanim Ultimate Art: Five Stones Flurry""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONESDESCRIPT = """Can only be used when all other allies are defeated. Targets the enemy with the most HP.
+Inflict Fear, then strike 5 times for 70% ATK damage, inflicting Shock, Shred, Shatter and {color=aqua|Paralysis} in sequence. The last hit deals 160% ATK damage and always crits.""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_2 = """Five Stones Flurry: Second Stone""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_2DESCRIPT = """70% ATK damage. Inflicts Shred for 3 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_3 = """Five Stones Flurry: Third Stone""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_3DESCRIPT = """70% ATK damage. Inflicts Shatter for 3 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_4 = """Five Stones Flurry: Fourth Stone""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_4DESCRIPT = """70% ATK damage. Inflicts {color=aqua|Paralysis} for 2 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_5 = """Five Stones Flurry: Fifth Stone""", # MISSING TRANSLATION
+	SKILLCOAL_FIVE_STONES_5DESCRIPT = """160% ATK damage. Always a critical hit.""", # MISSING TRANSLATION
+	SKILLCOAL_BOLTHAR_COUNTER = """Flash Counter""", # MISSING TRANSLATION
+	SKILLCOAL_BOLTHAR_COUNTERDESCRIPT = """A punch thrown at whoever Bolthar just dodged. Deals 80% ATK damage.""", # MISSING TRANSLATION
+	SKILLCOAL_GNOMES_WIT_ALLIES = """Unity of the Coalition: Gnome's Wit""", # MISSING TRANSLATION
+	SKILLCOAL_GNOMES_WIT_ALLIESDESCRIPT = """While Bolthar is alive, all allies gain +15% critical chance.""", # MISSING TRANSLATION
+	SKILLCOAL_GNOMES_WIT_ENEMIES = """Gnome's Wit: Bane""", # MISSING TRANSLATION
+	SKILLCOAL_GNOMES_WIT_ENEMIESDESCRIPT = """While Bolthar is alive, all enemies lose 10% critical chance.""", # MISSING TRANSLATION
+	SKILLCOAL_MAGMA_PENDANT = """Scavenged Artifact: Magma Pendant""", # MISSING TRANSLATION
+	SKILLCOAL_MAGMA_PENDANTDESCRIPT = """Deal 110% MATK {color=yellow|Fire} damage to 1-2 random enemies and inflict Burn for 3 turns. If the caster is Wet, the cast dries them off but the damage is halved.""", # MISSING TRANSLATION
+	SKILLCOAL_FAN_O_FLAME = """Scavenged Artifact: Fan O' Flame""", # MISSING TRANSLATION
+	SKILLCOAL_FAN_O_FLAMEDESCRIPT = """Deal 45% MATK {color=yellow|Air} damage to all enemies with a 30% chance to inflict Blind for 1 turn.
+On hitting a burning enemy the flames erupt: 70% MATK {color=yellow|Fire} damage to that enemy and 50% MATK to 1-2 other random enemies, spreading Burn for 2 turns. Once per cast.""", # MISSING TRANSLATION
+	SKILLCOAL_FLAME_ERUPTION = """Flame Eruption""", # MISSING TRANSLATION
+	SKILLCOAL_FLAME_ERUPTIONDESCRIPT = """The flames on a burning enemy erupt for 70% MATK {color=yellow|Fire} damage, then spread to 1-2 other random enemies.""", # MISSING TRANSLATION
+	SKILLCOAL_FLAME_SPREAD = """Spreading Flames""", # MISSING TRANSLATION
+	SKILLCOAL_FLAME_SPREADDESCRIPT = """50% MATK {color=yellow|Fire} damage to 1-2 random enemies. Inflicts Burn for 2 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_CURSED_FLINT = """Scavenged Artifact: Cursed Flint & Meteorite Steel""", # MISSING TRANSLATION
+	SKILLCOAL_CURSED_FLINTDESCRIPT = """Can only be used against a burning enemy. Deal 120% MATK {color=yellow|Dark} damage, then turn every Burn on the enemy party into Dark Flame for 4 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_FLINT_CONVERT = """Dark Kindling""", # MISSING TRANSLATION
+	SKILLCOAL_FLINT_CONVERTDESCRIPT = """Every burning enemy has their Burn replaced with Dark Flame for 4 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_LAVA_SPILL = """Command: Lava Spill""", # MISSING TRANSLATION
+	SKILLCOAL_LAVA_SPILLDESCRIPT = """Nearby kobolds toss buckets of molten rock at 4 random enemies with an 80% hit chance, dealing 90% MATK {color=yellow|Fire} damage and inflicting Shatter for 3 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_THROAT_SPRAY = """Scavenged Medicine: Throat Spray""", # MISSING TRANSLATION
+	SKILLCOAL_THROAT_SPRAYDESCRIPT = """Can be used while Silenced, and only while Silenced or below 60% HP. Restore 15% of max HP, remove Silence and gain Clarity for 4 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_DRAGON_TONIC = """Super Rare Scavenged Artifact: Dragon's Breath Tonic""", # MISSING TRANSLATION
+	SKILLCOAL_DRAGON_TONICDESCRIPT = """Can only be used when all other allies are defeated.
+Breathe fire for 180% MATK {color=yellow|Fire} damage on every enemy, 50% more against burning targets. Inflicts Shred and Burn for 3 turns and grants {color=aqua|Dragon Might} for the rest of the battle.""", # MISSING TRANSLATION
+	SKILLCOAL_BEAD_HEAL = """Scavenged Artifact: Bead of Healing""", # MISSING TRANSLATION
+	SKILLCOAL_BEAD_HEALDESCRIPT = """Heal an ally for 12% of their max HP and cure their Bleed.""", # MISSING TRANSLATION
+	SKILLCOAL_BEAD_WATCH = """Bead of Healing""", # MISSING TRANSLATION
+	SKILLCOAL_BEAD_WATCHDESCRIPT = """The kobold keeps an eye on wounded allies.""", # MISSING TRANSLATION
+	SKILLCOAL_KOBOLD_TREASURE = """Unity of the Coalition: Kobold's Treasure""", # MISSING TRANSLATION
+	SKILLCOAL_KOBOLD_TREASUREDESCRIPT = """While the Kobold Coalitionist is alive, all allies gain +20 resistance to every element and are immune to Burn.""", # MISSING TRANSLATION
+	SKILLCOAL_POISON_VAPORS = """Poison Vapors""", # MISSING TRANSLATION
+	SKILLCOAL_POISON_VAPORSDESCRIPT = """Deal 35% MATK {color=yellow|Water} damage to a column of enemies and inflict Poison for 3 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_PARALYTIC_REACTION = """Paralytic Reaction""", # MISSING TRANSLATION
+	SKILLCOAL_PARALYTIC_REACTIONDESCRIPT = """Can only target a poisoned enemy. Deal 160% MATK {color=yellow|Water} damage and inflict {color=aqua|Paralysis} for 2 turns. Removes Poison, unless the target carries {color=aqua|Contagious Calamity}, which keeps everything in place.""", # MISSING TRANSLATION
+	SKILLCOAL_RODENT_AGILITY = """Rodent Agility""", # MISSING TRANSLATION
+	SKILLCOAL_RODENT_AGILITYDESCRIPT = """Cannot be used while hasted. Gain Haste for 3 turns and In The Shadows until the ratkin attacks openly. Below 50% HP, follows up with Dip Poison on a random enemy.""", # MISSING TRANSLATION
+	SKILLCOAL_DIP_POISON_RANDOM = """Dip Poison""", # MISSING TRANSLATION
+	SKILLCOAL_DIP_POISON_RANDOMDESCRIPT = """Strike a random enemy for 100% ATK damage and inflict Poison for 4 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_HAZARDOUS_OUTBURST = """Hazardous Outburst""", # MISSING TRANSLATION
+	SKILLCOAL_HAZARDOUS_OUTBURSTDESCRIPT = """Lash out 6 times at random enemies for 35% ATK damage, inflicting Poison for 3 turns. Deals 40% more damage to poisoned targets. Hitting an enemy affected by {color=aqua|Contagious Calamity} spreads it to 2 other enemies.""", # MISSING TRANSLATION
+	SKILLCOAL_EPIDEMIC_BEGIN = """Epidemic Begin""", # MISSING TRANSLATION
+	SKILLCOAL_EPIDEMIC_BEGINDESCRIPT = """Can only be used when all other allies are defeated.
+Inflict {color=aqua|Contagious Calamity} on 2 random enemies for 3 turns. Gain Last Stand for 1 turn and In The Shadows until the ratkin attacks openly.""", # MISSING TRANSLATION
+	SKILLCOAL_CALAMITY_CARRIER = """Contagion""", # MISSING TRANSLATION
+	SKILLCOAL_CALAMITY_CARRIERDESCRIPT = """The plague jumps to up to 2 other allies of its victim.""", # MISSING TRANSLATION
+	SKILLCOAL_CALAMITY_SPREAD = """Contagion""", # MISSING TRANSLATION
+	SKILLCOAL_CALAMITY_SPREADDESCRIPT = """The plague spreads to 2 more enemies.""", # MISSING TRANSLATION
+	SKILLCOAL_DIP_POISON_REACTION = """Dip Poison""", # MISSING TRANSLATION
+	SKILLCOAL_DIP_POISON_REACTIONDESCRIPT = """Toxic Salt to the Wound: strike the enemy an ally just crit for 100% ATK damage and inflict Poison for 4 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_TOXIC_SALT_WATCH = """Toxic Salt to the Wound""", # MISSING TRANSLATION
+	SKILLCOAL_TOXIC_SALT_WATCHDESCRIPT = """The ratkin waits for an ally to land a critical hit.""", # MISSING TRANSLATION
+	SKILLCOAL_RATKIN_GIFT = """Unity of the Coalition: Ratkin's Gift""", # MISSING TRANSLATION
+	SKILLCOAL_RATKIN_GIFTDESCRIPT = """While the Ratkin Coalitionist is alive, all allies regenerate 50 HP per turn and are immune to Poison.""", # MISSING TRANSLATION
+	SKILLCOAL_FRAG_GRENADE = """Fragmentation Grenade""", # MISSING TRANSLATION
+	SKILLCOAL_FRAG_GRENADEDESCRIPT = """Disabled by Disarm instead of Silence. Deal 100% MATK {color=yellow|Fire} damage and inflict Bleed for 2 turns. 3-5 fragments fly out at other random enemies with a 70% hit chance, dealing 50% ATK damage and inflicting Bleed.""", # MISSING TRANSLATION
+	SKILLCOAL_FRAG_SHRAPNEL = """Shrapnel""", # MISSING TRANSLATION
+	SKILLCOAL_FRAG_SHRAPNELDESCRIPT = """50% ATK damage to 3-5 random enemies with a 70% hit chance. Inflicts Bleed for 2 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_FLASH_GRENADE = """Flash Grenade""", # MISSING TRANSLATION
+	SKILLCOAL_FLASH_GRENADEDESCRIPT = """Disabled by Disarm instead of Silence. Deal 50% MATK {color=yellow|Fire} damage and inflict Blind for 2 turns. Every other enemy has a 30% chance to be blinded as well.""", # MISSING TRANSLATION
+	SKILLCOAL_FLASH_BURST = """Flash""", # MISSING TRANSLATION
+	SKILLCOAL_FLASH_BURSTDESCRIPT = """30% chance to inflict Blind for 2 turns on every other enemy.""", # MISSING TRANSLATION
+	SKILLCOAL_INCENDIARY_GRENADE = """Incendiary Grenade""", # MISSING TRANSLATION
+	SKILLCOAL_INCENDIARY_GRENADEDESCRIPT = """Disabled by Disarm instead of Silence. Deal 160% MATK {color=yellow|Fire} damage and inflict Burn for 3 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_LAND_MINE = """Proximity Land Mine""", # MISSING TRANSLATION
+	SKILLCOAL_LAND_MINEDESCRIPT = """Disabled by Disarm instead of Silence. Give 2 random allies {color=aqua|Land Mine Deterrence}.""", # MISSING TRANSLATION
+	SKILLCOAL_RELOADING = """Reloading""", # MISSING TRANSLATION
+	SKILLCOAL_RELOADINGDESCRIPT = """Can only be used while Disarmed. Remove Disarm and reset the cooldown of every skill.""", # MISSING TRANSLATION
+	SKILLCOAL_BIG_RED_BUTTON = """Big Red Button""", # MISSING TRANSLATION
+	SKILLCOAL_BIG_RED_BUTTONDESCRIPT = """Can only be used when all other allies are defeated, and only once.
+Summon the Mother of All Bombs.""", # MISSING TRANSLATION
+	SKILLCOAL_SUMMON_MOAB = """Mother of All Bombs""", # MISSING TRANSLATION
+	SKILLCOAL_SUMMON_MOABDESCRIPT = """Wheels in the Mother of All Bombs.""", # MISSING TRANSLATION
+	SKILLCOAL_LIT_WICK_THROW = """Lit Wick for the Rested""", # MISSING TRANSLATION
+	SKILLCOAL_LIT_WICK_THROWDESCRIPT = """A random grenade thrown at an enemy who was just healed.""", # MISSING TRANSLATION
+	SKILLCOAL_LIT_WICK_WATCH = """Lit Wick for the Rested""", # MISSING TRANSLATION
+	SKILLCOAL_LIT_WICK_WATCHDESCRIPT = """The goblin waits for an enemy to be healed.""", # MISSING TRANSLATION
+	SKILLCOAL_GOBLIN_INVENTION = """Unity of the Coalition: Goblin's Invention""", # MISSING TRANSLATION
+	SKILLCOAL_GOBLIN_INVENTIONDESCRIPT = """While the Goblin Coalitionist is alive, all allies deal 10% more damage and are immune to Blind.""", # MISSING TRANSLATION
+	SKILLCOAL_CHOP_OFF = """Chop Off the Limb""", # MISSING TRANSLATION
+	SKILLCOAL_CHOP_OFFDESCRIPT = """Deal 120% ATK damage and inflict Bleed for 3 turns. 40% chance to inflict Disarm for 2 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_YIELD_MY_FLESH = """Yield My Flesh""", # MISSING TRANSLATION
+	SKILLCOAL_YIELD_MY_FLESHDESCRIPT = """Gain {color=aqua|To Claim Their Bone} until the start of the next turn.""", # MISSING TRANSLATION
+	SKILLCOAL_BONE_COUNTER = """To Claim Their Bone""", # MISSING TRANSLATION
+	SKILLCOAL_BONE_COUNTERDESCRIPT = """An unmissable counter for 220% ATK damage that inflicts Bleed for 3 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_MOUNTAIN_CRUMBLE = """Til Mountain Crumble to Dust""", # MISSING TRANSLATION
+	SKILLCOAL_MOUNTAIN_CRUMBLEDESCRIPT = """Can only be used when all other allies are defeated, and only once.
+Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soothe for 4 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_ASSIST_WATCH = """Assist Defence""", # MISSING TRANSLATION
+	SKILLCOAL_ASSIST_WATCHDESCRIPT = """The dwarf keeps watch over his allies.""", # MISSING TRANSLATION
+	SKILLCOAL_DWARF_PENANCE = """Unity of the Coalition: Dwarf's Penance""", # MISSING TRANSLATION
+	SKILLCOAL_DWARF_PENANCEDESCRIPT = """While the Dwarf Coalitionist is alive, all other allies take 70% less damage from area attacks.""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_TICK_1 = """IT'S GONNA BLOW UP!""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_TICK_1DESCRIPT = """The time before this thing explodes becomes shorter. 50% chance to inflict Fear on every enemy for 1 turn.""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_TICK_2 = """IT'S GONNA BLOW UP!!""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_TICK_2DESCRIPT = """The time before this thing explodes becomes shorter. 50% chance to inflict Fear on every enemy for 1 turn.""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_TICK_3 = """IT'S GONNA BLOW UP!!!""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_TICK_3DESCRIPT = """The time before this thing explodes becomes shorter. 50% chance to inflict Fear on every enemy for 1 turn.""", # MISSING TRANSLATION
+	SKILLCOAL_FRAG_GRENADE_WICK = """Fragmentation Grenade""", # MISSING TRANSLATION
+	SKILLCOAL_FRAG_GRENADE_WICKDESCRIPT = """Deal 100% MATK {color=yellow|Fire} damage and inflict Bleed for 2 turns. 3-5 fragments fly out at other random enemies with a 70% hit chance, dealing 50% ATK damage and inflicting Bleed.""", # MISSING TRANSLATION
+	SKILLCOAL_FLASH_GRENADE_WICK = """Flash Grenade""", # MISSING TRANSLATION
+	SKILLCOAL_FLASH_GRENADE_WICKDESCRIPT = """Deal 50% MATK {color=yellow|Fire} damage and inflict Blind for 2 turns. Every other enemy has a 30% chance to be blinded as well.""", # MISSING TRANSLATION
+	SKILLCOAL_INCENDIARY_GRENADE_WICK = """Incendiary Grenade""", # MISSING TRANSLATION
+	SKILLCOAL_INCENDIARY_GRENADE_WICKDESCRIPT = """Deal 160% MATK {color=yellow|Fire} damage and inflict Burn for 3 turns.""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_BOOM = """Birth of a Mushroom Cloud""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_BOOMDESCRIPT = """Cannot miss. Removes Last Stand, then deals a catastrophic amount of {color=yellow|True} damage to every unit on the field.""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_BOOM_ALLIES = """Mushroom Cloud""", # MISSING TRANSLATION
+	SKILLCOAL_MOAB_BOOM_ALLIESDESCRIPT = """The blast reaches its own side as well.""", # MISSING TRANSLATION
 	SKILLACCELERATING_PLUNGE = """Plongeon accélérant""",
 	SKILLACCELERATING_PLUNGEDESCRIPT = """Si cette unité n'a pas d'effet d'immobilisation, gagne une charge d'[{color=aqua|Élan catastrophique}].
 Sinon, dissipe tous les effets d'immobilisation.""",
@@ -2337,6 +2486,8 @@ Retire toute {color=aqua|Masse croissante} sur soi.""",
 	STATUSDESC_POISON = """Empoisonné : subit 10 % des PV max en dégâts neutres par tour.""",
 	STATUSDESC_BURN = """Brûlure : subit 8 % des PV max en dégâts de Feu par tour.""",
 	STATUSDESC_SHRED = """Lacéré : la DEF est réduite de 25 %. Cumulable 2 fois.""",
+	STATUSDESC_PARALYSIS = """Paralysed: -50 Speed, -80 Evasion and -75 Hitrate. Counts as an affliction.""", # MISSING TRANSLATION
+	STATUSDESC_CONTAGIOUS_CALAMITY = """Contagious Calamity: counts as Poison. Healing received is halved. 25% of max HP is lost and spreads to up to 2 random allies every turn. """, # MISSING TRANSLATION
 	STATUSDESC_FEAR = """Peur : les dégâts sont réduits de 25 %.""",
 	STATUSDESC_TAUNT = """Provoqué : focalisé sur le lanceur""",
 	STATUSDESC_PROVOKE = """Provoqué : focalisé sur le lanceur, ne peut utiliser que des capacités monocibles.""",
@@ -2911,12 +3062,15 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	MANSION_ACTIVITY_TYPE_TRAINING = """Training""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_STAT = """Stats""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_SERVICE = """Service""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_PRODUCTION = """Gathering""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_UPKEEP = """Upkeep""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s est rentré au manoir.""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s returned to %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s est arrivé à %s.""",
 	MANSION_ACTIVITY_AUTOBUY = """%s came back from the market with %s, for %d gold.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SLEPTROUGH = """Had no place to sleep at: %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s a terminé la fabrication de %s.""",
+	MANSION_ACTIVITY_CRAFT_REPORT = """The workshops finished [color=#e8aa55]%d[/color] craft(s), made by %d of the household.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TRAINING_COMPLETE = """%s finished training %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_STAT_CHANGES = """%s: %s""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPGRADE_COMPLETE = """%s a terminé l'amélioration %s.""",
@@ -2927,8 +3081,16 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	MANSION_ACTIVITY_LOCATION_EMPTY = """There is nobody left at %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_LOCATION_GONE = """That location is no longer accessible.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SERVICE_REPORT = """Service brought in [color=#f0c860]%d[/color] gold, earned by %d of the household.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_PRODUCTION_REPORT = """Work brought in [color=#6fc0b0]%d[/color] resource(s), of %d kind(s).""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_UPKEEP_REPORT = """Weekly upkeep cost the estate [color=#d05f5f]%d[/color] gold, over %d charge(s).""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_UPKEEP_CHARACTER = """%s: [color=#d05f5f]%d[/color] gold (%d fame + %d value).""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_UPKEEP_UPGRADES = """Taxes on upgrades: [color=#d05f5f]%d[/color] gold.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SERVICE_EXPAND = """Expand""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SERVICE_COLLAPSE = """Collapse""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_BEDROOM = """Bedroom""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_BEDROOM_LIGHT = """%s and %s had some light fun at night.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_BEDROOM_PASSIONATE = """%s and %s spent a passionate night together.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_BEDROOM_SKILL = """%s is now [color=#d95d8a]%s[/color] at %s.""", # MISSING TRANSLATION
 	
 	LOGLEFTLABEL = "Main",
 	LOGLEFTTTOOLTIP = "Affiche les événements principaux",
@@ -4876,6 +5038,55 @@ Peut être désactivé si l'utilisateur est réduit au silence ou immobilisé.""
 À sa mort : si le tueur est un nain, il obtient Promotion""",
 	EFFECTNAME_DWARF_PROMOTION = """Promotion""",
 	EFFECT_DWARF_PROMOTION = """+20 % de dégâts infligés. +50 précision. +30 % de chance de critique. +10 vitesse.""",
+	EFFECTNAME_COAL_PARALYSIS = """Paralysis""", # MISSING TRANSLATION
+	EFFECT_COAL_PARALYSIS = """Paralysed: -50 Speed, -80 Evasion and -75 Hitrate. Counts as an affliction.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_CALAMITY = """Contagious Calamity""", # MISSING TRANSLATION
+	EFFECT_COAL_CALAMITY = """Contagious Calamity: counts as Poison. Healing received is halved and 20% of max HP is lost every turn.
+When it runs its course it spreads to up to 2 other allies.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_LAND_MINE = """Land Mine Deterrence""", # MISSING TRANSLATION
+	EFFECT_COAL_LAND_MINE = """A melee attack on this unit sets the mine off: the attacker takes heavy {color=yellow|Fire} damage and is Shredded for 2 turns. Any party-wide attack clears the mine harmlessly.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_CLAIM_BONE = """To Claim Their Bone""", # MISSING TRANSLATION
+	EFFECT_COAL_CLAIM_BONE = """HP cannot drop below 10% and damage taken is halved. The next melee hit that lands is answered with an unmissable counter that inflicts Bleed. Lasts one hit or one turn.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_DRAGON_MIGHT = """Dragon Might""", # MISSING TRANSLATION
+	EFFECT_COAL_DRAGON_MIGHT = """+25% damage dealt and +25% armor for the rest of the battle.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_GNOMES_WIT = """Gnome's Wit""", # MISSING TRANSLATION
+	EFFECT_COAL_GNOMES_WIT = """+15% critical chance while Bolthar is alive.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_GNOMES_WIT_BANE = """Gnome's Wit""", # MISSING TRANSLATION
+	EFFECT_COAL_GNOMES_WIT_BANE = """-10% critical chance while Bolthar is alive.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_KOBOLD_TREASURE = """Kobold's Treasure""", # MISSING TRANSLATION
+	EFFECT_COAL_KOBOLD_TREASURE = """+20 resistance to every element and immunity to Burn while the Kobold Coalitionist is alive.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_RATKIN_GIFT = """Ratkin's Gift""", # MISSING TRANSLATION
+	EFFECT_COAL_RATKIN_GIFT = """Regenerates 50 HP per turn and immune to Poison while the Ratkin Coalitionist is alive.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_GOBLIN_INVENTION = """Goblin's Invention""", # MISSING TRANSLATION
+	EFFECT_COAL_GOBLIN_INVENTION = """+10% damage dealt and immunity to Blind while the Goblin Coalitionist is alive.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_DWARF_PENANCE = """Dwarf's Penance""", # MISSING TRANSLATION
+	EFFECT_COAL_DWARF_PENANCE = """70% less damage taken from area attacks while the Dwarf Coalitionist is alive.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_BEAD_WATCH = """Bead of Healing""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_TOXIC_SALT = """Toxic Salt to the Wound""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_LIT_WICK = """Lit Wick for the Rested""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_ASSIST_DEFENCE = """Assist Defence""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_BUTTON_PRESSED = """Button Pressed""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_CRUMBLE_USED = """Mountain Crumbled""", # MISSING TRANSLATION
+	EFFECT_COAL_EARTH_SHIELD = """Earth Shield: +150 Armor and +120 MDEF.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_ERUPTION_LOCK = """Flames Spent""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_SPREAD_LOCK = """Plague Spread""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_RECOVERED = """Recovered""", # MISSING TRANSLATION
+	TRAIT_COAL_FLASH_STEP = """Flash Step Mastery: melee attacks from the back row lose no damage.
+Single-target spells can be dodged with half of this unit's Evasion.""", # MISSING TRANSLATION
+	TRAIT_COAL_CHAMESH_AVANIM = """Practitioner of Chamesh Avanim: immune to Disarm.
+Attacks against a target with 5 or more afflictions always crit.
+Flash-steps in to counterattack whenever an attack is dodged, up to 5 times per turn.""", # MISSING TRANSLATION
+	TRAIT_COAL_BEAD_OF_HEALING = """Scavenged Artifact: Bead of Healing. Once per turn, when an ally ends their turn below 25% HP and this unit is neither immobilised nor Silenced, heal that ally and cure their Bleed.""", # MISSING TRANSLATION
+	TRAIT_COAL_TOXIC_SALT = """Toxic Salt to the Wound: once per turn, when an ally lands a critical hit and this unit is neither immobilised nor Blinded, follow up with Dip Poison on the victim.""", # MISSING TRANSLATION
+	TRAIT_COAL_LIT_WICK = """Lit Wick for the Rested: once per turn, when an enemy is healed and this unit is neither immobilised nor Disarmed, throw a random grenade at them.""", # MISSING TRANSLATION
+	TRAIT_COAL_ASSIST_DEFENCE = """Assist Defence: once per turn, while this unit is neither immobilised nor Ensnared, a single-target attack aimed at an ally below 50% HP is taken by this unit instead.""", # MISSING TRANSLATION
+	TRAIT_COAL_FINAL_COUNTDOWN = """Final Countdown: three warnings, then it explodes on its fourth turn. Destroy it before it wipes you and everything around it off the map! Freezing it buys time; nothing resets the fuse.""", # MISSING TRANSLATION
+	EFFECT_COAL_FUSE_1 = """Fuse lit: the bomb explodes in 3 turns.""", # MISSING TRANSLATION
+	EFFECT_COAL_FUSE_2 = """Fuse burning down: the bomb explodes in 2 turns.""", # MISSING TRANSLATION
+	EFFECT_COAL_FUSE_3 = """Fuse almost out: the bomb explodes on its next turn.""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_FUSE_1 = """Fuse""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_FUSE_2 = """Fuse""", # MISSING TRANSLATION
+	EFFECTNAME_COAL_FUSE_3 = """Fuse""", # MISSING TRANSLATION
 	EFFECTNAME_OVERLOADED_GOLEM_CORE = """Noyau de golem surchargé""",
 	EFFECT_OVERLOADED_GOLEM_CORE = """Toutes les attaques ont désormais 70 % de chance d'infliger Brûlure.
 En fin de tour : inflige de légers dégâts de feu à tous les ennemis.
@@ -5522,6 +5733,16 @@ La prochaine application de Gel est garantie.""",
 	BODYPARTHAIR_STYLEBRAID = "tresse",
 	BODYPARTHAIR_STYLETWINBRAIDS = "tresses jumelles",
 	BODYPARTHAIR_STYLEBUN = "chignon",
+	BODYPARTHAIR_STYLEBOB = """bob""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEMESSY = """messy""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLELAYERED = """layered""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEFRINGE = """fringe""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLECROWNBRAID = """crown braid""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLETWINTAILS = """twin tails""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLECURLS = """curls""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLESHAVED = """scraped back""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEUNDERCUT = """undercut""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEHIME = """hime cut""", # MISSING TRANSLATION
 	BODYPARTEYE_COLORDEFAULT = "par défaut",
 	BODYPARTEYE_SHAPENORMAL = "normal",
 	BODYPARTEYE_SHAPESLIT = "fente",
@@ -5710,6 +5931,16 @@ La prochaine application de Gel est garantie.""",
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "Il est coiffé en une seule [url=hair][color=aqua]tresse[/color][/url]",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "Il est coiffé en [url=hair][color=aqua]deux tresses[/color][/url]",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "Il est noué en un [url=hair][color=aqua]chignon[/color][/url]",
+	BODYPARTHAIR_STYLEBOBDESCRIPT = """It is cut into a neat [url=hair][color=aqua]bob[/color][/url].""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEMESSYDESCRIPT = """It falls in a [url=hair][color=aqua]dishevelled[/color][/url] tangle.""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLELAYEREDDESCRIPT = """It is cut in [url=hair][color=aqua]layers[/color][/url] that frame [his] face.""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEFRINGEDESCRIPT = """It is swept into a long [url=hair][color=aqua]side fringe[/color][/url].""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLECROWNBRAIDDESCRIPT = """It is gathered back behind a [url=hair][color=aqua]braided crown[/color][/url].""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLETWINTAILSDESCRIPT = """It is gathered into [url=hair][color=aqua]twin tails[/color][/url].""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLECURLSDESCRIPT = """It falls in loose [url=hair][color=aqua]ringlets[/color][/url].""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLESHAVEDDESCRIPT = """It is [url=hair][color=aqua]scraped back[/color][/url] tight against [his] skull.""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEUNDERCUTDESCRIPT = """The sides are shaved into an [url=hair][color=aqua]undercut[/color][/url].""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEHIMEDESCRIPT = """It is cut in a blunt fringe with long straight [url=hair][color=aqua]side locks[/color][/url].""", # MISSING TRANSLATION
 	HAIRCOLOR_GRADIENT = """multicolore""",
 	HAIRCOLOR_BROWN = """brun""",
 	HAIRCOLOR_ORANGE = """orange""",
@@ -8803,6 +9034,12 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYDWARVEN_SKIRMISHER = """Tirailleur nain""",
 	ENEMYDWARVEN_SHIELDER = """Porte-bouclier nain""",
 	ENEMYOBSIDIAN_GOLEM = """Golem d'obsidienne""",
+	ENEMYCOAL_BOLTHAR = """Bolthar""", # MISSING TRANSLATION
+	ENEMYCOAL_KOBOLD = """Kobold Coalitionist""", # MISSING TRANSLATION
+	ENEMYCOAL_RATKIN = """Ratkin Coalitionist""", # MISSING TRANSLATION
+	ENEMYCOAL_GOBLIN = """Goblin Coalitionist""", # MISSING TRANSLATION
+	ENEMYCOAL_DWARF = """Dwarf Coalitionist""", # MISSING TRANSLATION
+	ENEMYCOAL_MOAB = """Mother of All Bombs""", # MISSING TRANSLATION
 	ENEMYKURO = """Kuro""", # MISSING TRANSLATION
 	ENEMYERDYNA = """Erdyna""", # MISSING TRANSLATION
 	ENEMYNIXX = """Nixx""", # MISSING TRANSLATION
@@ -8917,6 +9154,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ITEMSEXSWAP_POTION = """Sex Swap Potion""", # MISSING TRANSLATION
 	ITEMSEXSWAP_POTIONDESCRIPT = """Changes character's sex to the opposite. Won't work on unique characters.""", # MISSING TRANSLATION
 	ITEMUSECONFIRM = """Voulez-vous vraiment utiliser {color=yellow|%s} ?""",
+	ITEMUSEAMOUNT = """Use %s""", # MISSING TRANSLATION
 	ITEXP_SCROLL = "Parchemin de connaissance",
 	ITEXP_SCROLLDESCRIPT = "Accorde 100 points d'expérience à l'utilisateur",
 
@@ -9066,6 +9304,9 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ACHIEVEMENT_MAX_ALCHEMY_NAME = """Maître alchimiste""",
 	ACHIEVEMENT_MAX_ALCHEMY_DESC = """Laboratoire d'alchimie amélioré au niveau 3""",
 	ACHIEVEMENT_MAX_ALCHEMY_HINT = """Améliorer le laboratoire d'alchimie au niveau 3""",
+	ACHIEVEMENT_MAX_KITCHEN_NAME = """Master cook""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_KITCHEN_DESC = """A Kitchen with every improvement built""", # MISSING TRANSLATION
+	ACHIEVEMENT_MAX_KITCHEN_HINT = """Build every improvement a Kitchen offers""", # MISSING TRANSLATION
 	ACHIEVEMENT_UPGRADES_NAME = """Maître artisan""",
 	ACHIEVEMENT_UPGRADES_DESC = """Les trois améliorations d'atelier réalisées""",
 	ACHIEVEMENT_UPGRADES_HINT = """Améliorer trois ateliers au niveau 3""",
@@ -20485,7 +20726,14 @@ Kuro pays no attention to his words, simply turns around and prepares to continu
 As she turns away, a group of coalition troops laying in the hiding who were just waiting for the king to appear.
 
 {color=yellow|The King: — That bitch even sided with the coalition behind my back! Take them out and get her!}""", # MISSING TRANSLATION
-	DWARF_CEREMONY_CAUGHTUP_CULT = """
+	DWARF_CEREMONY_CAUGHTUP_CULT = """,
+	DWARF_CEREMONY_BOLTHAR = """The ambushers part, and a gnome in a plain robe steps out of their ranks with his hands open at his sides. Bolthar. Behind him come the ones who hold his coalition together: a kobold weighed down with scavenged trinkets, a ratkin who keeps to the edge of the torchlight, a goblin with a bandolier of crude grenades, and a dwarf resting a double-bitted axe on his shoulder.
+
+{color=yellow|Bolthar: — I offered you a place among us once. You chose the crown instead, and now the crown has brought you here, to the one fight I hoped to spare you.}
+
+{color=aqua|The King: — Enough talk. Cut them down!}
+
+{color=yellow|Bolthar: — Stand together, friends. Whatever they take from us, they take from all of us at once.}""", # MISSING TRANSLATION
 
 As she turns away, a group of cultists join the street blocking you from going after her.""", # MISSING TRANSLATION
 	KURO_RESOLUTION_INTRO = """You make your way to the nearby caves chasing after Kuro carrying the artifact. By going through unconventional paths soon you arrive in a desolated area.
@@ -22375,6 +22623,14 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DATE_SCOLD3 = "Je suis désolé, ne vous mettez pas en colère",
 	DATE_SCOLD4 = "Arrête, je n'ai pas mérité ça !",
 	DATE_SCOLD5 = "Je suis désolé que tu te sentes comme ça",
+	DATE_PRESUMPTUOUS1 = """So... [Master] likes it like this? Hehe.""", # MISSING TRANSLATION
+	DATE_PRESUMPTUOUS2 = """[Master], you really spoiling me like that...""", # MISSING TRANSLATION
+	DATE_PRESUMPTUOUS3 = """You are quite a softy, [Master]""", # MISSING TRANSLATION
+	DATE_PRESUMPTUOUS4 = """Haah, I wonder how much I will be able to get away with now.""", # MISSING TRANSLATION
+	DATE_PUT_IN_PLACE1 = """...Forgive me, [Master]. I forgot myself.""", # MISSING TRANSLATION
+	DATE_PUT_IN_PLACE2 = """I'm sorry. It won't happen again.""", # MISSING TRANSLATION
+	DATE_PUT_IN_PLACE3 = """Of course, [Master], I know my place.""", # MISSING TRANSLATION
+	DATE_PUT_IN_PLACE4 = """As you say, [Master].""", # MISSING TRANSLATION
 	
 	MIMIC_EAT1 = "Oh non ! Il est vivant !",
 	MIMIC_EAT2 = "Non ! Il me tient ! A l'aide !",
@@ -22491,6 +22747,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	CAPITALEMPIRE = """Empire Capital""", # MISSING TRANSLATION
 	CAPITALBEASTKIN = """Beastkin Tribe""", # MISSING TRANSLATION
 	WORKERSDISASSEMBLE = """Disassemble""", # MISSING TRANSLATION
+	DISASSEMBLE_CONFIRM = """Disassemble %s?
+You'll get between %s and %s of %s.""", # MISSING TRANSLATION
+	DISASSEMBLE_RESULT = """You've got %s of %s after disassemble.""", # MISSING TRANSLATION
 	AREACAPITALS = "Capitales",
 	AREASETTLEMENTS = "Villages",
 	AREAQUESTS = "Quêtes",
@@ -23307,6 +23566,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ICON2_BUTTON_TEXT = "Créer un portrait aléatoire",
 	BODY_BUTTON_TEXT = "Sélectionner un corps personnalisé",
 	USPRITE_BUTTON_TEXT = "Sélectionner un sprite unique",
+	UPAPERDOLL_BUTTON_TEXT = """Use Paperdoll""", # MISSING TRANSLATION
+	UPAPERDOLL_BUTTON_TOOLTIP = """Draw this character with the paperdoll instead of their own sprites. Their artwork is kept and comes back when this is switched off. Has no effect while paperdolls are turned off in the options.""", # MISSING TRANSLATION
 	DETAILS_LABEL = "Détails",
 	DESCRIPT2_BUTTON_TEXT = "Ajouter une description personnalisée (commencez par # pour cacher)",
 	DESCRIPT_LABEL = """description""",
@@ -23662,7 +23923,16 @@ Authority: +""", # MISSING TRANSLATION
 	DATING_AFFECTIONATE_RESULT_1 = """
 
 {color=green|Affectionate Mood}: The time together leaves [name] feeling closer to you.""", # MISSING TRANSLATION
-	DATING_LOW_FEAR_WARNING = """
+	DATING_LOW_FEAR_WARNING = """,
+	DATING_PRESUMPTION_ASK = """[name] has been entirely at ease in your company. There is a new familiarity in the way [he] speaks to you, and you find yourself thinking [he] has grown presumptuous.""", # MISSING TRANSLATION
+	DATING_PRESUMPTION_DISCIPLINE = """Put [him] in [his] place""", # MISSING TRANSLATION
+	DATING_PRESUMPTION_ENDORSE = """Endorse it""", # MISSING TRANSLATION
+	DATING_PRESUMPTION_DISCIPLINE_RESULT = """
+
+{color=yellow|You remind [name] exactly where [he] stands. [He] takes the correction, and the date ends on a cooler note than it began.}""", # MISSING TRANSLATION
+	DATING_PRESUMPTION_ENDORSE_RESULT = """
+
+{color=yellow|You decide to play along, showing your willingness to let [name] treat you with less respect.}""", # MISSING TRANSLATION
 {color=yellow|[name] felt too at ease around you, weakening [his] respect.}""", # MISSING TRANSLATION
 	DATING_FEARFUL_RESULT_1 = """
 
@@ -32681,6 +32951,8 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONROOM_FORESTRYDESCRIPT = """1 work slot on the estate's timber, up to 5 with Larger Cabin. Rare Woods adds ironwood, then magic wood.""", # MISSING TRANSLATION
 	MANSIONROOM_HUNTING_CABIN = """Hunting Cabin""", # MISSING TRANSLATION
 	MANSIONROOM_HUNTING_CABINDESCRIPT = """1 work slot on the estate's meat, up to 5 with Larger Cabin. Butchery adds leather, then bone.""", # MISSING TRANSLATION
+	MANSIONROOM_BEAUTY_PARLOR = """Beauty Parlor""", # MISSING TRANSLATION
+	MANSIONROOM_BEAUTY_PARLORDESCRIPT = """Inks, needles and mirrors. Tattoos are applied here with inks brewed in the alchemy room; with Body modifications a body can be reshaped as well.""", # MISSING TRANSLATION
 	MANSIONUPG_FARM_HANDS = """Farm Hands""", # MISSING TRANSLATION
 	MANSIONUPG_FARM_HANDSDESCRIPT = """More work slots at this farm.""", # MISSING TRANSLATION
 	MANSIONUPG_FARM_HANDSBONUS1 = """+1 work slot""", # MISSING TRANSLATION
@@ -32756,6 +33028,9 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONUPG_BUILDERS = """Second Scaffold""", # MISSING TRANSLATION
 	MANSIONUPG_BUILDERSDESCRIPT = """Adds a builder slot to this room's construction and upgrades.""", # MISSING TRANSLATION
 	MANSIONUPG_BUILDERSBONUS1 = """+1 builder""", # MISSING TRANSLATION
+	MANSIONUPG_BODY_MODIFICATIONS = """Body modifications""", # MISSING TRANSLATION
+	MANSIONUPG_BODY_MODIFICATIONSDESCRIPT = """Tools and tonics for reshaping anyone in the household: any feature, any colour, fur on or off. Changes are free and take effect at once.""", # MISSING TRANSLATION
+	MANSIONUPG_BODY_MODIFICATIONSBONUS1 = """Appearance can be changed freely here""", # MISSING TRANSLATION
 	MANSIONVIEW_REST = """Idle""", # MISSING TRANSLATION
 	MANSIONVIEW_ATWORK = """At work""", # MISSING TRANSLATION
 	MANSIONVIEW_HOUSEALL = """Bed them down""", # MISSING TRANSLATION
@@ -32910,10 +33185,14 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_BUILDINGHINT = """Put somebody in the scaffolding and it will go up on its own.""", # MISSING TRANSLATION
 	MANSIONVIEW_PROGRESS = """Progress""", # MISSING TRANSLATION
 	MANSIONVIEW_SALVAGE = """Salvage gear""", # MISSING TRANSLATION
+	MANSIONVIEW_TATTOO = """Tattoo application""", # MISSING TRANSLATION
+	MANSIONVIEW_BODYMOD = """Body modifications""", # MISSING TRANSLATION
 	MANSIONVIEW_UPGRADELOCKED = """The workers' guild teaches this. Buy it there first.""", # MISSING TRANSLATION
 	MANSIONUPG_SALVAGE_BENCH = """Salvage bench""", # MISSING TRANSLATION
 	MANSIONUPG_SALVAGE_BENCHDESCRIPT = """A bench for taking worn gear apart. Needs what the workers' guild teaches before it can be built.""", # MISSING TRANSLATION
 	MANSIONUPG_SALVAGE_BENCHBONUS1 = """Gear can be taken apart here""", # MISSING TRANSLATION
+	MANSIONUPG_SALVAGE_BENCHBONUS2 = """65-90% of the materials recovered""", # MISSING TRANSLATION
+	MANSIONUPG_SALVAGE_BENCHBONUS3 = """75-100% of the materials recovered""", # MISSING TRANSLATION
 	MANSIONVIEW_WORKCOST = """Work Units""", # MISSING TRANSLATION
 	MANSIONVIEW_BUILDERS = """Builders""", # MISSING TRANSLATION
 	MANSIONVIEW_DAYSLEFT = """About %d days left""", # MISSING TRANSLATION
@@ -32947,6 +33226,8 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_ERR_NOTWORKER = """They will not work for you: they are not one of your workers.""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_NOTRAINER = """Slaves only work while a trainer is watching them, and this one has none. Assign a trainer on their character sheet.""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_FIXEDROOM = """The staircase is part of the house itself.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_NOTUTOR = """[name] is no trainer, and that place asks for one.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_TUTORTAKEN = """Somebody is already teaching here.""", # MISSING TRANSLATION
 	MANSIONVIEW_SWAPHINT = """Drop here and they swap slots.""", # MISSING TRANSLATION
 	MANSIONVIEW_TESTQUESTAWAY = """Word From The Road""", # MISSING TRANSLATION
 	MANSIONVIEW_TESTQUESTAWAYDESCRIPT = """Somebody out of town has been asking after the estate.""", # MISSING TRANSLATION
@@ -32995,6 +33276,25 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONUPG_ACCOUNTANT = """Accountant""", # MISSING TRANSLATION
 	MANSIONUPG_ACCOUNTANTDESCRIPT = """Adds a work slot. With somebody in it, deliveries over the limit are sold at market price instead of being lost.""", # MISSING TRANSLATION
 	MANSIONUPG_ACCOUNTANTBONUS1 = """+1 work slot, and overflow is sold rather than lost""", # MISSING TRANSLATION
+	BEAUTYPARLOR_TITLE = """Beauty Parlor""", # MISSING TRANSLATION
+	BEAUTYPARLOR_INKS = """Inks""", # MISSING TRANSLATION
+	BEAUTYPARLOR_CHARACTERS = """Characters""", # MISSING TRANSLATION
+	BEAUTYPARLOR_HINT = """Pick a character, then an ink and a lit body part. Press a filled part with no ink picked to remove its tattoo. Ink is not refunded.""", # MISSING TRANSLATION
+	BODYMOD_TITLE = """Body modifications""", # MISSING TRANSLATION
+	BODYMOD_COLOUR_AUTO = """Auto""", # MISSING TRANSLATION
+	BODYMOD_COAT_COLOUR = """Coat colour""", # MISSING TRANSLATION
+	BEAUTYPARLOR_PICKCHAR = """Pick a character first.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_AWAY = """Away on a quest.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_NOTHERE = """Not at the estate.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_UNIQUE = """This character's drawn body cannot be reshaped. Switch them to the paperdoll first.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_NODOLLS = """Paperdolls are disabled in the options, so there is nothing to reshape.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_NOINK = """None in stock. Inks are brewed in the alchemy room.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_ASK_ADD = """Apply %s on the %s of %s?""", # MISSING TRANSLATION
+	BEAUTYPARLOR_ASK_REPLACE = """Replace %s on the %s of %s with %s? The old ink is not returned.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_ASK_REMOVE = """Remove %s from the %s of %s? The ink is not returned.""", # MISSING TRANSLATION
+	BEAUTYPARLOR_FURRY = """Furry look""", # MISSING TRANSLATION
+	BEAUTYPARLOR_FURRY_TOOLTIP = """Switch between the beastkin and the halfkin look. Coat, muzzle and animal features come and go together; the race's talents do not change.""", # MISSING TRANSLATION
+	CHARCREATE_APPLY_CHANGES_QUESTION = """Apply the changes?""", # MISSING TRANSLATION
 	MANSIONVIEW_ERR_ENOUGH = """You have as many of these as the estate needs.""", # MISSING TRANSLATION
 	MANSIONVIEW_EMPTYPLOT = """Empty plot""", # MISSING TRANSLATION
 	MANSIONVIEW_ORDERHEADER = """Order of work""", # MISSING TRANSLATION
@@ -33070,6 +33370,7 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_STYLE_HAIR_BASE_FRINGE = """Side fringe""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_FRINGE_2 = """Crown braid""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_BOBCUT = """Bob cut""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_HIME = """Hime cut""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_PARTING = """Layered""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_SLAVE = """Scraped back""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_STRAIGHT = """Long straight""", # MISSING TRANSLATION

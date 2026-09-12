@@ -166,8 +166,11 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "mae_initiate_start", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
 	if !seen_events.has("heleviel_quest_1") and ResourceScripts.game_party.get_unique_slave('heleviel') != null:
 		globals.common_effects([{code = 'plan_mansion_event', value = "heleviel_quest_1"}])
-	if !seen_events.has("lira_quest_3_intro_1") && !timed_event_exists("lira_quest_3_intro_1") && completed_quests.has('lira_quest_2') && !completed_quests.has('lira_quest_3'):
-		globals.common_effects([{code = 'add_timed_event', value = "lira_quest_3_intro_1", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
+	#the scene is lira_quest3_intro_1 - no underscore before the 3. Scheduling the misspelling
+	#put a code with no scene on the timetable, and check_timed_events() died on the lookup the
+	#hour it came due, taking down whatever else was due that same hour
+	if !seen_events.has("lira_quest3_intro_1") && !timed_event_exists("lira_quest3_intro_1") && completed_quests.has('lira_quest_2') && !completed_quests.has('lira_quest_3'):
+		globals.common_effects([{code = 'add_timed_event', value = "lira_quest3_intro_1", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}])
 	
 	if !seen_events.has("mae_druid_event_start") && !timed_event_exists("mae_druid_event_start") && seen_events.has("mae_search_complete_final"):
 		globals.common_effects([
@@ -248,39 +251,41 @@ func get_time_of_event(ev):
 			res.hour = req.value
 	return res
 
-func get_next_event_time():
-	var res = 0
-	for i in stored_events.timed_events:
-		if i.has('broken'): continue
-		if i.has('pending'): continue #already due, waiting on the scene queue
-		var time = get_time_of_event(i)
-		#some debugging
-		if time.date == -1: 
-			print("error - broken timed event")
-			print(i)
-			i.broken = true
-			continue
-		if time.hour == -1 or time.hour > 4: 
-			print("error - broken timed event")
-			print(i)
-			i.broken = true
-			continue
-		if time.date < ResourceScripts.game_globals.date: 
-			print("error - broken timed event")
-			print(i)
-			i.broken = true
-			continue
-		var trem = time.hour - ResourceScripts.game_globals.hour + 4 * (time.date - ResourceScripts.game_globals.date)
-		if trem < 0: 
-			print("error - broken timed event")
-			print(i)
-			i.broken = true
-			continue
-		if res == 0: 
-			res = trem
-		else:
-			res = min(res, trem)
-	return int(res)
+#A missed hour used to be final. Both halves of a timed event's schedule are checked with
+#'eq', so an event the tick never saw kept its old date and sat in the list for the rest of
+#the save - which is how a single skipped morning froze three questlines at once. Anything
+#whose day has already gone by is offered again here.
+#The catch-up is pinned to the first hour of the day for two reasons: a letter still arrives
+#with the morning instead of at dusk, and a scene that reschedules itself through
+#'repeat_next_day' still waits a day between tries. That handler adds one to a date that is
+#already in the past, so without the pin it would retry every single hour.
+func event_is_overdue(ev):
+	if int(ResourceScripts.game_globals.hour) != 1:
+		return false
+	var time = get_time_of_event(ev)
+	if time.date == -1 or time.hour == -1:
+		return false #no schedule to be late for
+	return int(time.date) < int(ResourceScripts.game_globals.date)
+
+
+#Two kinds of event are due but must not be caught up on.
+#  loan_event* - the variation that plays when the money is not on hand ends in lose_game, and
+#                a bill from fifty days ago would decide that against a balance which has
+#                nothing to do with the day it was owed. The entry is left in place rather
+#                than dropped, so nothing is silently written off.
+#  a quest action naming a quest already finished - progress_quest appends the quest back onto
+#                active_quests when it fails to find it there, so a stale stage would put a
+#                closed quest back in the journal and re-open the locations that key off it.
+#                Only the catch-up path is guarded: an event firing on its own hour keeps the
+#                behaviour it has always had.
+func overdue_event_allowed(ev):
+	if ev.has('action'):
+		if ev.action == 'quest' and ev.code is Dictionary and ev.code.has('quest'):
+			return !completed_quests.has(ev.code.quest)
+		return true
+	if ev.code is String and ev.code.begins_with('loan_event'):
+		return false
+	return true
 
 
 func check_timed_events():
@@ -296,62 +301,75 @@ func check_timed_events():
 	#the copy is needed because a scene that opens right away strikes its own entry off
 	for i in stored_events.timed_events.duplicate():
 		if i.has('pending'): continue
-		if globals.checkreqs(i.reqs):
-			if i.has('action'): # it's for action_to_date
-				match i.action:
-					'decision':
-						if !ResourceScripts.game_progress.decisions.has(i.code):
-							ResourceScripts.game_progress.decisions.append(i.code)
-					'remove_decision':
-						if ResourceScripts.game_progress.decisions.has(i.code):
-							ResourceScripts.game_progress.decisions.erase(i.code)
-					'quest':
-						globals.common_effects([{code = 'progress_quest', value = i.code.quest, stage = i.code.stage}])
-					'affect_unique_character':
-						var k = ResourceScripts.game_party.get_unique_slave(i.code.name.to_lower())
-						if k != null:
-							k.affect_char(i.code)
-				deleting_events.append(i)
-#				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
-#					globals.autosave(true)
-				continue
-			var event = scenedata.scenedict[i.code]
-			var failed = false
-			if event.has('reqs'):
-				for k in event.reqs:
-					if globals.valuecheck(k) == false:
-						failed = true
-						if k.has('negative'):
-							match k.negative:
-								'repeat_next_day':
+		var overdue = false
+		if !globals.checkreqs(i.reqs):
+			if !event_is_overdue(i): continue
+			overdue = true
+		#a code with nothing behind it in the scene table used to abort this loop at the
+		#lookup further down, taking every event still to be checked with it - and since the
+		#schedule matches on 'eq', those were then late for good. start_event() carries the
+		#same guard for the display side
+		if !i.has('action') and !scenedata.scenedict.has(i.code):
+			print("timed event dropped, no scene for code: " + str(i.code))
+			deleting_events.append(i)
+			continue
+		if overdue and !overdue_event_allowed(i):
+			continue
+		if i.has('action'): # it's for action_to_date
+			match i.action:
+				'decision':
+					if !ResourceScripts.game_progress.decisions.has(i.code):
+						ResourceScripts.game_progress.decisions.append(i.code)
+				'remove_decision':
+					if ResourceScripts.game_progress.decisions.has(i.code):
+						ResourceScripts.game_progress.decisions.erase(i.code)
+				'quest':
+					globals.common_effects([{code = 'progress_quest', value = i.code.quest, stage = i.code.stage}])
+				'affect_unique_character':
+					var k = ResourceScripts.game_party.get_unique_slave(i.code.name.to_lower())
+					if k != null:
+						k.affect_char(i.code)
+			deleting_events.append(i)
+#			if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
+#				globals.autosave(true)
+			continue
+		var event = scenedata.scenedict[i.code]
+		var failed = false
+		if event.has('reqs'):
+			for k in event.reqs:
+				if globals.valuecheck(k) == false:
+					failed = true
+					if k.has('negative'):
+						match k.negative:
+							'repeat_next_day':
+								for j in i.reqs:
+									if j.type in ['date']:
+										j.value += 1
+										break
+							'repeat_next_turn':
+								var add_day = false
+								for j in i.reqs:
+									if j.type in ['hour']:
+										j.value += 1
+										if j.value > variables.HoursPerDay:
+											j.value = 1
+											add_day = true
+										break
+								if add_day:
 									for j in i.reqs:
 										if j.type in ['date']:
 											j.value += 1
 											break
-								'repeat_next_turn':
-									var add_day = false
-									for j in i.reqs:
-										if j.type in ['hour']:
-											j.value += 1
-											if j.value > variables.HoursPerDay:
-												j.value = 1
-												add_day = true
-											break
-									if add_day:
-										for j in i.reqs:
-											if j.type in ['date']:
-												j.value += 1
-												break
-								'cancel':
-									deleting_events.append(i)
-			if failed:
-				pass
-#				gui_controller.clock.continue_timer = true
-			else:
-				#not deleted here - consume_timed_event() strikes it off once the scene really
-				#opens, so a queue that gets dropped before that does not take the event with it
-				i.pending = true
-				input_handler.interactive_message(i.code, 'story_event', {timed_event = true})
+							'cancel':
+								deleting_events.append(i)
+		if failed:
+			pass
+#			gui_controller.clock.continue_timer = true
+		else:
+			#not deleted here - consume_timed_event() strikes it off once the scene really
+			#opens, so a queue that gets dropped before that does not take the event with it
+			i.pending = true
+			input_handler.interactive_message(i.code, 'story_event', {timed_event = true})
 	for i in deleting_events:
 		stored_events.timed_events.erase(i)
 
@@ -471,6 +489,10 @@ func try_planned_loc_event(loc):
 	
 	var to_rem = []
 	for loc_event in planned_loc_events[loc]:
+		if !scenedata.scenedict.has(loc_event): #removed or misspelled content, drop the plan
+			print("planned location event dropped, no scene for code: " + str(loc_event))
+			to_rem.append(loc_event)
+			continue
 		if globals.checkreqs(scenedata.scenedict[loc_event].reqs.duplicate(true)):#is duplicate() truly needed?
 			input_handler.interactive_message(loc_event, '', {})
 			to_rem.append(loc_event)

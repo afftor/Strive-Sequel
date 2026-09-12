@@ -1,3 +1,41 @@
+0.16.0d
+Fixed linux version cheat menu
+Fixed chinese localization being broken
+Fixed small chest clothes not displaying correctly
+Fixed serelization issue preventing older events from triggering
+0.16.0c
+Fixed old save compatibility
+0.16.0b
+Added alternative act 3 coaliton boss
+Multiple updates and fixes to paperdoll, including a couple new hairstyles
+Character cards now warn ahead of the turn about a missing or poor meal and a missing or poor bed
+Mansion floorplan now stands in a drawn courtyard
+Added arrows to step between characters with a card open
+Estate log now reports the turn's gathering and the week's upkeep, and folds crafting into one report per turn
+Salvage bench can be improved twice more like previous upgrade
+Base stats now read as trained/cap +bonus instead of folding gear into both halves
+Beds no longer gate buying, hiring or recruiting - the unhoused are seated automatically and take the slept-rough penalty until then
+Work and Beds are tabs on the idle strip now, and pressing the active one no longer hides the plan
+Build cards state turns left instead of days, and per-turn work also shows as a share of the whole
+Room crafting queues name the product and how many are wanted instead of the recipe id
+Refused lines in the floorplan character menu are greyed out with the reason on the tooltip
+Storage counter turns red once a material has filled its shelf share
+Cheat menu can unlock the New Game+ panel without finishing act 1
+Master's Mentor grants 2 extra training slots again
+Shattered now reduces MDEF by 25% per stack instead of 50%
+Fixed fighter cards drifting out of their frames over a long fight
+Fixed dead combat summons piling up in saves, and purged the ones older saves leaked
+Fixed the practice room teacher chair
+Fixed a child sent to a tutelage still showing as idle, where dropping them on work cancelled it
+Fixed romance events pairing characters who were away from the estate
+Fixed the demolition confirmation having its No button covered
+Fixed level-up marks and experience strips going stale when a popup was closed with its X button
+Fixed system messages drawing under the panels
+Fixed human hair length being rolled twice, and several styles pointing at missing art
+Fixed flat and masculine-chested characters going bare in outfits with no flat chest piece
+Fixed single-target resurrection skills not working correctly
+Fixed sex encounter results printing experience before the character's bonus
+Fixed effects without tags breaking the stat panel, and log rows vanishing in untranslated locales
 0.16.0a
 The mansion now always opens on the character list; the view buttons on the left (Work, Beds, Tasks, Estate) bring the floorplan up over it, and pressing the one already active puts it away and gives the list back
 Character cards in the list now carry an experience bar, and the floorplan character tooltip shows experience towards the next class

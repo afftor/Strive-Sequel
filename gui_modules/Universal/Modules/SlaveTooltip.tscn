@@ -508,9 +508,9 @@ __meta__ = {
 }
 
 [node name="physics" type="Label" parent="."]
-margin_left = 72.833
+margin_left = 60.0
 margin_top = 250.0
-margin_right = 122.833
+margin_right = 104.0
 margin_bottom = 282.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -522,9 +522,9 @@ __meta__ = {
 }
 
 [node name="physics2" type="Label" parent="."]
-margin_left = 130.449
+margin_left = 106.0
 margin_top = 250.0
-margin_right = 180.449
+margin_right = 190.0
 margin_bottom = 282.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -536,9 +536,9 @@ __meta__ = {
 }
 
 [node name="wits" type="Label" parent="."]
-margin_left = 71.641
+margin_left = 60.0
 margin_top = 285.0
-margin_right = 121.641
+margin_right = 104.0
 margin_bottom = 317.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -550,9 +550,9 @@ __meta__ = {
 }
 
 [node name="wits2" type="Label" parent="."]
-margin_left = 130.052
+margin_left = 106.0
 margin_top = 285.0
-margin_right = 180.052
+margin_right = 190.0
 margin_bottom = 317.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -564,9 +564,9 @@ __meta__ = {
 }
 
 [node name="charm" type="Label" parent="."]
-margin_left = 71.244
+margin_left = 60.0
 margin_top = 325.0
-margin_right = 121.244
+margin_right = 104.0
 margin_bottom = 357.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -578,9 +578,9 @@ __meta__ = {
 }
 
 [node name="charm2" type="Label" parent="."]
-margin_left = 130.449
+margin_left = 106.0
 margin_top = 325.0
-margin_right = 180.449
+margin_right = 190.0
 margin_bottom = 357.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = SubResource( 3 )

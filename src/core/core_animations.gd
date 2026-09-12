@@ -199,13 +199,20 @@ func ShadeAnimation(node, time = 0.3, delay = 0):
 	tweennode.start()
 
 
-func ShakeAnimation(node, time = 0.5, magnitude = 5):
+#`origin` is the position the node is snapped back to when the shake ends. Left out,
+#it is read off the live node - which is wrong for anything that may still be moving:
+#a fighter card caught mid-recoil would hand the shake a travelling position and get
+#hard-set there for good. Callers that know the node's rest position pass it in.
+func ShakeAnimation(node, time = 0.5, magnitude = 5, origin = null):
 	if !node.is_inside_tree(): return
-	var newdict = {node = node, time = time, magnitude = magnitude, originpos = node.rect_position}
+	var newdict = {node = node, time = time, magnitude = magnitude,
+		originpos = node.rect_position if origin == null else origin}
 	for i in range(ShakingNodes.size()-1, -1, -1):
 		var shaker = ShakingNodes[i]
 		if shaker.node == node:
-			newdict.originpos = shaker.originpos
+			#a re-triggered shake must not capture an already shaken position, but a
+			#caller that named the rest position outright still knows better
+			if origin == null: newdict.originpos = shaker.originpos
 			ShakingNodes.remove(i)
 	ShakingNodes.append(newdict)
 

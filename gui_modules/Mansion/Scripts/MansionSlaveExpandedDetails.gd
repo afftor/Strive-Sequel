@@ -169,9 +169,7 @@ func build_overview():
 		if code == "productivity":
 			value = str(int(floor(person.get_stat(code)))) + "%"
 		else:
-			var current_value = int(floor(person.get_stat(code)))
-			var maximum_value = int(floor(person.get_stat(code + "_cap") + person.get_stat(code + "_bonus")))
-			value = str(current_value) + " / " + str(maximum_value)
+			value = globals.base_stat_text(person, code)
 		var row = input_handler.DuplicateContainerTemplate(StatRows)
 		_setup_overview_row(row, code, value, false)
 

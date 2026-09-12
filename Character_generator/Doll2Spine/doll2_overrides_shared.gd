@@ -201,7 +201,19 @@ const AXES = {
 		"body_tag": "beastkin",
 		"hidden": true,
 	},
+	# `nearest`: a set with no piece cut for this size wears the closest one it
+	# does have rather than nothing.  Eight of the eighteen female sets have no
+	# flat chest piece, and without this a flat or masculine chest wore the skirt
+	# and the sleeves and went bare above them.  The values below are a real
+	# ladder, which is what makes "closest" mean anything.
+	#
+	# `nearest_slots` limits that to the worn piece.  The body's own `breasts` and
+	# `breast_nipples` have no flat cut on purpose - a flat chest is the bare torso
+	# - and standing a small pair in there gave a flat character breasts, with the
+	# bounce bones on them, under a chest piece still cut flat.
 	"tits_size": {
+		"nearest": true,
+		"nearest_slots": ["equip_breasts"],
 		"values": ["flat", "small", "normal", "large", "big"],
 		"default": "large",
 		"label": "DOLL2_PREVIEW_BREAST_SIZE",

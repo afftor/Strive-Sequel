@@ -11,6 +11,11 @@ extends Reference
 #	        contents. Whatever falls between slots reads as corridor and structure and
 #	        carries no mechanics.
 #
+#and, where the floor has one, a third:
+#
+#	backdrop - a picture to stand on instead of the painted slab, lined up by its own
+#	           landmark rather than by pixels. See the key on the first floor below.
+#
 #Coordinates rather than a character mask: at this resolution a mask would be a hundred
 #lines of a hundred characters, unreadable to edit, and a handful of rectangles also
 #draws in a handful of calls instead of ten thousand.
@@ -21,15 +26,15 @@ extends Reference
 #	broken - starts unavailable. Has to be repaired into an empty slot before use; that
 #	         conversion is a mechanic for later, the model just carries the state.
 
-#The coordinate field every floor is expressed in. Wider than the house needs to be: five
-#columns of slots with a comfortable gap between them do not fit across a hundred tiles, and
-#a tile is a fixed nine pixels (mansion_floor_grid.TILE_PX), so a larger field spaces the
-#rooms out rather than shrinking them.
-const FIELD_TILES = 120
+#The coordinate field every floor is expressed in. Wider than the house needs to be: a tile is
+#a fixed nine pixels (mansion_floor_grid.TILE_PX), so a larger field spaces the rooms out rather
+#than shrinking them, and the drawing they stand on is wider still than the house itself.
+const FIELD_TILES = 160
 
-#Edge length of a slot. Every slot on every floor is this size, so any two of them can
-#trade contents without anything having to be checked about their shapes.
-const SLOT_TILES = 18
+#A slot, in tiles - the size of a room as the manor is drawn, which is a shade wider than it is
+#tall. Every slot on every floor is this size, so any two of them can trade contents without
+#anything having to be checked about their shapes.
+const SLOT_TILES = [18, 17]
 
 #The house is a wide manor of two floors over its own grounds. Its offset wings leave irregular
 #corridors around the staircase, which stays in the exact middle so it meets between floors.
@@ -54,25 +59,41 @@ const LIST = {
 			#room in the left wing and one bare room in the right. The other six are rubble.
 			{
 				code = '1F',
+				#The floor is a picture of itself: the manor seen from above, with its rooms,
+				#walls, corridors and grounds drawn in. 'yard' is the box the ten rooms and the
+				#hall between them fill inside that picture, given as shares of it; 'over' is the
+				#tiles that box is laid on. The picture is blown up until the yard covers those
+				#tiles, which is what puts every slot below inside the room drawn for it - so the
+				#two are measured together, and moving one without the other pulls them apart.
+				#
+				#The file carries four hundred pixels of mirrored canopy above the house that the
+				#artist's picture does not. The plan is drawn across the whole screen rather than
+				#into a panel, and the picture is what the dragging stops against, so it has to
+				#reach every corner of that screen from every position it can be dragged to. The
+				#band the rooms are centred in is the lower two thirds of the screen: a picture
+				#that only just covers the screen therefore leaves the house too high in it, and
+				#one large enough to hang lower is too wide to fit between the side panels. That
+				#strip of sky is what buys both, and at rest it lies under the HUD.
+				backdrop = {
+					art = 'res://assets/images/backgrounds/mansion_manor.png',
+					yard = [0.2008, 0.3930, 0.6073, 0.3688],
+					over = [13, 53, 134, 54],
+				},
 				areas = [
-					{state = 'floor', rect = [0, 24, 120, 72]},
-					{state = 'outside', rect = [0, 24, 1, 8]},
-					{state = 'outside', rect = [119, 24, 1, 8]},
-					{state = 'outside', rect = [0, 88, 1, 8]},
-					{state = 'outside', rect = [119, 88, 1, 8]},
+					{state = 'floor', rect = [13, 53, 134, 54]},
 				],
 				slots = [
-					{code = 'a1', rect = [1, 26, 18, 18], broken = true},
-					{code = 'a2', rect = [26, 26, 18, 18]},
-					{code = 'a4', rect = [76, 26, 18, 18]},
-					{code = 'a5', rect = [101, 26, 18, 18], broken = true},
-					{code = 'b1', rect = [1, 51, 18, 18]},
-					{code = 'b3', rect = [51, 51, 18, 18]},
-					{code = 'b5', rect = [101, 51, 18, 18]},
-					{code = 'c1', rect = [1, 76, 18, 18], broken = true},
-					{code = 'c2', rect = [26, 76, 18, 18], broken = true},
-					{code = 'c4', rect = [76, 76, 18, 18], broken = true},
-					{code = 'c5', rect = [101, 76, 18, 18], broken = true},
+					{code = 'a1', rect = [19, 54, 18, 17], broken = true},
+					{code = 'a2', rect = [53, 53, 18, 17]},
+					{code = 'a4', rect = [90, 53, 18, 17]},
+					{code = 'a5', rect = [122, 54, 18, 17], broken = true},
+					{code = 'b1', rect = [13, 71, 18, 17]},
+					{code = 'b3', rect = [71, 76, 18, 17]},
+					{code = 'b5', rect = [129, 72, 18, 17]},
+					{code = 'c1', rect = [19, 89, 18, 17], broken = true},
+					{code = 'c2', rect = [52, 90, 18, 17], broken = true},
+					{code = 'c4', rect = [90, 90, 18, 17], broken = true},
+					{code = 'c5', rect = [122, 90, 18, 17], broken = true},
 				],
 				prebuilt = {a2 = 'master_bedroom', a4 = 'bedrooms', b1 = 'store_room', b3 = 'stairs'},
 			},
@@ -80,21 +101,28 @@ const LIST = {
 			#rest is rubble.
 			{
 				code = '2F',
+				#The same drawing as the floor below, and lined up the same way - see there. It is
+				#dimmed and cooled a little because this floor is above that one: the same rooms in
+				#the same places would otherwise give the player nothing to tell the two apart.
+				backdrop = {
+					art = 'res://assets/images/backgrounds/mansion_manor.png',
+					yard = [0.2008, 0.3930, 0.6073, 0.3688],
+					over = [13, 53, 134, 54],
+					shade = [0.60, 0.64, 0.76],
+				},
 				areas = [
-					{state = 'floor', rect = [0, 24, 120, 72]},
-					{state = 'blocked', rect = [51, 24, 18, 22]},
-					{state = 'blocked', rect = [51, 74, 18, 22]},
+					{state = 'floor', rect = [13, 53, 134, 54]},
 				],
 				slots = [
-					{code = 'a1', rect = [1, 26, 18, 18], broken = true},
-					{code = 'a2', rect = [26, 26, 18, 18]},
-					{code = 'a4', rect = [76, 26, 18, 18]},
-					{code = 'a5', rect = [101, 26, 18, 18], broken = true},
-					{code = 'b3', rect = [51, 51, 18, 18]},
-					{code = 'c1', rect = [1, 76, 18, 18], broken = true},
-					{code = 'c2', rect = [26, 76, 18, 18], broken = true},
-					{code = 'c4', rect = [76, 76, 18, 18], broken = true},
-					{code = 'c5', rect = [101, 76, 18, 18], broken = true},
+					{code = 'a1', rect = [19, 54, 18, 17], broken = true},
+					{code = 'a2', rect = [53, 53, 18, 17]},
+					{code = 'a4', rect = [90, 53, 18, 17]},
+					{code = 'a5', rect = [122, 54, 18, 17], broken = true},
+					{code = 'b3', rect = [71, 76, 18, 17]},
+					{code = 'c1', rect = [19, 89, 18, 17], broken = true},
+					{code = 'c2', rect = [52, 90, 18, 17], broken = true},
+					{code = 'c4', rect = [90, 90, 18, 17], broken = true},
+					{code = 'c5', rect = [122, 90, 18, 17], broken = true},
 				],
 				prebuilt = {b3 = 'stairs'},
 			},
@@ -168,3 +196,25 @@ static func shape_signature(floor_plan):
 	for slot in floor_plan.slots:
 		parts.append("%s:%d,%d,%d,%d" % [slot.code, slot.rect[0], slot.rect[1], slot.rect[2], slot.rect[3]])
 	return PoolStringArray(parts).join(";")
+
+
+#The slots a floor is made of, as a sorted list of codes. This - not the signature above - is
+#what says whether a saved floor still fits the plan: a slot IS its code, and the rect beside
+#it only says where the room is drawn. Moving the house around its backdrop rewrites every
+#rect and changes nothing about which rooms exist, so comparing the full signature condemned
+#a floor for a change of picture. Read out of the stored shape rather than kept separately,
+#so a save written before this distinction existed answers the same list.
+static func shape_codes(shape):
+	var codes = []
+	for part in str(shape).split(";", false):
+		codes.append(part.split(":")[0])
+	codes.sort()
+	return codes
+
+
+static func slot_codes(floor_plan):
+	var codes = []
+	for slot in floor_plan.slots:
+		codes.append(slot.code)
+	codes.sort()
+	return codes
