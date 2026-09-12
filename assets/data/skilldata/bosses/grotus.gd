@@ -42,7 +42,7 @@ var skills = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		sfx = [{code = 'devastation_1', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'},],
-		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*1.5', '+','caster.matk', '*0.5']],
 		variations = [
 			{
@@ -77,7 +77,7 @@ var skills = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		sfx = [{code = 'back_kick', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},{code = 'shake_target', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'punch', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk','*0.7','+','caster.matk', '*0.3']],
 		variations = [
 			{
@@ -115,7 +115,7 @@ var skills = {
 		sfx = [
 			{code = 'earthquake', target = 'target_line', period = 'predamage'},
 			{code = 'tauntwave', target = 'caster', period = 'windup'}],
-		sounddata = {initiate = null, strike = 'explosion', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'explosion', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk','*1.75', '+', 'caster.matk', '*0.5']],
 		variations = [
 			{
@@ -338,7 +338,7 @@ var skills = {
 			{code = 'meteor', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
 			{code = 'earth_spike', target = 'target', period = 'predamage'},
 		],
-		sounddata = {initiate = 'spell_explosion', strike = 'explosion', hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'spell_explosion', strike = 'explosion', hit = null, hittype = 'static'},
 		value = [['caster.atk','+','caster.matk', '*2.0']],
 	},
 	#follow-up of grotus_obliteration - the shockwave half.
@@ -365,7 +365,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'light',
 		sfx = [{code = 'radiance', target = 'target_group', period = 'predamage'}],
-		sounddata = {initiate = 'spell_break', strike = null, hit = null, hittype = 'absolute'},
+		sounddata = {initiate = 'spell_break', strike = null, hit = null, hittype = 'static'},
 		value = [['caster.matk', '*0.9']],
 	},
 }

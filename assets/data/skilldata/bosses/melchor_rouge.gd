@@ -205,7 +205,7 @@ var skills = {
 		sfx = [
 			{code = 'earthquake', target = 'target_group', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'spell_explosion', strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'spell_explosion', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk', '*1.35']],
 		variations = [
 			{
@@ -312,7 +312,7 @@ var skills = {
 		sfx = [
 			{code = 'meteor', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = [['caster.matk', '*1.1']],
 	},
 	melchor_buster_sweep = {
@@ -390,7 +390,7 @@ var skills = {
 		sfx = [
 			{code = 'draw_blood', target = 'target', period = 'predamage'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*1.5']],
 	},
 	rouge_feasting_frenzy = {
@@ -416,7 +416,7 @@ var skills = {
 		next_target = variables.NT_INDISCRIMINATE,
 		damage_type = 'weapon',
 		sfx = [{code = 'strike', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*0.65'],],
 		#receiver = ['target', 'caster'], this doesn't seem to work. Perphaps it has to do with next_target
 	},
@@ -447,7 +447,7 @@ var skills = {
 		sfx = [
 			{code = 'strike_through', target = 'target', period = 'predamage'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*1.6']],
 	},
 	rouge_nail_stiletto = {
@@ -584,7 +584,7 @@ var skills = {
 		sfx = [
 			{code = 'strike', target = 'target', period = 'predamage'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*1.3']],
 	},
 	imperial_bastion = {
@@ -638,7 +638,7 @@ var skills = {
 		keep_target = variables.TARGET_KEEP,
 		damage_type = 'weapon',
 		sfx = [{code = 'sunder', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*0.9']],
 		follow_up = 'imperial_threat_suppression_1',
 	},
@@ -664,7 +664,7 @@ var skills = {
 		keep_target = variables.TARGET_KEEP,
 		damage_type = 'weapon',
 		sfx = [{code = 'devastation_1', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*0.75']],
 	},
 	imperial_coordinate_attack = {
@@ -689,7 +689,7 @@ var skills = {
 		sfx = [
 			{code = 'command', target = 'caster', period = 'windup'},
 			{code = 'leader_mark', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*0.6']],
 	},
 	imperial_counter_strike = {
@@ -713,7 +713,7 @@ var skills = {
 		keep_target = variables.TARGET_FORCED,
 		damage_type = 'weapon',
 		sfx = [{code = 'strike', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'blade', hit = null, hittype = 'dynamic'},
 		value = [['caster.atk', '*0.9']],
 	},
 }

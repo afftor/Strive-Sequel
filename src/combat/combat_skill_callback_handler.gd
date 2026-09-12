@@ -443,26 +443,25 @@ func invoke_animations_1():
 	var animations = template.sfx.duplicate(true)
 	prepare_spellsword_followup_animations(animations)
 	#sort animations
+	#'weapon' and 'cast_weapon' become the codes the caster's equipment gives them here,
+	#once, before the entries are bucketed by period - has_predamage_hit_reaction and
+	#get_true_code only ever see resolved codes
+	var registry = queuenode.animationnode.get_registry()
 	for i in animations:
-		if i.code == 'weapon':
-			i.code = caster.get_weapon_animation()
-		elif i.code == 'cast_weapon':
-			i.code = caster.get_weapon_cast_animation()
+		i.code = registry.resolve(i.code, caster)
 		animationdict[i.period].append(i)
 	#casteranimations
 	#for sure at windup there should not be real_target-related animations
-	if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.initiate != null:
-		if caster.displaynode != null:
-			caster.displaynode.process_sound(template.sounddata.initiate)
+	queuenode.animationnode.play_skill_sound('initiate', template, caster, target)
 	for i in animationdict.windup:
 		var sfxtarget = globals.ProcessSfxTarget(i.target, caster, target)
 		var params = globals.make_sfx_params(i)
 		#animations on the caster cannot reach the target otherwise - they only ever
-		#get one node, and the two sit in different containers
+		#get one node, and the two sit in different containers. foe_position is the
+		#target's slot number, read by the row charge; harmless for the rest.
 		if i.target == 'caster' and target != null and target.displaynode != null:
 			params.foe_node = target.displaynode
-			if i.code == 'holy_lance_step':
-				params.foe_position = target.position
+			params.foe_position = target.position
 		queuenode.add_sfx(sfxtarget, i.code, params)
 	
 	combatnode.turns += 1
@@ -478,6 +477,14 @@ func invoke_instancing():
 		#refine target
 		combatnode.UpdateSkillTargets(caster, template, true)
 		last_target = refine_target(self, caster, last_target)
+		#nobody left to hit - the sandbox never ends the fight, and NT_BACK can come up empty
+		#as well: close the repeat loop the way a won fight does, so skillfinish still runs
+		#(devastation's return among others) instead of queueing an instance with no target
+		if last_target == null:
+			step += 1
+			combatnode.turns += 1
+			queuenode.call_deferred('invoke_resume')
+			return
 		
 		#make instance
 		iterations_played += 1

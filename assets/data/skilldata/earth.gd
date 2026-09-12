@@ -23,7 +23,7 @@ var skills = {
 		sfx = [
 			{code = 'earth_shield', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = [['caster.matk']],
 		damagestat = ['no_stat'],
 		variations = [
@@ -65,7 +65,7 @@ var skills = {
 		sfx = [
 			{code = 'earth_spike', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.85,
 		variations = [
 			{
@@ -160,7 +160,7 @@ var skills = {
 			{code = 'shake_target', target = 'target_group', period = 'windup', alt_slot = 'SFX_BG'},
 			{code = 'earthquake', target = 'target_group', period = 'windup'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.4,
 		follow_up = 'eq_setup',
 		variations = [
@@ -219,10 +219,11 @@ var skills = {
 		sfx = [
 			{code = 'earth_spike', target = 'target', period = 'postdamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.4
 	},
 	disintegrate = {
+		sounddata = {initiate = 'avalanche', hit = 'explosion', hittype = 'static'},
 		code = 'disintegrate',
 		descript = '',
 		icon = "res://assets/images/iconsskills/skill_disintegrate.png",

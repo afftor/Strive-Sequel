@@ -352,8 +352,8 @@ var power_adjustments_per_difficulty = {
 }
 var difficulty_per_level = 0.05 #% enemy stat increase
 var difficulty_per_level_survival = 0.1 #% enemy stat increase
-var survival_cap_main = 4.0 # added base 1 to max + 300%
-var survival_cap_secondary = 2.5 # added base 1 to max + 150%
+var survival_cap_main = 2.5 # added base 1 to max + 300%
+var survival_cap_secondary = 1.5 # added base 1 to max + 150%
 
 var slave_class_list = ['slave', 'slave_trained', 'servant', 'heir', 'master']
 var servant_unlock_traits = ['training_s_working', 'training_s_combat', 'training_s_relation', 'training_s_sexservice', 'training_s_sexservice_adv']
@@ -456,6 +456,10 @@ var ignore_quest_requirements = false
 #and skills cost nothing and never go on cooldown. Set by the checkbox in
 #test_combat; always false in a normal game.
 var anim_sandbox = false
+#Forces every hit roll while set: 'hit', 'crit' or 'miss'. The combat lab's trace runs use
+#it, because the roll draws from the global RNG that ShakeAnimation also burns once per
+#frame - so the same seed gives a crit on one run and not on the next. Null in the game.
+var anim_force_outcome = null
 #Animation trace: dumps the queue and every card's transform, frame by frame, to
 #stdout. Read the log to check timings as numbers instead of by eye. Noisy, so
 #it is its own checkbox in test_combat rather than part of the sandbox.

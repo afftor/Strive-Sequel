@@ -69,9 +69,9 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'targetattack', target = 'target', period = 'predamage'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = [['caster.matk','*0.5'],2],
 		damagestat = ['no_stat', '+damage_hp']
 	},
@@ -274,7 +274,7 @@ var skills = {
 		target_range = 'weapon',
 		damage_type = 'normal',
 		sfx = [{code = 'devour_spirit', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'spell_void', strike = null, hit = null, hittype = 'static'},
 		value = [['0']],
 		damagestat = 'no_stat'
 	},
@@ -378,6 +378,7 @@ var skills = {
 		damagestat = 'no_stat'
 	},
 	bard1 = {
+		sounddata = {initiate = 'spell_void'},
 		code = 'bard1',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/icon_bard1.png"),
@@ -402,6 +403,7 @@ var skills = {
 		damagestat = 'no_stat'
 	},
 	bard2 = {
+		sounddata = {initiate = 'spell_void'},
 		code = 'bard2',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/icon_bard3.png"),
@@ -426,6 +428,7 @@ var skills = {
 		damagestat = 'no_stat'
 	},
 	bard3 = {
+		sounddata = {initiate = 'spell_void'},
 		code = 'bard3',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/icon_bard2.png"),
@@ -495,7 +498,7 @@ var skills = {
 		sfx = [
 			{code = 'earth_spike', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 1.5
 	},
 	mirror_image = {
@@ -567,7 +570,7 @@ var skills = {
 		damage_type = 'weapon',
 		damage = 0,
 		sfx = [{code = 'wind_wall', target = 'target_line', period = 'windup'}], 
-		sounddata = {initiate = null, strike = null, hit = null},
+		sounddata = {initiate = 'spell_break', strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -598,10 +601,9 @@ var skills = {
 		#for now duration, no_delays and no_repeat_delays params doesn't works for postdamage period
 		#with caster or target and only with gfx_animsprite!
 		sfx = [
-			{code = 'void_barrage', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
-			{code = 'cast_dark', target = 'caster', period = 'windup', no_delays = true, is_cast = true}
-			],
-		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.4, queue_duration = 0.0, speed = 1.0, no_delays = true, color = '510977'},
+			{code = 'darkness', target = 'target', period = 'predamage', sync_to_hit = true, no_delays = true, no_repeat_delays = true, hit_motion = 'push'}],
+		sounddata = {initiate = null, strike = 'spell_dark', hit = null, hittype = 'static'},
 		value = 0.85,
 	},
 
@@ -1529,9 +1531,9 @@ var effects = {
 		conditions = [
 			{type = 'target', value = [
 				{code = 'has_status', check = true, status = 'cursed'},
-				{orfalg = true, code = 'has_status', check = true, status = 'blind'},
-				{orfalg = true, code = 'has_status', check = true, status = 'silence'},
-				{orfalg = true, code = 'has_status', check = true, status = 'fear'},
+				{orflag = true, code = 'has_status', check = true, status = 'blind'},
+				{orflag = true, code = 'has_status', check = true, status = 'silence'},
+				{orflag = true, code = 'has_status', check = true, status = 'fear'},
 			] },
 		],
 		sub_effects = [

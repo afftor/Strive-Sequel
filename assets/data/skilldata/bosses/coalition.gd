@@ -120,7 +120,7 @@ var skills = {
 		sfx = [
 			{code = 'earthquake', target = 'target_group', period = 'windup'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.7,
 		follow_up = 'coal_mighty_step_punch',
 	},
@@ -441,7 +441,7 @@ var skills = {
 		sfx = [
 			{code = 'magma_blast', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk', '*1.1']],
 		variations = [
 			{
@@ -607,7 +607,7 @@ var skills = {
 		sfx = [
 			{code = 'command', target = 'caster', period = 'windup'},
 			{code = 'magma_blast', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk', '*0.9']],
 	},
 	coal_throat_spray = {
@@ -670,7 +670,7 @@ var skills = {
 		sfx = [
 			{code = 'disintegrate', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk', '*1.8']],
 	},
 	#Bead of Healing reaction and the Kobold's Treasure aura
@@ -1767,7 +1767,7 @@ var skills = {
 		sfx = [
 			{code = 'earthquake', target = 'target_group', period = 'windup'},
 			{code = 'disintegrate', target = 'target', period = 'predamage'},],
-		sounddata = {initiate = 'spell_explosion', strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'spell_explosion', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk', '*4']],
 		follow_up = 'coal_moab_boom_allies',
 	},
@@ -1796,7 +1796,7 @@ var skills = {
 		critchance = 0,
 		chance = 999,
 		sfx = [{code = 'flame', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = null, strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk', '*4']],
 	},
 }

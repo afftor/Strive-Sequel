@@ -64,7 +64,7 @@ var skills = {
 			{code = 'tauntwave', target = 'target', period = 'windup'},
 			{code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2},
 			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = null, hittype = 'dynamic'},
 		value = 1.65,
 	},
 	turbulence_air = {

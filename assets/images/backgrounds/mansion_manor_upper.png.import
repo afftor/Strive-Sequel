@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mansion_courtyard.png-e4b8ef35d3bf6534c2e3eb932880755e.stex"
+path="res://.import/mansion_manor_upper.png-f5794f4fd16d7cfa191608721899abe7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/backgrounds/mansion_courtyard.png"
-dest_files=[ "res://.import/mansion_courtyard.png-e4b8ef35d3bf6534c2e3eb932880755e.stex" ]
+source_file="res://assets/images/backgrounds/mansion_manor_upper.png"
+dest_files=[ "res://.import/mansion_manor_upper.png-f5794f4fd16d7cfa191608721899abe7.stex" ]
 
 [params]
 

@@ -47,7 +47,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
 		value = [['target.hpmax','*0.25']],
 		not_final = true
 	},

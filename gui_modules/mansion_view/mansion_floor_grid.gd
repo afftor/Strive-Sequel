@@ -93,7 +93,14 @@ func _draw():
 	var ground = backdrop_rect(floor_plan)
 	var standing_on_art = ground.size.x > 0
 	if standing_on_art:
-		draw_texture_rect(backdrop_texture(floor_plan), ground, false, backdrop_shade(floor_plan))
+		var under = backdrop_under(floor_plan)
+		if under == null:
+			draw_texture_rect(backdrop_texture(floor_plan), ground, false, backdrop_shade(floor_plan))
+		else:
+			#the floor beneath first, through this floor's shade, and this floor over it as drawn:
+			#the two pictures share one canvas, so the same rect lays one exactly on the other
+			draw_texture_rect(under, ground, false, backdrop_shade(floor_plan))
+			draw_texture_rect(backdrop_texture(floor_plan), ground, false)
 	#areas are painted in the order the designer wrote them, so a later 'outside'
 	#rectangle cuts a hole back out of an earlier 'floor' one
 	for area in floor_plan.areas:
@@ -120,9 +127,11 @@ var backdrop_art = {}
 
 
 #How the picture is tinted on this floor. A storey above the ground is drawn through more air -
-#dimmer and a shade cooler - which is what says the player has climbed, since the drawing itself
-#is the same one. Multiplied into the picture and nothing else, so the rooms standing on it keep
-#their own colours. A floor that names no shade draws it as it is.
+#dimmer and a shade cooler - which is what says the player has climbed. Where the floor has a
+#picture of its own over the one beneath ('under'), the shade falls on the floor beneath alone,
+#which is what makes whatever shows through the upper floor's holes read as below it; otherwise
+#it falls on the one picture there is. Multiplied into the picture and nothing else, so the rooms
+#standing on it keep their own colours. A floor that names no shade draws it as it is.
 func backdrop_shade(floor_plan):
 	var back = floor_plan.get('backdrop', null)
 	var shade = null if back == null else back.get('shade', null)
@@ -133,11 +142,22 @@ func backdrop_shade(floor_plan):
 
 func backdrop_texture(floor_plan):
 	var back = floor_plan.get('backdrop', null)
-	if back == null:
+	return null if back == null else art_at(back.art)
+
+
+#The picture of the floor beneath, for a storey drawn over it, or null.
+func backdrop_under(floor_plan):
+	var back = floor_plan.get('backdrop', null)
+	if back == null or !back.has('under'):
 		return null
-	if !backdrop_art.has(back.art):
-		backdrop_art[back.art] = load(back.art)
-	return backdrop_art[back.art]
+	return art_at(back.under)
+
+
+#Loaded once however many floors and redraws ask for the same file.
+func art_at(path):
+	if !backdrop_art.has(path):
+		backdrop_art[path] = load(path)
+	return backdrop_art[path]
 
 
 #Where that picture goes, in the field's own pixels, or an empty rect for a floor with none.

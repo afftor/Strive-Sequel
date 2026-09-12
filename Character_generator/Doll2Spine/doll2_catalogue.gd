@@ -432,6 +432,22 @@ static func compose_bones(selections):
 	return result
 
 
+# Bone position offsets the selected parts ask for, added together:
+# {bone: Vector2}, in the female rig's bone names.  Only the artless parts from
+# POSE_PARTS carry any - a glance moves the pupils rather than drawing new eyes.
+static func compose_bone_offsets(selections):
+	var result = {}
+	for group_id in _gen().GROUP_ORDER:
+		var part_id = str(selections.get(group_id, ""))
+		if part_id.empty() or !bindings_met(part_id, selections):
+			continue
+		var offsets = part(part_id).get("offsets", {})
+		for bone_name in offsets.keys():
+			var pair = offsets[bone_name]
+			result[bone_name] = result.get(bone_name, Vector2.ZERO) + Vector2(float(pair[0]), float(pair[1]))
+	return result
+
+
 # Applies a preset over a copy of the given selections and returns it.
 static func apply_preset(selections, preset_id):
 	var result = selections.duplicate()

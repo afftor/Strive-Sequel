@@ -80,13 +80,17 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 0.8,
 		sfx = [
-			{code = 'ranged_attack', target = 'target', period = 'predamage'},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.3, arc = 20.0, boom_size = 150.0, size = 1.3},
 			{code = 'at_arch', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = null, strike = 'weapon', hit = null},
+		sounddata = {initiate = null, strike = 'bow', hit = null},
+		#ranged_attack carries no disable_immunity, so disarm blocks it outright; the swap
+		#to the unarmed attack is the only thing that still leaves its owner a turn. The
+		#check used to be limited to combatgroup 'enemy' - the player's summoned skeleton
+		#archer, whose only skill is ranged_attack, was then left with no legal action at
+		#all and its turn hung waiting for an input the player could not give.
 		variations = [
 			{
 				reqs = [
-					{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'},
 					{code = 'has_status', status = 'disarm', check = true},
 				],
 				replace = 'attack',
@@ -169,7 +173,7 @@ var Skilllist = {
 		sfx = [
 			{code = 'earth_spike', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 1.25
 	},
 	wind_atk = {
@@ -258,7 +262,7 @@ var Skilllist = {
 			{code = 'firebolt', target = 'target', period = 'predamage'},
 			{code = 'flame', target = 'target', period = 'postdamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
 		value = 0.50
 	},
 	
@@ -760,7 +764,7 @@ var Skilllist = {
 		target_range = 'melee',
 		damage_type = 'normal',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 1.2
 	},
 	voidslam = {
@@ -1316,7 +1320,7 @@ var Skilllist = {
 		sfx = [
 			{code = 'flame', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
 		value = 1,
 	},
 	curse_of_despair = { 

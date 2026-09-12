@@ -4468,7 +4468,8 @@ Anche se questa è stata un'esperienza spiacevole per [name], di sicuro gli inse
 	DATING_AFFECTIONATE_RESULT_1 = """
 
 {color=green|Umore Affettuoso}: Il tempo trascorso insieme lascia [name] più vicina a te.""",
-	DATING_LOW_FEAR_WARNING = """,
+	DATING_LOW_FEAR_WARNING = """
+{color=yellow|[name] si è sentita troppo a suo agio con te, indebolendo il suo rispetto.}""",
 	DATING_PRESUMPTION_ASK = """[name] has been entirely at ease in your company. There is a new familiarity in the way [he] speaks to you, and you find yourself thinking [he] has grown presumptuous.""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_DISCIPLINE = """Put [him] in [his] place""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_ENDORSE = """Endorse it""", # MISSING TRANSLATION
@@ -4478,7 +4479,6 @@ Anche se questa è stata un'esperienza spiacevole per [name], di sicuro gli inse
 	DATING_PRESUMPTION_ENDORSE_RESULT = """
 
 {color=yellow|You decide to play along, showing your willingness to let [name] treat you with less respect.}""", # MISSING TRANSLATION
-{color=yellow|[name] si è sentita troppo a suo agio con te, indebolendo il suo rispetto.}""",
 	DATING_FEARFUL_RESULT_1 = """
 
 {color=red|Umore Timoroso}: L'appuntamento lascia [name] scossa, ma più consapevole del tuo potere.""",
@@ -20828,14 +20828,7 @@ Kuro non presta attenzione alle sue parole, si gira e si prepara a continuare pe
 Mentre si allontana, un gruppo di truppe della coalizione giaceva nel nascondiglio che stava solo aspettando l'apparizione del re.
 
 {color=yellow|Il Re: — Quella si è schierata con la coalizione alle mie spalle! Tirateli fuori e prendetela!}""",
-	DWARF_CEREMONY_CAUGHTUP_CULT = """,
-	DWARF_CEREMONY_BOLTHAR = """The ambushers part, and a gnome in a plain robe steps out of their ranks with his hands open at his sides. Bolthar. Behind him come the ones who hold his coalition together: a kobold weighed down with scavenged trinkets, a ratkin who keeps to the edge of the torchlight, a goblin with a bandolier of crude grenades, and a dwarf resting a double-bitted axe on his shoulder.
-
-{color=yellow|Bolthar: — I offered you a place among us once. You chose the crown instead, and now the crown has brought you here, to the one fight I hoped to spare you.}
-
-{color=aqua|The King: — Enough talk. Cut them down!}
-
-{color=yellow|Bolthar: — Stand together, friends. Whatever they take from us, they take from all of us at once.}""", # MISSING TRANSLATION
+	DWARF_CEREMONY_CAUGHTUP_CULT = """
 
 
 
@@ -20844,6 +20837,13 @@ Mentre si allontana, un gruppo di truppe della coalizione giaceva nel nascondigl
 
 
 Mentre si allontana, un gruppo di cultisti si unisce alla strada impedendoti di inseguirla.""",
+	DWARF_CEREMONY_BOLTHAR = """The ambushers part, and a gnome in a plain robe steps out of their ranks with his hands open at his sides. Bolthar. Behind him come the ones who hold his coalition together: a kobold weighed down with scavenged trinkets, a ratkin who keeps to the edge of the torchlight, a goblin with a bandolier of crude grenades, and a dwarf resting a double-bitted axe on his shoulder.
+
+{color=yellow|Bolthar: — I offered you a place among us once. You chose the crown instead, and now the crown has brought you here, to the one fight I hoped to spare you.}
+
+{color=aqua|The King: — Enough talk. Cut them down!}
+
+{color=yellow|Bolthar: — Stand together, friends. Whatever they take from us, they take from all of us at once.}""", # MISSING TRANSLATION
 	KURO_RESOLUTION_INTRO = """Ti dirigi verso le grotte vicine inseguendo Kuro che trasporta l'artefatto. Percorrendo sentieri non convenzionali si arriva presto in una zona desolata.
 
 A quanto pare tutto è stato preparato in anticipo quando si vede Kuro in piedi nel mezzo del cerchio rituale che apre il portale. Su un perimetro molto più ampio l'area è bloccata da una barriera semitrasparente non dissimile da quella che hai incontrato a Millford, tuttavia questa è molto più scura.""",

@@ -344,7 +344,9 @@ var bodypartsdata = {
 			{code = 'eye_tex', value = [['eyes5m', 1]], reqs = []},
 			{code = 'chin', value = [['default', 1],['male', 1],['muscle', 1],['short', 1]], reqs = []},
 			{code = 'eyeshape', value = [['face_m1', 1],['face_m2', 1],['face_m3', 1],['face_m4', 1],['face_m5', 1]], reqs = []},
-			{code = 'lips', value = [['style6', 1],['style7', 1],['style8', 1],['style9', 1],['style10', 1],['style11', 1],['style12', 1]], reqs = []},
+			#`style11` is the round open mouth and is not a face to be born with; it stays
+			#pickable on the doll.  `style12` named `lips_s3`, which neither export has.
+			{code = 'lips', value = [['style6', 1],['style7', 1],['style8', 1],['style9', 1],['style10', 1]], reqs = []},
 			{code = 'lips', value = [['orcish', 1],['orcish_1', 1],['orcish_2', 1],['orcish_3', 1]], reqs = [{code = 'one_of_races', value = ['Orc','Goblin'], check = true}]},
 			{code = 'lips', value = [['none', 1],['beastkin_cry', 1],['beastkin_open', 1],['beastkin_smile', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
 			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinBunny'], check = true}]},
@@ -375,7 +377,7 @@ var bodypartsdata = {
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes5', 1]], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['small', 1],['skinny', 1],['short', 1]], reqs = []},
 			{code = 'eyeshape', value = [['face6', 1],['face7', 1],['face8', 1]], reqs = []},
-			{code = 'lips', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1],['style10', 1],['style11', 1],['style12', 1]], reqs = []},
+			{code = 'lips', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1],['style10', 1]], reqs = []},
 			{code = 'lips', value = [['orcish', 1],['orcish_1', 1],['orcish_2', 1],['orcish_3', 1]], reqs = [{code = 'one_of_races', value = ['Orc','Goblin'], check = true}]},
 			{code = 'lips', value = [['none', 1],['beastkin_cry', 1],['beastkin_open', 1],['beastkin_smile', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
 			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinBunny'], check = true}]},
@@ -404,7 +406,7 @@ var bodypartsdata = {
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes5', 1]], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['small', 1],['skinny', 1],['short', 1]], reqs = []},
 			{code = 'eyeshape', value = [['face6', 1],['face7', 1],['face8', 1]], reqs = []},
-			{code = 'lips', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1],['style10', 1],['style11', 1],['style12', 1]], reqs = []},
+			{code = 'lips', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1],['style10', 1]], reqs = []},
 			{code = 'lips', value = [['orcish', 1],['orcish_1', 1],['orcish_2', 1],['orcish_3', 1]], reqs = [{code = 'one_of_races', value = ['Orc','Goblin'], check = true}]},
 			{code = 'lips', value = [['none', 1],['beastkin_cry', 1],['beastkin_open', 1],['beastkin_smile', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
 			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinBunny'], check = true}]},

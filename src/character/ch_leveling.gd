@@ -898,6 +898,17 @@ func get_booster_multiplier_preview():#same as apply_boosters, but doesn't consu
 	return mul
 
 
+func get_booster_stop_tier():#the tier (1-3) where apply_boosters stops: switched off, or not more than 1 of its material in stock. No tier from there up applies; 4 when all three do
+	for i in range(3):
+		var id = 'boost%d' % (i + 1)
+		var res = service_boosters[id].res
+		if !service_boosters[id].value:
+			return i + 1
+		if !(ResourceScripts.game_res.materials.has(res) and ResourceScripts.game_res.materials[res] > 1):
+			return i + 1
+	return 4
+
+
 func get_estimated_service_value():#best-case gold per tick for the currently toggled sex actions, incl. boosters/service/productivity bonuses and the over-cap desirability bonus, but not the full/half gold roll
 	var enabled = get_enabled_sex_actions()
 	if enabled.size() == 0:

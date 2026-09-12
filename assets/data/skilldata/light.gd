@@ -136,7 +136,7 @@ var skills = {
 		sfx = [
 			{code = 'elemental_protection', target = 'target', period = 'predamage'},
 			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = [['0']],
 		damagestat = 'no_stat',
 		variations = [
@@ -226,7 +226,8 @@ var skills = {
 		sfx = [
 			{code = 'radiance', target = 'target_group', period = 'windup'},
 			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = 'firehit', strike = null, hit = null},
+		hitfx = {type = 'sparks', size = 6.0, speed = 1.0},
 		variations = [
 			{
 				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],

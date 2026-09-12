@@ -137,7 +137,7 @@ var skills = {
 		keep_target = variables.TARGET_NOKEEP,
 		next_target = variables.NT_ANY,
 		sfx = [{code = 'magma_blast', target = 'target', period = 'predamage'},{code = 'blood_boil', target = 'caster', period = 'postdamage'}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = [['caster.atk','+','caster.matk','*1.5']],
 	},
 	i_ve_seen_enough = {
@@ -190,7 +190,7 @@ var skills = {
 			{code = 'fire_shield', target = 'target', period = 'windup'},
 			{code = 'flame',target = 'target',period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
 		value = [['caster.matk','*1.6'],],
 	},
 	i_must_resist = {
@@ -241,7 +241,7 @@ var skills = {
 		sfx = [
 			{code = 'flame', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = 1.6,
 	},
 }

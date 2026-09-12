@@ -61,9 +61,11 @@ var racelist = {
 			eyeshape = ['face6','face7','face8','face_m1','face_m2','face_m3','face_m4','face_m5',],
 			nose = ['default', 'small', 'straight', 'feature', 'point'],
 			eyebrows = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6', 'style7', 'style8'],
-			#`style12` is deliberately absent: the mouth it names, `lips_s3`, was never
-			#drawn for either rig, so picking it left a face with no mouth on it
-			lips = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6', 'style7', 'style8', 'style9', 'style10', 'style11'],
+			#Two mouths are deliberately absent.  `style12` names `lips_s3`, which was
+			#never drawn for either rig, so picking it left a face with no mouth on it;
+			#`style11` is the round open one, which is a face a player may choose on the
+			#doll rather than one to be born with.
+			lips = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6', 'style7', 'style8', 'style9', 'style10'],
 			tits_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'], #add variants
 			ass_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'],
 			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'dark_1', 'dark_2', 'dark_3'],

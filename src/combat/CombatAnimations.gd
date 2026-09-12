@@ -2,6 +2,8 @@ extends Node
 
 const LightningEffect = preload("res://src/combat/LightningEffect.gd")
 const ProjectileEffect = preload("res://src/combat/ProjectileEffect.gd")
+const HitFxEffect = preload("res://src/combat/HitFxEffect.gd")
+const AnimRegistry = preload("res://src/combat/anim_registry.gd")
 
 #The tuning numbers below (cast tables, motion distances, hit reactions, per-skill beats)
 #are `var` rather than `const` on purpose: the combat lab in ../ConquestCombatTesting binds
@@ -140,6 +142,9 @@ var devastation_hp_delays = {}
 var lightning_effects = []
 var lightning_timing_plan = {}
 var lightning_hp_delays = {}
+#node -> {delay, cur_timer}: a projectile shot inside a repeat loop left the queue before it
+#landed, so its damage number waits the rest of the flight - without holding the queue
+var landing_hp_delays = {}
 var lightning_caster_states = {}
 
 func force_end():
@@ -153,6 +158,7 @@ func force_end():
 	lightning_effects.clear()
 	lightning_timing_plan.clear()
 	lightning_hp_delays.clear()
+	landing_hp_delays.clear()
 	for key in lightning_caster_states.keys():
 		lightning_caster_restore(key, true)
 	animation_delays.clear()
@@ -164,6 +170,8 @@ func force_end():
 	log_update_delay = 0
 	pending_shot_delay = 0.0
 	pending_shot_timer = -1
+	pending_shot_taken_slot = -1
+	pending_shot_taken_value = 0.0
 	is_busy = false
 
 #---------------------------------------------------------------------------
@@ -311,7 +319,16 @@ func start_animation(node):
 		elif images.GFX_particles.keys().has(data.type):#those with no own method
 			true_type = 'gfx_particles'
 			data.params.sprite_name = data.type
+		#a skill's hit effect rides on the entry that makes the card recoil: see arm_hit_fx
+		#some queue entries carry their params as an Array - only a Dictionary holds an effect
+		if data.params is Dictionary:
+			hit_fx_now = data.params.get('hit_fx', null)
+			hit_fx_nodes = data.params.get('hit_fx_nodes', null)
+			hit_fx_key = data.params.get('hit_fx_key', null)
 		var lock = call(true_type, data.node, data.params)
+		hit_fx_now = null
+		hit_fx_nodes = null
+		hit_fx_key = null
 		trace('  play %-18s on %-18s slot=%-10s lock=%.3f' % [
 			str(data.type), node_label(node), str(data.slot), float(lock)])
 		delay = max(delay, lock)
@@ -411,6 +428,8 @@ func ranged_attack(node, args = null):
 	if args != null and args.has("no_delays") and args.no_delays:
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
 		shot = 0.0
+		#no squash inside the loop, but every shot still throws its hit effect
+		arm_hit_fx(node, 0.0)
 	else:
 		hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 		log_update_delay = max(log_update_delay, 0.3)
@@ -484,16 +503,38 @@ var TILT_LIFT = 9.0
 var TILT_SCALE_X = 0.975
 var TILT_SCALE_Y = 1.02
 
+#What every code is - kind, function, beats. Built on first use from the same sources
+#start_animation consults, so the two can never disagree. Per instance: exploration screens
+#own their own CombatAnimations.
+var registry = null
+
+func get_registry():
+	if registry == null:
+		registry = AnimRegistry.new()
+		registry.build(self)
+	return registry
+
 var pending_shot_delay = 0.0 #set by the cast animation, consumed by the predamage one
 var pending_shot_timer = -1 #which slot set it, so a stale value cannot leak to a later skill
+#the slot that consumed the shot and what it got: every other entry of that same slot -
+#the other targets of a sweep - is handed the same value instead of zero
+var pending_shot_taken_slot = -1
+var pending_shot_taken_value = 0.0
 
 #the cast animation and the blow sit two `turns` apart (windup, targeting, predamage)
+#Consumed once per SLOT rather than once per skill: all the targets of a cleave sit in
+#the same predamage slot and all of them wait for the swing, while the next iteration of
+#a repeat loop is a later slot and lands without waiting - which is what a loop wants.
 func take_pending_shot():
+	if cur_timer != null and pending_shot_taken_slot == cur_timer:
+		return pending_shot_taken_value
 	var val = 0.0
 	if pending_shot_timer >= 0 and cur_timer != null and cur_timer - pending_shot_timer <= 3:
 		val = pending_shot_delay
 	pending_shot_delay = 0.0
 	pending_shot_timer = -1
+	pending_shot_taken_slot = cur_timer if cur_timer != null else -1
+	pending_shot_taken_value = val
 	return val
 
 #these intercept the generic gfx_animsprite path via has_method() in start_animation
@@ -739,6 +780,7 @@ func assassinate(node, args = null):
 func target_tilt(node, delay = 0.0):
 	if !node.is_inside_tree(): return
 	if !node.has_method('get_attack_vector'): return
+	arm_hit_fx(node, delay)
 	node.rect_pivot_offset = node.rect_size/2
 	node.rect_scale = Vector2(1,1)
 	node.rect_rotation = 0
@@ -1211,6 +1253,7 @@ func devastation_strike(node, args = null):
 	var tween = get_tween(visual_node)
 	tween.interpolate_callback(self, DEVASTATION_RELEASE, 'devastation_launch_arc',
 		visual_node, node, iteration)
+	arm_hit_fx(node, DEVASTATION_RELEASE + DEVASTATION_ARC)
 	tween.interpolate_callback(self, DEVASTATION_RELEASE + DEVASTATION_ARC,
 		'target_squash', node, DEVASTATION_STRIKE, 0.0)
 	tween.interpolate_callback(self, 0.75, 'devastation_clear_hp_delay', node, iteration)
@@ -1353,9 +1396,65 @@ func devastation_restore(key):
 #target takes the hit: knocked away and springs back past its spot
 #no ShakeAnimation here - it writes rect_position every frame in _process and would
 #both fight this tween and snap the node back to the position it captured at its start
+#--- hit effects -------------------------------------------------------------------------
+#A skill's `hitfx` (right under its sounddata) is a burst of particles thrown off the card
+#at the moment it recoils. The skill handlers put it into the params of the entries that
+#can make a card recoil, with hit_fx_nodes (the cards the skill aims at) and hit_fx_key
+#(which blow it is). start_animation holds the three only while that one entry's function
+#runs, and every recoil primitive calls arm_hit_fx with its own delay, so the burst starts
+#on the frame the card starts to move. A recoil scheduled for later through a tween
+#callback runs with nothing armed, so the function that schedules it arms the effect
+#itself, with the same delay (devastation_strike, lightning).
+#The hit effect a damaging skill gets when its data sets none: sparks at six times their
+#size, tuned in the combat lab (2026-09-10). A skill's own `hitfx` replaces it, and
+#`hitfx = []` (or null) switches it off for that one skill.
+var DEFAULT_HIT_FX = {type = 'sparks', size = 6.0}
+
+#What a cast throws on the recoil: the skill's own hitfx when its data has the field at
+#all, the default for a damaging skill otherwise, nothing for the rest.
+func hit_fx_for(template, tags):
+	if template.has('hitfx'): return template.hitfx
+	if tags != null and tags.has('damage') and !tags.has('passive'): return DEFAULT_HIT_FX
+	return null
+
+var hit_fx_now = null
+var hit_fx_nodes = null
+var hit_fx_key = null
+#"blow:card" pairs that already threw their burst
+var hit_fx_fired = {}
+
+func arm_hit_fx(node, delay = 0.0):
+	if hit_fx_now == null or node == null or !is_instance_valid(node): return
+	if hit_fx_nodes != null and !hit_fx_nodes.has(node): return
+	#one burst per card per blow: a function that pushes the card itself and the fallback
+	#reaction at the damage step would otherwise throw one each
+	if hit_fx_key != null:
+		var fired = '%s:%s' % [str(hit_fx_key), str(node.get_instance_id())]
+		if hit_fx_fired.has(fired): return
+		if hit_fx_fired.size() > 256: hit_fx_fired.clear()
+		hit_fx_fired[fired] = true
+	spawn_hit_fx(node, hit_fx_now, delay)
+
+#Also what the combat lab calls to preview a burst without casting anything.
+func spawn_hit_fx(node, fx, delay = 0.0):
+	if fx == null or node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
+	var layers = fx if fx is Array else [fx]
+	#like the projectiles: the combat scene's last child draws over every card
+	var layer_parent = get_parent()
+	if layer_parent == null: layer_parent = self
+	for layer in layers:
+		if !(layer is Dictionary) or !HitFxEffect.PRESETS.has(str(layer.get('type', ''))): continue
+		var effect = HitFxEffect.new()
+		effect.name = 'HitFx'
+		layer_parent.add_child(effect)
+		effect.time_rate = rate
+		effect.setup(node, layer, delay)
+		trace('  hitfx %s on %s at +%.3f' % [str(layer.type), node_label(node), float(delay)])
+
 func target_push(node, delay = 0.0):
 	if !node.is_inside_tree(): return
 	if !node.has_method('get_attack_vector'): return
+	arm_hit_fx(node, delay)
 	var tween = get_tween(node)
 	var p = settle_card(node)
 	#away from the target's own side, i.e. along the attacker's swing
@@ -1396,6 +1495,7 @@ func caster_recoil(node, contact, speed = 1.0):
 #target takes the hit: sinks by scale and springs back, plus a short shake
 func target_squash(node, duration = 0.4, delay = 0.0):
 	if !node.is_inside_tree(): return
+	arm_hit_fx(node, delay)
 	var out_time = min(SQUASH_OUT, max(duration, 0.1) * 0.8)
 	node.rect_pivot_offset = node.rect_size/2
 	node.rect_scale = Vector2(1,1)
@@ -1509,7 +1609,7 @@ func shake_target(node, args):
 	if args.has('queue_duration'):
 		nextanimationtime = args.queue_duration
 	nextanimationtime -= 0.1
-	if !args.has("no_delays"):
+	if !args.get('no_delays', false):
 		hp_update_delays[node] = 0.5
 		log_update_delay = max(log_update_delay, 0.5)
 		buffs_update_delays[node] = 0.5
@@ -1559,6 +1659,45 @@ var PROJ_ARROW_STICK = 0.34 #how long the arrow stays in the target before fadin
 var PROJ_FIRE_BOOM = 110.0 #radius the explosion reaches
 var PROJ_FIRE_BOOM_TIME = 0.42
 
+#Every sound a skill makes, resolved and gated in one place. The SLOT a phase lands in is
+#the caller's: initiate is queued from the windup phase, strike from predamage, the default
+#hit from instancing, the explicit hit from damage - the slot is the caller's position in
+#the handler chain, not a property of the sound, so the callers stay where they are.
+#   initiate     caster card, sounddata.initiate
+#   strike       caster card, sounddata.strike; 'weapon' is the held weapon's hitsound
+#   hit_default  target card, the target's material profile - only damage skills whose
+#                sounddata leaves the hit to the profile
+#   hit          target card, sounddata's explicit or dynamic hit sound
+#A sound that resolves to nothing, or to an id audio.sounds does not know, is skipped with
+#a note instead of reaching PlaySound and dying on the lookup.
+func play_skill_sound(phase, template, caster, target, tags = null):
+	var sounddata = {}
+	if template.has('sounddata') and template.sounddata is Dictionary:
+		sounddata = template.sounddata
+	var node = null
+	var sound = null
+	match phase:
+		'initiate':
+			node = caster.displaynode if caster != null else null
+			sound = sounddata.get('initiate', null)
+		'strike':
+			node = caster.displaynode if caster != null else null
+			sound = sounddata.get('strike', null)
+			if sound == 'weapon': sound = caster.get_weapon_sound()
+		'hit_default':
+			if tags == null or !tags.has('damage'): return
+			if !audio.uses_default_combat_hit_sound(sounddata): return
+			node = target.displaynode if target != null else null
+			sound = audio.get_default_combat_hit_sound(target)
+		'hit':
+			node = target.displaynode if target != null else null
+			sound = audio.get_combat_hit_sound(sounddata, target)
+	if node == null or sound == null: return
+	if !audio.sounds.has(sound):
+		print('combat sound %s is not in audio.sounds (phase %s)' % [str(sound), phase])
+		return
+	node.process_sound(sound)
+
 #Delays are set by several animations on the same node; the later one must never shorten
 #what an earlier one asked for.
 func bump_delay(dict, node, value):
@@ -1596,13 +1735,24 @@ func fly_projectile(node, args, kind):
 	var shot = take_pending_shot()
 	var boom = PROJ_FIRE_BOOM_TIME if kind == 'fireball' else PROJ_ARROW_STICK
 
-	if args.has('no_delays') and args.no_delays:
+	var volley = args.has('no_delays') and args.no_delays
+	if volley:
+		#A shot in the middle of a repeat loop (strafe, void barrage): the queue does not wait
+		#for it to land - the next shot leaves while it is still in the air, the way
+		#ranged_attack's loop runs. Its damage number still waits for the landing, through a
+		#non-blocking hp delay like devastation's: custom_delays stays at the usual 0.2,
+		#because defeat, miss and resist take it as their own lock and would hold the queue
+		#for the whole flight. No recoil (the recoveries would stack), but the hit effect still
+		#fires on the landing.
 		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
+		landing_hp_delays[node] = {delay = max(0.0, flight - HIT_TAIL), cur_timer = cur_timer}
+		arm_hit_fx(node, shot + flight)
 	else:
-		#everything the target does happens on contact, not on release
+		#Everything the target does happens on contact, not on release. Only this entry's own
+		#lock carries the flight: buffs_update_delays and log_update_delay survive into later
+		#slots (advance_timer clears hp_update_delays only), so a flight put there was waited a
+		#second time after the landing, by the buffs and the combat-log slots - see targetattack.
 		bump_delay(hp_update_delays, node, shot + flight)
-		bump_delay(buffs_update_delays, node, shot + flight)
-		log_update_delay = max(log_update_delay, shot + flight)
 		var motion = args.hit_motion if args.has('hit_motion') else 'push'
 		play_target_hit_motion(node, motion, max(0.2, boom), shot + flight)
 
@@ -1622,10 +1772,13 @@ func fly_projectile(node, args, kind):
 		scatter = float(args.scatter) if args.has('scatter') else PROJ_SCATTER,
 		spin = float(args.spin) if args.has('spin') else 0.0,
 		boom_time = boom,
+		color = args.color if args.has('color') else null,
+		size = float(args.size) if args.has('size') else 1.0,
 		boom_size = float(args.boom_size) if args.has('boom_size') else (PROJ_FIRE_BOOM if kind == 'fireball' else PROJ_FIRE_BOOM * 0.5),
 	})
 
 	if args.has('queue_duration'): return float(args.queue_duration)
+	if volley: return shot + HIT_TAIL
 	return shot + flight + HIT_TAIL
 
 
@@ -1752,6 +1905,7 @@ func prepare_lightning_impacts(hit_nodes, settings):
 		var branch_delay = 0.0 if index == 0 or !settings.chained else 0.10 + float(index - 1) * settings.branch_stagger
 		var impact_time = settings.windup + branch_delay + LIGHTNING_IMPACT_DELAY
 		lightning_timing_plan[hit_node] = max(0.0, impact_time - queue_release)
+		arm_hit_fx(hit_node, impact_time)
 		tween.interpolate_callback(self, impact_time, 'lightning_target_hit', hit_node)
 	tween.start()
 
@@ -1782,10 +1936,18 @@ func gfx_animsprite(node, args):
 	var nextanimationtime = duration
 	if args.has('queue_duration'):
 		nextanimationtime = args.queue_duration
-	else:
+	elif args.has('duration'):
+		#an explicit duration was tuned by hand: it stays the lock, capped as before
 		nextanimationtime = min(nextanimationtime, MAX_SFX_LOCK)
+	else:
+		#The queue waits for the blow, not for the sheet to burn out: the measured key
+		#frame (the registry's contact beat, scaled by speed) plus the usual tail. Never
+		#longer than the old cap, so a sheet whose flash comes late is no slower than it
+		#was - only the ones that flash early stop making the number wait.
+		var contact = get_registry().contact_time(args.sprite_name, speed)
+		nextanimationtime = min(min(contact + HIT_TAIL, MAX_SFX_LOCK), duration)
 	nextanimationtime -= 0.1
-	if !args.has("no_delays"):
+	if !args.get('no_delays', false):
 		if sync_to_hit:
 			var hit_nodes = args.hit_nodes if args.has('hit_nodes') else [node]
 			for hit_node in hit_nodes:
@@ -1840,6 +2002,7 @@ func get_flip_for_node(node, args):
 		flip = node.get_meta("anim_flip")
 	if args != null and args.has("reverse_flip"):
 		flip = !flip
+	trace('  flip %s -> %s' % [node_label(node), str(flip)])
 	return flip
 	
 
@@ -1862,9 +2025,13 @@ func decay(node, args):
 	hp_update_delays[node] = 0.5 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
-	fx_sprite(
-		node.get_parent().get_parent().get_parent().get_parent(),
-		'decay', 0.5, 1.5, get_flip_for_node(node, args))
+	#Visual disabled for now. DecayEffect.tscn has a Sprite root, and gfx_sprite reads
+	#speed_scale on it as soon as fast_combat scales speed - that runtime error aborts
+	#the function before play() and queue_free(), so the sprite stayed stuck on the card.
+	#The delays and lock time below are untouched, so combat pacing is unchanged.
+#	fx_sprite(
+#		node.get_parent().get_parent().get_parent().get_parent(),
+#		'decay', 0.5, 1.5, get_flip_for_node(node, args))
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	
@@ -1953,6 +2120,7 @@ func buffs(node, args):
 	var delay = 0
 	if buffs_update_delays.has(node): delay = buffs_update_delays[node]
 	buffs_update_delays.erase(node)
+	trace('  buffs on %s delay=%.3f' % [node_label(node), float(delay)])
 	var delaytime = 0.01
 	var tween = get_tween(node)
 	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs')
@@ -1962,6 +2130,7 @@ func buffs(node, args):
 func c_log(node, args):
 	var delay = log_update_delay
 	log_update_delay = 0
+	trace('  c_log on %s delay=%.3f' % [node_label(node), float(delay)])
 	var delaytime = 0.01
 	var tween = get_tween(node)
 	tween.interpolate_callback(node, delay, 'combatlogadd_q', args.text)
@@ -2051,6 +2220,12 @@ func hp_update(node, args):
 		delay = devastation_hp_delays[node].delay
 		devastation_hp_delays.erase(node)
 		nonblocking_delay = true
+	if landing_hp_delays.has(node):
+		if cur_timer != null and cur_timer - landing_hp_delays[node].cur_timer <= 7:
+			delay = max(delay, landing_hp_delays[node].delay)
+			nonblocking_delay = true
+		landing_hp_delays.erase(node)
+	trace('  hp_update on %s delay=%.3f' % [node_label(node), float(delay)])
 	#Every HP decrease passes through FighterNode.update_hp, including direct hits,
 	#poison, and bleeding. A follow-up that lands for nothing - hyperborea_1 only
 	#applies a status - still queues an hp_update, and flashing the card for it

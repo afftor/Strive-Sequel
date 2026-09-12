@@ -172,6 +172,12 @@ func hit_roll():#not implemented various chance stat rolls due to not having for
 		prop = 100 #targeting ally
 	if prop < 5: 
 		prop = 5
+	if variables.anim_force_outcome != null:
+		match variables.anim_force_outcome:
+			'miss': hit_res = variables.RES_MISS
+			'crit': hit_res = variables.RES_CRIT
+			_: hit_res = variables.RES_HIT
+		return
 	if prop < randf()*100:
 		hit_res = variables.RES_MISS
 	elif critchance < randf()*100:

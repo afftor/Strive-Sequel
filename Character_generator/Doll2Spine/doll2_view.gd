@@ -189,6 +189,9 @@ var _apply_queued = false
 # The screens around the doll redraw what they show of the character - a card
 # portrait, a stored sprite - when the player strips one.
 signal undress_level_changed(level)
+# the menu opens over whatever the screen keeps in that corner, so the screen
+# may want to put it away meanwhile
+signal hair_menu_toggled(open)
 
 
 func _ready():
@@ -469,23 +472,21 @@ const FACE_COLOUR_ROWS = [
 ]
 
 # Gear, which is not painted in one colour: its art is coded in three hue bands -
-# the main material, a second one and the trim - and each band takes its colour
-# from the stat that feeds the channel.  This table is what says which stat.
+# the main material, a second one and the trim - so a piece is a row of three
+# swatches, and a band the worn piece has no art in takes its swatch away.
 #
 # The stats are the old paperdoll's own and are still on every character:
 # `armor_color_base` and `armor_color_lower` dressed the two halves of the body,
 # `armor_color_underwear` the underwear and `armor_color_weapon` what is carried.
 # A preset name - `default`, `default_metal` - means "leave the bands where the
 # catalogue starts them", which is what this doll has been drawing all along; a
-# painted value reads `#rrggbb,#rrggbb,#rrggbb`, one per band, an empty slot for
-# a band still on its default.  The menu no longer offers swatches for these, so
-# nothing here writes them any more - but a character painted before that keeps
-# the look they were given, which is why the values are still read.
+# picked colour is written back as `#rrggbb,#rrggbb,#rrggbb`, one per band, an
+# empty slot for a band still on its default.
 #
-# Clothes and underwear are each two entries, because the game equips a chest and
-# a pair of legs separately and the old doll painted them apart.  `from` says
-# which of the two garments an entry is about - a character shows one or the
-# other, and both halves follow whichever it is.
+# Clothes and underwear are each two rows, because the game equips a chest and a
+# pair of legs separately and the old doll painted them apart.  `from` says which
+# of the two garments a row is about - a character shows one or the other, and
+# both halves follow whichever it is - and `half` is what the label says.
 const GEAR_COLOUR_ROWS = [
 	{"id": "underwear_colour", "stat": "armor_color_underwear", "channel": "outfit",
 		"label": "DOLL2_GEAR_UNDERWEAR", "from": "underwear", "half": "DOLL2_GEAR_HALF_TOP"},
@@ -516,6 +517,10 @@ const GEAR_CHANNEL_GROUPS = {
 	"headgear": ["headgear", "mask"],
 	"weapon": ["weapon_belt", "weapon_back"],
 }
+# What each of the three swatches paints, said in its tooltip: the art carries
+# no names for its bands, only the three hues, so the order is the whole of it.
+const GEAR_ZONE_HINTS = ["DOLL2_GEAR_ZONE_MAIN", "DOLL2_GEAR_ZONE_SECOND",
+	"DOLL2_GEAR_ZONE_TRIM"]
 
 
 func _on_hair_menu_toggled(pressed):
@@ -527,6 +532,7 @@ func _on_hair_menu_toggled(pressed):
 		_refresh_hair_panel()
 	else:
 		_give_back_the_room()
+	emit_signal("hair_menu_toggled", pressed)
 
 
 # The scene owns the panel and its rows.  Only the dropdown lists retain their
@@ -570,6 +576,22 @@ func _build_hair_panel():
 		else:
 			control.get_popup().theme = DOLL_DROPDOWN_THEME
 			control.connect("item_selected", self, "_on_hair_option_picked", [control_id, control])
+	# a gear row is a label and a box of swatches rather than a single control,
+	# so it is wired here instead of going through the pairs above
+	for row_data in GEAR_COLOUR_ROWS:
+		var box = rows.get_node(row_data.id)
+		var gear_label = rows.get_node(row_data.id + "_label")
+		gear_label.text = tr(row_data.label)
+		if row_data.has("half"):
+			gear_label.text = "%s - %s" % [tr(row_data.label), tr(row_data.half)]
+		_hair_controls[row_data.id] = box
+		_hair_controls[row_data.id + "_label"] = gear_label
+		for zone in range(GEAR_ZONE_HINTS.size()):
+			var picker = box.get_node("zone%d" % (zone + 1))
+			picker.hint_tooltip = tr(GEAR_ZONE_HINTS[zone])
+			picker.connect("color_changed", self, "_on_gear_colour_picked", [row_data.id, zone])
+			picker.get_popup().connect("about_to_show", self, "_place_colour_popup", [picker])
+			_hair_controls["%s_zone%d" % [row_data.id, zone]] = picker
 	_position_hair_panel()
 
 
@@ -661,6 +683,7 @@ func _refresh_hair_panel():
 	# what the doll draws, so it is what the swatch has to show
 	for row_data in FACE_COLOUR_ROWS:
 		_hair_controls[row_data.id].color = COLORS.colour_of(row_data.stat, _stat(row_data.stat))
+	_refresh_gear_rows()
 	_position_hair_panel()
 
 
@@ -735,6 +758,76 @@ func _on_hair_colour_picked(colour, control_id):
 	_apply()
 
 
+# One band of one piece.  The bands nobody has touched stay empty in the stat
+# rather than being written out at their current default: a default is the
+# catalogue's to change, and a piece left alone should follow it.
+func _on_gear_colour_picked(colour, control_id, zone):
+	_look_changed = true
+	if character == null:
+		return
+	for row_data in GEAR_COLOUR_ROWS:
+		if row_data.id != control_id:
+			continue
+		var picked = _gear_zone_colours(_stat(row_data.stat))
+		picked[zone] = colour
+		character.set_stat(row_data.stat, _gear_colour_stat_value(picked))
+	_apply()
+
+
+# The swatches follow what is on show.  A row nobody can see the effect of is
+# not offered: the piece it paints is off at this undress level, or - for the
+# two garments that share the body channel - the other one is the one drawn.
+func _refresh_gear_rows():
+	var equipment = _equipment()
+	for row_data in GEAR_COLOUR_ROWS:
+		var parts = _gear_parts_for(row_data, equipment)
+		var zones = []
+		for channel_id in _gear_channels_of(row_data):
+			for zone in CATALOGUE.channel_zones(channel_id, parts):
+				if !(zone in zones):
+					zones.append(zone)
+		zones.sort()
+		_show_hair_row(row_data.id, !zones.empty())
+		var picked = _gear_zone_colours(_stat(row_data.stat))
+		for zone in range(GEAR_ZONE_HINTS.size()):
+			var picker = _hair_controls["%s_zone%d" % [row_data.id, zone]]
+			picker.visible = zone in zones
+			picker.color = (picked[zone] if picked[zone] != null
+				else _zone_default(row_data.channel, zone))
+
+
+# What a row paints, as the {group: part} the catalogue measures zones from -
+# or nothing, which takes the row off the panel.
+#
+# Measured at the level the doll is actually standing at, so a row is offered
+# only while the piece it paints is being worn: a weapon goes with the clothes,
+# a collar stays until the character is naked.
+#
+# The two body rows need one test more.  The clothes and the underwear share the
+# doll's one body channel - a character shows one or the other, never both - so
+# only the garment being drawn can be painted, and the row for the other one
+# would sit there swallowing colours that never appear.  The test is
+# `_body_colour_stat`'s own, which is what decides the paint, so what the panel
+# offers and what the doll wears cannot drift apart.
+#
+# The whole selection goes in rather than the one group the row is named after:
+# `channel_zones` keeps only the parts whose slots the channel actually paints,
+# and which part that is varies with what is worn - a dress carries its own legs
+# and answers for the lower band itself, a skirt worn under a top is a part of
+# its own and answers for it instead.
+func _gear_parts_for(row_data, equipment):
+	var worn = GEAR.selections_for(equipment, GEAR.normalise(undress_level), model.doll_id)
+	if GEAR_CHANNEL_GROUPS.has(row_data.channel):
+		var result = {}
+		for group_id in GEAR_CHANNEL_GROUPS[row_data.channel]:
+			if worn.has(group_id):
+				result[group_id] = worn[group_id]
+		return result
+	if _body_colour_stat(row_data.channel) != row_data.stat:
+		return {}
+	return worn
+
+
 # Every colour channel a row paints.  Only the headgear row has more than one:
 # a hat and a mask are separate channels worn in the same slot.
 func _gear_channels_of(row_data):
@@ -772,6 +865,17 @@ func _gear_zone_colours(value):
 		var hex = str(parts[zone]).strip_edges()
 		if hex.begins_with("#") and hex.is_valid_html_color():
 			result[zone] = Color(hex)
+	return result
+
+
+# The three bands, back into the one stat that carries them.
+func _gear_colour_stat_value(colours):
+	var result = ""
+	for zone in range(colours.size()):
+		if zone > 0:
+			result += ","
+		if colours[zone] != null:
+			result += "#" + colours[zone].to_html(false)
 	return result
 
 
@@ -873,6 +977,7 @@ func _close_hair_menu():
 	if _undress_buttons.has("hair"):
 		_undress_buttons["hair"].pressed = false
 	_give_back_the_room()
+	emit_signal("hair_menu_toggled", false)
 
 
 # The containers between the doll and the screen that would cut the menu off.
@@ -1166,15 +1271,16 @@ func center_portrait_frame(_anchor = Vector2.ZERO):
 # A swing of the chest: the size sliders call this when the size changes, and a
 # click on the breasts calls it through `tits_interaction`.  The swing itself
 # belongs to the model, so the preview panel and the game show the same one.
-func jiggle_tits(power = 1.0):
+func jiggle_tits(_power = 1.0):
 	if model == null or !is_visible_in_tree():
 		return
-	model.jiggle_tits(power)
+	model.play_titjump()
 
 
+# The old doll's API.  The swing is the authored `titjump` bone animation now,
+# and a rebuild does not interrupt it, so there is nothing to put back.
 func stop_tits_jiggle():
-	if model != null:
-		model.stop_tits_jiggle()
+	pass
 
 
 func tits_interaction(position = Vector2.ZERO):
@@ -1203,9 +1309,6 @@ func get_tits_outline():
 func _apply():
 	if model == null or character == null:
 		return
-	# The mesh nodes are about to be replaced, so a swing in flight is put back
-	# before it loses the meshes it was moving.
-	stop_tits_jiggle()
 	# Read before the rebuild, compared after it: a top coming off is the moment
 	# the chest is worth a swing.
 	var was_covered = _chest_is_covered()

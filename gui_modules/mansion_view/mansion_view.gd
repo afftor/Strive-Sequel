@@ -524,6 +524,11 @@ func layout_view():
 		center_view()
 
 
+#Whether the map has been fitted to the band under the HUD at least once. Until it has, laying the
+#HUD out fits the map whatever the band did; after that, only a band that moved does.
+var hud_fitted = false
+
+
 func lay_out_hud():
 	if !embedded:
 		return
@@ -539,9 +544,15 @@ func lay_out_hud():
 	move_anchored($TopBar/ModeSleep, -190, -10)
 	move_anchored($TopBar/RearrangeHint, -380, -10)
 	$TopBar/Counters.visible = false
+	var band_moved = !hud_fitted or hud_bottom != bar_top + EMBEDDED_BAR_HEIGHT
 	hud_bottom = bar_top + EMBEDDED_BAR_HEIGHT
 	lay_out_location_panel(open_rect())
-	if grid.view != null:
+	#The strip lays the screen out again every time it rebuilds - every turn, every floor change,
+	#every portrait picked up - and refitting the map each time put the camera back in the middle
+	#and the zoom back to the fit, undoing whatever the player had dragged or zoomed to. So the
+	#map is only refitted when the band it is centred in has actually moved.
+	if grid.view != null and band_moved:
+		hud_fitted = true
 		fit_zoom()
 		center_view()
 
@@ -1600,9 +1611,15 @@ func go_to_floor(target):
 		input_handler.SystemMessage(tr("MANSIONVIEW_STAIRSBROKEN"))
 		return
 	close_card()
+	var ground_before = grid.ground_rect()
 	layout().current_floor = target
 	refresh()
-	center_view()
+	#Floors drawn on the same picture keep the camera where it was. Recentring on the new floor's
+	#rooms threw the view sideways on every flight of stairs, because the two floors' rooms do not
+	#fill the same box - the upper floor has no wings. A floor on other ground, or on none, is
+	#centred as before.
+	if ground_before.size.x <= 0 or grid.ground_rect() != ground_before:
+		center_view()
 
 
 const PAN_MARGIN = 80.0
@@ -1993,8 +2010,10 @@ func request_cancel_build(slot_code):
 	set_card_aside(true)
 	var question = input_handler.get_spec_node(input_handler.NODE_YESNOPANEL,
 		[self, 'cancel_build_confirmed', tr("MANSIONVIEW_CANCELCONFIRM")])
+	#For this closing only: one panel answers every yes/no in the game, and a connection left
+	#standing on it put the card back up on every later question asked anywhere.
 	if !question.is_connected("popup_hide", self, "on_question_closed"):
-		question.connect("popup_hide", self, "on_question_closed")
+		question.connect("popup_hide", self, "on_question_closed", [], CONNECT_ONESHOT)
 
 
 #Whichever way the question goes away, the card comes back.  It hides itself before it

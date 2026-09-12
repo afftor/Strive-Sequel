@@ -26,8 +26,8 @@ var skills = {
 		random_target = true,
 		not_final = true,
 		sfx = [
-			{code = 'ranged_attack', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},#strafe
-			{code = 'cast_weapon', target = 'caster', period = 'windup', no_delays = true, is_cast = true}],
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.4, queue_duration = 0.4, speed = 2.0, no_delays = true, no_repeat_delays = true, size = 1.5},
+			{code = 'at_arch', target = 'caster', period = 'predamage', queue_duration = 0.0, is_cast = true}],
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.45,
 		random_factor_p = 0.1,
@@ -95,8 +95,8 @@ var skills = {
 		random_factor_p = 0.1,
 		sfx = [
 			{code = 'arrowhail', target = 'target_group', period = 'windup'},
-			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'bow', hit = null},
+			{code = 'at_arch', target = 'caster', period = 'windup', is_cast = true}], 
+		sounddata = {initiate = null, strike = 'arrow', hit = null},
 		variations = [
 			{
 				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],

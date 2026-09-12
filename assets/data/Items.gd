@@ -1115,6 +1115,10 @@ var materiallist = {
 
 	#Complex materials
 	trap = {
+		sfx = [
+			{code = 'trap_snare', target = 'target', period = 'predamage'},
+			{code = 'hide', target = 'caster', period = 'windup', is_cast = true}],
+		sounddata = {initiate = 'slap'},
 		code = 'trap',
 		name = '',
 		descript = '',

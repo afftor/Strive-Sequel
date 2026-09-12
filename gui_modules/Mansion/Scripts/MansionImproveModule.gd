@@ -267,6 +267,8 @@ func apply_selection():
 	
 	item.clear_enchants()
 	item.set_quality_level(Items.next_quality[item.quality])
+	#at its new quality the item can match a stack it did not match before
+	globals.restack_item(item)
 	
 	selected_item = null
 	

@@ -89,7 +89,7 @@ func match_state():
 			#$TalkButton.show()
 #			$SlaveBodyModule/Body.show()
 			$SlaveBodyModule.body_show(true)
-			$SlaveBodyModule/buffscontainer.show()
+			$SlaveBodyModule.show_buffs()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"details":
 			gui_controller.windows_opened.clear()
@@ -102,18 +102,18 @@ func match_state():
 			#$TalkButton.show()
 #			$SlaveBodyModule/Body.show()
 			$SlaveBodyModule.body_show(true)
-			$SlaveBodyModule/buffscontainer.show() #or hide? it's all good @Sphinx
+			$SlaveBodyModule.show_buffs() #or hide? it's all good @Sphinx
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"gear":
 			#char_module_state = "default"
 			gui_controller.windows_opened.clear()
-			$SlaveBodyModule/buffscontainer.hide()
+			$SlaveBodyModule.hide_buffs()
 			open_gear()
 		"siblings":
 			gui_controller.windows_opened.clear()
 			gui_controller.windows_opened.append(SlaveSiblingsModule)
 			#$TalkButton.hide()
-			$SlaveBodyModule/buffscontainer.show()
+			$SlaveBodyModule.show_buffs()
 #			$SlaveBodyModule/Body.hide()
 			$SlaveBodyModule.body_show(true)
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 0

@@ -2938,7 +2938,11 @@ Characters left without a bed at the end of the turn will suffer penalties. """,
 
 Characters left without a bed at the end of the turn will suffer penalties.""",
 	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
-	SERVICEBOOSTTOOLTIP = "You can assign additional item consumption here which will boost service production. These items can be produced at Farm. ",
+	SERVICEBOOSTTOOLTIP = """You can assign additional item consumption here which will boost service production. These items can be produced at Farm.
+
+{color=yellow|Boosters work in tiers: a tier only works while every tier below it is also active and has enough items in stock. If a lower tier runs out, the tiers above it stop working too.}""",
+	SERVICEBOOSTNOSTOCK = "Not enough in stock",
+	SERVICEBOOSTNEEDS = "Inactive: needs %s",
 	FARMTOOLTIP = "You can assign character to farm to produce additional materials which can be used to boost service production or be sold.",
 	FACTOR_INCREASE_TOOLTIP = "By sacrificing unneeded characters you can boost factors of other characters as long as donor character's stat is higher than receiver's. Growth Factor only can be increased by 1 per donor. End price is defined by receiver's value.",
 	COMBAT_CHARACTER_CAPTURED = "Character",

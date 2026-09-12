@@ -389,6 +389,33 @@ const DISPLAY = {
 	"race_nereid": "Nereid",
 	"race_slime": "Slime",
 	"race_dragon": "Dragon",
+	"eyes_shy": "Shy glance",
+}
+
+# Parts with no art of their own: choosing one moves bones instead of drawing a
+# mesh.  Each sits in an ordinary options group, so the dropdown, its "none" row
+# and the saved selection treat it exactly like a drawn part.
+#
+# `offsets` are local position offsets, added after animation sampling on top of
+# the face sliders, written in the female rig's bone names - the modifiers
+# translate them per rig.  On this rig a face bone's local X runs down the face
+# and local Y across it (see POSITION_MODIFIERS in doll_modifiers.gd).
+const POSE_PARTS = {
+	# eyes cast down and to the viewer's right, the way someone embarrassed avoids
+	# a look.  Both pupils take the same offset, so the two eyes agree on where
+	# they look.  Measured on the skinned mesh rather than by eye: local +X moves
+	# a pupil UP the screen and local +Y moves it LEFT, about 5 px a unit at a
+	# head-sized frame - so down and right are both negative.
+	#
+	# Nothing masks the iris; the lids painted on the face art hide it.  Checked
+	# on every eye shape of both rigs.  Straight down is safe - the thick lower
+	# lash line takes the bottom of the iris - but sliding sideways is not: at 7
+	# across, the rounder eyes (face6, 7, 8 and 10) show a dark stroke under the
+	# inner corner where the iris slips out beneath the lower lid.
+	"eyes_shy": {
+		"group": "eyes_effect",
+		"offsets": {"pupil_l": [-5.0, -5.0], "pupil_r": [-5.0, -5.0]},
+	},
 }
 
 # Convenience multi-group selections.  These replace the race dropdown the

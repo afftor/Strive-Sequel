@@ -629,7 +629,7 @@ var skills = {
 		not_final = true,
 		value = 0.65,
 		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'avalanche', hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = null, strike = 'avalanche', hit = null, hittype = 'dynamic'},
 	},
 	how_dissapointing = {
 		code = 'how_dissapointing',
@@ -653,7 +653,7 @@ var skills = {
 		sfx = [
 			{code = 'earthquake', target = 'target_group', period = 'windup'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = ['caster.matk','*1.2'],
 	},
 	muddy_water = {

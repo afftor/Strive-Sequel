@@ -44,6 +44,13 @@ onready var opt_cont_T1 = $BackgroundT1/ScrollContainer/VBoxContainer
 onready var opt_cont_T2 = $BackgroundT2/ScrollContainer/VBoxContainer
 var cur_opt_cont
 var select_blocking_nodes = []
+#One input hold per open scene, released exactly once. set_disable_input is a single global
+#bool and this module used to poke it raw from two places: open() took it as the scene started
+#drawing and handed the release to show_buttons(), which dies on the first freed button
+#whenever the scene advances while it is still fading the options in. The release was then
+#never reached and the whole game stayed deaf to mouse and keyboard. input_handler counts its
+#holders on a singleton nothing can free, so route through it and release on the way out too.
+var input_held = false
 onready var comic_panel = $ComicPanel
 
 var dialogue_type_exceptions = ["church_event"]
@@ -112,7 +119,7 @@ func open(scene):
 	if is_just_started == false && scene.has("music"):
 		input_handler.SetMusic(scene.music)
 	
-	get_tree().get_root().set_disable_input(true)
+	hold_input()
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
 		save_scene_to_gallery(scene)
 	if scene.has("unlocked_char_sprites"):
@@ -259,15 +266,40 @@ func preset_dialogue_type(new_type):
 	$Shading.hide()
 
 
+func hold_input():
+	if input_held:
+		return
+	input_held = true
+	input_handler.lock_input()
+
+
+func release_input():
+	if !input_held:
+		return
+	input_held = false
+	input_handler.unlock_input()
+
+
+#the node can be freed while open() or show_buttons() is parked on a timer, and then neither
+#of them ever comes back to release the hold
+func _exit_tree():
+	release_input()
+
+
 func show_buttons():
-	get_tree().get_root().set_disable_input(true)
+	hold_input()
 	for button in cur_opt_cont.get_children():
 		if button.name == "Button":
 			continue
 		ResourceScripts.core_animations.UnfadeAnimation(button, 0.3)
 		yield(get_tree().create_timer(0.3), "timeout")
+		#handle_scene_options() clears this container on every scene change, so anything the
+		#loop is still holding across the wait may already be gone. Touching a freed button
+		#aborts the coroutine, and the release below is what the game needs to stay playable.
+		if !is_instance_valid(button):
+			break
 		button.set("modulate", Color(1, 1, 1, 1))
-	get_tree().get_root().set_disable_input(false)
+	release_input()
 
 func complete_skirmish():
 	hold_selection = true

@@ -162,6 +162,7 @@ var skills = {
 		damagestat = 'no_stat'
 	},
 	bolt_trap = {
+		sounddata = {initiate = 'slap'},
 		code = 'bolt_trap',
 		descript = '',
 		icon = "res://assets/images/iconsskills/skill_bolt_trap.png",
@@ -183,7 +184,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [
 			{code = 'trap_cast', target = 'target', period = 'predamage'},
-			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
+			{code = 'hide', target = 'caster', period = 'windup', is_cast = true}],
 		sound = [],
 		value = [['caster.atk', '*1.1']],
 		damagestat = 'no_stat'

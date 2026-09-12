@@ -195,6 +195,9 @@ func convert_to_new_template():
 	else: res_res.sfx = []
 	if template.has('sounddata'): res_res.sounddata = template.sounddata.duplicate()
 	else: res_res.sounddata = {}
+	#particles thrown off the target card on its recoil - see src/combat/HitFxEffect.gd
+	if template.has('hitfx'):
+		res_res.hitfx = template.hitfx.duplicate(true) if (template.hitfx is Array or template.hitfx is Dictionary) else null
 	res_res.repeat = repeat
 	if template.has('custom_duration'): res_res.custom_duration = template.custom_duration.duplicate()
 	if template.has('chance'): 
@@ -298,6 +301,9 @@ func convert_to_new_template_combat():
 	else: res_res.sfx = []
 	if template.has('sounddata'): res_res.sounddata = template.sounddata.duplicate()
 	else: res_res.sounddata = {}
+	#particles thrown off the target card on its recoil - see src/combat/HitFxEffect.gd
+	if template.has('hitfx'):
+		res_res.hitfx = template.hitfx.duplicate(true) if (template.hitfx is Array or template.hitfx is Dictionary) else null
 	res_res.repeat = repeat
 	if template.has('custom_duration'): res_res.custom_duration = template.custom_duration.duplicate()
 	if template.has('chance'): res_res.chance = template.chance

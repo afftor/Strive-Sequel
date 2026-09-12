@@ -470,7 +470,7 @@ func buildenemygroup(enemygroup, headless = false):
 		var tchar = characters_pool.get_char_by_id(enemygroup[i])
 		for stat in ['hpmax', 'xpreward']:
 			tchar.mul_stat(stat, combat_data.enemy_stats_mod)
-		for stat in ['atk', 'matk', 'armor']:
+		for stat in ['atk', 'matk', 'armor','mdef']:
 			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_main))
 		for stat in ['hitrate', 'evasion']:
 			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_secondary))
@@ -876,6 +876,28 @@ func speedsort(first, second):
 	return first.speed > second.speed
 
 
+#A fighter with nothing legal to do would otherwise sit on its turn forever: the player screen
+#waits for a click every button refuses, and an AI turn never gets around to select_actor.
+#Passing the turn is what the !can_act() branches already do.
+func pass_turn(fighter):
+	fighter.process_event(variables.TR_TURN_F)
+	effects_pool.process_event(variables.TR_TURN_F, fighter)
+	if fighter.displaynode != null and is_instance_valid(fighter.displaynode):
+		fighter.displaynode.rebuildbuffs()
+	call_deferred('select_actor')
+
+
+#Every character built through create() knows 'attack', which carries disable_immunity and so
+#survives disarm, and setup_skills() hands simple fighters the same fallback. An empty result
+#here therefore means a broken skill list, not an ordinary disable - pass the turn rather than
+#hang on it.
+func has_usable_skill(fighter):
+	for s in fighter.get_combat_skills():
+		if fighter.can_use_skill(Skilldata.get_template_combat(s, fighter)):
+			return true
+	return false
+
+
 func player_turn(char_changed = true):
 	var pos = currentactor
 	# battlefieldpositions[pos].get_node("Character/Active").show()
@@ -908,6 +930,11 @@ func player_turn(char_changed = true):
 		effects_pool.process_event(variables.TR_TURN_F, selected_character)
 		selected_character.displaynode.rebuildbuffs()
 		call_deferred('select_actor')
+		return
+
+	if !has_usable_skill(selected_character):
+		print('warning - %s has no usable combat skill, passing the turn' % selected_character.get_short_name())
+		pass_turn(selected_character)
 		return
 	if selected_character.has_status('confuse'):
 		activeaction = selected_character.get_skill_by_tag('basic')
@@ -978,14 +1005,21 @@ func enemy_turn(char_changed = true):
 	Highlight(pos, 'enemy')
 	
 	turns += 1
+	#_get_action answers null when even the basic attack is blocked - feeding that to
+	#_get_target would index skill_targets with null, and returning outright would leave the
+	#fight standing on this fighter's turn with nothing left to move it on.
 	var castskill = fighter.ai._get_action()
-	var target = fighter.ai._get_target(castskill)
+	var target = null
+	if castskill != null:
+		target = fighter.ai._get_target(castskill)
 	if target == null:
 		castskill = fighter.ai._get_action(true)
-		target = fighter.ai._get_target(castskill)
+		if castskill != null:
+			target = fighter.ai._get_target(castskill)
 	if target == null:
 		if !checkwinlose():
 			print("AI ERROR")
+			pass_turn(fighter)
 		return
 	target = get_char_by_pos(target)
 
@@ -1549,12 +1583,21 @@ func CalculateTargets(skill, target, finale = false):
 	match skill.target_number:
 		'single':
 			var tchar = get_char_by_pos(target.position)
-			if tchar.defeated: 
+			#A defeated summon leaves the battlefield outright - checkdeaths() nulls its slot and
+			#drops it from its group, which a defeated hero never does - so a skill still holding
+			#it as its target finds an empty slot on a later iteration. That is reached by any
+			#repeating single-target skill: the gryphon's swipe_en (repeat 2) kills a summon on
+			#its first hit and resolves the second against the slot just cleared. Every other
+			#branch below already skips an empty slot; this one indexed it, and the throw turned
+			#this function's return into Nil for combat_skill_iteration_handler to call .empty() on.
+			if tchar == null:
+				array = []
+			elif tchar.defeated:
 				if skill.target_range == 'dead':
 					array = [target]
 				else:
 					array = []
-			elif !tchar.can_be_damaged(skill) and !finale: 
+			elif !tchar.can_be_damaged(skill) and !finale:
 				array = []
 			else:
 				array = [target]
@@ -1618,6 +1661,7 @@ func CalculateTargets(skill, target, finale = false):
 			array.clear()
 			for pos in allowedtargets.enemy + allowedtargets.ally:
 				var tchar = get_char_by_pos(pos)
+				if tchar == null: continue #an allowed position a summon has just vacated
 				array.push_back(tchar)
 		'nontarget':
 			for j in range(1, 13):
@@ -1932,7 +1976,10 @@ func SelectSkill(skill, user_act = true):
 		#input_handler.SystemMessage("No charges left: " + skill.name)
 		fallback_to_basic(requested)
 		return
-	activecharacter.selectedskill = skill.code
+	#remember what was asked for, not what it resolved to: a 'replace' variation (disarm turning
+	#ranged_attack into the unarmed attack) is true for this turn only, and storing the
+	#replacement would leave the fighter defaulting to it once the status is gone.
+	activecharacter.selectedskill = requested
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter, skill)
 	allowaction = true

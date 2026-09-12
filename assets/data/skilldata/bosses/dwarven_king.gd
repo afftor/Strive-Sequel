@@ -452,7 +452,7 @@ var skills = {
 		sfx = [
 			{code = 'magma_blast', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk','*1.1']],
 		random_factor_p = 0.1,
 		chance = 80,
@@ -489,7 +489,7 @@ var skills = {
 		sfx = [
 			{code = 'earth_spike', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 1.5,
 		follow_up = 'emperor_hammerfall_1',
 	},
@@ -515,7 +515,7 @@ var skills = {
 		sfx = [
 			{code = 'tauntwave', target = 'target', period = 'windup'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.3,
 	},
 	open_the_magma_chamber = {
@@ -540,7 +540,7 @@ var skills = {
 		sfx = [
 			{code = 'disintegrate', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['target.hpmax', '*0.18','+caster.matk','*1.9']],
 		follow_up = 'open_the_magma_chamber_1',
 	},
@@ -589,7 +589,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'earth',
 		sfx = [{code = 'earth_spike', target = 'caster', period = 'windup'},{code = 'tauntwave', target = 'target', period = 'windup'}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.4,
 	},
 	double_bitted_axe = {
@@ -668,7 +668,7 @@ var skills = {
 		sfx = [
 			{code = 'earth_spike', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.9,
 	},
 }

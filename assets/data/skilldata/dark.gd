@@ -23,9 +23,9 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [
-			{code = 'darkness', target = 'target', period = 'predamage'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.5, hit_motion = 'push', arc = 25.0, color = '350782'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
+		sounddata = {initiate = null, strike = 'spell_dark', hit = null, hittype = 'static'},
 		value = 0.75,
 		variations = [
 			{
@@ -122,7 +122,7 @@ var skills = {
 		sfx = [
 			{code = 'devour_magic', target = 'target', period = 'predamage'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'spell2', hit = null},
+		sounddata = {initiate = null, strike = 'spell_void', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
 		variations = [
@@ -188,7 +188,7 @@ var skills = {
 		sfx = [
 			{code = 'skill_void', target = 'target_group', period = 'windup'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'spell_void', strike = null, hit = null},
+		sounddata = {initiate = 'spell_void', strike = null, hit = null, hittype = 'static'},
 	},
 }
 var effects = {

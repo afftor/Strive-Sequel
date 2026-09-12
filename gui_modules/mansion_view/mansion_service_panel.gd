@@ -277,9 +277,10 @@ func rule_label(who, rule):
 
 func switch_rule(button, rule):
 	rules_person().set_brothel_rule(rule, button.pressed)
-	update_summary(rules_person())
-	#the list behind shows what everyone is allowed to do, and one of them just changed
-	rules_rebuild()
+	#The whole screen, not only the rules half: every line of the list behind carries what that
+	#person is allowed to do and what it earns, and one of them just changed. rules_rebuild()
+	#alone left the line saying the old acts and the old sum until the screen was reopened.
+	rebuild()
 
 
 #What all the ticks add up to, in the same words and the same order the work panel says it -
@@ -339,9 +340,15 @@ func update_summary(who):
 #Three tiers of booster, each a material spent per turn for a share more work. Buying one
 #implies the cheaper ones and dropping one drops the dearer, which is the rule the work panel
 #enforces and the reason these are not three independent switches.
+#
+#Switched on is not the same as working, though. The tiers are paid for bottom up and the first
+#one short of its material stops the rest, so a tier with a full stock still earned nothing while
+#the one below it had run dry - and its line said "Activated" all the same. Every switched-on
+#line from the stopping tier up now says why it is idle, in red.
 func build_boosters(who):
 	input_handler.ClearContainer($Rules/Boosters/List)
 	var boosters = who.xp_module.service_boosters
+	var stop = who.xp_module.get_booster_stop_tier()
 	for id in range(1, 4):
 		var button = input_handler.DuplicateContainerTemplate($Rules/Boosters/List)
 		var boost = boosters['boost%d' % id]
@@ -350,12 +357,25 @@ func build_boosters(who):
 		var text = "%s (%d): %d00%%" % [tr(material.name),
 			int(ResourceScripts.game_res.materials[boost.res]), variables.booster_value[id - 1]]
 		if boost.value:
-			text += " - " + tr("FARMACTIVATED")
+			if id < stop:
+				text += " - " + tr("FARMACTIVATED")
+			else:
+				text += " - " + booster_idle_text(boosters, id, stop)
+				button.get_node('Label').set("custom_colors/font_color", variables.hexcolordict['red'])
 		button.get_node('Label').text = text
 		button.pressed = boost.value
 		globals.connectmaterialtooltip(button, material, '', null,
 			view.get_node("Overlay/ItemTooltip"))
 		button.connect('pressed', self, 'switch_booster', [id, !boost.value])
+
+
+#The stopping tier itself is short of its material; the ones above it are waiting on that one.
+#The key goes through the % guard: a locale without the line would otherwise abort the whole list.
+func booster_idle_text(boosters, id, stop):
+	if id == stop:
+		return tr("SERVICEBOOSTNOSTOCK")
+	var blocker = Items.materiallist[boosters['boost%d' % stop].res]
+	return globals._report_text("SERVICEBOOSTNEEDS", [tr(blocker.name)])
 
 
 func switch_booster(id, value, rebuild = true):
@@ -365,5 +385,8 @@ func switch_booster(id, value, rebuild = true):
 		switch_booster(id - 1, true, false)
 	if !value and id < 3:
 		switch_booster(id + 1, false, false)
+	#A booster is a multiplier on what service earns, so the figures that print those earnings
+	#go with it - the summary beside the boosters and the person's line in the list - and not
+	#only the booster buttons themselves, which was all this redrew.
 	if rebuild:
-		build_boosters(rules_person())
+		self.rebuild()

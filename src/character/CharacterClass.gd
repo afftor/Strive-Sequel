@@ -1539,9 +1539,14 @@ func has_furry_counterpart():
 func set_furry_form(furry):
 	return statlist.set_furry_form(furry)
 
-func play_sfx(code):
+func play_sfx(code, params = {}):
 	if displaynode != null:
-		displaynode.process_sfx(code)
+		displaynode.process_sfx(code, params)
+
+func play_sound(sound):
+	#an id audio.sounds does not know would die in PlaySound once the queue reaches it
+	if displaynode != null and audio.sounds.has(sound):
+		displaynode.process_sound(sound)
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
 	return xp_module.get_progress_task(temptask, tempsubtask, count_crit)
@@ -2540,7 +2545,10 @@ func affect_char(template, manifest = false):
 				return
 			input_handler.combat_node.transform_unit(position, template.unit)
 		'sfx':
-			play_sfx(template.value)
+			#optional params reach the animation function the way an sfx entry's keys do, and an
+			#optional sound plays with the animation
+			play_sfx(template.value, template.params if template.has('params') else {})
+			if template.get('sound', null) != null: play_sound(template.sound)
 		'effect':
 			var args = {}
 			if template.has('override'):

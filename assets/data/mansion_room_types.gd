@@ -90,7 +90,7 @@ const LIST = {
 				code = 'stairs_repair',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {woodiron = 10, steel = 5}, progress = 15, effect = {}},
+					1: {cost = {woodmagic = 10, steel = 5}, progress = 15, effect = {}},
 				},
 			},
 		},
@@ -120,8 +120,8 @@ const LIST = {
 				icon = 'rooms_lux',
 				levels = {
 					1: {cost = {wood = 100, cloth = 50}, progress = 20, effect = {sex_slots = 1}},
-					2: {cost = {wood = 100, clothsilk = 30, gold = 1000}, progress = 35, effect = {sex_slots = 2}},
-					3: {cost = {woodmagic = 50, clothethereal = 15, gold = 2000}, progress = 55, effect = {sex_slots = 3}},
+					2: {cost = {woodmagic = 50, clothsilk = 30, gold = 1000}, progress = 35, effect = {sex_slots = 2}},
+					3: {cost = {woodiron = 25, clothethereal = 15, gold = 2000}, progress = 55, effect = {sex_slots = 3}},
 				},
 			},
 			#Extra beds beside the master's own, which is never freed.
@@ -177,8 +177,8 @@ const LIST = {
 				icon = 'rooms_lux',
 				levels = {
 					1: {cost = {woodiron = 50, cloth = 50}, progress = 25, effect = {sleep_slots = 1}},
-					2: {cost = {wood = 100, clothmagic = 75}, progress = 40, effect = {sleep_slots = 2}},
-					3: {cost = {woodiron = 100, clothethereal = 15}, progress = 60, effect = {sleep_slots = 3}},
+					2: {cost = {woodmagic = 50, clothmagic = 75}, progress = 40, effect = {sleep_slots = 2}},
+					3: {cost = {woodancient = 10, clothethereal = 15}, progress = 60, effect = {sleep_slots = 3}},
 				},
 			},
 		},
@@ -242,7 +242,7 @@ const LIST = {
 		slots = {work = 1},
 		work_job = 'alchemy',
 		upkeep = 0,
-		build_cost = {wood = 60, stone = 40, iron = 10},
+		build_cost = {wood = 25, stone = 50, iron = 10},
 		build_progress = 30,
 		upgrades = {
 			craft_expansion = {
@@ -304,7 +304,7 @@ const LIST = {
 		slots = {work = 1},
 		work_job = 'cooking',
 		upkeep = 0,
-		build_cost = {wood = 70, stone = 30},
+		build_cost = {wood = 50, stone = 30},
 		build_progress = 25,
 		upgrades = {
 			craft_expansion = {
@@ -339,7 +339,7 @@ const LIST = {
 		work_job = null,
 		max_count = 1,
 		upkeep = 0,
-		build_cost = {wood = 80, stone = 40},
+		build_cost = {wood = 75, iron = 30},
 		build_progress = 25,
 		upgrades = {},
 		master_only = false,
@@ -357,7 +357,7 @@ const LIST = {
 		#game_res.process_rooms() sends it down the training branch instead
 		work_job = 'practice',
 		upkeep = 0,
-		build_cost = {wood = 90, stone = 50, iron = 20},
+		build_cost = {wood = 50, stone = 50, iron = 20},
 		build_progress = 30,
 		upgrades = {
 			#Room for more than one pupil at a time. The tutor's place is bought separately - see
@@ -366,8 +366,8 @@ const LIST = {
 				code = 'training_space',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {wood = 70, stone = 40}, progress = 25, effect = {work_slots = 1}},
-					2: {cost = {wood = 120, stone = 80, iron = 30}, progress = 40, effect = {work_slots = 2}},
+					1: {cost = {woodmagic = 25, steel = 50}, progress = 25, effect = {work_slots = 1}},
+					2: {cost = {woodiron = 30, stone = 100, mithril = 10}, progress = 40, effect = {work_slots = 2}},
 				},
 			},
 			#Somewhere for a tutor to stand - which is a second place in the room, since the tutor
@@ -428,7 +428,7 @@ const LIST = {
 		craft_menu = 'enchant',
 		max_count = 1,
 		upkeep = 0,
-		build_cost = {wood = 80, stone = 60, mithril = 20, gold = 400},
+		build_cost = {stone = 60, mithril = 20, gold = 400},
 		build_progress = 40,
 		upgrades = {},
 		master_only = false,
@@ -456,7 +456,7 @@ const LIST = {
 				code = 'shelves',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {wood = 100, stone = 200}, progress = 20, effect = {storage = 500}},
+					1: {cost = {wood = 25, stone = 200}, progress = 20, effect = {storage = 500}},
 					2: {cost = {woodiron = 20, obsidian = 10}, progress = 35, effect = {storage = 1000}},
 					3: {cost = {woodiron = 100, leathermythic = 30}, progress = 55, effect = {storage = 5000}},
 					4: {cost = {woodancient = 20, adamantine = 10, gold = 10000}, progress = 80, effect = {storage = 20000}},

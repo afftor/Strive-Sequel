@@ -54,6 +54,7 @@ func _ready():
 	# open_city("aliron")
 	gui_controller.add_close_button($BuyLocation)
 	gui_controller.add_close_button($GuildShop)
+	$GuildShop.connect("visibility_changed", self, "_on_guild_shop_visibility_changed")
 	gui_controller.add_close_button($QuestBoard)
 	gui_controller.add_close_button($SlaveMarket)
 	# a portrait is taken a few frames after it is asked for, so the shop is told
@@ -488,6 +489,21 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		unfade($GuildShop, 0.3)
 	elif !pressed && $GuildShop.is_visible():
 		fade($GuildShop, 0.3)
+
+
+#leaving the shop by any route must take its purchase popups with it: the yes/no panel
+#lives on its own layer, and confirming it would reopen the shop behind an unpressed
+#button that the close button can no longer toggle off
+func _on_guild_shop_visibility_changed():
+	if $GuildShop.is_visible_in_tree():
+		return
+	$GuildShop/NumberSelection2.hide()
+	var layer = get_tree().get_root().get_node_or_null(ResourceScripts.node_data[input_handler.NODE_YESNOPANEL].name + '_layer')
+	if layer == null:
+		return
+	var panel = layer.get_node_or_null(ResourceScripts.node_data[input_handler.NODE_YESNOPANEL].name)
+	if panel != null && panel.visible && panel.targetnode == self && panel.left_fn == 'confirm_buy_item':
+		panel.hide()
 
 
 func guild_shop_item_selected(button):

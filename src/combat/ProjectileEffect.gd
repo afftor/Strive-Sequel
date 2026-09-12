@@ -17,6 +17,10 @@ const GLOW_TEX = preload("res://assets/sfx/line_glow.png")
 const CORE_TEX = preload("res://assets/sfx/line_core.png")
 
 const TRAIL_POINTS = 18
+#the orange the fireball's palette is built around; a tint moves every layer from here
+const FIRE_BASE = Color(1.0, 0.54, 0.11)
+#the warm white an arrow's streak and hit are drawn in - what the colour row starts from
+const ARROW_BASE = Color(1.0, 0.93, 0.78)
 
 var kind = 'arrow'
 var flight = 0.45
@@ -26,7 +30,11 @@ var scatter = 28.0
 var spin = 0.0
 var boom_time = 0.42
 var boom_size = 96.0
+#sfx key size: the shot in flight - body and trail - and an arrow left stuck in the target
+var shot_size = 1.0
 var effect_seed = 1
+#sfx key `color` on a fireball: null keeps the fire's own palette
+var tint = null
 
 var start_point = Vector2()
 var end_point = Vector2()
@@ -50,6 +58,9 @@ func setup(caster_node, target_node, new_kind, settings = {}):
 	kind = new_kind
 	for key in ['flight', 'launch_delay', 'arc', 'scatter', 'spin', 'boom_time', 'boom_size']:
 		if settings.has(key): set(key, float(settings[key]))
+	if settings.has('size'): shot_size = max(0.05, float(settings.size))
+	var hex = str(settings.get('color', ''))
+	tint = Color(hex) if hex != '' and hex.is_valid_html_color() else null
 	effect_seed = int(OS.get_ticks_msec()) ^ int(get_instance_id())
 	rng.seed = effect_seed
 	z_index = 90
@@ -140,14 +151,38 @@ func make_disc(radius, color, add = true, points = 22):
 	return poly
 
 
+#The fire's own palette, or the same palette turned to the tint. Every layer keeps where it
+#sits against the base orange - a deeper halo, a paler white-hot core, brown smoke - and only
+#the hue moves to the tint's, with saturation and brightness scaled by the tint's own, so a
+#blue fireball still reads as fire rather than as a flat blue disc, and a white tint gives a
+#white-grey one.
+func fire(original):
+	if tint == null: return original
+	var c = Color(original.r, original.g, original.b, original.a)
+	c.h = fposmod(original.h + tint.h - FIRE_BASE.h, 1.0)
+	c.s = clamp(original.s * tint.s / max(0.01, FIRE_BASE.s), 0.0, 1.0)
+	c.v = clamp(original.v * tint.v / max(0.01, FIRE_BASE.v), 0.0, 1.0)
+	c.a = original.a
+	return c
+
+
+#An arrow is wood and steel with a light streak: the tint takes over the streak, the hit
+#flash, the ring, the chips and the fletching, and leaves the shaft and the head alone.
+func arrow_glow(original):
+	if tint == null: return original
+	return Color(lerp(original.r, tint.r, 0.85), lerp(original.g, tint.g, 0.85),
+		lerp(original.b, tint.b, 0.85), original.a)
+
+
 #--- the two projectiles --------------------------------------------------------------
 
 #Read at speed on a busy background: a dark shaft with a light rim above it, a steel head
 #wide enough to survive the downscale, and the flights kept at the very tail so the whole
 #thing reads as an arrow and not as a dash.
 func build_arrow():
-	trail = make_line(5.0, Color(1.0, 0.93, 0.78, 0.22), CORE_TEX, true)
+	trail = make_line(5.0 * shot_size, arrow_glow(Color(1.0, 0.93, 0.78, 0.22)), CORE_TEX, true)
 	body = make_arrow_body()
+	body.scale = Vector2(shot_size, shot_size)
 	add_child(body)
 
 
@@ -179,21 +214,22 @@ func make_arrow_body():
 	for side in [-1, 1]:
 		var fletch = Polygon2D.new()
 		fletch.polygon = PoolVector2Array([Vector2(-34, 0), Vector2(-21, 0), Vector2(-31, 6.4 * side)])
-		fletch.color = Color(0.80, 0.26, 0.20, 0.95)
+		fletch.color = arrow_glow(Color(0.80, 0.26, 0.20, 0.95))
 		body_node.add_child(fletch)
 	return body_node
 
 
 func build_fireball():
-	trail = make_line(20.0, Color(1.0, 0.40, 0.07, 0.50), GLOW_TEX, true)
+	trail = make_line(20.0 * shot_size, fire(Color(1.0, 0.40, 0.07, 0.50)), GLOW_TEX, true)
 	body = Node2D.new()
+	body.scale = Vector2(shot_size, shot_size)
 	add_child(body)
 	#three stacked discs: a wide soft halo, the orange body, and a small white-hot centre.
 	#Additive blending saturates fast, so the halo carries the colour and the core stays
 	#small - a big white middle just reads as a headlight.
-	body.add_child(make_disc(30.0, Color(1.0, 0.26, 0.03, 0.34)))
-	body.add_child(make_disc(17.0, Color(1.0, 0.54, 0.11, 0.62)))
-	body.add_child(make_disc(7.5, Color(1.0, 0.91, 0.62, 0.90)))
+	body.add_child(make_disc(30.0, fire(Color(1.0, 0.26, 0.03, 0.34))))
+	body.add_child(make_disc(17.0, fire(Color(1.0, 0.54, 0.11, 0.62))))
+	body.add_child(make_disc(7.5, fire(Color(1.0, 0.91, 0.62, 0.90))))
 
 
 #--- flight -----------------------------------------------------------------------------
@@ -246,24 +282,25 @@ func burst_arrow():
 	var stuck = make_arrow_body()
 	stuck.position = end_point
 	stuck.rotation = (end_point - point_at(0.94)).angle()
-	stuck.position -= Vector2(cos(stuck.rotation), sin(stuck.rotation)) * 14.0
+	stuck.position -= Vector2(cos(stuck.rotation), sin(stuck.rotation)) * 14.0 * shot_size
+	stuck.scale = Vector2(shot_size, shot_size)
 	add_child(stuck)
 	burst_nodes.append({node = stuck, life = boom_time * 1.8, kind = 'hold'})
 
 	var flash = Node2D.new()
 	flash.position = end_point
 	add_child(flash)
-	flash.add_child(make_disc(boom_size * 0.16, Color(1.0, 0.94, 0.78, 0.75)))
+	flash.add_child(make_disc(boom_size * 0.16, arrow_glow(Color(1.0, 0.94, 0.78, 0.75))))
 	burst_nodes.append({node = flash, life = boom_time * 0.35, kind = 'flash'})
 
-	var ring = make_line(3.2, Color(1.0, 0.92, 0.80, 0.85), CORE_TEX, true)
+	var ring = make_line(3.2, arrow_glow(Color(1.0, 0.92, 0.80, 0.85)), CORE_TEX, true)
 	ring.position = end_point
 	burst_nodes.append({node = ring, life = boom_time * 0.55, kind = 'ring', radius = boom_size * 0.40})
 
 	for i in range(4):
 		var angle = rng.randf() * TAU
 		var reach = boom_size * (0.24 + rng.randf() * 0.22)
-		var chip = make_spark(end_point, angle, reach, 2.6, Color(1.0, 0.90, 0.74, 0.9))
+		var chip = make_spark(end_point, angle, reach, 2.6, arrow_glow(Color(1.0, 0.90, 0.74, 0.9)))
 		burst_nodes.append({node = chip, life = boom_time * (0.35 + rng.randf() * 0.25), kind = 'fade'})
 
 
@@ -273,32 +310,32 @@ func burst_fireball():
 	var flash = Node2D.new()
 	flash.position = end_point
 	add_child(flash)
-	flash.add_child(make_disc(boom_size * 0.44, Color(1.0, 0.34, 0.05, 0.75)))
-	flash.add_child(make_disc(boom_size * 0.26, Color(1.0, 0.62, 0.16, 0.80)))
-	flash.add_child(make_disc(boom_size * 0.12, Color(1.0, 0.93, 0.70, 0.90)))
+	flash.add_child(make_disc(boom_size * 0.44, fire(Color(1.0, 0.34, 0.05, 0.75))))
+	flash.add_child(make_disc(boom_size * 0.26, fire(Color(1.0, 0.62, 0.16, 0.80))))
+	flash.add_child(make_disc(boom_size * 0.12, fire(Color(1.0, 0.93, 0.70, 0.90))))
 	burst_nodes.append({node = flash, life = boom_time * 0.55, kind = 'flash'})
 
 	#two rings: a heavy slow one that carries the fire colour, and a thin fast one that
 	#gives the burst its edge
-	var ring = make_line(11.0, Color(1.0, 0.34, 0.06, 0.95), GLOW_TEX, true)
+	var ring = make_line(11.0, fire(Color(1.0, 0.34, 0.06, 0.95)), GLOW_TEX, true)
 	ring.position = end_point
 	burst_nodes.append({node = ring, life = boom_time, kind = 'ring', radius = boom_size})
 
-	var edge = make_line(3.0, Color(1.0, 0.80, 0.45, 0.9), CORE_TEX, true)
+	var edge = make_line(3.0, fire(Color(1.0, 0.80, 0.45, 0.9)), CORE_TEX, true)
 	edge.position = end_point
 	burst_nodes.append({node = edge, life = boom_time * 0.55, kind = 'ring', radius = boom_size * 0.8})
 
 	var smoke = Node2D.new()
 	smoke.position = end_point
 	add_child(smoke)
-	smoke.add_child(make_disc(boom_size * 0.30, Color(0.35, 0.20, 0.16, 0.45), false))
+	smoke.add_child(make_disc(boom_size * 0.30, fire(Color(0.35, 0.20, 0.16, 0.45)), false))
 	burst_nodes.append({node = smoke, life = boom_time * 1.3, kind = 'smoke'})
 
 	for i in range(7):
 		var angle = TAU * float(i) / 7.0 + rng.randf() * 0.5
 		var reach = boom_size * (0.40 + rng.randf() * 0.50)
 		var spark = make_spark(end_point, angle, reach, 4.0 + rng.randf() * 2.0,
-			Color(1.0, 0.68, 0.22, 0.95))
+			fire(Color(1.0, 0.68, 0.22, 0.95)))
 		burst_nodes.append({node = spark, life = boom_time * (0.5 + rng.randf() * 0.45), kind = 'fade'})
 
 

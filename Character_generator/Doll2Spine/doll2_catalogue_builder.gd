@@ -15,6 +15,8 @@ extends Reference
 # Default semantics.  `build` takes an `overrides` option so a second export -
 # the male doll - is built from its own file against the same generator.
 const OVERRIDES = preload("res://Character_generator/Doll2Spine/doll2_overrides.gd")
+# Only for translating a POSE_PARTS bone name to the rig being built.
+const MODIFIERS = preload("res://Character_generator/Doll2Spine/universal/doll_modifiers.gd")
 
 const BASE_DIR = "res://Character_generator/Doll2Spine/"
 const JSON_PATH = BASE_DIR + "Doll2_spine4.2_female.json"
@@ -53,6 +55,8 @@ var _attachment_path_by_name = {}
 # Canonical records of the current build, so a paired slot can look up the
 # attachment that matches a part's style.
 var _all_records = []
+# Every bone in the skeleton being built, for checking what POSE_PARTS names.
+var _bone_names = []
 var _style_cache = {}
 
 
@@ -136,6 +140,7 @@ func build(options = {}):
 	var bone_names = []
 	for bone in skeleton.get("bones", []):
 		bone_names.append(str(bone.get("name", "")))
+	_bone_names = bone_names
 	var records = _collect_records(attachments, slot_order, bone_names)
 	_line("  attachmnt  %d" % records.size())
 	_line("")
@@ -406,6 +411,7 @@ func _build_parts(records, slot_order):
 		else:
 			_line("  UNPAINTED_PARTS: this doll has no `%s`" % part_id)
 	_build_set_cuts(parts)
+	_build_pose_parts(parts)
 
 	var groups = {}
 	var group_ids = _overrides.GROUP_DEFS.keys()
@@ -798,6 +804,39 @@ func _build_set_parts(set_records, parts):
 # and nothing else: no folders, no bindings.  A set with nothing in a cut - a
 # jacket has no legs - gets no piece for it, which is what stops the groups
 # filling up with empty entries.
+# The artless parts from POSE_PARTS.  Checked here rather than on a character:
+# a bone name this rig does not have, or a group that is not a dropdown, is a
+# build problem instead of an option that silently does nothing.
+func _build_pose_parts(parts):
+	var pose_parts = _overrides.get("POSE_PARTS", {})
+	for part_id in pose_parts.keys():
+		var definition = pose_parts[part_id]
+		var group_id = str(definition.get("group", ""))
+		if !_overrides.GROUP_DEFS.has(group_id):
+			_problem("POSE_PARTS: `%s` names group `%s`, which does not exist" % [part_id, group_id])
+			continue
+		if _overrides.GROUP_DEFS[group_id].kind != "options":
+			_problem("POSE_PARTS: `%s` is in set group `%s`; pose parts belong in an options group" % [part_id, group_id])
+			continue
+		if parts.has(part_id):
+			_problem("POSE_PARTS: `%s` is already a part drawn from the export" % part_id)
+			continue
+		var offsets = {}
+		for bone_name in definition.get("offsets", {}).keys():
+			var rig_name = MODIFIERS.rig_bone(str(bone_name), _contract_id)
+			if rig_name == "":
+				continue #the bone has no counterpart on this rig
+			if !(rig_name in _bone_names):
+				_problem("POSE_PARTS: `%s` moves bone `%s`, which this rig does not have" % [part_id, rig_name])
+				continue
+			var pair = definition.offsets[bone_name]
+			offsets[str(bone_name)] = [float(pair[0]), float(pair[1])]
+		var entry = _part_entry(part_id, group_id, str(_overrides.DISPLAY.get(part_id, _title(part_id))), [], [], {}, {})
+		entry["offsets"] = offsets
+		parts[part_id] = entry
+		_line("  POSE_PARTS: `%s` in %s moves %s" % [part_id, group_id, _join(offsets.keys(), ", ")])
+
+
 func _build_set_cuts(parts):
 	var cuts = _overrides.get("SET_CUTS", {})
 	if cuts.empty():

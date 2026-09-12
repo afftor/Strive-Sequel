@@ -4659,7 +4659,8 @@ USAGE_COST = "Стоимость использования",
 	DATING_AFFECTIONATE_RESULT_1 = """
 
 {color=green|Affectionate Mood}: The time together leaves [name] feeling closer to you.""", # MISSING TRANSLATION
-	DATING_LOW_FEAR_WARNING = """,
+	DATING_LOW_FEAR_WARNING = """
+{color=yellow|[name] felt too at ease around you, weakening [his] respect.}""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_ASK = """[name] has been entirely at ease in your company. There is a new familiarity in the way [he] speaks to you, and you find yourself thinking [he] has grown presumptuous.""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_DISCIPLINE = """Put [him] in [his] place""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_ENDORSE = """Endorse it""", # MISSING TRANSLATION
@@ -4669,7 +4670,6 @@ USAGE_COST = "Стоимость использования",
 	DATING_PRESUMPTION_ENDORSE_RESULT = """
 
 {color=yellow|You decide to play along, showing your willingness to let [name] treat you with less respect.}""", # MISSING TRANSLATION
-{color=yellow|[name] felt too at ease around you, weakening [his] respect.}""", # MISSING TRANSLATION
 	DATING_FEARFUL_RESULT_1 = """
 
 {color=red|Fearful Mood}: The date leaves [name] shaken, but more conscious of your power.""", # MISSING TRANSLATION
@@ -21811,7 +21811,9 @@ The King shoves past his guards, the restored machine still crackling behind him
 Когда она отворачивается, в укрытии лежит группа войск коалиции, которые только и ждали появления короля.
 
 Король: - Эта сучка вступила в союз с коалицией за моей спиной! Разберитесь с ними и схватите ее!""",
-	DWARF_CEREMONY_CAUGHTUP_CULT = """,
+	DWARF_CEREMONY_CAUGHTUP_CULT = """
+
+Когда она отворачивается, группа культистов выходит на улицу, мешая вам идти за ней.""",
 	DWARF_CEREMONY_BOLTHAR = """The ambushers part, and a gnome in a plain robe steps out of their ranks with his hands open at his sides. Bolthar. Behind him come the ones who hold his coalition together: a kobold weighed down with scavenged trinkets, a ratkin who keeps to the edge of the torchlight, a goblin with a bandolier of crude grenades, and a dwarf resting a double-bitted axe on his shoulder.
 
 {color=yellow|Bolthar: — I offered you a place among us once. You chose the crown instead, and now the crown has brought you here, to the one fight I hoped to spare you.}
@@ -21819,8 +21821,6 @@ The King shoves past his guards, the restored machine still crackling behind him
 {color=aqua|The King: — Enough talk. Cut them down!}
 
 {color=yellow|Bolthar: — Stand together, friends. Whatever they take from us, they take from all of us at once.}""", # MISSING TRANSLATION
-
-Когда она отворачивается, группа культистов выходит на улицу, мешая вам идти за ней.""",
 	KURO_RESOLUTION_INTRO = """Вы пробираетесь к близлежащим пещерам, преследуя Куро, несущую артефакт. Идя нестандартными путями, вы вскоре попадаете в заброшенную местность. 
 
 По всей видимости, все было подготовлено заранее, так как вы видите Куро, стоящую в центре ритуального круга и открывающего портал. По периметру территория отгорожена полупрозрачным барьером, не похожим на тот, что вы встречали в Милфорде, однако этот барьер гораздо темнее.""",

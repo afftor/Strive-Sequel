@@ -283,7 +283,7 @@ var skills = {
 		sfx = [
 			{code = 'magma_blast', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 	},
 	bile_splash = {
 		code = 'bile_splash',
@@ -545,7 +545,7 @@ var skills = {
 			{code = 'blood_explosion', target = 'target', period = 'predamage',sync_to_hit = true, hit_motion = 'push'},
 			{code = 'blood_explosion', target = 'caster', period = 'windup'},
 		], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = [['300']],
 	},
 	no_light_tunnel_end = {
@@ -842,7 +842,7 @@ var skills = {
 		sfx = [
 			{code = 'earth_spike', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'push'},
 			{code = 'tauntwave', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		follow_up = 'hysterical_strength_1',
 	},
 	hysterical_strength_1 = {

@@ -56,8 +56,10 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'water',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [
+			{code = 'water_attack', target = 'target', period = 'predamage'},
+			{code = 'at_sword', target = 'caster', period = 'windup', is_cast = true}], 
+		sounddata = {initiate = null, strike = 'slap', hit = null},
 		value = 1.0,
 	},
 	water_shield = {
@@ -101,6 +103,7 @@ var skills = {
 		]
 	},
 	frost_prison = {
+		sounddata = {hit = 'slap', hittype = 'static'},
 		code = 'frost_prison',
 		descript = '',
 		icon = "res://assets/images/iconsskills/freeze.png",
@@ -120,7 +123,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [{code = 'frost_prison', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'frost_prison', target = 'target', period = 'predamage'},
+			{code = 'haste', target = 'caster', period = 'windup', is_cast = true}], 
 		sound = [],
 		value = 1.3,
 	},

@@ -982,6 +982,8 @@ func build_boosters():
 	$DescriptionLabel.visible = false
 	input_handler.ClearContainer($BrothelRules/boosters/VBoxContainer, ['Button'])
 	var boosters = person.xp_module.service_boosters
+	#first tier that gets paid for no more - it and every switched-on tier above it are idle
+	var stop = person.xp_module.get_booster_stop_tier()
 #	var f = true
 	for id in range(1, 4):
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/boosters/VBoxContainer, 'Button')
@@ -1000,7 +1002,15 @@ func build_boosters():
 		#free to add any more data
 		newbutton.pressed = boost_data.value
 		if boost_data.value:
-			text += " - " + tr("FARMACTIVATED")
+			if id < stop:
+				text += " - " + tr("FARMACTIVATED")
+			elif id == stop:
+				text += " - " + tr("SERVICEBOOSTNOSTOCK")
+				newbutton.get_node('Label').set("custom_colors/font_color", variables.hexcolordict['red'])
+			else:
+				var blocker = Items.materiallist[boosters['boost%d' % stop].res]
+				text += " - " + globals._report_text("SERVICEBOOSTNEEDS", [tr(blocker.name)])
+				newbutton.get_node('Label').set("custom_colors/font_color", variables.hexcolordict['red'])
 		
 		newbutton.get_node('Label').text = text
 		newbutton.connect('pressed', self, 'set_booster', [id, !boost_data.value])

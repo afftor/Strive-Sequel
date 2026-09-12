@@ -1,3 +1,7 @@
+0.16.0e
+Added clothes coloring options to paperdoll customization
+Fixed 4 other localizations being broken
+Fixed skeleton archers not being able to attack when disarmed 
 0.16.0d
 Fixed linux version cheat menu
 Fixed chinese localization being broken

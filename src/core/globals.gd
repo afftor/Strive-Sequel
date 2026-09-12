@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.0d'
+const gameversion = '0.16.0e'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 
@@ -12,13 +12,7 @@ signal travel_completed
 signal slave_departed
 signal update_clock
 signal task_removed
-#A room was raised, pulled down, upgraded or carried elsewhere. What the estate can hold and
-#how many it can sleep are read off the rooms, so whoever prints those numbers has to hear it.
 signal rooms_changed
-#What a character will be given at the end of the turn changed, without the character
-#themselves changing - a food type forbidden in the diet panel, a bed handed out or taken
-#away on the floorplan. Whoever draws a per-character upkeep warning has to hear it: nothing
-#else about that character has moved, so no other refresh is going to run.
 signal upkeep_changed
 signal work_produced(person_id, task_id, texture)
 
@@ -143,56 +137,19 @@ func _ready():
 	get_tree().get_root().connect("ready", self, 'free_manifest', [], CONNECT_ONESHOT)
 
 
-#not used
-#func EventCheck():
-#	if state.CurEvent != "": return;
-#	for s in get_tree().get_nodes_in_group('char_sprite'):
-#		s.set_active_val();
-#	for event in EventList.keys():
-#		if SimpleEventCheck(event, false):
-#			StartEventScene(event);
-#			break;
-#
-#func SimpleEventCheck(event, skip = true):
-#	#var tmp_d = {global = 'skip'};
-#	if state.OldEvents.has(event):
-#		return false
-#	for check in EventList[event]:
-#		if check.size() == 0:
-#			if skip:
-#				continue
-#			else:
-#				return false
-#		if !globals.valuecheck(check):
-#			return false
-#	return true
-#
-#func LoadEvent(name):
-#	var dict
-#
-#	if file.file_exists("res://assets/data/events/"+ name + '.json'):
-#		file.open("res://assets/data/events/"+ name + '.json', File.READ)
-#		dict = parse_json(file.get_as_text())
-#		file.close()
-#	else:
-#		print('Event not found: ' + name)
-#	return dict
-#
-#func StartEventScene(name, debug = false, line = 0):
-#	state.CurEvent = name;
-#	scenes[name] = LoadEvent(name)
-#	var scene = input_handler.get_spec_node(input_handler.NODE_EVENT) #input_handler.GetEventNode()
-#	scene.visible = true
-#	scene.Start(scenes[name], debug, line)
 
-func get_duplicate_id_if_exist(item):
+#`ignore` is for an item that is already in the inventory, so it does not find itself.
+func get_duplicate_id_if_exist(item, ignore = null):
 	var itemtemplate = Items.itemlist[item.itembase]
 	if itemtemplate.has('tags') and itemtemplate.tags.has('no_stack'):
 		return null
 	if item.curse != null or !item.enchants.empty():
 		return null
 	for i in ResourceScripts.game_res.items.values():
-		if i.curse != null or !i.enchants.empty():
+		if i == ignore or i.curse != null or !i.enchants.empty():
+			continue
+		#a stack spent down to 0 is already queued for removal (Item.amount_set) and would take anything added to it along
+		if i.amount <= 0:
 			continue
 		if str(i.itembase) == str(item.itembase) and str(i.parts) == str(item.parts) and i.quality == item.quality and i.owner == null: #mb more
 			return i.id
@@ -354,6 +311,20 @@ func AddItemToInventory(item, dont_duplicate = true, count_achievements = true):
 			ResourceScripts.game_res.itemcounter += 1
 
 
+#For an item already in the inventory that has just been changed (improved to a new quality, say): if it now
+#matches another stack it joins that stack, rather than keeping a row of its own. Equipped gear stays put.
+func restack_item(item):
+	if item.owner != null:
+		return
+	var duplicate = get_duplicate_id_if_exist(item, item)
+	if duplicate == null:
+		return
+	ResourceScripts.game_res.items[duplicate].amount += item.amount
+	item.amount = 0
+	#erased here as well: amount_set only defers the removal, and a list redrawn on the next idle_frame can run first
+	ResourceScripts.game_res.items.erase(item.id)
+
+
 func remove_item(item):
 	var duplicate = get_duplicate_id_if_exist(item)
 	if duplicate != null:
@@ -509,8 +480,6 @@ func slavetooltip(targetnode, person, tooltip_node = null):
 		node = input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP) #input_handler.GetSlaveTooltip()
 	node.showup(targetnode, person)
 
-#what a food item is worth to anyone: its demand tier, how long it keeps a character fed
-#and the buff it leaves behind. used by every material tooltip and by the food column header
 func get_food_info_text(item):
 	if item.type != 'food':
 		return ''
@@ -524,9 +493,6 @@ func get_food_info_text(item):
 	return res
 
 
-#the part of a food tooltip that only makes sense for one character. reads the cached
-#demand rather than recomputing it - call person.get_food_demand() once first if the
-#value may be stale
 func get_food_char_text(item, person):
 	if item.type != 'food':
 		return ''
@@ -538,12 +504,6 @@ func get_food_char_text(item, person):
 	return res
 
 
-#one appetite covers the whole life a character is given: the demand tier decides what a
-#meal has to be, and at the top tier it decides where they are willing to sleep as well.
-#the tooltip walks every tier with what claims it and what falling short costs, and paints
-#the one the character sits at now - the same trick the personality tooltip uses. colour
-#tags cannot nest (parse_text takes the first '}' it finds), so an active tier is painted
-#as one green block instead of keeping its own tier colour inside it
 func get_character_demand_tooltip(person, demand = null):
 	if demand == null:
 		demand = person.get_food_demand()
@@ -567,8 +527,6 @@ func get_character_demand_tooltip(person, demand = null):
 	return text
 
 
-#what has to be true for a tier to claim a character. read off the same tables
-#ch_food.update_demand() walks, so the tooltip cannot drift from the rule
 func get_demand_requirement_text(tier):
 	var fame = variables.food_demand_by_fame.get(tier, null)
 	var value = variables.food_demand_by_value.get(tier, null)
@@ -577,8 +535,6 @@ func get_demand_requirement_text(tier):
 	return tr("DEMANDREQ") % [fame, value]
 
 
-#tooltip for the food column of the slave list: what they last ate, how long it holds and
-#what it is doing to them
 func get_food_state_tooltip(person):
 	var st = person.food.get_state()
 	if st.state == 'starving':
@@ -599,10 +555,6 @@ func get_food_state_tooltip(person):
 	return res
 
 
-#The two warnings on a character card: what the estate is about to fail to give them when the
-#turn ends. Both are asked of state that will not change by itself before then - the larder as
-#it stands and the beds as they are laid out - so the card can promise the outcome rather than
-#report it after the fact. An empty string means there is nothing to warn about.
 func get_food_warning(person):
 	if person == null or person.food == null:
 		return ''
@@ -658,20 +610,6 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned', to
 	
 	node.showup(targetnode, data, type)
 
-#func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
-#	var image
-#	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
-#	var data = {}
-#	var text = '[center]' + material.name + '[/center]\n' + material.descript
-#	data.text = text + bonustext
-#	data.item = material
-#	data.icon = material.icon
-#	data.price = str(material.price)
-#	data.type = material.type
-#	if ResourceScripts.game_res.materials[material.code] > 0:
-#		data.amount = ResourceScripts.game_res.materials[material.code]
-#
-#	node.showup(targetnode, data, type)
 
 
 func get_traitlist_for_char(person):
@@ -859,18 +797,12 @@ func build_training_traitlist(person, node):
 
 
 
-#The sex block reads the same on the character screen and in the mansion list, so the level
-#word, the bar value, the mastery hint and the trait toggles are built here and the two
-#panels only hand over their containers. Both expect the container's template child to be
-#named "Button".
 const SEX_TRAINING_PROGRESS = {
 	novice = 0,
 	skilled = 50,
 	mastered = 100,
 }
 
-#Each entry is a list of groups; a group counts as done once any one of its actions has been
-#performed, and a skill masters when every group is done.
 const SEX_TRAINING_MASTERY = {
 	penetration = [["missionary", "missionaryanal"], ["doggy", "doggyanal"], ["lotus", "lotusanal"], ["revlotus", "revlotusanal"], ["ontop", "ontopanal"]],
 	pussy = [["missionary"], ["doggy"], ["lotus"], ["revlotus"], ["ontop"]],
@@ -945,8 +877,6 @@ func build_sex_training_tooltip(person, code, state):
 	return text
 
 
-#Returns how many rows were actually drawn, so a panel that hides its whole sex block when
-#there is nothing to say does not have to repeat the skipping rules to find that out.
 func build_sex_training_rows(person, node):
 	input_handler.ClearContainer(node)
 	if person == null:
@@ -1093,21 +1023,14 @@ func build_buffs_for_char(person, node, mode):
 		connecttexttooltip(newnode, person.translate(i.description))
 
 
-#Base stats read as the trained number out of the cap training can reach, with everything
-#classes, gear and buffs lend shown after it as its own term: '31/100 +10' rather than the old
-#'41/110'. The old pair hid both halves of what the line is asked for - how much of the cap the
-#training has actually filled, and how much of the number would walk out with the equipment.
 func base_stat_text(person, code):
 	return base_stat_value_text(person, code) + "/" + base_stat_cap_text(person, code)
 
 
-#The trained number on its own, for the panels that keep the value and the cap in two columns.
 func base_stat_value_text(person, code):
 	return str(int(floor(person.get_stat(code, true))))
 
 
-#The cap with the borrowed part behind it. Sexuals has no cap stat of its own; 100 is the
-#ceiling every panel has always printed for it.
 func base_stat_cap_text(person, code):
 	var cap = 100 if code == 'sexuals' else int(floor(person.get_stat(code + '_cap')))
 	var bonus = int(floor(person.get_stat(code + '_bonus')))
@@ -1444,17 +1367,7 @@ func ItemSelect(targetscript, type, function, requirements = null):
 			var template = Items.itemlist[item.itembase]
 			if template.code in shrine_offering_items:
 				array.append({type = 'item', code = item.itembase, amount = item.amount, item = item})
-#		if requirements != null and requirements.has("allow_alcohol_items") and requirements.allow_alcohol_items:
-#			for item in ResourceScripts.game_res.items.values():
-#				if item.owner != null:
-#					continue
-#				if item.amount <= 0:
-#					continue
-#				var template = Items.itemlist[item.itembase]
-#				if !template.has("interaction_effect"):
-#					continue
-#				if template.interaction_effect in ['alcohol', 'beer']:
-#					array.append({kind = 'item', code = item.itembase, amount = item.amount, item = item})
+
 
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
@@ -4023,6 +3936,48 @@ func check_shop_record(item, code, dict):
 		return false
 	return true
 
+#Splits one line of a localization file into the part the parser sees as code (everything before
+#an unquoted '#') and reports whether the line leaves a """ string open. update_localization_file
+#needs this to tell a line that OPENS a multi-line value from one that ENDS an entry: they both
+#end in """, and inserting after an opening line cuts the value in half.
+func scan_localization_line(line: String, in_multiline: bool) -> Dictionary:
+	var i = 0
+	var quote = ""
+	while i < line.length():
+		var c = line[i]
+		if in_multiline:
+			if c == "\\": #escapes are processed inside """ strings too, so \" is not a delimiter
+				i += 2
+				continue
+			if line.substr(i, 3) == '"""':
+				in_multiline = false
+				i += 3
+				continue
+			i += 1
+			continue
+		if quote == "":
+			if line.substr(i, 3) == '"""':
+				in_multiline = true
+				i += 3
+				continue
+			if c == '"' or c == "'":
+				quote = c
+				i += 1
+				continue
+			if c == "#": #a comment - the rest of the line is not code, quotes in it do not count
+				break
+			i += 1
+		else:
+			if c == "\\":
+				i += 2
+				continue
+			if c == quote:
+				quote = ""
+			i += 1
+	if i > line.length():
+		i = line.length()
+	return {code = line.substr(0, i), in_multiline = in_multiline}
+
 #MIND! This func writes file to "res://", so it wouldn't (and shouldn't) work in exported version
 func update_localization_file(update_loc: String, primary_loc = "en"):
 	# find all main.gd files
@@ -4078,26 +4033,39 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 		# iterate through main.gd file
 		var key = ""
 		var inserted_anchors = {}
+		var in_multiline = false #inside a """ value that spans several lines
 		while loc_file.get_position() < loc_file.get_len():
 			var line = loc_file.get_line()
-			var cleared_line = line.replace(" ", "").replace("	", "")
-			var is_commented_line = cleared_line.length() > 0 and cleared_line[0] == "#"
-			var regex_result = regex.search(line)
+			var was_in_multiline = in_multiline
+			var scanned = scan_localization_line(line, in_multiline)
+			in_multiline = scanned.in_multiline
 
-			# if found a key in a line and it's not commented out
-			if regex_result and cleared_line.length() > 0 and !is_commented_line:
-				key = regex_result.get_string()
+			# a line in the middle of a multi-line value is plain text, copy it untouched
+			if was_in_multiline and in_multiline:
+				tmp_file.store_line(line)
+				continue
 
-			# if it's a missing key, insert keys
+			var code = scanned.code
+			if !was_in_multiline:
+				# a key can only be declared on a line that starts outside a string.
+				# search the code part so a word in a trailing comment is never taken for a key
+				var regex_result = regex.search(code)
+				if regex_result:
+					key = regex_result.get_string()
+				# the line only opens the value - its entry ends on the closing line below
+				if in_multiline:
+					tmp_file.store_line(line)
+					continue
+
+			# here `line` holds the last line of a complete entry: comments, blank lines and the
+			# closing brace all reduce to code that ends in neither a quote nor a comma
 			if key in missing_keys.keys() and !inserted_anchors.has(key):
-				var check_line = cleared_line
-				if check_line.ends_with("#MISSINGTRANSLATION"):
-					check_line = check_line.substr(0, check_line.length() - "#MISSINGTRANSLATION".length())
+				var check_line = code.strip_edges()
 				# last entry of a file may have no trailing comma, add it or nothing gets inserted after it
-				if !is_commented_line and check_line.ends_with('"""'):
-					line += ","
+				if check_line.ends_with('"') or check_line.ends_with("'"):
+					line = code + "," + line.substr(code.length())
 					check_line += ","
-				if !is_commented_line and check_line.length() > 0 and check_line[check_line.length() - 1] == ',':
+				if check_line.ends_with(","):
 					tmp_file.store_line(line)
 					inserted_anchors[key] = true
 					for i in missing_keys[key].size():
@@ -4201,6 +4169,10 @@ func show_buttons(container):
 			continue
 		ResourceScripts.core_animations.UnfadeAnimation(button, 0.3)
 		yield(get_tree().create_timer(0.3), "timeout")
+		#the container is rebuilt from under this loop whenever the panel refreshes while the
+		#options are still fading in - the buttons held here are freed by then
+		if !is_instance_valid(button):
+			return
 		button.set("modulate", Color(1, 1, 1, 1))
 
 #Every entry in statdata was generated with name = '' and the STAT<CODE> keys written instead,
@@ -4248,24 +4220,27 @@ func get_tr_src(src, src_val):
 
 
 
+#The keys that address an sfx entry rather than describe its animation. They never reach
+#the animation function; the last two are consumed by the transforms below.
+const SFX_ENTRY_ADDRESS = ['code', 'target', 'period', 'code_repeat', 'is_cast', 'no_repeat_delays']
+
+#Every other key of an sfx entry reaches the animation function that plays it, in a fresh
+#dictionary. Nothing is invented here: several functions test key PRESENCE rather than
+#value, so writing a default for an absent key would change what they do. Three keys are
+#turned into something else on the way:
+#   is_cast            -> queue_duration = 0.0 (unless the entry sets queue_duration): a
+#                         cast never holds the queue, the receiving side waits instead
+#   no_repeat_delays   -> no_delays = true on every iteration but the last
+#   target == 'caster' -> reverse_flip = true: FighterNode.get_flip() answers for the card
+#                         the sprite is drawn on, and a caster sprite faces the other way
 func make_sfx_params(anim_dict, last_iteration = false):
 	var params = {}
-	if anim_dict.has('duration'): params.duration = anim_dict.duration
-	if anim_dict.has('windup'): params.windup = anim_dict.windup
-	if anim_dict.has('jitter'): params.jitter = anim_dict.jitter
-	if anim_dict.has('branch_stagger'): params.branch_stagger = anim_dict.branch_stagger
-	if anim_dict.has('queue_duration'):
-		params.queue_duration = anim_dict.queue_duration
-	elif anim_dict.has("is_cast") and anim_dict.is_cast:
+	for key in anim_dict:
+		if key in SFX_ENTRY_ADDRESS: continue
+		params[key] = anim_dict[key]
+	if !anim_dict.has('queue_duration') and anim_dict.has('is_cast') and anim_dict.is_cast:
 		params.queue_duration = 0.0
-	if anim_dict.has('no_delays'): params.no_delays = anim_dict.no_delays
 	if anim_dict.has('no_repeat_delays') and anim_dict.no_repeat_delays and !last_iteration:
 		params.no_delays = true
-	if anim_dict.has('sync_to_hit'): params.sync_to_hit = anim_dict.sync_to_hit
-	if anim_dict.has('hit_motion'): params.hit_motion = anim_dict.hit_motion
-	if anim_dict.has('motion'): params.motion = anim_dict.motion
-	if anim_dict.has('speed'): params.speed = anim_dict.speed
-	if anim_dict.has('alt_slot'): params.alt_slot = anim_dict.alt_slot
-	if anim_dict.has('force_flip'): params.force_flip = anim_dict.force_flip
-	if anim_dict.has("target") and anim_dict.target == 'caster': params.reverse_flip = true
+	if anim_dict.has('target') and anim_dict.target == 'caster': params.reverse_flip = true
 	return params

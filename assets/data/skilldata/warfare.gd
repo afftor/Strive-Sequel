@@ -214,7 +214,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		sfx = [{code = 'execution', target = 'target', period = 'postdamage'}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = [['0']],
 		damagestat = ['no_stat'],
 		not_final = true,

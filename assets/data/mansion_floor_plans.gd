@@ -31,10 +31,9 @@ extends Reference
 #than shrinking them, and the drawing they stand on is wider still than the house itself.
 const FIELD_TILES = 160
 
-#A slot, in tiles - the size of a room as the manor is drawn, which is a shade wider than it is
-#tall. Every slot on every floor is this size, so any two of them can trade contents without
-#anything having to be checked about their shapes.
-const SLOT_TILES = [18, 17]
+#A slot on a floor that stands on a picture is the room drawn for it, to a fraction of a tile, so
+#slots are not all one size. Nothing about two slots trading contents looks at their shapes: a
+#room carries no position or size of its own, only the slot it is in does.
 
 #The house is a wide manor of two floors over its own grounds. Its offset wings leave irregular
 #corridors around the staircase, which stays in the exact middle so it meets between floors.
@@ -59,41 +58,38 @@ const LIST = {
 			#room in the left wing and one bare room in the right. The other six are rubble.
 			{
 				code = '1F',
-				#The floor is a picture of itself: the manor seen from above, with its rooms,
-				#walls, corridors and grounds drawn in. 'yard' is the box the ten rooms and the
-				#hall between them fill inside that picture, given as shares of it; 'over' is the
-				#tiles that box is laid on. The picture is blown up until the yard covers those
-				#tiles, which is what puts every slot below inside the room drawn for it - so the
-				#two are measured together, and moving one without the other pulls them apart.
+				#The floor is a picture of itself: the manor seen from above, rooms drawn as outlined
+				#squares of tiling in one continuous floor. 'yard' is the box the rooms fill inside
+				#that picture, as shares of it; 'over' is the tiles that box is laid on. Every slot
+				#below is one of those outlines converted by the same numbers, outline included, so a
+				#card covers its room edge to edge - which is also why the slots are no longer one
+				#shared size, and why the two must be measured together if either is ever moved.
 				#
-				#The file carries four hundred pixels of mirrored canopy above the house that the
-				#artist's picture does not. The plan is drawn across the whole screen rather than
-				#into a panel, and the picture is what the dragging stops against, so it has to
-				#reach every corner of that screen from every position it can be dragged to. The
-				#band the rooms are centred in is the lower two thirds of the screen: a picture
-				#that only just covers the screen therefore leaves the house too high in it, and
-				#one large enough to hang lower is too wide to fit between the side panels. That
-				#strip of sky is what buys both, and at rest it lies under the HUD.
+				#The file carries four hundred pixels of mirrored canopy above the artist's picture.
+				#The plan is drawn across the whole screen, and the picture is what the dragging stops
+				#against, so it has to reach every corner of the screen from every position it can be
+				#dragged to; the band the rooms are centred in is the lower two thirds of the screen,
+				#and that strip above the house is what lets the house sit there and still reach.
 				backdrop = {
 					art = 'res://assets/images/backgrounds/mansion_manor.png',
-					yard = [0.2008, 0.3930, 0.6073, 0.3688],
+					yard = [0.2018, 0.3969, 0.6055, 0.3629],
 					over = [13, 53, 134, 54],
 				},
 				areas = [
 					{state = 'floor', rect = [13, 53, 134, 54]},
 				],
 				slots = [
-					{code = 'a1', rect = [19, 54, 18, 17], broken = true},
-					{code = 'a2', rect = [53, 53, 18, 17]},
-					{code = 'a4', rect = [90, 53, 18, 17]},
-					{code = 'a5', rect = [122, 54, 18, 17], broken = true},
-					{code = 'b1', rect = [13, 71, 18, 17]},
-					{code = 'b3', rect = [71, 76, 18, 17]},
-					{code = 'b5', rect = [129, 72, 18, 17]},
-					{code = 'c1', rect = [19, 89, 18, 17], broken = true},
-					{code = 'c2', rect = [52, 90, 18, 17], broken = true},
-					{code = 'c4', rect = [90, 90, 18, 17], broken = true},
-					{code = 'c5', rect = [122, 90, 18, 17], broken = true},
+					{code = 'a1', rect = [18.88, 53.58, 18.14, 18.19], broken = true},
+					{code = 'a2', rect = [52.13, 53, 18.02, 18.37]},
+					{code = 'a4', rect = [90.2, 53.52, 18.02, 17.84]},
+					{code = 'a5', rect = [122.87, 53.7, 18.14, 18.31], broken = true},
+					{code = 'b1', rect = [12.43, 71.37, 19.12, 17.96]},
+					{code = 'b3', rect = [68.52, 73.05, 23.19, 17.38]},
+					{code = 'b5', rect = [128.68, 71.66, 18.89, 17.9]},
+					{code = 'c1', rect = [18.82, 88.92, 18.19, 17.96], broken = true},
+					{code = 'c2', rect = [52.24, 88.86, 18.02, 17.79], broken = true},
+					{code = 'c4', rect = [89.97, 88.92, 18.08, 17.79], broken = true},
+					{code = 'c5', rect = [122.98, 89.27, 18.14, 17.73], broken = true},
 				],
 				prebuilt = {a2 = 'master_bedroom', a4 = 'bedrooms', b1 = 'store_room', b3 = 'stairs'},
 			},
@@ -101,12 +97,13 @@ const LIST = {
 			#rest is rubble.
 			{
 				code = '2F',
-				#The same drawing as the floor below, and lined up the same way - see there. It is
-				#dimmed and cooled a little because this floor is above that one: the same rooms in
-				#the same places would otherwise give the player nothing to tell the two apart.
+				#Its own picture, with holes where nothing is built - the wings are roofs up here - and
+				#drawn over the floor beneath, which shows through them dimmed and cooled so it reads as
+				#below. Both pictures share one canvas, so the floor beneath's yard places both.
 				backdrop = {
-					art = 'res://assets/images/backgrounds/mansion_manor.png',
-					yard = [0.2008, 0.3930, 0.6073, 0.3688],
+					art = 'res://assets/images/backgrounds/mansion_manor_upper.png',
+					under = 'res://assets/images/backgrounds/mansion_manor.png',
+					yard = [0.2018, 0.3969, 0.6055, 0.3629],
 					over = [13, 53, 134, 54],
 					shade = [0.60, 0.64, 0.76],
 				},
@@ -114,15 +111,15 @@ const LIST = {
 					{state = 'floor', rect = [13, 53, 134, 54]},
 				],
 				slots = [
-					{code = 'a1', rect = [19, 54, 18, 17], broken = true},
-					{code = 'a2', rect = [53, 53, 18, 17]},
-					{code = 'a4', rect = [90, 53, 18, 17]},
-					{code = 'a5', rect = [122, 54, 18, 17], broken = true},
-					{code = 'b3', rect = [71, 76, 18, 17]},
-					{code = 'c1', rect = [19, 89, 18, 17], broken = true},
-					{code = 'c2', rect = [52, 90, 18, 17], broken = true},
-					{code = 'c4', rect = [90, 90, 18, 17], broken = true},
-					{code = 'c5', rect = [122, 90, 18, 17], broken = true},
+					{code = 'a1', rect = [30.27, 53.58, 18.08, 17.73], broken = true},
+					{code = 'a2', rect = [50.73, 53, 18.08, 18.37]},
+					{code = 'a4', rect = [91.25, 53.52, 18.08, 17.84]},
+					{code = 'a5', rect = [111.71, 53.58, 18.08, 17.79], broken = true},
+					{code = 'b3', rect = [68.52, 73.05, 23.19, 17.38]},
+					{code = 'c1', rect = [30.27, 88.4, 18.08, 17.73], broken = true},
+					{code = 'c2', rect = [50.73, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c4', rect = [91.25, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c5', rect = [111.71, 88.4, 18.08, 17.79], broken = true},
 				],
 				prebuilt = {b3 = 'stairs'},
 			},

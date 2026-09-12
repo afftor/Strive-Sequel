@@ -771,7 +771,7 @@ var loot_tables = {
 	prod_task_gathering_wood_iron = {material = 'woodiron'},
 	prod_task_mining_stone = {list = [
 		{material = 'stone'},
-		{material = 'iron', chance = 0.3,
+		{material = 'iron', chance = 0.7,
 			reqs = [{type = 'has_room_upgrade', name = 'mine', code = 'deeper_veins', value = 1}]},
 		{material = 'mithril', chance = 0.08,
 			reqs = [{type = 'has_room_upgrade', name = 'mine', code = 'deeper_veins', value = 2}]},

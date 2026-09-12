@@ -11,13 +11,36 @@ var nudity_toggle
 #func _ready():
 #	update()
 var body_visible = true
+# the buff column shares the doll's corner with its Custom menu and gives way to it
+var buffs_wanted = true
+var hair_menu_open = false
 
 
 func _ready():
 	$ragdoll.undress_is_a_rule = true
+	$ragdoll.connect("hair_menu_toggled", self, "_on_hair_menu_toggled")
 	nudity_toggle = NUDITY_TOGGLE.new()
 	nudity_toggle.connect("nudity_changed", self, "_on_nudity_changed")
 	add_child(nudity_toggle)
+
+
+func show_buffs():
+	buffs_wanted = true
+	_refresh_buffs_visibility()
+
+
+func hide_buffs():
+	buffs_wanted = false
+	_refresh_buffs_visibility()
+
+
+func _on_hair_menu_toggled(open):
+	hair_menu_open = open
+	_refresh_buffs_visibility()
+
+
+func _refresh_buffs_visibility():
+	$buffscontainer.visible = buffs_wanted and !hair_menu_open
 
 
 func _on_nudity_changed(changed_person):

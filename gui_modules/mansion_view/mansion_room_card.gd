@@ -1928,8 +1928,10 @@ func on_demolish():
 		tr("MANSIONVIEW_DEMOLISHCONFIRM") % room_name])
 	#The card comes back up when the question goes away by any route.  Answering is not the
 	#only one - the panel also closes on a click beside it, and then neither answer runs.
+	#For this closing only: one panel answers every yes/no in the game, and a connection left
+	#standing on it put the card back up on every later question asked anywhere.
 	if !question.is_connected("popup_hide", self, "on_question_closed"):
-		question.connect("popup_hide", self, "on_question_closed")
+		question.connect("popup_hide", self, "on_question_closed", [], CONNECT_ONESHOT)
 
 
 func confirm_demolish():

@@ -227,7 +227,15 @@ func _get_action(hide_ignore = false):
 	#=== Skill rotation zone ===
 	if actions.size() == 0:
 #		print ('ERROR IN AI TEMPLATE')
-		return app_obj.get_skill_by_tag('basic')
+		#the basic attack is the last resort, but it can be blocked as well - disarm stops any
+		#ability_type 'skill' that is not tagged disable_immunity. Handing back a skill the
+		#fighter cannot use makes enemy_turn cast it anyway, straight past the disable.
+		var basic = app_obj.get_skill_by_tag('basic')
+		if basic == null:
+			return null
+		if !app_obj.can_use_skill(Skilldata.get_template(basic, app_obj)):
+			return null
+		return basic
 	var res = input_handler.weightedrandom(actions)
 	return res
 

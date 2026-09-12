@@ -206,6 +206,18 @@ const BLINK_MIN_DELAY = 3.0
 const BLINK_MAX_DELAY = 7.0
 var blink_enabled = false
 var blink_delay = 0.0
+# Bone offsets asked for by the artless parts - the shy glance - kept apart from
+# what the selections want so the eyes can travel between the two.  The pose is
+# built with `pose_offsets`; a glide eases it from `pose_offsets_from` to
+# `pose_offsets_to` over POSE_OFFSET_GLIDE seconds, and `pose_offsets_time` is
+# negative whenever nothing is moving.
+const POSE_OFFSET_GLIDE = 0.2
+var pose_offsets = {}
+var pose_offsets_from = {}
+var pose_offsets_to = {}
+var pose_offsets_time = -1.0
+# Set by the panel just before the rebuild it wants eased; the rebuild uses it up.
+var glide_pose_offsets = false
 var handle_buttons = {}
 var handles_visible = true
 var handle_targets = {}
@@ -264,6 +276,8 @@ func _process(delta):
 	var pose_changed = _advance_pushables(delta)
 	pose_changed = _advance_pose_transition(delta) or pose_changed
 	pose_changed = _advance_titjump(delta) or pose_changed
+	if _advance_pose_offsets(delta):
+		pose_changed = true
 	for animation_name in animation_states.keys():
 		if animation_name == TITJUMP_ANIMATION:
 			continue
@@ -312,6 +326,51 @@ func _advance_pose_transition(delta):
 	pose_transition_sample_key = ""
 	if pose_transition_elapsed >= POSE_TRANSITION_DURATION:
 		pose_transition_from = {}
+# Catches the pose offsets up with the selections.  Only a change is acted on, so
+# the rebuilds an animation triggers part way through a glide leave it running.
+# A change nobody asked to see eased lands at once, and so does one made while
+# the doll is hidden - there is nobody to watch it travel.
+func _sync_pose_offsets():
+	var wanted = CATALOGUE.compose_bone_offsets(selections)
+	var glide = glide_pose_offsets
+	glide_pose_offsets = false
+	if wanted.hash() == pose_offsets_to.hash():
+		return
+	pose_offsets_to = wanted
+	if glide and is_visible_in_tree():
+		pose_offsets_from = pose_offsets.duplicate()
+		pose_offsets_time = 0.0
+	else:
+		pose_offsets = wanted.duplicate()
+		pose_offsets_time = -1.0
+
+
+# One frame of a glide.  Eased in and out, the way an eye starts and settles
+# rather than sliding at an even pace.  Returns whether anything moved.
+#
+# A step is never counted as longer than a thirtieth of a second.  The pick that
+# starts a glide rebuilds the whole doll, and that frame alone runs to 60 ms or
+# so: counted in full it swallowed the first fifth of the movement, and the eyes
+# visibly jumped before they started to travel.
+func _advance_pose_offsets(delta):
+	if pose_offsets_time < 0.0:
+		return false
+	pose_offsets_time += min(delta, 1.0 / 30.0)
+	var t = clamp(pose_offsets_time / POSE_OFFSET_GLIDE, 0.0, 1.0)
+	var eased = t * t * (3.0 - 2.0 * t)
+	var moving = {}
+	for bone_name in pose_offsets_from.keys():
+		moving[bone_name] = true
+	for bone_name in pose_offsets_to.keys():
+		moving[bone_name] = true
+	pose_offsets = {}
+	for bone_name in moving.keys():
+		var start = pose_offsets_from.get(bone_name, Vector2.ZERO)
+		var finish = pose_offsets_to.get(bone_name, Vector2.ZERO)
+		pose_offsets[bone_name] = start.linear_interpolate(finish, eased)
+	if t >= 1.0:
+		pose_offsets = pose_offsets_to.duplicate()
+		pose_offsets_time = -1.0
 	return true
 
 
@@ -785,6 +844,14 @@ func _apply_bone_modifiers(layer_factors = {}, layer_turns = {}):
 	var factors = MODIFIERS.bone_factors(proportions, height_tier, contract.CONTRACT_ID)
 	var offsets = MODIFIERS.bone_offsets(proportions, contract.CONTRACT_ID)
 	var world_offsets = MODIFIERS.bone_world_offsets(proportions, contract.CONTRACT_ID)
+	# A part with no art - the shy glance - moves bones instead of drawing, and
+	# adds to the face sliders rather than replacing them.  Read from where the
+	# glide has got to rather than from the selections, so the eyes travel.
+	for bone_name in pose_offsets.keys():
+		var rig_name = MODIFIERS.rig_bone(bone_name, contract.CONTRACT_ID)
+		if rig_name == "":
+			continue
+		offsets[rig_name] = offsets.get(rig_name, Vector2.ZERO) + pose_offsets[bone_name]
 	# A part may carry its own bone tweaks; they multiply into the tier's rather
 	# than replacing them, so height still reads correctly while it is worn.
 	var part_bones = CATALOGUE.compose_bones(selections)
@@ -925,7 +992,10 @@ func _sample_current_bone_timelines():
 	for animation_name in animation_states.keys():
 		if animation_states[animation_name]:
 			key += "%s@%.6f|" % [animation_name, float(animation_times.get(animation_name, 0.0))]
-	if key == bone_sample_key:
+	# An empty key is never a hit: `bone_sample_key = ""` is how callers throw the
+	# sample away, and it is also the key of "nothing is running".  Taken as a hit,
+	# the last animation to stop - a titjump with the idle off - stayed applied.
+	if key != "" and key == bone_sample_key:
 		return bone_sample
 	bone_sample_key = key
 	bone_sample = {}
@@ -2460,6 +2530,8 @@ func _on_select_changed(_item_index, group_id, select):
 	# second scale axis.
 	if group_id == "hair":
 		_solve_pose()
+	# a look picked here is watched being made, so the eyes travel to it
+	glide_pose_offsets = true
 	_rebuild_and_watch_the_chest()
 
 
@@ -2600,6 +2672,7 @@ func _select_ui_value(key, value):
 func _rebuild_model():
 	if !skeleton:
 		return
+	_sync_pose_offsets()
 	var authored_animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
 	var worn = _worn_selections()

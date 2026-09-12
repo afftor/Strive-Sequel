@@ -770,7 +770,7 @@ const GROUPS = {
 		"label": "DOLL2_PREVIEW_EYES_EFFECT",
 		"optional": true,
 		"order": 4,
-		"parts": ["eyes_hearts"],
+		"parts": ["eyes_hearts", "eyes_shy"],
 		"slots": ["eyes_hearts"],
 	},
 	"face": {
@@ -1989,6 +1989,16 @@ const PARTS = {
 		"slots": {
 			"eyes": "eyes_m5",
 		},
+	},
+	"eyes_shy": {
+		"display": "Shy glance",
+		"folders": [],
+		"group": "eyes_effect",
+		"offsets": {
+			"pupil_l": [-5, -5],
+			"pupil_r": [-5, -5],
+		},
+		"slots": {},
 	},
 	"face10": {
 		"folders": ["02_faces"],

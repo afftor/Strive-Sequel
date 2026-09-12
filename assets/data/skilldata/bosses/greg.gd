@@ -224,7 +224,7 @@ var skills = {
 		sfx = [{code = '', code_repeat = {
 				1 : "devastation_1", 2 : "devastation_2", 3 : "devastation_3", 4 : "devastation_4",
 			}, target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
-			{code = 'at_sword', target = 'caster', period = 'windup', no_delays = true, is_cast = true}],
+			{code = 'at_sword', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 0.75,
 		variations = [

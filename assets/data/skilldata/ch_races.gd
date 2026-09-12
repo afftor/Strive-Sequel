@@ -86,7 +86,7 @@ var skills = {
 		sfx = [
 			{code = 'entangle', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'blunt_hit', hit = null, hittype = 'static'},
 		value = 1.3
 	},
 	fly_evasion = {

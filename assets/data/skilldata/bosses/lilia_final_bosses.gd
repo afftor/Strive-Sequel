@@ -97,7 +97,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		sfx = [{code = 'tauntwave', target = 'caster', period = 'windup'},], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = [['0']],
 		damagestat = ['no_stat'],
 		not_final = true,
@@ -288,7 +288,7 @@ var skills = {
 		damage_type = 'weapon',
 		random_target = true,
 		not_final = true,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],#strafe
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],#strafe
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.45,
 		random_factor_p = 0.1,
@@ -376,7 +376,7 @@ var skills = {
 			{code = 'flame', target = 'target', period = 'predamage'},
 			{code = 'flame', target = 'caster', period = 'postdamage'},
 		], 
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
 		value = 0.1,
 	},
 	straight_forward_slash = {

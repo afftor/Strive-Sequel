@@ -50,7 +50,7 @@ var skills = {
 		sfx = [
 			{code = 'mind_blast', target = 'target', period = 'predamage'},
 			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 1.2,
 		random_factor_p = 0.1
 	},

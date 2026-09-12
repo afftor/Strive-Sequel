@@ -22,8 +22,10 @@ const ART_BROKEN = preload("res://gui_modules/mansion_view/rooms/trashed.png")
 #same flight of stairs is drawn on every floor of the house and none of them tells the player
 #anything. Drawn as the flight that leaves this floor - climbing away while there is a storey
 #above, dropping back on the top one.
-const ART_STAIRS_UP = preload("res://gui_modules/mansion_view/rooms/stairs_up.png")
-const ART_STAIRS_DOWN = preload("res://gui_modules/mansion_view/rooms/stairs_down.png")
+#The staircase's slot draws a frame and nothing inside it: the flight is part of the house's own
+#picture on every floor, so a picture of stairs laid over it would only hide the real one.
+const STAIRS_FRAME = Color(0.976471, 0.882353, 0.505882, 0.85)
+const STAIRS_FRAME_LIT = Color(1, 0.94, 0.62, 1)
 
 #Types that have had a picture drawn for them, by room_builder. Everything not named here
 #still shares ART_ROOM; a type moves out of that pile the moment its own picture exists, so
@@ -135,6 +137,7 @@ func update_pressability():
 
 func draw_broken():
 	has_stairs = false
+	frame_only(false)
 	$bg.color = Color(COLOR_BROKEN)
 	$art.texture = ART_BROKEN
 	$icon.texture = null
@@ -145,6 +148,7 @@ func draw_broken():
 
 func draw_empty():
 	has_stairs = false
+	frame_only(false)
 	$bg.color = Color(COLOR_EMPTY)
 	$art.texture = ART_EMPTY
 	$icon.texture = null
@@ -156,6 +160,7 @@ func draw_empty():
 func draw_building():
 	has_stairs = false
 	var build = build_data()
+	frame_only(false)
 	$bg.color = Color(COLOR_BUILDING)
 	#Scaffolding shows whatever is actually standing there meanwhile: a repair is still a
 	#wrecked room until it finishes, a new build is still bare floor.
@@ -173,6 +178,7 @@ func draw_room(room):
 	var data = RoomTypes.get_type(room.type)
 	$bg.color = Color(data.color)
 	$art.texture = room_art(room)
+	frame_only(RoomTypes.has_tag(room.type, 'stairs'))
 	$icon.texture = images.upgrade_icons[data.icon] if images.upgrade_icons.has(data.icon) else null
 	$name.text = tr(RoomTypes.get_name_key(room.type))
 	draw_stairs(room)
@@ -182,18 +188,36 @@ func draw_room(room):
 #Which picture a room is drawn with: its own if one has been drawn for it, the staircase's
 #pair of flights if it is the staircase, and the one picture the rest still share otherwise.
 func room_art(room):
-	if RoomTypes.has_tag(room.type, 'stairs'):
-		return stairs_art()
 	return ROOM_ART[room.type] if ROOM_ART.has(room.type) else ART_ROOM
 
 
-#Which way the flight goes from here. Asked of the floors rather than of the way-buttons
-#beside it: those go dark while the stairs are still rotted, and the flight is there to be
-#looked at either way.
-func stairs_art():
-	var walk = MansionLayout.house_floors(view.layout())
-	var at = walk.find(view.floor_index())
-	return ART_STAIRS_UP if at >= 0 and at < walk.size() - 1 else ART_STAIRS_DOWN
+#A slot that shows the house's own picture through it and only a frame round the edge - the
+#staircase's. Every other slot has its background, its picture and the template's own panel
+#back, so a room swapped out of the stairs' place comes back looking like a room.
+func frame_only(on):
+	$bg.visible = !on
+	$art.visible = !on
+	if !has_meta('panel_styles'):
+		var kept = {}
+		for state in ['normal', 'hover', 'pressed', 'focus']:
+			kept[state] = get_stylebox(state)
+		set_meta('panel_styles', kept)
+	var panels = get_meta('panel_styles')
+	for state in ['normal', 'hover', 'pressed', 'focus']:
+		add_stylebox_override(state, stairs_frame(state != 'normal') if on else panels[state])
+
+
+#The frame itself: a line and no fill, brighter under the cursor. Made once per slot.
+func stairs_frame(lit):
+	var key = 'stairs_frame_lit' if lit else 'stairs_frame'
+	if !has_meta(key):
+		var box = StyleBoxFlat.new()
+		box.draw_center = false
+		box.set_border_width_all(4 if lit else 3)
+		box.border_color = STAIRS_FRAME_LIT if lit else STAIRS_FRAME
+		box.set_corner_radius_all(4)
+		set_meta(key, box)
+	return get_meta(key)
 
 
 #The staircase is the one room whose whole use is a choice of two, so it carries them on its

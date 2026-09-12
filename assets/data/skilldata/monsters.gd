@@ -24,7 +24,7 @@ var skills = {
 		sfx = [
 			{code = 'flame', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'firehit', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'firehit', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.3,
 		not_final = true
 	},
@@ -49,7 +49,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'earth_spike', target = 'target', period = 'postdamage'}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0,
 		damagestat = 'no_stat',
 		not_final = true
@@ -74,7 +74,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'earth_spike', target = 'target', period = 'postdamage'}], 
-		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0,
 		damagestat = 'no_stat',
 		not_final = true

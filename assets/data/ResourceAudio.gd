@@ -148,6 +148,7 @@ var sounds = {
 	spell_explosion = load("res://assets/sounds/sounds/spell_explosion.wav"),
 	spell_dark = load("res://assets/sounds/sounds/spell_explosion.wav"),
 	spell_lightning = load("res://assets/sounds/sounds/spell_explosion.wav"),
+	combat_electric_charge_strike = load("res://assets/sounds/sounds/combat_electric_charge_strike.wav"),
 	spell2 = load("res://assets/sounds/sounds/spell2.wav"),
 	spell_void = load("res://assets/sounds/sounds/spell_void.wav"),
 
@@ -188,6 +189,7 @@ var random_pitch_sounds = {
 	dodge = 0.4,
 	melee_attack = 0.4,
 	firehit = 0.4,
+	combat_electric_charge_strike = 0.06,
 	skill_scene = 0.2,
 	speech = 0.2,
 	#these fire on every pickup and sale, so a fixed pitch turns mechanical fast
@@ -239,13 +241,15 @@ func get_equip_sound(item):
 	return null
 
 
-# Combat hit-sound data uses one of three policies:
-# {hit_mode = 'none'}: no impact sound.
-# {hit_mode = 'dynamic'}: choose from the target's hit_sound_profile metadata.
+# Combat hit-sound data: sounddata.hittype picks one of three policies.
+# {hittype = 'none'}: no impact sound.
+# {hittype = 'dynamic'}: choose from the target's hit_sound_profile metadata.
 # Targets without that metadata use the body profile.
-# {hit_mode = 'static', hit = 'sound_id'}: always use that sound.
-# Legacy sounddata.hittype values remain supported: bodyarmor is dynamic and
-# absolute is static.
+# {hittype = 'static', hit = 'sound_id'}: always use that sound.
+# No hittype, or a null one: a damage skill gets the dynamic sound at the hit roll (see
+# uses_default_combat_hit_sound); anything else is silent.
+# Older spellings still play, for mods and older data: hittype 'bodyarmor' is dynamic,
+# 'absolute' is static, and a hit_mode key counts when there is no hittype.
 var combat_hit_sound_profiles = {
 	# The selected subtle-body impact is the fallback for targets with no explicit
 	# hit_sound_profile metadata. Other profiles remain material-specific.
@@ -262,16 +266,7 @@ var combat_hit_sound_profiles = {
 func get_combat_hit_sound(sounddata, target):
 	if sounddata == null or sounddata.empty():
 		return null
-	var hit_mode = 'none'
-	if sounddata.has('hit_mode'):
-		hit_mode = sounddata.hit_mode
-	elif sounddata.has('hittype'):
-		match sounddata.hittype:
-			'bodyarmor':
-				hit_mode = 'dynamic'
-			'absolute':
-				hit_mode = 'static'
-	match hit_mode:
+	match combat_hittype(sounddata):
 		'dynamic':
 			return get_dynamic_combat_hit_sound(target)
 		'static':
@@ -281,12 +276,27 @@ func get_combat_hit_sound(sounddata, target):
 	return null
 
 
+# 'none', 'dynamic' or 'static'; null when the data leaves the hit sound to the default.
+func combat_hittype(sounddata):
+	var value = sounddata.get('hittype', null)
+	if value == null:
+		value = sounddata.get('hit_mode', null)
+	if value == null:
+		return null
+	match str(value):
+		'dynamic', 'bodyarmor':
+			return 'dynamic'
+		'static', 'absolute':
+			return 'static'
+	return 'none'
+
+
 func uses_default_combat_hit_sound(sounddata):
 	if sounddata == null or sounddata.empty():
 		return true
-	# Explicit hit modes and legacy hittype values own their behavior. A regular
-	# damage skill with neither resolves through the target's dynamic profile.
-	return !sounddata.has('hit_mode') and !sounddata.has('hittype')
+	# A skill that sets a hittype owns its hit sound; a regular damage skill without one
+	# resolves through the target's dynamic profile.
+	return combat_hittype(sounddata) == null
 
 
 func get_default_combat_hit_sound(target):

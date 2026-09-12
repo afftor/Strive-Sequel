@@ -166,9 +166,11 @@ func update_shield():
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'shield_update',slot = 'SHIELD', params = args}
 	animation_node.add_new_data(data)
 
-func process_sfx(code):
+func process_sfx(code, params = {}):
 	if fighter == null: return
-	var data = {node = self, time = input_handler.combat_node.turns,type = code, slot = 'SFX', params = {}}
+	#a copy: start_animation writes sprite_name / video_name into params, and params here can be
+	#a dictionary straight from the effect data
+	var data = {node = self, time = input_handler.combat_node.turns, type = code, slot = 'SFX', params = params.duplicate(true)}
 	animation_node.add_new_data(data)
 
 func process_sound(sound):

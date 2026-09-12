@@ -20726,7 +20726,9 @@ Kuro pays no attention to his words, simply turns around and prepares to continu
 As she turns away, a group of coalition troops laying in the hiding who were just waiting for the king to appear.
 
 {color=yellow|The King: — That bitch even sided with the coalition behind my back! Take them out and get her!}""", # MISSING TRANSLATION
-	DWARF_CEREMONY_CAUGHTUP_CULT = """,
+	DWARF_CEREMONY_CAUGHTUP_CULT = """
+
+As she turns away, a group of cultists join the street blocking you from going after her.""", # MISSING TRANSLATION
 	DWARF_CEREMONY_BOLTHAR = """The ambushers part, and a gnome in a plain robe steps out of their ranks with his hands open at his sides. Bolthar. Behind him come the ones who hold his coalition together: a kobold weighed down with scavenged trinkets, a ratkin who keeps to the edge of the torchlight, a goblin with a bandolier of crude grenades, and a dwarf resting a double-bitted axe on his shoulder.
 
 {color=yellow|Bolthar: — I offered you a place among us once. You chose the crown instead, and now the crown has brought you here, to the one fight I hoped to spare you.}
@@ -20734,8 +20736,6 @@ As she turns away, a group of coalition troops laying in the hiding who were jus
 {color=aqua|The King: — Enough talk. Cut them down!}
 
 {color=yellow|Bolthar: — Stand together, friends. Whatever they take from us, they take from all of us at once.}""", # MISSING TRANSLATION
-
-As she turns away, a group of cultists join the street blocking you from going after her.""", # MISSING TRANSLATION
 	KURO_RESOLUTION_INTRO = """You make your way to the nearby caves chasing after Kuro carrying the artifact. By going through unconventional paths soon you arrive in a desolated area.
 
 Everything apparently has been prepared beforehand as you spot Kuro standing in the middle of the ritual circle opening the portal. On a much larger perimeter the area is blocked out by a semi-transparent barrier not unlike one you've encountered at Millford, however this one is much darker.""", # MISSING TRANSLATION
@@ -23923,7 +23923,8 @@ Authority: +""", # MISSING TRANSLATION
 	DATING_AFFECTIONATE_RESULT_1 = """
 
 {color=green|Affectionate Mood}: The time together leaves [name] feeling closer to you.""", # MISSING TRANSLATION
-	DATING_LOW_FEAR_WARNING = """,
+	DATING_LOW_FEAR_WARNING = """
+{color=yellow|[name] felt too at ease around you, weakening [his] respect.}""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_ASK = """[name] has been entirely at ease in your company. There is a new familiarity in the way [he] speaks to you, and you find yourself thinking [he] has grown presumptuous.""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_DISCIPLINE = """Put [him] in [his] place""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_ENDORSE = """Endorse it""", # MISSING TRANSLATION
@@ -23933,7 +23934,6 @@ Authority: +""", # MISSING TRANSLATION
 	DATING_PRESUMPTION_ENDORSE_RESULT = """
 
 {color=yellow|You decide to play along, showing your willingness to let [name] treat you with less respect.}""", # MISSING TRANSLATION
-{color=yellow|[name] felt too at ease around you, weakening [his] respect.}""", # MISSING TRANSLATION
 	DATING_FEARFUL_RESULT_1 = """
 
 {color=red|Fearful Mood}: The date leaves [name] shaken, but more conscious of your power.""", # MISSING TRANSLATION
