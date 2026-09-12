@@ -161,6 +161,15 @@ var animation_attachments = {}
 var animation_signature = 0
 var animation_times = {}
 var animation_durations = {}
+const POSE_TRANSITION_DURATION = 0.35
+# A pose switch crossfades the local transforms produced by the old pose into
+# the live sample of the new one. Missing keys mean setup values, which also
+# makes turning the last pose off fade smoothly back to the setup pose.
+var pose_transition_from = {}
+var pose_transition_elapsed = POSE_TRANSITION_DURATION
+var pose_transition_sample = {}
+var pose_transition_sample_key = ""
+var bone_setup_sample = {}
 # What the running animations do to the bones they key, as {bone: [x, y,
 # rotation, scale_x, scale_y]} - the local values before any modifier has
 # touched them. A solve
@@ -227,6 +236,10 @@ func _ready():
 func _reset_animation_states():
 	animation_states = {}
 	animation_times = {}
+	pose_transition_from = {}
+	pose_transition_elapsed = POSE_TRANSITION_DURATION
+	pose_transition_sample = {}
+	pose_transition_sample_key = ""
 	var default_animation = str(DOLLS.doll(doll_id).get("default_animation", ""))
 	var animations = skeleton.get("animations", {})
 	for animation_name in animations.keys():
@@ -249,6 +262,7 @@ func _process(delta):
 	# animations that gets a share of this frame
 	_advance_blink(delta)
 	var pose_changed = _advance_pushables(delta)
+	pose_changed = _advance_pose_transition(delta) or pose_changed
 	pose_changed = _advance_titjump(delta) or pose_changed
 	for animation_name in animation_states.keys():
 		if animation_name == TITJUMP_ANIMATION:
@@ -289,6 +303,16 @@ func play_titjump():
 	animation_states[TITJUMP_ANIMATION] = true
 	bone_sample_key = ""
 	set_process(true)
+
+
+func _advance_pose_transition(delta):
+	if pose_transition_elapsed >= POSE_TRANSITION_DURATION:
+		return false
+	pose_transition_elapsed = min(POSE_TRANSITION_DURATION, pose_transition_elapsed + delta)
+	pose_transition_sample_key = ""
+	if pose_transition_elapsed >= POSE_TRANSITION_DURATION:
+		pose_transition_from = {}
+	return true
 
 
 # Whether the doll blinks by itself.  Turned on beside the idle and off with it.
@@ -510,6 +534,15 @@ func _load_source():
 	# animation they both name `idle1` would otherwise share one.
 	bone_sample = {}
 	bone_sample_key = ""
+	bone_setup_sample = {}
+	for definition in skeleton.get("bones", []):
+		bone_setup_sample[str(definition.get("name", ""))] = [
+			float(definition.get("x", 0.0)),
+			float(definition.get("y", 0.0)),
+			float(definition.get("rotation", 0.0)),
+			float(definition.get("scaleX", 1.0)),
+			float(definition.get("scaleY", 1.0)),
+		]
 	slot_data = shared.slot_data
 	skin_map = shared.skin_map
 	atlas = shared.atlas
@@ -851,6 +884,43 @@ func _apply_active_bone_timelines():
 # why a keyed child could be written before its keyed parent and still come out
 # right.  Only the locals survive the pass, and those are independent of it.
 func _sampled_bone_timelines():
+	var target = _sample_current_bone_timelines()
+	if pose_transition_elapsed >= POSE_TRANSITION_DURATION:
+		return target
+	var transition_key = "%s#%.6f" % [bone_sample_key, pose_transition_elapsed]
+	if transition_key == pose_transition_sample_key:
+		return pose_transition_sample
+	pose_transition_sample_key = transition_key
+	pose_transition_sample = {}
+	var names = {}
+	for name in pose_transition_from.keys():
+		names[name] = true
+	for name in target.keys():
+		names[name] = true
+	var amount = clamp(pose_transition_elapsed / POSE_TRANSITION_DURATION, 0.0, 1.0)
+	# Smoothstep keeps both ends of the short transition from arriving with a
+	# visible jerk while retaining the requested quarter-second duration.
+	amount = amount * amount * (3.0 - 2.0 * amount)
+	for name in names.keys():
+		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0])
+		var first = pose_transition_from.get(name, setup)
+		var second = target.get(name, setup)
+		pose_transition_sample[name] = [
+			lerp(float(first[0]), float(second[0]), amount),
+			lerp(float(first[1]), float(second[1]), amount),
+			_lerp_degrees(float(first[2]), float(second[2]), amount),
+			lerp(float(first[3]), float(second[3]), amount),
+			lerp(float(first[4]), float(second[4]), amount),
+		]
+	return pose_transition_sample
+
+
+func _lerp_degrees(first, second, amount):
+	var difference = fposmod(second - first + 180.0, 360.0) - 180.0
+	return first + difference * amount
+
+
+func _sample_current_bone_timelines():
 	var key = ""
 	for animation_name in animation_states.keys():
 		if animation_states[animation_name]:
@@ -1700,6 +1770,8 @@ func _add_animation_toggle(parent, label_text, animation_name):
 # either.  Overlays are not - `eyesmove` only swaps attachments and has no bone
 # timeline of its own, so it rides along with any pose.
 func _on_animation_toggled(enabled, animation_name):
+	var transitions_pose = _poses_the_skeleton(animation_name)
+	var previous_pose = _sampled_bone_timelines().duplicate(true) if transitions_pose else {}
 	animation_states[animation_name] = enabled
 	if !enabled:
 		animation_times[animation_name] = 0.0
@@ -1716,6 +1788,12 @@ func _on_animation_toggled(enabled, animation_name):
 				toggle.set_block_signals(true)
 				toggle.pressed = false
 				toggle.set_block_signals(false)
+	if transitions_pose:
+		bone_sample_key = ""
+		pose_transition_from = previous_pose
+		pose_transition_elapsed = 0.0
+		pose_transition_sample = {}
+		pose_transition_sample_key = ""
 	# An authored pose brings its own hands and its own draw order, so turning one
 	# on or off is a rebuild, not a re-pose.
 	_rebuild_model()
