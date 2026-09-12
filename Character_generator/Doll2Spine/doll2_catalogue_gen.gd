@@ -13,7 +13,7 @@ const SOURCE = {
 	"bone_count": 272,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "wxFdVlIDrNE",
+	"skeleton_hash": "DD4glcwEyg0",
 	"slot_count": 81,
 	"spine_version": "4.2.43",
 }
