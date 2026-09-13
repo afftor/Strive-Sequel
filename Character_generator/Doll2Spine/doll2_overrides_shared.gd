@@ -284,11 +284,13 @@ const SLOT_AXES = {
 const HIDDEN_BY_ANIMAL_BODY = ["leg_left", "leg_right", "equip_leg_left",
 	"equip_leg_right", "race_leg_left", "race_leg_right", "dick", "testicle"]
 
-# A harpy's wings are her arms: the pair is drawn from the shoulder down, so the
-# human arm and hand underneath would stick out of the feathers.  The shoulders
-# stay - the wing starts there and the art expects them.
+# A harpy's wings replace the visible human arms all the way through the
+# shoulder.  Muscle overlays belong to the same human shoulder cut and must go
+# with it; race and equipment shoulders remain independent choices.
 const HIDDEN_BY_WING_ARMS = ["arm_left", "arm_right", "hand_left", "hand_right",
+	"shoulder_left", "shoulder_right", "shoulderl_muscle", "shoulderr_muscle",
 	"equip_arm_left", "equip_arm_right", "equip_hand_left", "equip_hand_right",
+	"equip_shoulder_left", "equip_shoulder_right",
 	"race_arm_left", "race_arm_right"]
 
 const PART_HIDES = {

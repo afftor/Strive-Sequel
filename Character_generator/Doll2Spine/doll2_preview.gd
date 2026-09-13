@@ -162,6 +162,8 @@ var animation_signature = 0
 var animation_times = {}
 var animation_durations = {}
 const POSE_TRANSITION_DURATION = 0.35
+const EMOTION_TRANSITION_DURATION = 0.3
+const EMOTION_PREFIX = "emote_"
 # A pose switch crossfades the local transforms produced by the old pose into
 # the live sample of the new one. Missing keys mean setup values, which also
 # makes turning the last pose off fade smoothly back to the setup pose.
@@ -169,6 +171,11 @@ var pose_transition_from = {}
 var pose_transition_elapsed = POSE_TRANSITION_DURATION
 var pose_transition_sample = {}
 var pose_transition_sample_key = ""
+var emotion_transition_from = {}
+var emotion_transition_elapsed = EMOTION_TRANSITION_DURATION
+var emotion_transition_sample = {}
+var emotion_transition_sample_key = ""
+var emotion_colour_from = {}
 var bone_setup_sample = {}
 # What the running animations do to the bones they key, as {bone: [x, y,
 # rotation, scale_x, scale_y]} - the local values before any modifier has
@@ -252,6 +259,11 @@ func _reset_animation_states():
 	pose_transition_elapsed = POSE_TRANSITION_DURATION
 	pose_transition_sample = {}
 	pose_transition_sample_key = ""
+	emotion_transition_from = {}
+	emotion_transition_elapsed = EMOTION_TRANSITION_DURATION
+	emotion_transition_sample = {}
+	emotion_transition_sample_key = ""
+	emotion_colour_from = {}
 	var default_animation = str(DOLLS.doll(doll_id).get("default_animation", ""))
 	var animations = skeleton.get("animations", {})
 	for animation_name in animations.keys():
@@ -275,6 +287,7 @@ func _process(delta):
 	_advance_blink(delta)
 	var pose_changed = _advance_pushables(delta)
 	pose_changed = _advance_pose_transition(delta) or pose_changed
+	pose_changed = _advance_emotion_transition(delta) or pose_changed
 	pose_changed = _advance_titjump(delta) or pose_changed
 	if _advance_pose_offsets(delta):
 		pose_changed = true
@@ -326,6 +339,18 @@ func _advance_pose_transition(delta):
 	pose_transition_sample_key = ""
 	if pose_transition_elapsed >= POSE_TRANSITION_DURATION:
 		pose_transition_from = {}
+	return true
+
+
+func _advance_emotion_transition(delta):
+	if emotion_transition_elapsed >= EMOTION_TRANSITION_DURATION:
+		return false
+	emotion_transition_elapsed = min(EMOTION_TRANSITION_DURATION, emotion_transition_elapsed + delta)
+	emotion_transition_sample_key = ""
+	if emotion_transition_elapsed >= EMOTION_TRANSITION_DURATION:
+		emotion_transition_from = {}
+		emotion_colour_from = {}
+	return true
 # Catches the pose offsets up with the selections.  Only a change is acted on, so
 # the rebuilds an animation triggers part way through a glide leave it running.
 # A change nobody asked to see eased lands at once, and so does one made while
@@ -953,10 +978,10 @@ func _apply_active_bone_timelines():
 func _sampled_bone_timelines():
 	var target = _sample_current_bone_timelines()
 	if pose_transition_elapsed >= POSE_TRANSITION_DURATION:
-		return target
+		return _emotion_bone_sample(target)
 	var transition_key = "%s#%.6f" % [bone_sample_key, pose_transition_elapsed]
 	if transition_key == pose_transition_sample_key:
-		return pose_transition_sample
+		return _emotion_bone_sample(pose_transition_sample)
 	pose_transition_sample_key = transition_key
 	pose_transition_sample = {}
 	var names = {}
@@ -979,7 +1004,38 @@ func _sampled_bone_timelines():
 			lerp(float(first[3]), float(second[3]), amount),
 			lerp(float(first[4]), float(second[4]), amount),
 		]
-	return pose_transition_sample
+	return _emotion_bone_sample(pose_transition_sample)
+
+
+func _emotion_bone_sample(target):
+	if emotion_transition_elapsed >= EMOTION_TRANSITION_DURATION:
+		return target
+	var transition_key = "%s#%.6f#%.6f" % [
+		bone_sample_key, pose_transition_elapsed, emotion_transition_elapsed
+	]
+	if transition_key == emotion_transition_sample_key:
+		return emotion_transition_sample
+	emotion_transition_sample_key = transition_key
+	emotion_transition_sample = {}
+	var names = {}
+	for name in emotion_transition_from.keys():
+		names[name] = true
+	for name in target.keys():
+		names[name] = true
+	var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
+	amount = amount * amount * (3.0 - 2.0 * amount)
+	for name in names.keys():
+		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0])
+		var first = emotion_transition_from.get(name, setup)
+		var second = target.get(name, setup)
+		emotion_transition_sample[name] = [
+			lerp(float(first[0]), float(second[0]), amount),
+			lerp(float(first[1]), float(second[1]), amount),
+			_lerp_degrees(float(first[2]), float(second[2]), amount),
+			lerp(float(first[3]), float(second[3]), amount),
+			lerp(float(first[4]), float(second[4]), amount),
+		]
+	return emotion_transition_sample
 
 
 func _lerp_degrees(first, second, amount):
@@ -989,9 +1045,8 @@ func _lerp_degrees(first, second, amount):
 
 func _sample_current_bone_timelines():
 	var key = ""
-	for animation_name in animation_states.keys():
-		if animation_states[animation_name]:
-			key += "%s@%.6f|" % [animation_name, float(animation_times.get(animation_name, 0.0))]
+	for animation_name in _ordered_active_animations():
+		key += "%s@%.6f|" % [animation_name, float(animation_times.get(animation_name, 0.0))]
 	# An empty key is never a hit: `bone_sample_key = ""` is how callers throw the
 	# sample away, and it is also the key of "nothing is running".  Taken as a hit,
 	# the last animation to stop - a titjump with the idle off - stayed applied.
@@ -1001,15 +1056,7 @@ func _sample_current_bone_timelines():
 	bone_sample = {}
 	if key == "":
 		return bone_sample
-	var animation_names = animation_states.keys()
-	# titjump is an authored overlay on the current pose. Apply it last so its
-	# nipple-bone keys cannot be overwritten by the looping idle pose.
-	if bool(animation_states.get(TITJUMP_ANIMATION, false)):
-		animation_names.erase(TITJUMP_ANIMATION)
-		animation_names.append(TITJUMP_ANIMATION)
-	for animation_name in animation_names:
-		if !animation_states[animation_name]:
-			continue
+	for animation_name in _ordered_active_animations():
 		var animation = skeleton.get("animations", {}).get(animation_name, {})
 		var bone_timelines = animation.get("bones", {})
 		var time = float(animation_times.get(animation_name, 0.0))
@@ -1747,11 +1794,17 @@ func _build_interface():
 	title.text = _text("DOLL2_PREVIEW_TITLE")
 	box.add_child(title)
 	_add_doll_select(box)
-	# Built from the export rather than listed here, so an animation added in a
-	# later export shows up on its own instead of being invisible until someone
-	# remembers to add a line.
+	# Poses and emotions are two independent animation channels.  Each channel is
+	# exclusive inside itself, so a dropdown describes it better than a row of
+	# checkboxes that can appear to allow impossible combinations.
+	_add_animation_select(box, "Poses", _pose_animations(), "pose", false)
+	_add_animation_select(box, "Emotions", _emotion_animations(), "emotion", true)
+	# Small overlays such as `say` remain toggles: they run on top of both
+	# channels and must not replace the selected pose.
 	for animation_name in _sorted_animations():
 		if animation_name == BLINK_ANIMATION or animation_name == TITJUMP_ANIMATION:
+			continue
+		if _is_emotion_animation(animation_name) or _poses_the_skeleton(animation_name):
 			continue # the blink runs it on its own timer, see the toggle below
 		_add_animation_toggle(box, ANIMATION_LABELS.get(animation_name, ""), animation_name)
 	var blink_toggle = CheckButton.new()
@@ -1810,6 +1863,52 @@ func _poses_the_skeleton(animation_name):
 	return !skeleton.get("animations", {}).get(animation_name, {}).get("bones", {}).empty()
 
 
+func _is_emotion_animation(animation_name):
+	return str(animation_name).begins_with(EMOTION_PREFIX)
+
+
+func _emotion_animations():
+	var result = []
+	for animation_name in _sorted_animations():
+		if _is_emotion_animation(animation_name):
+			result.append(animation_name)
+	return result
+
+
+func _pose_animations():
+	var result = []
+	for animation_name in _sorted_animations():
+		if animation_name == TITJUMP_ANIMATION:
+			continue
+		if !_is_emotion_animation(animation_name) and _poses_the_skeleton(animation_name):
+			result.append(animation_name)
+	return result
+
+
+# Stable composition order: regular poses and overlays first, emotion last.
+# This makes every authored emotion channel authoritative wherever both takes
+# address the same bone, slot, attachment, deform or draw-order key.
+func _ordered_active_animations():
+	var ordinary = []
+	var emotions = []
+	for animation_name in animation_states.keys():
+		if !animation_states[animation_name]:
+			continue
+		if _is_emotion_animation(animation_name):
+			emotions.append(animation_name)
+		else:
+			ordinary.append(animation_name)
+	ordinary.sort()
+	emotions.sort()
+	# titjump remains an overlay on the pose, but an emotion still has the final
+	# say when the two happen to key the same breast or face control.
+	if TITJUMP_ANIMATION in ordinary:
+		ordinary.erase(TITJUMP_ANIMATION)
+		ordinary.append(TITJUMP_ANIMATION)
+	ordinary.append_array(emotions)
+	return ordinary
+
+
 func _sorted_animations():
 	# An animation with no timelines at all is not one: the male export carries an
 	# empty `1` left over in the Spine project, and a toggle that cannot move
@@ -1835,13 +1934,56 @@ func _add_animation_toggle(parent, label_text, animation_name):
 	ui["animation_" + animation_name] = toggle
 
 
+func _add_animation_select(parent, label_text, animation_names, channel, allow_none):
+	if animation_names.empty():
+		return
+	var select = _make_select(parent, label_text)
+	if allow_none:
+		select.add_item(_text("DOLL2_PREVIEW_NONE"))
+		select.set_item_metadata(0, "")
+	var active = ""
+	for animation_name in animation_names:
+		var item_label = str(animation_name)
+		if _is_emotion_animation(animation_name):
+			item_label = item_label.substr(EMOTION_PREFIX.length()).replace("_", " ").capitalize()
+		elif ANIMATION_LABELS.has(animation_name):
+			item_label = _text(ANIMATION_LABELS[animation_name])
+		select.add_item(item_label)
+		select.set_item_metadata(select.get_item_count() - 1, animation_name)
+		if bool(animation_states.get(animation_name, false)):
+			active = animation_name
+	_select_metadata(select, active)
+	select.connect("item_selected", self, "_on_animation_selected", [channel, select])
+	ui["animation_select_" + channel] = select
+
+
+func _on_animation_selected(_item_index, channel, select):
+	var animation_names = _emotion_animations() if channel == "emotion" else _pose_animations()
+	var selected = str(select.get_item_metadata(select.selected))
+	var active = ""
+	for animation_name in animation_names:
+		if bool(animation_states.get(animation_name, false)):
+			active = animation_name
+			break
+	if selected == active:
+		return
+	if selected.empty():
+		if !active.empty():
+			_on_animation_toggled(false, active)
+	else:
+		_on_animation_toggled(true, selected)
+
+
 # A pose is exclusive: two of them at once are two sets of keys on the same
 # bones, and the doll ends up in whichever the loop reached last rather than in
 # either.  Overlays are not - `eyesmove` only swaps attachments and has no bone
 # timeline of its own, so it rides along with any pose.
 func _on_animation_toggled(enabled, animation_name):
-	var transitions_pose = _poses_the_skeleton(animation_name)
+	var is_emotion = _is_emotion_animation(animation_name)
+	var transitions_pose = _poses_the_skeleton(animation_name) and !is_emotion
 	var previous_pose = _sampled_bone_timelines().duplicate(true) if transitions_pose else {}
+	var previous_emotion_pose = _sampled_bone_timelines().duplicate(true) if is_emotion else {}
+	var previous_emotion_colours = _capture_animated_slot_colours() if is_emotion else {}
 	animation_states[animation_name] = enabled
 	if !enabled:
 		animation_times[animation_name] = 0.0
@@ -1849,7 +1991,9 @@ func _on_animation_toggled(enabled, animation_name):
 		for other_name in animation_states.keys():
 			if other_name == animation_name or !animation_states[other_name]:
 				continue
-			if !_poses_the_skeleton(other_name):
+			if is_emotion != _is_emotion_animation(other_name):
+				continue
+			if !is_emotion and !_poses_the_skeleton(other_name):
 				continue
 			animation_states[other_name] = false
 			animation_times[other_name] = 0.0
@@ -1858,7 +2002,14 @@ func _on_animation_toggled(enabled, animation_name):
 				toggle.set_block_signals(true)
 				toggle.pressed = false
 				toggle.set_block_signals(false)
-	if transitions_pose:
+	if is_emotion:
+		bone_sample_key = ""
+		emotion_transition_from = previous_emotion_pose
+		emotion_colour_from = previous_emotion_colours
+		emotion_transition_elapsed = 0.0
+		emotion_transition_sample = {}
+		emotion_transition_sample_key = ""
+	elif transitions_pose:
 		bone_sample_key = ""
 		pose_transition_from = previous_pose
 		pose_transition_elapsed = 0.0
@@ -2770,9 +2921,7 @@ func _current_draw_order():
 # on their way forward, and an index would land one slot out.
 func _animation_draw_order():
 	var entry = []
-	for animation_name in animation_states.keys():
-		if !animation_states[animation_name]:
-			continue
+	for animation_name in _ordered_active_animations():
 		var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
 		if timeline.empty():
 			continue
@@ -2825,9 +2974,7 @@ func _animation_draw_order():
 # right now, so a change can be spotted without rebuilding to find out.
 func _animation_signature():
 	var result = [_animation_attachments()]
-	for animation_name in animation_states.keys():
-		if !animation_states[animation_name]:
-			continue
+	for animation_name in _ordered_active_animations():
 		var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
 		if timeline.empty():
 			continue
@@ -2869,9 +3016,7 @@ func _apply_draw_order_fixes(order):
 # one pose's hands on another pose's arms.
 func _animation_attachments():
 	var result = {}
-	for animation_name in animation_states.keys():
-		if !animation_states[animation_name]:
-			continue
+	for animation_name in _ordered_active_animations():
 		var timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {})
 		var time = float(animation_times.get(animation_name, 0.0))
 		for slot_name in timelines.keys():
@@ -2986,6 +3131,20 @@ func _update_bone_nodes():
 func _resolve_attachment(slot):
 	var slot_name = slot.get("name", "")
 	var attachment_name = str(composed.get(slot_name, ""))
+	var emotion_slot = _active_emotion_animates_slot(slot_name)
+	# Emotion art is intentionally absent from the ordinary appearance
+	# selection.  Blush is a setup attachment animated only through RGBA, while
+	# the surprise mouth is introduced by an attachment timeline.  Materialise
+	# those slots while an emotion owns them; ordinary pose attachments still
+	# cannot put hidden hands or clothes back on the doll.
+	if emotion_slot and animation_attachments.has(slot_name):
+		attachment_name = str(animation_attachments[slot_name])
+	elif emotion_slot and attachment_name.empty():
+		attachment_name = str(slot.get("attachment", ""))
+		if attachment_name.empty():
+			var slot_attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
+			if slot_attachments.size() == 1:
+				attachment_name = str(slot_attachments.keys()[0])
 	# Only for a slot the doll is already showing: the timeline says which hand to
 	# use, not whether the character has one.
 	if !attachment_name.empty() and animation_attachments.has(slot_name):
@@ -3000,6 +3159,15 @@ func _resolve_attachment(slot):
 	result["_attachment_name"] = attachment_name
 	result["_skin_name"] = SKIN_NAME
 	return result
+
+
+func _active_emotion_animates_slot(slot_name):
+	for animation_name in _ordered_active_animations():
+		if !_is_emotion_animation(animation_name):
+			continue
+		if skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).has(slot_name):
+			return true
+	return false
 
 
 func _add_attachment(slot, attachment):
@@ -3123,9 +3291,7 @@ func _attachment_deform(slot, attachment):
 	var skin_name = attachment.get("_skin_name", "")
 	var slot_name = slot.get("name", "")
 	var attachment_name = attachment.get("_attachment_name", "")
-	for animation_name in animation_states.keys():
-		if !animation_states[animation_name]:
-			continue
+	for animation_name in _ordered_active_animations():
 		var attachment_timelines = skeleton.get("animations", {}).get(animation_name, {}).get("attachments", {})
 		if !attachment_timelines.has(skin_name):
 			continue
@@ -3134,7 +3300,7 @@ func _attachment_deform(slot, attachment):
 			continue
 		var timeline = skin_timelines[slot_name][attachment_name].get("deform", [])
 		var sampled = _sample_deform_timeline(timeline, float(animation_times.get(animation_name, 0.0)), _deform_length(attachment))
-		if result.empty():
+		if result.empty() or _is_emotion_animation(animation_name):
 			result = sampled
 		else:
 			for i in range(min(result.size(), sampled.size())):
@@ -3229,15 +3395,33 @@ func _attachment_colour(slot, _attachment):
 # two animations key the same slot.
 func _animated_slot_colour(slot_name):
 	var result = Color(1, 1, 1, 1)
-	for animation_name in animation_states.keys():
-		if !animation_states[animation_name]:
-			continue
+	for animation_name in _ordered_active_animations():
 		var slot_timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {})
 		if !slot_timelines.has(slot_name):
 			continue
 		var frames = slot_timelines[slot_name].get("rgba", [])
 		if !frames.empty():
 			result = _sample_rgba_timeline(frames, float(animation_times.get(animation_name, 0.0)))
+	if emotion_transition_elapsed < EMOTION_TRANSITION_DURATION and emotion_colour_from.has(slot_name):
+		var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
+		amount = amount * amount * (3.0 - 2.0 * amount)
+		result = emotion_colour_from[slot_name].linear_interpolate(result, amount)
+	return result
+
+
+func _capture_animated_slot_colours():
+	var result = {}
+	var drawn_slots = {}
+	for record in mesh_records:
+		drawn_slots[str(record.slot.get("name", ""))] = true
+	for slot in skeleton.get("slots", []):
+		var slot_name = str(slot.get("name", ""))
+		var colour = _animated_slot_colour(slot_name)
+		# A slot introduced by the next emotion fades in from transparency rather
+		# than appearing at full opacity on the rebuild frame.
+		if !drawn_slots.has(slot_name):
+			colour.a = 0.0
+		result[slot_name] = colour
 	return result
 
 

@@ -9,11 +9,11 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 719,
+	"attachment_count": 721,
 	"bone_count": 272,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "DD4glcwEyg0",
+	"skeleton_hash": "T3oV9KEgj0E",
 	"slot_count": 81,
 	"spine_version": "4.2.43",
 }
@@ -954,6 +954,8 @@ const GROUPS = {
 			"lips4",
 			"lips5",
 			"lips_beast",
+			"lips_fang",
+			"lips_fang_open",
 			"lips_m1",
 			"lips_m2",
 			"lips_m3",
@@ -1227,7 +1229,6 @@ const PARTS = {
 			"dick": "dick_furry_up",
 			"testicle": "testicle_furry",
 		},
-		"zones": [0],
 	},
 	"Dick_horse_up": {
 		"folders": ["13_dicks"],
@@ -1236,7 +1237,6 @@ const PARTS = {
 			"dick": "dick_horse_up__body_female_beastkin",
 			"testicle": "testicle_furry",
 		},
-		"zones": [0],
 	},
 	"Dick_human_up": {
 		"folders": ["13_dicks"],
@@ -2521,6 +2521,20 @@ const PARTS = {
 		"group": "lips",
 		"slots": {
 			"lips": "lips_beast__body_female_beastkin",
+		},
+	},
+	"lips_fang": {
+		"folders": ["12_lips"],
+		"group": "lips",
+		"slots": {
+			"lips": "12_lips/lips_fang",
+		},
+	},
+	"lips_fang_open": {
+		"folders": ["12_lips"],
+		"group": "lips",
+		"slots": {
+			"lips_say": "12_lips/lips_fang_open",
 		},
 	},
 	"lips_m1": {
@@ -4748,10 +4762,16 @@ const PARTS = {
 			"arm_right",
 			"hand_left",
 			"hand_right",
+			"shoulder_left",
+			"shoulder_right",
+			"shoulderl_muscle",
+			"shoulderr_muscle",
 			"equip_arm_left",
 			"equip_arm_right",
 			"equip_hand_left",
 			"equip_hand_right",
+			"equip_shoulder_left",
+			"equip_shoulder_right",
 			"race_arm_left",
 			"race_arm_right",
 		],
