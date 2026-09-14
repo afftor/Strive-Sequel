@@ -914,9 +914,8 @@ var data = {
 				],
 				reqs = [
 					{
-						type = "has_mansion_room",
-						name = "bathhouse",
-						value = 1
+						type = "has_bath",
+						check = true
 					}
 				],
 				character = "$zephyra",
@@ -1026,9 +1025,8 @@ var data = {
 		music = "intimate_funny", 
 		reqs = [
 			{
-				type = "has_mansion_room",
-				name = "bathhouse",
-				value = 1,
+				type = "has_bath",
+				check = true,
 				negative = "repeat_next_day"
 			},
 			{

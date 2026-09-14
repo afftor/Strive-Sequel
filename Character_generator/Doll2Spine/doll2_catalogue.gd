@@ -246,8 +246,12 @@ static func _nearest_option(definition, options, wanted, slot_name):
 # slot an earlier one (the body) filled.  A part that declares a slot but has no
 # attachment for the current axis value clears it: an outfit with no maternity
 # piece must show nothing there, not the previous selection's mesh.
-static func compose(selections, axis_values):
+# `hidden_slots` are worn but not shown - the chest and the crotch of a bare
+# character's underwear - and are left out of the result.
+static func compose(selections, axis_values, hidden_slots = []):
 	var result = {}
+	# the part the chest is dressed in, which the nipple piercing asks about below
+	var chest_cover = ""
 	for slot_name in _gen().FIXED_SLOTS.keys():
 		result[slot_name] = _gen().FIXED_SLOTS[slot_name]
 	for group_id in _gen().GROUP_ORDER:
@@ -295,6 +299,8 @@ static func compose(selections, axis_values):
 					result.erase(slot_name)
 				else:
 					result[slot_name] = stand_in
+		if slots.has("equip_breasts") and result.has("equip_breasts"):
+			chest_cover = part_id
 	# A part can replace another one rather than sit on top of it: an animal lower
 	# body takes the place of the legs, so those slots are cleared after everything
 	# has been composed - the old doll hid its `l_body` node group for exactly this.
@@ -311,10 +317,15 @@ static func compose(selections, axis_values):
 	if has_tag(str(selections.get("body", "")), "beastkin"):
 		result.erase("equip_hand_left")
 		result.erase("equip_hand_right")
+	# What is worn but not shown goes before anything below asks what is drawn:
+	# the chest of a bare character's underwear covers no piercing.
+	for slot_name in hidden_slots:
+		result.erase(slot_name)
 	# A nipple piercing belongs under the breast clothing, never over it. Test
 	# the composed slot rather than the outfit selection: not every outfit has a
-	# breast piece for every size.
-	if result.has("equip_breasts"):
+	# breast piece for every size.  A sheer piece is the exception: the nipples
+	# are seen through it, and so is what goes through them.
+	if result.has("equip_breasts") and !has_tag(chest_cover, "see_through"):
 		result.erase("piercing_nipple_1_0")
 	return result
 

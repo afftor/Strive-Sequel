@@ -316,19 +316,27 @@ func _confirm_pending():
 	pending = {}
 	if question.empty() or selected_person == null or _block_reason(selected_person) != '':
 		return
+	var inked = false
 	match question.action:
 		'remove':
 			selected_person.remove_tattoo(question.slot)
+			inked = true
 		'add', 'replace':
 			if selected_ink == '' or !selected_person.can_add_tattoo(question.slot, selected_ink):
 				input_handler.SystemMessage(tr("INVALIDREQS"))
 			elif selected_person.add_tattoo(question.slot, selected_ink):
 				ResourceScripts.game_res.materials[selected_ink] -= 1
+				inked = true
 	if selected_ink != '' and int(ResourceScripts.game_res.materials.get(selected_ink, 0)) <= 0:
 		selected_ink = ''
-	#the counts and the icons; no doll work, the doll does not draw tattoos
 	rebuild_inks()
 	refresh_slots()
+	if inked:
+		#the doll draws a crotch tattoo now, so the picture changes the moment the ink goes on
+		#or comes off: this room's own doll is made to rebuild - it skips the rebuild while
+		#nothing it knows of has changed - and every other open doll is told as well
+		refresh_preview(true)
+		input_handler.emit_signal('update_ragdoll')
 
 
 func refresh_preview(force):

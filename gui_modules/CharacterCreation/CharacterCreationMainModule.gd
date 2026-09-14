@@ -133,6 +133,7 @@ var params_to_save = [ #memo mostly
 	'chin', 
 	'nose', 
 	'body_color_skin', 
+	'body_color_nipples', 
 	'body_color_lips', 
 	'body_color_eyebrows', 
 	'body_color_wings', 
@@ -460,11 +461,22 @@ func value_has_art(stat, value):
 	var group_id = str(DOLL_MAP.FEEDS.get(str(stat), ""))
 	if group_id == "":
 		return true #not something the doll picks a part for
+	# a chin is for the head this body has: a muzzle on a human face, or a human
+	# chin the muzzle would only be painted over, is not a choice
+	if str(stat) == "chin" and !DOLL_MAP.chin_fits_body(value, DOLL_MAP.draws_beastkin(person.get_stat('race')), DOLL_MAP.beast_of(person.get_stat('race'))):
+		return false
 	# resolved the same way the option pictures resolve it, so the list and the
 	# pictures cannot disagree about what is on offer
 	var part_id = str(DOLL_MAP.resolve(str(stat), str(value)))
 	if part_id == "":
 		return true #a value that means "nothing" is drawn as nothing on purpose
+	# a beastkin's face is the muzzle's: what the doll draws for these groups is the
+	# beastkin cut, or nothing at all - a cat's muzzle has its own mouth and no nose
+	var race = person.get_stat('race')
+	if DOLL_MAP.draws_beastkin(race) and group_id in DOLL_MAP.BEASTKIN_GROUPS:
+		part_id = str(DOLL_MAP.beastkin_variant(group_id, part_id, {"beast": DOLL_MAP.beast_of(race)}))
+		if part_id == "":
+			return false
 	DOLL_CATALOGUE.use("male" if str(person.get_stat('sex')) == "male" else "female")
 	return part_id in DOLL_CATALOGUE.parts(group_id)
 
@@ -656,14 +668,19 @@ const PART_BEHIND_COLOUR = {
 
 
 func colours_allowed_to_race(stat):
-	# A pointed or plain ear is shaped skin, drawn in skin tone by the art itself;
-	# only an ear the art grows fur on has a colour to be asked about.  Asked here,
-	# above the rule below, which answers with the whole palette and returns.
-	if stat == 'body_color_ears' and !person.statlist.has_animal_ears():
+	# Ears and a tail are offered a colour whenever the doll draws them - skin, fur,
+	# hide or fin alike: an empty value still follows the rule, and a pick paints
+	# the part whatever it is made of.  A pair the art never draws answers to
+	# nothing.  Asked here, above the rule below, which answers with the whole
+	# palette and returns.
+	if stat == 'body_color_ears' and !person.statlist.has_ear_art():
 		return []
-	# Same for the tail: a hide, a fin or a scaled tail answers to something else,
-	# and a tail the art never draws answers to nothing.
-	if stat == 'body_color_tail' and !person.statlist.has_fur_tail():
+	if stat == 'body_color_tail' and !person.statlist.has_tail_art():
+		return []
+	# A part the character does not have has no colour to pick: a human is not
+	# asked what shade her wings are.  Above the rule too, which would otherwise
+	# offer the whole palette for horns nobody has.
+	if PART_BEHIND_COLOUR.has(stat) and str(person.get_stat(PART_BEHIND_COLOUR[stat])) in ['', 'no', 'none']:
 		return []
 	var race = person.get_stat('race')
 	# A colour with a rule behind it offers the rule first - an empty value,
@@ -675,10 +692,6 @@ func colours_allowed_to_race(stat):
 		for value in DOLL_COLORS.values_for(stat):
 			offered.append(value)
 		return offered
-	# A part the character does not have has no colour to pick: a human is not
-	# asked what shade her wings are.
-	if PART_BEHIND_COLOUR.has(stat) and str(person.get_stat(PART_BEHIND_COLOUR[stat])) in ['', 'no', 'none']:
-		return []
 	# Neither is a colour the game works out on its own - the lips take the skin's,
 	# a fur tail the hair's.  Creation rolls whatever it offers, and a roll would
 	# overwrite the rule with any old colour.
@@ -751,8 +764,31 @@ func build_selectable_node(stat):
 		# only got in the way of picking one
 		if str(val) == '' and LAYOUT.DEFAULT_COLOUR_FROM.has(stat):
 			# the swatch shows what following the rule looks like right now
-			var source = str(LAYOUT.DEFAULT_COLOUR_FROM[stat])
-			square.color = DOLL_COLORS.colour_of(source, person.get_stat(source))
+			square.color = rule_colour(stat)
+
+
+# What following the rule paints a colour right now, for the swatch that stands
+# for "follow it".  Most rules are another stat's colour.  The nipples are the
+# deeper shade worked out from the skin; the ears, the tail and the horns answer
+# to whatever their getter works out, which it only does with the pick set aside -
+# asked with a pick in place, a getter answers with the pick.
+func rule_colour(stat):
+	if str(stat) == 'body_color_nipples':
+		return DOLL_COLORS.nipples_of(person.get_stat('body_color_skin'))
+	# a beastkin's mouth takes the fur of its muzzle rather than the skin, so the lips
+	# show what the getter works out too, not DEFAULT_COLOUR_FROM's source
+	if str(stat) in ['body_color_ears', 'body_color_tail', 'body_color_horns', 'body_color_lips']:
+		var raw = person.statlist.statlist
+		var picked = raw[stat]
+		raw[stat] = ''
+		var ruled = str(person.get_stat(stat))
+		raw[stat] = picked
+		if ruled == '' and str(stat) == 'body_color_ears':
+			# a shaped ear follows no rule of its own: it is the skin
+			return DOLL_COLORS.colour_of('body_color_skin', person.get_stat('body_color_skin'))
+		return DOLL_COLORS.colour_of(stat, ruled)
+	var source = str(LAYOUT.DEFAULT_COLOUR_FROM[stat])
+	return DOLL_COLORS.colour_of(source, person.get_stat(source))
 
 
 func build_node_for_stat(stat):
@@ -954,6 +990,15 @@ func change_value_node_selectable(stat, newvalue): #for selectable nodes
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
 	refresh_following_colours(stat)
+	if stat in ['body_color_skin', 'skin_coverage']:
+		# the nipples, the lips, a shaped ear, a kobold's tail and horns follow the skin
+		# - and a beastkin's lips, ears and tail its coat - while they are left to their
+		# rule, so their "follow it" swatches move with it
+		for colour in ['body_color_nipples', 'body_color_lips', 'body_color_ears', 'body_color_tail', 'body_color_horns']:
+			if colour in params_to_save:
+				build_possible_val_for_stat(colour)
+				build_selectable_node(colour)
+				build_node_for_stat(colour)
 	refresh_dependent_sliders(stat)
 	build_description()
 	build_master_relation()

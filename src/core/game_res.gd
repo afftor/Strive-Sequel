@@ -108,6 +108,9 @@ func ensure_mansion_layout(force = false):
 	if force or !(mansion_layout is Dictionary) or mansion_layout.empty():
 		mansion_layout = MansionLayout.build_default()
 	else:
+		#Before validate(), which drops rooms of any type the game no longer has: a bathhouse still
+		#standing in an old save is owed back as the master's bath rather than lost with it.
+		Migrations.retire_bathhouses(self)
 		MansionLayout.validate(mansion_layout, ResourceScripts.game_party.characters)
 	Migrations.run(self)
 	autohouse_household()
@@ -195,7 +198,7 @@ func open_stairs():
 #old-save conversion turn them into rooms, which is a strange road to take in a new game and
 #took the rubble's finds with it. Raised directly instead, and sparing the derelict rooms
 #that are hiding something.
-const TEST_ROOMS = ['forge', 'alchemy_room', 'ritual_room', 'bathhouse', 'practice_room', 'beauty_parlor']
+const TEST_ROOMS = ['forge', 'alchemy_room', 'ritual_room', 'practice_room', 'beauty_parlor']
 
 #Rooms test mode raises plain, with nothing bought on top of them. The forge is here because
 #its own upgrade row - the salvage bench above all, which waits on the workers' guild - is
@@ -379,12 +382,14 @@ func unhouse_character(char_id):
 	return true
 
 
-#A bathhouse does what the old Bath upgrade did. Both answers funnel through here so a
-#reader never has to know which of the two the household actually has.
+#Whether the master has a bath of his own: the Private Bath upgrade on his room. It was a
+#bathhouse on the plan for a while, and the Bath upgrade of the old tree before that. Every bonus
+#and every questline that wants a bath asks here, so none of them has to know which it once was.
 func has_bath():
-	#The old 'resting' upgrade is retired; a save that had bought it is handed a bathhouse by
-	#convert_room_tree_upgrades(), so there is one answer to this question again.
-	return MansionLayout.count_rooms_of_type(mansion_layout, 'bathhouse') > 0
+	if !(mansion_layout is Dictionary) or !mansion_layout.has('floors'):
+		return false
+	var entry = MansionLayout.master_room(mansion_layout)
+	return entry != null and MansionLayout.upgrade_level(entry.room, 'private_bath') > 0
 
 
 #How many people fit into one scene: two, plus whatever the master bedroom has been
@@ -835,7 +840,7 @@ func gather_room(room_type, slot = ''):
 #How many people share the master's bed besides the master. Nobody's own effect conditions
 #can answer this - "how many others are in the room I am in" is a question about the room,
 #not about the character - so the master's regen bonus is built from here instead, the way
-#the bathhouse's is. Zero when there is no such room or nobody in it but him.
+#the bath's is. Zero when there is no such room or nobody in it but him.
 func master_bed_partners():
 	var entry = MansionLayout.master_room(mansion_layout)
 	if entry == null:
@@ -1029,7 +1034,7 @@ func _bed_night_impregnations(bed):
 #True while the estate has a room carrying this tag standing anywhere on the plan. The
 #counterpart to character_room_has_tag(): that one asks where somebody sleeps, this one asks
 #whether the building has the thing at all - which is what a room like the office grants by
-#simply existing. has_bath() is the same question asked about one particular room.
+#simply existing. has_bath() asks about one upgrade of the master's room instead.
 func has_room_with_tag(tag):
 	for entry in MansionLayout.each_room(mansion_layout):
 		if RoomTypes.has_tag(entry.room.type, tag):
@@ -2289,8 +2294,8 @@ func craft_result_icon(task_id):
 	return load(data.icon) if data.icon is String else data.icon
 
 
-#How many rooms of this kind the estate has. What the old 'resting' upgrade asked about is a
-#bathhouse now, and questlines ask it through this.
+#How many rooms of this kind the estate has - what questlines ask through has_mansion_room.
+#A bath is not a room any more: that is has_bath().
 func count_rooms(room_type):
 	return MansionLayout.count_rooms_of_type(mansion_layout, room_type)
 

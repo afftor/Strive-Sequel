@@ -273,6 +273,12 @@ const BONES = [
 	"head22",
 	"head23",
 	"head24",
+	"monofringe1",
+	"monofringe2",
+	"monofringe3",
+	"spine46",
+	"spine47",
+	"spine48",
 ]
 
 const SLOTS = [
@@ -295,12 +301,14 @@ const SLOTS = [
 	"leg_left",
 	"leg_right",
 	"pelvis",
+	"piercing_belly_1_male",
 	"race_leg_left",
 	"equip_leg_left",
 	"race_leg_right",
 	"equip_leg_right",
 	"torso",
 	"nipples",
+	"piercing_nipple_1_male",
 	"race_torso_lower",
 	"race_torso",
 	"equip_collar",

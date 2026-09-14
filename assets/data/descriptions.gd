@@ -217,12 +217,12 @@ func piercing(): #currently unused
 	elif person.get_stat('piercing_penis') == 'stud':
 		text += '[His] cock has a [color=aqua]stud[/color] in it. '
 
-	if text != '':
-		#posible bug
-		if globals.state.descriptsettings.piercing == true || showmode != 'default':
-			text = "\n\n[url=piercing][color=#d1b970]Piercing:[/color][/url] " + text
-		else:
-			text = "\n[url=piercing][color=#d1b970]Piercing:[/color][/url] Omitted."
+#	if text != '':
+#		#posible bug
+#		if globals.state.descriptsettings.piercing == true || showmode != 'default':
+#			text = "\n\n[url=piercing][color=#d1b970]Piercing:[/color][/url] " + text
+#		else:
+#			text = "\n[url=piercing][color=#d1b970]Piercing:[/color][/url] Omitted."
 	return text
 
 #var tattoo_descripts = {
@@ -361,7 +361,7 @@ var bodypartsdata = {
 		]},
 		female = {code = 'female', name = '', chardescript = '', bodychanges = [
 			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
-			{code = 'hair_style', value = [['straight', 4],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1],['bob',1],['messy',1],['layered',1],['fringe',1],['crownbraid',1],['twintails',1],['curls',1],['hime',1]], reqs = []},
+			{code = 'hair_style', value = [['straight', 4],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1],['bob',1],['messy',1],['layered',1],['fringe',1],['crownbraid',1],['twintails',1],['curls',1],['hime',1],['messy_eyehide',1],['shaved',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['average', 1], ['big', 1], ['huge', 1]], reqs = [{code = 'race', race = 'Taurus', check = true}]},
@@ -392,7 +392,7 @@ var bodypartsdata = {
 		]},
 		futa = {code = 'futa', name = '', chardescript = '', bodychanges = [
 			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
-			{code = 'hair_style', value = [['straight', 4],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1],['bob',1],['messy',1],['layered',1],['fringe',1],['crownbraid',1],['twintails',1],['curls',1],['hime',1]], reqs = []},
+			{code = 'hair_style', value = [['straight', 4],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1],['bob',1],['messy',1],['layered',1],['fringe',1],['crownbraid',1],['twintails',1],['curls',1],['hime',1],['messy_eyehide',1],['shaved',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
 			{code = 'tits_size', value = [['average', 1], ['big', 1], ['huge', 1]], reqs = [{code = 'race', race = 'Taurus', check = true}]},
@@ -463,6 +463,7 @@ var bodypartsdata = {
 		bun = {code = 'bun', name = '', chardescript = '', bodychanges = []},
 		bob = {code = 'bob', name = '', chardescript = '', bodychanges = []},
 		messy = {code = 'messy', name = '', chardescript = '', bodychanges = []},
+		messy_eyehide = {code = 'messy_eyehide', name = '', chardescript = '', bodychanges = []},
 		layered = {code = 'layered', name = '', chardescript = '', bodychanges = []},
 		fringe = {code = 'fringe', name = '', chardescript = '', bodychanges = []},
 		crownbraid = {code = 'crownbraid', name = '', chardescript = '', bodychanges = []},
@@ -580,7 +581,7 @@ var bodypartsdata = {
 			{code = 'body_color_tail', value = [['orange3', 1]], reqs = []},
 		]},
 		fur_black = {code = 'fur_black', name = 'COVERAGE_FUR_BLACK', chardescript = '', bodychanges = [
-			{code = 'body_color_tail', value = [['dark3', 1]], reqs = []},
+			{code = 'body_color_tail', value = [['#363533', 1]], reqs = []},
 		]},
 		fur_orange = {code = 'fur_orange', name = 'COVERAGE_FUR_ORANGE', chardescript = '', bodychanges = [
 			{code = 'body_color_tail', value = [['orange3', 1]], reqs = []},

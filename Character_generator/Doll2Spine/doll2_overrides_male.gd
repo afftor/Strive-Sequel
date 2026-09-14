@@ -91,6 +91,35 @@ const PART_HIDES = {
 	"body_male_beastkin": ["noses"],
 }
 
+# Extra selectable combinations using the male export's short attachment key.
+const PART_VARIANTS = {
+	"hair_base_bobcut_monofringe": {
+		"source": "hair_base_bobcut",
+		"display": "Hair base bobcut (monofringe)",
+		"slots": {"hairs_fringe": "hair_fringe_monofringe"},
+	},
+	"hair_base_default_monofringe": {
+		"source": "hair_base_default",
+		"display": "Hair base default (monofringe)",
+		"slots": {"hairs_fringe": "hair_fringe_monofringe"},
+	},
+	"hair_base_disheveled_monofringe": {
+		"source": "hair_base_disheveled",
+		"display": "Hair base disheveled (monofringe)",
+		"slots": {"hairs_fringe": "hair_fringe_monofringe"},
+	},
+	"hair_base_fringe_2_monofringe": {
+		"source": "hair_base_fringe_2",
+		"display": "Hair base fringe 2 (monofringe)",
+		"slots": {"hairs_fringe": "hair_fringe_monofringe"},
+	},
+	"hair_base_fringe_monofringe": {
+		"source": "hair_base_fringe",
+		"display": "Hair base fringe (monofringe)",
+		"slots": {"hairs_fringe": "hair_fringe_monofringe"},
+	},
+}
+
 # The raw male export puts the collar behind the race torso.  Express this
 # directly against race_torso: race_pelvis is above it too, so using pelvis as
 # the anchor would not establish the requested collar/torso ordering.
@@ -183,6 +212,8 @@ const PRESETS = {
 # them across when it grows some.
 const SLOT_ROUTES = {
 	"bread": "beard",
+	"piercing_belly_1_male": "piercing_belly",
+	"piercing_nipple_1_male": "piercing_nipple",
 }
 
 const GROUP_DEFS = {

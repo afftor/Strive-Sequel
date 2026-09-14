@@ -542,6 +542,9 @@ func _build_colour_channels(groups):
 			# Starting colours for this channel's zones.  Empty means the channel
 			# falls back to ZONE_DEFAULTS when it is gear, or to white otherwise.
 			"zone_defaults": definition.get("zone_defaults", []),
+			# Whether a pick is laid on as it is rather than keeping the art's
+			# lightness - for near-black ink, which the plain path leaves black.
+			"flat": bool(definition.get("flat", false)),
 		}
 	_line("COLOUR CHANNELS")
 	for channel_id in channels.keys():

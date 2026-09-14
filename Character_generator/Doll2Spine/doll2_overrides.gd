@@ -32,6 +32,15 @@ const GROUP_DEFS = {
 	"piercing_nipple": {"kind": "options", "optional": true, "order": 19.5, "label": "Nipple piercing"},
 }
 
+# Each piercing is painted on its own, so rings through the nipples and a gem in
+# the navel can be different metals.  Declared with this rig's groups rather than
+# with the shared channels, because only this rig has them; the two groups draw
+# into slots of their own, so nothing is claimed away from another channel.
+const COLOR_CHANNELS = {
+	"piercing_nipple": {"anchor": "piercing_nipple", "groups": ["piercing_nipple"]},
+	"piercing_belly": {"anchor": "piercing_belly", "groups": ["piercing_belly"]},
+}
+
 # --------------------------------------------------------------- routing ----
 
 # The female bodies and the armour sets cut for them.
@@ -60,7 +69,9 @@ const FOLDER_MAP = {
 	"111_armory_set_tentackle_female": {"group": "outfit", "part": "outfit_tentacle"},
 	"112_armory_set_playboy_female": {"group": "outfit", "part": "outfit_playboy"},
 	"113_armory_set_underwear1": {"group": "outfit", "part": "outfit_underwear1"},
-	"113_armory_set_underwear2": {"group": "outfit", "part": "outfit_underwear2"},
+	# sheer: the nipples are seen through it, and so is a piercing in them - see
+	# `compose` in doll2_catalogue.gd
+	"113_armory_set_underwear2": {"group": "outfit", "part": "outfit_underwear2", "tags": ["see_through"]},
 	"151_armory_acces_petsuit": {"group": "outfit", "part": "outfit_petsuit"},
 }
 
@@ -159,14 +170,39 @@ const SLOT_ROUTES = {
 	"piercing_nipple_1_0": "piercing_nipple",
 }
 
-# Extra choices derived from an existing generated part. The original
-# disheveled entry keeps its automatically paired disheveled fringe; this copy
-# shares the same base mesh and replaces only the fringe.
+# Extra choices derived from existing generated hair parts. Originals retain
+# their automatic companions; each copy shares the base mesh and replaces only
+# the fringe.
 const PART_VARIANTS = {
+	"hair_base_bobcut_monofringe": {
+		"source": "hair_base_bobcut",
+		"display": "Hair base bobcut (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
+	"hair_base_default_monofringe": {
+		"source": "hair_base_default",
+		"display": "Hair base default (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
 	"hair_base_disheveled_eyehide": {
 		"source": "hair_base_disheveled",
 		"display": "Hair base disheveled (eyehide)",
 		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_eyehide"},
+	},
+	"hair_base_disheveled_monofringe": {
+		"source": "hair_base_disheveled",
+		"display": "Hair base disheveled (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
+	"hair_base_fringe_2_monofringe": {
+		"source": "hair_base_fringe_2",
+		"display": "Hair base fringe 2 (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
+	"hair_base_fringe_monofringe": {
+		"source": "hair_base_fringe",
+		"display": "Hair base fringe (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
 	},
 }
 
@@ -255,6 +291,12 @@ const DRAW_ORDER_FIXES = [
 	{"slot": "race_torso_lower", "before": "equip_torso"},
 	{"slot": "race_torso", "before": "equip_torso"},
 	{"slot": "race_pelvis", "before": "equip_torso"},
+	# A beastkin's extra rows of breasts and nipples are body, not gear, but the
+	# export lists them after the torso armour, so a dressed character wore them
+	# over the shirt.  Under the armour a top covers them and a bare midriff shows
+	# them.
+	{"slot": "breasts_beastkin_many", "before": "equip_torso"},
+	{"slot": "beastkin_torso_many_nipples", "before": "equip_torso"},
 ]
 
 

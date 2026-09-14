@@ -592,7 +592,7 @@ func fix_stat_data(stat, data):
 			#already earned bonuses of their own, and a tenth more work should be a tenth for
 			#everybody. 'add_part' is this stat's own channel (statdata.productivity) and one of
 			#the few the combiner applies by default - 'mul2' is not, and did nothing at all.
-			#Counted from the room the way the bathhouse and the master bed are: it is a fact
+			#Counted from the room the way the bath and the master bed are: it is a fact
 			#about the estate, not about the person.
 			if stat == 'productivity' and ResourceScripts.game_res.has_room_with_tag('dining'):
 				if !data.bonuses.has('add_part'):
@@ -641,10 +641,13 @@ func fix_stat_data(stat, data):
 			#because it is a fact about the room, not about him - see master_bed_partners().
 			if parent.get_ref().is_master():
 				data.bonuses.add.push_back({value = ResourceScripts.game_res.master_bed_partners() * 0.5, src_type = 'room', src_value = 'master_bedroom', timestamp = 0})
+			#The master's bath, a fifth faster. On 'mul', which this stat's combiner applies: it was
+			#pushed onto 'mul2', which mp_reg's order does not include (its custom_order is commented
+			#out in statdata), so the bath's mana bonus never reached anybody.
 			if ResourceScripts.game_res.has_bath():
-				if !data.bonuses.has('mul2'):
-					data.bonuses.mul2 = []
-				data.bonuses.mul2.push_back({value = 1.2, src_type = 'upgrade', src_value = 'resting', timestamp = 0})
+				if !data.bonuses.has('mul'):
+					data.bonuses.mul = []
+				data.bonuses.mul.push_back({value = 1.2, src_type = 'upgrade', src_value = 'private_bath', timestamp = 0})
 		'upgrade_points_total':
 			data.base_value = get_stat('growth_factor') * variables.body_upgrade_points_per_growth_factor
 #		'lustmax':

@@ -207,6 +207,8 @@ const FAMILIES = {
 	"body_color_ears": "BODY_PARTS", "body_color_tail": "BODY_PARTS",
 	"body_color_wings": "BODY_PARTS", "body_color_horns": "BODY_PARTS",
 	"body_color_animal": "BODY_PARTS",
+	# keyed by the skin a shade was made for - `human1` is the nipple of skin `human1`
+	"body_color_nipples": "NIPPLES",
 }
 
 
@@ -268,6 +270,19 @@ static func lips_code_for_skin(skin_value):
 	var lip = Color(skin.r, skin.g, skin.b)
 	lip.v = min(lip.v * 1.25, 1.0)
 	lip.s = lip.s * 0.85
+	return "#" + lip.to_html(false)
+
+
+# The mouth a furred muzzle wears.  The shader screens a light pick up towards
+# white, so the skin's lift above turned the mouth of a white or an orange-and-
+# white coat into a pale streak; a fur's mouth goes the other way - a deeper,
+# darker shade of the fur it sits in - and reads as a line on every coat.  The
+# value is a coat colour, spelled the way `body_color_coat` spells them.
+static func lips_code_for_fur(fur_value):
+	var fur = colour_of("body_color_tail", fur_value)
+	var lip = Color(fur.r, fur.g, fur.b)
+	lip.v = lip.v * 0.75
+	lip.s = min(lip.s * 1.3, 1.0)
 	return "#" + lip.to_html(false)
 
 

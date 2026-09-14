@@ -1,7 +1,7 @@
 extends Node
 
 #The upgrade tree is gone. Everything it sold is stood up on the mansion plan instead: the
-#workshops and their tools, a bathhouse, a practice room with somewhere for a tutor, and the
+#workshops and their tools, a practice room with somewhere for a tutor, and the
 #buildings out on the estate grounds. What it sold and could not become a room - builder
 #crews and their tools, farm slots, the exotic trader's stock - is simply gone; nothing reads
 #those codes any more.

@@ -354,6 +354,23 @@ var statdata = {
 		tags = ['custom_getter'],
 		default_bonus = 'set',
 	},
+	#empty leaves the nipples the shade worked out from the skin - see doll2_view._apply_colours
+	body_color_nipples = {
+		code = 'body_color_nipples',
+		tags = [],
+		default_bonus = 'set',
+	},
+	#the doll's picture of a crotch tattoo - see statlist.gd
+	tattoo_crotch_style = {
+		code = 'tattoo_crotch_style',
+		tags = [],
+		default_bonus = 'set',
+	},
+	tattoo_crotch_color = {
+		code = 'tattoo_crotch_color',
+		tags = [],
+		default_bonus = 'set',
+	},
 	body_color_eyebrows = {
 		code = 'body_color_eyebrows',
 		tags = ['custom_getter'],

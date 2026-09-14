@@ -25,6 +25,7 @@ const MODIFIERS = preload("res://Character_generator/Doll2Spine/universal/doll_m
 const COLORS = preload("res://Character_generator/Doll2Spine/universal/doll_colors.gd")
 const COVERAGE = preload("res://Character_generator/Doll2Spine/universal/doll_coverage.gd")
 const GEAR = preload("res://Character_generator/Doll2Spine/universal/doll_gear_map.gd")
+const EMOTES = preload("res://Character_generator/Doll2Spine/universal/doll_emotes.gd")
 const DOLL_DROPDOWN_THEME = preload("res://assets/Themes_v2/UNIVERSAL/DropDown.tres")
 # The frame is sized for the tallest character there can be, so the others stay
 # visibly shorter inside it.
@@ -36,11 +37,15 @@ const STATS = [
 	"race", "sex", "chin", "eyeshape", "eye_tex", "eyebrows", "lips", "nose",
 	"ears", "hair_base", "hair_back", "hair_assist", "horns", "wings", "tail",
 	"penis_type", "tits_size", "pregnancy_status", "height", "skin_coverage",
-	"multiple_tits_developed", "body_shape", "hand_pose", "face_markings",
+	"multiple_tits", "multiple_tits_developed", "body_shape", "hand_pose", "face_markings",
 	"ass_size", "beard", "penis_size", "balls_size", "head_size",
 	# how long each hair layer is worn - the doll scales the strands by them, see
 	# HAIR_LENGTH_STATS
 	"hair_base_length", "hair_back_length", "hair_assist_length",
+	# the two piercings the customize menu offers once there is skin to see them on
+	"piercing_nipples", "piercing_navel",
+	# the crotch tattoo the doll draws, and which drawing it is
+	"tattoo_crotch", "tattoo_crotch_style",
 ]
 
 # Colour channel -> the stat that picks its colour, and the stat that picks the
@@ -67,6 +72,11 @@ const CHANNEL_COLOURS = {
 	# nipples have no stat of their own: their table is keyed by the skin's code,
 	# so they follow the skin a character was given
 	"nipples": ["body_color_skin", ""],
+	# a piercing's metal - an unset stat leaves the art as drawn, see _apply_colours
+	"piercing_nipple": ["piercing_nipples_color", ""],
+	"piercing_belly": ["piercing_navel_color", ""],
+	# a tattoo's ink, laid on flat - see `flat` on the channel
+	"tattoo": ["tattoo_crotch_color", ""],
 }
 
 # What the new doll wants and the character does not carry yet.  They are listed
@@ -84,12 +94,19 @@ const AXES = {
 	"tits_size": "tits_size",
 	"pregnancy_status": "pregnancy",
 	"hand_pose": "hand_pose",
+	"multiple_tits": "many_tits",
 }
+# The extra rows a beastkin grows under the chest, by how many pairs the
+# character carries.  The art counts breasts - four is one extra pair, six is
+# two - and stops there, so a third pair is drawn as the second.
+const MANY_TITS = ["none", "4", "6"]
 const TITS = {
 	"flat": "flat", "small": "small", "average": "normal", "average_high": "normal",
 	"average_narrow": "normal", "average_wide": "normal", "big": "large",
 	"big_high": "large", "big_narrow": "large", "huge": "big", "huge_high": "big",
 	"huge_narrow": "big", "masculine": "flat",
+	# the two shapes the old doll also carried, which fell through to `normal`
+	"big_wide": "large", "huge_wide": "big",
 }
 const PREGNANCY = {"no": "none", "early": "mid", "heavy": "big"}
 # Races the export cut a heavier pair of legs for.
@@ -234,6 +251,12 @@ func _ready():
 			handler.connect("update_ragdoll", self, "_on_game_changed_a_character")
 		if handler != null and handler.has_signal("doll_settings_changed"):
 			handler.connect("doll_settings_changed", self, "_on_doll_settings_changed")
+	# Any doll a player looks at pulls a face at what is put on the character.  Not
+	# tied to the undress buttons above: the inventory's own doll carries none.
+	if !portrait_mode:
+		var events = _singleton("input_handler")
+		if events != null and events.has_signal("character_item_equipped"):
+			events.connect("character_item_equipped", self, "_on_character_item_equipped")
 	set_process(false)
 
 
@@ -250,6 +273,8 @@ func rebuild(character_to_build):
 		# the screen's, so a new one is picked up on the step they were last put on
 		undress_level = _remembered_undress_level(character_to_build)
 		_close_hair_menu()
+		# a face pulled at something that happened to somebody else
+		_stop_emotes()
 	character = character_to_build
 	_apply()
 
@@ -314,6 +339,79 @@ func _write_undress_rule():
 	var handler = _singleton("input_handler")
 	if handler != null and handler.has_method("reshoot_portrait"):
 		handler.reshoot_portrait(character)
+
+
+# --- faces --------------------------------------------------------------------
+
+# A face the character is pulling in answer to something, as the steps still to
+# play: [[emotion, seconds], ...], the first on the face for `_emote_left` more
+# seconds.  See doll_emotes.gd for what pulls which.
+var _emotes = []
+var _emote_left = 0.0
+
+
+func play_emotes(steps):
+	if model == null or steps.empty():
+		return
+	_emotes = steps.duplicate(true)
+	_start_emote_step()
+
+
+func _start_emote_step():
+	if model == null:
+		_emotes.clear()
+		set_process(false)
+		return
+	if _emotes.empty():
+		# every reaction ends back on the character's ordinary face
+		model.set_emotion("")
+		set_process(false)
+		return
+	model.set_emotion(str(_emotes[0][0]))
+	_emote_left = float(_emotes[0][1])
+	set_process(true)
+
+
+func _stop_emotes():
+	if _emotes.empty():
+		return
+	_emotes.clear()
+	set_process(false)
+	if model != null:
+		model.set_emotion("")
+
+
+func _process(delta):
+	if _emotes.empty():
+		set_process(false)
+		return
+	_emote_left -= delta
+	if _emote_left <= 0.0:
+		_emotes.pop_front()
+		_start_emote_step()
+
+
+# The game put an item on a character.  The one this doll shows reacts, as long as
+# the doll is on screen to be seen doing it.
+func _on_character_item_equipped(who, item):
+	if character == null or who != character or portrait_mode or !is_visible_in_tree():
+		return
+	_react(EMOTES.equip_reaction(character, item))
+
+
+# The player clicked the chest of the character this doll shows.
+func _on_chest_poked():
+	if character == null or portrait_mode:
+		return
+	_react(EMOTES.poke_reaction(character))
+
+
+# Plays a reaction, on the cooldown every reaction shares.  A rig without the
+# face - the male one has none - neither plays it nor spends the turn.
+func _react(steps):
+	if steps.empty() or model == null or !model.has_emotion(steps[0][0]) or !EMOTES.take_turn(character):
+		return
+	play_emotes(steps)
 
 
 func rebuild_underwear():
@@ -455,6 +553,23 @@ const HAIR_TONES = ["DOLL2_HAIR_TONE_ROOTS", "DOLL2_HAIR_TONE_TIPS"]
 # export carries (`hair_base_lion` beside `hairs_base_lion`) keep separate names.
 const STYLE_NAME_PREFIX = "DOLL2_STYLE_"
 
+# The piercing rows, named after the stats they write.  What each one offers is
+# CHARACTER_MAP.PIERCINGS; the row, its label and each word are named
+# `DOLL2_<STAT>` and `DOLL2_<STAT>_<WORD>`, so a `ring` can be a hoop through a
+# nipple on one row and a ring hanging from the navel on the other.
+const PIERCING_ROWS = ["piercing_nipples", "piercing_navel"]
+
+# The colour under each piercing, painted through its own channel.  An unset one
+# leaves the art as drawn, and the swatch then shows that gold at the shader's
+# neutral lightness, so picking it unchanged gives back what is already there.
+const PIERCING_COLOUR_ROWS = [
+	{"id": "piercing_nipples_colour", "stat": "piercing_nipples_color", "piercing": "piercing_nipples"},
+	{"id": "piercing_navel_colour", "stat": "piercing_navel_color", "piercing": "piercing_navel"},
+]
+const PIERCING_ART_GOLD = Color("e0a01f")
+# The womb tattoos are drawn in near-black ink; an unset colour is that ink.
+const TATTOO_ART_INK = Color("030303")
+
 # Compatibility for characters saved before the atlas-path names were removed
 # from the public catalogue ids.
 const HAIR_PART_ALIASES = {
@@ -467,8 +582,8 @@ const HAIR_PART_ALIASES = {
 # the hair, the lips take the skin - so the picker shows what is being drawn
 # rather than an empty value, and writing to it is what makes it the player's.
 const FACE_COLOUR_ROWS = [
-	{"id": "eyebrows_colour", "stat": "body_color_eyebrows", "label": "DOLL2_EYEBROWS_COLOUR"},
-	{"id": "lips_colour", "stat": "body_color_lips", "label": "DOLL2_LIPS_COLOUR"},
+	{"id": "eyebrows_colour", "stat": "body_color_eyebrows", "label": "DOLL2_EYEBROWS_COLOUR", "group": "eyebrows"},
+	{"id": "lips_colour", "stat": "body_color_lips", "label": "DOLL2_LIPS_COLOUR", "group": "lips"},
 ]
 
 # Gear, which is not painted in one colour: its art is coded in three hue bands -
@@ -575,6 +690,7 @@ func _build_hair_panel():
 			control.get_popup().connect("about_to_show", self, "_place_colour_popup", [control])
 		else:
 			control.get_popup().theme = DOLL_DROPDOWN_THEME
+			control.get_popup().connect("about_to_show", self, "_place_option_popup", [control])
 			control.connect("item_selected", self, "_on_hair_option_picked", [control_id, control])
 	# a gear row is a label and a box of swatches rather than a single control,
 	# so it is wired here instead of going through the pairs above
@@ -592,6 +708,47 @@ func _build_hair_panel():
 			picker.connect("color_changed", self, "_on_gear_colour_picked", [row_data.id, zone])
 			picker.get_popup().connect("about_to_show", self, "_place_colour_popup", [picker])
 			_hair_controls["%s_zone%d" % [row_data.id, zone]] = picker
+	# The piercings.  A row the scene has not got yet is skipped rather than failing
+	# the whole menu, so the panel opens either way.
+	for stat in PIERCING_ROWS:
+		if !rows.has_node(stat) or !rows.has_node(stat + "_label"):
+			continue
+		var piercing_row = rows.get_node(stat)
+		var piercing_label = rows.get_node(stat + "_label")
+		piercing_label.text = tr("DOLL2_" + stat.to_upper())
+		_hair_controls[stat] = piercing_row
+		_hair_controls[stat + "_label"] = piercing_label
+		piercing_row.get_popup().theme = DOLL_DROPDOWN_THEME
+		piercing_row.get_popup().connect("about_to_show", self, "_place_option_popup", [piercing_row])
+		piercing_row.connect("item_selected", self, "_on_hair_option_picked", [stat, piercing_row])
+	for row_data in PIERCING_COLOUR_ROWS:
+		if !rows.has_node(row_data.id) or !rows.has_node(row_data.id + "_label"):
+			continue
+		var swatch = rows.get_node(row_data.id)
+		var swatch_label = rows.get_node(row_data.id + "_label")
+		swatch_label.text = tr("DOLL2_" + str(row_data.piercing).to_upper() + "_COLOUR")
+		_hair_controls[row_data.id] = swatch
+		_hair_controls[row_data.id + "_label"] = swatch_label
+		swatch.connect("color_changed", self, "_on_hair_colour_picked", [row_data.id])
+		swatch.get_popup().connect("about_to_show", self, "_place_colour_popup", [swatch])
+	# the crotch tattoo: which drawing, and its ink
+	if rows.has_node("tattoo_crotch_style") and rows.has_node("tattoo_crotch_style_label"):
+		var drawing_row = rows.get_node("tattoo_crotch_style")
+		var drawing_label = rows.get_node("tattoo_crotch_style_label")
+		drawing_label.text = tr("DOLL2_TATTOO_CROTCH_STYLE")
+		_hair_controls["tattoo_crotch_style"] = drawing_row
+		_hair_controls["tattoo_crotch_style_label"] = drawing_label
+		drawing_row.get_popup().theme = DOLL_DROPDOWN_THEME
+		drawing_row.get_popup().connect("about_to_show", self, "_place_option_popup", [drawing_row])
+		drawing_row.connect("item_selected", self, "_on_hair_option_picked", ["tattoo_crotch_style", drawing_row])
+	if rows.has_node("tattoo_crotch_colour") and rows.has_node("tattoo_crotch_colour_label"):
+		var ink = rows.get_node("tattoo_crotch_colour")
+		var ink_label = rows.get_node("tattoo_crotch_colour_label")
+		ink_label.text = tr("DOLL2_TATTOO_CROTCH_COLOUR")
+		_hair_controls["tattoo_crotch_colour"] = ink
+		_hair_controls["tattoo_crotch_colour_label"] = ink_label
+		ink.connect("color_changed", self, "_on_hair_colour_picked", ["tattoo_crotch_colour"])
+		ink.get_popup().connect("about_to_show", self, "_place_colour_popup", [ink])
 	_position_hair_panel()
 
 
@@ -632,6 +789,22 @@ func _place_colour_popup(picker):
 		wheel = popup.get_combined_minimum_size()
 	popup.rect_global_position = _colour_popup_spot(
 		Rect2(picker.rect_global_position, picker.rect_size), wheel)
+
+
+# A dropdown opened low on the screen ran off the bottom: the engine keeps a popup
+# on screen, but it does so while the list is still zero rows tall and the rows
+# are added under it afterwards.  The ten tattoo drawings, at the foot of the
+# menu, were cut off after the eighth.  So the list is lifted, as it opens, until
+# all of it fits; one taller than the screen starts at the top, where the wheel
+# scrolls it.
+func _place_option_popup(control):
+	var popup = control.get_popup()
+	var need = popup.get_combined_minimum_size() * popup.rect_scale
+	var room = get_viewport().get_visible_rect().size
+	var at = popup.rect_global_position
+	if at.y + need.y > room.y:
+		at.y = max(0.0, room.y - need.y)
+		popup.rect_global_position = at
 
 
 # Under the swatch, or over it when the screen has no room below - a wheel that
@@ -679,10 +852,45 @@ func _refresh_hair_panel():
 	var beards = !CATALOGUE.parts("beard").empty() and str(_stat("sex")) != "female"
 	_show_hair_row("beard_style", beards)
 	_show_hair_row("beard_colour", beards)
+	# A piercing is offered once there is bare skin to see it on, and only on a rig
+	# that has the art - the male export has none yet.  The rest of the time the
+	# row is gone, and whatever the character wears stays on them.
+	var skin_shows = GEAR.normalise(undress_level) in [GEAR.BARE, GEAR.NAKED]
+	for stat in PIERCING_ROWS:
+		if !_hair_controls.has(stat):
+			continue
+		var piercing = CHARACTER_MAP.PIERCINGS[stat]
+		var offered = []
+		for word in piercing.values.keys():
+			if str(piercing.values[word]) in CATALOGUE.parts(piercing.group):
+				offered.append(word)
+		_fill_piercing_options(stat, offered, str(_stat(stat)))
+		_show_hair_row(stat, skin_shows and !offered.empty())
+	# and its colour, for as long as there is a piece in to paint
+	for row_data in PIERCING_COLOUR_ROWS:
+		if !_hair_controls.has(row_data.id):
+			continue
+		var pierced = str(model.selections.get(CHARACTER_MAP.PIERCINGS[row_data.piercing].group, ""))
+		var metal = str(_stat(row_data.stat))
+		_hair_controls[row_data.id].color = Color(metal) if metal.begins_with("#") else PIERCING_ART_GOLD
+		_show_hair_row(row_data.id, skin_shows and pierced != "")
+	# The crotch tattoo, for anyone who has one.  Every drawing the rig carries is
+	# offered and there is no "none": taking a tattoo off is the parlour's work.
+	if _hair_controls.has("tattoo_crotch_style"):
+		var inked = str(_stat("tattoo_crotch")) != ""
+		var drawings = _in_number_order(CATALOGUE.parts("tattoo"))
+		_fill_options("tattoo_crotch_style", drawings, str(model.selections.get("tattoo", "")))
+		_show_hair_row("tattoo_crotch_style", inked and !drawings.empty())
+		if _hair_controls.has("tattoo_crotch_colour"):
+			var ink = str(_stat("tattoo_crotch_color"))
+			_hair_controls["tattoo_crotch_colour"].color = Color(ink) if ink.begins_with("#") else TATTOO_ART_INK
+			_show_hair_row("tattoo_crotch_colour", inked and !drawings.empty())
 	# an empty stat is a colour the character derives, and that derived colour is
-	# what the doll draws, so it is what the swatch has to show
+	# what the doll draws, so it is what the swatch has to show.  A face with no such
+	# part drawn - a cat has no mouth - has nothing to paint, and the row goes.
 	for row_data in FACE_COLOUR_ROWS:
 		_hair_controls[row_data.id].color = COLORS.colour_of(row_data.stat, _stat(row_data.stat))
+		_show_hair_row(row_data.id, str(model.selections.get(row_data.group, "")) != "")
 	_refresh_gear_rows()
 	_position_hair_panel()
 
@@ -701,6 +909,47 @@ func _fill_options(control_id, values, current, allow_none = false):
 	for value in values:
 		control.add_item(_option_label(value))
 		control.set_item_metadata(control.get_item_count() - 1, value)
+	for i in range(control.get_item_count()):
+		if str(control.get_item_metadata(i)) == current:
+			control.select(i)
+			break
+
+
+# Part ids in reading order: `tatoo_womb10` after `tatoo_womb9`, not after
+# `tatoo_womb1` where a plain sort puts it.
+func _in_number_order(ids):
+	var keyed = []
+	for id in ids:
+		var name = str(id)
+		var cut = name.length()
+		while cut > 0 and name[cut - 1] >= "0" and name[cut - 1] <= "9":
+			cut -= 1
+		var number = int(name.substr(cut)) if cut < name.length() else 0
+		keyed.append([name.substr(0, cut), number, name])
+	keyed.sort_custom(self, "_by_stem_then_number")
+	var result = []
+	for entry in keyed:
+		result.append(entry[2])
+	return result
+
+
+func _by_stem_then_number(a, b):
+	if a[0] != b[0]:
+		return a[0] < b[0]
+	return a[1] < b[1]
+
+
+# `_fill_options` for a piercing row, which names each word by its row.
+func _fill_piercing_options(stat, words, current):
+	var control = _hair_controls[stat]
+	control.clear()
+	control.add_item(tr("DOLL2_HAIR_NONE"))
+	control.set_item_metadata(0, "")
+	for word in words:
+		var key = "DOLL2_%s_%s" % [stat.to_upper(), str(word).to_upper()]
+		var named = tr(key)
+		control.add_item(named if named != key else str(word).capitalize())
+		control.set_item_metadata(control.get_item_count() - 1, word)
 	for i in range(control.get_item_count()):
 		if str(control.get_item_metadata(i)) == current:
 			control.select(i)
@@ -733,6 +982,11 @@ func _on_hair_option_picked(_index, control_id, control):
 		character.set_stat("hair_base_length", value)
 	if control_id == "beard_style":
 		character.set_stat("beard", value.replace("beard_", ""))
+	if control_id in PIERCING_ROWS:
+		# taking one out puts the stat back to its own default rather than an empty word
+		character.set_stat(control_id, null if value == "" else value)
+	if control_id == "tattoo_crotch_style":
+		character.set_stat("tattoo_crotch_style", value)
 	# `_apply` refreshes the open menu itself
 	_apply()
 
@@ -751,6 +1005,15 @@ func _on_hair_colour_picked(colour, control_id):
 			character.set_stat(row_data.stat, hex)
 			_apply()
 			return
+	for row_data in PIERCING_COLOUR_ROWS:
+		if control_id == row_data.id:
+			character.set_stat(row_data.stat, hex)
+			_apply()
+			return
+	if control_id == "tattoo_crotch_colour":
+		character.set_stat("tattoo_crotch_color", hex)
+		_apply()
+		return
 	for layer in HAIR_LAYERS:
 		for tone in [1, 2]:
 			if control_id == "%s_colour%d" % [layer.id, tone]:
@@ -1154,6 +1417,7 @@ func _gui_input(event):
 				# a poke at the chest swings it, the way the old doll did; anywhere
 				# else the press starts a drag as before
 				if tits_interaction(event.position):
+					_on_chest_poked()
 					accept_event()
 					return
 				_drag_candidate = true
@@ -1373,6 +1637,19 @@ func _apply():
 	# what the level wears is already in the selections; this is what it wears but
 	# does not show, which is what makes a bare character bare
 	model.hidden_slots = GEAR.hidden_slots(undress_level)
+	# The extra rows under a beastkin's chest are nipples alone until they are
+	# developed into breasts.  A top covers both by draw order - see
+	# DRAW_ORDER_FIXES in doll2_overrides.gd.
+	var developed = bool(stats.get("multiple_tits_developed", false))
+	model.many_tits_developed = developed
+	# A pregnant beastkin's belly is drawn clean, and the nipples and small breasts
+	# on it are overlays of their own: worn only while the Extra Nipples option is
+	# on and the character has extra pairs - the breasts once those are developed.
+	if !_doll_setting("furry_multiple_nipples") or int(stats.get("multiple_tits", 0)) <= 0:
+		model.hidden_slots.append("beastkin_pregnancy_nipple")
+		model.hidden_slots.append("breasts_beastkin_pregnancy")
+	elif !developed:
+		model.hidden_slots.append("breasts_beastkin_pregnancy")
 	model.height_tier = _height(str(stats.get("height", "")))
 	#The preview picks the same six sizes by name, so the two cannot drift apart.
 	model.proportions["butt"] = MODIFIERS.step_factor("butt", stats.get("ass_size", ""))
@@ -1463,8 +1740,14 @@ func _apply_colours():
 			model._apply_channel_colour(channel_id)
 			continue
 		if channel_id == "nipples":
-			# a furred chest wears the coat's nipples rather than the skin's
-			var coat = COVERAGE.nipple_colour(_coverage_pattern())
+			# a colour the player picked wins; left alone, a furred chest wears the
+			# coat's nipples rather than the skin's
+			var coat = null
+			var picked_nipples = str(_stat("body_color_nipples"))
+			if picked_nipples != "":
+				coat = COLORS.colour_of("body_color_nipples", picked_nipples)
+			if coat == null:
+				coat = COVERAGE.nipple_colour(_coverage_pattern())
 			if coat == null:
 				coat = COLORS.nipples_of(_stat("body_color_skin"))
 			# and a heavy pregnancy darkens them over whichever of the two it is,
@@ -1475,8 +1758,20 @@ func _apply_colours():
 			model.color_values[channel_id] = coat
 			model._apply_channel_colour(channel_id)
 			continue
+		if channel_id in ["piercing_nipple", "piercing_belly", "tattoo"]:
+			# No palette stands behind a piercing or a tattoo: a picked hex, or white,
+			# which is how the shader is told to leave the drawn gold or ink alone.
+			var metal = str(_stat(str(pair[0])))
+			model.color_values[channel_id] = Color(metal) if metal.begins_with("#") else Color.white
+			model._apply_channel_colour(channel_id)
+			continue
 		if channel_id == "ears" and !_wears_animal_ears():
-			model.color_values[channel_id] = COLORS.colour_of("body_color_skin", _stat("body_color_skin"))
+			# a shaped ear is the skin, unless the player painted it
+			var painted_ears = str(_stat("body_color_ears"))
+			if painted_ears != "":
+				model.color_values[channel_id] = COLORS.colour_of("body_color_ears", painted_ears)
+			else:
+				model.color_values[channel_id] = COLORS.colour_of("body_color_skin", _stat("body_color_skin"))
 			model._apply_channel_colour(channel_id)
 			continue
 		# A piece of gear can bring its own colour - a tail plug is orange because
@@ -1760,6 +2055,8 @@ func _axis_value(stat, value):
 		return str(PREGNANCY.get(value, "none"))
 	if stat == "hand_pose":
 		return value if value != "" else "1"
+	if stat == "multiple_tits":
+		return MANY_TITS[int(clamp(int(value), 0, MANY_TITS.size() - 1))]
 	return value
 
 

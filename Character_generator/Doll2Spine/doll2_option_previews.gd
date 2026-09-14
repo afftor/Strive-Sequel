@@ -124,7 +124,7 @@ func request_for_stat(character, statname, values):
 		return
 	var parts = []
 	for value in values:
-		parts.append(CHARACTER_MAP.resolve(str(statname), str(value)))
+		parts.append(_part_for(character, statname, value))
 	request(character, group_id, parts)
 
 
@@ -135,7 +135,22 @@ func taken_for_stat(statname, value):
 	var group_id = str(CHARACTER_MAP.FEEDS.get(str(statname), ""))
 	if group_id == "":
 		return null
-	return taken(group_id, CHARACTER_MAP.resolve(str(statname), str(value)))
+	return taken(group_id, _part_for(_character, statname, value))
+
+
+# The part a value is drawn as on this character.  A beastkin wears the beastkin
+# cut of a face part whatever the stat says - `beastkin` on a fox is its first
+# muzzle, a human mouth on a muzzle is the beast's own - so the picture is of that
+# cut, or it shows a head the choice never gives.
+func _part_for(character, statname, value):
+	if character == null or !CHARACTER_MAP.draws_beastkin(str(character.get_stat("race"))):
+		return str(CHARACTER_MAP.resolve(str(statname), str(value)))
+	var stats = {"beast": CHARACTER_MAP.beast_of(str(character.get_stat("race")))}
+	var part_id = str(CHARACTER_MAP.resolve(str(statname), str(value), stats))
+	var group_id = str(CHARACTER_MAP.FEEDS.get(str(statname), ""))
+	if group_id in CHARACTER_MAP.BEASTKIN_GROUPS:
+		part_id = str(CHARACTER_MAP.beastkin_variant(group_id, part_id, stats))
+	return part_id
 
 
 # What is already in hand, for a menu that wants to draw itself before the rest

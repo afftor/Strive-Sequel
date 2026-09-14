@@ -121,6 +121,11 @@ var template_direct = {
 	#colours belong to the pattern they were picked for, so a new skin_coverage clears them.
 	body_color_coat = '',
 	body_color_lips = '',
+	body_color_nipples = '', #empty means the shade worked out from the skin, see doll2_view._apply_colours
+	#The doll's picture of a crotch tattoo: which drawing, as its catalogue part ('' is the first
+	#womb tattoo), and the ink, as "#rrggbb" ('' leaves the artist's black).
+	tattoo_crotch_style = '',
+	tattoo_crotch_color = '',
 	body_color_eyebrows = '',
 	#new hair, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
 	hair_base = '', 
@@ -223,6 +228,9 @@ var piercing = {
 	piercing_tongue = null, 
 	piercing_navel = null, 
 	piercing_nipples = null, 
+	#the metal the doll paints them in, as "#rrggbb"; null leaves the art's own gold
+	piercing_navel_color = null, 
+	piercing_nipples_color = null, 
 	piercing_clit = null, 
 	piercing_labia = null, 
 	piercing_penis = null,

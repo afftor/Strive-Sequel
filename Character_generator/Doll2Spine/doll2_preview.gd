@@ -28,12 +28,36 @@ const ANIMATION_LABELS = {
 	"eyesmove": "DOLL2_PREVIEW_ANIMATION_EYES",
 }
 const TITJUMP_ANIMATION = "titjump"
+<<<<<<< HEAD
+const EARJUMP_ANIMATION = "earjump"
+const TAILMOVE_ANIMATION = "tailmove"
+=======
+# A beastkin's extra rows under the chest are weighted to the smallest breast
+# size's bones, which the titjump take swings along with every other size's, so
+# the rows bounced with a chest they are not part of.  They are skinned from a
+# pose without the take - see _unjiggled_pose().  The breast sliders still move
+# them: the rows' art carries the top pair as well.
+const JIGGLE_FREE_SLOTS = ["breasts_beastkin_many", "beastkin_torso_many_nipples"]
+>>>>>>> master
 
 # Slots used only to decide whether a click landed on the chest. The motion
 # itself comes entirely from the authored titjump animation.
 const TITS_SLOTS = ["breasts", "breast_nipples", "equip_breasts",
 	"breasts_beastkin", "breasts_beastkin_pregnancy", "beastkin_pregnancy_nipple",
 	"breasts_beastkin_many"]
+
+# The export keeps every ear cut in one slot, but its two rig groups need
+# different layering. Cuts skinned to the upper ear_lt/ear_rt pair sit behind
+# the base hair; side ears on ear_l/ear_r retain the JSON order above it.
+# The split is identical in the female and male skeletons.
+const UPPER_EAR_PARTS = [
+	"ears_cat",
+	"ears_fox_n1", "ears_fox_n2", "ears_fox_n3", "ears_fox_n4",
+	"ears_mouse",
+	"ears_rabbit", "ears_rabbit2", "ears_rabbit3",
+	"ears_tanuk",
+	"ears_wolf",
+]
 
 # These broad back-hair meshes do not gain enough visible length from their
 # authored bone weights alone.  The back-hair slider therefore scales their
@@ -78,6 +102,11 @@ var composed_unpainted = {}
 # bare rather than dressed.  The screens fill this from the character's undress
 # level; in here it follows the undress buttons.
 var hidden_slots = []
+# Whether a beastkin's extra rows under the chest are grown into breasts or are
+# nipples alone.  The breast art repeats the top pair, which sits crooked on a
+# flat chest, so a flat chest is only ever given the nipples.  The screens set it
+# off the character; in here it follows the toggle under the extra-rows picker.
+var many_tits_developed = false
 # How undressed the preview's own buttons have the doll.  A screen leaves this
 # alone: it works the level out against real gear and hands over the selections
 # and the hidden slots itself.
@@ -102,9 +131,11 @@ var applying_post_ik_visual_scales = false
 var coverage_id = ""
 var coverage_colors = []
 var coverage_textures = {}
-# The nipples follow the skin, the way they do in the game, until somebody in
+# The nipples follow the skin - or the coat's own, while one is worn - and the
+# mouth follows the fur it sits in, the way both do in the game, until somebody in
 # here picks a colour for them by hand.
-var nipples_follow_skin = true
+var nipples_follow_rule = true
+var lips_follow_rule = true
 # One picked colour and one shared ShaderMaterial per catalogue colour channel.
 # Sharing the material per channel means a colour change is a single uniform
 # write that repaints every mesh of that channel, with no model rebuild.
@@ -164,6 +195,11 @@ var animation_durations = {}
 const POSE_TRANSITION_DURATION = 0.35
 const EMOTION_TRANSITION_DURATION = 0.3
 const EMOTION_PREFIX = "emote_"
+const EMOTION_SETUP_SLOTS = {
+	# This take keeps the setup blush visible without authoring a redundant
+	# attachment or RGBA key for it.
+	"emote_horny": ["blush"],
+}
 # A pose switch crossfades the local transforms produced by the old pose into
 # the live sample of the new one. Missing keys mean setup values, which also
 # makes turning the last pose off fade smoothly back to the setup pose.
@@ -178,7 +214,7 @@ var emotion_transition_sample_key = ""
 var emotion_colour_from = {}
 var bone_setup_sample = {}
 # What the running animations do to the bones they key, as {bone: [x, y,
-# rotation, scale_x, scale_y]} - the local values before any modifier has
+# rotation, scale_x, scale_y, shear_x, shear_y]} - the local values before any modifier has
 # touched them. A solve
 # runs the whole skeleton once per hair layer plus once more, and every one of
 # those passes used to sample the same 151 keyed timelines at the same instant:
@@ -213,6 +249,10 @@ const BLINK_MIN_DELAY = 3.0
 const BLINK_MAX_DELAY = 7.0
 var blink_enabled = false
 var blink_delay = 0.0
+const TAIL_MIN_DELAY = 3.0
+const TAIL_MAX_DELAY = 7.0
+var tail_animation_enabled = false
+var tail_animation_delay = 0.0
 # Bone offsets asked for by the artless parts - the shy glance - kept apart from
 # what the selections want so the eyes can travel between the two.  The pose is
 # built with `pose_offsets`; a glide eases it from `pose_offsets_from` to
@@ -286,13 +326,15 @@ func _process(delta):
 	# animations that gets a share of this frame
 	_advance_blink(delta)
 	var pose_changed = _advance_pushables(delta)
+	pose_changed = _advance_earjump(delta) or pose_changed
+	pose_changed = _advance_tail_animation(delta) or pose_changed
 	pose_changed = _advance_pose_transition(delta) or pose_changed
 	pose_changed = _advance_emotion_transition(delta) or pose_changed
 	pose_changed = _advance_titjump(delta) or pose_changed
 	if _advance_pose_offsets(delta):
 		pose_changed = true
 	for animation_name in animation_states.keys():
-		if animation_name == TITJUMP_ANIMATION:
+		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
 		if animation_states[animation_name]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
@@ -312,6 +354,13 @@ func _process(delta):
 func _advance_titjump(delta):
 	if !bool(animation_states.get(TITJUMP_ANIMATION, false)):
 		return false
+	# A chest made flat part way through a take stops it where it is, and so does
+	# the preview's own toggle, which turns the take on without asking.
+	if chest_is_flat():
+		animation_states[TITJUMP_ANIMATION] = false
+		animation_times[TITJUMP_ANIMATION] = 0.0
+		bone_sample_key = ""
+		return true
 	var duration = float(animation_durations.get(TITJUMP_ANIMATION, 0.0))
 	var next_time = float(animation_times.get(TITJUMP_ANIMATION, 0.0)) + delta
 	if duration <= 0.0 or next_time >= duration:
@@ -326,10 +375,73 @@ func _advance_titjump(delta):
 func play_titjump():
 	if !animation_states.has(TITJUMP_ANIMATION):
 		return
+	# nothing there to bounce: the take would swing the bones of a chest that is
+	# drawn flat, and the torso and the top weighted to them wobble with it
+	if chest_is_flat():
+		return
 	animation_times[TITJUMP_ANIMATION] = 0.0
 	animation_states[TITJUMP_ANIMATION] = true
 	bone_sample_key = ""
 	set_process(true)
+
+
+<<<<<<< HEAD
+func _advance_earjump(delta):
+	return _advance_one_shot(EARJUMP_ANIMATION, delta)
+
+
+func play_earjump():
+	if !animation_states.has(EARJUMP_ANIMATION):
+		return
+	animation_times[EARJUMP_ANIMATION] = 0.0
+	animation_states[EARJUMP_ANIMATION] = true
+	bone_sample_key = ""
+	set_process(true)
+
+
+func _advance_one_shot(animation_name, delta):
+	if !bool(animation_states.get(animation_name, false)):
+		return false
+	var duration = float(animation_durations.get(animation_name, 0.0))
+	var next_time = float(animation_times.get(animation_name, 0.0)) + delta
+	if duration <= 0.0 or next_time >= duration:
+		animation_states[animation_name] = false
+		animation_times[animation_name] = 0.0
+	else:
+		animation_times[animation_name] = next_time
+	bone_sample_key = ""
+=======
+# Whether this rig carries the named emotion at all.
+func has_emotion(emotion_name):
+	return animation_states.has(EMOTION_PREFIX + str(emotion_name))
+
+
+# The face the doll is making: an emotion by its name without the `emote_`
+# prefix, or "" for none, crossfaded the way the preview's picker does it.  A rig
+# that has no such emotion - the male export carries none at all - is left as it
+# is, and the answer is false.
+func set_emotion(emotion_name):
+	var wanted = ""
+	if str(emotion_name) != "":
+		wanted = EMOTION_PREFIX + str(emotion_name)
+		if !animation_states.has(wanted):
+			return false
+	var active = ""
+	for animation_name in animation_states.keys():
+		if _is_emotion_animation(animation_name) and bool(animation_states[animation_name]):
+			active = animation_name
+	if wanted == active:
+		return true
+	if wanted == "":
+		_on_animation_toggled(false, active)
+		return true
+	# an emotion with no bone keys of its own would not switch the last one off
+	if !active.empty() and !_poses_the_skeleton(wanted):
+		animation_states[active] = false
+		animation_times[active] = 0.0
+	_on_animation_toggled(true, wanted)
+>>>>>>> master
+	return true
 
 
 func _advance_pose_transition(delta):
@@ -430,6 +542,42 @@ func _advance_blink(delta):
 	if blink_delay <= 0.0:
 		animation_times[BLINK_ANIMATION] = 0.0
 		animation_states[BLINK_ANIMATION] = true
+
+
+func set_tail_animation(value):
+	tail_animation_enabled = bool(value) and animation_durations.get(TAILMOVE_ANIMATION, 0.0) > 0.0
+	animation_states[TAILMOVE_ANIMATION] = false
+	animation_times[TAILMOVE_ANIMATION] = 0.0
+	bone_sample_key = ""
+	_schedule_tail_animation()
+	_update_animated_pose()
+
+
+func _schedule_tail_animation():
+	tail_animation_delay = rand_range(TAIL_MIN_DELAY, TAIL_MAX_DELAY)
+
+
+func _advance_tail_animation(delta):
+	if !tail_animation_enabled or !animation_states.has(TAILMOVE_ANIMATION):
+		return false
+	if animation_states[TAILMOVE_ANIMATION]:
+		var duration = float(animation_durations.get(TAILMOVE_ANIMATION, 0.0))
+		var next_time = float(animation_times.get(TAILMOVE_ANIMATION, 0.0)) + delta
+		if duration <= 0.0 or next_time >= duration:
+			animation_states[TAILMOVE_ANIMATION] = false
+			animation_times[TAILMOVE_ANIMATION] = 0.0
+			_schedule_tail_animation()
+		else:
+			animation_times[TAILMOVE_ANIMATION] = next_time
+		bone_sample_key = ""
+		return true
+	tail_animation_delay -= delta
+	if tail_animation_delay <= 0.0:
+		animation_times[TAILMOVE_ANIMATION] = 0.0
+		animation_states[TAILMOVE_ANIMATION] = true
+		bone_sample_key = ""
+		return true
+	return false
 
 
 # The cursor leaning on whatever the doll is wearing that gives way.  Says
@@ -579,6 +727,11 @@ func _apply_pushables():
 const CHEST_COVER_SLOTS = ["equip_breasts"]
 
 
+# A flat or masculine chest - the screens send both as the `flat` size.
+func chest_is_flat():
+	return str(axis_values.get("tits_size", "")) == "flat"
+
+
 func chest_is_covered():
 	for record in mesh_records:
 		if str(record.slot.get("name", "")) in CHEST_COVER_SLOTS:
@@ -626,6 +779,8 @@ func _load_source():
 			float(definition.get("rotation", 0.0)),
 			float(definition.get("scaleX", 1.0)),
 			float(definition.get("scaleY", 1.0)),
+			float(definition.get("shearX", 0.0)),
+			float(definition.get("shearY", 0.0)),
 		]
 	slot_data = shared.slot_data
 	skin_map = shared.skin_map
@@ -661,10 +816,16 @@ func _solve_pose():
 			skipped_layers[slot_name] = true
 		else:
 			wanted.append(slot_name)
+	# The slots the jiggle leaves alone are skinned from a pose solved without it.
+	# Solved ahead of the ordinary pose, so `bones` still ends up holding that one.
+	var still = _unjiggled_pose()
 	# Solved first now rather than last: the layers are taken off this pose
 	# instead of each solving the skeleton again from the setup pose.  `bones` is
 	# left holding it either way.
 	_build_bone_transforms()
+	if still != null:
+		for slot_name in JIGGLE_FREE_SLOTS:
+			layer_poses[slot_name] = still
 	if wanted.empty():
 		return
 	var world_offsets = MODIFIERS.bone_world_offsets(proportions, contract.CONTRACT_ID)
@@ -685,6 +846,29 @@ func _solve_pose():
 			_build_bone_transforms()
 			continue
 		layer_poses[slot_name] = _layer_pose(base, factors, turns, affected)
+
+
+# The skeleton solved with the titjump take switched off, or null while none is
+# running or none of the slots that want it is drawn.  The take is left as it was
+# found; the caller solves `bones` again.
+func _unjiggled_pose():
+	if !bool(animation_states.get(TITJUMP_ANIMATION, false)):
+		return null
+	var drawn = _drawn_slot_names()
+	if !drawn.empty():
+		var wanted = false
+		for slot_name in JIGGLE_FREE_SLOTS:
+			if drawn.has(slot_name):
+				wanted = true
+		if !wanted:
+			return null
+	animation_states[TITJUMP_ANIMATION] = false
+	bone_sample_key = ""
+	_build_bone_transforms()
+	var pose = _snapshot_pose()
+	animation_states[TITJUMP_ANIMATION] = true
+	bone_sample_key = ""
+	return pose
 
 
 # One layer's pose, lifted off the ordinary one rather than solved again.
@@ -961,7 +1145,7 @@ func _apply_active_bone_timelines():
 		_set_bone_world(
 			name, values[0], values[1], values[2],
 			values[3], values[4],
-			float(bone.local_shear_x), float(bone.local_shear_y)
+			values[5], values[6]
 		)
 	_resolve_bone_hierarchy()
 
@@ -994,7 +1178,7 @@ func _sampled_bone_timelines():
 	# visible jerk while retaining the requested quarter-second duration.
 	amount = amount * amount * (3.0 - 2.0 * amount)
 	for name in names.keys():
-		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0])
+		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0])
 		var first = pose_transition_from.get(name, setup)
 		var second = target.get(name, setup)
 		pose_transition_sample[name] = [
@@ -1003,6 +1187,8 @@ func _sampled_bone_timelines():
 			_lerp_degrees(float(first[2]), float(second[2]), amount),
 			lerp(float(first[3]), float(second[3]), amount),
 			lerp(float(first[4]), float(second[4]), amount),
+			_lerp_degrees(float(first[5]), float(second[5]), amount),
+			_lerp_degrees(float(first[6]), float(second[6]), amount),
 		]
 	return _emotion_bone_sample(pose_transition_sample)
 
@@ -1025,7 +1211,7 @@ func _emotion_bone_sample(target):
 	var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
 	amount = amount * amount * (3.0 - 2.0 * amount)
 	for name in names.keys():
-		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0])
+		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0])
 		var first = emotion_transition_from.get(name, setup)
 		var second = target.get(name, setup)
 		emotion_transition_sample[name] = [
@@ -1034,6 +1220,8 @@ func _emotion_bone_sample(target):
 			_lerp_degrees(float(first[2]), float(second[2]), amount),
 			lerp(float(first[3]), float(second[3]), amount),
 			lerp(float(first[4]), float(second[4]), amount),
+			_lerp_degrees(float(first[5]), float(second[5]), amount),
+			_lerp_degrees(float(first[6]), float(second[6]), amount),
 		]
 	return emotion_transition_sample
 
@@ -1069,6 +1257,8 @@ func _sample_current_bone_timelines():
 			var rotation = float(definition.get("rotation", 0.0))
 			var scale_x = float(definition.get("scaleX", 1.0))
 			var scale_y = float(definition.get("scaleY", 1.0))
+			var shear_x = float(definition.get("shearX", 0.0))
+			var shear_y = float(definition.get("shearY", 0.0))
 			var channels = bone_timelines[name]
 			if channels.has("translate"):
 				var translation = _sample_timeline(channels.translate, time, ["x", "y"])
@@ -1081,9 +1271,13 @@ func _sample_current_bone_timelines():
 				var scale = _sample_timeline(channels.scale, time, ["x", "y"], 1.0)
 				scale_x *= float(scale.get("x", 1.0))
 				scale_y *= float(scale.get("y", 1.0))
+			if channels.has("shear"):
+				var shear = _sample_timeline(channels.shear, time, ["x", "y"])
+				shear_x += float(shear.get("x", 0.0))
+				shear_y += float(shear.get("y", 0.0))
 			# A bone two animations both key is written by the later one, which is
 			# what the pass this replaced did as well.
-			bone_sample[name] = [x, y, rotation, scale_x, scale_y]
+			bone_sample[name] = [x, y, rotation, scale_x, scale_y, shear_x, shear_y]
 	return bone_sample
 
 
@@ -1617,7 +1811,7 @@ func _unhandled_input(event):
 		elif event.button_index == BUTTON_LEFT:
 			# A poke owns its press and can never leave a previous pan latched.
 			# Anywhere else keeps the existing press-to-pan, release-to-stop flow.
-			if event.pressed and _poke_tits(event.position):
+			if event.pressed and (_poke_ears(event.position) or _poke_tits(event.position)):
 				panning = false
 				get_tree().set_input_as_handled()
 			else:
@@ -1802,7 +1996,7 @@ func _build_interface():
 	# Small overlays such as `say` remain toggles: they run on top of both
 	# channels and must not replace the selected pose.
 	for animation_name in _sorted_animations():
-		if animation_name == BLINK_ANIMATION or animation_name == TITJUMP_ANIMATION:
+		if animation_name in [BLINK_ANIMATION, TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
 		if _is_emotion_animation(animation_name) or _poses_the_skeleton(animation_name):
 			continue # the blink runs it on its own timer, see the toggle below
@@ -1812,6 +2006,13 @@ func _build_interface():
 	blink_toggle.pressed = blink_enabled
 	blink_toggle.connect("toggled", self, "set_blinking")
 	box.add_child(blink_toggle)
+	var tail_toggle = CheckButton.new()
+	tail_toggle.text = "Tail animation"
+	tail_toggle.pressed = tail_animation_enabled
+	tail_toggle.disabled = !animation_states.has(TAILMOVE_ANIMATION)
+	tail_toggle.connect("toggled", self, "set_tail_animation")
+	box.add_child(tail_toggle)
+	ui["tail_animation"] = tail_toggle
 	var handles_toggle = CheckButton.new()
 	handles_toggle.text = _text("DOLL2_PREVIEW_SHOW_HANDLES")
 	handles_toggle.pressed = handles_visible
@@ -1830,6 +2031,8 @@ func _build_interface():
 		if bool(definition.get("hidden", false)):
 			continue
 		_add_axis_select(box, definition.label, axis, definition.values)
+		if str(axis) == "many_tits":
+			_add_many_tits_toggle(box)
 	# A proportion picked by name reads as one of these, not as a slider stranded
 	# in the middle of the build ones.
 	for modifier_id in _sorted_modifiers():
@@ -1878,7 +2081,7 @@ func _emotion_animations():
 func _pose_animations():
 	var result = []
 	for animation_name in _sorted_animations():
-		if animation_name == TITJUMP_ANIMATION:
+		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
 		if !_is_emotion_animation(animation_name) and _poses_the_skeleton(animation_name):
 			result.append(animation_name)
@@ -1900,11 +2103,13 @@ func _ordered_active_animations():
 			ordinary.append(animation_name)
 	ordinary.sort()
 	emotions.sort()
-	# titjump remains an overlay on the pose, but an emotion still has the final
-	# say when the two happen to key the same breast or face control.
-	if TITJUMP_ANIMATION in ordinary:
-		ordinary.erase(TITJUMP_ANIMATION)
-		ordinary.append(TITJUMP_ANIMATION)
+	# Authored reactions are overlays on the pose. Apply them after the idle so
+	# its keys cannot overwrite a moving ear or tail; emotion remains the final
+	# channel wherever it deliberately addresses the same control.
+	for overlay in [TAILMOVE_ANIMATION, EARJUMP_ANIMATION, TITJUMP_ANIMATION]:
+		if overlay in ordinary:
+			ordinary.erase(overlay)
+			ordinary.append(overlay)
 	ordinary.append_array(emotions)
 	return ordinary
 
@@ -2107,6 +2312,21 @@ func _add_axis_select(parent, label_text, axis, values):
 	ui["axis/" + axis] = select
 
 
+# Under the extra-rows picker: the rows as nipples alone, or grown into breasts.
+func _add_many_tits_toggle(parent):
+	var toggle = CheckButton.new()
+	toggle.text = _text("DOLL2_PREVIEW_MANY_TITS_DEVELOPED")
+	toggle.pressed = many_tits_developed
+	toggle.connect("toggled", self, "_on_many_tits_developed_toggled")
+	parent.add_child(toggle)
+	ui["many_tits_developed"] = toggle
+
+
+func _on_many_tits_developed_toggled(pressed):
+	many_tits_developed = bool(pressed)
+	_rebuild_model()
+
+
 # Height slides, but only between the six authored steps: anything in between
 # has no proportions of its own, so the slider snaps to whole tiers.
 # Fur and scale patterns.  One row: the pattern, then a colour per layer, shown
@@ -2144,6 +2364,9 @@ func _on_coverage_changed(_item_index, select):
 	coverage_colors = COVERAGE.default_colors(coverage_id)
 	_refresh_coverage_pickers()
 	_apply_coverage_to_meshes()
+	# a coat brings its own nipples and puts the mouth in its fur
+	_follow_rule_with_nipples()
+	_follow_coat_with_mouth()
 
 
 func _on_coverage_colour_changed(colour, index):
@@ -2151,6 +2374,9 @@ func _on_coverage_colour_changed(colour, index):
 		coverage_colors.append(Color(1, 1, 1))
 	coverage_colors[index] = colour
 	_apply_coverage_to_meshes()
+	# the mouth follows its own layer being repainted
+	if index == COVERAGE.mouth_index(coverage_id):
+		_follow_coat_with_mouth()
 
 
 # Fur belongs to bodies that can grow it.  On a human body the whole row is
@@ -2278,6 +2504,8 @@ func _build_channel_materials():
 			CATALOGUE.zone_distance()[1] / 360.0,
 			CATALOGUE.zone_distance()[2] / 360.0
 		))
+		# near-black ink takes a pick as it is - see `flat` on the tattoo channel
+		material.set_shader_param("paint_flat", 1.0 if bool(channels[channel_id].get("flat", false)) else 0.0)
 		# Gear is painted entirely in the hue code, so its zones start on real
 		# colours: raw magenta is a placeholder, not a look.  Everywhere else a
 		# zone starts white, which leaves that band of the art alone.
@@ -2352,22 +2580,42 @@ func _on_channel_colour_changed(colour, channel_id, secondary = false):
 		color_values[channel_id] = colour
 	if channel_id == "nipples" and !secondary:
 		# a hand-picked colour is the end of the rule, not an exception to it
-		nipples_follow_skin = false
+		nipples_follow_rule = false
+	if channel_id == "lips" and !secondary:
+		lips_follow_rule = false
 	_apply_channel_colour(channel_id)
 	if channel_id == "skin" and !secondary:
-		_follow_skin_with_nipples()
+		_follow_rule_with_nipples()
 
 
-# In the game the nipples are read off the skin's own shade; the preview used to
-# leave them at the artist's pink, which is why a light skin came out with one
-# pair here and another one in play.
-func _follow_skin_with_nipples():
-	if !nipples_follow_skin or !color_values.has("nipples"):
+# In the game the nipples are read off the skin's own shade, and a furred chest
+# wears its coat's nipples instead; the preview used to leave them at the artist's
+# pink, which is why a light skin came out with one pair here and another one in
+# play.
+func _follow_rule_with_nipples():
+	if !nipples_follow_rule or !color_values.has("nipples"):
 		return
-	color_values["nipples"] = COLORS.nipples_from_colour(color_values.get("skin", Color(1, 1, 1)))
+	var coat = COVERAGE.nipple_colour(coverage_id) if _coverage_available() else null
+	color_values["nipples"] = coat if coat != null else COLORS.nipples_from_colour(color_values.get("skin", Color(1, 1, 1)))
 	_apply_channel_colour("nipples")
 	if ui.has("color/nipples"):
 		ui["color/nipples"].color = color_values["nipples"]
+
+
+# A coat's mouth is a darker shade of the fur it sits in, as the game paints it -
+# see ch_stats.get_body_color_lips().  With no coat on, the lips go back to the
+# art's own colour.
+func _follow_coat_with_mouth():
+	if !lips_follow_rule or !color_values.has("lips"):
+		return
+	var index = COVERAGE.mouth_index(coverage_id)
+	var lips = Color(1, 1, 1)
+	if _coverage_available() and index >= 0 and index < coverage_colors.size():
+		lips = Color(COLORS.lips_code_for_fur("#" + coverage_colors[index].to_html(false)))
+	color_values["lips"] = lips
+	_apply_channel_colour("lips")
+	if ui.has("color/lips"):
+		ui["color/lips"].color = lips
 
 
 func _on_zone_colour_changed(colour, channel_id, zone_index):
@@ -2674,6 +2922,9 @@ func _on_select_changed(_item_index, group_id, select):
 	if group_id == "body":
 		_follow_body_tag()
 		_refresh_coverage_pickers()
+		# a body that cannot wear the coat gives its nipples and mouth back to their rule
+		_follow_rule_with_nipples()
+		_follow_coat_with_mouth()
 	_refresh_all_bindings()
 	_refresh_zone_pickers()
 	# Layer poses depend on the selected cut as well as the slider value.  Re-solve
@@ -2747,6 +2998,16 @@ func _poke_tits(screen_point):
 	if !box.has_point(_to_doll_space(to_local(screen_point))):
 		return false
 	play_titjump()
+	return true
+
+
+func _poke_ears(screen_point):
+	var box = _slot_bounds(PUSH.PART_SLOTS)
+	if box.size.y <= 0.0:
+		return false
+	if !box.has_point(_to_doll_space(to_local(screen_point))):
+		return false
+	play_earjump()
 	return true
 
 
@@ -2827,7 +3088,7 @@ func _rebuild_model():
 	var authored_animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
 	var worn = _worn_selections()
-	composed = CATALOGUE.compose(worn, axis_values)
+	composed = CATALOGUE.compose(worn, axis_values, hidden_slots)
 	_apply_say_lips(worn)
 	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
 	composed_textures = CATALOGUE.compose_textures(worn)
@@ -2837,6 +3098,9 @@ func _rebuild_model():
 	for slot_name in hidden_slots:
 		composed.erase(slot_name)
 		composed_textures.erase(slot_name)
+	if !many_tits_developed or chest_is_flat():
+		composed.erase("breasts_beastkin_many")
+		composed_textures.erase("breasts_beastkin_many")
 	if model_root != null:
 		model_root.queue_free()
 	mesh_records.clear()
@@ -2905,13 +3169,40 @@ func _draw_ordered_slots():
 	return result
 
 
+# A flat chest draws no breasts, so the nipples a piercing goes through are the
+# torso's own, drawn under the torso's clothing.  The piercing goes down there
+# with them: at its export place above the breasts it would sit on top of a top
+# the nipples are under, and clear of the sheer one they are seen through.
+const FLAT_CHEST_DRAW_ORDER_FIXES = [{"slot": "piercing_nipple_1_0", "before": "equip_torso"}]
+
+
 # The order to draw in: the catalogue's, unless a running animation reorders the
 # slots itself.  An authored pose does that - the doll folds its arms in front of
 # the body in `idle2` and behind it everywhere else, which is a draw order change
-# and nothing else.
+# and nothing else.  A flat chest then moves the nipple piercing in either.
 func _current_draw_order():
 	var animated = _animation_draw_order()
-	return animated if !animated.empty() else CATALOGUE.draw_order()
+	var order = animated if !animated.empty() else CATALOGUE.draw_order()
+<<<<<<< HEAD
+	return _apply_selected_ear_draw_order(order.duplicate())
+
+
+func _apply_selected_ear_draw_order(order):
+	if !UPPER_EAR_PARTS.has(str(selections.get("ears", ""))):
+		return order
+	var from = order.find("ears")
+	var hair = order.find("hairs_base")
+	if from < 0 or hair < 0:
+		return order
+	order.remove(from)
+	hair = order.find("hairs_base")
+	order.insert(hair, "ears")
+=======
+	if chest_is_flat():
+		# on a copy: the catalogue's order is the one every doll on the rig reads
+		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
+>>>>>>> master
+	return order
 
 
 # Spine's DrawOrderTimeline, worked out over the export's own slot order because
@@ -2992,9 +3283,12 @@ func _sort_draw_offsets(first, second):
 
 
 # `{"slot": x, "before": y}` / `{"slot": x, "after": y}`: x is lifted
-# out and dropped directly below/above y.
-func _apply_draw_order_fixes(order):
-	for fix in CATALOGUE.draw_order_fixes():
+# out and dropped directly below/above y.  The catalogue's rules, unless `fixes`
+# names others.
+func _apply_draw_order_fixes(order, fixes = null):
+	if fixes == null:
+		fixes = CATALOGUE.draw_order_fixes()
+	for fix in fixes:
 		var slot_name = str(fix.get("slot", ""))
 		var relation = "before" if fix.has("before") else "after"
 		var anchor = str(fix.get(relation, ""))
@@ -3039,6 +3333,9 @@ func _apply_say_lips(worn):
 	if !bool(animation_states.get(SAY_ANIMATION, false)):
 		return
 	var lips_part = str(worn.get("lips", ""))
+	# a face drawn without a mouth - a cat's muzzle has its own - does not grow one to talk
+	if lips_part == "":
+		return
 	var say_selection = worn.duplicate()
 	say_selection["lips"] = SAY_ORC_LIPS_PART if lips_part.begins_with(SAY_ORC_LIPS_PREFIX) else SAY_DEFAULT_LIPS_PART
 	var say_composed = CATALOGUE.compose(say_selection, axis_values)
@@ -3166,6 +3463,8 @@ func _active_emotion_animates_slot(slot_name):
 		if !_is_emotion_animation(animation_name):
 			continue
 		if skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).has(slot_name):
+			return true
+		if slot_name in EMOTION_SETUP_SLOTS.get(animation_name, []):
 			return true
 	return false
 
