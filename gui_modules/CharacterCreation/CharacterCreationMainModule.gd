@@ -133,7 +133,7 @@ var params_to_save = [ #memo mostly
 	'chin', 
 	'nose', 
 	'body_color_skin', 
-	'body_color_nipples', 
+	'body_color_nipples',
 	'body_color_lips', 
 	'body_color_eyebrows', 
 	'body_color_wings', 

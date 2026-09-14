@@ -2922,7 +2922,7 @@ Predicted task shows which job the character will perform next. Materials are al
 	BROTHELTOOLTIP = """You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.
 Service is a global modifier for this assignment.
 When character attempts sex service, Desirability shows a chance for them to receive full estimated value, if it fails they only receive 50%. Desirability above 100 further boosts gold reward.
-Desirability is derived from {color=aqua|Charm Factor} and increase further if character is at least skilled in actions which they offer. 
+Desirability is derived from {color=aqua|Charm Factor} and increase further if character is at least skilled in actions which they offer.
 Sex skills will increase income of related actions.
 Lack of consent will reduce gold income by 40%.""",
 	BROTHELWARNING = "Sex services won't work if you don't select at least 1 allowed customer.",

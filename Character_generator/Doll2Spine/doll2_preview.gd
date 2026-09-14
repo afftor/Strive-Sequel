@@ -28,17 +28,14 @@ const ANIMATION_LABELS = {
 	"eyesmove": "DOLL2_PREVIEW_ANIMATION_EYES",
 }
 const TITJUMP_ANIMATION = "titjump"
-<<<<<<< HEAD
 const EARJUMP_ANIMATION = "earjump"
 const TAILMOVE_ANIMATION = "tailmove"
-=======
 # A beastkin's extra rows under the chest are weighted to the smallest breast
 # size's bones, which the titjump take swings along with every other size's, so
 # the rows bounced with a chest they are not part of.  They are skinned from a
 # pose without the take - see _unjiggled_pose().  The breast sliders still move
 # them: the rows' art carries the top pair as well.
 const JIGGLE_FREE_SLOTS = ["breasts_beastkin_many", "beastkin_torso_many_nipples"]
->>>>>>> master
 
 # Slots used only to decide whether a click landed on the chest. The motion
 # itself comes entirely from the authored titjump animation.
@@ -385,7 +382,6 @@ func play_titjump():
 	set_process(true)
 
 
-<<<<<<< HEAD
 func _advance_earjump(delta):
 	return _advance_one_shot(EARJUMP_ANIMATION, delta)
 
@@ -410,7 +406,9 @@ func _advance_one_shot(animation_name, delta):
 	else:
 		animation_times[animation_name] = next_time
 	bone_sample_key = ""
-=======
+	return true
+
+
 # Whether this rig carries the named emotion at all.
 func has_emotion(emotion_name):
 	return animation_states.has(EMOTION_PREFIX + str(emotion_name))
@@ -440,7 +438,6 @@ func set_emotion(emotion_name):
 		animation_states[active] = false
 		animation_times[active] = 0.0
 	_on_animation_toggled(true, wanted)
->>>>>>> master
 	return true
 
 
@@ -3183,8 +3180,11 @@ const FLAT_CHEST_DRAW_ORDER_FIXES = [{"slot": "piercing_nipple_1_0", "before": "
 func _current_draw_order():
 	var animated = _animation_draw_order()
 	var order = animated if !animated.empty() else CATALOGUE.draw_order()
-<<<<<<< HEAD
-	return _apply_selected_ear_draw_order(order.duplicate())
+	order = _apply_selected_ear_draw_order(order.duplicate())
+	if chest_is_flat():
+		# on a copy: the catalogue's order is the one every doll on the rig reads
+		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
+	return order
 
 
 func _apply_selected_ear_draw_order(order):
@@ -3197,11 +3197,6 @@ func _apply_selected_ear_draw_order(order):
 	order.remove(from)
 	hair = order.find("hairs_base")
 	order.insert(hair, "ears")
-=======
-	if chest_is_flat():
-		# on a copy: the catalogue's order is the one every doll on the rig reads
-		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
->>>>>>> master
 	return order
 
 
