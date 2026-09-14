@@ -407,8 +407,6 @@ func _advance_one_shot(animation_name, delta):
 		animation_times[animation_name] = next_time
 	bone_sample_key = ""
 	return true
-
-
 # Whether this rig carries the named emotion at all.
 func has_emotion(emotion_name):
 	return animation_states.has(EMOTION_PREFIX + str(emotion_name))
