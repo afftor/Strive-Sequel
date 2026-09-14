@@ -396,9 +396,20 @@ func _process(delta):
 func _on_character_item_equipped(who, item):
 	if character == null or who != character or portrait_mode or !is_visible_in_tree():
 		return
-	var steps = EMOTES.equip_reaction(character, item)
-	# a rig without the face - the male one has none - neither plays nor spends the turn
-	if steps.empty() or !model.has_emotion(steps[0][0]) or !EMOTES.take_turn(character):
+	_react(EMOTES.equip_reaction(character, item))
+
+
+# The player clicked the chest of the character this doll shows.
+func _on_chest_poked():
+	if character == null or portrait_mode:
+		return
+	_react(EMOTES.poke_reaction(character))
+
+
+# Plays a reaction, on the cooldown every reaction shares.  A rig without the
+# face - the male one has none - neither plays it nor spends the turn.
+func _react(steps):
+	if steps.empty() or model == null or !model.has_emotion(steps[0][0]) or !EMOTES.take_turn(character):
 		return
 	play_emotes(steps)
 
@@ -1406,6 +1417,7 @@ func _gui_input(event):
 				# a poke at the chest swings it, the way the old doll did; anywhere
 				# else the press starts a drag as before
 				if tits_interaction(event.position):
+					_on_chest_poked()
 					accept_event()
 					return
 				_drag_candidate = true

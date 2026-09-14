@@ -1,8 +1,8 @@
 extends Reference
 
-# Faces the doll pulls at what happens to the character.  For now that is putting
-# an item on: what the item is picks the reaction, and a character reacts at most
-# once every COOLDOWN seconds, however many dolls show them.
+# Faces the doll pulls at what happens to the character: an item put on, and a
+# click on the chest.  What happened picks the reaction, and a character reacts
+# at most once every COOLDOWN seconds, however many dolls show them.
 #
 # A reaction is a list of steps, [emotion, seconds], played one after another;
 # the face goes back to the character's ordinary one after the last.  An emotion
@@ -15,6 +15,8 @@ const COOLDOWN = 8.0
 # how long the shock is held before the reaction it leads into
 const SHOCK_SECONDS = 1.0
 const SHOCK = "surprise"
+# how often a click on the chest is noticed at all
+const POKE_CHANCE = 0.15
 
 # Pieces a character puts on with some bashfulness.  Every collar counts as well,
 # found by its code rather than listed.
@@ -50,6 +52,14 @@ static func equip_reaction(character, item):
 			if randf() < 0.3:
 				return [["joy", 2.0]]
 	return []
+
+
+# What a character's face does when the player clicks their chest, or [] for
+# nothing - most clicks go unremarked.
+static func poke_reaction(_character):
+	if randf() >= POKE_CHANCE:
+		return []
+	return [[SHOCK, SHOCK_SECONDS], ["embarrassment", 2.0]]
 
 
 # Whether the character may react right now; when they may, the cooldown starts.

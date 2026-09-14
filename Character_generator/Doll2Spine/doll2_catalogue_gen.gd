@@ -4162,6 +4162,7 @@ const PARTS = {
 			"equip_shoulder_right": "shoulderr_underwear2",
 			"equip_torso": "torso_underwear2",
 		},
+		"tags": ["see_through"],
 		"zones": [0],
 	},
 	"outfit_underwear2_legs": {
@@ -4192,6 +4193,7 @@ const PARTS = {
 				},
 			},
 		},
+		"tags": ["see_through"],
 		"zones": [0],
 	},
 	"outfit_waitress": {

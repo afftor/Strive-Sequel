@@ -217,12 +217,12 @@ func piercing(): #currently unused
 	elif person.get_stat('piercing_penis') == 'stud':
 		text += '[His] cock has a [color=aqua]stud[/color] in it. '
 
-	if text != '':
-		#posible bug
-		if globals.state.descriptsettings.piercing == true || showmode != 'default':
-			text = "\n\n[url=piercing][color=#d1b970]Piercing:[/color][/url] " + text
-		else:
-			text = "\n[url=piercing][color=#d1b970]Piercing:[/color][/url] Omitted."
+#	if text != '':
+#		#posible bug
+#		if globals.state.descriptsettings.piercing == true || showmode != 'default':
+#			text = "\n\n[url=piercing][color=#d1b970]Piercing:[/color][/url] " + text
+#		else:
+#			text = "\n[url=piercing][color=#d1b970]Piercing:[/color][/url] Omitted."
 	return text
 
 #var tattoo_descripts = {

@@ -2965,7 +2965,7 @@ func _rebuild_model():
 	var authored_animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
 	var worn = _worn_selections()
-	composed = CATALOGUE.compose(worn, axis_values)
+	composed = CATALOGUE.compose(worn, axis_values, hidden_slots)
 	_apply_say_lips(worn)
 	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
 	composed_textures = CATALOGUE.compose_textures(worn)
@@ -3046,13 +3046,24 @@ func _draw_ordered_slots():
 	return result
 
 
+# A flat chest draws no breasts, so the nipples a piercing goes through are the
+# torso's own, drawn under the torso's clothing.  The piercing goes down there
+# with them: at its export place above the breasts it would sit on top of a top
+# the nipples are under, and clear of the sheer one they are seen through.
+const FLAT_CHEST_DRAW_ORDER_FIXES = [{"slot": "piercing_nipple_1_0", "before": "equip_torso"}]
+
+
 # The order to draw in: the catalogue's, unless a running animation reorders the
 # slots itself.  An authored pose does that - the doll folds its arms in front of
 # the body in `idle2` and behind it everywhere else, which is a draw order change
-# and nothing else.
+# and nothing else.  A flat chest then moves the nipple piercing in either.
 func _current_draw_order():
 	var animated = _animation_draw_order()
-	return animated if !animated.empty() else CATALOGUE.draw_order()
+	var order = animated if !animated.empty() else CATALOGUE.draw_order()
+	if chest_is_flat():
+		# on a copy: the catalogue's order is the one every doll on the rig reads
+		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
+	return order
 
 
 # Spine's DrawOrderTimeline, worked out over the export's own slot order because
@@ -3133,9 +3144,12 @@ func _sort_draw_offsets(first, second):
 
 
 # `{"slot": x, "before": y}` / `{"slot": x, "after": y}`: x is lifted
-# out and dropped directly below/above y.
-func _apply_draw_order_fixes(order):
-	for fix in CATALOGUE.draw_order_fixes():
+# out and dropped directly below/above y.  The catalogue's rules, unless `fixes`
+# names others.
+func _apply_draw_order_fixes(order, fixes = null):
+	if fixes == null:
+		fixes = CATALOGUE.draw_order_fixes()
+	for fix in fixes:
 		var slot_name = str(fix.get("slot", ""))
 		var relation = "before" if fix.has("before") else "after"
 		var anchor = str(fix.get(relation, ""))

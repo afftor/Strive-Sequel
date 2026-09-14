@@ -69,7 +69,9 @@ const FOLDER_MAP = {
 	"111_armory_set_tentackle_female": {"group": "outfit", "part": "outfit_tentacle"},
 	"112_armory_set_playboy_female": {"group": "outfit", "part": "outfit_playboy"},
 	"113_armory_set_underwear1": {"group": "outfit", "part": "outfit_underwear1"},
-	"113_armory_set_underwear2": {"group": "outfit", "part": "outfit_underwear2"},
+	# sheer: the nipples are seen through it, and so is a piercing in them - see
+	# `compose` in doll2_catalogue.gd
+	"113_armory_set_underwear2": {"group": "outfit", "part": "outfit_underwear2", "tags": ["see_through"]},
 	"151_armory_acces_petsuit": {"group": "outfit", "part": "outfit_petsuit"},
 }
 
