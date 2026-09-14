@@ -1449,6 +1449,9 @@ var effects = {
 		type = 'trigger',
 		trigger = [variables.TR_CAST],
 		req_skill = true,
+		args = {
+			duration = {obj = 'self', func = 'dur', dur = 3}
+			},
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'taunt']},
 		],
@@ -1462,12 +1465,12 @@ var effects = {
 		req_skill = false,
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'arg',
 		args = {
 			armor = {obj = 'owner', func = 'stat', stat = 'armor'},
-			duration = {obj = 'self', func = 'dur', dur = 3}
 			},
 		sub_effects = ['e_tr_templar_heal'],
-		statchange = {mdef = [['arg', 'armor'], '*', 0.5]},
+		statchanges = {mdef = [['arg', 'armor'], '*', 0.5]},
 		buffs = ['b_templar'],
 	},
 	e_tr_templar_heal = {
