@@ -229,8 +229,8 @@ var piercing = {
 	piercing_navel = null, 
 	piercing_nipples = null, 
 	#the metal the doll paints them in, as "#rrggbb"; null leaves the art's own gold
-	piercing_navel_color = null, 
-	piercing_nipples_color = null, 
+	piercing_navel_color = null,
+	piercing_nipples_color = null,
 	piercing_clit = null, 
 	piercing_labia = null, 
 	piercing_penis = null,

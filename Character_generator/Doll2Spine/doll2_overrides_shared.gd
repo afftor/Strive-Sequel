@@ -32,7 +32,7 @@ const GROUP_DEFS = {
 	"ears": {"kind": "options", "optional": true, "order": 7, "label": "DOLL2_PREVIEW_EARS"},
 	# Base hair and fringe are one choice.  Their lists are the same styles under
 	# two names, and a style only ever makes sense with its own fringe; they stay
-	# two slots because the ears draw between them, but they are picked together.
+	# two independently layered slots, but they are picked together.
 	"hair": {"kind": "options", "optional": true, "order": 8, "label": "DOLL2_PREVIEW_HAIR"},
 	"hair_back": {"kind": "options", "optional": true, "order": 10, "label": "DOLL2_PREVIEW_HAIR_BACK"},
 	"hair_assist": {"kind": "options", "optional": true, "order": 11, "label": "DOLL2_PREVIEW_HAIR_ACCESSORY"},
@@ -149,11 +149,6 @@ const DRAW_ORDER_FIXES = [
 	# dressed character wore it over their trousers.  The testicles already sit
 	# below the armour and are left alone.
 	{"slot": "dick", "before": "equip_pelvis"},
-	# Animal ears are attached to the skull, not to the hairstyle, so the hair in
-	# front of the head has to fall over them: the export draws them after the
-	# hair and they came out pasted on top of it.  Under the hair mass and over
-	# the hair that hangs behind the head is where they belong.
-	{"slot": "ears", "before": "hairs_base"},
 ]
 
 # Always present, independent of any selection.

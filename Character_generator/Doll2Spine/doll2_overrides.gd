@@ -170,14 +170,39 @@ const SLOT_ROUTES = {
 	"piercing_nipple_1_0": "piercing_nipple",
 }
 
-# Extra choices derived from an existing generated part. The original
-# disheveled entry keeps its automatically paired disheveled fringe; this copy
-# shares the same base mesh and replaces only the fringe.
+# Extra choices derived from existing generated hair parts. Originals retain
+# their automatic companions; each copy shares the base mesh and replaces only
+# the fringe.
 const PART_VARIANTS = {
+	"hair_base_bobcut_monofringe": {
+		"source": "hair_base_bobcut",
+		"display": "Hair base bobcut (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
+	"hair_base_default_monofringe": {
+		"source": "hair_base_default",
+		"display": "Hair base default (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
 	"hair_base_disheveled_eyehide": {
 		"source": "hair_base_disheveled",
 		"display": "Hair base disheveled (eyehide)",
 		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_eyehide"},
+	},
+	"hair_base_disheveled_monofringe": {
+		"source": "hair_base_disheveled",
+		"display": "Hair base disheveled (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
+	"hair_base_fringe_2_monofringe": {
+		"source": "hair_base_fringe_2",
+		"display": "Hair base fringe 2 (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
+	},
+	"hair_base_fringe_monofringe": {
+		"source": "hair_base_fringe",
+		"display": "Hair base fringe (monofringe)",
+		"slots": {"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe"},
 	},
 }
 

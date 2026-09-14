@@ -28,6 +28,8 @@ const ANIMATION_LABELS = {
 	"eyesmove": "DOLL2_PREVIEW_ANIMATION_EYES",
 }
 const TITJUMP_ANIMATION = "titjump"
+const EARJUMP_ANIMATION = "earjump"
+const TAILMOVE_ANIMATION = "tailmove"
 # A beastkin's extra rows under the chest are weighted to the smallest breast
 # size's bones, which the titjump take swings along with every other size's, so
 # the rows bounced with a chest they are not part of.  They are skinned from a
@@ -40,6 +42,19 @@ const JIGGLE_FREE_SLOTS = ["breasts_beastkin_many", "beastkin_torso_many_nipples
 const TITS_SLOTS = ["breasts", "breast_nipples", "equip_breasts",
 	"breasts_beastkin", "breasts_beastkin_pregnancy", "beastkin_pregnancy_nipple",
 	"breasts_beastkin_many"]
+
+# The export keeps every ear cut in one slot, but its two rig groups need
+# different layering. Cuts skinned to the upper ear_lt/ear_rt pair sit behind
+# the base hair; side ears on ear_l/ear_r retain the JSON order above it.
+# The split is identical in the female and male skeletons.
+const UPPER_EAR_PARTS = [
+	"ears_cat",
+	"ears_fox_n1", "ears_fox_n2", "ears_fox_n3", "ears_fox_n4",
+	"ears_mouse",
+	"ears_rabbit", "ears_rabbit2", "ears_rabbit3",
+	"ears_tanuk",
+	"ears_wolf",
+]
 
 # These broad back-hair meshes do not gain enough visible length from their
 # authored bone weights alone.  The back-hair slider therefore scales their
@@ -177,6 +192,11 @@ var animation_durations = {}
 const POSE_TRANSITION_DURATION = 0.35
 const EMOTION_TRANSITION_DURATION = 0.3
 const EMOTION_PREFIX = "emote_"
+const EMOTION_SETUP_SLOTS = {
+	# This take keeps the setup blush visible without authoring a redundant
+	# attachment or RGBA key for it.
+	"emote_horny": ["blush"],
+}
 # A pose switch crossfades the local transforms produced by the old pose into
 # the live sample of the new one. Missing keys mean setup values, which also
 # makes turning the last pose off fade smoothly back to the setup pose.
@@ -191,7 +211,7 @@ var emotion_transition_sample_key = ""
 var emotion_colour_from = {}
 var bone_setup_sample = {}
 # What the running animations do to the bones they key, as {bone: [x, y,
-# rotation, scale_x, scale_y]} - the local values before any modifier has
+# rotation, scale_x, scale_y, shear_x, shear_y]} - the local values before any modifier has
 # touched them. A solve
 # runs the whole skeleton once per hair layer plus once more, and every one of
 # those passes used to sample the same 151 keyed timelines at the same instant:
@@ -226,6 +246,10 @@ const BLINK_MIN_DELAY = 3.0
 const BLINK_MAX_DELAY = 7.0
 var blink_enabled = false
 var blink_delay = 0.0
+const TAIL_MIN_DELAY = 3.0
+const TAIL_MAX_DELAY = 7.0
+var tail_animation_enabled = false
+var tail_animation_delay = 0.0
 # Bone offsets asked for by the artless parts - the shy glance - kept apart from
 # what the selections want so the eyes can travel between the two.  The pose is
 # built with `pose_offsets`; a glide eases it from `pose_offsets_from` to
@@ -299,13 +323,15 @@ func _process(delta):
 	# animations that gets a share of this frame
 	_advance_blink(delta)
 	var pose_changed = _advance_pushables(delta)
+	pose_changed = _advance_earjump(delta) or pose_changed
+	pose_changed = _advance_tail_animation(delta) or pose_changed
 	pose_changed = _advance_pose_transition(delta) or pose_changed
 	pose_changed = _advance_emotion_transition(delta) or pose_changed
 	pose_changed = _advance_titjump(delta) or pose_changed
 	if _advance_pose_offsets(delta):
 		pose_changed = true
 	for animation_name in animation_states.keys():
-		if animation_name == TITJUMP_ANIMATION:
+		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
 		if animation_states[animation_name]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
@@ -356,6 +382,31 @@ func play_titjump():
 	set_process(true)
 
 
+func _advance_earjump(delta):
+	return _advance_one_shot(EARJUMP_ANIMATION, delta)
+
+
+func play_earjump():
+	if !animation_states.has(EARJUMP_ANIMATION):
+		return
+	animation_times[EARJUMP_ANIMATION] = 0.0
+	animation_states[EARJUMP_ANIMATION] = true
+	bone_sample_key = ""
+	set_process(true)
+
+
+func _advance_one_shot(animation_name, delta):
+	if !bool(animation_states.get(animation_name, false)):
+		return false
+	var duration = float(animation_durations.get(animation_name, 0.0))
+	var next_time = float(animation_times.get(animation_name, 0.0)) + delta
+	if duration <= 0.0 or next_time >= duration:
+		animation_states[animation_name] = false
+		animation_times[animation_name] = 0.0
+	else:
+		animation_times[animation_name] = next_time
+	bone_sample_key = ""
+	return true
 # Whether this rig carries the named emotion at all.
 func has_emotion(emotion_name):
 	return animation_states.has(EMOTION_PREFIX + str(emotion_name))
@@ -486,6 +537,42 @@ func _advance_blink(delta):
 	if blink_delay <= 0.0:
 		animation_times[BLINK_ANIMATION] = 0.0
 		animation_states[BLINK_ANIMATION] = true
+
+
+func set_tail_animation(value):
+	tail_animation_enabled = bool(value) and animation_durations.get(TAILMOVE_ANIMATION, 0.0) > 0.0
+	animation_states[TAILMOVE_ANIMATION] = false
+	animation_times[TAILMOVE_ANIMATION] = 0.0
+	bone_sample_key = ""
+	_schedule_tail_animation()
+	_update_animated_pose()
+
+
+func _schedule_tail_animation():
+	tail_animation_delay = rand_range(TAIL_MIN_DELAY, TAIL_MAX_DELAY)
+
+
+func _advance_tail_animation(delta):
+	if !tail_animation_enabled or !animation_states.has(TAILMOVE_ANIMATION):
+		return false
+	if animation_states[TAILMOVE_ANIMATION]:
+		var duration = float(animation_durations.get(TAILMOVE_ANIMATION, 0.0))
+		var next_time = float(animation_times.get(TAILMOVE_ANIMATION, 0.0)) + delta
+		if duration <= 0.0 or next_time >= duration:
+			animation_states[TAILMOVE_ANIMATION] = false
+			animation_times[TAILMOVE_ANIMATION] = 0.0
+			_schedule_tail_animation()
+		else:
+			animation_times[TAILMOVE_ANIMATION] = next_time
+		bone_sample_key = ""
+		return true
+	tail_animation_delay -= delta
+	if tail_animation_delay <= 0.0:
+		animation_times[TAILMOVE_ANIMATION] = 0.0
+		animation_states[TAILMOVE_ANIMATION] = true
+		bone_sample_key = ""
+		return true
+	return false
 
 
 # The cursor leaning on whatever the doll is wearing that gives way.  Says
@@ -687,6 +774,8 @@ func _load_source():
 			float(definition.get("rotation", 0.0)),
 			float(definition.get("scaleX", 1.0)),
 			float(definition.get("scaleY", 1.0)),
+			float(definition.get("shearX", 0.0)),
+			float(definition.get("shearY", 0.0)),
 		]
 	slot_data = shared.slot_data
 	skin_map = shared.skin_map
@@ -1051,7 +1140,7 @@ func _apply_active_bone_timelines():
 		_set_bone_world(
 			name, values[0], values[1], values[2],
 			values[3], values[4],
-			float(bone.local_shear_x), float(bone.local_shear_y)
+			values[5], values[6]
 		)
 	_resolve_bone_hierarchy()
 
@@ -1084,7 +1173,7 @@ func _sampled_bone_timelines():
 	# visible jerk while retaining the requested quarter-second duration.
 	amount = amount * amount * (3.0 - 2.0 * amount)
 	for name in names.keys():
-		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0])
+		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0])
 		var first = pose_transition_from.get(name, setup)
 		var second = target.get(name, setup)
 		pose_transition_sample[name] = [
@@ -1093,6 +1182,8 @@ func _sampled_bone_timelines():
 			_lerp_degrees(float(first[2]), float(second[2]), amount),
 			lerp(float(first[3]), float(second[3]), amount),
 			lerp(float(first[4]), float(second[4]), amount),
+			_lerp_degrees(float(first[5]), float(second[5]), amount),
+			_lerp_degrees(float(first[6]), float(second[6]), amount),
 		]
 	return _emotion_bone_sample(pose_transition_sample)
 
@@ -1115,7 +1206,7 @@ func _emotion_bone_sample(target):
 	var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
 	amount = amount * amount * (3.0 - 2.0 * amount)
 	for name in names.keys():
-		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0])
+		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0])
 		var first = emotion_transition_from.get(name, setup)
 		var second = target.get(name, setup)
 		emotion_transition_sample[name] = [
@@ -1124,6 +1215,8 @@ func _emotion_bone_sample(target):
 			_lerp_degrees(float(first[2]), float(second[2]), amount),
 			lerp(float(first[3]), float(second[3]), amount),
 			lerp(float(first[4]), float(second[4]), amount),
+			_lerp_degrees(float(first[5]), float(second[5]), amount),
+			_lerp_degrees(float(first[6]), float(second[6]), amount),
 		]
 	return emotion_transition_sample
 
@@ -1159,6 +1252,8 @@ func _sample_current_bone_timelines():
 			var rotation = float(definition.get("rotation", 0.0))
 			var scale_x = float(definition.get("scaleX", 1.0))
 			var scale_y = float(definition.get("scaleY", 1.0))
+			var shear_x = float(definition.get("shearX", 0.0))
+			var shear_y = float(definition.get("shearY", 0.0))
 			var channels = bone_timelines[name]
 			if channels.has("translate"):
 				var translation = _sample_timeline(channels.translate, time, ["x", "y"])
@@ -1171,9 +1266,13 @@ func _sample_current_bone_timelines():
 				var scale = _sample_timeline(channels.scale, time, ["x", "y"], 1.0)
 				scale_x *= float(scale.get("x", 1.0))
 				scale_y *= float(scale.get("y", 1.0))
+			if channels.has("shear"):
+				var shear = _sample_timeline(channels.shear, time, ["x", "y"])
+				shear_x += float(shear.get("x", 0.0))
+				shear_y += float(shear.get("y", 0.0))
 			# A bone two animations both key is written by the later one, which is
 			# what the pass this replaced did as well.
-			bone_sample[name] = [x, y, rotation, scale_x, scale_y]
+			bone_sample[name] = [x, y, rotation, scale_x, scale_y, shear_x, shear_y]
 	return bone_sample
 
 
@@ -1707,7 +1806,7 @@ func _unhandled_input(event):
 		elif event.button_index == BUTTON_LEFT:
 			# A poke owns its press and can never leave a previous pan latched.
 			# Anywhere else keeps the existing press-to-pan, release-to-stop flow.
-			if event.pressed and _poke_tits(event.position):
+			if event.pressed and (_poke_ears(event.position) or _poke_tits(event.position)):
 				panning = false
 				get_tree().set_input_as_handled()
 			else:
@@ -1892,7 +1991,7 @@ func _build_interface():
 	# Small overlays such as `say` remain toggles: they run on top of both
 	# channels and must not replace the selected pose.
 	for animation_name in _sorted_animations():
-		if animation_name == BLINK_ANIMATION or animation_name == TITJUMP_ANIMATION:
+		if animation_name in [BLINK_ANIMATION, TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
 		if _is_emotion_animation(animation_name) or _poses_the_skeleton(animation_name):
 			continue # the blink runs it on its own timer, see the toggle below
@@ -1902,6 +2001,13 @@ func _build_interface():
 	blink_toggle.pressed = blink_enabled
 	blink_toggle.connect("toggled", self, "set_blinking")
 	box.add_child(blink_toggle)
+	var tail_toggle = CheckButton.new()
+	tail_toggle.text = "Tail animation"
+	tail_toggle.pressed = tail_animation_enabled
+	tail_toggle.disabled = !animation_states.has(TAILMOVE_ANIMATION)
+	tail_toggle.connect("toggled", self, "set_tail_animation")
+	box.add_child(tail_toggle)
+	ui["tail_animation"] = tail_toggle
 	var handles_toggle = CheckButton.new()
 	handles_toggle.text = _text("DOLL2_PREVIEW_SHOW_HANDLES")
 	handles_toggle.pressed = handles_visible
@@ -1970,7 +2076,7 @@ func _emotion_animations():
 func _pose_animations():
 	var result = []
 	for animation_name in _sorted_animations():
-		if animation_name == TITJUMP_ANIMATION:
+		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
 		if !_is_emotion_animation(animation_name) and _poses_the_skeleton(animation_name):
 			result.append(animation_name)
@@ -1992,11 +2098,13 @@ func _ordered_active_animations():
 			ordinary.append(animation_name)
 	ordinary.sort()
 	emotions.sort()
-	# titjump remains an overlay on the pose, but an emotion still has the final
-	# say when the two happen to key the same breast or face control.
-	if TITJUMP_ANIMATION in ordinary:
-		ordinary.erase(TITJUMP_ANIMATION)
-		ordinary.append(TITJUMP_ANIMATION)
+	# Authored reactions are overlays on the pose. Apply them after the idle so
+	# its keys cannot overwrite a moving ear or tail; emotion remains the final
+	# channel wherever it deliberately addresses the same control.
+	for overlay in [TAILMOVE_ANIMATION, EARJUMP_ANIMATION, TITJUMP_ANIMATION]:
+		if overlay in ordinary:
+			ordinary.erase(overlay)
+			ordinary.append(overlay)
 	ordinary.append_array(emotions)
 	return ordinary
 
@@ -2888,6 +2996,16 @@ func _poke_tits(screen_point):
 	return true
 
 
+func _poke_ears(screen_point):
+	var box = _slot_bounds(PUSH.PART_SLOTS)
+	if box.size.y <= 0.0:
+		return false
+	if !box.has_point(_to_doll_space(to_local(screen_point))):
+		return false
+	play_earjump()
+	return true
+
+
 func _tits_bounds():
 	return _slot_bounds(TITS_SLOTS)
 
@@ -3060,9 +3178,23 @@ const FLAT_CHEST_DRAW_ORDER_FIXES = [{"slot": "piercing_nipple_1_0", "before": "
 func _current_draw_order():
 	var animated = _animation_draw_order()
 	var order = animated if !animated.empty() else CATALOGUE.draw_order()
+	order = _apply_selected_ear_draw_order(order.duplicate())
 	if chest_is_flat():
 		# on a copy: the catalogue's order is the one every doll on the rig reads
 		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
+	return order
+
+
+func _apply_selected_ear_draw_order(order):
+	if !UPPER_EAR_PARTS.has(str(selections.get("ears", ""))):
+		return order
+	var from = order.find("ears")
+	var hair = order.find("hairs_base")
+	if from < 0 or hair < 0:
+		return order
+	order.remove(from)
+	hair = order.find("hairs_base")
+	order.insert(hair, "ears")
 	return order
 
 
@@ -3324,6 +3456,8 @@ func _active_emotion_animates_slot(slot_name):
 		if !_is_emotion_animation(animation_name):
 			continue
 		if skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).has(slot_name):
+			return true
+		if slot_name in EMOTION_SETUP_SLOTS.get(animation_name, []):
 			return true
 	return false
 

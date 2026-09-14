@@ -9,11 +9,11 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 721,
-	"bone_count": 272,
+	"attachment_count": 722,
+	"bone_count": 275,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "T3oV9KEgj0E",
+	"skeleton_hash": "9SLRSP8dE4k",
 	"slot_count": 81,
 	"spine_version": "4.2.43",
 }
@@ -173,8 +173,8 @@ const DRAW_ORDER = [
 	"eyes_hearts",
 	"race_head",
 	"face",
-	"ears",
 	"hairs_base",
+	"ears",
 	"lips",
 	"lips_say",
 	"eyebrows",
@@ -194,10 +194,6 @@ const DRAW_ORDER_FIXES = [
 	{
 		"before": "equip_pelvis",
 		"slot": "dick",
-	},
-	{
-		"before": "hairs_base",
-		"slot": "ears",
 	},
 	{
 		"before": "equip_torso",
@@ -882,12 +878,17 @@ const GROUPS = {
 		"parts": [
 			"hair_base_back",
 			"hair_base_bobcut",
+			"hair_base_bobcut_monofringe",
 			"hair_base_braids",
 			"hair_base_default",
+			"hair_base_default_monofringe",
 			"hair_base_disheveled",
 			"hair_base_disheveled_eyehide",
+			"hair_base_disheveled_monofringe",
 			"hair_base_fringe",
 			"hair_base_fringe_2",
+			"hair_base_fringe_2_monofringe",
+			"hair_base_fringe_monofringe",
 			"hair_base_hime",
 			"hair_base_parting",
 			"hair_base_slave",
@@ -2240,6 +2241,16 @@ const PARTS = {
 		},
 		"zones": [0],
 	},
+	"hair_base_bobcut_monofringe": {
+		"display": "Hair base bobcut (monofringe)",
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "hair_base_bobcut",
+			"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe",
+		},
+		"zones": [0],
+	},
 	"hair_base_braids": {
 		"folders": ["04_hairs_base"],
 		"group": "hair",
@@ -2254,6 +2265,16 @@ const PARTS = {
 		"slots": {
 			"hairs_base": "hair_base_default",
 			"hairs_fringe": "hair_fringe_default",
+		},
+		"zones": [0],
+	},
+	"hair_base_default_monofringe": {
+		"display": "Hair base default (monofringe)",
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "hair_base_default",
+			"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe",
 		},
 		"zones": [0],
 	},
@@ -2276,6 +2297,16 @@ const PARTS = {
 		},
 		"zones": [0],
 	},
+	"hair_base_disheveled_monofringe": {
+		"display": "Hair base disheveled (monofringe)",
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "04_hairs_base/hair_base_disheveled",
+			"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe",
+		},
+		"zones": [0],
+	},
 	"hair_base_fringe": {
 		"folders": ["04_hairs_base"],
 		"group": "hair",
@@ -2290,6 +2321,26 @@ const PARTS = {
 		"group": "hair",
 		"slots": {
 			"hairs_base": "hair_base_fringe 2",
+		},
+		"zones": [0],
+	},
+	"hair_base_fringe_2_monofringe": {
+		"display": "Hair base fringe 2 (monofringe)",
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "hair_base_fringe 2",
+			"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe",
+		},
+		"zones": [0],
+	},
+	"hair_base_fringe_monofringe": {
+		"display": "Hair base fringe (monofringe)",
+		"folders": ["04_hairs_base"],
+		"group": "hair",
+		"slots": {
+			"hairs_base": "hair_base_fringe",
+			"hairs_fringe": "04_hairs_fringe/hair_fringe_monofringe",
 		},
 		"zones": [0],
 	},
@@ -4268,6 +4319,7 @@ const PARTS = {
 				},
 			},
 		},
+		"zones": [0],
 	},
 	"piercing_belly_2": {
 		"folders": ["97_piercing"],
@@ -4282,6 +4334,7 @@ const PARTS = {
 				},
 			},
 		},
+		"zones": [0],
 	},
 	"piercing_belly_3": {
 		"folders": ["97_piercing"],
@@ -4296,6 +4349,7 @@ const PARTS = {
 				},
 			},
 		},
+		"zones": [0],
 	},
 	"piercing_nipple_1": {
 		"folders": ["97_piercing"],
@@ -4312,6 +4366,7 @@ const PARTS = {
 				},
 			},
 		},
+		"zones": [0],
 	},
 	"piercing_nipple_2": {
 		"folders": ["97_piercing"],
@@ -4328,7 +4383,7 @@ const PARTS = {
 				},
 			},
 		},
-		"zones": [1],
+		"zones": [0],
 	},
 	"piercing_nipple_3": {
 		"folders": ["97_piercing"],
@@ -4345,6 +4400,7 @@ const PARTS = {
 				},
 			},
 		},
+		"zones": [0],
 	},
 	"pigtails": {
 		"folders": ["05_hairs_assist"],

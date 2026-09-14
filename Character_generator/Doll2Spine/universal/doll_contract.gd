@@ -282,6 +282,9 @@ const BONES = [
 	"lips2",
 	"lips3",
 	"spine127",
+	"head19",
+	"head20",
+	"head21",
 ]
 
 const SLOTS = [
