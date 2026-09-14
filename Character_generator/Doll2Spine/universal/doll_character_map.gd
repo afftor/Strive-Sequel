@@ -185,7 +185,37 @@ const VALUES = {
 # arrives.  Delete an entry when both rigs have the part.
 # Empty: the August re-export gave both rigs the second elven and fox ears, which
 # is what this last stood in for.
-const STAND_INS = {}
+const STAND_INS = {
+	# Two cuts only the female export has, for a man who is handed one anyway: the
+	# plain tangle under the fallen fringe, and a swept-back cut for the scraped-back
+	# one.  The men's roll reaches neither.
+	"hair": {
+		"hair_base_disheveled_eyehide": "hair_base_disheveled",
+		"hair_base_slave": "hair_base_back",
+	},
+}
+
+# Piercings live in the game's own `piercing` container and in the game's own
+# words - the old descriptions already read `stud`, `ring` and `chain` off these
+# two stats - and each word names the drawn piece that looks like it.  Female art
+# only for now: a rig without the group has no part to wear, and the menu hides
+# the row there.  The order is the order the menu lists them in.
+# A tattoo inked in the game's crotch slot is drawn as a womb tattoo: the first
+# one, unless the player picked another drawing.  Whatever the tattoo is in the
+# game - a brand, a lust mark - the doll has one kind of picture for the place.
+const CROTCH_TATTOO_DEFAULT = "tatoo_womb1"
+const CROTCH_TATTOO_PREFIX = "tatoo_womb"
+
+const PIERCINGS = {
+	"piercing_nipples": {
+		"group": "piercing_nipple",
+		"values": {"ring": "piercing_nipple_1", "stud": "piercing_nipple_2", "chain": "piercing_nipple_3"},
+	},
+	"piercing_navel": {
+		"group": "piercing_belly",
+		"values": {"stud": "piercing_belly_1", "ring": "piercing_belly_2", "charm": "piercing_belly_3"},
+	},
+}
 
 
 # The piece this rig should wear instead, or "" when there is nothing to fall
@@ -206,6 +236,10 @@ const BEASTKIN_GROUPS = ["head", "face", "lips", "nose"]
 const BEASTKIN_FACE_PREFIX = "beastkin_"
 const BEASTKIN_DEFAULT_FACE = "beastkin_face1"
 const BEASTKIN_LIPS = "lips_beast"
+# Animals whose muzzle is drawn with its mouth already in it.  A cat's chin art
+# carries the little mouth under the nose, so any lips part on top of it was a
+# second mouth - the beast mouth, or an expression, whichever was asked for.
+const BEASTS_WITHOUT_MOUTH = ["cat"]
 const BEASTKIN_EXPRESSIONS = ["beastkin_lips_cry", "beastkin_lips_open", "beastkin_lips_smile"]
 
 
@@ -271,7 +305,7 @@ static func selections_for(stats, doll_id = "female"):
 	# taken off - the game renames `Beastkin` to `Halfkin` itself when the furry
 	# setting is off - so they keep the ears and the tail on a human body and a
 	# human face.  Ratkin are their own race and are not furry either.
-	var beastkin = race.find("Beastkin") >= 0
+	var beastkin = draws_beastkin(race)
 	var bodies = BODIES.get(doll_id, BODIES.female)
 	var body = "beastkin" if beastkin else "base"
 	if str(stats.get("body_shape", "")) == "femboy" and bodies.has("femboy"):
@@ -323,11 +357,52 @@ static func selections_for(stats, doll_id = "female"):
 		var value = str(stats.get(stat, ""))
 		if value != "":
 			result[stat] = value
+	var inked = stats.get("tattoo_crotch", "")
+	if inked != null and str(inked) != "" and !is_absent(inked):
+		var drawing = str(stats.get("tattoo_crotch_style", ""))
+		result["tattoo"] = drawing if drawing.begins_with(CROTCH_TATTOO_PREFIX) else CROTCH_TATTOO_DEFAULT
+	for stat in PIERCINGS.keys():
+		var pierced = str(PIERCINGS[stat].values.get(str(stats.get(stat, "")), ""))
+		if pierced != "":
+			result[PIERCINGS[stat].group] = pierced
 
 	var gear = GEAR.selections_for(stats.get("equipment", {}), undress, doll_id)
 	for group_id in gear.keys():
 		result[group_id] = gear[group_id]
 	return result
+
+
+# Whether a race is drawn as an animal: a beastkin body and a muzzled head.  The
+# one test for it, so the screens that offer parts ask what the doll will draw.
+static func draws_beastkin(race):
+	return str(race).find("Beastkin") >= 0
+
+
+# The animal a beastkin race is drawn from, which decides its muzzle and whether
+# it has a mouth of its own - the same reading the doll and the body editor make.
+static func beast_of(race):
+	var name = str(race).to_lower()
+	for animal in ["cat", "fox", "wolf", "rabbit", "bunny", "tanuki", "rat"]:
+		if name.find(animal) >= 0:
+			return animal
+	return "cat"
+
+
+# Whether a chin is one this body can actually wear.  A beastkin's head is always
+# a muzzle - `beastkin_variant` puts the animal's own over any human chin - so the
+# only real choices there are the values that name a muzzle; a human head has no
+# use for a muzzle at all.  A value that draws nothing is not this test's to judge.
+static func chin_fits_body(value, beastkin, beast = ""):
+	# `beastkin` names no muzzle of its own: it is whatever snout the animal wears.
+	# For the animals that pick between the shared muzzles that is their first one,
+	# which is offered under its own name - the generic value would be a second
+	# tile for the same face.
+	if bool(beastkin) and str(value) == "beastkin" and str(beast) != "":
+		return !(str(BEAST_CHINS.get(str(beast), "")) in BEAST_MUZZLES)
+	var part = resolve("chin", str(value))
+	if part == "":
+		return true
+	return part.begins_with("beastkin_") == bool(beastkin)
 
 
 # The beastkin cut of a part, or the part unchanged when there is none.
@@ -343,6 +418,8 @@ static func beastkin_variant(group_id, part_id, stats = {}):
 			return BEASTKIN_DEFAULT_FACE
 		return part_id if part_id.begins_with(BEASTKIN_FACE_PREFIX) else BEASTKIN_FACE_PREFIX + part_id
 	if group_id == "lips":
+		if str(stats.get("beast", "")) in BEASTS_WITHOUT_MOUTH:
+			return ""
 		return part_id if part_id in BEASTKIN_EXPRESSIONS else BEASTKIN_LIPS
 	# the muzzle is drawn with its own nose, so the human one would be a second
 	if group_id == "nose":

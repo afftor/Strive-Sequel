@@ -3641,10 +3641,13 @@ func valuecheck(dict):
 		#a craft room good enough for this recipe - built, and with tools enough. This replaced
 		#the global 'forge'/'tailor'/'alchemy' upgrades, which were the same three steps bought
 		#from a menu instead of stood up on the plan.
-		#the estate has a room of this kind at all - what the retired 'resting' upgrade asked,
-		#now that a bathhouse is the thing that answers it
+		#the estate has a room of this kind at all
 		"has_mansion_room":
 			return ResourceScripts.game_res.count_rooms(dict.name) >= int(dict.get('value', 1))
+		#the master has a bath of his own - the Private Bath on his room, which is what the retired
+		#'resting' upgrade and then the bathhouse became; see game_res.has_bath()
+		"has_bath":
+			return ResourceScripts.game_res.has_bath() == bool(dict.get('check', true))
 		"has_craft_room":
 			return ResourceScripts.game_res.craft_room_level(dict.name) >= int(dict.value)
 		"area_progress":
@@ -4213,7 +4216,8 @@ func get_tr_src(src, src_val):
 		'masteries_points':
 			return ["", tr("STATMASTERY_POINT_%s" % src_val.to_upper())]
 		'upgrade':
-			return ["", tr("UPGRADERESTING")]
+			#the one bonus with this source is the master's bath - see ch_dyn_stats
+			return ["", tr("MANSIONUPG_PRIVATE_BATH")]
 		_:
 			print("get_tr_src() can't decipher %s %s" % [src, src_val])
 			return [src, src_val]

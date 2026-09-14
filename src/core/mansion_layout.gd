@@ -966,7 +966,7 @@ static func best_repeatable_beds():
 #nothing else builds rooms without a builder standing in them.
 #Beds first from the rooms already standing. A bedroom widened to its full eight sleeps twice
 #what a bare one does without costing a slot, and a slot spent on a fifth bedroom is a slot
-#that can never be a bathhouse. Only once every bedroom is full does this raise another.
+#that can never be a forge. Only once every bedroom is full does this raise another.
 #Returns the derelict slots it had to clear to find the room, so the caller can hand over what
 #the rubble was hiding.
 static func build_bedrooms_up_to(layout, wanted, spare_finds = false):

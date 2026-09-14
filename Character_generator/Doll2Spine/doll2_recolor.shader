@@ -23,6 +23,12 @@ uniform vec4 recolor : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float strength : hint_range(0.0, 1.0) = 0.0;
 
 uniform vec4 recolor2 : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+// FLAT - ink rather than paint.  A tattoo is drawn in near-black ink, and the
+// plain path keeps the art's lightness, which for black is none: every pick at or
+// under neutral lightness came out black again.  A flat channel lays the picked
+// colour on as it is, and the art's own alpha alone gives the shape.
+uniform float paint_flat = 0.0;
 uniform float gradient_top = 0.0;
 uniform float gradient_span = 0.0;
 
@@ -161,6 +167,9 @@ void fragment() {
 
 	if (applied > 0.0) {
 		vec3 tinted = hsl_to_rgb(vec3(target.x, target.y, shift_lightness(source.z, target.z)));
+		if (paint_flat > 0.0) {
+			tinted = hsl_to_rgb(target);
+		}
 		rgb = mix(rgb, tinted, applied);
 	}
 

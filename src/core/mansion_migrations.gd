@@ -14,10 +14,10 @@ const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
 
 static func run(res):
 	#Order matters, and it is one-way: a room raised here takes a slot nothing gives back.
-	#The named rooms come first - a bath is a bath and nothing else will do - and the old
+	#The named rooms come first - a forge is a forge and nothing else will do - and the old
 	#'rooms' upgrade fills whatever is left with bedrooms, because "more beds" is the one
 	#thing that can go anywhere. Filling first left a save with 34 bedrooms, no free slot,
-	#and a bathhouse and forge it had paid for and could not be given.
+	#and a forge and a practice room it had paid for and could not be given.
 	convert_room_tree_upgrades(res)
 	convert_master_bedroom_upgrade(res)
 	convert_gather_upgrades(res)
@@ -30,7 +30,7 @@ static func run(res):
 #What is left once every conversion has had its turn. A code the tree no longer sells and no
 #room inherits bought something that does not exist any more - builder crews, farm slots, the
 #trader - and keeping it only leaves rubbish in the save. A code that DOES have an heir is
-#kept even when it could not be spent: a mansion with no free slot gets its bathhouse the day
+#kept even when it could not be spent: a mansion with no free slot gets its forge the day
 #one is cleared, rather than losing what it paid for.
 static func forget_spent_upgrades(res):
 	var owed = ['rooms', 'master_bedroom']
@@ -44,15 +44,54 @@ static func forget_spent_upgrades(res):
 		res.upgrades.erase(code)
 
 
+#The bath was a room for a while before it became an upgrade of the master's own room. This runs
+#before MansionLayout.validate(), which drops every room of a type the game no longer has - so a
+#bathhouse still standing in a save is turned back into the retired 'resting' level here, and
+#convert_room_tree_upgrades() pays that out as the Private Bath once the layout has been checked.
+#A bathhouse still being built is cancelled the way the card cancels one: what was paid for it
+#comes back, and so do its builders. The layout is not validated yet, so nothing here trusts its
+#shape.
+static func retire_bathhouses(res):
+	var layout = res.mansion_layout
+	if !(layout is Dictionary) or !(layout.get('floors') is Array):
+		return
+	for floor_data in layout.floors:
+		if !(floor_data is Dictionary) or !(floor_data.get('slots') is Dictionary):
+			continue
+		for slot_code in floor_data.slots:
+			var slot = floor_data.slots[slot_code]
+			if !(slot is Dictionary):
+				continue
+			var room = slot.get('room')
+			if room is Dictionary and room.get('type') == 'bathhouse':
+				slot.room = null
+				res.upgrades['resting'] = int(max(int(res.upgrades.get('resting', 0)), 1))
+			var build = slot.get('build')
+			if !(build is Dictionary) or build.get('kind') != 'construct' or build.get('target') != 'bathhouse':
+				continue
+			var paid = build.get('refund', {})
+			if paid is Dictionary:
+				for code in paid:
+					if code == 'gold':
+						res.money += int(paid[code])
+					else:
+						res.materials[code] = int(res.materials.get(code, 0)) + int(paid[code])
+			var task_id = build.get('task_id')
+			slot.build = null
+			if task_id != null and res.tasks_progresses.has(task_id):
+				res.clean_task(task_id)
+
+
 #The rest of the retired tree. A craft upgrade's three levels were the workshop itself and
 #two grades of what it could then make, so they come back as the room plus its Expansion -
 #Expansion being what the recipes read, see game_res.craft_room_level(). Tools is a separate
-#purchase now and buys speed only, so nothing here is owed it. The bath became a bathhouse, and
-#somewhere to be taught became a practice room with a tutor's place in it. Everything else
+#purchase now and buys speed only, so nothing here is owed it. The bath is the Private Bath on the
+#master's own room - a bathhouse for a while, see retire_bathhouses() - and somewhere to be taught
+#became a practice room with a tutor's place in it. Everything else
 #the tree sold - builder crews, their tools, farm slots, the exotic trader - had no room to
 #become and is simply gone, which is why nothing reads those codes any more.
 const ROOM_CONVERSION = {
-	resting = {room = 'bathhouse'},
+	resting = {room = 'master_bedroom', upgrade = 'private_bath'},
 	academy = {room = 'practice_room', upgrade = 'tutoring_area'},
 	tailor = {room = 'tailor_workshop', upgrade = 'craft_expansion', level_offset = -1},
 	forge = {room = 'forge', upgrade = 'craft_expansion', level_offset = -1},

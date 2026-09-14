@@ -28,6 +28,12 @@ const OFF_THE_LADDER = {
 const NEVER_OFFERED = {
 	"hair_base_length": ["bald"],
 	"hair_fringe_length": ["bald"],
+	# The old paperdoll's breast shapes.  The new doll draws each as its plain size
+	# (see TITS in doll2_view.gd), so on a slider they were steps that changed
+	# nothing; the game's own description data never had them.  A character who
+	# already carries one keeps it, and a trait condition still reads them.
+	"tits_size": ["average_high", "average_narrow", "average_wide", "big_high",
+		"big_narrow", "huge_high", "huge_narrow", "huge_wide"],
 }
 
 
@@ -72,6 +78,8 @@ const COLOUR_FOLLOWS = {
 	# the skin has no option row of its own to follow - a race decides it - so the
 	# swatches stand alone at the top of the visuals
 	"body_color_skin": "",
+	# the nipples stand with the skin they are shaded from, right under it
+	"body_color_nipples": "",
 	"eye_color": "eye_tex",
 	"body_color_lips": "lips",
 	"body_color_eyebrows": "eyebrows",
@@ -96,6 +104,8 @@ const COLOUR_FOLLOWS = {
 # Everything after it is the whole palette rather than the race's short list -
 # a painted mouth is a choice, not a birthright.
 const DEFAULT_COLOUR_FROM = {
+	# a beastkin's mouth follows the fur it sits in instead - the swatch shows what
+	# the getter works out, see `rule_colour` and `_drawn_colour`
 	"body_color_lips": "body_color_skin",
 	"body_color_eyebrows": "hair_base_color_1",
 	# a beastkin's ears are the colour of the hair between them unless the player
@@ -103,11 +113,18 @@ const DEFAULT_COLOUR_FROM = {
 	"body_color_ears": "hair_base_color_1",
 	# and the tail is the same story
 	"body_color_tail": "hair_base_color_1",
+	# Horns follow the hide their race wears, or stay as drawn.  The screens show
+	# what the getter works out on the "follow it" swatch rather than this source's
+	# own colour - see `rule_colour` and `_drawn_colour`.
+	"body_color_horns": "body_color_skin",
+	# the nipples follow the skin - not its exact shade but the deeper one worked
+	# out from it, which is what their "follow it" swatch shows
+	"body_color_nipples": "body_color_skin",
 }
 
-# Colours the game works out entirely on its own - a fur tail takes the hair, a
-# dragon's horns the hide - are not offered at all; `ch_stats.derives_colour()`
-# is what answers that, and the screen already asks it.
+# A colour the game works out entirely on its own - an animal body under a
+# covering takes the hide - is not offered at all; `ch_stats.derives_colour()`
+# is what answers that, and the screens already ask it.
 
 
 # The seven factors are the only thing on the screen a player spends points on,
@@ -170,12 +187,31 @@ static func factor_hint_key(statname):
 	return "CHARCREATE_STAT_HINT_" + str(statname).to_upper()
 
 
-# The values of a slider option, ladder first and the odd ones after it.
+# The order a slider's steps run in, where the data lists them some other way.
+# The old doll's hair-length table is keyed alphabetically - default, long, middle,
+# short - so the slider ran long before short and ended on the shortest.  The doll
+# scales the strands short 0.78 < default 1.0 < middle 1.15 < long 1.3, and `bald`,
+# where a character already carries it, is below every length.
+const LADDER_ORDER = {
+	"hair_base_length": ["bald", "short", "default", "middle", "long"],
+	"hair_fringe_length": ["bald", "short", "default", "middle", "long"],
+	"hair_back_length": ["short", "default", "middle", "long"],
+	"hair_assist_length": ["short", "default", "middle", "long"],
+}
+
+
+# The values of a slider option, ladder first and the odd ones after it.  A stat
+# with a LADDER_ORDER is put in that order; anything the order does not name keeps
+# its place after the named steps.
 static func ladder(statname, values):
 	var odd = OFF_THE_LADDER.get(str(statname), [])
+	var order = LADDER_ORDER.get(str(statname), [])
 	var result = []
+	for step in order:
+		if step in values and !(step in odd):
+			result.append(step)
 	for value in values:
-		if !(value in odd):
+		if !(value in odd) and !(value in result):
 			result.append(value)
 	for value in values:
 		if value in odd:

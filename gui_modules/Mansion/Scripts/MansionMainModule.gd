@@ -1001,7 +1001,7 @@ func test_mode():
 		#the estate's gathering used to be a row of 'resource_gather_*' upgrades handed out
 		#here; it comes out of the buildings on the grounds now
 		ResourceScripts.game_res.build_test_grounds()
-		#The workshops, the bathhouse, the practice room and a few beds - see TEST_ROOMS.
+		#The workshops, the practice room and a few beds - see TEST_ROOMS.
 		ResourceScripts.game_res.build_test_rooms()
 		ResourceScripts.game_res.fix_tax()
 		#A quest waiting at the estate with nobody on it, so the Local tasks button has
@@ -1116,8 +1116,11 @@ func test_mode():
 #		globals.impregnate(character, character)
 		character.set_stat('pregnancy_duration', 2)
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
+		#The household is every furry race, so the doll can be looked at on each of them. The
+		#furry setting renames a beastkin to its halfkin at creation; the fur is put back.
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Centaur', 'male', 'random')
+		character.create('BeastkinWolf', 'male', 'random')
+		character.set_furry_form(true)
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
 		character.set_stat('skin', 'grey')
@@ -1126,14 +1129,16 @@ func test_mode():
 		characters_pool.move_to_state(character.id)
 		character.process_training_metrics({physical = 10, magic = 5, positive = 20}) #example of testing
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Orc', 'female', 'random')
+		character.create('BeastkinCat', 'female', 'random')
+		character.set_furry_form(true)
 		character.fill_boosters()
 		character.set_stat('height', 'petite')
 		character.is_players_character = true
 		character.unlock_class("berserker")
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Elf', 'female', 'random')
+		character.create('BeastkinFox', 'female', 'random')
+		character.set_furry_form(true)
 		character.fill_boosters()
 		character.set_stat('height', 'short')
 		character.is_players_character = true
@@ -1145,20 +1150,23 @@ func test_mode():
 		character.unlock_class("battlesmith")
 		character.unlock_class("dragonknight")
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Goblin', 'female', 'random')
+		character.create('BeastkinBunny', 'female', 'random')
+		character.set_furry_form(true)
 		character.fill_boosters()
 		character.set_stat('height', 'average')
 		character.set_slave_category('servant')
 		character.is_players_character = true
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Goblin', 'female', 'random')
+		character.create('BeastkinTanuki', 'female', 'random')
+		character.set_furry_form(true)
 		character.fill_boosters()
 		character.set_stat('height', 'tall')
 		character.is_players_character = true
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Ratkin', 'female', 'random')
+		character.create('BeastkinWolf', 'female', 'random')
+		character.set_furry_form(true)
 		character.fill_boosters()
 		character.set_stat('height', 'towering')
 		characters_pool.move_to_state(character.id)

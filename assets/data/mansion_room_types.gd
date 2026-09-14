@@ -134,6 +134,16 @@ const LIST = {
 					3: {cost = {leathermythic = 20, clothethereal = 25}, progress = 30, effect = {sleep_slots = 3}},
 				},
 			},
+			#A bath of the master's own. What a bathhouse used to give the estate for simply standing -
+			#every slave a training point more per session and a fifth faster mana - comes with this
+			#now: bought once, on the room it belongs to, and taking no slot. game_res.has_bath() reads it.
+			private_bath = {
+				code = 'private_bath',
+				icon = 'rooms',
+				levels = {
+					1: {cost = {stone = 150, woodmagic = 50}, progress = 30, effect = {}},
+				},
+			},
 		},
 		master_only = true,
 		hidden = true,
@@ -705,22 +715,6 @@ const LIST = {
 		tags = ['outdoor'],
 		icon = 'hunting',
 		color = '5a4030',
-	},
-
-	#No slots at all. Simply having one grants the bath bonus.
-	bathhouse = {
-		code = 'bathhouse',
-		slots = {},
-		work_job = null,
-		max_count = 1,
-		upkeep = 0,
-		build_cost = {stone = 150, woodmagic = 50},
-		build_progress = 30,
-		upgrades = {},
-		master_only = false,
-		tags = ['bath'],
-		icon = 'rooms',
-		color = '3f6b6b',
 	},
 
 	#No slots either: the parlor is visited, not worked. Having one puts the Tattoo application

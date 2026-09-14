@@ -60,10 +60,17 @@ func try_start_event():
 
 	if event_reqs and event_reqs.has('global_reqs'):
 		for req in event_reqs.global_reqs:
+			#Every kind of global condition is asked, the way scenes ask theirs. Only 'has_upgrade'
+			#used to be read here and anything else was skipped without a word - which is how the
+			#event that wants a bath played in houses that had none.
+			var met = false
 			if req.type == 'has_upgrade':
-				if !ResourceScripts.game_res.if_has_upgrade(req.name, req.value):
-					return_events.append(event_id)
-					return false
+				met = ResourceScripts.game_res.if_has_upgrade(req.name, req.value)
+			else:
+				met = globals.valuecheck(req)
+			if !met:
+				return_events.append(event_id)
+				return false
 
 	var list_by_loc = {}
 	#get_romance_pair made unique solution. I can't come up with any universal idea

@@ -284,6 +284,8 @@ func equip_confirm():
 		var equip_sound = audio.get_equip_sound(equiped_item)
 		if equip_sound != null:
 			input_handler.PlaySound(equip_sound)
+		#the doll showing the character pulls a face at what went on
+		input_handler.emit_signal("character_item_equipped", selectedhero, equiped_item)
 	input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 	get_parent().emit_signal("item_equipped")
 	tempitem.amount -= 1

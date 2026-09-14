@@ -2,6 +2,7 @@ extends Reference
 
 # Colour tables only - no singletons - so this is safe in the preload chain.
 const DOLL_COLORS = preload("res://Character_generator/Doll2Spine/universal/doll_colors.gd")
+const DOLL_COVERAGE = preload("res://Character_generator/Doll2Spine/universal/doll_coverage.gd")
 
 var parent: WeakRef = null
 
@@ -287,7 +288,9 @@ const FIN_TAILS = ['fish']
 const FUR_COLOURS = {
 	'fur_orange': 'orange3', 'fur_orange_white': 'orange2', 'fur_striped': 'orange3',
 	'fur_white': 'white2', 'fur_grey': 'white3', 'fur_brown': 'brown3',
-	'fur_black': 'dark3',
+	#not the near-black of the coat's head: ear and tail art is drawn darker than the
+	#body's, so that shade came out solid black - this is the black coat's body fur
+	'fur_black': '#363533',
 }
 
 
@@ -382,23 +385,22 @@ func derives_colour(stat):
 	match stat:
 		'body_color_lips', 'body_color_eyebrows':
 			# both are offered, with "follow the rule" as their first value: an
-			# empty stat still takes the skin and the hair, so nothing is derived
+			# empty stat still takes the skin (a beastkin's fur) and the hair, so nothing is derived
 			# behind the player's back
 			return false
 		'body_color_ears':
-			# offered like the lips and the brows above: an empty stat still takes
-			# the hair, so the rule survives without the row being hidden.  Which
-			# ears get the row at all is `has_animal_ears()` - a shaped ear is
-			# drawn in skin tone and has no colour of its own
+			# offered like the lips and the brows above: an empty stat still follows
+			# the rule - the hair for fur, the skin for a shaped ear, the fin for a
+			# nereid's.  Which ears get the row at all is `has_ear_art()`.
 			return false
-		'body_color_tail':
-			# A fur tail is offered, the way the ears are: an empty stat still takes
-			# the hair, so the rule survives without the row being hidden.  Every
-			# other tail really is worked out - a demon's is the hide its wings are,
-			# a kobold's is skin, a nereid's is the fin - and one with no art has
-			# nothing to colour.
-			return !has_fur_tail()
-		'body_color_horns', 'body_color_animal':
+		'body_color_tail', 'body_color_horns':
+			# Offered the way the ears are.  An empty stat still follows the rule - a
+			# fur tail takes the hair, a demon's tail and horns the hide its wings
+			# are, a kobold's the skin, a nereid's tail the fin - so a pick is made
+			# on top of the rule rather than over a colour derived behind the
+			# player's back.  Which tails get the row at all is `has_tail_art()`.
+			return false
+		'body_color_animal':
 			return get_covering_colour() != ''
 	return false
 
@@ -420,8 +422,31 @@ func get_body_color_lips():
 	# `human1` still reads as a dark mouth on a pale face.  `lips_code_for_skin`
 	# lifts the skin into flesh, and hands back an authored `lips_<skin>` colour
 	# where the palette carries one.
+	# A beastkin's mouth is not on skin at all: it sits in the fur of the muzzle,
+	# and takes a darker shade of that fur - see `lips_code_for_fur`.
+	var fur = mouth_fur_colour()
+	if fur != '':
+		return DOLL_COLORS.lips_code_for_fur(fur)
 	var lips = DOLL_COLORS.lips_code_for_skin(statlist.body_color_skin)
 	return lips if lips != '' else statlist.body_color_skin
+
+
+# The fur a beastkin's mouth sits in: the coat colour its pattern lays over the
+# lips, as the player repainted it or as the artist drew it.  '' where the mouth
+# is on bare skin - a body the doll does not draw furred, or a pattern with no
+# fur there.
+func mouth_fur_colour():
+	if str(statlist.race).find('Beastkin') < 0:
+		return ''
+	var pattern = str(statlist.skin_coverage)
+	var index = DOLL_COVERAGE.mouth_index(pattern)
+	var drawn = DOLL_COVERAGE.default_colors(pattern)
+	if index < 0 or index >= drawn.size():
+		return ''
+	var painted = get_coat_colour(index)
+	if painted != '':
+		return painted
+	return '#' + drawn[index].to_html(false)
 
 
 # Ears that are shaped skin rather than grown fur.  Their art is drawn in skin
@@ -460,15 +485,31 @@ func has_animal_ears():
 	return !(ears in EARS_TAKING_THE_FIN)
 
 
+# Whether the doll draws any ears at all - skin, fur or fin.  Every drawn pair is
+# offered a colour: an empty stat still follows its rule (get_body_color_ears),
+# and a pick paints the pair whatever it is made of.
+func has_ear_art():
+	var ears = str(statlist.ears)
+	return !(ears in ['', 'no', 'none']) and !(ears in EARS_WITHOUT_ART)
+
+
+# Whether the doll draws a tail at all.  Offered a colour on the ears' terms: fur,
+# hide, skin or fin, an empty stat follows the rule get_body_color_tail works out.
+func has_tail_art():
+	var tail = str(statlist.tail)
+	return !(tail in ['', 'no', 'none']) and !(tail in TAILS_WITHOUT_ART)
+
+
 # What colour a pair of animal ears is.  The player's own choice wins; with none
 # made, they take the hair - or the fur, when the character is covered in it,
 # because ears sticking out of a striped coat are the coat's colour and not the
 # hair's.
 func get_body_color_ears():
-	if statlist.ears in EARS_TAKING_THE_FIN:
-		return fin_colour()
+	# a pick wins over every rule below, the fin's included
 	if statlist.body_color_ears != '':
 		return statlist.body_color_ears
+	if statlist.ears in EARS_TAKING_THE_FIN:
+		return fin_colour()
 	if !has_animal_ears():
 		return '' #shaped skin, or no ear art at all: nothing here to paint
 	var res = get_hairs_data().hair_base_color_1
@@ -479,22 +520,9 @@ func get_body_color_ears():
 	var painted = painted_coat_colour()
 	if painted != '':
 		return painted
-	if statlist.skin_coverage.begins_with('fur'):
-		match statlist.skin_coverage:
-			'fur_orange':
-				return 'orange3'
-			'fur_orange_white':
-				return 'orange2'
-			'fur_striped':
-				return 'orange3'
-			'fur_white':
-				return 'white2'
-			'fur_grey':
-				return 'white3'
-			'fur_brown':
-				return 'brown3'
-			'fur_black':
-				return 'dark3'
+	#the same fur the tail takes - see FUR_COLOURS
+	if FUR_COLOURS.has(statlist.skin_coverage):
+		return FUR_COLOURS[statlist.skin_coverage]
 	return res
 
 
@@ -863,6 +891,15 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
+		'disheveled_eyehide':
+			res.hair_style = 'messy_eyehide'
+			match exterior.hair_base_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
 		'back':
 			res.hair_style = 'straight'
 			match exterior.hair_base_length:
@@ -1073,6 +1110,17 @@ const HAIR_STYLES = {
 			"hips": {"hair_back": "wave"},
 		},
 	},
+	"messy_eyehide": {
+		# the same tangle with the fringe fallen over one eye; female art only, so only
+		# the women's roll carries it (a man handed it wears the plain tangle, see
+		# STAND_INS in doll_character_map.gd)
+		"pieces": {"hair_base": "disheveled_eyehide", "hair_assist": "no", "hair_back": "no"},
+		"by_length": {
+			"shoulder": {"hair_back": "straight"},
+			"waist": {"hair_back": "straight"},
+			"hips": {"hair_back": "wave"},
+		},
+	},
 	"layered": {
 		"pieces": {"hair_base": "parting", "hair_assist": "no", "hair_back": "no"},
 		"by_length": {
@@ -1127,7 +1175,8 @@ const HAIR_STYLES = {
 		},
 	},
 	"shaved": {
-		# the scraped-back cut; female art only, so it is offered rather than rolled
+		# the scraped-back cut; female art only, so only the women's roll carries it (a
+		# man handed it wears a swept-back cut, see STAND_INS in doll_character_map.gd)
 		"pieces": {"hair_base": "slave", "hair_assist": "no", "hair_back": "no"},
 	},
 	"curls": {

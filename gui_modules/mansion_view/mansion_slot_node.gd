@@ -37,7 +37,6 @@ const ROOM_ART = {
 	store_room = preload("res://gui_modules/mansion_view/rooms/storeroom.png"),
 	forge = preload("res://gui_modules/mansion_view/rooms/forge.png"),
 	tailor_workshop = preload("res://gui_modules/mansion_view/rooms/tailor.png"),
-	bathhouse = preload("res://gui_modules/mansion_view/rooms/bath.png"),
 }
 
 const COLOR_EMPTY = '332f28'

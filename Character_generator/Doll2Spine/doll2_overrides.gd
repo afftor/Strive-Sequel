@@ -32,6 +32,15 @@ const GROUP_DEFS = {
 	"piercing_nipple": {"kind": "options", "optional": true, "order": 19.5, "label": "Nipple piercing"},
 }
 
+# Each piercing is painted on its own, so rings through the nipples and a gem in
+# the navel can be different metals.  Declared with this rig's groups rather than
+# with the shared channels, because only this rig has them; the two groups draw
+# into slots of their own, so nothing is claimed away from another channel.
+const COLOR_CHANNELS = {
+	"piercing_nipple": {"anchor": "piercing_nipple", "groups": ["piercing_nipple"]},
+	"piercing_belly": {"anchor": "piercing_belly", "groups": ["piercing_belly"]},
+}
+
 # --------------------------------------------------------------- routing ----
 
 # The female bodies and the armour sets cut for them.
@@ -255,6 +264,12 @@ const DRAW_ORDER_FIXES = [
 	{"slot": "race_torso_lower", "before": "equip_torso"},
 	{"slot": "race_torso", "before": "equip_torso"},
 	{"slot": "race_pelvis", "before": "equip_torso"},
+	# A beastkin's extra rows of breasts and nipples are body, not gear, but the
+	# export lists them after the torso armour, so a dressed character wore them
+	# over the shirt.  Under the armour a top covers them and a bare midriff shows
+	# them.
+	{"slot": "breasts_beastkin_many", "before": "equip_torso"},
+	{"slot": "beastkin_torso_many_nipples", "before": "equip_torso"},
 ]
 
 

@@ -35,12 +35,17 @@ const ORDER = [
 # The coat colours are the artist's own, read off the preview's pickers in the
 # order they appear there: the first picker is the base where a pattern has one,
 # then each mask in turn.  `nipple` is the colour a furred chest wears instead of
-# the one its skin shade would give.
+# the one its skin shade would give.  `mouth` is which of those colours, counted
+# the same way, the lips sit in: the mask that covers the lips' place on the
+# canvas (x 420-460, y 348-362), read off the mask files.  A beastkin's mouth is
+# a darker shade of that fur rather than of the skin under it - see
+# ch_stats.get_body_color_lips().
 const PATTERNS = {
 	"fur_orange": {
 		"label": "Fur: orange",
 		"base": Color("904b18"),
 		"nipple": Color("543131"),
+		"mouth": 2,
 		"layers": [
 			{"mask": "mask_besatkin 2 ext.png", "color": Color("904b18")},
 			{"mask": "mask_besatkin 2.png", "color": Color("904b18")},
@@ -48,17 +53,19 @@ const PATTERNS = {
 	},
 	"fur_orange_white": {
 		"label": "Fur: orange and white",
-		"base": Color("ad5c21"),
-		"nipple": Color("84483f"),
+		"base": Color("67605b"),
+		"nipple": Color("645553"),
+		"mouth": 2,
 		"layers": [
 			{"mask": "mask_besatkin 2 ext.png", "color": Color("ad5c21")},
-			{"mask": "mask_besatkin 2.png", "color": Color("b3b2b2")},
+			{"mask": "mask_besatkin 2.png", "color": Color("9e9595")},
 		],
 	},
 	"fur_white": {
 		"label": "Fur: white",
-		"base": Color("ababab"),
-		"nipple": Color("9c6a71"),
+		"base": Color("6a6464"),
+		"nipple": Color("6b6564"),
+		"mouth": 2,
 		"layers": [
 			{"mask": "mask_besatkin 2 ext.png", "color": Color("ababab")},
 			{"mask": "mask_besatkin 2.png", "color": Color("ababab")},
@@ -67,7 +74,8 @@ const PATTERNS = {
 	"fur_grey": {
 		"label": "Fur: grey",
 		"base": Color("6d6d6d"),
-		"nipple": Color("473f40"),
+		"nipple": Color("4e4948"),
+		"mouth": 2,
 		"layers": [
 			{"mask": "mask_besatkin 2 ext.png", "color": Color("6d6d6d")},
 			{"mask": "mask_besatkin 2.png", "color": Color("6d6d6d")},
@@ -76,7 +84,8 @@ const PATTERNS = {
 	"fur_brown": {
 		"label": "Fur: brown",
 		"base": Color("846952"),
-		"nipple": Color("563632"),
+		"nipple": Color("493c3a"),
+		"mouth": 2,
 		"layers": [
 			{"mask": "mask_besatkin 2 ext.png", "color": Color("513b28")},
 			{"mask": "mask_besatkin 2.png", "color": Color("513b28")},
@@ -84,19 +93,21 @@ const PATTERNS = {
 	},
 	"fur_black": {
 		"label": "Fur: black",
-		"base": Color("424242"),
-		"nipple": Color("191818"),
+		"base": Color("a09b9b"),
+		"nipple": Color("342f2e"),
+		"mouth": 2,
 		"layers": [
-			{"mask": "mask_besatkin 2 ext.png", "color": Color("2c2b2a")},
-			{"mask": "mask_besatkin 2.png", "color": Color("4a423a")},
+			{"mask": "mask_besatkin 2 ext.png", "color": Color("191918")},
+			{"mask": "mask_besatkin 2.png", "color": Color("363533")},
 		],
 	},
 	# The striped and tricolour cats use their own masks rather than the shared
 	# beastkin pair, which is what makes their patterns read as patterns.
 	"fur_striped": {
 		"label": "Fur: striped",
-		"base": Color("b58f6f"),
+		"base": Color("745d49"),
 		"nipple": Color("855151"),
+		"mouth": 1,
 		"layers": [
 			{"mask": "mask_cat 2.png", "color": Color("925927")},
 			{"mask": "mask_cat2 2 ext.png", "color": Color("21170f")},
@@ -104,11 +115,12 @@ const PATTERNS = {
 	},
 	"fur_tricolor": {
 		"label": "Fur: tricolour",
-		"nipple": Color("855151"),
+		"nipple": Color("705c58"),
+		"mouth": 1,
 		"layers": [
 			{"mask": "mask_besatkin cat_tricolor_black.png", "color": Color("655340")},
-			{"mask": "mask_besatkin cat_tricolor_white.png", "color": Color("a8a49d")},
-			{"mask": "mask_besatkin cat_tricolor_yellow.png", "color": Color("7b5c25")},
+			{"mask": "mask_besatkin cat_tricolor_white.png", "color": Color("92846c")},
+			{"mask": "mask_besatkin cat_tricolor_yellow.png", "color": Color("6b5022")},
 		],
 	},
 	"kobold": {
@@ -148,6 +160,13 @@ static func mask_path(pattern_id, index):
 static func nipple_colour(pattern_id):
 	var found = pattern(pattern_id).get("nipple", null)
 	return found
+
+
+# Which of a pattern's colours the mouth sits in - an index into `default_colors()`,
+# and so into a repainted `body_color_coat` - or -1 where the pattern puts no fur
+# over the mouth.
+static func mouth_index(pattern_id):
+	return int(pattern(pattern_id).get("mouth", -1))
 
 
 static func has_base(pattern_id):

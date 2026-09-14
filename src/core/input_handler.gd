@@ -51,6 +51,8 @@ signal SpellUsed
 signal animatedbackground_changed
 #one of the doll options changed; a doll on screen re-reads them
 signal doll_settings_changed
+#the player put an item on a character; a doll showing them may pull a face at it
+signal character_item_equipped(character, item)
 
 #animations queue
 signal animation_finished

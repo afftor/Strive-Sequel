@@ -510,7 +510,10 @@ const COLOR_CHANNELS = {
 	"animal": {"anchor": "animal_body", "groups": ["animal_body"], "zones": true},
 	"race": {"anchor": "race_overlay", "groups": ["race_overlay"]},
 	"face_markings": {"anchor": "face_markings", "groups": ["face_markings"]},
-	"tattoo": {"anchor": "tattoo", "groups": ["tattoo"]},
+	# Tattoo ink is near black, and the plain recolour keeps the art's lightness, so a
+	# pick would only ever come out black again: `flat` lays the picked colour on as it
+	# is, with the art's alpha giving the shape - see paint_flat in doll2_recolor.shader.
+	"tattoo": {"anchor": "tattoo", "groups": ["tattoo"], "flat": true},
 	# Gear is painted entirely in the hue code, so its zones start on real
 	# colours instead of on white - see ZONE_DEFAULTS.
 	# The body is dressed by one part but coloured as two, because the game equips

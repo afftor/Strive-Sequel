@@ -337,9 +337,8 @@ var list = {
 		special_reqs = {
 			global_reqs = [
 				{
-					type = 'has_mansion_room',
-					name = 'bathhouse',
-					value = 1
+					type = 'has_bath',
+					check = true
 				}
 			],
 			char_reqs = [

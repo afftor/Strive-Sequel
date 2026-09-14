@@ -65,6 +65,8 @@ const SIZE_LADDER = ['small', 'average', 'big']
 #the male body the doll carries that no race rolls
 const EXTRA_BODY_SHAPES = ['femboy']
 const ABSENT_PART = ['', 'no', 'none']
+#parts a character may just as well not have: taking them off is a choice on their list
+const REMOVABLE_PARTS = ['horns', 'wings']
 
 var person = null
 var possible_vals = {}
@@ -204,7 +206,7 @@ func _stat_is_offered(stat):
 
 
 func _is_beastkin():
-	return str(person.get_stat('race')).find('Beastkin') >= 0
+	return CHARACTER_MAP.draws_beastkin(person.get_stat('race'))
 
 
 #the animal a beastkin race is drawn from, which is what decides its muzzle
@@ -307,7 +309,14 @@ func _values_for(stat):
 			return _race_values(str(person.get_stat('race')), 'skin_coverage')
 		'multiple_tits':
 			if races.racelist[person.get_stat('race')].get('tags', []).has('multibreasts'):
-				return [0, 1, 2, 3]
+				#the doll draws one or two extra pairs, so a doll-drawn character is offered no step
+				#that changes nothing - a third pair already there stays on the list until it goes
+				if !_uses_doll():
+					return [0, 1, 2, 3]
+				var pairs = [0, 1, 2]
+				if int(person.get_stat('multiple_tits')) > 2:
+					pairs.append(int(person.get_stat('multiple_tits')))
+				return pairs
 			return []
 		'multiple_tits_developed':
 			if int(person.get_stat('multiple_tits')) > 0:
@@ -328,12 +337,15 @@ func _values_for(stat):
 		sources.append(ResourceScripts.descriptions.bodypartsdata[stat])
 	if GeneratorData.transforms.has(stat):
 		sources.append(GeneratorData.transforms[stat])
+	var worn = str(person.get_stat(stat))
 	for source in sources:
 		for value in source:
 			#a null or empty key is the table's own "unset", not something to hand a player
 			if value == null or str(value) == '':
 				continue
-			if !LAYOUT.offered(stat, value):
+			#what nobody may pick stays off the list - except what this character already is,
+			#or a slider would print a value its own knob can never reach
+			if !LAYOUT.offered(stat, value) and str(value) != worn:
 				continue
 			if !res.has(value):
 				res.append(value)
@@ -341,6 +353,9 @@ func _values_for(stat):
 		for extra in EXTRA_BODY_SHAPES:
 			if !res.has(extra):
 				res.append(extra)
+	#the tables' own unset is kept off every other list; for these it is "none", and it goes first
+	if stat in REMOVABLE_PARTS:
+		res.push_front('')
 	#A value the art cannot draw, or one that comes out as the very piece another value
 	#already gives, is not a choice: it is a row entry that does nothing. A beastkin's face
 	#is the muzzle's whatever the stat says, so those rows empty themselves here.
@@ -348,16 +363,23 @@ func _values_for(stat):
 		var drawn = []
 		var seen = {}
 		for value in res:
+			#a chin is for the head this body has: a muzzle on a human face, or a human chin the
+			#muzzle would only be painted over, is not a choice
+			if stat == 'chin' and !CHARACTER_MAP.chin_fits_body(value, _is_beastkin(), _beast()):
+				continue
 			var part = _drawn_part(stat, value)
 			if part == null or seen.has(part):
 				continue
 			seen[part] = true
 			drawn.append(value)
 		#whatever they wear now stays on the list, or the row would show a value it does not
-		#offer
+		#offer - unless another name on the list draws that very piece (`beastkin` on a fox is
+		#its first muzzle), which then stands for it and is the tile lit for it
 		var current = person.get_stat(stat)
 		if res.has(current) and !drawn.has(current):
-			drawn.push_front(current)
+			var twin = _drawn_part(stat, current)
+			if twin == null or !seen.has(twin):
+				drawn.push_front(current)
 		res = drawn
 	return res
 
@@ -375,9 +397,11 @@ func _race_values(race, stat):
 #The whole palette, and for a colour with a rule behind it the rule itself first - an empty
 #value, which is what makes the lips follow the skin and the brows the hair.
 func _colour_values(stat):
-	if stat == 'body_color_ears' and !person.statlist.has_animal_ears():
+	#ears and a tail get a colour whenever the doll draws them - skin, fur, hide or fin: Auto
+	#still follows the rule, and a pick paints the part whatever it is made of
+	if stat == 'body_color_ears' and !person.statlist.has_ear_art():
 		return []
-	if stat == 'body_color_tail' and !person.statlist.has_fur_tail():
+	if stat == 'body_color_tail' and !person.statlist.has_tail_art():
 		return []
 	if PART_BEHIND_COLOUR.has(stat) \
 			and str(person.get_stat(PART_BEHIND_COLOUR[stat])) in ABSENT_PART:
@@ -473,9 +497,12 @@ func _append_coat_colour_rows():
 		setup_visual_stat_node(node, key, 'Colour')
 
 
+#A colour row is built for every colour the character is offered, the ones whose part is not
+#worn yet included: such a row stays hidden until the part goes on, which is what lets picking
+#horns or wings bring their palette along.
 func append_following_colour_rows(stat):
 	for colour in colours_following(stat):
-		if !possible_vals.has(colour) or possible_vals[colour].empty():
+		if !possible_vals.has(colour):
 			continue
 		var colour_node = duplicate_visual_template('Colour')
 		setup_visual_stat_node(colour_node, colour, 'Colour')
@@ -494,6 +521,9 @@ func visual_stat_name(stat):
 
 
 func visual_value_name(stat, value):
+	#a part taken off reads the same on its row as on its button
+	if stat in REMOVABLE_PARTS and (value == null or str(value) in ABSENT_PART):
+		return tr("NONE")
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
 		var descriptions = ResourceScripts.descriptions.bodypartsdata[stat]
 		if descriptions.has(value) and str(descriptions[value].name) != '':
@@ -587,13 +617,26 @@ func build_selectable_node(stat):
 		auto.text = tr("BODYMOD_COLOUR_AUTO")
 		auto.pressed = str(_raw_value(stat)) == ''
 	updating_visual_controls = true
-	swatch.color = DOLL_COLORS.colour_of(stat, person.get_stat(stat))
+	swatch.color = _drawn_colour(stat)
 	updating_visual_controls = false
 	if !node.has_meta('signals_built'):
 		_wire_colour_picker(swatch)
 		swatch.connect('color_changed', self, '_on_colour_picked', [stat])
 		auto.connect('pressed', self, '_on_colour_auto', [stat])
 		node.set_meta('signals_built', true)
+
+
+#The colour a row's swatch shows, which is what the doll paints. Mostly that is the stat read
+#through its getter. The nipples have none - on Auto they are the deeper shade worked out from
+#the skin - and a shaped ear left on Auto is the skin itself, which its getter answers with
+#nothing at all.
+func _drawn_colour(stat):
+	var raw = str(_raw_value(stat))
+	if str(stat) == 'body_color_nipples' and raw == '':
+		return DOLL_COLORS.nipples_of(person.get_stat('body_color_skin'))
+	if str(stat) == 'body_color_ears' and raw == '' and str(person.get_stat(stat)) == '':
+		return DOLL_COLORS.colour_of('body_color_skin', person.get_stat('body_color_skin'))
+	return DOLL_COLORS.colour_of(stat, person.get_stat(stat))
 
 
 #One row per colour the coat pattern carries. There is no stat behind a row: the value lives at
@@ -694,9 +737,10 @@ func _write_coat_colour(key, value):
 	looks_changed = true
 	_apply_to_doll('skin_coverage')
 	build_selectable_node(key)
-	#the ears and the tail take after the coat while they are on Auto themselves
+	#the ears, the tail and a beastkin's mouth take after the coat while they are on Auto themselves
 	refresh_following_colours('ears')
 	refresh_following_colours('tail')
+	refresh_following_colours('lips')
 	refresh_visual_submenu_previews()
 
 
@@ -814,6 +858,12 @@ func _write_stat(stat, value):
 	build_node_for_stat(stat)
 	refresh_following_colours(stat)
 	refresh_dependent_sliders(stat)
+	if stat == 'body_color_skin':
+		#the nipples, the lips, a shaped ear, a kobold's tail and horns follow the skin while they
+		#are on Auto, so their swatches move with it
+		for colour in ['body_color_nipples', 'body_color_lips', 'body_color_ears', 'body_color_tail', 'body_color_horns']:
+			if possible_vals.has(colour):
+				build_selectable_node(colour)
 	if stat == 'multiple_tits':
 		#the extra pair cannot be developed once there is none
 		if int(value) == 0 and bool(person.get_stat('multiple_tits_developed')):
@@ -907,7 +957,12 @@ func refresh_visual_tile_selection(stat):
 	for tile in visual_submenu_tiles:
 		if !is_instance_valid(tile) or tile.get_meta('stat') != stat:
 			continue
-		var selected = tile.get_meta('value') == person.get_stat(stat)
+		var value = tile.get_meta('value')
+		var selected = value == person.get_stat(stat)
+		if !selected and _uses_doll() and CHARACTER_MAP.FEEDS.has(stat):
+			#worn under another name that draws the same piece - `beastkin` on a fox is `muzzle1`
+			var part = _drawn_part(stat, value)
+			selected = part != null and part == _drawn_part(stat, person.get_stat(stat))
 		tile.pressed = selected
 		tile.get_node('Frame').visible = selected
 
@@ -933,6 +988,11 @@ func refresh_visual_submenu_button(menu_id):
 			has_options = true
 			break
 	visual_submenu_buttons[menu_id].visible = has_options
+	#a part a character may do without says on its button what is worn - the button alone cannot
+	#tell horns from none
+	var stat = str(menu.stats[0]) if menu.stats.size() == 1 else ''
+	if stat in REMOVABLE_PARTS:
+		visual_submenu_buttons[menu_id].text = '%s - %s' % [tr(menu.label), visual_value_name(stat, person.get_stat(stat))]
 
 
 func _on_visual_preview_ready(_group_id, _part_id, texture):

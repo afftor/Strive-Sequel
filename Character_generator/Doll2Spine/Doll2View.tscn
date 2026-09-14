@@ -575,6 +575,135 @@ custom_styles/pressed = SubResource( 7 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 
+[node name="piercing_nipples_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Nipple piercing"
+valign = 1
+clip_text = true
+
+[node name="piercing_nipples" type="OptionButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 1 )
+clip_text = true
+
+[node name="piercing_nipples_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Nipples - colour"
+valign = 1
+clip_text = true
+
+[node name="piercing_nipples_colour" type="ColorPickerButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="piercing_navel_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Navel piercing"
+valign = 1
+clip_text = true
+
+[node name="piercing_navel" type="OptionButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 1 )
+clip_text = true
+
+[node name="piercing_navel_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Navel - colour"
+valign = 1
+clip_text = true
+
+[node name="piercing_navel_colour" type="ColorPickerButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="tattoo_crotch_style_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Tattoo"
+valign = 1
+clip_text = true
+
+[node name="tattoo_crotch_style" type="OptionButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 1 )
+clip_text = true
+
+[node name="tattoo_crotch_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 150, 26 )
+custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Tattoo - colour"
+valign = 1
+clip_text = true
+
+[node name="tattoo_crotch_colour" type="ColorPickerButton" parent="HairMenu/VBox/Rows"]
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.35 )
+custom_colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+
 [node name="underwear_colour_label" type="Label" parent="HairMenu/VBox/Rows"]
 rect_min_size = Vector2( 150, 26 )
 custom_colors/font_color = Color( 0.72, 0.7, 0.68, 1 )
