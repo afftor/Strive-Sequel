@@ -206,7 +206,6 @@ margin_right = 319.84
 margin_bottom = 937.32
 
 [node name="MansionTaskInfoModule" parent="." instance=ExtResource( 17 )]
-visible = false
 margin_left = 15.0
 margin_top = 608.0
 margin_right = 305.0

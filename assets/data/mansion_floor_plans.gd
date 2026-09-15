@@ -13,8 +13,8 @@ extends Reference
 #
 #and, where the floor has one, a third:
 #
-#	backdrop - a picture to stand on instead of the painted slab, lined up by its own
-#	           landmark rather than by pixels. See the key on the first floor below.
+#	backdrop - where the floor's picture goes, when it stands on one instead of the painted
+#	           slab. It is a layer of gui_modules/mansion_view/backdrop/mansion_backdrop.tscn.
 #
 #Coordinates rather than a character mask: at this resolution a mask would be a hundred
 #lines of a hundred characters, unreadable to edit, and a handful of rectangles also
@@ -34,6 +34,11 @@ const FIELD_TILES = 160
 #A slot on a floor that stands on a picture is the room drawn for it, to a fraction of a tile, so
 #slots are not all one size. Nothing about two slots trading contents looks at their shapes: a
 #room carries no position or size of its own, only the slot it is in does.
+#
+#On such a floor the room is drawn where the slot's mark in the backdrop scene puts it -
+#gui_modules/mansion_view/backdrop/mansion_backdrop.tscn, <floor code>/Rooms/<slot code> - which is
+#moved and sized in the editor. The rect here is only what a slot without a mark falls back on, and
+#what a saved floor's shape records; which slots a floor has is still decided here.
 
 #The house is a wide manor of two floors over its own grounds. Its offset wings leave irregular
 #corridors around the staircase, which stays in the exact middle so it meets between floors.
@@ -70,8 +75,8 @@ const LIST = {
 				#against, so it has to reach every corner of the screen from every position it can be
 				#dragged to; the band the rooms are centred in is the lower two thirds of the screen,
 				#and that strip above the house is what lets the house sit there and still reach.
+				#The picture itself is the 1F layer of backdrop/mansion_backdrop.tscn.
 				backdrop = {
-					art = 'res://assets/images/backgrounds/mansion_manor.png',
 					yard = [0.2018, 0.3969, 0.6055, 0.3629],
 					over = [13, 53, 134, 54],
 				},
@@ -97,15 +102,13 @@ const LIST = {
 			#rest is rubble.
 			{
 				code = '2F',
-				#Its own picture, with holes where nothing is built - the wings are roofs up here - and
-				#drawn over the floor beneath, which shows through them dimmed and cooled so it reads as
-				#below. Both pictures share one canvas, so the floor beneath's yard places both.
+				#Its own picture, with holes where nothing is built - the wings are roofs up here - drawn
+				#over the floor beneath, which shows through them dimmed and cooled so it reads as below.
+				#It is the 2F layer of backdrop/mansion_backdrop.tscn, drawn over the 1F one; the two
+				#share one canvas, so the floor beneath's yard places both.
 				backdrop = {
-					art = 'res://assets/images/backgrounds/mansion_manor_upper.png',
-					under = 'res://assets/images/backgrounds/mansion_manor.png',
 					yard = [0.2018, 0.3969, 0.6055, 0.3629],
 					over = [13, 53, 134, 54],
-					shade = [0.60, 0.64, 0.76],
 				},
 				areas = [
 					{state = 'floor', rect = [13, 53, 134, 54]},

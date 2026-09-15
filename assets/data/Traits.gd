@@ -2722,6 +2722,7 @@ var body_upgrades = {
 		reqs = [{code = 'has_coverage', coverage = 'fur', check = false}, {code = 'has_coverage', coverage = 'scales', check = false}],
 		cost = 40,
 		goldcost = 10000,
+		manacost = 80,
 		traits = ['upgrade_thick_skin']
 	},
 	upgrade_thick_coverage = {
@@ -2731,6 +2732,7 @@ var body_upgrades = {
 		reqs = [{code = 'has_coverage', coverage = 'fur', check = true}, {orflag = true, code = 'has_coverage', coverage = 'scales', check = true}],
 		cost = 30,
 		goldcost = 10000,
+		manacost = 60,
 		traits = ['upgrade_thick_coverage']
 	},
 	upgrade_nipples = {
@@ -2740,6 +2742,7 @@ var body_upgrades = {
 		reqs = [{code = 'stat_in_set', stat = 'tits_size', value = ['average', 'big', 'huge', 'average_high', 'big_high', 'huge_high', 'average_narrow', 'big_narrow', 'huge_narrow', 'average_wide', 'big_wide', 'huge_wide']}],
 		cost = 20,
 		goldcost = 5000,
+		manacost = 40,
 		traits = ['upgrade_nipples']
 	},
 	upgrade_tongue = {
@@ -2749,6 +2752,7 @@ var body_upgrades = {
 		reqs = [],
 		cost = 20,
 		goldcost = 5000,
+		manacost = 40,
 		traits = ['upgrade_tongue']
 	},
 	upgrade_eggs = {
@@ -2758,6 +2762,7 @@ var body_upgrades = {
 		reqs = [{code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
 		cost = 30,
 		goldcost = 8000,
+		manacost = 60,
 		traits = ['upgrade_eggs']
 	},
 	upgrade_silk = {
@@ -2767,6 +2772,7 @@ var body_upgrades = {
 		reqs = [],
 		cost = 40,
 		goldcost = 12500,
+		manacost = 80,
 		traits = ['upgrade_silk']
 	},
 	upgrade_strongarm = {
@@ -2776,6 +2782,7 @@ var body_upgrades = {
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}],
 		cost = 40,
 		goldcost = 10000,
+		manacost = 80,
 		traits = ['upgrade_strongarm']
 	},
 	upgrade_resist = {
@@ -2785,6 +2792,7 @@ var body_upgrades = {
 		reqs = [{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4}],
 		cost = 60,
 		goldcost = 15000,
+		manacost = 120,
 		traits = ['upgrade_resist']
 	},
 	upgrade_thickblood = {
@@ -2794,6 +2802,7 @@ var body_upgrades = {
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
 		cost = 50,
 		goldcost = 15000,
+		manacost = 100,
 		traits = ['upgrade_thickblood']
 	},
 	upgrade_breeder = { #2fix parameters
@@ -2803,6 +2812,7 @@ var body_upgrades = {
 		reqs = [],
 		cost = 40,
 		goldcost = 10000,
+		manacost = 80,
 		traits = ['upgrade_breeder']
 	},
 	upgrade_metabolism = { #2fix parameters
@@ -2812,6 +2822,7 @@ var body_upgrades = {
 		reqs = [],
 		cost = 20,
 		goldcost = 1500,
+		manacost = 40,
 		traits = ['upgrade_metabolism']
 	},
 }

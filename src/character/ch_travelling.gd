@@ -82,17 +82,9 @@ func tick():
 			globals.emit_signal("travel_completed")
 			parent.get_ref().remove_from_task(true)
 			input_handler.update_slave_list()
-			if location == ResourceScripts.game_world.mansion_location:
-				# parent.get_ref().return_to_task()
-				var mansion_link = "[url=mansion][color=#72c8d9]%s[/color][/url]" % tr("MANSION_LABEL")
-				globals.mansion_activity_log_add("arrival", tr("MANSION_ACTIVITY_ARRIVAL_MANSION_LINK") % [parent.get_ref().get_short_name(), mansion_link])
-			else:
-#					if state.capitals.has(location):
-#						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
-#					else:
-				var loc_data = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location]
-				var loc_link = "[url=loc:%s][color=#72c8d9]%s[/color][/url]" % [location, tr(loc_data.name)]
-				globals.mansion_activity_log_add("arrival", tr("MANSION_ACTIVITY_ARRIVAL_LOCATION") % [parent.get_ref().get_short_name(), loc_link])
+			#Not a row of its own: everybody who arrives this turn shares one, with the travel
+			#groups folded away behind it. See globals.mansion_activity_arrival().
+			globals.mansion_activity_arrival(parent.get_ref(), location)
 			parent.get_ref().return_to_task()
 
 func make_location_description():

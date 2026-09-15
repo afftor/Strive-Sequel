@@ -34,21 +34,28 @@ func setup(view_node):
 	rect_pivot_offset = Vector2.ZERO
 	rect_min_size = Vector2(FloorPlans.FIELD_TILES, FloorPlans.FIELD_TILES) * TILE_PX
 	rect_size = rect_min_size
+	#the clock only sets the hour on a turn or a reset, so a mansion just built starts at the right one
+	var backdrop = backdrop_scene()
+	if backdrop != null:
+		backdrop.set_hour(ResourceScripts.game_globals.hour)
 
 
 func rebuild():
-	input_handler.ClearContainer(self)
+	#the picture under the rooms is a scene of its own hung here, not a slot to sweep away
+	input_handler.ClearContainer(self, ['Button', 'Backdrops'])
 	var floor_plan = view.floor_plan()
+	show_backdrop(floor_plan)
 	if floor_plan == null:
 		return
 	for slot_plan in floor_plan.slots:
 		var node = input_handler.DuplicateContainerTemplate(self)
 		node.setup(slot_plan.code, view)
-		node.rect_position = Vector2(slot_plan.rect[0], slot_plan.rect[1]) * TILE_PX
+		var rect = slot_rect(floor_plan, slot_plan)
+		node.rect_position = rect.position
 		#The template carries a minimum of its own and a Control never goes under one, so a slot
 		#the plan draws shorter than that kept the template's height and hung over the wall of the
-		#room beneath it. The plan is what says how big a slot is.
-		node.rect_min_size = Vector2(slot_plan.rect[2], slot_plan.rect[3]) * TILE_PX
+		#room beneath it. The slot's rect is what says how big it is.
+		node.rect_min_size = rect.size
 		node.rect_size = node.rect_min_size
 		node.update_slot()
 	update()
@@ -90,17 +97,8 @@ func _draw():
 	var floor_plan = view.floor_plan()
 	if floor_plan == null:
 		return
-	var ground = backdrop_rect(floor_plan)
-	var standing_on_art = ground.size.x > 0
-	if standing_on_art:
-		var under = backdrop_under(floor_plan)
-		if under == null:
-			draw_texture_rect(backdrop_texture(floor_plan), ground, false, backdrop_shade(floor_plan))
-		else:
-			#the floor beneath first, through this floor's shade, and this floor over it as drawn:
-			#the two pictures share one canvas, so the same rect lays one exactly on the other
-			draw_texture_rect(under, ground, false, backdrop_shade(floor_plan))
-			draw_texture_rect(backdrop_texture(floor_plan), ground, false)
+	#the picture itself is a node drawn over this, see show_backdrop()
+	var standing_on_art = backdrop_rect(floor_plan).size.x > 0
 	#areas are painted in the order the designer wrote them, so a later 'outside'
 	#rectangle cuts a hole back out of an earlier 'floor' one
 	for area in floor_plan.areas:
@@ -118,46 +116,41 @@ func _draw():
 
 #### the ground under the rooms ####
 
-#A floor can stand on a picture instead of on the painted slab - see 'backdrop' in
-#mansion_floor_plans.gd. It is drawn here, in the grid's own _draw() and before anything else,
-#rather than hung under the slots as a node of its own: that makes it part of this canvas item
-#and nothing else, so it takes the zoom and the pan of the rooms without being told, and the
-#viewport above clips whatever hangs over its edges.
-var backdrop_art = {}
+#A floor can stand on a picture instead of on the painted slab. The picture is a scene of its own
+#- backdrop/mansion_backdrop.tscn, instanced here as Backdrops - in which the house and whatever is
+#set about it by hand are laid out in the picture's own pixels, a layer to each floor code, and
+#where the colours of the hours and the lanterns are set. It hangs under this control before every
+#slot, so it takes the zoom and the pan of the rooms without being told and is drawn under all of
+#them, and the viewport above clips whatever hangs over its edges. What stays in the plan is where
+#the picture goes - its 'yard' and 'over' - because the slots are measured against the same numbers.
+func backdrop_scene():
+	var node = get_node_or_null("Backdrops")
+	return node if node != null and node.has_method('show_floor') else null
 
 
-#How the picture is tinted on this floor. A storey above the ground is drawn through more air -
-#dimmer and a shade cooler - which is what says the player has climbed. Where the floor has a
-#picture of its own over the one beneath ('under'), the shade falls on the floor beneath alone,
-#which is what makes whatever shows through the upper floor's holes read as below it; otherwise
-#it falls on the one picture there is. Multiplied into the picture and nothing else, so the rooms
-#standing on it keep their own colours. A floor that names no shade draws it as it is.
-func backdrop_shade(floor_plan):
-	var back = floor_plan.get('backdrop', null)
-	var shade = null if back == null else back.get('shade', null)
-	if shade == null:
-		return Color(1, 1, 1, 1)
-	return Color(shade[0], shade[1], shade[2], 1)
+#The size of the picture a floor stands on, or nothing for a floor that stands on none.
+func backdrop_size(floor_plan):
+	var backdrop = backdrop_scene()
+	if backdrop == null or floor_plan == null or !floor_plan.has('backdrop'):
+		return Vector2.ZERO
+	if !backdrop.has_floor(floor_plan.code):
+		return Vector2.ZERO
+	return backdrop.canvas_size()
 
 
-func backdrop_texture(floor_plan):
-	var back = floor_plan.get('backdrop', null)
-	return null if back == null else art_at(back.art)
-
-
-#The picture of the floor beneath, for a storey drawn over it, or null.
-func backdrop_under(floor_plan):
-	var back = floor_plan.get('backdrop', null)
-	if back == null or !back.has('under'):
-		return null
-	return art_at(back.under)
-
-
-#Loaded once however many floors and redraws ask for the same file.
-func art_at(path):
-	if !backdrop_art.has(path):
-		backdrop_art[path] = load(path)
-	return backdrop_art[path]
+#The picture at the floor on screen, laid where the plan puts it - scaled rather than sized, so all
+#that is set out on it in its pixels comes along - or put away for a floor that has none.
+func show_backdrop(floor_plan):
+	var backdrop = backdrop_scene()
+	if backdrop == null:
+		return
+	var rect = backdrop_rect(floor_plan)
+	backdrop.visible = rect.size.x > 0
+	if !backdrop.visible:
+		return
+	backdrop.show_floor(floor_plan.code)
+	backdrop.rect_position = rect.position
+	backdrop.rect_scale = rect.size / backdrop.canvas_size()
 
 
 #Where that picture goes, in the field's own pixels, or an empty rect for a floor with none.
@@ -165,8 +158,8 @@ func art_at(path):
 #covers them: the yard is the wider shape of the two, so what covers their height overhangs
 #their width, and that overhang is the gardens to either side.
 func backdrop_rect(floor_plan):
-	var texture = backdrop_texture(floor_plan)
-	if texture == null:
+	var whole = backdrop_size(floor_plan)
+	if whole.x <= 0 or whole.y <= 0:
 		return Rect2()
 	var on = floor_plan.backdrop.over
 	var over = Rect2(Vector2(on[0], on[1]) * TILE_PX, Vector2(on[2], on[3]) * TILE_PX)
@@ -175,7 +168,6 @@ func backdrop_rect(floor_plan):
 	var yard = floor_plan.backdrop.yard
 	var share_at = Vector2(yard[0], yard[1])
 	var share_size = Vector2(yard[2], yard[3])
-	var whole = texture.get_size()
 	var scale = max(over.size.x / (share_size.x * whole.x), over.size.y / (share_size.y * whole.y))
 	var size = whole * scale
 	return Rect2(over.position + over.size / 2 - (share_at + share_size / 2) * size, size)
@@ -189,6 +181,23 @@ func ground_rect():
 	return Rect2() if floor_plan == null else backdrop_rect(floor_plan)
 
 
+#Where a slot is drawn, in the field's own pixels. On a floor that stands on a picture it is the
+#slot's mark in the backdrop scene - rooms are moved about on the picture there, in the editor -
+#carried out of the picture's pixels by the numbers that lay the picture; a slot with no mark, or
+#a floor with no picture, is drawn where the plan's tiles put it.
+func slot_rect(floor_plan, slot_plan):
+	var backdrop = backdrop_scene()
+	var whole = backdrop_size(floor_plan)
+	if backdrop != null and whole.x > 0:
+		var mark = backdrop.room_rect(floor_plan.code, slot_plan.code)
+		if mark != null:
+			var place = backdrop_rect(floor_plan)
+			var scale = place.size / whole
+			return Rect2(place.position + mark.position * scale, mark.size * scale)
+	return Rect2(Vector2(slot_plan.rect[0], slot_plan.rect[1]) * TILE_PX,
+		Vector2(slot_plan.rect[2], slot_plan.rect[3]) * TILE_PX)
+
+
 #### zoom and panning ####
 
 #The wheel and the middle button are handled by the view in _input(), not here. Slot
@@ -200,19 +209,16 @@ func ground_rect():
 #The painted field is larger than the rooms standing on it, and not evenly so. Centring the
 #field itself put that margin on screen and pushed the rooms down out of the middle, so both
 #the opening view and the panning limits are measured from the box the slots actually occupy.
-#Read from the plan rather than from the nodes, because the view is centred before they exist.
+#Read from where the slots are drawn rather than from their nodes, which do not exist yet when the
+#view is first centred.
 func content_rect():
 	var floor_plan = view.floor_plan()
 	if floor_plan == null or floor_plan.slots.empty():
 		return Rect2(Vector2.ZERO, rect_size)
-	var from = Vector2(FloorPlans.FIELD_TILES, FloorPlans.FIELD_TILES)
-	var to = Vector2.ZERO
+	var box = slot_rect(floor_plan, floor_plan.slots[0])
 	for slot_plan in floor_plan.slots:
-		from.x = min(from.x, slot_plan.rect[0])
-		from.y = min(from.y, slot_plan.rect[1])
-		to.x = max(to.x, slot_plan.rect[0] + slot_plan.rect[2])
-		to.y = max(to.y, slot_plan.rect[1] + slot_plan.rect[3])
-	return Rect2(from * TILE_PX, (to - from) * TILE_PX)
+		box = box.merge(slot_rect(floor_plan, slot_plan))
+	return box
 
 
 func apply_transform(zoom, pan):

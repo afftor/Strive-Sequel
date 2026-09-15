@@ -802,6 +802,7 @@ func setup_baby(mother, father):
 			set_stat(i, father.get_stat(i))
 	
 	if mother.check_trait('master_progenecy') or father.check_trait('master_progenecy'):
+		var master_parent = mother.is_master() or father.is_master()
 		for factor in [
 			'physics_factor',
 			'magic_factor',
@@ -812,6 +813,8 @@ func setup_baby(mother, father):
 			'wits_factor',
 			'sexuals_factor',
 		]:
+			if master_parent and factor in ['tame_factor', 'authority_factor']:
+				continue
 			if randf() <= 0.5:
 				add_stat(factor, 1)
 	

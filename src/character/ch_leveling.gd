@@ -1008,22 +1008,14 @@ func work_tick_values(workstat):
 
 
 func predict_active_task():
-	#items are worked before materials, so what somebody will be doing is looked for that way
-	var joborder = get_job_order(false)
-	for job in joborder:
-		#'building' rides in the item order but has its own list rather than a recipe queue -
-		#there is no 'building_item', which is what asking for one cost the screen
-		var real_job = job
-		if job != 'building':
-			real_job += '_item'
-		var curupgrade = ResourceScripts.game_res._active_task_find(ResourceScripts.game_res.crafting_lists[real_job])
-		if curupgrade != null:
-			return curupgrade
-	
-	joborder = get_job_order(true)
-	for job in joborder:
-		var real_job = job + '_material'
-		var curupgrade = ResourceScripts.game_res._active_task_find(ResourceScripts.game_res.crafting_lists[real_job])
+	#the item order is tried before the material order, the way process_craft works them; both
+	#name craft types, each with one queue of orders - 'building' with its list of upgrades
+	var tried = []
+	for job in get_job_order(false) + get_job_order(true):
+		if tried.has(job):
+			continue
+		tried.append(job)
+		var curupgrade = ResourceScripts.game_res._active_task_find(ResourceScripts.game_res.crafting_lists[job])
 		if curupgrade != null:
 			return curupgrade
 	return null

@@ -440,7 +440,17 @@ const LIST = {
 		upkeep = 0,
 		build_cost = {stone = 60, mithril = 20, gold = 400},
 		build_progress = 40,
-		upgrades = {},
+		#Flesh Rites is what brings body upgrades to the mansion: once built, the card opens them
+		#(src/core/body_rites.gd, mansion_view's BodyRitesPanel).
+		upgrades = {
+			flesh_rites = {
+				code = 'flesh_rites',
+				icon = 'academy',
+				levels = {
+					1: {cost = {bone = 60, woodmagic = 30, gold = 2500}, progress = 45, effect = {}},
+				},
+			},
+		},
 		master_only = false,
 		tags = ['ritual'],
 		icon = 'academy',

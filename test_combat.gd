@@ -440,8 +440,97 @@ var chardata = {
 	},
 }
 
+#Fixed parties, listed in selector2 after the levels. Nothing in them is rolled: race, sex, classes,
+#masteries, gear parts and enchants are the same every run, so damage numbers compare between runs.
+var party_presets = {
+	#Endgame damage test: pure physical melee in front, dark casters behind.
+	#Front: no magic class at all, so every weapon hit is (Physical, Normal). Knight is +15% melee
+	#damage, sniper multiplies single target skills by 1.25, assassin adds crit damage. The master is also
+	#the ruler (leadership 4: Inspire +20% damage for the whole party, Leader's Mark x1.15 damage taken)
+	#and a dragonknight (Dragon's Might +25%); the orc is a berserker, whose kills grant another action;
+	#the cat fights in medium armor because Hide, which Assassinate needs, is not allowed in heavy.
+	#Back: two dark casters and a bishop. Malediction curses (-40 dark resist), Pacify puts Luminance on
+	#the target (-50 dark resist), Radiance shatters (-25% mdef) - none of it touches physical damage.
+	#What the front gives the back: Back Kick silences and Execution frightens, and a silenced or
+	#frightened target takes x1.15 from every occultist.
+	#unlock_class() checks no class conflicts (knight vs shieldbearer, bishop vs occultist and
+	#necromancer), so keep the class lists legal by hand.
+	dark_magic = {
+		kits = {
+			melee = {
+				#serious personality is -1 combat cooldown on skills above 1; wits factor 4 is the assassin's requirement
+				stats = {physics_factor = 6, wits_factor = 4, magic_factor = 3, charm_factor = 3, growth_factor = 6,
+					physics = 100, wits = 100, personality_kind = -100, personality_bold = 0},
+				#two starting traits, then the minor trainings a physical fighter gets anything from
+				traits = ['belligerent', 'deadly', 'table_manners', 'penmanship', 'courtly_arms'],
+				food = 'e_food_roasted_feast',
+				#physics potion: +80 until the next world turn
+				buffs = ['e_i_physbuf'],
+				items = [
+					#adamantine blade for atk; the fire ruby gem is armor penetration
+					{base = 'swordadv', parts = {Blade = 'adamantine', WeaponHandle = 'bonedragon', WeaponEnc = 'fire_ruby'}, curse = 'decline_major',
+						enchants = {sharpness = 4, reaper = 3, beasthunter = 3, undeadbane = 3, giantslayer = 3}},
+					#fire ruby armor gems are +melee damage. No vampirism: a draining hit is logged as
+					#"drained N health", without its damage type
+					{base = 'chest_adv_metal', parts = {ArmorBaseHeavy = 'adamantine', ArmorTrim = 'bonedragon', ArmorEnc = 'fire_ruby'},
+						enchants = {carapace = 5, nimble = 3, commander = 2}},
+					{base = 'legs_adv_metal', parts = {ArmorBaseHeavy = 'adamantine', ArmorTrim = 'bonedragon', ArmorEnc = 'fire_ruby'},
+						enchants = {carapace = 5, nimble = 3}},
+					{base = 'earrings'},
+					{base = 'gauntlets'},
+				],
+			},
+			caster = {
+				#magic factor 6 is +10% matk; serious personality is -1 combat cooldown on skills above 1
+				stats = {physics_factor = 3, wits_factor = 5, magic_factor = 6, charm_factor = 3, growth_factor = 6,
+					physics = 100, wits = 100, personality_kind = -100, personality_bold = 0},
+				traits = ['hiddenpowers', 'deadly', 'etiquette', 'foreign_diplomacy', 'history'],
+				food = 'e_food_fishcakes',
+				buffs = ['e_i_witsbuf'],
+				items = [
+					#obsidian in the staff gem is the +dark damage part, ice crystal in the armor gems is crit
+					{base = 'staffadv', parts = {Rod = 'bonedragon', WeaponHandle = 'obsidian', WeaponEnc = 'obsidian'}, curse = 'decline_major',
+						enchants = {spell_mastery = 4, reaper = 3, beasthunter = 3, undeadbane = 3, giantslayer = 3}},
+					{base = 'chest_adv_cloth', parts = {ArmorBaseCloth = 'clothethereal', ArmorTrim = 'clothmagic', ArmorEnc = 'ice_crystal'},
+						enchants = {warlock = 4, carapace = 5, nimble = 3, commander = 2}},
+					{base = 'legs_adv_cloth', parts = {ArmorBaseCloth = 'clothethereal', ArmorTrim = 'clothmagic', ArmorEnc = 'ice_crystal'},
+						enchants = {carapace = 5, nimble = 3}},
+					{base = 'circlet'},
+				],
+			},
+		},
+		heroes = [
+			#a master point buys Master Fortune; the sacred scales are a one-off act 4 reward
+			{name = 'ruler_dragonknight', kit = 'melee', race = 'Dragonkin', sex = 'male', masteries = {warfare = 8, stealth = 8},
+				traits = ['master_fortune'], items = [{base = 'sacred_scales'}],
+				classes = ['ruler', 'fighter', 'knight', 'dragonknight', 'archer', 'sniper', 'rogue', 'assassin']},
+			#berserker disables the stealth and protection masteries, so marksmanship is the second school
+			{name = 'orc_berserker', kit = 'melee', race = 'Orc', sex = 'male', masteries = {warfare = 8, marksmanship = 8},
+				classes = ['fighter', 'knight', 'berserker', 'archer', 'sniper', 'rogue', 'assassin']},
+			{name = 'cat_assassin', kit = 'melee', race = 'HalfkinCat', sex = 'female', masteries = {stealth = 8, warfare = 8},
+				classes = ['fighter', 'knight', 'rogue', 'assassin', 'thief', 'ninja', 'archer', 'sniper'],
+				#medium armor in place of the kit's heavy set, for Hide
+				items = [
+					{base = 'chest_adv_leather', parts = {ArmorBaseMed = 'leatherdragon', ArmorTrim = 'bonedragon', ArmorEnc = 'fire_ruby'},
+						enchants = {carapace = 5, nimble = 3, commander = 2}},
+					{base = 'legs_adv_leather', parts = {ArmorBaseMed = 'leatherdragon', ArmorTrim = 'bonedragon', ArmorEnc = 'fire_ruby'},
+						enchants = {carapace = 5, nimble = 3}},
+				]},
+			{name = 'darkelf_warlock', kit = 'caster', race = 'DarkElf', sex = 'male', masteries = {dark = 8},
+				classes = ['apprentice', 'scholar', 'caster', 'archmage', 'occultist', 'necromancer', 'warlock', 'shaman']},
+			{name = 'darkelf_witch', kit = 'caster', race = 'DarkElf', sex = 'female', masteries = {dark = 8},
+				classes = ['apprentice', 'scholar', 'caster', 'archmage', 'occultist', 'necromancer', 'witch', 'shaman']},
+			{name = 'darkelf_bishop', kit = 'caster', race = 'DarkElf', sex = 'male', masteries = {dark = 8, light = 2},
+				classes = ['acolyte', 'priest', 'caster', 'bishop', 'apprentice', 'scholar', 'archmage', 'warlock']},
+		],
+	},
+}
 
 
+#not an enemy group: a fight rolled the way the tower rolls one on this floor, elites only
+const TOWER_ELITES = 'tower_100_elites'
+#counted the way the dungeon screen shows it, from 1
+const TOWER_FLOOR = 100
 
 var combatlist = []
 
@@ -451,12 +540,15 @@ func _ready():
 	
 	for id in ['weak', 'medium', 'strong', 'maxed']:
 		$selector2.add_item(id)
+	for id in party_presets:
+		$selector2.add_item(id)
 #	setup_player()
 	for id in Enemydata.enemygroups:
 		combatlist.push_back(id)
 	
 	combatlist.sort()
-	
+	combatlist.push_front(TOWER_ELITES)
+
 	for i in combatlist:
 		$selector.add_item(i)
 
@@ -533,6 +625,10 @@ func run_test():
 		}
 	setup_player()
 	globals.char_roll_data.no_roll = true
+	if combatlist[$selector.selected] == TOWER_ELITES:
+		#open() has just reset the confirm call; this sets ours
+		input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS).open_defined(input_handler.active_location.group, self, 'start_tower_elites')
+		return
 	var enc_template = {unittype = 'randomgroup', unitcode = combatlist[$selector.selected], bg = 'default', bgm = 'default', win_effects = [], lose_effects = [], enemy_stats_mod = float($mod1.text)}
 	Enemydata.encounters.combat_test = enc_template
 	globals.current_enemy_group = 'combat_test'
@@ -881,6 +977,10 @@ func make_hero(type, level, position = 1, first = false):
 
 func setup_player():
 	ResourceScripts.game_party.clear_heroes()
+	var preset_id = $selector2.get_item_text($selector2.selected)
+	if party_presets.has(preset_id):
+		make_preset_party(preset_id)
+		return
 	var level = $selector2.selected + 1
 #	make_hero('fighter', level, 1, true)
 	make_hero_from_data(input_handler.random_from_array(['base_melee', 'bers_melee', 'dk_melee', 'val_melee']), level, 1, true)
@@ -997,3 +1097,121 @@ func make_hero_from_data(type, level, position = 1, first = false):
 	
 	character.hp = character.get_stat("hpmax")
 	character.mp = character.get_stat("mpmax")
+
+
+func make_preset_party(preset_id):
+	var preset = party_presets[preset_id]
+	for i in range(preset.heroes.size()):
+		make_hero_from_preset(preset, preset.heroes[i], i + 1, i == 0)
+
+
+func make_hero_from_preset(preset, data, position, first = false):
+	var kit = preset.kits[data.kit]
+	var character = ResourceScripts.scriptdict.class_slave.new("test_combat")
+	character.create(data.race, data.sex, 'random')
+	character.fill_boosters()
+	characters_pool.move_to_state(character.id)
+	character.add_stat('mastery_point_universal', 50)
+	character.is_players_character = true
+	if first:
+		character.unlock_class("master")
+		character.set_slave_category('master')
+	else:
+		character.set_slave_category('servant')
+		character.add_trait('training_s_combat')
+	
+	#the stats meet every class requirement on their own; unlock_class(prof, true) would instead set
+	#wits and physics to each class's minimum (75 for a necromancer, warlock or witch)
+	for prof in data.classes:
+		character.unlock_class(prof)
+	for st in kit.stats:
+		character.set_stat(st, kit.stats[st])
+	for mas in data.masteries:
+		for i in range(data.masteries[mas]):
+			character.upgrade_mastery(mas, true)
+	for trait_code in kit.get('traits', []) + data.get('traits', []):
+		character.add_trait(trait_code)
+	#core_trait carries every meal buff; the last meal and a full stomach pick the one that is on
+	if kit.has('food'):
+		character.food.last_meal_type = kit.food
+		character.food.fed = 10
+	for eff_code in kit.get('buffs', []):
+		character.apply_effect_code(eff_code)
+	
+	character.set_stat('name', data.name)
+	input_handler.active_location.group['pos' + str(position)] = character.id
+	
+	#a hero's own item takes its slot away from the kit's
+	var item_recs = data.get('items', []).duplicate()
+	var hero_slots = []
+	for rec in item_recs:
+		hero_slots += Items.itemlist[rec.base].slots
+	for rec in kit.items:
+		var slot_free = true
+		for slot in Items.itemlist[rec.base].slots:
+			if hero_slots.has(slot):
+				slot_free = false
+		if slot_free:
+			item_recs.push_back(rec)
+	for rec in item_recs:
+		var item
+		if rec.has('parts'):
+			item = globals.CreateGearItemQuality(rec.base, rec.parts, 'legendary')
+		else:
+			#accessories never roll a quality in game, so they keep their template stats
+			item = globals.CreateGearItem(rec.base, {})
+		#the enchanting screen trades a random curse for capacity (+50% for a major one); decline
+		#only cuts experience, which costs a test fight nothing
+		if rec.has('curse'):
+			item.add_curse(rec.curse)
+		for ench in rec.get('enchants', {}):
+			item.add_enchant(ench, rec.enchants[ench], true)
+		#add_enchant(..., true) skips the capacity check the enchanting screen makes
+		if item.get_e_capacity() < 0:
+			print('test_combat: %s of %s is %d over its enchant capacity' % [rec.base, data.name, -item.get_e_capacity()])
+		globals.AddItemToInventory(item, false)
+		character.equip(item)
+
+	character.hp = character.get_stat("hpmax")
+	character.mp = character.get_stat("mpmax")
+
+
+#A room fight of the tower on TOWER_FLOOR, rolled the way world_gen.build_room, the dungeon's room entry
+#and globals.StartFixedAreaCombat do it, except that every unit is an elite: the tower makes each one
+#elite at variables.enemy_rarechance and keeps three at most. The Stat modifier multiplies the floor's own.
+func start_tower_elites():
+	if !globals.check_location_group():
+		input_handler.SystemMessage(tr("SYSMESSAGEATLEAST1CHAR"))
+		return
+	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS).hide()
+	var level = TOWER_FLOOR - 1
+	#set_level_infinite drops a biome from the rotation past its max_floor
+	var biomes = []
+	for biome in DungeonData.dungeons.infinite_aliron.avaliable_biomes:
+		var b_data = DungeonData.infinite_dungeon_biomes[biome]
+		if b_data.has('max_floor') and level > b_data.max_floor:
+			continue
+		biomes.push_back(biome)
+	var biome_data = DungeonData.infinite_dungeon_biomes[input_handler.random_from_array(biomes)]
+	var group_code = input_handler.weightedrandom(biome_data.enemyarray)
+
+	globals.reset_roll_data()
+	globals.char_roll_data.no_roll = true
+	globals.char_roll_data.diff = 'infinite'
+	globals.char_roll_data.lvl = level
+	#quest = true skips the random elite roll; every unit is made elite here instead
+	var enemies = globals.makerandomgroup(Enemydata.enemygroups[group_code], true)
+	for pos in enemies:
+		if enemies[pos] != null:
+			enemies[pos] += '_rare'
+	globals.char_roll_data.rare = true
+
+	input_handler.encounter_win_script = null
+	input_handler.encounter_lose_script = null
+	if input_handler.combat_node == null:
+		input_handler.combat_node = input_handler.get_combat_node()
+	input_handler.combat_node.encountercode = group_code
+	input_handler.combat_node.set_norun_mode(false)
+	var stats_mod = (1 + level * variables.difficulty_per_level_survival) * float($mod1.text)
+	var background = input_handler.random_from_array(biome_data.background_pool)
+	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, background, 'combattheme', {enemy_stats_mod = stats_mod})

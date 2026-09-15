@@ -176,6 +176,28 @@ func get_drain():
 	return 1
 
 
+#Units of food one meal takes from storage: one, or more for an extreme metabolism. It changes
+#what a meal costs, not how long it lasts.
+func get_portion():
+	if parent.get_ref().check_trait('upgrade_metabolism'):
+		return variables.food_metabolism_portion
+	return 1
+
+
+#The meal the storage can serve: the best allowed food there is a whole portion of - or, when there
+#is no whole portion of anything, the best food there is any of, eaten to the last unit.
+func choose_meal(order):
+	var portion = get_portion()
+	var stock = ResourceScripts.game_res.materials
+	var fallback = null
+	for code in order:
+		if stock[code] >= portion:
+			return code
+		if fallback == null and stock[code] >= 1:
+			fallback = code
+	return fallback
+
+
 func tick():
 	var person = parent.get_ref()
 	if person.check_trait('undead'):
@@ -198,16 +220,19 @@ func get_food():
 	update_demand()
 	#a forager feeds themselves off the land, without touching the storage
 	var forager = person.check_trait('forager')
+	var order = build_meal_order()
 	var meal = null
-	for code in build_meal_order():
-		if forager or ResourceScripts.game_res.materials[code] >= 1:
-			meal = code
-			break
+	if forager:
+		meal = null if order.empty() else order[0]
+	else:
+		meal = choose_meal(order)
 	if meal == null:
 		starve()
 		return
 	if !forager:
-		ResourceScripts.game_res.materials[meal] -= 1
+		var stock = ResourceScripts.game_res.materials
+		var portion = get_portion()
+		stock[meal] -= portion if stock[meal] >= portion else int(stock[meal])
 	consume(meal)
 
 
@@ -299,13 +324,17 @@ func predict_meal_problem():
 	update_demand()
 	var demand_rank = get_demand_rank()
 	var ignore_demand = ignores_demand()
-	for code in build_meal_order():
-		if !forager and ResourceScripts.game_res.materials[code] < 1:
-			continue
-		if !ignore_demand and get_food_rank(code) < demand_rank:
-			return 'poor'
-		return ''
-	return 'starve'
+	var order = build_meal_order()
+	var meal = null
+	if forager:
+		meal = null if order.empty() else order[0]
+	else:
+		meal = choose_meal(order)
+	if meal == null:
+		return 'starve'
+	if !ignore_demand and get_food_rank(meal) < demand_rank:
+		return 'poor'
+	return ''
 
 
 func predict_food():
@@ -321,7 +350,7 @@ func predict_food():
 	if is_liked(code):
 		value = int(ceil(value * variables.food_liked_value_mod))
 	var res = {}
-	res[code] = float(variables.HoursPerDay * get_drain()) / float(value)
+	res[code] = float(variables.HoursPerDay * get_drain() * get_portion()) / float(value)
 	return res
 
 

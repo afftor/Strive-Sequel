@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui_modules/mansion_view/backdrop/sun_shafts.gd" type="Script" id=1]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/lamp_glow_material.tres" type="Material" id=2]
+
+[node name="SunShafts" type="Node2D"]
+material = ExtResource( 2 )
+script = ExtResource( 1 )

@@ -61,7 +61,6 @@ func _ready():
 	# when one lands instead of showing the race icon until the next click
 	input_handler.connect('portrait_taken', self, '_on_portrait_taken')
 	$GuildShop/Label.text = tr("REPUTATION_SHOP_LABEL")
-	$SlaveMarket/HBoxContainer/UpgradeButton2/Label.text = tr("UPGRADE_BODY_LABEL")
 	
 	selected_location = 'aliron'
 	selected_area = ResourceScripts.game_world.areas.plains
@@ -70,7 +69,6 @@ func _ready():
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SlaveMarket/SellMode.connect("pressed", self, "change_mode", ["sell"])
 	$SlaveMarket/HBoxContainer/UpgradeButton.connect("pressed", self, "show_upgrade_window")
-	$SlaveMarket/HBoxContainer/UpgradeButton2.connect("pressed", self, "show_bodyupgrade_window")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
 	$TestButton.visible = gui_controller.mansion.in_test_mode
@@ -702,7 +700,6 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	$SlaveMarket/HireMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/SellMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/HBoxContainer/UpgradeButton.visible = market_mode != "guild_slaves"
-	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = market_mode != "guild_slaves"
 	hiremode = 'hire'
 	$SlaveMarket/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
@@ -756,21 +753,6 @@ func show_upgrade_window():
 		gui_controller.windows_opened.append($StatsUpgrade)
 	$StatsUpgrade.show()
 	$StatsUpgrade.show_characters_panel()
-
-
-func show_bodyupgrade_window():
-#	if person_to_hire == null:
-#		return
-#	if !person_to_hire.is_players_character or !person_to_hire.is_active:
-#		return #should add here message
-#	var person = person_to_hire
-#	gui_controller.close_top_window()
-#	$SlaveMarket.hide()
-#	input_handler.get_spec_node(input_handler.NODE_CHAREDIT, [person])
-	if !gui_controller.windows_opened.has($BodyUpgrade):
-		gui_controller.windows_opened.append($BodyUpgrade)
-	$BodyUpgrade.show()
-	$BodyUpgrade.show_characters_panel()
 
 
 func change_mode(mode):
@@ -831,7 +813,6 @@ func _on_portrait_taken(id):
 
 
 func show_slave_info(person):
-	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = $SlaveMarket/HBoxContainer/UpgradeButton.visible
 	person_to_hire = person
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":
