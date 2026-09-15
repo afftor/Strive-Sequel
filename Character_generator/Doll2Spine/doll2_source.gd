@@ -26,6 +26,7 @@ extends Reference
 const DOLLS = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
 
 const LOADED = {}
+const LOADED_SIGNATURES = {}
 
 
 # Everything the rig brings with it, parsed on first ask and handed out after
@@ -34,9 +35,15 @@ const LOADED = {}
 # next try.
 static func of(doll_id):
 	var key = str(doll_id)
-	if LOADED.has(key):
-		return LOADED[key]
 	var source = DOLLS.doll(key)
+	var signature = _source_signature(source)
+	if LOADED.has(key) and LOADED_SIGNATURES.get(key, -1) == signature:
+		return LOADED[key]
+	# Spine exports are replaced while the editor stays open. Drop the parsed
+	# source when any JSON, atlas or page changed, otherwise a reloaded preview
+	# keeps displaying the old imported texture for the rest of the session.
+	LOADED.erase(key)
+	LOADED_SIGNATURES.erase(key)
 	if source == null or source.empty():
 		push_error("Doll2 source: `%s` is not a doll this project ships" % key)
 		return {}
@@ -57,6 +64,7 @@ static func of(doll_id):
 	for animation_name in skeleton.get("animations", {}).keys():
 		built.animation_durations[animation_name] = _animation_duration(skeleton, animation_name)
 	LOADED[key] = built
+	LOADED_SIGNATURES[key] = signature
 	return built
 
 
@@ -70,6 +78,21 @@ static func is_loaded(doll_id):
 # session never does.
 static func forget():
 	LOADED.clear()
+	LOADED_SIGNATURES.clear()
+
+
+static func _source_signature(source):
+	if source == null or source.empty():
+		return -1
+	var paths = [str(source.get("json", "")), str(source.get("atlas", ""))]
+	for texture in source.get("pages", {}).values():
+		if texture is Resource and !texture.resource_path.empty():
+			paths.append(texture.resource_path)
+	var stamps = []
+	var file = File.new()
+	for path in paths:
+		stamps.append([path, file.get_modified_time(path)])
+	return stamps.hash()
 
 
 static func _read_skeleton(source):
@@ -104,7 +127,14 @@ static func _read_atlas(source, built):
 		if line.find(":") == -1:
 			if line.ends_with(".png"):
 				current_page = line
-				pages[current_page] = {"texture": source.pages.get(current_page), "size": Vector2.ZERO}
+				var texture = source.pages.get(current_page)
+				# `pages` contains preloads so exported builds retain these resources,
+				# but a preload already held by the editor may point at the old .stex.
+				# Reload the same path without the ResourceLoader cache after a source
+				# signature change.
+				if texture is Resource and !texture.resource_path.empty():
+					texture = ResourceLoader.load(texture.resource_path, "Texture", true)
+				pages[current_page] = {"texture": texture, "size": Vector2.ZERO}
 			else:
 				current_region = line
 				atlas[current_region] = {"page": current_page, "bounds": Rect2(), "offset": Vector2.ZERO, "source_size": Vector2.ZERO, "rotate": false}

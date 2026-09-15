@@ -3599,6 +3599,7 @@ func _scale_back_hair_mesh(points, slot):
 
 func _attachment_deform(slot, attachment):
 	var result = []
+	var blink_overlay = []
 	var skin_name = attachment.get("_skin_name", "")
 	var slot_name = slot.get("name", "")
 	var attachment_name = attachment.get("_attachment_name", "")
@@ -3611,11 +3612,25 @@ func _attachment_deform(slot, attachment):
 			continue
 		var timeline = skin_timelines[slot_name][attachment_name].get("deform", [])
 		var sampled = _sample_deform_timeline(timeline, float(animation_times.get(animation_name, 0.0)), _deform_length(attachment))
+		# `emote_horny` is now an authored static face-mesh deformation rather
+		# than a bone pose. `eyesmove` addresses the same meshes, so applying the
+		# emotion last used to erase the blink completely. Keep the blink aside
+		# and add its relative deformation after the emotion: its zero frames
+		# preserve the horny face, while its middle frames close those same eyes.
+		if animation_name == BLINK_ANIMATION:
+			blink_overlay = sampled
+			continue
 		if result.empty() or _is_emotion_animation(animation_name):
 			result = sampled
 		else:
 			for i in range(min(result.size(), sampled.size())):
 				result[i] += sampled[i]
+	if !blink_overlay.empty():
+		if result.empty():
+			result = blink_overlay
+		else:
+			for i in range(min(result.size(), blink_overlay.size())):
+				result[i] += blink_overlay[i]
 	return result
 
 
