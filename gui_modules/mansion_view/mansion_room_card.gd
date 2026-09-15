@@ -77,6 +77,8 @@ func setup(view_node):
 		$Body/Columns/LeftScroll/LeftColumn/TattooButton.connect("pressed", self, "on_tattoo")
 	if has_node("Body/Columns/LeftScroll/LeftColumn/BodyModButton"):
 		$Body/Columns/LeftScroll/LeftColumn/BodyModButton.connect("pressed", self, "on_body_mod")
+	if has_node("Body/Columns/LeftScroll/LeftColumn/BodyRitesButton"):
+		$Body/Columns/LeftScroll/LeftColumn/BodyRitesButton.connect("pressed", self, "on_body_rites")
 	autobuy_panel().get_node("CloseButton").connect("pressed", self, "close_autobuy_panel")
 	autobuy_panel().get_node("Body/AddRow/AddButton").connect(
 		"pressed", self, "add_autobuy_rule")
@@ -282,6 +284,8 @@ func rebuild():
 		$Body/Columns/LeftScroll/LeftColumn/TattooButton.visible = false
 	if has_node("Body/Columns/LeftScroll/LeftColumn/BodyModButton"):
 		$Body/Columns/LeftScroll/LeftColumn/BodyModButton.visible = false
+	if has_node("Body/Columns/LeftScroll/LeftColumn/BodyRitesButton"):
+		$Body/Columns/LeftScroll/LeftColumn/BodyRitesButton.visible = false
 	#Nothing shows the help mark any more: what it had to say is the room's description, and the
 	#card prints that a couple of lines below the name - so the mark opened a panel over the card
 	#to repeat what was already on it. The node is left in the scene, and this one line is what
@@ -550,6 +554,7 @@ func build_for_room(current):
 	build_salvage_button(current)
 	build_tattoo_button(current)
 	build_body_mod_button(current)
+	build_body_rites_button(current)
 	build_inventory_button(current)
 	build_autobuy_button(current)
 
@@ -666,6 +671,20 @@ func on_tattoo():
 
 func on_body_mod():
 	_open_parlor('open_body_mod')
+
+
+func build_body_rites_button(current):
+	var path = "Body/Columns/LeftScroll/LeftColumn/BodyRitesButton"
+	if !has_node(path):
+		return
+	var button = get_node(path)
+	button.visible = MansionLayout.upgrade_level(current, 'flesh_rites') > 0
+	if button.visible:
+		button.text = tr("MANSIONVIEW_BODY_RITES")
+
+
+func on_body_rites():
+	view.open_body_rites()
 
 
 #Each button opens its own window. The card goes first: the Overlay is a CanvasLayer that wins
@@ -1617,8 +1636,8 @@ func build_order_list(current):
 	#bought once on the master's office, spent on every craft room the estate has
 	var owned = ResourceScripts.game_res.has_ledgers()
 	#a real craft discipline, not one of the jobs that only name a room - the estate's recipe
-	#queues are the test, since those are what an order would be drawn from
-	var crafts = job != null and ResourceScripts.game_res.crafting_lists.has(job + '_material')
+	#queue is the test, since that is what an order would be drawn from
+	var crafts = ResourceScripts.game_res.has_craft_queue(job)
 	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = owned and crafts
 	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.visible = $Body/Columns/LeftScroll/LeftColumn/OrderList.visible
 	if !$Body/Columns/LeftScroll/LeftColumn/OrderList.visible:
@@ -1626,13 +1645,12 @@ func build_order_list(current):
 	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.text = tr("MANSIONVIEW_ORDERHEADER")
 	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/OrderList)
 	var offered = 0
-	for queue in [job + '_item', job + '_material']:
-		for task_id in ResourceScripts.game_res.crafting_lists[queue]:
-			var button = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/OrderList)
-			button.text = order_label(current, task_id)
-			button.pressed = current.craft_rules.has(task_id)
-			button.connect("pressed", self, "toggle_order", [task_id])
-			offered += 1
+	for task_id in ResourceScripts.game_res.crafting_lists[job]:
+		var button = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/OrderList)
+		button.text = order_label(current, task_id)
+		button.pressed = current.craft_rules.has(task_id)
+		button.connect("pressed", self, "toggle_order", [task_id])
+		offered += 1
 	if offered == 0:
 		var button = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/OrderList)
 		button.text = tr("MANSIONVIEW_NOORDERS")

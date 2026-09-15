@@ -792,6 +792,8 @@ var food_starve_affection = -5
 var food_demand_respect = [-5, -3]
 #the extra rations work rule burns through food faster
 var food_ration_drain = 2
+#units of food a meal takes for a character with an extreme metabolism (upgrade_metabolism)
+var food_metabolism_portion = 3
 
 var minor_trainings_base = 3
 var minor_trainings_per_growth = 0.5

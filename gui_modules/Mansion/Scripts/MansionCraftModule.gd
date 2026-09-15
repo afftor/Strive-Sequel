@@ -309,50 +309,38 @@ func sort_craft_list(first, second):
 
 func rebuild_scheldue():
 	input_handler.ClearContainer($CraftSchedule/ScrollContainer/VBoxContainer)
-	input_handler.ClearContainer($CraftSchedule2/ScrollContainer/VBoxContainer)
-	for i in ResourceScripts.game_res.crafting_lists[craft_category + '_material']:
+	#the craft type's one queue, items and materials together, in the order it is worked
+	var queue = ResourceScripts.game_res.crafting_lists[craft_category]
+	for i in queue:
 		var pdata = ResourceScripts.game_res.tasks_progresses[i]
 		var newnode = input_handler.DuplicateContainerTemplate($CraftSchedule/ScrollContainer/VBoxContainer)
 		var recipe_data = Items.recipes[pdata.id]
-		var item_data = Items.materiallist[recipe_data.resultitem]
-		newnode.get_node("icon").texture = item_data.icon
-		if pdata.has('repeat'):
-			newnode.get_node("Label").text = tr(item_data.name) + ": " +  str(pdata.repeat) 
-		elif pdata.has('continuous'):
-			newnode.get_node("Label").text = tr(item_data.name) + ": ∞"
+		var item_data
+		var in_store
+		if recipe_data.resultitemtype == 'material':
+			item_data = Items.materiallist[recipe_data.resultitem]
+			in_store = ResourceScripts.game_res.materials[recipe_data.resultitem]
 		else:
-			newnode.get_node("Label").text = "%s: %d / %d" % [tr(item_data.name), pdata.cap_up, ResourceScripts.game_res.materials[recipe_data.resultitem]]
-		newnode.connect("pressed", self, 'select_entry', [i])
-		newnode.set_meta("selected_craft", i)
-		newnode.get_node("DeleteButton").connect("pressed",self,'delete_from_queue', [i])
-		newnode.get_node("ProgressBar").visible = true
-		newnode.get_node("progress").visible = false
-		newnode.get_node("ProgressBar").value = pdata.progress
-		newnode.get_node("ProgressBar").max_value = pdata.progress_limit
-		newnode.arraydata = i
-		newnode.parentnodearray = ResourceScripts.game_res.crafting_lists[craft_category + '_material']
-		newnode.target_node = self
-		newnode.target_function = 'rebuild_scheldue'
-	for i in ResourceScripts.game_res.crafting_lists[craft_category + '_item']:
-		var pdata = ResourceScripts.game_res.tasks_progresses[i]
-		var newnode = input_handler.DuplicateContainerTemplate($CraftSchedule2/ScrollContainer/VBoxContainer)
-		var recipe_data = Items.recipes[pdata.id]
-		var item_data = Items.itemlist[recipe_data.resultitem]
+			item_data = Items.itemlist[recipe_data.resultitem]
+			in_store = ResourceScripts.game_res.get_item_amount(recipe_data.resultitem)
 		newnode.get_node("icon").texture = item_data.icon
 		if recipe_data.crafttype == 'modular':
 			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
 		if pdata.has('repeat'):
-			newnode.get_node("Label").text = tr(item_data.name) + ": " +  str(pdata.repeat) 
+			newnode.get_node("Label").text = tr(item_data.name) + ": " + str(pdata.repeat)
 		elif pdata.has('continuous'):
 			newnode.get_node("Label").text = tr(item_data.name) + ": ∞"
 		else:
-			newnode.get_node("Label").text = "%s: %d / %d" % [tr(item_data.name), pdata.cap_up, ResourceScripts.game_res.get_item_amount(recipe_data.resultitem)]
+			newnode.get_node("Label").text = "%s: %d / %d" % [tr(item_data.name), pdata.cap_up, in_store]
 		newnode.connect("pressed", self, 'select_entry', [i])
 		newnode.set_meta("selected_craft", i)
 		newnode.get_node("DeleteButton").connect("pressed",self,'delete_from_queue', [i])
-		newnode.get_node("progress").text = str(floor(pdata.progress)) + "/" + str(pdata.progress_limit)
+		#Written on the row for both kinds. The bar the materials list used to show hangs below its
+		#row, where the next order in the list is drawn over it, and a food recipe's fraction of a
+		#work unit would round away to nothing in whole units - so it is kept to a tenth.
+		newnode.get_node("progress").text = str(stepify(pdata.progress, 0.1)) + "/" + str(pdata.progress_limit)
 		newnode.arraydata = i
-		newnode.parentnodearray = ResourceScripts.game_res.crafting_lists[craft_category + '_item']
+		newnode.parentnodearray = queue
 		newnode.target_node = self
 		newnode.target_function = 'rebuild_scheldue'
 

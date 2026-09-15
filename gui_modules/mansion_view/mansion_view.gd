@@ -50,6 +50,7 @@ onready var card = $Overlay/RoomCard
 onready var rest_panel = $RestPanel
 onready var location_panel = $LocationPanel
 onready var service_panel = $Overlay/ServicePanel
+onready var body_rites_panel = $Overlay/BodyRitesPanel
 
 
 const EMBEDDED_MARGIN = 16
@@ -81,6 +82,7 @@ func _ready():
 	rest_panel.setup(self)
 	location_panel.visible = false
 	service_panel.setup(self)
+	body_rites_panel.setup(self)
 	$ExpelZone.setup(self)
 	connect("resized", self, "layout_view")
 	connect("visibility_changed", self, "on_visibility_changed")
@@ -242,6 +244,7 @@ func on_visibility_changed():
 		if refresh_missed or layout_signature() != built_signature:
 			queue_refresh()
 		return
+	body_rites_panel.close()
 	close_card()
 	clear_char_pick()
 
@@ -1103,7 +1106,7 @@ func idle_workshop(room):
 	var job = RoomTypes.get_work_job(room.type)
 	if job == null or job == '':
 		return false
-	if !ResourceScripts.game_res.crafting_lists.has(job + '_item'):
+	if !ResourceScripts.game_res.has_craft_queue(job):
 		return false
 	return ResourceScripts.game_res.room_current_craft(room) == null
 
@@ -1453,6 +1456,16 @@ func open_service_screen():
 		if entry.own_screen:
 			open_task_screen(entry)
 			return
+
+
+func open_body_rites():
+	set_card_aside(true)
+	body_rites_panel.open()
+
+
+func close_body_rites():
+	body_rites_panel.close()
+	set_card_aside(false)
 
 
 func refresh_marks():

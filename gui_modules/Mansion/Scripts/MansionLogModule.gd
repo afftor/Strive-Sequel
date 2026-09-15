@@ -3,6 +3,10 @@ extends PanelContainer
 const MAX_MESSAGES = 50
 
 const EVENT_CONFIG = {
+	#Everybody who reached the end of a road over one turn. The row reads as a single arrival until
+	#a second person turns up in the same turn; from then on it names the travel groups that came in,
+	#and the fold behind it is one line per group with the people in it. The only fold here that
+	#survives a save - see globals.mansion_activity_arrival().
 	"arrival": {
 		label = "MANSION_ACTIVITY_TYPE_ARRIVAL",
 		icon = preload("res://assets/Textures_v2/MANSION/icon_travel_small.png"),
@@ -129,13 +133,74 @@ onready var entries = $Margin/Layout/ScrollContainer/Entries
 onready var entry_template = $Margin/Layout/ScrollContainer/Entries/EntryTemplate
 onready var empty_label = $Margin/Layout/ScrollContainer/Entries/EmptyLabel
 onready var count_label = $Margin/Layout/Header/Count
+onready var header = $Margin/Layout/Header
+onready var divider = $Margin/Layout/Divider
+onready var fold_button = $Margin/Layout/Header/FoldButton
+onready var fold_tween = $FoldTween
+
+#The panel folds up into its title bar, the way the household list does, and hands the right-hand
+#side of the screen back to the floorplan. Folding only hides the log - messages keep arriving,
+#and the count beside the title keeps up with them.
+const FOLD_ANIMATION_TIME = 0.18
+
+var folded = false
+#The height the mansion screen gives the panel, and the minimum its own scene sets. That minimum
+#is taller than the bar, and a size below it is snapped straight back, so the fold lifts it for
+#as long as the panel is anything but fully open.
+var unfolded_height = 0.0
+var unfolded_min_height = 0.0
 
 
 func _ready():
+	unfolded_height = rect_size.y
+	unfolded_min_height = rect_min_size.y
+	fold_button.connect("pressed", self, "toggle_fold")
+	header.connect("gui_input", self, "_on_header_gui_input")
+	fold_tween.connect("tween_all_completed", self, "_on_fold_animation_finished")
+	set_folded(false, false)
 	for data in ResourceScripts.game_globals.mansion_activity_log:
 		add_log_message(data, false)
 	_update_empty_state()
 	call_deferred("_scroll_to_latest")
+
+
+func toggle_fold():
+	set_folded(!folded)
+
+
+#The whole bar is the handle, not only the button at its end: folded, the bar is all that is
+#left of the panel, and it should open from wherever it is pressed.
+func _on_header_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		header.accept_event()
+		toggle_fold()
+
+
+func set_folded(state, animated = true):
+	folded = state
+	fold_tween.stop_all()
+	fold_tween.remove_all()
+	fold_button.get_node("Label").text = "v" if folded else "^"
+	globals.connecttexttooltip(fold_button, tr("MANSION_ACTIVITY_UNFOLD" if folded else "MANSION_ACTIVITY_FOLD"))
+	#Hidden rather than clipped: a hidden subtree is out of the mouse's reach as well, so the plan
+	#under a folded panel gets its clicks and its wheel back.
+	divider.visible = !folded
+	scroll.visible = !folded
+	rect_min_size.y = 0
+	#with the list hidden the minimum is the bar alone, whatever the font makes of the title
+	var target_size = Vector2(rect_size.x, get_combined_minimum_size().y if folded else unfolded_height)
+	if !animated:
+		rect_size = target_size
+		_on_fold_animation_finished()
+		return
+	fold_tween.interpolate_property(self, "rect_size", rect_size, target_size,
+		FOLD_ANIMATION_TIME, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	fold_tween.start()
+
+
+func _on_fold_animation_finished():
+	if !folded:
+		rect_min_size.y = unfolded_min_height
 
 
 func add_log_message(data, scroll_to_latest = true):
@@ -234,7 +299,11 @@ func _fill_detail_lines(list, lines):
 		if rows[i].bbcode_text != lines[i]:
 			rows[i].bbcode_text = lines[i]
 	for i in range(rows.size(), lines.size()):
-		input_handler.DuplicateContainerTemplate(list, 'DetailTemplate').bbcode_text = lines[i]
+		var row = input_handler.DuplicateContainerTemplate(list, 'DetailTemplate')
+		row.bbcode_text = lines[i]
+		#A line can name a place the way the row's own message does - an arrival's group line says
+		#where its group got to - and that name has to follow through the same way.
+		row.connect("meta_clicked", self, "_on_meta_clicked")
 
 
 #The haul, one tile per material with its count written across the bottom. Patched in place for

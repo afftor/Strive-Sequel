@@ -1052,7 +1052,7 @@ func build_predicted(root):
 		else:
 			var recipe_data = Items.recipes[task.id]
 			var item_data
-			if task.job.ends_with('_material'):
+			if recipe_data.resultitemtype == 'material':
 				item_data = Items.materiallist[recipe_data.resultitem]
 			else:
 				item_data = Items.itemlist[recipe_data.resultitem]

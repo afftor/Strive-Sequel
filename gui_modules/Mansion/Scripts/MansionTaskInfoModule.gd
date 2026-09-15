@@ -239,16 +239,17 @@ func show_resources_info():
 			for product in product_names:
 				product_text += "\n" + tr(Items.materiallist[product].name)
 			_add_card_tooltip(newtask, product_text, true)
-	#crafting
-	for category in ['cooking_material', 'smith_material', 'alchemy_material', 'tailor_material', 'smith_item', 'alchemy_item', 'tailor_item', 'cooking_item',]:
+	#crafting - one queue per craft type, items and materials together
+	for category in ['cooking', 'smith', 'alchemy', 'tailor']:
 		for task_id in ResourceScripts.game_res.crafting_lists[category]:
 			var progress_data = ResourceScripts.game_res.tasks_progresses[task_id]
 			if progress_data.status in ['completed', 'stopped', 'init']:
 				continue
+			var recipe_data = Items.recipes[progress_data.id]
 			var newtask = _create_task_node(task_id)
 			if progress_data.status == 'no_resources':
 				newtask.get_node("NoResources").visible = true
-			if category == 'cooking_material':
+			if category == 'cooking' and recipe_data.resultitemtype == 'material':
 				newtask.get_node("ProgressBar").visible = true
 				newtask.get_node("ProgressBar").max_value = progress_data.progress_limit
 				newtask.get_node("ProgressBar").value = progress_data.progress
@@ -261,9 +262,8 @@ func show_resources_info():
 						if str(worker_ch.predict_active_task()) == str(task_id):
 							craft_workers.append(worker)
 			_set_worker_display(newtask, craft_workers)
-			var recipe_data = Items.recipes[progress_data.id]
 			var item_data
-			if category.ends_with('_material'):
+			if recipe_data.resultitemtype == 'material':
 				item_data = Items.materiallist[recipe_data.resultitem]
 				_set_inventory_amount(newtask, ResourceScripts.game_res.materials[recipe_data.resultitem])
 			else:

@@ -622,6 +622,9 @@ func get_traitlist_for_char(person):
 			icon = b.icon,
 			text = text
 		})
+	var upgrades_entry = get_body_upgrades_trait_entry(person)
+	if upgrades_entry != null:
+		traitlist.append(upgrades_entry)
 	var trlist = person.get_traits_by_arg('visible', true)
 	for tr in trlist:
 		var trdata = Traitdata.traits[tr]
@@ -662,6 +665,26 @@ func get_traitlist_for_char(person):
 						entry.text_with_name += line
 		traitlist.append(entry)
 	return traitlist
+
+
+#Every body upgrade a character carries, as one icon in the trait row with one tooltip naming them all -
+#the way the maxed factors share b_factor_maxed. The upgrades' own traits are hidden (visible = false),
+#so this is the only sign of them in a trait row. null when the character carries none.
+const BODY_UPGRADES_TRAIT_ICON = "res://assets/images/iconsskills/icon_blood_explosion.png"
+
+func get_body_upgrades_trait_entry(person):
+	var lines = []
+	for code in person.get_body_upgrades():
+		var data = Traitdata.body_upgrades.get(code)
+		if data == null:
+			continue
+		lines.append("{color=yellow|" + tr(data.name) + "}: " + person.translate(tr(data.descript)))
+	if lines.empty():
+		return null
+	return {
+		icon = BODY_UPGRADES_TRAIT_ICON,
+		text = "[center]" + tr("BODYRITE_TITLE") + "[/center]\n" + PoolStringArray(lines).join("\n"),
+	}
 
 
 #Grey enough to read as "being scrubbed out", translucent enough to leave the icon legible.
@@ -2137,6 +2160,34 @@ func mansion_activity_production(res, amount):
 		mansion_activity_log_node.update_log_message(entry)
 
 
+#One entry per turn for everybody who reached the end of a road. The log used to write a row per
+#person, and a party of five walking in together read as five rows of the same news. Folded on the
+#stamp like the reports above, but it does not start out as a report: a lone arrival reads the way
+#it always did, a name and a place. Only a second arrival in the same turn makes it a report, and
+#the report names the travel groups that came in rather than the people in them.
+#
+#`details` - one line per travel group, under the name the map gives it, with the people in it - is
+#rebuilt from `arrivals` on every arrival rather than appended to, since a newcomer usually joins a
+#line that is already there. The lines keep the order the turn first saw each group, which is what
+#lets MansionLogModule patch the rows already on screen. Unlike the other breakdowns this one is
+#kept through a save: see game_globals._drop_turn_local_breakdown().
+func mansion_activity_arrival(character, location):
+	var record = {name = character.get_short_name(), location = location,
+		group = str(character.get_loc_group())}
+	var stamp = mansion_activity_stamp()
+	var entry = _mansion_activity_turn_report('arrival', stamp)
+	#a row written before arrivals were folded has no records to add this one to
+	if entry == null or !entry.has('arrivals'):
+		mansion_activity_log_add('arrival', _arrival_report_text([record]),
+			{arrivals = [record], details = []})
+		return
+	entry.arrivals.append(record)
+	entry.text = _arrival_report_text(entry.arrivals)
+	entry.details = _arrival_detail_lines(entry.arrivals)
+	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+		mansion_activity_log_node.update_log_message(entry)
+
+
 #One row a week for the estate's standing costs, written from game_res.subtract_taxes() once the
 #whole bill is known. Unlike the service, craft and production reports it needs no folding: the
 #week's charges are collected in one pass by game_res.collect_weekly_expenses() and arrive here
@@ -2189,6 +2240,77 @@ func _production_report_text(total, kinds):
 
 func _upkeep_report_text(total, charges):
 	return _report_text("MANSION_ACTIVITY_UPKEEP_REPORT", [total, charges])
+
+
+#A lone arrival keeps the sentence it always had. More than one is named by the travel groups they
+#came in, and the place is named only while they all got to the same one - otherwise the places are
+#on the lines behind the fold.
+func _arrival_report_text(arrivals):
+	var mansion = ResourceScripts.game_world.mansion_location
+	if arrivals.size() == 1:
+		var single_key = "MANSION_ACTIVITY_ARRIVAL_MANSION_LINK" if arrivals[0].location == mansion else "MANSION_ACTIVITY_ARRIVAL_LOCATION"
+		return _report_text(single_key, [arrivals[0].name, _arrival_link(arrivals[0].location)])
+	var groups = _arrival_group_names(arrivals)
+	var destinations = _arrival_destinations(arrivals)
+	if destinations.size() > 1:
+		return _report_text("MANSION_ACTIVITY_ARRIVAL_REPORT_SPREAD", [groups, destinations.size()])
+	var report_key = "MANSION_ACTIVITY_ARRIVAL_REPORT_MANSION" if destinations[0] == mansion else "MANSION_ACTIVITY_ARRIVAL_REPORT"
+	return _report_text(report_key, [groups, _arrival_link(destinations[0])])
+
+
+#One line per travel group, in the order the turn first saw each: the group's name, where it got to
+#when the turn's arrivals went to more than one place, and who is in it. A group is keyed on its
+#place as well as its name, because two places can each hold a group of the same name until the
+#map next tidies them up.
+func _arrival_detail_lines(arrivals):
+	var several_places = _arrival_destinations(arrivals).size() > 1
+	var groups = {}
+	for record in arrivals:
+		var key = "%s|%s" % [record.location, record.group]
+		if !groups.has(key):
+			groups[key] = {location = record.location, group = record.group, names = []}
+		groups[key].names.append(record.name)
+	var lines = []
+	for key in groups:
+		var group = groups[key]
+		var names = PoolStringArray(group.names).join(", ")
+		if several_places:
+			lines.append(_report_text("MANSION_ACTIVITY_ARRIVAL_GROUP_AT",
+				[_arrival_group_label(group.group), _arrival_link(group.location), names]))
+		else:
+			lines.append(_report_text("MANSION_ACTIVITY_ARRIVAL_GROUP", [_arrival_group_label(group.group), names]))
+	return lines
+
+
+#Every travel group among the turn's arrivals, named once however many places it got to, in the
+#order the turn first saw them.
+func _arrival_group_names(arrivals):
+	var labels = []
+	for record in arrivals:
+		input_handler.append_not_duplicate(labels, _arrival_group_label(record.group))
+	return PoolStringArray(labels).join(", ")
+
+
+#A group's name as the log shows it, the same on the row and behind the fold. It goes through tr()
+#the way the map's own group label does.
+func _arrival_group_label(group):
+	return "[color=#72c8d9]%s[/color]" % tr(group)
+
+
+func _arrival_destinations(arrivals):
+	var destinations = []
+	for record in arrivals:
+		input_handler.append_not_duplicate(destinations, record.location)
+	return destinations
+
+
+#The place an arrival names, as a link MansionLogModule._on_meta_clicked() can follow.
+func _arrival_link(location):
+	if location == ResourceScripts.game_world.mansion_location:
+		return "[url=mansion][color=#72c8d9]%s[/color][/url]" % tr("MANSION_LABEL")
+	var loc_data = ResourceScripts.world_gen.get_location_from_code(location)
+	var loc_name = tr(loc_data.name) if loc_data != null else str(location)
+	return "[url=loc:%s][color=#72c8d9]%s[/color][/url]" % [location, loc_name]
 
 
 func _stat_change_text(character, parts):

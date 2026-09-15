@@ -95,10 +95,10 @@ func fix_serialization():
 	#Older saves - and any save written before the breakdown stopped being stored - can still
 	#carry the lines behind a folded report, the service takings or the turn's crafting. They are
 	#turn-local by design, so a loaded log keeps the total and drops the fold. See
-	#globals.mansion_activity_service() and globals.mansion_activity_craft().
+	#globals.mansion_activity_service() and globals.mansion_activity_craft(). Arrivals are the
+	#exception - see _drop_turn_local_breakdown().
 	for entry in mansion_activity_log:
-		if entry is Dictionary:
-			entry.erase("details")
+		_drop_turn_local_breakdown(entry)
 	if original_version == null: #stub, technically not correct
 		original_version = globals.gameversion
 	if difficulty == 'normal':
@@ -120,9 +120,18 @@ func serialize():
 	#turn is on screen, not a record worth carrying: a line per worker per hour would grow the
 	#save for something nobody reads back. The total stays, the breakdown does not.
 	for entry in data.get("mansion_activity_log", []):
-		if entry is Dictionary:
-			entry.erase("details")
+		_drop_turn_local_breakdown(entry)
 	return data
+
+
+#The one breakdown worth carrying is the arrivals'. It is a line per travel group, written only on
+#the turns somebody reaches the end of a road, and it is the only record left of who got where:
+#once a second person arrives in the same turn, the row itself names only their groups. Dropping
+#it would lose the names the per-person rows it replaced used to keep. See
+#globals.mansion_activity_arrival().
+static func _drop_turn_local_breakdown(entry):
+	if entry is Dictionary and entry.get("type") != "arrival":
+		entry.erase("details")
 
 
 func autosave_due():

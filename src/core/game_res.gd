@@ -23,7 +23,10 @@ var tax = 0
 var buyback = {}
 
 #new tasks system
-var crafting_lists = {alchemy_material = [], alchemy_item = [], smith_material = [], smith_item = [], cooking_material = [], cooking_item = [], tailor_material = [], tailor_item = [], building = []}
+#One queue of craft orders per craft type - items and materials together, worked from the top
+#down. 'building' is not a craft type: its list holds upgrade codes rather than recipe orders.
+const CRAFT_JOBS = ['alchemy', 'smith', 'cooking', 'tailor']
+var crafting_lists = {alchemy = [], smith = [], cooking = [], tailor = [], building = []}
 var tasks_progresses = {}
 var active_tasks = {
 	gathering = [],
@@ -74,6 +77,7 @@ func fix_serialization():
 	for i in clear_array:
 		materials.erase(i)
 	oldmaterials = materials.duplicate()
+	merge_craft_queues()
 	#A save from before the tree was retired can have one of its upgrades queued for building.
 	#Nothing can describe it any more - the readers index upgradelist to draw its icon and
 	#name - so the queue is swept before anybody asks.
@@ -100,6 +104,40 @@ func fix_serialization():
 	fix_food_task_limits()
 	ensure_mansion_layout()
 #	fix_items_inventory(false)
+
+
+#Saves written before the craft orders were merged keep two queues per craft type,
+#'<type>_item' and '<type>_material', and every order names its queue in 'job'. Items were
+#always worked before materials, so they go on top of the one queue that replaces the pair and
+#the estate goes on making what it was making. A save that has been through this has no split
+#queue left to find, and one missing a queue - older still, or edited - gets an empty one.
+func merge_craft_queues():
+	if !(crafting_lists is Dictionary):
+		crafting_lists = {}
+	var split = []
+	for key in crafting_lists.keys():
+		for suffix in ['_item', '_material']:
+			if str(key).ends_with(suffix) and !split.has(str(key).trim_suffix(suffix)):
+				split.append(str(key).trim_suffix(suffix))
+	for job in CRAFT_JOBS + ['building'] + split:
+		if !(crafting_lists.get(job) is Array):
+			crafting_lists[job] = []
+	for job in split:
+		for suffix in ['_item', '_material']:
+			var old_queue = crafting_lists.get(job + suffix)
+			crafting_lists.erase(job + suffix)
+			if !(old_queue is Array):
+				continue
+			for id in old_queue:
+				if !crafting_lists[job].has(id):
+					crafting_lists[job].append(id)
+	for task in tasks_progresses.values():
+		if !(task is Dictionary) or task.get('type') != 'progress_item':
+			continue
+		var job = str(task.get('job', ''))
+		for suffix in ['_item', '_material']:
+			if job.ends_with(suffix) and crafting_lists.has(job.trim_suffix(suffix)):
+				task.job = job.trim_suffix(suffix)
 
 
 #Creates the mansion floorplan on first use and repairs one loaded from a save.
@@ -1387,8 +1425,9 @@ func add_recipe_task(recipe_id, parts = {}, amount = {fixed = 1}):
 	}
 	if tdata.has('worktool'):
 		template.worktool = tdata.worktool
-	template.job = rdata.worktype + '_' + rdata.resultitemtype
-	
+	#the craft type's one queue, whatever the recipe makes - see merge_craft_queues()
+	template.job = rdata.worktype
+
 	if amount.has('fixed'):
 		template.repeat = amount.fixed
 	elif amount.has('continuous'):
@@ -1403,8 +1442,7 @@ func add_recipe_task(recipe_id, parts = {}, amount = {fixed = 1}):
 
 func if_has_crafting_recipe(recipe_id):
 	var rdata = Items.recipes[recipe_id]
-	var list = rdata.worktype + '_' + rdata.resultitemtype
-	for id in crafting_lists[list]:
+	for id in crafting_lists[rdata.worktype]:
 		var pdata = tasks_progresses[id]
 		if pdata.id == recipe_id:
 			return true
@@ -1749,7 +1787,9 @@ func check_location_job(type, location, job, slot = ''):
 func crafted_amount(pdata):
 	var recipe = Items.recipes.get(pdata.id, null)
 	var product = pdata.id if recipe == null else recipe.resultitem
-	if str(pdata.get('job', '')).ends_with('material'):
+	#items and materials share one queue, so the order's job no longer says which it makes
+	var is_material = Items.materiallist.has(product) if recipe == null else (recipe.resultitemtype == 'material')
+	if is_material:
 		return int(materials.get(product, 0))
 	return get_item_amount(product)
 
@@ -1950,20 +1990,17 @@ func process_service(managed = false):
 
 
 func _apply_craft_overflow(character, value, preferred_job, joborder):
-	#Item work keeps its matching material category first, but any unused work units must
-	#fall through to the character's other enabled categories instead of disappearing.
+	#Work left over keeps to the craft type it was started in first, but any unused work units
+	#must fall through to the character's other enabled types instead of disappearing.
 	var jobs = joborder.duplicate()
 	jobs.erase(preferred_job)
 	jobs.push_front(preferred_job)
 	for job in jobs:
 		if value <= 0:
 			break
-		if job == 'building':
+		if !has_craft_queue(job):
 			continue
-		var real_job = job + '_material'
-		if !crafting_lists.has(real_job):
-			continue
-		var curupgrade = _active_task_find(crafting_lists[real_job])
+		var curupgrade = _active_task_find(crafting_lists[job])
 		value = _add_craft_value(curupgrade, value, character)
 	return value
 
@@ -1975,9 +2012,10 @@ func process_craft(firstpass = true):
 		if !(ch_id in currenttask.workers):
 			continue
 		var character = characters_pool.get_char_by_id(ch_id)
-		#Items are made first and materials take what is left over. The two passes are the
-		#same shape either way - one picks a piece of work and records what it cost, the
-		#other spreads the remainder - so the swap is which queue each pass reaches for.
+		#Both passes reach into the same queues - one per craft type, items and materials
+		#together. What the character's two orders still decide is which types they work and in
+		#what order: the item order picks a piece of work and records what it cost, the material
+		#order spreads the remainder.
 		var joborder = character.get_job_order(!firstpass)
 		if firstpass:
 			for job in joborder:
@@ -1995,8 +2033,7 @@ func process_craft(firstpass = true):
 						character.work_tick_values(tasks_progresses[built].workstat)
 						break
 					continue
-				var real_job = job + '_item'
-				var curupgrade = _active_task_find(crafting_lists[real_job])
+				var curupgrade = _active_task_find(crafting_lists[job])
 				var new_value = _add_craft_value(curupgrade, value, character)
 				if new_value != value:
 					var pdata = tasks_progresses[curupgrade]
@@ -2009,11 +2046,10 @@ func process_craft(firstpass = true):
 				_apply_craft_overflow(character, handled.value, handled.job, joborder)
 			else:
 				var applied = false
-				#nothing in the item order took them, so the materials are what is left to do
+				#nothing in the item order took them, so the material order is what is left to try
 				for job in joborder:
-					var value = character.get_job_value(job, true) 
-					var real_job = job + '_material'
-					var curupgrade = _active_task_find(crafting_lists[real_job])
+					var value = character.get_job_value(job, true)
+					var curupgrade = _active_task_find(crafting_lists[job])
 					var new_value = _add_craft_value(curupgrade, value, character)
 					if new_value < value:
 						var pdata = tasks_progresses[curupgrade]
@@ -2229,14 +2265,11 @@ func process_room_builds():
 		globals.emit_signal("task_removed")
 
 
-#Materials first, then items - the same order and the same helpers process_craft uses.
+#The craft type's one queue from the top, through the same helpers process_craft uses.
 #_add_craft_value returns the work it could not spend, so nothing was done when it hands
 #the whole value back.
 func _spend_room_work(job, value, character, room = null):
-	#items first, materials with what is left - the same order the estate's own crafting takes
-	var left = _add_craft_value(_active_task_find(room_queue(room, crafting_lists[job + '_item'])), value, character)
-	if left == value:
-		left = _add_craft_value(_active_task_find(room_queue(room, crafting_lists[job + '_material'])), left, character)
+	var left = _add_craft_value(_active_task_find(room_queue(room, crafting_lists[job])), value, character)
 	return left < value
 
 
@@ -2253,13 +2286,15 @@ func room_current_craft(room):
 	if room == null:
 		return null
 	var job = RoomTypes.get_work_job(room.type)
-	if job == null or !crafting_lists.has(job + '_item'):
+	if !has_craft_queue(job):
 		return null
-	for suffix in ['_item', '_material']:
-		var task_id = _active_task_find(room_queue(room, crafting_lists[job + suffix]))
-		if task_id != null:
-			return task_id
-	return null
+	return _active_task_find(room_queue(room, crafting_lists[job]))
+
+
+#Whether a job takes recipe orders: a craft type, with its queue in crafting_lists. 'building'
+#has a list there too, but of upgrades, and the jobs that only name a room have none.
+func has_craft_queue(job):
+	return job is String and job != 'building' and crafting_lists.has(job)
 
 
 #The name of what a queued recipe makes, for the screens that show it.
@@ -2332,6 +2367,15 @@ func has_ledgers():
 	if office == null:
 		return false
 	return MansionLayout.upgrade_level(office, 'ledgers') > 0
+
+
+#Whether the ritual room has its Flesh Rites circle, which is what opens body upgrades on the
+#mansion - see src/core/body_rites.gd.
+func has_body_rites():
+	var circle = MansionLayout.first_room_of_type(mansion_layout, 'ritual_room')
+	if circle == null:
+		return false
+	return MansionLayout.upgrade_level(circle, 'flesh_rites') > 0
 
 
 #The order this room works its discipline's queue in. Without Ledgers, or with nothing chosen,

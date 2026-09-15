@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -26,14 +26,17 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=27]
 [ext_resource path="res://gui_modules/Universal/Modules/TextTooltipPanel.tscn" type="PackedScene" id=28]
 [ext_resource path="res://gui_modules/Universal/Modules/ItemTooltipV3.tscn" type="PackedScene" id=29]
-[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=30]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_GoldButton.tres" type="Theme" id=31]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=32]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=33]
-
 [ext_resource path="res://gui_modules/mansion_view/mansion_char_tooltip.tscn" type="PackedScene" id=34]
 [ext_resource path="res://gui_modules/Universal/Scripts/ContextDropdown.gd" type="Script" id=35]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=36]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/mansion_backdrop.tscn" type="PackedScene" id=37]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/lamp_glow_material.tres" type="Material" id=38]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/glows_over_rooms.gd" type="Script" id=39]
+[ext_resource path="res://gui_modules/mansion_view/body_rites_panel.tscn" type="PackedScene" id=40]
+
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
 border_width_left = 2
@@ -93,6 +96,41 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color( 0.105882, 0.0705882, 0.0392157, 0.98 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color( 0.027451, 0.0156863, 0.0117647, 0.96 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=17]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color( 0.0196078, 0.0117647, 0.00784314, 0.9 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.431373, 0.352941, 0.211765, 0.92 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.2, 0.0509804, 0.0431373, 0.96 )
@@ -154,6 +192,26 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 7.0
+content_margin_right = 7.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.329412, 0.2, 0.109804, 0.96 )
+border_width_left = 3
+border_color = Color( 0.976471, 0.784314, 0.321569, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [sub_resource type="StyleBoxFlat" id=12]
 content_margin_left = 12.0
 content_margin_right = 12.0
@@ -169,61 +227,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id=13]
-content_margin_left = 7.0
-content_margin_right = 7.0
-content_margin_top = 2.0
-content_margin_bottom = 2.0
-bg_color = Color( 0.329412, 0.2, 0.109804, 0.96 )
-border_width_left = 3
-border_color = Color( 0.976471, 0.784314, 0.321569, 1 )
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id=14]
-content_margin_left = 8.0
-content_margin_right = 8.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=15]
-content_margin_left = 3.0
-content_margin_right = 3.0
-bg_color = Color( 0.105882, 0.0705882, 0.0392157, 0.98 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-
-[sub_resource type="StyleBoxFlat" id=16]
-content_margin_left = 3.0
-content_margin_right = 3.0
-bg_color = Color( 0.027451, 0.0156863, 0.0117647, 0.96 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-
-[sub_resource type="StyleBoxFlat" id=17]
-content_margin_left = 3.0
-content_margin_right = 3.0
-bg_color = Color( 0.0196078, 0.0117647, 0.00784314, 0.9 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.431373, 0.352941, 0.211765, 0.92 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
 
 [node name="MansionView" type="Control"]
 anchor_right = 1.0
@@ -250,6 +253,13 @@ mouse_filter = 1
 margin_right = 900.0
 margin_bottom = 900.0
 script = ExtResource( 2 )
+
+[node name="Backdrops" parent="GridViewport/FloorGrid" instance=ExtResource( 37 )]
+margin_left = -293.549
+margin_top = -54.5332
+margin_right = 3546.45
+margin_bottom = 2505.47
+rect_scale = Vector2( 0.52313, 0.52313 )
 
 [node name="Button" type="Button" parent="GridViewport/FloorGrid"]
 visible = false
@@ -447,6 +457,13 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.419608, 0.639216, 0.419608, 0.35 )
 
+[node name="GlowsOverRooms" type="Control" parent="GridViewport"]
+material = ExtResource( 38 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 39 )
+
 [node name="RestPanel" type="Panel" parent="."]
 margin_left = 40.0
 margin_top = 16.0
@@ -518,7 +535,6 @@ margin_left = 420.0
 margin_top = 4.0
 margin_right = 1100.0
 margin_bottom = 30.0
-mouse_filter = 2
 custom_colors/font_color = Color( 1, 0.368627, 0.368627, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Some of them have no bed."
@@ -923,7 +939,6 @@ scroll_horizontal_enabled = false
 
 [node name="Rooms" type="GridContainer" parent="LocationPanel/RoomsScroll"]
 margin_right = 1804.0
-margin_bottom = 704.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 10
 custom_constants/hseparation = 6
@@ -1018,7 +1033,7 @@ theme = ExtResource( 32 )
 scroll_horizontal_enabled = false
 
 [node name="People" type="GridContainer" parent="LocationPanel/RoomsScroll/Rooms/Button/PeopleScroll"]
-margin_right = 150.0
+margin_right = 164.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 4
 custom_constants/hseparation = 4
@@ -1097,8 +1112,8 @@ margin_bottom = -12.0
 custom_constants/separation = 8
 
 [node name="Columns" type="HBoxContainer" parent="Overlay/RoomCard/Body"]
-custom_constants/separation = 12
 size_flags_vertical = 3
+custom_constants/separation = 12
 
 [node name="LeftScroll" type="ScrollContainer" parent="Overlay/RoomCard/Body/Columns"]
 rect_min_size = Vector2( 428, 0 )
@@ -1106,6 +1121,8 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="LeftColumn" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll"]
+margin_right = 428.0
+margin_bottom = 210.0
 rect_min_size = Vector2( 428, 0 )
 size_flags_horizontal = 3
 custom_constants/separation = 8
@@ -1217,6 +1234,18 @@ size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Body modifications"
+
+[node name="BodyRitesButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
+visible = false
+margin_top = 346.0
+margin_right = 428.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 0, 44 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Body upgrades"
 
 [node name="SalvageButton" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
@@ -1354,8 +1383,8 @@ align = 0
 [node name="PeopleColumn" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 visible = false
 rect_min_size = Vector2( 428, 0 )
-custom_constants/separation = 8
 size_flags_vertical = 3
+custom_constants/separation = 8
 
 [node name="Occupants" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/PeopleColumn"]
 margin_top = 450.0
@@ -1425,7 +1454,6 @@ margin_left = 140.0
 margin_top = 5.0
 margin_right = 202.0
 margin_bottom = 51.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.607843, 0.858824, 0.529412, 1 )
 custom_fonts/font = ExtResource( 27 )
 text = "+0.0"
@@ -1502,7 +1530,6 @@ margin_left = 140.0
 margin_top = 5.0
 margin_right = 202.0
 margin_bottom = 51.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.607843, 0.858824, 0.529412, 1 )
 custom_fonts/font = ExtResource( 27 )
 text = "+0.0"
@@ -1521,7 +1548,6 @@ scroll_horizontal_enabled = false
 
 [node name="CandidateList" type="VBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll"]
 margin_right = 428.0
-margin_bottom = 34.0
 size_flags_horizontal = 3
 custom_constants/separation = 4
 
@@ -1571,7 +1597,6 @@ margin_left = 334.0
 margin_top = 5.0
 margin_right = 420.0
 margin_bottom = 51.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.607843, 0.858824, 0.529412, 1 )
 text = "+0.0"
 align = 2
@@ -1617,7 +1642,6 @@ anchor_right = 1.0
 margin_left = 40.0
 margin_right = -80.0
 margin_bottom = 44.0
-mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 valign = 1
@@ -1626,10 +1650,8 @@ valign = 1
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -72.0
-margin_right = 0.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 72, 0 )
-mouse_filter = 2
 custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
 custom_fonts/font = ExtResource( 9 )
 align = 2
@@ -1649,8 +1671,8 @@ visible = false
 margin_top = 488.0
 margin_right = 428.0
 margin_bottom = 544.0
-custom_constants/hseparation = 4
 custom_constants/vseparation = 4
+custom_constants/hseparation = 4
 columns = 6
 
 [node name="Button" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/ResidentsGrid"]
@@ -1686,8 +1708,8 @@ visible = false
 margin_top = 488.0
 margin_right = 428.0
 margin_bottom = 544.0
-custom_constants/hseparation = 4
 custom_constants/vseparation = 4
+custom_constants/hseparation = 4
 columns = 6
 
 [node name="Button" type="Button" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/CompanionGrid"]
@@ -1781,8 +1803,8 @@ margin_left = 72.0
 margin_top = 55.0
 margin_right = 302.0
 margin_bottom = 81.0
-custom_constants/hseparation = 4
 custom_constants/vseparation = 3
+custom_constants/hseparation = 4
 columns = 3
 
 [node name="Cost" type="Control" parent="Overlay/RoomCard/Body/BuildList/Row/Costs"]
@@ -1866,6 +1888,8 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="DetailsColumn" type="VBoxContainer" parent="Overlay/RoomDetails/Body/DetailsScroll"]
+margin_right = 428.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 428, 0 )
 size_flags_horizontal = 3
 custom_constants/separation = 8
@@ -1999,8 +2023,8 @@ margin_left = 72.0
 margin_top = 55.0
 margin_right = 302.0
 margin_bottom = 84.0
-custom_constants/hseparation = 4
 custom_constants/vseparation = 3
+custom_constants/hseparation = 4
 columns = 3
 
 [node name="Cost" type="Control" parent="Overlay/RoomDetails/Body/DetailsScroll/DetailsColumn/UpgradeList/Row/Costs"]
@@ -2126,6 +2150,7 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="RuleList" type="VBoxContainer" parent="Overlay/AutobuyPanel/Body/RuleScroll"]
+margin_right = 892.0
 rect_min_size = Vector2( 892, 0 )
 size_flags_horizontal = 3
 custom_constants/separation = 4
@@ -2172,13 +2197,13 @@ text = "−"
 [node name="Value" type="LineEdit" parent="Overlay/AutobuyPanel/Body/RuleScroll/RuleList/Rule/Level"]
 rect_min_size = Vector2( 70, 44 )
 size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_selected = Color( 1, 0.784314, 0.321569, 1 )
-custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/selection_color = Color( 0.14902, 0.0980392, 0.054902, 0.98 )
+custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_selected = Color( 1, 0.784314, 0.321569, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-custom_styles/normal = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
 align = 1
 max_length = 6
 
@@ -2238,7 +2263,6 @@ margin_left = 61.0
 margin_top = 2.0
 margin_right = 788.0
 margin_bottom = 50.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 9 )
 valign = 1
 clip_text = true
@@ -2248,7 +2272,6 @@ margin_left = 796.0
 margin_top = 2.0
 margin_right = 876.0
 margin_bottom = 50.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.670588, 0.352941, 1 )
 custom_fonts/font = ExtResource( 9 )
 align = 1
@@ -2283,16 +2306,16 @@ text = "−"
 [node name="Value" type="LineEdit" parent="Overlay/AutobuyPanel/Body/AddRow/Level"]
 rect_min_size = Vector2( 662, 44 )
 size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_selected = Color( 1, 0.784314, 0.321569, 1 )
-custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/selection_color = Color( 0.14902, 0.0980392, 0.054902, 0.98 )
+custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_selected = Color( 1, 0.784314, 0.321569, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-custom_styles/normal = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
+text = "1"
 align = 1
 max_length = 6
-text = "1"
 
 [node name="Increase" type="Button" parent="Overlay/AutobuyPanel/Body/AddRow/Level"]
 rect_min_size = Vector2( 44, 44 )
@@ -2327,7 +2350,6 @@ stretch_mode = 6
 
 [node name="ChoicePopup" type="Control" parent="Overlay/AutobuyPanel"]
 visible = false
-z_index = 20
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -2335,7 +2357,6 @@ mouse_filter = 2
 [node name="Dismiss" type="ColorRect" parent="Overlay/AutobuyPanel/ChoicePopup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 0
 color = Color( 0, 0, 0, 0 )
 
 [node name="ListPanel" type="Panel" parent="Overlay/AutobuyPanel/ChoicePopup"]
@@ -2358,6 +2379,7 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="ChoiceList" type="VBoxContainer" parent="Overlay/AutobuyPanel/ChoicePopup/ListPanel/ChoiceScroll"]
+margin_right = 884.0
 rect_min_size = Vector2( 884, 0 )
 size_flags_horizontal = 3
 custom_constants/separation = 4
@@ -2385,7 +2407,6 @@ margin_left = 61.0
 margin_top = 2.0
 margin_right = 780.0
 margin_bottom = 50.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 9 )
 valign = 1
 clip_text = true
@@ -2395,7 +2416,6 @@ margin_left = 788.0
 margin_top = 2.0
 margin_right = 868.0
 margin_bottom = 50.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.670588, 0.352941, 1 )
 custom_fonts/font = ExtResource( 9 )
 align = 1
@@ -2493,6 +2513,8 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="Empty" type="Label" parent="Overlay/AutosellPanel/Body/RuleScroll"]
+margin_right = 892.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 892, 280 )
 custom_fonts/font = ExtResource( 9 )
 align = 1
@@ -2508,47 +2530,47 @@ rect_min_size = Vector2( 0, 46 )
 custom_constants/separation = 8
 
 [node name="Choice" type="Button" parent="Overlay/AutosellPanel/Body/AddRow"]
-disabled = true
 rect_min_size = Vector2( 0, 44 )
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
+disabled = true
 
 [node name="Level" type="HBoxContainer" parent="Overlay/AutosellPanel/Body/AddRow"]
 rect_min_size = Vector2( 130, 44 )
 custom_constants/separation = 2
 
 [node name="Decrease" type="Button" parent="Overlay/AutosellPanel/Body/AddRow/Level"]
-disabled = true
 rect_min_size = Vector2( 28, 44 )
 custom_colors/font_color = Color( 0.752941, 0.72549, 0.67451, 1 )
 custom_fonts/font = ExtResource( 9 )
 custom_styles/disabled = SubResource( 6 )
+disabled = true
 text = "−"
 
 [node name="Value" type="LineEdit" parent="Overlay/AutosellPanel/Body/AddRow/Level"]
-editable = false
 rect_min_size = Vector2( 70, 44 )
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.752941, 0.72549, 0.67451, 1 )
 custom_fonts/font = ExtResource( 9 )
-custom_styles/normal = SubResource( 6 )
 custom_styles/read_only = SubResource( 6 )
-align = 1
+custom_styles/normal = SubResource( 6 )
 text = "1"
+align = 1
+editable = false
 
 [node name="Increase" type="Button" parent="Overlay/AutosellPanel/Body/AddRow/Level"]
-disabled = true
 rect_min_size = Vector2( 28, 44 )
 custom_colors/font_color = Color( 0.752941, 0.72549, 0.67451, 1 )
 custom_fonts/font = ExtResource( 9 )
 custom_styles/disabled = SubResource( 6 )
+disabled = true
 text = "+"
 
 [node name="AddButton" type="Button" parent="Overlay/AutosellPanel/Body/AddRow"]
-disabled = true
 rect_min_size = Vector2( 130, 44 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
+disabled = true
 
 [node name="CloseButton" type="TextureButton" parent="Overlay/AutosellPanel"]
 anchor_left = 1.0
@@ -2713,8 +2735,8 @@ margin_left = 20.0
 margin_top = -60.0
 margin_right = -10.0
 margin_bottom = -20.0
-theme = ExtResource( 31 )
 mouse_default_cursor_shape = 2
+theme = ExtResource( 31 )
 text = "Add worker"
 
 [node name="Rules" type="Panel" parent="Overlay/ServicePanel"]
@@ -2755,7 +2777,7 @@ margin_left = -98.0
 margin_top = 12.0
 margin_right = -62.0
 margin_bottom = 48.0
-texture = ExtResource( 30 )
+texture = ExtResource( 33 )
 expand = true
 stretch_mode = 6
 
@@ -2813,7 +2835,7 @@ anchor_bottom = 0.5
 margin_top = -18.0
 margin_right = 36.0
 margin_bottom = 18.0
-texture = ExtResource( 30 )
+texture = ExtResource( 33 )
 expand = true
 stretch_mode = 6
 
@@ -2853,6 +2875,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "Booster"
 clip_text = true
 
+[node name="BodyRitesPanel" parent="Overlay" instance=ExtResource( 40 )]
+visible = false
+
 [node name="PickPreview" type="TextureRect" parent="Overlay"]
 visible = false
 margin_right = 64.0
@@ -2880,23 +2905,21 @@ visible = false
 visible = false
 
 [node name="CharTooltip" parent="Overlay" instance=ExtResource( 34 )]
-visible = false
 
 [node name="CharMenu" type="PopupMenu" parent="Overlay"]
 margin_right = 255.0
 margin_bottom = 53.0
 theme = ExtResource( 36 )
-custom_colors/font_color = Color( 0.878431, 0.823529, 0.713726, 1 )
-custom_colors/font_color_accel = Color( 0.72549, 0.678431, 0.588235, 1 )
 custom_colors/font_color_disabled = Color( 0.494118, 0.454902, 0.384314, 0.82 )
-custom_colors/font_color_hover = Color( 1, 0.941176, 0.721569, 1 )
+custom_colors/font_color_accel = Color( 0.72549, 0.678431, 0.588235, 1 )
 custom_colors/font_color_separator = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_constants/hseparation = 8
+custom_colors/font_color = Color( 0.878431, 0.823529, 0.713726, 1 )
+custom_colors/font_color_hover = Color( 1, 0.941176, 0.721569, 1 )
 custom_constants/vseparation = 5
+custom_constants/hseparation = 8
 custom_fonts/font = ExtResource( 9 )
-custom_fonts/font_separator = ExtResource( 6 )
-custom_styles/hover = SubResource( 13 )
 custom_styles/labeled_separator_left = SubResource( 14 )
+custom_styles/hover = SubResource( 13 )
 custom_styles/labeled_separator_right = SubResource( 14 )
 custom_styles/panel = SubResource( 12 )
 script = ExtResource( 35 )

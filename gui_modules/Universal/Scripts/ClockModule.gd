@@ -146,6 +146,26 @@ func set_sky_pos():
 				bg.modulate = Color(1.0,1.0,1.0,1.0)
 			else:
 				bg.modulate = Color(1.0,1.0,1.0,0.0)
+	var backdrop = mansion_backdrop()
+	if backdrop != null:
+		backdrop.set_hour(ResourceScripts.game_globals.hour)
+
+
+#The picture the mansion's floorplan stands on, which keeps the hour as well - its colours and its
+#lanterns, see mansion_backdrop.gd - or null when there is no mansion on screen or no picture in it.
+func mansion_backdrop():
+	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
+		return null
+	var rooms = gui_controller.mansion.get('RoomsModule')
+	if rooms == null or !is_instance_valid(rooms):
+		return null
+	var grid = rooms.get('grid')
+	if grid == null or !is_instance_valid(grid):
+		return null
+	var backdrop = grid.get_node_or_null("Backdrops")
+	if backdrop == null or !backdrop.has_method('set_hour'):
+		return null
+	return backdrop
 
 
 func move_sky(from, to, init_delay):
@@ -191,6 +211,18 @@ func move_sky(from, to, init_delay):
 					tw.interpolate_callback(bg, init_delay + speed * t1, 'set_modulate', Color(1.0,1.0,1.0,0.0))
 			for b1 in range(0, to):
 				tw.interpolate_property(bghold.get_child(b1 + 1), 'modulate', Color(1.0,1.0,1.0,0.0), Color(1.0,1.0,1.0,1.0), speed, 0, 2, init_delay + (b1 + t1) * speed)
+
+	#The house's picture goes through the same hours on the same beat, its colour and its lanterns
+	#both: from 'from' up to 'to', or on to the night at 4 and round from 0 when the turn runs past
+	#midnight - 4 and 0 are both the night, so the two halves meet on one hour.
+	var backdrop = mansion_backdrop()
+	if backdrop != null:
+		backdrop.set_hour(from)
+		var hours = range(from, to) if from < to else range(from, 4) + range(0, to)
+		var step = (variables.SecndsPerTransition - init_delay) / max(1, hours.size())
+		for i in range(hours.size()):
+			tw.interpolate_property(backdrop, 'hour_blend', float(hours[i]), float(hours[i] + 1),
+				step, 0, 2, init_delay + i * step)
 			
 	tw.start()
 	#a timer instead of "tween_all_completed": remove_all() never fires that signal,

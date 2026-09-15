@@ -1,0 +1,611 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://gui_modules/mansion_view/backdrop/mansion_backdrop.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_upper.png" type="Texture" id=3]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/lamp_post.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/wall_lantern.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/sun_shafts.tscn" type="PackedScene" id=6]
+
+[node name="MansionBackdrop" type="Control"]
+margin_right = 3840.0
+margin_bottom = 2560.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="1F" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Art" type="TextureRect" parent="1F"]
+light_mask = 513
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Objects" type="Node2D" parent="1F"]
+
+[node name="WallLantern" parent="1F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 1462.45, 1323.21 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.5
+
+[node name="WallLantern2" parent="1F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 2420.48, 1335.17 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.45
+
+[node name="WallLantern3" parent="1F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 1941.45, 1417.21 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.5
+
+[node name="WallLantern4" parent="1F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 1772.5, 1961.16 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.5
+
+[node name="WallLantern5" parent="1F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 2107.91, 1961.84 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.5
+
+[node name="LampPost" parent="1F/Objects" instance=ExtResource( 4 )]
+position = Vector2( 970.277, 2349.9 )
+light_radius = 500.0
+light_energy = 1.0
+glow_radius = 300.0
+glow_intensity = 0.45
+
+[node name="LampPost2" parent="1F/Objects" instance=ExtResource( 4 )]
+position = Vector2( 2941.01, 2363.97 )
+light_radius = 500.0
+light_energy = 1.0
+glow_radius = 300.0
+glow_intensity = 0.45
+
+[node name="LampPost3" parent="1F/Objects" instance=ExtResource( 4 )]
+position = Vector2( 3243.69, 1049.43 )
+light_radius = 500.0
+light_energy = 1.0
+glow_radius = 300.0
+glow_intensity = 0.45
+
+[node name="LampPost4" parent="1F/Objects" instance=ExtResource( 4 )]
+position = Vector2( 628.881, 1042.37 )
+light_radius = 500.0
+light_energy = 1.0
+glow_radius = 300.0
+glow_intensity = 0.45
+
+[node name="LampPost5" parent="1F/Objects" instance=ExtResource( 4 )]
+position = Vector2( 1814.56, 786.707 )
+light_radius = 500.0
+light_energy = 1.0
+glow_radius = 300.0
+glow_intensity = 0.45
+
+[node name="Rooms" type="Control" parent="1F"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="a1" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 880.287
+margin_top = 1005.27
+margin_right = 1192.38
+margin_bottom = 1318.22
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a1"
+
+[node name="a2" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 1470.41
+margin_top = 1001.95
+margin_right = 1780.43
+margin_bottom = 1317.99
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a2"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a2"
+
+[node name="a4" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2102.59
+margin_top = 1002.36
+margin_right = 2412.61
+margin_bottom = 1309.28
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a4"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a4"
+
+[node name="a5" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2688.22
+margin_top = 1005.46
+margin_right = 3000.31
+margin_bottom = 1320.46
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a5"
+
+[node name="b1" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 763.663
+margin_top = 1330.21
+margin_right = 1092.6
+margin_bottom = 1639.2
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/b1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "b1"
+
+[node name="b3" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 1739.97
+margin_top = 1361.01
+margin_right = 2138.93
+margin_bottom = 1660.02
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/b3"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "b3"
+
+[node name="b5" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2784.41
+margin_top = 1335.2
+margin_right = 3109.4
+margin_bottom = 1643.16
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/b5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "b5"
+
+[node name="c1" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 884.92
+margin_top = 1654.81
+margin_right = 1197.87
+margin_bottom = 1963.79
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c1"
+
+[node name="c2" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 1457.99
+margin_top = 1661.32
+margin_right = 1768.01
+margin_bottom = 1967.39
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c2"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c2"
+
+[node name="c4" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2109.0
+margin_top = 1660.47
+margin_right = 2420.05
+margin_bottom = 1966.53
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c4"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c4"
+
+[node name="c5" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2688.24
+margin_top = 1655.16
+margin_right = 3000.32
+margin_bottom = 1960.19
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c5"
+
+[node name="2F" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Art" type="TextureRect" parent="2F"]
+light_mask = 1025
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Objects" type="Node2D" parent="2F"]
+
+[node name="WallLantern6" parent="2F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 1945.93, 1125.08 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.5
+
+[node name="WallLantern7" parent="2F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 1379.81, 1330.48 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.5
+
+[node name="WallLantern8" parent="2F/Objects" instance=ExtResource( 5 )]
+position = Vector2( 2497.82, 1333.22 )
+light_radius = 350.0
+light_energy = 1.45
+glow_radius = 150.0
+glow_intensity = 0.5
+
+[node name="Rooms" type="Control" parent="2F"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="a1" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 1081.91
+margin_top = 1026.04
+margin_right = 1392.96
+margin_bottom = 1331.07
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/a1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a1"
+
+[node name="a2" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 1433.91
+margin_top = 1016.06
+margin_right = 1744.96
+margin_bottom = 1332.1
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/a2"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a2"
+
+[node name="a4" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 2131.02
+margin_top = 1025.01
+margin_right = 2442.07
+margin_bottom = 1331.93
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/a4"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a4"
+
+[node name="a5" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 2483.02
+margin_top = 1026.04
+margin_right = 2794.07
+margin_bottom = 1332.1
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/a5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a5"
+
+[node name="b3" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 1739.97
+margin_top = 1361.01
+margin_right = 2138.93
+margin_bottom = 1660.02
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/b3"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "b3"
+
+[node name="c1" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 1081.91
+margin_top = 1625.09
+margin_right = 1392.96
+margin_bottom = 1930.12
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/c1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c1"
+
+[node name="c2" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 1433.91
+margin_top = 1625.09
+margin_right = 1744.96
+margin_bottom = 1931.15
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/c2"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c2"
+
+[node name="c4" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 2131.02
+margin_top = 1625.09
+margin_right = 2442.07
+margin_bottom = 1931.15
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/c4"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c4"
+
+[node name="c5" type="ReferenceRect" parent="2F/Rooms"]
+margin_left = 2483.02
+margin_top = 1625.09
+margin_right = 2794.07
+margin_bottom = 1931.15
+mouse_filter = 2
+border_color = Color( 0.35, 0.85, 1, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="2F/Rooms/c5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0.5, 0.9, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c5"
+
+[node name="Sky" type="Node2D" parent="."]
+
+[node name="SunShafts" parent="Sky" instance=ExtResource( 6 )]
+position = Vector2( 3650, -150 )
+rotation = 0.610865

@@ -1922,6 +1922,17 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label2").text = masdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("class_achieved")
+		"body_upgrade": #(upgrade, person) - a body rite performed in the ritual room
+			var udata = Traitdata.body_upgrades[args.upgrade]
+			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
+			if udata.icon is String:
+				anim_scene.get_node("TextureRect").texture = load(udata.icon)
+			else:
+				anim_scene.get_node("TextureRect").texture = udata.icon
+			anim_scene.get_node("Label").text = tr("BODYRITE_ANIM_TITLE")
+			anim_scene.get_node("Label2").text = tr(udata.name)
+			anim_scene.get_node("Label3").text = args.person.get_full_name()
+			anim_scene.play("class_achieved")
 		"quest_completed":
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
 			anim_scene.get_node("Label3").text = args.name
