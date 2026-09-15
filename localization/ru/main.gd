@@ -34026,7 +34026,8 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_PREVIEW_DOLL = """Doll""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_DOLL_FEMALE = """Female""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_DOLL_MALE = """Male""", # MISSING TRANSLATION
-	DOLL2_PREVIEW_MANY_TITS = """Extra nipples""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MANY_TITS = """Дополнительные пары груди""",
+	DOLL2_PREVIEW_MANY_TITS_DEVELOPED = """Развитая множественная грудь""",
 	DOLL2_PREVIEW_POSE_DEFAULT = """Setup pose""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_BACK = """Swept back""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_BRAIDS = """Cornrows""", # MISSING TRANSLATION
