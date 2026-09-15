@@ -103,7 +103,7 @@ var hidden_slots = []
 # nipples alone.  The breast art repeats the top pair, which sits crooked on a
 # flat chest, so a flat chest is only ever given the nipples.  The screens set it
 # off the character; in here it follows the toggle under the extra-rows picker.
-var many_tits_developed = false
+var many_tits_developed = true
 # How undressed the preview's own buttons have the doll.  A screen leaves this
 # alone: it works the level out against real gear and hands over the selections
 # and the hidden slots itself.
@@ -3093,7 +3093,26 @@ func _rebuild_model():
 	for slot_name in hidden_slots:
 		composed.erase(slot_name)
 		composed_textures.erase(slot_name)
-	if !many_tits_developed or chest_is_flat():
+	# The pregnancy overlays use the pregnancy axis, so they cannot infer whether
+	# the character actually has extra rows. Keep all four related slots tied to
+	# the many-tits picker, then choose nipples alone or the developed breast mesh.
+	var has_many_tits = str(axis_values.get("many_tits", "none")) != "none"
+	if !has_many_tits:
+		for slot_name in [
+			"breasts_beastkin_many", "beastkin_torso_many_nipples",
+			"breasts_beastkin_pregnancy", "beastkin_pregnancy_nipple",
+		]:
+			composed.erase(slot_name)
+			composed_textures.erase(slot_name)
+	elif !many_tits_developed:
+		composed.erase("breasts_beastkin_many")
+		composed_textures.erase("breasts_beastkin_many")
+		composed.erase("breasts_beastkin_pregnancy")
+		composed_textures.erase("breasts_beastkin_pregnancy")
+	elif chest_is_flat():
+		# Only the ordinary developed mesh repeats the top pair and therefore sits
+		# incorrectly on a flat chest. The pregnant overlay has its own authored
+		# mid/big geometry and remains valid.
 		composed.erase("breasts_beastkin_many")
 		composed_textures.erase("breasts_beastkin_many")
 	if model_root != null:

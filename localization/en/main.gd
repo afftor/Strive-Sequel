@@ -32015,7 +32015,7 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_PREVIEW_DOLL = "Doll",
 	DOLL2_PREVIEW_DOLL_FEMALE = "Female",
 	DOLL2_PREVIEW_DOLL_MALE = "Male",
-	DOLL2_PREVIEW_MANY_TITS = "Extra nipples",
+	DOLL2_PREVIEW_MANY_TITS = "Additional breast pairs",
 	DOLL2_PREVIEW_MANY_TITS_DEVELOPED = "Developed breasts",
 	DOLL2_PREVIEW_POSE_DEFAULT = "Setup pose",
 	#The names the customize menu reads. The key is the part's own id from the
