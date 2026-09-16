@@ -1091,6 +1091,40 @@ var scenedict = {
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
 		],
 	},
+	#the ritual room's body rites (gui_modules/mansion_view/body_rites_panel.gd): what a rite did, told before
+	#its upgrade animation or its before-and-after window
+	body_rite_upgrade = {
+		text = tr("BODYRITE_SCENE_UPGRADE"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+	body_rite_form_change = {
+		text = tr("BODYRITE_SCENE_FORM_CHANGE"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+	body_rite_sex_change = {
+		text = tr("BODYRITE_SCENE_SEX_CHANGE"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+	body_rite_virginity = {
+		text = tr("BODYRITE_SCENE_VIRGINITY"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
 	
 	zephyra_underwear = {
 		text = tr("DIALOGUEZEPHYRA_UNDERWEAR"),

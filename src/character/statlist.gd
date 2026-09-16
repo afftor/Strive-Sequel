@@ -11,6 +11,9 @@ var sex_binded_exterior = {
 	chin = 'default',
 	eye_tex = 'eyes1',
 	eyebrows = 'style1',
+	eyeshape = 'face1',
+	nose = 'default',
+	lips = 'style1',
 	hair_base_length = '', 
 	hair_fringe_length = '', 
 	hair_back_length = '', 
@@ -102,10 +105,7 @@ var template_direct = {
 	body_shape = 'humanoid',
 	skin_coverage = '',
 	facial_hair = '',
-	#new ones
-	eyeshape = 'face1',
-	nose = 'default',
-	lips = 'style1',
+	#new ones - eyeshape, nose and lips are in sex_binded_exterior
 	
 	#new skin, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
 	body_color_skin = '', 

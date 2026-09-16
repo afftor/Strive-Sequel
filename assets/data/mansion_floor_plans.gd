@@ -14,7 +14,8 @@ extends Reference
 #and, where the floor has one, a third:
 #
 #	backdrop - where the floor's picture goes, when it stands on one instead of the painted
-#	           slab. It is a layer of gui_modules/mansion_view/backdrop/mansion_backdrop.tscn.
+#	           slab. It is a layer of gui_modules/mansion_view/backdrop/mansion_backdrop.tscn:
+#	           the one named by the floor's code, or another floor's when 'layer' names it.
 #
 #Coordinates rather than a character mask: at this resolution a mask would be a hundred
 #lines of a hundred characters, unreadable to edit, and a handful of rectangles also
@@ -25,6 +26,10 @@ extends Reference
 #Slot flag, optional:
 #	broken - starts unavailable. Has to be repaired into an empty slot before use; that
 #	         conversion is a mechanic for later, the model just carries the state.
+#
+#Floor flag, optional:
+#	locked - starts shut: in the save but not in the house - the staircase does not lead there
+#	         and nothing is put up on it - until mansion_layout.unlock_floors() opens it.
 
 #The coordinate field every floor is expressed in. Wider than the house needs to be: a tile is
 #a fixed nine pixels (mansion_floor_grid.TILE_PX), so a larger field spaces the rooms out rather
@@ -146,6 +151,86 @@ const LIST = {
 				],
 				prebuilt = {},
 			},
+			#Three storeys over the second, each the second floor over again: the same eight rooms about
+			#the same staircase, the two beside it open and the rest rubble, drawn on the second floor's
+			#own picture ('layer') until they have one of their own.
+			#
+			#They start shut ('locked') - for now only the cheat menu opens them - and they come after the
+			#grounds rather than before them: validate() appends the floors a plan has gained, but pairs
+			#the floors a save already has with the plan's in order, so a storey put in ahead of the
+			#grounds would be paired with the grounds in every older save and rebuilt over them.
+			{
+				code = '3F',
+				locked = true,
+				backdrop = {
+					layer = '2F',
+					yard = [0.2018, 0.3969, 0.6055, 0.3629],
+					over = [13, 53, 134, 54],
+				},
+				areas = [
+					{state = 'floor', rect = [13, 53, 134, 54]},
+				],
+				slots = [
+					{code = 'a1', rect = [30.27, 53.58, 18.08, 17.73], broken = true},
+					{code = 'a2', rect = [50.73, 53, 18.08, 18.37]},
+					{code = 'a4', rect = [91.25, 53.52, 18.08, 17.84]},
+					{code = 'a5', rect = [111.71, 53.58, 18.08, 17.79], broken = true},
+					{code = 'b3', rect = [68.52, 73.05, 23.19, 17.38]},
+					{code = 'c1', rect = [30.27, 88.4, 18.08, 17.73], broken = true},
+					{code = 'c2', rect = [50.73, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c4', rect = [91.25, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c5', rect = [111.71, 88.4, 18.08, 17.79], broken = true},
+				],
+				prebuilt = {b3 = 'stairs'},
+			},
+			{
+				code = '4F',
+				locked = true,
+				backdrop = {
+					layer = '2F',
+					yard = [0.2018, 0.3969, 0.6055, 0.3629],
+					over = [13, 53, 134, 54],
+				},
+				areas = [
+					{state = 'floor', rect = [13, 53, 134, 54]},
+				],
+				slots = [
+					{code = 'a1', rect = [30.27, 53.58, 18.08, 17.73], broken = true},
+					{code = 'a2', rect = [50.73, 53, 18.08, 18.37]},
+					{code = 'a4', rect = [91.25, 53.52, 18.08, 17.84]},
+					{code = 'a5', rect = [111.71, 53.58, 18.08, 17.79], broken = true},
+					{code = 'b3', rect = [68.52, 73.05, 23.19, 17.38]},
+					{code = 'c1', rect = [30.27, 88.4, 18.08, 17.73], broken = true},
+					{code = 'c2', rect = [50.73, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c4', rect = [91.25, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c5', rect = [111.71, 88.4, 18.08, 17.79], broken = true},
+				],
+				prebuilt = {b3 = 'stairs'},
+			},
+			{
+				code = '5F',
+				locked = true,
+				backdrop = {
+					layer = '2F',
+					yard = [0.2018, 0.3969, 0.6055, 0.3629],
+					over = [13, 53, 134, 54],
+				},
+				areas = [
+					{state = 'floor', rect = [13, 53, 134, 54]},
+				],
+				slots = [
+					{code = 'a1', rect = [30.27, 53.58, 18.08, 17.73], broken = true},
+					{code = 'a2', rect = [50.73, 53, 18.08, 18.37]},
+					{code = 'a4', rect = [91.25, 53.52, 18.08, 17.84]},
+					{code = 'a5', rect = [111.71, 53.58, 18.08, 17.79], broken = true},
+					{code = 'b3', rect = [68.52, 73.05, 23.19, 17.38]},
+					{code = 'c1', rect = [30.27, 88.4, 18.08, 17.73], broken = true},
+					{code = 'c2', rect = [50.73, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c4', rect = [91.25, 88.4, 18.08, 17.79], broken = true},
+					{code = 'c5', rect = [111.71, 88.4, 18.08, 17.79], broken = true},
+				],
+				prebuilt = {b3 = 'stairs'},
+			},
 		],
 	},
 }
@@ -186,6 +271,10 @@ static func get_slot_plan(floor_plan, slot_code):
 
 static func slot_starts_broken(slot_plan):
 	return slot_plan.get('broken', false)
+
+
+static func floor_starts_locked(floor_plan):
+	return bool(floor_plan.get('locked', false))
 
 
 #Stable text form of a floor's slots, so a layout loaded from a save can tell whether the

@@ -1139,6 +1139,9 @@ func floor_data_at(floor_index):
 func person_yield_in_room(character, room, slot_code):
 	if character == null or room == null:
 		return 0.0
+	#the ritual room's workers prepare its circle rather than make anything - see game_res.prepare_rites()
+	if RoomTypes.has_tag(room.type, 'ritual'):
+		return ResourceScripts.game_res.rite_preparation_per_turn(character)
 	for tag in ['practice', 'farm', 'storage']:
 		if RoomTypes.has_tag(room.type, tag):
 			return 0.0
@@ -1466,6 +1469,9 @@ func open_body_rites():
 func close_body_rites():
 	body_rites_panel.close()
 	set_card_aside(false)
+	#a rite performed spends the circle's preparation, which the card prints and locks its button on
+	if card != null and card.visible:
+		card.rebuild()
 
 
 func refresh_marks():
@@ -1546,6 +1552,9 @@ func refresh_people():
 	else:
 		refresh_location_places()
 	rest_panel.rebuild()
+	#the service screen prints the purse and what everyone on it earns, both of which a turn changes;
+	#it returns at once while it is shut
+	service_panel.rebuild()
 	$ExpelZone.refresh()
 	update_counters()
 	if card.visible:
@@ -1572,9 +1581,11 @@ func update_counters():
 func update_floor_selector():
 	var floor_data = current_floor()
 	$FloorSelector/Label.text = floor_data.code if floor_data != null else "-"
-	var climbable = stairs_repaired()
-	$FloorSelector/Up.disabled = floor_index() >= layout().floors.size() - 1 or !climbable
-	$FloorSelector/Down.disabled = floor_index() <= 0 or !climbable
+	#The flights the staircase's own buttons take. Counting floors by their place in the plan walked
+	#out onto the grounds, which the plan lists between the second storey and the third, and on into
+	#storeys that are still shut.
+	$FloorSelector/Up.disabled = stairs_target(1) == null
+	$FloorSelector/Down.disabled = stairs_target(-1) == null
 
 
 func update_mode_buttons():
@@ -1592,7 +1603,9 @@ func update_mode_buttons():
 
 
 func change_floor(step):
-	go_to_floor(floor_index() + step)
+	var target = stairs_target(step)
+	if target != null:
+		go_to_floor(target)
 
 
 func stairs_repaired():
@@ -1615,6 +1628,9 @@ func stairs_target(step):
 
 func go_to_floor(target):
 	if target < 0 or target >= layout().floors.size() or target == floor_index():
+		return
+	#a shut floor is in the save but not in the house - see MansionLayout.is_floor_locked()
+	if MansionLayout.is_floor_locked(layout(), target):
 		return
 	#The grounds are walked out to rather than climbed to, so only a storey is refused.
 	var between_storeys = !MansionLayout.is_grounds(layout(), target)

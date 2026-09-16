@@ -101,6 +101,12 @@ func base_exp_set(value):
 func swap_alternate_exterior():
 	statlist.swap_alternate_exterior()
 
+func remember_name_for_sex(sex = null):
+	statlist.remember_name_for_sex(sex)
+
+func name_for_sex(sex):
+	return statlist.name_for_sex(sex)
+
 
 func update_capped_stats():
 	hp = min(hp, get_stat('hpmax'))
@@ -1539,8 +1545,8 @@ func is_furry_form():
 func has_furry_counterpart():
 	return statlist.furry_counterpart_race() != ''
 
-func set_furry_form(furry):
-	return statlist.set_furry_form(furry)
+func set_furry_form(furry, first_coat = false):
+	return statlist.set_furry_form(furry, first_coat)
 
 func play_sfx(code, params = {}):
 	if displaynode != null:
@@ -2043,6 +2049,11 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 					tres = true
 					break
 			return tres == i.check
+		#a mother or a father on record - every child born to the household has both
+		'has_known_parent':
+			var reldata = ResourceScripts.game_party.get_relatives_data(id)
+			var known = reldata != null and (reldata.mother != null or reldata.father != null)
+			return known == i.check
 		'work':
 			if i.has("check"):
 				return (get_work() == i.value) == i.check
@@ -2901,6 +2912,8 @@ func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat
 	skills.fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove)
 
 func update_portrait(ragdoll): # for ragdolls
+	if input_handler.globalsettings.disable_paperdoll: #no doll is drawn, so none is photographed
+		return
 	if !get_stat('dynamic_portrait') and !uses_paperdoll():
 		return
 	if !get_stat('portrait_update'):

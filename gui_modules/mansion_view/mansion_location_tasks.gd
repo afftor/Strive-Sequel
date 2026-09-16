@@ -227,6 +227,63 @@ static func workers_of(task_id):
 	return ResourceScripts.game_res.tasks_progresses[task_id].workers
 
 
+#### the purse behind service ####
+
+#green while the purse covers what everybody on service is expected to earn next turn, gold once it
+#may not, red once it is empty and pays only variables.service_gold_exhausted_mult
+const SERVICE_POOL_COLORS = {
+	ok = Color(0.541176, 0.85098, 0.541176),
+	low = Color(0.976471, 0.882353, 0.505882),
+	empty = Color(0.85098, 0.372549, 0.372549),
+}
+
+
+#What the settlement behind a service task can still pay this week (game_world.get_service_gold),
+#read against the whole household's estimate - or null when that settlement has no limit. The service
+#screen, its rows and the service card all read this one answer, so they cannot disagree.
+static func service_pool_state(task_id):
+	if !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return null
+	var code = ResourceScripts.game_res.tasks_progresses[task_id].get('location', MANSION_CODE)
+	var pool = ResourceScripts.game_world.get_service_gold(code)
+	if pool == null:
+		return null
+	var estimated = 0.0
+	for char_id in workers_of(task_id):
+		var person = ResourceScripts.game_party.characters.get(char_id)
+		if person != null:
+			estimated += person.get_estimated_current_service_value()
+	var status = 'ok'
+	if pool.current <= 0:
+		status = 'empty'
+	elif pool.current < estimated:
+		status = 'low'
+	return {
+		code = code,
+		name = ResourceScripts.game_world.get_service_location_name(code),
+		current = int(pool.current),
+		max = int(pool.max),
+		days = ResourceScripts.game_world.days_until_service_gold_refill(),
+		estimated = estimated,
+		status = status,
+	}
+
+
+static func service_pool_line(state):
+	if state.days == 1:
+		return globals._report_text("MANSIONVIEW_SERVICEPOOL_ONE", [state.name, state.current, state.max])
+	return globals._report_text("MANSIONVIEW_SERVICEPOOL_MANY",
+		[state.name, state.current, state.max, state.days])
+
+
+static func service_exhausted_percent():
+	return int(round(variables.service_gold_exhausted_mult * 100.0))
+
+
+static func service_pool_hint(state):
+	return globals._report_text("MANSIONVIEW_SERVICEPOOL_HINT", [state.name, service_exhausted_percent()])
+
+
 #What this work can turn out, as [material code, chance] pairs. The table's branches carry
 #their own reqs and are asked at roll time (loot.is_record_restricted), so the same question
 #is asked here and a branch the estate has not unlocked is simply not listed - which is what

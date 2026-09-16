@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=2]
 [ext_resource path="res://gui_modules/Mansion/Scripts/BodyModModule.gd" type="Script" id=3]
@@ -82,6 +82,17 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.486275, 0.309804, 0.227451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+bg_color = Color( 0.03, 0.02, 0.03, 0.6 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -172,26 +183,37 @@ text = "Character"
 valign = 1
 clip_text = true
 
-[node name="FurryToggle" type="CheckButton" parent="."]
-margin_left = 400.0
+[node name="Subject" type="Control" parent="."]
+visible = false
+margin_left = 24.0
 margin_top = 80.0
-margin_right = 800.0
-margin_bottom = 120.0
+margin_right = 380.0
+margin_bottom = 940.0
+
+[node name="Portrait" type="TextureRect" parent="Subject"]
+margin_left = 18.0
+margin_right = 338.0
+margin_bottom = 320.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Subject"]
+margin_top = 332.0
+margin_right = 356.0
+margin_bottom = 372.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 31 )
-custom_styles/normal = SubResource( 5 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-text = "Furry look"
+custom_fonts/font = ExtResource( 4 )
+text = "Character"
+align = 1
+valign = 1
+clip_text = true
 
 [node name="Visuals" type="Control" parent="."]
 margin_left = 400.0
-margin_top = 128.0
+margin_top = 80.0
 margin_right = 1060.0
-margin_bottom = 940.0
+margin_bottom = 884.0
 
 [node name="Backdrop" type="ColorRect" parent="Visuals"]
 show_behind_parent = true
@@ -433,7 +455,7 @@ text = "Auto"
 [node name="VisualSubmenu" type="Panel" parent="."]
 visible = false
 margin_left = 400.0
-margin_top = 90.0
+margin_top = 80.0
 margin_right = 1060.0
 margin_bottom = 940.0
 custom_styles/panel = ExtResource( 22 )
@@ -550,9 +572,9 @@ script = ExtResource( 28 )
 
 [node name="Empty" type="Label" parent="."]
 margin_left = 400.0
-margin_top = 300.0
+margin_top = 252.0
 margin_right = 1060.0
-margin_bottom = 400.0
+margin_bottom = 352.0
 custom_fonts/font = ExtResource( 4 )
 align = 1
 autowrap = true
@@ -561,7 +583,7 @@ autowrap = true
 margin_left = 1080.0
 margin_top = 80.0
 margin_right = 1656.0
-margin_bottom = 940.0
+margin_bottom = 884.0
 mouse_filter = 2
 script = ExtResource( 29 )
 
@@ -589,3 +611,25 @@ margin_bottom = 0.0
 offered_undress_levels = [ "underwear", "naked" ]
 show_hair_menu = false
 update_character_portrait = false
+
+[node name="Description" type="RichTextLabel" parent="Preview"]
+visible = false
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 660.0
+mouse_filter = 2
+theme = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 18 )
+custom_styles/normal = SubResource( 9 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="DoneButton" type="Button" parent="."]
+margin_left = 1396.0
+margin_top = 900.0
+margin_right = 1656.0
+margin_bottom = 952.0
+theme = ExtResource( 9 )
+text = "BODYMOD_DONE"

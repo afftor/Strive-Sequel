@@ -95,14 +95,16 @@ func rules_summary(person):
 
 
 #The same figure the rules panel prints, on whichever of the two counts applies: somebody set
-#to sexual work is paid for that, somebody waiting tables for that.
+#to sexual work is paid for that, somebody waiting tables for that. Read against the settlement's
+#purse the same way the rules panel reads it - see mansion_service_panel.earnings_text().
 func earnings_line(person):
 	var sexual = false
 	for rule in Rules.SEXUAL:
 		if person.check_brothel_rule(rule):
 			sexual = true
 	var value = person.get_estimated_service_value() if sexual 		else person.get_estimated_non_sex_service_value()
-	return tr("MANSIONVIEW_SERVICEEARNS") % str(stepify(value, 0.1))
+	return panel.earnings_text(value, "MANSIONVIEW_SERVICEEARNS", "MANSIONVIEW_SERVICEEARNS_LIMITED",
+		"MANSIONVIEW_SERVICEEARNS_EXHAUSTED")
 
 
 #The same question the work itself asks before refusing, asked here so the refusal is read off

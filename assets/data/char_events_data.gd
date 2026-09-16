@@ -243,6 +243,11 @@ var list = {
 					code = 'slave_type',
 					operant = 'neq',
 					value = 'slave_trained'
+				},
+				#a plea from family back home - not for somebody whose parents are on record, like a child of the household
+				{
+					code = 'has_known_parent',
+					check = false
 				}
 			]
 		},

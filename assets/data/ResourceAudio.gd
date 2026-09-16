@@ -104,6 +104,14 @@ var sounds = {
 	button_clank = load("res://assets/sounds/sounds/gui_button_clank.wav"),
 
 	morning = load("res://assets/sounds/sounds/morning_rooster.wav"),
+	mansion_morning_rooster = load("res://assets/sounds/sounds/mansion_morning_rooster.wav"),
+	mansion_morning_rooster_alt = load("res://assets/sounds/sounds/mansion_morning_rooster_alt.wav"),
+	mansion_day_birds = load("res://assets/sounds/sounds/mansion_day_birds.wav"),
+	mansion_day_birds_alt = load("res://assets/sounds/sounds/mansion_day_birds_alt.wav"),
+	mansion_evening_crow_01 = load("res://assets/sounds/sounds/mansion_evening_crow_01.wav"),
+	mansion_evening_crow_02 = load("res://assets/sounds/sounds/mansion_evening_crow_02.wav"),
+	mansion_night_owl = load("res://assets/sounds/sounds/mansion_night_owl.wav"),
+	mansion_night_crickets = load("res://assets/sounds/sounds/mansion_night_crickets.wav"),
 
 	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
 

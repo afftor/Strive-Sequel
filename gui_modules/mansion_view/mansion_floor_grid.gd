@@ -128,12 +128,18 @@ func backdrop_scene():
 	return node if node != null and node.has_method('show_floor') else null
 
 
+#Which layer of that scene a floor stands on: the one named by its code, unless the plan stands it
+#on another floor's picture - the storeys over the second are drawn on the second's, rooms and all.
+func backdrop_layer(floor_plan):
+	return str(floor_plan.backdrop.get('layer', floor_plan.code))
+
+
 #The size of the picture a floor stands on, or nothing for a floor that stands on none.
 func backdrop_size(floor_plan):
 	var backdrop = backdrop_scene()
 	if backdrop == null or floor_plan == null or !floor_plan.has('backdrop'):
 		return Vector2.ZERO
-	if !backdrop.has_floor(floor_plan.code):
+	if !backdrop.has_floor(backdrop_layer(floor_plan)):
 		return Vector2.ZERO
 	return backdrop.canvas_size()
 
@@ -148,7 +154,7 @@ func show_backdrop(floor_plan):
 	backdrop.visible = rect.size.x > 0
 	if !backdrop.visible:
 		return
-	backdrop.show_floor(floor_plan.code)
+	backdrop.show_floor(backdrop_layer(floor_plan))
 	backdrop.rect_position = rect.position
 	backdrop.rect_scale = rect.size / backdrop.canvas_size()
 
@@ -189,7 +195,7 @@ func slot_rect(floor_plan, slot_plan):
 	var backdrop = backdrop_scene()
 	var whole = backdrop_size(floor_plan)
 	if backdrop != null and whole.x > 0:
-		var mark = backdrop.room_rect(floor_plan.code, slot_plan.code)
+		var mark = backdrop.room_rect(backdrop_layer(floor_plan), slot_plan.code)
 		if mark != null:
 			var place = backdrop_rect(floor_plan)
 			var scale = place.size / whole

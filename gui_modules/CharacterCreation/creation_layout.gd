@@ -28,6 +28,8 @@ const OFF_THE_LADDER = {
 const NEVER_OFFERED = {
 	"hair_base_length": ["bald"],
 	"hair_fringe_length": ["bald"],
+	# the same for the description's own length, the row offered while dolls are switched off
+	"hair_length": ["bald"],
 	# The old paperdoll's breast shapes.  The new doll draws each as its plain size
 	# (see TITS in doll2_view.gd), so on a slider they were steps that changed
 	# nothing; the game's own description data never had them.  A character who

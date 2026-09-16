@@ -64,7 +64,6 @@ var social_skill_unlimited_charges = false
 var allow_skip_fights = false
 var unlimited_date_sex = false
 var unlock_all_classes = false
-var unlimited_popcap = false
 #var unlock_all_scenes = false
 
 
@@ -236,6 +235,7 @@ func advance_day(managed = false):
 	#weeks check
 	if int(date) % variables.DaysPerWeek == 1 or variables.DaysPerWeek == 1:
 		reset_limits()
+		ResourceScripts.game_world.refill_service_gold()
 
 		ResourceScripts.game_res.subtract_taxes()
 		ResourceScripts.slave_quests.regen_quests()

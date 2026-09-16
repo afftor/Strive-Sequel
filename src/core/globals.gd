@@ -1966,7 +1966,12 @@ func impregnate_check(father,mother):
 		result.value = false
 		if variables.pregduration/1.5 > mother.get_stat('pregnancy_duration'):
 			result.already_preg_visible = true
-	
+	#A birth is not over until the baby is kept or given up: the scene reads pregnancy_baby when the
+	#player answers it. The master's bed night runs later in the same turn as the birth, and a
+	#conception there put the new embryo in pregnancy_baby, so it took the newborn's name and place.
+	elif mother.get_stat('pregnancy_baby') != null:
+		result.value = false
+
 	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive || result.father_undead || result.mother_undead:
 		result.value = false
 	
@@ -1977,6 +1982,11 @@ func impregnate(father, mother, skip_check = false):
 		return
 	mother.add_stat('metrics_pregnancy',  1)
 	father.add_stat("metrics_impregnation", 1)
+	#A conception means she was taken vaginally, so a mother still a virgin at this moment loses it
+	#to the father. Sex scenes already take it when the act starts - this is a no-op there - but the
+	#master's bed night, brothel service and the event effect never asked.
+	if mother.get_stat('has_pussy'):
+		mother.take_virginity('vaginal', father.id)
 	var baby = ResourceScripts.scriptdict.class_slave.new("baby")
 	baby.setup_baby(mother, father)
 
@@ -2103,6 +2113,14 @@ func mansion_activity_service(gold, detail_text):
 	entry.text = _service_report_text(entry.total, entry.workers)
 	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
 		mansion_activity_log_node.update_log_message(entry)
+
+
+#A settlement's clients have spent what they had for service this week. Written once per weekly
+#refill, by game_world.pay_service_gold(), on the payout that empties the pool - a row of its own
+#rather than a line in the service report, which folds every later payout of the turn into itself.
+func mansion_activity_service_exhausted(location_name):
+	mansion_activity_log_add('service_exhausted',
+		_report_text("MANSION_ACTIVITY_SERVICE_EXHAUSTED", [location_name]))
 
 
 #One entry per turn for everything the benches finished, folded exactly like the service report

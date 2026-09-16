@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/backdrop/mansion_backdrop.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/mansion_manor.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/lamp_post.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/wall_lantern.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/sun_shafts.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/fog.tscn" type="PackedScene" id=7]
 
 [node name="MansionBackdrop" type="Control"]
 margin_right = 3840.0
@@ -605,6 +606,9 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "c5"
 
 [node name="Sky" type="Node2D" parent="."]
+
+[node name="Fog" parent="Sky" instance=ExtResource( 7 )]
+density = 0.28
 
 [node name="SunShafts" parent="Sky" instance=ExtResource( 6 )]
 position = Vector2( 3650, -150 )

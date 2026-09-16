@@ -53,7 +53,7 @@ const EVENT_CONFIG = {
 		color = Color("c9a06a"),
 	},
 	#The rest of what the estate got through in a turn - what turned up under the rubble, a
-	#habit drilled out of somebody in the practice room.
+	#habit drilled out of somebody in the practice room, the ritual room made ready for a rite.
 	"work": {
 		label = "MANSION_ACTIVITY_TYPE_WORK",
 		icon = preload("res://assets/Textures_v2/MANSION/icon_gears_small.png"),
@@ -101,6 +101,13 @@ const EVENT_CONFIG = {
 		label = "MANSION_ACTIVITY_TYPE_SERVICE",
 		icon = preload("res://assets/images/iconsitems/gold.png"),
 		color = Color("f0c860"),
+	},
+	#A settlement's clients have run out of coin for service until the weekly refill. Written once
+	#per refill by globals.mansion_activity_service_exhausted().
+	"service_exhausted": {
+		label = "MANSION_ACTIVITY_TYPE_SERVICE",
+		icon = preload("res://assets/images/iconsitems/gold.png"),
+		color = Color("d05f5f"),
 	},
 	#Everything the estate's work pulled out of the ground, the water and the fields over one
 	#turn. Nobody is named on it - the storehouse does not care who carried it in - and the fold

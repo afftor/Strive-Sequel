@@ -20,6 +20,11 @@ var easter_egg_characters_acquired = []
 
 var dungeon_events_assigned = {}
 
+#What each settlement's clients can still pay out for service until the week is out, by location code:
+#{current, max, reported}. Only settlements in variables.service_gold_limits have a pool; it is created
+#the first time it is asked for, which is also what gives an older save its pool. See pay_service_gold().
+var service_gold = {}
+
 var serial_quest_items#only for serialize
 
 func _ready():
@@ -109,6 +114,12 @@ func fix_serialization():
 				item_to_add.fix_gear()
 			items_list.append(item_to_add)
 	serial_quest_items = null
+	if service_gold == null:
+		service_gold = {}
+	for pool in service_gold.values():
+		pool.current = int(pool.get('current', 0))
+		pool.max = int(pool.get('max', 0))
+		pool.reported = bool(pool.get('reported', false))
 	fix_broken_item_links()
 	
 	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
@@ -261,6 +272,67 @@ func advance_day():
 				if k.has('shop'):
 					ResourceScripts.world_gen.update_area_shop(k)
 	update_locations()
+
+
+#### service gold pool ####
+
+#The pool service in this settlement is paid from, or null when the settlement has no limit.
+func get_service_gold(code):
+	if !variables.service_gold_limits.has(code):
+		return null
+	if !service_gold.has(code):
+		service_gold[code] = {}
+		_refill_service_gold_pool(code)
+	return service_gold[code]
+
+
+func _refill_service_gold_pool(code):
+	var limit = variables.service_gold_limits[code]
+	var pool = service_gold[code]
+	pool.max = int(limit.base) + globals.rng.randi_range(0, int(limit.random))
+	pool.current = pool.max
+	pool.reported = false
+
+
+#Every week start (game_globals.advance_day). The maximum is rolled again, not carried over.
+func refill_service_gold():
+	for code in service_gold.keys():
+		if !variables.service_gold_limits.has(code):
+			service_gold.erase(code)
+	for code in variables.service_gold_limits:
+		if !service_gold.has(code):
+			service_gold[code] = {}
+		_refill_service_gold_pool(code)
+
+
+func days_until_service_gold_refill():
+	var week = variables.DaysPerWeek
+	return week - (int(ResourceScripts.game_globals.date) - 1) % week
+
+
+#What a service payout of `amount` actually pays. The pool covers what it can; the part it cannot
+#is paid at variables.service_gold_exhausted_mult. The payout that empties the pool writes the
+#one log row of the week about it.
+func pay_service_gold(code, amount):
+	var pool = get_service_gold(code)
+	if pool == null or amount <= 0:
+		return amount
+	var covered = min(amount, pool.current)
+	pool.current -= covered
+	var paid = covered + round((amount - covered) * variables.service_gold_exhausted_mult)
+	if pool.current <= 0 and !pool.reported:
+		pool.reported = true
+		globals.mansion_activity_service_exhausted(get_service_location_name(code))
+	return paid
+
+
+func get_service_location_name(code):
+	var location = ResourceScripts.world_gen.get_location_from_code(code)
+	if location != null and str(location.get('name', '')) != '':
+		return tr(location.name)
+	if location_links.has(code) and str(location_links[code].get('name', '')) != '':
+		return tr(location_links[code].name)
+	return str(code).capitalize()
 
 
 func advance_hour():

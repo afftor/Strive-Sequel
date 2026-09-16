@@ -60,6 +60,8 @@ func rebuild():
 	#the list is under the screen's own title and needs no second heading over it
 	$OnTaskLabel.visible = false
 	var ids = workers()
+	#before the rows: every income line on the screen is read against it
+	fill_pool()
 	$Empty.text = tr("MANSIONVIEW_TASKEMPTY")
 	$Empty.visible = ids.empty() and !picking
 	input_handler.ClearContainer($Scroll/List)
@@ -68,6 +70,45 @@ func rebuild():
 		cell.setup(view, char_id, self, true)
 	build_candidates(ids)
 	rules_rebuild()
+
+
+#### the settlement's purse ####
+
+#What the settlement's clients can still pay this week, from LocationTasks.service_pool_state(), or
+#null when that settlement has no limit - in which case the line and its mark are simply not there.
+var pool = null
+
+
+func fill_pool():
+	pool = LocationTasks.service_pool_state(entry.id) if is_service() else null
+	$PoolStatus.visible = pool != null
+	$PoolTip.visible = pool != null
+	if pool == null:
+		return
+	$PoolStatus.text = LocationTasks.service_pool_line(pool)
+	$PoolStatus.add_color_override("font_color", LocationTasks.SERVICE_POOL_COLORS[pool.status])
+	globals.connecttexttooltip($PoolTip, LocationTasks.service_pool_hint(pool), false,
+		view.get_node("Overlay/TextTooltip"))
+
+
+#One person's estimated turn, read against the purse: as it is while the purse covers everybody's
+#estimate, "up to" once it may not, and at the exhausted rate once it is empty. Not shared out between
+#the rows - who is paid first is decided by the turn's order, not here.
+func earnings_text(value, full_key, low_key, empty_key):
+	var status = pool.status if pool != null else 'ok'
+	if status == 'ok':
+		return globals._report_text(full_key, [str(stepify(value, 0.1))])
+	if status == 'low':
+		return globals._report_text(low_key, [str(stepify(value, 0.1))])
+	return globals._report_text(empty_key, [
+		str(stepify(value * variables.service_gold_exhausted_mult, 0.1)),
+		LocationTasks.service_exhausted_percent()])
+
+
+func summary_income(value):
+	var color = {ok = 'aqua', low = 'yellow', empty = 'red'}[pool.status if pool != null else 'ok']
+	return "{color=%s|%s}" % [color,
+		earnings_text(value, "SERVICEESTVALUE", "SERVICEESTVALUE_LIMITED", "SERVICEESTVALUE_EXHAUSTED")]
 
 
 func add_worker(char_id):
@@ -318,8 +359,7 @@ func update_summary(who):
 			text += "\n\n{color=red|" + tr("BROTHELWARNING") + "}"
 		text += "\n\n{color=aqua|" + tr("SERVICEDESIRABILITY") \
 			% str(round(who.get_service_desirability())) + "}"
-		text += "\n{color=aqua|" + tr("SERVICEESTVALUE") \
-			% str(stepify(who.get_estimated_service_value(), 0.1)) + "}"
+		text += "\n" + summary_income(who.get_estimated_service_value())
 	else:
 		var any_non_sex = false
 		for rule in NON_SEX:
@@ -328,8 +368,7 @@ func update_summary(who):
 		if any_non_sex:
 			text += "\n\n{color=aqua|" + tr("SERVICEDESIRABILITYVALUE") \
 				% str(round(who.get_stat('desirability'))) + "}"
-			text += "\n{color=aqua|" + tr("SERVICEESTVALUE") \
-				% str(stepify(who.get_estimated_non_sex_service_value(), 0.1)) + "}"
+			text += "\n" + summary_income(who.get_estimated_non_sex_service_value())
 	$Rules/Scroll/Content/Summary.bbcode_text = globals.TextEncoder(who.translate(text))
 	#serving and sleeping with clients are not done at once, the way the work panel has it
 	for box in $Rules/Scroll/Content/Rules.get_children():

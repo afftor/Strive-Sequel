@@ -106,7 +106,31 @@ var loading_progress_node
 var loading_progress_range = [70.0, 90.0]
 var local_tasks_attention = false
 
+#These are local players rather than input_handler's shared SFX player. Night ambience should
+#not cut off a button or an in-world effect, and it is only audible while this screen is open.
+var night_cricket_player
+var night_owl_player
+var night_sound_delay = 0.0
+var night_sounds_active = false
+var morning_rooster_player
+var morning_rooster_variants = []
+var morning_rooster_delay = 0.0
+var morning_rooster_active = false
+var day_bird_player
+var day_bird_variants = []
+var day_bird_delay = 0.0
+var day_birds_active = false
+var evening_crow_player
+var evening_crow_variants = []
+var evening_crow_delay = 0.0
+var evening_crows_active = false
+const MORNING_HOUR = 1
+const DAY_HOUR = 2
+const EVENING_HOUR = 3
+const NIGHT_HOUR = 4
+
 func _ready():
+	setup_night_sound_players()
 	if !show_legacy_character_panels:
 		$MansionSkillsModule.hide()
 		$MansionSlaveModule.hide()
@@ -238,9 +262,149 @@ func _ready():
 #also call the same edge-triggered update directly.
 func _process(delta):
 	refresh_local_tasks_attention()
+	update_night_sounds(delta)
+	update_time_of_day_sounds(delta)
 	if !local_tasks_attention:
 		return
 	#the sweep keeps its own time inside the shader now, so there is nothing to advance here
+
+
+func setup_night_sound_players():
+	night_cricket_player = AudioStreamPlayer.new()
+	night_cricket_player.name = "NightCrickets"
+	night_cricket_player.bus = "Sound"
+	night_cricket_player.volume_db = -14.0
+	night_cricket_player.stream = audio.sounds.mansion_night_crickets
+	add_child(night_cricket_player)
+
+	night_owl_player = AudioStreamPlayer.new()
+	night_owl_player.name = "NightOwl"
+	night_owl_player.bus = "Sound"
+	night_owl_player.volume_db = -8.0
+	night_owl_player.stream = audio.sounds.mansion_night_owl
+	add_child(night_owl_player)
+
+	morning_rooster_player = AudioStreamPlayer.new()
+	morning_rooster_player.name = "MorningRooster"
+	morning_rooster_player.bus = "Sound"
+	morning_rooster_player.volume_db = -9.0
+	morning_rooster_variants = [audio.sounds.mansion_morning_rooster,
+		audio.sounds.mansion_morning_rooster_alt]
+	morning_rooster_player.stream = morning_rooster_variants[0]
+	add_child(morning_rooster_player)
+
+	day_bird_player = AudioStreamPlayer.new()
+	day_bird_player.name = "DayBirds"
+	day_bird_player.bus = "Sound"
+	day_bird_player.volume_db = -12.0
+	day_bird_variants = [audio.sounds.mansion_day_birds, audio.sounds.mansion_day_birds_alt]
+	day_bird_player.stream = day_bird_variants[0]
+	add_child(day_bird_player)
+
+	evening_crow_player = AudioStreamPlayer.new()
+	evening_crow_player.name = "EveningCrow"
+	evening_crow_player.bus = "Sound"
+	evening_crow_player.volume_db = -10.0
+	evening_crow_variants = [audio.sounds.mansion_evening_crow_01,
+		audio.sounds.mansion_evening_crow_02]
+	evening_crow_player.stream = evening_crow_variants[0]
+	add_child(evening_crow_player)
+
+
+func mansion_is_active_at_hour(hour):
+	return visible and gui_controller.current_screen == self \
+		and ResourceScripts.game_globals.hour == hour
+
+
+func play_mansion_sound_variant(player, variants):
+	if variants.empty():
+		return
+	player.stream = variants[randi() % variants.size()]
+	player.play()
+
+
+func update_night_sounds(delta):
+	var is_night_in_mansion = mansion_is_active_at_hour(NIGHT_HOUR)
+	if !is_night_in_mansion:
+		if night_sounds_active:
+			night_cricket_player.stop()
+			night_owl_player.stop()
+			night_sounds_active = false
+		return
+	if !night_sounds_active:
+		night_sounds_active = true
+		night_sound_delay = rand_range(1.0, 3.0)
+		return
+
+	night_sound_delay -= delta
+	if night_sound_delay > 0.0:
+		return
+	if randf() < 0.75:
+		night_cricket_player.play()
+		night_sound_delay = rand_range(7.5, 12.0)
+	else:
+		night_owl_player.play()
+		night_sound_delay = rand_range(14.0, 24.0)
+
+
+func update_time_of_day_sounds(delta):
+	update_morning_rooster(delta)
+	update_day_birds(delta)
+	update_evening_crows(delta)
+
+
+func update_morning_rooster(delta):
+	if !mansion_is_active_at_hour(MORNING_HOUR):
+		if morning_rooster_active:
+			morning_rooster_player.stop()
+			morning_rooster_active = false
+		return
+	if !morning_rooster_active:
+		morning_rooster_active = true
+		morning_rooster_delay = rand_range(2.0, 5.0)
+		return
+
+	morning_rooster_delay -= delta
+	if morning_rooster_delay > 0.0:
+		return
+	play_mansion_sound_variant(morning_rooster_player, morning_rooster_variants)
+	morning_rooster_delay = rand_range(23.0, 38.0)
+
+
+func update_day_birds(delta):
+	if !mansion_is_active_at_hour(DAY_HOUR):
+		if day_birds_active:
+			day_bird_player.stop()
+			day_birds_active = false
+		return
+	if !day_birds_active:
+		day_birds_active = true
+		day_bird_delay = rand_range(2.0, 5.0)
+		return
+
+	day_bird_delay -= delta
+	if day_bird_delay > 0.0:
+		return
+	play_mansion_sound_variant(day_bird_player, day_bird_variants)
+	day_bird_delay = rand_range(12.0, 20.0)
+
+
+func update_evening_crows(delta):
+	if !mansion_is_active_at_hour(EVENING_HOUR):
+		if evening_crows_active:
+			evening_crow_player.stop()
+			evening_crows_active = false
+		return
+	if !evening_crows_active:
+		evening_crows_active = true
+		evening_crow_delay = rand_range(2.0, 5.0)
+		return
+
+	evening_crow_delay -= delta
+	if evening_crow_delay > 0.0:
+		return
+	play_mansion_sound_variant(evening_crow_player, evening_crow_variants)
+	evening_crow_delay = rand_range(16.0, 30.0)
 
 
 #Only quests waiting at the estate. The button opens the estate and nothing else - it calls
@@ -372,7 +536,8 @@ func match_state():
 	gui_controller.nav_panel.build_accessible_locations()
 	Journal.visible = MenuModule.get_node("Buttons/Journal").is_pressed()
 	for node in get_children():
-		if node.get_class() == "Tween":
+		#Tweens and the night sound players are plain Nodes with nothing to hide
+		if !(node is CanvasItem):
 			continue
 		if !show_legacy_character_panels and node.name in LEGACY_CHARACTER_PANELS:
 			node.hide()
@@ -628,10 +793,20 @@ func open_beauty_parlor():
 
 
 func open_body_mod():
+	body_mod_window().open()
+
+
+#The ritual room's appearance change sends the one character it readied - see
+#BodyModModule.open_for_rite.
+func open_body_mod_for_rite(person, target, method):
+	body_mod_window().open_for_rite(person, target, method)
+
+
+func body_mod_window():
 	if body_mod == null or !is_instance_valid(body_mod):
 		body_mod = load("res://gui_modules/Mansion/Modules/BodyModModule.tscn").instance()
 		add_child(body_mod)
-	body_mod.open()
+	return body_mod
 
 
 #The scope pair does say what is on screen: with the list up neither is pressed, because

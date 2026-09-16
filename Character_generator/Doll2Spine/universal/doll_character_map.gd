@@ -449,6 +449,43 @@ static func resolve(stat, value, stats = {}):
 	return prefix + value
 
 
+# The value a stat is given to wear a part - resolve() the other way round: the
+# part's name with its group's prefix taken off, when that name resolves back to
+# it, and otherwise the first name VALUES points at the part.  "" when no value of
+# the stat reaches the part.
+static func value_for_part(stat, part_id):
+	var part = str(part_id)
+	var prefix = str(RULES.get(str(FEEDS.get(stat, "")), ""))
+	if part.begins_with(prefix):
+		var bare = part.substr(prefix.length())
+		if bare != "" and resolve(stat, bare) == part:
+			return bare
+	var table = VALUES.get(stat, {})
+	for value in table.keys():
+		if str(table[value]) == part:
+			return str(value)
+	return ""
+
+
+# Values for the parts in `parts` that none of `values` reaches yet, one per part,
+# in the catalogue's order.  The screens list their options from the old doll's
+# tables, and a cut the export gained after those were written - the monofringe
+# cuts, hime - was drawn but could not be picked.
+static func values_for_unlisted_parts(stat, values, parts):
+	var reached = {}
+	for value in values:
+		reached[resolve(stat, str(value))] = true
+	var result = []
+	for part_id in parts:
+		if reached.has(str(part_id)):
+			continue
+		var value = value_for_part(stat, part_id)
+		if value != "":
+			result.append(value)
+			reached[str(part_id)] = true
+	return result
+
+
 # Every value the old doll accepted that this map answers with a part the
 # catalogue does not have, so the gaps are reported rather than met on a
 # character.

@@ -499,6 +499,8 @@ var data = {
 		image = null,
 		reqs = [], tags = ["dialogue_scene", "master_translate",],
 		text = "LIRA_QUEST3_ROAD_POSTFIGHT_1",
+		#the bandits carry her off here; lira_quest3_den_3 gives her back
+		common_effects = [{code = 'affect_unique_character', name = 'lira', type = 'set_availability', value = false}],
 		options = [{code = "lira_quest3_road_postfight_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	lira_quest3_road_postfight_2 = {
@@ -575,6 +577,8 @@ var data = {
 			{text = "LIRA_QUEST3_DEN_3", reqs = [], previous_dialogue_option = 0},
 			{text = "LIRA_QUEST3_DEN_4", reqs = []},
 		],
+		#both den routes untie her here - the surrender through lira_quest3_den_2, the fight through its win_effects
+		common_effects = [{code = 'affect_unique_character', name = 'lira', type = 'set_availability', value = true}],
 		options = [{code = "lira_quest3_bandit_leader_1", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}],
 	},
 	

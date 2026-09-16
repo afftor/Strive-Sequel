@@ -230,6 +230,11 @@ func open_stairs():
 	return MansionLayout.open_stairs(mansion_layout)
 
 
+#Opens the floors the plan keeps shut - see MansionLayout.is_floor_locked(). Only the cheat menu asks.
+func unlock_floors():
+	return MansionLayout.unlock_floors(mansion_layout)
+
+
 #The rooms a test game starts with, each at its best bar the ones listed just below - test
 #mode is for looking at rooms, not for paying for them. These used to be handed over by
 #writing the retired 'forge'/'alchemy'/'tailor'/'resting' upgrade codes and letting the
@@ -289,6 +294,10 @@ func build_test_rooms():
 			if entry.room.type == type_code and !standing.has(entry.room.task_id):
 				MansionLayout.max_out_upgrades(entry.room)
 		built.append(type_code)
+	#test mode is for looking at the rites, not for waiting on a circle to be prepared first
+	var circle = MansionLayout.first_room_of_type(mansion_layout, 'ritual_room')
+	if circle != null:
+		circle.preparation = RITE_PREPARATION_FULL
 	sync_room_tasks()
 	rooms_changed()
 	return built
@@ -2101,6 +2110,10 @@ func process_rooms():
 				if clerk != null:
 					clerk.work_tick_values('wits')
 			continue
+		#nor does the ritual room: its workers prepare the circle for the next flesh rite
+		if RoomTypes.has_tag(room.type, 'ritual'):
+			prepare_rites(room, tprogress.workers)
+			continue
 		#per-room modifier, so "better tools" really does apply to this room only
 		var modifier = MansionLayout.craft_modifier(room)
 		for ch_id in tprogress.workers.duplicate():
@@ -2369,13 +2382,67 @@ func has_ledgers():
 	return MansionLayout.upgrade_level(office, 'ledgers') > 0
 
 
-#Whether the ritual room has its Flesh Rites circle, which is what opens body upgrades on the
+#Whether the ritual room has its Flesh Rites circle, which is what opens the body rites on the
 #mansion - see src/core/body_rites.gd.
 func has_body_rites():
+	return flesh_rites_level() > 0
+
+
+#How far the ritual room's Flesh Rites is built, 0 without the room. The first level opens the rites; the
+#second opens the body upgrades as well (body_rites.upgrades_unlocked).
+func flesh_rites_level():
 	var circle = MansionLayout.first_room_of_type(mansion_layout, 'ritual_room')
 	if circle == null:
-		return false
-	return MansionLayout.upgrade_level(circle, 'flesh_rites') > 0
+		return 0
+	return MansionLayout.upgrade_level(circle, 'flesh_rites')
+
+
+#The ritual room's preparation for the next flesh rite, kept on the room as 'preparation': its workers
+#raise it a turn at a time (prepare_rites), the body rites need it full, and any rite performed spends
+#all of it (src/core/body_rites.gd).
+const RITE_PREPARATION_FULL = 100.0
+
+
+func rite_preparation():
+	var circle = MansionLayout.first_room_of_type(mansion_layout, 'ritual_room')
+	if circle == null:
+		return 0.0
+	return float(circle.get('preparation', 0.0))
+
+
+func rite_prepared():
+	return rite_preparation() >= RITE_PREPARATION_FULL
+
+
+func spend_rite_preparation():
+	var circle = MansionLayout.first_room_of_type(mansion_layout, 'ritual_room')
+	if circle != null:
+		circle.preparation = 0.0
+
+
+#What one person working in the circle adds to its preparation in a turn.
+func rite_preparation_per_turn(person):
+	return 10.0 + float(person.get_stat('wits')) / 4.0
+
+
+#A turn in the ritual room: each worker adds rite_preparation_per_turn() until the preparation is full.
+#Once it is there is nothing to do, and they rest rather than spend themselves on a ready circle.
+func prepare_rites(room, workers):
+	var preparation = float(room.get('preparation', 0.0))
+	var was_ready = preparation >= RITE_PREPARATION_FULL
+	for ch_id in workers.duplicate():
+		var worker = characters_pool.get_char_by_id(ch_id)
+		if worker == null:
+			continue
+		if preparation >= RITE_PREPARATION_FULL:
+			worker.rest_tick()
+			continue
+		preparation = min(RITE_PREPARATION_FULL, preparation + rite_preparation_per_turn(worker))
+		worker.work_tick_values('wits')
+	room.preparation = preparation
+	#the turn the circle fills goes in the activity log: the room card is rarely open when it happens
+	if !was_ready and preparation >= RITE_PREPARATION_FULL:
+		globals.mansion_activity_log_add('work', tr("MANSION_ACTIVITY_RITES_PREPARED"))
 
 
 #The order this room works its discipline's queue in. Without Ledgers, or with nothing chosen,
@@ -2745,8 +2812,6 @@ func get_item_amount(item_id, free = true):
 #abstract number off the 'rooms' upgrade, which said the same thing a second time and could
 #disagree with the floorplan the player was looking at. Beds are the one answer now.
 func get_pop_cap():
-	if ResourceScripts.game_globals.unlimited_popcap:
-		return 100
 	return MansionLayout.total_sleep_capacity(mansion_layout)
 
 

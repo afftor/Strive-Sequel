@@ -170,6 +170,21 @@ var params_to_save = [ #memo mostly
 
 var tooltips_stat = ['slave_class']
 
+#With dolls switched off in the options the screen draws no doll and photographs none. The picture menus go,
+#and so do the rows that only pick the doll's art; the description's own hair takes their place, and the
+#description itself stands over the silhouette (RagdollPanel/Description). A colour stays a row of swatches -
+#it writes the colour's name, which is what the description prints - but only the eyes' is said anywhere.
+const DOLL_ONLY_STATS = ['head_size', 'eyeshape', 'eye_tex', 'eyebrows', 'lips', 'chin', 'nose',
+	'body_color_skin', 'body_color_nipples', 'body_color_lips', 'body_color_eyebrows', 'body_color_wings',
+	'body_color_tail', 'body_color_horns', 'body_color_animal', 'body_color_ears', 'hair_base',
+	'hair_base_length', 'hair_assist', 'hair_assist_length', 'hair_back', 'hair_back_length',
+	'hair_back_color_1', 'hair_back_color_2', 'hair_assist_color_1', 'hair_assist_color_2',
+	'hair_base_color_1', 'hair_base_color_2', 'beard', 'hair_facial_color']
+#the description's hair, given rows of their own right after the height while dolls are off
+const DESCRIPTION_HAIR_STATS = ['hair_length', 'hair_style', 'hair_color']
+#which of the two the rows were last built for, so a screen opened after the option changed builds them again
+var rows_built_dolls_off = null
+
 # Whether the picture tiles carry their value's name under them.  The pictures
 # are the choice - the character's own head wearing each option - and the caption
 # under one is a part code out of the data files, which is what a developer needs
@@ -393,7 +408,19 @@ func apply_preserved_settings(): #on regenerating char
 	rebuild_ragdoll()
 
 
+func _dolls_off():
+	return input_handler.globalsettings.disable_paperdoll
+
+
+#The picture menu a stat is chosen in, or '' - always '' while dolls are off.
+func _submenu_of(stat):
+	return '' if _dolls_off() else LAYOUT.submenu_of(stat)
+
+
 func build_possible_vals():
+	if _dolls_off():
+		for stat in DESCRIPTION_HAIR_STATS:
+			build_possible_val_for_stat(stat)
 	for stat in params_to_save:
 		if stat in ['food_like', 'food_hate', 'food_filter']:
 			continue
@@ -513,6 +540,12 @@ func _collect_possible_vals(stat):
 	if stat == 'personality':
 		possible_vals.personality = get_personality_options()
 		return
+	#The description's length and style: no race lists them - the sexes roll them - so every one the
+	#description has words for is offered.
+	if stat in ['hair_length', 'hair_style']:
+		for val in ResourceScripts.descriptions.bodypartsdata[stat]:
+			possible_vals[stat].push_back(val)
+		return
 	# Colours come from the palette the doll paints with rather than from the old
 	# transform tables, but a character is still only offered what their race
 	# wears: the race's own list, kept to the values the palette knows.
@@ -532,6 +565,12 @@ func _collect_possible_vals(stat):
 					possible_vals[stat].push_back(val)
 			else:
 				print ('error - unknown stat %s' % stat)
+		#the old table does not know the cuts the export gained after it was written - the monofringe cuts, hime
+		#- so the hair layers also offer every piece the art has that no name above reaches yet
+		if stat in ['hair_base', 'hair_back', 'hair_assist']:
+			DOLL_CATALOGUE.use("male" if str(person.get_stat('sex')) == "male" else "female")
+			for val in DOLL_MAP.values_for_unlisted_parts(stat, possible_vals[stat], DOLL_CATALOGUE.parts(str(DOLL_MAP.FEEDS[stat]))):
+				possible_vals[stat].push_back(val)
 	else:
 		var t_stat = stat
 		if stat.begins_with('hair_') and stat.find('color') != -1:
@@ -616,6 +655,9 @@ func visual_stat_name(stat):
 
 
 func visual_value_name(stat, value):
+	#the old hair colours have names of their own, the ones the description prints
+	if stat == 'hair_color':
+		return tr("HAIRCOLOR_" + str(value).to_upper())
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
 		var descriptions = ResourceScripts.descriptions.bodypartsdata[stat]
 		if descriptions.has(value) and str(descriptions[value].name) != '':
@@ -829,7 +871,7 @@ func build_node_for_stat(stat):
 				nd.get_node('Frame').visible = selected
 		return
 
-	var submenu_id = LAYOUT.submenu_of(stat)
+	var submenu_id = _submenu_of(stat)
 	if submenu_id != '':
 		refresh_visual_submenu_button(submenu_id)
 		if node != null:
@@ -914,9 +956,13 @@ func change_checkbox_value(pressed, stat):
 
 
 func rebuild_ragdoll(stat = null):
-	refresh_visual_submenu_previews()
+	if !_dolls_off():
+		refresh_visual_submenu_previews()
+	#the description stands over the silhouette only while there is no doll to look at - build_description
+	if has_node("RagdollPanel/Description"):
+		$RagdollPanel/Description.visible = _dolls_off()
 	var stored_image = person.get_stored_body_image()
-	if input_handler.globalsettings.disable_paperdoll and stored_image == null:
+	if _dolls_off() and stored_image == null:
 		stored_image = person.get_body_image()
 	if stored_image != null:
 		$RagdollPanel/TextureRect.texture = stored_image
@@ -955,6 +1001,12 @@ func change_value_node(stat, value): #for scrollable nodes
 		id = values.size() - 1
 	if id >= values.size():
 		id = 0
+	#the description's hair: several of its names come out as the same hair, and the step goes on past them -
+	#see ch_stats.step_described_hair; when no name changes anything, the row stays as it was
+	if stat in DESCRIPTION_HAIR_STATS:
+		id = person.statlist.step_described_hair(stat, values, id, value)
+		if id == -1:
+			return
 	var newval = values[id]
 	if stat != 'slave_class':
 		person.set_stat(stat, newval)
@@ -1226,6 +1278,8 @@ func MainMenu():
 # while it is still settling instead, one per frame.  The parse is shared, so
 # this is paid once for the session and every other screen gets it for free.
 func warm_doll_rigs():
+	if input_handler.globalsettings.disable_paperdoll: #no doll will be drawn, so no rig is read
+		return
 	yield(get_tree(), 'idle_frame')
 	yield(get_tree(), 'idle_frame') # let the screen paint before the read
 	for doll_id in DOLL_LIST.DOLLS.keys():
@@ -1233,6 +1287,13 @@ func warm_doll_rigs():
 			continue
 		DOLL_SOURCE.of(doll_id)
 		yield(get_tree(), 'idle_frame') # one rig per frame, never both in one
+
+
+#The rows are built once for the screen; dolls switched on or off since then change which rows there are.
+func _rebuild_rows_for_the_doll_setting():
+	if rows_built_dolls_off != _dolls_off():
+		_close_visual_submenu()
+		RebuildStatsContainer()
 
 
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
@@ -1249,6 +1310,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 #	build_sex_trait()
 #	build_trait()
 	warm_doll_rigs()
+	_rebuild_rows_for_the_doll_setting()
 	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
@@ -1295,6 +1357,7 @@ func open_freemode(char_to_open, flag = false):
 	preservedsettings.clear()
 	selected_master_relation = 'none'
 	warm_doll_rigs()
+	_rebuild_rows_for_the_doll_setting()
 	show()
 	$introduction.bbcode_text = introduction_text['freemode']
 	mode = 'freemode'
@@ -1625,11 +1688,15 @@ func RebuildStatsContainer(): #onready scheme build, not values
 
 	# A colour with no owner (skin) gets its own row at the top.  All other
 	# colours are inserted immediately after the option they paint.
+	var dolls_off = _dolls_off()
+	rows_built_dolls_off = dolls_off
 	for colour in LAYOUT.COLOUR_FOLLOWS:
+		if dolls_off and colour in DOLL_ONLY_STATS:
+			continue
 		if str(LAYOUT.COLOUR_FOLLOWS[colour]) == '' and colour in params_to_save:
 			append_visual_colour_row(colour)
 
-	for menu in LAYOUT.SUBMENUS:
+	for menu in ([] if dolls_off else LAYOUT.SUBMENUS):
 		var menu_button = duplicate_visual_template('SubmenuButton')
 		menu_button.name = 'submenu_' + str(menu.id)
 		menu_button.text = tr(menu.label)
@@ -1641,16 +1708,20 @@ func RebuildStatsContainer(): #onready scheme build, not values
 	for stat in params_to_save:
 		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter", "personality"]:
 			continue
-		if stat.ends_with('factor') or LAYOUT.COLOUR_FOLLOWS.has(stat) or LAYOUT.submenu_of(stat) != '':
+		if dolls_off and stat in DOLL_ONLY_STATS:
 			continue
-		var template = 'Button'
-		if stat in LAYOUT.SLIDERS:
-			template = 'Slider'
-		elif stat in LAYOUT.CHECKBOXES:
-			template = 'Checkbox'
-		var newnode = duplicate_visual_template(template)
-		setup_visual_stat_node(newnode, stat, template)
-		append_following_colour_rows(stat)
+		if dolls_off and LAYOUT.COLOUR_FOLLOWS.has(stat):
+			#its picture menu is gone, so the colour stands where the stat is listed
+			append_visual_colour_row(stat)
+			continue
+		if stat.ends_with('factor') or LAYOUT.COLOUR_FOLLOWS.has(stat) or _submenu_of(stat) != '':
+			continue
+		append_visual_stat_row(stat)
+		if !dolls_off:
+			append_following_colour_rows(stat)
+		elif stat == 'height':
+			for hair_stat in DESCRIPTION_HAIR_STATS:
+				append_visual_stat_row(hair_stat)
 
 
 # The half of a factor row that is settled the moment it is built: its colour,
@@ -1785,6 +1856,16 @@ func fit_stats_panel():
 	var diet_height = $DietPanel.margin_bottom - $DietPanel.margin_top
 	$DietPanel.margin_top = $StatsModule.margin_bottom + LAYOUT.STATS_PANEL_GAP
 	$DietPanel.margin_bottom = $DietPanel.margin_top + diet_height
+
+
+func append_visual_stat_row(stat):
+	var template = 'Button'
+	if stat in LAYOUT.SLIDERS:
+		template = 'Slider'
+	elif stat in LAYOUT.CHECKBOXES:
+		template = 'Checkbox'
+	var newnode = duplicate_visual_template(template)
+	setup_visual_stat_node(newnode, stat, template)
 
 
 func append_following_colour_rows(stat):
@@ -1939,6 +2020,9 @@ func FillStats():
 		if LAYOUT.COLOUR_FOLLOWS.has(stat):
 			build_selectable_node(stat)
 		build_node_for_stat(stat)
+	if _dolls_off():
+		for stat in DESCRIPTION_HAIR_STATS:
+			build_node_for_stat(stat)
 #	build_class()
 	build_description()
 	build_race()
@@ -2222,7 +2306,10 @@ func build_class():
 
 
 func build_description():
-	$VisualsModule/Desc.bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
+	var text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
+	$VisualsModule/Desc.bbcode_text = text
+	if has_node("RagdollPanel/Description"):
+		$RagdollPanel/Description.bbcode_text = text
 
 
 func confirm_return():

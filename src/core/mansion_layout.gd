@@ -90,6 +90,8 @@ static func build_floor(floor_plan):
 		code = floor_plan.code,
 		#kept so validate() can tell when the designer reshaped the level map
 		shape = FloorPlans.shape_signature(floor_plan),
+		#a floor the plan keeps shut until something opens it - see is_floor_locked()
+		locked = FloorPlans.floor_starts_locked(floor_plan),
 		slots = {},
 	}
 	for slot_plan in floor_plan.slots:
@@ -386,6 +388,27 @@ static func open_stairs(layout):
 	return false
 
 
+#Whether a floor is shut. A shut floor is in the save but not in the house: the staircase does not
+#lead to it, nothing handed to the estate is put up on it, and no room is carried to or from it. It
+#is kept on the floor rather than read off the plan, because opening one is something that happens
+#to an estate - validate() is where the two are reconciled.
+static func is_floor_locked(layout, floor_index):
+	var floor_data = get_floor(layout, floor_index)
+	return floor_data != null and bool(floor_data.get('locked', false))
+
+
+#Opens every shut floor and answers how many that was - none for an estate that already had them.
+static func unlock_floors(layout):
+	var opened = 0
+	if !(layout is Dictionary) or !(layout.get('floors') is Array):
+		return opened
+	for floor_data in layout.floors:
+		if bool(floor_data.get('locked', false)):
+			floor_data.locked = false
+			opened += 1
+	return opened
+
+
 #### room work tasks ####
 
 #Idempotently mirrors a work room into game_res.tasks_progresses so the ordinary
@@ -666,6 +689,9 @@ static func can_swap(layout, floor_a, code_a, floor_b, code_b):
 	var slot_b = get_slot(get_floor(layout, floor_b), code_b)
 	if slot_a == null or slot_b == null:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
+	#a shut floor is nowhere anybody can get to, so nothing is carried to it or out of it
+	if is_floor_locked(layout, floor_a) or is_floor_locked(layout, floor_b):
+		return {ok = false, reason = 'MANSIONVIEW_ERR_VOID'}
 	if slot_a.broken or slot_b.broken:
 		return {ok = false, reason = 'MANSIONVIEW_ERR_BROKEN'}
 	#scaffolding does not travel: a room in the middle of something stays where it is
@@ -826,12 +852,13 @@ static func is_grounds(layout, floor_index):
 	return int(floor_index) == grounds_floor(layout)
 
 
-#Floors of the house proper, in order - everything the staircase walks between.
+#Floors of the house proper, in order - everything the staircase walks between. A shut floor is not
+#one of them until it is opened.
 static func house_floors(layout):
 	var res = []
 	var grounds = grounds_floor(layout)
 	for index in range(layout.floors.size()):
-		if index != grounds:
+		if index != grounds and !is_floor_locked(layout, index):
 			res.append(index)
 	return res
 
@@ -935,8 +962,10 @@ static func total_sleep_capacity(layout):
 static func max_sleep_capacity(layout):
 	var per_slot = best_repeatable_beds()
 	var slots = 0
-	for floor_data in layout.floors:
-		slots += floor_data.slots.size()
+	for floor_index in range(layout.floors.size()):
+		#a shut floor is not somewhere the player can go and build
+		if !is_floor_locked(layout, floor_index):
+			slots += layout.floors[floor_index].slots.size()
 	return int(max(per_slot * slots, total_sleep_capacity(layout)))
 
 
@@ -1042,6 +1071,10 @@ static func validate(layout, party = null):
 			continue
 		var floor_plan = plan.floors[floor_index]
 		var floor_data = layout.floors[floor_index]
+		#Shut only while the plan and the estate both say so: a floor the designer opens is open in
+		#every save, and one this estate has opened stays open, rebuilt or not. A save from before
+		#floors could be shut has no say, and takes the plan's word.
+		var locked = FloorPlans.floor_starts_locked(floor_plan) and bool(floor_data.get('locked', true))
 		#The designer added or took away slots - a floor this save cannot be fitted to, so
 		#rebuild rather than guess. Slots merely moved or resized are not that: where a room
 		#is drawn belongs to the picture behind it, not to the house, and redrawing the manor
@@ -1049,9 +1082,11 @@ static func validate(layout, party = null):
 		if !floor_data.has('shape') or FloorPlans.shape_codes(floor_data.shape) != FloorPlans.slot_codes(floor_plan):
 			print_debug("mansion_layout: floor %d level map changed, rebuilding" % floor_index)
 			layout.floors[floor_index] = build_floor(floor_plan)
+			layout.floors[floor_index].locked = locked
 			continue
 		#same house, new drawing - take the rects on so the save carries what is on screen now
 		floor_data.shape = FloorPlans.shape_signature(floor_plan)
+		floor_data.locked = locked
 		validate_floor(floor_plan, floor_data)
 
 	#the plan gained floors since this layout was created

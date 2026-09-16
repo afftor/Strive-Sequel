@@ -65,6 +65,8 @@ const DEFAULT = {
 	#most rooms are one line to explain and a mark beside every name is a mark nobody reads.
 	#Set 'help = true' on a type whose rules are worth stopping for.
 	help = false,
+	#and when it names an upgrade, the mark waits until that upgrade is built in the room
+	help_upgrade = '',
 	tags = [],
 	icon = '',
 	color = '4b4b4b',
@@ -426,28 +428,37 @@ const LIST = {
 		icon = 'rooms_lux',
 		color = '4a3f6b',
 	},
-	#Circles, candles and a great deal of chalk. Nobody works here: having one is what lets
-	#the estate put enchantments on gear at all - see MansionCraftModule.craftcategories.
+	#Circles, candles and a great deal of chalk. Having one is what lets the estate put
+	#enchantments on gear at all - see MansionCraftModule.craftcategories. With Flesh Rites it
+	#also takes two workers, who prepare the circle for the body rites.
 	ritual_room = {
 		code = 'ritual_room',
+		#the preparation is a rule worth a mark beside the name, once there is a circle to prepare
+		help = true,
+		help_upgrade = 'flesh_rites',
 		slots = {},
-		work_job = null,
-		#Nobody works in here, so it has no job of its own - but it is what lets the estate
-		#enchant at all (MansionCraftModule's 'enchant' category asks for this room), and the
-		#card's bench button opens that, the way a forge's opens smithing.
+		#not a craft discipline: whoever stands here raises the circle's preparation, and
+		#game_res.process_rooms() sends the job down its own branch (prepare_rites)
+		work_job = 'rite_preparation',
+		#The bench the card's button opens is still enchanting (MansionCraftModule's 'enchant'
+		#category asks for this room), named here because the work done in the room is not it.
 		craft_menu = 'enchant',
 		max_count = 1,
 		upkeep = 0,
 		build_cost = {stone = 60, mithril = 20, gold = 400},
 		build_progress = 40,
-		#Flesh Rites is what brings body upgrades to the mansion: once built, the card opens them
-		#(src/core/body_rites.gd, mansion_view's BodyRitesPanel).
+		#Flesh Rites is what brings the body rites to the mansion: once built, the card opens them
+		#(src/core/body_rites.gd, mansion_view's BodyRitesPanel). The first level opens the rites that
+		#change a body - its appearance, sex, form or virginity - and the second the body upgrades.
+		#It also gives the room its two work slots, whose workers prepare the circle - a rite needs it
+		#full and spends it.
 		upgrades = {
 			flesh_rites = {
 				code = 'flesh_rites',
 				icon = 'academy',
 				levels = {
-					1: {cost = {bone = 60, woodmagic = 30, gold = 2500}, progress = 45, effect = {}},
+					1: {cost = {bone = 60, woodmagic = 30, gold = 2500}, progress = 45, effect = {work_slots = 2}},
+					2: {cost = {boneancient = 30, woodiron = 30, gold = 5000}, progress = 65, effect = {work_slots = 2}},
 				},
 			},
 		},

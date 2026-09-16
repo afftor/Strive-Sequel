@@ -286,10 +286,11 @@ func rebuild():
 		$Body/Columns/LeftScroll/LeftColumn/BodyModButton.visible = false
 	if has_node("Body/Columns/LeftScroll/LeftColumn/BodyRitesButton"):
 		$Body/Columns/LeftScroll/LeftColumn/BodyRitesButton.visible = false
-	#Nothing shows the help mark any more: what it had to say is the room's description, and the
-	#card prints that a couple of lines below the name - so the mark opened a panel over the card
-	#to repeat what was already on it. The node is left in the scene, and this one line is what
-	#keeps it down, so putting it back is a decision rather than a rebuild.
+	if has_node("Body/Columns/LeftScroll/LeftColumn/PreparationBar"):
+		$Body/Columns/LeftScroll/LeftColumn/PreparationBar.visible = false
+	#The help mark is down unless build_help_mark() has rules to explain. It used to open a panel
+	#that repeated the room's description; now it is a hover over a room whose rules the description
+	#cannot hold - see MANSIONROOM_<CODE>HELP.
 	$Body/Columns/LeftScroll/LeftColumn/TitleRow/HelpButton.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = false
@@ -547,6 +548,8 @@ func build_for_room(current):
 	#announce the same Beds/Workplaces count twice.
 	$Body/Columns/LeftScroll/LeftColumn/Subtitle.text = ""
 	set_description(tr(RoomTypes.get_descript_key(current.type)))
+	build_preparation_bar(current)
+	build_help_mark(current)
 	detail("Functions").text = upgrades_text(current)
 	build_yield_list(current)
 	build_craft_button(current)
@@ -681,6 +684,50 @@ func build_body_rites_button(current):
 	button.visible = MansionLayout.upgrade_level(current, 'flesh_rites') > 0
 	if button.visible:
 		button.text = tr("MANSIONVIEW_BODY_RITES")
+		#the rites wait for the circle to be prepared - see game_res.prepare_rites()
+		var prepared = ResourceScripts.game_res.rite_prepared()
+		button.disabled = !prepared
+		if prepared:
+			globals.disconnect_text_tooltip(button)
+		else:
+			globals.connecttexttooltip(button, tr("MANSIONVIEW_RITES_UNPREPARED"), true,
+				view.get_node("Overlay/TextTooltip"))
+
+
+#The circle's preparation for the next flesh rite, as a bar under the name once Flesh Rites is built: how full,
+#and what the people working in the circle add a turn between them (game_res.prepare_rites).
+func build_preparation_bar(current):
+	var path = "Body/Columns/LeftScroll/LeftColumn/PreparationBar"
+	if !has_node(path) or !RoomTypes.has_tag(current.type, 'ritual') or MansionLayout.upgrade_level(current, 'flesh_rites') <= 0:
+		return
+	var game_res = ResourceScripts.game_res
+	var preparation = float(current.get('preparation', 0.0))
+	var bar = get_node(path)
+	bar.visible = true
+	bar.max_value = game_res.RITE_PREPARATION_FULL
+	bar.value = preparation
+	var text = tr("MANSIONVIEW_PREPARATION") + ": " + str(int(preparation)) + " / " + str(int(game_res.RITE_PREPARATION_FULL))
+	var per_turn = 0.0
+	for char_id in view.room_workers(current):
+		var worker = view.get_character(char_id)
+		if worker != null:
+			per_turn += game_res.rite_preparation_per_turn(worker)
+	if per_turn > 0 and preparation < game_res.RITE_PREPARATION_FULL:
+		text += " (" + tr("MANSIONVIEW_PERTURN") + " +" + str(stepify(per_turn, 0.1)) + ")"
+	bar.get_node("Label").text = text
+
+
+#The round question mark beside the name, for a room whose rules are worth stopping for: the hover explains
+#them. Shown where there is something to say (MANSIONROOM_<CODE>HELP) and, for a type naming a help_upgrade,
+#once that is built - the ritual room's preparation is a rule of Flesh Rites.
+func build_help_mark(current):
+	var mark = $Body/Columns/LeftScroll/LeftColumn/TitleRow/HelpButton
+	var key = RoomTypes.get_name_key(current.type) + "HELP"
+	var needed = str(RoomTypes.get_type(current.type).get('help_upgrade', ''))
+	mark.visible = RoomTypes.shows_help(current.type) and tr(key) != key \
+		and (needed == '' or MansionLayout.upgrade_level(current, needed) > 0)
+	if mark.visible:
+		globals.connecttexttooltip(mark, tr(key), true, view.get_node("Overlay/TextTooltip"))
 
 
 func on_body_rites():

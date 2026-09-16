@@ -329,18 +329,40 @@ func oblivionpot(character):
 	character.try_breakdown('brk_oblivion')
 
 
+#The sex swap potion: the body swap below, then the message saying which way it went.
 func sex_swap(character):
 	input_handler.active_character = character
+	var was = character.get_stat('sex')
+	swap_sex_of(character)
+	match was:
+		'male':
+			input_handler.interactive_message_follow("sex_swap_potion_female",'char_translate', {ch = character})
+		'female':
+			input_handler.interactive_message_follow("sex_swap_potion_male",'char_translate', {ch = character})
+
+
+#A male body turned female or a female one male, shared by the potion and the ritual room's sex change
+#(body_rites.gd). The first change generates a look for the new sex and keeps the old exterior aside;
+#changing back puts that exterior on again (swap_alternate_exterior) - though not the hair length,
+#which statlist leaves out of the backup (exterior_stats_composite). The first name goes the same way:
+#the current one is kept for the old sex, and a name once given for the new sex comes back with it.
+#Returns the new sex.
+func swap_sex_of(character):
+	character.remember_name_for_sex()
 	match character.get_stat('sex'):
 		'male':
 			character.set_stat('sex', 'female')
-			input_handler.interactive_message_follow("sex_swap_potion_female",'char_translate', {ch = character})
 		'female':
 			character.set_stat('sex', 'male')
-			input_handler.interactive_message_follow("sex_swap_potion_male",'char_translate', {ch = character})
 	character.swap_alternate_exterior()
+	var bound_name = character.name_for_sex(character.get_stat('sex'))
+	if bound_name != '':
+		character.set_stat('name', bound_name)
 	character.set_stat('portrait_update', true)
 	input_handler.emit_signal('update_ragdoll')
+	#the portrait on file shows the old body, and the booth only shoots by itself someone who never had one
+	input_handler.reshoot_portrait(character)
+	return character.get_stat('sex')
 	
 
 

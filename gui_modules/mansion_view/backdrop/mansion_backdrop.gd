@@ -13,9 +13,11 @@ extends Control
 #it are hidden. To put something on a floor, instance it or drop its picture into that floor's
 #Objects; a lantern is lamp_post.tscn, wall_lantern.tscn, or any scene whose root carries lantern.gd.
 #
-#Beside the floors a Sky holds what falls over all of them - sun shafts, sun_shafts.tscn. It is drawn
-#over whichever floor is on screen and told the hour like the lanterns, and the game always shows it:
-#its eye in the editor is only for seeing past it while placing things.
+#Beside the floors a Sky holds what falls over all of them - sun shafts, sun_shafts.tscn, and mist, fog.tscn.
+#It is drawn over whichever floor is on screen, told the hour like the lanterns, and the game
+#always shows it: its eye in the editor is only for seeing past it while placing things. In the game
+#mansion_view draws both over the rooms as well - the shafts through GlowsOverRooms, the mist through
+#FogOverRooms.
 
 #The colour of the hour, the way the screen behind the plan has one: the stops, which the clock
 #fades between as a turn plays out. They tint each floor whole, what is set on it included - all
@@ -56,6 +58,9 @@ var lamp_floor = {}
 var glows_over_rooms = false
 #the sky things - sun shafts - gathered from Sky
 var skies = []
+#the mists under Sky, and whether mansion_view's FogOverRooms draws them over the rooms - see draw_fog_over_rooms()
+var fogs = []
+var fog_over_rooms = false
 
 
 func _ready():
@@ -77,6 +82,8 @@ func gather_skies(node):
 	for child in node.get_children():
 		if child.has_method('set_sky_hour'):
 			skies.append(child)
+		elif child.has_method('fog_material'):
+			fogs.append(child)
 		gather_skies(child)
 
 
@@ -138,6 +145,20 @@ func draw_glows_over_rooms(on):
 	apply()
 
 
+#Asked for by mansion_view's FogOverRooms, which draws the mist over the rooms with the mist's own material: the
+#mist here then hides, and only keeps drifting for that to copy.
+func draw_fog_over_rooms(on):
+	fog_over_rooms = on
+	apply()
+
+
+func first_fog():
+	for fog in fogs:
+		if is_instance_valid(fog):
+			return fog
+	return null
+
+
 #Whether anything under Sky shows at this hour - GlowsOverRooms stays up for it.
 func sky_shows():
 	for sky in skies:
@@ -178,6 +199,10 @@ func apply():
 		if is_instance_valid(sky):
 			sky.drawn_elsewhere = glows_over_rooms
 			sky.set_sky_hour(hour_blend)
+	for fog in fogs:
+		if is_instance_valid(fog):
+			fog.drawn_elsewhere = fog_over_rooms
+			fog.set_fog_hour(hour_blend)
 
 
 func hour_tint(hour):

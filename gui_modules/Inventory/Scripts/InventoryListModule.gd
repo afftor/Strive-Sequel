@@ -107,6 +107,10 @@ func buildinventory():
 		if itemcontainer == itemcontainervbox:
 			newnode.get_node("Name").text = i.name
 			newnode.get_node("Type").texture = get_item_type_icon(i)
+			#red for gear the selected hero can't put on - equip() refuses on this same reqs check
+			var hero = input_handler.interacted_character
+			if hero != null and i.type == 'gear' and !hero.checkreqs(i.reqs):
+				newnode.get_node("Name").set("custom_colors/font_color", variables.hexcolordict.red)
 		newnode.set_meta('type', type)
 		newnode.set_meta("item", i)
 		newnode.connect("pressed",self,'useitem', [i, i.type])

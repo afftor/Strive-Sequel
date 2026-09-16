@@ -68,6 +68,8 @@ func confirm_number_selection():
 
 
 func disassamble():
+	#the sound a finished craft makes: itemcraft.wav, filed in ResourceAudio as itemcreate
+	input_handler.PlaySound("itemcreate")
 	_close("info")
 	var ratio = rng.randf_range(recovery[0], recovery[1])
 	var final_amount = round(selected_result_item.parts[selected_part] * ratio) * $NumberSelection/HSlider.value

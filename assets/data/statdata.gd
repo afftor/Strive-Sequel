@@ -333,16 +333,19 @@ var statdata = {
 		code = 'eyeshape',
 		tags = [],
 		default_bonus = 'set',
+		container = 'exterior',
 	},
 	nose = {
 		code = 'nose',
 		tags = [],
 		default_bonus = 'set',
+		container = 'exterior',
 	},
 	lips = {
 		code = 'lips',
 		tags = [],
 		default_bonus = 'set',
+		container = 'exterior',
 	},
 	body_color_skin = {
 		code = 'body_color_skin',

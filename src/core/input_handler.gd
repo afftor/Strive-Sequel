@@ -1260,6 +1260,9 @@ func start_event(code, type, args):
 			active_character = args.pregchar
 			active_character.set_stat('metrics_birth', active_character.get_stat('metrics_birth') + 1)
 			var baby = ResourceScripts.game_party.babies[active_character.get_stat('pregnancy_baby')]
+			#select_tutelage checks scene_characters[0] and sends everyone in the list to the course
+			#picked, so nobody left over from an earlier scene may stand in front of the baby
+			scene_characters.clear()
 			scene_characters.append(baby)
 		'event_selection':
 			data.location = active_location
@@ -1619,7 +1622,7 @@ signal portrait_taken(id)
 
 
 func queue_portrait(person): #generate a portrait for someone whose ragdoll nobody opened
-	if person == null:
+	if person == null or globalsettings.disable_paperdoll: #dolls switched off: nothing to photograph
 		return
 	if portrait_booth == null:
 		portrait_booth = load("res://src/core/portrait_booth.gd").new()
@@ -1634,7 +1637,7 @@ func _on_portrait_taken(id):
 
 
 func reshoot_portrait(person): #their look changed while the doll was open
-	if person == null:
+	if person == null or globalsettings.disable_paperdoll:
 		return
 	queue_portrait(person) #builds the booth if this is the first one
 	portrait_booth.reshoot(person)
@@ -1922,15 +1925,19 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label2").text = masdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("class_achieved")
-		"body_upgrade": #(upgrade, person) - a body rite performed in the ritual room
-			var udata = Traitdata.body_upgrades[args.upgrade]
+		"body_upgrade": #(person, upgrade or icon + name, title) - a body rite performed in the ritual room
+			var rite_icon = args.get('icon')
+			var rite_name = args.get('name')
+			if !args.has('icon'):
+				rite_icon = Traitdata.body_upgrades[args.upgrade].icon
+				rite_name = Traitdata.body_upgrades[args.upgrade].name
 			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
-			if udata.icon is String:
-				anim_scene.get_node("TextureRect").texture = load(udata.icon)
+			if rite_icon is String:
+				anim_scene.get_node("TextureRect").texture = load(rite_icon)
 			else:
-				anim_scene.get_node("TextureRect").texture = udata.icon
-			anim_scene.get_node("Label").text = tr("BODYRITE_ANIM_TITLE")
-			anim_scene.get_node("Label2").text = tr(udata.name)
+				anim_scene.get_node("TextureRect").texture = rite_icon
+			anim_scene.get_node("Label").text = tr(args.get('title', "BODYRITE_ANIM_TITLE"))
+			anim_scene.get_node("Label2").text = tr(rite_name)
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("class_achieved")
 		"quest_completed":

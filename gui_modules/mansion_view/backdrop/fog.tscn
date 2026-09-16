@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gui_modules/mansion_view/backdrop/fog.gd" type="Script" id=1]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/fog.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/fog_color = Color( 0.85, 0.88, 0.92, 1 )
+shader_param/density = 0.2
+shader_param/coverage = 0.55
+shader_param/softness = 0.48
+shader_param/patch_size = 900.0
+
+[node name="Fog" type="ColorRect"]
+material = SubResource( 1 )
+margin_right = 3840.0
+margin_bottom = 2560.0
+mouse_filter = 2
+script = ExtResource( 1 )

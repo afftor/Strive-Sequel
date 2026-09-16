@@ -32,8 +32,11 @@ var cheats = [
 	'add_new_character',
 	'add_material',
 	'unlock_all_scenes',
-	'unlimited_popcap'
+	'unlock_extra_floors'
 ]
+
+#Pressed once and done, rather than switched on and left on.
+var action_cheats = ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes', 'unlock_extra_floors']
 
 func _ready():
 	gui_controller.add_close_button(self)
@@ -65,14 +68,12 @@ func list_cheats():
 			newbutton.get_node("Label").text = "Unlock All Upgrades"
 		if cheat == "unlock_all_scenes":
 			newbutton.get_node("Label").text = "Unlock All Scenes"
-		if cheat == "unlimited_popcap":
-			newbutton.get_node("Label").text = "Set Character Limit to 100"
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
 
 
 func set_cheat(cheat = null, btn = null):
-	if cheat != null && btn != null && !cheat in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes']:
+	if cheat != null && btn != null && !cheat in action_cheats:
 		ResourceScripts.game_globals[cheat] = btn.is_pressed()
 	match cheat:
 		"instant_upgrades":
@@ -88,10 +89,12 @@ func set_cheat(cheat = null, btn = null):
 			add_material()
 		'unlock_all_scenes':
 			unlock_all()
+		'unlock_extra_floors':
+			unlock_extra_floors()
 	for button in LeftSide.get_children():
-		if button.name == "Button" || button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes']:
+		if button.name == "Button" || button.get_meta("cheat") in action_cheats:
 			continue
-		button.toggle_mode = !button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes'] # this means 'true' i think
+		button.toggle_mode = !button.get_meta("cheat") in action_cheats # this means 'true' i think
 		button.pressed = ResourceScripts.game_globals[button.get_meta("cheat")]
 
 
@@ -262,3 +265,12 @@ func add_new_character():
 
 func unlock_all(): #temporal solution - for unlocks are not gamestate-related
 	Gallery.unlock_all()
+
+
+func unlock_extra_floors():
+	var opened = ResourceScripts.game_res.unlock_floors()
+	if opened == 0:
+		input_handler.SystemMessage("The extra mansion floors are already unlocked")
+		return
+	ResourceScripts.game_res.rooms_changed()
+	input_handler.SystemMessage("%d more mansion floors unlocked" % opened)

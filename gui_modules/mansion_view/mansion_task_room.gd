@@ -139,7 +139,15 @@ func refresh_plot():
 	globals.connecttexttooltip(self, tr(RoomTypes.get_descript_key(room.type)), true)
 
 
+var output_color = null
+
+
 func refresh():
+	#only the service card recolours its output line (the purse); a card reused for other work gets the
+	#scene's own colour back
+	if output_color == null:
+		output_color = $output.get_color("font_color")
+	$output.add_color_override("font_color", output_color)
 	if plot != '':
 		refresh_plot()
 		return
@@ -152,13 +160,20 @@ func refresh():
 	if entry.own_screen:
 		set_card_icon(load(entry.icon) if entry.icon != '' else null)
 		$name.text = tr(entry.name)
+		#what the settlement's clients have left to pay this week, so a dry purse is seen before
+		#the screen is opened; nothing at all where the settlement has no limit
+		var pool = LocationTasks.service_pool_state(entry.id)
 		$output.text = ""
+		var tooltip = "%s\n%s" % [tr(entry.descript), tr("MANSIONVIEW_SERVICEOPENHINT")]
+		if pool != null:
+			$output.text = globals._report_text("MANSIONVIEW_SERVICEPOOL_CARD", [pool.current, pool.max])
+			$output.add_color_override("font_color", LocationTasks.SERVICE_POOL_COLORS[pool.status])
+			tooltip = "%s\n%s" % [LocationTasks.service_pool_line(pool), tooltip]
 		show_count(true)
 		$count.text = "%s %d" % [tr("MANSIONVIEW_WORKERS"),
 			LocationTasks.workers_of(entry.id).size()]
 		build_places(LocationTasks.workers_of(entry.id), 0)
-		globals.connecttexttooltip(self, "%s\n%s" % [tr(entry.descript),
-			tr("MANSIONVIEW_SERVICEOPENHINT")], true)
+		globals.connecttexttooltip(self, tooltip, true)
 		return
 	set_card_icon(load(entry.icon) if entry.icon != '' else null)
 	$name.text = tr(entry.name)

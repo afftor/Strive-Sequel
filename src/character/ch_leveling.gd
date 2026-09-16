@@ -724,6 +724,7 @@ func select_brothel_activity():
 
 		goldearned = apply_boosters(goldearned)
 		goldearned = round(goldearned)
+		goldearned = take_service_pay(goldearned)
 		if selected_workstat != null:
 			work_tick_values(selected_workstat)
 
@@ -761,6 +762,7 @@ func select_brothel_activity():
 
 		goldearned = apply_boosters(goldearned)
 		goldearned = round(goldearned)
+		goldearned = take_service_pay(goldearned)
 		if selected_workstat != null:
 			work_tick_values(selected_workstat)
 		
@@ -819,6 +821,14 @@ func apply_boosters(value):
 		else:
 			break
 	return value * mul
+
+
+#Service is paid out of what its settlement's clients have left this week - game_world.pay_service_gold().
+func take_service_pay(gold):
+	var location = 'aliron'
+	if ResourceScripts.game_res.tasks_progresses.has('service'):
+		location = ResourceScripts.game_res.tasks_progresses.service.get('location', location)
+	return ResourceScripts.game_world.pay_service_gold(location, gold)
 
 
 func get_highest_value(array):#find highest profit option

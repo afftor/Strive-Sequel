@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/lamp_glow_material.tres" type="Material" id=38]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/glows_over_rooms.gd" type="Script" id=39]
 [ext_resource path="res://gui_modules/mansion_view/body_rites_panel.tscn" type="PackedScene" id=40]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/fog_over_rooms.gd" type="Script" id=42]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
@@ -369,34 +370,39 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="Stairs" type="VBoxContainer" parent="GridViewport/FloorGrid/Button"]
+[node name="Stairs" type="HBoxContainer" parent="GridViewport/FloorGrid/Button"]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 154.0
-margin_bottom = 91.0
+margin_right = -8.0
+margin_bottom = -70.0
+mouse_filter = 2
 custom_constants/separation = 5
 
-[node name="Up" type="Button" parent="GridViewport/FloorGrid/Button/Stairs"]
-margin_right = 146.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 0, 39 )
-mouse_default_cursor_shape = 2
-size_flags_vertical = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
-text = "Up"
-
 [node name="Down" type="Button" parent="GridViewport/FloorGrid/Button/Stairs"]
-margin_top = 44.0
-margin_right = 146.0
-margin_bottom = 83.0
+margin_right = 70.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 0, 39 )
 mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Down"
+
+[node name="Up" type="Button" parent="GridViewport/FloorGrid/Button/Stairs"]
+margin_left = 75.0
+margin_right = 146.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 39 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Up"
 
 [node name="Fill" type="Label" parent="GridViewport/FloorGrid/Button"]
 visible = false
@@ -456,6 +462,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.419608, 0.639216, 0.419608, 0.35 )
+
+[node name="FogOverRooms" type="ColorRect" parent="GridViewport"]
+mouse_filter = 2
+script = ExtResource( 42 )
 
 [node name="GlowsOverRooms" type="Control" parent="GridViewport"]
 material = ExtResource( 38 )
@@ -1183,6 +1193,22 @@ margin_bottom = 72.0
 rect_min_size = Vector2( 0, 28 )
 custom_fonts/font = ExtResource( 9 )
 text = "Beds 0/0"
+
+[node name="PreparationBar" type="ProgressBar" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
+visible = false
+rect_min_size = Vector2( 0, 30 )
+mouse_filter = 2
+custom_styles/fg = ExtResource( 26 )
+custom_styles/bg = ExtResource( 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/PreparationBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_fonts/font = ExtResource( 9 )
+align = 1
+valign = 1
 
 [node name="Actions" type="HBoxContainer" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn"]
 margin_top = 190.0
@@ -2634,6 +2660,30 @@ margin_bottom = 98.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "On this work"
+
+[node name="PoolStatus" type="Label" parent="Overlay/ServicePanel"]
+visible = false
+anchor_right = 1.0
+margin_left = 24.0
+margin_top = 62.0
+margin_right = -76.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 10 )
+valign = 1
+clip_text = true
+
+[node name="PoolTip" type="TextureRect" parent="Overlay/ServicePanel"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -62.0
+margin_top = 64.0
+margin_right = -30.0
+margin_bottom = 96.0
+mouse_default_cursor_shape = 2
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 6
 
 [node name="CloseButton" type="TextureButton" parent="Overlay/ServicePanel"]
 anchor_left = 1.0

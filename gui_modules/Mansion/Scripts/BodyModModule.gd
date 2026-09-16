@@ -30,20 +30,37 @@ const COAT_PREFIX = 'coat_colour_'
 #the tail and the ears are painted from
 const COAT_PALETTE_STAT = 'body_color_tail'
 
-#What the room offers, in the order it offers it. A stat that belongs to one of LAYOUT's
-#submenus is drawn as a panel of pictures instead of a row, and every colour is drawn under
-#the part it paints - both are decided by LAYOUT, as on the creation screen.
-const BODY_STATS = ['height', 'head_size', 'body_shape', 'skin_coverage', 'ears', 'horns',
-	'tail', 'wings', 'eye_shape', 'eyeshape', 'eye_tex', 'eyebrows', 'nose', 'lips', 'chin',
+#What the room offers, in the order it offers it. A stat that belongs to one of the submenus is
+#drawn as a panel of pictures instead of a row, and every colour is drawn under the part it
+#paints - both are decided by LAYOUT, as on the creation screen. The body shape and the eye
+#shape are not on it: the room leaves those two as they are.
+const BODY_STATS = ['height', 'head_size', 'skin_coverage', 'ears', 'horns',
+	'tail', 'wings', 'eyeshape', 'eye_tex', 'eyebrows', 'nose', 'lips', 'chin',
 	'beard', 'hair_base', 'hair_base_length', 'hair_back', 'hair_back_length', 'hair_assist',
 	'hair_assist_length', 'tits_size', 'multiple_tits', 'multiple_tits_developed', 'ass_size',
 	'penis_type', 'penis_size', 'balls_size']
 
-#What the written description is built from - descriptions.descriptionorder. These are worth
-#offering even to a character the doll never draws: they still change what is said about them.
-const DESCRIBED_STATS = ['body_shape', 'horns', 'ears', 'skin_coverage', 'wings', 'tail',
+#The panels of pictures are the creation screen's, and one of the room's own: wings are picked
+#off pictures here, the way horns are.
+const EXTRA_SUBMENUS = [
+	{"id": "wings", "label": "CHARCREATE_MENU_WINGS", "stats": ["wings"]},
+]
+
+#What the written description is built from - descriptions.descriptionorder - less the two
+#shapes above. These are worth offering even to a character the doll never draws: they still
+#change what is said about them.
+const DESCRIBED_STATS = ['horns', 'ears', 'skin_coverage', 'wings', 'tail',
 	'height', 'tits_size', 'multiple_tits', 'ass_size', 'penis_type', 'penis_size',
-	'balls_size', 'eye_shape', 'eye_color', 'body_color_skin']
+	'balls_size', 'eye_color', 'body_color_skin']
+
+#With dolls switched off in the options there is no doll to show and none to photograph, so the room
+#offers only what the written description is made of, as plain rows, and the description itself stands
+#over the silhouette. The hair is the description's own length and style (the doll's cuts are derived
+#from them), the eyes are picked by the colour's name, which is what the text prints; the skin is left
+#out, since the doll's shades have no words in the description.
+const DESCRIPTION_ONLY_STATS = ['height', 'hair_length', 'hair_style', 'hair_color', 'eye_color', 'ears', 'horns',
+	'wings', 'tail', 'skin_coverage', 'tits_size', 'multiple_tits', 'multiple_tits_developed', 'ass_size',
+	'penis_type', 'penis_size', 'balls_size']
 
 #yes or no, so a box to tick
 const CHECK_STATS = ['multiple_tits_developed']
@@ -62,8 +79,6 @@ const PART_BEHIND_SLIDER = {
 #the sizes' own ladder. The descriptions file keys penis_size by type as well
 #(`human_small` ...) - that is prose about the pair, not a value the stat may hold.
 const SIZE_LADDER = ['small', 'average', 'big']
-#the male body the doll carries that no race rolls
-const EXTRA_BODY_SHAPES = ['femboy']
 const ABSENT_PART = ['', 'no', 'none']
 #parts a character may just as well not have: taking them off is a choice on their list
 const REMOVABLE_PARTS = ['horns', 'wings']
@@ -78,6 +93,11 @@ var updating_visual_controls = false
 var visual_insert_index = 0
 #a look that has been changed is written down when the chair is given up, not on every click
 var looks_changed = false
+#Opened by the ritual room's appearance change for the one character it has just readied, with no list to
+#pick anybody else from (open_for_rite); whoever sent them is called back as the window goes.
+var rite_subject_only = false
+var closed_target = null
+var closed_method = ''
 
 # Whether the picture tiles carry their value's name under them - a part code out of the data
 # files, which is what a developer needs and a player never should read.
@@ -94,10 +114,13 @@ func _ready():
 	gui_controller.add_close_button(self)
 	$Title.text = tr("BODYMOD_TITLE")
 	$Characters/Header.text = tr("BEAUTYPARLOR_CHARACTERS")
-	$FurryToggle.text = tr("BEAUTYPARLOR_FURRY")
-	globals.connecttexttooltip($FurryToggle, tr("BEAUTYPARLOR_FURRY_TOOLTIP"))
-	$FurryToggle.connect("toggled", self, "_on_furry_toggled")
 	$VisualSubmenu/Title/Close.connect("pressed", self, "_close_visual_submenu")
+	#The plain way out. Every change is already on the character, so Done only gives up the chair - the same
+	#as the close button in the corner, which is easy to miss. Looked for rather than assumed, as the node
+	#lands in the scene separately from this script.
+	if has_node("DoneButton"):
+		$DoneButton.text = tr("BODYMOD_DONE")
+		$DoneButton.connect("pressed", self, "hide")
 	preview_booth.connect("preview_ready", self, "_on_visual_preview_ready")
 	input_handler.connect("PortraitUpdate", self, "_refresh_row_icons")
 
@@ -105,14 +128,37 @@ func _ready():
 #### the window ####
 
 func open():
+	rite_subject_only = false
+	closed_target = null
+	closed_method = ''
+	_open_window()
+
+
+#The ritual room's appearance change sends its character here to settle the new look: the same menu,
+#without the list of everybody else. `method` is called on `target` when the window goes.
+func open_for_rite(subject, target, method):
+	rite_subject_only = true
+	closed_target = target
+	closed_method = method
+	if subject != person:
+		#the tiles were shot on the old head
+		preview_booth.forget()
+	person = subject
+	_open_window()
+
+
+func _open_window():
 	_close_visual_submenu()
 	if person != null and (!ResourceScripts.game_party.characters.has(person.id) \
 			or _block_reason(person) != ''):
 		person = null
+	$Characters.visible = !rite_subject_only
 	#shown before it is filled: the doll only stands itself up once it has a rect to stand in
 	show()
 	raise()
-	rebuild_characters()
+	if !rite_subject_only:
+		rebuild_characters()
+	refresh_subject_card()
 	refresh_all()
 	input_handler.append_not_duplicate(gui_controller.windows_opened, self)
 	_hide_clock()
@@ -150,6 +196,13 @@ func hide():
 	gui_controller.windows_opened.erase(self)
 	_restore_clock()
 	.hide()
+	#the ritual room's panel that sent the character here comes back
+	if closed_target != null and is_instance_valid(closed_target) and closed_method != '':
+		var target = closed_target
+		var method = closed_method
+		closed_target = null
+		closed_method = ''
+		target.call(method)
 
 
 func _custom_gui_controller_close():
@@ -159,11 +212,11 @@ func _custom_gui_controller_close():
 func refresh_all():
 	$Visuals.visible = person != null
 	$Empty.visible = person == null
-	refresh_furry_toggle()
 	if person == null:
 		$Empty.text = tr("BEAUTYPARLOR_PICKCHAR")
 		_close_visual_submenu()
 		preview.hide_band()
+		refresh_description()
 		return
 	#which options this character has at all depends on the character, so the rows are built
 	#for them rather than once for everybody
@@ -171,6 +224,7 @@ func refresh_all():
 	RebuildStatsContainer()
 	fill_all()
 	refresh_preview(true)
+	refresh_description()
 
 
 #### the people ####
@@ -187,9 +241,19 @@ func _block_reason(candidate):
 #or a game with paperdolls switched off, is still described in words - so the room still has
 #something to offer them, just less of it.
 func _uses_doll():
-	if person == null or input_handler.globalsettings.disable_paperdoll:
+	if person == null or _dolls_off():
 		return false
 	return !person.is_unique() or person.uses_paperdoll()
+
+
+#Dolls switched off in the options: nothing here draws or photographs one - see DESCRIPTION_ONLY_STATS.
+func _dolls_off():
+	return input_handler.globalsettings.disable_paperdoll
+
+
+#The rows the room builds, in the order it builds them.
+func _row_stats():
+	return DESCRIPTION_ONLY_STATS if _dolls_off() else BODY_STATS
 
 
 #What is worth putting in front of the player: everything the doll actually draws, plus
@@ -197,6 +261,8 @@ func _uses_doll():
 func _stat_is_offered(stat):
 	if person == null:
 		return false
+	if _dolls_off():
+		return DESCRIPTION_ONLY_STATS.has(stat)
 	if DESCRIBED_STATS.has(stat):
 		return true
 	#the colours are the doll's own; the description names only the skin and the eyes
@@ -262,6 +328,18 @@ func _refresh_row_icons(_who = null):
 	for row in character_list.get_children():
 		if row.has_meta('slave') and !row.is_queued_for_deletion():
 			row.get_node('Icon').texture = row.get_meta('slave').get_icon()
+	refresh_subject_card()
+
+
+#In place of the list, the one character a rite brought here. The card is the scene's `Subject`, shown only
+#then; looked for rather than assumed, as the node lands in the scene separately from this script.
+func refresh_subject_card():
+	if !has_node("Subject"):
+		return
+	$Subject.visible = rite_subject_only and person != null
+	if $Subject.visible:
+		$Subject/Portrait.texture = person.get_icon()
+		$Subject/Name.text = person.get_short_name()
 
 
 func _on_person_pressed(candidate):
@@ -298,8 +376,8 @@ func _values_for(stat):
 			return SIZE_LADDER.duplicate()
 		'skin_coverage':
 			#the fur masks are only drawn on the beastkin body, so a coat is offered to a
-			#beastkin (the furry switch above is how anybody else gets one) and every other
-			#race keeps the overlay its own data names
+			#beastkin (the ritual room's form change is how anybody else becomes one) and
+			#every other race keeps the overlay its own data names
 			if str(person.get_stat('race')).begins_with('Beastkin'):
 				var coats = []
 				for value in ResourceScripts.descriptions.bodypartsdata.skin_coverage:
@@ -322,6 +400,15 @@ func _values_for(stat):
 			if int(person.get_stat('multiple_tits')) > 0:
 				return [false, true]
 			return []
+		'hair_color':
+			#the description's own names for hair, which no one table lists whole: every race's list together
+			var colours = []
+			for race in races.racelist.values():
+				for entry in race.get('bodyparts', {}).get('hair_color', []):
+					var value = entry[0] if entry is Array else entry
+					if !colours.has(value):
+						colours.append(value)
+			return colours
 	if PART_BEHIND_SLIDER.has(stat) \
 			and str(person.get_stat(PART_BEHIND_SLIDER[stat])) in ABSENT_PART:
 		return []
@@ -349,10 +436,14 @@ func _values_for(stat):
 				continue
 			if !res.has(value):
 				res.append(value)
-	if stat == 'body_shape':
-		for extra in EXTRA_BODY_SHAPES:
-			if !res.has(extra):
-				res.append(extra)
+	#Neither table knows the cuts the export gained after it was written - the monofringe cuts, hime - so the
+	#hair layers also offer every piece the art has that no name above reaches yet.
+	if stat in ['hair_base', 'hair_back', 'hair_assist']:
+		CATALOGUE.use('male' if str(person.get_stat('sex')) == 'male' else 'female')
+		var pieces = CATALOGUE.parts(str(CHARACTER_MAP.FEEDS[stat]))
+		for value in CHARACTER_MAP.values_for_unlisted_parts(stat, res, pieces):
+			if LAYOUT.offered(stat, value) and !res.has(value):
+				res.append(value)
 	#the tables' own unset is kept off every other list; for these it is "none", and it goes first
 	if stat in REMOVABLE_PARTS:
 		res.push_front('')
@@ -431,7 +522,7 @@ func _raw_value(stat):
 
 func build_possible_vals():
 	possible_vals.clear()
-	for stat in BODY_STATS:
+	for stat in _row_stats():
 		if _stat_is_offered(stat):
 			possible_vals[stat] = _values_for(stat)
 	for colour in LAYOUT.COLOUR_FOLLOWS:
@@ -521,6 +612,9 @@ func visual_stat_name(stat):
 
 
 func visual_value_name(stat, value):
+	#the old hair colours have names of their own, the ones the description prints
+	if stat == 'hair_color':
+		return tr("HAIRCOLOR_" + str(value).to_upper())
 	#a part taken off reads the same on its row as on its button
 	if stat in REMOVABLE_PARTS and (value == null or str(value) in ABSENT_PART):
 		return tr("NONE")
@@ -546,6 +640,17 @@ func RebuildStatsContainer():
 	visual_submenu_buttons.clear()
 	visual_submenu_tiles.clear()
 	visual_insert_index = 0
+	#First, for a character with artwork of their own, the switch between that artwork and the
+	#doll - the same one the character screen's customization carries. It decides what else is
+	#on the list, so it stands above all of it.
+	paperdoll_switch = null
+	#with dolls switched off everyone is described in words, and the switch has nothing to switch to
+	if person.is_unique() and !_dolls_off():
+		paperdoll_switch = duplicate_visual_template('Checkbox')
+		paperdoll_switch.text = tr("UPAPERDOLL_BUTTON_TEXT")
+		paperdoll_switch.pressed = bool(person.get_stat('use_paperdoll'))
+		globals.connecttexttooltip(paperdoll_switch, tr("UPAPERDOLL_BUTTON_TOOLTIP"))
+		paperdoll_switch.connect('toggled', self, '_on_paperdoll_toggled')
 	# A colour with no owner (the skin) gets its own row at the top. All the others are
 	# inserted immediately after the option they paint.
 	for colour in LAYOUT.COLOUR_FOLLOWS:
@@ -553,7 +658,7 @@ func RebuildStatsContainer():
 				and possible_vals.has(colour) and !possible_vals[colour].empty():
 			var skin_node = duplicate_visual_template('Colour')
 			setup_visual_stat_node(skin_node, colour, 'Colour')
-	for menu in LAYOUT.SUBMENUS:
+	for menu in _submenus():
 		if !_menu_is_offered(menu):
 			continue
 		var menu_button = duplicate_visual_template('SubmenuButton')
@@ -567,8 +672,9 @@ func RebuildStatsContainer():
 			#sits under the part it paints
 			if str(stat) == 'skin_coverage':
 				_append_coat_colour_rows()
-	for stat in BODY_STATS:
-		if LAYOUT.COLOUR_FOLLOWS.has(stat) or LAYOUT.submenu_of(stat) != '':
+	for stat in _row_stats():
+		#a colour gets a row of its own only where there is no wheel for it - see build_node_for_stat
+		if (LAYOUT.COLOUR_FOLLOWS.has(stat) and !_dolls_off()) or _submenu_of(stat) != '':
 			continue
 		if !visual_option_is_shown(stat):
 			continue
@@ -753,10 +859,12 @@ func build_node_for_stat(stat):
 		return
 	var val = person.get_stat(stat)
 	var node = visual_stat_nodes.get(str(stat))
-	if LAYOUT.COLOUR_FOLLOWS.has(stat):
+	#With dolls switched off a colour is picked by its name on an arrow row: the description prints the
+	#stored value, and a wheel's "#rrggbb" would read as exactly that in the text.
+	if LAYOUT.COLOUR_FOLLOWS.has(stat) and !_dolls_off():
 		build_selectable_node(stat)
 		return
-	var submenu_id = LAYOUT.submenu_of(stat)
+	var submenu_id = _submenu_of(stat)
 	if submenu_id != '':
 		refresh_visual_submenu_button(submenu_id)
 		if node != null:
@@ -837,6 +945,12 @@ func change_value_node(stat, step): #for the arrow rows and the sliders
 		id = values.size() - 1
 	if id >= values.size():
 		id = 0
+	#the description's hair: several of its names come out as the same hair, and the step goes on past them -
+	#see ch_stats.step_described_hair; when no name changes anything, the row stays as it was
+	if stat in ['hair_length', 'hair_style', 'hair_color']:
+		id = person.statlist.step_described_hair(stat, values, id, step)
+		if id == -1:
+			return
 	_write_stat(stat, values[id])
 
 
@@ -878,6 +992,7 @@ func _write_stat(stat, value):
 		refresh_all()
 		return
 	refresh_visual_submenu_previews()
+	refresh_description()
 
 
 func refresh_following_colours(stat):
@@ -912,7 +1027,7 @@ func open_visual_submenu_panel(menu_id):
 	$VisualSubmenu/Title/Label.text = tr(menu.label)
 	input_handler.ClearContainer(visual_submenu_rows, ['StatRow'])
 	visual_submenu_tiles.clear()
-	for submenu_data in LAYOUT.SUBMENUS:
+	for submenu_data in _submenus():
 		for submenu_stat in submenu_data.stats:
 			visual_stat_nodes.erase(submenu_stat)
 	for stat in menu.stats:
@@ -1009,33 +1124,26 @@ func _close_visual_submenu():
 
 
 func get_visual_submenu_data(menu_id):
-	for menu in LAYOUT.SUBMENUS:
+	for menu in _submenus():
 		if str(menu.id) == str(menu_id):
 			return menu
 	return {}
 
 
-#### the furry form ####
+#Every panel of pictures the room has: the creation screen's, then its own.
+func _submenus():
+	#with dolls switched off there is nothing to take the pictures with, so every option is a plain row
+	if _dolls_off():
+		return []
+	return LAYOUT.SUBMENUS + EXTRA_SUBMENUS
 
-func refresh_furry_toggle():
-	var shown = person != null and person.has_furry_counterpart()
-	$FurryToggle.visible = shown
-	if shown:
-		$FurryToggle.set_pressed_no_signal(person.is_furry_form())
 
-
-func _on_furry_toggled(pressed):
-	if person == null:
-		return
-	if !person.set_furry_form(pressed):
-		refresh_furry_toggle()
-		return
-	looks_changed = true
-	#the coat, the muzzle and the limbs all changed, and so did the lists behind their rows
-	_close_visual_submenu()
-	preview_booth.forget()
-	#a flipped form draws a different face out of different art, so the rows themselves change
-	refresh_all()
+#Which panel an option belongs to, or '' when it stays on the main list.
+func _submenu_of(stat):
+	for menu in _submenus():
+		if str(stat) in menu.stats:
+			return str(menu.id)
+	return ''
 
 
 #### the doll, and writing a new look down ####
@@ -1059,6 +1167,18 @@ func refresh_preview(force):
 	preview.show_for(person)
 
 
+#With dolls switched off the character is a silhouette, and what the room changes is what is said about
+#them, so the description stands over the silhouette and is written again after every change. The node is
+#the scene's Preview/Description, looked for rather than assumed.
+func refresh_description():
+	if !preview.has_node("Description"):
+		return
+	var description = preview.get_node("Description")
+	description.visible = person != null and _dolls_off()
+	if description.visible:
+		description.bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
+
+
 #The portrait on file was taken before the change, and every other screen showing this
 #character is holding the old doll. Done when the chair is given up rather than on every
 #click: a reshoot builds the booth and costs a few frames.
@@ -1068,6 +1188,28 @@ func _commit_looks():
 	looks_changed = false
 	input_handler.reshoot_portrait(person)
 	input_handler.emit_signal('update_ragdoll')
+	_rebuild_slave_list()
+
+
+func _rebuild_slave_list():
 	var mansion = get_parent()
 	if mansion != null and mansion.get('SlaveListModule') != null:
 		mansion.SlaveListModule.rebuild()
+
+
+#### the doll or the artwork ####
+
+#the switch at the top of a unique character's list, while there is one
+var paperdoll_switch = null
+
+
+#The same switch as the character screen's: it is written on the character, so every screen
+#that draws them follows it and it survives a save. What the room offers changes with it - the
+#doll's parts, or only what the description is built from - so the list is built again.
+func _on_paperdoll_toggled(pressed):
+	if person == null or bool(person.get_stat('use_paperdoll')) == pressed:
+		return
+	person.set_use_paperdoll(pressed)
+	_close_visual_submenu()
+	refresh_all()
+	_rebuild_slave_list()

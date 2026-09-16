@@ -153,6 +153,13 @@ var waitress_training_point_chance = 0.5 #chance for a slave currently in traini
 var petbeast_desirability_per_tame_factor = 2.0 #extra desirability per tame factor, petbeast class only
 var petbeast_service_tame_factor_mult = 1.0 #extra non-sex service income per tame factor, petbeast class only
 
+#service gold pool: what a settlement's clients can pay out over one week, refilled every week start.
+#max = base + randi_range(0, random), rolled again at every refill. A settlement with no entry here has no limit.
+var service_gold_limits = {
+	aliron = {base = 5000, random = 500},
+}
+var service_gold_exhausted_mult = 0.1 #share of a payout still paid for the part the settlement's pool cannot cover
+
 #harlot & courtesan trait perks
 var harlot_desirability_cap = 75.0
 var harlot_proc_chance = 0.5

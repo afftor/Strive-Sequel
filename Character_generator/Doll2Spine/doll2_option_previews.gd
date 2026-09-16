@@ -47,10 +47,17 @@ const FRAMING = {
 	# a tail is read off itself: it hangs where it hangs, and framing it against
 	# the body would leave the shape a few pixels across
 	"tails": {"slots": ["tails"], "fill": 0.85},
+	# and so are wings, which spread wider than the body standing in front of them
+	"wings": {"slots": ["wings"], "fill": 0.9},
 	# a coat is read off the body, not the head
 	"skin_coverage": {"slots": ["torso", "breasts", "belly", "pelvis"], "fill": 0.95},
 }
 const HEAD_FALLBACK = {"slots": ["head", "head_skull", "face"], "fill": 0.8}
+# A picture of wearing none of a part, where a bare head says nothing: no wings is
+# the figure the wings would spread from, at about the size the winged ones show it.
+const EMPTY_FRAMING = {
+	"wings": {"slots": ["head_skull", "torso", "pelvis"], "fill": 0.8},
+}
 
 var _viewport = null
 var _doll = null
@@ -69,10 +76,10 @@ var _built = "" # ...and what the doll in the booth is currently wearing
 # picture already taken is of somebody else and is thrown away.
 const LOOK_STATS = [
 	"race", "sex", "height", "body_color_skin", "body_color_lips", "body_color_ears",
-	"body_color_horns", "body_color_tail", "eye_color", "skin_coverage",
+	"body_color_horns", "body_color_tail", "body_color_wings", "eye_color", "skin_coverage",
 	"hair_base_color_1", "hair_base_color_2", "hair_back_color_1", "hair_back_color_2",
 	"hair_assist_color_1", "hair_assist_color_2", "hair_facial_color",
-	"chin", "eyeshape", "eye_tex", "eyebrows", "lips", "nose", "ears", "horns",
+	"chin", "eyeshape", "eye_tex", "eyebrows", "lips", "nose", "ears", "horns", "wings",
 	"hair_base", "hair_back", "hair_assist", "beard",
 	"hair_base_length", "hair_back_length", "hair_assist_length",
 ]
@@ -86,9 +93,11 @@ func _look_of(character):
 
 
 # `parts` is what to photograph, in the order they should appear.  Anything
-# already taken comes back at once; the rest arrive as they are shot.
+# already taken comes back at once; the rest arrive as they are shot.  With dolls
+# switched off in the options nothing is photographed at all.
 func request(character, group_id, parts):
-	if character == null:
+	var handler = get_node_or_null("/root/input_handler")
+	if character == null or (handler != null and bool(handler.globalsettings.get("disable_paperdoll", false))):
 		return
 	var look = _look_of(character)
 	if _character != character or look != _look:
@@ -184,6 +193,8 @@ func _build():
 	_doll.rect_size = CANVAS
 	_doll.portrait_mode = true
 	_doll.show_undress_buttons = false
+	# a booth's doll only stands for its picture, so it never moves - see `animated`
+	_doll.animated = false
 	_viewport.add_child(_doll)
 	# after it is in the tree: entering re-reads the scene's own margins and
 	# would put the size back to what the .tscn says
@@ -247,6 +258,8 @@ func _shoot(group_id, part_id):
 	_doll.model._update_animated_pose()
 	var framing = FRAMING.get(str(group_id), HEAD_FALLBACK)
 	if _doll._bounds_of(framing.slots).size.y <= 0.0:
-		framing = HEAD_FALLBACK # nothing worn: a bare head still reads as `none`
+		# nothing worn: a bare head still reads as `none`, unless the part has a
+		# stand-in of its own
+		framing = EMPTY_FRAMING.get(str(group_id), HEAD_FALLBACK)
 	_doll.model.scale = Vector2.ONE
 	_doll.frame_on(framing.slots, framing.fill)

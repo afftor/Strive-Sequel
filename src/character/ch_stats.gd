@@ -9,6 +9,8 @@ var parent: WeakRef = null
 var statlist = Statlist_init.template_direct.duplicate(true) 
 var exterior = Statlist_init.sex_binded_exterior.duplicate(true) 
 var exterior_alt = {}
+#The first name the character has gone by as each sex - see custom_effects.swap_sex_of().
+var sex_names = {}
 var sexexp = Statlist_init.sexexp.duplicate(true)
 var sex_skills = Statlist_init.sex_skills.duplicate(true)
 var sex_training = Statlist_init.sex_training.duplicate(true)
@@ -47,6 +49,8 @@ func deserialize(savedict):
 				exterior_alt[stat] = savedict.exterior_alt[stat]
 			elif savedict.statlist.has(stat):
 				exterior_alt[stat] = savedict.statlist[stat]
+	if savedict.has('sex_names'):
+		sex_names = savedict.sex_names.duplicate()
 	for stat in sexexp:
 		if savedict.sexexp.has(stat):
 			sexexp[stat] = savedict.sexexp[stat].duplicate(true)
@@ -104,6 +108,16 @@ func swap_alternate_exterior(): #only on sex change due to current implementatio
 	else:
 		exterior = exterior_alt
 		exterior_alt = tmp
+
+
+#The first name kept for a sex: remember_name_for_sex() files the current name under the sex the
+#character has now (or the one given), name_for_sex() hands it back, '' when none was ever filed.
+func remember_name_for_sex(sex = null):
+	sex_names[str(statlist.sex if sex == null else sex)] = statlist.name
+
+
+func name_for_sex(sex):
+	return str(sex_names.get(str(sex), ''))
 
 
 func recreate_exterior(): #only on sex change
@@ -458,7 +472,8 @@ func mouth_fur_colour():
 # add it anywhere.  Getting that backwards is what left the second elven ear
 # wearing fur colour on bare skin until it was noticed.  `doll2_view.gd` keeps
 # the same list in the doll's own part ids, as HUMANOID_EARS.
-const SKIN_EARS = ['human', 'elven', 'elven2', 'orcish', 'goblin']
+#`normal` is the human ear the races roll; `human` is its name in the descriptions
+const SKIN_EARS = ['normal', 'human', 'elven', 'elven2', 'orcish', 'goblin']
 # Ears the export has no art for at all.  `doll_character_map.gd` maps both of
 # these to the empty part on purpose - `03_ears/` in the atlas carries twenty
 # pairs and neither of them is among them - so the doll wears nothing there and
@@ -826,6 +841,49 @@ func write_derived_hair(h_stat, value):
 		statlist[h_stat] = value
 
 
+#What the hair the description speaks of - hair_length, hair_style, hair_color - is written into. Trying one of
+#their values writes all of these, so they are what is put back when no value changes anything.
+const DESCRIBED_HAIR_SOURCES = {
+	hair_length = ['hair_length', 'hair_style', 'hair_base', 'hair_assist', 'hair_back', 'hair_fringe',
+		'hair_base_length', 'hair_fringe_length', 'hair_back_length', 'hair_assist_length'],
+	hair_style = ['hair_length', 'hair_style', 'hair_base', 'hair_assist', 'hair_back', 'hair_fringe',
+		'hair_base_length', 'hair_fringe_length', 'hair_back_length', 'hair_assist_length'],
+	hair_color = ['hair_color', 'hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1',
+		'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2'],
+}
+
+
+#The description's hair is worked back out of the doll's (get_combined_hairs_data), and several of its names come
+#out as the same hair: `shoulder` can read back `neck`, and twin braids read `ear` at any length. Tries
+#values[index], then the next ones in `direction`, and keeps the first that changes what is said, returning its
+#index. When none does, the hair is put back exactly as it was - the doll's own cuts and colours as well, which
+#trying the values overwrote - and -1 comes back.
+func step_described_hair(stat, values, index, direction):
+	var person = parent.get_ref()
+	var kept = {}
+	for h_stat in DESCRIBED_HAIR_SOURCES[stat]:
+		kept[h_stat] = _stored_hair(h_stat)
+	var shown = str(person.get_stat(stat))
+	for _attempt in range(values.size()):
+		person.set_stat(stat, values[index])
+		if str(person.get_stat(stat)) != shown:
+			return index
+		index = wrapi(index + (1 if direction >= 0 else -1), 0, values.size())
+	for h_stat in kept:
+		if str(statdata.statdata[h_stat].get('container', '')) == 'exterior':
+			exterior[h_stat] = kept[h_stat]
+		else:
+			statlist[h_stat] = kept[h_stat]
+	return -1
+
+
+#A hair stat as it is stored, wherever write_derived_hair keeps it.
+func _stored_hair(h_stat):
+	if str(statdata.statdata[h_stat].get('container', '')) == 'exterior':
+		return exterior.get(h_stat)
+	return statlist.get(h_stat)
+
+
 func get_combined_hairs_data():
 	var res = {
 		hair_color ='',
@@ -846,7 +904,8 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-		'dopple', 'lion', 'default':
+		#a monofringe cut is its plain cut with a single lock of fringe, and reads as that cut
+		'dopple', 'lion', 'default', 'default_monofringe':
 			res.hair_style = 'straight'
 			match exterior.hair_base_length:
 				'long':
@@ -864,7 +923,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-		'fringe':
+		'fringe', 'fringe_monofringe':
 			res.hair_style = 'fringe'
 			match exterior.hair_base_length:
 				'long':
@@ -873,7 +932,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-		'fringe2':
+		'fringe2', 'fringe_2', 'fringe_2_monofringe':
 			res.hair_style = 'crownbraid'
 			match exterior.hair_base_length:
 				'long':
@@ -882,7 +941,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-		'disheveled':
+		'disheveled', 'disheveled_monofringe':
 			res.hair_style = 'messy'
 			match exterior.hair_base_length:
 				'long':
@@ -929,7 +988,8 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-		'bobcut':
+		#`kare` is the name the bob was offered under before the September export renamed the art
+		'bobcut', 'kare', 'bobcut_monofringe':
 			res.hair_style = 'bob'
 			match exterior.hair_base_length:
 				'long':
@@ -1857,7 +1917,15 @@ func _pick_race_part(template, stat):
 	return input_handler.weightedrandom(list)
 
 
-func set_furry_form(furry):
+#A beastkin mouth: one of the expressions, or 'none' - which the beastkin lips table also rolls, as the muzzle
+#draws a mouth of its own. On a human face 'none' leaves no mouth at all.
+func _is_beast_mouth(lips):
+	return str(lips).begins_with('beastkin') or str(lips) == 'none'
+
+
+#first_coat gives a new beastkin the first coat its race lists instead of a rolled one (the ritual
+#room's form change, body_rites.gd).
+func set_furry_form(furry, first_coat = false):
 	furry = bool(furry)
 	if is_furry_form() == furry:
 		return false
@@ -1871,7 +1939,8 @@ func set_furry_form(furry):
 		#a coat the character already wears is kept when the race lists it, else one is rolled;
 		#going through the setter also gives the tail the coat's colour, as creation does
 		if parts.has('skin_coverage') and !(str(statlist.skin_coverage) in _race_part_values(template, 'skin_coverage')):
-			update_stat('skin_coverage', _pick_race_part(template, 'skin_coverage'), 'set')
+			var coat = _race_part_values(template, 'skin_coverage')[0] if first_coat else _pick_race_part(template, 'skin_coverage')
+			update_stat('skin_coverage', coat, 'set')
 			#the paint belonged to the coat that was just replaced
 			statlist.body_color_coat = ''
 		#the muzzle and the limbs, only where the face is still a human one; a Bunny or a Tanuki
@@ -1898,9 +1967,13 @@ func set_furry_form(furry):
 		#the other sex's stored face would bring the muzzle back after a swap
 		if exterior_alt is Dictionary and exterior_alt.has('chin') and str(exterior_alt.chin) in FURRY_STALE_CHINS:
 			exterior_alt.chin = 'default'
-		if str(statlist.nose) == 'beastkin':
+		if exterior_alt is Dictionary and str(exterior_alt.get('nose', '')) == 'beastkin':
+			exterior_alt.nose = 'default'
+		if exterior_alt is Dictionary and _is_beast_mouth(exterior_alt.get('lips', '')):
+			exterior_alt.lips = 'style1' if str(statlist.sex) == 'male' else 'style6'
+		if str(get_stat('nose')) == 'beastkin':
 			update_stat('nose', 'default', 'set')
-		if str(statlist.lips).begins_with('beastkin'):
+		if _is_beast_mouth(get_stat('lips')):
 			#the first human mouth of each sex's own table
 			update_stat('lips', 'style6' if str(statlist.sex) == 'male' else 'style1', 'set')
 		if str(statlist.penis_type) in FURRY_PENIS_TYPES:

@@ -70,6 +70,9 @@ func _build():
 	_doll.rect_min_size = Vector2.ZERO #the scene asks for a big frame; a shot is small
 	_doll.rect_size = CANVAS
 	_doll.portrait_mode = true
+	#it never moves: the viewport renders it whether anyone looks or not, so every
+	#animated frame would be a whole skin solved for nothing
+	_doll.animated = false
 	_viewport.add_child(_doll)
 	#entering the tree re-reads the scene's margins, so the canvas size is set
 	#again once it is in there

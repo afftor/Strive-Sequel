@@ -123,6 +123,33 @@ var bone_parents = {}
 # removed before its child is placed so it cannot turn into length or shear.
 var post_ik_visual_scales = {}
 var applying_post_ik_visual_scales = false
+# The children that keep only part of their parent's basis in `_set_bone_world`,
+# by their name on this rig, each with the parent it applies under.  Found once
+# per rig in `_load_source`: worked out inline it was a dictionary lookup and up to
+# three `rig_bone` calls on every one of the thousand-odd bone writes of a frame.
+var butt_compensated_children = {}
+var shoulder_compensated_children = {}
+# Bone names by their index in the export: a skinning weight names its bone by index.
+var bone_names_by_index = []
+# The display scale of `display_scale_tier`, kept because the modifiers rebuild
+# the tier table on every ask.
+var display_scale_tier = "#unset"
+var display_scale_value = 1.0
+# Spine's RRGGBBAA colour strings, each parsed once.
+var spine_colours = {}
+# The pose every solve starts from - see `_setup_bones` - with what it was worked
+# out for.
+var setup_pose = {}
+var setup_pose_names = []
+var setup_pose_ready = false
+var setup_pose_butt = 1.0
+var setup_pose_shoulders = 1.0
+# Walks of the skeleton that depend on it alone, kept by the bones they start from:
+# see `_descendants_below`, `_resolve_subtree` and `_keyed_bones`.  Emptied with the
+# skeleton.
+var descendants_below = {}
+var subtree_under = {}
+var keyed_bones_of = {}
 # Fur or scale pattern painted over the body, "" for bare skin, plus the colour
 # of each of its layers.
 var coverage_id = ""
@@ -205,6 +232,14 @@ var pose_transition_elapsed = POSE_TRANSITION_DURATION
 var pose_transition_sample = {}
 var pose_transition_sample_key = ""
 var emotion_transition_from = {}
+# The bones an emotion crossfade may ease, worked out once per rig.  The fade
+# starts from the pose the doll was in, and easing every bone of that sample held
+# the whole body back for its length: the idle went on running while the doll
+# stayed where the face changed, and the parts the idle swings hardest - the
+# breasts, and the nipples on them - lurched and then caught up.  An emotion is an
+# overlay on a pose, so only the bones the emotions themselves key have anything
+# to ease; everything else follows the live sample.
+var emotion_eased_bones = null
 var emotion_transition_elapsed = EMOTION_TRANSITION_DURATION
 var emotion_transition_sample = {}
 var emotion_transition_sample_key = ""
@@ -748,6 +783,13 @@ func _load_source():
 	asset_dir = get_script().resource_path.get_base_dir() + "/"
 	var source = DOLLS.doll(doll_id)
 	contract = source.contract
+	_find_compensated_bones()
+	# a new rig, or the same one read again: nothing kept from the last skeleton holds
+	setup_pose_ready = false
+	descendants_below = {}
+	subtree_under = {}
+	keyed_bones_of = {}
+	emotion_eased_bones = null
 	bone_parents.clear()
 	handle_definitions = contract.HANDLES.duplicate(true)
 	CATALOGUE.use(doll_id)
@@ -761,6 +803,9 @@ func _load_source():
 	if shared.empty():
 		return
 	skeleton = shared.skeleton
+	bone_names_by_index = []
+	for definition in skeleton.get("bones", []):
+		bone_names_by_index.append(definition.get("name", ""))
 	# A different rig keys different bones, and the sample is keyed only by which
 	# animations are running and when - two dolls both sitting at time 0 of an
 	# animation they both name `idle1` would otherwise share one.
@@ -987,13 +1032,44 @@ func _pose_for(slot):
 
 
 func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
+	_setup_bones()
 	bones.clear()
 	post_ik_visual_scales.clear()
 	applying_post_ik_visual_scales = false
+	for name in setup_pose_names:
+		bones[name] = setup_pose[name].duplicate()
+	# The timelines and the modifiers write the bones' own values, and the modifier
+	# pass re-derives the skeleton from them once, after both.
+	var keyed = _apply_active_bone_timelines()
+	_apply_bone_modifiers(layer_factors, layer_turns, keyed)
+	_apply_pushables()
+	_apply_native_handle_targets()
+	var constraints = skeleton.get("ik", []).duplicate()
+	constraints.sort_custom(self, "_sort_ik_constraints")
+	for constraint in constraints:
+		_apply_ik_constraint(constraint)
+	_apply_hand_handles()
+	_apply_post_ik_visual_scales()
+
+
+# Every bone at its setup values and solved: the pose every solve starts from.  It
+# reads nothing an animation moves - only the export, the rig's names and, through
+# the basis compensation in `_set_bone_world`, the butt and shoulder sliders - so it
+# is kept and worked out again only when one of those changes.  Solving it at the
+# start of every pass was over 3 ms a frame.
+func _setup_bones():
+	var butt = float(proportions.get("butt", 1.0))
+	var shoulders = float(proportions.get("shoulders", 1.0))
+	if setup_pose_ready and setup_pose_butt == butt and setup_pose_shoulders == shoulders:
+		return
+	bones.clear()
+	post_ik_visual_scales.clear()
+	applying_post_ik_visual_scales = false
+	setup_pose_names = []
 	var index = 0
 	for definition in skeleton.get("bones", []):
 		var name = definition.get("name", "bone_%d" % index)
-		bones[name] = {"definition": definition, "index": index}
+		bones[name] = {"definition": definition, "index": index, "parent_name": definition.get("parent", "")}
 		_set_bone_world(
 			name,
 			float(definition.get("x", 0.0)),
@@ -1004,17 +1080,14 @@ func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
 			float(definition.get("shearX", 0.0)),
 			float(definition.get("shearY", 0.0))
 		)
+		setup_pose_names.append(name)
 		index += 1
-	_apply_active_bone_timelines()
-	_apply_bone_modifiers(layer_factors, layer_turns)
-	_apply_pushables()
-	_apply_native_handle_targets()
-	var constraints = skeleton.get("ik", []).duplicate()
-	constraints.sort_custom(self, "_sort_ik_constraints")
-	for constraint in constraints:
-		_apply_ik_constraint(constraint)
-	_apply_hand_handles()
-	_apply_post_ik_visual_scales()
+	setup_pose = {}
+	for name in setup_pose_names:
+		setup_pose[name] = bones[name].duplicate()
+	setup_pose_butt = butt
+	setup_pose_shoulders = shoulders
+	setup_pose_ready = true
 
 
 # IK must never use a cosmetic thickness as reach.  Rebuild the final hierarchy
@@ -1042,7 +1115,7 @@ func _apply_post_ik_visual_scales():
 	applying_post_ik_visual_scales = false
 
 
-func _apply_bone_modifiers(layer_factors = {}, layer_turns = {}):
+func _apply_bone_modifiers(layer_factors = {}, layer_turns = {}, resolve = false):
 	# Every active modifier contributes a multiplier and they compose, so no
 	# modifier can silently discard another one acting on the same bone.
 	var factors = MODIFIERS.bone_factors(proportions, height_tier, contract.CONTRACT_ID)
@@ -1080,7 +1153,7 @@ func _apply_bone_modifiers(layer_factors = {}, layer_turns = {}):
 		var bone = bones[bone_name]
 		var factor = factors.get(bone_name, Vector2.ONE)
 		var offset = offsets.get(bone_name, Vector2.ZERO)
-		_set_bone_world(
+		_set_bone_local(
 			bone_name,
 			float(bone.local_x) + offset.x, float(bone.local_y) + offset.y,
 			float(bone.local_rotation) + float(layer_turns.get(bone_name, 0.0)),
@@ -1088,7 +1161,8 @@ func _apply_bone_modifiers(layer_factors = {}, layer_turns = {}):
 			float(bone.local_scale_y) * factor.y,
 			float(bone.local_shear_x), float(bone.local_shear_y)
 		)
-	if !touched.empty():
+	# `resolve` is the timelines' re-derive, left to happen here along with this one.
+	if resolve or !touched.empty():
 		_resolve_bone_hierarchy()
 	if !world_offsets.empty():
 		for bone_name in world_offsets.keys():
@@ -1119,7 +1193,10 @@ func _resolve_bone_hierarchy():
 
 
 func _display_scale():
-	return DISPLAY_SCALE * float(MODIFIERS.display_scale(height_tier))
+	if height_tier != display_scale_tier:
+		display_scale_tier = height_tier
+		display_scale_value = DISPLAY_SCALE * float(MODIFIERS.display_scale(height_tier))
+	return display_scale_value
 
 
 # Bones a running animation keys, plus - and this is the part that is easy to
@@ -1127,22 +1204,23 @@ func _display_scale():
 # not keyed and so is never revisited, and it keeps the world transform it was
 # given under the setup pose.  On the arm-swinging idles that left the wrist
 # 52-74 px from the hand it belongs to.  The IK pass and the modifier pass
-# already re-solve their descendants; so does this one now.
+# already re-solve their descendants.  This one writes the keyed bones' own values
+# only and leaves the re-derive of the whole skeleton to `_apply_bone_modifiers`,
+# which does it once after its own writes.  Answers whether anything was sampled.
 func _apply_active_bone_timelines():
 	var sample = _sampled_bone_timelines()
 	if sample.empty():
-		return
+		return false
 	for name in sample.keys():
 		if !bones.has(name):
 			continue
 		var values = sample[name]
-		var bone = bones[name]
-		_set_bone_world(
+		_set_bone_local(
 			name, values[0], values[1], values[2],
 			values[3], values[4],
 			values[5], values[6]
 		)
-	_resolve_bone_hierarchy()
+	return true
 
 
 # The keyed bones as the timelines have them at this instant, worked out once per
@@ -1205,7 +1283,14 @@ func _emotion_bone_sample(target):
 		names[name] = true
 	var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
 	amount = amount * amount * (3.0 - 2.0 * amount)
+	var eased = _emotion_eased_bones()
 	for name in names.keys():
+		# a bone no emotion keys is nobody's to ease: it is the pose's own, and
+		# holding it back is what stalled the idle for the length of the fade
+		if !eased.has(name):
+			if target.has(name):
+				emotion_transition_sample[name] = target[name]
+			continue
 		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0])
 		var first = emotion_transition_from.get(name, setup)
 		var second = target.get(name, setup)
@@ -1221,14 +1306,31 @@ func _emotion_bone_sample(target):
 	return emotion_transition_sample
 
 
+# Every bone any emotion of this rig keys, which is the whole of what an emotion
+# crossfade has to ease.  Kept per rig beside the other skeleton walks and thrown
+# away with them in `_load_source`.
+func _emotion_eased_bones():
+	if emotion_eased_bones != null:
+		return emotion_eased_bones
+	emotion_eased_bones = {}
+	var animations = skeleton.get("animations", {})
+	for animation_name in animations.keys():
+		if !_is_emotion_animation(animation_name):
+			continue
+		for bone_name in animations[animation_name].get("bones", {}).keys():
+			emotion_eased_bones[bone_name] = true
+	return emotion_eased_bones
+
+
 func _lerp_degrees(first, second, amount):
 	var difference = fposmod(second - first + 180.0, 360.0) - 180.0
 	return first + difference * amount
 
 
 func _sample_current_bone_timelines():
+	var active = _ordered_active_animations()
 	var key = ""
-	for animation_name in _ordered_active_animations():
+	for animation_name in active:
 		key += "%s@%.6f|" % [animation_name, float(animation_times.get(animation_name, 0.0))]
 	# An empty key is never a hit: `bone_sample_key = ""` is how callers throw the
 	# sample away, and it is also the key of "nothing is running".  Taken as a hit,
@@ -1239,22 +1341,20 @@ func _sample_current_bone_timelines():
 	bone_sample = {}
 	if key == "":
 		return bone_sample
-	for animation_name in _ordered_active_animations():
+	for animation_name in active:
 		var animation = skeleton.get("animations", {}).get(animation_name, {})
 		var bone_timelines = animation.get("bones", {})
 		var time = float(animation_times.get(animation_name, 0.0))
-		for definition in skeleton.get("bones", []):
-			var name = definition.get("name", "")
-			if !bone_timelines.has(name):
-				continue
-			var x = float(definition.get("x", 0.0))
-			var y = float(definition.get("y", 0.0))
-			var rotation = float(definition.get("rotation", 0.0))
-			var scale_x = float(definition.get("scaleX", 1.0))
-			var scale_y = float(definition.get("scaleY", 1.0))
-			var shear_x = float(definition.get("shearX", 0.0))
-			var shear_y = float(definition.get("shearY", 0.0))
-			var channels = bone_timelines[name]
+		for keyed in _keyed_bones(animation_name, bone_timelines):
+			var name = keyed[0]
+			var x = keyed[1]
+			var y = keyed[2]
+			var rotation = keyed[3]
+			var scale_x = keyed[4]
+			var scale_y = keyed[5]
+			var shear_x = keyed[6]
+			var shear_y = keyed[7]
+			var channels = keyed[8]
 			if channels.has("translate"):
 				var translation = _sample_timeline(channels.translate, time, ["x", "y"])
 				x += float(translation.get("x", 0.0))
@@ -1274,6 +1374,32 @@ func _sample_current_bone_timelines():
 			# what the pass this replaced did as well.
 			bone_sample[name] = [x, y, rotation, scale_x, scale_y, shear_x, shear_y]
 	return bone_sample
+
+
+# An animation's keyed bones in skeleton order, each as [name, its seven setup
+# values, its timelines].  The sample above walked all 269 bones for them and read
+# every one's setup values afresh on each frame.
+func _keyed_bones(animation_name, bone_timelines):
+	if keyed_bones_of.has(animation_name):
+		return keyed_bones_of[animation_name]
+	var result = []
+	for definition in skeleton.get("bones", []):
+		var name = definition.get("name", "")
+		if !bone_timelines.has(name):
+			continue
+		result.append([
+			name,
+			float(definition.get("x", 0.0)),
+			float(definition.get("y", 0.0)),
+			float(definition.get("rotation", 0.0)),
+			float(definition.get("scaleX", 1.0)),
+			float(definition.get("scaleY", 1.0)),
+			float(definition.get("shearX", 0.0)),
+			float(definition.get("shearY", 0.0)),
+			bone_timelines[name],
+		])
+	keyed_bones_of[animation_name] = result
+	return result
 
 
 func _sample_timeline(frames, time, fields, default_value = 0.0):
@@ -1332,7 +1458,13 @@ func _bezier_parameter_for_time(time, start_time, control_time_1, control_time_2
 	var high = 1.0
 	for _iteration in range(14):
 		var middle = (low + high) * 0.5
-		var sampled_time = _cubic_bezier(start_time, control_time_1, control_time_2, end_time, middle)
+		# `_cubic_bezier` written out, the same sum in the same order: fourteen calls a
+		# sample on every keyed channel came to two and a half thousand calls a frame.
+		var inverse = 1.0 - middle
+		var sampled_time = inverse * inverse * inverse * start_time \
+			+ 3.0 * inverse * inverse * middle * control_time_1 \
+			+ 3.0 * inverse * middle * middle * control_time_2 \
+			+ middle * middle * middle * end_time
 		if sampled_time < time:
 			low = middle
 		else:
@@ -1359,7 +1491,7 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 	var local_b = cos(rotation_y) * scale_y
 	var local_c = sin(rotation_x) * scale_x
 	var local_d = sin(rotation_y) * scale_y
-	var parent_name = bone.definition.get("parent", "")
+	var parent_name = bone.parent_name
 	if parent_name.empty():
 		bone["x"] = x
 		bone["y"] = y
@@ -1399,28 +1531,19 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 		# must remain at the world scale they had before it.  Remove only that
 		# inherited factor from the parent's basis; the position above deliberately
 		# keeps the real, widened parent transform.
-		var butt_factor = float(proportions.get("butt", 1.0))
-		var compensated_parent = MODIFIERS.rig_bone("spine1", contract.CONTRACT_ID)
-		var compensate_scale = parent_name == compensated_parent
-		if compensate_scale:
-			compensate_scale = false
-			for authored_name in MODIFIERS.BUTT_SCALE_COMPENSATION_BONES:
-				if name == MODIFIERS.rig_bone(authored_name, contract.CONTRACT_ID):
-					compensate_scale = true
-					break
-		if compensate_scale and butt_factor != 0.0:
-			parent_b /= butt_factor
-			parent_d /= butt_factor
+		if butt_compensated_children.get(name, "") == parent_name:
+			var butt_factor = float(proportions.get("butt", 1.0))
+			if butt_factor != 0.0:
+				parent_b /= butt_factor
+				parent_d /= butt_factor
 		# Shoulder width should move the arm root with the end of the collarbone,
 		# but must not scale or shear the arm basis.  Position above intentionally
 		# keeps the widened parent; only the basis loses its local-X factor.
-		var shoulder_factor = float(proportions.get("shoulders", 1.0))
-		var authored_parent = MODIFIERS.SHOULDER_WIDTH_BASIS_COMPENSATION.get(name, "")
-		if !str(authored_parent).empty() \
-			and parent_name == MODIFIERS.rig_bone(authored_parent, contract.CONTRACT_ID) \
-			and shoulder_factor != 0.0:
-			parent_a /= shoulder_factor
-			parent_c /= shoulder_factor
+		if shoulder_compensated_children.get(name, "") == parent_name:
+			var shoulder_factor = float(proportions.get("shoulders", 1.0))
+			if shoulder_factor != 0.0:
+				parent_a /= shoulder_factor
+				parent_c /= shoulder_factor
 		bone["a"] = parent_a * local_a + parent_b * local_c
 		bone["b"] = parent_a * local_b + parent_b * local_d
 		bone["c"] = parent_c * local_a + parent_d * local_c
@@ -1432,7 +1555,36 @@ func _set_bone_world(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
 	bone["local_scale_y"] = scale_y
 	bone["local_shear_x"] = shear_x
 	bone["local_shear_y"] = shear_y
-	bones[name] = bone
+
+
+# A bone's own values, with its world transform left to a re-derive of the skeleton.
+# The timelines and the modifiers set many bones and then re-derive them all, so the
+# world maths `_set_bone_world` did for each of them was thrown away.
+func _set_bone_local(name, x, y, rotation, scale_x, scale_y, shear_x, shear_y):
+	var bone = bones[name]
+	bone["local_x"] = x
+	bone["local_y"] = y
+	bone["local_rotation"] = rotation
+	bone["local_scale_x"] = scale_x
+	bone["local_scale_y"] = scale_y
+	bone["local_shear_x"] = shear_x
+	bone["local_shear_y"] = shear_y
+
+
+# The pairs `_set_bone_world` compensates, on this rig's names - see
+# BUTT_SCALE_COMPENSATION_BONES and SHOULDER_WIDTH_BASIS_COMPENSATION.  A child the
+# rig has no counterpart for is left out; a parent it has none for is kept as "",
+# which no bone's parent is.
+func _find_compensated_bones():
+	butt_compensated_children = {}
+	shoulder_compensated_children = {}
+	var pelvis = MODIFIERS.rig_bone("spine1", contract.CONTRACT_ID)
+	for authored_name in MODIFIERS.BUTT_SCALE_COMPENSATION_BONES:
+		var child = MODIFIERS.rig_bone(authored_name, contract.CONTRACT_ID)
+		if child != "":
+			butt_compensated_children[child] = pelvis
+	for child in MODIFIERS.SHOULDER_WIDTH_BASIS_COMPENSATION.keys():
+		shoulder_compensated_children[child] = MODIFIERS.rig_bone(MODIFIERS.SHOULDER_WIDTH_BASIS_COMPENSATION[child], contract.CONTRACT_ID)
 
 
 func _restore_bone_world(name):
@@ -1683,17 +1835,31 @@ func _normalize_degrees(angle):
 
 
 func _update_ik_descendants(constrained_names):
+	for name in _descendants_below(constrained_names):
+		_restore_bone_world(name)
+
+
+# The bones `_update_ik_descendants` re-derives under the given ones, in the order it
+# re-derives them.  Which they are depends on the skeleton alone, so the walk over
+# all 269 bones is taken once per set of names instead of on every IK solve.
+func _descendants_below(constrained_names):
+	var key = PoolStringArray(constrained_names).join("|")
+	if descendants_below.has(key):
+		return descendants_below[key]
 	var changed = {}
 	for name in constrained_names:
 		changed[name] = true
+	var result = []
 	for definition in skeleton.get("bones", []):
 		var name = definition.get("name", "")
 		if changed.has(name):
 			continue
 		var parent_name = definition.get("parent", "")
 		if changed.has(parent_name):
-			_restore_bone_world(name)
+			result.append(name)
 			changed[name] = true
+	descendants_below[key] = result
+	return result
 
 
 # The named bones and everything under them, re-derived from their own local
@@ -1707,17 +1873,24 @@ func _update_ik_descendants(constrained_names):
 # a parent chain that had not been rebuilt yet.  Skipping it, as an IK pass must,
 # left it 22 px out and carried its whole chain with it.
 func _resolve_subtree(roots):
-	var changed = {}
-	for name in roots:
-		changed[name] = true
+	# which bones, and in what order, depends on the skeleton alone: walked once per set of roots
+	var key = PoolStringArray(roots).join("|")
+	if !subtree_under.has(key):
+		var changed = {}
+		for name in roots:
+			changed[name] = true
+		var order = []
+		for definition in skeleton.get("bones", []):
+			var name = definition.get("name", "")
+			if !bones.has(name):
+				continue
+			if !changed.has(name) and !changed.has(str(definition.get("parent", ""))):
+				continue
+			changed[name] = true
+			order.append(name)
+		subtree_under[key] = order
 	var moved = {}
-	for definition in skeleton.get("bones", []):
-		var name = definition.get("name", "")
-		if !bones.has(name):
-			continue
-		if !changed.has(name) and !changed.has(str(definition.get("parent", ""))):
-			continue
-		changed[name] = true
+	for name in subtree_under[key]:
 		_restore_bone_world(name)
 		moved[name] = true
 	return moved
@@ -3124,11 +3297,12 @@ func _rebuild_model():
 	add_child(model_root)
 	_bake_bone_hierarchy()
 	rendered_meshes = 0
+	var rows = {}
 	for slot in _draw_ordered_slots():
 		var attachment = _resolve_attachment(slot)
 		if attachment.empty():
 			continue
-		_add_attachment(slot, attachment)
+		_add_attachment(slot, attachment, rows)
 	# The screens all re-pose straight after a rebuild and would have caught this
 	# on that call; the preview's own rebuilds do not, so a layer that has only
 	# just been put on is solved here rather than left a frame behind.  Costs a
@@ -3403,7 +3577,9 @@ func _bake_bone_hierarchy():
 	# Bone2D editor gizmos cover the entire doll with white wedges.  Keep the
 	# clean textured preview in the editor; the full Bone2D hierarchy is built
 	# when the scene runs and can be inspected in Remote.
-	if Engine.editor_hint:
+	# Nor for a doll in the game, which has no panel to inspect them from and where
+	# nothing reads them: moving 269 of them was 0.6 ms of every animated frame.
+	if Engine.editor_hint or !interface_enabled:
 		return
 	var nodes = {}
 	for definition in skeleton.get("bones", []):
@@ -3481,7 +3657,7 @@ func _active_emotion_animates_slot(slot_name):
 	return false
 
 
-func _add_attachment(slot, attachment):
+func _add_attachment(slot, attachment, rows = {}):
 	var attachment_type = attachment.get("type", "region")
 	if attachment_type == "clipping" or attachment_type == "path" or attachment_type == "point":
 		return
@@ -3502,7 +3678,7 @@ func _add_attachment(slot, attachment):
 	# A mod can repaint a part: its image replaces the atlas page while the mesh,
 	# its weights and its UVs stay exactly as the export authored them.
 	var mod_texture = _mod_texture(slot.get("name", ""), region)
-	var data = _attachment_geometry(slot, attachment, region, page.size, _attachment_deform(slot, attachment), mod_texture, _pose_for(slot))
+	var data = _attachment_geometry(slot, attachment, region, page.size, _attachment_deform(slot, attachment), mod_texture, _pose_for(slot), false, _skinning_rows(slot, rows))
 	if data.empty():
 		return
 	var polygon = Polygon2D.new()
@@ -3558,14 +3734,18 @@ func _load_texture(path):
 
 
 func _update_mesh_geometry():
+	# One list of what is running for the whole pass: nothing in it starts or stops an
+	# animation, and every mesh used to build and sort it twice.
+	var active = _ordered_active_animations()
+	var rows = {}
 	for record in mesh_records:
 		if !is_instance_valid(record.polygon):
 			continue
-		var deform = _attachment_deform(record.slot, record.attachment)
-		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot), true)
+		var deform = _attachment_deform(record.slot, record.attachment, active)
+		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot), true, _skinning_rows(record.slot, rows))
 		if !data.empty():
 			record.polygon.polygon = _scale_back_hair_mesh(data.points, record.slot)
-		record.polygon.color = _attachment_colour(record.slot, record.attachment)
+		record.polygon.color = _attachment_colour(record.slot, record.attachment, active)
 
 
 # Extra world-axis scale for the three broad back-hair meshes.  Bone length is
@@ -3597,13 +3777,15 @@ func _scale_back_hair_mesh(points, slot):
 	return scaled
 
 
-func _attachment_deform(slot, attachment):
+func _attachment_deform(slot, attachment, active = null):
+	if active == null:
+		active = _ordered_active_animations()
 	var result = []
 	var blink_overlay = []
 	var skin_name = attachment.get("_skin_name", "")
 	var slot_name = slot.get("name", "")
 	var attachment_name = attachment.get("_attachment_name", "")
-	for animation_name in _ordered_active_animations():
+	for animation_name in active:
 		var attachment_timelines = skeleton.get("animations", {}).get(animation_name, {}).get("attachments", {})
 		if !attachment_timelines.has(skin_name):
 			continue
@@ -3708,9 +3890,9 @@ func _expanded_deform_frame(frame, length):
 # breasts blue against a purple torso, which is the mismatch the previous preview
 # tried to patch over.  The art underneath already matches, and player colour now
 # comes from the channel material, so the stale tint has no job left.
-func _attachment_colour(slot, _attachment):
+func _attachment_colour(slot, _attachment, active = null):
 	var colour = _spine_colour(slot.get("color", "FFFFFFFF"))
-	colour *= _animated_slot_colour(str(slot.get("name", "")))
+	colour *= _animated_slot_colour(str(slot.get("name", "")), active)
 	if str(slot.get("name", "")).ends_with("_muscle"):
 		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
 	return colour
@@ -3719,9 +3901,11 @@ func _attachment_colour(slot, _attachment):
 # Slot RGBA timelines are what `say` uses to cross-fade the closed lips into the
 # open-mouth slot.  As with bone timelines, a later active animation wins when
 # two animations key the same slot.
-func _animated_slot_colour(slot_name):
+func _animated_slot_colour(slot_name, active = null):
+	if active == null:
+		active = _ordered_active_animations()
 	var result = Color(1, 1, 1, 1)
-	for animation_name in _ordered_active_animations():
+	for animation_name in active:
 		var slot_timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {})
 		if !slot_timelines.has(slot_name):
 			continue
@@ -3787,19 +3971,23 @@ func _spine_colour(hex_value):
 	# AARRGGBB.  Parsing the channels explicitly keeps the alpha timelines in
 	# `say` from turning transparency into a blue/yellow colour instead.
 	var value = str(hex_value).substr(0, 8)
-	return Color(
+	if spine_colours.has(value):
+		return spine_colours[value]
+	var colour = Color(
 		float(("0x" + value.substr(0, 2)).hex_to_int()) / 255.0,
 		float(("0x" + value.substr(2, 2)).hex_to_int()) / 255.0,
 		float(("0x" + value.substr(4, 2)).hex_to_int()) / 255.0,
 		float(("0x" + value.substr(6, 2)).hex_to_int()) / 255.0
 	)
+	spine_colours[value] = colour
+	return colour
 
 
 # `points_only` is the animated path: a frame of an animation moves the vertices
 # and nothing else, while the UV projection and the triangle list are fixed by
 # the art.  Building them anyway and throwing them away - which is what an
 # animated frame did - cost 3.2 ms a doll.
-func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_texture = null, pose = null, points_only = false):
+func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_texture = null, pose = null, points_only = false, rows = null):
 	if pose == null:
 		pose = bones
 	var raw_vertices = attachment.get("vertices", [])
@@ -3807,7 +3995,7 @@ func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_
 	if is_mesh:
 		if raw_vertices.empty():
 			return {}
-		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose)
+		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose, rows)
 		if points_only:
 			return {"points": points}
 		var uv_points = PoolVector2Array()
@@ -3873,7 +4061,29 @@ func _mesh_uv(region, u, v, page_size):
 
 
 
-func _mesh_points(vertices, uv_size, deform = [], pose = null):
+# The solved bones as plain rows [a, b, c, d, x, y] by their index in the export, for
+# skinning: reading the six numbers out of a bone's dictionary by name, on every
+# weight, cost more than copying them all out once a pass.
+func _pose_table(pose):
+	var table = []
+	table.resize(bone_names_by_index.size())
+	for i in range(bone_names_by_index.size()):
+		var bone = pose[bone_names_by_index[i]]
+		table[i] = [bone.a, bone.b, bone.c, bone.d, bone.x, bone.y]
+	return table
+
+
+# A slot's pose as a table, made once per pass over the meshes and kept in `rows`:
+# the ordinary pose's under "", a layer pose's under its slot.
+func _skinning_rows(slot, rows):
+	var pose = _pose_for(slot)
+	var key = "" if pose == bones else str(slot.get("name", ""))
+	if !rows.has(key):
+		rows[key] = _pose_table(pose)
+	return rows[key]
+
+
+func _mesh_points(vertices, uv_size, deform = [], pose = null, rows = null):
 	if pose == null:
 		pose = bones
 	# Worked out once here rather than inside `_world_point`.  It is the same
@@ -3882,28 +4092,36 @@ func _mesh_points(vertices, uv_size, deform = [], pose = null):
 	# was 4.1 ms of the 17.6 an animated frame took.
 	var display_scale = _display_scale()
 	var points = PoolVector2Array()
+	var deform_size = deform.size()
 	# Weighted Spine vertices begin with an integer bone count.  An unweighted mesh
 	# always has exactly twice as many entries as its UV list and is handled below.
 	var unweighted = vertices.size() == uv_size
 	if unweighted:
+		var root = pose["root"]
 		for i in range(0, vertices.size(), 2):
-			var deform_x = float(deform[i]) if i < deform.size() else 0.0
-			var deform_y = float(deform[i + 1]) if i + 1 < deform.size() else 0.0
-			points.append(_world_point(pose["root"], Vector2(float(vertices[i]) + deform_x, float(vertices[i + 1]) + deform_y), display_scale))
+			var deform_x = float(deform[i]) if i < deform_size else 0.0
+			var deform_y = float(deform[i + 1]) if i + 1 < deform_size else 0.0
+			points.append(_world_point(root, Vector2(float(vertices[i]) + deform_x, float(vertices[i + 1]) + deform_y), display_scale))
 		return points
+	# `_world_point` is written out in the loop, in its own order of operations, so the
+	# points come out the same to the bit.  A call on each of two thousand bone weights
+	# was much of what skinning cost, and so was finding the bone through the export's
+	# list of dictionaries and then the pose's on every weight - see `_pose_table`.
+	if rows == null:
+		rows = _pose_table(pose)
+	var vertex_count = vertices.size()
 	var cursor = 0
 	var deform_cursor = 0
-	while cursor < vertices.size():
+	while cursor < vertex_count:
 		var count = int(vertices[cursor])
 		cursor += 1
 		var result = Vector2.ZERO
 		for _i in range(count):
-			var bone_index = int(vertices[cursor])
-			var deform_x = float(deform[deform_cursor]) if deform_cursor < deform.size() else 0.0
-			var deform_y = float(deform[deform_cursor + 1]) if deform_cursor + 1 < deform.size() else 0.0
+			var deform_x = float(deform[deform_cursor]) if deform_cursor < deform_size else 0.0
+			var deform_y = float(deform[deform_cursor + 1]) if deform_cursor + 1 < deform_size else 0.0
 			var local = Vector2(float(vertices[cursor + 1]) + deform_x, float(vertices[cursor + 2]) + deform_y)
-			var weight = float(vertices[cursor + 3])
-			result += _world_point(pose[skeleton.bones[bone_index].name], local, display_scale) * weight
+			var bone = rows[int(vertices[cursor])]
+			result += Vector2((bone[0] * local.x + bone[1] * local.y + bone[4]) * display_scale, -(bone[2] * local.x + bone[3] * local.y + bone[5]) * display_scale) * float(vertices[cursor + 3])
 			cursor += 4
 			deform_cursor += 2
 		points.append(result)

@@ -127,6 +127,13 @@ export var portrait_mode = false
 # How much of the shot is head: 1.0 would be the head box exactly, and the rest
 # is shoulders and hair.
 export var portrait_zoom = 1.55
+# Whether the doll moves by itself at all - the idle, the blink, the chest's
+# swing and the faces it pulls.  Off for the booths, whose dolls are only ever
+# photographed: a doll inside a Viewport counts as seen even while nothing shows
+# that viewport, and a moving doll solves its whole skin again on the CPU every
+# frame - one left idling in the body rites' booth cost the mansion screen about
+# 25 ms a frame.
+export var animated = true setget set_animated
 # The player may look closer and move the doll about, as they could on the old
 # one.  Its limits are kept: a tenth per wheel step, three quarters to one and a
 # half, and a pan that cannot push the figure out of its own frame.
@@ -222,20 +229,9 @@ func _ready():
 	# the doll takes the wheel and the drag inside its own rect and lets everything
 	# else through, which is what the old doll's `ZoomArea` did
 	mouse_filter = Control.MOUSE_FILTER_PASS if allow_zoom and !portrait_mode else Control.MOUSE_FILTER_IGNORE
-	model = MODEL.instance()
-	# said before the model enters the tree, so its editor panel is never built
-	model.interface_enabled = false
-	# the frame is the first child, so the authored controls still draw over it
-	_frame.add_child(model)
-	# the preview carries an editor panel and drag handles; in the game the doll
-	# is only ever looked at
-	for child in model.get_children():
-		if child is CanvasLayer:
-			child.queue_free()
-	model.handle_buttons.clear()
-	model.handles_visible = false
-	model.set_process_unhandled_input(false)
-	_apply_idle_animation()
+	# the rig is built only for a game that draws dolls - see _make_model
+	if !_dolls_switched_off():
+		_make_model()
 	if portrait_mode or !show_undress_buttons:
 		for control_name in ["UndressLevels", "HairMenuButton", "HairMenu"]:
 			get_node(control_name).queue_free()
@@ -258,6 +254,32 @@ func _ready():
 		if events != null and events.has_signal("character_item_equipped"):
 			events.connect("character_item_equipped", self, "_on_character_item_equipped")
 	set_process(false)
+
+
+# The rig itself, built only for a game that draws dolls.  With them switched off in
+# the options nothing is loaded here; the first rebuild after they come back on builds
+# it then (_apply), and switching them off lets it go (_on_doll_settings_changed).
+func _make_model():
+	model = MODEL.instance()
+	# said before the model enters the tree, so its editor panel is never built
+	model.interface_enabled = false
+	# the frame is the first child, so the authored controls still draw over it
+	_frame.add_child(model)
+	# the preview carries an editor panel and drag handles; in the game the doll
+	# is only ever looked at
+	for child in model.get_children():
+		if child is CanvasLayer:
+			child.queue_free()
+	model.handle_buttons.clear()
+	model.handles_visible = false
+	model.set_process_unhandled_input(false)
+	_apply_idle_animation()
+	_hold_still()
+
+
+func _dolls_switched_off():
+	var handler = _singleton("input_handler")
+	return handler != null and bool(handler.globalsettings.get("disable_paperdoll", false))
 
 
 # --- the old doll's API -------------------------------------------------------
@@ -351,7 +373,7 @@ var _emote_left = 0.0
 
 
 func play_emotes(steps):
-	if model == null or steps.empty():
+	if model == null or !animated or steps.empty():
 		return
 	_emotes = steps.duplicate(true)
 	_start_emote_step()
@@ -409,7 +431,7 @@ func _on_chest_poked():
 # Plays a reaction, on the cooldown every reaction shares.  A rig without the
 # face - the male one has none - neither plays it nor spends the turn.
 func _react(steps):
-	if steps.empty() or model == null or !model.has_emotion(steps[0][0]) or !EMOTES.take_turn(character):
+	if !animated or steps.empty() or model == null or !model.has_emotion(steps[0][0]) or !EMOTES.take_turn(character):
 		return
 	play_emotes(steps)
 
@@ -600,8 +622,9 @@ const FACE_COLOUR_ROWS = [
 #
 # Clothes and underwear are each two rows, because the game equips a chest and a
 # pair of legs separately and the old doll painted them apart.  `from` says which
-# of the two garments a row is about - a character shows one or the other, and
-# both halves follow whichever it is - and `half` is what the label says.
+# of the two garments a row is about - each half shows one or the other: the top
+# the chest's clothes or the underwear, the bottom the legs' clothes or the
+# underwear - and `half` is what the label says.
 const GEAR_COLOUR_ROWS = [
 	{"id": "underwear_colour", "stat": "armor_color_underwear", "channel": "outfit",
 		"label": "DOLL2_GEAR_UNDERWEAR", "from": "underwear", "half": "DOLL2_GEAR_HALF_TOP"},
@@ -1104,12 +1127,13 @@ func _gear_channels_of(row_data):
 	return result
 
 
-# Whether what a dressed character shows comes out of the underwear slot.
-func _dressed_from_underwear(equipment):
-	for slot_name in GEAR.OUTFIT_BY_LEVEL[GEAR.DRESSED]:
-		if !str(equipment.get(slot_name, "")).empty():
-			return !(slot_name in ["chest", "legs"])
-	return true
+# Whether what a dressed character shows on one half of the body comes out of the
+# underwear slot.  Each half is its own slot's to dress - the chest the top, the
+# legs the bottom - so a robe over bare legs has the underwear below it, and
+# trousers on their own have it above them (`selections_for` in the gear map).
+func _dressed_from_underwear(equipment, channel_id):
+	var slot_name = "legs" if channel_id == "outfit_lower" else "chest"
+	return str(equipment.get(slot_name, "")).empty()
 
 
 # `#rrggbb,#rrggbb,#rrggbb` -> a colour per band, `null` where the band is still
@@ -1182,7 +1206,7 @@ func _apply_gear_zones():
 # the character is dressed in something they equipped, the underwear otherwise.
 func _body_colour_stat(channel_id):
 	var dressed = (GEAR.normalise(undress_level) == GEAR.DRESSED
-		and !_dressed_from_underwear(_equipment()))
+		and !_dressed_from_underwear(_equipment(), channel_id))
 	var wanted = "clothing" if dressed else "underwear"
 	for row_data in GEAR_COLOUR_ROWS:
 		if row_data.channel == channel_id and str(row_data.get("from", "")) == wanted:
@@ -1536,7 +1560,7 @@ func center_portrait_frame(_anchor = Vector2.ZERO):
 # click on the breasts calls it through `tits_interaction`.  The swing itself
 # belongs to the model, so the preview panel and the game show the same one.
 func jiggle_tits(_power = 1.0):
-	if model == null or !is_visible_in_tree():
+	if model == null or !animated or !is_visible_in_tree():
 		return
 	model.play_titjump()
 
@@ -1571,6 +1595,9 @@ func get_tits_outline():
 # --- driving the doll ---------------------------------------------------------
 
 func _apply():
+	# dolls switched back on since this one was made: the rig is built now
+	if model == null and character != null and !_dolls_switched_off():
+		_make_model()
 	if model == null or character == null:
 		return
 	# Read before the rebuild, compared after it: a top coming off is the moment
@@ -1900,13 +1927,34 @@ func _doll_setting(setting_name):
 func _apply_idle_animation():
 	for animation_name in model.animation_states.keys():
 		model.animation_states[animation_name] = false
-	var wanted = !portrait_mode and _doll_setting("doll_idle_animation")
+	var wanted = animated and !portrait_mode and _doll_setting("doll_idle_animation")
 	if wanted:
 		model._reset_animation_states()
 	model.set_blinking(wanted)
 
 
+# A doll that does not move gives its model nothing to do between rebuilds, so the
+# model gets no frames at all.  The model turns them back on itself whenever it
+# starts a swing, which is why `jiggle_tits` and the reactions ask first.
+func _hold_still():
+	if model != null:
+		model.set_process(animated)
+
+
+func set_animated(value):
+	animated = bool(value)
+	if model != null:
+		_apply_idle_animation()
+		_hold_still()
+
+
 func _on_doll_settings_changed():
+	# dolls switched off: the rig goes, and the screen shows its picture instead the next time it asks
+	if _dolls_switched_off():
+		if model != null:
+			model.queue_free()
+			model = null
+		return
 	if model == null:
 		return
 	_apply_idle_animation()

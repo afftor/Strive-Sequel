@@ -81,10 +81,10 @@ const MODESTY_SLOTS = [
 	"equip_pregnancy_low", "equip_pregnancy_up",
 ]
 
-# The old doll dressed the upper and the lower half from two separate stats.
-# The new catalogue has one `outfit` group covering the whole body, so the two
-# cannot both write it: the chest is what a character reads as wearing, the legs
-# answer for it only when the chest is bare, and underwear only when neither is.
+# The old doll dressed the upper and the lower half from two separate stats, and
+# so does this one, through the `outfit` set and its `_legs` cut below: the chest
+# dresses the top, the legs the bottom, and the underwear whichever of the two is
+# left bare.  These are the slots that dress the body at all.
 const OUTFIT_PRIORITY = ["chest", "legs", "underwear"]
 
 # The lower half of a set, worn when the legs have armour of their own.
@@ -213,6 +213,9 @@ const ITEM_PARTS = {
 	"animal_gloves": "outfit_petsuit_hands",
 	# medium armour, so the advanced leather rather than the base cut
 	"garb_of_forest": "outfit_leather2",
+	# Hector's breastplate has no art of its own: the old doll wore it as the base
+	# plate, and with no entry here it came out as the slave set
+	"hector_armor": "outfit_plate",
 
 	# collars: the old list is item names, the new one is what the collar looks
 	# like, so these pair by material
@@ -283,6 +286,8 @@ static func selections_for(equipped, level = DRESSED, doll_id = "female"):
 	# are deliberately not in this loop any more - they answer for the lower half
 	# below, and a pair of greaves has no business dressing a torso.
 	var outfit = ""
+	# and the slot it came from, which decides what is worn below it
+	var dressed_from = ""
 	for slot_name in dresses:
 		if slot_name == "legs":
 			continue
@@ -292,6 +297,7 @@ static func selections_for(equipped, level = DRESSED, doll_id = "female"):
 		outfit = _part_for(item_id, doll_id)
 		if outfit.empty():
 			outfit = _override(UNKNOWN_ITEM, doll_id)
+		dressed_from = slot_name
 		break
 	# Whether a dress, a suit or underwear actually answered for the body.  What
 	# follows leans on it: gloves and a pet suit live in the same group as the
@@ -301,13 +307,23 @@ static func selections_for(equipped, level = DRESSED, doll_id = "female"):
 		outfit = default_underwear(doll_id)
 	if !outfit.empty():
 		result["outfit"] = outfit
-	# and the lower half, when the legs wear something the body is not already in
+	# And the lower half, which is the legs' to dress.  A set is drawn with both
+	# halves, so a top worn on its own - a robe, a jacket, a breastplate - brought
+	# its skirt or trousers along.  With nothing on the legs, what goes below a top
+	# is what the character wears under it: the outfit the underwear level shows.
+	# An item that fills both slots, a dress or a suit, is the same set in each and
+	# stays whole.
 	if !outfit.empty() and "legs" in dresses:
+		var lower = ""
 		var legs_item = str(equipped.get("legs", ""))
 		if !legs_item.empty():
-			var legs_part = _part_for(legs_item, doll_id)
-			if !legs_part.empty() and legs_part != outfit:
-				result[LOWER_GROUP] = legs_part + LOWER_SUFFIX
+			lower = _part_for(legs_item, doll_id)
+			if lower.empty():
+				lower = _override(UNKNOWN_ITEM, doll_id)
+		elif dressed_from == "chest":
+			lower = str(selections_for(equipped, UNDERWEAR, doll_id).get("outfit", ""))
+		if !lower.empty() and lower != outfit:
+			result[LOWER_GROUP] = lower + LOWER_SUFFIX
 	# and everything worn on top of it
 	for slot_name in SLOT_GROUPS.keys():
 		if slot_name in OUTFIT_PRIORITY:

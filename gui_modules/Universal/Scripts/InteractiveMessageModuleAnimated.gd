@@ -82,6 +82,16 @@ func hide_dialogue(action = "hide"):
 	$BackgroundT2.visible = action != "hide"
 	$ShowPanel.visible = action == "hide"
 
+#Hiding belongs to the one scene that asked for it. The number keys answer straight through the
+#hidden box, so a scene could close or move on without its Show button ever being pressed, and
+#nothing else took the Show bar down - it then sat over the options of every later dialogue.
+func restore_hidden_dialogue():
+	if !$ShowPanel.visible:
+		return
+	$ShowPanel.hide()
+	if dialogue_window_type == 2:
+		$BackgroundT2.show()
+
 func determine_dialogue_type(scene):
 	next_dialogue_type = 1
 	if (scene.has("custom_background")
@@ -205,6 +215,8 @@ func open(scene):
 	doing_transition = false
 	
 	#prepare screen while (if) in dark
+	#ahead of common_effects, so a scene that hides its box again starts from a clean state
+	restore_hidden_dialogue()
 	if is_type_changing:
 		new_background.show()
 		if no_screen_transition:
