@@ -55,6 +55,7 @@ const UPPER_EAR_PARTS = [
 	"ears_tanuk",
 	"ears_wolf",
 ]
+const FRINGE_BACK_EAR_PARTS = ["ears_human"]
 
 # These broad back-hair meshes do not gain enough visible length from their
 # authored bone weights alone.  The back-hair slider therefore scales their
@@ -244,6 +245,9 @@ var emotion_transition_elapsed = EMOTION_TRANSITION_DURATION
 var emotion_transition_sample = {}
 var emotion_transition_sample_key = ""
 var emotion_colour_from = {}
+var emotion_deform_from = {}
+var emotion_setup_slots_from = []
+var emotion_setup_slots_to = []
 var bone_setup_sample = {}
 # What the running animations do to the bones they key, as {bone: [x, y,
 # rotation, scale_x, scale_y, shear_x, shear_y]} - the local values before any modifier has
@@ -336,6 +340,9 @@ func _reset_animation_states():
 	emotion_transition_sample = {}
 	emotion_transition_sample_key = ""
 	emotion_colour_from = {}
+	emotion_deform_from = {}
+	emotion_setup_slots_from = []
+	emotion_setup_slots_to = []
 	var default_animation = str(DOLLS.doll(doll_id).get("default_animation", ""))
 	var animations = skeleton.get("animations", {})
 	for animation_name in animations.keys():
@@ -466,10 +473,6 @@ func set_emotion(emotion_name):
 	if wanted == "":
 		_on_animation_toggled(false, active)
 		return true
-	# an emotion with no bone keys of its own would not switch the last one off
-	if !active.empty() and !_poses_the_skeleton(wanted):
-		animation_states[active] = false
-		animation_times[active] = 0.0
 	_on_animation_toggled(true, wanted)
 	return true
 
@@ -490,8 +493,20 @@ func _advance_emotion_transition(delta):
 	emotion_transition_elapsed = min(EMOTION_TRANSITION_DURATION, emotion_transition_elapsed + delta)
 	emotion_transition_sample_key = ""
 	if emotion_transition_elapsed >= EMOTION_TRANSITION_DURATION:
+		var remove_setup_slots = false
+		for slot_name in emotion_setup_slots_from:
+			if !(slot_name in emotion_setup_slots_to):
+				remove_setup_slots = true
+				break
 		emotion_transition_from = {}
 		emotion_colour_from = {}
+		emotion_deform_from = {}
+		emotion_setup_slots_from = []
+		emotion_setup_slots_to = []
+		# A setup attachment that faded out stayed in the mesh list solely for the
+		# transition. Remove it once its alpha has reached zero.
+		if remove_setup_slots:
+			call_deferred("_rebuild_model")
 	return true
 # Catches the pose offsets up with the selections.  Only a change is acted on, so
 # the rebuilds an animation triggers part way through a glide leave it running.
@@ -2357,10 +2372,12 @@ func _on_animation_toggled(enabled, animation_name):
 	var previous_pose = _sampled_bone_timelines().duplicate(true) if transitions_pose else {}
 	var previous_emotion_pose = _sampled_bone_timelines().duplicate(true) if is_emotion else {}
 	var previous_emotion_colours = _capture_animated_slot_colours() if is_emotion else {}
+	var previous_emotion_deforms = _capture_animated_attachment_deforms() if is_emotion else {}
+	var previous_setup_slots = _active_emotion_setup_slots() if is_emotion else []
 	animation_states[animation_name] = enabled
 	if !enabled:
 		animation_times[animation_name] = 0.0
-	elif _poses_the_skeleton(animation_name):
+	elif is_emotion or _poses_the_skeleton(animation_name):
 		for other_name in animation_states.keys():
 			if other_name == animation_name or !animation_states[other_name]:
 				continue
@@ -2379,6 +2396,9 @@ func _on_animation_toggled(enabled, animation_name):
 		bone_sample_key = ""
 		emotion_transition_from = previous_emotion_pose
 		emotion_colour_from = previous_emotion_colours
+		emotion_deform_from = previous_emotion_deforms
+		emotion_setup_slots_from = previous_setup_slots
+		emotion_setup_slots_to = _active_emotion_setup_slots()
 		emotion_transition_elapsed = 0.0
 		emotion_transition_sample = {}
 		emotion_transition_sample_key = ""
@@ -3379,14 +3399,22 @@ func _current_draw_order():
 
 
 func _apply_selected_ear_draw_order(order):
-	if !UPPER_EAR_PARTS.has(str(selections.get("ears", ""))):
+	var ear_part = str(selections.get("ears", ""))
+	var anchor = ""
+	if UPPER_EAR_PARTS.has(ear_part):
+		anchor = "hairs_base"
+	elif FRINGE_BACK_EAR_PARTS.has(ear_part):
+		# Human ears stay between the base hair and its fringe. Enforce this on
+		# animated draw orders too, where the export may move the ears forward.
+		anchor = "hairs_fringe"
+	else:
 		return order
 	var from = order.find("ears")
-	var hair = order.find("hairs_base")
+	var hair = order.find(anchor)
 	if from < 0 or hair < 0:
 		return order
 	order.remove(from)
-	hair = order.find("hairs_base")
+	hair = order.find(anchor)
 	order.insert(hair, "ears")
 	return order
 
@@ -3654,7 +3682,41 @@ func _active_emotion_animates_slot(slot_name):
 			return true
 		if slot_name in EMOTION_SETUP_SLOTS.get(animation_name, []):
 			return true
+	# Keep a setup-only attachment alive while it fades out. Without this the
+	# rebuild caused by disabling horny removes blush before its alpha can move.
+	if emotion_transition_elapsed < EMOTION_TRANSITION_DURATION:
+		return slot_name in emotion_setup_slots_from or slot_name in emotion_setup_slots_to
 	return false
+
+
+func _active_emotion_setup_slots():
+	var result = []
+	for animation_name in _ordered_active_animations():
+		if !_is_emotion_animation(animation_name):
+			continue
+		for slot_name in EMOTION_SETUP_SLOTS.get(animation_name, []):
+			if !(slot_name in result):
+				result.append(slot_name)
+	return result
+
+
+func _is_emotion_setup_slot(slot_name):
+	for slots in EMOTION_SETUP_SLOTS.values():
+		if slot_name in slots:
+			return true
+	return false
+
+
+func _emotion_setup_slot_alpha(slot_name):
+	if !_is_emotion_setup_slot(slot_name):
+		return 1.0
+	if emotion_transition_elapsed >= EMOTION_TRANSITION_DURATION:
+		return 1.0 if slot_name in _active_emotion_setup_slots() else 0.0
+	var first = 1.0 if slot_name in emotion_setup_slots_from else 0.0
+	var second = 1.0 if slot_name in emotion_setup_slots_to else 0.0
+	var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
+	amount = amount * amount * (3.0 - 2.0 * amount)
+	return lerp(first, second, amount)
 
 
 func _add_attachment(slot, attachment, rows = {}):
@@ -3813,6 +3875,39 @@ func _attachment_deform(slot, attachment, active = null):
 		else:
 			for i in range(min(result.size(), blink_overlay.size())):
 				result[i] += blink_overlay[i]
+	# Bone crossfading cannot affect the current mesh-authored horny take. Ease
+	# every displayed attachment from the deformation visible before the switch
+	# to the new raw sample, both on entry and on exit.
+	var transition_key = _attachment_deform_key(slot, attachment)
+	if emotion_transition_elapsed < EMOTION_TRANSITION_DURATION and emotion_deform_from.has(transition_key):
+		var first = emotion_deform_from[transition_key]
+		var length = max(first.size(), result.size())
+		if length > 0:
+			var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
+			amount = amount * amount * (3.0 - 2.0 * amount)
+			var eased = []
+			eased.resize(length)
+			for i in range(length):
+				var first_value = float(first[i]) if i < first.size() else 0.0
+				var second_value = float(result[i]) if i < result.size() else 0.0
+				eased[i] = lerp(first_value, second_value, amount)
+			result = eased
+	return result
+
+
+func _attachment_deform_key(slot, attachment):
+	return "%s|%s|%s" % [
+		str(attachment.get("_skin_name", "")),
+		str(slot.get("name", "")),
+		str(attachment.get("_attachment_name", "")),
+	]
+
+
+func _capture_animated_attachment_deforms():
+	var result = {}
+	var active = _ordered_active_animations()
+	for record in mesh_records:
+		result[_attachment_deform_key(record.slot, record.attachment)] = _attachment_deform(record.slot, record.attachment, active).duplicate()
 	return result
 
 
@@ -3892,8 +3987,10 @@ func _expanded_deform_frame(frame, length):
 # comes from the channel material, so the stale tint has no job left.
 func _attachment_colour(slot, _attachment, active = null):
 	var colour = _spine_colour(slot.get("color", "FFFFFFFF"))
-	colour *= _animated_slot_colour(str(slot.get("name", "")), active)
-	if str(slot.get("name", "")).ends_with("_muscle"):
+	var slot_name = str(slot.get("name", ""))
+	colour *= _animated_slot_colour(slot_name, active)
+	colour.a *= _emotion_setup_slot_alpha(slot_name)
+	if slot_name.ends_with("_muscle"):
 		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
 	return colour
 
@@ -3929,7 +4026,11 @@ func _capture_animated_slot_colours():
 		var colour = _animated_slot_colour(slot_name)
 		# A slot introduced by the next emotion fades in from transparency rather
 		# than appearing at full opacity on the rebuild frame.
-		if !drawn_slots.has(slot_name):
+		# Setup-only emotion slots have their own symmetric alpha transition below;
+		# keeping this channel opaque avoids applying the fade twice.
+		if _is_emotion_setup_slot(slot_name):
+			colour.a = 1.0
+		elif !drawn_slots.has(slot_name):
 			colour.a = 0.0
 		result[slot_name] = colour
 	return result
