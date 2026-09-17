@@ -343,7 +343,9 @@ var effects = {
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 4, #'arg',
-		tags = ['buff'],
+		#the 'clarity' tag is what lets anything find this by name - removals and has_status checks
+		#match tags, and the stack id alone is invisible to both
+		tags = ['buff', 'clarity'],
 		statchanges = {matk_add_part = 0.25, resist_blind = 200, resist_sleep = 200},
 		buffs = [
 			{

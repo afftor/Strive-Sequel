@@ -1991,6 +1991,25 @@ var traits = {
 		effects = ['obsidian_golem_trait','obsidian_golem_trait_2'],
 		tags = [],
 	},
+	#Jean quest finale - assets/data/skilldata/bosses/jean_demon.gd
+	jd_jean_trait = {
+		code = 'jd_jean_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['jd_demon_arrogance', 'jd_flame_sphere_open', 'jd_adaptive_ward_open', 'jd_second_mouth', 'jd_second_mouth_shut'],
+		tags = [],
+	},
+	jd_demon_trait = {
+		code = 'jd_demon_trait',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['jd_demon_arrogance', 'jd_dream_eater', 'jd_dream_eater_display', 'jd_ennui_display', 'jd_ennui_rage', 'jd_ennui_unsilence'],
+		tags = [],
+	},
 	#coalition finale bosses - assets/data/skilldata/bosses/coalition.gd
 	coal_bolthar_trait = {
 		code = 'coal_bolthar_trait',
