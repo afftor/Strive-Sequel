@@ -635,6 +635,7 @@ var scenes = {
 	deer = 'res://assets/images/scenes/deer.png',
 	leon = 'res://assets/images/scenes/leon.png',
 	ritual = 'res://assets/images/scenes/ritual.png',
+	ritual_room = 'res://assets/images/scenes/ritual_room.png',
 	
 	prey = "res://assets/images/scenes/prey.png",
 	slave_sex = "res://assets/images/scenes/slave sex.png",

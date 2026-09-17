@@ -139,15 +139,16 @@ func refresh_plot():
 	globals.connecttexttooltip(self, tr(RoomTypes.get_descript_key(room.type)), true)
 
 
-var output_color = null
+#The purse behind service, drawn on the card as the bar it is on the service screen. It stands on
+#the output line, so a card showing one shows no output text, and every other card hides it.
+func set_pool_bar(state):
+	if !has_node("PoolBar"):
+		return
+	LocationTasks.fill_service_bar($PoolBar, state)
 
 
 func refresh():
-	#only the service card recolours its output line (the purse); a card reused for other work gets the
-	#scene's own colour back
-	if output_color == null:
-		output_color = $output.get_color("font_color")
-	$output.add_color_override("font_color", output_color)
+	set_pool_bar(null)
 	if plot != '':
 		refresh_plot()
 		return
@@ -166,9 +167,9 @@ func refresh():
 		$output.text = ""
 		var tooltip = "%s\n%s" % [tr(entry.descript), tr("MANSIONVIEW_SERVICEOPENHINT")]
 		if pool != null:
-			$output.text = globals._report_text("MANSIONVIEW_SERVICEPOOL_CARD", [pool.current, pool.max])
-			$output.add_color_override("font_color", LocationTasks.SERVICE_POOL_COLORS[pool.status])
-			tooltip = "%s\n%s" % [LocationTasks.service_pool_line(pool), tooltip]
+			set_pool_bar(pool)
+			#the card carries no mark of its own, so the rules behind the bar go in its tooltip
+			tooltip = "%s\n%s" % [LocationTasks.service_pool_hint(), tooltip]
 		show_count(true)
 		$count.text = "%s %d" % [tr("MANSIONVIEW_WORKERS"),
 			LocationTasks.workers_of(entry.id).size()]

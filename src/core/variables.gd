@@ -343,6 +343,15 @@ var slave_starting_stats = 15
 
 var minimum_factor_value = 1
 var maximum_factor_value = 6
+#Ceiling on the factors a captive taken in a dungeon is rolled with, keyed by that dungeon's own
+#difficulty tier (char_roll_data.diff). Applied once, after the difficulty bonus loop has run -
+#see ch_dyn_stats.generate_random_character_from_data(). A tier left out of this dict is not
+#capped beyond maximum_factor_value. Combat that never names a tier falls back to 'medium',
+#which is the same default its difficulty already uses.
+var dungeon_factor_caps = {
+	easy = 4,
+	medium = 5,
+}
 var body_upgrade_points_per_growth_factor = 25
 
 var basic_character_atk = 15

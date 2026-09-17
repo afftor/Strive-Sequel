@@ -250,7 +250,7 @@ var scenedict = {
 		{type = 'function',
 		function = 'make_local_recruit',
 		args = {
-			races = [['local', 3],['random', 1]],
+			races = [['dungeon', 1]],
 			difficulty = [1,2],
 			type = 'slave'
 			}
@@ -1095,7 +1095,7 @@ var scenedict = {
 	#its upgrade animation or its before-and-after window
 	body_rite_upgrade = {
 		text = tr("BODYRITE_SCENE_UPGRADE"),
-		image = null,
+		image = 'ritual_room',
 		tags = ['active_character_translate'],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
@@ -1103,7 +1103,7 @@ var scenedict = {
 	},
 	body_rite_form_change = {
 		text = tr("BODYRITE_SCENE_FORM_CHANGE"),
-		image = null,
+		image = 'ritual_room',
 		tags = ['active_character_translate'],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
@@ -1111,7 +1111,7 @@ var scenedict = {
 	},
 	body_rite_sex_change = {
 		text = tr("BODYRITE_SCENE_SEX_CHANGE"),
-		image = null,
+		image = 'ritual_room',
 		tags = ['active_character_translate'],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
@@ -1119,7 +1119,7 @@ var scenedict = {
 	},
 	body_rite_virginity = {
 		text = tr("BODYRITE_SCENE_VIRGINITY"),
-		image = null,
+		image = 'ritual_room',
 		tags = ['active_character_translate'],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},

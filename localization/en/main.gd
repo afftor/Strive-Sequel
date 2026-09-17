@@ -2929,6 +2929,8 @@ Predicted task shows which job the character will perform next. Materials are al
 	MANSION_ACTIVITY_BEDROOM_SKILL = "%s is now [color=#d95d8a]%s[/color] at %s.",
 	BROTHELLOGSEX = "%s earned %s gold performing %s with a %s customer.",
 	BROTHELLOGSEXPARTIAL = "%s failed to fully attract a customer and earned only %s gold performing %s with a %s customer.",
+	BROTHELLOGSEXGROUP = "%s earned %s gold performing %s with %s customers.",
+	BROTHELLOGSEXPARTIALGROUP = "%s failed to fully attract customers and earned only %s gold performing %s with %s customers.",
 	BROTHELLOGNO_SEX = "%s earned %s gold working as a %s.",
 	BROTHELTOOLTIP = """You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.
 Service is a global modifier for this assignment.
@@ -31938,10 +31940,8 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_SERVICEEARNS = "%s gold/turn",
 	MANSIONVIEW_SERVICEEARNS_LIMITED = "up to %s gold/turn",
 	MANSIONVIEW_SERVICEEARNS_EXHAUSTED = "%s gold/turn (%d%% rate)",
-	MANSIONVIEW_SERVICEPOOL_ONE = "%s budget: %d / %d gold, refills tomorrow",
-	MANSIONVIEW_SERVICEPOOL_MANY = "%s budget: %d / %d gold, refills in %d days",
-	MANSIONVIEW_SERVICEPOOL_CARD = "Budget: %d/%d",
-	MANSIONVIEW_SERVICEPOOL_HINT = "Service in %s is paid out of what its clients can spend this week, shared by everyone you send there.\nEvery payout is taken from this budget. Whatever the budget cannot cover is paid at only %d%%.\nAt the start of every week the budget is refilled to a new maximum.",
+	MANSIONVIEW_SERVICEPOOL_BAR = "Saturation",
+	MANSIONVIEW_SERVICEPOOL_HINT = "Saturation presents the gold you can earn until next week. Once it's depleted, service income from this location will greatly drop.",
 	MANSIONVIEW_SERVICENORULES = "Allowed nothing yet.",
 	MANSIONVIEW_SERVICERULESHINT = "Click to set what they may do.",
 	MANSIONROOM_STAIRS = "Staircase",

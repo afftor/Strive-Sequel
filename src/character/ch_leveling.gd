@@ -780,10 +780,12 @@ func select_brothel_activity():
 func update_brothel_log(ch_name, gold, data, customer_gender = "", full_gold = true):
 	var text = ""
 	if customer_gender != "":
-		if full_gold:
-			text = tr("BROTHELLOGSEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
-		else:
-			text = tr("BROTHELLOGSEXPARTIAL")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
+		var key = globals.fastif(full_gold, "BROTHELLOGSEX", "BROTHELLOGSEXPARTIAL")
+		#The group service is served by several customers at once, so it takes the plural line.
+		#Locales without that line yet fall back to the singular one they do have.
+		if data.code == 'group' and tr(key + "GROUP") != key + "GROUP":
+			key += "GROUP"
+		text = tr(key)  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
 		#text = tr(ch_name) + " earned " + str(gold) + " gold doing " + tr("BROTHEL" + data.code.to_upper()) + " with a " + customer_gender
 	else:
 		text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]

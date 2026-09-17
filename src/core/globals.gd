@@ -2380,6 +2380,21 @@ func character_stat_change(character, data):
 #	manifest(text, character)
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
+func get_active_location_races():
+	var locdata = input_handler.active_location
+	if locdata != null and locdata.has('character_data'):
+		var chardata = locdata.character_data
+		if chardata.has('races') and !chardata.races.empty():
+			return chardata.races
+	var areadata = input_handler.active_area
+	if areadata != null:
+		if areadata.has('races') and !areadata.races.empty():
+			return areadata.races
+		if areadata.has('code') and worlddata.lands.has(areadata.code) and worlddata.lands[areadata.code].has('races'):
+			return worlddata.lands[areadata.code].races
+	return [['random', 1]]
+
+
 func make_local_recruit(args):
 	var newchar = ResourceScripts.scriptdict.class_slave.new("local_recruit")
 	if args == null:
@@ -2390,6 +2405,8 @@ func make_local_recruit(args):
 		var difficulty = 0
 		if args.has('races'):
 			race = input_handler.weightedrandom(args.races)
+			if race == 'dungeon':
+				race = input_handler.weightedrandom(get_active_location_races())
 			if race == 'local':
 				race = input_handler.weightedrandom(input_handler.active_area.races)
 			elif race == 'beast':
@@ -2922,6 +2939,12 @@ func get_rolled_diff(): #excluding event bonus
 	return t_diff
 
 
+#The ceiling the captives of this fight are rolled against. Keyed by the dungeon's difficulty tier,
+#so a rare enemy or a boss - which raise the difficulty, not the tier - stays under the same roof
+#as the rest of the floor. The endless tower ('infinite') and hard dungeons are not capped.
+func get_rolled_factor_cap():
+	return variables.dungeon_factor_caps.get(char_roll_data.diff, variables.maximum_factor_value)
+
 
 func roll_characters():
 	var res = []
@@ -2946,6 +2969,7 @@ func roll_characters():
 	var t_diff = get_rolled_diff()
 	if char_roll_data.event: t_diff += variables.dungeon_character_chances.event_diff_bonus
 	if char_roll_data.mboss: t_diff += variables.dungeon_character_chances.mboss_diff_bonus
+	var t_cap = get_rolled_factor_cap()
 	
 	var t_race = 'random'
 	var areadata = input_handler.active_area
@@ -2988,7 +3012,7 @@ func roll_characters():
 			else:
 				print("ERROR - no racedata for %s" % areadata.code)
 		var newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
-		newslave.generate_random_character_from_data(t_race, null, t_diff)
+		newslave.generate_random_character_from_data(t_race, null, t_diff, [], [], t_cap)
 		newslave.is_active = true
 #		newslave.set_slave_category('servant')
 		res.push_back(newslave.id)
@@ -2999,7 +3023,7 @@ func roll_characters():
 			if t_race == 'local':
 				t_race = input_handler.weightedrandom(areadata.races)
 			newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
-			newslave.generate_random_character_from_data(t_race, null, t_diff)
+			newslave.generate_random_character_from_data(t_race, null, t_diff, [], [], t_cap)
 			newslave.is_active = true
 #			newslave.set_slave_category('servant')
 			res.push_back(newslave.id)

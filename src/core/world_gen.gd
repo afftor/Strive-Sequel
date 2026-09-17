@@ -880,7 +880,6 @@ var dungeon_template = { #sample dungeon data
 		
 		bgm = "dungeon",
 		purchase_price = 100,
-		affiliation = 'local', #defines character races and events
 		events = [],
 		tags = [],
 	}

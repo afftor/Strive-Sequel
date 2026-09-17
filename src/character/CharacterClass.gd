@@ -522,7 +522,7 @@ func generate_ea_character(gendata, desired_class):
 	return res
 
 
-func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = [], guaranteed_classes = []):
+func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = [], guaranteed_classes = [], factor_cap = variables.maximum_factor_value):
 	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
@@ -535,7 +535,7 @@ func generate_random_character_from_data(races_l, desired_class = null, adjust_d
 	create(gendata.race, gendata.sex, gendata.age)
 	dyn_stats.generate_data()
 	statlist.generate_random_character_from_data(adjust_difficulty)
-	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty, guaranteed_classes)
+	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty, guaranteed_classes, factor_cap)
 	dyn_stats.get_random_traits(trait_blacklist)
 	xp_module.set_service_boost()
 

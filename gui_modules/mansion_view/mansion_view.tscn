@@ -1005,6 +1005,25 @@ custom_colors/font_color = Color( 0.541176, 0.85098, 0.541176, 1 )
 custom_fonts/font = ExtResource( 9 )
 clip_text = true
 
+[node name="PoolBar" type="ProgressBar" parent="LocationPanel/RoomsScroll/Rooms/Button"]
+visible = false
+margin_left = 8.0
+margin_top = 55.0
+margin_right = 172.0
+margin_bottom = 76.0
+mouse_filter = 2
+custom_styles/fg = ExtResource( 26 )
+custom_styles/bg = ExtResource( 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="LocationPanel/RoomsScroll/Rooms/Button/PoolBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_fonts/font = ExtResource( 9 )
+align = 1
+valign = 1
+
 [node name="count" type="Label" parent="LocationPanel/RoomsScroll/Rooms/Button"]
 visible = false
 margin_left = 8.0
@@ -2661,24 +2680,29 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "On this work"
 
-[node name="PoolStatus" type="Label" parent="Overlay/ServicePanel"]
+[node name="PoolBar" type="ProgressBar" parent="Overlay/ServicePanel"]
 visible = false
-anchor_right = 1.0
 margin_left = 24.0
-margin_top = 62.0
-margin_right = -76.0
-margin_bottom = 98.0
+margin_top = 64.0
+margin_right = 524.0
+margin_bottom = 96.0
+custom_styles/fg = ExtResource( 26 )
+custom_styles/bg = ExtResource( 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="Overlay/ServicePanel/PoolBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 custom_fonts/font = ExtResource( 10 )
+align = 1
 valign = 1
-clip_text = true
 
 [node name="PoolTip" type="TextureRect" parent="Overlay/ServicePanel"]
 visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -62.0
+margin_left = 532.0
 margin_top = 64.0
-margin_right = -30.0
+margin_right = 564.0
 margin_bottom = 96.0
 mouse_default_cursor_shape = 2
 texture = ExtResource( 33 )

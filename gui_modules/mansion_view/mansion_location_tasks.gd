@@ -269,19 +269,40 @@ static func service_pool_state(task_id):
 	}
 
 
-static func service_pool_line(state):
-	if state.days == 1:
-		return globals._report_text("MANSIONVIEW_SERVICEPOOL_ONE", [state.name, state.current, state.max])
-	return globals._report_text("MANSIONVIEW_SERVICEPOOL_MANY",
-		[state.name, state.current, state.max, state.days])
+#The purse as a bar rather than a sum. What a player does with "5459 gold" is nothing - the figure
+#has no scale to be read against - while a bar says at a glance how much of the week's work is still
+#paid in full. The word under it is the same at every level and the colour is the one the line carried.
+static func fill_service_bar(bar, state):
+	bar.visible = state != null
+	if state == null:
+		return
+	bar.max_value = max(1, state.max)
+	bar.value = clamp(state.current, 0, bar.max_value)
+	var label = bar.get_node("Label")
+	label.text = globals.tr("MANSIONVIEW_SERVICEPOOL_BAR")
+	#The word stands in the middle of the bar, so the fill runs under one half of it and the empty
+	#track under the other. Green on the orange fill is the one pairing that cannot be read at all -
+	#and a full purse has nothing to warn about anyway, so a full one is simply written in cream. The
+	#two warnings keep the colours the old line had; by then the bar is dark enough to carry them.
+	var colour = SERVICE_POOL_COLORS[state.status]
+	if state.status == 'ok':
+		colour = Color(0.94, 0.9, 0.82)
+	label.add_color_override("font_color", colour)
+	label.add_color_override("font_color_shadow", Color(0, 0, 0, 0.65))
+	label.add_constant_override("shadow_offset_x", 1)
+	label.add_constant_override("shadow_offset_y", 1)
 
 
 static func service_exhausted_percent():
 	return int(round(variables.service_gold_exhausted_mult * 100.0))
 
 
-static func service_pool_hint(state):
-	return globals._report_text("MANSIONVIEW_SERVICEPOOL_HINT", [state.name, service_exhausted_percent()])
+#What the bar means, read wherever it is drawn: the mark beside it on the service screen, and the
+#tooltip of the card on the tasks screen. The key is taken as it stands, with nothing put into it -
+#a line assembled out of figures and other keys is a line that can come out mangled in a locale that
+#has only some of them, and this one says what it has to say without any.
+static func service_pool_hint():
+	return globals.tr("MANSIONVIEW_SERVICEPOOL_HINT")
 
 
 #What this work can turn out, as [material code, chance] pairs. The table's branches carry

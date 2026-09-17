@@ -1539,20 +1539,7 @@ func combat_defeat():
 		gui_controller.exploration_dungeon.update_map()
 
 func character_boss_defeat():
-	var character_race = []
-	var character_class = []
-	var difficulty
-	if active_location.affiliation == 'local':
-		character_race.append([weightedrandom(active_area.races), 1])
-	if active_location.has("final_enemy_class"):
-		for i in active_location.final_enemy_class:
-			character_class.append([i, 1])
-
-	character_race = weightedrandom(character_race)
-	character_class = weightedrandom(character_class)
-	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
-	difficulty = rand_range(difficulty[0], difficulty[1])
-	interactive_message('character_boss_defeat', 'character_event', {characterdata = {type = 'raw',race = character_race, class = character_class, difficulty = difficulty, slave_type = 'slave'}})
+	interactive_message('character_boss_defeat', 'character_event', {})
 
 func loadimage(path, type = ""):
 	#var file = File.new()

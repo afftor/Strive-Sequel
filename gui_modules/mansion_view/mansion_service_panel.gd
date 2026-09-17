@@ -75,20 +75,24 @@ func rebuild():
 #### the settlement's purse ####
 
 #What the settlement's clients can still pay this week, from LocationTasks.service_pool_state(), or
-#null when that settlement has no limit - in which case the line and its mark are simply not there.
+#null when that settlement has no limit - in which case the bar and its mark are simply not there.
 var pool = null
 
 
 func fill_pool():
 	pool = LocationTasks.service_pool_state(entry.id) if is_service() else null
-	$PoolStatus.visible = pool != null
 	$PoolTip.visible = pool != null
+	#the bar is the scene's; a scene that has not got one simply shows nothing
+	var bar = get_node_or_null("PoolBar")
+	if bar != null:
+		LocationTasks.fill_service_bar(bar, pool)
 	if pool == null:
 		return
-	$PoolStatus.text = LocationTasks.service_pool_line(pool)
-	$PoolStatus.add_color_override("font_color", LocationTasks.SERVICE_POOL_COLORS[pool.status])
-	globals.connecttexttooltip($PoolTip, LocationTasks.service_pool_hint(pool), false,
-		view.get_node("Overlay/TextTooltip"))
+	#the mark beside the bar and the bar itself answer the same question, so they say the same thing
+	var hint = LocationTasks.service_pool_hint()
+	globals.connecttexttooltip($PoolTip, hint, false, view.get_node("Overlay/TextTooltip"))
+	if bar != null:
+		globals.connecttexttooltip(bar, hint, false, view.get_node("Overlay/TextTooltip"))
 
 
 #One person's estimated turn, read against the purse: as it is while the purse covers everybody's

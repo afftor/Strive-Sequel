@@ -958,7 +958,10 @@ func roll_growth(diff):
 	set_default_value('growth_factor', tmp)
 
 
-func generate_random_character_from_data(desired_class = null, adjust_difficulty = 0, guaranteed_classes = []):
+#factor_cap is the ceiling this character's factors are cut to once every random step is done -
+#the dungeon tiers in variables.dungeon_factor_caps pass one in. It lands before the classes are
+#handed out on purpose: a captive capped at 4 physics cannot then roll paladin, which asks for 5.
+func generate_random_character_from_data(desired_class = null, adjust_difficulty = 0, guaranteed_classes = [], factor_cap = variables.maximum_factor_value):
 	roll_growth(adjust_difficulty)
 	
 	var slaveclass = desired_class
@@ -986,11 +989,15 @@ func generate_random_character_from_data(desired_class = null, adjust_difficulty
 			statlist[array] += globals.rng.randi_range(-1, 1)
 		difficulty -= 1
 		bonus_counter += 1
-	for st in ['physics_factor', 'magic_factor', 'wits_factor','sexuals_factor', 'charm_factor', 'tame_factor', 'authority_factor']:
-		if statlist[st] < 1:
-			statlist[st] = 1
-		if statlist[st] > 6:
-			statlist[st] = 6
+	#int(), because min() hands back a float and these stats are stored as whole numbers
+	var factor_ceiling = int(min(factor_cap, variables.maximum_factor_value))
+	#growth_factor rides along although no bonus touched it: roll_growth() can hand out a 6 on its
+	#own, and a capped dungeon that still yields 6 growth reads as a broken cap to the player.
+	for st in ['physics_factor', 'magic_factor', 'wits_factor','sexuals_factor', 'charm_factor', 'tame_factor', 'authority_factor', 'growth_factor']:
+		if statlist[st] < variables.minimum_factor_value:
+			statlist[st] = variables.minimum_factor_value
+		if statlist[st] > factor_ceiling:
+			statlist[st] = factor_ceiling
 	
 	#assign classes
 	while classcounter > 0:
