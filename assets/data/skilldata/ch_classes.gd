@@ -1342,7 +1342,7 @@ var effects = {
 	
 	e_tr_nixx = {
 		type = 'trigger',
-		trigger = [variables.TR_CAST],
+		trigger = [variables.TR_PREHIT],
 		req_skill = true,
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage']},
