@@ -47,7 +47,7 @@ const PATTERNS = {
 		"nipple": Color("543131"),
 		"mouth": 2,
 		"layers": [
-			{"mask": null, "color": Color("904b18")},
+			{"mask": "white_mask.png", "color": Color("904b18")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("904b18")},
 		],
 	},
@@ -67,7 +67,7 @@ const PATTERNS = {
 		"nipple": Color("6b6564"),
 		"mouth": 2,
 		"layers": [
-			{"mask": null, "color": Color("ababab")},
+			{"mask": "white_mask.png", "color": Color("ababab")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("ababab")},
 		],
 	},
@@ -77,7 +77,7 @@ const PATTERNS = {
 		"nipple": Color("4e4948"),
 		"mouth": 2,
 		"layers": [
-			{"mask": null, "color": Color("6d6d6d")},
+			{"mask": "white_mask.png", "color": Color("6d6d6d")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("6d6d6d")},
 		],
 	},
@@ -87,7 +87,7 @@ const PATTERNS = {
 		"nipple": Color("493c3a"),
 		"mouth": 2,
 		"layers": [
-			{"mask": null, "color": Color("513b28")},
+			{"mask": "white_mask.png", "color": Color("513b28")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("513b28")},
 		],
 	},
