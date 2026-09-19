@@ -88,11 +88,10 @@ func update():
 		input_handler.GetTweenNode(self).stop_all()
 		self.modulate.a = 1
 #		show()
-		var pos = parentnode.get_global_rect()
-		pos = Vector2(pos.end.x + 10, pos.position.y)
-		self.set_global_position(pos)
+		var anchor = parentnode.get_global_rect()
+		self.set_global_position(Vector2(anchor.end.x + 10, anchor.position.y))
 		if get_rect().end.x+100 > screen.size.x:
-			rect_global_position.x -= get_rect().end.x+100 - screen.size.x
+			rect_global_position.x = max(0, anchor.position.x - rect_size.x - 10)
 		if get_rect().end.y+125 > screen.size.y:
 			rect_global_position.y -= get_rect().end.y+125 - screen.size.y
 		set_process(true)

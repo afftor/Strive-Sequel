@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=1]
 [ext_resource path="res://gui_modules/Exploration/Scripts/AvailableSlaves.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
 [ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/icons/icon_enslave.png" type="Texture" id=6]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/sell all/button_sellall_unactive.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/enslave/button_enslave_hover.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/frame_hero_hover.png" type="Texture" id=10]
@@ -25,192 +25,571 @@
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/sell all/button_sellall_hover.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/icons/icon_recruit.png" type="Texture" id=24]
 
-[sub_resource type="DynamicFont" id=4]
-size = 22
-font_data = ExtResource( 3 )
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=26]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_hover.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_pressed.png" type="Texture" id=29]
 
 [sub_resource type="DynamicFont" id=5]
-size = 28
+size = 34
 font_data = ExtResource( 3 )
 
-[node name="AvailableSlaves" type="TextureRect"]
-margin_left = 1480.0
-margin_top = 94.0
-margin_right = 1848.0
-margin_bottom = 768.0
+[sub_resource type="DynamicFont" id=6]
+use_filter = true
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+use_filter = true
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
+
+[sub_resource type="DynamicFont" id=8]
+use_filter = true
+size = 16
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+use_filter = true
+size = 13
+font_data = ExtResource( 26 )
+
+[sub_resource type="DynamicFont" id=10]
+use_filter = true
+size = 11
+font_data = ExtResource( 26 )
+
+[sub_resource type="DynamicFont" id=11]
+use_filter = true
+size = 17
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+use_filter = true
+size = 14
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.12, 0.30, 0.10, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.85, 0.702, 0.361, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_left = 2
+corner_radius_bottom_right = 2
+
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.25, 0.49, 0.20, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.85, 0.702, 0.361, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_left = 2
+corner_radius_bottom_right = 2
+
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.07, 0.20, 0.06, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.85, 0.702, 0.361, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_left = 2
+corner_radius_bottom_right = 2
+
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.85, 0.702, 0.361, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_left = 2
+corner_radius_bottom_right = 2
+draw_center = false
+shadow_color = Color( 0.43, 0.94, 0.39, 0.9 )
+shadow_size = 10
+
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.06, 0.08, 0.05, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.85, 0.702, 0.361, 1 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.0745, 0.0784, 0.0941, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.541, 0.416, 0.169, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_left = 2
+corner_radius_bottom_right = 2
+content_margin_left = 7.0
+content_margin_right = 7.0
+content_margin_top = 7.0
+content_margin_bottom = 7.0
+
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 27 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 52.0
+margin_right = 6.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id=33]
+texture = ExtResource( 28 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 68.0
+margin_right = 16.0
+margin_top = 24.0
+margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id=34]
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 52.0
+margin_right = 6.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.28, 0.38, 0.20, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.85, 0.702, 0.361, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_left = 16
+corner_radius_bottom_right = 16
+
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.5, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
+width = 64
+
+[sub_resource type="CanvasItemMaterial" id=25]
+blend_mode = 1
+
+[sub_resource type="Animation" id=26]
+resource_name = "breathe"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Glow:modulate")
+tracks/0/interp = 1
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.35 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sheen/Band:rect_position")
+tracks/1/interp = 1
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -70, 0 ), Vector2( 200, 0 ), Vector2( 200, 0 ) ]
+}
+
+[sub_resource type="Gradient" id=27]
+colors = PoolColorArray( 0.239, 0.51, 0.22, 1, 0.102, 0.259, 0.098, 1 )
+
+[sub_resource type="GradientTexture2D" id=28]
+gradient = SubResource( 27 )
+width = 32
+height = 32
+fill_from = Vector2( 0, 0 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=29]
+texture = ExtResource( 20 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=30]
+texture = ExtResource( 10 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 11 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=32]
+size = 24
+font_data = ExtResource( 3 )
+fallback/0 = ExtResource( 7 )
+
+[node name="AvailableSlaves" type="NinePatchRect"]
+margin_left = 1129.0
+margin_top = 235.0
+margin_right = 1865.0
+margin_bottom = 941.0
 texture = ExtResource( 15 )
 script = ExtResource( 2 )
+patch_margin_left = 12
+patch_margin_top = 51
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="back" type="TextureRect" parent="."]
 show_behind_parent = true
-margin_right = 368.0
-margin_bottom = 674.0
+margin_right = 0.0
+margin_bottom = 0.0
 texture = ExtResource( 21 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+margin_left = 0.0
+margin_top = 0.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 77.0
-margin_right = -7.0
-margin_bottom = -78.0
+margin_left = 10.0
+margin_top = 82.0
+margin_right = -8.0
+margin_bottom = -94.0
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+anchor_top = 0.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 353.0
+[node name="Captives" type="GridContainer" parent="ScrollContainer"]
 size_flags_horizontal = 3
+custom_constants/hseparation = 6
+custom_constants/vseparation = 7
+columns = 5
 
-[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
+[node name="Captive" type="Button" parent="ScrollContainer/Captives"]
 visible = false
-margin_right = 353.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 10 )
-expand = true
-stretch_mode = 1
+margin_right = 139.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 158 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_styles/normal = SubResource( 29 )
+custom_styles/hover = SubResource( 30 )
+custom_styles/pressed = SubResource( 31 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/focus = SubResource( 22 )
 
-[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 7.0
+[node name="Icon" type="TextureRect" parent="ScrollContainer/Captives/Captive"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.0
 margin_top = 7.0
-margin_right = 42.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 35, 35 )
+margin_right = 36.0
+margin_bottom = 79.0
+mouse_filter = 1
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/Icon"]
-margin_right = 35.0
-margin_bottom = 35.0
-texture = ExtResource( 16 )
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 48.0
-margin_top = 9.0
-margin_right = 239.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Name"
-valign = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TakeButton" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 250.0
-margin_top = 4.0
-margin_right = 290.0
-margin_bottom = 44.0
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 9 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/TakeButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -13.5
-margin_top = -13.0
-margin_right = 13.5
-margin_bottom = 13.0
+[node name="Frame" type="TextureRect" parent="ScrollContainer/Captives/Captive/Icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 24 )
+texture = ExtResource( 16 )
+expand = true
 
-[node name="EnslaveButton" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 203.0
-margin_top = 4.0
-margin_right = 243.0
-margin_bottom = 44.0
+[node name="Race" type="TextureRect" parent="ScrollContainer/Captives/Captive"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -62.0
+margin_top = 31.0
+margin_right = -38.0
+margin_bottom = 55.0
+mouse_filter = 1
+expand = true
+stretch_mode = 6
+
+[node name="Sex" type="TextureRect" parent="ScrollContainer/Captives/Captive"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 38.0
+margin_top = 31.0
+margin_right = 62.0
+margin_bottom = 55.0
+mouse_filter = 1
+expand = true
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="ScrollContainer/Captives/Captive"]
+mouse_filter = 2
+custom_fonts/font = SubResource( 6 )
+text = "Name"
+anchor_right = 1.0
+margin_left = 5.0
+margin_right = -5.0
+margin_top = 81.0
+margin_bottom = 104.0
+align = 1
+clip_text = true
+
+[node name="Actions" type="HBoxContainer" parent="ScrollContainer/Captives/Captive"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -62.0
+margin_right = 62.0
+margin_top = 108.0
+margin_bottom = 151.0
+mouse_filter = 2
+custom_constants/separation = 5
+alignment = 1
+
+[node name="EnslaveButton" type="TextureButton" parent="ScrollContainer/Captives/Captive/Actions"]
+rect_min_size = Vector2( 38, 43 )
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 9 )
 expand = true
+stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/EnslaveButton"]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Captives/Captive/Actions/EnslaveButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -13.5
-margin_top = -13.0
-margin_right = 13.5
-margin_bottom = 13.0
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
 mouse_filter = 2
 texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
 
-[node name="SellButton" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 298.0
-margin_top = 4.0
-margin_right = 338.0
-margin_bottom = 44.0
+[node name="TakeButton" type="TextureButton" parent="ScrollContainer/Captives/Captive/Actions"]
+rect_min_size = Vector2( 38, 43 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Captives/Captive/Actions/TakeButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
+mouse_filter = 2
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 5
+
+[node name="SellButton" type="TextureButton" parent="ScrollContainer/Captives/Captive/Actions"]
+rect_min_size = Vector2( 38, 43 )
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 18 )
 expand = true
+stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/SellButton"]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Captives/Captive/Actions/SellButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -14.0
-margin_top = -13.0
-margin_right = 10.0
-margin_bottom = 11.0
+margin_left = -12.0
+margin_top = -19.0
+margin_right = 12.0
+margin_bottom = 5.0
 mouse_filter = 2
 texture = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+expand = true
+stretch_mode = 5
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/SellButton"]
-margin_left = 0.891846
-margin_top = 19.0273
-margin_right = 40.8918
-margin_bottom = 33.0273
+[node name="Label" type="Label" parent="ScrollContainer/Captives/Captive/Actions/SellButton"]
+mouse_filter = 2
+custom_fonts/font = SubResource( 7 )
+text = "25"
+anchor_right = 1.0
+margin_top = 26.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "500"
 align = 1
 
+[node name="HandOver" type="Button" parent="ScrollContainer/Captives/Captive"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -37.0
+margin_right = -4.0
+margin_bottom = -5.0
+rect_min_size = Vector2( 0, 32 )
+custom_styles/normal = SubResource( 13 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 22 )
+flat = true
+
+[node name="Glow" type="Panel" parent="ScrollContainer/Captives/Captive/HandOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+show_behind_parent = true
+custom_styles/panel = SubResource( 16 )
+
+[node name="Background" type="Panel" parent="ScrollContainer/Captives/Captive/HandOver"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 13 )
+
+[node name="Gradient" type="TextureRect" parent="ScrollContainer/Captives/Captive/HandOver"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = -1.0
+mouse_filter = 2
+texture = SubResource( 28 )
+expand = true
+
+[node name="Sheen" type="Control" parent="ScrollContainer/Captives/Captive/HandOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = -1.0
+rect_clip_content = true
+
+[node name="Band" type="TextureRect" parent="ScrollContainer/Captives/Captive/HandOver/Sheen"]
+material = SubResource( 25 )
+margin_left = -70.0
+margin_right = -22.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource( 24 )
+expand = true
+
+[node name="Content" type="HBoxContainer" parent="ScrollContainer/Captives/Captive/HandOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+margin_left = 3.0
+margin_right = -3.0
+custom_constants/separation = 4
+alignment = 1
+
+[node name="Verb" type="Label" parent="ScrollContainer/Captives/Captive/HandOver/Content"]
+mouse_filter = 2
+custom_fonts/font = SubResource( 8 )
+text = "Hand Over"
+custom_colors/font_color = Color( 0.918, 1, 0.902, 1 )
+valign = 1
+
+
+[node name="Count" type="Label" parent="ScrollContainer/Captives/Captive/HandOver/Content"]
+visible = false
+rect_min_size = Vector2( 16, 16 )
+mouse_filter = 2
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+text = "2"
+custom_colors/font_color = Color( 0.85, 0.702, 0.361, 1 )
+custom_styles/normal = SubResource( 18 )
+align = 1
+valign = 1
+
+[node name="Pulse" type="AnimationPlayer" parent="ScrollContainer/Captives/Captive/HandOver"]
+autoplay = "breathe"
+anims/breathe = SubResource( 26 )
+
 [node name="Button" type="TextureButton" parent="."]
-margin_left = 109.859
-margin_top = 611.101
-margin_right = 269.859
-margin_bottom = 651.101
+margin_left = -96.0
+margin_top = -76.0
+margin_right = 96.0
+margin_bottom = -28.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 23 )
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 1.0
+anchor_bottom = 1.0
+expand = true
+stretch_mode = 0
 
 [node name="Label2" type="Label" parent="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.568627, 1 )
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = SubResource( 32 )
 text = "QUICK_SELL_LABEL"
 align = 1
 valign = 1
 
 [node name="Label" type="Label" parent="."]
-margin_left = 38.659
-margin_top = 7.70517
-margin_right = 317.659
-margin_bottom = 44.7052
+margin_left = 56.0
+margin_top = 0.0
+margin_right = -56.0
+margin_bottom = 51.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.568627, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "CAPTURED_CHARACTERS_LABEL"
@@ -218,15 +597,101 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+anchor_right = 1.0
+valign = 1
 
 [node name="Hint" type="TextureRect" parent="."]
-margin_left = 320.237
-margin_top = 4.8909
-margin_right = 362.237
-margin_bottom = 46.8909
+margin_left = -56.0
+margin_top = 0.0
+margin_right = -6.0
+margin_bottom = 50.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+anchor_left = 1.0
+anchor_right = 1.0
+
+[node name="Chooser" type="PopupPanel" parent="."]
+margin_right = 312.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 312, 0 )
+custom_styles/panel = SubResource( 19 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Chooser"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -7.0
+margin_bottom = -7.0
+custom_constants/separation = 5
+
+[node name="ChooserTitle" type="Label" parent="Chooser/VBoxContainer"]
+mouse_filter = 2
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.8, 0.8, 0.7, 1 )
+
+[node name="ChooserList" type="VBoxContainer" parent="Chooser/VBoxContainer"]
+custom_constants/separation = 2
+
+[node name="ChooserRow" type="Button" parent="Chooser/VBoxContainer/ChooserList"]
+visible = false
+rect_min_size = Vector2( 0, 52 )
+custom_styles/normal = SubResource( 20 )
+custom_styles/hover = SubResource( 33 )
+custom_styles/pressed = SubResource( 34 )
+custom_styles/focus = SubResource( 22 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Chooser/VBoxContainer/ChooserList/ChooserRow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+margin_left = 10.0
+margin_top = 2.0
+margin_right = -10.0
+margin_bottom = -2.0
+custom_constants/separation = 16
+
+[node name="Seal" type="Panel" parent="Chooser/VBoxContainer/ChooserList/ChooserRow/HBoxContainer"]
+mouse_filter = 2
+rect_min_size = Vector2( 31, 31 )
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 21 )
+
+[node name="Emblem" type="TextureRect" parent="Chooser/VBoxContainer/ChooserList/ChooserRow/HBoxContainer/Seal"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Chooser/VBoxContainer/ChooserList/ChooserRow/HBoxContainer"]
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="Chooser/VBoxContainer/ChooserList/ChooserRow/HBoxContainer/VBoxContainer"]
+mouse_filter = 2
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.918, 1, 0.902, 1 )
+
+[node name="Meta" type="Label" parent="Chooser/VBoxContainer/ChooserList/ChooserRow/HBoxContainer/VBoxContainer"]
+mouse_filter = 2
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.65, 0.68, 0.64, 1 )
+
+[node name="Pay" type="Label" parent="Chooser/VBoxContainer/ChooserList/ChooserRow/HBoxContainer"]
+mouse_filter = 2
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.318, 0.996, 0.518, 1 )
+valign = 1

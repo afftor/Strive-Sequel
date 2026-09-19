@@ -45,7 +45,7 @@ const PATTERNS = {
 		"label": "Fur: orange",
 		"base": Color("904b18"),
 		"nipple": Color("543131"),
-		"mouth": 2,
+		"mouth": 1,
 		"layers": [
 			{"mask": "white_mask.png", "color": Color("904b18")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("904b18")},
@@ -68,7 +68,7 @@ const PATTERNS = {
 		"label": "Fur: white",
 		"base": Color("6a6464"),
 		"nipple": Color("6b6564"),
-		"mouth": 2,
+		"mouth": 1,
 		"layers": [
 			{"mask": "white_mask.png", "color": Color("ababab")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("ababab")},
@@ -78,7 +78,7 @@ const PATTERNS = {
 		"label": "Fur: grey",
 		"base": Color("6d6d6d"),
 		"nipple": Color("4e4948"),
-		"mouth": 2,
+		"mouth": 1,
 		"layers": [
 			{"mask": "white_mask.png", "color": Color("6d6d6d")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("6d6d6d")},
@@ -88,7 +88,7 @@ const PATTERNS = {
 		"label": "Fur: brown",
 		"base": Color("846952"),
 		"nipple": Color("493c3a"),
-		"mouth": 2,
+		"mouth": 1,
 		"layers": [
 			{"mask": "white_mask.png", "color": Color("513b28")},
 #			{"mask": "mask_besatkin 2.png", "color": Color("513b28")},
@@ -176,7 +176,11 @@ static func nipple_colour(pattern_id):
 # and so into a repainted `body_color_coat` - or -1 where the pattern puts no fur
 # over the mouth.
 static func mouth_index(pattern_id):
-	return int(pattern(pattern_id).get("mouth", -1))
+	var index = int(pattern(pattern_id).get("mouth", -1))
+	# A layer taken out must not leave the index past the colours left.
+	if index >= 0:
+		index = min(index, default_colors(pattern_id).size() - 1)
+	return index
 
 
 static func has_base(pattern_id):

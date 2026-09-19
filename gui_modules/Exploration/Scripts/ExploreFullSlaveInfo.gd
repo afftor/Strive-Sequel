@@ -34,7 +34,10 @@ func tut_get_close_button():
 
 
 func update_purchase_btn():
-	$PurchaseButton/Label.text = tr(gui_controller.exploration_city.hiremode.to_upper() + "_LABEL")
+	var city = gui_controller.exploration_city
+	$PurchaseButton/Label.text = tr(city.hiremode.to_upper() + "_LABEL")
+	if city.hiremode == "sell" and city.person_to_hire != null and city.is_subordinate(city.person_to_hire):
+		$PurchaseButton/Label.text = tr("SLAVE_MARKET_RELINQUISH")
 	if gui_controller.exploration_city.hiremode == "sell":
 		$PurchaseButton.disabled = false
 	else:
@@ -63,7 +66,7 @@ func show_summary(person = selected_char):
 		$Price.visible = true
 		$TextureRect.visible = true
 		if gui_controller.exploration_city.hiremode == "sell":
-			$Price.text = str(round(person.calculate_price(true) / 2))
+			$Price.text = str(gui_controller.exploration_city.market_sale_price(person))
 			$ExploreSlaveInfoModule/Panel/obedlabel.visible = true
 		else:
 			$Price.text = str(round(person.calculate_price(true)))
@@ -153,6 +156,7 @@ func hire_character():
 		return
 	ResourceScripts.game_res.money -= person.calculate_price(true)
 	input_handler.PlaySound("money_spend")
+	ResourceScripts.slave_quests.mark_bought(person)
 	person.set_stat('is_hirable', false)
 	person.recruit() #ResourceScripts.game_party.add_slave(person)
 	person.travel.location = gui_controller.exploration_city.selected_location
@@ -183,19 +187,27 @@ func sell_slave():
 	var text = ''
 	if selectedperson.get_stat('unique') != null:
 		text += "This is a unique character. "
-	text += tr("SELL") + " [name]?"
+	var verb = tr("SLAVE_MARKET_RELINQUISH") if gui_controller.exploration_city.is_subordinate(selectedperson) else tr("SELL")
+	text += verb + " [name]?"
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'sell_slave_confirm', selectedperson.translate(text)])
 
 
 func sell_slave_confirm():
 	var selectedperson = gui_controller.exploration_city.person_to_hire
-	ResourceScripts.game_res.money += int(round(selectedperson.calculate_price(true)/2))
+	var price = gui_controller.exploration_city.market_sale_price(selectedperson)
+	var relinquished = gui_controller.exploration_city.is_subordinate(selectedperson)
+	ResourceScripts.game_res.money += price
 	ResourceScripts.game_party.add_fate(selectedperson.id, tr("SIBLINGMODULEFATEREMOVED"))
 	ResourceScripts.game_party.remove_slave(selectedperson)
 	gui_controller.exploration_city.active_faction.slaves.append(selectedperson.id)
 #	selectedperson.is_players_character = false
 	input_handler.PlaySound("money_spend")
 #	input_handler.slave_list_node.rebuild()
-	gui_controller.exploration_city.sell_slave() #2test 
+	gui_controller.exploration_city.sell_slave() #2test
 	self.hide()
+	var slave_quests = ResourceScripts.slave_quests
+	var bought = 1 if slave_quests.was_bought(selectedperson) else 0
+	slave_quests.forget_bought(selectedperson)
+	if !relinquished:
+		slave_quests.on_slave_sold(1, price, bought)
 

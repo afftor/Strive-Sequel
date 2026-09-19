@@ -2834,6 +2834,10 @@ func _refresh_zone_pickers():
 				ui[key].visible = i in zones
 
 
+# skin_alternate channels take the body's colour too: the split is only for fur masks.
+const CHANNEL_MIRRORS = {"skin": "skin_alternate"}
+
+
 func _apply_channel_colour(channel_id):
 	var material = channel_materials.get(channel_id)
 	if material == null:
@@ -2852,6 +2856,14 @@ func _apply_channel_colour(channel_id):
 	material.set_shader_param("recolor2", secondary)
 	material.set_shader_param("strength", 0.0 if !has_primary and !has_secondary else 1.0)
 	_propagate_channel(channel_id)
+	var mirror = str(CHANNEL_MIRRORS.get(channel_id, ""))
+	if mirror != "" and channel_materials.has(mirror):
+		color_values[mirror] = color_values[channel_id]
+		if color_values_secondary.has(channel_id):
+			color_values_secondary[mirror] = color_values_secondary[channel_id]
+		else:
+			color_values_secondary.erase(mirror)
+		_apply_channel_colour(mirror)
 
 
 # A mesh's own material: the channel's colours plus the map from atlas UV back to
@@ -3698,7 +3710,32 @@ func _active_emotion_setup_slots():
 		for slot_name in EMOTION_SETUP_SLOTS.get(animation_name, []):
 			if !(slot_name in result):
 				result.append(slot_name)
+		# An emotion's own RGBA key for the slot counts as on (embarrassment and shy fade the blush in).
+		for slot_name in skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).keys():
+			if _is_emotion_setup_slot(slot_name) and !(slot_name in result) and _emotion_slot_shows(animation_name, slot_name):
+				result.append(slot_name)
 	return result
+
+
+# Keys that only hide the slot (joy, angry, surprise) do not count as showing it.
+func _emotion_slot_shows(animation_name, slot_name):
+	var timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).get(slot_name, {})
+	var frames = timelines.get("rgba", [])
+	if frames.empty():
+		return true
+	for frame in frames:
+		if _spine_colour(frame.get("color", "FFFFFFFF")).a > 0.0:
+			return true
+	return false
+
+
+func _active_emotion_keys_slot(slot_name):
+	for animation_name in _ordered_active_animations():
+		if !_is_emotion_animation(animation_name):
+			continue
+		if skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).has(slot_name):
+			return true
+	return false
 
 
 func _is_emotion_setup_slot(slot_name):
@@ -4029,7 +4066,8 @@ func _capture_animated_slot_colours():
 		# than appearing at full opacity on the rebuild frame.
 		# Setup-only emotion slots have their own symmetric alpha transition below;
 		# keeping this channel opaque avoids applying the fade twice.
-		if _is_emotion_setup_slot(slot_name):
+		# One the current emotion keys itself keeps its keyed alpha.
+		if _is_emotion_setup_slot(slot_name) and !_active_emotion_keys_slot(slot_name):
 			colour.a = 1.0
 		elif !drawn_slots.has(slot_name):
 			colour.a = 0.0

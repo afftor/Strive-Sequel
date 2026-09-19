@@ -240,6 +240,8 @@ func _append_action_tooltip_details(action, tooltiptext):
 func OrgasmDenyInitiate(player, victim):
 	OrgasmDenyPlayer = player
 	OrgasmDenyVictim = victim
+	#opened mid-turn: ongoing actions, desires and end-turn effects still add sens after this
+	OrgasmDenyVictim.orgasm_on_hold = true
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	$OrgasmDenial.show()
 	$OrgasmDenial/RichTextLabel.bbcode_text = decoder(tr(OrgasmDenyText.initiate), [OrgasmDenyPlayer], [OrgasmDenyVictim])
@@ -260,6 +262,7 @@ func OrgasmDenialCum():
 		text += '_petting'
 	#$Panel/sceneeffects.bbcode_text +="\n" +
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.show()
+	OrgasmDenyVictim.orgasm_on_hold = false
 	OrgasmDenyVictim.orgasm(decoder(tr(OrgasmDenyText[text]), [OrgasmDenyPlayer], [OrgasmDenyVictim]))
 	$OrgasmDenial.hide()
 	rebuildparticipantslist()
@@ -277,6 +280,7 @@ func OrgasmDenialBeg():
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.hide()
 
 func OrgasmDenialDeny():
+	OrgasmDenyVictim.orgasm_on_hold = false
 	OrgasmDenyVictim.sens -= 250
 	#OrgasmDenyVictim.person.add_stat('submission' ,10 + OrgasmDenyVictim.person.get_stat('sexuals_factor')) #todo add new effect
 	$OrgasmDenial.hide()
@@ -301,6 +305,7 @@ hands = {reqs = [{code = 'stat', stat = 'arms', operant = 'neq', value = 'wings'
 func SelectCum(player, victim):
 	OrgasmDenyPlayer = player
 	OrgasmDenyVictim = victim
+	OrgasmDenyPlayer.orgasm_on_hold = true
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	$CumSelect.show()
 	var text = tr("INTERACTION_CUM_SELECT_TEXT")
@@ -362,6 +367,7 @@ func trigger_bonus_action(action, giver_member, taker_member):
 
 func SelectCumTarget(part):
 	var orgasm_text = decoder(tr(part.text), [OrgasmDenyPlayer], [OrgasmDenyVictim])
+	OrgasmDenyPlayer.orgasm_on_hold = false
 	OrgasmDenyPlayer.orgasm(orgasm_text)
 	$CumSelect.hide()
 	get_node("Panel/sceneeffects").bbcode_text += '\n' + pending_turn_text

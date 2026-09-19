@@ -510,9 +510,8 @@ func apply_training(code):
 					result_data[ch] += tmp
 	if result_data.loyalty != 0:
 		result_data.loyalty += parent.get_ref().get_stat('training_loyalty')
-		#trainer_loyalty_bonus and fame's loyalty_bonus works the same way
-		#For now fame works separately, but maybe it should influence trainer_loyalty_bonus
-		var trainers_bonus = ch_trainer.get_stat('trainer_loyalty_bonus') + ch_trainer.get_fame_bonus('loyalty_bonus')
+		#fame's loyalty_bonus is part of trainer_loyalty_bonus (ch_dyn_stats.fix_stat_data)
+		var trainers_bonus = ch_trainer.get_stat('trainer_loyalty_bonus')
 		result_data.loyalty += result_data.loyalty * trainers_bonus
 		if result_data.loyalty < 0:
 			result_data.loyalty = 0

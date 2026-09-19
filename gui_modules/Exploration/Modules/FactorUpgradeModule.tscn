@@ -1,0 +1,707 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
+
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=3]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
+
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=5]
+
+[ext_resource path="res://gui_modules/Exploration/Scripts/FactorUpgradeModule.gd" type="Script" id=6]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=7]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave.png" type="Texture" id=17]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_hover.png" type="Texture" id=18]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_pressed.png" type="Texture" id=19]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge.png" type="Texture" id=24]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_hover.png" type="Texture" id=25]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_pressed.png" type="Texture" id=26]
+
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=27]
+
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Growth factor/fx1_growthfactor.png" type="Texture" id=28]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.042, 0.044, 0.038, 1 )
+
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.08, 0.09, 0.078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.32, 0.29, 0.19, 1 )
+
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.16, 0.2, 0.15, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.88, 0.72, 0.35, 1 )
+
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 1 )
+
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+use_filter = true
+font_data = ExtResource( 1 )
+
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+use_filter = true
+font_data = ExtResource( 1 )
+
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+use_filter = true
+font_data = ExtResource( 1 )
+
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+use_filter = true
+font_data = ExtResource( 1 )
+
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 52.0
+margin_right = 6.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 68.0
+margin_right = 16.0
+margin_top = 24.0
+margin_bottom = 24.0
+
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 52.0
+margin_right = 6.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.976, 0.882, 0.506, 0.12 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976, 0.882, 0.506, 0.9 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+shadow_color = Color( 0.976, 0.882, 0.506, 0.3 )
+shadow_size = 6
+
+[sub_resource type="Gradient" id=25]
+offsets = PoolRealArray( 0, 0.35, 0.5, 0.65, 1 )
+colors = PoolColorArray( 0.976, 0.882, 0.506, 0, 0.976, 0.882, 0.506, 0.35, 1, 0.97, 0.82, 0.55, 0.976, 0.882, 0.506, 0.35, 0.976, 0.882, 0.506, 0 )
+
+[sub_resource type="GradientTexture" id=26]
+gradient = SubResource( 25 )
+width = 160
+
+[sub_resource type="CanvasItemMaterial" id=27]
+blend_mode = 1
+
+[node name="FactorUpgradeModule" type="Panel"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 1560.0
+margin_bottom = 930.0
+mouse_filter = 0
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 6 )
+
+[node name="Frame" type="Panel" parent="."]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 1560.0
+margin_bottom = 930.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+
+[node name="BookTitle" type="Label" parent="."]
+margin_left = 800.0
+margin_top = 28.0
+margin_right = 1420.0
+margin_bottom = 70.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "SQ_UPGRADE_TITLE"
+align = 2
+valign = 1
+
+[node name="HeaderBand" type="Panel" parent="."]
+margin_left = 35.0
+margin_top = 105.0
+margin_right = 1525.0
+margin_bottom = 208.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 8 )
+
+[node name="TokenBox" type="Control" parent="."]
+margin_left = 55.0
+margin_top = 119.0
+margin_right = 555.0
+margin_bottom = 194.0
+mouse_filter = 0
+
+
+[node name="TokenIcon" type="TextureRect" parent="TokenBox"]
+margin_left = 8.0
+margin_top = 17.0
+margin_right = 48.0
+margin_bottom = 57.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+
+[node name="Tokens" type="Label" parent="TokenBox"]
+margin_left = 63.0
+margin_top = 24.0
+margin_right = 470.0
+margin_bottom = 69.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 5 )
+valign = 1
+
+
+[node name="SpentTokens" type="Label" parent="TokenBox"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 200.0
+margin_top = 24.0
+margin_right = 280.0
+margin_bottom = 69.0
+mouse_filter = 2
+custom_colors/font_color = Color( 1, 0.56, 0.42, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 5 )
+text = "-12"
+valign = 1
+
+[node name="Caption" type="Label" parent="TokenBox"]
+margin_left = 63.0
+margin_top = 0.0
+margin_right = 470.0
+margin_bottom = 26.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SQ_TOKENS"
+valign = 1
+
+
+[node name="Limit" type="Label" parent="."]
+margin_left = 595.0
+margin_top = 122.0
+margin_right = 1440.0
+margin_bottom = 190.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 3 )
+valign = 1
+autowrap = true
+
+
+[node name="Help" type="TextureRect" parent="."]
+margin_left = 1476.0
+margin_top = 143.0
+margin_right = 1500.0
+margin_bottom = 167.0
+mouse_filter = 0
+expand = true
+stretch_mode = 5
+texture = ExtResource( 5 )
+
+[node name="CharacterPanel" type="Panel" parent="."]
+margin_left = 35.0
+margin_top = 235.0
+margin_right = 755.0
+margin_bottom = 895.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+
+[node name="CharScroll" type="ScrollContainer" parent="."]
+margin_left = 41.0
+margin_top = 241.0
+margin_right = 749.0
+margin_bottom = 889.0
+mouse_filter = 1
+theme = ExtResource( 4 )
+scroll_horizontal_enabled = false
+
+[node name="Characters" type="VBoxContainer" parent="CharScroll"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 708.0
+margin_bottom = 0.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_constants/separation = 5
+
+[node name="CharRow" type="Button" parent="CharScroll/Characters"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 708.0
+margin_bottom = 64.0
+mouse_filter = 0
+visible = false
+rect_min_size = Vector2( 0, 64 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/normal = SubResource( 20 )
+toggle_mode = true
+
+[node name="Portrait" type="TextureRect" parent="CharScroll/Characters/CharRow"]
+margin_left = 6.0
+margin_top = 12.0
+margin_right = 46.0
+margin_bottom = 52.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+
+[node name="Name" type="Label" parent="CharScroll/Characters/CharRow"]
+margin_left = 60.0
+margin_top = 7.0
+margin_right = 470.0
+margin_bottom = 57.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 2 )
+valign = 1
+clip_text = true
+
+
+[node name="Type" type="Label" parent="CharScroll/Characters/CharRow"]
+margin_left = 485.0
+margin_top = 7.0
+margin_right = 680.0
+margin_bottom = 57.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+valign = 1
+align = 2
+
+
+[node name="DetailPanel" type="Panel" parent="."]
+margin_left = 780.0
+margin_top = 235.0
+margin_right = 1525.0
+margin_bottom = 895.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+
+[node name="Pick" type="Label" parent="."]
+margin_left = 800.0
+margin_top = 430.0
+margin_right = 1505.0
+margin_bottom = 550.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "SQ_UPGRADE_PICK"
+valign = 1
+align = 1
+autowrap = true
+
+
+[node name="Plan" type="Control" parent="."]
+margin_left = 780.0
+margin_top = 235.0
+margin_right = 1525.0
+margin_bottom = 790.0
+mouse_filter = 2
+visible = false
+
+[node name="SelectedPortrait" type="TextureRect" parent="Plan"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 110.0
+margin_bottom = 106.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+
+[node name="SelectedName" type="Label" parent="Plan"]
+margin_left = 130.0
+margin_top = 15.0
+margin_right = 730.0
+margin_bottom = 96.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 4 )
+valign = 1
+autowrap = true
+
+
+[node name="ColumnHeader" type="Panel" parent="Plan"]
+margin_left = 1.0
+margin_top = 116.0
+margin_right = 744.0
+margin_bottom = 150.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 8 )
+
+[node name="FactorHeading" type="Label" parent="Plan"]
+margin_left = 14.0
+margin_top = 116.0
+margin_right = 183.0
+margin_bottom = 150.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SQ_UPGRADE_COL_FACTOR"
+valign = 1
+align = 0
+
+
+[node name="NowHeading" type="Label" parent="Plan"]
+margin_left = 186.0
+margin_top = 116.0
+margin_right = 278.0
+margin_bottom = 150.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SQ_UPGRADE_COL_NOW"
+valign = 1
+align = 0
+
+
+[node name="PlannedHeading" type="Label" parent="Plan"]
+margin_left = 281.0
+margin_top = 116.0
+margin_right = 383.0
+margin_bottom = 150.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SQ_UPGRADE_COL_PLANNED"
+valign = 1
+align = 0
+
+
+[node name="CostHeading" type="Label" parent="Plan"]
+margin_left = 466.0
+margin_top = 116.0
+margin_right = 730.0
+margin_bottom = 150.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SQ_UPGRADE_COL_COST"
+valign = 1
+align = 2
+
+
+[node name="FactorRows" type="VBoxContainer" parent="Plan"]
+margin_left = 8.0
+margin_top = 158.0
+margin_right = 737.0
+margin_bottom = 556.0
+mouse_filter = 2
+custom_constants/separation = 2
+
+[node name="FactorRow" type="Panel" parent="Plan/FactorRows"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 729.0
+margin_bottom = 48.0
+mouse_filter = 2
+visible = false
+rect_min_size = Vector2( 0, 48 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Icon" type="TextureRect" parent="Plan/FactorRows/FactorRow"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 45.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+
+[node name="FactorName" type="Label" parent="Plan/FactorRows/FactorRow"]
+margin_left = 51.0
+margin_top = 0.0
+margin_right = 176.0
+margin_bottom = 48.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+valign = 1
+
+
+[node name="Current" type="Label" parent="Plan/FactorRows/FactorRow"]
+margin_left = 178.0
+margin_top = 0.0
+margin_right = 270.0
+margin_bottom = 48.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+valign = 1
+
+
+[node name="Planned" type="Label" parent="Plan/FactorRows/FactorRow"]
+margin_left = 273.0
+margin_top = 0.0
+margin_right = 375.0
+margin_bottom = 48.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+valign = 1
+
+
+[node name="Minus" type="Button" parent="Plan/FactorRows/FactorRow"]
+margin_left = 378.0
+margin_top = 8.0
+margin_right = 410.0
+margin_bottom = 40.0
+mouse_filter = 0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 2 )
+text = "-"
+
+[node name="Plus" type="Button" parent="Plan/FactorRows/FactorRow"]
+margin_left = 414.0
+margin_top = 8.0
+margin_right = 446.0
+margin_bottom = 40.0
+mouse_filter = 0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 2 )
+text = "+"
+
+[node name="StepCost" type="HBoxContainer" parent="Plan/FactorRows/FactorRow"]
+margin_left = 452.0
+margin_top = 0.0
+margin_right = 719.0
+margin_bottom = 48.0
+mouse_filter = 2
+custom_constants/separation = 8
+alignment = 2
+
+[node name="StepTokenIcon" type="TextureRect" parent="Plan/FactorRows/FactorRow/StepCost"]
+rect_min_size = Vector2( 22, 22 )
+mouse_filter = 2
+size_flags_vertical = 4
+expand = true
+stretch_mode = 5
+
+[node name="StepTokens" type="Label" parent="Plan/FactorRows/FactorRow/StepCost"]
+rect_min_size = Vector2( 24, 0 )
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+valign = 1
+align = 2
+
+[node name="StepGoldIcon" type="TextureRect" parent="Plan/FactorRows/FactorRow/StepCost"]
+rect_min_size = Vector2( 22, 22 )
+mouse_filter = 2
+size_flags_vertical = 4
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 5
+
+[node name="StepGold" type="Label" parent="Plan/FactorRows/FactorRow/StepCost"]
+rect_min_size = Vector2( 44, 0 )
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 1 )
+valign = 1
+align = 2
+
+[node name="RowEffects" type="Control" parent="Plan"]
+margin_left = 8.0
+margin_top = 158.0
+margin_right = 737.0
+margin_bottom = 556.0
+mouse_filter = 2
+
+[node name="RowEffect" type="Control" parent="Plan/RowEffects"]
+visible = false
+margin_right = 729.0
+margin_bottom = 48.0
+mouse_filter = 2
+
+[node name="Flash" type="Panel" parent="Plan/RowEffects/RowEffect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 24 )
+
+[node name="Sheen" type="Control" parent="Plan/RowEffects/RowEffect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+mouse_filter = 2
+
+[node name="Band" type="TextureRect" parent="Plan/RowEffects/RowEffect/Sheen"]
+material = SubResource( 27 )
+margin_left = -200.0
+margin_top = -14.0
+margin_right = -40.0
+margin_bottom = 62.0
+rect_rotation = 12.0
+rect_pivot_offset = Vector2( 80, 38 )
+mouse_filter = 2
+texture = SubResource( 26 )
+expand = true
+stretch_mode = 0
+
+[node name="Medallion" type="TextureRect" parent="Plan/RowEffects/RowEffect"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 45.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+[node name="Ring" type="TextureRect" parent="Plan/RowEffects/RowEffect"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -21.0
+margin_top = -21.0
+margin_right = 69.0
+margin_bottom = 69.0
+mouse_filter = 2
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 0
+
+[node name="TotalTokenIcon" type="TextureRect" parent="."]
+margin_left = 798.0
+margin_top = 810.0
+margin_right = 822.0
+margin_bottom = 834.0
+mouse_filter = 2
+expand = true
+stretch_mode = 5
+
+[node name="TotalTokens" type="Label" parent="."]
+margin_left = 830.0
+margin_top = 806.0
+margin_right = 1180.0
+margin_bottom = 838.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 2 )
+valign = 1
+
+
+[node name="TotalGoldIcon" type="TextureRect" parent="."]
+margin_left = 798.0
+margin_top = 848.0
+margin_right = 822.0
+margin_bottom = 872.0
+mouse_filter = 2
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 5
+
+[node name="TotalGold" type="Label" parent="."]
+margin_left = 830.0
+margin_top = 844.0
+margin_right = 1180.0
+margin_bottom = 876.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 2 )
+valign = 1
+
+
+[node name="SpentGold" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 1090.0
+margin_top = 844.0
+margin_right = 1170.0
+margin_bottom = 876.0
+mouse_filter = 2
+custom_colors/font_color = Color( 1, 0.56, 0.42, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 2 )
+text = "-750"
+valign = 1
+
+[node name="Reset" type="Button" parent="."]
+margin_left = 1185.0
+margin_top = 838.0
+margin_right = 1285.0
+margin_bottom = 882.0
+mouse_filter = 0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 1 )
+text = "SQ_UPGRADE_RESET"
+
+[node name="Buy" type="TextureButton" parent="."]
+margin_left = 1295.0
+margin_top = 828.0
+margin_right = 1515.0
+margin_bottom = 888.0
+mouse_filter = 0
+texture_normal = ExtResource( 24 )
+texture_hover = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+expand = true
+
+[node name="Label" type="Label" parent="Buy"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 220.0
+margin_bottom = 60.0
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "SQ_UPGRADE_BUY"
+valign = 1
+align = 1
+

@@ -529,9 +529,6 @@ func get_background(id, cash = false):
 	return res
 
 
-#location art is screen sized (2-4 MB a piece). A slave list can show a dozen different
-#locations at once, so the card backdrops get their own centre cropped, shrunk copies and
-#the full sized originals are let go again
 const CARD_BACKGROUND_SIZE = Vector2(226, 160)
 var card_backgrounds = {}
 
@@ -1250,84 +1247,6 @@ var icons = {
 	resist_light = "res://assets/images/iconsstats/light.png",
 	resist_dark = "res://assets/images/iconsstats/dark.png",
 	resist_mind = "res://assets/images/iconsstats/mind.png",
-#	TO COMPLETE AND USE IN DATA TABLES
-#	NEED TO GET RID OF ALL LOAD FUNCTIONS
-#	skill_abuse = "res://assets/images/iconsskills/abuse.png",
-#	"res://assets/images/iconsskills/Acid-spit.png",
-#	"res://assets/images/iconsskills/AcidBomb.png",
-#	"res://assets/images/iconsskills/Aimed-strike.png",
-#	"res://assets/images/iconsskills/arrowshower.png",
-#	"res://assets/images/iconsskills/Attack.png",
-#	skill_attract = "res://assets/images/iconsskills/Attract.png",
-#	"res://assets/images/iconsskills/Barrier.png",
-#	"res://assets/images/iconsskills/BloodMagic.png",
-#	skill_charm = "res://assets/images/iconsskills/Charm.png",
-#	skill_double_attack = "res://assets/images/iconsskills/comboattack.png",
-#	skill_command = "res://assets/images/iconsskills/Command.png",
-#	"res://assets/images/iconsskills/cripple.png",
-#	"res://assets/images/iconsskills/Debilitate.png",
-#	skill_attack = "res://assets/images/iconsskills/defaultattack.png",
-#	skill_discipline = "res://assets/images/iconsskills/Discipline2.png",
-#	skill_hardwork = "res://assets/images/iconsskills/Discipline.png",
-#	skill_distract = "res://assets/images/iconsskills/distract.png",
-#	skill_dragon_might = "res://assets/images/iconsskills/Drain.png",
-#	"res://assets/images/iconsskills/Escape.png",
-#	skill_publicexecution = "res://assets/images/iconsskills/Execution.png",
-#	skill_fear = "res://assets/images/iconsskills/Fear.png",
-#	"res://assets/images/iconsskills/firebolt.png",
-#	"res://assets/images/iconsskills/FireBomb.png",
-#	"res://assets/images/iconsskills/firestorm.png",
-#	skill_greatseduce = "res://assets/images/iconsskills/Great_Seduce.png",
-#	skill_lesser_heal = "res://assets/images/iconsskills/Heal.png",
-#	skill_first_aid = "res://assets/images/iconsskills/HealBandage.png",
-#	"res://assets/images/iconsskills/Heavy-Strike.png",
-#	skill_ranged_attack = "res://assets/images/iconsskills/heavyshot.png",
-#	skill_rserrated_shot = "res://assets/images/iconsskills/heavyshot.png",
-#	"res://assets/images/iconsskills/icon_arrow_explode.png",
-#	"res://assets/images/iconsskills/icon_dark.png",
-#	"res://assets/images/iconsskills/icon_earth.png",
-#	"res://assets/images/iconsskills/icon_eyes.png",
-#	"res://assets/images/iconsskills/icon_ice.png",
-#	"res://assets/images/iconsskills/icon_light.png",
-#	"res://assets/images/iconsskills/icon_lightning.png",
-#	"res://assets/images/iconsskills/icon_plant.png",
-#	"res://assets/images/iconsskills/icon_tiny.png",
-#	skill_innervate = "res://assets/images/iconsskills/Innervate.png",
-#	skill_inspire = "res://assets/images/iconsskills/Inspire.png",
-#	skill_mass_lesser_heal = "res://assets/images/iconsskills/lesserheal.png",
-#	"res://assets/images/iconsskills/Lich-strike.png",
-#	skill_drain = "res://assets/images/iconsskills/LifeDrain.png",
-#	skill_shackles = "res://assets/images/iconsskills/Magic Shackles.png",
-#	skill_drain_mana = "res://assets/images/iconsskills/ManaDrain.png",
-#	"res://assets/images/iconsskills/meditate.png",
-#	"res://assets/images/iconsskills/Mindblast.png",
-#	"res://assets/images/iconsskills/Mindread.png",
-#	skill_mindcontrol = "res://assets/images/iconsskills/Mind_Control.png",
-#	skill_praise = "res://assets/images/iconsskills/Praise.png",
-#	skill_protect = "res://assets/images/iconsskills/Protect.png",
-#	skill_publichumiliation = "res://assets/images/iconsskills/PublicPunish.png",
-#	skill_publicsexhumiliation = "res://assets/images/iconsskills/PublicSex.png",
-#	skill_punish = "res://assets/images/iconsskills/Punish.png",
-#	skill_stopmindcontrol = "res://assets/images/iconsskills/RemoveMindcontrol.png",
-#	skill_reward = "res://assets/images/iconsskills/Reward.png",
-#	skill_rewardsex = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-#	skill_sedate = "res://assets/images/iconsskills/Sedate.png",
-#	"res://assets/images/iconsskills/Sedation.png",
-#	skill_seduce = "res://assets/images/iconsskills/Seduce.png",
-#	skill_serve = "res://assets/images/iconsskills/Serve2.png",
-#	"res://assets/images/iconsskills/Serve.png",
-#	skill_slash = "res://assets/images/iconsskills/Shackle.png",
-#	"res://assets/images/iconsskills/slash.png",
-#	skill_consume_soul = "res://assets/images/iconsskills/soulconsume.png",
-#	skill_greatshavkles = "res://assets/images/iconsskills/Strong Magic Shackles.png",
-#	skill_fire_attack = "res://assets/images/iconsskills/strongattack.png",
-#	"res://assets/images/iconsskills/tackle.png",
-#	"res://assets/images/iconsskills/taunt.png",
-#	skill_trap = "res://assets/images/iconsskills/Trap.png",
-#	skill_make_undead = "res://assets/images/iconsskills/TurnUndead.png",
-#	skill_warn = "res://assets/images/iconsskills/Warn.png",
-#	skill_weaponrefine = "res://assets/images/iconsskills/WeaponRefine.png",
-#	"res://assets/images/iconsskills/windarrow.png"
 }
 
 func get_icon(id):
@@ -1516,11 +1435,6 @@ var GFX_sprites = {
 	aura_firearr = "res://assets/sfx/hit_animation/aura_firearr.tscn",
 	aura_arcaneblade = "res://assets/sfx/hit_animation/aura_arcaneblade.tscn",
 	bite = "res://assets/sfx/hit_animation/bite.tscn",
-	#Same sheet as `bite`, but its own scene so it can carry an offset: as a cast
-	#animation it plays on the caster's card, and centred it just paints a mouth over
-	#the attacker's own portrait. The offset pushes the jaws out to the leading edge,
-	#where the target is, and is negated automatically when the sprite is flipped.
-	#`bite` itself stays as it is - bosses use it as a target-side predamage effect.
 	at_bite = "res://assets/sfx/hit_animation/at_bite.tscn",
 	trap_snare = "res://assets/sfx/hit_animation/trap_snare.tscn",
 	dark_swril = "res://assets/sfx/hit_animation/dark_swirl.tscn",
@@ -1544,10 +1458,17 @@ var GFX_sprites = {
 	cast_mind = "res://assets/sfx/hit_animation/cast_mind.tscn",
 	talisman_ticket_apply = "res://assets/sfx/hit_animation/talisman_ticket_apply.tscn",
 	talisman_ticket_burn = "res://assets/sfx/hit_animation/talisman_ticket_burn.tscn",
+	inferno = "res://assets/sfx/hit_animation/inferno.tscn",
+	hailstorm = "res://assets/sfx/hit_animation/hailstorm.tscn",
+	blizzard = "res://assets/sfx/hit_animation/blizzard.tscn",
+	abyss_gaze = "res://assets/sfx/hit_animation/abyss_gaze.tscn",
+	meteor_strike = "res://assets/sfx/hit_animation/meteor_strike.tscn",
+	charge_fire = "res://assets/sfx/hit_animation/charge_fire.tscn",
+	charge_frost = "res://assets/sfx/hit_animation/charge_frost.tscn",
+	charge_abyss = "res://assets/sfx/hit_animation/charge_abyss.tscn",
 	}
 
 var GFX_particles = {
-#	heal = "res://assets/sfx/HealEffect.tscn",
 	heal = "res://assets/sfx/heal.tscn",
 	buff = "res://assets/sfx/buff.tscn",
 	debuff = "res://assets/sfx/debuff.tscn",
@@ -1563,18 +1484,6 @@ var GFX_video = {
 
 
 func loadimages(): 
-#	for i in icons:
-#		icons[i] = input_handler.loadimage(icons[i])
-#	for i in backgrounds:
-#		backgrounds[i] = input_handler.loadimage(backgrounds[i])
-#	for i in scenes:
-#		scenes[i] = input_handler.loadimage(scenes[i])
-#	for i in shades:
-#		shades[i] = input_handler.loadimage(shades[i])
-#	for i in portraits:
-#		portraits[i] = input_handler.loadimage(portraits[i])
-#	for i in sprites:
-#		sprites[i] = input_handler.loadimage(sprites[i])
 	for i in cursors:
 		cursors[i] = input_handler.loadimage(cursors[i])
 	for i in GFX:
@@ -1626,40 +1535,3 @@ var upgrade_tiers = {
 
 }
 
-#var statsicons = {#not used at all O_o
-#lub1 = load("res://assets/images/sexicons/lub1.png"),
-#lub2 = load("res://assets/images/sexicons/lub2.png"),
-#lub3 = load("res://assets/images/sexicons/lub3.png"),
-#lub4 = load("res://assets/images/sexicons/lub4.png"),
-#lub5 = load("res://assets/images/sexicons/lub5.png"),
-#lust1 = load("res://assets/images/sexicons/lust1.png"),
-#lust2 = load("res://assets/images/sexicons/lust2.png"),
-#lust3 = load("res://assets/images/sexicons/lust3.png"),
-#lust4 = load("res://assets/images/sexicons/lust4.png"),
-#lust5 = load("res://assets/images/sexicons/lust5.png"),
-#sens1 = load("res://assets/images/sexicons/sens1.png"),
-#sens2 = load("res://assets/images/sexicons/sens2.png"),
-#sens3 = load("res://assets/images/sexicons/sens3.png"),
-#sens4 = load("res://assets/images/sexicons/sens4.png"),
-#sens5 = load("res://assets/images/sexicons/sens5.png"),
-#stress1 = load("res://assets/images/gui/obed_bad.png"),
-#stress2 = load("res://assets/images/gui/obed_med.png"),
-#stress3 = load("res://assets/images/gui/obed_good.png")
-#}
-#var combatfullpictures = { #not used
-#	rat = load("res://assets/images/enemies/RatFull.png"),
-#	ent = load("res://assets/images/enemies/EntFull.png"),
-#	bigent = load("res://assets/images/enemies/BigEntFull.png"),
-#	golem = load("res://assets/images/enemies/Golem.png"),
-#	golemalt = load("res://assets/images/enemies/GolemAlt.png"),
-#	spider = load("res://assets/images/enemies/Spider.png"),
-#}
-#var combatportraits = {
-#	##enemies
-#	rat = load("res://assets/images/enemies/RatIcon2.png"),
-#	ent = load("res://assets/images/enemies/EntIcon.png"),
-#	bigent = load("res://assets/images/enemies/BigEntIcon.png"),
-#	golem = load("res://assets/images/enemies/GolemIcon.png"),
-#	golemalt = load("res://assets/images/enemies/GolemAltIcon.png"),
-#	spider = load("res://assets/images/enemies/SpiderIcon.png"),
-#	}

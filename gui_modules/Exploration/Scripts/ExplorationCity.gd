@@ -18,22 +18,6 @@ var hiremode
 var person_to_hire
 var selectedquest
 
-const SEX_SKILLS = [
-	{code = 'sex_skills_petting', name = 'SEXSKILLPETTING', descript = 'SEXSKILLPETTINGDESCRIPT'},
-	{code = 'sex_skills_penetration', name = 'SEXSKILLPENETRATION', descript = 'SEXSKILLPENETRATIONDESCRIPT'},
-	{code = 'sex_skills_pussy', name = 'SEXSKILLPUSSY', descript = 'SEXSKILLPUSSYDESCRIPT'},
-	{code = 'sex_skills_oral', name = 'SEXSKILLORAL', descript = 'SEXSKILLORALDESCRIPT'},
-	{code = 'sex_skills_anal', name = 'SEXSKILLANAL', descript = 'SEXSKILLANALDESCRIPT'},
-	{code = 'sex_skills_tail', name = 'SEXSKILLTAIL', descript = 'SEXSKILLTAILDESCRIPT'},
-]
-
-func get_sex_training_label(state):
-	match state:
-		'novice': return tr('SEX_TRAINING_LEVEL_NOVICE')
-		'skilled': return tr('SEX_TRAINING_LEVEL_SKILLED')
-		'mastered': return tr('SEX_TRAINING_LEVEL_MASTERED')
-	return str(state).capitalize()
-
 var city_options = {
 	#location_purchase = "EXPLORBUYDUNGEON",
 	quest_board = "EXPLORENOTICEBOARD",
@@ -66,9 +50,17 @@ func _ready():
 	selected_area = ResourceScripts.game_world.areas.plains
 	
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
+	var action_button = $SlaveMarket.get_node_or_null("ActionButton")
+	if action_button != null:
+		action_button.connect("pressed", self, "market_action_pressed")
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SlaveMarket/SellMode.connect("pressed", self, "change_mode", ["sell"])
-	$SlaveMarket/HBoxContainer/UpgradeButton.connect("pressed", self, "show_upgrade_window")
+	var quests_mode = $SlaveMarket.get_node_or_null("QuestsMode")
+	if quests_mode != null:
+		quests_mode.connect("pressed", self, "change_mode", ["quests"])
+	var upgrades_mode = $SlaveMarket.get_node_or_null("UpgradesMode")
+	if upgrades_mode != null:
+		upgrades_mode.connect("pressed", self, "change_mode", ["upgrades"])
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
 	$TestButton.visible = gui_controller.mansion.in_test_mode
@@ -78,6 +70,8 @@ func _ready():
 	#input_handler.connect("update_itemlist", $AreaShop, 'update_sell_list')
 	input_handler.connect("clear_cashed", self, 'clear_cashed')
 	input_handler.register_btn_source('quest_board', self, 'tut_get_quest_board')
+	input_handler.register_btn_source('slave_market_btn', self, 'tut_get_slave_market')
+	input_handler.register_btn_source('market_hire_tab', self, 'tut_get_market_hire_tab')
 	nav.tut_register_travel_btn()
 	nav.tut_register_wolves_btn()
 
@@ -85,6 +79,14 @@ func tut_get_quest_board():
 	for btn in AreaActions.get_children():
 		if btn.get_node("Label").text == tr(city_options['quest_board']):
 			return btn
+
+func tut_get_slave_market():
+	for btn in AreaActions.get_children():
+		if btn.visible and btn.has_meta("faction_code") and btn.get_meta("faction_code") == "slavemarket":
+			return btn
+
+func tut_get_market_hire_tab():
+	return $SlaveMarket/HireMode if $SlaveMarket.visible else null
 
 func clear_cashed():
 	active_location = null
@@ -205,7 +207,8 @@ func build_area_menu(area_actions):
 	for action in area_actions:
 		if action.code == "slavemarket":
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-			newbutton.connect("toggled", self, "faction_hire", [newbutton, action, "city_slaves"])
+			newbutton.set_meta("faction_code", action.code)
+			newbutton.connect("toggled", self, "open_slave_market", [newbutton, action])
 			newbutton.connect("toggled", self, 'reset_active_location')
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
@@ -699,25 +702,15 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	self.current_pressed_area_btn = pressed_button
 	$SlaveMarket/HireMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/SellMode.visible = market_mode != "guild_slaves"
-	$SlaveMarket/HBoxContainer/UpgradeButton.visible = market_mode != "guild_slaves"
+	reset_quests_mode()
 	hiremode = 'hire'
-	$SlaveMarket/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 	for i in active_faction.slaves:
 		var tchar = characters_pool.get_char_by_id(i)
 		var newbutton = input_handler.DuplicateContainerTemplate(
 			$SlaveMarket/SlaveList/ScrollContainer/VBoxContainer
 		)
-		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
-		#newbutton.get_node('name').set("custom_colors/font_color",variables.hexcolordict['factor'+str(int(floor(tchar.get_stat('growth_factor'))))])
-		newbutton.get_node("Price").text = str(tchar.calculate_price(true))
-		newbutton.set_meta("person", tchar)
-		newbutton.get_node('icon').texture = tchar.get_icon_small()
-		input_handler.queue_portrait(tchar) #a slave nobody opened has no picture yet
-		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
-		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
-		newbutton.connect('gui_input', self, 'double_clicked')
-		newbutton.set_meta("person", tchar)
+		fill_market_row(newbutton, tchar, tchar.calculate_price(true))
 	var person_id
 	var person
 	if !active_faction.slaves.empty():
@@ -729,6 +722,8 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		$SlaveMarket/HireMode.disabled = true
 		if market_mode != "guild_slaves":
 			change_mode('sell')
+		else:
+			show_market_empty()
 #		current_pressed_area_btn.pressed = false
 #		$SlaveMarket.hide()
 #		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))
@@ -746,27 +741,79 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		fade($SlaveMarket, 0.3)
 
 
-func show_upgrade_window():
-	gui_controller.close_top_window()
-	$SlaveMarket.hide()
-	if !gui_controller.windows_opened.has($StatsUpgrade):
-		gui_controller.windows_opened.append($StatsUpgrade)
-	$StatsUpgrade.show()
-	$StatsUpgrade.show_characters_panel()
-
-
 func change_mode(mode):
 	hiremode = mode
 	if mode == "hire":
 		faction_hire(true, current_pressed_area_btn, active_faction, "city_slaves", false)
+	elif mode == "quests":
+		show_slave_quests()
+	elif mode == "upgrades":
+		show_upgrades()
 	else:
 		sell_slave()
+
+
+func open_slave_market(pressed, pressed_button, area):
+	faction_hire(pressed, pressed_button, area, "city_slaves")
+	if pressed and $SlaveMarket.get_node_or_null("QuestsPanel") != null:
+		change_mode("quests")
+
+
+func show_slave_quests():
+	show_market_panel("QuestsPanel", "QuestsMode", 'quests')
+
+
+func show_upgrades():
+	show_market_panel("UpgradesPanel", "UpgradesMode", 'upgrades')
+
+
+const MARKET_PANELS = {QuestsPanel = "QuestsMode", UpgradesPanel = "UpgradesMode"}
+
+func show_market_panel(panel_name, tab_name, mode):
+	var panel = $SlaveMarket.get_node_or_null(panel_name)
+	if panel == null:
+		return
+	hiremode = mode
+	person_to_hire = null
+	$SlaveMarket/HireMode.pressed = false
+	$SlaveMarket/SellMode.pressed = false
+	for other in MARKET_PANELS:
+		var tab = $SlaveMarket.get_node_or_null(MARKET_PANELS[other])
+		if tab != null:
+			tab.pressed = other == panel_name
+		var other_panel = $SlaveMarket.get_node_or_null(other)
+		if other_panel != null and other != panel_name:
+			other_panel.hide()
+	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
+	if slave_tooltip != null:
+		slave_tooltip.hide()
+	$SlaveMarket/PurchaseButton.hide()
+	var action_button = $SlaveMarket.get_node_or_null("ActionButton")
+	if action_button != null:
+		action_button.hide()
+	panel.open()
+
+
+func reset_quests_mode():
+	for panel_name in MARKET_PANELS:
+		var tab = $SlaveMarket.get_node_or_null(MARKET_PANELS[panel_name])
+		if tab != null:
+			tab.visible = market_mode != "guild_slaves"
+			tab.pressed = false
+		var panel = $SlaveMarket.get_node_or_null(panel_name)
+		if panel != null:
+			panel.hide()
+	$SlaveMarket/PurchaseButton.show()
+	var action_button = $SlaveMarket.get_node_or_null("ActionButton")
+	if action_button != null:
+		action_button.show()
 
 
 func sell_slave():
 	person_to_hire = null
 	$SlaveMarket/HireMode.pressed = false
 	$SlaveMarket/SellMode.pressed = true
+	reset_quests_mode()
 	if !active_faction.slaves.empty():
 		$SlaveMarket/HireMode.disabled = false
 	else:
@@ -779,26 +826,158 @@ func sell_slave():
 	hiremode = 'sell'
 	$SlaveMarket/HireMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/SellMode.visible = market_mode != "guild_slaves"
-	$SlaveMarket/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 	var char_list = []
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
-		if (tchar.has_profession('master') || tchar.get_stat('slave_class') == 'servant') || tchar.check_work_rule("lock"): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
+		if tchar.has_profession('master') || tchar.check_work_rule("lock"): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
 			continue
 		char_list.append(tchar)
+	sort_by_quest_fit(char_list)
+	for tchar in char_list:
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
-		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
-		newbutton.get_node("Price").text = str(round(tchar.calculate_price(true) / 2))
-		newbutton.connect("pressed", self, 'show_slave_info', [tchar])
-		newbutton.connect('gui_input', self, 'double_clicked')
-		newbutton.set_meta("person", tchar)
-		newbutton.get_node('icon').texture = tchar.get_icon_small()
-		input_handler.queue_portrait(tchar) #a slave nobody opened has no picture yet
+		fill_market_row(newbutton, tchar, market_sale_price(tchar))
 	if !char_list.empty():
 		var person = char_list[0]
 		show_slave_info(person)
 		char_list.clear()
+	else:
+		show_market_empty()
+
+
+const QUEST_FIT_ORDER = ['green', 'yellow']
+var quest_fit_keys = {}
+
+func sort_by_quest_fit(char_list):
+	var sq = ResourceScripts.slave_quests
+	var order = ResourceScripts.game_party.character_order
+	quest_fit_keys.clear()
+	for tchar in char_list:
+		var rank = QUEST_FIT_ORDER.size()
+		if sq.can_deliver(tchar):
+			var found = QUEST_FIT_ORDER.find(sq.best_match_for(tchar).status)
+			if found >= 0:
+				rank = found
+		quest_fit_keys[tchar.id] = [rank, order.find(tchar.id)]
+	char_list.sort_custom(self, "_quest_fit_before")
+	quest_fit_keys.clear()
+
+
+func _quest_fit_before(a, b):
+	var key_a = quest_fit_keys[a.id]
+	var key_b = quest_fit_keys[b.id]
+	if key_a[0] != key_b[0]:
+		return key_a[0] < key_b[0]
+	return key_a[1] < key_b[1]
+
+
+func market_sale_price(tchar):
+	var price = int(round(tchar.calculate_price(true) / 2))
+	if is_subordinate(tchar):
+		price = int(round(price / 2.0))
+	return price
+
+
+const SUBORDINATE_CLASSES = ['servant', 'servant_notax']
+
+func is_subordinate(tchar):
+	return tchar.get_stat('slave_class') in SUBORDINATE_CLASSES
+
+
+func fill_market_row(row, tchar, price):
+	var race_label = row.get_node_or_null("Race")
+	if race_label != null:
+		row.get_node("name").text = tchar.get_short_name()
+		race_label.text = tchar.get_short_race()
+	else:
+		row.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
+	var race_icon = row.get_node_or_null("RaceIcon")
+	if race_icon is TextureRect:
+		var race = races.racelist[tchar.get_stat('race')]
+		race_icon.texture = race.icon
+		globals.connecttexttooltip(race_icon, "[center]{color=green|" + race.name + "}[/center]\n\n" + tchar.show_race_description())
+	var type_label = row.get_node_or_null("Type")
+	if type_label is Label:
+		type_label.text = globals.character_type_name(tchar)
+	var type_icon = row.get_node_or_null("TypeIcon")
+	if type_icon is TextureRect:
+		type_icon.texture = tchar.get_class_icon()
+		globals.connecttexttooltip(type_icon, globals.character_type_tooltip(tchar))
+	row.get_node("Price").text = str(price)
+	row.get_node('icon').texture = tchar.get_icon_small()
+	input_handler.queue_portrait(tchar) #a slave nobody opened has no picture yet
+	row.set_meta("person", tchar)
+	row.connect("pressed", self, 'show_slave_info', [tchar])
+	row.connect('gui_input', self, 'double_clicked')
+	var star = row.get_node_or_null("QuestStar")
+	if star != null:
+		var sq = ResourceScripts.slave_quests
+		var fit = sq.best_match_for(tchar)
+		var could_go = sq.can_deliver(tchar) if ResourceScripts.game_party.characters.has(tchar.id) else tchar.get_stat('slave_class') != 'servant'
+		star.visible = could_go and fit.status != ''
+		if star.visible:
+			star.self_modulate = Color(variables.hexcolordict[fit.status])
+			globals.connecttexttooltip(star, sq.star_tooltip(fit))
+
+
+const MARKET_CARD_NODES = ['Card', 'PurchaseButton', 'ActionButton']
+
+func set_market_card_visible(shown):
+	for node_name in MARKET_CARD_NODES:
+		var node = $SlaveMarket.get_node_or_null(node_name)
+		if node is CanvasItem:
+			node.visible = shown
+	var empty = $SlaveMarket.get_node_or_null("MarketEmpty")
+	if empty is CanvasItem:
+		empty.visible = !shown
+
+
+func show_market_empty():
+	person_to_hire = null
+	set_market_card_visible(false)
+	var empty = $SlaveMarket.get_node_or_null("MarketEmpty")
+	if empty is Label:
+		empty.text = tr("SLAVE_MARKET_EMPTY_SELL" if hiremode == 'sell' else "SLAVE_MARKET_EMPTY_HIRE")
+
+
+func update_action_button():
+	var button = $SlaveMarket.get_node_or_null("ActionButton")
+	if button == null:
+		return
+	var text = ""
+	if person_to_hire != null:
+		if hiremode == 'sell':
+			var sell_key = "SLAVE_MARKET_RELINQUISH_FOR" if is_subordinate(person_to_hire) else "SLAVE_MARKET_SELL_FOR"
+			text = globals._report_text(sell_key, [market_sale_price(person_to_hire)])
+		else:
+			var buy_key = "SLAVE_MARKET_HIRE_FOR" if is_subordinate(person_to_hire) else "SLAVE_MARKET_BUY_FOR"
+			text = globals._report_text(buy_key, [person_to_hire.calculate_price(true)])
+	var label = button.get_node_or_null("Label")
+	if label is Label:
+		label.text = text
+	elif button is Button:
+		button.text = text
+	button.disabled = (person_to_hire == null
+		or (hiremode != 'sell' and ResourceScripts.game_res.money < person_to_hire.calculate_price(true)))
+
+
+func market_action_pressed():
+	if person_to_hire == null:
+		return
+	var info = input_handler.get_spec_node(input_handler.NODE_EXPLORE_SLAVEINFO, null, false, false)
+	if hiremode == 'sell':
+		info.sell_slave()
+		return
+	var confirm_key = "SLAVE_MARKET_HIRE_CONFIRM" if is_subordinate(person_to_hire) else "SLAVE_MARKET_BUY_CONFIRM"
+	var text = globals._report_text(confirm_key, [person_to_hire.calculate_price(true)])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'market_buy_confirm', person_to_hire.translate(text)])
+
+
+func market_buy_confirm():
+	if person_to_hire == null:
+		return
+	var info = input_handler.get_spec_node(input_handler.NODE_EXPLORE_SLAVEINFO, null, false, false)
+	info.hire_character()
 
 
 func _on_portrait_taken(id):
@@ -808,126 +987,23 @@ func _on_portrait_taken(id):
 		var listed = button.get_meta('person')
 		if listed != null and listed.id == id and button.has_node('icon'):
 			button.get_node('icon').texture = listed.get_icon_small()
-	if person_to_hire != null and person_to_hire.id == id:
-		$SlaveMarket/Portrait.texture = person_to_hire.get_icon()
+	var card = $SlaveMarket.get_node_or_null("Card")
+	if card != null and person_to_hire != null and person_to_hire.id == id:
+		card.refresh_portrait(person_to_hire)
 
 
 func show_slave_info(person):
 	person_to_hire = person
+	set_market_card_visible(true)
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":
 			continue
 		button.pressed = button.get_meta("person") == person_to_hire
-	globals.connecttexttooltip($SlaveMarket/RichTextLabel, person.show_race_description())
-	$SlaveMarket/exp.text = tr("EXP_LABEL") + ": " + str(floor(person.get_stat('base_exp')))
-	var text = "[center]" + person.get_full_name() + "[/center]"
-	input_handler.ClearContainer($SlaveMarket/TextureRect/professions)
-	if person.get_prof_number() > 5:
-		$SlaveMarket/TextureRect/professions.columns = 10
-		$SlaveMarket/TextureRect/professions/Button.rect_min_size = Vector2(45, 45)
-		$SlaveMarket/TextureRect/professions/Button/ProfIcon.rect_size = Vector2(34, 34)
-		$SlaveMarket/TextureRect/professions/Button/Label.hide()
-	else:
-		$SlaveMarket/TextureRect/professions.columns = 5
-		$SlaveMarket/TextureRect/professions/Button.rect_min_size = Vector2(90, 90)
-		$SlaveMarket/TextureRect/professions/Button/ProfIcon.rect_size = Vector2(78, 78)
-		$SlaveMarket/TextureRect/professions/Button/Label.show()
-	
-	for i in person.get_professions():
-		var newnode = input_handler.DuplicateContainerTemplate($SlaveMarket/TextureRect/professions)
-		var prof = classesdata.professions[i]
-		var name = ResourceScripts.descriptions.get_class_name(prof, person)
-		newnode.get_node("Label").text = name
-		newnode.get_node("ProfIcon").texture = prof.icon
-		newnode.connect('signal_RMB_release', gui_controller, 'show_class_info', [i, person])
-#		var temptext = (
-#			"[center]"
-#			+ ResourceScripts.descriptions.get_class_name(prof, person)
-#			+ "[/center]\n"
-#			+ ResourceScripts.descriptions.get_class_bonuses(person, prof)
-#			+ ResourceScripts.descriptions.get_class_traits(person, prof)
-#		)
-#		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-#		globals.connecttexttooltip(newnode, temptext)
-		globals.connectclasstooltip(newnode, person, i)
-	input_handler.queue_portrait(person)
-	$SlaveMarket/Portrait.texture = person.get_icon()
-	globals.build_attrs_for_char($SlaveMarket, person)
-	$SlaveMarket/RichTextLabel.bbcode_text = text
-	
-	for i in ['hp', 'mp', 'lust']:
-		get_node("SlaveMarket/base_stats/" + i).max_value = person.get_stat(i + 'max')
-		get_node("SlaveMarket/base_stats/" + i).value = person.get_stat(i)
-		get_node("SlaveMarket/base_stats/" + i + '/Label').text = (
-			str(floor(person.get_stat(i)))
-			+ "/"
-			+ str(floor(person.get_stat(i + 'max')))
-		)
-	get_node("SlaveMarket/base_stats/lust").visible = person.check_trait('succubus')
-	
-	var slavename = "CHARTYPE" + person.get_stat('slave_class').to_upper()
-	if person.get_stat('sex') != 'male':
-		slavename += "F"
-	text = (
-		tr('TYPE_LABEL') + ': ' + "[color=yellow]"
-		+ tr(slavename)
-		+ "[/color]\n"
-	)
-	
-	for i in $SlaveMarket/factors.get_children():
-		# if i.name in ['food_consumption', 'base_exp']:
-		if i.name in ['base_exp', 'food_consumption']:
-			# i.get_node("Label").text = str(floor(person.get_stat(i.name)))
-			continue
-		if input_handler.globalsettings.factors_as_words:
-			i.get_node("Label").text = ResourceScripts.descriptions.factor_descripts[int(
-				floor(person.get_stat(i.name))
-			)]
-			i.get_node("Label").set(
-				"custom_colors/font_color",
-				variables.hexcolordict['factor' + str(int(floor(person.get_stat(i.name))))]
-			)
-		else:
-			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
-			i.get_node("Label").set("custom_colors/font_color", Color(1, 1, 1))
-	
-	$SlaveMarket/traitslabel.visible = true
-	$SlaveMarket/traitslabel.text = tr('TRAITS')
-	globals.build_traitlist_for_char(person, $SlaveMarket/scroll/traitscontainer)
-
-	$SlaveMarket/PersonalityLabel.text = tr('SIBLINGMODULEPERSONALITY') + ': ' + tr('PERSONALITYNAME' + person.get_stat('personality').to_upper())
-	globals.connecttexttooltip($SlaveMarket/PersonalityLabel, globals.get_character_personality_tooltip(person.get_stat('personality')))
-
-	var consent_value = int(person.get_stat('consent'))
-	$SlaveMarket/ConsentLabel.text = tr('SIBLINGMODULECONSENT') + str(tr(variables.consent_dict[consent_value])) + ' (' + str(consent_value) + ')'
-	globals.connecttexttooltip($SlaveMarket/ConsentLabel, tr('INFOCONSENT'))
-	$SlaveMarket/ConsentLabel.visible = true
-
-	$SlaveMarket/SexSkillsLabel.text = tr('SLAVE_MARKET_SEX_SKILLS')
-	input_handler.ClearContainer($SlaveMarket/SexSkills, ['Skill'])
-	var sex_training = person.get_sex_training()
-	var has_visible_sex_skills = false
-	for skill in SEX_SKILLS:
-		if person.get_stat(skill.code) <= 0:
-			continue
-		var training_code = skill.code.replace('sex_skills_', 'sex_training_')
-		var training_state = sex_training.get(training_code, 'novice')
-		if skill.code == 'sex_skills_tail' and training_state == 'novice':
-			continue
-		if skill.code == 'sex_skills_penetration' and training_state == 'novice' and person.get_stat('penis_size') == '':
-			continue
-		if skill.code == 'sex_skills_pussy' and training_state == 'novice' and person.get_stat('sex') == 'male':
-			continue
-		var newnode = input_handler.DuplicateContainerTemplate($SlaveMarket/SexSkills, 'Skill')
-		has_visible_sex_skills = true
-		var training_label = get_sex_training_label(training_state)
-		newnode.text = '%s\n%s' % [tr(skill.name), training_label]
-		globals.connecttexttooltip(newnode, '[center]' + tr(skill.name) + '[/center]\n' + tr(skill.descript) + '\n' + tr('CUR_LEVEL_LABEL') + ': ' + training_label)
-	$SlaveMarket/SexSkillsLabel.visible = has_visible_sex_skills
-
+	var card = $SlaveMarket.get_node_or_null("Card")
+	if card != null:
+		card.show_person(person)
 	$SlaveMarket/PurchaseButton.disabled = false
-	#$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money
-	# rebuild_traits(person)
+	update_action_button()
 
 
 func open_shop(pressed, pressed_button, shop):

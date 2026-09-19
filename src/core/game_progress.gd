@@ -106,7 +106,15 @@ var slave_quests = {
 			price_factor = 0.0
 		},
 	},
-	quest_pool = {}
+	#the slaver rank; older saves get it from slave_quests.fix_serialization()
+	rank = 'D',
+	rank_xp = 0,
+	rank_sales = 0,
+	next_id = 0,
+	quest_pool = {},
+	tokens = 0,
+	top_sales = 0,
+	bought = [],
 }
 
 

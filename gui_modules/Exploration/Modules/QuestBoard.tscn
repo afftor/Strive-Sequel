@@ -1,13 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/QuestPanelV2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/close_screen.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/images/iconstraits/l_collar.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=6]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=7]
-[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_fighters.png" type="Texture" id=8]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/images/gui/explore/QuestBoard/quest_task_panel.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/explore/QuestBoard/quest_panel.png" type="Texture" id=11]
@@ -72,35 +69,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="slave_quests" type="TextureButton" parent="."]
-margin_left = 84.0
-margin_top = 40.0
-margin_right = 178.0
-margin_bottom = 134.0
-rect_min_size = Vector2( 0, 50 )
-hint_tooltip = "Slave Requests"
-texture_normal = ExtResource( 27 )
-texture_pressed = ExtResource( 20 )
-texture_hover = ExtResource( 24 )
-
-[node name="TextureRect" type="TextureRect" parent="slave_quests"]
-modulate = Color( 0.772549, 0.72549, 0.639216, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 9.5
-margin_top = 9.5
-margin_right = -9.5
-margin_bottom = -9.5
-texture = ExtResource( 4 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="guildsortVScroll" type="HBoxContainer" parent="."]
-margin_left = 260.0
+margin_left = 225.0
 margin_top = 40.0
-margin_right = 746.0
+margin_right = 711.0
 margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -222,19 +194,19 @@ custom_fonts/font = ExtResource( 26 )
 text = "QBALL"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 17.9932
+margin_left = 84.0
 margin_top = 161.498
-margin_right = 935.993
+margin_right = 852.0
 margin_bottom = 787.498
 mouse_filter = 1
 theme = ExtResource( 1 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer2" type="GridContainer" parent="ScrollContainer"]
-margin_right = 918.0
+margin_right = 768.0
 size_flags_horizontal = 3
-custom_constants/hseparation = -10
-columns = 4
+custom_constants/hseparation = 24
+columns = 3
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer2"]
 visible = false
@@ -361,61 +333,5 @@ margin_top = 867.0
 margin_right = 1548.0
 margin_bottom = 900.0
 text = "test"
-
-[node name="Background" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.823529 )
-show_behind_parent = true
-margin_left = -381.0
-margin_top = 146.0
-margin_bottom = 850.0
-
-[node name="Label" type="Label" parent="Background"]
-margin_left = 31.3431
-margin_top = 15.4142
-margin_right = 352.343
-margin_bottom = 79.4142
-focus_mode = 2
-mouse_filter = 0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 13 )
-text = "JOURNALLABLE"
-align = 1
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="ScrollContainer2" type="ScrollContainer" parent="."]
-margin_left = -356.0
-margin_top = 228.0
-margin_right = -17.0
-margin_bottom = 784.0
-theme = ExtResource( 1 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer2"]
-margin_right = 339.0
-size_flags_horizontal = 3
-
-[node name="Button" type="Control" parent="ScrollContainer2/VBoxContainer"]
-visible = false
-margin_right = 339.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 0, 55 )
-
-[node name="fact" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Button"]
-margin_top = 5.0
-margin_right = 47.0
-margin_bottom = 52.0
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 5
-
-[node name="btn" type="Button" parent="ScrollContainer2/VBoxContainer/Button"]
-margin_left = 50.0
-margin_right = 315.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 0, 40 )
-theme = ExtResource( 7 )
-toggle_mode = true
-text = "TestText"
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

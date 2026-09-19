@@ -548,7 +548,33 @@ var tutorials = {
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['quest_close'],
-			text = 'TUTORIAL_COMBAT5',
+			text = 'TUTORIAL_COMBAT5_0',
+			panel_pos = Vector2(733,150)
+		},
+		#### the slave market ####
+		{
+			buttons = ['slave_market_btn'],
+			tut_func = 'prepare_market_order',
+			text = 'TUTORIAL_MARKET1',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = [],
+			text = 'TUTORIAL_MARKET2',
+			panel_pos = Vector2(733,150),
+			delay = 0.6
+		},{
+			buttons = ['market_hire_tab'],
+			text = 'TUTORIAL_MARKET3',
+			panel_pos = Vector2(733,150)
+		},{
+			buttons = [],
+			text = 'TUTORIAL_MARKET4',
+			panel_pos = Vector2(733,150),
+			delay = 0.4
+		},{
+			#the market's button in the city's list is a toggle: pressed again, it closes the market
+			buttons = ['slave_market_btn'],
+			text = 'TUTORIAL_MARKET5',
 			panel_pos = Vector2(733,150)
 		},{
 			buttons = ['travel_btn'],
@@ -698,6 +724,21 @@ var tutorials = {
 			text = 'TUTORIAL_COMBAT26',
 			panel_pos = Vector2(733,50),
 			delay = 1.0
+		},{
+			buttons = ['first_handover'],
+			text = 'TUTORIAL_COMBAT26_1',
+			panel_pos = Vector2(733,50),
+			delay = 0.5
+		},{
+			buttons = ['first_handover_quest'],
+			text = 'TUTORIAL_COMBAT26_1A',
+			panel_pos = Vector2(733,50),
+			delay = 0.3
+		},{
+			buttons = [],
+			text = 'TUTORIAL_COMBAT26_2',
+			panel_pos = Vector2(733,50),
+			delay = 1.5
 		},{
 			buttons = ['first_recruit_char'],
 			text = 'TUTORIAL_COMBAT27',
@@ -993,11 +1034,32 @@ func next_tut_step():
 
 #in-tutorial funcs
 func add_combat_reward_char():
+	prepare_market_order()
+	var fitting = ResourceScripts.scriptdict.class_slave.new("random_combat")
+	fitting.generate_random_character_from_data(MARKET_ORDER_RACE, null, 1)
+	fitting.is_active = true
 	var newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
 	newslave.generate_random_character_from_data('random', null, 1)
 	newslave.is_active = true
 #	newslave.set_slave_category('servant')
-	input_handler.combat_node.set_external_reward_chars([newslave.id])
+	input_handler.combat_node.set_external_reward_chars([fitting.id, newslave.id])
+
+#the order the chapter's first captive fits; posted once, and again only if it is gone
+const MARKET_ORDER_RACE = 'Human'
+var market_order_id = null
+
+func prepare_market_order():
+	var sq = ResourceScripts.slave_quests
+	if market_order_id != null and sq.has_quest(market_order_id) and sq.is_quest_open_for_delivery(sq.get_quest(market_order_id)):
+		return
+	var quest = sq.generate_quest('basic', 'easy')
+	quest.requirements[0].statreqs = [{code = 'race', race = MARKET_ORDER_RACE, check = true, tier = 'basic', rq = 'race'}]
+	quest.requirements[0].value = 1
+	quest.requirements[0].delivered_slaves = 0
+	quest.paid = 0
+	sq.get_quest_pool()[quest.id] = quest
+	market_order_id = quest.id
+	sq.emit_signal("quests_changed")
 
 func check_turn_master():
 	return input_handler.combat_node.get_current_actor().is_master()

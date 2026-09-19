@@ -80,6 +80,8 @@ func _ready():
 	input_handler.register_btn_source('location_reju_btn', cast_panel, 'tut_get_reju_btn')
 	$LocationGui/AvailableSlaves.tut_register_first_recruit()
 	$LocationGui/AvailableSlaves.tut_register_first_char()
+	$LocationGui/AvailableSlaves.tut_register_first_handover()
+	$LocationGui/AvailableSlaves.tut_register_first_handover_quest()
 	$LocationGui/NavigationModule.tut_register_mansion_btn()
 	
 	add_child(animations)

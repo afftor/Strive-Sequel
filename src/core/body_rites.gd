@@ -297,26 +297,28 @@ static func remove(person, code, donor_ids):
 #- the form change turns a beastkin body halfkin or a halfkin one beastkin, as the body editor's furry
 #  switch does (ch_stats.set_furry_form), a new beastkin getting the first coat its race lists; nothing of
 #  the old form is kept for a change back;
-#- the virginity restoration makes a woman a virgin again.
+#- the virginity restoration makes a woman a virgin again;
+#- the personality change asks in its dialogue which personality to give (give_personality()).
 const APPEARANCE = 'appearance'
 const SEX_CHANGE = 'sex_change'
 const FORM_CHANGE = 'form_change'
 const VIRGINITY = 'virginity'
-const RITE_GOLD = {appearance = 500, sex_change = 1000, form_change = 1000, virginity = 500}
-const RITE_MANA = {appearance = 30, sex_change = 50, form_change = 50, virginity = 30}
+const PERSONALITY = 'personality'
+const RITE_GOLD = {appearance = 500, sex_change = 1000, form_change = 1000, virginity = 500, personality = 1000}
+const RITE_MANA = {appearance = 30, sex_change = 50, form_change = 50, virginity = 30, personality = 50}
 const APPEARANCE_ICON = "res://assets/images/iconsitems/magic brush.png"
 const SEX_CHANGE_ICON = "res://assets/images/iconsitems/sexswap_potion.png"
 const VIRGINITY_ICON = "res://assets/images/iconsitems/icon_flower.png"
+const PERSONALITY_ICON = "res://assets/images/iconsitems/mask2.png"
+const PERSONALITIES = ['kind', 'bold', 'shy', 'serious']
 
 
 static func is_rite(code):
-	return code in [APPEARANCE, SEX_CHANGE, FORM_CHANGE, VIRGINITY]
+	return code in [APPEARANCE, SEX_CHANGE, FORM_CHANGE, VIRGINITY, PERSONALITY]
 
 
-#The rites a subject is offered, in the order the panel lists them: the appearance and sex changes to
-#everyone, the form change only to a race with the other form, the virginity restoration only to a woman.
 static func rites_for(person):
-	var res = [APPEARANCE, SEX_CHANGE]
+	var res = [APPEARANCE, SEX_CHANGE, PERSONALITY]
 	if form_change_target(person) != '':
 		res.append(FORM_CHANGE)
 	if person.get_stat('sex') == 'female':
@@ -349,6 +351,8 @@ static func rite_name_key(person, code):
 			return "BODYRITE_HALFKIN_FORM" if person.is_furry_form() else "BODYRITE_BEASTKIN_FORM"
 		VIRGINITY:
 			return "BODYRITE_VIRGINITY"
+		PERSONALITY:
+			return "BODYRITE_PERSONALITY"
 	return ""
 
 
@@ -358,8 +362,6 @@ static func rite_descript_key(person, code):
 
 
 #The picture on a rite's row: a brush for the appearance change, the potion for the sex change, the icon of
-#the race a form change gives, a flower for the restoration - a path, or for a race the texture its data
-#already holds.
 static func rite_icon(person, code):
 	match code:
 		APPEARANCE:
@@ -371,13 +373,11 @@ static func rite_icon(person, code):
 			return races.racelist[target].get('icon', '') if target != '' else ''
 		VIRGINITY:
 			return VIRGINITY_ICON
+		PERSONALITY:
+			return PERSONALITY_ICON
 	return ''
 
 
-#What a body must be for a rite, as rows for the panel. The appearance change asks nothing. The sex change
-#asks what the potion asks - nobody
-#of the unique cast, and a sex the swap has an other side for; the form change keeps the unique cast out
-#too; the restoration asks for a virginity to restore.
 static func rite_rows(person, code):
 	var not_unique = {text = text("BODYRITE_REQ_NOT_UNIQUE"), met = person.get_stat('unique') == null}
 	match code:
@@ -437,7 +437,16 @@ static func perform_change(person, code, donor_ids):
 			input_handler.reshoot_portrait(person)
 		VIRGINITY:
 			person.set_stat('vaginal_virgin_lost', null)
+		PERSONALITY:
+			pass
 	ResourceScripts.game_res.spend_rite_preparation()
+	return true
+
+
+static func give_personality(person, personality):
+	if person == null or !(personality in PERSONALITIES):
+		return false
+	person.set_stat('personality', personality)
 	return true
 
 

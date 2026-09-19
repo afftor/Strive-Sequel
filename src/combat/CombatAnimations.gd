@@ -603,6 +603,25 @@ func maw_sprite(node, sprite_name, duration, flip, speedup):
 		return
 	fx_sprite(node, sprite_name, 0.5, duration, flip, speedup)
 
+#SPELL CASTS THAT MOVE THE CARD
+#the element charges on the caster's card and the throw lands on the sheet's key frame (`release` overrides it)
+func charge_fire(node, args = null):  return cast_with_charge(node, args, 'charge_fire')
+func charge_frost(node, args = null): return cast_with_charge(node, args, 'charge_frost')
+func charge_abyss(node, args = null): return cast_with_charge(node, args, 'charge_abyss')
+
+func cast_with_charge(node, args, sprite_name):
+	if args == null: args = {}
+	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
+	var release = get_registry().contact_time(sprite_name, speed)
+	if args.has('release'): release = float(args.release) / speed
+	var duration = ResourceScripts.core_animations.get_gfx_sprite_time(sprite_name) / speed
+	var nextanimationtime = duration
+	if args.has('queue_duration'): nextanimationtime = args.queue_duration
+	nextanimationtime -= 0.1
+	fx_sprite(node, sprite_name, 0.5, duration, get_flip_for_node(node, args), speed)
+	lightning_caster_charge(node, release)
+	return nextanimationtime + aftereffectdelay
+
 #FIELD-WIDE WEATHER
 #These scenes emit in a 1000 px ring, so a single instance centred on the
 #battlefield covers the whole screen. It is parented to the combat node, not to a

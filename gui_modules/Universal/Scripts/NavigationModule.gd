@@ -397,11 +397,12 @@ func open_infinite():
 	var data = ResourceScripts.world_gen.get_location_from_code(input_handler.selected_location)
 	input_handler.active_location = data
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[input_handler.selected_location].area]
-	if gui_controller.exploration == null:
+	#is_instance_valid: a freed node still passes != null
+	if !is_instance_valid(gui_controller.exploration):
 		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
-	if gui_controller.exploration_city == null:
+	if !is_instance_valid(gui_controller.exploration_city):
 		gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
-	if gui_controller.exploration_dungeon == null:
+	if !is_instance_valid(gui_controller.exploration_dungeon):
 		gui_controller.exploration_dungeon = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_DUNGEON, null, false, false)
 	if gui_controller.current_screen == gui_controller.mansion:
 		input_handler.PlaySound("door_open")
@@ -436,11 +437,11 @@ func select_location(location):
 		return_to_mansion()
 		return
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area] #only for postloading location change, cause this forces exploration node to be built before open_X call
-	if gui_controller.exploration == null:
+	if !is_instance_valid(gui_controller.exploration):
 		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
-	if gui_controller.exploration_city == null:
+	if !is_instance_valid(gui_controller.exploration_city):
 		gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
-	if gui_controller.exploration_dungeon == null:
+	if !is_instance_valid(gui_controller.exploration_dungeon):
 		gui_controller.exploration_dungeon = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_DUNGEON, null, false, false)
 
 	if gui_controller.current_screen == gui_controller.mansion:

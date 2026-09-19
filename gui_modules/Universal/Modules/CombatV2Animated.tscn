@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -80,6 +80,8 @@
 [ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=78]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=79]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=80]
+
+[ext_resource path="res://assets/Textures_v2/star_small.png" type="Texture" id=81]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -1685,6 +1687,29 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="QuestStar" type="TextureRect" parent="Rewards/ScrollContainer/HBoxContainer/Button"]
+visible = false
+margin_left = 24.0
+margin_top = 26.0
+margin_right = 46.0
+margin_bottom = 48.0
+mouse_filter = 1
+texture = ExtResource( 81 )
+expand = true
+stretch_mode = 5
+
+[node name="Outline" type="TextureRect" parent="Rewards/ScrollContainer/HBoxContainer/Button/QuestStar"]
+show_behind_parent = true
+self_modulate = Color( 0.08, 0.06, 0.04, 1 )
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 24.0
+margin_bottom = 24.0
+mouse_filter = 2
+texture = ExtResource( 81 )
+expand = true
+stretch_mode = 5
 
 [node name="amount" type="Label" parent="Rewards/ScrollContainer/HBoxContainer/Button"]
 margin_left = 307.027

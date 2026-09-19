@@ -366,6 +366,27 @@ func swap_sex_of(character):
 	
 
 
+#the ritual room's personality change: each option of body_rite_personality comes here
+func body_rite_personality_kind():
+	body_rite_personality('kind')
+
+func body_rite_personality_bold():
+	body_rite_personality('bold')
+
+func body_rite_personality_shy():
+	body_rite_personality('shy')
+
+func body_rite_personality_serious():
+	body_rite_personality('serious')
+
+func body_rite_personality(personality):
+	load("res://src/core/body_rites.gd").give_personality(input_handler.active_character, personality)
+	#the rite dialogue sits on a layer of its own, so it is closed directly
+	var dialogue = gui_controller.dialogue
+	if dialogue != null and is_instance_valid(dialogue):
+		dialogue.close()
+
+
 func zephyra_underwear(character):
 	if gui_controller.inventory.visible:
 		gui_controller.close_scene(gui_controller.inventory)

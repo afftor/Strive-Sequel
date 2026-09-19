@@ -1606,10 +1606,10 @@ margin_right = -19.0
 
 [node name="AvailableSlaves" parent="." instance=ExtResource( 41 )]
 visible = false
-margin_left = 1497.0
+margin_left = 1129.0
 margin_top = 235.0
 margin_right = 1865.0
-margin_bottom = 909.0
+margin_bottom = 941.0
 
 [node name="Resources" type="Panel" parent="."]
 visible = false

@@ -1216,6 +1216,10 @@ func test_mode():
 			})
 		else:
 			print_debug("test mode: no settlement found to place the away quest in")
+		#the market at rank A: make_world() rolled rank-D quests, so the pool is emptied first
+		ResourceScripts.slave_quests.get_quest_pool().clear()
+		ResourceScripts.slave_quests.set_rank('A')
+		ResourceScripts.slave_quests.add_tokens(100)
 
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)

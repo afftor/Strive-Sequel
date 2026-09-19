@@ -670,6 +670,16 @@ func fix_stat_data(stat, data):
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = -get_used_mastery_points('magic'), src_type = 'used', src_value = '', timestamp = 0})
+		#fame tier bonuses
+		'manhunt', 'trainer_loyalty_bonus':
+			var fame_key = 'manhunt_bonus'
+			if stat == 'trainer_loyalty_bonus':
+				fame_key = 'loyalty_bonus'
+			var fame_value = parent.get_ref().get_fame_bonus(fame_key)
+			if fame_value != 0:
+				if !data.bonuses.has('add'):
+					data.bonuses.add = []
+				data.bonuses.add.push_back({value = fame_value, src_type = 'fame', src_value = parent.get_ref().get_stat('fame'), timestamp = 0})
 
 
 #setters

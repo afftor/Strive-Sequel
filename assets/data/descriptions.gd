@@ -893,6 +893,9 @@ func make_slave_statreq_text(req):
 		'is_free':
 			if req.check: return tr('STATREQ_IS_FREE')
 			else: return tr('STATREQ_IS_NOT_FREE')
+		'is_unique':
+			if req.value: return tr('STATREQ_IS_UNIQUE')
+			else: return tr('STATREQ_NOT_UNIQUE')
 		'slave_type':
 			var text
 			if req.operant == 'eq': text = "STATREQ_IS_SLAVE_TYPE"
@@ -948,8 +951,13 @@ func make_slave_statreq_text(req):
 						val += bodypartsdata[req.stat][req.value].name
 				
 				return "%s: %s." % [stat_name, val]
+			elif req.stat == 'consent':
+				return "%s: %s %s (%s)." % [stat_name, operant_text, int(req.value), tr("CONSENT" + str(int(req.value)))]
 			else:
 				return "%s: %s %s." % [stat_name, operant_text, req.value]
+		'base_stat':
+			return globals._report_text("STATREQ_BASE_STAT", [
+				globals.get_stat_name(req.stat), input_handler.operant_translation(req.operant), req.value])
 		'sex':
 			var text = "%s: " % tr('STATSEX')
 			if req.has('check') and !req.check:

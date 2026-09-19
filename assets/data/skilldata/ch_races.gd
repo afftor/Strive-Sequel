@@ -52,7 +52,8 @@ var skills = {
 		damage_type = 'air',
 		sfx = [
 			{code = 'air_shield', target = 'target', period = 'predamage'},
-			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true},
+			{code = 'fairy_grace', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],

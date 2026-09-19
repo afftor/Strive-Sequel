@@ -2444,6 +2444,13 @@ func give_rewards():
 		newbutton.get_node('name').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
 		newbutton.get_node("amount").text = ""
 		globals.connectslavetooltip(newbutton, tchar)
+		var quest_star = newbutton.get_node_or_null('QuestStar')
+		if quest_star != null:
+			var fit = ResourceScripts.slave_quests.best_match_for(tchar)
+			quest_star.visible = fit.status != ''
+			if quest_star.visible:
+				quest_star.self_modulate = Color(variables.hexcolordict[fit.status])
+				globals.connecttexttooltip(quest_star, ResourceScripts.slave_quests.star_tooltip(fit))
 	if input_handler.exploration_node != null:
 		input_handler.exploration_node.add_rolled_chars(rewardchars)
 	for i in rewardsdict.materials:

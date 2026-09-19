@@ -429,6 +429,11 @@ func on_mansion_shown():
 	if get_parent().visible:
 		expanded_paperdoll_cache_person_id = ""
 		_close_expanded_character_immediate()
+		if rebuild_pending:
+			rebuild()
+		elif upkeep_refresh_pending:
+			refresh_upkeep_warnings()
+		upkeep_refresh_pending = false
 		reset_sorting()
 		apply_default_fold()
 
@@ -1758,19 +1763,7 @@ func _can_buy_class(person):
 
 
 func _get_character_type_tooltip(person):
-	var class_code = person.get_stat('slave_class')
-	if class_code == 'servant_notax':
-		class_code = 'servant'
-	var base_key = "CHARTYPE" + class_code.to_upper()
-	var name_key = base_key
-	if person.get_stat('sex') != 'male':
-		name_key += "F"
-	var result = "[center]{color=yellow|" + tr(name_key) + "}[/center]"
-	var description_key = base_key + "DESCRIPT"
-	var description = tr(description_key)
-	if description != description_key:
-		result += "\n\n" + person.translate(description)
-	return result
+	return globals.character_type_tooltip(person)
 
 
 func _work_icon_texture(value):
@@ -2197,7 +2190,15 @@ func _refresh_card_visual(newbutton):
 	card_layout.self_modulate = color
 	card_layout.modulate.a = card_alpha
 
+#a roster change while the mansion screen is hidden waits for on_mansion_shown
+var rebuild_pending = false
+
 func rebuild():
+	if !get_parent().visible:
+		rebuild_pending = true
+		return
+	rebuild_pending = false
+	upkeep_refresh_pending = false
 	_prepare_rebuild()
 	_ensure_selected_container_entries()
 	_finish_rebuild()
@@ -2398,11 +2399,17 @@ func queue_upkeep_refresh():
 	call_deferred("flush_queued_upkeep_refresh")
 
 
+#hidden, the sweep waits for on_mansion_shown too: after rooms_changed every stat read is a full rebuild
+var upkeep_refresh_pending = false
+
 func flush_queued_upkeep_refresh():
 	if !upkeep_refresh_queued:
 		return
 	upkeep_refresh_queued = false
 	if rebuild_queued:
+		return
+	if !get_parent().visible:
+		upkeep_refresh_pending = true
 		return
 	refresh_upkeep_warnings()
 
@@ -2761,6 +2768,8 @@ func remove_from_travel(person):
 	rebuild()
 
 func update():
+	if rebuild_pending and !get_parent().visible:
+		return
 	update_dislocations()
 	_select_slave_container()
 	_ensure_selected_container_entries()

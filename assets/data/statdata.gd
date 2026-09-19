@@ -825,7 +825,8 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'stat_cf',
-		tags = [],
+		#custom_bonuses: fame's loyalty_bonus is added in ch_dyn_stats.fix_stat_data()
+		tags = ['custom_bonuses'],
 		show_info = {category = 'non_combat'}
 	},
 	trainer_training_points_bonus = {
@@ -1413,7 +1414,8 @@ var statdata = {
 		baseicon = 'food_love',
 		type = 'misc',
 		default_bonus = 'add',
-		tags = ['numeric', 'integer'],
+		#custom_bonuses: fame's manhunt_bonus is added in ch_dyn_stats.fix_stat_data()
+		tags = ['numeric', 'integer', 'custom_bonuses'],
 		direct = false,
 		show_info = {category = 'non_combat'}
 	},

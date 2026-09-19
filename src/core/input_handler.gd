@@ -160,9 +160,9 @@ enum {
 	ANIM_TASK_COMPLETED,
 	ANIM_LOOT,
 	ANIM_SKILL_UNLOCKED,
-	ANIM_GROWTHF,
 	ANIM_MASTER_POINT,
 	ANIM_ITEM_FLIGHT,
+	ANIM_FACTOR_UPGRADE,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
@@ -1933,9 +1933,13 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.play("task_completed")
 		"repeatable_quest_completed":
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
-			var name =  tr(selectedquest.name)
-			if selectedquest.has("source"):
-				name += " (" + tr(worlddata.factiondata[selectedquest.source].name) + ")"
+			#the caller passes the quest where it has one; an error here would stall the queue for good
+			var quest = args.get('quest', selectedquest)
+			var name = ''
+			if quest != null:
+				name = tr(quest.name)
+				if quest.has("source") and worlddata.factiondata.has(quest.source):
+					name += " (" + tr(worlddata.factiondata[quest.source].name) + ")"
 			anim_scene.get_node("Label3").text = name
 			anim_scene.play("task_completed")
 		"skill_unlocked":
@@ -1944,20 +1948,9 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label2").text = tr("SKILL" + args["skill"].code.to_upper())
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("Ability_unlocked")
-		"factor":
-			anim_scene = get_spec_node(ANIM_GROWTHF)
-			anim_scene.get_node("TextureRect5").texture = args.character.get_icon()
-			anim_scene.get_node('Label').text = args.character.get_short_name()
-			var value = int(args.character.get_stat(args.stat))
-			anim_scene.get_node('Label2').text = "%s: %s" % [tr(statdata.statdata[args.stat].name), ResourceScripts.descriptions.factor_descripts[value]]
-			for i in range(1, 6):
-				anim_scene.get_node('fill%d' % i).visible = (i < value)
-			anim_scene.get_node("TextureRect6").rect_position.x += (value - 1) * 57
-			anim_scene.get_node("TextureRect4").rect_position.x += (value - 1) * 57
-			anim_scene.get_node("TextureRect7").rect_position.x += (value - 1) * 57
-#			anim_scene.get_node("Label2").text = tr("SKILL" + args["skill"].code.to_upper())
-#			anim_scene.get_node("Label3").text = args.person.get_full_name()
-			anim_scene.play("Animation_growth_factor")
+		"factor_upgrade": #(character, raised = [{code, from, to}], area)
+			anim_scene = get_spec_node(ANIM_FACTOR_UPGRADE)
+			anim_scene.play_upgrade(args.character, args.raised, args.get('area'))
 		"master_points":
 			anim_scene = get_spec_node(ANIM_MASTER_POINT)
 			if args.has("sound"):

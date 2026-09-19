@@ -12,6 +12,11 @@ var hide_pretenders = false
 
 var silently_hide_codes = ['is_at_location', 'in_combat_party']
 
+
+#never shown: anyone failing it is left out (silently_hide_codes, or silent = true on the condition)
+func is_silent_req(req):
+	return req.code in silently_hide_codes or req.get('silent', false)
+
 func _ready():
 	hide_pretenders_btn.connect("pressed", self, "on_hide_pretenders_press")
 	input_handler.register_btn_source('slave_select', self, 'tut_get_slave_btn')
@@ -62,14 +67,14 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	if !reqs_list.empty() and show_req_info:
 		var has_visible_reqs = false
 		for req in reqs_list:
-			if !(req.code in silently_hide_codes):
+			if !is_silent_req(req):
 				has_visible_reqs = true
 				break
 		show_req_info = has_visible_reqs
 	if !reqs_list.empty() and show_req_info:
 		reqs_text = tr('REQUIREMENTS_TOOLTIP') + ":"
 		for req in reqs_list:
-			if !(req.code in silently_hide_codes):
+			if !is_silent_req(req):
 				reqs_text += '\n' + ResourceScripts.descriptions.make_slave_statreq_text(req)
 		req_info_label.bbcode_text = reqs_text
 		req_info.show()
@@ -109,7 +114,7 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 			var reqs_met = true
 			var silently_hide = false
 			for req in reqs_list:
-				var is_silent = req.code in silently_hide_codes
+				var is_silent = is_silent_req(req)
 				var color = "green"
 				if !i.checkreqs(req):
 					reqs_met = false
@@ -135,7 +140,12 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 				if !reqs_met:
 					newnode.hide()
 		globals.connectslavetooltip(newnode, i)
-	$Label.visible = slave_btn_cont.get_child_count() <= 1
+	#the templates stay and cleared rows are only queued for freeing: count the rows on show
+	var shown = 0
+	for btn in slave_btn_cont.get_children():
+		if btn is BaseButton and btn.name != 'Button' and btn.visible:
+			shown += 1
+	$Label.visible = shown == 0
 	if hide_pretenders_btn.visible:
 		check_hide_pretenders()
 

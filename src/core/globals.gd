@@ -352,6 +352,29 @@ func connecttexttooltip(node, text, move_right = false, tooltip_node = null, anc
 		node.disconnect("mouse_entered",self,'showtexttooltip')
 	node.connect("mouse_entered",self,'showtexttooltip', [node, text, move_right, tooltip_node, anchor])
 
+func character_type_key(person):
+	var class_code = person.get_stat('slave_class')
+	if class_code == 'servant_notax':
+		class_code = 'servant'
+	return "CHARTYPE" + class_code.to_upper()
+
+
+func character_type_name(person):
+	var key = character_type_key(person)
+	if person.get_stat('sex') != 'male':
+		key += "F"
+	return tr(key)
+
+
+func character_type_tooltip(person):
+	var result = "[center]{color=yellow|" + character_type_name(person) + "}[/center]"
+	var description_key = character_type_key(person) + "DESCRIPT"
+	var description = tr(description_key)
+	if description != description_key:
+		result += "\n\n" + person.translate(description)
+	return result
+
+
 func get_character_personality_tooltip(personality):
 	var text = tr("INFOPERSONALITY")
 	return highlight_current_personality_bonus_tooltip(text, personality)
@@ -1067,12 +1090,20 @@ func base_stat_cap_text(person, code):
 
 func build_attrs_for_char(node, person):
 	node.get_node('Portrait').texture = person.get_icon()
-	node.get_node('sex').texture = images.get_icon(person.get_stat('sex'))
-	node.get_node('race').texture = races.racelist[person.get_stat('race')].icon
+	build_sex_icon(node.get_node('sex'), person)
+	build_race_icon(node.get_node('race'), person)
 	node.get_node('age').texture = images.ages[person.get_stat('age')]
-	connecttexttooltip(node.get_node('sex'), tr("MSLMSex")+": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))
 	connecttexttooltip(node.get_node('age'), tr("STATAGE")+": " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
-	connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
+
+
+func build_sex_icon(icon, person):
+	icon.texture = images.get_icon(person.get_stat('sex'))
+	connecttexttooltip(icon, tr("MSLMSex")+": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))
+
+
+func build_race_icon(icon, person):
+	icon.texture = races.racelist[person.get_stat('race')].icon
+	connecttexttooltip(icon, "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 
 
 func build_desc_for_effect(effect_desc, mul = 1): #stub as it is
@@ -1674,15 +1705,16 @@ func LoadGame(filename):
 #"Invalid get index 'is_stored' (on base: 'Nil')". They used to be freed at the very end of the
 #load, long after the window had opened. Taking them out of the tree stops them this frame;
 #queue_free() on its own only promises the node will be gone by the end of it.
+#forget the freed screen everywhere: a freed node still passes != null
 func drop_replaced_screens():
-	for node in [gui_controller.mansion, gui_controller.current_screen]:
+	var screens = [gui_controller.mansion, gui_controller.current_screen]
+	gui_controller.forget_nodes(screens)
+	for node in screens:
 		if !is_instance_valid(node):
 			continue
 		if node.is_inside_tree():
 			node.get_parent().remove_child(node)
 		node.queue_free()
-	gui_controller.mansion = null
-	gui_controller.current_screen = null
 
 
 #A save written with mods loaded names classes and data that only that mod could supply. With
@@ -2986,7 +3018,7 @@ func roll_characters():
 	for ch_id in input_handler.active_location.group.values():
 		var scout = characters_pool.get_char_by_id(ch_id)
 		if scout != null:
-			manhunt_values.push_back(scout.get_stat('manhunt') + scout.get_fame_bonus('manhunt_bonus'))
+			manhunt_values.push_back(scout.get_stat('manhunt'))#fame included
 	manhunt_values.sort()
 	var manhunt_bonus = 0.0
 	for i in range(max(manhunt_values.size() - 2, 0), manhunt_values.size()):
@@ -3050,7 +3082,7 @@ func roll_hirelings(loc, recruiter = null):
 		if locdata1.has('diff_roll'):
 			t_diff = locdata1.diff_roll
 	if recruiter != null:
-		t_diff += recruiter.get_stat('manhunt') + recruiter.get_fame_bonus('manhunt_bonus')
+		t_diff += recruiter.get_stat('manhunt')#fame included
 	
 	
 	if racedata is Array and !racedata.empty():
@@ -4382,6 +4414,8 @@ func get_tr_src(src, src_val):
 		'upgrade':
 			#the one bonus with this source is the master's bath - see ch_dyn_stats
 			return ["", tr("MANSIONUPG_PRIVATE_BATH")]
+		'fame':
+			return [tr("STATFAME"), tr(variables.fame_tiers[src_val].name)]
 		_:
 			print("get_tr_src() can't decipher %s %s" % [src, src_val])
 			return [src, src_val]

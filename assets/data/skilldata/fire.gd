@@ -174,8 +174,8 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'flame', target = 'target', period = 'predamage'},
-			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
+			{code = 'inferno', target = 'target_group', period = 'windup'},
+			{code = 'charge_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = 1.6,
 	},
@@ -203,8 +203,8 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'flame', target = 'target', period = 'predamage'},
-			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
+			{code = 'meteor_strike', target = 'target', period = 'predamage'},
+			{code = 'charge_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = 2.0,
 	},

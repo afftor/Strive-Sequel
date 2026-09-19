@@ -242,6 +242,7 @@ func make_world():
 	areas.plains.unlocked = true
 	areas.forests.unlocked = true
 	mansion_location = areas[starting_area].capital_code
+	ResourceScripts.slave_quests.fill_quests()
 
 func get_area_name(area_id):
 	return areas[area_id].name

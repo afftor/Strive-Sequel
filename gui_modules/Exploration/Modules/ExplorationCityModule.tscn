@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -9,37 +9,21 @@
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExplorationCity.gd" type="Script" id=7]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=8]
 [ext_resource path="res://src/scenes/close_screen.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=11]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=12]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png" type="Texture" id=15]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=17]
-[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=18]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=20]
-[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png" type="Texture" id=22]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=23]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=25]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=26]
 [ext_resource path="res://gui_modules/Exploration/Modules/QuestBoard.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/gui/gui icons/food.png" type="Texture" id=30]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=31]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_pressed.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge.png" type="Texture" id=35]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_hover.png" type="Texture" id=36]
-[ext_resource path="res://assets/Themes_v2/EXPLORATION/SlaveMarketPanel.tres" type="StyleBox" id=37]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_hover.png" type="Texture" id=38]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_pressed.png" type="Texture" id=39]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_pressed.png" type="Texture" id=40]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=41]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=42]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=69]
 [ext_resource path="res://assets/images/iconstraits/guilds_fighters.png" type="Texture" id=71]
@@ -51,7 +35,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=89]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=90]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_upgrades_task.png" type="Texture" id=93]
-[ext_resource path="res://gui_modules/Exploration/Modules/StatsTrading.tscn" type="PackedScene" id=94]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=95]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=96]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=99]
@@ -74,34 +57,67 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_hover.png" type="Texture" id=117]
 [ext_resource path="res://gui_modules/Exploration/Modules/DisassembleModule.tscn" type="PackedScene" id=118]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=119]
-[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=120]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=121]
-[ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=122]
-[ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=123]
-[ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
 [ext_resource path="res://gui_modules/Exploration/Modules/AreaShop.tscn" type="PackedScene" id=128]
-[ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=129]
+[ext_resource path="res://gui_modules/Exploration/Modules/SlaveQuestModule.tscn" type="PackedScene" id=130]
+[ext_resource path="res://assets/Textures_v2/star_small.png" type="Texture" id=131]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=132]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=133]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave.png" type="Texture" id=134]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_hover.png" type="Texture" id=135]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_pressed.png" type="Texture" id=136]
+[ext_resource path="res://gui_modules/Exploration/Modules/MarketSlaveCard.tscn" type="PackedScene" id=137]
+[ext_resource path="res://gui_modules/Exploration/Modules/FactorUpgradeModule.tscn" type="PackedScene" id=138]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 28 )
-region_rect = Rect2( -477, 451, 1, 1 )
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.042, 0.044, 0.038, 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 14
-font_data = ExtResource( 26 )
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.08, 0.09, 0.078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.32, 0.29, 0.19, 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 20
-font_data = ExtResource( 10 )
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 135 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 68.0
+margin_right = 16.0
+margin_top = 24.0
+margin_bottom = 24.0
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 136 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 52.0
+margin_right = 6.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 134 )
+region_rect = Rect2( 0, 0, 464, 52 )
+margin_left = 52.0
+margin_right = 6.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[sub_resource type="DynamicFont" id=19]
 size = 18
-font_data = ExtResource( 10 )
+use_filter = true
+font_data = ExtResource( 133 )
 
-[sub_resource type="DynamicFont" id=15]
-size = 16
-font_data = ExtResource( 10 )
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.16, 0.2, 0.15, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.88, 0.72, 0.35, 1 )
 
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 90 )
@@ -293,61 +309,59 @@ __meta__ = {
 
 [node name="SlaveMarket" type="Panel" parent="." groups=["pauseprocess"]]
 visible = false
-margin_left = 516.0
-margin_top = 137.0
-margin_right = 1519.0
-margin_bottom = 937.0
-custom_styles/panel = ExtResource( 37 )
+margin_left = 320.0
+margin_top = 130.0
+margin_right = 1880.0
+margin_bottom = 1060.0
+custom_styles/panel = SubResource( 16 )
 
 [node name="close_screen" parent="SlaveMarket" instance=ExtResource( 9 )]
-margin_left = -560.0
-margin_top = -168.0
-margin_right = 1447.0
-margin_bottom = 995.0
+margin_left = -320.0
+margin_top = -130.0
+margin_right = 1600.0
+margin_bottom = 950.0
 
 [node name="HireBG1" type="Panel" parent="SlaveMarket"]
-self_modulate = Color( 0, 0, 0, 0.705882 )
-show_behind_parent = true
-margin_right = 517.0
-margin_bottom = 796.0
-custom_styles/panel = SubResource( 1 )
+margin_right = 1560.0
+margin_bottom = 930.0
+custom_styles/panel = ExtResource( 132 )
 
 [node name="HireBG2" type="Panel" parent="SlaveMarket"]
-self_modulate = Color( 0, 0, 0, 0.705882 )
-show_behind_parent = true
-margin_left = 540.0
-margin_right = 1003.0
-margin_bottom = 580.0
-custom_styles/panel = SubResource( 1 )
+margin_left = 780.0
+margin_top = 105.0
+margin_right = 1525.0
+margin_bottom = 895.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HireBG3" type="Panel" parent="SlaveMarket"]
-self_modulate = Color( 0, 0, 0, 0.705882 )
-show_behind_parent = true
-margin_left = 540.0
-margin_top = 608.0
-margin_right = 1003.0
-margin_bottom = 796.0
-custom_styles/panel = SubResource( 1 )
+margin_left = 35.0
+margin_top = 105.0
+margin_right = 755.0
+margin_bottom = 895.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SlaveList" type="Panel" parent="SlaveMarket"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 35.0
+margin_top = 105.0
+margin_right = 755.0
+margin_bottom = 895.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveMarket/SlaveList"]
-margin_left = 56.0
-margin_top = 147.0
-margin_right = 461.0
-margin_bottom = 636.0
+margin_top = 47.0
+margin_right = 720.0
+margin_bottom = 790.0
 theme = ExtResource( 19 )
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -355,48 +369,52 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveMarket/SlaveList/ScrollContainer"]
-margin_right = 405.0
-rect_min_size = Vector2( 405, 0 )
+margin_right = 720.0
+rect_min_size = Vector2( 708, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 4
 
-[node name="Button" type="TextureButton" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 405.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_right = 708.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 708, 64 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/normal = SubResource( 20 )
 toggle_mode = true
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 21 )
-expand = true
 
 [node name="name" type="Label" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 53.0
+margin_left = 64.0
 margin_top = 2.0
-margin_right = 330.0
-margin_bottom = 49.0
+margin_right = 208.0
+margin_bottom = 62.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = SubResource( 19 )
 text = "NAME_LABEL"
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Price" type="Label" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 326.0
+margin_left = 598.0
 margin_top = 2.0
-margin_right = 391.0
-margin_bottom = 49.0
+margin_right = 696.0
+margin_bottom = 62.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = SubResource( 19 )
 text = "100"
 align = 2
 valign = 1
 
 [node name="icon" type="TextureRect" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 2.01312
-margin_top = 2.08087
-margin_right = 47.0131
-margin_bottom = 47.0809
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 46.0
+margin_bottom = 58.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6
@@ -404,616 +422,186 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SlaveMarket"]
-margin_left = 733.0
-margin_top = 110.0
-margin_right = 988.0
-margin_bottom = 158.0
-custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/normal_font = ExtResource( 8 )
-bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Race" type="Label" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 248.0
+margin_top = 2.0
+margin_right = 398.0
+margin_bottom = 62.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 19 )
+valign = 1
+clip_text = true
+
+[node name="RaceIcon" type="TextureRect" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 216.0
+margin_top = 18.0
+margin_right = 244.0
+margin_bottom = 46.0
+expand = true
+stretch_mode = 5
+
+[node name="TypeIcon" type="TextureRect" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 406.0
+margin_top = 18.0
+margin_right = 434.0
+margin_bottom = 46.0
+expand = true
+stretch_mode = 5
+
+[node name="Type" type="Label" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 438.0
+margin_top = 2.0
+margin_right = 556.0
+margin_bottom = 62.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 19 )
+valign = 1
+
+[node name="QuestStar" type="TextureRect" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
+visible = false
+margin_left = 561.0
+margin_top = 22.0
+margin_right = 585.0
+margin_bottom = 46.0
+texture = ExtResource( 131 )
+expand = true
+stretch_mode = 5
+
+[node name="TableHeader" type="Panel" parent="SlaveMarket/SlaveList"]
+margin_right = 720.0
+margin_bottom = 36.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 18 )
+
+[node name="ColName" type="Label" parent="SlaveMarket/SlaveList/TableHeader"]
+margin_left = 64.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "SLAVE_MARKET_COL_NAME"
+valign = 1
+
+[node name="ColRace" type="Label" parent="SlaveMarket/SlaveList/TableHeader"]
+margin_left = 216.0
+margin_top = 1.0
+margin_right = 398.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "SLAVE_MARKET_COL_RACE"
+valign = 1
+
+[node name="ColType" type="Label" parent="SlaveMarket/SlaveList/TableHeader"]
+margin_left = 406.0
+margin_top = 1.0
+margin_right = 556.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "SLAVE_MARKET_COL_TYPE"
+valign = 1
+
+[node name="ColPrice" type="Label" parent="SlaveMarket/SlaveList/TableHeader"]
+margin_left = 598.0
+margin_top = 1.0
+margin_right = 696.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "SLAVE_MARKET_COL_PRICE"
+valign = 1
+
+[node name="Card" parent="SlaveMarket" instance=ExtResource( 137 )]
+margin_left = 792.0
+margin_top = 117.0
+margin_right = 1513.0
+margin_bottom = 818.0
 
 [node name="Label" type="Label" parent="SlaveMarket"]
-margin_right = 517.0
-margin_bottom = 88.0
+margin_left = 850.0
+margin_top = 28.0
+margin_right = 1480.0
+margin_bottom = 70.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 121 )
-text = "SLAVERS_LIST"
-align = 1
+custom_fonts/font = ExtResource( 119 )
+text = "SLAVEMARKET"
+align = 2
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TextureRect" type="Panel" parent="SlaveMarket"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 540.0
-margin_right = 1003.0
-margin_bottom = 103.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="professions" type="GridContainer" parent="SlaveMarket/TextureRect"]
-margin_left = 2.0
-margin_top = 6.0
-margin_right = 91.0
-margin_bottom = 95.0
-mouse_filter = 2
-custom_constants/hseparation = 2
-columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureRect" parent="SlaveMarket/TextureRect/professions" groups=["ignore_rightclicks"]]
-visible = false
-margin_right = 89.0
-margin_bottom = 89.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 89, 89 )
-texture = ExtResource( 18 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 12 )
-
-[node name="Label" type="Label" parent="SlaveMarket/TextureRect/professions/Button"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 6.0
-margin_top = 64.0
-margin_right = 84.0
-margin_bottom = 83.0
-custom_fonts/font = SubResource( 2 )
-text = "Label"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProfIcon" type="TextureRect" parent="SlaveMarket/TextureRect/professions/Button"]
-show_behind_parent = true
-margin_left = 6.0
-margin_top = 6.0
-margin_right = 84.0
-margin_bottom = 84.0
-expand = true
-stretch_mode = 1
-
-[node name="exp" type="Label" parent="SlaveMarket"]
-margin_left = 538.0
-margin_top = 264.0
-margin_right = 717.0
-margin_bottom = 299.0
-custom_fonts/font = ExtResource( 8 )
-text = "EXP_LABEL"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Portrait" type="TextureRect" parent="SlaveMarket"]
-margin_left = 540.0
-margin_top = 103.0
-margin_right = 714.0
-margin_bottom = 262.0
-expand = true
-stretch_mode = 6
-
-[node name="race" type="TextureRect" parent="SlaveMarket"]
-margin_left = 788.416
-margin_top = 159.127
-margin_right = 828.416
-margin_bottom = 199.127
-texture = ExtResource( 122 )
-expand = true
-stretch_mode = 6
-
-[node name="sex" type="TextureRect" parent="SlaveMarket"]
-margin_left = 843.201
-margin_top = 159.18
-margin_right = 883.201
-margin_bottom = 199.18
-texture = ExtResource( 124 )
-expand = true
-stretch_mode = 6
-
-[node name="age" type="TextureRect" parent="SlaveMarket"]
-margin_left = 897.201
-margin_top = 159.18
-margin_right = 937.201
-margin_bottom = 199.18
-texture = ExtResource( 123 )
-expand = true
-stretch_mode = 6
-
-[node name="base_stats" type="VBoxContainer" parent="SlaveMarket" groups=["hide_stranger"]]
-margin_left = 727.0
-margin_top = 208.0
-margin_right = 991.0
-margin_bottom = 301.0
-custom_constants/separation = 9
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hp" type="TextureProgress" parent="SlaveMarket/base_stats"]
-margin_right = 264.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 200, 25 )
-value = 100.0
-rounded = true
-texture_over = ExtResource( 13 )
-texture_progress = ExtResource( 16 )
-texture_progress_offset = Vector2( 29, 3 )
-
-[node name="Label" type="Label" parent="SlaveMarket/base_stats/hp"]
-margin_top = -3.0
-margin_right = 262.0
-margin_bottom = 27.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 20 )
-text = "1.100"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="mp" type="TextureProgress" parent="SlaveMarket/base_stats"]
-margin_top = 37.0
-margin_right = 264.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 200, 25 )
-value = 50.0
-texture_over = ExtResource( 13 )
-texture_progress = ExtResource( 23 )
-texture_progress_offset = Vector2( 29, 3 )
-
-[node name="Label" type="Label" parent="SlaveMarket/base_stats/mp"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 20 )
-text = "1.100"
-align = 1
-
-[node name="lust" type="TextureProgress" parent="SlaveMarket/base_stats"]
-margin_top = 74.0
-margin_right = 264.0
-margin_bottom = 102.0
-rect_min_size = Vector2( 200, 25 )
-value = 100.0
-texture_over = ExtResource( 13 )
-texture_progress = ExtResource( 24 )
-texture_progress_offset = Vector2( 29, 3 )
-
-[node name="Label" type="Label" parent="SlaveMarket/base_stats/lust"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 20 )
-text = "1.100"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="factors" type="VBoxContainer" parent="SlaveMarket"]
-margin_left = 546.0
-margin_top = 314.0
-margin_right = 667.0
-margin_bottom = 559.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/separation = -2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="base_exp" type="TextureRect" parent="SlaveMarket/factors"]
-visible = false
-margin_right = 50.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 25 )
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/base_exp"]
-margin_left = 69.0
-margin_top = 7.0
-margin_right = 118.0
-margin_bottom = 31.0
-mouse_filter = 1
-text = "0"
-
-[node name="growth_factor" type="Label" parent="SlaveMarket/factors" groups=["hide_master"]]
-margin_right = 50.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "GRO"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/growth_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Excellent"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="physics_factor" type="Label" parent="SlaveMarket/factors"]
-margin_top = 33.0
-margin_right = 50.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "PHY"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/physics_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
-text = "25"
-
-[node name="magic_factor" type="Label" parent="SlaveMarket/factors"]
-margin_top = 66.0
-margin_right = 57.0
-margin_bottom = 101.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "MAG"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/magic_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
-text = "25"
-
-[node name="wits_factor" type="Label" parent="SlaveMarket/factors"]
-margin_top = 99.0
-margin_right = 50.0
-margin_bottom = 134.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "WIT"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/wits_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
-text = "25"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="charm_factor" type="Label" parent="SlaveMarket/factors"]
-margin_top = 132.0
-margin_right = 52.0
-margin_bottom = 167.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "CHA"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/charm_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
-text = "25"
-
-[node name="sexuals_factor" type="Label" parent="SlaveMarket/factors"]
-margin_top = 165.0
-margin_right = 50.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "SEX"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/sexuals_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
-text = "25"
-
-[node name="tame_factor" type="Label" parent="SlaveMarket/factors" groups=["hide_master"]]
-margin_top = 198.0
-margin_right = 55.0
-margin_bottom = 233.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "TAM"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/tame_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
-text = "25"
-
-[node name="authority_factor" type="Label" parent="SlaveMarket/factors" groups=["hide_master"]]
-margin_top = 231.0
-margin_right = 51.0
-margin_bottom = 266.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "ATH"
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/authority_factor"]
-margin_left = 69.2385
-margin_top = -4.0
-margin_right = 229.239
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
-text = "25"
-
-[node name="food_consumption" type="TextureRect" parent="SlaveMarket/factors"]
-visible = false
-margin_top = 315.0
-margin_right = 50.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 50, 35 )
-mouse_filter = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 30 )
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="SlaveMarket/factors/food_consumption"]
-margin_left = 69.2385
-margin_top = 7.0
-margin_right = 229.239
-margin_bottom = 31.0
-text = "25"
-
-[node name="scroll" type="ScrollContainer" parent="SlaveMarket"]
-margin_left = 720.957
-margin_top = 321.0
-margin_right = 994.957
-margin_bottom = 372.0
-theme = ExtResource( 19 )
-scroll_vertical_enabled = false
-
-[node name="traitscontainer" type="HBoxContainer" parent="SlaveMarket/scroll"]
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureButton" parent="SlaveMarket/scroll/traitscontainer"]
-visible = false
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 126 )
-expand = true
-
-[node name="icon" type="TextureRect" parent="SlaveMarket/scroll/traitscontainer/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = 2.0
-margin_right = -2.0
-margin_bottom = -2.0
-mouse_filter = 2
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cross" type="TextureRect" parent="SlaveMarket/scroll/traitscontainer/Button"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = 2.0
-margin_right = -2.0
-margin_bottom = -2.0
-mouse_filter = 2
-texture = ExtResource( 129 )
-expand = true
-
-[node name="Button2" type="TextureRect" parent="SlaveMarket/scroll/traitscontainer"]
-visible = false
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 126 )
-expand = true
-stretch_mode = 1
-
-[node name="Label" type="Label" parent="SlaveMarket/scroll/traitscontainer/Button2"]
-margin_top = 24.0
-margin_right = 50.0
-margin_bottom = 50.0
-custom_fonts/font = ExtResource( 20 )
-text = "5"
-align = 1
-
-[node name="traitslabel" type="Label" parent="SlaveMarket"]
-margin_left = 722.0
-margin_top = 294.0
-margin_right = 995.0
-margin_bottom = 320.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Traits"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer2" type="ScrollContainer" parent="SlaveMarket"]
-visible = false
-margin_left = 733.0
-margin_top = 392.0
-margin_right = 989.0
-margin_bottom = 566.0
-scroll_horizontal_enabled = false
-
-[node name="traits" type="VBoxContainer" parent="SlaveMarket/ScrollContainer2"]
-margin_right = 255.0
-rect_min_size = Vector2( 255, 0 )
-custom_constants/separation = 9
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Label" parent="SlaveMarket/ScrollContainer2/traits"]
-visible = false
-margin_right = 255.0
-margin_bottom = 29.0
-rect_min_size = Vector2( 255, 0 )
-mouse_filter = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 20 )
-text = "1.100"
-align = 1
-valign = 1
-
-[node name="ConsentLabel" type="Label" parent="SlaveMarket"]
-margin_left = 722.0
-margin_top = 408.0
-margin_right = 997.0
-margin_bottom = 430.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 14 )
-text = "Consent: 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PersonalityLabel" type="Label" parent="SlaveMarket"]
-margin_left = 722.0
-margin_top = 386.0
-margin_right = 997.0
-margin_bottom = 408.0
-mouse_filter = 0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 14 )
-text = "Personality: Neutral"
-clip_text = true
-
-[node name="SexSkillsLabel" type="Label" parent="SlaveMarket"]
-margin_left = 722.0
-margin_top = 433.0
-margin_right = 997.0
-margin_bottom = 453.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Sex Skills"
-
-[node name="SexSkills" type="GridContainer" parent="SlaveMarket"]
-margin_left = 722.0
-margin_top = 455.0
-margin_right = 997.0
-margin_bottom = 572.0
-custom_constants/hseparation = 4
-custom_constants/vseparation = 0
-columns = 2
-
-[node name="Skill" type="Label" parent="SlaveMarket/SexSkills"]
-visible = false
-margin_right = 135.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 135, 36 )
-mouse_filter = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 15 )
-text = "Petting\nNovice"
-align = 1
-valign = 1
-clip_text = true
 
 [node name="PurchaseButton" type="TextureButton" parent="SlaveMarket"]
-margin_left = 581.0
-margin_top = 667.0
-margin_right = 961.0
-margin_bottom = 747.0
+margin_left = 1165.0
+margin_top = 828.0
+margin_right = 1505.0
+margin_bottom = 882.0
 texture_normal = ExtResource( 35 )
 texture_pressed = ExtResource( 40 )
 texture_hover = ExtResource( 38 )
+expand = true
 
 [node name="Label" type="Label" parent="SlaveMarket/PurchaseButton"]
-margin_top = -2.0
-margin_right = 380.0
-margin_bottom = 78.0
+margin_right = 340.0
+margin_bottom = 54.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 119 )
+custom_fonts/font = ExtResource( 8 )
 text = "SHOW_INFO_LABEL"
 align = 1
 valign = 1
 
+[node name="ActionButton" type="TextureButton" parent="SlaveMarket"]
+margin_left = 802.0
+margin_top = 828.0
+margin_right = 1142.0
+margin_bottom = 882.0
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 38 )
+expand = true
+
+[node name="Label" type="Label" parent="SlaveMarket/ActionButton"]
+margin_right = 340.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+
+[node name="MarketEmpty" type="Label" parent="SlaveMarket"]
+visible = false
+margin_left = 35.0
+margin_top = 483.5
+margin_right = 755.0
+margin_bottom = 563.5
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 19 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="QuestsPanel" parent="SlaveMarket" instance=ExtResource( 130 )]
+visible = false
+
+[node name="UpgradesPanel" parent="SlaveMarket" instance=ExtResource( 138 )]
+visible = false
+
 [node name="HireMode" type="TextureButton" parent="SlaveMarket"]
-margin_left = 260.0
-margin_top = 88.0
-margin_right = 388.0
-margin_bottom = 130.0
-rect_scale = Vector2( -1, 1 )
+margin_left = 225.0
+margin_top = 28.0
+margin_right = 405.0
+margin_bottom = 76.0
 toggle_mode = true
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 34 )
+expand = true
 
 [node name="Label" type="Label" parent="SlaveMarket/HireMode"]
-margin_left = 107.0
-margin_right = 214.0
-margin_bottom = 42.0
-rect_scale = Vector2( -1, 1 )
+margin_right = 180.0
+margin_bottom = 48.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "EXPLOREHIRE"
@@ -1024,58 +612,73 @@ __meta__ = {
 }
 
 [node name="SellMode" type="TextureButton" parent="SlaveMarket"]
-margin_left = 260.0
-margin_top = 88.0
-margin_right = 388.0
-margin_bottom = 130.0
+margin_left = 415.0
+margin_top = 28.0
+margin_right = 595.0
+margin_bottom = 76.0
 toggle_mode = true
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 34 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="SlaveMarket/SellMode"]
-margin_right = 106.0
-margin_bottom = 42.0
+margin_right = 180.0
+margin_bottom = 48.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "SELL"
 align = 1
 valign = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SlaveMarket"]
-margin_left = 40.0
-margin_top = 720.0
-margin_right = 704.0
-margin_bottom = 778.0
-custom_constants/separation = 15
-
-[node name="UpgradeButton" type="TextureButton" parent="SlaveMarket/HBoxContainer"]
-margin_right = 220.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 220, 58 )
-theme = ExtResource( 31 )
-texture_normal = ExtResource( 41 )
-texture_pressed = ExtResource( 39 )
-texture_hover = ExtResource( 36 )
+[node name="UpgradesMode" type="TextureButton" parent="SlaveMarket"]
+margin_left = 605.0
+margin_top = 28.0
+margin_right = 785.0
+margin_bottom = 76.0
+toggle_mode = true
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 34 )
 expand = true
 __meta__ = {
-"_editor_description_": ""
+"_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="SlaveMarket/HBoxContainer/UpgradeButton"]
-margin_left = 4.0
-margin_top = -2.0
-margin_right = 212.0
-margin_bottom = 56.0
+[node name="Label" type="Label" parent="SlaveMarket/UpgradesMode"]
+margin_right = 180.0
+margin_bottom = 48.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 120 )
-text = "UPGRADE_LABEL"
+custom_fonts/font = ExtResource( 8 )
+text = "SLAVE_MARKET_TAB_UPGRADES"
 align = 1
 valign = 1
-clip_text = true
+
+[node name="QuestsMode" type="TextureButton" parent="SlaveMarket"]
+margin_left = 35.0
+margin_top = 28.0
+margin_right = 215.0
+margin_bottom = 76.0
+toggle_mode = true
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 34 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SlaveMarket/QuestsMode"]
+margin_right = 180.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "SQ_MODE_QUESTS"
+align = 1
+valign = 1
 
 [node name="FactionDetails" type="Panel" parent="."]
 visible = false
@@ -1212,13 +815,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "UNSPENT_POINTS"
 align = 2
-
-[node name="StatsUpgrade" parent="." instance=ExtResource( 94 )]
-visible = false
-margin_left = 449.0
-margin_top = 157.0
-margin_right = 1685.0
-margin_bottom = 958.0
 
 [node name="AreaShop" parent="." instance=ExtResource( 128 )]
 

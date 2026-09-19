@@ -498,6 +498,59 @@ func announce_slept_rough():
 		PoolStringArray(names).join(", ")])
 
 
+#Every bedless night may come to a breakdown or an escape (variables.unhoused_night_*). Asked afresh,
+#not read off slept_rough_ids: a bedroom finished during the turn has somebody asleep in it tonight.
+#Nobody on a quest: make_unavaliable() would take a tutelage for a guild job. Must never yield.
+func process_unhoused_night():
+	var escaped = []
+	var broke_down = []
+	for char_id in unhoused_characters():
+		var person = ResourceScripts.game_party.characters.get(char_id)
+		#an earlier escape may already have broken this one down
+		if !(person is Object) or !person.is_active or person.is_on_quest():
+			continue
+		match unhoused_night_outcome(person):
+			'escape':
+				escaped.append(person.get_short_name())
+				run_away_unhoused(person)
+			'breakdown':
+				person.try_breakdown('brk_no_bed')
+				if person.is_unavaliable():
+					broke_down.append(person.get_short_name())
+	_unhoused_night_log(escaped, broke_down)
+
+
+func unhoused_night_outcome(person):
+	if randf() >= variables.unhoused_night_trouble_chance:
+		return ''
+	if randf() < variables.unhoused_night_escape_share and can_run_away(person):
+		return 'escape'
+	return 'breakdown'
+
+
+func can_run_away(person):
+	return !person.is_master() and !person.is_unique()
+
+
+#gone for good, as after a sale; the popup text is filled in while they are still in the household
+func run_away_unhoused(person):
+	var scene = scenedata.scenedict['nobed_escape_event'].duplicate(true)
+	scene.text = person.translate(tr("ESCAPE_NOBED"))
+	input_handler.interactive_message(scene, 'direct', {})
+	ResourceScripts.game_party.add_fate(person.id, tr("SIBLINGMODULEFATERESCAPE"))
+	ResourceScripts.game_party.remove_slave(person, true)
+
+
+func _unhoused_night_log(escaped, broke_down):
+	var stamp = {date = ResourceScripts.game_globals.date - 1, hour = variables.HoursPerDay}
+	if !escaped.empty():
+		globals.mansion_activity_log_add('population', globals._report_text(
+			"MANSION_ACTIVITY_NOBED_ESCAPE", [PoolStringArray(escaped).join(", ")]), stamp)
+	if !broke_down.empty():
+		globals.mansion_activity_log_add('population', globals._report_text(
+			"MANSION_ACTIVITY_NOBED_BREAKDOWN", [PoolStringArray(broke_down).join(", ")]), stamp)
+
+
 #What a room grants is read through effect conditions, and those are answered off a cached
 #rebuild of the character's dynamic stats. Nothing in the mansion screen invalidated that
 #cache, so a room raised this turn only started counting whenever something else happened to

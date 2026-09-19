@@ -1125,6 +1125,18 @@ var scenedict = {
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
 		],
 	},
+	#the body rite personality choice; its options are handled in custom_effects.gd
+	body_rite_personality = {
+		text = tr("BODYRITE_SCENE_PERSONALITY"),
+		image = 'ritual_room',
+		tags = ['custom_effect', 'active_character_translate'],
+		options = [
+		{code = 'body_rite_personality_kind', reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'personality', operant = 'neq', value = 'kind'}]}], text = tr("PERSONALITYNAMEKIND")},
+		{code = 'body_rite_personality_bold', reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'personality', operant = 'neq', value = 'bold'}]}], text = tr("PERSONALITYNAMEBOLD")},
+		{code = 'body_rite_personality_shy', reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'personality', operant = 'neq', value = 'shy'}]}], text = tr("PERSONALITYNAMESHY")},
+		{code = 'body_rite_personality_serious', reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'personality', operant = 'neq', value = 'serious'}]}], text = tr("PERSONALITYNAMESERIOUS")},
+		],
+	},
 	
 	zephyra_underwear = {
 		text = tr("DIALOGUEZEPHYRA_UNDERWEAR"),
@@ -1985,6 +1997,15 @@ var scenedict = {
 		text = '',
 		image = 'abuse',
 		tags = ["dialogue_scene", "active_character_translate"],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", type = "next_dialogue", reqs = []}
+		]
+	},
+	#the text is filled in by game_res.run_away_unhoused()
+	nobed_escape_event = {
+		text = '',
+		image = 'slaveescape',
+		tags = ["dialogue_scene"],
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", type = "next_dialogue", reqs = []}
 		]

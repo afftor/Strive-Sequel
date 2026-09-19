@@ -32,11 +32,14 @@ var cheats = [
 	'add_new_character',
 	'add_material',
 	'unlock_all_scenes',
-	'unlock_extra_floors'
+	'unlock_extra_floors',
+	'slaver_rank_up',
+	'regen_slave_quests',
+	'plus_50_slaver_tokens',
 ]
 
 #Pressed once and done, rather than switched on and left on.
-var action_cheats = ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes', 'unlock_extra_floors']
+var action_cheats = ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes', 'unlock_extra_floors', 'slaver_rank_up', 'regen_slave_quests', 'plus_50_slaver_tokens']
 
 func _ready():
 	gui_controller.add_close_button(self)
@@ -91,6 +94,13 @@ func set_cheat(cheat = null, btn = null):
 			unlock_all()
 		'unlock_extra_floors':
 			unlock_extra_floors()
+		'slaver_rank_up':
+			slaver_rank_up()
+		'regen_slave_quests':
+			regen_slave_quests()
+		'plus_50_slaver_tokens':
+			ResourceScripts.slave_quests.add_tokens(50)
+			input_handler.SystemMessage("Tokens of Recognition: %d" % ResourceScripts.slave_quests.get_tokens())
 	for button in LeftSide.get_children():
 		if button.name == "Button" || button.get_meta("cheat") in action_cheats:
 			continue
@@ -274,3 +284,22 @@ func unlock_extra_floors():
 		return
 	ResourceScripts.game_res.rooms_changed()
 	input_handler.SystemMessage("%d more mansion floors unlocked" % opened)
+
+
+func slaver_rank_up():
+	var slave_quests = ResourceScripts.slave_quests
+	if slave_quests.is_max_rank():
+		input_handler.SystemMessage("The slaver rank is already at its highest")
+		return
+	var progress = slave_quests.get_progress()
+	progress.rank_xp = slave_quests.xp_threshold()
+	progress.rank_sales = slave_quests.sales_target()
+	slave_quests.try_rank_up()
+	input_handler.SystemMessage("Slaver rank raised to %s" % slave_quests.get_rank())
+
+
+func regen_slave_quests():
+	var slave_quests = ResourceScripts.slave_quests
+	slave_quests.get_quest_pool().clear()
+	slave_quests.fill_quests()
+	input_handler.SystemMessage("Slave market quests regenerated")

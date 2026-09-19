@@ -1852,7 +1852,7 @@ func killed(direct_call = true):
 		remove_from_task(true)
 	equipment.clear_equip()
 	training.clear_training()
-	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEDEAD"))
+	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATERDEAD"))
 	is_active = false
 	ResourceScripts.game_party.character_order.erase(id)
 	#the dead do not keep their room
@@ -1917,6 +1917,9 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				check = input_handler.operate(i.operant, get_stat(i.stat, true), i.value) 
 			else:
 				check = input_handler.operate(i.operant, get_stat(i.stat), i.value)
+		#a stat without its bonuses, whoever asks (the slave market quests rely on it)
+		'base_stat':
+			check = input_handler.operate(i.operant, get_stat(i.stat, true), i.value)
 		'stat_in_set':
 			check = i.value.has(get_stat(i.stat))
 		'stat_index':
@@ -2245,15 +2248,11 @@ func show_race_description():
 	return text
 
 
+#down the road every other departure takes (game_res.run_away_unhoused)
 func escape_actions():
-	remove_from_work_quest()
-	remove_from_task()
-	remove_from_travel()
-	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATEESCAPE"))
-	is_active = false #for now, to replace with corresponding mechanic
-	#and neither do the ones who ran
-	ResourceScripts.game_res.unhouse_character(id)
-	characters_pool.cleanup()
+	ResourceScripts.game_party.add_fate(id, tr("SIBLINGMODULEFATERESCAPE"))
+	ResourceScripts.game_party.remove_slave(self, true)
+	is_active = false
 
 func predict_food():
 	return food.predict_food()
@@ -3081,20 +3080,6 @@ func try_breakdown_on_release():
 	try_breakdown('brk_enthrall_release')
 
 #Fame. Maybe should be withdrawn to separate module
-func get_stat_upgrade_price(stat_level):
-	var base_price = variables.base_stat_upg_price
-	var upg_price = base_price
-	for rarity in variables.race_stat_upg_bonus_priority:
-		if races.racelist[get_stat('race')].race_tags.has(rarity):
-			upg_price += base_price * variables.race_stat_upg_bonuses[rarity]
-			break
-	if variables.level_stat_upg_bonuses.has(stat_level):
-		upg_price += base_price * variables.level_stat_upg_bonuses[stat_level]
-	if is_unique():
-		upg_price += upg_price * variables.stat_upg_unique_bonus
-	
-	return upg_price
-
 func get_upkeep():
 	return int(get_fame_bonus('upkeep') * get_upkeep_multiplier())
 

@@ -1400,10 +1400,10 @@ margin_bottom = 1023.7
 text = "event"
 
 [node name="AvailableSlaves" parent="." instance=ExtResource( 41 )]
-margin_left = 1103.0
+margin_left = 919.0
 margin_top = 128.0
-margin_right = 1471.0
-margin_bottom = 802.0
+margin_right = 1655.0
+margin_bottom = 834.0
 
 [node name="cast_panel" parent="." instance=ExtResource( 35 )]
 visible = false

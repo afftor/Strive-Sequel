@@ -126,8 +126,10 @@ var desirability_per_charm_stat = 0.3
 var desirability_per_enabled_action = 4.0
 var desirability_gold_cap = 100.0 #desirability above this no longer affects full-gold chance, only the gold bonus below
 var desirability_overcap_gold_bonus = 0.01 #gold income % per point of desirability above desirability_gold_cap
-var sex_service_base_income_mult = 5.0
+var sex_service_base_income_mult = 8.0
 var sex_service_partial_gold_mult = 0.5 #gold received when the desirability roll fails
+var sex_service_work_gain_mult = 0.5 #share of the usual work experience and stat gain a sex service action gives
+var sex_service_work_stats = ['physics', 'charm'] #stats every sex service action trains, each at sex_service_work_gain_mult
 var sex_service_fluctuation = 0.2 #+-20% randomness on sex service base value
 var consent_lock_gold_mult = 0.6 #gold received when performing a sex action above the character's consent level
 var sex_training_gold_multiplier = {
@@ -148,7 +150,7 @@ var sextoy_tame_factor_bonus = 0.10 #income % per point of tame factor above 1
 var non_sex_service_charm_factor_mult = 3.0
 var non_sex_service_tame_factor_mult = 2.5
 var non_sex_desirability_threshold = 50.0 #desirability above this boosts non-sex service income
-var non_sex_desirability_gold_bonus = 0.02 #gold income % per point of desirability above non_sex_desirability_threshold
+var non_sex_desirability_gold_bonus = 0.01 #gold income % per point of desirability above non_sex_desirability_threshold
 var waitress_training_point_chance = 0.5 #chance for a slave currently in training to gain 1 training point from waitress work
 var petbeast_desirability_per_tame_factor = 2.0 #extra desirability per tame factor, petbeast class only
 var petbeast_service_tame_factor_mult = 1.0 #extra non-sex service income per tame factor, petbeast class only
@@ -297,15 +299,6 @@ var growth_factor_cost_mod = {
 	6 : 5
 }
 
-var basestat_factor_upgrade = {
-1 : 0,
-2 : 100,
-3 : 300,
-4 : 500,
-5 : 750,
-6 : 1500,
-}
-
 #slave & quest timings
 
 var guild_slave_update_time = 7
@@ -438,13 +431,14 @@ var base_loan_dates = [15, 29, 50, 99]
 #var authority_threshold_per_timid = 25
 
 
+#the same scale as the reputation bonus below
 var master_charm_quests_gold_bonus = {
 	1 : 0,
 	2 : 0.05,
 	3 : 0.1,
-	4 : 0.2,
-	5 : 0.3,
-	6 : 0.4,
+	4 : 0.15,
+	5 : 0.2,
+	6 : 0.25,
 }
 var master_charm_quests_rep_bonus = {
 	1 : 0,
@@ -684,28 +678,15 @@ var breakdown_info = {
 	brk_shrine_enslave = {chance = 1.0, text = "BREAKDOWN_SHRINE"},
 	brk_enthrall = {chance = 0.1, text = "BREAKDOWN_ENTHRALL"},
 	brk_enthrall_release = {chance = 0.5, text = "BREAKDOWN_ENTHRALLRELEASE"},
+	#certain: the night's own roll has already decided it
+	brk_no_bed = {chance = 1.0, text = "BREAKDOWN_NOBED"},
 }
 
-const base_stat_upg_price = 100
-const stat_upg_unique_bonus = 0.2
+#a night without a bed: the chance it brings trouble, and the share of that which is an escape
+var unhoused_night_trouble_chance = 0.2
+var unhoused_night_escape_share = 0.25
 
 const mastery_train_limit = 8
-
-var race_stat_upg_bonuses = {
-	common = 0.0,
-	uncommon = 0.25,
-	rare = 0.4,
-	monster = 0.5,
-	top = 1.0
-}
-var race_stat_upg_bonus_priority = ['top', 'monster', 'rare', 'uncommon', 'common']
-var level_stat_upg_bonuses = {
-	2 : 0.2,
-	3 : 0.4,
-	4 : 0.6,
-	5 : 0.8,
-	6 : 1.0,
-}
 
 var value_upkeep_rate = 0.1
 
@@ -780,10 +761,6 @@ var fame_rise_events = {#and max fame
 	story = 6
 }
 const fame_rise_chance_service = 0.05
-
-var SQ_random_reward = [-0.1, 0.1]
-const SQ_req_num_mod_start = 4
-const SQ_req_num_mod = 0.1
 
 var damage_shake = [#order matters! Low max_damage first. No max_damage means infinity
 	{max_damage = 15, time = 0.1, magnitude = 1},

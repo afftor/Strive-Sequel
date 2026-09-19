@@ -188,7 +188,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'blizzard', target = 'target_group', period = 'windup'},
+			{code = 'charge_frost', target = 'caster', period = 'windup', is_cast = true}],
 		sound = [],
 		value = 0.9,
 	},
@@ -215,7 +217,9 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'hailstorm', target = 'target_group', period = 'windup'},
+			{code = 'charge_frost', target = 'caster', period = 'windup', is_cast = true}],
 		sound = [],
 		value = 1.5,
 	},

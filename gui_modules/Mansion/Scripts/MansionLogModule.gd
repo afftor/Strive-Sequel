@@ -45,6 +45,11 @@ const EVENT_CONFIG = {
 		icon = preload("res://assets/Textures_v2/MANSION/quest_task.png"),
 		color = Color("c89be8"),
 	},
+	"slaver_rank": {
+		label = "MANSION_ACTIVITY_TYPE_SLAVER_RANK",
+		icon = preload("res://assets/Textures_v2/slave_quests/scales.png"),
+		color = Color("e0c060"),
+	},
 	#Scaffolding coming down: a room raised, a cluttered one cleared out, an improvement
 	#finished. game_res.process_room_builds() is the only thing that writes these.
 	"build": {

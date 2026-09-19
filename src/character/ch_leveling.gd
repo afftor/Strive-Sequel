@@ -727,6 +727,8 @@ func select_brothel_activity():
 		goldearned = take_service_pay(goldearned)
 		if selected_workstat != null:
 			work_tick_values(selected_workstat)
+		else:
+			sex_service_tick_values()
 
 
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
@@ -1008,15 +1010,29 @@ func add_metric_for_outcome(res_id, amount = 1):
 			parent.get_ref().add_stat('metrics_materialearn', amount)
 
 
+const WORK_TICK_EXP = 5
+const WORK_TICK_STAT_GAIN = 0.36
+
 func work_tick_values(workstat):
 	var person = parent.get_ref()
 	if !person.has_status('no_working_bonuses'):
 		#Read the multiplier and award experience while the dynamic-stat cache is
 		#still valid. The work-stat gain intentionally invalidates it last, for the
 		#next consumer, instead of forcing a full rebuild inside every work action.
-		person.add_stat('base_exp', 5)
+		person.add_stat('base_exp', WORK_TICK_EXP)
 		if workstat.findn("sex_skills") < 0:
-			person.add_stat(workstat, 0.36)
+			person.add_stat(workstat, WORK_TICK_STAT_GAIN)
+
+
+#a sex service action pays a share of the usual experience and stat gain (variables.sex_service_*)
+func sex_service_tick_values():
+	var person = parent.get_ref()
+	if person.has_status('no_working_bonuses'):
+		return
+	var mult = variables.sex_service_work_gain_mult
+	person.add_stat('base_exp', WORK_TICK_EXP * mult)
+	for st in variables.sex_service_work_stats:
+		person.add_stat(st, WORK_TICK_STAT_GAIN * mult)
 
 
 func predict_active_task():

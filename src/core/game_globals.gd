@@ -226,6 +226,9 @@ func advance_day(managed = false):
 	#wakes with when it was, which that call pays out itself
 	ResourceScripts.game_res.process_master_bed_night()
 
+	#and a night on the floor for whoever has no bed
+	ResourceScripts.game_res.process_unhoused_night()
+
 	#the clerk's morning trip to market, against the standing orders the player left
 	ResourceScripts.game_res.process_autobuy()
 
@@ -238,7 +241,6 @@ func advance_day(managed = false):
 		ResourceScripts.game_world.refill_service_gold()
 
 		ResourceScripts.game_res.subtract_taxes()
-		ResourceScripts.slave_quests.regen_quests()
 
 	if !managed and gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()

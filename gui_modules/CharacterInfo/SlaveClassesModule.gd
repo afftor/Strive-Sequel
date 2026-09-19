@@ -41,7 +41,6 @@ func _ready():
 	$ClassPanel/HBoxContainer2/Unlock.connect('pressed', self, 'unlock_class')
 	for ch in $categories.get_children():
 		globals.connecttexttooltip(ch, tr("CAT_" + str(ch.name).to_upper() + "_DESC"))
-#	$UpgradeButton.connect("pressed", $stats_upgrade, 'show')
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 #	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
@@ -125,7 +124,6 @@ func open(tempperson, tempmode = 'normal'):
 	mode = tempmode
 	current_class = null
 	update()
-#	$stats_upgrade.show()
 
 
 func update():

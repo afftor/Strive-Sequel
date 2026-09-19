@@ -40,7 +40,8 @@ const CHARGE_ALPHA = 0.38
 const CHARGE_EDGE = 3.0
 #The dialogue scenes telling what a rite did (scenedata.gd); an upgrade, or one taken back, gets the common one.
 const UPGRADE_SCENE = 'body_rite_upgrade'
-const RITE_SCENES = {sex_change = 'body_rite_sex_change', form_change = 'body_rite_form_change', virginity = 'body_rite_virginity'}
+const RITE_SCENES = {sex_change = 'body_rite_sex_change', form_change = 'body_rite_form_change', virginity = 'body_rite_virginity',
+	personality = 'body_rite_personality'}
 
 var view = null
 var subject_id = null
@@ -906,6 +907,8 @@ func play_rite_animation(person, rite):
 		args.icon = BodyRites.rite_icon(person, rite.code)
 		args.name = BodyRites.rite_name_key(person, rite.code)
 		args.title = "BODYRITE_ANIM_RITE_TITLE"
+		if rite.code == BodyRites.PERSONALITY:
+			args.name = "PERSONALITYNAME" + str(person.get_stat('personality')).to_upper()
 	else:
 		args.upgrade = rite.code
 		if rite.taking_back:

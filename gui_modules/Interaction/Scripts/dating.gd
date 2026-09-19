@@ -181,6 +181,11 @@ func initiate(tempperson):
 
 	self.fear = 0#person.fear
 	var stored_image = person.get_stored_body_image()
+	var unique_code = person.get_stat("unique")
+	if stored_image != null and person.has_work_rule("nudity") and worlddata.pregen_character_sprites.has(unique_code):
+		var sprite_data = worlddata.pregen_character_sprites[unique_code]
+		if sprite_data.has("nude"):
+			stored_image = images.get_sprite(sprite_data.nude.path)
 	if stored_image != null:
 		$fullbody.texture = stored_image
 		$fullbody.visible = true

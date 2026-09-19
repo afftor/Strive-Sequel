@@ -27,6 +27,7 @@ var sceneref
 
 var new_action_performed = false
 var begged_for_orgasm = false
+var orgasm_on_hold = false #a deny or cum-target popup is open for this member: sens stops at the edge until the player picks an option
 
 var horny = 0 setget horny_set
 var hornymod = 1.0
@@ -144,6 +145,9 @@ func sens_set(value):
 	var change = value - sens
 	sens += change*sensmod
 	if sens >= 1000:
+		if orgasm_on_hold:
+			sens = 999
+			return
 		if lastaction == null || ((lastaction.givers.has(self) && lastaction.scene.givertags.has('noorgasm')) || (lastaction.takers.has(self) && lastaction.scene.takertags.has('noorgasm'))):
 			var can_orgasm = false
 			if effects.has("aphrodisiac"):

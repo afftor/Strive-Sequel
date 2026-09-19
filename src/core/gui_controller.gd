@@ -100,6 +100,31 @@ func revert_scenes_data():
 	
 
 
+const CACHED_NODE_FIELDS = ['mansion', 'nav_panel', 'clock', 'exploration', 'exploration_city',
+	'exploration_dungeon', 'explore_slaveinfo', 'slavepanel', 'inventory', 'spells', 'game_menu',
+	'classinfo', 'sex_panel', 'date_panel', 'mansion_tutorial_panel', 'cheat_panel', 'char_creation',
+	'dialogue', 'travel', 'upgrades', 'combat', 'current_screen', 'previous_screen']
+
+
+#a freed node still passes != null: forget it, and the panels inside it, at once
+func forget_nodes(nodes):
+	var dropped = []
+	for node in nodes:
+		if is_instance_valid(node):
+			input_handler.append_not_duplicate(dropped, node)
+	for field in CACHED_NODE_FIELDS:
+		var value = get(field)
+		if value == null:
+			continue
+		if !is_instance_valid(value):
+			set(field, null)
+			continue
+		for node in dropped:
+			if value == node or (value is Node and node.is_a_parent_of(value)):
+				set(field, null)
+				break
+
+
 func update_modules():
 	if current_screen == null:
 		return
