@@ -224,4 +224,5 @@ const GROUP_DEFS = {
 # `hair_facial_color` since the old doll, with nothing to paint until now.
 const COLOR_CHANNELS = {
 	"beard": {"anchor": "beard", "groups": ["beard"]},
+	"skin_alternate": {"anchor": "body", "groups": [], "slots": ["arm_left", "arm_right", "hand_left", "hand_right", "shoulder_left", "shoulder_right"], "coverage": true, "coverage_alternate": true},
 }

@@ -539,6 +539,7 @@ func _build_colour_channels(groups):
 			"zones": gear or bool(definition.get("zones", false)),
 			# Whether fur and scale patterns paint over this channel's meshes.
 			"coverage": bool(definition.get("coverage", false)),
+			"coverage_alternate": bool(definition.get("coverage_alternate", false)),
 			# Starting colours for this channel's zones.  Empty means the channel
 			# falls back to ZONE_DEFAULTS when it is gear, or to white otherwise.
 			"zone_defaults": definition.get("zone_defaults", []),
