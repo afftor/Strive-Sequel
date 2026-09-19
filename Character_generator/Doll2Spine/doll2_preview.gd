@@ -2898,7 +2898,8 @@ func _apply_coverage(material, channel_id):
 	if material == null:
 		return
 	var channel = CATALOGUE.color_channels().get(channel_id, {})
-	var layers = COVERAGE.layers(coverage_id)
+	var alternate = channel.get("coverage_alternate", false)
+	var layers = COVERAGE.layers(coverage_id, alternate)
 	if coverage_id.empty() or layers.empty() or !channel.get("coverage", false) or !_coverage_available():
 		material.set_shader_param("coverage_count", 0)
 		return
@@ -2913,7 +2914,7 @@ func _apply_coverage(material, channel_id):
 	else:
 		material.set_shader_param("coverage_base_on", 0.0)
 	for i in range(min(layers.size(), COVERAGE.MAX_LAYERS)):
-		material.set_shader_param("coverage_mask%d" % (i + 1), _coverage_texture(COVERAGE.mask_path(coverage_id, i)))
+		material.set_shader_param("coverage_mask%d" % (i + 1), _coverage_texture(COVERAGE.mask_path(coverage_id, i, alternate)))
 		var index = i + offset
 		material.set_shader_param("coverage_color%d" % (i + 1), coverage_colors[index] if index < coverage_colors.size() else Color(1, 1, 1))
 

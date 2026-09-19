@@ -60,6 +60,9 @@ const PATTERNS = {
 			{"mask": "mask_besatkin 2 ext.png", "color": Color("ad5c21")},
 			{"mask": "mask_besatkin 2.png", "color": Color("9e9595")},
 		],
+		"layers_alternate": [
+			{"mask": "white_mask.png", "color": Color("ad5c21")},
+		],
 	},
 	"fur_white": {
 		"label": "Fur: white",
@@ -99,6 +102,9 @@ const PATTERNS = {
 		"layers": [
 			{"mask": "mask_besatkin 2 ext.png", "color": Color("191918")},
 			{"mask": "mask_besatkin 2.png", "color": Color("363533")},
+		],
+		"layers_alternate": [
+			{"mask": "white_mask.png", "color": Color("191918")},
 		],
 	},
 	# The striped and tricolour cats use their own masks rather than the shared
@@ -142,12 +148,16 @@ static func pattern(pattern_id):
 	return PATTERNS.get(pattern_id, {})
 
 
-static func layers(pattern_id):
-	return pattern(pattern_id).get("layers", [])
+static func layers(pattern_id, alternate = false):
+	var pattern = pattern(pattern_id)
+	var res = pattern.get("layers", [])
+	if alternate and pattern.has("layers_alternate"): #only if alternate layers exists, fallback is basic layers, so no overwriting without checking
+		res = pattern.get("layers_alternate") 
+	return res
 
 
-static func mask_path(pattern_id, index):
-	var list = layers(pattern_id)
+static func mask_path(pattern_id, index, alternate = false):
+	var list = layers(pattern_id, alternate)
 	if index < 0 or index >= list.size():
 		return ""
 	return MASKS + str(list[index].mask)
