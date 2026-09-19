@@ -45,7 +45,7 @@ var skills = {
 			{code = 'flame', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
-		value = [['target.hpmax', '*0.22']],
+		value = [['target.hpmax', '*0.3']],
 	},
 	#Abyss - Void and Inferno in one. e_s_void is the player spell's own debuff roll (dark.gd:225):
 	#one of blind / disarm / silence per target.
@@ -179,7 +179,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/meditate.png",
 		type = 'combat',
 		ability_type = 'spell',
-		tags = ['heal', 'support', 'noreduce', 'noevade', 'no_caster_bonuses', 'ignore_taunt'],
+		tags = ['support', 'noreduce', 'noevade', 'no_caster_bonuses', 'ignore_taunt'],
 		reqs = [],
 		targetreqs = [],
 		effects = [],
@@ -227,7 +227,7 @@ var skills = {
 			{code = 'magma_blast', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
-		value = 0.5,
+		value = 0.75,
 		variations = [
 			{
 				reqs = [{code = 'random', value = 50}],
@@ -528,7 +528,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/comboattack.png",
 		type = 'combat',
 		ability_type = 'skill',
-		tags = ['damage', 'aoe', 'ads', 'buff', 'ignore_taunt'],
+		tags = ['damage', 'stealth_casting', 'aoe', 'ads', 'buff', 'ignore_taunt'],
 		reqs = [],
 		targetreqs = [
 			{code = 'has_status', status = 'jd_comatose', check = false},
@@ -647,7 +647,7 @@ var effects = {
 	jd_demon_arrogance = {
 		type = 'simple',
 		statchanges = {
-			bleed_damage = 0.5, poison_damage = 0.5, burn_damage = 0.5, darkflame_damage = 0.5,
+			bleed_damage = 0.5, poison_damage = 0.5, burn_damage = 0.4, darkflame_damage = 0.3,
 			resist_taunt_set = 100, resist_provoke_set = 100, resist_fear_set = 100, resist_cursed_set = 100,
 		},
 		tags = ['jd_demon_arrogance'],
@@ -701,7 +701,7 @@ var effects = {
 		stack = 'jd_ward',
 		tick_event = [variables.TR_NONE],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		tags = ['buff', 'positive', 'shield', 'jd_ward', 'jd_ward_diamond'],
+		tags = ['buff', 'shield', 'jd_ward', 'jd_ward_diamond'],
 		statchanges = {armor = 100, resist_shred_set = 100, resist_poison_set = 100, resist_bleed_set = 100},
 		buffs = ['b_jd_ward_diamond'],
 		sub_effects = ['jd_ward_diamond_soak', 'jd_ward_diamond_swap', 'jd_ward_clean_shred'],
@@ -754,7 +754,7 @@ var effects = {
 		stack = 'jd_ward',
 		tick_event = [variables.TR_NONE],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		tags = ['buff', 'positive', 'shield', 'jd_ward', 'jd_ward_plasma'],
+		tags = ['buff', 'shield', 'jd_ward', 'jd_ward_plasma'],
 		statchanges = {mdef = 100, resist_shatter_set = 100, resist_burn_set = 100, resist_wet_set = 100},
 		buffs = ['b_jd_ward_plasma'],
 		sub_effects = ['jd_ward_plasma_soak', 'jd_ward_plasma_swap', 'jd_ward_clean_shatter'],
@@ -957,7 +957,7 @@ var effects = {
 			type = 'oneshot',
 			target = 'caster',
 			args = {hp = {obj = 'caster', func = 'stat', stat = 'hpmax'}},
-			atomic = [{type = 'heal', value = [['parent_args', 'hp'], '*', 0.06]}],
+			atomic = [{type = 'heal', value = [['parent_args', 'hp'], '*', 0.2]}],
 		}],
 	},
 	jd_dream_eater_display = {
@@ -1066,10 +1066,10 @@ var effects = {
 		type = 'temp_s',
 		target = 'target',
 		stack = 'jd_deep_sleep',
-		tick_event = [variables.TR_TURN_F],
+		tick_event = [variables.TR_NONE],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		tags = ['debuff', 'negative', 'disable', 'jd_deep_sleep'],
+		tags = ['debuff', 'disable', 'jd_deep_sleep'],
 		statchanges = {},
 		buffs = ['b_jd_deep_sleep'],
 		sub_effects = ['jd_deep_sleep_shake', 'jd_deep_sleep_clarity', 'jd_deep_sleep_coma'],
@@ -1101,7 +1101,7 @@ var effects = {
 	},
 	jd_deep_sleep_coma = {
 		type = 'trigger',
-		trigger = [variables.TR_TURN_F],
+		trigger = [variables.TR_TURN_F,variables.TR_POST_TARG],
 		req_skill = false,
 		conditions = [{type = 'owner', value = [{code = 'buff_number', status = 'jd_deep_sleep', operant = 'gte', value = 8}]}],
 		sub_effects = [{
@@ -1114,13 +1114,13 @@ var effects = {
 			],
 		}],
 	},
-	jd_comatose = {
+	jd_comatose = { #negative tag are removed to prevent the boss gimmick being completely trivialize by bard skill
 		type = 'temp_s',
 		target = 'owner',
 		stack = 'jd_comatose',
 		tick_event = [variables.TR_NONE],
 		rem_event = [variables.TR_COMBAT_F],
-		tags = ['debuff', 'negative', 'disable', 'jd_comatose'],
+		tags = ['debuff', 'disable', 'jd_comatose'],
 		statchanges = {},
 		buffs = ['b_jd_comatose'],
 	},
@@ -1204,7 +1204,7 @@ var buffs = {
 		description = "EFFECT_JD_DEEP_SLEEP",
 	},
 	b_jd_comatose = {
-		icon = "res://assets/images/iconsskills/icon_eyes.png",
+		icon = "res://assets/images/iconsskills/Serve2.png",
 		description = "EFFECT_JD_COMATOSE",
 	},
 }

@@ -2161,7 +2161,7 @@ Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soot
 	SKILLJD_GREATER_FLAME_SPHEREDESCRIPT = "A sphere of fire hangs over the field from the first moment. Deals 30% of each enemy's maximum health as {color=yellow|Fire} damage and sets them Burning for 3 turns.",
 	SKILLJD_ABYSS = "Abyss",
 	SKILLJD_ABYSSDESCRIPT = """Deals 160% of MATK as {color=yellow|Dark} damage to all enemies. Each one hit is struck Silent, Blind or Disarmed.
-Any Burning on them is drawn into Dark Flame for 4 turns.""",
+Any Burning on target is transform into Dark Flame for 4 turns.""",
 	SKILLJD_SOIL_LIQUEFACTION = "Soil Liquefaction",
 	SKILLJD_SOIL_LIQUEFACTIONDESCRIPT = "The ground turns to slurry. Deals 75% of MATK as {color=yellow|Earth} damage to every enemy standing on it, leaving them Wet and caught in {color=aqua|Quicksand} for 2 turns. Flying enemies are missed entirely.",
 	SKILLJD_WINTERFALL = "Winterfall",
@@ -2172,7 +2172,7 @@ A dry target is left Wet; a Wet one is frozen solid instead.""",
 	SKILLJD_CATCH_BREATH = "Tch..! This body ain't used to this level of spellcasting just yet...",
 	SKILLJD_CATCH_BREATHDESCRIPT = "The demon lets Jean's body catch up with what it is being asked to do, restoring 12% of her maximum health.",
 	SKILLJD_VOLCANIC_ERUPTION = "Volcanic Eruption",
-	SKILLJD_VOLCANIC_ERUPTIONDESCRIPT = "Fire bolt after fire bolt at whoever is nearest to hand: 5 to 6 hits of 85% MATK {color=yellow|Fire} damage on random enemies, each leaving Shatter and Burn for 3 turns.",
+	SKILLJD_VOLCANIC_ERUPTIONDESCRIPT = "Fire bolt after fire bolt at whoever is nearest to hand: 5 to 6 hits of 75% MATK {color=yellow|Fire} damage on random enemies, each leaving Shatter and Burn for 3 turns.",
 	SKILLJD_DEMONIC_STRUGGLE = "Demonic Struggle",
 	SKILLJD_DEMONIC_STRUGGLEDESCRIPT = "With her voice taken, the demon wrings the body itself for 250% ATK damage and a Stun. Cannot be Silenced. Costs 8% of her maximum health.",
 	SKILLJD_WARD_CAST_DIAMOND = "Warding Field: Diamond Shell",
@@ -2181,13 +2181,13 @@ A dry target is left Wet; a Wet one is frozen solid instead.""",
 	SKILLJD_WARD_CAST_PLASMADESCRIPT = "Hardens the air around her into a shell against magic.",
 	#Jean quest finale - the demon
 	SKILLJD_ENGULFING_DREAM = "Engulfing Dream",
-	SKILLJD_ENGULFING_DREAMDESCRIPT = """Drags one waking enemy 2 turns deep into {color=aqua|Deep Sleep}. Cannot be used on an enemy already {color=aqua|Comatose}.
+	SKILLJD_ENGULFING_DREAMDESCRIPT = """Drags one waking enemy 2 layers deep into {color=aqua|Deep Sleep}. Cannot be used on an enemy already {color=aqua|Comatose}.
 Against a lone opponent it can only manage ordinary Sleep.""",
 	SKILLJD_ONEIRIC_FEEDING = "Oneiric Feeding",
-	SKILLJD_ONEIRIC_FEEDINGDESCRIPT = "Feeds on a sleeper's dream: 2 more turns of {color=aqua|Deep Sleep} for them, one stack of {color=aqua|Empowerment} for the demon. Can only be used on an enemy in {color=aqua|Deep Sleep}.",
+	SKILLJD_ONEIRIC_FEEDINGDESCRIPT = "Feeds on a sleeper's dream: Inflict 2 more layers of {color=aqua|Deep Sleep} on them, Demon gain 1 stack of {color=aqua|Empowerment}. Can only be used on an enemy in {color=aqua|Deep Sleep}.",
 	SKILLJD_SAPID_UNREALITY = "Sapid Unreality",
-	SKILLJD_SAPID_UNREALITYDESCRIPT = """Needs 5 stacks of {color=aqua|Empowerment} and an enemy already in {color=aqua|Deep Sleep}, whom it pushes 3 turns deeper.
-The dream spills over: 110% MATK {color=yellow|Mind} damage to every enemy who is still awake.""",
+	SKILLJD_SAPID_UNREALITYDESCRIPT = """Needs 5 stacks of {color=aqua|Empowerment} and an enemy already in {color=aqua|Deep Sleep}, whom it pushes 3 layers deeper.
+The dream spills over: dealing 110% MATK {color=yellow|Mind} damage to every enemy who is still awake.""",
 	SKILLJD_SAPID_WAVE = "Sapid Unreality",
 	SKILLJD_SAPID_WAVEDESCRIPT = "The nightmare spills out over everyone still awake.",
 	SKILLJD_ETERNAL_SLUMBER = "Eternal Slumber",
@@ -2200,7 +2200,7 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 	SKILLJD_VISION_SLEEP = "Vision of Indulgence",
 	SKILLJD_VISION_SLEEPDESCRIPT = "The vision takes hold.",
 	SKILLJD_MASS_ILLUSION = "Mass Illusion Mayhem",
-	SKILLJD_MASS_ILLUSIONDESCRIPT = "Copies of the demon come from everywhere at once for 90% ATK damage each, and it slips into In The Shadows behind them. Sleeping enemies are struck at by copies that are not there. Cannot be used on a sleeping enemy.",
+	SKILLJD_MASS_ILLUSIONDESCRIPT = "Copies of the demon come from everywhere at once to strike any non-sleeping enemies 90% ATK damage each, and the user slips into {color=aqua|In The Shadows} behind them. Cannot be used on a sleeping enemy.",
 	SKILLJD_FAUSTIAN_DELIVERANCE = "Faustian Deliverance",
 	SKILLJD_FAUSTIAN_DELIVERANCEDESCRIPT = "A beam of ruin down one column for 170% MATK {color=yellow|Dark} damage, leaving the Cursed behind it. Passes over sleepers. Cannot be used on a sleeping enemy.",
 	SKILLACCELERATING_PLUNGE = "Accelerating Plunge",
@@ -2530,7 +2530,7 @@ Remove all {color=aqua|Heaping Mass} on self.""",
 	STATUSDESC_SHRED = "Shredded: DEF is reduced by 25%. Can stack up to 2 times.",
 	STATUSDESC_PARALYSIS = "Paralysed: -50 Speed, -80 Evasion and -75 Hitrate. Counts as an affliction.",
 	STATUSDESC_CONTAGIOUS_CALAMITY = "Contagious Calamity: counts as Poison. Healing received is halved. 25% of max HP is lost and spreads to up to 2 random allies every turn. ",
-	STATUSDESC_JD_DEEP_SLEEP = "Deep Sleep: cannot act. Any ability an ally aims at them shortens it, and so does Clarity at the end of each turn. Left for 8 turns' worth, it becomes Comatose.",
+	STATUSDESC_JD_DEEP_SLEEP = "Deep Sleep: cannot act. Any ability an ally aims at them shortens it, and so does Clarity at the end of each turn. At 8 layers' worth, it becomes Comatose.",
 	STATUSDESC_JD_COMATOSE = "Comatose: cannot act, and cannot be woken before the battle is over.",
 	STATUSDESC_JD_QUICKSAND = "Quicksand: -75% Evasion, -50 Speed, and this unit's melee attacks always miss. Counts as a trap.",
 	STATUSDESC_FEAR = "Fear: Damage is reduced by 25%.",
@@ -5645,7 +5645,7 @@ Flash-steps in to counterattack whenever an attack is dodged, up to 5 times per 
 	EFFECT_JD_WARD_PLASMA = """Warding Field: Plasma Shell. Clears Shatter on arrival; immune to Shatter, Burn and Wet.
 +100 MDEF and half damage from magic. A physical blow flips it to the Diamond Shell, unless she is Silenced.""",
 	EFFECTNAME_JD_MOUTH_SHUT = "Second Mouth Shut",
-	EFFECT_JD_MOUTH_SHUT = "The demon's own mouth has been burned shut: no Silence immunity and no extra {color=yellow|Light} weakness for 2 turns. When it opens again, any Silence on her is spat back out.",
+	EFFECT_JD_MOUTH_SHUT = "The demon's own mouth has been burned shut: no Silence immunity and no extra {color=yellow|Light} weakness for 2 turns. When it opens again, any Silence on her is cleared.",
 	EFFECTNAME_JD_QUICKSAND = "Quicksand",
 	EFFECT_JD_QUICKSAND = "Quicksand: -75% Evasion, -50 Speed, and this unit's melee attacks always miss. Counts as a trap.",
 	EFFECTNAME_JD_LINGERING_STORM = "Lingering Storm",
@@ -5657,15 +5657,15 @@ Flash-steps in to counterattack whenever an attack is dodged, up to 5 times per 
 	EFFECTNAME_JD_EMPOWERMENT = "Empowerment",
 	EFFECT_JD_EMPOWERMENT = "+10% ATK and MATK per stack.",
 	EFFECTNAME_JD_DEEP_SLEEP = "Deep Sleep",
-	EFFECT_JD_DEEP_SLEEP = """Deep Sleep: cannot act. Every helping queues behind the last one instead of replacing it.
-Any ability an ally aims at them burns one helping off, and so does Clarity at the end of their turn. Let it reach 8 turns and it becomes Comatose.""",
+	EFFECT_JD_DEEP_SLEEP = """Deep Sleep: cannot act.
+Any ability an ally aims at them burns one helping off, and so does Clarity at the end of their turn. Let it reach 8 layers and it becomes Comatose.""",
 	EFFECTNAME_JD_COMATOSE = "Comatose",
 	EFFECT_JD_COMATOSE = "Comatose: cannot act, and cannot be woken before the battle is over.",
 	TRAIT_JD_DEMON_ARROGANCE = """Undefilable Arrogance of a Demon: damage over time is cut further still.
 Too proud to be Taunted, too sure of itself to feel Fear, too damned to be Cursed.""",
 	TRAIT_JD_SECOND_MOUTH = """Second Mouth: the demon speaks in her place, so she is immune to Silence - but its mouth is an opening, and she takes far more {color=yellow|Light} damage.
-A hit of {color=yellow|Light} shuts it for 2 turns; when it opens again it spits any Silence back out.""",
-	TRAIT_JD_DREAM_EATER = "Dream Eater's Self-Made Vessel: immune to Sleep and Disarm. Every blow that lands on a Sleeping, {color=aqua|Deep Sleeping} or {color=aqua|Comatose} enemy restores 16% of its maximum health.",
+A hit of {color=yellow|Light} shuts it for 2 turns; when it opens again it clear out any Silence effect on self.""",
+	TRAIT_JD_DREAM_EATER = "Dream Eater's Self-Made Vessel: immune to Sleep and Disarm. Every blow that lands on a Sleeping, {color=aqua|Deep Sleeping} or {color=aqua|Comatose} enemy restores 20% of its maximum health.",
 	TRAIT_JD_ENNUI = """500 Years of Ennui and Resentment: being held down - immobilised or Ensnared - sends it into {color=aqua|Enrage} for 3 turns.
 The first time it is driven below half health it tears off any Silence and cannot be Silenced again.""",
 	EFFECTNAME_OVERLOADED_GOLEM_CORE = "Overloaded Golem Core",
