@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://gui_modules/Exploration/Scripts/MarketSlaveCard.gd" type="Script" id=1]
 
@@ -31,6 +31,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_mp.png" type="Texture" id=34]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_lust.png" type="Texture" id=35]
+[ext_resource path="res://assets/factor_halo.shader" type="Shader" id=36]
 
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_left = 4.0
@@ -76,6 +77,9 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0.88, 0.72, 0.35, 1 )
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 36 )
 
 [node name="MarketSlaveCard" type="Control"]
 margin_left = 0.0
@@ -399,6 +403,17 @@ custom_constants/vseparation = 12
 visible = false
 rect_min_size = Vector2( 101, 78 )
 mouse_filter = 1
+
+[node name="Glow" type="ColorRect" parent="Right/FactorsSection/Padding/Content/FactorRows/Button"]
+visible = false
+material = SubResource( 10 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -46.0
+margin_top = -16.0
+margin_right = 46.0
+margin_bottom = 76.0
+mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="Right/FactorsSection/Padding/Content/FactorRows/Button"]
 anchor_left = 0.5

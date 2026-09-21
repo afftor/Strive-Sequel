@@ -866,11 +866,10 @@ var traits = {
 		icon = "res://assets/images/iconstraits/brain.png",
 		effects = [],
 		bonusstats = {}, #hardcoded
-		weight = 100,
 		disposition_change = {
 			positive = [['weak', 75],['neutral', 25]]
 		},
-		tags = ['positive', 'can_start', 'disposition_change']
+		tags = ['positive', 'disposition_change']
 	},
 	gifted = {
 		code = 'gifted',

@@ -593,6 +593,11 @@ func use_mansion_item(item, amount = 1):
 	if itembase.has("uses_per_target") && items_used_global.has(itembase.code) && items_used_global[itembase.code] >= itembase.uses_per_target:
 		input_handler.SystemMessage(parent.get_ref().translate("[name] can't use this item anymore."))
 		return
+	#a map has nowhere to put its dungeon when the region is full, and the check has to happen
+	#before the item is spent - the effect itself never sees the item
+	if skill == 'map' and !ResourceScripts.custom_effects.can_use_map(itembase.map):
+		input_handler.SystemMessage(tr("CANT_PURCHASE_LOC_LABEL"))
+		return
 	amount = get_item_use_limit(item, amount)
 	if itembase.has("uses_per_target"):
 		if items_used_global.has(itembase.code):

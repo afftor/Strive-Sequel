@@ -60,8 +60,13 @@ func build_rank_header():
 	var rank = sq.get_rank()
 	_put_text(rank_node, "RankLetter", rank)
 	_put_text(rank_node, "RankLabel", globals._report_text("SQ_RANK_LABEL", [rank]))
+	var unlocks = sq.rank_unlocks_text()
 	for code in RANKS:
 		_show(rank_node, "Rank" + code, code == rank)
+		var medal = _find(rank_node, "Rank" + code)
+		if medal is Control:
+			medal.mouse_filter = Control.MOUSE_FILTER_STOP
+			globals.connecttexttooltip(medal, unlocks)
 	var top = sq.is_max_rank()
 	if !top:
 		_put_text(rank_node, "NextRank", globals._report_text("SQ_NEXT_RANK", [sq.quest_data.ranks[sq.get_rank_index() + 1].code]))

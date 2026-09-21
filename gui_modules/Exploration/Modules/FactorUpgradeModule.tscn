@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 
@@ -29,6 +29,12 @@
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=27]
 
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Growth factor/fx1_growthfactor.png" type="Texture" id=28]
+[ext_resource path="res://assets/factor_halo.shader" type="Shader" id=29]
+
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=33]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.042, 0.044, 0.038, 1 )
@@ -135,6 +141,69 @@ width = 160
 
 [sub_resource type="CanvasItemMaterial" id=27]
 blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id=28]
+shader = ExtResource( 29 )
+
+[sub_resource type="StyleBoxTexture" id=30]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource( 30 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=31]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=32]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=33]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource( 33 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=34]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+region_rect = Rect2( 863, 93, 163, 8 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+modulate_color = Color( 0, 0, 0, 1 )
 
 [node name="FactorUpgradeModule" type="Panel"]
 margin_left = 0.0
@@ -453,7 +522,17 @@ margin_bottom = 48.0
 mouse_filter = 2
 visible = false
 rect_min_size = Vector2( 0, 48 )
+rect_clip_content = true
 custom_styles/panel = SubResource( 7 )
+
+[node name="Glow" type="ColorRect" parent="Plan/FactorRows/FactorRow"]
+visible = false
+material = SubResource( 28 )
+margin_left = -8.5
+margin_top = -8.5
+margin_right = 56.5
+margin_bottom = 56.5
+mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="Plan/FactorRows/FactorRow"]
 margin_left = 3.0
@@ -500,21 +579,31 @@ valign = 1
 
 [node name="Minus" type="Button" parent="Plan/FactorRows/FactorRow"]
 margin_left = 378.0
-margin_top = 8.0
+margin_top = 5.0
 margin_right = 410.0
-margin_bottom = 40.0
+margin_bottom = 43.0
 mouse_filter = 0
 theme = ExtResource( 7 )
+custom_styles/normal = SubResource( 30 )
+custom_styles/hover = SubResource( 31 )
+custom_styles/pressed = SubResource( 32 )
+custom_styles/disabled = SubResource( 33 )
+custom_styles/focus = SubResource( 34 )
 custom_fonts/font = SubResource( 2 )
 text = "-"
 
 [node name="Plus" type="Button" parent="Plan/FactorRows/FactorRow"]
 margin_left = 414.0
-margin_top = 8.0
+margin_top = 5.0
 margin_right = 446.0
-margin_bottom = 40.0
+margin_bottom = 43.0
 mouse_filter = 0
 theme = ExtResource( 7 )
+custom_styles/normal = SubResource( 30 )
+custom_styles/hover = SubResource( 31 )
+custom_styles/pressed = SubResource( 32 )
+custom_styles/disabled = SubResource( 33 )
+custom_styles/focus = SubResource( 34 )
 custom_fonts/font = SubResource( 2 )
 text = "+"
 

@@ -423,11 +423,25 @@ func lactation_pot(character):
 func close():#for the cancel function
 	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close()
 
-func map(dungeon_code):
+#Which region a treasure map leads into. Half the map templates name no area of their own, and
+#selected_area is null until some screen has set it, so the starting region is the last word.
+func map_area(dungeon_code):
 	var dungeon = DungeonData.dungeons[dungeon_code]
 	if dungeon.has('purchase_area'):
-		input_handler.selected_area = ResourceScripts.game_world.areas[dungeon.purchase_area]
-	if input_handler.selected_area.locations.size() < 8:
+		return ResourceScripts.game_world.areas[dungeon.purchase_area]
+	if input_handler.selected_area != null:
+		return input_handler.selected_area
+	return ResourceScripts.game_world.areas[ResourceScripts.game_world.starting_area]
+
+
+func can_use_map(dungeon_code):
+	return ResourceScripts.game_world.can_add_location(map_area(dungeon_code))
+
+
+func map(dungeon_code):
+	var dungeon = DungeonData.dungeons[dungeon_code]
+	input_handler.selected_area = map_area(dungeon_code)
+	if ResourceScripts.game_world.can_add_location(input_handler.selected_area):
 		var randomlocation = []
 		for i in input_handler.selected_area.locationpool:
 			randomlocation.append(DungeonData.dungeons[i].code)

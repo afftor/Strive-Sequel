@@ -119,6 +119,9 @@ func blocked_reason():
 		return "MANSIONVIEW_ERR_NOTWORKER"
 	if !view.person_is_here(person):
 		return "MANSIONVIEW_ERR_AWAY"
+	#a settlement that buys service only from certain races does not take this one at all
+	if panel.is_service() and !ResourceScripts.game_world.service_takes_race(panel.service_code(), person):
+		return "MANSIONVIEW_ERR_SERVICERACE"
 	return ""
 
 

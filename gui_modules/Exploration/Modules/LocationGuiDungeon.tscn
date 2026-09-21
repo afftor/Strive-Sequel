@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -63,6 +63,8 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=77]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Icons/steps.png" type="Texture" id=78]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=79]
+
+[ext_resource path="res://assets/Textures_v2/MANSION/yes.png" type="Texture" id=80]
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 45 )
@@ -1290,6 +1292,16 @@ margin_bottom = 1060.0
 texture = ExtResource( 19 )
 expand = true
 
+[node name="cleared" type="TextureRect" parent="MapPanel"]
+visible = false
+margin_left = 795.0
+margin_top = 32.0
+margin_right = 835.0
+margin_bottom = 72.0
+texture = ExtResource( 80 )
+expand = true
+stretch_mode = 6
+
 [node name="RichTextLabel" type="RichTextLabel" parent="MapPanel"]
 margin_left = 37.0
 margin_top = 35.0
@@ -1673,18 +1685,6 @@ custom_fonts/font = ExtResource( 4 )
 text = "20"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Forget" type="Button" parent="Resources"]
-visible = false
-margin_left = 135.0
-margin_top = 200.0
-margin_right = 315.0
-margin_bottom = 252.0
-theme = ExtResource( 7 )
-text = "FORGET_LOC_LABEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }

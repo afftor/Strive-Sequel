@@ -450,6 +450,18 @@ static func give_personality(person, personality):
 	return true
 
 
+#The name the rename prompt opens with: the one this body already went by, when the character has been this
+#sex before (swap_sex_of brings it back), otherwise a fresh random name of their race and new sex.
+static func suggested_name_for_sex(person):
+	if person == null:
+		return ''
+	var current = str(person.get_stat('name'))
+	if person.name_for_sex(person.get_stat('sex')) != '':
+		return current
+	var generated = Namedata.random_first_name(person.get_stat('race'), person.get_stat('sex'))
+	return generated if generated != '' else current
+
+
 #The first name the subject goes by from now on, filed under the sex they have now: a change back brings
 #the other sex's name back, a change to this sex again brings this one (custom_effects.swap_sex_of).
 #An empty name keeps the current one and only files it.

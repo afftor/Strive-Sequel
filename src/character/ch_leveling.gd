@@ -253,11 +253,11 @@ func check_brothel_rule(rule):
 	if !brothel_rules.has(rule):
 		print("warning - brothel rule %s removed" % rule)
 		return false
-	return brothel_rules[rule]
+	return brothel_rules[rule] and service_rule_offered(rule)
 
 
 func set_brothel_rule(rule, value):
-	if variables.brothel_rules.has(rule):
+	if variables.brothel_rules.has(rule) and (!value or service_rule_offered(rule)):
 		brothel_rules[rule] = value
 
 
@@ -647,6 +647,7 @@ func select_brothel_activity():
 	var no_consent = false
 	for i in brothel_rules:
 		if !brothel_rules[i] || i in ['males','futa','females']: continue
+		if !service_rule_offered(i): continue
 		if variables.brothel_non_sex_options.has(i):
 			non_sex_rules.append(i)
 		else:
@@ -740,6 +741,7 @@ func select_brothel_activity():
 
 		#TODO add decriptions and impregnation
 		update_brothel_log(parent.get_ref().get_stat('name'), goldearned, data, brothel_customer_gender, full_gold)
+		try_virginity_offer()
 		return
 	elif non_sex_rules.size() > 0:
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)
@@ -778,6 +780,50 @@ func select_brothel_activity():
 		remove_from_task()
 		parent.get_ref().rest_tick()
 	
+
+#A client who would rather buy what the house is not selling: her first time, outright. Offered only
+#to somebody who sells no penetration at all and still has her maidenhead, and only now and then.
+func try_virginity_offer():
+	var person = parent.get_ref()
+	if person.get_stat('has_womb') != true or person.get_stat('vaginal_virgin_lost') != null:
+		return
+	for rule in variables.penetrative_service_rules:
+		if brothel_rules.get(rule, false) and service_rule_offered(rule):
+			return
+	if randf() >= variables.virginity_offer_chance:
+		return
+	var price = int(max(1, round(get_estimated_service_value() * globals.rng.randf_range(
+		variables.virginity_offer_mult[0], variables.virginity_offer_mult[1]))))
+	var data = {
+		text = person.translate(tr("SERVICE_VIRGINITY_OFFER")),
+		tags = ['dialogue_scene'],
+		image = null,
+		options = [
+			{
+				code = 'close',
+				text = person.translate(globals._report_text("SERVICE_VIRGINITY_SELL", [price])),
+				reqs = [],
+				bonus_effects = [
+					{code = 'money_change', operant = '+', value = price},
+					{code = 'take_virginity', value = 'vaginal'},
+					{code = 'affect_active_character', type = 'stat', stat = 'affection',
+						value = -variables.virginity_offer_affection_loss},
+				],
+			},
+			{
+				code = 'close',
+				text = tr("SERVICE_VIRGINITY_REFUSE"),
+				reqs = [],
+				bonus_effects = [
+					{code = 'affect_active_character', type = 'stat', stat = 'affection',
+						value = variables.virginity_offer_affection_gain},
+				],
+			},
+		],
+	}
+	input_handler.interactive_message(data, 'direct',
+		{set_active_character = person.id, scene_characters_add = [person.id]})
+
 
 func update_brothel_log(ch_name, gold, data, customer_gender = "", full_gold = true):
 	var text = ""
@@ -828,11 +874,10 @@ func apply_boosters(value):
 
 
 #Service is paid out of what its settlement's clients have left this week - game_world.pay_service_gold().
+#Whoever is on service is on the service of the place they stand in, and that place's clients are the
+#ones who pay them (game_world.service_gold). A settlement with no purse pays in full.
 func take_service_pay(gold):
-	var location = 'aliron'
-	if ResourceScripts.game_res.tasks_progresses.has('service'):
-		location = ResourceScripts.game_res.tasks_progresses.service.get('location', location)
-	return ResourceScripts.game_world.pay_service_gold(location, gold)
+	return ResourceScripts.game_world.pay_service_gold(service_location(), gold)
 
 
 func get_highest_value(array):#find highest profit option
@@ -850,8 +895,27 @@ func get_highest_value(array):#find highest profit option
 func get_gold_value(task):
 	var value = call(tasks.gold_tasks_data[task].formula)
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(tasks.gold_tasks_data[task].workmod)/100.0)
-
+	#clients pay more for whatever their settlement is after this week
+	value *= ResourceScripts.game_world.service_bonus_multiplier(service_location(), parent.get_ref(), task)
 	return value
+
+
+#Where this person's service is sold, which is where they stand: the estate's own work is Aliron's.
+func service_location():
+	var location = parent.get_ref().get_location()
+	if location == 'mansion' or location == '':
+		return 'aliron'
+	return location
+
+
+#An act nobody here buys, or one their gear takes off the table, is not on offer however it is toggled.
+func service_rule_offered(rule):
+	if !ResourceScripts.game_world.service_allows_rule(service_location(), rule):
+		return false
+	for gear in variables.service_gear_blocks:
+		if variables.service_gear_blocks[gear].has(rule) and parent.get_ref().equipment.check_gear_equipped(gear):
+			return false
+	return true
 
 
 func get_enabled_sex_actions():
@@ -859,7 +923,7 @@ func get_enabled_sex_actions():
 	for i in variables.brothel_rules:
 		if variables.brothel_non_sex_options.has(i) or i in ['males','futa','females']:
 			continue
-		if brothel_rules.get(i, false):
+		if brothel_rules.get(i, false) and service_rule_offered(i):
 			res.append(i)
 	return res
 
@@ -939,7 +1003,7 @@ func get_estimated_service_value():#best-case gold per tick for the currently to
 func get_enabled_non_sex_actions():
 	var res = []
 	for i in variables.brothel_non_sex_options:
-		if brothel_rules.get(i, false):
+		if brothel_rules.get(i, false) and service_rule_offered(i):
 			res.append(i)
 	return res
 

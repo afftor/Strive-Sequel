@@ -891,6 +891,9 @@ func fill_market_row(row, tchar, price):
 		race_label.text = tchar.get_short_race()
 	else:
 		row.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
+	var sex_icon = row.get_node_or_null("SexIcon")
+	if sex_icon is TextureRect:
+		globals.build_sex_icon(sex_icon, tchar)
 	var race_icon = row.get_node_or_null("RaceIcon")
 	if race_icon is TextureRect:
 		var race = races.racelist[tchar.get_stat('race')]
@@ -1093,7 +1096,7 @@ func purchase_location():
 #	var active_location 
 	if purchasing_location.has('purchase_area'):
 		input_handler.selected_area = ResourceScripts.game_world.areas[purchasing_location.purchase_area]
-	if input_handler.selected_area.locations.size() < 8:
+	if ResourceScripts.game_world.can_add_location(input_handler.selected_area):
 		var randomlocation = []
 		for i in input_handler.selected_area.locationpool:
 			randomlocation.append(DungeonData.dungeons[i].code)

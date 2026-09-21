@@ -8,7 +8,6 @@ var original_version = globals.gameversion
 var newgame = false
 var difficulty = 'medium'
 #diff
-var diff_gf_only_upg = false
 var diff_permadeath = false
 var diff_bonus_taskmod = false
 var diff_bonus_loot = false
@@ -30,6 +29,9 @@ var seed_salt = randi()
 #dynamic part
 var date = 1
 var hour = 1
+#The weather over the mansion, rolled at the end of every turn - see advance_weather().
+var rain_turns_left = 0
+var storm = false
 
 #var daily_sex_left = 1
 #var daily_dates_left = 1
@@ -193,6 +195,7 @@ func advance_hour(managed = false, progress_target = null):
 	if managed:
 		yield(globals.get_tree(), 'idle_frame')
 	hour += 1
+	advance_weather()
 	ResourceScripts.game_res.clear_buyback() #shops resell what they bought once the turn ends
 
 	ResourceScripts.game_world.advance_hour()
@@ -208,6 +211,41 @@ func advance_hour(managed = false, progress_target = null):
 func _report_turn_progress(progress_target, value):
 	if progress_target != null and progress_target.has_method("set_turn_simulation_progress"):
 		progress_target.set_turn_simulation_progress(value)
+
+
+#Rain starts on its own chance, runs the length it rolled, and each of its turns carries its own
+#chance of a storm. The lengths are weights against each other, not percentages.
+const RAIN_CHANCE = 0.05
+const RAIN_LENGTHS = [[2, 40], [3, 40], [4, 10]]
+const STORM_CHANCE = 0.10
+
+
+func raining():
+	return rain_turns_left > 0
+
+
+func storming():
+	return rain_turns_left > 0 and storm
+
+
+func advance_weather():
+	if rain_turns_left > 0:
+		rain_turns_left -= 1
+	if rain_turns_left <= 0 and randf() < RAIN_CHANCE:
+		rain_turns_left = roll_rain_length()
+	storm = rain_turns_left > 0 and randf() < STORM_CHANCE
+
+
+func roll_rain_length():
+	var total = 0
+	for entry in RAIN_LENGTHS:
+		total += entry[1]
+	var roll = randi() % int(max(1, total))
+	for entry in RAIN_LENGTHS:
+		roll -= entry[1]
+		if roll < 0:
+			return entry[0]
+	return RAIN_LENGTHS[0][0]
 
 
 func advance_day(managed = false):
@@ -239,6 +277,7 @@ func advance_day(managed = false):
 	if int(date) % variables.DaysPerWeek == 1 or variables.DaysPerWeek == 1:
 		reset_limits()
 		ResourceScripts.game_world.refill_service_gold()
+		ResourceScripts.game_world.roll_service_bonuses()
 
 		ResourceScripts.game_res.subtract_taxes()
 

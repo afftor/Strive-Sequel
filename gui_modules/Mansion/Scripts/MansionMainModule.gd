@@ -316,6 +316,11 @@ func mansion_is_active_at_hour(hour):
 		and ResourceScripts.game_globals.hour == hour
 
 
+#Fair weather only: the rooster and the day birds keep quiet through the rain.
+func mansion_is_dry_at_hour(hour):
+	return mansion_is_active_at_hour(hour) and !ResourceScripts.game_globals.raining()
+
+
 func play_mansion_sound_variant(player, variants):
 	if variants.empty():
 		return
@@ -339,7 +344,8 @@ func update_night_sounds(delta):
 	night_sound_delay -= delta
 	if night_sound_delay > 0.0:
 		return
-	if randf() < 0.75:
+	#crickets do not sing through rain; the owl still calls over it
+	if !ResourceScripts.game_globals.raining() and randf() < 0.75:
 		night_cricket_player.play()
 		night_sound_delay = rand_range(7.5, 12.0)
 	else:
@@ -354,7 +360,7 @@ func update_time_of_day_sounds(delta):
 
 
 func update_morning_rooster(delta):
-	if !mansion_is_active_at_hour(MORNING_HOUR):
+	if !mansion_is_dry_at_hour(MORNING_HOUR):
 		if morning_rooster_active:
 			morning_rooster_player.stop()
 			morning_rooster_active = false
@@ -368,11 +374,11 @@ func update_morning_rooster(delta):
 	if morning_rooster_delay > 0.0:
 		return
 	play_mansion_sound_variant(morning_rooster_player, morning_rooster_variants)
-	morning_rooster_delay = rand_range(23.0, 38.0)
+	morning_rooster_delay = rand_range(50.0, 60.0)
 
 
 func update_day_birds(delta):
-	if !mansion_is_active_at_hour(DAY_HOUR):
+	if !mansion_is_dry_at_hour(DAY_HOUR):
 		if day_birds_active:
 			day_bird_player.stop()
 			day_birds_active = false
@@ -731,7 +737,12 @@ func on_place_changed(_code = null):
 #brings the plan up over the list; pressing the one that is already up puts the plan away and
 #gives the household back, which is what the whole row of four is for.
 func set_local_tasks_scope(value):
+	#Pressed at another place it is the way home, and it brings back what it names rather than folding
+	#anything away: there is nothing here yet for the press to have been about.
 	if !RoomsModule.in_mansion():
+		RoomsModule.set_place(RoomsModule.LocationTasks.MANSION_CODE)
+		RoomsModule.set_local_tasks(value)
+		show_plan(true)
 		sync_local_tasks_button(RoomsModule.place)
 		return
 	if plan_shown() and RoomsModule.local_tasks == value:
@@ -816,9 +827,11 @@ func sync_local_tasks_button(_place = null):
 	var at_mansion = RoomsModule.in_mansion()
 	var local = RoomsModule.local_tasks if at_mansion else false
 	var up = plan_shown()
-	ViewModes.get_node("Scope").visible = at_mansion
-	LocalTasksButton.pressed = up and local
-	ViewModes.get_node("Scope/MansionButton").pressed = up and !local
+	#The pair stays on the rail at another place as well: it is the way home, and with it gone the screen
+	#said nothing about where home was.
+	ViewModes.get_node("Scope").visible = true
+	LocalTasksButton.pressed = up and at_mansion and local
+	ViewModes.get_node("Scope/MansionButton").pressed = up and at_mansion and !local
 	refresh_local_tasks_attention()
 	sync_view_mode_buttons(RoomsModule.mode)
 
@@ -838,19 +851,25 @@ func set_rooms_mode(value):
 func sync_view_mode_buttons(value = null):
 	if value == null:
 		value = RoomsModule.mode
-	ViewModes.visible = RoomsModule.in_mansion()
+	ViewModes.visible = true
 	var work = mode_tab("ModeWork")
 	var beds = mode_tab("ModeBeds")
+	#One row of tabs at a time. Work and beds arrange the estate's plan; while the screen is showing
+	#errands - the estate's own or another place's - the row names the places that can be turned to.
+	var plan = RoomsModule.showing_plan()
+	var places = mode_tab("PlaceTabs")
+	if places != null:
+		places.visible = !plan
 	if work == null or beds == null:
 		return
+	work.visible = plan
+	beds.visible = plan
 	#One of the pair is always down: they name which of the two arrangements the plan is in, and
 	#the plan is always in one of them. What is on screen over it is a different question, and
 	#the scope pair on the rail answers that one.
 	work.pressed = value == 'work'
 	beds.pressed = value == 'sleep'
-	#beds belong to the building; the estate's own work has none to arrange, so the button
-	#stays where it is and greys out rather than leaving a hole in the row
-	beds.disabled = !RoomsModule.showing_plan()
+	beds.disabled = !plan
 
 
 func rooms_after_turn():
@@ -1220,6 +1239,12 @@ func test_mode():
 		ResourceScripts.slave_quests.get_quest_pool().clear()
 		ResourceScripts.slave_quests.set_rank('A')
 		ResourceScripts.slave_quests.add_tokens(100)
+
+		#a storm over the house on the first turn, so the rain, the flash and the thunder are
+		#there to look at straight away; it then blows over and comes back on its own chance,
+		#the same as in a played game
+		ResourceScripts.game_globals.rain_turns_left = 3
+		ResourceScripts.game_globals.storm = true
 
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)

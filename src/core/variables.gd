@@ -94,8 +94,8 @@ var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_dead
 
 var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros', 'mod_service']
 
-var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard','kobold','rat']
-var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','tanuki']
+var longtails = ['fox','fox_2','fox_3','cat','wolf','dragon','demon','tanuki','fish','lizard','kobold','rat']
+var longears = ['fox','fox2','fox_n1','fox_n2','fox_n3','fox_n4','cat','wolf','bunny','bunny_standing','bunny_drooping','elven','elven2','tanuki']
 
 var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
@@ -159,8 +159,48 @@ var petbeast_service_tame_factor_mult = 1.0 #extra non-sex service income per ta
 #max = base + randi_range(0, random), rolled again at every refill. A settlement with no entry here has no limit.
 var service_gold_limits = {
 	aliron = {base = 5000, random = 500},
+	elf_capital = {base = 4000, random = 400},
+	dwarf_capital = {base = 6500, random = 650},
+	empire_capital = {base = 12000, random = 1200},
+	beastkin_capital = {base = 2500, random = 250},
 }
 var service_gold_exhausted_mult = 0.1 #share of a payout still paid for the part the settlement's pool cannot cover
+
+#What a settlement will not buy and whom it will not take. No entry here means it buys everything from anybody.
+var service_settlement_limits = {
+	elf_capital = {
+		banned_rules = ['hostess', 'stripper', 'petting', 'oral', 'anal', 'penetration', 'pussy', 'group', 'sextoy'],
+		races = ['Elf', 'TribalElf', 'Fairy', 'Dryad'],
+		no_race_bonus = true,
+	},
+	beastkin_capital = {
+		banned_rules = ['waitress', 'hostess', 'petting'],
+	},
+	dwarf_capital = {
+		banned_rules = ['group'],
+		races = ['Dwarf', 'Gnome', 'Fairy', 'Kobold', 'Goblin'],
+	},
+}
+
+#Every week a settlement's clients are after something in particular, and whoever fits earns more.
+var service_bonus_types = ['race', 'personality', 'rule', 'factor']
+var service_bonus_two_chance = 0.7 #the week rolls two bonuses instead of one
+var service_bonus_gold_mult = {1: 0.4, 2: 0.7} #extra gold for matching one of them, or both
+var service_bonus_picks = [2, 3] #how many races or rules a bonus of that kind names
+var service_bonus_monster_chance = 0.25 #a race bonus asks for the monster races as one instead of naming some
+var service_bonus_factors = ['physics_factor', 'charm_factor', 'sexuals_factor', 'tame_factor', 'authority_factor']
+var service_bonus_factor_level = 5 #factor a character needs to match a factor bonus
+
+#Gear that takes a service action off the table for whoever wears it, whatever the settlement allows.
+var service_gear_blocks = {chastity_belt = ['pussy']}
+
+#A client who would rather buy what the house is not selling. Offered after a turn of sex work to
+#somebody who sells no penetration at all and still has her maidenhead.
+var penetrative_service_rules = ['pussy', 'anal', 'group', 'sextoy']
+var virginity_offer_chance = 0.1
+var virginity_offer_mult = [6.0, 8.0] #what he pays, as a multiple of what that turn was worth
+var virginity_offer_affection_loss = 50
+var virginity_offer_affection_gain = 20
 
 #harlot & courtesan trait perks
 var harlot_desirability_cap = 75.0
@@ -303,6 +343,13 @@ var growth_factor_cost_mod = {
 
 var guild_slave_update_time = 7
 var guild_quest_update_time = 3
+
+#locations
+var location_cap_per_area = 8
+#A cleared location is removed once it has stood empty this long. Anything still worth a visit -
+#unexplored rooms, resources, captives - buys it the longer wait.
+var location_removal_days_empty = 1
+var location_removal_days_leftovers = 3
 
 
 #mansion & ugprades

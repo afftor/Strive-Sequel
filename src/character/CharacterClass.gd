@@ -1869,10 +1869,11 @@ func teleport(data):
 		return
 	xp_module.remove_from_task()
 	travel.location = locdata.location
-	travel.area = locdata.area # I think it's wrong @Sphinx 
-	#error was in getting locdata 
+	travel.area = locdata.area # I think it's wrong @Sphinx
+	#error was in getting locdata
 #	travel.area = locdata.area.code
 	travel.travel_time = 0
+	travel.travel_origin = ''
 	globals.emit_signal("slave_arrived", self)
 	input_handler.update_slave_list()
 	#add logging if reqired

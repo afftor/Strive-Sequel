@@ -24,14 +24,6 @@
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.042, 0.044, 0.038, 1 )
 
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.08, 0.09, 0.078, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.32, 0.29, 0.19, 1 )
-
 [sub_resource type="DynamicFont" id=2]
 size = 18
 use_filter = true
@@ -44,6 +36,14 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.69, 0.54, 0.25, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.08, 0.09, 0.078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.32, 0.29, 0.19, 1 )
 
 [sub_resource type="DynamicFont" id=1]
 use_filter = true

@@ -56,6 +56,8 @@ var lamps = []
 var lamp_floor = {}
 #whether the floor on screen's glows are drawn over the rooms - see draw_glows_over_rooms()
 var glows_over_rooms = false
+#whether the sky is shut out - no sun reaches the grounds through rain, see set_overcast()
+var overcast = false
 #the sky things - sun shafts - gathered from Sky
 var skies = []
 #the mists under Sky, and whether mansion_view's FogOverRooms draws them over the rooms - see draw_fog_over_rooms()
@@ -132,6 +134,17 @@ func room_rect(floor_code, slot_code):
 	return Rect2(mark.get_parent().rect_position + mark.rect_position, mark.rect_size)
 
 
+#Where the floor on screen is indoors: a picture laid over that floor's own, white where no rain
+#must fall - the RainMask beside its Art. mansion_view's Rain reads it; the node is hidden, and
+#its eye in the editor is only for checking it lines up with the picture.
+func indoors_mask():
+	var layer = get_node_or_null(shown_floor)
+	if layer == null:
+		return null
+	var node = layer.get_node_or_null("RainMask")
+	return node.texture if node is TextureRect else null
+
+
 func show_floor(code):
 	shown_floor = str(code)
 	apply()
@@ -140,6 +153,15 @@ func show_floor(code):
 #Asked for by mansion_view's GlowsOverRooms, which draws the glows of the floor on screen over the
 #rooms: their sprites here are hidden and flicker on for it to copy. Only that floor's - a lower
 #floor's glow drawn over the rooms would shine up through the floor drawn over it.
+#Told by mansion_view when the weather turns: the sun shafts go out while it rains, whatever the
+#hour would give them. The mist is left alone - rain is no reason for less of it.
+func set_overcast(on):
+	if overcast == on:
+		return
+	overcast = on
+	apply()
+
+
 func draw_glows_over_rooms(on):
 	glows_over_rooms = on
 	apply()
@@ -197,6 +219,7 @@ func apply():
 	#the sky falls over every floor, so it goes over the rooms whenever the glows do
 	for sky in skies:
 		if is_instance_valid(sky):
+			sky.visible = !overcast
 			sky.drawn_elsewhere = glows_over_rooms
 			sky.set_sky_hour(hour_blend)
 	for fog in fogs:
