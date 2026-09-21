@@ -2593,7 +2593,7 @@ func _apply_coverage_to_meshes():
 	for record in mesh_records:
 		if !is_instance_valid(record.polygon) or record.polygon.material == null:
 			continue
-		_apply_coverage(record.polygon.material, record.get("channel", ""))
+		_apply_coverage(record.polygon.material, record.get("channel", ""), record.slot.get("name", ""))
 
 
 func _add_height_slider(parent):
@@ -2868,7 +2868,7 @@ func _apply_channel_colour(channel_id):
 
 # A mesh's own material: the channel's colours plus the map from atlas UV back to
 # the art canvas, which is what lets a full-body mask find this mesh.
-func _mesh_material(channel_id, region, page_size):
+func _mesh_material(channel_id, region, page_size, slot_name = ""):
 	var template = channel_materials.get(channel_id)
 	if template == null:
 		return null
@@ -2876,7 +2876,7 @@ func _mesh_material(channel_id, region, page_size):
 	var map = _canvas_map(region, page_size)
 	material.set_shader_param("canvas_row0", map[0])
 	material.set_shader_param("canvas_row1", map[1])
-	_apply_coverage(material, channel_id)
+	_apply_coverage(material, channel_id, slot_name)
 	return material
 
 
@@ -2906,14 +2906,25 @@ func Vector4_zero():
 	return Color(0.0, 0.0, 0.0, 0.0)
 
 
-func _apply_coverage(material, channel_id):
+func _apply_coverage(material, channel_id, slot_name = ""):
 	if material == null:
 		return
+	material.set_shader_param("coverage_solid_on", 0.0)
 	var channel = CATALOGUE.color_channels().get(channel_id, {})
 	var alternate = channel.get("coverage_alternate", false)
 	var layers = COVERAGE.layers(coverage_id, alternate)
 	if coverage_id.empty() or layers.empty() or !channel.get("coverage", false) or !_coverage_available():
 		material.set_shader_param("coverage_count", 0)
+		return
+	# The raised female chest belongs entirely to the white fur zone; the
+	# torso masks cannot follow its silhouette. Colour 3 remains user-editable.
+	if coverage_id == "fur_orange_white" and str(selections.get("body", "")) == "body_female_beastkin" and slot_name == "breasts_beastkin" and !chest_is_flat():
+		var colours = coverage_colors if coverage_colors.size() > 2 else COVERAGE.default_colors(coverage_id)
+		material.set_shader_param("coverage_count", 0)
+		material.set_shader_param("coverage_solid_on", 1.0)
+		material.set_shader_param("coverage_solid_color", colours[2])
+		material.set_shader_param("coverage_base", colours[0])
+		material.set_shader_param("coverage_base_on", 0.0 if _is_neutral(colours[0]) else 1.0)
 		return
 	material.set_shader_param("coverage_count", min(layers.size(), COVERAGE.MAX_LAYERS))
 	# The base, when the pattern has one, is the first colour of the row.
@@ -3793,7 +3804,7 @@ func _add_attachment(slot, attachment, rows = {}):
 		channel = ""
 	# Coverage needs the mesh's own place on the art canvas, so those meshes get
 	# their own material instead of sharing the channel's.
-	polygon.material = _mesh_material(channel, region, page.size)
+	polygon.material = _mesh_material(channel, region, page.size, slot.get("name", ""))
 	var points = _scale_back_hair_mesh(data.points, slot)
 	_track_gradient_bounds(channel, points)
 	polygon.polygon = points
