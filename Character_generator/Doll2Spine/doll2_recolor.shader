@@ -53,6 +53,8 @@ uniform vec4 coverage_color1 : hint_color = vec4(1.0);
 uniform vec4 coverage_color2 : hint_color = vec4(1.0);
 uniform vec4 coverage_color3 : hint_color = vec4(1.0);
 uniform int coverage_count = 0;
+uniform float coverage_solid_on = 0.0;
+uniform vec4 coverage_solid_color : hint_color = vec4(1.0);
 uniform vec4 coverage_base : hint_color = vec4(1.0);
 uniform float coverage_base_on = 0.0;
 uniform vec4 canvas_row0 = vec4(1.0, 0.0, 0.0, 0.0);
@@ -176,7 +178,7 @@ void fragment() {
 	// Fur goes on last, over whatever colour the body ended up with, so a pattern
 	// reads the same on any skin.  The mask's alpha is the blend weight, curved
 	// the way the old shader curved it so soft edges fade instead of cutting.
-	if (coverage_count > 0) {
+	if (coverage_count > 0 || coverage_solid_on > 0.0) {
 		vec2 canvas_uv = vec2(
 			dot(canvas_row0.xy, UV) + canvas_row0.z,
 			dot(canvas_row1.xy, UV) + canvas_row1.z
@@ -191,6 +193,12 @@ void fragment() {
 				rgb = hsl_to_rgb(vec3(base_hsl.x, base_hsl.y, shift_lightness(base_lit.z, base_hsl.z)));
 			}
 			vec3 lit = rgb_to_hsl(rgb);
+			// Match the belly's skin -> coat base -> white sequence, without
+			// sampling a torso mask on the raised chest.
+			if (coverage_solid_on > 0.0) {
+				vec3 fur_hsl = rgb_to_hsl(coverage_solid_color.rgb);
+				rgb = hsl_to_rgb(vec3(fur_hsl.x, fur_hsl.y, shift_lightness(lit.z, fur_hsl.z)));
+			}
 			for (int i = 0; i < 3; i++) {
 				if (i >= coverage_count) {
 					break;
