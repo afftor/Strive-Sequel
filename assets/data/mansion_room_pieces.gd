@@ -27,7 +27,7 @@ const ATLASES = {
 const ATLAS = "res://assets/images/mansion_rooms/house_layout_atlas.png"
 
 const LIST = {
-	wall_window = {code = 'wall_window', kind = 'wall', rect = Rect2(0, 0, 240, 240), full = true},
+	wall_window = {code = 'wall_window', kind = 'wall', rect = Rect2(0, 0, 240, 248), full = true},
 
 	bed = {code = 'bed', kind = 'prop', rect = Rect2(260, 52, 122, 188)},
 	fireplace = {code = 'fireplace', kind = 'prop', rect = Rect2(403, 5, 75, 75)},
@@ -72,6 +72,12 @@ const LIST = {
 
 #What a finished room picture measures.
 const ROOM_SIZE = Vector2(320, 320)
+#The slot spans the inner width; reserve the upper strip for the back wall.
+#The floor reaches the bottom edge except for the foreground column corners.
+const FLOOR_RECT = Rect2(0, 56, 320, 264)
+const ROOM_COLUMN_LEFT = 18
+const ROOM_COLUMN_RIGHT = 24
+const ROOM_COLUMN_HEIGHT = 24
 #The atlas was drawn for a 400px room; every piece is put down at this much of its own size so
 #a 320px room holds the same furniture in the same proportions. 80px floor squares become 64,
 #and five of those cover the room exactly.
