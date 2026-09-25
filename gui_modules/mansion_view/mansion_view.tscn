@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/glows_over_rooms.gd" type="Script" id=39]
 [ext_resource path="res://gui_modules/mansion_view/body_rites_panel.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/fog_over_rooms.gd" type="Script" id=42]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/lamps_over_rooms.gd" type="Script" id=43]
 [ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.tscn" type="PackedScene" id=44]
 [ext_resource path="res://assets/images/iconstraits/bed.png" type="Texture" id=45]
 
@@ -289,13 +290,9 @@ color = Color( 0.294118, 0.262745, 0.207843, 1 )
 [node name="art" type="TextureRect" parent="GridViewport/FloorGrid/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3.0
-margin_top = 3.0
-margin_right = -3.0
-margin_bottom = -3.0
 mouse_filter = 2
 expand = true
-stretch_mode = 7
+stretch_mode = 1
 
 [node name="HeaderShade" type="ColorRect" parent="GridViewport/FloorGrid/Button"]
 anchor_top = 1.0
@@ -464,6 +461,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.419608, 0.639216, 0.419608, 0.35 )
+
+[node name="LampsOverRooms" type="Control" parent="GridViewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 43 )
 
 [node name="FogOverRooms" type="ColorRect" parent="GridViewport"]
 mouse_filter = 2
