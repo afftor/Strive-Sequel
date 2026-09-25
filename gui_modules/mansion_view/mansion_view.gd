@@ -16,6 +16,8 @@ const LocationTasks = preload("res://gui_modules/mansion_view/mansion_location_t
 #The whole chapter happens on this one slot: it is cleared out, then a kitchen is raised on
 #it, then that kitchen is worked.
 const TUTORIAL_SLOT = 'c2'
+#How hard it rains when it rains - one of garden_rain.gd LEVELS.
+const RAIN_LEVEL = 2
 #The plot the tutorial's kitchen garden stands on, put there by hard_tutorial.prepare_general_tut.
 const TUTORIAL_PLOT = 'g1'
 
@@ -519,7 +521,6 @@ func layout_view():
 		return
 	$Background.visible = false
 	place_child($GridViewport, Rect2(Vector2.ZERO, rect_size))
-	$PlaceBar.visible = false
 	$ExpelZone.visible = false
 	lay_out_hud()
 	if grid.view != null:
@@ -597,9 +598,12 @@ const LOCATION_GRID_TOP = 64
 func rebuild_location_panel(location_code):
 	var panel = location_panel
 	panel.get_node("Background").texture = null if local_tasks 		else LocationTasks.location_background(location_code)
-	panel.get_node("LocalShade").visible = local_tasks
-	panel.get_node("LocalFrame").visible = local_tasks
+	#the frame and its shade are the screen's, not the estate's: every place is looked at through the
+	#same panel, and what changes under it is the picture behind
+	panel.get_node("LocalShade").visible = true
+	panel.get_node("LocalFrame").visible = true
 	panel.get_node("Title").text = tr("MANSIONVIEW_LOCALTASKS") if local_tasks 		else LocationTasks.location_name(location_code)
+	set_service_mark(LocationTasks.service_mark_hint(location_code))
 	var entries = LocationTasks.tasks_for(location_code)
 	var rooms = location_rooms()
 	input_handler.ClearContainer(rooms)
@@ -612,6 +616,32 @@ func rebuild_location_panel(location_code):
 	panel.get_node("Empty").visible = entries.empty() and !local_tasks
 	if embedded:
 		lay_out_location_panel(open_rect())
+
+
+#What this place's clients are after this week and what it will not buy. It belongs to the place rather
+#than to one piece of work on it, so it stands at the end of the heading rather than on the service card.
+func set_service_mark(hint):
+	var mark = location_panel.get_node_or_null("ServiceMark")
+	if mark == null:
+		return
+	mark.visible = hint != ""
+	if !mark.visible:
+		return
+	globals.connecttexttooltip(mark, hint, true)
+	place_service_mark()
+
+
+#The heading is a label as wide as the panel, so the mark is put at the end of the words rather than at
+#the end of the label.
+func place_service_mark():
+	var mark = location_panel.get_node_or_null("ServiceMark")
+	if mark == null or !mark.visible:
+		return
+	var title = location_panel.get_node("Title")
+	var font = title.get_font("font")
+	var width = font.get_string_size(title.text).x if font != null else 0.0
+	mark.rect_position = Vector2(title.rect_position.x + width + 14.0,
+		title.rect_position.y + (title.rect_size.y - mark.rect_size.y) / 2.0)
 
 
 func refresh_location_places():
@@ -663,6 +693,7 @@ func lay_out_location_panel(room):
 		Rect2(grid_left, LOCATION_GRID_TOP, grid_width, visible_height))
 	rooms.rect_min_size = Vector2(grid_width, grid_height)
 	place_child($LocationPanel/Title, Rect2(24, 12, min(800, inner), 40))
+	place_service_mark()
 	place_child($LocationPanel/Empty, Rect2(24, 64, min(900, inner), 36))
 
 
@@ -802,14 +833,48 @@ func set_place(code):
 	refresh()
 
 
-func rebuild_place_bar():
-	input_handler.ClearContainer($PlaceBar/List)
+#Everywhere the screen can be turned to, as tabs in the strip's tab band: the estate, then the capitals,
+#then wherever the household is standing (LocationTasks.accessible_locations). They take the band the work
+#and beds tabs use - those two arrange the estate's plan, and while another place's work is on screen there
+#is no plan to arrange. MansionMainModule.sync_view_mode_buttons decides which of the two rows is up.
+func rebuild_place_tabs():
+	var list = place_tab_list()
+	if list == null:
+		return
+	input_handler.ClearContainer(list)
 	for code in LocationTasks.accessible_locations():
-		var button = input_handler.DuplicateContainerTemplate($PlaceBar/List)
+		var button = input_handler.DuplicateContainerTemplate(list)
 		button.text = tr("MANSIONVIEW_MANSION") if code == LocationTasks.MANSION_CODE \
 			else LocationTasks.location_name(code)
+		button.set_meta("place", code)
 		button.pressed = code == place
-		button.connect("pressed", self, "set_place", [code])
+		button.connect("pressed", self, "go_to_place", [code])
+
+
+func place_tab_list():
+	if rest_panel == null or !is_instance_valid(rest_panel):
+		return null
+	return rest_panel.get_node_or_null("PlaceTabs/List")
+
+
+#A tab pressed. The estate's own tab means its errands rather than its rooms: the row is only up while
+#errands are what the screen is showing, and its rooms have the scope pair on the rail.
+func go_to_place(code):
+	set_place(code)
+	if code == LocationTasks.MANSION_CODE:
+		set_local_tasks(true)
+	sync_place_tabs()
+
+
+#Pressing the tab that is already down would otherwise leave the row with nothing pressed: set_place does
+#nothing when the place has not changed, so the rebuild that would have put it back never runs.
+func sync_place_tabs():
+	var list = place_tab_list()
+	if list == null:
+		return
+	for button in list.get_children():
+		if button.has_meta("place"):
+			button.pressed = button.get_meta("place") == place
 
 
 func resting_characters():
@@ -970,6 +1035,11 @@ func assign_location_worker(task_id, char_id):
 	if task.type != 'gather_limited' and task.has('max_workers') \
 			and task.workers.size() >= int(task.max_workers):
 		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_FULL"))
+		return false
+	#a settlement that buys service only from certain races does not take anybody else at all
+	if ResourceScripts.game_res.is_service_task(task_id) \
+			and !ResourceScripts.game_world.service_takes_race(task.get('location', ''), person):
+		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_SERVICERACE")))
 		return false
 	person.assign_to_task(task_id)
 	refresh_people()
@@ -1525,10 +1595,24 @@ func layout_signature():
 	return res
 
 
+#The weather over the plan. Which weather it is belongs to the turn, not to the view - see
+#game_globals.advance_weather().
+func apply_weather():
+	var rain = get_node_or_null('GridViewport/Rain')
+	if rain == null:
+		return
+	var weather = ResourceScripts.game_globals
+	rain.set_intensity(RAIN_LEVEL if weather.raining() else 0)
+	rain.set_storm(weather.storming())
+	var backdrop = get_node_or_null('GridViewport/FloorGrid/Backdrops')
+	if backdrop != null and backdrop.has_method('set_overcast'):
+		backdrop.set_overcast(weather.raining())
+
+
 func refresh():
+	apply_weather()
 	ResourceScripts.game_res.sync_room_tasks()
-	if !embedded:
-		rebuild_place_bar()
+	rebuild_place_tabs()
 	$GridViewport.visible = showing_plan()
 	$FloorSelector.visible = showing_plan() and !embedded
 	$ZoomControls.visible = showing_plan() and !embedded

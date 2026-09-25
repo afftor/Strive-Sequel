@@ -1,14 +1,23 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/garden/garden_mul.shader" type="Shader" id=1]
 [ext_resource path="res://assets/images/mansion_garden/garden_splash.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/mansion_garden/garden_raindrop.png" type="Texture" id=3]
 [ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.gd" type="Script" id=4]
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_rain_mask.shader" type="Shader" id=5]
+[ext_resource path="res://assets/sounds/sounds/rain_quiet_roof.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/sounds/mansion_storm_thunder.wav" type="AudioStream" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/mul_color = Color( 0.8084, 0.8342, 0.903, 1 )
 shader_param/amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 5 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
+blend_mode = 1
 
 [sub_resource type="Curve" id=2]
 max_value = 1.5
@@ -28,6 +37,7 @@ margin_bottom = 1080.0
 mouse_filter = 2
 
 [node name="Splash" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
 modulate = Color( 0.74, 0.82, 0.96, 0.432 )
 position = Vector2( 960, 540 )
 amount = 120
@@ -47,6 +57,7 @@ scale_amount_curve = SubResource( 2 )
 color_ramp = SubResource( 3 )
 
 [node name="Far" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
 modulate = Color( 0.74, 0.82, 0.96, 0.32 )
 position = Vector2( 960, -140 )
 amount = 520
@@ -67,6 +78,7 @@ scale_amount = 0.45
 scale_amount_random = 0.35
 
 [node name="Near" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
 modulate = Color( 0.74, 0.82, 0.96, 0.1984 )
 position = Vector2( 960, -140 )
 amount = 130
@@ -87,7 +99,26 @@ scale_amount = 0.85
 scale_amount_random = 0.35
 
 [node name="Haze" type="ColorRect" parent="."]
+material = SubResource( 4 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 mouse_filter = 2
 color = Color( 0.62, 0.7, 0.8, 0.055 )
+
+[node name="Flash" type="ColorRect" parent="."]
+material = SubResource( 5 )
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+color = Color( 0.72, 0.82, 1, 1 )
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -6.0
+bus = "Sound"
+
+[node name="Thunder" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -7.0
+bus = "Sound"

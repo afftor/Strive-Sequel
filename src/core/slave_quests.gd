@@ -214,12 +214,16 @@ func try_rank_up():
 
 signal tokens_changed
 const TOKEN_ICON = "res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png"
+const RANK_MEDAL = "res://assets/Textures_v2/slave_quests/rank_%s.png"
 
 func get_tokens():
 	return int(get_progress().get('tokens', 0))
 
 func token_icon():
 	return _icon(TOKEN_ICON)
+
+func rank_icon(code):
+	return _icon(RANK_MEDAL % code)
 
 func add_tokens(amount):
 	if int(amount) <= 0:
@@ -260,8 +264,6 @@ func can_upgrade_character(character):
 func upgradable_factors(character):
 	var res = []
 	for code in quest_data.factor_upgrade.factors:
-		if ResourceScripts.game_globals.diff_gf_only_upg and code != 'growth_factor':
-			continue
 		if character.is_master() and code in ['tame_factor', 'authority_factor']:
 			continue
 		res.append(code)
@@ -388,6 +390,28 @@ func set_rank(rank):
 
 func rank_help_text():
 	var text = tr("SQ_RANK_HELP")
+	return text
+
+
+#the factor upgrade cap each rank opens, for the rank medal's tooltip
+func rank_unlocks_text():
+	var text = "[center]{color=yellow|" + tr("SQ_RANK_UNLOCKS_TITLE") + "}[/center]"
+	var current = get_rank_index()
+	var unlocked = false
+	for i in range(quest_data.ranks.size()):
+		var data = quest_data.ranks[i]
+		var cap = int(data.factor_upgrade_cap)
+		var row
+		if cap <= 0:
+			row = globals._report_text("SQ_RANK_UNLOCKS_ROW_LOCKED", [data.code])
+		elif !unlocked:
+			row = globals._report_text("SQ_RANK_UNLOCKS_ROW_FIRST", [data.code, cap])
+			unlocked = true
+		else:
+			row = globals._report_text("SQ_RANK_UNLOCKS_ROW", [data.code, cap])
+		if i == current:
+			row = "{color=yellow|%s}" % row
+		text += "\n" + row
 	return text
 
 

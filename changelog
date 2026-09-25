@@ -1,3 +1,78 @@
+0.16.1
+Slave market:
+	Slave market revamped
+	Added Slave Market Commissions which replace previous faction quests
+	Added the slaver rank, D through S. Rank experience from completed commissions plus a number of slaves sold at the market raises it; a higher rank keeps more orders open, pays better and raises the factor upgrade cap
+	Added Tokens of Recognition, earned for completed commissions, new ranks and each rank's sales target, and are now used to purchase factor upgrades including hard mode
+	Captives and the combat victory screen now carry a star for whoever fits an open commission as they are (green) or after training (yellow)
+	Subordinates can now be sold at half price
+
+Ritual room and body rites:
+	Ritual room now takes two workers who prepare its state; their Wits decides how fast. Any rite spends the whole preparation
+	Added the Flesh Rites upgrade in two levels. The first unlocks the appearance, sex, form and virginity rites and the room's work slots; the second unlocks the body upgrades
+	Rites cost gold, mana and a prepared circle, and can draw mana from donors
+	Sex change now files the name the character went by as each sex and gives it back on a change back, restores the look kept from before, and re-takes the portrait
+	Ritual room is now used to change personality
+
+Mansion:
+	Mansion visuals and sounds how been improved, added weather, lightening, some background noise
+	Mansion log can be folded now
+	Everyone who arrives in the same turn is now one log row naming the travel groups, with a line per group behind the fold; it is the one breakdown kept through a save
+	Added log rows for a cleared location leaving the map, a slaver rank-up, and a settlement running out of coin for service
+	The bath is now the Private Bath upgrade on the master's bedroom instead of a room of its own; bathhouses in old saves convert to it
+	Item and material orders now share one craft queue per craft type
+	Cheat menu now allows to add 3 additional floors
+
+Service:
+	Service income has been revamped to make non-sex service less profitable late game and sex service more profitable at the start.
+	Service is now sold in every capital with a weekly cap. Once it is spent, service there pays a tenth until the week turns
+	Each week a settlement's clients are after something in particular - certain races, a personality, certain acts, providing more income depending on it
+	Some settlements now refuse particular races and actions
+	A chastity belt now takes the acts it blocks off the worker's list
+	Group service gets a log line of its own instead of the single-customer one
+	A worker who sells no penetration and is still a virgin now sometimes gets an offer for her first time, with the choice to take it or refuse
+
+Locations:
+	Each dungeon now have its own pool of races which you can have a chance to find there. 
+	Locations now are set to be cleared automatically, characters no longer should be sent back from quests or events.
+	The map info panel now lists the races a location can yield, as icons
+	Captive factors are now capped by the dungeon's tier - 4 in easy dungeons, 5 in medium ones; hard dungeons and the tower are uncapped
+
+Characters:
+	A character with no bed now risks a breakdown or running away every night
+	Extreme Metabolism now eats three units of food per meal
+	Master passes tame or authority to the master's own children
+	Alcohol items now simply make the drinker tipsy - the personality-shift options they offered are gone
+	The master's charm factor bonus to quest gold lowered (0.2/0.3/0.4 to 0.15/0.2/0.25)
+
+Combat:
+	Jean's finale rebuilt as a two-phase boss
+	Added spell animations for Inferno, Meteor Strike, Blizzard, Hailstorm and Abyss Gaze
+	Fixed Templar's magic defense buff never applying
+	Fixed Nixx's dark damage trigger firing on cast instead of on hit
+	Fixed Clarity not being findable or removable by name
+
+Paperdoll:
+	Added nipple and navel piercings with their own metal colours, and crotch tattoos in ten patterns with a choice of ink
+	Added a nipple colour, kept separate from the skin
+	Added new hairstyles - disheveled, monofringe variants and a messy style
+	Beastkin can now show extra nipple rows under the chest
+	Added some animation reactions to the head
+	Fixed fur masking on monocoloured and multicoloured coats
+	Fixed some of fur colors palette
+	A beastkin's lips now take shade of the muzzle's fur instead of a skin tone
+	Improved overall doll performance
+	Fixed paperdoll disable in options not correctly disabling them
+	Added an option to switch to paperdoll for unique characters
+
+Interface:
+	Reworked Cali's sprite
+	Added a race tooltip panel with race icons for dungeons
+	Factors at level 6 now glow on character cards
+	Inventory now marks in red the gear the selected character cannot wear
+	Fixed the sex minigame firing an orgasm while a deny or cum-target popup was open
+	Dates now use the nude sprite for a character kept under the nudity rule
+
 0.16.0e
 Added clothes coloring options to paperdoll customization
 Fixed 4 other localizations being broken

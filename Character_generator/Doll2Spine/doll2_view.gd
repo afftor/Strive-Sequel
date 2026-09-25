@@ -853,7 +853,8 @@ func _refresh_hair_panel():
 	CATALOGUE.use(model.doll_id)
 	for layer in HAIR_LAYERS:
 		var worn = str(model.selections.get(layer.group, ""))
-		_fill_options(layer.id + "_style", CATALOGUE.parts(layer.group), worn, layer.group != "hair")
+		_fill_options(layer.id + "_style", CHARACTER_MAP.offered_parts(layer.group, CATALOGUE.parts(layer.group), worn),
+			worn, layer.group != "hair")
 		# the two colours belong to the layer: with nothing worn there is nothing
 		# to paint, so the pair goes with it
 		for tone in [1, 2]:

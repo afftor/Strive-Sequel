@@ -51,6 +51,7 @@ var common_effect_codes = {
 	"change_type_scene_characters": true,
 	"active_character_switch": true,
 	"affect_active_character": true,
+	"take_virginity": true,
 	"affect_master": true,
 	"make_loot": true,
 	"open_loot": true,

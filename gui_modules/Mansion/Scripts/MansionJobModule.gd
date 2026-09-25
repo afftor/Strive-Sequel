@@ -180,7 +180,7 @@ func update_characters():
 				newbutton.disabled = true
 			globals.connecttexttooltip(newbutton, ch.translate("[name]" + " " + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
 		if selected_job != null:
-			if selected_job == "service":
+			if ResourceScripts.game_res.is_service_task(selected_job):
 				if !ch.is_worker():
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, ch.get_short_name() + ": Refused to work")
@@ -362,14 +362,20 @@ func update_resources():
 	var person_location = selected_location
 	var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 	
-	if location.type == 'capital':
-		ResourceScripts.game_res._add_service_job()
+	#the service this settlement's own clients buy, which is a task of its own
+	var service_id = ResourceScripts.game_res._add_service_job(person_location)
+	if service_id != '':
 		servicebutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-		if selected_job != null and selected_job == 'service':
+		if selected_job != null and selected_job == service_id:
 			servicebutton.pressed = true
 		servicebutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
-		servicebutton.connect("pressed", self, "select_resource", ["service", servicebutton])
-		globals.connecttexttooltip(servicebutton, tr('TASKRESTSERVICE'))
+		servicebutton.connect("pressed", self, "select_resource", [service_id, servicebutton])
+		var service_hint = tr('TASKRESTSERVICE')
+		#a settlement that buys service only from certain races does not take this one at all
+		if person != null and !ResourceScripts.game_world.service_takes_race(person_location, person):
+			servicebutton.disabled = true
+			service_hint = person.translate(tr("MANSIONVIEW_ERR_SERVICERACE"))
+		globals.connecttexttooltip(servicebutton, service_hint)
 	
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
@@ -519,7 +525,7 @@ func select_resource(job_id, newbutton):
 	$WorkunitLabel.text = ""
 	if job_id == "rest":
 		$DescriptionLabel.bbcode_text = tr("TASKRESTINFO")
-	elif job_id == "service":
+	elif ResourceScripts.game_res.is_service_task(job_id):
 		$DescriptionLabel.bbcode_text = tr("TASKRESTDESCRIPT")
 	elif job_id == "crafting":
 		$DescriptionLabel.bbcode_text = tr("TASKCRAFTDESCRIPT")
@@ -613,9 +619,9 @@ func focus_on_person_task(ch):
 	if ResourceScripts.game_res.is_farming_work(work_code):
 		build_farm()
 		return
-	if work_code == 'service':
+	if ResourceScripts.game_res.is_service_task(work_code):
 		if servicebutton != null:
-			select_resource("service", servicebutton)
+			select_resource(work_code, servicebutton)
 			show_brothel_options()
 			return
 	if work_code == 'crafting':
@@ -653,8 +659,8 @@ func select_job(button, newperson):
 		set_rest(button, person)
 #		show_brothel_options()
 		return
-	if selected_job == "service":
-		person.assign_to_task('service')
+	if ResourceScripts.game_res.is_service_task(selected_job):
+		person.assign_to_task(selected_job)
 		show_brothel_options()
 		update_status(button, person)
 		update_resources()
@@ -703,6 +709,9 @@ func show_brothel_options():
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
 	
 	for i in brothel_rules.non_sex:
+		#acts this settlement's clients do not buy are not offered here at all
+		if !ResourceScripts.game_world.service_allows_rule(person.xp_module.service_location(), i):
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		if person.get_stat('sex') == "male" && tasks.gold_tasks_data[i].tags.has('has_alt_name'):
 			newbutton.text = tr("BROTHEL"+i.to_upper() + "ALT")
@@ -716,6 +725,8 @@ func show_brothel_options():
 #		if person.get_work() == '':
 #			newbutton.disabled = true
 	for i in brothel_rules.sexual:
+		if !ResourceScripts.game_world.service_allows_rule(person.xp_module.service_location(), i):
+			continue
 		if i == 'sextoy' and !person.has_profession('sextoy'):
 			continue
 		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
@@ -742,7 +753,11 @@ func show_brothel_options():
 		newbutton.add_to_group('sex_option')
 		#if person.get_work() == '':
 		#	newbutton.disabled = true
-		if person.has_status('no_sex'):
+		if !person.xp_module.service_rule_offered(i):
+			newbutton.disabled = true
+			newbutton.pressed = false
+			text += "\n" + tr("BROTHELBLOCKEDBYGEAR")
+		elif person.has_status('no_sex'):
 			newbutton.disabled = true
 			globals.connecttexttooltip(newbutton, person.translate("[name] " + " " + tr("REFUSE_TO_WHORE_LABEL")))
 		elif person.has_status('no_whoring'):

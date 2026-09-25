@@ -391,7 +391,6 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	NEWGAMESETTINGFURRY = "Furry",
 	NEWGAMESETTINGEASYTRAIN = "Easy Training",
 	NEWGAMESETTINGSKIP_PROLOGUE = "Skip prologue",
-	NEWGAMESETTINGGF_ONLY_UPG = "No factors upgrade",
 	NEWGAMESETTINGPERMADEATH = "Permadeath",
 	NEWGAMESETTINGBONUS_TASKMOD = "Crafting bonus",
 	NEWGAMESETTINGBONUS_LOOT = "Loot bonus",
@@ -405,7 +404,6 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	NEWGAMESETTINGHARD_MONSTERS = "Harder enemy combat AI",
 	SETTINGHARD_MONSTERS_DESCRIPT = "Enemy combat AI will be more advanced",
 	SETTINGSKIP_PROLOGUE_DESCRIPT = "Start the story at the beginning of Act 1.",
-	SETTINGGF_ONLY_UPG_DESCRIPT = "Only Growth Factor can be upgraded at market.",
 	SETTINGPERMADEATH_DESCRIPT = "Permadeath",
 	SETTINGBONUS_TASKMOD_DESCRIPT = "Crafted gear has better quality",
 	SETTINGBONUS_LOOT_DESCRIPT = "Looted gear has better quality",
@@ -837,6 +835,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALCATEGORYCOMPONENT = "Consumable",
 	TOOLTIPHIDDENRESOURCE = """Unknown resource.
 Progress main story to reveal it.""",
+	MAPRACES = "Races",
+	MAPRACEUNKNOWN = """Unknown kind.
+Take one here to learn what it is.""",
 	MATERIALMEAT = "Meat",
 	MATERIALMEATDESCRIPT = "A rich source of nutrients. Acquired from hunting. ",
 	MATERIALFISH = "Fish",
@@ -1047,7 +1048,7 @@ Otherwise: +3 Physics""",
 	ITEMSHACKLES = "Shackles",
 	ITEMSHACKLESDESCRIPT = "Heavy chains for dangerous individuals.",
 	ITEMCHASTITY_BELT = "Chastity Belt",
-	ITEMCHASTITY_BELTDESCRIPT = "A tool designed to keep wearer's genitalia untouched.",
+	ITEMCHASTITY_BELTDESCRIPT = "A tool designed to keep wearer's genitalia untouched. While it is worn, vaginal service is switched off and cannot be allowed.",
 	ITEMSTIMULATIVE_UNDERWEAR = "Stimulating Underwear",
 	ITEMSTIMULATIVE_UNDERWEARDESCRIPT = "Specially designed underwear to arouse the wearer and make them hornier.",
 	ITEMTENTACLE_SUIT = "Tentacle Suit",
@@ -1071,19 +1072,19 @@ Turns character Horny during sex interactions and allow them to orgasm even from
 	ITEMALCOHOL = "Whiskey",
 	ITEMALCOHOLDESCRIPT = """A simple strong beverage produced from various grains.
 
-When consumed normally can apply \"Drunk\" status, or shift personality towards \"Serious\". Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.""",
+When consumed normally can apply \"Drunk\" status. Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.""",
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = """A nectar of the gods.
 
-When consumed normally can apply \"Drunk\" status, or shift personality towards \"Bold\". Improves horniness and sensitivity during sex interactions.""",
+When consumed normally can apply \"Drunk\" status. Improves horniness and sensitivity during sex interactions.""",
 	ITEMWINE = "Dry Wine",
 	ITEMWINEDESCRIPT = """A sour fruit beverage.
 
-When consumed normally can apply \"Drunk\" status, or shift personality towards \"Kind\". Improves horniness and sensitivity during sex interactions.""",
+When consumed normally can apply \"Drunk\" status. Improves horniness and sensitivity during sex interactions.""",
 	ITEMWINE2 = "Sweet Wine",
 	ITEMWINE2DESCRIPT = """A sweet fruit bevarage.
 
-When consumed normally can apply \"Drunk\" status, or shift personality towards \"Shy\". Improves horniness and sensitivity during sex interactions.""",
+When consumed normally can apply \"Drunk\" status. Improves horniness and sensitivity during sex interactions.""",
 	ITEMCORRUPTIVE_ESSENCE = "Corruptive Essence",
 	ITEMCORRUPTIVE_ESSENCEDESCRIPT = "Magic essence from unknown source. Digesting it allows a person to obtain unusual powers ",
 	ITEMTAMEDRUG = "Tame Drug",
@@ -2980,6 +2981,10 @@ Predicted task shows which job the character will perform next. Materials are al
 	MANSION_ACTIVITY_CHARACTER_FOUND = "%s found %s at %s.",
 	MANSION_ACTIVITY_LOCATION_EMPTY = "There is nobody left at %s.",
 	MANSION_ACTIVITY_LOCATION_GONE = "That location is no longer accessible.",
+	MANSION_ACTIVITY_TYPE_LOCATION = "Location",
+	MANSION_ACTIVITY_LOCATION_REMOVED = "%s has been left behind and is gone from the map.",
+	MANSION_ACTIVITY_LOCATION_REMOVED_SOLD = "%d captive(s) left there were sold for [color=#f0c860]%d[/color] gold.",
+	MANSION_ACTIVITY_LOCATION_REMOVED_FREED = "%d captive(s) left there were let go.",
 	MANSION_ACTIVITY_SERVICE_REPORT = "Service brought in [color=#f0c860]%d[/color] gold, earned by %d of the household.",
 	MANSION_ACTIVITY_SERVICE_EXHAUSTED = "There are no more clients in %s who can afford service for now. Until the week is out, service there pays only a tenth of its usual rate.",
 	MANSION_ACTIVITY_PRODUCTION_REPORT = "Work brought in [color=#6fc0b0]%d[/color] resource(s), of %d kind(s).",
@@ -3710,7 +3715,7 @@ Consent represents character's general acceptance of various sexual actions, but
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatable traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	INFOPERSONALITY = """Character's personality will affect their banter and provide access to certain traits and bonuses.
-Personality is defined by two axes, Bold-Shy and Kind-Serious, and can be shifted by serving the character alcoholic drinks.
+Personality is defined by two axes, Bold-Shy and Kind-Serious, and can be reshaped by the Personality Change rite in the Ritual Room.
 [center]Neutral[/center]
 No bonuses
 [center]Bold[/center]
@@ -4343,6 +4348,11 @@ Wits: -10; EXP Gain: -10%; Sell price is greatly lowered.""",
 	SELECT_CHAR_BEFORE_ADV = "Select at least 1 character before advancing.",
 	NO_STAMINA_LABEL = "No stamina",
 	LOC_COMPLETE = "Location complete",
+	LOC_CLEARED = "Cleared",
+	LOC_ABANDONED = "Abandoned",
+	LOC_CLEARED_TOOLTIP = "There is nothing left to do here. The location no longer counts toward the region's limit and will leave the map on its own once none of your characters are here or on the road to or from it.",
+	LOC_ABANDONED_TOOLTIP = "This place was left behind unfinished. It no longer counts toward the region's limit and will leave the map on its own once none of your characters are here or on the road to or from it.",
+	LOC_REMOVAL_TIMER_LEFT = "Turns left: %d",
 	CANT_PAY_COSTS_LABEL = "Can't pay costs",
 	NO_CHARGES_LEFT_LABEL = "No charges left",
 	CANT_USE_TODAY_LABEL = "Can't use this skill today anymore",
@@ -9369,15 +9379,10 @@ As the [scncharboy] is made your slave, [scncharhe] can be a very useful additio
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = """[center]{color=red|Failure!}[/center]
 [name] hasn't managed to intimidate the rebels and they are preparing to attack you. """,
 	DIALOGUEINTIMIDATE = "Intimidate",
-	DIALOGUEALCOHOL_1TEXT = "Use this beverage to get drunk or shift personality?",
-	DIALOGUEALCOHOL_2TEXT = "Use this beverage to get drunk or shift personality?",
-	DIALOGUEALCOHOL_3TEXT = "Use this beverage to get drunk or shift personality?",
-	DIALOGUEALCOHOL_4TEXT = "Use this beverage to get drunk or shift personality?",
-	DIALOGUEALCO_DEFAULTREPORT = "[name] has drank the beverage and feels tipsy now.",
-	DIALOGUEALCO_KINDREPORT = "[name] feels more relaxed after digesting the wine.",
-	DIALOGUEALCO_SHYREPORT = "[name] feels more soft after digesting the wine.",
-	DIALOGUEALCO_BOLDREPORT = "[name] feels more brave with the help of beer.",
-	DIALOGUEALCO_SERIOUSREPORT = "[name] becomes more cautious of [his] surroundings after ingesting whiskey.",
+	DIALOGUEALCOHOL_1REPORT = "[name] has drank the beverage and feels tipsy now.",
+	DIALOGUEALCOHOL_2REPORT = "[name] has drank the beverage and feels tipsy now.",
+	DIALOGUEALCOHOL_3REPORT = "[name] has drank the beverage and feels tipsy now.",
+	DIALOGUEALCOHOL_4REPORT = "[name] has drank the beverage and feels tipsy now.",
 	DIALOGUEUNLOCKINFINITEDUNGEON = "You walk through one of city's streets as you notice a faint glow emitting from one of the dead ends. Nobody besides you apparently notice it despite being clearly unusual occurrence. As you get closer to it something changes in the surrounding air. The darkness of an alley surrounds you until it suddenly is gone, revealing a mesmerizing view. ",
 	DIALOGUEUNLOCKINFINITEDUNGEON1 = "A gigantic tower stands before you, completely unsuited for the underground caves you are in. Its top is concealed by the darkness of underground and its base feels like it stretch for a good mile. Apparently you still are able to traverse towards it.",
 	DIALOGUEUNLOCKINFINITEDUNGEON2 = """After uncertain amount of time you stand right before the giant doors. Just as you try to approach them you feel a presence behind your back. As you turn around, you see a beautiful woman floating in the air.
@@ -11097,6 +11102,11 @@ The princess notices Aire tensing up in response to the question.
 {color=red|[name] lacks Prostitution Training and will only earn 2/3 of the potential gold from it.}""",
 	BROTHELMINCONSENT = "Consent Level: {color=aqua|%s}",
 	BROTHELSKILLLEVEL = "Skill level: {color=aqua|%s}",
+	BROTHELBLOCKEDBYGEAR = """
+{color=red|[name]'s gear keeps this one off the table.}""",
+	SERVICE_VIRGINITY_OFFER = """A regular of the house waits for [name] after [his] shift. Word has gone round that [he] goes only so far with anyone, and he would like to buy the exception. [His] first time, here and now.""",
+	SERVICE_VIRGINITY_SELL = "Sell [his] virginity (%d gold)",
+	SERVICE_VIRGINITY_REFUSE = "Turn the offer down",
 	ITEMCHEST_ADV_CLOTH = "Coat",
 	ITEMLEGS_ADV_CLOTH = "Mantle",
 	ITEMCHEST_ADV_LEATHER = "Advanced Medium Armor",
@@ -14911,7 +14921,7 @@ Savra passes you a small parchment with the ingredients.
 	SAVRA_TALK_7_1 = "{color=yellow|— No, as I said, I must act in place of a chieftain as the current one is missing. I trust you to deal with it.}",
 	SAVRA_TALK_7_2 = "{color=yellow|— Find Leon, bring the totem to him. The rest will be obvious.}",
 	LEON_ENCOUNTER_START = "As you were actively searching for Leon this time you manage to find him before he spots you. You spring at him, preparing for a fight.",
-	LEON_ENCOUNTER_1 = "Before Leon manages to escape once again, you pull out the totem and it shines your hand. A bright flash blinds you as it disappears and Leon falls on the ground. You decide to carry him back to the tribe without further delay.",
+	LEON_ENCOUNTER_1 = "Before Leon manages to escape once again, you pull out the totem and it shines your hand. A bright flash blinds you as it disappears and Leon falls on the ground. You bind him while he is still out cold — Savra will want him delivered to the tribe, and the sooner you set out, the better.",
 	LEON_ENCOUNTER_2 = """A few hours pass after you deliver the unconscious Leon to Savra. Finally he emerges, looking more lively than you'd expect.
 
 {color=yellow| — I wish I could properly thank you for my rescue, [name], but I'm afraid, as we speak, the White Stag threatens the very wellbeing of the tribe, meaning we can't waste any time. Until this is dealt with I can't give you a final answer to the question you came here with.}""",
@@ -14992,7 +15002,7 @@ Before you realize that Leon is yelling at you to be careful, you see the beast 
 Before you are able to answer, the woman's figure is enveloped in a bright light, blinding you.""",
 	WHITE_STAG_ENCOUNTER_11 = "As the mist disperses, you find yourself returned to the familiar woods. You see the White Stag back in it's animal form as the battle with the tribe begins.",
 	WHITE_STAG_ENCOUNTER_12 = "{color=yellow|— Now, don't let it get away! You too, [name], prepare for a fierce fight.}",
-	WHITE_STAG_ENCOUNTER_13 = "With your combined efforts you've dealt enough damage to the White Stag. With a deafening scream its form slowly vanishes in the air. Seeing this, Leon and his party roar in triumph. Once again the tribe has triumphed over the threat...",
+	WHITE_STAG_ENCOUNTER_13 = "With your combined efforts you've dealt enough damage to the White Stag. With a deafening scream its form slowly vanishes in the air. Seeing this, Leon and his party roar in triumph. Once again the tribe has triumphed over the threat... Leon claps your shoulder and sets off for the settlement, saying he will await you there.",
 	WHITE_STAG_ENCOUNTER_14 = """You return to the tribe's settlement and after getting some rest met with Leon once again.
 
 {color=yellow|Leon: — A mighty fight, [name]. We can't praise you enough for your work, but there's a reason why you came in first place. Here's my answer to the elves for the question you've been required to deliver. Because of their magic you won't be able to read it though.}
@@ -21910,8 +21920,8 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	SWORD_ARTIFACT_QUEST_STAGE_10 = "Talk to Savra about breaking Leon's madness",
 	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver 50 Magic Wood, 25 Iron Wood and 15 Mythic Leather to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
-	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
-	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track down the White Stag",
+	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more, and bring him back to the tribe's settlement",
+	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track down the White Stag, then report back at the tribe's settlement",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = "Talk with Erlen at Eldewyn",
 	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
 	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
@@ -32064,6 +32074,14 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONVIEW_SERVICEPOOL_HINT = "Saturation presents the gold you can earn until next week. Once it's depleted, service income from this location will greatly drop.",
 	MANSIONVIEW_SERVICENORULES = "Allowed nothing yet.",
 	MANSIONVIEW_SERVICERULESHINT = "Click to set what they may do.",
+	MANSIONVIEW_ERR_SERVICERACE = "The clients here will not buy service from [race].",
+	MANSIONVIEW_SERVICELIMIT_RULES = "Not allowed: {color=red|%s}",
+	MANSIONVIEW_SERVICELIMIT_RACES = "Allowed races: {color=yellow|%s}",
+	MANSIONVIEW_SERVICEBONUS_DEMAND = "In demand: {color=aqua|%s}",
+	MANSIONVIEW_SERVICEBONUS_FACTOR = "%s %d+",
+	MANSIONVIEW_SERVICEBONUS_MONSTERS = "Monstrous races",
+	MANSIONVIEW_SERVICEBONUS_REWARD = "+%d%% gold, +%d%% if both match",
+	MANSIONVIEW_SERVICEBONUS_REWARD_ONE = "+%d%% gold",
 	MANSIONROOM_STAIRS = "Staircase",
 	MANSIONROOM_STAIRSDESCRIPT = "Part of the house. Once repaired, the buttons on it change floor.",
 	MANSIONVIEW_GOUP = "Go up",
@@ -32193,6 +32211,8 @@ You leave her in the shade and return to the others, carrying with you the stran
 	DOLL2_STYLE_HAIR_BASE_SLAVE = "Scraped back",
 	DOLL2_STYLE_HAIR_BASE_STRAIGHT = "Long straight",
 	DOLL2_STYLE_HAIR_BASE_UNDERCUT = "Undercut",
+	DOLL2_STYLE_HAIR_BASE_DEFAULT_MONOFRINGE = "Fringe",
+	DOLL2_STYLE_HAIR_BASE_FRINGE_2_MONOFRINGE = "Fringe v2",
 	DOLL2_STYLE_HAIRS_BASE_DOPPLE = "Curtains",
 	DOLL2_STYLE_TATOO_WOMB1 = "Horned heart",
 	DOLL2_STYLE_TATOO_WOMB2 = "Crest",
@@ -32354,6 +32374,10 @@ You leave her in the shade and return to the others, carrying with you the stran
 	SQ_RANK_HELP_ROW = "Rank %s to %s: %s experience and %s slaves sold.",
 	SQ_RANK_UP_LOG = "The slave market now counts you a rank [color=#e0c060]%s[/color] slaver and offers you more work.",
 	SQ_NEXT_RANK = "Next rank: %s",
+	SQ_RANK_UNLOCKS_TITLE = "Factor Upgrades by Rank",
+	SQ_RANK_UNLOCKS_ROW_LOCKED = "Rank %s.",
+	SQ_RANK_UNLOCKS_ROW_FIRST = "Rank %s: factor upgrade unlocked, factors raised up to level %s",
+	SQ_RANK_UNLOCKS_ROW = "Rank %s: factors raised up to level %s",
 	SQ_GOLD_PER_SLAVE = "%s per slave",
 	SQ_POPUP_SALE_TITLE = "Slave sold",
 	SQ_POPUP_DELIVERY_TITLE = "Slave handed over",

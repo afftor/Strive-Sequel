@@ -1068,7 +1068,7 @@ func offer_new_name():
 	var body = prompt.get_node("Body")
 	body.get_node("Title").text = person.translate(tr("BODYRITE_NEW_NAME"))
 	body.get_node("Hint").text = person.translate(tr("BODYRITE_NEW_NAME_HINT"))
-	body.get_node("NameEdit").text = tr(str(person.get_stat('name')))
+	body.get_node("NameEdit").text = tr(str(BodyRites.suggested_name_for_sex(person)))
 	body.get_node("Buttons/Rename").text = tr("BODYRITE_RENAME")
 	body.get_node("Buttons/Keep").text = tr("BODYRITE_KEEP_NAME")
 	var window = $SexChangeResult/Window

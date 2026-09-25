@@ -21,3 +21,14 @@ static func getRandomFurrySurname():
 	var furrysurnames2 = ['paw','mane','tail','fang','howl','bone','pelt','eyes','hunter','claw','growl']
 	return furrysurnames1[rand_range(0,furrysurnames1.size())] + furrysurnames2[rand_range(0,furrysurnames2.size())]
 
+
+
+#A random first name for a race and a sex, picked as get_random_name() picks one: a race with no list of
+#its own, and a sex with none, take the human list.
+func random_first_name(race, sex):
+	var key = str(race).to_lower() + str(sex).replace("futa", 'female')
+	if !namelist.has(key):
+		key = 'human' + str(sex).replace("futa", 'female')
+	if !namelist.has(key) or namelist[key].empty():
+		return ''
+	return namelist[key][randi() % namelist[key].size()]

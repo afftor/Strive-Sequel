@@ -216,6 +216,28 @@ func _setup_factor_value(row, value, code):
 	else:
 		number.text = value
 		number.set("custom_colors/font_color", colour)
+	setup_factor_glow(row.get_node("Glow"), code, step)
+
+
+const LAYOUT = preload("res://gui_modules/CharacterCreation/creation_layout.gd")
+const GROWTH_HALO_COLOUR = Color("b4c4dc")
+
+
+static func setup_factor_glow(glow, code, step):
+	glow.visible = step == 6
+	if glow.visible:
+		glow.color = factor_halo_colour(code)
+
+
+#the creation screen's plate colours are too dull to read as light
+static func factor_halo_colour(code):
+	var plate = LAYOUT.factor_row(code)
+	if plate == null:
+		return GROWTH_HALO_COLOUR
+	var halo = Color(plate.colour)
+	halo.s = min(halo.s * 1.25, 1.0)
+	halo.v = 1.0
+	return halo
 
 
 func _build_productivity_tooltip():

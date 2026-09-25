@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=2]
@@ -43,6 +43,8 @@
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
 [ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=43]
+
+[ext_resource path="res://assets/Textures_v2/MANSION/yes.png" type="Texture" id=44]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -105,6 +107,16 @@ margin_top = 787.459
 margin_right = 1275.0
 margin_bottom = 1058.46
 custom_styles/panel = ExtResource( 18 )
+
+[node name="cleared" type="TextureRect" parent="DungeonInfo"]
+visible = false
+margin_left = 570.0
+margin_top = 25.0
+margin_right = 610.0
+margin_bottom = 65.0
+texture = ExtResource( 44 )
+expand = true
+stretch_mode = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DungeonInfo"]
 margin_left = 17.0
@@ -1357,18 +1369,6 @@ custom_fonts/font = ExtResource( 4 )
 text = "20"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Forget" type="Button" parent="Resources"]
-visible = false
-margin_left = 135.0
-margin_top = 200.0
-margin_right = 315.0
-margin_bottom = 252.0
-theme = ExtResource( 7 )
-text = "FORGET_LOC_LABEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }

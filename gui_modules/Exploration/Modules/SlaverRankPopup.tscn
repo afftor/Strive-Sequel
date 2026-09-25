@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://gui_modules/Exploration/Scripts/SlaverRankPopup.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=2]
@@ -22,11 +22,6 @@ size = 15
 use_filter = true
 extra_spacing_char = 2
 font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 51
-use_filter = true
-font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 36
@@ -173,27 +168,14 @@ margin_bottom = 126.5
 mouse_filter = 2
 rect_pivot_offset = Vector2( 43.5, 49.5 )
 
-[node name="HexOuter" type="Polygon2D" parent="Ribbon/Hex"]
-antialiased = true
-polygon = PoolVector2Array( 43.5, 0, 87, 24.75, 87, 74.25, 43.5, 99, 0, 74.25, 0, 24.75 )
-vertex_colors = PoolColorArray( 0.953, 0.835, 0.541, 1, 0.886, 0.741, 0.424, 1, 0.725, 0.541, 0.243, 1, 0.604, 0.435, 0.165, 1, 0.694, 0.510, 0.227, 1, 0.914, 0.780, 0.463, 1 )
-
-[node name="HexInner" type="Polygon2D" parent="Ribbon/Hex"]
-antialiased = true
-polygon = PoolVector2Array( 43.5, 5.2, 82.5, 27.35, 82.5, 71.65, 43.5, 93.8, 4.5, 71.65, 4.5, 27.35 )
-vertex_colors = PoolColorArray( 0.180, 0.173, 0.125, 1, 0.149, 0.141, 0.102, 1, 0.086, 0.082, 0.063, 1, 0.071, 0.071, 0.051, 1, 0.102, 0.098, 0.075, 1, 0.169, 0.161, 0.118, 1 )
-
-[node name="RankLetter" type="Label" parent="Ribbon/Hex"]
-margin_left = 0
-margin_top = 0
-margin_right = 87
-margin_bottom = 99
+[node name="Medal" type="TextureRect" parent="Ribbon/Hex"]
+margin_left = -6.0
+margin_top = 0.0
+margin_right = 93.0
+margin_bottom = 99.0
 mouse_filter = 2
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.976, 0.882, 0.506, 1 )
-text = "C"
-align = 1
-valign = 1
+expand = true
+stretch_mode = 6
 
 [node name="Title" type="Label" parent="Ribbon"]
 margin_left = 156

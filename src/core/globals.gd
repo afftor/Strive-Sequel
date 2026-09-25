@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.0e'
+const gameversion = '0.16.1'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 
@@ -434,6 +434,19 @@ func tempitemtooltip(targetnode, item, mode):
 	data.price = str(item.price)
 	data.amount = ResourceScripts.game_res.get_item_amount(item.code)
 	node.showup(targetnode, data, mode)
+
+#The dungeon's races, as icons - the plain text tooltip cannot hold images, so this one has its own panel.
+func connectracetooltip(node, location):
+	if node.is_connected("mouse_entered", self, 'showracetooltip'):
+		node.disconnect("mouse_entered", self, 'showracetooltip')
+	node.connect("mouse_entered", self, 'showracetooltip', [node, location])
+
+
+func showracetooltip(node, location):
+	if node == null or !is_instance_valid(node) or !node.is_visible_in_tree():
+		return
+	input_handler.get_spec_node(input_handler.NODE_RACETOOLTIP).showup(node, location)
+
 
 func connectskilltooltip(node, skill, character):
 	if node.is_connected("mouse_entered",self,'showskilltooltip'):
@@ -2238,6 +2251,19 @@ func mansion_activity_arrival(character, location):
 		mansion_activity_log_node.update_log_message(entry)
 
 
+#A cleared location finally leaving the map. The sweep runs inside the turn, where
+#mansion_activity_stamp() would push the row an hour ahead, so the hour that just ended is
+#stamped instead - the same thing the bed-night report does.
+func mansion_activity_location_removed(report):
+	var text = _report_text("MANSION_ACTIVITY_LOCATION_REMOVED", [tr(report.name)])
+	if report.sold > 0:
+		text += "\n" + _report_text("MANSION_ACTIVITY_LOCATION_REMOVED_SOLD", [report.sold, report.gold])
+	if report.freed > 0:
+		text += "\n" + _report_text("MANSION_ACTIVITY_LOCATION_REMOVED_FREED", [report.freed])
+	mansion_activity_log_add('location', text,
+		{date = ResourceScripts.game_globals.date, hour = ResourceScripts.game_globals.hour})
+
+
 #One row a week for the estate's standing costs, written from game_res.subtract_taxes() once the
 #whole bill is known. Unlike the service, craft and production reports it needs no folding: the
 #week's charges are collected in one pass by game_res.collect_weekly_expenses() and arrive here
@@ -2778,12 +2804,23 @@ func makerandomgroup(enemygroup, quest = false):
 	return combatparty
 
 
-func complete_location(locationid):
+#The one way a location is marked as done with - by the story, by a quest, or by the death of a
+#dungeon's last boss. It is not removed here: game_world.sweep_cleared_locations() does that once
+#the place has stood empty long enough. `abandoned` only picks the label: a quest given up on
+#leaves its dungeon behind rather than cleared.
+func declare_location_cleared(locationid, abandoned = false):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
-	if location == null: return
-	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
-	return_characters_from_location(locationid)
-	ResourceScripts.game_progress.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
+	if location == null: return false
+	if !ResourceScripts.game_world.can_clear_location(location): return false
+	if !location.get('cleared', false):
+		location.cleared = true
+		location.removal_hours = 0
+		location.abandoned = abandoned
+	elif !abandoned:
+		#a boss put down in a dungeon left behind earns it the honest label
+		location.abandoned = false
+	refresh_location_status_ui(location)
+	return true
 
 
 func Reward(selectedquest, suspend_rep = false):
@@ -2862,33 +2899,79 @@ func Reward(selectedquest, suspend_rep = false):
 
 
 
-func remove_location(locationid):
+#Erases a location for good. Nobody is ever dragged home by it: an occupied place is only marked
+#as cleared instead, so no character is ever left pointing at a location that is no longer there.
+#`keep_characters` is for make_quest_location replacing a place under the people parked in it.
+#Returns what was left behind, for the activity log, or null when nothing was removed.
+func remove_location(locationid, keep_characters = false):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
-	if location == null: return
-	if location.type == 'capital':
+	if location == null: return null
+	if location.type in ['capital', 'settlement']:
 		print('WARNING - incorrect location removal')
-		return
-	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
+		return null
+	if !keep_characters and ResourceScripts.game_world.is_location_occupied(locationid):
+		declare_location_cleared(locationid)
+		return null
+	var report = {name = location.name, sold = 0, freed = 0, gold = 0}
 	ResourceScripts.game_res.remove_tasks_for_location(location.id)
-	return_characters_from_location(locationid)
-	if location.has('captured_characters'):
-		for id in location.captured_characters:
-			var tchar = characters_pool.get_char_by_id(id)
-			var val = tchar.calculate_price(true) / 2
-			ResourceScripts.game_res.money += int(val)
-			tchar.is_active = false
-#	area.locations.erase(location.id)
-#	area.questlocations.erase(location.id)
-#	ResourceScripts.game_world.location_links.erase(location.id)
+	#the same split the captives panel's Quick Sell makes: the ones taken in a fight are sold,
+	#anybody else is let go
+	for id in location.get('captured_characters', []):
+		var tchar = characters_pool.get_char_by_id(id)
+		if tchar == null: continue
+		if tchar.src == 'random_combat':
+			var val = int(tchar.calculate_price(true) / 2)
+			ResourceScripts.game_res.money += val
+			report.gold += val
+			report.sold += 1
+		else:
+			report.freed += 1
+		tchar.is_active = false
 	ResourceScripts.game_world.remove_location(locationid)
-	
-	input_handler.update_slave_list()
-	gui_controller.nav_panel.build_accessible_locations()
+	refresh_ui_after_location_removal(locationid)
+	return report
+
+
+#A removal can land during a day tick or in the middle of loading a save, where half the screens
+#do not exist yet, so every node here is checked before it is touched.
+func refresh_ui_after_location_removal(locationid):
+	if gui_controller.nav_panel != null and is_instance_valid(gui_controller.nav_panel):
+		gui_controller.nav_panel.build_accessible_locations()
+	if gui_controller.mansion != null and is_instance_valid(gui_controller.mansion):
+		var rooms = gui_controller.mansion.get_node_or_null("MansionRoomsModule")
+		if rooms != null and rooms.get("place") == locationid:
+			rooms.set_place('aliron')
+
+
+func refresh_location_status_ui(location):
+	for screen in [gui_controller.exploration_dungeon, gui_controller.exploration]:
+		if screen == null or !is_instance_valid(screen) or !screen.is_visible_in_tree():
+			continue
+		if screen.active_location == null or screen.active_location.id != location.id:
+			continue
+		screen.build_location_description()
+		if screen.has_method("open_location_actions"):
+			screen.open_location_actions()
+
+
+func is_location_on_screen(locationid):
 	if gui_controller.current_screen == gui_controller.mansion:
-		gui_controller.mansion.mansion_state_set("default")
-		return
-	if input_handler.active_location == location and gui_controller.exploration != null and gui_controller.exploration.is_visible_in_tree():
-		gui_controller.nav_panel.select_location('aliron')
+		return false
+	for screen in [gui_controller.exploration_dungeon, gui_controller.exploration]:
+		if screen == null or !is_instance_valid(screen) or !screen.is_visible_in_tree():
+			continue
+		if screen.active_location != null and screen.active_location.id == locationid:
+			return true
+	return false
+
+
+func get_location_cleared_tooltip(location):
+	var state = ResourceScripts.game_world.get_location_removal_state(location)
+	if !state.cleared:
+		return ""
+	var lines = [tr("LOC_ABANDONED_TOOLTIP") if state.abandoned else tr("LOC_CLEARED_TOOLTIP")]
+	lines.append(_report_text("LOC_REMOVAL_TIMER_LEFT", [state.left]))
+	return PoolStringArray(lines).join("\n")
 
 
 func unquest_location(locationid):
@@ -2922,6 +3005,7 @@ func return_characters_from_location(locationid):
 		if person.check_location(location.id):
 			if ResourceScripts.game_globals.instant_travel:
 				person.travel.location = ResourceScripts.game_world.mansion_location
+				person.travel.travel_origin = ''
 				person.return_to_task()
 			else:
 				person.return_to_mansion() 
@@ -3047,6 +3131,7 @@ func roll_characters():
 		newslave.generate_random_character_from_data(t_race, null, t_diff, [], [], t_cap)
 		newslave.is_active = true
 #		newslave.set_slave_category('servant')
+		remember_local_race(newslave)
 		res.push_back(newslave.id)
 		n += 1
 		while rng.randf() < chance2 and n < char_roll_data.max_amount:
@@ -3058,10 +3143,44 @@ func roll_characters():
 			newslave.generate_random_character_from_data(t_race, null, t_diff, [], [], t_cap)
 			newslave.is_active = true
 #			newslave.set_slave_category('servant')
+			remember_local_race(newslave)
 			res.push_back(newslave.id)
 			n += 1
-	
+
 	reset_roll_data()
+	return res
+
+
+#What the player has actually turned up at this location. The dungeon tooltip shows only these, so a race
+#stays hidden until one of its own has stood in the captives list.
+func remember_local_race(person):
+	var location = input_handler.active_location
+	if person == null or !(location is Dictionary):
+		return
+	if !location.has('seen_races'):
+		location.seen_races = []
+	var code = person.get_stat('race')
+	if code != null and code != '' and !location.seen_races.has(code):
+		location.seen_races.append(code)
+
+
+#The location's own race table in its own order, each entry marked with whether one has been taken here.
+#Beastkin collapse to Halfkin when furry is off, the same way ch_stats does when it builds the character -
+#otherwise the tooltip promises a race the player can never get.
+func location_race_slots(location):
+	var res = []
+	if !(location is Dictionary) or !location.has('character_data'):
+		return res
+	var seen = location.get('seen_races', [])
+	var listed = []
+	for entry in location.character_data.get('races', []):
+		var code = str(entry[0] if entry is Array else entry)
+		if !input_handler.globalsettings.furry and code.find("Beastkin") >= 0:
+			code = code.replace("Beastkin", "Halfkin")
+		if !races.racelist.has(code) or listed.has(code):
+			continue
+		listed.append(code)
+		res.append({race = code, known = seen.has(code)})
 	return res
 
 
@@ -3258,6 +3377,10 @@ func common_effects(effects, from_event = false):
 				input_handler.active_character = input_handler.scene_characters[i.value]
 			'affect_active_character':
 				input_handler.active_character.affect_char(i, true)
+			'take_virginity':
+				#the same loss the brothel's own act writes, for a client who bought it outright
+				input_handler.active_character.take_virginity(i.value,
+					i.partner if i.has('partner') else 'brothel_customer')
 			'affect_master':
 				ResourceScripts.game_party.get_master().affect_char(i, true)
 			'make_loot':
@@ -3417,23 +3540,22 @@ func common_effects(effects, from_event = false):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 				input_handler.achievements.try_add_quest_achimnt(i.value)
 			'complete_active_location':
-				complete_location(input_handler.active_location.id)
+				declare_location_cleared(input_handler.active_location.id)
 #			'set_completed_quest_location':
 #				var data = ResourceScripts.world_gen.get_faction_from_code(i.id)
 #				data.completed = true
 #				data.active = false
 			'set_completed_active_location':
-				#input_handler.active_location.progress.level = input_handler.active_location.levels.size()
-#				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
-				if gui_controller.exploration_dungeon != null and gui_controller.exploration_dungeon.visible:
-					gui_controller.exploration_dungeon.active_location.completed = true
-					gui_controller.exploration_dungeon.active_location.active = false
-				if gui_controller.exploration != null and gui_controller.exploration.visible:
-					gui_controller.exploration.active_location.completed = true
-					gui_controller.exploration.active_location.active = false
-					gui_controller.exploration.open_location_actions()
+				#deliberately the visible screen rather than input_handler.active_location: scenes
+				#firing this from elsewhere have always been no-ops and stay that way
+				for screen in [gui_controller.exploration_dungeon, gui_controller.exploration]:
+					if screen == null or !screen.visible or screen.active_location == null:
+						continue
+					screen.active_location.completed = true
+					declare_location_cleared(screen.active_location.id)
 			'remove_active_location':
-				remove_location(input_handler.active_location.id)
+				ResourceScripts.game_res.remove_tasks_for_location(input_handler.active_location.id, ['special'])
+				declare_location_cleared(input_handler.active_location.id)
 			'reputation':
 				var data = ResourceScripts.world_gen.get_faction_from_code(i.name)
 				var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]
@@ -3470,7 +3592,10 @@ func common_effects(effects, from_event = false):
 			'make_quest_location':
 				ResourceScripts.world_gen.make_quest_location(i.value)
 			'remove_quest_location':
-				remove_location(i.value)
+				#the story tasks standing on the place go at once, the gathering it still offers
+				#lives until the location itself is removed
+				ResourceScripts.game_res.remove_tasks_for_location(i.value, ['special'])
+				declare_location_cleared(i.value)
 			'return_characters_from_location':
 				return_characters_from_location(i.value)
 			'set_music':
@@ -3646,6 +3771,9 @@ func common_effects(effects, from_event = false):
 			'plan_loc_event':
 				ResourceScripts.game_progress.plan_loc_event(i.loc, i.event)
 			'add_special_task_for_location':
+				#the story wants the place again, so it stops waiting to be removed
+				ResourceScripts.game_world.revive_location(
+					ResourceScripts.world_gen.get_location_from_code(i.location))
 				ResourceScripts.game_res.add_special_job(i)
 			'remove_special_task_for_location':
 				for task_id in ResourceScripts.game_res.active_tasks.special.duplicate():

@@ -10,7 +10,10 @@ extends Node2D
 #   look at it:         open this scene and press F6
 #
 #   wheel zoom in (1.0 is the outer stop)   drag pan   0 reset view
-#   1 2 3 4  day / dawn / sunset / night    R  cycle rain
+#   1 2 3 4  day / dawn / sunset / night    R  cycle rain    T  storm
+#
+# It opens in a storm on purpose, so the flash and the thunder are there to look at
+# without setting anything up. --rain= and --storm= override that.
 #   M placeholder   V vignette   G lamp glow   S screenshot   Esc quit
 #
 # The weather overlays and this hint sit in CanvasLayers so the camera does not
@@ -38,6 +41,9 @@ var _shot_path = ''
 
 
 func _ready():
+	# a storm to look at from the first frame; the arguments below can still say otherwise
+	rain.set_intensity(2)
+	rain.set_storm(true)
 	var shoot = false
 	var zoom = 0.0
 	var focus = null
@@ -48,6 +54,8 @@ func _ready():
 			daylight.set_phase(int(arg.substr('--phase='.length())))
 		elif arg.begins_with('--rain='):
 			rain.set_intensity(int(arg.substr('--rain='.length())))
+		elif arg.begins_with('--storm='):
+			rain.set_storm(int(arg.substr('--storm='.length())) != 0)
 		elif arg.begins_with('--zoom='):
 			zoom = float(arg.substr('--zoom='.length()))
 		elif arg.begins_with('--focus='):
@@ -71,8 +79,9 @@ func _ready():
 
 
 func _update_hint():
-	hint.text = '%s   |   rain: %s   |   zoom %.2fx   |   1-4 time   R rain   wheel zoom   0 reset   M placeholder   V vignette   G glow   S shot   Esc quit' % [
-		daylight.phase_name(), rain.level_name(), 1.0 / cam.zoom.x]
+	hint.text = '%s   |   rain: %s   |   storm: %s   |   zoom %.2fx   |   1-4 time   R rain   T storm   wheel zoom   0 reset   M placeholder   V vignette   G glow   S shot   Esc quit' % [
+		daylight.phase_name(), rain.level_name(), 'on' if rain.storm else 'off',
+		1.0 / cam.zoom.x]
 
 
 func _process(_delta):
@@ -87,6 +96,8 @@ func _unhandled_input(event):
 			daylight.set_phase(event.scancode - KEY_1)
 		KEY_R:
 			rain.set_intensity((rain.intensity + 1) % rain.LEVELS.size())
+		KEY_T:
+			rain.set_storm(not rain.storm)
 		KEY_M:
 			placeholder.visible = not placeholder.visible
 		KEY_V:

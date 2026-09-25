@@ -40,8 +40,8 @@ valign = 1
 lamp_glow_path = NodePath("../../Backdrop/Glow")
 
 [node name="Rain" parent="Effects" instance=ExtResource( 4 )]
-visible = false
-intensity = 0
+intensity = 2
+storm = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2

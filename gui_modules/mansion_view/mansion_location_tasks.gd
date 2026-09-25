@@ -52,15 +52,23 @@ static func location_name(code):
 	if location == null:
 		return code
 	if location.has('name') and location.name != '':
-		return location.name
+		#a capital's name is a key until something translates it - worlddata writes it before the
+		#locale is up, and the navigation strip tr()s it at display time for the same reason
+		return globals.tr(location.name)
 	return code
 
 
 static func location_background(code):
 	var location = ResourceScripts.world_gen.get_location_from_code(code)
-	if location == null or !location.has('background'):
+	if location == null:
 		return null
-	return images.get_background(location.background)
+	if location.has('background'):
+		return images.get_background(location.background)
+	#a capital carries none of its own: its picture belongs to its land, where the navigation strip
+	#also goes for its icon
+	if location.get('type', '') == 'capital' and worlddata.lands.has(location.get('area', '')):
+		return images.get_background(worlddata.lands[location.area].get('capital_background', ''))
+	return null
 
 
 static func characters_at(code):
@@ -107,11 +115,13 @@ static func tasks_for(code):
 	#else offers only what that place itself has. Running both lists for a settlement listed
 	#the estate's whole production on top of the settlement's own - the same resources twice,
 	#and a shelf of them with nowhere to stand because their upgrades are the estate's.
+	#A settlement whose clients buy service offers it, wherever it is: its own work, its own people,
+	#its own purse. It is the one piece of work with a screen of its own behind it rather than a row
+	#of places on the card.
+	var service_id = ResourceScripts.game_res._add_service_job(code)
+	if service_id != '':
+		add_entry(res, service_id)
 	if code == MANSION_CODE:
-		#Service is the estate's own trade, and the one piece of work here with a screen of
-		#its own behind it rather than a row of places on the card.
-		ResourceScripts.game_res._add_service_job()
-		add_entry(res, 'service')
 		#Gathering is not listed here. Each of those jobs is worked out of a building on the
 		#grounds, and that building's own card carries its places - listing the job as well
 		#drew the same work twice, once as a barn and once as "fishing". The records still
@@ -212,7 +222,7 @@ static func entry_for(task_id):
 		remaining = null,
 		#service takes as many as you send and is arranged on a screen of its own, so it has
 		#neither a cap to draw nor a row of places to draw it in
-		own_screen = task_id == 'service',
+		own_screen = ResourceScripts.game_res.is_service_task(task_id),
 		#a quest is worked at until it is done rather than producing anything, so what it has
 		#to show is how far along it is
 		quest = data.type == 'special',
@@ -295,6 +305,83 @@ static func fill_service_bar(bar, state):
 
 static func service_exhausted_percent():
 	return int(round(variables.service_gold_exhausted_mult * 100.0))
+
+
+#Where a task is worked - for service, the settlement whose clients pay for it.
+static func task_location(task_id):
+	if !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return MANSION_CODE
+	return ResourceScripts.game_res.tasks_progresses[task_id].get('location', MANSION_CODE)
+
+
+static func _name_list(names):
+	return PoolStringArray(names).join(", ")
+
+
+#What this settlement refuses: the acts nobody here buys, and the races it takes at all.
+static func service_limit_lines(code):
+	var res = []
+	var banned = ResourceScripts.game_world.service_banned_rules(code)
+	if !banned.empty():
+		var names = []
+		for rule in banned:
+			names.append(globals.tr("BROTHEL" + rule.to_upper()))
+		res.append(globals._report_text("MANSIONVIEW_SERVICELIMIT_RULES", [_name_list(names)]))
+	var allowed = ResourceScripts.game_world.service_allowed_races(code)
+	if !allowed.empty():
+		var names = []
+		for race in allowed:
+			names.append(globals.tr("RACE" + race.to_upper()))
+		res.append(globals._report_text("MANSIONVIEW_SERVICELIMIT_RACES", [_name_list(names)]))
+	return res
+
+
+#What this week's clients are after here, and what fitting them is worth.
+static func service_bonus_lines(code):
+	var res = []
+	var bonuses = ResourceScripts.game_world.get_service_bonuses(code)
+	var wanted = []
+	for bonus in bonuses:
+		wanted.append(service_bonus_text(bonus))
+	if wanted.empty():
+		return res
+	res.append(globals._report_text("MANSIONVIEW_SERVICEBONUS_DEMAND", [_name_list(wanted)]))
+	var one = int(round(float(variables.service_bonus_gold_mult[1]) * 100.0))
+	if bonuses.size() > 1:
+		res.append(globals._report_text("MANSIONVIEW_SERVICEBONUS_REWARD",
+			[one, int(round(float(variables.service_bonus_gold_mult[2]) * 100.0))]))
+	else:
+		res.append(globals._report_text("MANSIONVIEW_SERVICEBONUS_REWARD_ONE", [one]))
+	return res
+
+
+#The mark a settlement's service wears: what its clients are after and what it refuses, as one
+#tooltip, and the picture that stands for it - the first bonus's own icon, or the trade's own when
+#the week asks for nothing. null where there is nothing to say.
+static func service_mark_hint(code):
+	return PoolStringArray(service_bonus_lines(code) + service_limit_lines(code)).join("\n")
+
+
+#What one bonus asks for, named as it is named everywhere else.
+static func service_bonus_text(bonus):
+	var names = []
+	match bonus.type:
+		'race':
+			if bonus.get('monster', false):
+				return globals.tr("MANSIONVIEW_SERVICEBONUS_MONSTERS")
+			for race in bonus.values:
+				names.append(globals.tr("RACE" + str(race).to_upper()))
+			return _name_list(names)
+		'personality':
+			return globals.tr("PERSONALITYNAME" + str(bonus.values[0]).to_upper())
+		'rule':
+			for rule in bonus.values:
+				names.append(globals.tr("BROTHEL" + str(rule).to_upper()))
+			return _name_list(names)
+		'factor':
+			return globals._report_text("MANSIONVIEW_SERVICEBONUS_FACTOR",
+				[globals.tr("STAT" + str(bonus.values[0]).to_upper()), variables.service_bonus_factor_level])
+	return ""
 
 
 #What the bar means, read wherever it is drawn: the mark beside it on the service screen, and the

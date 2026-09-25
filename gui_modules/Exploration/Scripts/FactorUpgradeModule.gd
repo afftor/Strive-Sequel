@@ -165,6 +165,9 @@ func fill_factor_row(row, code):
 	var icon = row.get_node_or_null("Icon")
 	if icon is TextureRect:
 		icon.texture = EXPANDED.OVERVIEW_ICONS[code]
+	var glow = row.get_node_or_null("Glow")
+	if glow is ColorRect:
+		EXPANDED.setup_factor_glow(glow, code, current)
 	var name_label = row.get_node_or_null("FactorName")
 	if name_label is Label:
 		name_label.text = tr(statdata.statdata[code].name)

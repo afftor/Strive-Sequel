@@ -467,6 +467,27 @@ static func value_for_part(stat, part_id):
 	return ""
 
 
+# Parts the art carries that no screen puts on offer; one already worn is kept.
+const NOT_OFFERED = {
+	"hair": [
+		"hair_base_bobcut_monofringe",
+		"hair_base_disheveled_monofringe",
+		"hair_base_fringe_monofringe",
+	],
+}
+
+
+static func offered_parts(group_id, parts, keep = ""):
+	var hidden = NOT_OFFERED.get(str(group_id), [])
+	if hidden.empty():
+		return parts
+	var result = []
+	for part_id in parts:
+		if !(str(part_id) in hidden) or str(part_id) == str(keep):
+			result.append(part_id)
+	return result
+
+
 # Values for the parts in `parts` that none of `values` reaches yet, one per part,
 # in the catalogue's order.  The screens list their options from the old doll's
 # tables, and a cut the export gained after those were written - the monofringe
@@ -476,7 +497,7 @@ static func values_for_unlisted_parts(stat, values, parts):
 	for value in values:
 		reached[resolve(stat, str(value))] = true
 	var result = []
-	for part_id in parts:
+	for part_id in offered_parts(str(FEEDS.get(stat, "")), parts):
 		if reached.has(str(part_id)):
 			continue
 		var value = value_for_part(stat, part_id)

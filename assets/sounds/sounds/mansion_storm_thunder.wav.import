@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mansion_storm_thunder.wav-2c4e5b0cbd28ceda78d3aa01a45777bd.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/mansion_storm_thunder.wav"
+dest_files=[ "res://.import/mansion_storm_thunder.wav-2c4e5b0cbd28ceda78d3aa01a45777bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

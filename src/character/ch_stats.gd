@@ -2022,10 +2022,9 @@ func get_random_age():
 
 
 func get_random_name(keep_surname = false):
-	var text = statlist.race.to_lower() + statlist.sex.replace("futa",'female')
-	if !Namedata.namelist.has(text):
-		text = 'human'+ statlist.sex.replace("futa",'female')
-	statlist.name = Namedata.namelist[text][randi() % Namedata.namelist[text].size()]
+	var generated = Namedata.random_first_name(statlist.race, statlist.sex)
+	if generated != '':
+		statlist.name = generated
 	if keep_surname and statlist.surname != '': 
 		return
 	if Namedata.namelist.has(statlist.race.to_lower() + 'surname'):

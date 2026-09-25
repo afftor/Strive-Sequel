@@ -113,8 +113,6 @@ var sounds = {
 	mansion_night_owl = load("res://assets/sounds/sounds/mansion_night_owl.wav"),
 	mansion_night_crickets = load("res://assets/sounds/sounds/mansion_night_crickets.wav"),
 
-	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
-
 	blade = load("res://assets/sounds/sounds/fx knife body hit.wav"),
 	blunt_hit = load("res://assets/sounds/sounds/blunt_hit.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
@@ -134,7 +132,6 @@ var sounds = {
 
 	#combat
 	victory = load("res://assets/sounds/sounds/victory.wav"),
-	defeat = load('res://assets/sounds/sounds/defeat.wav'),
 	combatmiss = load('res://assets/sounds/sounds/dodge.wav'),
 	dodge = load("res://assets/sounds/sounds/dodge.wav"),
 	melee_attack = load("res://assets/sounds/sounds/dodge.wav"),
@@ -161,7 +158,6 @@ var sounds = {
 	spell_void = load("res://assets/sounds/sounds/spell_void.wav"),
 
 	#skills
-	arrowshower = load("res://assets/sounds/sounds/arrowshower.wav"),
 	firebolt = load("res://assets/sounds/sounds/firebolt.wav"),
 	firehit = load("res://assets/sounds/sounds/firedamage.wav"),
 	avalanche = load("res://assets/sounds/sounds/avalanche.wav"),

@@ -1575,21 +1575,40 @@ func _add_farm_job():
 	tasks_progresses.farming.max_workers = 0
 
 
-func _add_service_job():
-	if !tasks_progresses.has('service'):
+#Service is worked where its clients are, so every settlement that buys it (variables.service_gold_limits)
+#has a task of its own, with its own people and its own purse. The estate's keeps the plain id 'service'
+#that saves and the old work panel were written against; the rest are 'service_<settlement>'.
+func service_task_id(location):
+	if !variables.service_gold_limits.has(location):
+		return ''
+	return 'service' if location == 'aliron' else 'service_' + location
+
+
+func is_service_task(task_id):
+	return str(task_id) == 'service' or str(task_id).begins_with('service_')
+
+
+func _add_service_job(location = 'aliron'):
+	var task_id = service_task_id(location)
+	if task_id == '':
+		return ''
+	if !tasks_progresses.has(task_id):
 		var jobdata = tasks.tasklist.brothel
 		var template = {
 			id = 'service', 
 			status = 'permanent', 
 			workers = [], 
 			messages = [], 
-			location = 'aliron', 
+			location = location, 
 			type = 'permanent',
 			icon = jobdata.production_icon,
 		} 
 		for st in ['descript', 'name']:
 			template[st] = jobdata[st]
-		tasks_progresses.service = template
+		tasks_progresses[task_id] = template
+	if !active_tasks.service.has(task_id):
+		active_tasks.service.append(task_id)
+	return task_id
 
 
 func add_recruiting_job_temp(task_template_id, location):
@@ -1950,11 +1969,24 @@ func drop_unused_temp_tasks():
 		clean_task(id)
 
 
-func remove_tasks_for_location(location):
+#`types` narrows the sweep to certain task types: declaring a location cleared drops the story
+#tasks standing on it right away, while the gathering it still offers lives until it is removed.
+func remove_tasks_for_location(location, types = null):
 	for id in tasks_progresses.keys().duplicate():
 		var val = tasks_progresses[id]
 		if val.has("location") and val.location == location:
+			if types != null and !(val.type in types):
+				continue
 			clean_task(id)
+
+
+func has_special_tasks_at(location):
+	for id in active_tasks.special:
+		if !tasks_progresses.has(id):
+			continue
+		if tasks_progresses[id].get('location', '') == location:
+			return true
+	return false
 
 
 func find_task_for_quest(q_id):
@@ -2032,11 +2064,13 @@ func process_service(managed = false):
 	if managed: #always a coroutine when managed, so the caller can yield on it
 		yield(globals.get_tree(), 'idle_frame')
 	_add_service_job()
-	var currenttask = tasks_progresses.service
 	var slice = OS.get_ticks_msec()
 	var worker_lookup = {}
-	for worker_id in currenttask.workers:
-		worker_lookup[worker_id] = true
+	for task_id in active_tasks.service:
+		if !tasks_progresses.has(task_id):
+			continue
+		for worker_id in tasks_progresses[task_id].workers:
+			worker_lookup[worker_id] = true
 	#iterate a copy: a character dying mid-turn erases itself from character_order, and with
 	#the tick spread over frames a deferred cleanup can land in the middle of this loop
 	for ch_id in ResourceScripts.game_party.character_order.duplicate():

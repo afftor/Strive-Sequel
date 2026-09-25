@@ -50,6 +50,13 @@ const EVENT_CONFIG = {
 		icon = preload("res://assets/Textures_v2/slave_quests/scales.png"),
 		color = Color("e0c060"),
 	},
+	#A cleared place finally leaving the map, with whoever was left behind in it - see
+	#globals.mansion_activity_location_removed().
+	"location": {
+		label = "MANSION_ACTIVITY_TYPE_LOCATION",
+		icon = preload("res://assets/Textures_v2/Universal/Icons/icon_travel_dungeon.png"),
+		color = Color("a9b8c8"),
+	},
 	#Scaffolding coming down: a room raised, a cluttered one cleared out, an improvement
 	#finished. game_res.process_room_builds() is the only thing that writes these.
 	"build": {
