@@ -13,10 +13,10 @@ const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
 #What a slot looks like before anything is read off it. Every working room shares the one
 #picture for now; a slot with nothing built and a slot left derelict have their own, so the
 #three states are told apart at a glance rather than by their colour alone. The colours below
-#stay under the art - they are what shows if a picture is ever missing.
-const ART_ROOM = preload("res://gui_modules/mansion_view/rooms/master_bedrrom.png")
-const ART_EMPTY = preload("res://gui_modules/mansion_view/rooms/empty.png")
-const ART_BROKEN = preload("res://gui_modules/mansion_view/rooms/trashed.png")
+#are retained as state metadata; no solid backing is drawn behind transparent art.
+const ART_ROOM = 'master bedroom'
+const ART_EMPTY = 'empty room'
+const ART_BROKEN = 'trashed'
 
 #The staircase is the exception: its picture has to say which way it goes from here, or the
 #same flight of stairs is drawn on every floor of the house and none of them tells the player
@@ -27,17 +27,27 @@ const ART_BROKEN = preload("res://gui_modules/mansion_view/rooms/trashed.png")
 const STAIRS_FRAME = Color(0.976471, 0.882353, 0.505882, 0.85)
 const STAIRS_FRAME_LIT = Color(1, 0.94, 0.62, 1)
 
-#Types that have had a picture drawn for them, by room_builder. Everything not named here
-#still shares ART_ROOM; a type moves out of that pile the moment its own picture exists, so
-#this list is meant to grow. The two bedrooms share one - the luxury one is the same room
-#with better upgrades in it, not a different room.
+#Names match the builder's saved presets. Read source PNGs in the working project
+#so saving in the builder does not wait for the editor's texture import cache.
 const ROOM_ART = {
-	bedrooms = preload("res://gui_modules/mansion_view/rooms/bedroom.png"),
-	luxury_bedrooms = preload("res://gui_modules/mansion_view/rooms/bedroom.png"),
-	store_room = preload("res://gui_modules/mansion_view/rooms/storeroom.png"),
-	forge = preload("res://gui_modules/mansion_view/rooms/forge.png"),
-	tailor_workshop = preload("res://gui_modules/mansion_view/rooms/tailor.png"),
+	master_bedroom = 'master bedroom',
+	bedrooms = 'bedroom',
+	luxury_bedrooms = 'luxury bedroom',
+	store_room = 'storeroom',
+	forge = 'forge',
+	tailor_workshop = 'tailor',
+	alchemy_room = 'alchemy room',
+	kitchen = 'kitchen',
+	dining_room = 'dining room',
+	practice_room = 'practice room',
+	masters_office = 'masters office',
+	ritual_room = 'ritual room',
+	beauty_parlor = 'beauty parlor',
 }
+
+var art_cache = {}
+var current_art = ''
+var art_refresh_elapsed = 0.0
 
 const COLOR_EMPTY = '332f28'
 const COLOR_BROKEN = '4a2f2f'
@@ -81,6 +91,11 @@ func setup(code, view_node):
 #ignores the mouse altogether (see update_pressability) and would never be named at all.
 func _process(_delta):
 	show_caption(Rect2(Vector2.ZERO, rect_size).has_point(get_local_mouse_position()))
+	art_refresh_elapsed += _delta
+	if art_refresh_elapsed >= 1.0:
+		art_refresh_elapsed = 0.0
+		if is_visible_in_tree() and $art.visible and current_art != '':
+			$art.texture = room_texture(current_art)
 
 
 func show_caption(shown):
@@ -138,7 +153,7 @@ func draw_broken():
 	has_stairs = false
 	frame_only(false)
 	$bg.color = Color(COLOR_BROKEN)
-	$art.texture = ART_BROKEN
+	$art.texture = room_texture(ART_BROKEN)
 	$icon.texture = null
 	$name.text = tr("MANSIONVIEW_BROKEN")
 	globals.connecttexttooltip(self, tr("MANSIONVIEW_BROKENHINT"), true)
@@ -149,7 +164,7 @@ func draw_empty():
 	has_stairs = false
 	frame_only(false)
 	$bg.color = Color(COLOR_EMPTY)
-	$art.texture = ART_EMPTY
+	$art.texture = room_texture(ART_EMPTY)
 	$icon.texture = null
 	$name.text = tr("MANSIONVIEW_EMPTYROOM")
 	globals.connecttexttooltip(self, tr("MANSIONVIEW_BUILDHERE"), true)
@@ -163,7 +178,7 @@ func draw_building():
 	$bg.color = Color(COLOR_BUILDING)
 	#Scaffolding shows whatever is actually standing there meanwhile: a repair is still a
 	#wrecked room until it finishes, a new build is still bare floor.
-	$art.texture = ART_BROKEN if build != null and build.kind == 'repair' else ART_EMPTY
+	$art.texture = room_texture(ART_BROKEN if build != null and build.kind == 'repair' else ART_EMPTY)
 	$icon.texture = null
 	if build != null and build.kind == 'construct':
 		var data = RoomTypes.get_type(build.target)
@@ -187,22 +202,47 @@ func draw_room(room):
 #Which picture a room is drawn with: its own if one has been drawn for it, the staircase's
 #pair of flights if it is the staircase, and the one picture the rest still share otherwise.
 func room_art(room):
-	return ROOM_ART[room.type] if ROOM_ART.has(room.type) else ART_ROOM
+	return room_texture(ROOM_ART.get(room.type, ART_ROOM))
 
 
-#A slot that shows the house's own picture through it and only a frame round the edge - the
-#staircase's. Every other slot has its background, its picture and the template's own panel
-#back, so a room swapped out of the stairs' place comes back looking like a room.
+func room_texture(preset):
+	current_art = preset
+	var path = 'res://gui_modules/mansion_view/rooms/' + preset + '.png'
+	var file = File.new()
+	var modified = file.get_modified_time(path) if file.file_exists(path) else 0
+	if art_cache.has(path) and art_cache[path].modified == modified:
+		return art_cache[path].texture
+	var texture = null
+	var image = Image.new()
+	if modified > 0 and image.load(path) == OK:
+		texture = ImageTexture.new()
+		texture.create_from_image(image, Texture.FLAG_FILTER)
+	elif ResourceLoader.exists(path):
+		#Exported games can contain only imported resources, without source PNGs.
+		texture = load(path)
+	if texture == null:
+		return art_cache[path].texture if art_cache.has(path) else null
+	art_cache[path] = {modified = modified, texture = texture}
+	return texture
+
+
+#The staircase shows only a frame. Room art keeps its alpha too: neither the
+#background rectangle nor the button style may fill the space outside the walls.
 func frame_only(on):
-	$bg.visible = !on
+	$bg.visible = false
 	$art.visible = !on
 	if !has_meta('panel_styles'):
 		var kept = {}
-		for state in ['normal', 'hover', 'pressed', 'focus']:
-			kept[state] = get_stylebox(state)
+		for state in ['normal', 'hover', 'pressed', 'focus', 'disabled']:
+			var box = get_stylebox(state).duplicate()
+			if state in ['normal', 'disabled']:
+				box = StyleBoxEmpty.new()
+			elif box is StyleBoxFlat or box is StyleBoxTexture:
+				box.draw_center = false
+			kept[state] = box
 		set_meta('panel_styles', kept)
 	var panels = get_meta('panel_styles')
-	for state in ['normal', 'hover', 'pressed', 'focus']:
+	for state in ['normal', 'hover', 'pressed', 'focus', 'disabled']:
 		add_stylebox_override(state, stairs_frame(state != 'normal') if on else panels[state])
 
 

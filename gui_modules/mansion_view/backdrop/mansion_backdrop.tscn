@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/backdrop/mansion_backdrop.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/backgrounds/mansion_manor.png" type="Texture" id=2]
+[ext_resource path="res://gui_modules/Mansion/Modules/mansion_manor.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/backgrounds/mansion_manor_upper.png" type="Texture" id=3]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/lamp_post.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/wall_lantern.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/sun_shafts.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/fog.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/images/backgrounds/mansion_manor_rain_mask.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/backgrounds/mansion_manor_upper_rain_mask.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_walls_f1.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_walls_f2.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_rain_mask.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_upper_rain_mask.png" type="Texture" id=11]
 
 [node name="MansionBackdrop" type="Control"]
 margin_right = 3840.0
@@ -42,11 +44,268 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
 expand = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Walls" type="TextureRect" parent="1F"]
+light_mask = 513
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+
+[node name="Rooms" type="Control" parent="1F"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="a1" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 887.0
+margin_top = 1010.0
+margin_right = 1192.0
+margin_bottom = 1279.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a1"
+
+[node name="a2" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 1471.0
+margin_top = 1005.0
+margin_right = 1776.0
+margin_bottom = 1277.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a2"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a2"
+
+[node name="a4" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2113.0
+margin_top = 1010.0
+margin_right = 2417.0
+margin_bottom = 1278.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a4"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a4"
+
+[node name="a5" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2684.0
+margin_top = 1016.0
+margin_right = 2991.0
+margin_bottom = 1286.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/a5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "a5"
+
+[node name="b1" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 772.0
+margin_top = 1328.0
+margin_right = 1076.0
+margin_bottom = 1599.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/b1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "b1"
+
+[node name="b3" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 1739.97
+margin_top = 1361.01
+margin_right = 2138.93
+margin_bottom = 1660.02
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/b3"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "b3"
+
+[node name="b5" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2796.0
+margin_top = 1319.0
+margin_right = 3103.0
+margin_bottom = 1590.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/b5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "b5"
+
+[node name="c1" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 887.0
+margin_top = 1637.0
+margin_right = 1193.0
+margin_bottom = 1907.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c1"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c1"
+
+[node name="c2" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 1472.0
+margin_top = 1640.0
+margin_right = 1775.0
+margin_bottom = 1910.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c2"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c2"
+
+[node name="c4" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2108.0
+margin_top = 1633.0
+margin_right = 2413.0
+margin_bottom = 1906.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c4"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c4"
+
+[node name="c5" type="ReferenceRect" parent="1F/Rooms"]
+margin_left = 2684.0
+margin_top = 1637.0
+margin_right = 2989.0
+margin_bottom = 1906.0
+mouse_filter = 2
+border_color = Color( 1, 0.78, 0.2, 1 )
+border_width = 4.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Code" type="Label" parent="1F/Rooms/c5"]
+margin_left = 14.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "c5"
 
 [node name="Objects" type="Node2D" parent="1F"]
 
@@ -120,258 +379,7 @@ light_energy = 1.0
 glow_radius = 300.0
 glow_intensity = 0.45
 
-[node name="Rooms" type="Control" parent="1F"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="a1" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 880.287
-margin_top = 1005.27
-margin_right = 1192.38
-margin_bottom = 1318.22
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/a1"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "a1"
-
-[node name="a2" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 1470.41
-margin_top = 1001.95
-margin_right = 1780.43
-margin_bottom = 1317.99
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/a2"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "a2"
-
-[node name="a4" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 2102.59
-margin_top = 1002.36
-margin_right = 2412.61
-margin_bottom = 1309.28
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/a4"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "a4"
-
-[node name="a5" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 2688.22
-margin_top = 1005.46
-margin_right = 3000.31
-margin_bottom = 1320.46
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/a5"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "a5"
-
-[node name="b1" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 763.663
-margin_top = 1330.21
-margin_right = 1092.6
-margin_bottom = 1639.2
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/b1"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "b1"
-
-[node name="b3" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 1739.97
-margin_top = 1361.01
-margin_right = 2138.93
-margin_bottom = 1660.02
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/b3"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "b3"
-
-[node name="b5" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 2784.41
-margin_top = 1335.2
-margin_right = 3109.4
-margin_bottom = 1643.16
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/b5"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "b5"
-
-[node name="c1" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 884.92
-margin_top = 1654.81
-margin_right = 1197.87
-margin_bottom = 1963.79
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/c1"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "c1"
-
-[node name="c2" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 1457.99
-margin_top = 1661.32
-margin_right = 1768.01
-margin_bottom = 1967.39
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/c2"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "c2"
-
-[node name="c4" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 2109.0
-margin_top = 1660.47
-margin_right = 2420.05
-margin_bottom = 1966.53
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/c4"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "c4"
-
-[node name="c5" type="ReferenceRect" parent="1F/Rooms"]
-margin_left = 2688.24
-margin_top = 1655.16
-margin_right = 3000.32
-margin_bottom = 1960.19
-mouse_filter = 2
-border_color = Color( 1, 0.78, 0.2, 1 )
-border_width = 4.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Code" type="Label" parent="1F/Rooms/c5"]
-margin_left = 14.0
-margin_top = 10.0
-margin_right = 54.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
-custom_colors/font_color = Color( 1, 0.85, 0.3, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "c5"
-
 [node name="2F" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -394,11 +402,18 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
 expand = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Walls" type="TextureRect" parent="2F"]
+light_mask = 1025
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 9 )
 
 [node name="Objects" type="Node2D" parent="2F"]
 
@@ -432,10 +447,10 @@ __meta__ = {
 }
 
 [node name="a1" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 1081.91
-margin_top = 1026.04
-margin_right = 1392.96
-margin_bottom = 1331.07
+margin_left = 1086.0
+margin_top = 997.0
+margin_right = 1393.0
+margin_bottom = 1268.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -454,10 +469,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "a1"
 
 [node name="a2" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 1433.91
-margin_top = 1016.06
-margin_right = 1744.96
-margin_bottom = 1332.1
+margin_left = 1441.0
+margin_top = 998.0
+margin_right = 1745.0
+margin_bottom = 1269.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -476,10 +491,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "a2"
 
 [node name="a4" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 2131.02
-margin_top = 1025.01
-margin_right = 2442.07
-margin_bottom = 1331.93
+margin_left = 2138.0
+margin_top = 1002.0
+margin_right = 2442.0
+margin_bottom = 1272.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -498,10 +513,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "a4"
 
 [node name="a5" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 2483.02
-margin_top = 1026.04
-margin_right = 2794.07
-margin_bottom = 1332.1
+margin_left = 2486.0
+margin_top = 1002.0
+margin_right = 2792.0
+margin_bottom = 1270.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -542,10 +557,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "b3"
 
 [node name="c1" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 1081.91
-margin_top = 1625.09
-margin_right = 1392.96
-margin_bottom = 1930.12
+margin_left = 1087.0
+margin_top = 1636.0
+margin_right = 1393.0
+margin_bottom = 1906.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -564,10 +579,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "c1"
 
 [node name="c2" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 1433.91
-margin_top = 1625.09
-margin_right = 1744.96
-margin_bottom = 1931.15
+margin_left = 1440.0
+margin_top = 1636.0
+margin_right = 1745.0
+margin_bottom = 1906.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -586,10 +601,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "c2"
 
 [node name="c4" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 2131.02
-margin_top = 1625.09
-margin_right = 2442.07
-margin_bottom = 1931.15
+margin_left = 2137.0
+margin_top = 1636.0
+margin_right = 2442.0
+margin_bottom = 1906.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -608,10 +623,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "c4"
 
 [node name="c5" type="ReferenceRect" parent="2F/Rooms"]
-margin_left = 2483.02
-margin_top = 1625.09
-margin_right = 2794.07
-margin_bottom = 1931.15
+margin_left = 2487.0
+margin_top = 1637.0
+margin_right = 2793.0
+margin_bottom = 1906.0
 mouse_filter = 2
 border_color = Color( 0.35, 0.85, 1, 1 )
 border_width = 4.0
@@ -632,8 +647,11 @@ text = "c5"
 [node name="Sky" type="Node2D" parent="."]
 
 [node name="Fog" parent="Sky" instance=ExtResource( 7 )]
-fog_color = Color( 0.85, 0.88, 0.92, 1 )
-density = 0.28
+visible = false
+margin_left = -10.0
+margin_top = 17.0
+margin_right = 3830.0
+margin_bottom = 2577.0
 
 [node name="SunShafts" parent="Sky" instance=ExtResource( 6 )]
 position = Vector2( 3650, -150 )

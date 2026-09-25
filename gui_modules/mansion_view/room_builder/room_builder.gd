@@ -6,9 +6,8 @@ extends Control
 #	pick a piece on the left and click the canvas to put it down. That piece is then the one
 #	being worked on and the palette lets go, so the next click moves what is already there:
 #	drag a piece about, right-click it to take it away
-#	the ground and the walls are pieces like any other, only they cover the whole room and a
-#	room holds one of each - laying a second floor takes up the first
-#	every room starts with a floor and a wall, at the bottom of the pile
+#	the room holds one floor; laying a second floor takes up the first
+#	every room starts with a floor. Walls belong to the mansion backdrop.
 #	the colour on the left belongs to the piece being worked on: choose a chair, move the
 #	colour, that chair changes. Every piece takes paint, furniture included
 #	the rooms built so far are listed at the top: choosing one says which room Save writes over
@@ -52,6 +51,20 @@ func _ready():
 	canvas().rect_min_size = Pieces.ROOM_SIZE
 	canvas().rect_size = Pieces.ROOM_SIZE
 	canvas().get_node("Viewport").size = Pieces.ROOM_SIZE
+	#Keep alpha even if the scene is resaved with the default 3D viewport settings.
+	canvas().get_node("Viewport").usage = Viewport.USAGE_2D
+	canvas().get_node("Viewport").hdr = false
+	canvas().get_node("Viewport").transparent_bg = true
+	#Mask the composited viewport, including furniture, in the editor preview.
+	var mask_shader = Shader.new()
+	mask_shader.code = "shader_type canvas_item; uniform vec2 room_size; uniform float cut_left; uniform float cut_right; uniform float cut_height; void fragment() { vec2 p = UV * room_size; COLOR = texture(TEXTURE, UV); if (p.y >= room_size.y - cut_height && (p.x < cut_left || p.x >= room_size.x - cut_right)) { COLOR = vec4(0.0); } }"
+	var mask_material = ShaderMaterial.new()
+	mask_material.shader = mask_shader
+	mask_material.set_shader_param('room_size', Pieces.ROOM_SIZE)
+	mask_material.set_shader_param('cut_left', float(Pieces.ROOM_COLUMN_LEFT))
+	mask_material.set_shader_param('cut_right', float(Pieces.ROOM_COLUMN_RIGHT))
+	mask_material.set_shader_param('cut_height', float(Pieces.ROOM_COLUMN_HEIGHT))
+	canvas().material = mask_material
 	room().rect_size = Pieces.ROOM_SIZE
 	canvas().get_node("Catcher").connect("gui_input", self, "on_canvas_input")
 	$Body/SidePane/Side/Save.connect("pressed", self, "save_room")
@@ -111,11 +124,16 @@ func floor_picture(code):
 	square.resize(int(step.x), int(step.y), Image.INTERPOLATE_NEAREST)
 	var whole = Image.new()
 	whole.create(int(Pieces.ROOM_SIZE.x), int(Pieces.ROOM_SIZE.y), false, Image.FORMAT_RGBA8)
+	whole.fill(Color(0, 0, 0, 0))
 	var y = 0
 	while y < Pieces.ROOM_SIZE.y:
 		var x = 0
 		while x < Pieces.ROOM_SIZE.x:
-			whole.blit_rect(square, Rect2(Vector2(), step), Vector2(x, y))
+			#Preserve tile scale and phase, but hide the floor outside the walls.
+			var tile_origin = Vector2(x, y)
+			var visible_rect = Rect2(tile_origin, step).clip(Pieces.FLOOR_RECT)
+			if visible_rect.has_no_area() == false:
+				whole.blit_rect(square, Rect2(visible_rect.position - tile_origin, visible_rect.size), visible_rect.position)
 			x += int(step.x)
 		y += int(step.y)
 	var tex = ImageTexture.new()
@@ -137,7 +155,7 @@ func build_palette():
 		input_handler.ClearContainer(holder, ['Piece'])
 	for code in Pieces.codes_of_kind('floor'):
 		add_palette_button($Body/SidePane/Side/Floors/List, code)
-	for kind in ['wall', 'prop']:
+	for kind in ['prop']:
 		for code in Pieces.codes_of_kind(kind):
 			add_palette_button($Body/SidePane/Side/Props/List, code)
 
@@ -309,6 +327,8 @@ func grab(node, at):
 
 func place(code, at):
 	var piece = Pieces.get_piece(code)
+	if piece == null or piece.kind == 'wall':
+		return null
 	var props = room().get_node("Props")
 	#a room has one ground and one back wall: laying another takes up the one already there
 	if Pieces.fills_room(code):
@@ -321,8 +341,8 @@ func place(code, at):
 	var size = Pieces.drawn_size(code)
 	node.rect_min_size = size
 	node.rect_size = size
-	#a piece that covers the room has nowhere to be put - it is the whole of it
-	node.rect_position = Vector2(0, 0) if Pieces.fills_room(code) else snapped_corner(at, size)
+	#Keep the complete wall silhouette inside the saved image.
+	node.rect_position = Vector2() if Pieces.fills_room(code) else snapped_corner(at, size)
 	node.set_meta('code', code)
 	props.add_child(node)
 	if Pieces.fills_room(code):
@@ -413,11 +433,10 @@ func clear_room():
 	set_selected(null)
 
 
-#An empty room is not an empty picture: it is a floor and four walls with nothing on them, so
-#clearing one out leaves those two standing, at the bottom of the pile where they belong.
+#Reset keeps the floor. Walls are supplied by the backdrop, not baked into room art.
 func reset_room():
 	clear_room()
-	for code in [Pieces.default_floor(), Pieces.default_wall()]:
+	for code in [Pieces.default_floor()]:
 		if code != null:
 			place(code, Pieces.ROOM_SIZE / 2.0)
 	show_chosen()
@@ -599,6 +618,18 @@ func layout_of_room():
 	return {pieces = placed}
 
 
+func mask_room_image(image):
+	#Apply the same cutouts after compositing every layer, not just to the floor.
+	image.convert(Image.FORMAT_RGBA8)
+	image.lock()
+	for y in range(image.get_height() - Pieces.ROOM_COLUMN_HEIGHT, image.get_height()):
+		for x in range(Pieces.ROOM_COLUMN_LEFT):
+			image.set_pixel(x, y, Color(0, 0, 0, 0))
+		for x in range(image.get_width() - Pieces.ROOM_COLUMN_RIGHT, image.get_width()):
+			image.set_pixel(x, y, Color(0, 0, 0, 0))
+	image.unlock()
+
+
 func save_room():
 	var dir = Directory.new()
 	dir.make_dir_recursive(LAYOUTS_DIR)
@@ -617,6 +648,7 @@ func save_room():
 	#showing the room as it was at the moment of saving however much was moved or painted after
 	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
 	image.flip_y()
+	mask_room_image(image)
 	var path = ROOMS_DIR + name + ".png"
 	var err = image.save_png(path)
 	$Body/SidePane/Side/Report.text = "saved %s" % name if err == OK else "could not save (%d)" % err
@@ -638,15 +670,15 @@ func load_room():
 	clear_room()
 	for entry in data.get('pieces', []):
 		var piece = Pieces.get_piece(entry.get('code', ''))
-		if piece == null:
+		if piece == null or piece.kind == 'wall':
 			continue
 		var node = place(entry.code, Vector2(0, 0))
 		if !Pieces.fills_room(entry.code):
 			node.rect_position = Vector2(entry.get('x', 0), entry.get('y', 0))
 		node.modulate = Color(entry.get('paint', 'ffffff'))
 		node.flip_h = entry.get('mirrored', false) == true
-	#a layout saved before rooms carried their own ground and wall still gets them
-	for code in [Pieces.default_floor(), Pieces.default_wall()]:
+	#Old wall entries are ignored; older layouts still receive a floor if missing.
+	for code in [Pieces.default_floor()]:
 		if code != null and !has_kind(Pieces.get_piece(code).kind):
 			place(code, Pieces.ROOM_SIZE / 2.0)
 	refresh_placed()

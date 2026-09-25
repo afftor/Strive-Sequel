@@ -33,14 +33,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 2.0
 margin_bottom = -3.0
-color = Color( 0.03, 0.02, 0.03, 0.93 )
 mouse_filter = 2
+color = Color( 0.03, 0.02, 0.03, 0.93 )
 
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 0.0
 margin_top = 26.0
-margin_right = 0.0
 margin_bottom = 66.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
@@ -66,6 +64,7 @@ theme = ExtResource( 6 )
 scroll_horizontal_enabled = false
 
 [node name="List" type="VBoxContainer" parent="Characters/Scroll"]
+margin_right = 336.0
 size_flags_horizontal = 3
 custom_constants/separation = 2
 
@@ -73,11 +72,10 @@ custom_constants/separation = 2
 visible = false
 rect_min_size = Vector2( 316, 52 )
 toggle_mode = true
-expand = true
-stretch_mode = 0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 9 )
+expand = true
 
 [node name="Icon" type="TextureRect" parent="Characters/Scroll/List/Button"]
 margin_left = 4.0
@@ -93,7 +91,6 @@ margin_left = 56.0
 margin_top = 10.0
 margin_right = 312.0
 margin_bottom = 42.0
-mouse_filter = 2
 text = "Character"
 valign = 1
 clip_text = true
@@ -117,23 +114,24 @@ theme = ExtResource( 6 )
 scroll_horizontal_enabled = false
 
 [node name="Grid" type="GridContainer" parent="Tattoo/Inks"]
+margin_right = 376.0
 size_flags_horizontal = 3
-columns = 3
-custom_constants/hseparation = 6
 custom_constants/vseparation = 6
+custom_constants/hseparation = 6
+columns = 3
 
 [node name="Button" type="TextureButton" parent="Tattoo/Inks/Grid"]
 visible = false
+light_mask = 0
 margin_bottom = 112.0
 rect_min_size = Vector2( 112, 112 )
 toggle_mode = true
-light_mask = 0
-expand = true
-stretch_mode = 4
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
+stretch_mode = 4
 
 [node name="Icon" type="TextureRect" parent="Tattoo/Inks/Grid/Button"]
 margin_left = 18.0
@@ -150,7 +148,6 @@ margin_left = 6.0
 margin_top = 82.0
 margin_right = 106.0
 margin_bottom = 106.0
-mouse_filter = 2
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "0"
@@ -166,19 +163,18 @@ text = "Body slots"
 margin_top = 312.0
 margin_right = 376.0
 margin_bottom = 558.0
-columns = 4
-custom_constants/hseparation = 6
 custom_constants/vseparation = 38
+custom_constants/hseparation = 6
+columns = 4
 
 [node name="face" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/face"]
 margin_left = 8.0
@@ -194,19 +190,17 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
 [node name="neck" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/neck"]
 margin_left = 8.0
@@ -222,19 +216,17 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
 [node name="arms" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/arms"]
 margin_left = 8.0
@@ -250,19 +242,17 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
 [node name="legs" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/legs"]
 margin_left = 8.0
@@ -278,19 +268,17 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
 [node name="chest" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/chest"]
 margin_left = 8.0
@@ -306,19 +294,17 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
 [node name="crotch" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/crotch"]
 margin_left = 8.0
@@ -334,19 +320,17 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
 [node name="waist" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/waist"]
 margin_left = 8.0
@@ -362,19 +346,17 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
 [node name="ass" type="TextureButton" parent="Tattoo/Slots"]
-rect_min_size = Vector2( 86, 86 )
 light_mask = 0
-expand = true
-stretch_mode = 0
+rect_min_size = Vector2( 86, 86 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_disabled = ExtResource( 13 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="Tattoo/Slots/ass"]
 margin_left = 8.0
@@ -390,7 +372,6 @@ stretch_mode = 6
 margin_top = 98.0
 margin_right = 86.0
 margin_bottom = 122.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 5 )
 align = 1
 
@@ -421,24 +402,13 @@ script = ExtResource( 14 )
 [node name="StoredImage" type="TextureRect" parent="Preview"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6
 
 [node name="Paperdoll" parent="Preview" instance=ExtResource( 15 )]
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
 offered_undress_levels = [ "underwear", "naked" ]
 show_hair_menu = false
-update_character_portrait = false
