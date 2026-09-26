@@ -48,34 +48,23 @@ var data = {
 				]
 			}
 		],
-		common_effects = [
-			{
-				code = "teleport_active_location",
-				to_loc = {
-					location = "beastkin_capital",
-					code = "beastkin_capital",
-					area = "beastkin_tribe"
-				}
-			}
-		],
 		options = [
 			{
-				code = "leon_encounter_start_2",
-				text = "DIALOGUECONTINUE",
+				code = "close",
+				text = "DIALOGUECLOSE",
 				reqs = [
 
 				],
 				dialogue_argument = 1,
-				type = "next_dialogue",
 				bonus_effects = [
 					{
 						code = "remove_quest_location",
 						value = "quest_leon_forest_2"
 					},
 					{
-						code = "open_location",
-						location = "beastkin_capital",
-						area = "beastkin_tribe"
+						code = "plan_loc_event",
+						loc = "beastkin_capital",
+						event = "leon_encounter_start_2"
 					}
 				]
 			}
@@ -914,30 +903,21 @@ var data = {
 		],
 		options = [
 			{
-				code = "white_stag_encounter_14",
-				text = "DIALOGUECONTINUE",
+				code = "close",
+				text = "DIALOGUECLOSE",
 				reqs = [
 
 				],
 				dialogue_argument = 1,
-				type = "next_dialogue",
 				bonus_effects = [
-					{
-						code = "teleport_active_location",
-						to_loc = {
-							location = "beastkin_capital",
-							code = "beastkin_capital",
-							area = "beastkin_tribe"
-						}
-					},
 					{
 						code = "remove_quest_location",
 						value = "quest_white_stag_location"
 					},
 					{
-						code = "open_location",
-						location = "beastkin_capital",
-						area = "beastkin_tribe"
+						code = "plan_loc_event",
+						loc = "beastkin_capital",
+						event = "white_stag_encounter_14"
 					},
 					{
 						code = "make_loot",

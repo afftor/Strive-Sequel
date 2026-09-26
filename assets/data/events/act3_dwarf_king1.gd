@@ -2071,6 +2071,10 @@ var data = {
 						value = "quest_hollow_passage"
 					},
 					{
+						code = "remove_quest_location",
+						value = "quest_old_gods_temple"
+					},
+					{
 						code = "add_timed_event",
 						value = {
 							quest = "dking_hara_quest",

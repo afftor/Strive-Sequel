@@ -62,6 +62,7 @@ func rebuild():
 	var ids = workers()
 	#before the rows: every income line on the screen is read against it
 	fill_pool()
+	fill_limits()
 	$Empty.text = tr("MANSIONVIEW_TASKEMPTY")
 	$Empty.visible = ids.empty() and !picking
 	input_handler.ClearContainer($Scroll/List)
@@ -107,6 +108,19 @@ func earnings_text(value, full_key, low_key, empty_key):
 	return globals._report_text(empty_key, [
 		str(stepify(value * variables.service_gold_exhausted_mult, 0.1)),
 		LocationTasks.service_exhausted_percent()])
+
+
+#What this settlement's clients are after this week and what it will not buy: one mark beside the
+#purse, said in its tooltip. A scene without the mark simply shows nothing.
+func fill_limits():
+	var mark = get_node_or_null("Marks")
+	if mark == null:
+		return
+	var hint = LocationTasks.service_mark_hint(service_code()) if is_service() else ""
+	mark.visible = hint != ""
+	if !mark.visible:
+		return
+	globals.connecttexttooltip(mark, hint, false, view.get_node("Overlay/TextTooltip"))
 
 
 func summary_income(value):
@@ -179,6 +193,8 @@ func refusal_for(data):
 	#already on it: nothing to do, and nothing worth saying about it either
 	if workers().has(data.char_id):
 		return 'MANSIONVIEW_ERR_VOID'
+	if is_service() and !ResourceScripts.game_world.service_takes_race(service_code(), view.get_character(data.char_id)):
+		return 'MANSIONVIEW_ERR_SERVICERACE'
 	return ''
 
 
@@ -241,15 +257,26 @@ func rules_rebuild():
 	$Rules/Title.text = who.get_short_name()
 	input_handler.ClearContainer($Rules/Scroll/Content/Rules)
 	for rule in NON_SEX:
+		if !settlement_allows(rule):
+			continue
 		add_rule(who, rule, false)
 	for rule in SEXUAL:
-		if !offers_rule(who, rule):
+		if !offers_rule(who, rule) or !settlement_allows(rule):
 			continue
 		add_rule(who, rule, true)
 	for rule in SEXES:
 		add_rule(who, rule, false)
 	build_boosters(who)
 	update_summary(who)
+
+
+#The settlement this service is sold in, and the acts its clients will not buy at all.
+func service_code():
+	return LocationTasks.task_location(entry.id) if entry != null else LocationTasks.MANSION_CODE
+
+
+func settlement_allows(rule):
+	return ResourceScripts.game_world.service_allows_rule(service_code(), rule)
 
 
 #The acts this person is not asked about at all: nothing to buy them with, or nothing to do
@@ -279,7 +306,11 @@ func add_rule(who, rule, sexual):
 	text += "\n" + tr("BROTHELMINCONSENT") % tr(variables.consent_dict[
 		tasks.gold_tasks_data[rule].min_consent])
 	#refusals first: somebody who will not do it at all is not asked to
-	if who.has_status('no_sex'):
+	if !who.xp_module.service_rule_offered(rule):
+		button.disabled = true
+		button.pressed = false
+		text += "\n" + tr("BROTHELBLOCKEDBYGEAR")
+	elif who.has_status('no_sex'):
 		button.disabled = true
 		text = "[name] " + tr("REFUSE_TO_WHORE_LABEL")
 	elif who.has_status('no_whoring'):

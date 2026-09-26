@@ -148,7 +148,6 @@ func _ready():
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/Resources/SelectWorkers.text = tr("SELECT_WORKERS_LABEL")
-	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	return_all_btn.connect("pressed", self, "return_all_to_mansion")
 	$JournalButton.connect("pressed", self, "open_journal")
 	cast_panel.connect("set_entity_use", self, "start_use_state")
@@ -295,13 +294,33 @@ func build_location_description():
 	text += " - "
 	
 	text += tr("DUNGEONLEVEL") + ": " + str(active_location.current_level + 1)
-	if active_location.completed:
+	if active_location.get('cleared', false):
+		text += " - {color=aqua|" + tr("LOC_ABANDONED" if active_location.get('abandoned', false) \
+			else "LOC_CLEARED") + "}"
+	elif active_location.completed:
 		text += " - {color=aqua|" + tr("LOC_COMPLETE") + "}"
 	map_panel.get_node('RichTextLabel').bbcode_text = (
 		'[center]'
 		+ globals.TextEncoder(text)
 		+ "[/center]"
 	)
+	update_cleared_badge()
+
+
+#A bbcode segment cannot carry a tooltip of its own, so the explanation hangs on the badge beside
+#the header - and on the header itself, which is a node.
+func update_cleared_badge():
+	var cleared = active_location.get('cleared', false)
+	var nodes = [map_panel.get_node_or_null('cleared'), map_panel.get_node('RichTextLabel')]
+	for node in nodes:
+		if node == null:
+			continue
+		if node.name == 'cleared':
+			node.visible = cleared
+		if cleared:
+			globals.connecttexttooltip(node, globals.get_location_cleared_tooltip(active_location))
+		else:
+			globals.disconnect_text_tooltip(node)
 
 
 func slave_position_selected(pos, character):
@@ -564,34 +583,7 @@ func StartCombat(data):
 # 			anim_scene.queue_free()
 
 
-var action_type
 var active_skill
-
-
-func clear_dungeon():
-	input_handler.get_spec_node(
-		input_handler.NODE_YESNOPANEL,
-		[
-			self,
-			'clear_dungeon_confirm',
-			tr("FORGETLOCATIONQUESTION")
-		]
-	)
-
-func forget_location():
-	input_handler.get_spec_node(
-		input_handler.NODE_YESNOPANEL,
-		[
-			self,
-			'clear_dungeon_confirm',
-			tr("FORGETLOCATIONQUESTION")
-		]
-	)
-
-
-func clear_dungeon_confirm():
-	globals.remove_location(active_location.id)
-	action_type = 'location_finish'
 
 
 func build_location_group():
@@ -961,11 +953,12 @@ func build_level():
 	yield(get_tree(), 'idle_frame')
 #	scout_room(data.first_room, get_scouting_range(), true)
 	update_map()
-	build_location_description()
 	var tooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP)
 	globals.disconnect_text_tooltip(tooltip.parentnode)
 #	tooltip.turnoff()
 	tooltip.hide()
+	#after the blanket disconnect above, or the header would lose the tooltip it just got
+	build_location_description()
 
 
 func update_map():
@@ -1132,6 +1125,9 @@ func move_to_room(room_id = null):
 		build_location_description()
 		globals.start_fixed_event('event_dungeon_complete_loot_' + active_location.difficulty)
 		globals.check_events('complete_location')
+		#a story dungeon is declared done with by its own quest, never by the boss alone
+		if !active_location.tags.has('quest') and !active_location.tags.has('infinite'):
+			globals.declare_location_cleared(active_location.id)
 		input_handler.achievements.try_add_dungeon_achimnt(active_location.code)
 		#fame
 		var char_group = active_location.group.values()

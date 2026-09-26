@@ -44,7 +44,6 @@ func _ready():
 #	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
-	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	return_all_btn.connect("pressed", self, "return_all_to_mansion")
 	$TestButton.connect("pressed", self, "test")
 	$TestButton.visible = gui_controller.mansion.in_test_mode
@@ -169,7 +168,6 @@ func open_location(data):
 #	nav = $LocationGui/NavigationModule
 	selected_location = data.id
 	var gatherable_resources
-	$LocationGui/Resources/Forget.visible = false
 	gui_controller.clock.hide()
 	if data.has('gather_resources'):
 		gatherable_resources = data.gather_resources
@@ -203,15 +201,10 @@ func open_location(data):
 		open_location_actions()
 	build_location_description()
 #	if data.type in ["quest_location", "encounter"]:
-	if input_handler.active_area.questlocations.has(selected_location):#or active_area.encounters.has(selected_location):
-		$LocationGui/Resources/Forget.visible = false
-#		$LocationGui/Resources/SelectWorkers.visible = false
-#		$LocationGui/Resources/Label.visible = false
-	else:
+	if !input_handler.active_area.questlocations.has(selected_location):#or active_area.encounters.has(selected_location):
 		$LocationGui/Resources/Label.visible = true
 	if data.has("locked"):
 		if data.locked:
-			$LocationGui/Resources/Forget.visible = false
 			$LocationGui/Resources/SelectWorkers.visible = false
 			$LocationGui/Resources/Label.visible = true
 	gui_controller.nav_panel.build_accessible_locations()
@@ -228,11 +221,34 @@ func build_location_description():
 			pass
 		'quest_location':
 			text = tr(active_location.name) #+ "\n" + active_location.descript
+	if active_location.get('cleared', false):
+		if text != '':
+			text += " - "
+		text += "{color=aqua|" + tr("LOC_ABANDONED" if active_location.get('abandoned', false) \
+			else "LOC_CLEARED") + "}"
 	$LocationGui/DungeonInfo/RichTextLabel.bbcode_text = (
 		'[center]'
 		+ globals.TextEncoder(text)
 		+ "[/center]"
 	)
+	update_cleared_badge()
+
+
+#A bbcode segment cannot carry a tooltip of its own, so the explanation hangs on the badge beside
+#the header - and on the header itself, which is a node.
+func update_cleared_badge():
+	var cleared = active_location.get('cleared', false)
+	var nodes = [$LocationGui/DungeonInfo.get_node_or_null('cleared'),
+		$LocationGui/DungeonInfo/RichTextLabel]
+	for node in nodes:
+		if node == null:
+			continue
+		if node.name == 'cleared':
+			node.visible = cleared
+		if cleared:
+			globals.connecttexttooltip(node, globals.get_location_cleared_tooltip(active_location))
+		else:
+			globals.disconnect_text_tooltip(node)
 
 
 func slave_position_selected(pos, character):
@@ -456,24 +472,7 @@ func StartCombat():
 	globals.StartCombat()
 
 
-var action_type
 var active_skill
-
-
-func forget_location():
-	input_handler.get_spec_node(
-		input_handler.NODE_YESNOPANEL,
-		[
-			self,
-			'clear_dungeon_confirm',
-			tr("FORGETLOCATIONQUESTION")
-		]
-	)
-
-
-func clear_dungeon_confirm():
-	globals.remove_location(active_location.id)
-	action_type = 'location_finish'
 
 
 func build_location_group():
@@ -775,6 +774,11 @@ func open_location_actions():
 	if active_location == null:
 		return
 	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	#The story is done with a cleared place, and its options outliving it would let the player
+	#play the same scene again - several encounters have options with no requirements at all and
+	#were only ever guarded by the location disappearing on the spot.
+	if active_location.get('cleared', false):
+		return
 	var newbutton
 	var option_list = []
 	if active_location.has("locked"):

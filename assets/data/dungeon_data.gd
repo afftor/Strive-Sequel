@@ -1079,7 +1079,7 @@ var dungeons = {
 		descript = tr("DUNGEON_FIRE_DEPTHS_DESC"),
 		character_data = {
 			chance_mod = 0.8,
-			races = [['Kobold',15], ['Dwarf',14], ['Slime',12], ['Orc',11], ['Gnome',8], ['Demon',8], ['Taurus',7], ['DarkElf',6], ['Dragonkin',6], ['Harpy',5], ['Lamia',5], ['Seraph',3]]
+			races = [['Kobold',15], ['Dwarf',14], ['Orc',11], ['Gnome',8], ['Demon',8], ['Taurus',7], ['DarkElf',6], ['Dragonkin',6], ['Lamia',5], ['Seraph',3]]
 		},
 		purchase_area = 'mountains',
 		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4', 'fire_depths5', 'fire_depths6', 'fire_depths7', 'fire_depths8'],
@@ -2198,6 +2198,9 @@ var dungeons = {
 		travel_time = [1,1], #[3,3],
 		events = [],
 		tags = ['quest'],
+		#Xari's hut is a standing place in the world: six options across four questlines from act
+		#1 to act 4 are hosted here. It is never declared cleared.
+		never_clear = true,
 	},
 	quest_tax_settlement = {
 		code = 'quest_tax_settlement',
@@ -2821,6 +2824,9 @@ var dungeons = {
 		bgm = "dungeon",
 		purchase_price = 0,
 		events = [],
+		#The catacombs are a place the story keeps coming back to - every route has its own
+		#return option, and a save that lost them is repaired on load. Never declared cleared.
+		never_clear = true,
 		options = [
 			{
 				text = "ACT4_QUEST_CATACOMB_OPTION_ENTER",

@@ -1617,6 +1617,10 @@ var data = {
 						stage = "bring_cap"
 					},
 					{
+						code = "remove_quest_location",
+						value = "quest_molten_grounds"
+					},
+					{
 						code = "dialogue_counter",
 						name = "kuros_questions",
 						op = "+"
@@ -1754,6 +1758,10 @@ var data = {
 						code = "progress_quest",
 						value = "hara_scales_quest",
 						stage = "bring_cap"
+					},
+					{
+						code = "remove_quest_location",
+						value = "quest_molten_grounds"
 					},
 					{
 						code = "dialogue_counter",

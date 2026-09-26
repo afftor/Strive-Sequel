@@ -3025,6 +3025,10 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "lilith_patron_quest"
+					},
+					{
+						code = "remove_quest_location",
+						value = "quest_patron_lilia_location"
 					}
 				]
 			}

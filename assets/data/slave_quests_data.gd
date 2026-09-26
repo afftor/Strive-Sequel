@@ -100,11 +100,11 @@ var faction_dynamic_data_template = {
 #Lowest first. xp and sales are what it takes to leave a rank; *_slots are the open quests per kind;
 #factor_upgrade_cap is the highest factor level the Upgrades tab sells (0 = none).
 var ranks = [
-	{code = 'D', basic_slots = 3, advanced_slots = 1, weights = {easy = 100, medium = 0, hard = 0}, sales = 5, xp = 300, factor_upgrade_cap = 0},
-	{code = 'C', basic_slots = 3, advanced_slots = 2, weights = {easy = 70, medium = 30, hard = 0}, sales = 10, xp = 400, factor_upgrade_cap = 3},
-	{code = 'B', basic_slots = 4, advanced_slots = 3, weights = {easy = 40, medium = 40, hard = 20}, sales = 15, xp = 600, factor_upgrade_cap = 4},
-	{code = 'A', basic_slots = 5, advanced_slots = 3, weights = {easy = 10, medium = 60, hard = 30}, sales = 25, xp = 800, factor_upgrade_cap = 5},
-	{code = 'S', basic_slots = 6, advanced_slots = 4, weights = {easy = 0, medium = 25, hard = 75}, sales = 0, xp = 0, factor_upgrade_cap = 6},
+	{code = 'D', basic_slots = 2, advanced_slots = 1, weights = {easy = 100, medium = 0, hard = 0}, sales = 5, xp = 300, factor_upgrade_cap = 0},
+	{code = 'C', basic_slots = 2, advanced_slots = 2, weights = {easy = 70, medium = 30, hard = 0}, sales = 10, xp = 400, factor_upgrade_cap = 3},
+	{code = 'B', basic_slots = 2, advanced_slots = 3, weights = {easy = 40, medium = 40, hard = 20}, sales = 15, xp = 600, factor_upgrade_cap = 4},
+	{code = 'A', basic_slots = 2, advanced_slots = 3, weights = {easy = 10, medium = 60, hard = 30}, sales = 25, xp = 800, factor_upgrade_cap = 5},
+	{code = 'S', basic_slots = 2, advanced_slots = 4, weights = {easy = 0, medium = 25, hard = 75}, sales = 0, xp = 0, factor_upgrade_cap = 6},
 ]
 
 #days a new quest stays open, rolled per quest

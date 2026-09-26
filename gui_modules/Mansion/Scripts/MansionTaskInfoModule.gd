@@ -130,14 +130,16 @@ func get_turn_animation_targets():
 	return targets
 
 func show_resources_info():
-	#service
-	if ResourceScripts.game_res.tasks_progresses.has('service'):
-		var progress_data = ResourceScripts.game_res.tasks_progresses.service
+	#service - one task per settlement that buys it
+	for service_id in ResourceScripts.game_res.active_tasks.service:
+		if !ResourceScripts.game_res.tasks_progresses.has(service_id):
+			continue
+		var progress_data = ResourceScripts.game_res.tasks_progresses[service_id]
 		for worker in progress_data.workers.duplicate():
 			if !ResourceScripts.game_party.characters.has(worker):
 				progress_data.workers.erase(worker)
 		if !progress_data.workers.empty():
-			var newtask = _create_task_node("service")
+			var newtask = _create_task_node(service_id)
 			var text = tr("TASKINFOWORKERS") + "\n"
 			var value = 0.0
 			for worker in progress_data.workers:

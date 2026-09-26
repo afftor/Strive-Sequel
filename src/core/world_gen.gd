@@ -353,7 +353,9 @@ func make_location(code, area):
 #	code = 'dungeon_bandit_fort'
 	var location = DungeonData.dungeons[code].duplicate(true)
 	location.stamina = 100
-	location.active = true
+	location.cleared = false
+	location.abandoned = false
+	location.removal_hours = 0
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
 		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
@@ -713,10 +715,26 @@ func _apply_requirement_items_to_name(quest_data, base_name):
 
 
 func make_quest_location(code):
-	if globals.valuecheck({type = 'location_exists', location = code}): 
-		return
+	var captives = []
+	var old = get_location_from_code(code)
+	if old != null:
+		#a place the story is not done with stays as it is, as it always has
+		if !old.get('cleared', false):
+			return
+		#one waiting to be removed is rebuilt instead, which is what the story used to get back
+		#when removal was instant - unless the player is looking at it, and its data cannot be
+		#swapped under an open screen
+		if globals.is_location_on_screen(code):
+			ResourceScripts.game_world.revive_location(old)
+			globals.refresh_location_status_ui(old)
+			return
+		captives = old.get('captured_characters', []).duplicate()
+		old.captured_characters = []
+		globals.remove_location(code, true)
 	var data = DungeonData.dungeons[code]
 	var locationdata = make_location(code, data.area)
+	if !captives.empty():
+		locationdata.captured_characters = captives
 	locationdata.id = code
 	locationdata.tags.push_back('quest')
 	locationdata.travel_time = max(1, globals.rng.randi_range(data.travel_time[0], data.travel_time[1]))#round(rand_range(data.travel_time[0], data.travel_time[1]))

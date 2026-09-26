@@ -149,15 +149,24 @@ func set_sky_pos():
 	var backdrop = mansion_backdrop()
 	if backdrop != null:
 		backdrop.set_hour(ResourceScripts.game_globals.hour)
+	var rooms = mansion_rooms()
+	if rooms != null and rooms.has_method('apply_weather'):
+		rooms.apply_weather()
 
 
 #The picture the mansion's floorplan stands on, which keeps the hour as well - its colours and its
 #lanterns, see mansion_backdrop.gd - or null when there is no mansion on screen or no picture in it.
-func mansion_backdrop():
+#The mansion floorplan screen, or null when there is none on screen.
+func mansion_rooms():
 	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
 		return null
 	var rooms = gui_controller.mansion.get('RoomsModule')
-	if rooms == null or !is_instance_valid(rooms):
+	return rooms if rooms != null and is_instance_valid(rooms) else null
+
+
+func mansion_backdrop():
+	var rooms = mansion_rooms()
+	if rooms == null:
 		return null
 	var grid = rooms.get('grid')
 	if grid == null or !is_instance_valid(grid):

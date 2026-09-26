@@ -30,6 +30,11 @@ const CELL_GAP = 6
 const TITLE_HEIGHT = 30
 #past this the strip scrolls rather than growing further down the screen
 const MAX_ROWS = 3
+#The tabs stand on the panel's top edge: the work and beds pair at the left end of that band, the row of
+#places (mansion_view.rebuild_place_tabs) taking the rest of the width when it is the one shown.
+const TAB_BAND_LEFT = 495
+const TAB_BAND_TOP = -10
+const TAB_BAND_HEIGHT = 36
 
 
 #How wide the strip is decides how many portraits fit across it, and that decides how many
@@ -40,6 +45,9 @@ const MAX_ROWS = 3
 #them itself: the screen used to stretch the one Scroll over everything below the title, which
 #is exactly the space the second strip needs.
 func apply_layout(width):
+	var tabs = get_node_or_null("PlaceTabs")
+	if tabs != null:
+		place(tabs, Rect2(TAB_BAND_LEFT, TAB_BAND_TOP, max(100, width - TAB_BAND_LEFT - 10), TAB_BAND_HEIGHT))
 	var step = COMPACT_CELL.x + CELL_GAP
 	var columns = int(max(1, floor((width - 20 + CELL_GAP) / step)))
 	var inner = max(10, width - 20)

@@ -1827,6 +1827,9 @@ func _get_card_work_icon(person, output):
 		return output.texture
 	if person.is_on_quest() or person.get_work() == "disabled":
 		return TEX_WORK_QUEST
+	#service is a task per settlement now, so the work code carries the place with it
+	if ResourceScripts.game_res.is_service_task(person.get_work()):
+		return TEX_WORK_SERVICE
 	match person.get_work():
 		"", "rest":
 			return TEX_WORK_REST
@@ -1834,8 +1837,6 @@ func _get_card_work_icon(person, output):
 			return TEX_TRAVEL_SMALL
 		"learning":
 			return TEX_WORK_TRAINING
-		"service":
-			return TEX_WORK_SERVICE
 		"crafting":
 			return TEX_WORK_CRAFT
 	var task = person.find_worktask()
@@ -2985,11 +2986,16 @@ func update_button(newbutton, t_mode = mode):
 	#services
 	for rl in ['petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_brothel_rule(rl)
+		#nobody here buys it, or their own gear is in the way
+		newbutton.get_node('rule_' + rl).disabled = !person.xp_module.service_rule_offered(rl)
 		if person.is_master() == false:
 			if !person.has_status(tasks.gold_tasks_data[rl].req_training):
 				if person.get_stat('slave_class') == 'slave':
 					newbutton.get_node('rule_' + rl).disabled = true
-	for rl in ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa']:
+	for rl in ['waitress', 'hostess', 'dancer', 'stripper']:
+		newbutton.get_node('rule_' + rl).pressed = person.check_brothel_rule(rl)
+		newbutton.get_node('rule_' + rl).disabled = !person.xp_module.service_rule_offered(rl)
+	for rl in ['males', 'females', 'futa']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_brothel_rule(rl)
 	#The card and legacy row trees are cached; only the selected presentation is shown.
 	for nd in newbutton.get_children():

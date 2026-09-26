@@ -4,6 +4,7 @@ const DOLL_COLORS = preload("res://Character_generator/Doll2Spine/universal/doll
 const DOLL_SOURCE = preload("res://Character_generator/Doll2Spine/doll2_source.gd")
 const DOLL_LIST = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
 const LAYOUT = preload("res://gui_modules/CharacterCreation/creation_layout.gd")
+const EXPANDED = preload("res://gui_modules/Mansion/Scripts/MansionSlaveExpandedDetails.gd")
 const DOLL_CATALOGUE = preload("res://Character_generator/Doll2Spine/doll2_catalogue.gd")
 const DOLL_MAP = preload("res://Character_generator/Doll2Spine/universal/doll_character_map.gd")
 
@@ -1803,6 +1804,7 @@ func build_factor_row_value(node, stat, val):
 	else:
 		label.text = str(value)
 	label.set('custom_colors/font_color', Color(variables.hexcolordict['factor' + str(step)]))
+	EXPANDED.setup_factor_glow(node.get_node('Glow'), stat, step)
 
 	set_factor_arrows(node, stat, unassigned_points())
 	if !node.has_meta('signals_built'):

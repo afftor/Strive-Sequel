@@ -135,6 +135,7 @@ func fill_factors():
 		else:
 			number.text = str(int(floor(person.get_stat(code))))
 			number.set("custom_colors/font_color", colour)
+		EXPANDED.setup_factor_glow(row.get_node("Glow"), code, step)
 		globals.connecttexttooltip(row, stat_tooltip(code))
 
 

@@ -84,6 +84,7 @@ onready var node_data = {
 	input_handler.NODE_SKILLTOOLTIP : {name = 'skilltooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/SkillToolTip.tscn")},
 	input_handler.NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ItemTooltipV3.tscn")},
 	input_handler.NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/TextTooltipPanel.tscn")},
+	input_handler.NODE_RACETOOLTIP : {name = 'racetooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/RaceTooltipPanel.tscn")},
 	input_handler.NODE_GALLERYTOOLTIP : {name = 'gallerytooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/GalleryTooltip.tscn")},
 	input_handler.NODE_CLASSTOOLTIP : {name = 'classtooltip', mode = 'scene', scene = preload("res://gui_modules/classtooltip.tscn")},
 	input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open'},

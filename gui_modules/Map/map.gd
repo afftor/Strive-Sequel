@@ -1,5 +1,7 @@
 extends CanvasItem
 
+const UNKNOWN_RACE_ICON = "res://assets/Textures_v2/icon_question_small.png"
+
 #map inputs
 var map_zoom_max = 1.5
 var map_zoom_min = 0.9
@@ -58,7 +60,6 @@ var can_teleport = false
 onready var info_btn_teleport = $InfoPanel/buttons/Teleport
 onready var info_btn_separator = $InfoPanel/buttons/separator
 onready var info_btn_send = $InfoPanel/buttons/Sendbutton
-onready var info_btn_forget = $InfoPanel/buttons/Forget
 onready var info_btns = $InfoPanel/buttons
 onready var info_teleport_menu = $InfoPanel/teleport_menu
 
@@ -257,7 +258,6 @@ func _ready():#2add button connections
 	$InfoPanel/Label.text = tr("INFORMATION_LABEL")
 	$InfoPanel/buttons/Sendbutton/Label.text = tr("CONFIRM")
 	$InfoPanel/buttons/Teleport/Label.text = tr("SKILLTELEPORT")
-	$InfoPanel/buttons/Forget/Label.text = tr("FORGET_LABEL")
 	$InfoPanel/VBoxContainer/Label2.text = tr("GALLERYCHAR")
 	$InfoPanel/VBoxContainer/Label3.text = tr("UPGRADERES")
 	$FromLocList/Label.text = tr("SELECT_CHAR_LABEL")
@@ -273,7 +273,6 @@ func _ready():#2add button connections
 #	$zoom.connect("value_changed", self, 'zoom_change')
 #	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
 #	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
-	info_btn_forget.connect("pressed", self, "forget_location")
 #	match_state()
 	input_handler.connect("mass_select_in_act", self, "off_mass_select_effect")
 	input_handler.connect("clear_cashed", self, "clear_cached_lists")
@@ -324,36 +323,6 @@ func tut_get_send_confirm():
 	return info_btn_send
 func tut_get_back_btn():
 	return $Back
-
-func forget_location():
-	input_handler.get_spec_node(
-		input_handler.NODE_YESNOPANEL,
-		[
-			self,
-			'clear_dungeon_confirm',
-			tr("FORGETLOCATIONQUESTION")
-		]
-	)
-
-
-func clear_dungeon_confirm():
-	if to_loc == null:
-		return
-	globals.remove_location(to_loc)
-	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
-	selected_loc = null
-	selected_chars.clear()
-	selected_groups.clear()
-	build_locations_list()
-	reset_from()
-	reset_to()
-	unselect_location()
-	build_from_locations()
-	update_location_chars()
-	build_to_locations()
-	match_state()
-	build_info()
-
 
 func set_return_context(screen, nav_module, location):
 	return_screen = screen
@@ -471,6 +440,8 @@ func build_locations_list():
 			temp.icon = null
 		if cdata[id].has('captured'): temp.captured = cdata[id].captured
 		if cdata[id].has('locked'): temp.locked = cdata[id].locked
+		if cdata[id].get('cleared', false):
+			temp.cleared = true
 		if temp.area == 'beastkin_tribe':
 			temp.area = 'forests'
 		if lands_count.has(temp.area): lands_count[temp.area] += 1
@@ -512,7 +483,7 @@ func build_locations_list():
 func build_lists_signature():
 	var parts = PoolStringArray()
 	for loc_data in sorted_locations:
-		parts.append("L:%s:%s:%s:%s:%s:%s:%s" % [
+		parts.append("L:%s:%s:%s:%s:%s:%s:%s:%s" % [
 			str(loc_data.get('id', '')),
 			str(loc_data.get('area', '')),
 			str(loc_data.get('type', '')),
@@ -520,6 +491,7 @@ func build_lists_signature():
 			str(loc_data.get('captured', false)),
 			str(loc_data.get('locked', false)),
 			str(loc_data.get('icon', '')),
+			str(loc_data.get('cleared', false)),
 		])
 		for ch_id in loc_data.heroes:
 			var person = characters_pool.get_char_by_id(ch_id)
@@ -585,10 +557,8 @@ func build_info(loc = null):
 	var adata = ResourceScripts.game_world.areas[tdata.area]
 	
 	var location_selected = get_location_data(loc)
-	info_btn_forget.visible = (!location.tags.has('quest') and location_selected.type in ['dungeon', 'encounter'])
-#	if to_loc != null:
-#		info_btn_forget.visible = false
-	
+	build_cleared_info(location)
+
 	#build info
 	$InfoPanel/Label.text = tr(location.name)
 	var icon = null
@@ -681,6 +651,7 @@ func build_info(loc = null):
 				newbutton.set_meta("exploration", true)
 				newbutton.get_node("amount").text = ""
 				globals.connecttexttooltip(newbutton, tr('TOOLTIPHIDDENRESOURCE'))
+	build_races(location)
 	#build chars
 	input_handler.ClearContainer($InfoPanel/VBoxContainer/CharScroll/Characters)
 	var f = false
@@ -719,19 +690,60 @@ func build_info(loc = null):
 		$InfoPanel/time.visible = false
 
 
+#What the info panel says about a place that is waiting to be removed: the label, how far the
+#wait has gone, and the tooltip explaining both.
+func build_cleared_info(location):
+	var node = $InfoPanel/InfoFrame.get_node_or_null("cleared")
+	if node == null:
+		return
+	var state = ResourceScripts.game_world.get_location_removal_state(location)
+	node.visible = state.cleared
+	if !state.cleared:
+		globals.disconnect_text_tooltip(node)
+		return
+	node.get_node("Label").text = tr("LOC_ABANDONED") if state.abandoned else tr("LOC_CLEARED")
+	var bar = node.get_node("bar")
+	bar.max_value = max(state.limit, 1)
+	bar.value = state.elapsed
+	globals.connecttexttooltip(node, globals.get_location_cleared_tooltip(location))
+
+
+#The races this location can yield, in its own order. A race the player has never taken here stays a
+#question mark. The row lives in the scene beside the resources; a scene without it simply shows nothing.
+func build_races(location):
+	if !has_node("InfoPanel/VBoxContainer/RaceScroll/Races"):
+		return
+	var row = $InfoPanel/VBoxContainer/RaceScroll/Races
+	input_handler.ClearContainer(row)
+	var slots = globals.location_race_slots(location)
+	$InfoPanel/VBoxContainer/RaceScroll.visible = !slots.empty()
+	if has_node("InfoPanel/VBoxContainer/Label4"):
+		$InfoPanel/VBoxContainer/Label4.text = tr("MAPRACES")
+		$InfoPanel/VBoxContainer/Label4.visible = !slots.empty()
+	for slot in slots:
+		var newbutton = input_handler.DuplicateContainerTemplate(row)
+		var known = slot.known
+		newbutton.get_node("Icon").texture = races.racelist[slot.race].icon if known else load(UNKNOWN_RACE_ICON)
+		newbutton.get_node("Icon").modulate = Color(1, 1, 1, 1) if known else Color(1, 1, 1, 0.5)
+		globals.connecttexttooltip(newbutton,
+			races.racelist[slot.race].name if known else tr("MAPRACEUNKNOWN"))
+
+
 func make_panel_for_location(panel, loc):
 	if loc.id == 'travel':
 		set_loc_text(panel, tr("CHARS_ON_ROAD_LABEL"))
 	else:
 		var data = ResourceScripts.world_gen.get_location_from_code(loc.id)
 		var text = data.name
+		var cleared = loc.get('cleared', false)
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
-		if loc.quest:
+		if loc.quest and !cleared:
 			text = "Q:" + text
 			panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
-		if  data.has('active') and data.active == false:
-			text += "(!)"
 		set_loc_text(panel, text)
+		#the tick lives in the row template, and the logic works without it
+		if panel.has_node("cleared"):
+			panel.get_node("cleared").visible = cleared
 #		panel.get_node("Label").text = text
 		if loc.has('captured'):
 			if loc.captured:
@@ -756,6 +768,9 @@ func make_panel_for_location(panel, loc):
 				icon = images.get_icon('travel_event')
 		if panel.has_node('icon'):
 			panel.get_node("icon").texture = icon
+		#the races this dungeon can yield, the ones never taken here kept behind a question mark
+		if loc.type == 'dungeon':
+			globals.connectracetooltip(panel, data)
 
 
 func make_panel_for_character(panel, ch_id):

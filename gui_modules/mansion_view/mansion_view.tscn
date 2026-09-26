@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -37,6 +37,8 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/glows_over_rooms.gd" type="Script" id=39]
 [ext_resource path="res://gui_modules/mansion_view/body_rites_panel.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/fog_over_rooms.gd" type="Script" id=42]
+[ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.tscn" type="PackedScene" id=44]
+[ext_resource path="res://assets/images/iconstraits/bed.png" type="Texture" id=45]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/lamps_over_rooms.gd" type="Script" id=43]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -477,6 +479,10 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 39 )
 
+[node name="Rain" parent="GridViewport" instance=ExtResource( 44 )]
+fit_to_parent = true
+mask_source = NodePath("../FloorGrid/Backdrops")
+
 [node name="RestPanel" type="Panel" parent="."]
 margin_left = 40.0
 margin_top = 16.0
@@ -532,6 +538,29 @@ custom_styles/pressed = SubResource( 16 )
 custom_styles/normal = SubResource( 17 )
 toggle_mode = true
 text = "Beds"
+
+[node name="PlaceTabs" type="ScrollContainer" parent="RestPanel"]
+visible = false
+scroll_vertical_enabled = false
+
+[node name="List" type="HBoxContainer" parent="RestPanel/PlaceTabs"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+
+[node name="Button" type="Button" parent="RestPanel/PlaceTabs/List"]
+visible = false
+rect_min_size = Vector2( 0, 24 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 13 )
+custom_colors/font_color = Color( 0.713726, 0.647059, 0.513726, 1 )
+custom_colors/font_color_hover = Color( 1, 0.917647, 0.65098, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 27 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+toggle_mode = true
 
 [node name="Title" type="Label" parent="RestPanel"]
 margin_left = 12.0
@@ -708,27 +737,6 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="PlaceBar" type="Control" parent="."]
-margin_left = 40.0
-margin_top = 144.0
-margin_right = 1880.0
-margin_bottom = 190.0
-mouse_filter = 2
-
-[node name="List" type="HBoxContainer" parent="PlaceBar"]
-margin_right = 1100.0
-margin_bottom = 40.0
-custom_constants/separation = 8
-
-[node name="Button" type="Button" parent="PlaceBar/List"]
-visible = false
-margin_right = 170.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 170, 40 )
-custom_fonts/font = ExtResource( 9 )
-toggle_mode = true
-text = "Place"
-
 [node name="TopBar" type="Control" parent="."]
 margin_left = 40.0
 margin_top = 196.0
@@ -893,7 +901,6 @@ custom_fonts/font = ExtResource( 9 )
 text = "+"
 
 [node name="LocationPanel" type="Control" parent="."]
-visible = false
 margin_left = 40.0
 margin_top = 256.0
 margin_right = 1880.0
@@ -933,6 +940,16 @@ margin_bottom = 44.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 21 )
 text = "Location"
+
+[node name="ServiceMark" type="TextureRect" parent="LocationPanel"]
+visible = false
+margin_left = 392.729
+margin_top = 1.89783
+margin_right = 457.729
+margin_bottom = 64.8978
+texture = ExtResource( 45 )
+expand = true
+stretch_mode = 6
 
 [node name="Empty" type="Label" parent="LocationPanel"]
 visible = false
@@ -1022,7 +1039,6 @@ percent_visible = false
 [node name="Label" type="Label" parent="LocationPanel/RoomsScroll/Rooms/Button/PoolBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
@@ -1227,7 +1243,6 @@ percent_visible = false
 [node name="Label" type="Label" parent="Overlay/RoomCard/Body/Columns/LeftScroll/LeftColumn/PreparationBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
@@ -2696,7 +2711,6 @@ percent_visible = false
 [node name="Label" type="Label" parent="Overlay/ServicePanel/PoolBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 custom_fonts/font = ExtResource( 10 )
 align = 1
 valign = 1
@@ -2709,6 +2723,17 @@ margin_right = 564.0
 margin_bottom = 96.0
 mouse_default_cursor_shape = 2
 texture = ExtResource( 33 )
+expand = true
+stretch_mode = 6
+
+[node name="Marks" type="TextureRect" parent="Overlay/ServicePanel"]
+visible = false
+margin_left = 576.0
+margin_top = 64.0
+margin_right = 608.0
+margin_bottom = 96.0
+mouse_filter = 0
+texture = ExtResource( 45 )
 expand = true
 stretch_mode = 6
 

@@ -25,6 +25,11 @@ var dungeon_events_assigned = {}
 #the first time it is asked for, which is also what gives an older save its pool. See pay_service_gold().
 var service_gold = {}
 
+#What each settlement's clients are after this week, by location code: a list of {type, values}.
+#Rolled with the purse, and created the first time it is asked for, which is what gives an older
+#save its bonuses. See roll_service_bonuses().
+var service_bonuses = {}
+
 var serial_quest_items#only for serialize
 
 func _ready():
@@ -71,6 +76,7 @@ func fix_serialization():
 		for j in i.locations.values() + i.questlocations.values():
 			if j.type == 'dungeon' and !j.has('stamina'):
 				j.stamina = 100
+			fix_location_clear_state(j)
 			if j.has('stagedevents'):
 				for cat in j.stagedevents:
 					var tmp = {}
@@ -116,6 +122,8 @@ func fix_serialization():
 	serial_quest_items = null
 	if service_gold == null:
 		service_gold = {}
+	if service_bonuses == null:
+		service_bonuses = {}
 	for pool in service_gold.values():
 		pool.current = int(pool.get('current', 0))
 		pool.max = int(pool.get('max', 0))
@@ -138,6 +146,22 @@ func fix_serialization():
 			globals.common_effects([
 				{code = "remove_quest_location", value = "quest_dungeon_kuro3"},
 			])
+
+
+#The 'active = false' flag this replaces meant the same thing: waiting to be removed. Dungeons
+#whose boss is already dead are cleared here too - the Forget button they used to rely on is
+#gone, so nothing else would ever free their slot in the region.
+func fix_location_clear_state(location):
+	if location.has('active'):
+		if location.active == false and can_clear_location(location):
+			location.cleared = true
+		location.erase('active')
+	if !location.get('cleared', false) and location.type == 'dungeon' \
+			and location.get('completed', false) \
+			and !location.get('tags', []).has('quest') and can_clear_location(location):
+		location.cleared = true
+	if location.has('removal_hours'):
+		location.removal_hours = int(location.removal_hours)
 
 
 func fix_broken_item_links(): #remove broken quests for safety reasons
@@ -255,18 +279,6 @@ func advance_day():
 	ResourceScripts.slave_quests.tick_quests()
 	for i in areas.values():
 		update_guilds(i)
-		var tmp = []
-		for k in i.locations.values() + i.questlocations.values():
-			if k.has('active') and k.active == false:
-				var f = true
-				for ch in ResourceScripts.game_party.characters.values():
-					if ch.check_location(k.id):
-						f = false
-						break
-				if f:
-					tmp.push_back(k.id)
-		for id in tmp:
-			remove_location(id)
 		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 1 or variables.shop_restock_days == 1:
 			ResourceScripts.world_gen.update_area_shop(i)
 			for k in i.locations.values():
@@ -311,6 +323,124 @@ func days_until_service_gold_refill():
 	return week - (int(ResourceScripts.game_globals.date) - 1) % week
 
 
+#### what this week's clients are after ####
+
+func get_service_bonuses(code):
+	if !variables.service_gold_limits.has(code):
+		return []
+	if !service_bonuses.has(code):
+		_roll_settlement_bonuses(code)
+	return service_bonuses[code]
+
+
+#Every week start, beside the purse refill.
+func roll_service_bonuses():
+	for code in service_bonuses.keys():
+		if !variables.service_gold_limits.has(code):
+			service_bonuses.erase(code)
+	for code in variables.service_gold_limits:
+		_roll_settlement_bonuses(code)
+
+
+func _roll_settlement_bonuses(code):
+	var types = []
+	for type in variables.service_bonus_types:
+		if !_service_bonus_pool(code, type).empty():
+			types.append(type)
+	types.shuffle()
+	var count = min(globals.fastif(randf() < variables.service_bonus_two_chance, 2, 1), types.size())
+	var res = []
+	for i in range(count):
+		res.append(_make_service_bonus(code, types[i]))
+	service_bonuses[code] = res
+
+
+#What a bonus of this kind could ask for here. Empty means this settlement cannot roll that kind.
+func _service_bonus_pool(code, type):
+	var limits = variables.service_settlement_limits.get(code, {})
+	var res = []
+	match type:
+		'race':
+			if limits.get('no_race_bonus', false):
+				return res
+			for race in races.racelist:
+				if limits.has('races') and !limits.races.has(race):
+					continue
+				if races.racelist[race].race_tags.has('monster'):
+					continue
+				res.append(race)
+		'personality':
+			res = variables.personality_array.duplicate()
+		'rule':
+			for rule in variables.brothel_rules:
+				if rule in ['males', 'females', 'futa'] or !service_allows_rule(code, rule):
+					continue
+				res.append(rule)
+		'factor':
+			res = variables.service_bonus_factors.duplicate()
+	return res
+
+
+func _make_service_bonus(code, type):
+	var pool = _service_bonus_pool(code, type)
+	if type == 'race' and !variables.service_settlement_limits.get(code, {}).has('races') \
+			and randf() < variables.service_bonus_monster_chance:
+		return {type = 'race', monster = true, values = races.race_groups.get('monster', []).duplicate()}
+	if type in ['race', 'rule']:
+		return {type = type, values = _pick_several(pool)}
+	return {type = type, values = [input_handler.random_from_array(pool)]}
+
+
+func _pick_several(pool):
+	pool = pool.duplicate()
+	pool.shuffle()
+	var count = min(input_handler.random_from_array(variables.service_bonus_picks), pool.size())
+	return pool.slice(0, count - 1)
+
+
+#What one person's service is worth here this week: 1.0, or more when they fit what the clients want.
+func service_bonus_multiplier(code, character, action):
+	if character == null:
+		return 1.0
+	var hits = 0
+	for bonus in get_service_bonuses(code):
+		if service_bonus_fits(bonus, character, action):
+			hits += 1
+	return 1.0 + float(variables.service_bonus_gold_mult.get(hits, 0.0))
+
+
+func service_bonus_fits(bonus, character, action):
+	match bonus.type:
+		'race':
+			return bonus.values.has(character.get_stat('race'))
+		'personality':
+			return bonus.values.has(character.get_stat('personality'))
+		'rule':
+			return bonus.values.has(action)
+		'factor':
+			return character.get_stat(bonus.values[0]) >= variables.service_bonus_factor_level
+	return false
+
+
+#### what a settlement will not buy, and whom it will not take ####
+
+func service_banned_rules(code):
+	return variables.service_settlement_limits.get(code, {}).get('banned_rules', [])
+
+
+func service_allows_rule(code, rule):
+	return !service_banned_rules(code).has(rule)
+
+
+func service_allowed_races(code):
+	return variables.service_settlement_limits.get(code, {}).get('races', [])
+
+
+func service_takes_race(code, character):
+	var allowed = service_allowed_races(code)
+	return character == null or allowed.empty() or allowed.has(character.get_stat('race'))
+
+
 #What a service payout of `amount` actually pays. The pool covers what it can; the part it cannot
 #is paid at variables.service_gold_exhausted_mult. The payout that empties the pool writes the
 #one log row of the week about it.
@@ -347,6 +477,117 @@ func advance_hour():
 		for room_id in dung_data.rooms:
 			if rooms[room_id].has("intimidate"):
 				rooms[room_id].intimidate = false
+	sweep_cleared_locations()
+
+
+#### cleared locations ####
+
+#A place the story or the last boss is done with. It stays on the map until nobody of the
+#household is there, heading there or walking away from it, and then keeps standing for a day -
+#three, while it still holds unexplored rooms, resources or captives - before it is removed.
+#Nothing is ever taken out from under the player: the timer only runs while the place is empty.
+func can_clear_location(location):
+	if location == null:
+		return false
+	if location.type in ['capital', 'settlement']:
+		return false
+	if location.get('tags', []).has('infinite'):
+		return false
+	#read from the template, so the decision also covers locations already in a save
+	var template = DungeonData.dungeons.get(location.get('code', ''), {})
+	return !template.get('never_clear', false)
+
+
+func is_location_occupied(loc_id):
+	for ch in ResourceScripts.game_party.characters.values():
+		#check_location covers both standing there and being on the road to it
+		if ch.check_location(loc_id) or ch.travel.is_leaving(loc_id):
+			return true
+	return false
+
+
+#What still makes the place worth a visit. Room status is no test here: ladders stay 'scouted'
+#for good, while a fought room is re-typed to 'empty' (ExplorationDungeon.move_to_room).
+func location_has_leftovers(location):
+	for d_id in location.get('dungeon', []):
+		if !dungeons.has(d_id):
+			continue
+		for r_id in dungeons[d_id].rooms:
+			if !rooms.has(r_id):
+				continue
+			var room = rooms[r_id]
+			if room.type in ['combat', 'combat_boss', 'event']:
+				return true
+			for sub in room.get('subrooms', []):
+				if sub != null and sub.get('type', 'empty') != 'empty':
+					return true
+	for amount in location.get('gather_limit_resources', {}).values():
+		if amount > 0:
+			return true
+	if !location.get('captured_characters', []).empty():
+		return true
+	return ResourceScripts.game_res.has_special_tasks_at(location.id)
+
+
+#Everything the map row, the info panel, the list signature and the tooltips say about a cleared
+#location, answered in one place so they cannot disagree. Times are in turns.
+func get_location_removal_state(location):
+	var res = {cleared = false, abandoned = false, occupied = false, leftovers = false,
+		limit = 0, elapsed = 0, left = 0}
+	if location == null or !location.get('cleared', false):
+		return res
+	res.cleared = true
+	res.abandoned = location.get('abandoned', false)
+	res.occupied = is_location_occupied(location.id)
+	res.leftovers = location_has_leftovers(location)
+	var days = variables.location_removal_days_leftovers if res.leftovers \
+		else variables.location_removal_days_empty
+	res.limit = days * variables.HoursPerDay
+	res.elapsed = 0 if res.occupied else int(location.get('removal_hours', 0))
+	res.left = max(0, res.limit - res.elapsed)
+	return res
+
+
+func revive_location(location):
+	if location == null:
+		return
+	location.cleared = false
+	location.abandoned = false
+	location.removal_hours = 0
+
+
+func sweep_cleared_locations():
+	var expired = []
+	for area in areas.values():
+		for location in area.locations.values() + area.questlocations.values():
+			if !location.get('cleared', false):
+				continue
+			if is_location_occupied(location.id):
+				location.removal_hours = 0
+				continue
+			location.removal_hours = int(location.get('removal_hours', 0)) + 1
+			var days = variables.location_removal_days_leftovers if location_has_leftovers(location) \
+				else variables.location_removal_days_empty
+			if location.removal_hours >= days * variables.HoursPerDay:
+				expired.append(location.id)
+	for id in expired:
+		var report = globals.remove_location(id)
+		if report != null:
+			globals.mansion_activity_location_removed(report)
+
+
+func count_active_locations(area):
+	var counter = 0
+	for location in area.locations.values():
+		if !location.get('cleared', false):
+			counter += 1
+	return counter
+
+
+func can_add_location(area):
+	if area == null:
+		return false
+	return count_active_locations(area) < variables.location_cap_per_area
 
 
 func quest_kill_receiver(enemycode):
@@ -517,13 +758,21 @@ func get_worker_count_for_task(worktask):
 
 
 func complete_quest(quest, state = 'failed'):
-	quest.state = state
+	quest.state = state #set first: unquest_location refuses while the quest is still active
 	ResourceScripts.game_res.remove_quest_task(quest.id)
 	for i in quest.requirements:
-		if i.code in ['complete_location','complete_dungeon']:
-			if i.code == 'complete_location':#dungeon should not be removed
-				globals.remove_location(i.location)
-			globals.unquest_location(i.location)
+		if !(i.code in ['complete_location','complete_dungeon']):
+			continue
+		globals.unquest_location(i.location)
+		var location = ResourceScripts.world_gen.get_location_from_code(i.location)
+		if location == null:
+			continue
+		#a threat's place is done with either way; a dungeon only counts as cleared once its
+		#boss is down, and a quest given up on leaves the place behind rather than cleared
+		if state != 'complete':
+			globals.declare_location_cleared(i.location, true)
+		elif i.code == 'complete_location' or location.get('completed', false):
+			globals.declare_location_cleared(i.location)
 
 
 func get_quest_by_id(id):

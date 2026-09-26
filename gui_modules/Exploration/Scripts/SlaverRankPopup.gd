@@ -61,7 +61,7 @@ func show_progress(new_data):
 	if crest is TextureRect:
 		crest.texture = data.get('icon') if data.get('icon') is Texture else null
 		crest.visible = crest.texture != null
-	_put_text("RankLetter", data.get('rank', ''))
+	_set_medal(data.get('rank', ''))
 	_put_text("Gold", "+0")
 	_show("GoldRow", gold > 0)
 	_put_text("Tokens", "+%d" % tokens)
@@ -187,8 +187,15 @@ func _set_shine(position):
 
 func _promote():
 	_sound(SOUND_RANK_UP)
-	_put_text("RankLetter", data.get('new_rank', ''))
+	_set_medal(data.get('new_rank', ''))
 	_put_text("Title", globals._report_text("SQ_POPUP_RANK_UP", [data.get('new_rank', '')]))
+
+
+#the rank's medallion, swapped while the badge is squeezed flat
+func _set_medal(code):
+	var medal = _find("Medal")
+	if medal is TextureRect:
+		medal.texture = ResourceScripts.slave_quests.rank_icon(code)
 
 
 func _sound(sound_name):
