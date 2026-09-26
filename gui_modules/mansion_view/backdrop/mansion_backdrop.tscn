@@ -7,10 +7,10 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/wall_lantern.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/sun_shafts.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/fog.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/images/backgrounds/mansion_manor_walls_f1.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/backgrounds/mansion_manor_walls_f2.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/backgrounds/mansion_manor_rain_mask.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/backgrounds/mansion_manor_upper_rain_mask.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_rain_mask.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_upper_rain_mask.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_walls_f1.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/backgrounds/mansion_manor_walls_f2.png" type="Texture" id=11]
 
 [node name="MansionBackdrop" type="Control"]
 margin_right = 3840.0
@@ -44,7 +44,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 expand = true
 __meta__ = {
 "_edit_lock_": true
@@ -55,7 +55,7 @@ light_mask = 513
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
 
 [node name="Rooms" type="Control" parent="1F"]
 anchor_right = 1.0
@@ -402,7 +402,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 11 )
+texture = ExtResource( 9 )
 expand = true
 __meta__ = {
 "_edit_lock_": true
@@ -413,7 +413,7 @@ light_mask = 1025
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
 
 [node name="Objects" type="Node2D" parent="2F"]
 

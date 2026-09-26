@@ -37,9 +37,9 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/glows_over_rooms.gd" type="Script" id=39]
 [ext_resource path="res://gui_modules/mansion_view/body_rites_panel.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/fog_over_rooms.gd" type="Script" id=42]
+[ext_resource path="res://gui_modules/mansion_view/backdrop/lamps_over_rooms.gd" type="Script" id=43]
 [ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.tscn" type="PackedScene" id=44]
 [ext_resource path="res://assets/images/iconstraits/bed.png" type="Texture" id=45]
-[ext_resource path="res://gui_modules/mansion_view/backdrop/lamps_over_rooms.gd" type="Script" id=43]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.027451, 0.0196078, 0.92 )
