@@ -17,11 +17,14 @@ extends Reference
 #	                 one of each such kind: laying a second floor takes up the first
 #	sheet = ...    - which sheet in ATLASES the rectangle is cut from, 'house' when not said
 #	scale = ...    - how much of its own size the piece stands at in a room, SCALE when not said.
-#	                 The furniture sheet is drawn at the size it is used, so it stands at 1
+#	                 Replacement furniture is scaled to fit its original room footprint.
 
 const ATLASES = {
 	house = "res://assets/images/mansion_rooms/house_layout_atlas.png",
 	furniture = "res://assets/images/mansion_rooms/room_furniture_atlas.png",
+	trash = "res://assets/images/mansion_rooms/room_trashed_atlas.png",
+	dirty_floor = "res://assets/images/mansion_rooms/room_dirty_floor_atlas.png",
+	rug = "res://assets/images/mansion_rooms/rug_brown_gold_atlas.png",
 }
 #the sheet the older pieces were cut from, and what a piece without a sheet of its own means
 const ATLAS = "res://assets/images/mansion_rooms/house_layout_atlas.png"
@@ -35,36 +38,59 @@ const LIST = {
 	cabinet = {code = 'cabinet', kind = 'prop', rect = Rect2(398, 149, 84, 91)},
 	side_table = {code = 'side_table', kind = 'prop', rect = Rect2(501, 147, 37, 93)},
 	chair = {code = 'chair', kind = 'prop', rect = Rect2(259, 278, 42, 123)},
-	rug = {code = 'rug', kind = 'prop', rect = Rect2(2, 249, 236, 224)},
+	rug = {code = 'rug', kind = 'prop', sheet = 'rug', rect = Rect2(0, 0, 236, 224)},
 	chest = {code = 'chest', kind = 'prop', rect = Rect2(330, 425, 60, 47)},
 	book = {code = 'book', kind = 'prop', rect = Rect2(428, 99, 20, 29)},
 	torch_wall_a = {code = 'torch_wall_a', kind = 'prop', rect = Rect2(241, 424, 24, 48)},
 	torch_wall_b = {code = 'torch_wall_b', kind = 'prop', rect = Rect2(272, 424, 24, 48)},
 	torch_small = {code = 'torch_small', kind = 'prop', rect = Rect2(306, 427, 13, 45)},
 
-	#furniture, drawn at the size it stands in a room
-	bath = {code = 'bath', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(100, 158, 163, 89)},
-	bed_plain = {code = 'bed_plain', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(0, 254, 121, 81)},
-	bed_grand = {code = 'bed_grand', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(0, 0, 95, 156)},
-	bunk_bed = {code = 'bunk_bed', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(97, 0, 121, 121)},
-	forge_oven = {code = 'forge_oven', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(272, 0, 85, 116)},
-	altar = {code = 'altar', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(123, 254, 83, 72)},
-	crate = {code = 'crate', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(417, 254, 26, 27)},
-	sack = {code = 'sack', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(388, 254, 27, 29)},
-	partition_wide = {code = 'partition_wide', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(265, 158, 102, 89)},
-	cauldron = {code = 'cauldron', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(403, 0, 65, 94)},
-	partition_tall = {code = 'partition_tall', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(208, 254, 70, 70)},
-	bottle_tall = {code = 'bottle_tall', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(445, 254, 10, 23)},
-	anvil = {code = 'anvil', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(326, 254, 60, 52)},
-	bottle_small = {code = 'bottle_small', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(457, 254, 9, 18)},
-	armour_stand = {code = 'armour_stand', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(220, 0, 50, 117)},
-	flask = {code = 'flask', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(468, 254, 13, 14)},
-	craft_bench = {code = 'craft_bench', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(0, 158, 98, 94)},
-	weapon_rack = {code = 'weapon_rack', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(369, 158, 95, 82)},
-	robe_stand = {code = 'robe_stand', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(359, 0, 42, 105)},
-	brazier = {code = 'brazier', kind = 'prop', sheet = 'furniture', scale = 1.0, rect = Rect2(280, 254, 44, 58)},
+	#Replacement furniture atlas, fitted proportionally into the previous piece sizes.
+	bath = {code = 'bath', kind = 'prop', sheet = 'furniture', scale = 0.83962264, rect = Rect2(333, 15, 185, 106)},
+	bed_plain = {code = 'bed_plain', kind = 'prop', sheet = 'furniture', scale = 0.81208054, rect = Rect2(20, 23, 149, 93)},
+	bed_grand = {code = 'bed_grand', kind = 'prop', sheet = 'furniture', scale = 0.81896552, rect = Rect2(193, 76, 116, 189)},
+	bunk_bed = {code = 'bunk_bed', kind = 'prop', sheet = 'furniture', scale = 0.81208054, rect = Rect2(20, 134, 149, 132)},
+	forge_oven = {code = 'forge_oven', kind = 'prop', sheet = 'furniture', scale = 0.83333333, rect = Rect2(323, 134, 102, 133)},
+	altar = {code = 'altar', kind = 'prop', sheet = 'furniture', scale = 0.75789474, rect = Rect2(441, 172, 101, 95)},
+	crate = {code = 'crate', kind = 'prop', sheet = 'furniture', scale = 0.72972973, rect = Rect2(19, 282, 34, 37)},
+	sack = {code = 'sack', kind = 'prop', sheet = 'furniture', scale = 0.74358974, rect = Rect2(61, 279, 35, 39)},
+	partition_wide = {code = 'partition_wide', kind = 'prop', sheet = 'furniture', scale = 0.80314961, rect = Rect2(122, 282, 127, 107)},
+	cauldron = {code = 'cauldron', kind = 'prop', sheet = 'furniture', scale = 0.74712644, rect = Rect2(265, 275, 87, 114)},
+	partition_tall = {code = 'partition_tall', kind = 'prop', sheet = 'furniture', scale = 0.72164948, rect = Rect2(372, 295, 97, 90)},
+	bottle_tall = {code = 'bottle_tall', kind = 'prop', sheet = 'furniture', scale = 0.76923077, rect = Rect2(487, 293, 13, 28)},
+	anvil = {code = 'anvil', kind = 'prop', sheet = 'furniture', scale = 0.72289157, rect = Rect2(14, 327, 83, 66)},
+	bottle_small = {code = 'bottle_small', kind = 'prop', sheet = 'furniture', scale = 0.69230769, rect = Rect2(487, 327, 13, 24)},
+	armour_stand = {code = 'armour_stand', kind = 'prop', sheet = 'furniture', scale = 0.75757576, rect = Rect2(385, 384, 66, 143)},
+	flask = {code = 'flask', kind = 'prop', sheet = 'furniture', scale = 0.66666667, rect = Rect2(484, 360, 18, 21)},
+	craft_bench = {code = 'craft_bench', kind = 'prop', sheet = 'furniture', scale = 0.75968992, rect = Rect2(15, 410, 129, 118)},
+	weapon_rack = {code = 'weapon_rack', kind = 'prop', sheet = 'furniture', scale = 0.75229358, rect = Rect2(165, 416, 123, 109)},
+	robe_stand = {code = 'robe_stand', kind = 'prop', sheet = 'furniture', scale = 0.70000000, rect = Rect2(474, 396, 60, 132)},
+	brazier = {code = 'brazier', kind = 'prop', sheet = 'furniture', scale = 0.69841270, rect = Rect2(301, 442, 63, 81)},
+
+	#Keep only the largest connected island in each crop: diagonal debris overlaps
+	#neighbouring bounding rectangles, although the actual opaque islands are separate.
+	trash_stones_a = {code = 'trash_stones_a', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(240, 1, 50, 73)},
+	trash_stone_block = {code = 'trash_stone_block', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(112, 17, 41, 35)},
+	trash_stone_small_a = {code = 'trash_stone_small_a', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(299, 33, 22, 17)},
+	trash_broken_crate_a = {code = 'trash_broken_crate_a', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(51, 41, 44, 46)},
+	trash_stone_small_b = {code = 'trash_stone_small_b', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(209, 44, 20, 18)},
+	trash_stones_small = {code = 'trash_stones_small', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(178, 55, 22, 30)},
+	trash_plank_a = {code = 'trash_plank_a', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(215, 75, 67, 53)},
+	trash_stone_pair = {code = 'trash_stone_pair', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(56, 97, 31, 39)},
+	trash_plank_b = {code = 'trash_plank_b', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(226, 97, 62, 45)},
+	trash_stones_b = {code = 'trash_stones_b', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(290, 105, 55, 59)},
+	trash_stone_flat = {code = 'trash_stone_flat', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(176, 117, 33, 26)},
+	trash_broken_furniture = {code = 'trash_broken_furniture', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(53, 139, 99, 92)},
+	trash_plank_upright = {code = 'trash_plank_upright', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(258, 150, 16, 63)},
+	trash_broken_crate_b = {code = 'trash_broken_crate_b', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(292, 168, 71, 74)},
+	trash_plank_long = {code = 'trash_plank_long', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(158, 193, 90, 57)},
+	trash_plank_c = {code = 'trash_plank_c', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(86, 212, 73, 51)},
+	trash_plank_bent = {code = 'trash_plank_bent', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(195, 257, 48, 49)},
+	trash_rubble_a = {code = 'trash_rubble_a', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(33, 261, 73, 61)},
+	trash_rubble_b = {code = 'trash_rubble_b', kind = 'prop', sheet = 'trash', scale = 1.0, rect = Rect2(308, 261, 60, 61)},
 
 	floor_tiles = {code = 'floor_tiles', kind = 'floor', rect = Rect2(400, 320, 80, 80), full = true},
+	floor_tiles_dirty = {code = 'floor_tiles_dirty', kind = 'floor', sheet = 'dirty_floor', rect = Rect2(0, 0, 80, 80), full = true},
 	floor_brick = {code = 'floor_brick', kind = 'floor', rect = Rect2(480, 320, 80, 80), full = true},
 	floor_cobble = {code = 'floor_cobble', kind = 'floor', rect = Rect2(400, 400, 80, 80), full = true},
 	floor_wood = {code = 'floor_wood', kind = 'floor', rect = Rect2(480, 400, 80, 80), full = true},
@@ -152,7 +178,51 @@ static func make_texture(code, atlas_texture):
 	var piece = get_piece(code)
 	if piece == null or atlas_texture == null:
 		return null
+	if piece.get('sheet', '') == 'trash':
+		return isolated_texture(atlas_texture, piece.rect)
 	var tex = AtlasTexture.new()
 	tex.atlas = atlas_texture
 	tex.region = piece.rect
+	return tex
+
+
+static func isolated_texture(atlas_texture, rect):
+	var source = atlas_texture.get_data().get_rect(rect)
+	source.convert(Image.FORMAT_RGBA8)
+	var width = source.get_width()
+	var height = source.get_height()
+	var seen = {}
+	var largest = []
+	source.lock()
+	for y in range(height):
+		for x in range(width):
+			var start = Vector2(x, y)
+			if seen.has(start) or source.get_pixel(x, y).a == 0:
+				continue
+			var island = [start]
+			seen[start] = true
+			var cursor = 0
+			while cursor < island.size():
+				var at = island[cursor]
+				cursor += 1
+				for dy in range(-1, 2):
+					for dx in range(-1, 2):
+						var next = at + Vector2(dx, dy)
+						if next.x < 0 or next.y < 0 or next.x >= width or next.y >= height or seen.has(next):
+							continue
+						seen[next] = true
+						if source.get_pixel(int(next.x), int(next.y)).a > 0:
+							island.append(next)
+			if island.size() > largest.size():
+				largest = island
+	var clean = Image.new()
+	clean.create(width, height, false, Image.FORMAT_RGBA8)
+	clean.fill(Color(0, 0, 0, 0))
+	clean.lock()
+	for at in largest:
+		clean.set_pixel(int(at.x), int(at.y), source.get_pixel(int(at.x), int(at.y)))
+	clean.unlock()
+	source.unlock()
+	var tex = ImageTexture.new()
+	tex.create_from_image(clean, 0)
 	return tex

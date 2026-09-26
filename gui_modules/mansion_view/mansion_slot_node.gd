@@ -16,7 +16,8 @@ const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
 #are retained as state metadata; no solid backing is drawn behind transparent art.
 const ART_ROOM = 'master bedroom'
 const ART_EMPTY = 'empty room'
-const ART_BROKEN = 'trashed'
+const BROKEN_PRESETS = ['trashed rubble', 'trashed storage', 'trashed furniture',
+	'trashed planks', 'trashed mixed']
 
 #The staircase is the exception: its picture has to say which way it goes from here, or the
 #same flight of stairs is drawn on every floor of the house and none of them tells the player
@@ -153,11 +154,19 @@ func draw_broken():
 	has_stairs = false
 	frame_only(false)
 	$bg.color = Color(COLOR_BROKEN)
-	$art.texture = room_texture(ART_BROKEN)
+	$art.texture = room_texture(broken_art())
 	$icon.texture = null
 	$name.text = tr("MANSIONVIEW_BROKEN")
 	globals.connecttexttooltip(self, tr("MANSIONVIEW_BROKENHINT"), true)
 	$Stairs.visible = false
+
+
+func broken_art():
+	#A local seeded generator keeps the choice stable across refreshes and saves,
+	#without consuming the game's random sequence.
+	var rng = RandomNumberGenerator.new()
+	rng.seed = ('mansion debris:%s:%s' % [view.floor_index(), slot_code]).hash()
+	return BROKEN_PRESETS[rng.randi_range(0, BROKEN_PRESETS.size() - 1)]
 
 
 func draw_empty():
@@ -178,7 +187,7 @@ func draw_building():
 	$bg.color = Color(COLOR_BUILDING)
 	#Scaffolding shows whatever is actually standing there meanwhile: a repair is still a
 	#wrecked room until it finishes, a new build is still bare floor.
-	$art.texture = room_texture(ART_BROKEN if build != null and build.kind == 'repair' else ART_EMPTY)
+	$art.texture = room_texture(broken_art() if build != null and build.kind == 'repair' else ART_EMPTY)
 	$icon.texture = null
 	if build != null and build.kind == 'construct':
 		var data = RoomTypes.get_type(build.target)
