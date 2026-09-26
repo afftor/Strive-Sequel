@@ -10,6 +10,8 @@ func _ready():
 
 
 func build_gear_panel():
+	if !is_visible_in_tree(): #update_ragdoll also comes when the inventory closes; opening rebuilds it
+		return
 	var selectedhero = input_handler.interacted_character
 	if selectedhero != null:
 		var stored_image = selectedhero.get_stored_body_image()

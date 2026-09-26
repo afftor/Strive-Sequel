@@ -1132,7 +1132,7 @@ func check_food_filter():
 		for food in foods:
 			if preservedsettings.food_filter.has(food):
 				if !food_vals.has(preservedsettings.food_filter[food]):
-					print ('warning - wrong value for food filter $s - %s removed' % [food, preservedsettings.food_filter[food]])
+					print ('warning - wrong value for food filter %s - %s removed' % [food, preservedsettings.food_filter[food]])
 					preservedsettings.food_filter.erase(food)
 					continue
 				reverse_filter[preservedsettings.food_filter[food]].push_back(food)
@@ -1270,6 +1270,9 @@ func MainMenu():
 	input_handler.GameStartNode.got_back = true
 	input_handler.emit_signal("CharacterCreated")#for GameStartNode
 	globals.return_to_main_menu()
+	#the panel outlives the game; left shown it would lie under the menu and keep the hotkeys and ESC blocked
+	yield(globals, "scene_change_start")
+	hide()
 
 
 #
@@ -1332,7 +1335,8 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 			person.set_stat('sex', 'female')
 
 #	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/slave_class_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
-	$BackButton.visible = type != 'slave' || is_from_cheats
+	#the starting slaves are part of the new game setup too; GameStartNode only lives while it runs
+	$BackButton.visible = !is_from_cheats and (type == 'master' or is_instance_valid(input_handler.GameStartNode))
 	$BackButtonCheats.visible = is_from_cheats
 	$SaveButton.visible = !is_from_cheats
 	$LoadButton.visible = !is_from_cheats

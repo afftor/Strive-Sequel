@@ -272,21 +272,21 @@ func _process(delta):
 func setup_night_sound_players():
 	night_cricket_player = AudioStreamPlayer.new()
 	night_cricket_player.name = "NightCrickets"
-	night_cricket_player.bus = "Sound"
+	night_cricket_player.bus = "Ambient"
 	night_cricket_player.volume_db = -14.0
 	night_cricket_player.stream = audio.sounds.mansion_night_crickets
 	add_child(night_cricket_player)
 
 	night_owl_player = AudioStreamPlayer.new()
 	night_owl_player.name = "NightOwl"
-	night_owl_player.bus = "Sound"
+	night_owl_player.bus = "Ambient"
 	night_owl_player.volume_db = -8.0
 	night_owl_player.stream = audio.sounds.mansion_night_owl
 	add_child(night_owl_player)
 
 	morning_rooster_player = AudioStreamPlayer.new()
 	morning_rooster_player.name = "MorningRooster"
-	morning_rooster_player.bus = "Sound"
+	morning_rooster_player.bus = "Ambient"
 	morning_rooster_player.volume_db = -9.0
 	morning_rooster_variants = [audio.sounds.mansion_morning_rooster,
 		audio.sounds.mansion_morning_rooster_alt]
@@ -295,7 +295,7 @@ func setup_night_sound_players():
 
 	day_bird_player = AudioStreamPlayer.new()
 	day_bird_player.name = "DayBirds"
-	day_bird_player.bus = "Sound"
+	day_bird_player.bus = "Ambient"
 	day_bird_player.volume_db = -12.0
 	day_bird_variants = [audio.sounds.mansion_day_birds, audio.sounds.mansion_day_birds_alt]
 	day_bird_player.stream = day_bird_variants[0]
@@ -303,7 +303,7 @@ func setup_night_sound_players():
 
 	evening_crow_player = AudioStreamPlayer.new()
 	evening_crow_player.name = "EveningCrow"
-	evening_crow_player.bus = "Sound"
+	evening_crow_player.bus = "Ambient"
 	evening_crow_player.volume_db = -10.0
 	evening_crow_variants = [audio.sounds.mansion_evening_crow_01,
 		audio.sounds.mansion_evening_crow_02]
@@ -1248,7 +1248,6 @@ func test_mode():
 
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)
-		character.equip(item)
 		stock_the_test_wardrobe()
 		character.set_stat('charm', 100)
 		character.set_stat('wits', 100)

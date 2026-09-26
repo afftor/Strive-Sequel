@@ -61,17 +61,38 @@ func cleanup(on_exit = false):
 #A load always lands in the mansion and never resumes a fight, so any summon still in the pool at
 #that point is a leftover. Effects are only unmarked here - effects_pool.cleanup(), which runs right
 #after this on the load path, sweeps them out in a single pass.
-func purge_stale_summons():
+#The same holds for the fight's enemies: a teardown that never ran leaves them is_active, which
+#cleanup() will not release either. Prisoners keep src 'combat_enemy' too, so those are spared.
+func purge_stale_fighters():
+	var captives = captive_ids()
 	var doomed = []
 	for id in characters:
-		if characters[id].src == 'combat_summon':
+		var src = characters[id].src
+		if src == 'combat_summon' or (src == 'combat_enemy' and !captives.has(id)):
 			doomed.push_back(id)
 	for id in doomed:
 		effects_pool.clean_effects_for_char(id)
-		characters.erase(id) #summons live only in the pool, never in game_party
+		characters.erase(id) #both live only in the pool, never in game_party
 	if !doomed.empty():
-		print("purged %d leaked combat summons left by an older save" % doomed.size())
+		print("purged %d leaked combat fighters left by an older save" % doomed.size())
 	return doomed.size()
+
+
+#an enemy taken prisoner belongs to the location that lists it, for as long as it is listed
+func captive_ids():
+	var res = {}
+	var world = ResourceScripts.game_world
+	if world == null or !(world.areas is Dictionary):
+		return res
+	for area in world.areas.values():
+		var places = []
+		for field in ['locations', 'questlocations']:
+			if area.get(field) is Dictionary:
+				places += area[field].values()
+		for place in places:
+			for id in place.get('captured_characters', []):
+				res[id] = true
+	return res
 
 
 func postload():

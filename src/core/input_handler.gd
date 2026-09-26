@@ -176,6 +176,8 @@ var globalsettings = {
 	musicmute = false,
 	soundvol = -15,
 	soundmute = false,
+	ambientvol = -16, #60% of the -40..0 slider
+	ambientmute = false,
 
 	#Window settings
 	fullscreen = true,
@@ -283,9 +285,13 @@ func settings_load():
 	var settings = config.get_section_keys("settings")
 	for i in settings:
 		globalsettings[i] = config.get_value("settings", i, null)
+	#ambience used to play through the sound bus, so an older file hands it the sound slider's level
+	if !config.has_section_key("settings", "ambientvol"):
+		globalsettings.ambientvol = globalsettings.soundvol
+		globalsettings.ambientmute = globalsettings.soundmute
 	#updatevolume
 	var counter = 0
-	for i in ['master','music','sound']:
+	for i in ['master','music','sound','ambient']:
 		AudioServer.set_bus_mute(counter, globalsettings[i+'mute'])
 		AudioServer.set_bus_volume_db(counter, globalsettings[i+'vol'])
 		counter += 1

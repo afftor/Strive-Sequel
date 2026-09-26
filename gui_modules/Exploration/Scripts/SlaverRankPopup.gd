@@ -1,6 +1,7 @@
 extends Control
 #The slaver rank ribbon after a sale or a hand-over: slave_quests.show_rank_popup() calls show_progress(data)
 #with title, caption, icon, label, count, max, from, to, gold, tokens, rank, new_rank and rank_up.
+#A guild order adds badge (the guild's emblem for the medal) and reputation + reputation_icon, shown in the token row.
 
 const SLIDE = 780.0
 const SLIDE_IN_TIME = 0.72
@@ -18,6 +19,7 @@ const HOLD_TIME = 3.0
 const HOLD_TIME_RANK_UP = 4.5
 const SOUND_GOLD = "money_spend"
 const SOUND_RANK_UP = "class_aquired"
+const TOKEN_COLOR = Color(1.0, 0.878, 0.541)
 
 var tween = Tween.new()
 var data = {}
@@ -50,7 +52,8 @@ func show_progress(new_data):
 	var to = int(data.get('to', from))
 	var rank_up = data.get('rank_up', false)
 	var gold = int(data.get('gold', 0))
-	var tokens = int(data.get('tokens', 0))
+	var reputation = int(data.get('reputation', 0))
+	var tokens = reputation if reputation > 0 else int(data.get('tokens', 0))
 
 	_put_text("Title", data.get('title', ''))
 	_set_shine(-1.0)
@@ -62,13 +65,22 @@ func show_progress(new_data):
 		crest.texture = data.get('icon') if data.get('icon') is Texture else null
 		crest.visible = crest.texture != null
 	_set_medal(data.get('rank', ''))
+	var medal = _find("Medal")
+	if medal is TextureRect and data.get('badge') is Texture:
+		medal.texture = data.badge
 	_put_text("Gold", "+0")
 	_show("GoldRow", gold > 0)
 	_put_text("Tokens", "+%d" % tokens)
 	_show("TokenRow", tokens > 0)
 	var token_icon = _find("TokenIcon")
 	if token_icon is TextureRect:
-		token_icon.texture = ResourceScripts.slave_quests.token_icon()
+		token_icon.texture = data.reputation_icon if reputation > 0 else ResourceScripts.slave_quests.token_icon()
+	var token_label = _find("Tokens")
+	if token_label is Label:
+		if reputation > 0:
+			token_label.add_color_override("font_color", ResourceScripts.slave_quests.REPUTATION_COLOR)
+		else:
+			token_label.add_color_override("font_color", TOKEN_COLOR)
 	var hex = _find("Hex")
 	if hex is Control:
 		hex.rect_scale = Vector2.ONE

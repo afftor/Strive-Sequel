@@ -1367,6 +1367,45 @@ func get_short_race_name(race_code):
 	return translated_name.to_lower() if translated_name != short_name else short_name
 
 
+#a Beastkin and its Halfkin counterpart count as one race wherever a requirement names one
+func kin_counterpart(race_code):
+	var other = ''
+	if race_code.begins_with('Beastkin'):
+		other = race_code.replace('Beastkin', 'Halfkin')
+	elif race_code.begins_with('Halfkin'):
+		other = race_code.replace('Halfkin', 'Beastkin')
+	return other if racelist.has(other) else ''
+
+
+func kin_races(race_code):
+	var other = kin_counterpart(race_code)
+	if other == '' or !input_handler.globalsettings.furry:
+		return [race_code]
+	return [race_code, other] if race_code.begins_with('Beastkin') else [other, race_code]
+
+
+func with_kin(race_list):
+	var res = []
+	for race_code in race_list:
+		for kin in kin_races(race_code):
+			if !res.has(kin):
+				res.append(kin)
+	return res
+
+
+#one entry per kin pair, so a list naming both halves does not roll the pair twice
+func kin_dedupe(race_list):
+	var res = []
+	for race_code in race_list:
+		var other = kin_counterpart(race_code)
+		if other != '' and !input_handler.globalsettings.furry and race_code.begins_with('Beastkin'):
+			race_code = other
+		if res.has(race_code) or res.has(other):
+			continue
+		res.append(race_code)
+	return res
+
+
 func get_random_race():
 	var array = []
 	for i in racelist.values():

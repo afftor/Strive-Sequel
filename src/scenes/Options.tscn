@@ -652,6 +652,35 @@ custom_fonts/font = ExtResource( 4 )
 text = "OPTAUDIOSOUND"
 align = 1
 
+[node name="ambient" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+margin_top = 189.0
+margin_right = 420.0
+margin_bottom = 221.0
+min_value = -40.0
+max_value = 0.0
+ticks_on_borders = true
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/ambient"]
+margin_left = 449.0
+margin_top = -14.0
+margin_right = 503.0
+margin_bottom = 40.0
+custom_icons/radio_checked = ExtResource( 6 )
+custom_icons/checked = ExtResource( 6 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+align = 2
+
+[node name="Label" type="Label" parent="TabContainer/Audio/VBoxContainer/ambient"]
+margin_left = 124.0
+margin_top = -30.0
+margin_right = 308.0
+margin_bottom = 2.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "OPTAUDIOAMBIENT"
+align = 1
+
 [node name="Label" type="Label" parent="TabContainer/Audio"]
 margin_left = 485.0
 margin_top = 40.0

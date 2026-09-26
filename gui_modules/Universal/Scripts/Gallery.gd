@@ -197,6 +197,9 @@ func FindNextImagesInPlayer():
 	imagename = Collection
 	Collection = Collection.rstrip("1234567890")
 	#
+	if !Gallery.ero_scenes_collection.has(str(Collection)):
+		$FullScreenImage.hide()
+		return
 	var content : Array = Gallery.ero_scenes_collection[str(Collection)]
 	var count = content.size()
 	var currentCount = 0

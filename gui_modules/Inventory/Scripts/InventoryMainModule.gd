@@ -14,6 +14,8 @@ onready var GearModule = $InventoryGearModule
 onready var StatsModule = $InventoryStatsModule
 onready var FactorsModule = $InventorySlaveListModule/InventoryFactorsModule
 onready var submodules = []
+var gear_on_open = {}
+var redressed = false
 
 
 signal inventory_opened
@@ -29,6 +31,7 @@ func _ready():
 	$InventoryListModule.buildinventory()
 	$GridContainer/CharInfoButton.connect("pressed", self, "open_char_info")
 	$GridContainer/MansionButton.connect("pressed", self, "return_to_mansion")
+	connect("visibility_changed", self, "on_visibility_changed")
 	input_handler.register_btn_source('inv_close_button', self, 'tut_get_close_button')
 
 func tut_get_close_button():
@@ -71,6 +74,10 @@ func update():
 
 
 func set_active_hero(hero):
+	if selectedhero != null and selectedhero != hero:
+		retake_portrait(selectedhero.id)
+	if hero != null and !gear_on_open.has(hero.id):
+		gear_on_open[hero.id] = [str(hero.equipment.gear), hero.portrait_gear()]
 	input_handler.interacted_character = hero
 	selectedhero = hero
 	SlaveList.update()
@@ -80,6 +87,30 @@ func set_active_hero(hero):
 	FactorsModule.show_factors()
 	update()
 #	GearModule.show_buffs()
+
+
+#a portrait shot costs two long frames, so it is retaken once the player moves on from someone rather than per item
+func retake_portrait(id):
+	if !gear_on_open.has(id):
+		return
+	var before = gear_on_open[id]
+	gear_on_open.erase(id)
+	var person = characters_pool.get_char_by_id(id)
+	if person == null or str(person.equipment.gear) == before[0]:
+		return
+	redressed = true
+	if person.portrait_gear() != before[1]:
+		input_handler.reshoot_portrait(person)
+
+
+func on_visibility_changed():
+	if visible:
+		return
+	for id in gear_on_open.keys():
+		retake_portrait(id)
+	if redressed:
+		redressed = false
+		input_handler.emit_signal('update_ragdoll')
 
 
 

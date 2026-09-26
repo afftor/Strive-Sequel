@@ -477,6 +477,10 @@ var data = {
 								material = "wood",
 								operant = "gte",
 								value = 10
+							},
+							{
+								type = "has_stamina",
+								value = 3
 							}
 						],
 						text = "DIALOGUEFALLENBRIDGESELECT2",

@@ -8,7 +8,7 @@ margin_right = 1920.0
 margin_bottom = 1088.0
 stream = ExtResource( 2 )
 autoplay = true
-bus = "Sound"
+bus = "Ambient"
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

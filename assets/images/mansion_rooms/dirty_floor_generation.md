@@ -3,7 +3,7 @@
 Generated with the built-in image_gen tool, then resized in Godot to the original 80 × 80 atlas region. The builder displays it at the same 64 × 64 repeat size as the clean floor.
 
 Source crop: `floor_tiles_clean_reference.png`, copied from `house_layout_atlas.png`, rectangle (400, 320, 80, 80).
-Generated original: `floor_dirty_generated.png`.
+Generated original: `floor_dirty_generated.png`, removed from the tree; kept in git history (commit `32e9a7cc1`).
 Runtime atlas: `room_dirty_floor_atlas.png`.
 Builder item: `floor_tiles_dirty`.
 

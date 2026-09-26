@@ -270,6 +270,7 @@ func _ready():
 	_select_slave_container()
 	input_handler.slave_list_node = self
 	input_handler.connect('PortraitUpdate', self, 'refresh_portraits')
+	input_handler.connect('update_ragdoll', self, '_drop_expanded_paperdoll_cache')
 	globals.connect("slave_added", self, "queue_rebuild")
 	globals.connect("task_removed", self, "queue_task_refresh")
 	#The upkeep badges are answered from the larder and the floorplan, neither of which this
@@ -760,6 +761,11 @@ func _clear_expanded_body_preview():
 	#var viewport = ExpandedPaperdoll.get_node_or_null("VPC/VP")
 	#if viewport != null:
 	#	viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+
+
+#the doll is hidden while the card is shut and skips update_ragdoll, so its cache would reopen it stale
+func _drop_expanded_paperdoll_cache():
+	expanded_paperdoll_cache_person_id = ""
 
 
 func _set_expanded_body_preview_width(desired_width):

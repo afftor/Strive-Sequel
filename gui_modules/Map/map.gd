@@ -57,10 +57,10 @@ var group_move_chars = []
 var mass_select_press_effect = false
 var can_teleport = false
 
-onready var info_btn_teleport = $InfoPanel/buttons/Teleport
-onready var info_btn_separator = $InfoPanel/buttons/separator
-onready var info_btn_send = $InfoPanel/buttons/Sendbutton
-onready var info_btns = $InfoPanel/buttons
+onready var info_btn_teleport = $InfoPanel/VBoxContainer/buttons/Teleport
+onready var info_btn_separator = $InfoPanel/VBoxContainer/buttons/separator
+onready var info_btn_send = $InfoPanel/VBoxContainer/buttons/Sendbutton
+onready var info_btns = $InfoPanel/VBoxContainer/buttons
 onready var info_teleport_menu = $InfoPanel/teleport_menu
 
 func map_input(event):
@@ -256,8 +256,8 @@ func _input(event):
 
 func _ready():#2add button connections
 	$InfoPanel/Label.text = tr("INFORMATION_LABEL")
-	$InfoPanel/buttons/Sendbutton/Label.text = tr("CONFIRM")
-	$InfoPanel/buttons/Teleport/Label.text = tr("SKILLTELEPORT")
+	$InfoPanel/VBoxContainer/buttons/Sendbutton/Label.text = tr("CONFIRM")
+	$InfoPanel/VBoxContainer/buttons/Teleport/Label.text = tr("SKILLTELEPORT")
 	$InfoPanel/VBoxContainer/Label2.text = tr("GALLERYCHAR")
 	$InfoPanel/VBoxContainer/Label3.text = tr("UPGRADERES")
 	$FromLocList/Label.text = tr("SELECT_CHAR_LABEL")
@@ -568,8 +568,8 @@ func build_info(loc = null):
 		icon = location.background
 	if icon != null:
 		icon = images.get_background(icon)
-	$InfoPanel/InfoFrame/icon.texture = icon
-	$InfoPanel/InfoFrame/name.text = tr(location.name)
+	$InfoPanel/VBoxContainer/InfoFrame/icon.texture = icon
+	$InfoPanel/VBoxContainer/InfoFrame/name.text = tr(location.name)
 	#build res
 	var dungeon = false
 	var hidden = false
@@ -577,7 +577,7 @@ func build_info(loc = null):
 	input_handler.ClearContainer(info_res_node)
 	info_res_node.show()
 	$InfoPanel/VBoxContainer/Label3.show()
-	$InfoPanel/InfoFrame/enemies.visible = false
+	$InfoPanel/VBoxContainer/InfoFrame/enemies.visible = false
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
@@ -596,12 +596,12 @@ func build_info(loc = null):
 		info_res_node.hide()
 		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
-		$InfoPanel/InfoFrame/enemies.visible = true
+		$InfoPanel/VBoxContainer/InfoFrame/enemies.visible = true
 		if location.tags.has('quest'):
-			$InfoPanel/InfoFrame/enemies.text = tr("QUESTLOCATION")
+			$InfoPanel/VBoxContainer/InfoFrame/enemies.text = tr("QUESTLOCATION")
 			
 		else:
-			$InfoPanel/InfoFrame/enemies.text = tr(location.classname)
+			$InfoPanel/VBoxContainer/InfoFrame/enemies.text = tr(location.classname)
 		dungeon = true
 #		if !location.completed:
 #			hidden = true
@@ -673,8 +673,8 @@ func build_info(loc = null):
 	info_btns.visible = not_temporal_info
 	if from_loc != 'adv_mode' and not_temporal_info and !selected_chars.empty() and from_loc != to_loc:
 		info_btn_send.visible = true
-		$InfoPanel/time.visible = true
-		$InfoPanel/time.text = tr("TRAVEL_TIME_LABEL") + " - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
+		$InfoPanel/VBoxContainer/time.visible = true
+		$InfoPanel/VBoxContainer/time.text = tr("TRAVEL_TIME_LABEL") + " - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
 		
 		can_teleport = false
 		for sort_loc in sorted_locations:
@@ -687,13 +687,13 @@ func build_info(loc = null):
 		info_btn_send.visible = false
 		info_btn_teleport.visible = false
 		info_btn_separator.visible = false
-		$InfoPanel/time.visible = false
+		$InfoPanel/VBoxContainer/time.visible = false
 
 
 #What the info panel says about a place that is waiting to be removed: the label, how far the
 #wait has gone, and the tooltip explaining both.
 func build_cleared_info(location):
-	var node = $InfoPanel/InfoFrame.get_node_or_null("cleared")
+	var node = $InfoPanel/VBoxContainer/InfoFrame.get_node_or_null("cleared")
 	if node == null:
 		return
 	var state = ResourceScripts.game_world.get_location_removal_state(location)

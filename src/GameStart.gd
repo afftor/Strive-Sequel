@@ -26,5 +26,7 @@ func start():
 	finish()
 
 func finish():
+	if !got_back:
+		globals.new_game_setup = null
 	input_handler.emit_signal("StartingSequenceComplete")
 

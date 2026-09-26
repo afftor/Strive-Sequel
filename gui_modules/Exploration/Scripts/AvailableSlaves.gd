@@ -9,6 +9,7 @@ const FLIGHT_TIME = 0.75
 const FLIGHT_TRAIL = [0.3, 0.18, 0.1]
 const FLIGHT_LAG = 0.06
 const TRAVELERS = "PresentedSlavesPanel/ScrollContainer"
+const TOGGLE = "MapPanel/slaves"
 const DISMISS_ICON = "res://assets/images/gui/explore/Captured Characters/icons/icon_dismiss.png"
 
 var found = {}
@@ -102,7 +103,8 @@ func update():
 	if location.captured_characters.empty():
 		input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 		hide()
-	elif location.type != 'dungeon':
+	#the dungeon screen opens the panel with its map button; a type test missed the Tower of Dreams, typed 'capital'
+	elif !get_parent().has_node(TOGGLE):
 		show()
 	var list = _node("Captives")
 	if !(list is Container) or !list.has_node(CAPTIVE):
@@ -610,7 +612,9 @@ func place_copy(flight, copy, t):
 func land(ch_id):
 	var row = flights[ch_id].get("row")
 	drop_flight(ch_id)
-	if !(row is Control) or !is_instance_valid(row):
+	#validity first: `is` on a freed object is an error, and the list can rebuild itself
+	#while the copies are still in the air
+	if !is_instance_valid(row) or !(row is Control):
 		return
 	row.rect_pivot_offset = row.rect_size / 2
 	var tween = input_handler.GetTweenNode(row)

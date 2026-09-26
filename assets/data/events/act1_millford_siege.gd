@@ -498,6 +498,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "$zephyra",
 		text = [{text = "DIVINE_SYMBOL_37", reqs = []}],
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true, slave_category = 'slave'},
+		{code = 'affect_unique_character', name = 'zephyra', type = 'remove_trait', trait = 'untrained'},
 #		{code = 'unique_character_changes', value = 'zephyra', args = [
 #			{code = 'tag', operant = 'add', value = 'no_sex'}]},
 		{code = 'decision', value = 'ZephyraRecruited'}, {code = 'decision', value = 'ZephyraEnslaved'}],

@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.1'
+const gameversion = '0.16.1a'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 
@@ -27,6 +27,8 @@ var log_storage = []
 var mansion_activity_log_node
 
 var start_new_game = false
+#the new game panel's choices during the opening character creation, restored if the player backs out
+var new_game_setup = null
 var gameover_process = false
 
 #var SpriteDict = {}
@@ -418,14 +420,16 @@ func disconnect_temp_item_tooltip(node):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
 		node.disconnect("mouse_entered",self,'tempitemtooltip')
 
-func connecttempitemtooltip(node, item, mode):
+func connecttempitemtooltip(node, item, mode, tooltip_node = null):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
 		node.disconnect("mouse_entered",self,'tempitemtooltip')
-	node.connect("mouse_entered",self,'tempitemtooltip', [node, item, mode])
+	node.connect("mouse_entered",self,'tempitemtooltip', [node, item, mode, tooltip_node])
 #	node.connect("mouse_entered",item,'tooltip_v2', [node])
 
-func tempitemtooltip(targetnode, item, mode):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+func tempitemtooltip(targetnode, item, mode, tooltip_node = null):
+	var node = tooltip_node
+	if node == null or !is_instance_valid(node):
+		node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + item.name + '[/center]\n' + item.descript
 	data.text = text
@@ -868,7 +872,7 @@ const SEX_TRAINING_MASTERY = {
 	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
 	petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
 	oral = [["kiss"], ["sucknipples"], ["rimjob"], ["cunnilingus", "blowjob"]],
-	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
+	tail = [["tailjob", "inserttailv"], ["inserttaila"]],
 }
 
 const SEX_ACTION_KEYS = {
@@ -1666,7 +1670,7 @@ func LoadGame(filename):
 	ResourceScripts.game_progress.fix_serialization()
 	loadscreen.set_progress(41)
 	yield(get_tree(), 'idle_frame')
-	characters_pool.purge_stale_summons() #drops summons leaked by pre-fix saves
+	characters_pool.purge_stale_fighters() #drops summons and enemies leaked by pre-fix saves
 	characters_pool.cleanup()
 	characters_pool.postload()
 	loadscreen.set_progress(42)
@@ -2425,6 +2429,8 @@ func manifest_and_log(label, text, person = null):
 #these arrive several at a time and read as a list - see mansion_activity_stat_change().
 func character_stat_change(character, data):
 	var part = get_stat_name(data.code)
+	#appearance fields and hidden counters have no display name - the log would print the bare key
+	var shown = part != "STAT%s" % data.code.to_upper()
 	if data.operant == '+':
 		character.add_stat(data.code, data.value)
 		part += " [color=%s]+%s[/color]" % [variables.hexcolordict.k_green, data.value]
@@ -2434,7 +2440,8 @@ func character_stat_change(character, data):
 	else:
 		character.add_stat(data.code, -data.value)
 		part += " [color=%s]-%s[/color]" % [variables.hexcolordict.k_red, data.value]
-	mansion_activity_stat_change(character, part)
+	if shown:
+		mansion_activity_stat_change(character, part)
 #	manifest(text, character)
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
@@ -2878,9 +2885,17 @@ func Reward(selectedquest, suspend_rep = false):
 #			'usable':
 #				AddItemToInventory(CreateUsableItem(i.item, i.value))
 
+	guild_reputation_progress(selectedquest.area)
+	if return_reputation:
+		return {value = reputation_value, guild = guild}
+	return null
+
+
+#The guilds_introduction step that waits on guild reputation; the slave market's guild orders run it too.
+func guild_reputation_progress(area):
 	#remake into data system
-	if selectedquest.area == 'plains':
-		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
+	if area == 'plains':
+		for i in ResourceScripts.game_world.areas[area].factions.values():
 			if i.totalreputation >= 300 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
 				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
 				common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
@@ -2893,9 +2908,6 @@ func Reward(selectedquest, suspend_rep = false):
 				counter = true
 		if counter == false:
 			common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-	if return_reputation:
-		return {value = reputation_value, guild = guild}
-	return null
 
 
 
@@ -3151,27 +3163,40 @@ func roll_characters():
 	return res
 
 
-#What the player has actually turned up at this location. The dungeon tooltip shows only these, so a race
-#stays hidden until one of its own has stood in the captives list.
+#Places of the same kind share what has been found in them: the infinite dungeon goes by its current biome,
+#whose character data changes with the floor, everything else by its location template.
+func location_race_key(location):
+	if !(location is Dictionary):
+		return ''
+	return str(location.get('biome', location.get('code', '')))
+
+
+#What the player has actually turned up in places of this kind. The dungeon tooltip shows only these, so a
+#race stays hidden until one of its own has stood in the captives list.
 func remember_local_race(person):
 	var location = input_handler.active_location
-	if person == null or !(location is Dictionary):
+	var key = location_race_key(location)
+	if person == null or key == '':
 		return
-	if !location.has('seen_races'):
-		location.seen_races = []
 	var code = person.get_stat('race')
-	if code != null and code != '' and !location.seen_races.has(code):
-		location.seen_races.append(code)
+	if code == null or code == '':
+		return
+	var seen = ResourceScripts.game_world.seen_races
+	if !seen.has(key):
+		seen[key] = []
+	if !seen[key].has(code):
+		seen[key].append(code)
 
 
-#The location's own race table in its own order, each entry marked with whether one has been taken here.
+#The location's own race table in its own order, each entry marked with whether one has been taken in a
+#place of this kind.
 #Beastkin collapse to Halfkin when furry is off, the same way ch_stats does when it builds the character -
 #otherwise the tooltip promises a race the player can never get.
 func location_race_slots(location):
 	var res = []
 	if !(location is Dictionary) or !location.has('character_data'):
 		return res
-	var seen = location.get('seen_races', [])
+	var seen = ResourceScripts.game_world.seen_races.get(location_race_key(location), [])
 	var listed = []
 	for entry in location.character_data.get('races', []):
 		var code = str(entry[0] if entry is Array else entry)

@@ -227,7 +227,7 @@ var ero_scenes_collection = {
 	'jean_wedding_': ['jean_wedding_1', 'jean_wedding_2', 'jean_wedding_3', 'jean_wedding_4'],
 	'jean_dream_': ['jean_dream_1', 'jean_dream_2', 'jean_dream_3', 'jean_dream_4'],
 	'rouge_sex_': ['rouge_sex_1', 'rouge_sex_2', 'rouge_sex_3', 'rouge_sex_4', 'rouge_sex_5', 'rouge_sex_6', 'rouge_sex_7', 'rouge_sex_8',],
-	'erdyna_campfire_': ['erdyna_campfire1', 'erdyna_campfire2', 'erdyna_campfire3', 'erdyna_campfire4'],
+	'erdyna_campfire': ['erdyna_campfire1', 'erdyna_campfire2', 'erdyna_campfire3', 'erdyna_campfire4'],
 }
 #so these arrays are needed for storing order 
 

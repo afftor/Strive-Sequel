@@ -26,7 +26,7 @@ var mastery_required = {
 	anal = [["missionaryanal"], ["doggyanal"], ["lotusanal"], ["revlotusanal"], ["ontopanal"]],
 	petting = [["fondletits", "titjob"], ["handjob", "fingering", "assfingering"], ["footjob", "massagefoot"], ["fisting", "analfisting"]],
 	oral = [["rimjob"], ["cunnilingus", "blowjob"], ["kiss"], ["sucknipples"]],
-	tail = [["tailjob"], ["inserttailv"], ["inserttaila"]],
+	tail = [["tailjob", "inserttailv"], ["inserttaila"]],
 }
 
 var mastery_action_keys = {

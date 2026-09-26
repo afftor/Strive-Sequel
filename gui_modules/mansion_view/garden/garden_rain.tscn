@@ -116,9 +116,9 @@ color = Color( 0.72, 0.82, 1, 1 )
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -6.0
-bus = "Sound"
+bus = "Ambient"
 
 [node name="Thunder" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -7.0
-bus = "Sound"
+bus = "Ambient"

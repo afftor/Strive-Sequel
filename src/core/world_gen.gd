@@ -299,8 +299,13 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 	
 	var array = []
 	for i in guilddatatemplate.questpool[difficulty]:
+		#slave deliveries are posted at the slave market as guild orders
+		if ResourceScripts.slave_quests.is_slave_order_template(i):
+			continue
 		if globals.checkreqs(worlddata.questdata[i].unlockreqs) == true:
 			array.append(i)
+	if array.empty():
+		return
 	var input_info = {
 		source = guilddatatemplate.code,
 		area = guilddatatemplate.area,
@@ -571,13 +576,15 @@ func make_quest(questcode, input_info):
 						tempdata.statreqs.append({code = 'has_profession', profession = i, check = true})
 				elif statdata.code == 'race':
 					var number = round(rand_range(statdata.range[0],statdata.range[1]))
+					var racepool = races.kin_dedupe(statdata.type)
 					var racearray = []
-					while number > 0:
-						var newrace = statdata.type[randi()%statdata.type.size()]
+					while number > 0 and !racepool.empty():
+						var newrace = racepool[randi()%racepool.size()]
 						racearray.append(newrace)
+						racepool.erase(newrace)
 						statdata.type.erase(newrace)
 						number -= 1
-					tempdata.statreqs.append({code = 'one_of_races', value = racearray, check = true})
+					tempdata.statreqs.append({code = 'one_of_races', value = races.with_kin(racearray), check = true})
 				
 				
 				if statdata.use_once == true:

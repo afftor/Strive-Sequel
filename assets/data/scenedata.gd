@@ -669,7 +669,7 @@ var scenedict = {
 			tags = ['scene_character_translate','active_character_translate'],
 			image = 'goblin_encounter',
 			options = [
-				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
+				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}, {code = 'clear_subroom', optional = true}]},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
 				]
 			
@@ -768,7 +768,7 @@ var scenedict = {
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'fairy_encounter',
 			options = [
-				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'clear_subroom', optional = true}]},
+				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}, {code = 'clear_subroom', optional = true}]},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = []}
 				]
 			
@@ -916,7 +916,7 @@ var scenedict = {
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'slave_decision',
 			options = [
-				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
+				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}]},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 				]
 			

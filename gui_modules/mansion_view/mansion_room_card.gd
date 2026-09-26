@@ -34,6 +34,8 @@ const DEFAULT_CARD_WIDTH = 460
 #Three catalogue rows side by side leave enough width for the full room prose while keeping
 #all thirteen indoor choices (five rows of three) comfortably inside the screen.
 const BUILD_CARD_WIDTH = 1332
+#rows of the Market Restock stock grid shown before it scrolls
+const AUTOBUY_CHOICE_ROWS = 3
 
 var view = null
 var slot_code = ''
@@ -987,13 +989,13 @@ func build_autobuy_choices():
 	if !selected_available:
 		selected_autobuy_code = '' if choices.empty() else str(choices[0][1])
 	for entry in choices:
-		var row = input_handler.DuplicateContainerTemplate(list, 'Choice')
+		var cell = input_handler.DuplicateContainerTemplate(list, 'Choice')
 		var code = str(entry[1])
-		row.set_meta('code', code)
-		row.get_node("Icon").texture = autobuy_icon(code)
-		row.get_node("Name").text = entry[0]
-		row.get_node("Held").text = str(ResourceScripts.game_res.autobuy_held(code))
-		row.connect("pressed", self, "select_autobuy_choice", [code])
+		cell.set_meta('code', code)
+		cell.get_node("Icon").texture = autobuy_icon(code)
+		cell.get_node("Held").text = str(ResourceScripts.game_res.autobuy_held(code))
+		connect_autobuy_tooltip(cell, code)
+		cell.connect("pressed", self, "select_autobuy_choice", [code])
 	var has_choice = !choices.empty()
 	panel.get_node("Body/ChoiceField").visible = has_choice
 	panel.get_node("Body/ChoiceEmpty").visible = !has_choice
@@ -1003,10 +1005,21 @@ func build_autobuy_choices():
 		select_autobuy_choice(selected_autobuy_code)
 
 
+func connect_autobuy_tooltip(node, code):
+	var tooltip = view.get_node("Overlay/ItemTooltip")
+	if Items.materiallist.has(code):
+		globals.connectmaterialtooltip(node, Items.materiallist[code], '', null, tooltip)
+	elif Items.itemlist.has(code):
+		globals.connecttempitemtooltip(node, Items.itemlist[code], 'geartemplate', tooltip)
+
+
 func select_autobuy_choice(code):
 	if code == '':
 		return
 	selected_autobuy_code = str(code)
+	for cell in autobuy_panel().get_node("ChoicePopup/ListPanel/ChoiceScroll/ChoiceList").get_children():
+		if cell.has_meta('code'):
+			cell.pressed = cell.get_meta('code') == selected_autobuy_code
 	var field = autobuy_panel().get_node("Body/ChoiceField")
 	field.get_node("Icon").texture = autobuy_icon(selected_autobuy_code)
 	field.get_node("Name").text = ResourceScripts.game_res.autobuy_name(selected_autobuy_code)
@@ -1030,8 +1043,17 @@ func place_autobuy_choice_list():
 	var panel = autobuy_panel()
 	var field = panel.get_node("Body/ChoiceField")
 	var list_panel = panel.get_node("ChoicePopup/ListPanel")
+	var scroll = list_panel.get_node("ChoiceScroll")
+	var grid = scroll.get_node("ChoiceList")
+	var cells = 0
+	for cell in grid.get_children():
+		if cell.visible:
+			cells += 1
+	var rows = clamp(ceil(float(cells) / grid.columns), 1, AUTOBUY_CHOICE_ROWS)
+	var gap = grid.get_constant("vseparation")
+	var list_height = rows * (grid.get_node("Choice").get_combined_minimum_size().y + gap) - gap \
+		+ scroll.margin_top - scroll.margin_bottom
 	var field_position = field.rect_global_position - panel.rect_global_position
-	var list_height = 148.0
 	var list_y = field_position.y + field.rect_size.y + 2.0
 	if list_y + list_height > panel.rect_size.y - 8.0:
 		list_y = field_position.y - list_height - 2.0
@@ -1221,8 +1243,9 @@ func setup_upgrade_row(row, current, code, build):
 		#an improvement with nothing left to add says nothing rather than opening an empty panel
 		var hint = upgrade_hint(code, level, next_level, current.type)
 		if hint != "":
+			#the row stands in the details panel, and beside the card is where that panel is
 			globals.connecttexttooltip(row, hint, true,
-				view.get_node("Overlay/TextTooltip"), self)
+				view.get_node("Overlay/TextTooltip"), details())
 
 
 #Room choices and improvements both carry prose and a separate mechanical summary. Measure

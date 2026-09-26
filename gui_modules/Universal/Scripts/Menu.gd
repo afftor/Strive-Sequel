@@ -10,6 +10,7 @@ onready var newgame_bonuses_cont = $NewGameCont/bonuses/ScrollContainer/VBoxCont
 var cur_bonus_points = 0
 var max_bonus_points = 0
 var newgame_bonuses = []
+var current_preset = 'easy'
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
@@ -22,6 +23,8 @@ func _ready():
 	var buttonlist = ['continueb','newgame', 'loadwindow','options', 'credits', 'mods']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
+	#ESC and RMB close windows only on the current screen, which nothing set on first launch
+	gui_controller.current_screen = self
 	#input_handler.StopMusic()
 	check_last_save()
 	for i in range(0,6):
@@ -60,6 +63,7 @@ func _ready():
 	call_deferred("show_mod_list_safety_message")
 	$UpdateNotice.start_update_check()
 	$SupporterNotice.try_show(lastsave != null)
+	reopen_newgame()
 	cycle_backgrounds()
 func show_mod_list_safety_message():
 	if modding_core.mod_list_safety_message == "":
@@ -301,6 +305,7 @@ func update_bonus_points_text():
 		cur_bonus_points, max_bonus_points]
 
 func select_preset(val):
+	current_preset = val
 	if val == 'custom':
 		newgame_node.get_node("PresetContainer").visible = false
 		newgame_node.get_node("RichTextLabel").visible = false
@@ -375,6 +380,10 @@ func start_game():
 
 
 func start_game_confirm():
+	var settings = {}
+	for arg in newgame_setting_keys():
+		settings[arg] = ResourceScripts.game_globals.get(arg)
+	globals.new_game_setup = {preset = current_preset, settings = settings, bonuses = newgame_bonuses.duplicate()}
 	ResourceScripts.game_world.make_world()
 	$VBoxContainer/newgamebutton.disabled = true
 	globals.start_new_game = true
@@ -392,6 +401,31 @@ func start_game_confirm():
 	yield(globals, 'scene_changed')
 	gui_controller.windows_opened.clear()
 	self.queue_free()
+
+
+#everything this panel can set on game_globals: the presets' arguments and the custom settings
+func newgame_setting_keys():
+	var keys = settingarray2 + settingarray3
+	for id in starting_presets.preset_data:
+		for arg in starting_presets.preset_data[id].args:
+			input_handler.append_not_duplicate(keys, arg)
+	return keys
+
+
+#Back to Menu from the opening character creation lands here, on the panel as it was left
+func reopen_newgame():
+	var setup = globals.new_game_setup
+	globals.new_game_setup = null
+	if setup == null:
+		return
+	open_newgame()
+	select_preset(setup.preset)
+	for arg in setup.settings:
+		ResourceScripts.game_globals.set(arg, setup.settings[arg])
+	start_preset_update()
+	for node in newgame_bonuses_cont.get_children():
+		if node.visible and node.has_meta("id") and setup.bonuses.has(node.get_meta("id")):
+			node.get_node("btn").pressed = true
 
 func tutorial():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'tutorial_confirm', tr('STARTTUTORIAL')])

@@ -647,11 +647,6 @@ text = "c5"
 [node name="Sky" type="Node2D" parent="."]
 
 [node name="Fog" parent="Sky" instance=ExtResource( 7 )]
-visible = false
-margin_left = -10.0
-margin_top = 17.0
-margin_right = 3830.0
-margin_bottom = 2577.0
 
 [node name="SunShafts" parent="Sky" instance=ExtResource( 6 )]
 position = Vector2( 3650, -150 )

@@ -13,6 +13,8 @@ signal quests_changed
 signal rank_changed
 
 const KINDS = ['basic', 'advanced']
+const GUILD_KIND = 'guild'
+const SORT_KINDS = ['basic', 'advanced', 'guild']
 const DIFFICULTIES = ['easy', 'medium', 'hard']
 const BASIC_POOL = ['race', 'personality', 'factor', 'sex']
 const ADVANCED_POOL = ['sex_skill', 'base_stat', 'consent', 'class', 'training']
@@ -54,7 +56,7 @@ func _sort_quests(a, b):
 func _quest_sort_key(quest):
 	return [
 		0 if quest.state == states.active else 1,
-		KINDS.find(quest.kind),
+		SORT_KINDS.find(quest.kind),
 		DIFFICULTIES.find(quest.difficulty),
 		int(quest.id),
 	]
@@ -88,6 +90,219 @@ func process_faction_icon(node, fact_id):
 	node.texture = faction.icon
 	globals.connecttexttooltip(node, "%s\n%s" % [
 		'[center]' + tr(faction.name) + '[/center]', tr(faction.description)])
+
+#a quest's crest: its market faction, or the guild of a guild order
+func process_quest_icon(node, quest):
+	if !is_guild_order(quest):
+		process_faction_icon(node, quest.faction)
+		return
+	node.texture = guild_icon(quest.guild)
+	globals.connecttexttooltip(node, '[center]' + guild_full_name(quest.guild) + '[/center]')
+
+func quest_icon(quest):
+	return guild_icon(quest.guild) if is_guild_order(quest) else get_faction(quest.faction).icon
+
+
+#--------------guild orders--------------
+#The guilds' slave-delivery quests, posted here instead of on the notice board. They are built by the guild's own
+#template (world_gen.make_quest) and pay the guild's reputation on the last slave instead of experience and tokens.
+
+#what can_deliver() already refuses
+const GUILD_GUARD_CODES = ['is_master', 'slave_type']
+#the journal asked for it at hand-over; here it is a requirement like any other
+const BROKE_IN_REQ = {code = 'trait', trait = 'training_broke_in', check = true, tier = 'advanced', rq = 'broke_in'}
+const REPUTATION_COLOR = Color(0.56, 0.81, 1.0)
+const TOKENS_COLOR = Color(0.976471, 0.882353, 0.505882)
+
+func is_guild_order(quest):
+	return quest is Dictionary and quest.get('kind') == GUILD_KIND
+
+func get_guild(code):
+	var world = ResourceScripts.game_world
+	if world == null or !world.factions.has(code):
+		return null
+	var area = world.areas.get(world.factions[code].area)
+	if area == null or !area.factions.has(code):
+		return null
+	return area.factions[code]
+
+func guild_name(code):
+	if worlddata.factiondata.has(code):
+		return tr(worlddata.factiondata[code].name)
+	return str(code)
+
+func guild_full_name(code):
+	return globals._report_text("SQ_GUILD_ORDER_GUILD", [guild_name(code)])
+
+func guild_icon(code):
+	return images.get_icon("guilds_%s_colored" % code)
+
+func is_slave_order_template(code):
+	if !worlddata.questdata.has(code):
+		return false
+	for condition in worlddata.questdata[code].randomconditions:
+		if condition.code == 'slave_delivery':
+			return true
+	return false
+
+#the guild's slave-delivery templates, of one difficulty or of all
+func guild_order_templates(guild, difficulty = ''):
+	var res = []
+	for diff in guild.get('questpool', {}):
+		if difficulty != '' and diff != difficulty:
+			continue
+		for code in guild.questpool[diff]:
+			if is_slave_order_template(code) and globals.checkreqs(worlddata.questdata[code].unlockreqs):
+				res.append(code)
+	return res
+
+#guilds with slave-delivery templates, in the order the world made them
+func order_guilds():
+	var res = []
+	if ResourceScripts.game_world == null:
+		return res
+	for code in ResourceScripts.game_world.factions:
+		var guild = get_guild(code)
+		if guild != null and !guild_order_templates(guild).empty():
+			res.append(code)
+	return res
+
+#a difficulty opens at the guild's total reputation, as on the notice board
+func guild_order_difficulties(guild):
+	var res = []
+	var unlock = quest_data.guild_orders.unlock
+	for difficulty in DIFFICULTIES:
+		if int(guild.get('totalreputation', 0)) < int(unlock.get(difficulty, 0)):
+			continue
+		if !guild_order_templates(guild, difficulty).empty():
+			res.append(difficulty)
+	return res
+
+func fill_guild_orders():
+	var have = {}
+	for quest in get_quest_pool().values():
+		if is_guild_order(quest) and quest.state != states.failed:
+			have[quest.guild] = have.get(quest.guild, 0) + 1
+	var added = 0
+	for code in order_guilds():
+		while have.get(code, 0) < int(quest_data.guild_orders.per_guild):
+			var quest = generate_guild_order(code)
+			if quest == null:
+				break
+			get_quest_pool()[quest.id] = quest
+			have[code] = have.get(code, 0) + 1
+			added += 1
+	return added
+
+func generate_guild_order(code, difficulty = ''):
+	var guild = get_guild(code)
+	if guild == null:
+		return null
+	if difficulty == '':
+		var open = guild_order_difficulties(guild)
+		if open.empty():
+			return null
+		difficulty = _random_from(open)
+	var templates = guild_order_templates(guild, difficulty)
+	if templates.empty():
+		return null
+	var board_quest = ResourceScripts.world_gen.make_quest(_random_from(templates), {
+		source = code, area = guild.area, travel_time = 1, difficulty = difficulty})
+	var req = board_quest.requirements[0]
+	var statreqs = []
+	for statreq in req.statreqs:
+		if statreq.get('code') in GUILD_GUARD_CODES:
+			continue
+		if typeof(statreq.get('value')) == TYPE_REAL:
+			statreq.value = int(statreq.value)
+		statreq.tier = 'basic'
+		statreq.rq = 'race' if statreq.code in ['race', 'one_of_races'] else statreq.code
+		statreqs.append(statreq)
+	statreqs.append(BROKE_IN_REQ.duplicate())
+	var reputation = 0
+	for rule in board_quest.rewards.get('spec_rules', []):
+		if rule.get('rule') == 'reputation':
+			reputation = int(rule.value)
+	return {
+		id = make_quest_id(),
+		kind = GUILD_KIND,
+		difficulty = difficulty,
+		guild = code,
+		source = code,
+		area = guild.area,
+		name = board_quest.name,
+		descript = board_quest.descript,
+		state = states.active,
+		time_limit = int(board_quest.time_limit),
+		requirements = [{
+			code = 'slave_delivery',
+			value = int(req.value),
+			delivered_slaves = 0,
+			statreqs = statreqs,
+		}],
+		rewards = {gold = int(board_quest.rewards.get('gold', 0)), reputation = reputation},
+		paid = 0,
+	}
+
+#with the master's charm bonus, as the notice board showed and paid it
+func guild_order_reputation(quest):
+	var base = int(quest.rewards.get('reputation', 0))
+	var bonus = 0.0
+	var master = ResourceScripts.game_party.get_master()
+	if master != null:
+		bonus = variables.master_charm_quests_rep_bonus[int(master.get_stat('charm_factor'))]
+	return int(round(base + base * bonus))
+
+func _pay_guild_reputation(quest, value):
+	if value <= 0 or !ResourceScripts.game_world.factions.has(quest.guild):
+		return
+	globals.common_effects([{code = 'reputation', name = quest.guild, value = value, operant = '+'}])
+	globals.guild_reputation_progress(quest.get('area', ''))
+
+#the reward shown under the gold: Tokens of Recognition, or a guild order's reputation
+func quest_extra_reward(quest):
+	var when = tr("SQ_REWARD_ON_LAST") if int(quest.requirements[0].value) > 1 else tr("SQ_REWARD_ON_DELIVERY")
+	if !is_guild_order(quest):
+		var tokens = quest_tokens(quest)
+		var tooltip = "%s: +%d\n%s" % [tr("SQ_TOKENS"), tokens, when]
+		var per_slave = slave_tokens(quest)
+		if per_slave > 0:
+			tooltip += "\n" + globals._report_text("SQ_TOKENS_PER_SLAVE", [per_slave])
+		tooltip += "\n" + globals._report_text("SQ_TOKENS_OWNED", [get_tokens()])
+		return {value = tokens, icon = token_icon(), color = TOKENS_COLOR, caption = tr("SQ_TOKENS"), tooltip = tooltip}
+	var guild_label = guild_name(quest.guild)
+	var base = int(quest.rewards.get('reputation', 0))
+	var value = guild_order_reputation(quest)
+	var tooltip = "%s (%s): %d + %d (%s)\n%s" % [tr("QUESTREPUTATION"), guild_label, base, value - base, tr("QUESTMASTERCHARMBONUS"), when]
+	var guild = get_guild(quest.guild)
+	if guild != null:
+		tooltip += "\n" + globals._report_text("SQ_GUILD_REPUTATION_NOW", [guild_label, int(guild.reputation)])
+	return {value = value, icon = guild_icon(quest.guild), color = REPUTATION_COLOR,
+		caption = globals._report_text("SQ_GUILD_REPUTATION", [guild_label]), tooltip = tooltip}
+
+#saves from before guild orders keep slave deliveries on the notice boards; accepted ones stay in the journal
+func _drop_board_slave_quests():
+	var world = ResourceScripts.game_world
+	if world == null:
+		return
+	for area in world.areas.values():
+		if !area.has('quests'):
+			continue
+		for faction in area.quests.factions:
+			var board = area.quests.factions[faction]
+			var dropped = false
+			for quest_id in board.keys():
+				if board[quest_id].get('state') == 'free' and _has_slave_delivery(board[quest_id]):
+					board.erase(quest_id)
+					dropped = true
+			if dropped and area.factions.has(faction):
+				ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
+
+func _has_slave_delivery(quest):
+	for req in quest.get('requirements', []):
+		if req.get('code') == 'slave_delivery':
+			return true
+	return false
 
 
 #--------------rank--------------
@@ -129,6 +344,8 @@ func factor_upgrade_cap():
 	return int(get_rank_data().factor_upgrade_cap)
 
 func quest_xp(quest):
+	if is_guild_order(quest):
+		return 0
 	var value = float(quest_data.xp[quest.kind])
 	if quest_data.xp_decay.has(quest.difficulty):
 		var decay = quest_data.xp_decay[quest.difficulty]
@@ -232,8 +449,14 @@ func add_tokens(amount):
 	emit_signal("tokens_changed")
 
 func quest_tokens(quest):
-	var cfg = quest_data.tokens
-	return int(cfg.quest[quest.kind]) + int(max(0, DIFFICULTIES.find(quest.difficulty))) * int(cfg.per_difficulty)
+	if is_guild_order(quest):
+		return 0
+	return int(quest_data.tokens.quest[quest.kind].get(quest.difficulty, 0))
+
+func slave_tokens(quest):
+	if is_guild_order(quest) or int(quest.requirements[0].value) <= 1:
+		return 0
+	return int(quest_data.tokens.per_slave)
 
 func rank_up_tokens(rank):
 	var index = get_rank_index(rank)
@@ -277,9 +500,10 @@ func factor_upgrade_limit():
 
 func factor_step_cost(level):
 	var cfg = quest_data.factor_upgrade
+	var gold = int(cfg.gold[int(clamp(level, 2, int(cfg.top_level)))])
 	if level >= int(cfg.top_level):
-		return {tokens = int(cfg.top_tokens), gold = int(cfg.top_gold)}
-	return {tokens = int(level), gold = int(cfg.gold_step)}
+		return {tokens = int(cfg.top_tokens), gold = gold}
+	return {tokens = int(level), gold = gold}
 
 func upgrade_plan_cost(character, plan):
 	var res = {tokens = 0, gold = 0, steps = 0}
@@ -423,7 +647,7 @@ func fill_quests():
 	var rank_data = get_rank_data()
 	var have = {basic = 0, advanced = 0}
 	for quest in get_quest_pool().values():
-		if !quest.has('kind') or quest.state == states.failed:
+		if !quest.has('kind') or quest.state == states.failed or !have.has(quest.kind):
 			continue
 		have[quest.kind] += 1
 	var added = 0
@@ -434,6 +658,8 @@ func fill_quests():
 			get_quest_pool()[quest.id] = quest
 			have[kind] += 1
 			added += 1
+	_drop_board_slave_quests()
+	added += fill_guild_orders()
 	if added > 0:
 		emit_signal("quests_changed")
 	return added
@@ -601,26 +827,10 @@ func _race_pool(tags):
 	return res
 
 func _kin_counterpart(race):
-	var other = ''
-	if race.begins_with('Beastkin'):
-		other = race.replace('Beastkin', 'Halfkin')
-	elif race.begins_with('Halfkin'):
-		other = race.replace('Halfkin', 'Beastkin')
-	return other if races.racelist.has(other) else ''
-
-func _kin_races(race):
-	var other = _kin_counterpart(race)
-	if other == '' or !input_handler.globalsettings.furry:
-		return [race]
-	return [race, other] if race.begins_with('Beastkin') else [other, race]
+	return races.kin_counterpart(race)
 
 func _with_kin(race_list):
-	var res = []
-	for race in race_list:
-		for kin in _kin_races(race):
-			if !res.has(kin):
-				res.append(kin)
-	return res
+	return races.with_kin(race_list)
 
 func _pair_kin_races(statreq):
 	var accepted = []
@@ -931,6 +1141,8 @@ func star_tooltip(fit):
 	return text
 
 func quest_title(quest):
+	if is_guild_order(quest):
+		return "%s (%s)" % [tr(quest.name), guild_name(quest.guild)]
 	return tr(quest.name)
 
 func quest_list_info(quest):
@@ -1023,6 +1235,9 @@ func _req_textures(req):
 				return [_as_texture(classesdata.professions[req.profession].icon)]
 		'slave_type':
 			return [_icon(REQ_ICON_PATHS.trained)]
+		'trait':
+			if Traitdata.traits.has(req.trait):
+				return [_as_texture(Traitdata.traits[req.trait].get('icon'))]
 	return []
 
 func _race_icon(race):
@@ -1198,6 +1413,8 @@ func captive_quests(character, location):
 	if !can_deliver_captive(character, location):
 		return res
 	for quest in get_sorted_quests():
+		if is_guild_order(quest):
+			continue
 		if is_quest_open_for_delivery(quest) and quest_match(quest, character).status == 'green':
 			res.append(quest)
 	res.sort_custom(self, '_pays_more')
@@ -1210,7 +1427,7 @@ func deliver_captive(quest_id, character, location):
 	if !can_deliver_captive(character, location) or !has_quest(quest_id):
 		return _no_delivery()
 	var quest = get_quest(quest_id)
-	if !is_quest_open_for_delivery(quest) or quest_match(quest, character).status != 'green':
+	if !is_quest_open_for_delivery(quest) or is_guild_order(quest) or quest_match(quest, character).status != 'green':
 		return _no_delivery()
 	var paid = _count_delivery(quest)
 	location.captured_characters.erase(character.id)
@@ -1218,7 +1435,7 @@ func deliver_captive(quest_id, character, location):
 	return _pay_delivery(quest, paid)
 
 func _no_delivery():
-	return {paid = 0, complete = false, xp = 0, tokens = 0, rank_up = false}
+	return {paid = 0, complete = false, xp = 0, tokens = 0, reputation = 0, rank_up = false}
 
 func _count_delivery(quest):
 	var req = quest.requirements[0]
@@ -1236,19 +1453,34 @@ func _pay_delivery(quest, paid):
 	var count = int(req.value)
 	var popup_data = {
 		title = tr("SQ_POPUP_DELIVERY_TITLE"),
-		caption = tr(quest.name), icon = get_faction(quest.faction).icon,
+		caption = tr(quest.name), icon = quest_icon(quest),
 		label = tr("SQ_POPUP_LABEL_DELIVERED"), count = "%d / %d" % [int(req.delivered_slaves), count],
 		max = count, from = req.delivered_slaves - 1, to = req.delivered_slaves,
 		gold = res.paid, tokens = 0, rank = rank, new_rank = rank, rank_up = false,
 	}
+	if is_guild_order(quest):
+		popup_data.badge = guild_icon(quest.guild)
+		if req.delivered_slaves >= count:
+			quest.state = states.complete
+			res.complete = true
+			res.reputation = guild_order_reputation(quest)
+			_pay_guild_reputation(quest, res.reputation)
+			popup_data.reputation = res.reputation
+			popup_data.reputation_icon = guild_icon(quest.guild)
+			input_handler.play_animation("repeatable_quest_completed", {quest = quest})
+		show_rank_popup(popup_data)
+		emit_signal("quests_changed")
+		return res
 	var shows_xp = false
+	res.tokens = slave_tokens(quest)
 	if req.delivered_slaves >= count:
 		quest.state = states.complete
 		res.complete = true
 		res.xp = quest_xp(quest)
-		res.tokens = quest_tokens(quest)
-		add_tokens(res.tokens)
-		popup_data.tokens = res.tokens
+		res.tokens += quest_tokens(quest)
+	add_tokens(res.tokens)
+	popup_data.tokens = res.tokens
+	if res.complete:
 		if !is_max_rank():
 			var threshold = xp_threshold()
 			var xp_before = get_rank_xp()
@@ -1302,7 +1534,11 @@ func fix_serialization():
 				continue
 			quest.id = int(quest.id)
 			quest.time_limit = int(quest.time_limit)
-			if !quest_data.factions.has(quest.get('faction')):
+			if is_guild_order(quest):
+				if get_guild(quest.get('guild')) == null:
+					continue
+				quest.rewards.reputation = int(quest.rewards.get('reputation', 0))
+			elif !quest_data.factions.has(quest.get('faction')):
 				quest.faction = _roll_faction()
 			quest.paid = int(quest.get('paid', 0))
 			quest.rewards.gold = int(quest.rewards.gold)

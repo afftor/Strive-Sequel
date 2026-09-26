@@ -251,5 +251,5 @@ margin_top = -14.3348
 margin_right = 352.579
 margin_bottom = 15.6652
 custom_fonts/font = ExtResource( 1 )
-text = "SIMRESISTS"
+text = "SIMRESIST"
 align = 1

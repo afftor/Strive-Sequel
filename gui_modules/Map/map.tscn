@@ -267,13 +267,22 @@ script = ExtResource( 50 )
 margin_left = 696.0
 margin_top = 104.0
 margin_right = 1256.0
-margin_bottom = 849.0
+margin_bottom = 964.0
 texture = ExtResource( 11 )
+expand = true
 
-[node name="Frame" type="TextureRect" parent="InfoPanel"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Frame" type="NinePatchRect" parent="InfoPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
 texture = ExtResource( 10 )
+patch_margin_left = 40
+patch_margin_top = 95
+patch_margin_right = 40
+patch_margin_bottom = 55
 
 [node name="Label" type="Label" parent="InfoPanel"]
 margin_right = 558.0
@@ -284,77 +293,26 @@ text = "Information"
 align = 1
 valign = 1
 
-[node name="buttons" type="HBoxContainer" parent="InfoPanel"]
-margin_left = 17.0
-margin_top = 679.0
-margin_right = 544.0
-margin_bottom = 727.0
-custom_constants/separation = 5
-alignment = 1
-
-[node name="Sendbutton" type="TextureButton" parent="InfoPanel/buttons"]
-margin_left = 67.0
-margin_right = 251.0
-margin_bottom = 48.0
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
-texture_disabled = ExtResource( 12 )
-
-[node name="Label" type="Label" parent="InfoPanel/buttons/Sendbutton"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 2.0
-margin_bottom = 2.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "Confirm"
-align = 1
-valign = 1
+margin_left = 18.0
+margin_top = 98.0
+margin_right = -18.0
+margin_bottom = -18.0
+custom_constants/separation = 4
 
-[node name="Teleport" type="TextureButton" parent="InfoPanel/buttons"]
-visible = false
-margin_left = 189.0
-margin_right = 339.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 150, 48 )
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
-texture_disabled = ExtResource( 12 )
-expand = true
-
-[node name="Label" type="Label" parent="InfoPanel/buttons/Teleport"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 2.0
-margin_bottom = 2.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "Teleport"
-align = 1
-valign = 1
-
-[node name="separator" type="Control" parent="InfoPanel/buttons"]
-margin_left = 256.0
-margin_right = 271.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 15, 0 )
-
-[node name="InfoFrame" type="TextureRect" parent="InfoPanel"]
-margin_left = 18.4998
-margin_top = 98.2258
-margin_right = 542.5
-margin_bottom = 398.226
+[node name="InfoFrame" type="TextureRect" parent="InfoPanel/VBoxContainer"]
+rect_min_size = Vector2( 524, 300 )
 texture = ExtResource( 17 )
 
-[node name="icon" type="TextureRect" parent="InfoPanel/InfoFrame"]
+[node name="icon" type="TextureRect" parent="InfoPanel/VBoxContainer/InfoFrame"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 
-[node name="name" type="Label" parent="InfoPanel/InfoFrame"]
+[node name="name" type="Label" parent="InfoPanel/VBoxContainer/InfoFrame"]
 visible = false
 anchor_right = 1.0
 margin_top = 17.0
@@ -365,7 +323,7 @@ text = "Location Name"
 align = 1
 valign = 1
 
-[node name="enemies" type="Label" parent="InfoPanel/InfoFrame"]
+[node name="enemies" type="Label" parent="InfoPanel/VBoxContainer/InfoFrame"]
 anchor_right = 1.0
 margin_left = -3.51978
 margin_top = 8.4491
@@ -378,7 +336,7 @@ text = "Location Name"
 align = 1
 valign = 1
 
-[node name="cleared" type="Control" parent="InfoPanel/InfoFrame"]
+[node name="cleared" type="Control" parent="InfoPanel/VBoxContainer/InfoFrame"]
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -388,7 +346,7 @@ margin_top = -52.0
 margin_right = -12.0
 margin_bottom = -6.0
 
-[node name="Label" type="Label" parent="InfoPanel/InfoFrame/cleared"]
+[node name="Label" type="Label" parent="InfoPanel/VBoxContainer/InfoFrame/cleared"]
 anchor_right = 1.0
 margin_bottom = 26.0
 custom_colors/font_color = Color( 0.141176, 1, 0.858824, 1 )
@@ -396,7 +354,7 @@ custom_fonts/font = ExtResource( 46 )
 align = 1
 valign = 1
 
-[node name="bar" type="ProgressBar" parent="InfoPanel/InfoFrame/cleared"]
+[node name="bar" type="ProgressBar" parent="InfoPanel/VBoxContainer/InfoFrame/cleared"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -407,12 +365,6 @@ custom_styles/bg = ExtResource( 53 )
 max_value = 12.0
 value = 0.0
 percent_visible = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel"]
-margin_left = 21.0
-margin_top = 407.0
-margin_right = 545.0
-margin_bottom = 640.0
 
 [node name="Label2" type="Label" parent="InfoPanel/VBoxContainer"]
 margin_right = 524.0
@@ -516,18 +468,69 @@ margin_right = -10.0
 margin_bottom = -10.0
 expand = true
 
-[node name="time" type="Label" parent="InfoPanel"]
-anchor_right = 1.0
-margin_left = 0.999995
-margin_top = 641.0
-margin_right = 1.0
-margin_bottom = 678.0
+[node name="Filler" type="Control" parent="InfoPanel/VBoxContainer"]
+size_flags_vertical = 3
+
+[node name="time" type="Label" parent="InfoPanel/VBoxContainer"]
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 46 )
 text = "Location Name"
 align = 1
 valign = 1
+
+[node name="buttons" type="HBoxContainer" parent="InfoPanel/VBoxContainer"]
+custom_constants/separation = 5
+alignment = 1
+
+[node name="Sendbutton" type="TextureButton" parent="InfoPanel/VBoxContainer/buttons"]
+margin_left = 67.0
+margin_right = 251.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="InfoPanel/VBoxContainer/buttons/Sendbutton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_bottom = 2.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "Confirm"
+align = 1
+valign = 1
+
+[node name="Teleport" type="TextureButton" parent="InfoPanel/VBoxContainer/buttons"]
+visible = false
+margin_left = 189.0
+margin_right = 339.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 150, 48 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 12 )
+expand = true
+
+[node name="Label" type="Label" parent="InfoPanel/VBoxContainer/buttons/Teleport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_bottom = 2.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "Teleport"
+align = 1
+valign = 1
+
+[node name="separator" type="Control" parent="InfoPanel/VBoxContainer/buttons"]
+margin_left = 256.0
+margin_right = 271.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 15, 0 )
 
 [node name="teleport_menu" parent="InfoPanel" instance=ExtResource( 49 )]
 visible = false
@@ -536,9 +539,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -194.5
-margin_top = -341.0
+margin_top = -364.0
 margin_right = 194.5
-margin_bottom = -78.0
+margin_bottom = -101.0
 
 [node name="FromLocList" type="TextureRect" parent="."]
 visible = false

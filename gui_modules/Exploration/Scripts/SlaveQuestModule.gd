@@ -146,7 +146,10 @@ func fill_quest_fields(root, quest):
 	var count = int(req.value)
 	var crest = _find(root, "Crest")
 	if crest is TextureRect:
-		sq.process_faction_icon(crest, quest.faction)
+		sq.process_quest_icon(crest, quest)
+	var guild_order = sq.is_guild_order(quest)
+	_put_text(root, "Guild", sq.guild_full_name(quest.guild) if guild_order else "")
+	_show(root, "Guild", guild_order)
 	var icons = _find(root, "ReqIcons")
 	if icons is Container and icons.has_node("ReqIcon"):
 		input_handler.ClearContainer(icons, ['ReqIcon'])
@@ -157,12 +160,31 @@ func fill_quest_fields(root, quest):
 			if entry.textures.size() > 1:
 				cycle_icon(icon, entry.textures)
 	_put_text(root, "Gold", str(sq.quest_total_gold(quest)))
+	fill_extra_reward(root, quest)
 	_put_text(root, "GoldPer", globals._report_text("SQ_GOLD_PER_SLAVE", [sq.next_payment(quest)]))
 	_show(root, "GoldPerRow", count > 1 and sq.is_quest_open_for_delivery(quest))
 	_put_text(root, "Days", "%d %s" % [int(quest.time_limit), tr("QUESTDAYSLEFT")])
 	_put_text(root, "DaysNumber", str(int(quest.time_limit)))
 	_put_text(root, "Count", "%d/%d" % [int(req.delivered_slaves), count])
 	_show(root, "CountRow", count > 1)
+
+
+#the reward under the gold (ExtraLine in a row, ExtraRow in the details): tokens, or a guild order's reputation
+func fill_extra_reward(root, quest):
+	var extra = ResourceScripts.slave_quests.quest_extra_reward(quest)
+	_put_text(root, "Extra", "+%d" % extra.value)
+	var label = _find(root, "Extra")
+	if label is Label:
+		label.add_color_override("font_color", extra.color)
+	var icon = _find(root, "ExtraIcon")
+	if icon is TextureRect:
+		icon.texture = extra.icon
+	_put_text(root, "ExtraCaption", extra.caption)
+	for node_name in ["ExtraLine", "ExtraRow"]:
+		var holder = _find(root, node_name)
+		if holder is Control:
+			holder.visible = extra.value > 0
+			globals.connecttexttooltip(holder, extra.tooltip)
 
 
 #--------------details--------------
@@ -191,16 +213,16 @@ func fill_details(quest):
 	var sq = ResourceScripts.slave_quests
 	details.show()
 	fill_quest_fields(details, quest)
-	var faction = sq.get_faction(quest.faction)
+	var house = sq.guild_full_name(quest.guild) if sq.is_guild_order(quest) else tr(sq.get_faction(quest.faction).name)
 	_put_text(details, "Title", tr(quest.name))
 	var description = _find(details, "Description")
 	if description != null:
 		var text = tr(quest.descript)
 		if description is RichTextLabel:
 			var color = description.get_meta("faction_color") if description.has_meta("faction_color") else "#8fd18f"
-			text = text.replace("[factionname]", "[color=%s]%s[/color]" % [color, tr(faction.name)])
+			text = text.replace("[factionname]", "[color=%s]%s[/color]" % [color, house])
 		else:
-			text = text.replace("[factionname]", tr(faction.name))
+			text = text.replace("[factionname]", house)
 		_put_text(details, "Description", text)
 	var lines = sq.requirement_lines(quest)
 	if lines.basic.empty():

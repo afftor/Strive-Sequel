@@ -1687,6 +1687,10 @@ func clear_enthrall():
 
 func serialize():
 	var res = inst2dict(self)
+	#both hold live combat objects, and to_json writes an object as its to_string(). The String
+	#that comes back passes every `if displaynode != null` guard before failing inside it.
+	res.erase('displaynode')
+	res.erase('ai')
 	res.statlist = inst2dict(statlist)
 	res.dyn_stats = inst2dict(dyn_stats)
 	res.xp_module = inst2dict(xp_module)
@@ -1699,6 +1703,11 @@ func serialize():
 	return res
 
 func fix_serialization():
+	#saves written before serialize() stopped storing these carry them as strings
+	if displaynode != null and typeof(displaynode) != TYPE_OBJECT:
+		displaynode = null
+	if ai != null and typeof(ai) != TYPE_OBJECT:
+		ai = null
 	if xp_module is Dictionary:
 		xp_module = dict2inst(xp_module)
 	if equipment is Dictionary:
@@ -2737,6 +2746,11 @@ func deal_damage(value, source = 'normal'):
 			value -= shield
 			self.shield = 0
 		process_event(variables.TR_DMG)
+		#A scripted lesson has no route past a lost fight - every step after the tutorial's
+		#wolves waits on the victory rewards, which a defeat never produces - so while the
+		#hard tutorial is running its fighters hold at 1 hp instead of going down.
+		if input_handler.hard_tutorial_active and combatgroup == 'ally' and value >= hp:
+			value = max(hp - 1, 0)
 		self.hp -= value
 		tmp = tmp - hp
 		if displaynode != null and !defeated:
@@ -2944,6 +2958,21 @@ func needs_portrait(): #never had one taken, or the file behind it is gone
 	if input_handler.portrait_cache.has(path): #asked once per card build, keep it off the disk
 		return false
 	return !File.new().file_exists(path)
+
+
+#gear the head-and-shoulders shot can show; rhand is here for the weapons slung across the back
+const PORTRAIT_GEAR_SLOTS = ['head', 'neck', 'chest', 'underwear', 'rhand']
+
+
+func portrait_gear(): #empty unless the portrait is the doll's shot - a hand picked one must not be retaken
+	if !uses_paperdoll():
+		var path = get_stat('icon_image')
+		if !get_stat('dynamic_portrait') or !(path is String) or !path.begins_with(variables.portraits_folder):
+			return []
+	var res = []
+	for slot in PORTRAIT_GEAR_SLOTS:
+		res.append(equipment.get_gear_type(slot))
+	return res
 
 
 func portrait_ready(path): #called back by the ragdoll, the image is in the cache by then

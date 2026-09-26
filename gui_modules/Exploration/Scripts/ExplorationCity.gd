@@ -833,7 +833,7 @@ func sell_slave():
 		if tchar.has_profession('master') || tchar.check_work_rule("lock"): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
 			continue
 		char_list.append(tchar)
-	sort_by_quest_fit(char_list)
+	sort_sell_list(char_list)
 	for tchar in char_list:
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 		fill_market_row(newbutton, tchar, market_sale_price(tchar))
@@ -845,30 +845,32 @@ func sell_slave():
 		show_market_empty()
 
 
-const QUEST_FIT_ORDER = ['green', 'yellow']
-var quest_fit_keys = {}
+#the mansion list's order - the player's manual one, hidden characters last - except that
+#slaves a market quest takes as they are come first
+var sell_sort_keys = {}
 
-func sort_by_quest_fit(char_list):
+func sort_sell_list(char_list):
 	var sq = ResourceScripts.slave_quests
 	var order = ResourceScripts.game_party.character_order
-	quest_fit_keys.clear()
+	sell_sort_keys.clear()
 	for tchar in char_list:
-		var rank = QUEST_FIT_ORDER.size()
-		if sq.can_deliver(tchar):
-			var found = QUEST_FIT_ORDER.find(sq.best_match_for(tchar).status)
-			if found >= 0:
-				rank = found
-		quest_fit_keys[tchar.id] = [rank, order.find(tchar.id)]
-	char_list.sort_custom(self, "_quest_fit_before")
-	quest_fit_keys.clear()
+		var idx = order.find(tchar.id)
+		sell_sort_keys[tchar.id] = [
+			0 if sq.can_deliver(tchar) and sq.best_match_for(tchar).status == 'green' else 1,
+			1 if tchar.check_work_rule("hide") else 0,
+			idx if idx >= 0 else order.size(),
+		]
+	char_list.sort_custom(self, "_sell_row_before")
+	sell_sort_keys.clear()
 
 
-func _quest_fit_before(a, b):
-	var key_a = quest_fit_keys[a.id]
-	var key_b = quest_fit_keys[b.id]
-	if key_a[0] != key_b[0]:
-		return key_a[0] < key_b[0]
-	return key_a[1] < key_b[1]
+func _sell_row_before(a, b):
+	var key_a = sell_sort_keys[a.id]
+	var key_b = sell_sort_keys[b.id]
+	for i in key_a.size():
+		if key_a[i] != key_b[i]:
+			return key_a[i] < key_b[i]
+	return false
 
 
 func market_sale_price(tchar):

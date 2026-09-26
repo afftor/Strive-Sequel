@@ -155,26 +155,32 @@ var picking = false
 func toggle_picking():
 	picking = !picking
 	rebuild()
+	var ids = workers()
+	#said to the press only: rebuild() also runs after every assignment, and repeated it each time
+	if picking and !ids.empty() and candidates(ids).empty():
+		input_handler.SystemMessage(tr("MANSIONVIEW_NOCANDIDATES"))
+
+
+func candidates(ids):
+	var res = []
+	for char_id in view.resting_characters():
+		if !ids.has(char_id):
+			res.append(char_id)
+	return res
 
 
 func build_candidates(ids):
 	$AddButton.text = tr("MANSIONVIEW_HIDEFREE" if picking else "MANSIONVIEW_ADDFREE")
 	if !picking:
 		return
-	var offered = 0
-	for char_id in view.resting_characters():
-		if ids.has(char_id):
-			continue
+	var offered = candidates(ids)
+	for char_id in offered:
 		var cell = input_handler.DuplicateContainerTemplate($Scroll/List)
 		cell.setup(view, char_id, self, false)
-		offered += 1
-	if offered == 0:
-		#the label sits over the top of the list, so it can only be used when there is no list
-		if ids.empty():
-			$Empty.text = tr("MANSIONVIEW_NOCANDIDATES")
-			$Empty.visible = true
-		else:
-			input_handler.SystemMessage(tr("MANSIONVIEW_NOCANDIDATES"))
+	#the label sits over the top of the list, so it can only be used when there is no list
+	if offered.empty() and ids.empty():
+		$Empty.text = tr("MANSIONVIEW_NOCANDIDATES")
+		$Empty.visible = true
 
 
 #Clicking somebody opens what they are allowed to do, beside the list rather than instead of

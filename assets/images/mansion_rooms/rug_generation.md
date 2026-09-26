@@ -1,6 +1,6 @@
 # Brown and gold rug
 
-Tool: built-in image_gen. Source: `rug_gray_reference.png`, copied from rectangle (2, 249, 236, 224) of `house_layout_atlas.png`. Generated source: `rug_brown_gold_generated.png`. Runtime texture: `rug_brown_gold_atlas.png`, resized to 236 × 224 in Godot; original builder scale retained.
+Tool: built-in image_gen. Source: `rug_gray_reference.png`, copied from rectangle (2, 249, 236, 224) of `house_layout_atlas.png`. Generated source: `rug_brown_gold_generated.png`, removed from the tree; kept in git history (commit `32e9a7cc1`). Runtime texture: `rug_brown_gold_atlas.png`, resized to 236 × 224 in Godot; original builder scale retained.
 
 ## Prompt
 

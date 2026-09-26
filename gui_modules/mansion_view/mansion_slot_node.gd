@@ -223,7 +223,8 @@ func room_texture(preset):
 		return art_cache[path].texture
 	var texture = null
 	var image = Image.new()
-	if modified > 0 and image.load(path) == OK:
+	#by file path: Image.load on a res:// path prints a "will not work on export" warning
+	if modified > 0 and image.load(ProjectSettings.globalize_path(path)) == OK:
 		texture = ImageTexture.new()
 		texture.create_from_image(image, Texture.FLAG_FILTER)
 	elif ResourceLoader.exists(path):

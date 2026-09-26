@@ -171,7 +171,7 @@ func mutepressed(node):
 
 func updatesounds():
 	var counter = 0
-	for i in ['master','music','sound']:
+	for i in ['master','music','sound','ambient']:
 		AudioServer.set_bus_mute(counter, input_handler.globalsettings[i+'mute'])
 		AudioServer.set_bus_volume_db(counter, input_handler.globalsettings[i+'vol'])
 		counter += 1

@@ -70,6 +70,7 @@ Potrebbero già essere disponibili build sperimentali o stabili più recenti: co
 
 
 	MODLISTGAMEVERSIONRESET = "L'elenco delle mod attive è stato creato per la versione di gioco %s, ma la versione attuale è %s.\n\nPer sicurezza, il vecchio mods.ini è stato salvato come backup in:\n%s\n\nÈ stato creato un nuovo mods.ini vuoto. Riattiva le mod compatibili dal menu Mod.",
+	SAVEMODDATASTRIPPED = """This save was made with mods that are not loaded now. What they had added was taken out of it so it could be opened:""", # MISSING TRANSLATION
 	MENUCREDITSNAME = "Crediti",
 	MENUCREDITSDESC = """Progettazione, scrittura, programmazione del gioco: Maverik /
 
@@ -171,6 +172,7 @@ I tasti della villa e del combattimento sono indipendenti: lo stesso tasto può 
 	OPTAUDIOMASTERSOUND = "Master Suono",
 	OPTAUDIOMUSIC = "Musica",
 	OPTAUDIOSOUND = "Suono",
+	OPTAUDIOAMBIENT = """Ambient""", # MISSING TRANSLATION
 	OPTAUDIOMUTE = "Muto",
 	OPTGRAPHICFULLSCREEN = "Schermo intero",
 	OPTGRAPHICFACTOR = "Fattori come parole",
@@ -503,6 +505,8 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	MSLMNAVEXPLORE = "Esplora",
 	MSMNAME = "Informazioni Personaggio",
 	MSMEXP = "EXP", #
+	MSMPREVCHARACTER = """Previous character""", # MISSING TRANSLATION
+	MSMNEXTCHARACTER = """Next character""", # MISSING TRANSLATION
 	FACTORDESCRIPTS1 = "Pessimo",
 	FACTORDESCRIPTS2 = "Scarso",
 	FACTORDESCRIPTS3 = "Medio",
@@ -765,6 +769,21 @@ Tuttavia, mentre potrebbe sembrare che i proprietari terrieri non abbiano altro 
 	LABELDESTINATION = "Destinazione",
 	LABELSEXSKILLS = "Abilità Sessuali",
 	SLAVE_MARKET_SEX_SKILLS = "Abilità Sessuali",
+	SLAVE_MARKET_BUY_FOR = """Buy: %s""", # MISSING TRANSLATION
+	SLAVE_MARKET_SELL_FOR = """Sell: %s""", # MISSING TRANSLATION
+	SLAVE_MARKET_BUY_CONFIRM = """Buy [name] for %s gold?""", # MISSING TRANSLATION
+	SLAVE_MARKET_HIRE_FOR = """Hire: %s""", # MISSING TRANSLATION
+	SLAVE_MARKET_HIRE_CONFIRM = """Hire [name] for %s gold?""", # MISSING TRANSLATION
+	SLAVE_MARKET_EMPTY_HIRE = """Nobody is for sale here right now.""", # MISSING TRANSLATION
+	SLAVE_MARKET_EMPTY_SELL = """You have nobody the market would buy.""", # MISSING TRANSLATION
+	SLAVE_MARKET_COL_NAME = """Name""", # MISSING TRANSLATION
+	SLAVE_MARKET_COL_RACE = """Race""", # MISSING TRANSLATION
+	SLAVE_MARKET_COL_PRICE = """Price""", # MISSING TRANSLATION
+	SLAVE_MARKET_COL_TYPE = """Type""", # MISSING TRANSLATION
+	SLAVE_MARKET_RELINQUISH = """Relinquish""", # MISSING TRANSLATION
+	SLAVE_MARKET_RELINQUISH_FOR = """Relinquish: %s""", # MISSING TRANSLATION
+	SLAVE_MARKET_NO_CLASSES = """No classes yet""", # MISSING TRANSLATION
+	SLAVE_MARKET_NO_TRAITS = """No traits""", # MISSING TRANSLATION
 	STARTINGADJ = "Avviamento",
 	FOODTYPEMEAT = "Carne",
 	FOODTYPEFISH = "Pesce",
@@ -819,6 +838,9 @@ Tuttavia, mentre potrebbe sembrare che i proprietari terrieri non abbiano altro 
 	MATERIALCATEGORYCOMPONENT = "Consumabile",
 	TOOLTIPHIDDENRESOURCE = """Risorsa sconosciuta.
 Procedi nella storia principale per scoprirla.""",
+	MAPRACES = """Races""", # MISSING TRANSLATION
+	MAPRACEUNKNOWN = """Unknown kind.
+Take one here to learn what it is.""", # MISSING TRANSLATION
 	MATERIALMEAT = "Carne",
 	MATERIALMEATDESCRIPT = "Una ricca fonte di sostanze nutritive. Acquisita dalla caccia. ",
 	MATERIALFISH = "Pesce",
@@ -2147,6 +2169,51 @@ Fully restore HP. Gain Stone Wall for 3 turns, Earth Shield for 5 turns and Soot
 	SKILLCOAL_MOAB_BOOMDESCRIPT = """Cannot miss. Removes Last Stand, then deals a catastrophic amount of {color=yellow|True} damage to every unit on the field.""", # MISSING TRANSLATION
 	SKILLCOAL_MOAB_BOOM_ALLIES = """Mushroom Cloud""", # MISSING TRANSLATION
 	SKILLCOAL_MOAB_BOOM_ALLIESDESCRIPT = """The blast reaches its own side as well.""", # MISSING TRANSLATION
+	SKILLJD_GREATER_FLAME_SPHERE = """Greater Flame Sphere""", # MISSING TRANSLATION
+	SKILLJD_GREATER_FLAME_SPHEREDESCRIPT = """A sphere of fire hangs over the field from the first moment. Deals 30% of each enemy's maximum health as {color=yellow|Fire} damage and sets them Burning for 3 turns.""", # MISSING TRANSLATION
+	SKILLJD_ABYSS = """Abyss""", # MISSING TRANSLATION
+	SKILLJD_ABYSSDESCRIPT = """Deals 160% of MATK as {color=yellow|Dark} damage to all enemies. Each one hit is struck Silent, Blind or Disarmed.
+Any Burning on target is transform into Dark Flame for 4 turns.""", # MISSING TRANSLATION
+	SKILLJD_SOIL_LIQUEFACTION = """Soil Liquefaction""", # MISSING TRANSLATION
+	SKILLJD_SOIL_LIQUEFACTIONDESCRIPT = """The ground turns to slurry. Deals 75% of MATK as {color=yellow|Earth} damage to every enemy standing on it, leaving them Wet and caught in {color=aqua|Quicksand} for 2 turns. Flying enemies are missed entirely.""", # MISSING TRANSLATION
+	SKILLJD_WINTERFALL = """Winterfall""", # MISSING TRANSLATION
+	SKILLJD_WINTERFALLDESCRIPT = """Deals 150% of MATK as {color=yellow|Water} damage to all enemies. Wet targets take 50% more, Frozen ones 60% more.
+A dry target is left Wet; a Wet one is frozen solid instead.""", # MISSING TRANSLATION
+	SKILLJD_PERFECT_STORM = """Perfect Storm""", # MISSING TRANSLATION
+	SKILLJD_PERFECT_STORMDESCRIPT = """Deals 120% of MATK as {color=yellow|Air} damage to all enemies and Shocks them for 2 turns. The storm does not disperse: for 3 turns it hangs over them as {color=aqua|Lingering Storm}.""", # MISSING TRANSLATION
+	SKILLJD_CATCH_BREATH = """Tch..! This body ain't used to this level of spellcasting just yet...""", # MISSING TRANSLATION
+	SKILLJD_CATCH_BREATHDESCRIPT = """The demon lets Jean's body catch up with what it is being asked to do, restoring 12% of her maximum health.""", # MISSING TRANSLATION
+	SKILLJD_VOLCANIC_ERUPTION = """Volcanic Eruption""", # MISSING TRANSLATION
+	SKILLJD_VOLCANIC_ERUPTIONDESCRIPT = """Fire bolt after fire bolt at whoever is nearest to hand: 5 to 6 hits of 75% MATK {color=yellow|Fire} damage on random enemies, each leaving Shatter and Burn for 3 turns.""", # MISSING TRANSLATION
+	SKILLJD_DEMONIC_STRUGGLE = """Demonic Struggle""", # MISSING TRANSLATION
+	SKILLJD_DEMONIC_STRUGGLEDESCRIPT = """With her voice taken, the demon wrings the body itself for 250% ATK damage and a Stun. Cannot be Silenced. Costs 8% of her maximum health.""", # MISSING TRANSLATION
+	SKILLJD_WARD_CAST_DIAMOND = """Warding Field: Diamond Shell""", # MISSING TRANSLATION
+	SKILLJD_WARD_CAST_DIAMONDDESCRIPT = """Hardens the air around her into a shell against steel.""", # MISSING TRANSLATION
+	SKILLJD_WARD_CAST_PLASMA = """Warding Field: Plasma Shell""", # MISSING TRANSLATION
+	SKILLJD_WARD_CAST_PLASMADESCRIPT = """Hardens the air around her into a shell against magic.""", # MISSING TRANSLATION
+	SKILLJD_ENGULFING_DREAM = """Engulfing Dream""", # MISSING TRANSLATION
+	SKILLJD_ENGULFING_DREAMDESCRIPT = """Drags one waking enemy 2 layers deep into {color=aqua|Deep Sleep}. Cannot be used on an enemy already {color=aqua|Comatose}.
+Against a lone opponent it can only manage ordinary Sleep.""", # MISSING TRANSLATION
+	SKILLJD_ONEIRIC_FEEDING = """Oneiric Feeding""", # MISSING TRANSLATION
+	SKILLJD_ONEIRIC_FEEDINGDESCRIPT = """Feeds on a sleeper's dream: Inflict 2 more layers of {color=aqua|Deep Sleep} on them, Demon gain 1 stack of {color=aqua|Empowerment}. Can only be used on an enemy in {color=aqua|Deep Sleep}.""", # MISSING TRANSLATION
+	SKILLJD_SAPID_UNREALITY = """Sapid Unreality""", # MISSING TRANSLATION
+	SKILLJD_SAPID_UNREALITYDESCRIPT = """Needs 5 stacks of {color=aqua|Empowerment} and an enemy already in {color=aqua|Deep Sleep}, whom it pushes 3 layers deeper.
+The dream spills over: dealing 110% MATK {color=yellow|Mind} damage to every enemy who is still awake.""", # MISSING TRANSLATION
+	SKILLJD_SAPID_WAVE = """Sapid Unreality""", # MISSING TRANSLATION
+	SKILLJD_SAPID_WAVEDESCRIPT = """The nightmare spills out over everyone still awake.""", # MISSING TRANSLATION
+	SKILLJD_ETERNAL_SLUMBER = """Eternal Slumber""", # MISSING TRANSLATION
+	SKILLJD_ETERNAL_SLUMBERDESCRIPT = """Once no one is left awake, the dream closes over the whole party. Every {color=aqua|Comatose} enemy dies where they lie.""", # MISSING TRANSLATION
+	SKILLJD_SHOW_BODY = """I'll Show You What This Body can Do!!""", # MISSING TRANSLATION
+	SKILLJD_SHOW_BODYDESCRIPT = """Deals 190% ATK damage at range and inflicts Shatter for 3 turns, with a 50% chance to Stun. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
+	SKILLJD_VISION_INDULGENCE = """Vision of Indulgence""", # MISSING TRANSLATION
+	SKILLJD_VISION_INDULGENCEDESCRIPT = """Deals 120% MATK {color=yellow|Mind} damage and scrambles the target's mind with the thing it wants most.
+Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
+	SKILLJD_VISION_SLEEP = """Vision of Indulgence""", # MISSING TRANSLATION
+	SKILLJD_VISION_SLEEPDESCRIPT = """The vision takes hold.""", # MISSING TRANSLATION
+	SKILLJD_MASS_ILLUSION = """Mass Illusion Mayhem""", # MISSING TRANSLATION
+	SKILLJD_MASS_ILLUSIONDESCRIPT = """Copies of the demon come from everywhere at once to strike any non-sleeping enemies 90% ATK damage each, and the user slips into {color=aqua|In The Shadows} behind them. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
+	SKILLJD_FAUSTIAN_DELIVERANCE = """Faustian Deliverance""", # MISSING TRANSLATION
+	SKILLJD_FAUSTIAN_DELIVERANCEDESCRIPT = """A beam of ruin down one column for 170% MATK {color=yellow|Dark} damage, leaving the Cursed behind it. Passes over sleepers. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
 	SKILLACCELERATING_PLUNGE = 'Tuffo Accelerato',
 	SKILLACCELERATING_PLUNGEDESCRIPT = """Se questa unità non ha un effetto immobilizzante, ottiene una carica di [{color=aqua|Slancio Catastrofico}].
 In caso contrario, rimuove tutti gli effetti immobilizzanti.""",
@@ -2474,6 +2541,9 @@ Rimuove tutta la {color=aqua|Massa Accumulata} su se stesso.""",
 	STATUSDESC_SHRED = "Lacerazione: La DIF è ridotta del 25%.",
 	STATUSDESC_PARALYSIS = """Paralysed: -50 Speed, -80 Evasion and -75 Hitrate. Counts as an affliction.""", # MISSING TRANSLATION
 	STATUSDESC_CONTAGIOUS_CALAMITY = """Contagious Calamity: counts as Poison. Healing received is halved. 25% of max HP is lost and spreads to up to 2 random allies every turn. """, # MISSING TRANSLATION
+	STATUSDESC_JD_DEEP_SLEEP = """Deep Sleep: cannot act. Any ability an ally aims at them shortens it, and so does Clarity at the end of each turn. At 8 layers' worth, it becomes Comatose.""", # MISSING TRANSLATION
+	STATUSDESC_JD_COMATOSE = """Comatose: cannot act, and cannot be woken before the battle is over.""", # MISSING TRANSLATION
+	STATUSDESC_JD_QUICKSAND = """Quicksand: -75% Evasion, -50 Speed, and this unit's melee attacks always miss. Counts as a trap.""", # MISSING TRANSLATION
 	STATUSDESC_FEAR = "Paura: Il danno è ridotto del 25%.",
 	STATUSDESC_TAUNT = "Provocato: Concentrato sull'incantatore",
 	STATUSDESC_PROVOKE = "Sfidato: Concentrato sull'incantatore, può usare solo abilità a bersaglio singolo.",
@@ -2847,6 +2917,8 @@ Migliora la disposizione verso {color=yellow|Azioni Casuali}. Costa 5 Mana.""",
 	SERVICESEXUALNONPENETRATIVE = "[name] intratterrà i clienti servendoli e fornendo loro servizi sessuali leggeri che non comportano la penetrazione.",
 	SERVICENOSEX = "[name] servirà e intratterrà i clienti, ma rifiuterà qualsiasi servizio sessuale.",
 	SERVICEESTVALUE = "Reddito stimato: %s oro",
+	SERVICEESTVALUE_LIMITED = """Estimated income: up to %s gold, the clients' purse may run short""", # MISSING TRANSLATION
+	SERVICEESTVALUE_EXHAUSTED = """Estimated income: %s gold, at the %d%% rate until the purse refills""", # MISSING TRANSLATION
 	SERVICEDESIRABILITY = "Desiderabilità: %s%%",
 	SERVICEDESIRABILITYVALUE = "Desiderabilità: %s",
 	TASKMAINSTAT = "Caratteristica principale",
@@ -2883,8 +2955,16 @@ Migliora la disposizione verso {color=yellow|Azioni Casuali}. Costa 5 Mana.""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION = "%s è tornata alla villa.",
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = "%s è tornata a %s.",
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = "%s è arrivata a %s.",
+	MANSION_ACTIVITY_ARRIVAL_REPORT = """%s arrived at %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_REPORT_MANSION = """%s returned to %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_REPORT_SPREAD = """%s arrived at %d locations.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_GROUP = """%s: %s""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_GROUP_AT = """%s at %s: %s""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_AUTOBUY = "%s è tornata dal mercato con %s, per %d monete d'oro.",
+	MANSION_ACTIVITY_RITES_PREPARED = """The Ritual Room's preparation is complete: a flesh rite can be performed.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SLEPTROUGH = "Non aveva un posto dove dormire: %s.",
+	MANSION_ACTIVITY_NOBED_ESCAPE = """Ran away for want of a bed: %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_NOBED_BREAKDOWN = """Broke down for want of a bed: %s.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_CRAFT_COMPLETE = "%s ha finito di fabbricare %s.",
 	MANSION_ACTIVITY_CRAFT_REPORT = """The workshops finished [color=#e8aa55]%d[/color] craft(s), made by %d of the household.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TRAINING_COMPLETE = "%s ha finito l'addestramento in %s.",
@@ -2896,19 +2976,28 @@ Migliora la disposizione verso {color=yellow|Azioni Casuali}. Costa 5 Mana.""",
 	MANSION_ACTIVITY_CHARACTER_FOUND = "%s ha trovato %s a %s.",
 	MANSION_ACTIVITY_LOCATION_EMPTY = "Non è rimasto nessuno a %s.",
 	MANSION_ACTIVITY_LOCATION_GONE = "Quella località non è più accessibile.",
+	MANSION_ACTIVITY_TYPE_LOCATION = """Location""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_LOCATION_REMOVED = """%s has been left behind and is gone from the map.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_LOCATION_REMOVED_SOLD = """%d captive(s) left there were sold for [color=#f0c860]%d[/color] gold.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_LOCATION_REMOVED_FREED = """%d captive(s) left there were let go.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SERVICE_REPORT = "Il servizio ha fruttato [color=#f0c860]%d[/color] monete d'oro, guadagnate da %d membri della casa.",
+	MANSION_ACTIVITY_SERVICE_EXHAUSTED = """There are no more clients in %s who can afford service for now. Until the week is out, service there pays only a tenth of its usual rate.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_PRODUCTION_REPORT = """Work brought in [color=#6fc0b0]%d[/color] resource(s), of %d kind(s).""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPKEEP_REPORT = """Weekly upkeep cost the estate [color=#d05f5f]%d[/color] gold, over %d charge(s).""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPKEEP_CHARACTER = """%s: [color=#d05f5f]%d[/color] gold (%d fame + %d value).""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_UPKEEP_UPGRADES = """Taxes on upgrades: [color=#d05f5f]%d[/color] gold.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_SERVICE_EXPAND = "Espandi",
 	MANSION_ACTIVITY_SERVICE_COLLAPSE = "Comprimi",
+	MANSION_ACTIVITY_FOLD = """Collapse activity log""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_UNFOLD = """Expand activity log""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_TYPE_BEDROOM = """Bedroom""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_BEDROOM_LIGHT = """%s and %s had some light fun at night.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_BEDROOM_PASSIONATE = """%s and %s spent a passionate night together.""", # MISSING TRANSLATION
 	MANSION_ACTIVITY_BEDROOM_SKILL = """%s is now [color=#d95d8a]%s[/color] at %s.""", # MISSING TRANSLATION
 	BROTHELLOGSEX = "%s ha guadagnato %s oro eseguendo %s con un cliente %s.",
 	BROTHELLOGSEXPARTIAL = "%s non è riuscita ad attirare pienamente un cliente e ha guadagnato solo %s oro eseguendo %s con un cliente %s.",
+	BROTHELLOGSEXGROUP = """%s earned %s gold performing %s with %s customers.""", # MISSING TRANSLATION
+	BROTHELLOGSEXPARTIALGROUP = """%s failed to fully attract customers and earned only %s gold performing %s with %s customers.""", # MISSING TRANSLATION
 	BROTHELLOGNO_SEX = "%s ha guadagnato %s oro lavorando come %s.",
 	BROTHELTOOLTIP = """Puoi selezionare quali compiti il personaggio potrà svolgere mentre lavora in un bordello. Attivando o disattivando attività specifiche, saranno consentite solo quelle disponibili. I sessi dei clienti influenzano solo i compiti sessuali.
 Un valore del personaggio più alto aumenta i guadagni, un fascino più alto aumenta la probabilità di essere richiesti per il sesso.
@@ -2929,7 +3018,20 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 
 Non potrai completare il turno se il numero totale dei tuoi personaggi è superiore al numero di stanze disponibili. """,
 	CAPTUREDISMISSTOOLTIP = "Rilascia questo personaggio.",
+	CAPTURE_HANDOVER_HINT = """Those who fit a slave market quest as they are get a green Hand Over strip: click it, pick the quest, and they are handed over from here, paid as at the market.""", # MISSING TRANSLATION
+	CAPTURE_HANDOVER_TOOLTIP = """[color=yellow]%s[/color]
+%s, %d of %d delivered.
+Hand over now: +%d gold.""", # MISSING TRANSLATION
+	CAPTURE_HANDOVER_CHOOSE = """Fits %d slave market quests - click to choose:""", # MISSING TRANSLATION
+	CAPTURE_HANDOVER_LINE = """%s: +%d gold""", # MISSING TRANSLATION
+	CAPTURE_CHOOSER_TITLE = """Hand %s over for:""", # MISSING TRANSLATION
+	CAPTURE_CHOOSER_META = """%s, %d of %d delivered""", # MISSING TRANSLATION
+	CAPTURE_QUICKSELL_TOOLTIP = """Sell every captive for quick cash and let the others go. Those who fit a slave market quest stay: hand them over with their Hand Over strip.""", # MISSING TRANSLATION
+	CAPTURE_QUICKSELL_CONFIRM = """Sell %d captive(s) for %d gold?""", # MISSING TRANSLATION
+	CAPTURE_QUICKSELL_CONFIRM_FREE = """Let %d captive(s) go?""", # MISSING TRANSLATION
 	SERVICEBOOSTTOOLTIP = "Qui è possibile assegnare un consumo di articoli aggiuntivo che aumenterà la produzione di servizi. Questi oggetti possono essere prodotti in Fattoria. ",
+	SERVICEBOOSTNOSTOCK = """Not enough in stock""", # MISSING TRANSLATION
+	SERVICEBOOSTNEEDS = """Inactive: needs %s""", # MISSING TRANSLATION
 	FARMTOOLTIP = "Puoi assegnare il personaggio alla fattoria per produrre materiali aggiuntivi che possono essere utilizzati per aumentare la produzione di servizi o essere venduti.",
 	FACTOR_INCREASE_TOOLTIP = "Sacrificando i personaggi non necessari, puoi potenziare i fattori di altri personaggi purché la statistica del personaggio donatore sia superiore a quella del ricevente. Il solo fattore di crescita può essere aumentato di 1 per donatore. Il prezzo finale è definito dal valore del destinatario.",
 	COMBAT_CHARACTER_CAPTURED = "Personaggio",
@@ -3025,6 +3127,7 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATBODY_COLOR_HORNS = "Colore delle corna",
 	STATBODY_COLOR_ANIMAL = "Colore delle parti animali",
 	STATBODY_COLOR_EARS = "Colore delle orecchie",
+	STATBODY_COLOR_NIPPLES = """Nipples color""", # MISSING TRANSLATION
 	STATHAIR_BASE = "Capelli base",
 	STATHAIR_ASSIST = "Capelli assistiti",
 	STATHAIR_BACK = "Capelli dietro",
@@ -3122,6 +3225,8 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATTATTOO_CROTCH = "",
 	STATTATTOO_WAIST = "",
 	STATTATTOO_ASS = "",
+	STATTATTOO_CROTCH_STYLE = """""", # MISSING TRANSLATION
+	STATTATTOO_CROTCH_COLOR = """""", # MISSING TRANSLATION
 	STATARMOR_COLOR_BASE = "",
 	STATARMOR_COLOR_LOWER = "",
 	STATARMOR_COLOR_COLLAR = "",
@@ -3137,6 +3242,8 @@ Non potrai completare il turno se il numero totale dei tuoi personaggi è superi
 	STATPIERCING_CLIT = "",
 	STATPIERCING_LABIA = "",
 	STATPIERCING_PENIS = "",
+	STATPIERCING_NIPPLES_COLOR = """""", # MISSING TRANSLATION
+	STATPIERCING_NAVEL_COLOR = """""", # MISSING TRANSLATION
 	STATMETRICS_OWNERSHIP = "Data di acquisizione",
 	STATMETRICS_SEX = "Rapporti sessuali",
 	STATMETRICS_DATES = "Appuntamenti",
@@ -3530,6 +3637,8 @@ Danno +15%, Salute +20.""",
 	BREAKDOWN_SHRINE = "[name] ha avuto un crollo a causa della schiavitù al Santuario di Hybris",
 	BREAKDOWN_ENTHRALL = "[name] ha avuto un crollo a causa dell'affascinamento.",
 	BREAKDOWN_ENTHRALLRELEASE = "[name] ha avuto un crollo a causa della perdita del legame con il suo maestro demoniaco.",
+	BREAKDOWN_NOBED = """[name] had a breakdown due to having no bed to sleep in""", # MISSING TRANSLATION
+	ESCAPE_NOBED = """[name] has run away during the night. With no bed to call [his] own, there was little left to keep [him] in your household.""", # MISSING TRANSLATION
 	STATFAME = "Fama",
 	STATFAMEDESCRIPT = "",
 	STATFAME_DEGRADE_TIMER = "Timer di degradazione della fama",
@@ -4234,6 +4343,11 @@ Intelligenza: -10; Guadagno EXP: -10%; Il prezzo di vendita è notevolmente rido
 	SELECT_CHAR_BEFORE_ADV = "Seleziona almeno 1 personaggio prima di avanzare.",
 	NO_STAMINA_LABEL = "Nessuna stamina",
 	LOC_COMPLETE = "Posizione completata",
+	LOC_CLEARED = """Cleared""", # MISSING TRANSLATION
+	LOC_ABANDONED = """Abandoned""", # MISSING TRANSLATION
+	LOC_CLEARED_TOOLTIP = """There is nothing left to do here. The location no longer counts toward the region's limit and will leave the map on its own once none of your characters are here or on the road to or from it.""", # MISSING TRANSLATION
+	LOC_ABANDONED_TOOLTIP = """This place was left behind unfinished. It no longer counts toward the region's limit and will leave the map on its own once none of your characters are here or on the road to or from it.""", # MISSING TRANSLATION
+	LOC_REMOVAL_TIMER_LEFT = """Turns left: %d""", # MISSING TRANSLATION
 	CANT_PAY_COSTS_LABEL = "Non può pagare le spese",
 	NO_CHARGES_LEFT_LABEL = "Nessuna carica rimasta",
 	CANT_USE_TODAY_LABEL = "Non posso più usare questa abilità oggi",
@@ -5556,6 +5670,35 @@ Flash-steps in to counterattack whenever an attack is dodged, up to 5 times per 
 	EFFECTNAME_COAL_FUSE_1 = """Fuse""", # MISSING TRANSLATION
 	EFFECTNAME_COAL_FUSE_2 = """Fuse""", # MISSING TRANSLATION
 	EFFECTNAME_COAL_FUSE_3 = """Fuse""", # MISSING TRANSLATION
+	EFFECTNAME_JD_WARD = """Warding Field""", # MISSING TRANSLATION
+	EFFECT_JD_WARD_DIAMOND = """Warding Field: Diamond Shell. Clears Shred on arrival; immune to Shred, Poison and Bleed.
++100 Armor and half damage from physical attacks. A spell landing on her flips it to the Plasma Shell, unless she is Silenced.""", # MISSING TRANSLATION
+	EFFECT_JD_WARD_PLASMA = """Warding Field: Plasma Shell. Clears Shatter on arrival; immune to Shatter, Burn and Wet.
++100 MDEF and half damage from magic. A physical blow flips it to the Diamond Shell, unless she is Silenced.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_MOUTH_SHUT = """Second Mouth Shut""", # MISSING TRANSLATION
+	EFFECT_JD_MOUTH_SHUT = """The demon's own mouth has been burned shut: no Silence immunity and no extra {color=yellow|Light} weakness for 2 turns. When it opens again, any Silence on her is cleared.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_QUICKSAND = """Quicksand""", # MISSING TRANSLATION
+	EFFECT_JD_QUICKSAND = """Quicksand: -75% Evasion, -50 Speed, and this unit's melee attacks always miss. Counts as a trap.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_LINGERING_STORM = """Lingering Storm""", # MISSING TRANSLATION
+	EFFECT_JD_LINGERING_STORM = """Lingering Storm: at the start of each round the weather may pick this unit out for a bolt, dealing {color=yellow|Air} damage and Shocking them for 2 turns.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_ENRAGE = """Enrage""", # MISSING TRANSLATION
+	EFFECT_JD_ENRAGE = """Enraged: +20% damage dealt, 20% less damage taken, -20 {color=yellow|Mind} resistance.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_UNSILENCED = """Torn Gag""", # MISSING TRANSLATION
+	EFFECT_JD_UNSILENCED = """Five hundred years of being shut up were enough. Immune to Silence for the rest of the battle.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_EMPOWERMENT = """Empowerment""", # MISSING TRANSLATION
+	EFFECT_JD_EMPOWERMENT = """+10% ATK and MATK per stack.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_DEEP_SLEEP = """Deep Sleep""", # MISSING TRANSLATION
+	EFFECT_JD_DEEP_SLEEP = """Deep Sleep: cannot act.
+Any ability an ally aims at them burns one helping off, and so does Clarity at the end of their turn. Let it reach 8 layers and it becomes Comatose.""", # MISSING TRANSLATION
+	EFFECTNAME_JD_COMATOSE = """Comatose""", # MISSING TRANSLATION
+	EFFECT_JD_COMATOSE = """Comatose: cannot act, and cannot be woken before the battle is over.""", # MISSING TRANSLATION
+	TRAIT_JD_DEMON_ARROGANCE = """Undefilable Arrogance of a Demon: damage over time is cut further still.
+Too proud to be Taunted, too sure of itself to feel Fear, too damned to be Cursed.""", # MISSING TRANSLATION
+	TRAIT_JD_SECOND_MOUTH = """Second Mouth: the demon speaks in her place, so she is immune to Silence - but its mouth is an opening, and she takes far more {color=yellow|Light} damage.
+A hit of {color=yellow|Light} shuts it for 2 turns; when it opens again it clear out any Silence effect on self.""", # MISSING TRANSLATION
+	TRAIT_JD_DREAM_EATER = """Dream Eater's Self-Made Vessel: immune to Sleep and Disarm. Every blow that lands on a Sleeping, {color=aqua|Deep Sleeping} or {color=aqua|Comatose} enemy restores 20% of its maximum health.""", # MISSING TRANSLATION
+	TRAIT_JD_ENNUI = """500 Years of Ennui and Resentment: being held down - immobilised or Ensnared - sends it into {color=aqua|Enrage} for 3 turns.
+The first time it is driven below half health it tears off any Silence and cannot be Silenced again.""", # MISSING TRANSLATION
 	EFFECTNAME_OVERLOADED_GOLEM_CORE = 'Nucleo del Golem Sovraccarico',
 	EFFECT_OVERLOADED_GOLEM_CORE = """Tutti gli attacchi hanno ora il 70% di probabilità di infliggere bruciatura.
 A fine turno: infligge un piccolo danno da fuoco a tutti i nemici.
@@ -6128,6 +6271,7 @@ Azioni positive, sociali, fisiche e di umiliazione forniscono maggiore lealtà."
 	BODYPARTHAIR_STYLEBUN = "panino",
 	BODYPARTHAIR_STYLEBOB = """bob""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLEMESSY = """messy""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEMESSY_EYEHIDE = """messy, over one eye""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLELAYERED = """layered""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLEFRINGE = """fringe""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLECROWNBRAID = """crown braid""", # MISSING TRANSLATION
@@ -6316,6 +6460,7 @@ Azioni positive, sociali, fisiche e di umiliazione forniscono maggiore lealtà."
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "È legato in un ordinato [url=hair][color=aqua]chignon[/color][/url].",
 	BODYPARTHAIR_STYLEBOBDESCRIPT = """It is cut into a neat [url=hair][color=aqua]bob[/color][/url].""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLEMESSYDESCRIPT = """It falls in a [url=hair][color=aqua]dishevelled[/color][/url] tangle.""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEMESSY_EYEHIDEDESCRIPT = """It falls in a [url=hair][color=aqua]dishevelled[/color][/url] tangle over one eye.""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLELAYEREDDESCRIPT = """It is cut in [url=hair][color=aqua]layers[/color][/url] that frame [his] face.""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLEFRINGEDESCRIPT = """It is swept into a long [url=hair][color=aqua]side fringe[/color][/url].""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLECROWNBRAIDDESCRIPT = """It is gathered back behind a [url=hair][color=aqua]braided crown[/color][/url].""", # MISSING TRANSLATION
@@ -6381,6 +6526,8 @@ Azioni positive, sociali, fisiche e di umiliazione forniscono maggiore lealtà."
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = "La sua pelle è parzialmente ricoperta da [color=aqua]squame[/color].",
 	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = "La sua pelle è parzialmente ricoperta da [color=aqua]squame[/color].",
 	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = "La sua pelle è parzialmente ricoperta da [color=aqua]squame[/color].",
+	BODYPARTSKIN_COVERAGEKOBOLDDESCRIPT = """[His] skin is covered in small, fine [color=aqua]scales[/color].""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGEKOBOLD_SPOTSDESCRIPT = """[His] skin is covered in small, fine [color=aqua]spotted scales[/color].""", # MISSING TRANSLATION
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = "Il suo corpo è ricoperto di piume simili a quelle di [color=aqua]uccelli[/color] in molti punti.",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = "Il suo corpo è ricoperto da una spessa e morbida pelliccia di [color=aqua]color marmo[/color].",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = "Il suo corpo è ricoperto da una folta e morbida pelliccia di [color=aqua]colore grigio[/color].",
@@ -9227,6 +9374,10 @@ Dato che il [boy] è reso il tuo schiavo, [he] può essere un'aggiunta molto uti
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = """[center]{color=red|Fallimento!}[/center]
 [name] non è riuscito a intimidire i ribelli e si stanno preparando ad attaccarti. """,
 	DIALOGUEINTIMIDATE = "Intimidisci",
+	DIALOGUEALCOHOL_1REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
+	DIALOGUEALCOHOL_2REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
+	DIALOGUEALCOHOL_3REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
+	DIALOGUEALCOHOL_4REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
 	DIALOGUEALCOHOL_1TEXT = "Usa questa bevanda per ubriacarti o cambiare personalità?",
 	DIALOGUEALCOHOL_2TEXT = "Usa questa bevanda per ubriacarti o cambiare personalità?",
 	DIALOGUEALCOHOL_3TEXT = "Usa questa bevanda per ubriacarti o cambiare personalità?",
@@ -10604,6 +10755,12 @@ Chiudi questo menu.""",
 	TUTORIAL_COMBAT3 = "Accetta la missione Risoluzione Problemi.",
 	TUTORIAL_COMBAT4 = "Tutte le missioni forniscono ricompense in oggetti e reputazione di gilda. La reputazione può essere usata per acquistare servizi speciali della gilda. Risoluzione Problemi richiede di viaggiare verso un luogo generato proceduralmente.",
 	TUTORIAL_COMBAT5 = "Apri il menu mappa per imparare come inviare personaggi in un nuovo luogo.",
+	TUTORIAL_COMBAT5_0 = """Close the notice board.""", # MISSING TRANSLATION
+	TUTORIAL_MARKET1 = """Before leaving Aliron, visit its {color=yellow|Slave Market}: it buys and sells slaves and takes orders for them. Open it.""", # MISSING TRANSLATION
+	TUTORIAL_MARKET2 = """The market opens on the orders the great houses post. Hand over a slave who meets one to earn gold and slaver rank - one house wants a human right now.""", # MISSING TRANSLATION
+	TUTORIAL_MARKET3 = """Slaves are for sale here as well. Open {color=yellow|Hire}.""", # MISSING TRANSLATION
+	TUTORIAL_MARKET4 = """Slaves for sale are listed with their prices; the button under a slave's card buys them.""", # MISSING TRANSLATION
+	TUTORIAL_MARKET5 = """Press the {color=yellow|Slave Market} button again to close it.""", # MISSING TRANSLATION
 	TUTORIAL_COMBAT6 = "Seleziona due personaggi che viaggeranno per completare il compito.",
 	TUTORIAL_COMBAT8 = "Nell'elenco dei luoghi, trova il luogo speciale della missione che devi visitare.",
 	TUTORIAL_COMBAT9 = "Clicca Invia per iniziare il viaggio.",
@@ -10624,6 +10781,9 @@ Chiudi questo menu.""",
 	TUTORIAL_COMBAT22 = "Le abilità di supporto funzionano in modo simile ma prendono di mira gli alleati. Applica Scudo di Terra al tuo Master.",
 	TUTORIAL_COMBAT24 = "Termina il combattimento.",
 	TUTORIAL_COMBAT26 = "La finestra del bottino mostra i risultati della battaglia.",
+	TUTORIAL_COMBAT26_1 = """Fights often leave captives behind, and this one left two. The first fits the order you saw at the slave market: hand them over right here with the green {color=yellow|Hand Over} strip.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT26_1A = """A captive can fit several orders at once, so you choose which one gets them. Pick the order you saw at the slave market.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT26_2 = """Handing a captive over pays at once, just as at the market, and counts towards your slaver rank.""", # MISSING TRANSLATION
 	TUTORIAL_COMBAT27 = "Hai ottenuto un personaggio casuale dopo la battaglia, cosa comune negli scontri nei dungeon. Selezionalo per ispezionarlo.",
 	TUTORIAL_COMBAT28 = "I personaggi indesiderati possono essere venduti immediatamente, reclutati o schiavizzati.",
 	TUTORIAL_COMBAT29 = "Tenta di persuaderlo selezionando l'opzione appropriata.",
@@ -10946,6 +11106,11 @@ La principessa nota che Aire si irrigidisce alla domanda.
 {color=red|[name] manca di addestramento alla prostituzione e guadagnerà solo 2/3 dell'oro potenziale da esso.}""",
 	BROTHELMINCONSENT = "Livello di consenso: {color=aqua|%s}",
 	BROTHELSKILLLEVEL = "Livello di abilità: {color=aqua|%s}",
+	BROTHELBLOCKEDBYGEAR = """
+{color=red|[name]'s gear keeps this one off the table.}""", # MISSING TRANSLATION
+	SERVICE_VIRGINITY_OFFER = """A regular of the house waits for [name] after [his] shift. Word has gone round that [he] goes only so far with anyone, and he would like to buy the exception. [His] first time, here and now.""", # MISSING TRANSLATION
+	SERVICE_VIRGINITY_SELL = """Sell [his] virginity (%d gold)""", # MISSING TRANSLATION
+	SERVICE_VIRGINITY_REFUSE = """Turn the offer down""", # MISSING TRANSLATION
 	ITEMCHEST_ADV_CLOTH = "Cappotto",
 	ITEMLEGS_ADV_CLOTH = "Manto",
 	ITEMCHEST_ADV_LEATHER = "Corazza media avanzata",
@@ -31628,6 +31793,9 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	MANSIONUPG_BED_SIZEBONUS1 = "+1 posto per Compagna di letto",
 	MANSIONUPG_BED_SIZEBONUS2 = "+2 posti per Compagna di letto",
 	MANSIONUPG_BED_SIZEBONUS3 = "+3 posti per Compagna di letto",
+	MANSIONUPG_PRIVATE_BATH = """Bath""", # MISSING TRANSLATION
+	MANSIONUPG_PRIVATE_BATHDESCRIPT = """Mansion's bath. Gives every slave +1 training point per training and +20% mana recovery to everyone.""", # MISSING TRANSLATION
+	MANSIONUPG_PRIVATE_BATHBONUS1 = """+1 training point per training, +20% mana recovery""", # MISSING TRANSLATION
 	MANSIONUPG_BEDROOMS_EXPANSION = "Espansione",
 	MANSIONUPG_BEDROOMS_EXPANSIONDESCRIPT = "Più letti in questa stanza.",
 	MANSIONUPG_BEDROOMS_EXPANSIONBONUS1 = "+4 letti",
@@ -31656,6 +31824,80 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	MANSIONUPG_BODY_MODIFICATIONS = """Body modifications""", # MISSING TRANSLATION
 	MANSIONUPG_BODY_MODIFICATIONSDESCRIPT = """Tools and tonics for reshaping anyone in the household: any feature, any colour, fur on or off. Changes are free and take effect at once.""", # MISSING TRANSLATION
 	MANSIONUPG_BODY_MODIFICATIONSBONUS1 = """Appearance can be changed freely here""", # MISSING TRANSLATION
+	MANSIONUPG_FLESH_RITES = """Flesh Rites""", # MISSING TRANSLATION
+	MANSIONUPG_FLESH_RITESDESCRIPT = """A circle cut into the floor for reshaping flesh. Its rites change a body's appearance, sex, form or virginity; second level will unlock stronger options. Room must be prepared by apt individuals before a rite can be held.""", # MISSING TRANSLATION
+	MANSIONUPG_FLESH_RITESBONUS1 = """Unlocks the appearance, sex, form and virginity rites and 2 work slots for preparing the circle""", # MISSING TRANSLATION
+	MANSIONUPG_FLESH_RITESBONUS2 = """Unlocks body upgrades""", # MISSING TRANSLATION
+	MANSIONVIEW_BODY_RITES = """Body upgrades""", # MISSING TRANSLATION
+	MANSIONVIEW_PREPARATION = """Preparation""", # MISSING TRANSLATION
+	MANSIONVIEW_RITES_UNPREPARED = """The circle is not prepared yet. Put residents to work in the ritual room until its preparation reaches 100.""", # MISSING TRANSLATION
+	BODYRITE_TITLE = """Body Upgrades""", # MISSING TRANSLATION
+	BODYRITE_SUBJECTS = """Subject""", # MISSING TRANSLATION
+	BODYRITE_UPGRADES = """Upgrades""", # MISSING TRANSLATION
+	BODYRITE_NO_SUBJECTS = """Nobody is at the mansion.""", # MISSING TRANSLATION
+	BODYRITE_PICK_SUBJECT = """Choose whose body to change.""", # MISSING TRANSLATION
+	BODYRITE_PICK_UPGRADE = """Choose an upgrade.""", # MISSING TRANSLATION
+	BODYRITE_STATE_OWNED = """Received""", # MISSING TRANSLATION
+	BODYRITE_STATE_LOCKED = """Requirements not met""", # MISSING TRANSLATION
+	BODYRITE_STATE_NO_POINTS = """Not enough upgrade points""", # MISSING TRANSLATION
+	BODYRITE_STATE_SEALED = """Needs Flesh Rites level 2""", # MISSING TRANSLATION
+	BODYRITE_PRICE = """Price""", # MISSING TRANSLATION
+	BODYRITE_GOLD = """Gold""", # MISSING TRANSLATION
+	BODYRITE_POINTS = """Upgrade points""", # MISSING TRANSLATION
+	BODYRITE_MANA = """Mana""", # MISSING TRANSLATION
+	BODYRITE_POINTS_LEFT = """Left after the rite""", # MISSING TRANSLATION
+	BODYRITE_REQUIREMENTS = """Requirements""", # MISSING TRANSLATION
+	BODYRITE_CHECK_BODY = """The body meets the requirements""", # MISSING TRANSLATION
+	BODYRITE_CHECK_POINTS = """Enough upgrade points""", # MISSING TRANSLATION
+	BODYRITE_CHECK_GOLD = """Enough gold""", # MISSING TRANSLATION
+	BODYRITE_CHECK_MANA = """Enough mana from donors""", # MISSING TRANSLATION
+	BODYRITE_DONORS = """Mana Donors""", # MISSING TRANSLATION
+	BODYRITE_NO_DONORS = """Nobody else at the mansion can give mana.""", # MISSING TRANSLATION
+	BODYRITE_DONOR_GIVES = """Gives""", # MISSING TRANSLATION
+	BODYRITE_PERFORM = """Perform the Rite""", # MISSING TRANSLATION
+	BODYRITE_REMOVE = """Unshape""", # MISSING TRANSLATION
+	BODYRITE_REMOVE_TOOLTIP = """Undoes this upgrade: the body returns to how it was and its upgrade points are freed.""", # MISSING TRANSLATION
+	BODYRITE_MANA_AVAILABLE = """Available""", # MISSING TRANSLATION
+	BODYRITE_POINTS_TOOLTIP = """Upgrade points are how much reshaping a body can take. Every point of {color=yellow|Growth Factor} gives %d. Each upgrade the body carries uses its cost in points; removing an upgrade returns them.""", # MISSING TRANSLATION
+	BODYRITE_ANIM_TITLE = """Body Upgrade""", # MISSING TRANSLATION
+	BODYRITE_APPEARANCE = """Appearance Change""", # MISSING TRANSLATION
+	BODYRITE_APPEARANCE_DESCRIPT = """Once the rite is done, [name]'s appearance can be adjusted at will.""", # MISSING TRANSLATION
+	BODYRITE_APPEARANCE_DONE = """[name] has taken on a new look.""", # MISSING TRANSLATION
+	BODYRITE_SEX_CHANGE = """Sex Change""", # MISSING TRANSLATION
+	BODYRITE_SEX_CHANGE_DESCRIPT = """[name]'s body will be reshaped into the opposite sex.""", # MISSING TRANSLATION
+	BODYRITE_REQ_NOT_UNIQUE = """Not a unique character""", # MISSING TRANSLATION
+	BODYRITE_REQ_MALE_OR_FEMALE = """Male or female""", # MISSING TRANSLATION
+	BODYRITE_BEFORE = """Before""", # MISSING TRANSLATION
+	BODYRITE_AFTER = """After""", # MISSING TRANSLATION
+	BODYRITE_NEW_NAME = """A New Name""", # MISSING TRANSLATION
+	BODYRITE_NEW_NAME_HINT = """After changing [name]'s sex you can assign a new name to [him].""", # MISSING TRANSLATION
+	BODYRITE_RENAME = """Rename""", # MISSING TRANSLATION
+	BODYRITE_KEEP_NAME = """Keep the Name""", # MISSING TRANSLATION
+	BODYRITE_BEASTKIN_FORM = """Beastkin Form""", # MISSING TRANSLATION
+	BODYRITE_BEASTKIN_FORM_DESCRIPT = """[name]'s body will take the full beast form of its kind, with fur and muzzle.""", # MISSING TRANSLATION
+	BODYRITE_BEASTKIN_FORM_DONE = """[name] has taken beastkin form""", # MISSING TRANSLATION
+	BODYRITE_HALFKIN_FORM = """Halfkin Form""", # MISSING TRANSLATION
+	BODYRITE_HALFKIN_FORM_DESCRIPT = """[name]'s body will take the halfkin form of its kind: a human body that keeps the ears and the tail.""", # MISSING TRANSLATION
+	BODYRITE_HALFKIN_FORM_DONE = """[name] has taken halfkin form""", # MISSING TRANSLATION
+	BODYRITE_VIRGINITY = """Virginity Restoration""", # MISSING TRANSLATION
+	BODYRITE_VIRGINITY_DESCRIPT = """[name]'s hymen will grow back, as if it had never been touched.""", # MISSING TRANSLATION
+	BODYRITE_PERSONALITY = """Personality Change""", # MISSING TRANSLATION
+	BODYRITE_PERSONALITY_DESCRIPT = """[name]'s personality will be reshaped into the one you choose during the rite.""", # MISSING TRANSLATION
+	BODYRITE_REQ_VIRGINITY_LOST = """Virginity already lost""", # MISSING TRANSLATION
+	BODYRITE_ANIM_RITE_TITLE = """Flesh Rite""", # MISSING TRANSLATION
+	BODYRITE_ANIM_UNSHAPED_TITLE = """Unshaped""", # MISSING TRANSLATION
+	BODYRITE_SCENE_UPGRADE = """The ritual circle flares as the gathered mana pours into [name]. As [he] loses consciousness, [his] body slowly begin to change...""", # MISSING TRANSLATION
+	BODYRITE_SCENE_FORM_CHANGE = """The ritual circle flares as the gathered mana pours into [name]. As [he] loses consciousness, [his] body is being transformed by your whim.""", # MISSING TRANSLATION
+	BODYRITE_SCENE_SEX_CHANGE = """The ritual circle flares as the gathered mana pours into [name]. . Vile magic changes [his] form into that of opposite sex...""", # MISSING TRANSLATION
+	BODYRITE_SCENE_VIRGINITY = """The ritual circle flares as the gathered mana pours into [name]. [His] hymen grows back with an utmost care, restoring [his] body to a fresher state.""", # MISSING TRANSLATION
+	BODYRITE_SCENE_PERSONALITY = """The ritual circle flares as the gathered mana pours into [name]. As [he] loses consciousness, [his] mind lies open before you, waiting to be given a new shape...""", # MISSING TRANSLATION
+	BODYRITE_REQ_OR = """ or """, # MISSING TRANSLATION
+	BODYRITE_REQ_FUR = """Fur""", # MISSING TRANSLATION
+	BODYRITE_REQ_SCALES = """Scales""", # MISSING TRANSLATION
+	BODYRITE_REQ_NO_FUR = """No fur""", # MISSING TRANSLATION
+	BODYRITE_REQ_NO_SCALES = """No scales""", # MISSING TRANSLATION
+	BODYRITE_REQ_TITS_SIZE = """Breasts of average size or bigger""", # MISSING TRANSLATION
+	BODYRITE_REQ_HAS_WOMB = """Has a womb""", # MISSING TRANSLATION
 
 	MANSIONVIEW_REST = "A riposo",
 	MANSIONVIEW_ATWORK = "Al lavoro",
@@ -31832,8 +32074,20 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	MANSIONVIEW_TASKADDHINT = "Clicca per assegnarli a questo lavoro.",
 	MANSIONVIEW_TASKREMOVEHINT = "Clicca per toglierli da questo lavoro.",
 	MANSIONVIEW_SERVICEEARNS = "%s oro/turno",
+	MANSIONVIEW_SERVICEEARNS_LIMITED = """up to %s gold/turn""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEEARNS_EXHAUSTED = """%s gold/turn (%d%% rate)""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEPOOL_BAR = """Saturation""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEPOOL_HINT = """Saturation presents the gold you can earn until next week. Once it's depleted, service income from this location will greatly drop.""", # MISSING TRANSLATION
 	MANSIONVIEW_SERVICENORULES = "Non è ancora permesso nulla.",
 	MANSIONVIEW_SERVICERULESHINT = "Clicca per impostare cosa può fare.",
+	MANSIONVIEW_ERR_SERVICERACE = """The clients here will not buy service from [race].""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICELIMIT_RULES = """Not allowed: {color=red|%s}""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICELIMIT_RACES = """Allowed races: {color=yellow|%s}""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEBONUS_DEMAND = """In demand: {color=aqua|%s}""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEBONUS_FACTOR = """%s %d+""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEBONUS_MONSTERS = """Monstrous races""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEBONUS_REWARD = """+%d%% gold, +%d%% if both match""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEBONUS_REWARD_ONE = """+%d%% gold""", # MISSING TRANSLATION
 	MANSIONROOM_STAIRS = "Scala",
 	MANSIONROOM_STAIRSDESCRIPT = "Parte della casa. Una volta riparata, i pulsanti su di essa cambiano piano.",
 	MANSIONVIEW_GOUP = "Sali",
@@ -31846,6 +32100,7 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	MANSIONVIEW_TRAITREMOVED = "%s si è liberata di %s.",
 	MANSIONROOM_RITUAL_ROOM = "Sala Rituale",
 	MANSIONROOM_RITUAL_ROOMDESCRIPT = "Permette alla tenuta di incantare l'equipaggiamento.",
+	MANSIONROOM_RITUAL_ROOMHELP = """Flesh Rites require preparation of the room before they can be performed. Characters with higher {color=yellow|Wits} will perform those faster. Performing any upgrade or rite, or unshaping an upgrade, spends all of it and needs a new preparation.""", # MISSING TRANSLATION
 	MANSIONROOM_STORE_ROOM = "Deposito",
 	MANSIONROOM_STORE_ROOMDESCRIPT = "Fornisce spazio di deposito per i materiali.",
 	MANSIONUPG_SHELVES = "Scaffali",
@@ -31867,6 +32122,7 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	BODYMOD_TITLE = """Body modifications""", # MISSING TRANSLATION
 	BODYMOD_COLOUR_AUTO = """Auto""", # MISSING TRANSLATION
 	BODYMOD_COAT_COLOUR = """Coat colour""", # MISSING TRANSLATION
+	BODYMOD_DONE = """Done""", # MISSING TRANSLATION
 	BEAUTYPARLOR_PICKCHAR = """Pick a character first.""", # MISSING TRANSLATION
 	BEAUTYPARLOR_AWAY = """Away on a quest.""", # MISSING TRANSLATION
 	BEAUTYPARLOR_NOTHERE = """Not at the estate.""", # MISSING TRANSLATION
@@ -31945,6 +32201,7 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	DOLL2_PREVIEW_DOLL_FEMALE = "Femmina",
 	DOLL2_PREVIEW_DOLL_MALE = "Maschio",
 	DOLL2_PREVIEW_MANY_TITS = "Capezzoli extra",
+	DOLL2_PREVIEW_MANY_TITS_DEVELOPED = """Developed breasts""", # MISSING TRANSLATION
 	DOLL2_PREVIEW_POSE_DEFAULT = "Posa di base",
 	#The names the customize menu reads. The key is the part's own id from the
 	#export, verbatim and in capitals - see _option_label() in doll2_view.gd.
@@ -31952,6 +32209,8 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	DOLL2_STYLE_HAIR_BASE_BACK = "Pettinati indietro",
 	DOLL2_STYLE_HAIR_BASE_BRAIDS = "Treccine aderenti",
 	DOLL2_STYLE_HAIR_BASE_DEFAULT = "Riga centrale",
+	DOLL2_STYLE_HAIR_BASE_DISHEVELED = """Disheveled""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_DISHEVELED_EYEHIDE = """Disheveled, eye hidden""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BASE_FRINGE = "Frangia laterale",
 	DOLL2_STYLE_HAIR_BASE_FRINGE_2 = "Treccia a corona",
 	DOLL2_STYLE_HAIR_BASE_BOBCUT = """Bob cut""", # MISSING TRANSLATION
@@ -31961,7 +32220,19 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	DOLL2_STYLE_HAIR_BASE_SLAVE = "Tirati indietro",
 	DOLL2_STYLE_HAIR_BASE_STRAIGHT = "Lunghi lisci",
 	DOLL2_STYLE_HAIR_BASE_UNDERCUT = "Undercut",
+	DOLL2_STYLE_HAIR_BASE_DEFAULT_MONOFRINGE = """Fringe""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_FRINGE_2_MONOFRINGE = """Fringe v2""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIRS_BASE_DOPPLE = "Frangia a tendina",
+	DOLL2_STYLE_TATOO_WOMB1 = """Horned heart""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB2 = """Crest""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB3 = """Tribal""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB4 = """Tribal mask""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB5 = """Bat""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB6 = """Ringed heart""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB7 = """Infinity heart""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB8 = """Rose""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB9 = """Owl""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB10 = """Butterfly""", # MISSING TRANSLATION
 	DOLL2_STYLE_HAIR_BACK_BOBCUT = """Chin length""", # MISSING TRANSLATION
 	#what hangs behind it
 	DOLL2_STYLE_HAIR_BACK_CARE = "Lunghezza mento",
@@ -32037,6 +32308,18 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	DOLL2_HAIR_NONE = "nessuno",
 	DOLL2_HAIR_COLOUR = "Colore capelli",
 	DOLL2_BEARD_STYLE = "Barba",
+	DOLL2_PIERCING_NIPPLES = """Nipple piercing""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NIPPLES_RING = """Rings""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NIPPLES_STUD = """Barbells""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NIPPLES_CHAIN = """Chained rings""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NIPPLES_COLOUR = """Nipples - colour""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NAVEL = """Navel piercing""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NAVEL_STUD = """Gem""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NAVEL_RING = """Ring""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NAVEL_CHARM = """Charm""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NAVEL_COLOUR = """Navel - colour""", # MISSING TRANSLATION
+	DOLL2_TATTOO_CROTCH_STYLE = """Tattoo""", # MISSING TRANSLATION
+	DOLL2_TATTOO_CROTCH_COLOUR = """Tattoo - colour""", # MISSING TRANSLATION
 	DOLL2_BEARD_COLOUR = "Colore barba",
 	DOLL2_EYEBROWS_COLOUR = "Sopracciglia",
 	DOLL2_LIPS_COLOUR = "Labbra",
@@ -32063,6 +32346,7 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	CHARCREATE_MENU_EYES = "Occhi",
 	CHARCREATE_MENU_CHIN = "Mento",
 	CHARCREATE_MENU_HORNS = "Corna",
+	CHARCREATE_MENU_WINGS = """Wings""", # MISSING TRANSLATION
 	CHARCREATE_MENU_COVERAGE = "Pelliccia e scaglie",
 	COVERAGE_FUR_ORANGE = "Pelliccia arancione",
 	COVERAGE_FUR_ORANGE_WHITE = "Pelliccia arancione e bianca",
@@ -32091,4 +32375,124 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	DOLL2_PREVIEW_ZONE_HINT = "Colore del materiale. La grafica dell'equipaggiamento è codificata per tonalità: i tre selettori sono il materiale principale, secondario e la rifinitura.",
 	DOLL2_PREVIEW_NONE = "— nessuno —",
 	DOLL2_PREVIEW_NOTE = "La rotella dello zoom segue il cursore, tieni premuto il tasto sinistro per trascinare la bambola, il tasto destro ripristina la visuale.\n\nScena di test autonoma. Parti, gruppi e valori degli assi provengono da doll2_catalogue_gen.gd, ricostruito dall'esportazione Spine da doll2_catalogue_build.gd.",
+	SQ_MODE_QUESTS = """Quests""", # MISSING TRANSLATION
+	SQ_RANK_LABEL = """Slaver Rank: %s""", # MISSING TRANSLATION
+	SQ_RANK_XP_MAX = """Highest rank reached""", # MISSING TRANSLATION
+	SQ_RANK_SALES = """Slaves sold: %s/%s""", # MISSING TRANSLATION
+	SQ_RANK_HELP = """Every quest listed here is already yours: hand over a slave who meets it before its days run out. Completed and expired quests are replaced the next day, and a higher rank keeps more of them open and pays better.
+The icons in each row show what the quest wants of a slave; hover over one for the details. Some requirements are met as found, others (listed under "Needs work first") take training.
+To reach the next rank you need rank experience from completed quests and a number of slaves sold at the market or quick-sold from captives.
+Captives marked with a green star fit an open quest as they are; a yellow star means they fit it once they have been worked on.
+Completed quests, new ranks and each rank's slaves-sold target also earn Tokens of Recognition, spent on factor upgrades in the Upgrades tab.
+Guild orders pay gold and reputation with their guild instead of rank experience and tokens. A guild posts harder orders as your reputation with it grows.""", # MISSING TRANSLATION
+	SQ_RANK_HELP_ROW = """Rank %s to %s: %s experience and %s slaves sold.""", # MISSING TRANSLATION
+	SQ_RANK_UP_LOG = """The slave market now counts you a rank [color=#e0c060]%s[/color] slaver and offers you more work.""", # MISSING TRANSLATION
+	SQ_NEXT_RANK = """Next rank: %s""", # MISSING TRANSLATION
+	SQ_RANK_UNLOCKS_TITLE = """Factor Upgrades by Rank""", # MISSING TRANSLATION
+	SQ_RANK_UNLOCKS_ROW_LOCKED = """Rank %s.""", # MISSING TRANSLATION
+	SQ_RANK_UNLOCKS_ROW_FIRST = """Rank %s: factor upgrade unlocked, factors raised up to level %s""", # MISSING TRANSLATION
+	SQ_RANK_UNLOCKS_ROW = """Rank %s: factors raised up to level %s""", # MISSING TRANSLATION
+	SQ_GOLD_PER_SLAVE = """%s per slave""", # MISSING TRANSLATION
+	SQ_POPUP_SALE_TITLE = """Slave sold""", # MISSING TRANSLATION
+	SQ_POPUP_DELIVERY_TITLE = """Slave handed over""", # MISSING TRANSLATION
+	SQ_POPUP_RANK_CAPTION = """Slaver rank %s""", # MISSING TRANSLATION
+	SQ_POPUP_LABEL_XP = """Rank experience""", # MISSING TRANSLATION
+	SQ_POPUP_LABEL_DELIVERED = """Slaves delivered""", # MISSING TRANSLATION
+	SQ_POPUP_LABEL_SOLD = """Slaves sold""", # MISSING TRANSLATION
+	SQ_POPUP_NEED_SALES = """Sell %s more slaves to reach the next rank""", # MISSING TRANSLATION
+	SQ_POPUP_RANK_UP = """Slaver rank %s reached""", # MISSING TRANSLATION
+	SQ_POPUP_GOLD_LABEL = """Gold received""", # MISSING TRANSLATION
+	SQ_PANEL_TITLE = """Market Commissions""", # MISSING TRANSLATION
+	SQ_PANEL_SUBTITLE = """Open orders from the factions""", # MISSING TRANSLATION
+	SQ_COL_QUEST = """Quest""", # MISSING TRANSLATION
+	SQ_COL_WANTS = """Wants""", # MISSING TRANSLATION
+	SQ_COL_REWARD = """Reward""", # MISSING TRANSLATION
+	SQ_COL_DAYS = """Days""", # MISSING TRANSLATION
+	SQ_COL_SLAVES = """Slaves""", # MISSING TRANSLATION
+	SQ_SALES_HEADING = """Slaves sold""", # MISSING TRANSLATION
+	SQ_XP_HEADING = """Rank experience""", # MISSING TRANSLATION
+	SQ_REWARD_HEADING = """Reward""", # MISSING TRANSLATION
+	SQ_DEADLINE_HEADING = """Deadline""", # MISSING TRANSLATION
+	SQ_DELIVERED_HEADING = """Delivered""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_SLAVER_RANK = """Slaver Rank""", # MISSING TRANSLATION
+	SQ_SALE_TARGET_MET = """Enough slaves sold: complete quests for the next rank""", # MISSING TRANSLATION
+	SQ_STATE_COMPLETE = """Completed""", # MISSING TRANSLATION
+	SQ_NO_QUESTS = """No quests right now. New ones arrive tomorrow.""", # MISSING TRANSLATION
+	SQ_REQS_ANY = """Any slave.""", # MISSING TRANSLATION
+	SQ_REQS_ADVANCED = """Needs work first""", # MISSING TRANSLATION
+	STATREQ_BASE_STAT = """%s: %s %s.""", # MISSING TRANSLATION
+	SQ_DELIVER = """Hand Over""", # MISSING TRANSLATION
+	SQ_DELIVER_CONFIRM = """Hand [name] over for %s gold?""", # MISSING TRANSLATION
+	STATREQ_IS_UNIQUE = """Must be a unique character""", # MISSING TRANSLATION
+	STATREQ_NOT_UNIQUE = """Must not be a unique character""", # MISSING TRANSLATION
+	SQ_STAR_GREEN = """Fits a slave market quest as they are:""", # MISSING TRANSLATION
+	SQ_STAR_YELLOW = """Fits a slave market quest after some work:""", # MISSING TRANSLATION
+	SQ_CANDIDATES = """Hand Over""", # MISSING TRANSLATION
+	SQ_NO_CANDIDATES = """Nobody in your household can be handed over for this quest.""", # MISSING TRANSLATION
+	SQ_HIDE_UNFIT = """Only those who fit""", # MISSING TRANSLATION
+	SQ_CAND_MET = """Meets it""", # MISSING TRANSLATION
+	SQ_CAND_TRAIN = """Can be trained up to it""", # MISSING TRANSLATION
+	SQ_CAND_NO = """Does not meet it""", # MISSING TRANSLATION
+	SQ_CAND_YELLOW = """Fits once worked on: train them up first.""", # MISSING TRANSLATION
+	SQ_CAND_RED = """Does not fit this quest.""", # MISSING TRANSLATION
+	SQ_RACE_KIN_PAIR = """Race: %s or %s.""", # MISSING TRANSLATION
+	SQ_BASIC_NAME_1 = """Standing Order""", # MISSING TRANSLATION
+	SQ_BASIC_NAME_2 = """Fresh Stock Wanted""", # MISSING TRANSLATION
+	SQ_BASIC_NAME_3 = """A Discreet Purchase""", # MISSING TRANSLATION
+	SQ_BASIC_NAME_4 = """Household Replacement""", # MISSING TRANSLATION
+	SQ_BASIC_NAME_5 = """Private Commission""", # MISSING TRANSLATION
+	SQ_BASIC_NAME_6 = """Collector's Request""", # MISSING TRANSLATION
+	SQ_BASIC_DESC_1 = """[factionname] has placed a standing order with the market. Any slave who fits the description below will do, just as they are.""", # MISSING TRANSLATION
+	SQ_BASIC_DESC_2 = """An agent of [factionname] is buying through the market this week and will take a slave matching the requirements below without further training.""", # MISSING TRANSLATION
+	SQ_BASIC_DESC_3 = """[factionname] wants a new acquisition delivered quietly and quickly. Bring a slave who meets the requirements below.""", # MISSING TRANSLATION
+	SQ_ADVANCED_NAME_1 = """Refined Tastes""", # MISSING TRANSLATION
+	SQ_ADVANCED_NAME_2 = """Finished Goods""", # MISSING TRANSLATION
+	SQ_ADVANCED_NAME_3 = """A Demanding Patron""", # MISSING TRANSLATION
+	SQ_ADVANCED_NAME_4 = """Trained to Order""", # MISSING TRANSLATION
+	SQ_ADVANCED_NAME_5 = """Special Commission""", # MISSING TRANSLATION
+	SQ_ADVANCED_NAME_6 = """Polished Acquisition""", # MISSING TRANSLATION
+	SQ_ADVANCED_DESC_1 = """[factionname] will pay well for a slave shaped to its tastes. Raw stock will not do: bring one who already meets every requirement below.""", # MISSING TRANSLATION
+	SQ_ADVANCED_DESC_2 = """A patron from [factionname] has particular demands. Work on a slave until they meet the requirements below, then hand them over.""", # MISSING TRANSLATION
+	SQ_ADVANCED_DESC_3 = """[factionname] is looking for finished goods, not fresh captives. Only a slave brought up to the requirements below will satisfy it.""", # MISSING TRANSLATION
+	SQ_TOKENS = """Tokens of Recognition""", # MISSING TRANSLATION
+	SQ_TOKENS_OWNED = """You have %s.""", # MISSING TRANSLATION
+	SQ_REWARD_ON_LAST = """Given when the last slave is handed over.""", # MISSING TRANSLATION
+	SQ_REWARD_ON_DELIVERY = """Given when the slave is handed over.""", # MISSING TRANSLATION
+	SQ_TOKENS_PER_SLAVE = """Also +%s for each slave handed over.""", # MISSING TRANSLATION
+	SQ_GUILD_ORDER_GUILD = """%s Guild""", # MISSING TRANSLATION
+	SQ_GUILD_REPUTATION = """%s reputation""", # MISSING TRANSLATION
+	SQ_GUILD_REPUTATION_NOW = """Your reputation with the %s: %s""", # MISSING TRANSLATION
+	SQ_TOKENS_TOOLTIP = """[center]{color=yellow|Tokens of Recognition}[/center]
+The slave market's own currency, spent on factor upgrades in the Upgrades tab.
+
+Earned for every completed quest, for every new rank (5 at C and 5 more for each rank after it) and for meeting a rank's slaves-sold target (10). At rank S every 10 slaves sold earn 10 tokens; slaves you bought at a market do not count.""", # MISSING TRANSLATION
+	SQ_SALES_HEADING_TOP = """Slaves sold: every %s earn %s tokens""", # MISSING TRANSLATION
+	SQ_TOP_SALES_MET = """Another round of sales recognised""", # MISSING TRANSLATION
+	SLAVE_MARKET_TAB_UPGRADES = """Upgrades""", # MISSING TRANSLATION
+	SQ_UPGRADE_TITLE = """Factor Upgrades""", # MISSING TRANSLATION
+	SQ_UPGRADE_HELP = """[center]{color=yellow|Factor Upgrades}[/center]
+Raise a character's factors with Tokens of Recognition and gold, one level at a time.
+
+Each level costs as many tokens as the level it reaches (the 6th always costs 10), plus gold: 500 for level 2, 750 for 3, 1000 for 4, 1500 for 5 and 2500 for 6. Your slaver rank sets the highest level on sale: C up to 3, B up to 4, A up to 5, S up to 6.
+
+Plan as many levels and factors as you like, then confirm them all at once.""", # MISSING TRANSLATION
+	SQ_UPGRADE_PICK = """Choose a character to upgrade.""", # MISSING TRANSLATION
+	SQ_UPGRADE_BUY = """Upgrade""", # MISSING TRANSLATION
+	SQ_UPGRADE_RESET = """Reset""", # MISSING TRANSLATION
+	SQ_UPGRADE_COL_FACTOR = """Factor""", # MISSING TRANSLATION
+	SQ_UPGRADE_COL_NOW = """Now""", # MISSING TRANSLATION
+	SQ_UPGRADE_COL_PLANNED = """Planned""", # MISSING TRANSLATION
+	SQ_UPGRADE_COL_COST = """Cost""", # MISSING TRANSLATION
+	SQ_UPGRADE_LIMIT = """Your rank allows factors up to %s.""", # MISSING TRANSLATION
+	SQ_UPGRADE_LOCKED = """Factor upgrades open at slaver rank %s.""", # MISSING TRANSLATION
+	SQ_UPGRADE_STEP = """Raise to %s: %s tokens and %s gold.""", # MISSING TRANSLATION
+	SQ_UPGRADE_AT_TOP = """Already at the highest level.""", # MISSING TRANSLATION
+	SQ_UPGRADE_AT_LIMIT = """Your slaver rank allows no higher level yet.""", # MISSING TRANSLATION
+	SQ_UPGRADE_NOTHING = """Plan at least one level first.""", # MISSING TRANSLATION
+	SQ_UPGRADE_NOT_HERE = """This character is not at hand.""", # MISSING TRANSLATION
+	SQ_UPGRADE_PAST_LIMIT = """Your slaver rank does not allow that level.""", # MISSING TRANSLATION
+	SQ_UPGRADE_SHORT_TOKENS = """Not enough Tokens of Recognition.""", # MISSING TRANSLATION
+	SQ_UPGRADE_SHORT_GOLD = """Not enough gold.""", # MISSING TRANSLATION
+	SQ_UPGRADE_BUY_TOOLTIP = """Buy every planned level at once.""", # MISSING TRANSLATION
+	SQ_UPGRADE_ASK = """Spend %s Tokens of Recognition and %s gold to raise [name]'s factors?""", # MISSING TRANSLATION
 }

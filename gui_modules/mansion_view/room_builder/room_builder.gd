@@ -94,7 +94,7 @@ func load_atlases():
 func load_sheet(path):
 	#Read the current atlas even when the editor still has an older import cached.
 	var image = Image.new()
-	if image.load(path) != OK:
+	if image.load(ProjectSettings.globalize_path(path)) != OK:
 		return load(path) if ResourceLoader.exists(path) else null
 	var tex = ImageTexture.new()
 	#no filtering: the pieces are drawn at four fifths of their size and smoothing turns pixel

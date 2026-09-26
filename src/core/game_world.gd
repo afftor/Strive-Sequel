@@ -20,6 +20,11 @@ var easter_egg_characters_acquired = []
 
 var dungeon_events_assigned = {}
 
+#Which races the player has actually turned up in each kind of place, by location template code - by biome
+#for the infinite dungeon, whose character data follows the floor. Kept on the world rather than on the
+#location so that clearing one goblin cave does not erase what goblin caves are known to yield.
+var seen_races = {}
+
 #What each settlement's clients can still pay out for service until the week is out, by location code:
 #{current, max, reported}. Only settlements in variables.service_gold_limits have a pool; it is created
 #the first time it is asked for, which is also what gives an older save its pool. See pay_service_gold().
@@ -56,6 +61,22 @@ func serialize():
 	return res
 
 
+#Saves from before the races were remembered per kind of place kept the list on the location itself. The
+#infinite dungeon is skipped: its list spans every biome it has been through, so there is no one biome to
+#credit it to.
+func migrate_seen_races(location):
+	if !location.has('seen_races'):
+		return
+	var key = globals.location_race_key(location)
+	if key != '' and !location.has('biome'):
+		if !seen_races.has(key):
+			seen_races[key] = []
+		for code in location.seen_races:
+			if !seen_races[key].has(code):
+				seen_races[key].append(code)
+	location.erase('seen_races')
+
+
 func fix_serialization():
 	update_guilds_data()
 	
@@ -76,6 +97,7 @@ func fix_serialization():
 		for j in i.locations.values() + i.questlocations.values():
 			if j.type == 'dungeon' and !j.has('stamina'):
 				j.stamina = 100
+			migrate_seen_races(j)
 			fix_location_clear_state(j)
 			if j.has('stagedevents'):
 				for cat in j.stagedevents:
@@ -106,6 +128,7 @@ func fix_serialization():
 #			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
 #				print("wrong questnumber for %s - unallocated quests" % [guild.name])
 	fix_old_rep_quests_rewards()
+	pair_kin_race_reqs()
 	if serial_quest_items != null:
 		for item_s in serial_quest_items:
 			var quest_list = areas[item_s.k_area].quests.factions[item_s.k_faction]
@@ -189,6 +212,19 @@ func fix_old_rep_quests_rewards():
 		for fac in area.quests.factions.values():
 			for quest in fac.values():
 				fix_old_quests_rewards(quest)
+
+
+#quests written before Beastkin and Halfkin were paired ask for one half only
+func pair_kin_race_reqs():
+	for area in areas.values():
+		var lists = area.quests.factions.values() + [area.quests.global]
+		for list in lists:
+			for quest in list.values():
+				for requirement in quest.requirements:
+					for statreq in requirement.get('statreqs', []):
+						if statreq.get('code') != 'one_of_races':
+							continue
+						statreq.value = races.with_kin(statreq.value)
 
 
 func fix_old_quests_rewards(quest):

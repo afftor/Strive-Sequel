@@ -93,6 +93,7 @@ func _ready():
 	#changes the house says so through this signal - without it the plan went on drawing the
 	#house as it was when it was last looked at.
 	globals.connect("rooms_changed", self, "on_rooms_changed")
+	input_handler.connect("PortraitUpdate", self, "on_portrait_update")
 	layout_view()
 	if embedded:
 		globals.connect("slave_added", self, "queue_refresh")
@@ -1566,6 +1567,13 @@ func queue_refresh():
 		return
 	refresh_queued = true
 	call_deferred("flush_queued_refresh")
+
+
+#a shot lands frames after the cells read the old one; the end of a drag repaints them anyway
+func on_portrait_update():
+	if get_viewport().gui_is_dragging():
+		return
+	queue_refresh()
 
 
 func flush_queued_refresh():

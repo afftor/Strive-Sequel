@@ -1147,7 +1147,7 @@ var buffs = {
 		t_name = 'close_confrontation'
 	},
 	b_close_confrontation_cancel = {
-		icon = "res://assets/images/traits/defaultattack.png",
+		icon = "res://assets/images/iconsskills/defaultattack.png",
 		description = "BUFFDESCRIPTCLOSE_CONFRONTATION_CANCEL",
 		limit = 1,
 		t_name = 'close_confrontation_cancel'
