@@ -160,6 +160,16 @@ const MODIFIERS = {
 		# here lets it share the same slider/default/state machinery.
 		"ops": [],
 	},
+	"freckles_alpha": {
+		"contract": "doll2_v1",
+		"contracts": ["doll2_v1", "doll2_male_v1"],
+		"label": "Freckles opacity",
+		"display": "percent",
+		"range": {"default": 100.0, "minimum": 0.0, "maximum": 100.0, "step": 1.0},
+		# Freckles are meshes in their own slot. Their opacity is applied in the
+		# preview while colour comes from the shared nipples channel.
+		"ops": [],
+	},
 	"build": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_BUILD",

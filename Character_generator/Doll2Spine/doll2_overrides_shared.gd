@@ -46,6 +46,7 @@ const GROUP_DEFS = {
 	# own rather than part of the race bundle: otherwise the only way to put
 	# kobold lines on a beastkin face is to give it the whole kobold body.
 	"face_markings": {"kind": "options", "optional": true, "order": 17, "label": "DOLL2_PREVIEW_FACE_MARKINGS"},
+	"freckles": {"kind": "options", "optional": true, "order": 17.5, "label": "Freckles"},
 	"genitals": {"kind": "options", "optional": true, "order": 18, "label": "DOLL2_PREVIEW_GENITALS"},
 	"tattoo": {"kind": "options", "optional": true, "order": 19, "label": "DOLL2_PREVIEW_TATTOO"},
 	"outfit": {"kind": "set", "optional": true, "order": 20, "label": "DOLL2_PREVIEW_OUTFIT"},
@@ -82,6 +83,7 @@ const FOLDER_MAP = {
 	"03_ears": {"group": "ears"},
 	"10_eyes": {"group": "eyes"},
 	"11_eyebrows": {"group": "eyebrows"},
+	"11_freckles": {"group": "freckles"},
 	"04_hairs_base": {"group": "hair"},
 	# The fringe art makes no parts of its own; PAIRED_SLOTS hangs it off the
 	# matching base style instead.
@@ -113,6 +115,7 @@ const SLOT_ROUTES = {
 	"equip_collar": "collar",
 	"equip_masks": "mask",
 	"race_head": "face_markings",
+	"freckles": "freckles",
 }
 
 # Slots that never produce a part of their own: they are driven by FIXED_SLOTS
@@ -470,7 +473,7 @@ const COLOR_CHANNELS = {
 	# The two exports name them differently and neither has all of them: the
 	# female rig splits breasts, torso and the beastkin extras, the male rig has
 	# one `nipples` slot.  A slot the doll in hand does not have is simply noted.
-	"nipples": {"anchor": "body", "groups": [], "slots": [
+	"nipples": {"anchor": "body", "groups": ["freckles"], "slots": [
 		"breast_nipples", "torso_nipples_mask", "nipples",
 		"beastkin_torso_many_nipples", "beastkin_pregnancy_nipple",
 	]},
