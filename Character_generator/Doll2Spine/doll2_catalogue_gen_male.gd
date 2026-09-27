@@ -9,12 +9,12 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_male.atlas",
-	"attachment_count": 463,
+	"attachment_count": 465,
 	"bone_count": 269,
 	"contract": "doll2_male_v1",
 	"skeleton": "Doll2_spine4.2_male.json",
 	"skeleton_hash": "re+MQZp7LQA",
-	"slot_count": 64,
+	"slot_count": 65,
 	"spine_version": "4.2.43",
 }
 
@@ -76,6 +76,7 @@ const SLOT_ORDER = [
 	"bread",
 	"eyebrows",
 	"noses",
+	"freckles",
 	"blush",
 	"hairs_base",
 	"ears",
@@ -143,6 +144,7 @@ const DRAW_ORDER = [
 	"bread",
 	"eyebrows",
 	"noses",
+	"freckles",
 	"blush",
 	"hairs_base",
 	"ears",
@@ -188,6 +190,7 @@ const GROUP_ORDER = [
 	"animal_body",
 	"race_overlay",
 	"face_markings",
+	"freckles",
 	"genitals",
 	"tattoo",
 	"piercing_belly",
@@ -377,7 +380,7 @@ const COLOR_CHANNELS = {
 		"coverage": false,
 		"flat": false,
 		"gear": false,
-		"slots": ["nipples"],
+		"slots": ["freckles", "nipples"],
 		"two_tone": false,
 		"zone_defaults": [],
 		"zones": false,
@@ -538,6 +541,7 @@ const SLOT_COLORS = {
 	"eyes": "eyes",
 	"eyes_hearts": "eyes",
 	"face": "skin",
+	"freckles": "nipples",
 	"hairs_assist": "hair_assist",
 	"hairs_back": "hair_back",
 	"hairs_base": "hair",
@@ -770,6 +774,15 @@ const GROUPS = {
 		"parts": ["head_m_dragon", "head_m_dragon2", "kobold_head_kobold", "kobold_head_mask1"],
 		"slots": ["race_head"],
 	},
+	"freckles": {
+		"default": "",
+		"kind": "options",
+		"label": "Freckles",
+		"optional": true,
+		"order": 17.5,
+		"parts": ["f2"],
+		"slots": ["freckles"],
+	},
 	"genitals": {
 		"default": "",
 		"kind": "options",
@@ -836,6 +849,7 @@ const GROUPS = {
 			"hair_back_ponytail_long",
 			"hair_back_straight",
 			"hair_back_verylong1",
+			"hair_back_verylong_wave",
 			"hair_back_wawe",
 		],
 		"slots": ["hairs_back"],
@@ -1978,6 +1992,13 @@ const PARTS = {
 		},
 		"slots": {},
 	},
+	"f2": {
+		"folders": ["11_freckles"],
+		"group": "freckles",
+		"slots": {
+			"freckles": "11_freckles/f2",
+		},
+	},
 	"face10": {
 		"folders": ["02_faces"],
 		"group": "face",
@@ -2138,6 +2159,14 @@ const PARTS = {
 		"group": "hair_back",
 		"slots": {
 			"hairs_back": "hair_back_verylong1",
+		},
+		"zones": [0],
+	},
+	"hair_back_verylong_wave": {
+		"folders": ["06_hairs_back"],
+		"group": "hair_back",
+		"slots": {
+			"hairs_back": "06_hairs_back/hair_back_verylong_wave",
 		},
 		"zones": [0],
 	},

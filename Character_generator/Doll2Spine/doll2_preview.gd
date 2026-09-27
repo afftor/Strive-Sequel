@@ -3105,6 +3105,9 @@ func _on_proportion_changed(value, key):
 	if key == "muscle_alpha":
 		_apply_muscle_alpha()
 		return
+	if key == "freckles_alpha":
+		_apply_freckles_alpha()
+		return
 	# Bone scales feed the solver, so the pose has to be worked out again.
 	_update_animated_pose()
 	if key == "breast_scale":
@@ -4041,6 +4044,8 @@ func _attachment_colour(slot, _attachment, active = null):
 	colour.a *= _emotion_setup_slot_alpha(slot_name)
 	if slot_name.ends_with("_muscle"):
 		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
+	if slot_name == "freckles":
+		colour.a *= clamp(float(proportions.get("freckles_alpha", 100.0)) / 100.0, 0.0, 1.0)
 	return colour
 
 
@@ -4111,6 +4116,15 @@ func _apply_muscle_alpha():
 		if !is_instance_valid(record.polygon):
 			continue
 		if !str(record.slot.get("name", "")).ends_with("_muscle"):
+			continue
+		record.polygon.color = _attachment_colour(record.slot, record.attachment)
+
+
+func _apply_freckles_alpha():
+	for record in mesh_records:
+		if !is_instance_valid(record.polygon):
+			continue
+		if str(record.slot.get("name", "")) != "freckles":
 			continue
 		record.polygon.color = _attachment_colour(record.slot, record.attachment)
 

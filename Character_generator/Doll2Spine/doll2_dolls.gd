@@ -40,6 +40,11 @@ const DOLLS = {
 			"Doll2_spine4.2_male.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_male.png"),
 			"Doll2_spine4.2_male_2.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_male_2.png"),
 			"Doll2_spine4.2_male_3.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_male_3.png"),
+			# These two shared pages carry the transferred very-long back hair and
+			# freckles. Keeping them as shared resources avoids duplicating the art
+			# into the male atlas PNGs while still retaining it in exported builds.
+			"Doll2_spine4.2_female.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_female.png"),
+			"Doll2_spine4.2_female_3.png": preload("res://Character_generator/Doll2Spine/Doll2_spine4.2_female_3.png"),
 		},
 		"overrides": preload("res://Character_generator/Doll2Spine/doll2_overrides_male.gd"),
 		"catalogue": preload("res://Character_generator/Doll2Spine/doll2_catalogue_gen_male.gd"),

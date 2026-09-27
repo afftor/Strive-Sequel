@@ -364,6 +364,7 @@ const SLOTS = [
 	"lips_say",
 	"eyebrows",
 	"noses",
+	"freckles",
 	"blush",
 	"hairs_fringe",
 	"equip_masks",
