@@ -481,7 +481,8 @@ func forget_bought(character):
 
 
 func can_upgrade_character(character):
-	return (character != null and ResourceScripts.game_party.characters.has(character.id)
+	#the market screen outlives a save load, so a character it kept may be one of the old world's
+	return (character != null and ResourceScripts.game_party.characters.get(character.id) == character
 		and !character.is_on_quest())
 
 func upgradable_factors(character):
@@ -743,7 +744,7 @@ func generate_quest(kind, difficulty):
 		name = _random_unused(quest_data.namepool[kind], 'name'),
 		descript = _random_from(quest_data.descpool[kind]),
 		state = states.active,
-		time_limit = _roll(quest_data.deadline),
+		time_limit = _roll(quest_data.deadline) + int(get_rank_data().get('deadline_bonus', 0)),
 		requirements = [{
 			code = 'slave_delivery',
 			value = count,
@@ -1408,14 +1409,14 @@ func can_deliver_captive(character, location):
 		return false
 	return character.src == 'random_combat' and !character.is_unique()
 
-func captive_quests(character, location):
+func captive_quests(character, location, status = 'green'):
 	var res = []
 	if !can_deliver_captive(character, location):
 		return res
 	for quest in get_sorted_quests():
 		if is_guild_order(quest):
 			continue
-		if is_quest_open_for_delivery(quest) and quest_match(quest, character).status == 'green':
+		if is_quest_open_for_delivery(quest) and quest_match(quest, character).status == status:
 			res.append(quest)
 	res.sort_custom(self, '_pays_more')
 	return res

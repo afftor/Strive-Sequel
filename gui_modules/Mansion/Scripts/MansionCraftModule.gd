@@ -28,6 +28,7 @@ func _ready():
 	$NumberSelect/NumberConfirm2.connect("pressed", self, "confirm_unique")
 	globals.connecttexttooltip($NumberSelect/TextureRect, tr("TOOLTIPPROGRESSREQUIRED"))
 	$CraftSelect/BackButton.connect("pressed", get_parent(), "mansion_state_set", ["default"])
+	$CraftSelect/ImproveButton.connect("pressed", self, "select_category", ['improve'])
 	# input_handler.AddPanelOpenCloseAnimation($MaterialSelect)
 	
 	$NumberSelect2/CloseButton.connect('pressed', self, 'close_number_select')
@@ -137,8 +138,6 @@ var craftcategories = {
 	tailor = {reqs = [{type = "has_craft_room", name = 'tailor_workshop', value = 1}]},
 	alchemy = {reqs = [{type = "has_craft_room", name = 'alchemy_room', value = 1}]},
 	smith = {reqs = [{type = "has_craft_room", name = 'forge', value = 1}]},
-	#enchanting needs somewhere to do it: the ritual room, of which the estate has one
-	enchant = {reqs = [{type = "has_mansion_room", name = 'ritual_room'}]},
 }
 
 var filtercategories = {
@@ -177,9 +176,6 @@ func clear():
 
 
 func select_category(category):
-	if category == 'enchant':
-		$Enchant.open()
-		return
 	if category == 'improve':
 		$Improve.open()
 		return
@@ -189,7 +185,8 @@ func select_category(category):
 	craft_category = category
 	for i in $categories.get_children():
 		i.pressed = i.name == category
-	
+	$CraftSelect/ImproveButton.visible = category == 'smith'
+
 	for i in $filter.get_children():
 		i.pressed = false
 	item_filter = 'all'

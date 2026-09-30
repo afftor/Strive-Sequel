@@ -10,6 +10,7 @@ extends Reference
 #screen, never by game_res, so it is not part of the compile-time preload chain.
 
 const MansionLayout = preload("res://src/core/mansion_layout.gd")
+const Jobs = preload("res://src/character/ch_jobs.gd")
 
 const MANSION_CODE = 'aliron'
 
@@ -229,6 +230,85 @@ static func entry_for(task_id):
 		progress = float(data.get('progress', 0.0)),
 		progress_limit = float(data.get('progress_limit', 0.0)),
 	}
+
+
+#### what the work goes by ####
+
+#The formula a piece of work is worked out with: a gathering task works a material and the material
+#carries it, everything else takes its job's.
+static func work_formula_of(task_id):
+	if task_id == null or !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return ''
+	var job = str(ResourceScripts.game_res.tasks_progresses[task_id].get('job', ''))
+	if Items.materiallist.has(job) and Items.materiallist[job].has('progress_formula'):
+		return str(Items.materiallist[job].progress_formula)
+	if tasks.tasklist.has(job) and tasks.tasklist[job].has('progress_function'):
+		return str(tasks.tasklist[job].progress_function)
+	return ''
+
+
+#Rooms whose turn is worked out by their own code rather than by a formula in ch_jobs. The practice room
+#is deliberately not here: its 3..5 a turn is flat (game_res.process_practice_room).
+const ROOM_JOB_STATS = {
+	rite_preparation = ['wits'],   #10 + wits/4 a turn (game_res.rite_preparation_per_turn)
+	storage = ['charm'],           #the clerk's charm is what buys cheaper (game_res.autobuy_clerk)
+}
+
+
+#The stats a piece of work goes by, strongest first. Not the task's `workstat`, which is the stat the work
+#grows rather than the one it goes by - the two differ for tailoring.
+static func work_stats_of(task_id):
+	var stats = Jobs.WORK_STATS.get(work_formula_of(task_id), [])
+	if !stats.empty():
+		return stats
+	if task_id == null or !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return []
+	return ROOM_JOB_STATS.get(str(ResourceScripts.game_res.tasks_progresses[task_id].get('job', '')), [])
+
+
+static func work_stat_line(task_id):
+	var stats = work_stats_of(task_id)
+	if stats.empty():
+		return ''
+	var names = []
+	for stat in stats:
+		names.append(globals.tr("STAT" + str(stat).to_upper()))
+	return globals._report_text("MANSIONVIEW_WORKSTAT", [PoolStringArray(names).join("/")])
+
+
+#The tool the work goes faster with: somebody wearing one of that type works quicker
+#(ch_leveling.fill_task_mods). A room task is stamped with a hammer before its job is known, so a job
+#that names no tool of its own keeps that stamp and means nothing by it.
+static func worktool_line(task_id):
+	if task_id == null or !ResourceScripts.game_res.tasks_progresses.has(task_id):
+		return ''
+	var task = ResourceScripts.game_res.tasks_progresses[task_id]
+	var tool = str(task.get('worktool', ''))
+	var job = str(task.get('job', ''))
+	if task.get('type', '') == 'room_work' and (!tasks.tasklist.has(job) \
+			or !tasks.tasklist[job].has('worktool')):
+		tool = ''
+	if tool == '' or !statdata.worktoolnames.has(tool):
+		return ''
+	return globals._report_text("MANSIONVIEW_WORKTOOL", [statdata.worktoolnames[tool]])
+
+
+#What the screens put beside a room's places: the stats the work goes by and the tool it goes faster with.
+static func work_hint_line(task_id):
+	var parts = []
+	for line in [work_stat_line(task_id), worktool_line(task_id)]:
+		if line != '':
+			parts.append(line)
+	return PoolStringArray(parts).join("   ")
+
+
+#The work the places in a room serve: a building raised to gather something works that job, anything
+#else the room's own.
+static func room_work_task(room, slot_code):
+	if room == null:
+		return null
+	var gather = gather_entry_for_room(room.type, slot_code)
+	return gather.id if gather != null else room.get('task_id')
 
 
 static func workers_of(task_id):

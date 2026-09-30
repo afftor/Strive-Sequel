@@ -208,7 +208,33 @@ var skills = {
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = 2.0,
 	},
-	
+
+	#lab only for now: no class or mastery grants it
+	supernova = {
+		code = 'supernova',
+		descript = '',
+		icon = "res://assets/images/iconsskills/FireBomb.png",
+		type = 'combat',
+		ability_type = 'spell',
+		tags = ['damage','ads','fire', 'aoe', 'ultimate'],
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		cost = {mp = 25},
+		charges = 0,
+		combatcooldown = 6,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'all',
+		target_range = 'any',
+		damage_type = 'fire',
+		sfx = [{code = 'supernova', target = 'target_group', period = 'predamage', sync_to_hit = true}],
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
+		hitfx = [],
+		value = 2.0,
+	},
+
 	dark_flame = {
 		code = 'dark_flame',
 		descript = '',

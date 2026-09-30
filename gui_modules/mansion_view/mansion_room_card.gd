@@ -36,6 +36,8 @@ const DEFAULT_CARD_WIDTH = 460
 const BUILD_CARD_WIDTH = 1332
 #rows of the Market Restock stock grid shown before it scrolls
 const AUTOBUY_CHOICE_ROWS = 3
+#the ritual room's bench is the enchanting panel on this screen, not a category of the craft screen
+const ENCHANTING_BENCH = 'enchant'
 
 var view = null
 var slot_code = ''
@@ -581,8 +583,8 @@ func craft_screen():
 
 func craft_category_of(current):
 	var job = RoomTypes.get_craft_menu(current.type)
-	if job == null:
-		return null
+	if job == null or job == ENCHANTING_BENCH:
+		return job
 	var screen = craft_screen()
 	if screen == null or !('craftcategories' in screen):
 		return null
@@ -594,6 +596,8 @@ func craft_category_of(current):
 #craft screen's own category button, so the two cannot end up calling it different things -
 #their keys are not built to a pattern (BLACKSMITH, TASKCOOKING, CRAFTTAILORING...).
 func craft_category_name(job):
+	if job == ENCHANTING_BENCH:
+		return tr("CRAFTENCHANT")
 	var screen = craft_screen()
 	var path = "categories/%s/Label" % str(job)
 	if screen == null or !screen.has_node(path):
@@ -799,7 +803,9 @@ func close_autosell_panel():
 
 func build_autobuy_panel():
 	var panel = autobuy_panel()
-	panel.get_node("Body/Title").text = tr("MANSIONVIEW_AUTOBUY_TITLE")
+	panel.get_node("Body/TitleRow/Title").text = tr("MANSIONVIEW_AUTOBUY_TITLE")
+	globals.connecttexttooltip(panel.get_node("Body/TitleRow/HelpButton"), tr("MANSIONVIEW_AUTOBUY_HELP"),
+		true, view.get_node("Overlay/TextTooltip"))
 	panel.get_node("Body/Explanation").text = tr("MANSIONVIEW_AUTOBUY_EXPLAIN")
 	panel.get_node("Body/RuleHeader/Item").text = tr("MANSIONVIEW_AUTOBUY_ITEM")
 	panel.get_node("Body/RuleHeader/Held").text = tr("MANSIONVIEW_AUTOBUY_HELD")
@@ -1381,6 +1387,7 @@ func build_people(current):
 		fill_people_group($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants,
 			tr("MANSIONVIEW_WORKPLACES"), students, max(0, capacity - tutor_places), true, false,
 			false, false, null if gather == null else gather.id)
+		append_work_hint(work_task(current, gather))
 		fill_people_group($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Companions, tr("MANSIONVIEW_TUTORSLOT"),
 			[] if tutor == null else [tutor], tutor_places, false, false, true)
 		return
@@ -1402,6 +1409,8 @@ func build_people(current):
 		tr("MANSIONVIEW_BEDS") if sleeping else tr("MANSIONVIEW_WORKPLACES"),
 		occupants.size(), capacity]
 	var job_id = null if gather == null else gather.id
+	if !sleeping:
+		append_work_hint(work_task(current, gather))
 	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants/List)
 	#On a farm a click picks the person whose produce is being set rather than turning them
 	#out; the list itself carries the button that sends them away, so nobody loses their
@@ -1440,6 +1449,21 @@ func build_people(current):
 
 #One titled group of bed slots, drawn the way the single list is: a face for everyone in a bed,
 #a free slot for every bed still empty, and both clickable - out of the room, or into it.
+func work_task(current, gather):
+	return gather.id if gather != null else LocationTasks.room_work_task(current, slot_code)
+
+
+#What the work here goes by, beside the count of its places.
+func append_work_hint(task_id):
+	var line = LocationTasks.work_hint_line(task_id)
+	if line == "":
+		return
+	var header = $Body/Columns/LeftScroll/LeftColumn/PeopleColumn/Occupants.get_node('Header')
+	#its own line under the count: with the stat and the tool spelled out the three together run past
+	#the card's width
+	header.text += "\n" + line
+
+
 func fill_people_group(section, title, char_ids, places, count_in_title, sleeping,
 		tutor_slot = false, builder = false, job_id = null):
 	section.get_node('Header').text = title
@@ -1991,6 +2015,9 @@ func on_craft():
 	if current == null:
 		return
 	var job = craft_category_of(current)
+	if job == ENCHANTING_BENCH:
+		view.open_enchanting()
+		return
 	var mansion = view.get_parent()
 	#the plan is also used on its own, with no mansion above it - there the button does nothing
 	if job == null or mansion == null or !mansion.has_method("mansion_state_set"):

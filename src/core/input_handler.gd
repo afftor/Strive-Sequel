@@ -1937,6 +1937,16 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label2").text = tr(rite_name)
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("class_achieved")
+		"enchanted": #(item, subtitle) - gear enchanted in the ritual room
+			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
+			args.item.set_icon(anim_scene.get_node("TextureRect"))
+			anim_scene.get_node("Label").text = tr("ENCHANTING_ANIM_TITLE")
+			anim_scene.get_node("Label2").text = tr(args.item.name)
+			anim_scene.get_node("Label3").text = args.get('subtitle', "")
+			#gear names and enchantment lists run longer than class names
+			font_size_adjust(anim_scene.get_node("Label2"), 0)
+			font_size_adjust(anim_scene.get_node("Label3"), 0)
+			anim_scene.play("class_achieved")
 		"quest_completed":
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
 			anim_scene.get_node("Label3").text = args.name

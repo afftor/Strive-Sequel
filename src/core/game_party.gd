@@ -683,10 +683,57 @@ func fix_import():
 #			characters[p].add_trait(tr)
 
 
+#travel groups
+func is_travel_group_locked(group_name):
+	return travel_groups_ref.has(group_name) and travel_groups_ref[group_name].get('locked', false)
+
+func set_travel_group_locked(group_name, value):
+	if !travel_groups_ref.has(group_name):
+		travel_groups_ref[group_name] = {priority = 10}
+	travel_groups_ref[group_name].locked = value
+
+func make_new_travel_group_name(taken = {}):
+	var used = {}
+	for id in characters:
+		used[characters[id].get_loc_group()] = true
+	for i in range(1, 10000):
+		var new_name = "Group %d" % i
+		if !used.has(new_name) and !travel_groups_ref.has(new_name) and !taken.has(new_name):
+			return new_name
+	return "Error name"
+
+func get_travel_group_priority(group_name):
+	if travel_groups_ref.has(group_name):
+		return travel_groups_ref[group_name].get('priority', 10)
+	return 10
+
+func sort_by_travel_group_priority(first_id, second_id):
+	return get_travel_group_priority(characters[first_id].get_loc_group()) < get_travel_group_priority(characters[second_id].get_loc_group())
+
+#the exploring party's group, else the next unlocked group standing there in map order, else a new one
+func get_travel_group_for_newcomer(loc_id):
+	var candidates = []
+	var active_location = input_handler.active_location
+	if active_location != null and active_location.get('id') == loc_id and active_location.has('group'):
+		candidates.append_array(active_location.group.values())
+	var others = characters.keys()
+	others.sort_custom(self, 'sort_by_travel_group_priority')
+	candidates.append_array(others)
+	for id in candidates:
+		if !characters.has(id) or !characters[id].travel.check_location(loc_id, true):
+			continue
+		var group_name = characters[id].get_loc_group()
+		if !is_travel_group_locked(group_name):
+			return group_name
+	return make_new_travel_group_name()
+
+
 func add_slave(person, child = false):
-	if child: 
+	if is_travel_group_locked(person.get_loc_group()):
+		person.set_loc_group(get_travel_group_for_newcomer(person.travel.location))
+	if child:
 		characters_pool.move_baby_to_state(person.id)
-	else: 
+	else:
 		characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true

@@ -408,12 +408,12 @@ func connectitemtooltip(node, item):
 	node.connect("mouse_entered",item,'tooltip', [node])
 
 
-func connectitemtooltip_v2(node, item):
+func connectitemtooltip_v2(node, item, tooltip_node = null):
 	for dir in node.get_signal_connection_list("mouse_entered"):
 		node.disconnect(dir.signal, dir.target, dir.method)
 #	if node.is_connected("mouse_entered",item,'tooltip_v2'):
 #		node.disconnect("mouse_entered",item,'tooltip_v2')
-	node.connect("mouse_entered",item,'tooltip_v2', [node])
+	node.connect("mouse_entered",item,'tooltip_v2', [node, tooltip_node])
 
 
 func disconnect_temp_item_tooltip(node):
@@ -1712,6 +1712,24 @@ func LoadGame(filename):
 			{code = 'progress_quest', value = 'erdyna_quest', stage = 'catacombs_opened'},
 			{code = 'make_quest_location', value = 'quest_empire_catacomb_entry'}
 		])
+	repair_anastasia_virginity()
+
+
+#older saves: the post-election scenes gave Anastasia's virginity to 'unknown', or to nobody on the mindbroken route
+func repair_anastasia_virginity():
+	var master = ResourceScripts.game_party.get_master()
+	if master == null:
+		return
+	var decisions = ResourceScripts.game_progress.decisions
+	var anastasia = ResourceScripts.game_party.get_unique_slave('anastasia')
+	if (anastasia != null and anastasia.get_stat('vaginal_virgin_lost') == 'unknown'
+			and (decisions.has('anstasia_sex_scene') or decisions.has('anastasia_rape'))):
+		anastasia.set_stat('vaginal_virgin_lost', null)
+		anastasia.take_virginity('vaginal', master.id)
+	var broken = ResourceScripts.game_party.get_unique_slave('AnastasiaBroken')
+	if broken != null and decisions.has('anastasia_rape') and !broken.get_stat('metrics_partners').has(master.id):
+		broken.take_virginity('vaginal', master.id)
+		broken.take_virginity('anal', master.id)
 
 
 #The screens of the game being replaced stay in the tree for the whole of a load, and both

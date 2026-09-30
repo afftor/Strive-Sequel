@@ -16,11 +16,6 @@ const BUTTON_TOOLTIPS = {
 #the way the slave cards grey theirs.
 const DISABLED_MATERIAL = preload("res://assets/sfx/bw_shader.tres")
 
-#What the craft icon opens is a bench, and a bench stands in a workshop: with none built there
-#is nothing behind the button. The kitchen counts - it is tagged a craft room like the forge -
-#and so does the ritual room, which is what the enchanting bench needs.
-const ENCHANT_ROOM = 'ritual_room'
-
 onready var buttons = $Buttons
 
 
@@ -48,9 +43,10 @@ func build_tooltips():
 		globals.connecttexttooltip(buttons.get_node(button_name), text)
 
 
+#What the craft icon opens is a bench, and a bench stands in a workshop: with none built there
+#is nothing behind the button. The kitchen counts - it is tagged a craft room like the forge.
 func craft_available():
-	return ResourceScripts.game_res.has_room_with_tag('craft') \
-		or ResourceScripts.game_res.count_rooms(ENCHANT_ROOM) > 0
+	return ResourceScripts.game_res.has_room_with_tag('craft')
 
 
 #A room going up or coming down is the only thing that changes this answer, and the plan emits

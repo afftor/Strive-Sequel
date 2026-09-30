@@ -53,6 +53,7 @@ onready var rest_panel = $RestPanel
 onready var location_panel = $LocationPanel
 onready var service_panel = $Overlay/ServicePanel
 onready var body_rites_panel = $Overlay/BodyRitesPanel
+onready var enchant_panel = $Overlay/EnchantPanel
 
 
 const EMBEDDED_MARGIN = 16
@@ -85,6 +86,7 @@ func _ready():
 	location_panel.visible = false
 	service_panel.setup(self)
 	body_rites_panel.setup(self)
+	enchant_panel.setup(self)
 	$ExpelZone.setup(self)
 	connect("resized", self, "layout_view")
 	connect("visibility_changed", self, "on_visibility_changed")
@@ -248,6 +250,7 @@ func on_visibility_changed():
 			queue_refresh()
 		return
 	body_rites_panel.close()
+	enchant_panel.close()
 	close_card()
 	clear_char_pick()
 
@@ -1543,6 +1546,16 @@ func close_body_rites():
 	#a rite performed spends the circle's preparation, which the card prints and locks its button on
 	if card != null and card.visible:
 		card.rebuild()
+
+
+func open_enchanting():
+	set_card_aside(true)
+	enchant_panel.open()
+
+
+func close_enchanting():
+	enchant_panel.close()
+	set_card_aside(false)
 
 
 func refresh_marks():

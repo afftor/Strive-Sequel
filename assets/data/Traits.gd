@@ -39,7 +39,7 @@ var traits = {
 		icon = "res://assets/images/iconsskills/icon_eyes.png",
 		effects = [],
 		tags = ['simple_icon', 'trait_only'],
-		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}
+		bonusstats = {mod_hunt = 0.25, physics_bonus = 15, chg_dexterity_max = 1, mastery_stealth = 1}
 	},
 	spirit_boar = {
 		code = 'spirit_boar',

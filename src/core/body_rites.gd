@@ -89,7 +89,7 @@ static func donors_for(subject_id):
 static func valid_donors(subject, donor_ids):
 	var res = []
 	for id in donor_ids:
-		if id == subject.id or res.has(id):
+		if (subject != null and id == subject.id) or res.has(id):
 			continue
 		if is_present(character(id)):
 			res.append(id)

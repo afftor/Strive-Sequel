@@ -1984,13 +1984,14 @@ func _update_card_action_states(newbutton, person):
 	var training_button = newbutton.get_node(CARD_ACTIONS + "/Training")
 	_set_card_action_available(training_button, training_availability[0])
 	var training_tooltip = _get_training_title(person)
-	if !training_availability[0]:
+	#an available button can still carry a note, like a slave waiting for a trainer; "can be
+	#trained today" is only true of a slave mid-course with nothing in the way
+	if training_availability[1] != "":
 		training_tooltip += "\n" + training_availability[1]
-	else:
+	elif person.training.is_slave() and !person.training.enable:
+		training_tooltip += "\n" + (tr("TRAININGCOMPLETEDANNOUNCE") % person.get_short_name()).strip_edges()
+	elif person.training.is_slave() and person.training.is_in_training():
 		training_tooltip += "\n" + tr("TRAINTOOLTIP")
-		#an available button can still carry a note, like a slave waiting for a trainer
-		if training_availability[1] != "":
-			training_tooltip += "\n" + training_availability[1]
 	_set_card_text_tooltip(training_button, training_tooltip)
 	var date_availability = _get_date_availability(person)
 	var date_button = newbutton.get_node(CARD_ACTIONS + "/Date")

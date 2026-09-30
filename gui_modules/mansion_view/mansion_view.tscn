@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/lamp_glow_material.tres" type="Material" id=38]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/glows_over_rooms.gd" type="Script" id=39]
 [ext_resource path="res://gui_modules/mansion_view/body_rites_panel.tscn" type="PackedScene" id=40]
+[ext_resource path="res://gui_modules/mansion_view/enchant_panel.tscn" type="PackedScene" id=46]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/fog_over_rooms.gd" type="Script" id=42]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/lamps_over_rooms.gd" type="Script" id=43]
 [ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.tscn" type="PackedScene" id=44]
@@ -302,6 +303,10 @@ color = Color( 0.294118, 0.262745, 0.207843, 1 )
 [node name="art" type="TextureRect" parent="GridViewport/FloorGrid/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
 expand = true
 stretch_mode = 1
@@ -471,6 +476,10 @@ valign = 1
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
 color = Color( 0.419608, 0.639216, 0.419608, 0.35 )
 
@@ -2167,10 +2176,23 @@ margin_right = -24.0
 margin_bottom = -22.0
 custom_constants/separation = 8
 
-[node name="Title" type="Label" parent="Overlay/AutobuyPanel/Body"]
+[node name="TitleRow" type="HBoxContainer" parent="Overlay/AutobuyPanel/Body"]
+rect_min_size = Vector2( 0, 40 )
+custom_constants/separation = 8
+
+[node name="Title" type="Label" parent="Overlay/AutobuyPanel/Body/TitleRow"]
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 21 )
+valign = 1
+
+[node name="HelpButton" type="TextureRect" parent="Overlay/AutobuyPanel/Body/TitleRow"]
+rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+size_flags_vertical = 4
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 6
 
 [node name="Explanation" type="Label" parent="Overlay/AutobuyPanel/Body"]
 rect_min_size = Vector2( 0, 30 )
@@ -2988,6 +3010,9 @@ text = "Booster"
 clip_text = true
 
 [node name="BodyRitesPanel" parent="Overlay" instance=ExtResource( 40 )]
+visible = false
+
+[node name="EnchantPanel" parent="Overlay" instance=ExtResource( 46 )]
 visible = false
 
 [node name="PickPreview" type="TextureRect" parent="Overlay"]

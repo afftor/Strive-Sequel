@@ -1,3 +1,29 @@
+0.16.1a
+Slave market:
+	Guild slave-delivery quests moved from the guild notice boards to the slave market as guild orders, one open order per guild
+	Plain commissions now pay 2/2/3 tokens and complex ones 3/4/5 for easy/medium/hard (was 1/2/3 and 2/3/4); commissions for several slaves also give 1 token per slave handed over
+	Factor upgrades now cost 500/750/1000/1500/2500 gold for levels 2-6 (was 250 per level and 1000 for the 6th)
+	Commission rows and details show the token reward, or a guild order's reputation, under the gold
+
+Mansion:
+	Improved mansion's visual looks and placement
+	Improved item restock selection
+	Portraits in the mansion view update as soon as a new one is taken
+	Added an Ambient volume slider with mute. Mansion nature sounds, rain and thunder, background ambience and animated town backgrounds play on it; existing settings start it at the Sound slider's level
+	
+	Fixed leaving the game back to menu when starting
+	Fixed race list on main map
+	Fixed guild quests splitting beastkin/halfkin races when demanding a race
+	Characters persuaded to join in the goblin, fairy and freed captive dungeon events now join as Subordinates
+	The fallen bridge's repair option now should properly show its cost
+	Fixed Zephyra getting rebellious state when agreed to be slave
+	Fixed some of character descriptions (kobold scales)
+	Saves no longer store characters' combat links, which caused errors after loading; old saves are cleaned when loaded
+	Fixed the captives panel in the Tower of Dreams opening by itself
+	Fixed an error when the captives list rebuilt during a hand-over animation
+	Fixed an error when browsing Erdyna's campfire scene in the gallery
+	Untranslated new lines in other languages now show the English text instead of their keys
+
 0.16.1
 Slave market:
 	Slave market revamped

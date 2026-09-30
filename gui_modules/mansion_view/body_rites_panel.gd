@@ -79,11 +79,15 @@ func setup(view_node):
 	#and its doll never moves: inside a Viewport it counts as seen, so an idling doll would solve its skin
 	#every frame for a picture nobody is taking
 	$SexChangeBooth/Doll.animated = false
-	#while a rite drains, its head fills with gold and motes of its mana fly into it - see drain_step()
+	connect_rite_drawing()
+	visible = false
+
+
+#while a rite drains, its head fills with gold and motes of its mana fly into it - see drain_step()
+func connect_rite_drawing():
 	$Body/Columns/Details/Scroll/Content/UpgradeHead.connect("draw", self, "draw_head_charge")
 	if has_node("RiteParticles"):
 		$RiteParticles.connect("draw", self, "draw_motes")
-	visible = false
 
 
 func open():
@@ -368,35 +372,44 @@ func build_price(person, shares, mana, problems, taking_back, rite):
 	tiles.get_node("Gold").visible = !taking_back
 	tiles.get_node("Points").visible = !taking_back and !rite
 
-	var gold = BodyRites.rite_gold(upgrade_code) if rite else BodyRites.gold_cost(upgrade_code)
+	build_gold_tile(BodyRites.rite_gold(upgrade_code) if rite else BodyRites.gold_cost(upgrade_code))
+	if tiles.get_node("Points").visible:
+		build_points_tile(person, tiles.get_node("Points"))
+	build_mana_tile(shares, mana, !problems.has('mana'))
+
+
+func build_gold_tile(gold):
 	var money = int(ResourceScripts.game_res.money)
-	var gold_tile = tiles.get_node("Gold/Body")
+	var gold_tile = $Body/Columns/Details/Scroll/Content/PriceTiles/Gold/Body
 	gold_tile.get_node("Title").text = tr("BODYRITE_GOLD")
 	gold_tile.get_node("CostRow/Cost").text = str(gold)
 	gold_tile.get_node("Available").text = tr("BODYRITE_GOLD") + ": " + str(money)
 	gold_tile.get_node("Available").set("custom_colors/font_color", GOOD if money >= gold else UNAFFORDABLE)
 
-	if tiles.get_node("Points").visible:
-		build_points_tile(person, tiles.get_node("Points"))
 
-	var gathered = BodyRites.collected(shares)
-	var mana_tile = tiles.get_node("Mana/Body")
+func build_mana_tile(shares, mana, enough):
+	var mana_tile = $Body/Columns/Details/Scroll/Content/PriceTiles/Mana/Body
 	mana_tile.get_node("Title").text = tr("BODYRITE_MANA")
-	mana_tile.get_node("Figures").text = tr("BODYRITE_MANA_AVAILABLE") + ": " + str(gathered) + " / " + str(mana)
-	mana_tile.get_node("Figures").set("custom_colors/font_color", GOOD if !problems.has('mana') else UNAFFORDABLE)
+	mana_tile.get_node("Figures").text = tr("BODYRITE_MANA_AVAILABLE") + ": " + str(BodyRites.collected(shares)) + " / " + str(mana)
+	mana_tile.get_node("Figures").set("custom_colors/font_color", GOOD if enough else UNAFFORDABLE)
 	mana_tile.get_node("Status").text = tr("BODYRITE_MANA") + ": " + str(mana)
-	mana_tile.get_node("Status").set("custom_colors/font_color", GOOD if !problems.has('mana') else BAD)
+	mana_tile.get_node("Status").set("custom_colors/font_color", GOOD if enough else BAD)
 	build_mana_segments(shares, mana)
 
 
-#The bar is the body's whole allowance: first what its upgrades already take, then this rite's cost.
 func build_points_tile(person, tile):
-	var cost = BodyRites.point_cost(upgrade_code)
-	var total = BodyRites.total_points(person)
-	var used = BodyRites.used_points(person)
+	fill_budget_tile(tile, tr("BODYRITE_POINTS"), BodyRites.used_points(person), BodyRites.point_cost(upgrade_code),
+		BodyRites.total_points(person))
+	globals.connecttexttooltip(tile,
+		globals._report_text("BODYRITE_POINTS_TOOLTIP", [variables.body_upgrade_points_per_growth_factor]),
+		false, tooltip_node())
+
+
+#The bar is the whole allowance: first what is taken already, then this rite's cost.
+func fill_budget_tile(tile, title, used, cost, total):
 	var fits = used + cost <= total
 	var point_tile = tile.get_node("Body")
-	point_tile.get_node("Title").text = tr("BODYRITE_POINTS")
+	point_tile.get_node("Title").text = title
 	point_tile.get_node("Figures").text = str(used + cost) + " / " + str(total)
 	point_tile.get_node("Figures").set("custom_colors/font_color", GOOD if fits else UNAFFORDABLE)
 	point_tile.get_node("Left").text = tr("BODYRITE_POINTS_LEFT") + ": " + str(total - used - cost)
@@ -414,9 +427,6 @@ func build_points_tile(person, tile):
 	point_fill.margin_left = 0
 	point_fill.margin_right = 0
 	point_fill.color = WARNING if fits else UNAFFORDABLE
-	globals.connecttexttooltip(tile,
-		globals._report_text("BODYRITE_POINTS_TOOLTIP", [variables.body_upgrade_points_per_growth_factor]),
-		false, tooltip_node())
 
 
 func build_mana_segments(shares, cost):
@@ -465,12 +475,13 @@ func build_requirements(person, problems, taking_back, rite):
 	add_requirement(list, tr("BODYRITE_CHECK_MANA"), !problems.has('mana'))
 
 
-func add_requirement(list, text, met):
+func add_requirement(list, text, met, note = false):
 	var row = input_handler.DuplicateContainerTemplate(list, 'Row')
-	row.get_node("Mark").text = "✓" if met else "×"
-	row.get_node("Mark").set("custom_colors/font_color", GOOD if met else BAD)
+	var colour = WARNING if note else (GOOD if met else BAD)
+	row.get_node("Mark").text = "!" if note else ("✓" if met else "×")
+	row.get_node("Mark").set("custom_colors/font_color", colour)
 	row.get_node("Text").text = text
-	row.get_node("Text").set("custom_colors/font_color", GOOD if met else BAD)
+	row.get_node("Text").set("custom_colors/font_color", colour)
 
 
 #Everybody who can give mana for this subject, as a grid of tiles: a press chooses a resident as a donor or lets

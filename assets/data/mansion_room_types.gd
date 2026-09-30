@@ -429,7 +429,7 @@ const LIST = {
 		color = '4a3f6b',
 	},
 	#Circles, candles and a great deal of chalk. Having one is what lets the estate put
-	#enchantments on gear at all - see MansionCraftModule.craftcategories. With Flesh Rites it
+	#enchantments on gear at all - see src/core/enchanting.gd. With Flesh Rites it
 	#also takes two workers, who prepare the circle for the body rites.
 	ritual_room = {
 		code = 'ritual_room',
@@ -440,8 +440,7 @@ const LIST = {
 		#not a craft discipline: whoever stands here raises the circle's preparation, and
 		#game_res.process_rooms() sends the job down its own branch (prepare_rites)
 		work_job = 'rite_preparation',
-		#The bench the card's button opens is still enchanting (MansionCraftModule's 'enchant'
-		#category asks for this room), named here because the work done in the room is not it.
+		#the card's bench button opens the enchanting panel - see mansion_room_card.ENCHANTING_BENCH
 		craft_menu = 'enchant',
 		max_count = 1,
 		upkeep = 0,

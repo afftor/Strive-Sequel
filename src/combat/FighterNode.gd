@@ -18,13 +18,10 @@ var buffs = []
 
 var is_active = true
 
-var buff_scroll_max_page = 0
-var buff_scroll_page = 0
-
-var buffs_timer
-var buffs_fade_timer
 var buffs_cont
-var buffs_on_pause = false
+var buff_fonts = {}
+#the row show_buffs laid out: {size, y, shown}; null without buffs
+var buff_row = null
 
 #data format: node, time, type, slot, params
 
@@ -72,25 +69,15 @@ var float_on = false
 var float_time = 0.0
 var float_shifted = false
 
-const STEALTH_DESAT = 0.7
-const STEALTH_TINT = Color(0.62, 0.74, 1.0)
-
-var stealth_on = false
-
 
 func _ready():
 	set_process(false)
 	connect("gui_input", self, "_on_Button_gui_input")
 	if has_node("Buffs"):
-		buffs_timer = $Buffs/Timer
-		buffs_fade_timer = $Buffs/fade_timer
 		buffs_cont = $Buffs
-		buffs_timer.connect("timeout", self, "show_next_buff_page")
-		buffs_fade_timer.connect("timeout", self, "show_buff_page_true")
-		buffs_cont.connect("mouse_entered", self, "mouse_in_buffs")
-		buffs_cont.connect("mouse_exited", self, "try_mouse_out_buffs")
-		buffs_cont.connect("gui_input", self, "_on_buffs_gui_input")
-		buffs_cont.connect("resized", self, "_on_buffs_cont_resized")
+		buffs_cont.mouse_filter = MOUSE_FILTER_IGNORE
+		buffs_cont.add_constant_override("separation", BUFF_GAP)
+		buffs_cont.connect("draw", self, "draw_buff_strip")
 
 func _on_Button_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -212,115 +199,191 @@ func noq_rebuildbuffs():
 	buffs = fighter.get_combat_buffs()
 	if fighter.hp <= 0:
 		buffs.clear()
-	set_stealth(fighter.hp > 0 and fighter.has_status('hide'))
-	if buffs.empty():
-		buff_scroll_max_page = 0
-	else:
-		buff_scroll_max_page = int(ceil(float(buffs.size())/3.0)) - 1
-	if buff_scroll_page > buff_scroll_max_page:
-		buff_scroll_page = 0
-	show_buff_page(false)
-	if buff_scroll_max_page > 0:
-		if buffs_timer.is_stopped():
-			buffs_timer.start()
-	elif !buffs_timer.is_stopped():
-		buffs_timer.stop()
+	if animation_node != null: animation_node.freeze_card(self, fighter.hp > 0 and fighter.has_status('freeze'))
+	show_buffs()
+	if animation_node != null: animation_node.status_aura(self)
 
-func show_next_buff_page():
-	buff_scroll_page += 1
-	if buff_scroll_page > buff_scroll_max_page:
-		buff_scroll_page = 0
-	show_buff_page()
+#Buff row over the bars: icons as large as fit between the two sizes, the rest behind a "+N" chip
+const BUFF_SIZE_MAX = 45
+const BUFF_SIZE_MIN = 30
+const BUFF_ROW_X = 10
+const BUFF_ROW_WIDTH = 162
+const BUFF_GAP = 2
+const BUFF_ROW_LIFT = 4
+const BUFF_STRIP_RISE = 9
+const BUFF_STRIP_COLOR = Color(0, 0, 0, 0.74)
+const BUFF_FONT_DATA = preload("res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf")
+const BUFF_RING_COLORS = {buff = Color(0.86, 0.72, 0.4), debuff = Color(0.82, 0.29, 0.25), neutral = Color(0.55, 0.53, 0.48)}
+const BUFF_NUMBER_COLORS = {turns = Color(1, 1, 1), hits = Color(1, 0.7, 0.34), attacks = Color(1, 0.7, 0.34),
+	hours = Color(0.62, 0.83, 1), stacks = Color(0.96, 0.84, 0.49), value = Color(0.62, 0.83, 1)}
+const BUFF_CHIP_FILL = Color(0.03, 0.04, 0.07, 0.9)
+const BUFF_CHIP_BORDER = Color(0.79, 0.64, 0.36, 0.7)
+const BUFF_CHIP_TEXT = Color(0.95, 0.84, 0.56)
 
-var buffs_in_fade = false
-func show_buff_page(make_fade = true):
-	if buffs_in_fade: return
-	if make_fade:
-		ResourceScripts.core_animations.FadeAnimation(buffs_cont, buffs_fade_timer.wait_time)
-		buffs_in_fade = true
-		buffs_fade_timer.start()
-	else:
-		show_buff_page_true()
-func show_buff_page_true():
+func show_buffs():
 	input_handler.ClearContainer(buffs_cont)
-	var max_pos = min((buff_scroll_page+1) * 3, buffs.size())
-	for i in range(buff_scroll_page * 3, max_pos):
-		add_buff(buffs[i])
-	if buffs_in_fade:
-		buffs_in_fade = false
-		ResourceScripts.core_animations.UnfadeAnimation(buffs_cont, buffs_fade_timer.wait_time)
+	var count = buffs.size()
+	buff_row = null
+	if count > 0:
+		var icon_size = int(clamp(floor(float(BUFF_ROW_WIDTH - BUFF_GAP * (count - 1)) / count), BUFF_SIZE_MIN, BUFF_SIZE_MAX))
+		var fit = max(1, int(float(BUFF_ROW_WIDTH + BUFF_GAP) / (icon_size + BUFF_GAP)))
+		var shown = count if count <= fit else fit - 1
+		var font = get_buff_font(int(round(8 + icon_size * 0.15)))
+		for k in range(shown):
+			add_buff(buffs[k], icon_size, font)
+		if shown < count:
+			add_buff_chip(buffs.slice(shown, count - 1), icon_size, font)
+		var bottom = $bars.margin_bottom - BUFF_ROW_LIFT
+		for bar in $bars.get_children():
+			if bar.visible:
+				bottom -= bar.rect_min_size.y
+		buffs_cont.rect_position = Vector2(BUFF_ROW_X, bottom - icon_size)
+		buffs_cont.rect_size = Vector2(0, icon_size)
+		buff_row = {size = icon_size, y = bottom - icon_size, shown = shown}
+	buffs_cont.update()
 
-func add_buff(i):
-	if !visible: return
-	var newbuff = input_handler.DuplicateContainerTemplate(buffs_cont)
-	var text = i.description
+#where the buff row's dark strip begins, in card coordinates; the portrait's bottom without a row
+func buff_floor():
+	var bottom = $Icon.rect_position.y + $Icon.rect_size.y
+	if buff_row == null: return bottom
+	return min(bottom, buff_row.y - BUFF_STRIP_RISE)
+
+#the icon of a status in the row: {rect, texture} in card coordinates; the "+N" chip when it is hidden behind it
+func buff_icon(status):
+	if buff_row == null: return null
+	for k in range(buffs.size()):
+		if !buff_has_tag(buffs[k], status): continue
+		var slot = min(k, buff_row.shown)
+		var rect = Rect2(BUFF_ROW_X + slot * (buff_row.size + BUFF_GAP), buff_row.y, buff_row.size, buff_row.size)
+		return {rect = rect, texture = buffs[k].icon if k < buff_row.shown else null}
+	return null
+
+func buff_has_tag(b, tag):
+	var eff = b.parent
+	if eff is eff_stack:
+		var first = null
+		for id in eff.effects:
+			first = id
+			break
+		eff = first
+	for depth in range(4):
+		if eff is String:
+			eff = effects_pool.effects.get(eff)
+		if !(eff is base_effect) or typeof(eff.template) != TYPE_DICTIONARY:
+			break
+		if eff.template.get('tags', []).has(tag):
+			return true
+		eff = eff.parent
+	return false
+
+func add_buff(i, icon_size, font):
+	var newbuff = make_buff_icon(icon_size)
 	newbuff.texture = i.icon
-#	buffs.push_back(i.template_name)
+	newbuff.hint_tooltip = i.description
+	newbuff.connect("draw", self, "draw_buff_icon", [newbuff, BUFF_RING_COLORS[get_buff_side(i)], null])
+	var value = null
+	var event = 'value'
 	if i.template.has('bonuseffect'):
 		match i.template.bonuseffect:
 			'barrier':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.shield)
+				value = fighter.shield
 			'lust':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.get_stat('lust'))
+				value = fighter.get_stat('lust')
 			'counterattacks':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.get_stat('counterattacks'))
+				value = fighter.get_stat('counterattacks')
 			'fed':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.get_stat('fed'))
-	newbuff.hint_tooltip = text
-	
+				value = fighter.get_stat('fed')
 	if i.tags.has('show_amount'):
-		newbuff.get_node("Label").text = str(i.get_stacks())
-		newbuff.get_node("Label").set("custom_colors/font_color",Color(1,1,0))
-		newbuff.get_node("Label").show()
+		value = "×" + str(i.get_stacks())
+		event = 'stacks'
 	else:
-		var tmp = i.get_duration()
-		if tmp != null:
-			newbuff.get_node("Label").text = str(tmp.count)
-			match tmp.event:
-				'hours':
-					newbuff.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-				'turns':
-					newbuff.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-				'hits':
-					newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-				'attacks':
-					newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-			newbuff.get_node("Label").show()
+		var duration = i.get_duration()
+		if duration != null:
+			value = duration.count
+			event = duration.event
+	if value != null:
+		set_buff_label(newbuff, str(value), BUFF_NUMBER_COLORS.get(event, Color(1, 1, 1)), font, Label.ALIGN_RIGHT, Label.VALIGN_BOTTOM, 2)
 
-func mouse_in_buffs():
-	if buffs_on_pause: return
-	buffs_on_pause = true
-	buffs_timer.paused = true
+func add_buff_chip(hidden, icon_size, font):
+	var chip = make_buff_icon(icon_size)
+	chip.texture = null
+	var lines = []
+	for b in hidden:
+		lines.push_back(b.description)
+	chip.hint_tooltip = PoolStringArray(lines).join("\n")
+	chip.connect("draw", self, "draw_buff_icon", [chip, BUFF_CHIP_BORDER, BUFF_CHIP_FILL])
+	set_buff_label(chip, "+" + str(hidden.size()), BUFF_CHIP_TEXT, font, Label.ALIGN_CENTER, Label.VALIGN_CENTER, 0)
 
-func try_mouse_out_buffs():
-	if !buffs_on_pause or is_mouse_on_buffs(): return
-	buffs_on_pause = false
-	buffs_timer.paused = false
-	if !buffs_timer.is_stopped():
-		buffs_timer.start()
+func make_buff_icon(icon_size):
+	var node = input_handler.DuplicateContainerTemplate(buffs_cont)
+	node.rect_min_size = Vector2(icon_size, icon_size)
+	node.size_flags_vertical = 0
+	return node
 
-func _on_buffs_gui_input(event):
-	if !buffs_on_pause or buff_scroll_max_page == 0: return
-	if event.is_action_released("LMB"):
-		show_next_buff_page()
-#	elif event.is_action_released("RMB"):
-#		buff_scroll_page -= 1
-#		if buff_scroll_page < 0:
-#			buff_scroll_page = buff_scroll_max_page
-#		show_buff_page()
+func set_buff_label(node, text, color, font, align, valign, drop):
+	var label = node.get_node("Label")
+	label.text = text
+	label.add_font_override("font", font)
+	label.set("custom_colors/font_color", color)
+	label.align = align
+	label.valign = valign
+	label.rect_position = Vector2()
+	label.rect_size = node.rect_min_size + Vector2(0, drop)
+	label.show()
 
-func _on_buffs_cont_resized():
-	if buffs_on_pause:
-		try_mouse_out_buffs()
-	elif !buffs_on_pause and is_mouse_on_buffs():
-		mouse_in_buffs()
+func get_buff_font(px):
+	if !buff_fonts.has(px):
+		var font = DynamicFont.new()
+		font.font_data = BUFF_FONT_DATA
+		font.size = px
+		font.outline_size = 1
+		font.outline_color = Color(0, 0, 0)
+		font.use_filter = true
+		buff_fonts[px] = font
+	return buff_fonts[px]
 
-func is_mouse_on_buffs():
-	return buffs_cont.get_rect().has_point(buffs_cont.get_parent().get_local_mouse_position())
+#'buff' / 'debuff' from the tags of the effect behind the icon or of its parents; most effects have neither
+func get_buff_side(b):
+	var eff = b.parent
+	if eff is eff_stack:
+		var first = null
+		for id in eff.effects:
+			first = id
+			break
+		eff = first
+	for depth in range(4):
+		if eff is String:
+			eff = effects_pool.effects.get(eff)
+		if !(eff is base_effect) or typeof(eff.template) != TYPE_DICTIONARY:
+			break
+		var tags = eff.template.get('tags', [])
+		if tags.has('negative') or tags.has('debuff'):
+			return 'debuff'
+		if tags.has('positive') or tags.has('buff'):
+			return 'buff'
+		eff = eff.parent
+	return 'neutral'
+
+func draw_buff_icon(node, ring, fill):
+	var rect = Rect2(Vector2(), node.rect_size)
+	if fill != null:
+		node.draw_rect(rect, fill)
+	node.draw_rect(rect.grow(0.5), Color(0, 0, 0, 0.9), false)
+	node.draw_rect(rect.grow(-0.5), ring, false)
+	node.draw_rect(rect.grow(-1.5), Color(0, 0, 0, 0.35), false)
+
+func draw_buff_strip():
+	if buffs.empty():
+		return
+	var left = $Icon.rect_position.x - buffs_cont.rect_position.x
+	var right = left + $Icon.rect_size.x
+	var bottom = $Icon.rect_position.y + $Icon.rect_size.y - buffs_cont.rect_position.y
+	var top = -BUFF_STRIP_RISE
+	var mid = lerp(top, bottom, 0.72)
+	var clear = Color(0, 0, 0, 0)
+	buffs_cont.draw_polygon(PoolVector2Array([Vector2(left, top), Vector2(right, top), Vector2(right, mid), Vector2(left, mid)]),
+		PoolColorArray([clear, clear, BUFF_STRIP_COLOR, BUFF_STRIP_COLOR]))
+	buffs_cont.draw_rect(Rect2(left, mid, right - left, bottom - mid), BUFF_STRIP_COLOR)
 
 #not used
 #func update_buff(i): 
@@ -465,33 +528,15 @@ func turn_overlay(val):
 	refresh_icon_desat()
 
 
-#"In the shadows" status (e_t_hide2, tag hide): the portrait fades out and shifts
-#to a cold moonlit tone. Desaturation comes from the same desaturate.shader that
-#already sits on Icon, and the tint from the portrait's own modulate - no extra
-#nodes needed.
-func set_stealth(val):
-	if stealth_on == val: return
-	stealth_on = val
-	$Icon.modulate = STEALTH_TINT if val else Color(1, 1, 1, 1)
-	refresh_icon_desat()
-
-
-#Death is shown through the same percent and takes priority. For the 'mind'
-#damage type Icon carries swirl_shader, whose parameter of the same name drives
-#both the swirl and the greying out - that is the whole mind kill effect, since
-#that branch leaves the overlay without a texture. So death does touch it, and
-#only stealth stays desaturate-only.
+#Death is shown through the desaturation percent. For the 'mind' damage type Icon
+#carries swirl_shader, whose parameter of the same name drives both the swirl and
+#the greying out - that is the whole mind kill effect, since that branch leaves the
+#overlay without a texture. The "In the shadows" silhouette is StatusAura's.
 func refresh_icon_desat():
 	if $Icon.material == null or $Icon.material.shader == null: return
 	var shader_path = $Icon.material.shader.resource_path
-	var is_desat = shader_path.ends_with('desaturate.shader')
-	if !is_desat and !shader_path.ends_with('swirl.shader'): return
-	if $overlay.visible:
-		$Icon.material.set_shader_param('percent', 1.0)
-	elif stealth_on and is_desat:
-		$Icon.material.set_shader_param('percent', STEALTH_DESAT)
-	else:
-		$Icon.material.set_shader_param('percent', 0.0)
+	if !shader_path.ends_with('desaturate.shader') and !shader_path.ends_with('swirl.shader'): return
+	$Icon.material.set_shader_param('percent', 1.0 if $overlay.visible else 0.0)
 
 
 #The shadow is created lazily and only for whoever's turn it is: other cards

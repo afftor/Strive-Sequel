@@ -10,6 +10,7 @@ var combat_skill_charges = {}
 var combat_cooldowns = {}
 var daily_cooldowns = {}
 var social_skill_panel = {}
+var spent_race_skills = []
 var combat_skill_panel = {}
 var combat_skill_panel_row = 1
 var active_panel = variables.PANEL_SOC
@@ -158,6 +159,9 @@ func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat
 
 func learn_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]
+	if spent_race_skills.has(skill):
+		spent_race_skills.erase(skill)
+		parent.get_ref().reset_rebuild()
 	if !social_skills.has(skill):
 		social_skills.append(skill)
 		parent.get_ref().reset_rebuild()
@@ -179,6 +183,9 @@ func learn_e_skill(skill, free = false):
 
 func unlearn_skill(skill):
 	social_skills.erase(skill)
+	var race_data = races.racelist.get(parent.get_ref().get_stat('race'))
+	if race_data != null and race_data.get('social_skills', []).has(skill) and !spent_race_skills.has(skill):
+		spent_race_skills.append(skill)
 	social_cooldowns.erase(skill)
 	daily_cooldowns.erase(skill)
 	social_skills_charges.erase(skill)

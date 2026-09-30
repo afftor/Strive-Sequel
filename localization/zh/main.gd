@@ -1814,6 +1814,8 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLHASTEDESCRIPT = """使队友的速度增加 25，持续 4 回合。""",
 	SKILLCHAIN_LIGHTNING = """连锁闪电""",
 	SKILLCHAIN_LIGHTNINGDESCRIPT = """对 4-6 个目标造成 80% 的魔法 {color=yellow|风系} 伤害。""",
+	SKILLMILLENNIUM_STORM = """Storm of the Millennium""", # MISSING TRANSLATION
+	SKILLMILLENNIUM_STORMDESCRIPT = """Deals 110% of MATK as {color=yellow|Air} damage to all enemies.""", # MISSING TRANSLATION
 	SKILLAIR_SHIELD = """空气护盾""",
 	SKILLAIR_SHIELDDESCRIPT = """使目标队友获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。拥有风系精通时增加目标数量。""",
 	SKILLAIR_SHIELDDESCRIPT_1 = """使目标队友列获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。驱散陷阱状态。拥有风系精通时增加目标数量。""",
@@ -1871,6 +1873,8 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLPOISON_VAPORSDESCRIPT = """对敌方所在列造成 25% 的魔法 {color=yellow|水系} 伤害。施加“中毒”效果，持续 3 回合。""",
 	SKILLMETEOR = """陨石术""",
 	SKILLMETEORDESCRIPT = """造成 200% 的魔法 {color=yellow|火系} 伤害，并对目标施加“灼烧”效果，持续 4 回合。""",
+	SKILLSUPERNOVA = """Supernova""", # MISSING TRANSLATION
+	SKILLSUPERNOVADESCRIPT = """Deals 200% of MATK as {color=yellow|Fire} damage to all enemies.""", # MISSING TRANSLATION
 	SKILLABYSS_GAZE = """深渊凝视""",
 	SKILLABYSS_GAZEDESCRIPT = """对所有敌人造成 125% 的魔法 {color=yellow|心灵} 伤害。眩晕 2 回合。""",
 	SKILLDARK_FLAME = """暗黑烈焰""",
@@ -11354,6 +11358,14 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	TRAVEL_GROUP_RENAME = """重命名""",
 	TRAVEL_MOVE_UP = """向上移动""",
 	TRAVEL_MOVE_DOWN = """向下移动""",
+	TRAVEL_GROUP_LOCK = """Lock group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_UNLOCK = """Unlock group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_LOCK_DESC = """Random characters won't be added to a locked group. Characters recruited at its location start a group of their own.""", # MISSING TRANSLATION
+	TRAVEL_GROUP_LOCKED_DESC = """This group is locked.""", # MISSING TRANSLATION
+	TRAVEL_GROUP_CLOSE = """Close group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_OPEN = """Open group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_CLOSE_DESC = """A closed group takes no one new: nobody can be moved into it, and characters recruited at its location start a group of their own.""", # MISSING TRANSLATION
+	TRAVEL_GROUP_CLOSED_DESC = """This group is closed to new members.""", # MISSING TRANSLATION
 	SKILLPOISON_BITE = """毒液咬噬""",
 	SKILLPOISON_BITE_S = """毒液咬噬""",
 	SKILLENTANGLE_SA = """藤蔓缠绕""",
@@ -32341,6 +32353,46 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	BODYRITE_REQ_NO_SCALES = """No scales""", # MISSING TRANSLATION
 	BODYRITE_REQ_TITS_SIZE = """Breasts of average size or bigger""", # MISSING TRANSLATION
 	BODYRITE_REQ_HAS_WOMB = """Has a womb""", # MISSING TRANSLATION
+	ENCHANTING_TITLE = """Enchanting""", # MISSING TRANSLATION
+	ENCHANTING_ITEMS = """Item""", # MISSING TRANSLATION
+	ENCHANTING_FILTER_ALL = """All""", # MISSING TRANSLATION
+	ENCHANTING_FILTER_WEAPONS = """Weapons""", # MISSING TRANSLATION
+	ENCHANTING_FILTER_ARMOR = """Armor""", # MISSING TRANSLATION
+	ENCHANTING_NO_ITEMS = """No gear to show.""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY = """Capacity""", # MISSING TRANSLATION
+	ENCHANTING_WORN_BY = """Worn by %s""", # MISSING TRANSLATION
+	ENCHANTING_AWAY = """Worn by %s, away""", # MISSING TRANSLATION
+	ENCHANTING_IN_STORE = """%d in store""", # MISSING TRANSLATION
+	ENCHANTING_ENCHANTMENTS = """Enchantments""", # MISSING TRANSLATION
+	ENCHANTING_PICK_ITEM = """Choose an item to enchant.""", # MISSING TRANSLATION
+	ENCHANTING_HELP = """Each level of an enchantment takes some of the item's Enchant Capacity, costs gold and needs mana. The mana is given by the residents you choose as donors, split evenly between them.
+Levels can be added to gear that is already enchanted. Worn gear is taken off for the rite and put back on after, unless it is cursed.""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY_LEFT = """Capacity left""", # MISSING TRANSLATION
+	ENCHANTING_TOP_LEVEL = """Highest level""", # MISSING TRANSLATION
+	ENCHANTING_NEEDS_CAPACITY = """Needs %d capacity""", # MISSING TRANSLATION
+	ENCHANTING_RAISE = """Raise to level %s""", # MISSING TRANSLATION
+	ENCHANTING_NO_ROOM = """Not enough capacity: the next level takes %d, %d left""", # MISSING TRANSLATION
+	ENCHANTING_LEVEL_LINE = """%s: capacity %d, %d gold, %d mana""", # MISSING TRANSLATION
+	ENCHANTING_CURSE = """Curse""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_NONE = """No curse""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_MINOR = """Minor +25%""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_MAJOR = """Major +50%""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_TAKEN = """This item already carries a curse.""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_HELP = """A curse raises the item's Enchant Capacity: by 25% for a minor one, by 50% for a major one. It is picked at random and stays hidden until the item is worn. {color=red|Cursed gear is destroyed when it is taken off.}""", # MISSING TRANSLATION
+	ENCHANTING_STATS = """Stats""", # MISSING TRANSLATION
+	ENCHANTING_NONE = """None yet""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY_TITLE = """Enchant Capacity""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY_TOOLTIP = """The first part of the bar is what the item's enchantments already take, the second what this rite adds. A curse raises the capacity; the part it adds is shaded purple.""", # MISSING TRANSLATION
+	ENCHANTING_CHECK_WEARER = """%s is at the mansion""", # MISSING TRANSLATION
+	ENCHANTING_CHECK_CHOSEN = """A level to add is chosen""", # MISSING TRANSLATION
+	ENCHANTING_CHECK_CAPACITY = """Fits the enchant capacity""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_PUT_BACK = """%s takes it off for the rite and puts it back on after.""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_KEPT_OFF = """%s takes it off for the rite. Cursed gear is not put back on.""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_STACK = """One of the %d is enchanted.""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_CURSE = """The curse is random and hidden until the item is worn. Cursed gear is destroyed when taken off.""", # MISSING TRANSLATION
+	ENCHANTING_NO_DONORS = """Nobody at the mansion can give mana.""", # MISSING TRANSLATION
+	ENCHANTING_PERFORM = """Enchant""", # MISSING TRANSLATION
+	ENCHANTING_ANIM_TITLE = """Enchanted""", # MISSING TRANSLATION
 	MANSIONVIEW_REST = """闲置""",
 	MANSIONVIEW_ATWORK = """工作中""",
 	MANSIONVIEW_HOUSEALL = """安排住宿""",
@@ -32350,6 +32402,8 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONVIEW_ROOMSBUILT = """房间数""",
 	MANSIONVIEW_BEDS = """床位数""",
 	MANSIONVIEW_WORKPLACES = """工作位""",
+	MANSIONVIEW_WORKSTAT = """Stat: %s""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKTOOL = """Tool: %s""", # MISSING TRANSLATION
 	MANSIONVIEW_POPULATION = """人口""",
 	MANSIONVIEW_STORAGELIMIT = """每种材料可储存 %d 个。""",
 	MANSIONVIEW_UPKEEP = """维护费用""",
@@ -32399,6 +32453,8 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONVIEW_AUTOBUY_BUTTON = """市场补货""",
 	MANSIONVIEW_AUTOBUY_TITLE = """市场补货""",
 	MANSIONVIEW_AUTOBUY_EXPLAIN = """每天清晨，文员会购买足够的物资，使各项库存达到设定的水平。""",
+	MANSIONVIEW_AUTOBUY_HELP = """[center]{color=yellow|Market Restock}[/center]
+The assigned character will try to purchase set items from the local market. Only items actually existing there can be purchased.""", # MISSING TRANSLATION
 	MANSIONVIEW_AUTOBUY_CLERK = """%s 需支付市场卖价的 %d%%。""",
 	MANSIONVIEW_AUTOBUY_NOCLERK = """办公桌前无人值守。订单将予以保留，但不会购买任何物品。""",
 	MANSIONVIEW_AUTOBUY_ITEM = """存货""",

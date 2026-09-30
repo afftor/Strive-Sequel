@@ -149,7 +149,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'water',#not sure but not matters #It matter now -Garden
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'clarity_sign', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -246,9 +246,7 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		#the field-wide weather replaces the red debuff burst that used to sit on
-		#each enemy portrait
-		sfx = [{code = 'rainfall_field', target = 'caster', period = 'windup'}],
+		sfx = [{code = 'hyperborea_winds', target = 'target_group', period = 'predamage', sync_to_hit = true}],
 		sound = [],
 		value = 2.1,
 		follow_up = 'hyperborea_1'

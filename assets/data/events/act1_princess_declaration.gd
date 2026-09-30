@@ -841,12 +841,17 @@ var data = {
 				bonus_effects = [
 					{
 						code = "unique_character_changes",
-						value = "anastasia",
+						value = "AnastasiaBroken",
 						args = [
 							{
-								code = "vaginal_virgin",
-								operant = "=",
-								value = false
+								code = "take_virginity",
+								type = "vaginal",
+								partner = "master"
+							},
+							{
+								code = "take_virginity",
+								type = "anal",
+								partner = "master"
 							}
 						]
 					},
@@ -1215,9 +1220,9 @@ var data = {
 						value = "anastasia",
 						args = [
 							{
-								code = "vaginal_virgin",
-								operant = "=",
-								value = false
+								code = "take_virginity",
+								type = "vaginal",
+								partner = "master"
 							}
 						]
 					},
@@ -1571,9 +1576,9 @@ var data = {
 						value = "anastasia",
 						args = [
 							{
-								code = "vaginal_virgin",
-								operant = "=",
-								value = false
+								code = "take_virginity",
+								type = "vaginal",
+								partner = "master"
 							}
 						]
 					},

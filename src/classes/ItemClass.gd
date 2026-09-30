@@ -585,8 +585,10 @@ func tooltip(targetnode):
 	node.showup(targetnode, data, 'gear')
 
 
-func tooltip_v2(targetnode):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+func tooltip_v2(targetnode, tooltip_node = null):
+	var node = tooltip_node
+	if node == null or !is_instance_valid(node):
+		node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {title = name, text = tooltiptext(), icon = input_handler.loadimage(icon, 'icons'), item = self, price = str(calculateprice())}
 	node.showup(targetnode, data, 'gear')
 

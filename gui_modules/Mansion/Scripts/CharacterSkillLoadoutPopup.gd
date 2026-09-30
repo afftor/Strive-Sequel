@@ -199,7 +199,7 @@ func show_skill_info(skill):
 		$Window/Info/SkillInfo/Cost.show()
 		$Window/Info/SkillInfo/CostIcon.show()
 		$Window/Info/SkillInfo/Cost.text = str(int(skill.cost.get("mp", 0)))
-	$Window/Info/SkillInfo/Cooldown.text = str(skill.cooldown)
+	$Window/Info/SkillInfo/Cooldown.text = str(skill.get("combatcooldown", 0))
 
 
 func clear_skill_info():

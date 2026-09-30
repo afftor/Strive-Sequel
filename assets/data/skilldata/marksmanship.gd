@@ -94,9 +94,9 @@ var skills = {
 		value = 1.2,
 		random_factor_p = 0.1,
 		sfx = [
-			{code = 'arrowhail', target = 'target_group', period = 'windup'},
-			{code = 'at_arch', target = 'caster', period = 'windup', is_cast = true}], 
+			{code = 'arrow_rain', target = 'target_group', period = 'predamage', sync_to_hit = true}], 
 		sounddata = {initiate = null, strike = 'arrow', hit = null},
+		hitfx = [],
 		variations = [
 			{
 				reqs = [{code = 'stat', stat = 'combatgroup', value = 'enemy', operant = 'eq'}],

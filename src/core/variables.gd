@@ -563,7 +563,7 @@ var autosave_frequency_min = 1
 var autosave_frequency_max = 30
 
 
-var personality_array = ['neutral','kind','bold','shy','serious']
+var personality_array = ['kind','bold','shy','serious']
 #dynamic_text_vars probably obsolete, use text_pronouns in new cases
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']
 var text_pronouns = ['He', 'he', 'his', 'him', 'His', 'Sir', 'sir', 'mister', 'Succubus', 'succubus', 'son', 'father', 'brother', 'gentleman', 'raceadj', 'race', 'race_short', 'name', 'surname', 'age', 'male', 'eye_color', 'hair_color', 'man', 'guy', 'husband', 'groom', 'master', 'Master', 'boygirlfuta', 'boy', 'himself', 'mastername']

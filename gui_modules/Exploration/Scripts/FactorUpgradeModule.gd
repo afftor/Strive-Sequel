@@ -35,6 +35,8 @@ func _ready():
 
 func open():
 	build_characters()
+	if person != null:
+		person = ResourceScripts.game_party.characters.get(person.id)
 	if ResourceScripts.slave_quests.can_upgrade_character(person):
 		select(person)
 	else:

@@ -1,5 +1,6 @@
 extends Node
 var floatfont = preload("res://FloatFont.tres")
+const DamageCounter = preload("res://src/combat/DamageCounter.gd")
 
 var BeingAnimated = []
 var ShakingNodes = []
@@ -51,7 +52,9 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 	if !node.is_inside_tree(): return
 	var textnode = Label.new()
 	node.add_child(textnode)
-	var newfont = floatfont.duplicate()
+	#damage takes the one look of the combat's damage numbers: DamageFont's dark outline and a soft shadow
+	var damage = type == 'damageenemy' or type == 'damageally'
+	var newfont = DamageCounter.make_fonts(size).font if damage else floatfont.duplicate()
 	newfont.size = size
 	textnode.set("custom_fonts/font", newfont)
 	textnode.text = text
@@ -59,7 +62,8 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 	textnode.rect_position += positionoffset
 
 	textnode.set("custom_colors/font_color", color)
-	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
+	if damage: damage_shadow(textnode, newfont, text, size)
+	else: textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
 
 	match type:
 		'damageenemy':
@@ -77,6 +81,18 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 	var wr = weakref(textnode)
 	yield(get_tree().create_timer(time+1), 'timeout')
 	if wr.get_ref(): textnode.queue_free()
+
+#the soft shadow of a damage number: the same text behind it, offset and black, its outline left clear so it lines up
+func damage_shadow(textnode, font, text, size):
+	var shadow = Label.new()
+	var shadow_font = font.duplicate()
+	shadow_font.outline_color = Color(0, 0, 0, 0)
+	shadow.set("custom_fonts/font", shadow_font)
+	shadow.set("custom_colors/font_color", Color(0, 0, 0, 0.75))
+	shadow.text = text
+	shadow.rect_position = Vector2(size * 0.045, size * 0.05)
+	shadow.show_behind_parent = true
+	textnode.add_child(shadow)
 
 func DamageTextFly(node, reverse = false):
 	if !node.is_inside_tree(): return

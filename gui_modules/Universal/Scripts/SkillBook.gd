@@ -187,7 +187,7 @@ func update_skillinfo(skill):
 			$SkillInfo/Cost.text = str(int(skill.cost.mp))
 		else:
 			$SkillInfo/Cost.text = "0"
-		$SkillInfo/Cooldown.text = str(skill.cooldown)
+	$SkillInfo/Cooldown.text = str(skill.get('combatcooldown', 0))
 
 func clear_skillinfo():
 	$SkillInfo/frame.visible = false

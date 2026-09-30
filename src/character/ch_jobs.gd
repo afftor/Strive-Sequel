@@ -174,6 +174,45 @@ func servants_task_hard():
 	return (0.75 + parent.get_ref().get_stat('charm')/66.0)
 
 
+#Which stats each formula above works off, strongest first. The screens that count a room's work
+#places name them (mansion_location_tasks.work_stats_of); the check reads the formulas back.
+const WORK_STATS = {
+	alchemy_progress = ['wits'],
+	building_progress = ['physics', 'wits'],
+	cooking_progress = ['wits'],
+	farming_cloth = ['physics', 'wits'],
+	farming_veges = ['physics', 'wits'],
+	farming_wheat = ['physics', 'wits'],
+	fighters_task_easy = ['physics'],
+	fighters_task_hard = ['physics'],
+	fighters_task_medium = ['physics'],
+	fishing = ['wits', 'physics'],
+	forge_progress = ['physics', 'wits'],
+	hunt_leather = ['physics'],
+	hunt_leather_hard = ['physics'],
+	hunt_leather_mythic = ['physics'],
+	hunt_meat = ['physics'],
+	mages_task_easy = ['wits'],
+	mages_task_hard = ['wits'],
+	mages_task_medium = ['wits'],
+	mining_iron = ['physics'],
+	mining_mithril = ['physics'],
+	mining_stone = ['physics'],
+	servants_task_easy = ['charm'],
+	servants_task_hard = ['charm'],
+	servants_task_medium = ['charm'],
+	settlement_recruiting_easy = ['charm'],
+	settlement_recruiting_hard = ['charm'],
+	tailor_progress = ['wits', 'physics'],
+	woodcutting_lumber = ['physics'],
+	woodironcutting_lumber = ['physics'],
+	woodmagiccutting_lumber = ['physics'],
+	workers_task_easy = ['physics'],
+	workers_task_hard = ['physics'],
+	workers_task_medium = ['wits'],
+}
+
+
 func farm_milk():
 	var tits_size = 0
 	match parent.get_ref().get_stat('tits_size'):

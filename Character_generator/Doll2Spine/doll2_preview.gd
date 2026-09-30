@@ -3410,6 +3410,12 @@ func _draw_ordered_slots():
 # the nipples are under, and clear of the sheer one they are seen through.
 const FLAT_CHEST_DRAW_ORDER_FIXES = [{"slot": "piercing_nipple_1_0", "before": "equip_torso"}]
 
+# A belly that size pushes what hangs under it forward instead of hiding it.
+const PREGNANT_DRAW_ORDER_FIXES = [
+	{"slot": "dick", "after": "pregnancy_belly"},
+	{"slot": "testicle", "after": "pregnancy_belly"},
+]
+
 
 # The order to draw in: the catalogue's, unless a running animation reorders the
 # slots itself.  An authored pose does that - the doll folds its arms in front of
@@ -3422,6 +3428,8 @@ func _current_draw_order():
 	if chest_is_flat():
 		# on a copy: the catalogue's order is the one every doll on the rig reads
 		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
+	if composed.has("pregnancy_belly"):
+		order = _apply_draw_order_fixes(order.duplicate(), PREGNANT_DRAW_ORDER_FIXES)
 	return order
 
 

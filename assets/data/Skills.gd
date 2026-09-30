@@ -2389,6 +2389,8 @@ func get_template(id, caster):
 	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
 		tres.reqs_text = caster.decipher_reqs(tres.reqs, true)
 		tres.descript += '\n\n' + tres.reqs_text
+	if tres.has('combatcooldown') and tres.combatcooldown > 1 and caster.get_stat('personality') == 'serious':
+		tres.combatcooldown -= 1
 	return tres
 
 

@@ -1046,6 +1046,7 @@ func recruit(enslave = false):
 	is_active = true
 	travel.location = input_handler.active_location.id
 	travel.area = input_handler.active_area.code
+	set_loc_group(ResourceScripts.game_party.get_travel_group_for_newcomer(travel.location))
 	if enslave == true:
 		set_slave_category('slave')
 #		set_work_rule('bindings', true)
@@ -2909,6 +2910,9 @@ func add_partner(partner):
 
 func get_learned_skills(cat):
 	return skills.get_learned_skills(cat)
+
+func is_race_skill_spent(skill):
+	return skills.spent_race_skills.has(skill)
 
 func get_combat_skills():
 	return dyn_stats.get_combat_skills()

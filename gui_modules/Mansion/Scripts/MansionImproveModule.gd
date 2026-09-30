@@ -15,7 +15,6 @@ func _ready():
 	$Back.connect("pressed", self, 'close')
 	$EnchantPanel/Apply.connect('pressed', self, 'apply_selection')
 	$EnchantPanel/reset.connect('pressed', self, 'select_item')
-	$Mode.connect("pressed", self, 'change_mode')
 
 	search_filter.connect("text_changed", self, '_on_search_changed')
 	globals.connecttexttooltip($Tooltip, tr("TOOLTIPIMPROVESCREEN"))
@@ -275,14 +274,6 @@ func apply_selection():
 	yield(get_tree(),'idle_frame')
 	build_item_list()
 	build_item()
-
-
-func change_mode():
-	gui_controller.windows_opened.erase(self)
-	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-	hide()
-	get_parent().update()
-	get_parent().select_category('enchant')
 
 
 func _on_search_changed(_new_text):

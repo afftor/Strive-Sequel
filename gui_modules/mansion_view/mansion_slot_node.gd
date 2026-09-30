@@ -9,6 +9,7 @@ extends Button
 
 const MansionLayout = preload("res://src/core/mansion_layout.gd")
 const RoomTypes = preload("res://assets/data/mansion_room_types.gd")
+const LocationTasks = preload("res://gui_modules/mansion_view/mansion_location_tasks.gd")
 
 #What a slot looks like before anything is read off it. Every working room shares the one
 #picture for now; a slot with nothing built and a slot left derelict have their own, so the
@@ -313,6 +314,11 @@ func build_tooltip(room):
 	var places = MansionLayout.work_capacity(room)
 	if places > 0:
 		text += "\n%s %d/%d" % [tr("MANSIONVIEW_WORKPLACES"), view.room_workers(room).size(), places]
+	#a building raised to gather something holds its hands on that job rather than on work places of its
+	#own, so what its work goes by is said whether or not the room itself counts any
+	var goes_by = LocationTasks.work_hint_line(LocationTasks.room_work_task(room, slot_code))
+	if goes_by != "":
+		text += "\n" + goes_by
 	for code in room.upgrades:
 		text += "\n%s %d" % [tr(RoomTypes.get_upgrade_name_key(code)), int(room.upgrades[code])]
 	var build = build_data()

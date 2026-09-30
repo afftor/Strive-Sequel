@@ -285,6 +285,9 @@ func build_tooltip(workers):
 		text += "\n%s %d" % [tr("MANSIONVIEW_WORKERS"), workers.size()]
 	else:
 		text += "\n%s %d/%d" % [tr("MANSIONVIEW_WORKPLACES"), workers.size(), entry.max_workers]
+	var goes_by = LocationTasks.work_hint_line(entry.id)
+	if goes_by != "":
+		text += "\n" + goes_by
 	#a quest says how far along it is rather than what it makes, since it makes nothing
 	if entry.get('quest', false) and entry.progress_limit > 0:
 		text += "\n%s %d/%d" % [tr("MANSIONVIEW_PROGRESS"),

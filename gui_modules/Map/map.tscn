@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/map/location/button_place_hover.png" type="Texture" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/yes.png" type="Texture" id=51]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_FG.tres" type="StyleBox" id=52]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_BG.tres" type="StyleBox" id=53]
+[ext_resource path="res://assets/images/map/location/icon_group_lock.png" type="Texture" id=54]
 
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 42 )
@@ -642,6 +643,16 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "Location name"
 valign = 1
+
+[node name="lock" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]
+visible = false
+margin_left = 13.0
+margin_top = 11.0
+margin_right = 39.0
+margin_bottom = 39.0
+texture = ExtResource( 54 )
+expand = true
+stretch_mode = 6
 
 [node name="menu" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]
 anchor_left = 1.0

@@ -507,7 +507,7 @@ func build_lists_signature():
 	group_names.sort()
 	for group_name in group_names:
 		var group_data = ResourceScripts.game_party.travel_groups_ref[group_name]
-		parts.append("G:%s:%s" % [str(group_name), str(group_data.get('priority', 10))])
+		parts.append("G:%s:%s:%s" % [str(group_name), str(group_data.get('priority', 10)), str(group_data.get('locked', false))])
 	return parts.join("|")
 
 
@@ -784,6 +784,9 @@ func make_panel_for_character(panel, ch_id):
 
 func make_panel_for_group(panel, group_name):
 	set_loc_text(panel, group_name)
+	var lock = panel.get_node("lock")
+	lock.visible = ResourceScripts.game_party.is_travel_group_locked(group_name)
+	globals.connecttexttooltip(lock, tr("TRAVEL_GROUP_LOCK_DESC"))
 
 
 func _populate_group_character_buttons(group_cont):
@@ -858,6 +861,9 @@ func build_from_locations():
 				var true_name = group_name
 				if char_groups.has(group_name):#bad sit, means there is a double
 					true_name = make_new_group_name()
+					#both halves of a split closed group stay closed
+					if ResourceScripts.game_party.is_travel_group_locked(group_name):
+						ResourceScripts.game_party.set_travel_group_locked(true_name, true)
 					loc_char_groups[true_name] = loc_char_groups[group_name]
 					loc_char_groups.erase(group_name)
 					for ch_id in loc_char_groups[true_name]:
@@ -1346,13 +1352,7 @@ func has_group(group_name):
 	return char_groups.has(group_name)
 
 func make_new_group_name():
-	var i = 1
-	while i < 10000:
-		var new_name = "Group %d" % i
-		if !has_group(new_name):
-			return new_name
-		i += 1
-	return "Error name"
+	return ResourceScripts.game_party.make_new_travel_group_name(char_groups)
 
 func append_char_group(group_name, char_list):
 	char_groups[group_name] = {chars = char_list, priority = 10}
@@ -1433,7 +1433,9 @@ func open_char_menu(ch_id, loc_id):
 		actions.append({
 			"label": tr("TRAVEL_MOVE_TO") % group_name,
 			"callback": funcref(self, "add_one_char_to_group"),
-			"args": [ch_id, group_name]
+			"args": [ch_id, group_name],
+			"disabled": ResourceScripts.game_party.is_travel_group_locked(group_name),
+			"tooltip": get_closed_group_tooltip(group_name)
 		})
 	if !selected_chars.empty():
 		actions.append_array([
@@ -1459,7 +1461,9 @@ func open_char_menu(ch_id, loc_id):
 			actions.append({
 				"label": tr("TRAVEL_MOVE_TO") % group_name,
 				"callback": funcref(self, "add_sel_char_to_group"),
-				"args": [group_name]
+				"args": [group_name],
+				"disabled": ResourceScripts.game_party.is_travel_group_locked(group_name),
+				"tooltip": get_closed_group_tooltip(group_name)
 			})
 	$FromLocList/ContextMenu.open_with_actions(person.get_short_name(), actions, get_viewport().get_mouse_position())
 
@@ -1482,7 +1486,24 @@ func open_group_menu(group_name, loc_id):
 		"callback": funcref(self, "move_group_prior_down"),
 		"args": [group_name, loc_id]
 	})
+	var locked = ResourceScripts.game_party.is_travel_group_locked(group_name)
+	actions.append({
+		"label": tr("TRAVEL_GROUP_UNLOCK") if locked else tr("TRAVEL_GROUP_LOCK"),
+		"tooltip": tr("TRAVEL_GROUP_LOCK_DESC"),
+		"callback": funcref(self, "switch_group_lock"),
+		"args": [group_name]
+	})
 	$FromLocList/ContextMenu.open_with_actions(group_name, actions, get_viewport().get_mouse_position())
+
+func switch_group_lock(group_name):
+	var game_party = ResourceScripts.game_party
+	game_party.set_travel_group_locked(group_name, !game_party.is_travel_group_locked(group_name))
+	reset_from()
+
+func get_closed_group_tooltip(group_name):
+	if ResourceScripts.game_party.is_travel_group_locked(group_name):
+		return tr("TRAVEL_GROUP_LOCKED_DESC")
+	return ""
 
 func switch_teleport_menu():
 	info_teleport_menu.visible = !info_teleport_menu.visible

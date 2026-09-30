@@ -1787,6 +1787,8 @@ Tasto di scelta rapida: 3""",
 	SKILLHASTEDESCRIPT = "Aumenta la Velocità dell'alleato di 25 per 4 turni.",
 	SKILLCHAIN_LIGHTNING = "Catena di fulmini",
 	SKILLCHAIN_LIGHTNINGDESCRIPT = "Infligge l'80% di MATK come {color=yellow|Danni da Aria} a 4-6 bersagli.",
+	SKILLMILLENNIUM_STORM = """Storm of the Millennium""", # MISSING TRANSLATION
+	SKILLMILLENNIUM_STORMDESCRIPT = """Deals 110% of MATK as {color=yellow|Air} damage to all enemies.""", # MISSING TRANSLATION
 	SKILLAIR_SHIELD = "Scudo d'aria",
 	SKILLAIR_SHIELDDESCRIPT = "L'alleato bersaglio riceve 40 resistenza alla terra e 10 resistenza ai danni a distanza per 5 turni. Aumenta il numero di bersagli con la maestria aerea.",
 	SKILLAIR_SHIELDDESCRIPT_1 = "La fila di alleati bersaglio riceve 40 resistenza alla terra e 10 resistenza ai danni a distanza per 5 turni. Dissolve gli stati Trappola. Aumenta il numero di bersagli con la maestria aerea.",
@@ -1844,6 +1846,8 @@ Tasto di scelta rapida: 3""",
 	SKILLPOISON_VAPORSDESCRIPT = "Infligge il 25% di MATK come {color=yellow|Danni da Acqua} alla colonna nemica. Applica Veleno per 3 turni.",
 	SKILLMETEOR = "Meteora",
 	SKILLMETEORDESCRIPT = "Infligge il 200% di MATK come {color=yellow|Danni da Fuoco} e applica Bruciatura sul bersaglio per 4 turni.",
+	SKILLSUPERNOVA = """Supernova""", # MISSING TRANSLATION
+	SKILLSUPERNOVADESCRIPT = """Deals 200% of MATK as {color=yellow|Fire} damage to all enemies.""", # MISSING TRANSLATION
 	SKILLABYSS_GAZE = "Sguardo dell'Abisso",
 	SKILLABYSS_GAZEDESCRIPT = "Infligge il 125% di MATK come {color=yellow|Danni Mentali} a tutti i nemici. Stordisce per 2 turni.",
 	SKILLDARK_FLAME = "Fiamme oscure",
@@ -11287,6 +11291,14 @@ La principessa nota che Aire si irrigidisce alla domanda.
 	TRAVEL_GROUP_RENAME = "Rinomina",
 	TRAVEL_MOVE_UP = "Avanza",
 	TRAVEL_MOVE_DOWN = "Scenditi",
+	TRAVEL_GROUP_LOCK = """Lock group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_UNLOCK = """Unlock group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_LOCK_DESC = """Random characters won't be added to a locked group. Characters recruited at its location start a group of their own.""", # MISSING TRANSLATION
+	TRAVEL_GROUP_LOCKED_DESC = """This group is locked.""", # MISSING TRANSLATION
+	TRAVEL_GROUP_CLOSE = """Close group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_OPEN = """Open group""", # MISSING TRANSLATION
+	TRAVEL_GROUP_CLOSE_DESC = """A closed group takes no one new: nobody can be moved into it, and characters recruited at its location start a group of their own.""", # MISSING TRANSLATION
+	TRAVEL_GROUP_CLOSED_DESC = """This group is closed to new members.""", # MISSING TRANSLATION
 	SKILLPOISON_BITE = "Morso di veleno",
 	SKILLPOISON_BITE_S = "Morso di veleno",
 	SKILLENTANGLE_SA = "Impigliare",
@@ -31898,6 +31910,46 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	BODYRITE_REQ_NO_SCALES = """No scales""", # MISSING TRANSLATION
 	BODYRITE_REQ_TITS_SIZE = """Breasts of average size or bigger""", # MISSING TRANSLATION
 	BODYRITE_REQ_HAS_WOMB = """Has a womb""", # MISSING TRANSLATION
+	ENCHANTING_TITLE = """Enchanting""", # MISSING TRANSLATION
+	ENCHANTING_ITEMS = """Item""", # MISSING TRANSLATION
+	ENCHANTING_FILTER_ALL = """All""", # MISSING TRANSLATION
+	ENCHANTING_FILTER_WEAPONS = """Weapons""", # MISSING TRANSLATION
+	ENCHANTING_FILTER_ARMOR = """Armor""", # MISSING TRANSLATION
+	ENCHANTING_NO_ITEMS = """No gear to show.""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY = """Capacity""", # MISSING TRANSLATION
+	ENCHANTING_WORN_BY = """Worn by %s""", # MISSING TRANSLATION
+	ENCHANTING_AWAY = """Worn by %s, away""", # MISSING TRANSLATION
+	ENCHANTING_IN_STORE = """%d in store""", # MISSING TRANSLATION
+	ENCHANTING_ENCHANTMENTS = """Enchantments""", # MISSING TRANSLATION
+	ENCHANTING_PICK_ITEM = """Choose an item to enchant.""", # MISSING TRANSLATION
+	ENCHANTING_HELP = """Each level of an enchantment takes some of the item's Enchant Capacity, costs gold and needs mana. The mana is given by the residents you choose as donors, split evenly between them.
+Levels can be added to gear that is already enchanted. Worn gear is taken off for the rite and put back on after, unless it is cursed.""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY_LEFT = """Capacity left""", # MISSING TRANSLATION
+	ENCHANTING_TOP_LEVEL = """Highest level""", # MISSING TRANSLATION
+	ENCHANTING_NEEDS_CAPACITY = """Needs %d capacity""", # MISSING TRANSLATION
+	ENCHANTING_RAISE = """Raise to level %s""", # MISSING TRANSLATION
+	ENCHANTING_NO_ROOM = """Not enough capacity: the next level takes %d, %d left""", # MISSING TRANSLATION
+	ENCHANTING_LEVEL_LINE = """%s: capacity %d, %d gold, %d mana""", # MISSING TRANSLATION
+	ENCHANTING_CURSE = """Curse""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_NONE = """No curse""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_MINOR = """Minor +25%""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_MAJOR = """Major +50%""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_TAKEN = """This item already carries a curse.""", # MISSING TRANSLATION
+	ENCHANTING_CURSE_HELP = """A curse raises the item's Enchant Capacity: by 25% for a minor one, by 50% for a major one. It is picked at random and stays hidden until the item is worn. {color=red|Cursed gear is destroyed when it is taken off.}""", # MISSING TRANSLATION
+	ENCHANTING_STATS = """Stats""", # MISSING TRANSLATION
+	ENCHANTING_NONE = """None yet""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY_TITLE = """Enchant Capacity""", # MISSING TRANSLATION
+	ENCHANTING_CAPACITY_TOOLTIP = """The first part of the bar is what the item's enchantments already take, the second what this rite adds. A curse raises the capacity; the part it adds is shaded purple.""", # MISSING TRANSLATION
+	ENCHANTING_CHECK_WEARER = """%s is at the mansion""", # MISSING TRANSLATION
+	ENCHANTING_CHECK_CHOSEN = """A level to add is chosen""", # MISSING TRANSLATION
+	ENCHANTING_CHECK_CAPACITY = """Fits the enchant capacity""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_PUT_BACK = """%s takes it off for the rite and puts it back on after.""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_KEPT_OFF = """%s takes it off for the rite. Cursed gear is not put back on.""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_STACK = """One of the %d is enchanted.""", # MISSING TRANSLATION
+	ENCHANTING_NOTE_CURSE = """The curse is random and hidden until the item is worn. Cursed gear is destroyed when taken off.""", # MISSING TRANSLATION
+	ENCHANTING_NO_DONORS = """Nobody at the mansion can give mana.""", # MISSING TRANSLATION
+	ENCHANTING_PERFORM = """Enchant""", # MISSING TRANSLATION
+	ENCHANTING_ANIM_TITLE = """Enchanted""", # MISSING TRANSLATION
 
 	MANSIONVIEW_REST = "A riposo",
 	MANSIONVIEW_ATWORK = "Al lavoro",
@@ -31908,6 +31960,8 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	MANSIONVIEW_ROOMSBUILT = "Stanze",
 	MANSIONVIEW_BEDS = "Letti",
 	MANSIONVIEW_WORKPLACES = "Posti di lavoro",
+	MANSIONVIEW_WORKSTAT = """Stat: %s""", # MISSING TRANSLATION
+	MANSIONVIEW_WORKTOOL = """Tool: %s""", # MISSING TRANSLATION
 	MANSIONVIEW_POPULATION = "Persone",
 	MANSIONVIEW_STORAGELIMIT = "Contiene %d di ogni materiale.",
 	MANSIONVIEW_UPKEEP = "Mantenimento",
@@ -31961,6 +32015,8 @@ La lasci all'ombra e torni dagli altri, portando con te la strana certezza che K
 	MANSIONVIEW_AUTOBUY_BUTTON = "Rifornimento mercato",
 	MANSIONVIEW_AUTOBUY_TITLE = "Rifornimento mercato",
 	MANSIONVIEW_AUTOBUY_EXPLAIN = "Ogni mattina, l'impiegato compra abbastanza da riportare ogni scorta al livello impostato.",
+	MANSIONVIEW_AUTOBUY_HELP = """[center]{color=yellow|Market Restock}[/center]
+The assigned character will try to purchase set items from the local market. Only items actually existing there can be purchased.""", # MISSING TRANSLATION
 	MANSIONVIEW_AUTOBUY_CLERK = "%s paga il %d%% del prezzo richiesto dal mercato.",
 	MANSIONVIEW_AUTOBUY_NOCLERK = "Non c'è nessuno al banco. Gli ordini restano validi, ma non verrà comprato nulla.",
 	MANSIONVIEW_AUTOBUY_ITEM = "Scorta",

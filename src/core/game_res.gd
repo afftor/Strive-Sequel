@@ -683,7 +683,7 @@ func gain_material(res, amount):
 	if spilled <= 0:
 		return kept
 	if has_accountant():
-		money += int(round(spilled * material_price(res)))
+		money += spilled * material_sell_price(res)
 	return kept
 
 
@@ -910,6 +910,11 @@ func material_price(res):
 	if !Items.materiallist.has(res):
 		return 0
 	return Items.materiallist[res].get('price', 0)
+
+
+#What the market pays for one unit, the same figure the shop's sell tab shows - not what it asks.
+func material_sell_price(res):
+	return int(ceil(material_price(res) * variables.material_sell_multiplier))
 
 
 #Places this building offers, or 0 when the estate has not raised it. Reads the work slots

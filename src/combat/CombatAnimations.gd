@@ -3,6 +3,15 @@ extends Node
 const LightningEffect = preload("res://src/combat/LightningEffect.gd")
 const ProjectileEffect = preload("res://src/combat/ProjectileEffect.gd")
 const HitFxEffect = preload("res://src/combat/HitFxEffect.gd")
+const CasterLiftEffect = preload("res://src/combat/CasterLiftEffect.gd")
+const SupernovaEffect = preload("res://src/combat/SupernovaEffect.gd")
+const FxNode = preload("res://src/combat/FxNode.gd")
+const HyperboreaEffect = preload("res://src/combat/HyperboreaEffect.gd")
+const FrozenCard = preload("res://src/combat/FrozenCard.gd")
+const ClarityGlow = preload("res://src/combat/ClarityGlow.gd")
+const StormCloud = preload("res://src/combat/StormCloud.gd")
+const StatusAura = preload("res://src/combat/StatusAura.gd")
+const ArrowRainEffect = preload("res://src/combat/ArrowRainEffect.gd")
 const AnimRegistry = preload("res://src/combat/anim_registry.gd")
 
 #The tuning numbers below (cast tables, motion distances, hit reactions, per-skill beats)
@@ -145,7 +154,32 @@ var lightning_hp_delays = {}
 #node -> {delay, cur_timer}: a projectile shot inside a repeat loop left the queue before it
 #landed, so its damage number waits the rest of the flight - without holding the queue
 var landing_hp_delays = {}
-var lightning_caster_states = {}
+var caster_lift_states = {}
+var supernova_effects = []
+#target card -> the SupernovaEffect that runs its damage up as a counter, taken by hp_update
+var supernova_counters = {}
+var supernova_shared = null
+var hyperborea_effects = []
+#target card -> the HyperboreaEffect that shows its damage when the ice bursts off it, taken by hp_update
+var hyperborea_hits = {}
+#fighter card -> the FrozenCard its Frozen status is shown with
+var frozen_cards = {}
+var storm_effects = []
+var rain_effects = []
+#target card -> the ArrowRainEffect whose arrows run its damage up, taken by hp_update and miss
+var rain_hits = {}
+var rain_count = 0
+#fighter card -> the StatusAura its poison, bleeding, burning, sleep, stun and stealth are shown with
+var status_auras = {}
+#fighter card -> the StatusAura whose DoT tick waits for its damage number, taken by hp_update
+var status_tick_cards = {}
+var status_warm_up = null
+#the atlas, shaders and baked textures every FxNode effect shares
+var fx_kit = null
+
+func get_fx_kit():
+	if fx_kit == null: fx_kit = FxNode.make_kit()
+	return fx_kit
 
 func force_end():
 	for key in devastation_states.keys():
@@ -159,8 +193,26 @@ func force_end():
 	lightning_timing_plan.clear()
 	lightning_hp_delays.clear()
 	landing_hp_delays.clear()
-	for key in lightning_caster_states.keys():
-		lightning_caster_restore(key, true)
+	for key in caster_lift_states.keys():
+		caster_lift_restore(key, true)
+	for effect in supernova_effects.duplicate():
+		if is_instance_valid(effect): effect.queue_free()
+	supernova_effects.clear()
+	supernova_counters.clear()
+	for effect in hyperborea_effects.duplicate():
+		if is_instance_valid(effect): effect.queue_free()
+	hyperborea_effects.clear()
+	hyperborea_hits.clear()
+	frozen_cards.clear()
+	status_tick_cards.clear()
+	warm_up_statuses()
+	for effect in storm_effects.duplicate():
+		if is_instance_valid(effect): effect.queue_free()
+	storm_effects.clear()
+	for effect in rain_effects.duplicate():
+		if is_instance_valid(effect): effect.queue_free()
+	rain_effects.clear()
+	rain_hits.clear()
 	animation_delays.clear()
 	animations_queue.clear()
 	hp_update_delays.clear()
@@ -276,6 +328,7 @@ func check_start():
 
 func advance_timer():
 	hp_update_delays.clear()
+	status_tick_cards.clear()
 	if animations_queue.empty(): return
 	cur_timer = animations_queue.keys().min()
 	trace('--- slot %s, %d node(s)' % [str(cur_timer), animations_queue[cur_timer].size()])
@@ -619,8 +672,71 @@ func cast_with_charge(node, args, sprite_name):
 	if args.has('queue_duration'): nextanimationtime = args.queue_duration
 	nextanimationtime -= 0.1
 	fx_sprite(node, sprite_name, 0.5, duration, get_flip_for_node(node, args), speed)
-	lightning_caster_charge(node, release)
+	caster_lift(node, release, CHARGE_PALETTES.get(sprite_name, 'arcane'))
 	return nextanimationtime + aftereffectdelay
+
+#THE CHARGED CAST
+#Lightning and the charge_* casts lift the caster's card over a magic circle drawn on
+#the ground; its pillar of light flares on the release. Numbers from the levitation mockup.
+var CASTER_LIFT_RISE = 20.0
+var CASTER_LIFT_RADIUS = 112.0
+var CASTER_LIFT_TILT = 20.0
+var CASTER_LIFT_PERSPECTIVE = 0.09
+const CHARGE_PALETTES = {charge_fire = 'fire', charge_frost = 'frost', charge_abyss = 'abyss'}
+
+func caster_lift(node, release, palette):
+	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
+	var key = node.get_instance_id()
+	if caster_lift_states.has(key): caster_lift_restore(key, true)
+	var origin = {
+		node = node,
+		position = card_home(node),
+		rotation = node.rect_rotation,
+		scale = node.rect_scale,
+		pivot = node.rect_pivot_offset,
+		modulate = node.modulate,
+		ground = card_home(node) + Vector2(node.rect_size.x / 2.0, node.rect_size.y - 4.0),
+		effects = [],
+	}
+	var settings = {release = release, rise = CASTER_LIFT_RISE, radius = CASTER_LIFT_RADIUS,
+		tilt = CASTER_LIFT_TILT, perspective = CASTER_LIFT_PERSPECTIVE, palette = palette}
+	#the far half goes under the card's portrait, the near half and the pillar over every card
+	var back = CasterLiftEffect.new()
+	back.back_half = true
+	back.show_behind_parent = true
+	node.add_child(back)
+	node.move_child(back, 0)
+	var front = CasterLiftEffect.new()
+	var layer = get_parent() if get_parent() != null else self
+	layer.add_child(front)
+	front.z_index = 79
+	front.global_position = node.get_parent().get_global_transform().xform(origin.ground)
+	for effect in [back, front]:
+		effect.setup(settings)
+		origin.effects.append(effect)
+	caster_lift_states[key] = origin
+	node.rect_pivot_offset = node.rect_size / 2
+	front.drive(node, origin, back)
+	var total = front.duration()
+	var tween = get_tween(node)
+	tween.interpolate_method(front, 'play_at', 0.0, total, total, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_callback(self, total, 'caster_lift_restore', key)
+	tween.start()
+
+func caster_lift_restore(key, stop_tween = false):
+	if !caster_lift_states.has(key): return
+	var origin = caster_lift_states[key]
+	caster_lift_states.erase(key)
+	for effect in origin.effects:
+		if is_instance_valid(effect): effect.queue_free()
+	var node = origin.node
+	if node == null or !is_instance_valid(node): return
+	if stop_tween and node.has_node('tween'): node.get_node('tween').stop_all()
+	node.rect_position = origin.position
+	node.rect_rotation = origin.rotation
+	node.rect_scale = origin.scale
+	node.rect_pivot_offset = origin.pivot
+	node.modulate = origin.modulate
 
 #FIELD-WIDE WEATHER
 #These scenes emit in a 1000 px ring, so a single instance centred on the
@@ -1801,7 +1917,7 @@ func fly_projectile(node, args, kind):
 	return shot + flight + HIT_TAIL
 
 
-var LIGHTNING_WINDUP = 0.58
+var LIGHTNING_WINDUP = 0.66
 var LIGHTNING_DURATION = 0.76
 var LIGHTNING_JITTER = 25.0
 var CHAIN_LIGHTNING_STAGGER = 0.10
@@ -1841,7 +1957,7 @@ func get_lightning_settings(args, chained):
 
 func start_lightning_effect(caster_node, hit_nodes, settings):
 	if caster_node == null or !is_instance_valid(caster_node) or hit_nodes.empty(): return
-	lightning_caster_charge(caster_node, settings.windup)
+	caster_lift(caster_node, settings.windup, 'storm')
 	var effect = LightningEffect.new()
 	add_child(effect)
 	effect.time_rate = rate
@@ -1853,64 +1969,6 @@ func start_lightning_effect(caster_node, hit_nodes, settings):
 	})
 	lightning_effects.append(effect)
 	effect.connect('tree_exited', self, '_on_lightning_effect_exited', [effect], CONNECT_ONESHOT)
-
-func lightning_caster_charge(node, windup):
-	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
-	var key = node.get_instance_id()
-	if lightning_caster_states.has(key): lightning_caster_restore(key, true)
-	var origin = {
-		node = node,
-		position = card_home(node),
-		rotation = node.rect_rotation,
-		scale = node.rect_scale,
-		pivot = node.rect_pivot_offset,
-	}
-	lightning_caster_states[key] = origin
-	node.rect_pivot_offset = node.rect_size/2
-	var direction = node.get_attack_vector().normalized() if node.has_method('get_attack_vector') else Vector2.RIGHT
-	var gather_time = max(0.12, windup*0.65)
-	var focus_time = max(0.06, windup - gather_time)
-	var gather_position = origin.position - direction*14.0 + Vector2(0.0, -6.0)
-	var focus_position = origin.position - direction*7.0 + Vector2(0.0, -12.0)
-	var release_position = origin.position + direction*11.0 + Vector2(0.0, -4.0)
-	var sign_value = 1.0 if direction.x > 0 else -1.0
-	var tween = get_tween(node)
-	tween.interpolate_property(node, 'rect_position', origin.position, gather_position,
-		gather_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'rect_position', gather_position, focus_position,
-		focus_time, Tween.TRANS_QUAD, Tween.EASE_IN, gather_time)
-	tween.interpolate_property(node, 'rect_position', focus_position, release_position,
-		0.06, Tween.TRANS_QUART, Tween.EASE_OUT, windup)
-	tween.interpolate_property(node, 'rect_position', release_position, origin.position,
-		0.12, Tween.TRANS_BACK, Tween.EASE_OUT, windup + 0.06)
-	tween.interpolate_property(node, 'rect_rotation', origin.rotation, origin.rotation - 3.0*sign_value,
-		gather_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'rect_rotation', origin.rotation - 3.0*sign_value, origin.rotation + 2.0*sign_value,
-		focus_time, Tween.TRANS_QUAD, Tween.EASE_IN, gather_time)
-	tween.interpolate_property(node, 'rect_rotation', origin.rotation + 2.0*sign_value, origin.rotation,
-		0.18, Tween.TRANS_BACK, Tween.EASE_OUT, windup)
-	tween.interpolate_property(node, 'rect_scale', origin.scale,
-		Vector2(origin.scale.x*0.97, origin.scale.y*1.04), gather_time,
-		Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'rect_scale', Vector2(origin.scale.x*0.97, origin.scale.y*1.04),
-		Vector2(origin.scale.x*1.03, origin.scale.y*0.98), focus_time,
-		Tween.TRANS_QUAD, Tween.EASE_IN, gather_time)
-	tween.interpolate_property(node, 'rect_scale', Vector2(origin.scale.x*1.03, origin.scale.y*0.98),
-		origin.scale, 0.18, Tween.TRANS_BACK, Tween.EASE_OUT, windup)
-	tween.interpolate_callback(self, windup + 0.18, 'lightning_caster_restore', key)
-	tween.start()
-
-func lightning_caster_restore(key, stop_tween = false):
-	if !lightning_caster_states.has(key): return
-	var origin = lightning_caster_states[key]
-	lightning_caster_states.erase(key)
-	var node = origin.node
-	if node == null or !is_instance_valid(node): return
-	if stop_tween and node.has_node('tween'): node.get_node('tween').stop_all()
-	node.rect_position = origin.position
-	node.rect_rotation = origin.rotation
-	node.rect_scale = origin.scale
-	node.rect_pivot_offset = origin.pivot
 
 func _on_lightning_effect_exited(effect):
 	lightning_effects.erase(effect)
@@ -1940,6 +1998,313 @@ func prepare_lightning_hp_update(node):
 
 func clear_lightning_timing():
 	lightning_timing_plan.clear()
+
+
+#THE SUPERNOVA
+#One clock in SupernovaEffect.gd; these are the knobs of its mockup page
+var SUPERNOVA_CHARGE = 1.2
+var SUPERNOVA_FLIGHT = 0.55
+var SUPERNOVA_BUILDUP = 1.55 #the ball blinks faster while the light builds; the damage lands at its end
+var SUPERNOVA_BLINK = 16.0 #Hz the blinking reaches
+var SUPERNOVA_BALL_GONE = 0.95 #seconds after the peak until the ball is gone
+var SUPERNOVA_TICK = 0.05 #the counter adds a share of the damage this often
+var SUPERNOVA_BURN = 1.0 #how long the counter runs
+var SUPERNOVA_GLARE = 0.4
+var SUPERNOVA_WHITE = 1.05 #seconds the glare holds after the peak
+var SUPERNOVA_GAIN = 1.3 #how fast the bright parts burn out to white in the glare
+var SUPERNOVA_SOFT = 10.0 #how soft the burnt silhouettes are
+var SUPERNOVA_TINT = 0.85 #the glare's pale lift, from white to yellow
+var SUPERNOVA_FIELD_DIM = 0.35 #the backdrop darkens under the nova, as dark as the mockup's field
+var SUPERNOVA_SCREEN_DIM = 0.2 #so do the cards and the UI, which the mockup has none of
+var SUPERNOVA_SHAKE = 16.0
+var SUPERNOVA_BALL_SIZE = 1.0
+var SUPERNOVA_RAYS = 1
+
+func supernova(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node) or !caster_node.is_inside_tree(): return HIT_TAIL
+	var hit_nodes = args.hit_nodes if args.has('hit_nodes') else []
+	if supernova_shared == null: supernova_shared = SupernovaEffect.make_shared()
+	var layer = get_parent() if get_parent() != null else self
+	var effect = SupernovaEffect.new()
+	layer.add_child(effect)
+	effect.time_rate = rate
+	effect.setup(caster_node, hit_nodes, {
+		charge = SUPERNOVA_CHARGE, flight = SUPERNOVA_FLIGHT, build = SUPERNOVA_BUILDUP,
+		blink = SUPERNOVA_BLINK, life = SUPERNOVA_BALL_GONE, every = SUPERNOVA_TICK, burn = SUPERNOVA_BURN,
+		glare = SUPERNOVA_GLARE, white = SUPERNOVA_WHITE, shake = SUPERNOVA_SHAKE,
+		size = SUPERNOVA_BALL_SIZE, rays = SUPERNOVA_RAYS, gain = SUPERNOVA_GAIN, soft = SUPERNOVA_SOFT, tint = SUPERNOVA_TINT,
+		field_dim = SUPERNOVA_FIELD_DIM, screen_dim = SUPERNOVA_SCREEN_DIM,
+	}, layer, supernova_shared)
+	supernova_effects.append(effect)
+	effect.connect('tree_exited', self, '_on_supernova_exited', [effect], CONNECT_ONESHOT)
+	for hit_node in hit_nodes:
+		if hit_node != null and is_instance_valid(hit_node): supernova_counters[hit_node] = effect
+	caster_lift(caster_node, SUPERNOVA_CHARGE, 'fire')
+	return effect.peak
+
+func _on_supernova_exited(effect):
+	supernova_effects.erase(effect)
+	for key in supernova_counters.keys():
+		if supernova_counters[key] == effect: supernova_counters.erase(key)
+
+#a missed target never gets its hp_update; its entry must not catch a later hit
+func clear_supernova_counters():
+	supernova_counters.clear()
+
+
+#THE ARROW RAIN
+#One clock in ArrowRainEffect.gd; the timings are the «Дождь стрел» mockup's
+var ARROW_RAIN_ARROWS = 60
+var ARROW_RAIN_TIME = 0.55 #how long the arrows fall
+var ARROW_RAIN_STOP = 0.12 #the hit-stop of the last heavy arrow; the others stop for a third of it
+var ARROW_RAIN_SHAKE = 18.0
+var ARROW_RAIN_HOLD = 0.15 #the queue waits this long after the last number has landed
+var ARROW_RAIN_DRAW = 0.18 #the archer leans into the draw this long before the arrow goes up
+
+#the bow's release comes from the at_arch cast in front of it; the targets' side is the group the entry aims at
+func arrow_rain(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node) or !caster_node.is_inside_tree(): return HIT_TAIL
+	var player_side = group_side(node)
+	if player_side == null: return HIT_TAIL
+	var shot = take_pending_shot()
+	if shot <= 0.0:
+		shot = ARROW_RAIN_DRAW
+		archer_draw(caster_node, shot)
+	var layer = get_parent() if get_parent() != null else self
+	var effect = ArrowRainEffect.new()
+	layer.add_child(effect)
+	rain_count += 1
+	effect.rain(self, caster_node, args.hit_nodes if args.has('hit_nodes') else [], side_slots(player_side), get_fx_kit(), {
+		root = layer, shot = shot, arrows = ARROW_RAIN_ARROWS, time = ARROW_RAIN_TIME, stop = ARROW_RAIN_STOP,
+		shake = ARROW_RAIN_SHAKE, hold = ARROW_RAIN_HOLD, seed = 4100 + rain_count * 131})
+	rain_effects.append(effect)
+	effect.connect('tree_exited', self, '_on_rain_exited', [effect], CONNECT_ONESHOT)
+	for hit_node in effect.target_cards():
+		rain_hits[hit_node] = effect
+	return effect.lock_time()
+
+#the mockup's archer: it leans back into the draw, the string kicks it on the release, and it settles
+func archer_draw(node, shot):
+	if node == null or !is_instance_valid(node) or !node.is_inside_tree() or !node.has_method('get_attack_vector'): return
+	var away = 1.0 if node.get_attack_vector().x > 0.0 else -1.0
+	node.rect_pivot_offset = node.rect_size / 2.0
+	node.rect_scale = Vector2(1, 1)
+	node.rect_rotation = 0.0
+	var tween = get_tween(node)
+	var p = settle_card(node)
+	var lean = p + Vector2(-14.0 * away, 0.0)
+	var kick = p + Vector2(-26.0 * away, 6.0)
+	tween.interpolate_property(node, 'rect_position', p, lean, shot, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(node, 'rect_rotation', 0.0, -12.0 * away, shot, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(node, 'rect_position', lean, kick, 0.03, Tween.TRANS_QUAD, Tween.EASE_OUT, shot)
+	tween.interpolate_property(node, 'rect_rotation', -12.0 * away, -17.0 * away, 0.03, Tween.TRANS_QUAD, Tween.EASE_OUT, shot)
+	tween.interpolate_property(node, 'rect_position', kick, lean, 0.19, Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shot + 0.03)
+	tween.interpolate_property(node, 'rect_rotation', -17.0 * away, -12.0 * away, 0.19, Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shot + 0.03)
+	tween.interpolate_property(node, 'rect_position', lean, p, 0.28, Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shot + 0.22)
+	tween.interpolate_property(node, 'rect_rotation', -12.0 * away, 0.0, 0.28, Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shot + 0.22)
+	tween.start()
+
+#how long a card's damage still runs up as a counter; its death waits for the last share
+func counter_wait(node):
+	var res = 0.0
+	for effect in rain_effects:
+		if is_instance_valid(effect): res = max(res, effect.counter_left(node))
+	for effect in supernova_effects:
+		if is_instance_valid(effect): res = max(res, effect.counter_left(node))
+	return res
+
+func _on_rain_exited(effect):
+	rain_effects.erase(effect)
+	for key in rain_hits.keys():
+		if rain_hits[key] == effect: rain_hits.erase(key)
+
+#the six places of a side, front rows top to bottom and then back rows, whether or not anyone stands there
+func side_slots(player_side):
+	var res = []
+	var combat = input_handler.combat_node
+	if combat == null or !is_instance_valid(combat) or combat.get('battlefieldpositions') == null: return res
+	for pos in range(1, 7):
+		var key = pos if player_side else pos + 6
+		if combat.battlefieldpositions.has(key): res.append(combat.battlefieldpositions[key])
+	return res
+
+
+#THE WINDS OF HYPERBOREA
+#One clock in HyperboreaEffect.gd; these are the knobs of its mockup page («Северный ветер»)
+var HYPERBOREA_RELEASE = 1.15 #the cast lets the wind go
+var HYPERBOREA_WIND = 2000.0 #px/s the gust front crosses the field
+var HYPERBOREA_STOP = 0.12 #hit-stop at the release, the first freeze and the burst
+var HYPERBOREA_SHAKE = 18.0
+var HYPERBOREA_HOLD = 0.45 #the queue waits this long after a target's damage shows
+
+func hyperborea_winds(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node) or !caster_node.is_inside_tree(): return HIT_TAIL
+	var hit_nodes = args.hit_nodes if args.has('hit_nodes') else []
+	HyperboreaEffect.equip(get_fx_kit())
+	var layer = get_parent() if get_parent() != null else self
+	var effect = HyperboreaEffect.new()
+	layer.add_child(effect)
+	effect.time_rate = rate
+	effect.setup(self, caster_node, hit_nodes, hyperborea_allies(caster_node), {
+		release = HYPERBOREA_RELEASE, wind = HYPERBOREA_WIND, stop = HYPERBOREA_STOP,
+		shake = HYPERBOREA_SHAKE, hold = HYPERBOREA_HOLD,
+	}, layer, get_fx_kit())
+	hyperborea_effects.append(effect)
+	effect.connect('tree_exited', self, '_on_hyperborea_exited', [effect], CONNECT_ONESHOT)
+	for hit_node in hit_nodes:
+		if hit_node != null and is_instance_valid(hit_node): hyperborea_hits[hit_node] = effect
+	caster_lift(caster_node, HYPERBOREA_RELEASE, 'hyperborea')
+	return effect.lock_time()
+
+#the living cards on the caster's side, which Clarity lands on
+func hyperborea_allies(caster_node):
+	var res = []
+	var combat = input_handler.combat_node
+	if combat == null or !is_instance_valid(combat) or combat.get('battlefieldpositions') == null: return [caster_node]
+	var ally_side = caster_node.get('fighter') == null or caster_node.fighter.combatgroup == 'ally'
+	for pos in combat.battlefieldpositions:
+		if (pos <= 6) != ally_side: continue
+		var card = combat.battlefieldpositions[pos].get_node_or_null('Character')
+		if card == null or !card.visible or card.get('fighter') == null or card.fighter == null: continue
+		if card.fighter.defeated or card.fighter.hp <= 0: continue
+		res.append(card)
+	return res
+
+func _on_hyperborea_exited(effect):
+	hyperborea_effects.erase(effect)
+	for key in hyperborea_hits.keys():
+		if hyperborea_hits[key] == effect: hyperborea_hits.erase(key)
+
+func clear_hyperborea_hits():
+	hyperborea_hits.clear()
+
+#called by FighterNode.noq_rebuildbuffs with whether the fighter has the Frozen status
+func freeze_card(node, frozen):
+	var ice = frozen_cards.get(node)
+	if ice != null and !is_instance_valid(ice): ice = null
+	if !frozen:
+		if ice != null: ice.release(hit_pending(node))
+		return
+	if ice != null and ice.keep(): return
+	if !node.is_inside_tree() or node.get_node_or_null('Icon') == null: return
+	ice = FrozenCard.new()
+	#the frost gathers on the side facing the enemy
+	ice.seal(node, get_fx_kit(), {seed = 7300 + int(node.position) * 29, windward = -1.0 if node.get_attack_vector().x > 0.0 else 1.0, anim = self})
+	frozen_cards[node] = ice
+
+#STATUSES ON THE CARDS
+#Poison, bleeding, burning, sleep, stun and stealth (StatusAura.gd, from the «Статусы» mockup) and the tick of the first three
+var STATUS_TICK_LOCK = 0.32 #a fighter's DoT ticks play this far apart
+var STATUS_TICK_COLOURED = 1 #1: a tick's number in the colour of its status, 0: the game's red
+
+#called whenever a fighter's buffs are rebuilt
+func status_aura(node):
+	var fighter = node.get('fighter')
+	var kinds = []
+	var alive = fighter != null and fighter.hp > 0
+	if alive:
+		for kind in StatusAura.KINDS:
+			if fighter.has_status(kind): kinds.append(kind)
+	var aura = status_auras.get(node)
+	if aura != null and (!is_instance_valid(aura) or aura.is_queued_for_deletion()): aura = null
+	if aura == null:
+		if kinds.empty() or !node.is_inside_tree() or node.get_node_or_null('Icon') == null: return null
+		aura = StatusAura.new()
+		aura.attach(node, get_fx_kit(), {seed = 11 + int(node.position) * 7, anim = self})
+		status_auras[node] = aura
+	aura.refresh(kinds, node.buff_floor(), !alive)
+	return aura
+
+#a DoT ticks (Effects.gd rebuild_status_tick): its icon flares, and hp_update hands the damage number to the aura
+func status_tick(node, args = null):
+	if args == null: args = {}
+	if node == null or !is_instance_valid(node) or !node.has_method('buff_icon'): return 0.0
+	var aura = status_auras.get(node)
+	if aura == null or !is_instance_valid(aura) or aura.is_queued_for_deletion(): aura = status_aura(node)
+	if aura == null: return 0.0
+	var status = str(args.get('status', ''))
+	aura.begin_tick(status, node.buff_icon(status), STATUS_TICK_COLOURED != 0)
+	status_tick_cards[node] = aura
+	return STATUS_TICK_LOCK
+
+func warm_up_statuses():
+	if status_warm_up != null and is_instance_valid(status_warm_up): return
+	status_warm_up = StatusAura.new()
+	add_child(status_warm_up)
+	status_warm_up.warm_up(get_fx_kit())
+
+func hit_pending(node):
+	for time in animations_queue:
+		if !animations_queue[time].has(node): continue
+		for group in animations_queue[time][node]:
+			for data in group:
+				if data.type == 'hp_update' and data.params.get('damage', 0) < 0: return true
+	return false
+
+var TEMPEST_RELEASE = 0.5 #the cast_air sheet lets go here; the bolt falls 0.55 s later
+var TEMPEST_SHAKE = 14.0
+
+#the tempest sheet's code: one storm cloud over the targets' side and one bolt that splits into every card there
+func tempest(node, args = null):
+	var player_side = group_side(node)
+	if player_side == null: return 0.0
+	var cards = side_cards(player_side)
+	if cards.empty(): return 0.0
+	var layer = get_parent() if get_parent() != null else self
+	var effect = StormCloud.new()
+	layer.add_child(effect)
+	effect.gather(self, cards, get_fx_kit(), {release = TEMPEST_RELEASE, shake = TEMPEST_SHAKE, root = layer, group = node})
+	storm_effects.append(effect)
+	effect.connect('tree_exited', self, '_on_storm_exited', [effect], CONNECT_ONESHOT)
+	return effect.lock_time()
+
+func _on_storm_exited(effect):
+	storm_effects.erase(effect)
+
+#true for the player's side, false for the enemies', null when the node is no group of the battlefield
+func group_side(node):
+	var combat = input_handler.combat_node
+	if combat == null or !is_instance_valid(combat) or combat.get('battlefield_target_groups') == null: return null
+	for pos in combat.battlefield_target_groups:
+		if node in combat.battlefield_target_groups[pos].values(): return pos <= 6
+	return null
+
+#the cards of a side that still look alive: the skill's damage is already dealt when its animation plays, and a card
+#it kills only shows its death after
+func side_cards(player_side):
+	var res = []
+	var combat = input_handler.combat_node
+	if combat == null or !is_instance_valid(combat) or combat.get('battlefieldpositions') == null: return res
+	for pos in combat.battlefieldpositions:
+		if (pos <= 6) != player_side: continue
+		var card = combat.battlefieldpositions[pos].get_node_or_null('Character')
+		if card == null or !card.visible or card.get('fighter') == null or card.fighter == null: continue
+		var overlay = card.get_node_or_null('overlay')
+		if overlay != null and overlay.visible: continue
+		res.append(card)
+	return res
+
+var CLARITY_LOCK = 0.35 #the queue moves on once the gold has swept the portrait; the sign floats on
+
+#the Clarity skill: the same sign of Clarity that Winds of Hyperborea lands on its allies
+func clarity_sign(node, args = null):
+	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return 0.0
+	var glow = ClarityGlow.new()
+	glow.land(node, get_fx_kit(), {anim = self, seed = int(node.position) if node.get('position') != null else 0})
+	return CLARITY_LOCK
+
+#the skill has already run when its damage plays, so a status gone by now is gone with this blow
+func frozen_hit(node, delay):
+	var ice = frozen_cards.get(node)
+	if ice == null or !is_instance_valid(ice): return
+	var fighter = node.get('fighter')
+	ice.hit(delay, fighter == null or fighter.hp <= 0 or !fighter.has_status('freeze'))
 
 func gfx_animsprite(node, args):
 	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
@@ -2098,6 +2463,11 @@ func debuff(node, args = null):
 	return nextanimationtime + aftereffectdelay
 
 func miss(node, args = null):#conflicting usage of tween node!!
+	#the rain's arrows that have not reached a dodging card go into the floor
+	if rain_hits.has(node):
+		var effect = rain_hits[node]
+		rain_hits.erase(node)
+		if is_instance_valid(effect): effect.missed(node)
 	var tween = get_tween(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
@@ -2228,6 +2598,35 @@ func damage_flash(node, delay = 0.0):
 	tween.start()
 
 func hp_update(node, args):
+	if rain_hits.has(node):
+		var effect = rain_hits[node]
+		rain_hits.erase(node)
+		if is_instance_valid(effect) and args.get('damage_float', false) and ceil(args.get('damage', 0)) <= -1:
+			var crit = crit_display.has(node)
+			crit_display.erase(node)
+			frozen_hit(node, 0.0)
+			return effect.take_hit(node, args, crit)
+	if supernova_counters.has(node):
+		var effect = supernova_counters[node]
+		supernova_counters.erase(node)
+		if is_instance_valid(effect) and args.get('damage_float', false) and ceil(args.get('damage', 0)) <= -1:
+			var crit = crit_display.has(node)
+			crit_display.erase(node)
+			frozen_hit(node, 0.0)
+			return effect.start_counter(node, args, crit)
+	if hyperborea_hits.has(node):
+		var effect = hyperborea_hits[node]
+		hyperborea_hits.erase(node)
+		if is_instance_valid(effect) and args.get('damage_float', false) and ceil(args.get('damage', 0)) <= -1:
+			var crit = crit_display.has(node)
+			crit_display.erase(node)
+			var lock = effect.take_hit(node, args, crit)
+			frozen_hit(node, lock - HYPERBOREA_HOLD)
+			return lock
+	#a DoT's tick: its number flies out of the status icon and the icon's wave stands in for the card's flash
+	var tick_aura = status_tick_cards.get(node)
+	status_tick_cards.erase(node)
+	if tick_aura != null and (!is_instance_valid(tick_aura) or tick_aura.is_queued_for_deletion()): tick_aura = null
 	var delay = 0
 	var nonblocking_delay = false
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
@@ -2253,15 +2652,19 @@ func hp_update(node, args):
 	#on the magnitude. Comparing the raw value against zero silently swallowed
 	#every real hit.
 	var real_damage = !args.has('damage') or abs(ceil(args.damage)) > 0
-	if args.has('type') and (args.type == 'damageally' or args.type == 'damageenemy') and real_damage:
+	if tick_aura == null and args.has('type') and (args.type == 'damageally' or args.type == 'damageenemy') and real_damage:
 		damage_flash(node, delay)
+	if ceil(args.get('damage', 0)) <= -1: frozen_hit(node, delay)
 	
 	var delaytime = 0.2
 	var tween = get_tween(node)
 	var hpnode = node.get_node("bars/HP")
 	#float damage
 	if args.damage_float and real_damage:
-		if crit_display.has(node):
+		if tick_aura != null:
+			crit_display.erase(node)
+			tween.interpolate_callback(tick_aura, delay, 'tick_number', str(ceil(args.damage)))
+		elif crit_display.has(node):
 			args.color = Color(1,0.8,0)
 			crit_display.erase(node)
 			tween.interpolate_callback(ResourceScripts.core_animations, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)) + '!', type = args.type, size = 120, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
@@ -2297,15 +2700,17 @@ func shield_update(node, args):
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode
 	var delaytime = 0.3
-	fx_gfx(node, 'slice', 0.3, delaytime)
+	var wait = counter_wait(node)
 	var tween = get_tween(node)
-	tween.interpolate_callback(node, delaytime, 'noq_defeat')
+	if wait > 0.0: tween.interpolate_callback(self, wait, 'fx_gfx', node, 'slice', 0.3, delaytime)
+	else: fx_gfx(node, 'slice', 0.3, delaytime)
+	tween.interpolate_callback(node, wait + delaytime, 'noq_defeat')
 	tween.start()
 	#node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
 	#input_handler.FadeAnimation(node, 0.5, 0.3)
 	if custom_delays.has(node):
 		delaytime = custom_delays[node].delay
-	return delaytime
+	return wait + delaytime
 
 
 func death_animation(node):

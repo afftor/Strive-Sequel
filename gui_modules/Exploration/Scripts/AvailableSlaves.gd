@@ -1,5 +1,6 @@
 extends Control
-#The captives panel: a portrait gallery; a captive who fits a slave market quest gets a Hand Over strip.
+#The captives panel: a portrait gallery; a captive who fits a slave market quest gets a Hand Over strip, one who fits
+#it after training a yellow star by the name.
 
 const CAPTIVE = 'Captive'
 const CHOOSER_ROW = 'ChooserRow'
@@ -155,16 +156,19 @@ func _on_visibility_changed():
 func sorted_captives(location):
 	var sq = ResourceScripts.slave_quests
 	var ready = []
+	var trainable = []
 	var rest = []
 	for id in location.captured_characters:
 		var tchar = characters_pool.get_char_by_id(id)
 		if tchar == null:
 			continue
-		if sq.captive_quests(tchar, location).empty():
-			rest.append(tchar)
-		else:
+		if !sq.captive_quests(tchar, location).empty():
 			ready.append(tchar)
-	return ready + rest
+		elif !sq.captive_quests(tchar, location, 'yellow').empty():
+			trainable.append(tchar)
+		else:
+			rest.append(tchar)
+	return ready + trainable + rest
 
 
 func fill_tile(tile, tchar, location, base_height):
@@ -187,6 +191,7 @@ func fill_tile(tile, tchar, location, base_height):
 	if name_label is Label:
 		name_label.text = tchar.get_short_name()
 		name_label.set("custom_colors/font_color", variables.hexcolordict['factor' + str(int(tchar.get_stat('growth_factor')))])
+	fill_star(tile, tchar, location)
 	var take = _part(tile, 'TakeButton')
 	var sell = _part(tile, 'SellButton')
 	var enslave = _part(tile, 'EnslaveButton')
@@ -267,6 +272,32 @@ func strip_tooltip(quests):
 	var text = globals._report_text("CAPTURE_HANDOVER_CHOOSE", [quests.size()])
 	for quest in quests:
 		text += "\n" + globals._report_text("CAPTURE_HANDOVER_LINE", [tr(quest.name), sq.next_payment(quest)])
+	return text
+
+
+#a captive with no Hand Over who fits a quest once trained
+func fill_star(tile, tchar, location):
+	var star = _part(tile, 'QuestStar')
+	if !(star is Control):
+		return
+	var sq = ResourceScripts.slave_quests
+	var quests = []
+	if sq.captive_quests(tchar, location).empty():
+		quests = sq.captive_quests(tchar, location, 'yellow')
+	star.visible = !quests.empty()
+	if star.visible:
+		globals.connecttexttooltip(star, star_tooltip(tchar, quests))
+
+
+func star_tooltip(tchar, quests):
+	var sq = ResourceScripts.slave_quests
+	var text = tr("SQ_STAR_YELLOW")
+	for quest in quests:
+		text += "\n" + globals._report_text("CAPTURE_HANDOVER_LINE", [tr(quest.name), sq.next_payment(quest)])
+		for req in sq.quest_match(quest, tchar).failed_advanced:
+			if req.get('silent', false):
+				continue
+			text += "\n    [color=%s]%s[/color]" % [variables.hexcolordict.yellow, ResourceScripts.descriptions.make_slave_statreq_text(req)]
 	return text
 
 
