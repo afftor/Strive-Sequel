@@ -283,8 +283,7 @@ func convert_to_new_template_combat():
 	else: res_res.name = ""
 	if template.has('descript'): res_res.descript = template.descript
 	res_res.type = template.type
-	if template.has('ability_type'): res_res.ability_type = template.ability_type
-	else: res_res.ability_type = 'combat'
+	res_res.ability_type = template.ability_type
 	res_res.cost = cost.duplicate()
 #	if template.has('learn_cost'): res_res.learn_cost = template.learn_cost
 #	if template.has('learn_reqs'): res_res.learn_reqs = template.learn_reqs.duplicate()
@@ -317,6 +316,7 @@ func convert_to_new_template_combat():
 		else:
 			res_res.number_rnd_targets = template.number_rnd_targets
 	res_res.tags = tags.duplicate()
+	res_res.tags.push_back(res_res.ability_type)
 	if tags.has('damage') and !tags.has(damage_type) and damage_type != 'weapon':
 		res_res.tags.push_back(damage_type)
 	return res_res
