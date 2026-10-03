@@ -199,7 +199,7 @@ func noq_rebuildbuffs():
 	buffs = fighter.get_combat_buffs()
 	if fighter.hp <= 0:
 		buffs.clear()
-	if animation_node != null: animation_node.freeze_card(self, fighter.hp > 0 and fighter.has_status('freeze'))
+	if animation_node != null: animation_node.freeze_card(self, fighter.hp > 0 and (fighter.has_status('freeze') or shows_aura('freeze')))
 	show_buffs()
 	if animation_node != null: animation_node.status_aura(self)
 
@@ -252,7 +252,7 @@ func buff_floor():
 func buff_icon(status):
 	if buff_row == null: return null
 	for k in range(buffs.size()):
-		if !buff_has_tag(buffs[k], status): continue
+		if !buff_has_tag(buffs[k], status) and !buff_auras(buffs[k]).has(status): continue
 		var slot = min(k, buff_row.shown)
 		var rect = Rect2(BUFF_ROW_X + slot * (buff_row.size + BUFF_GAP), buff_row.y, buff_row.size, buff_row.size)
 		return {rect = rect, texture = buffs[k].icon if k < buff_row.shown else null}
@@ -274,6 +274,16 @@ func buff_has_tag(b, tag):
 		if eff.template.get('tags', []).has(tag):
 			return true
 		eff = eff.parent
+	return false
+
+#`aura` in a buff template, one look or a list (StatusAura.KINDS or 'freeze'): the card shows it, the rules don't see it
+func buff_auras(b):
+	var looks = b.template.get('aura', []) if typeof(b.template) == TYPE_DICTIONARY else []
+	return looks if looks is Array else [looks]
+
+func shows_aura(kind):
+	for b in buffs:
+		if buff_auras(b).has(kind): return true
 	return false
 
 func add_buff(i, icon_size, font):

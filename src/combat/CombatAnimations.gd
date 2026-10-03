@@ -2210,7 +2210,7 @@ func status_aura(node):
 	var alive = fighter != null and fighter.hp > 0
 	if alive:
 		for kind in StatusAura.KINDS:
-			if fighter.has_status(kind): kinds.append(kind)
+			if fighter.has_status(kind) or node.shows_aura(kind): kinds.append(kind)
 	var aura = status_auras.get(node)
 	if aura != null and (!is_instance_valid(aura) or aura.is_queued_for_deletion()): aura = null
 	if aura == null:
