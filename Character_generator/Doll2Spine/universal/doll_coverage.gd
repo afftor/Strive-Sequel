@@ -63,6 +63,9 @@ const PATTERNS = {
 		"layers_alternate": [
 			{"mask": "white_mask.png", "color": Color("ad5c21")},
 		],
+		"layers_alternate_2": [
+			{"mask": "white_mask.png", "color": Color("9e9595")},
+		],
 	},
 	"fur_white": {
 		"label": "Fur: white",
@@ -106,6 +109,9 @@ const PATTERNS = {
 		"layers_alternate": [
 			{"mask": "white_mask.png", "color": Color("191918")},
 		],
+		"layers_alternate_2": [
+			{"mask": "white_mask.png", "color": Color("363533")},
+		],
 	},
 	# The striped and tricolour cats use their own masks rather than the shared
 	# beastkin pair, which is what makes their patterns read as patterns.
@@ -148,15 +154,17 @@ static func pattern(pattern_id):
 	return PATTERNS.get(pattern_id, {})
 
 
-static func layers(pattern_id, alternate = false):
+static func layers(pattern_id, alternate = 0):
 	var pattern = pattern(pattern_id)
 	var res = pattern.get("layers", [])
-	if alternate and pattern.has("layers_alternate"): #only if alternate layers exists, fallback is basic layers, so no overwriting without checking
-		res = pattern.get("layers_alternate") 
+	if alternate == 1 and pattern.has("layers_alternate"): #only if alternate layers exists, fallback is basic layers, so no overwriting without checking
+		res = pattern.get("layers_alternate")
+	if alternate == 2 and pattern.has("layers_alternate_2"): #only if alternate layers exists, fallback is basic layers, so no overwriting without checking
+		res = pattern.get("layers_alternate_2")  
 	return res
 
 
-static func mask_path(pattern_id, index, alternate = false):
+static func mask_path(pattern_id, index, alternate = 0):
 	var list = layers(pattern_id, alternate)
 	if index < 0 or index >= list.size():
 		return ""
@@ -192,6 +200,15 @@ static func default_colors(pattern_id):
 	if has_base(pattern_id):
 		result.append(pattern(pattern_id).base)
 	for layer in layers(pattern_id):
+		result.append(layer.color)
+	return result
+
+
+static func alternate_colors(pattern_id, alternate = 0):
+	var result = []
+	if has_base(pattern_id):
+		result.append(pattern(pattern_id).base)
+	for layer in layers(pattern_id, alternate):
 		result.append(layer.color)
 	return result
 

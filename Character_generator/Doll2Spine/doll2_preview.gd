@@ -2911,20 +2911,15 @@ func _apply_coverage(material, channel_id, slot_name = ""):
 		return
 	material.set_shader_param("coverage_solid_on", 0.0)
 	var channel = CATALOGUE.color_channels().get(channel_id, {})
-	var alternate = channel.get("coverage_alternate", false)
+	var alternate = 0
+	if channel.get("coverage_alternate", false):
+		alternate = 1
+	if channel.get("coverage_alternate_2", false):
+		alternate = 2
 	var layers = COVERAGE.layers(coverage_id, alternate)
+	var real_coverage_colors = COVERAGE.alternate_colors(coverage_id, alternate)
 	if coverage_id.empty() or layers.empty() or !channel.get("coverage", false) or !_coverage_available():
 		material.set_shader_param("coverage_count", 0)
-		return
-	# The raised female chest belongs entirely to the white fur zone; the
-	# torso masks cannot follow its silhouette. Colour 3 remains user-editable.
-	if coverage_id == "fur_orange_white" and str(selections.get("body", "")) == "body_female_beastkin" and slot_name == "breasts_beastkin" and !chest_is_flat():
-		var colours = coverage_colors if coverage_colors.size() > 2 else COVERAGE.default_colors(coverage_id)
-		material.set_shader_param("coverage_count", 0)
-		material.set_shader_param("coverage_solid_on", 1.0)
-		material.set_shader_param("coverage_solid_color", colours[2])
-		material.set_shader_param("coverage_base", colours[0])
-		material.set_shader_param("coverage_base_on", 0.0 if _is_neutral(colours[0]) else 1.0)
 		return
 	material.set_shader_param("coverage_count", min(layers.size(), COVERAGE.MAX_LAYERS))
 	# The base, when the pattern has one, is the first colour of the row.
@@ -2939,7 +2934,7 @@ func _apply_coverage(material, channel_id, slot_name = ""):
 	for i in range(min(layers.size(), COVERAGE.MAX_LAYERS)):
 		material.set_shader_param("coverage_mask%d" % (i + 1), _coverage_texture(COVERAGE.mask_path(coverage_id, i, alternate)))
 		var index = i + offset
-		material.set_shader_param("coverage_color%d" % (i + 1), coverage_colors[index] if index < coverage_colors.size() else Color(1, 1, 1))
+		material.set_shader_param("coverage_color%d" % (i + 1), real_coverage_colors[index] if index < real_coverage_colors.size() else Color(1, 1, 1))
 
 
 func _coverage_texture(path):

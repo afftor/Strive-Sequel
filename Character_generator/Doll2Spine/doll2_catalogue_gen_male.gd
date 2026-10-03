@@ -473,6 +473,21 @@ const COLOR_CHANNELS = {
 		"zone_defaults": [],
 		"zones": false,
 	},
+	"skin_alternate_2": {
+		"anchor": "body",
+		"coverage": true,
+		"coverage_alternate": true,
+		"flat": false,
+		"gear": false,
+		"slots": [
+			"breasts_beastkin",
+			"breasts_beastkin_many",
+			"breasts_beastkin_pregnancy",
+		],
+		"two_tone": false,
+		"zone_defaults": [],
+		"zones": false,
+	},
 	"tail": {
 		"anchor": "tails",
 		"coverage": false,

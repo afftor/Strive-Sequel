@@ -478,6 +478,7 @@ const COLOR_CHANNELS = {
 		"beastkin_torso_many_nipples", "beastkin_pregnancy_nipple",
 	]},
 	"skin_alternate": {"anchor": "body", "groups": [], "slots": ["arm_left", "arm_right", "hand_left", "hand_right", "shoulder_left", "shoulder_right", "shoulderl_muscle", "shoulderr_muscle",], "coverage": true, "coverage_alternate": true},
+	"skin_alternate_2": {"anchor": "body", "groups": [], "slots": ["breasts_beastkin", "breasts_beastkin_many", "breasts_beastkin_pregnancy",], "coverage": true, "coverage_alternate_2": true},
 	"skin": {"anchor": "body", "groups": ["body", "head", "face", "nose", "genitals"], "coverage": true},
 	"eyes": {"anchor": "eyes", "groups": ["eyes", "eyes_effect"]},
 	"eyebrows": {"anchor": "eyebrows", "groups": ["eyebrows"]},
