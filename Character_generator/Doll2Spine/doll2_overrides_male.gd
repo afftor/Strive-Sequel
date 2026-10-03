@@ -225,4 +225,5 @@ const GROUP_DEFS = {
 const COLOR_CHANNELS = {
 	"beard": {"anchor": "beard", "groups": ["beard"]},
 	"skin_alternate": {"anchor": "body", "groups": [], "slots": ["arm_left", "arm_right", "hand_left", "hand_right", "shoulder_left", "shoulder_right"], "coverage": true, "coverage_alternate": true},
+	"skin_alternate_2": {"anchor": "body", "groups": [], "slots": ["breasts_beastkin", "breasts_beastkin_many", "breasts_beastkin_pregnancy",], "coverage": true, "coverage_alternate_2": true},
 }
