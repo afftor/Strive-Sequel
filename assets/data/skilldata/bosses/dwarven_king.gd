@@ -412,7 +412,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'arrow_rain', target = 'target_group', period = 'predamage', sync_to_hit = true}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.65,
 		variations = [
@@ -450,7 +450,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'magma_blast', target = 'target', period = 'predamage'},
+			{code = 'meteor_strike', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['caster.matk','*1.1']],
@@ -538,7 +538,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'disintegrate', target = 'target', period = 'predamage'},
+			{code = 'inferno', target = 'target_group', period = 'windup'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'explosion', hittype = 'static'},
 		value = [['target.hpmax', '*0.18','+caster.matk','*1.9']],

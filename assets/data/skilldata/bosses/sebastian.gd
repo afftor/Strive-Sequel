@@ -571,7 +571,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',#not sure but not matters
 		sfx = [
-			{code = 'tempest', target = 'target_group', period = 'windup'},
+			{code = 'smokescreen', target = 'target_group', period = 'windup'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'spell_void', strike = null, hit = null},
 		value = ['0'],
@@ -599,7 +599,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'tempest', target = 'target_group', period = 'windup'}], 
+		sfx = [{code = 'smokescreen', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = null, hit = null, hittype = null},
 		value = [['0']],
 		damagestat = ['no_stat'],

@@ -408,7 +408,7 @@ var enemygroups = {
 		reqs = [], units = {jarl_boss = [1,1], castellan_boss = [1,1], bounty_hunter_boss = [1,1], warlock_boss = [1,1]}
 		},
 
-		_test_boss = {reqs = [], units = {coal_moab = [1,1],}}, #test
+		_test_boss = {reqs = [], units = {test_boss = [1,1],}}, #test
 	}
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -2945,6 +2945,7 @@ var enemies = {
 		status_resists = {},
 		race = 'humanoid',
 		loot = 'bandit_loot',
+		cast_weapon = 'at_axe',
 		icon = "res://assets/images/enemies/bandit_big.png",
 		skills = ['attack','howling_rising_axe','clumsy_log_splitter','brutal_axe_swing','fat_bandit_charge'],
 		traits = ['self_preservation','moderately_fearsome_stature',],
@@ -4056,13 +4057,13 @@ var enemies = {
 		evasion = 70,
 		armorpenetration = 20,
 		atk = 30,
-		matk = 60,
+		matk = 40,
 		speed = 90,
 		resists = {dark = 25, mind = 25, light = -50},
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/demon_enemy.png",
-		skills = [],
+		skills = ['jd_perfect_storm'],
 		traits = ['boss_resists',],
 		tags = ['demon','bandit'],
 		ai = [['damage', 66],['debuff',1999],['ultimate',999]],

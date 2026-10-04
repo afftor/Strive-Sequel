@@ -268,7 +268,10 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [{code = 'execution', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'},
+			{code = 'execution', target = 'target', period = 'predamage',sync_to_hit = true}, 
+		], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.5,
 	},

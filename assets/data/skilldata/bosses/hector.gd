@@ -196,7 +196,10 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'arrowhail', target = 'target_line', period = 'windup'}], 
+		sfx = [
+			{code = 'at_arch', target = 'caster', period = 'windup', is_cast = true},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.3, arc = 20.0, boom_size = 150.0, size = 1.3},
+			], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.atk','*0.7'],
 	},

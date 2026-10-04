@@ -42,9 +42,9 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'flame', target = 'target', period = 'predamage'},
-			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
-		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
+			{code = 'inferno', target = 'target', period = 'predamage'},
+			{code = 'charge_fire', target = 'caster', period = 'windup', is_cast = true}],
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = [['target.hpmax', '*0.3']],
 	},
 	#Abyss - Void and Inferno in one. e_s_void is the player spell's own debuff roll (dark.gd:225):
@@ -104,7 +104,8 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'earth',
 		sfx = [
-			{code = 'overgrowth', target = 'target_group', period = 'windup'},
+			{code = 'blizzard', target = 'target_group', period = 'windup'},
+			{code = 'cast_earth', target = 'target', period = 'predamage'},
 			{code = 'cast_earth', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'dynamic'},
 		value = 0.5,
@@ -136,7 +137,7 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'hyperborea_winds', target = 'target_group', period = 'predamage', sync_to_hit = true}],
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = 0.9,
 	},
@@ -224,7 +225,7 @@ var skills = {
 		damage_type = 'fire',
 		repeat = 5,
 		sfx = [
-			{code = 'magma_blast', target = 'target', period = 'predamage'},
+			{code = 'meteor_strike', target = 'target', period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = 0.75,
@@ -420,8 +421,8 @@ var skills = {
 		chance = 999,
 		critchance = 0,
 		sfx = [
-			{code = 'black_tendrils', target = 'target_group', period = 'windup'},
-			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}],
+			{code = 'abyss_gaze', target = 'target_group', period = 'windup'},
+			{code = 'charge_abyss', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'spell_break', strike = 'blade', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -934,7 +935,7 @@ var effects = {
 					src = {obj = 'self', func = 'src', src = 'air'},
 					mod = {obj = 'self', func = 'src', src = 0.6},
 				},
-				atomic = [{type = 'sfx', value = 'lightning'}, 'a_damage_new'],
+				atomic = [{type = 'sfx', value = 'old_lightning', sound = 'combat_electric_charge_strike'}, 'a_damage_new'],
 			},
 			'shock',
 		],
@@ -1202,10 +1203,12 @@ var buffs = {
 	b_jd_deep_sleep = {
 		icon = "res://assets/images/iconsskills/Sedation.png",
 		description = "EFFECT_JD_DEEP_SLEEP",
+		aura = 'sleep',
 	},
 	b_jd_comatose = {
 		icon = "res://assets/images/iconsskills/Serve2.png",
 		description = "EFFECT_JD_COMATOSE",
+		aura = 'sleep',
 	},
 }
 
