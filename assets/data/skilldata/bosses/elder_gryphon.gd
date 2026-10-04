@@ -215,6 +215,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.4, speed = 1.2, no_delays = true, color = '87fff1'},
 			{code = 'wind_blade', target = 'target', period = 'predamage'},
 			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},

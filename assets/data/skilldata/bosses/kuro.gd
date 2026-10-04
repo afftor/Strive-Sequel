@@ -76,7 +76,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [
-			{code = 'wind_blade', target = 'target', period = 'predamage'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.4, hit_motion = 'push', speed = 0.25, color = '87fff1'},
 			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = ['target.hpmax','*0.15'],
@@ -101,7 +101,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [
-			{code = 'darkness', target = 'target', period = 'predamage'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.23, hit_motion = 'push', arc = 25.0, color = '350782'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = ['target.hpmax','*0.2'],
@@ -197,7 +197,7 @@ var skills = {
 		value = 0.1,
 		random_factor_p = 0.1,
 		sfx = [
-			{code = 'black_tendrils', target = 'target_group', period = 'windup'},
+			{code = 'smokescreen', target = 'target_group', period = 'windup'},
 			{code = 'dark_swril', target = 'target', period = 'predamage'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},

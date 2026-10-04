@@ -139,6 +139,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'mind',
 		sfx = [
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.5, hit_motion = 'push', arc = 25.0, color = 'fff26b'},
 			{code = 'mind_blast', target = 'target', period = 'predamage'},
 			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'spell2', hit = null},
@@ -498,6 +499,7 @@ var skills = {
 		keep_target = variables.TARGET_FORCED,
 		damage_type = 'weapon',
 		sfx = [
+			{code = 'assassinate_step', target = 'caster', period = 'windup', is_cast = true}, 
 			{code = 'execution', target = 'target', period = 'predamage'},
 			{code = 'blood_explosion', target = 'target', period = 'postdamage'}],
 		sounddata = {initiate = null, strike = 'fleshhit', hit = null},

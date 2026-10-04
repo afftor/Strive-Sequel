@@ -187,8 +187,11 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'fire_shield', target = 'target', period = 'windup'},
-			{code = 'flame',target = 'target',period = 'predamage'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.1, arc = 35.0},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.1, arc = -45.0},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.1, arc = 20.0},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.1, arc = -30.0},
+			{code = 'magma_blast',target = 'target',period = 'predamage'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'static'},
 		value = [['caster.matk','*1.6'],],
@@ -239,7 +242,7 @@ var skills = {
 		keep_target = variables.TARGET_NOKEEP,
 		next_target = variables.NT_ANY,
 		sfx = [
-			{code = 'flame', target = 'target', period = 'predamage'},
+			{code = 'inferno', target = 'target_group', period = 'windup'},
 			{code = 'cast_fire', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		value = 1.6,

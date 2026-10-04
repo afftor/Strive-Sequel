@@ -152,7 +152,10 @@ var skills = {
 		target_range = 'weapon',
 		damage_type = 'weapon',
 		random_factor_p = 0.1,
-		sfx = [{code = 'execution', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'execution', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
+			{code = 'at_axe', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'},
+		], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.55,
 		chance = ['caster.hitrate','-50']
@@ -448,7 +451,7 @@ var skills = {
 		damage_type = 'weapon',
 		value = 0.65,
 		random_factor_p = 0.1,
-		sfx = [{code = 'assassinate', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.25, arc = 45.0, boom_size = 150.0, size = 1.1},], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		chance = ['caster.hitrate','-25']
 	},

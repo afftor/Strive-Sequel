@@ -257,7 +257,11 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'devour_spirit', target = 'caster', period = 'windup'}, {code = 'acid_bomb', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'devour_spirit', target = 'caster', period = 'windup'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.12, hit_motion = 'push', arc = 25.0, color = 'befe5b'},
+			{code = 'acid_bomb', target = 'target', period = 'predamage'}
+		], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.matk','*1.2'],
 	},
@@ -1143,11 +1147,13 @@ var buffs = {
 	b_curse_primeval_regression = {
 		icon = "res://assets/images/iconsclasses/Breeder.png",
 		description = "EFFECT_CURSE_PRIMEVAL_MADNESS",
+		aura = 'stun',
 	},
 	b_drown_in_kudzu = {
 		icon = "res://assets/images/enemies/plant.png",
 		description = "EFFECT_DROWN_IN_KUDZU",
 		limit = 1,
+		aura = ['stun','bleed'],
 	}
 }
 var stacks = {

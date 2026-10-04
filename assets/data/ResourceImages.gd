@@ -1476,6 +1476,7 @@ var GFX_particles = {
 	sparks = "res://assets/sfx/spark.tscn",
 	arrowhail = "res://assets/sfx/arrowhail.tscn",
 	bonemeal_spray = "res://assets/sfx/bonemeal_spray.tscn",
+	smokescreen = "res://assets/sfx/smokescreen.tscn",
 }
 
 var GFX_video = {

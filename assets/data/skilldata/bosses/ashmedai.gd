@@ -159,7 +159,7 @@ var skills = {
 		number_rnd_targets = 3,
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.25, hit_motion = 'push', arc = 25.0, color = 'b524bd'},], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 0.8,
 		random_factor_p = 0.1,
@@ -208,7 +208,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'normal',
-		sfx = [{code = 'haste', target = 'caster', period = 'windup'},{code = 'bite', target = 'target', period = 'predamage'},{code = 'malediction', target = 'target', period = 'postdamage'}],
+		sfx = [{code = 'haste', target = 'caster', period = 'windup'},
+		{code = 'at_bite', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'},
+		{code = 'malediction', target = 'caster', period = 'postdamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -256,7 +258,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage',}], 
 		sounddata = {initiate = null, strike = 'fleshhit', hit = null},
 		value = 1,
 	},
@@ -280,7 +282,7 @@ var skills = {
 		number_rnd_targets = [1, 3],
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.35, hit_motion = 'push', arc = 25.0, color = 'ffffff'},], 
 		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 0.65,
 		random_factor_p = 0.1,
@@ -679,7 +681,7 @@ var effects = {
 		duration = 1,
 		statchanges = {},
 		sub_effects = [],
-		buffs = ['b_swallowed']
+		buffs = ['b_swallowed'],
 	},
 	ashmodai_digestion = {
 		type = 'trigger',
@@ -797,7 +799,8 @@ var buffs = {
 		icon = "res://assets/images/iconsclasses/soul eater.png",
 		description = "EFFECT_SWALLOWED_DESCRIPT",
 		limit = 1,
-		t_name = 'swallowed'
+		t_name = 'swallowed',
+		aura = ['stun','poison'],
 	},
 }
 var stacks = {

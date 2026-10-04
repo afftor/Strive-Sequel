@@ -2945,6 +2945,7 @@ var enemies = {
 		status_resists = {},
 		race = 'humanoid',
 		loot = 'bandit_loot',
+		cast_weapon = 'at_axe',
 		icon = "res://assets/images/enemies/bandit_big.png",
 		skills = ['attack','howling_rising_axe','clumsy_log_splitter','brutal_axe_swing','fat_bandit_charge'],
 		traits = ['self_preservation','moderately_fearsome_stature',],

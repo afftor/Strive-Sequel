@@ -179,7 +179,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',#not sure but not matters
 		sfx = [
-			{code = 'dark_swril', target = 'target', period = 'predamage'},
+			{code = 'smokescreen', target = 'target_group', period = 'predamage'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = 'spell_void', strike = null, hit = null},
 		value = ['0'],
@@ -290,7 +290,11 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [
-			{code = 'void_barrage', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.11, hit_motion = 'push', arc = 25.0, no_delays = true, color = '350782'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.11, hit_motion = 'push', arc = 45.0, no_delays = true, color = '350782'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.11, hit_motion = 'push', arc = 15.0, no_delays = true, color = '350782'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.11, hit_motion = 'push', arc = 60.0, no_delays = true, color = '350782'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.11, hit_motion = 'push', arc = 35.0, no_delays = true, color = '350782'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', no_delays = true, is_cast = true}
 			],
 		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
@@ -318,6 +322,7 @@ var skills = {
 		value = 1,
 		random_factor_p = 0.1,
 		sfx = [
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.11, hit_motion = 'push', arc = 25.0, color = '350782'},
 			{code = 'dark_swril', target = 'target', period = 'predamage'},
 			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
 		sounddata = {initiate = null, strike = 'spell_void', hit = null},
@@ -349,9 +354,10 @@ var skills = {
 		value = 2,
 		random_factor_p = 0.1,
 		sfx = [
-			{code = 'black_tendrils', target = 'target_group', period = 'windup'},
+			{code = 'abyss_gaze', target = 'target_group', period = 'windup'},
+			{code = 'charge_abyss', target = 'caster', period = 'windup', is_cast = true},
 			{code = 'shadow_spike', target = 'target', period = 'predamage'},
-			{code = 'cast_dark', target = 'caster', period = 'windup', is_cast = true}], 
+		], 
 		sounddata = {initiate = 'spell_break', strike = 'blade', hit = null},
 		follow_up = 'nixx_ult_1',
 	},
