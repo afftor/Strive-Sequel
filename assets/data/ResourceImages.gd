@@ -1372,6 +1372,7 @@ var GFX_sprites = {
 	haste = "res://assets/sfx/hit_animation/haste.tscn",
 	healing_light = "res://assets/sfx/hit_animation/healing_light.tscn",
 	lightning = "res://assets/sfx/hit_animation/lightning.tscn",
+	old_lightning = "res://assets/sfx/hit_animation/lightning.tscn",
 	magma_blast = "res://assets/sfx/hit_animation/magma_blast.tscn",
 	malediction = "res://assets/sfx/hit_animation/malediction.tscn",
 	mass_resurrection = "res://assets/sfx/hit_animation/mass_resurrection.tscn",

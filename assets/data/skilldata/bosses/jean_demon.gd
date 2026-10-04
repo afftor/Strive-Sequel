@@ -935,7 +935,7 @@ var effects = {
 					src = {obj = 'self', func = 'src', src = 'air'},
 					mod = {obj = 'self', func = 'src', src = 0.6},
 				},
-				atomic = [{type = 'sfx', value = 'lightning'}, 'a_damage_new'],
+				atomic = [{type = 'sfx', value = 'old_lightning', sound = 'combat_electric_charge_strike'}, 'a_damage_new'],
 			},
 			'shock',
 		],
