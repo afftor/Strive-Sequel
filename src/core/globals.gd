@@ -119,7 +119,7 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-	if OS.has_feature('editor'): #&& false:
+	if OS.has_feature('editor') && false:
 		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
 			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
 			if loc_code != "en":
