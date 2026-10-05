@@ -449,8 +449,10 @@ func targetattack(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
+	#without a cast in front the target stays still unless the data asks for a reaction
+	var motion = args.hit_motion if args.has('hit_motion') else ('push' if shot > 0 else 'none')
+	play_target_hit_motion(node, motion, 0.4, shot)
 	if shot > 0:
-		target_push(node, shot)
 		tween.interpolate_callback(self, shot, 'fx_sprite_args', {node = node,
 			effect = 'strike', fade = 0.3, delay = 0.1 / speed,
 			flip = get_flip_for_node(node, args), speed = speed})
@@ -487,7 +489,7 @@ func ranged_attack(node, args = null):
 		hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 		log_update_delay = max(log_update_delay, 0.3)
 		buffs_update_delays[node] = 0.2
-		target_squash(node, duration, shot)
+		play_target_hit_motion(node, args.hit_motion if args.has('hit_motion') else 'squash', duration, shot)
 	if shot > 0:
 		tween.interpolate_callback(self, shot, 'fx_sprite_args', {node = node,
 			effect = 'arrow', fade = 0.3, delay = duration,
