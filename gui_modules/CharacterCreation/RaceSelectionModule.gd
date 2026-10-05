@@ -65,12 +65,7 @@ func select_character_race():
 	#unlocked more races than this one has - never confirm a race this run cannot pick
 	if !get_parent().get_available_races().has(selected_race):
 		return
-	if get_parent().person.get_stat('race') != selected_race:
-		get_parent().person.set_stat('race', selected_race)
-		get_parent().preservedsettings["race"] = selected_race
-		get_parent().preservedsettings.erase('surname') #think it is right
-		get_parent().rebuild_slave()
-		get_parent().build_race()
+	get_parent().change_race(selected_race)
 
 
 func show_race_info(temprace):
@@ -78,10 +73,10 @@ func show_race_info(temprace):
 	var person = get_parent().person
 	var race = races.racelist[temprace]
 	var image
-	var text = race.descript
-	
+	var text = "[center]" + tr("RACE_BONUSES") + "\n" + globals.build_desc_for_bonusstats(race.race_bonus).strip_edges() + "[/center]"
+	text += "\n\n" + globals.race_lore_text(race.descript)
+
 #	text += "\n\n{color=yellow|" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(race.race_bonus)
-	text += "\n\n[center]" + tr("RACE_BONUSES") + "\n" + globals.build_desc_for_bonusstats(race.race_bonus) + "[/center]"
 #	for i in race.race_bonus:
 #		if (i as String).begins_with('resist'):
 #			text += i.replace("resist_","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
@@ -114,7 +109,7 @@ func _update_race_exclusive_entries(race_id):
 	var person = get_parent().person
 	var container = $RaceSelection/ScrollContainer2/VBoxContainer
 	input_handler.ClearContainer(container, ['RichTextLabel', 'Button'])
-	for skill_id in _get_race_exclusive_skills(race_id):
+	for skill_id in races.get_exclusive_skills(race_id):
 		var skill = Skilldata.get_template(skill_id, person)
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
 		newbutton.set_meta('display_only', true)
@@ -124,68 +119,12 @@ func _update_race_exclusive_entries(race_id):
 			globals.connecttexttooltip(newbutton, tr(skill.descript))
 		else:
 			globals.connectskilltooltip(newbutton, skill.code, person)
-	for class_id in _get_race_exclusive_classes(race_id):
+	for class_id in races.get_exclusive_classes(race_id):
 		var classdata = classesdata.professions[class_id]
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
 		newbutton.get_node('Label').text = tr("RACE_EXCLUSIVE_CLASS_LABEL") % ResourceScripts.descriptions.get_class_name(classdata, person)
 		newbutton.get_node('Icon').texture = _get_entry_icon(classdata.icon)
 		globals.connectclasstooltip(newbutton, person, class_id)
-
-
-func _get_race_exclusive_skills(race_id):
-	var race = races.racelist[race_id]
-	var skill_list = []
-	for group in ['social_skills', 'combat_skills', 'explore_skills']:
-		if !race.has(group):
-			continue
-		for skill_id in race[group]:
-			if !skill_list.has(skill_id):
-				skill_list.append(skill_id)
-	return skill_list
-
-
-func _get_race_exclusive_classes(race_id):
-	var class_list = []
-	var race_is_beast = _is_race_beast(race_id)
-	for class_id in classesdata.professions:
-		var classdata = classesdata.professions[class_id]
-		if _is_disabled_class(classdata):
-			continue
-		if class_id == 'pet':
-			continue
-		if _has_matching_race_requirement(classdata.showupreqs, race_id, race_is_beast) or _has_matching_race_requirement(classdata.reqs, race_id, race_is_beast):
-			class_list.append(class_id)
-	class_list.sort()
-	return class_list
-
-
-func _has_matching_race_requirement(reqs, race_id, race_is_beast):
-	for req in reqs:
-		match req.code:
-			'race':
-				if req.check and req.race == race_id:
-					return true
-			'one_of_races':
-				if req.value.has(race_id):
-					return true
-			'race_is_beast':
-				if req.check == race_is_beast:
-					return true
-	return false
-
-
-func _is_disabled_class(classdata):
-	if classdata.tags.has('obsolete'):
-		return true
-	for req_group in ['showupreqs', 'reqs']:
-		for req in classdata[req_group]:
-			if req.code == 'disabled' and req.check:
-				return true
-	return false
-
-
-func _is_race_beast(race_id):
-	return races.racelist[race_id].tags.has('beast')
 
 
 func _get_entry_icon(icon):

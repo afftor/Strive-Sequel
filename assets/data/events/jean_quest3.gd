@@ -951,10 +951,15 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				reqs = [
 					{
-						code = "stat",
-						stat = "physics",
-						operant = "gte",
-						value = 5
+						type = "master_check",
+						value = [
+							{
+								code = "stat",
+								stat = "physics",
+								operant = "gte",
+								value = 75
+							}
+						]
 					}
 				],
 				dialogue_argument = 1,
@@ -965,10 +970,15 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				reqs = [
 					{
-						code = "stat",
-						stat = "physics",
-						operant = "lt",
-						value = 5
+						type = "master_check",
+						value = [
+							{
+								code = "stat",
+								stat = "physics",
+								operant = "lt",
+								value = 75
+							}
+						]
 					}
 				],
 				dialogue_argument = 1,
@@ -1429,7 +1439,7 @@ var data = {
 								code = "stat",
 								stat = "physics",
 								operant = "lt",
-								value = 5
+								value = 75
 							}
 						]
 					}
@@ -1448,7 +1458,7 @@ var data = {
 								code = "stat",
 								stat = "physics",
 								operant = "gte",
-								value = 5
+								value = 75
 							}
 						]
 					}

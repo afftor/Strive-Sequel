@@ -237,6 +237,11 @@ func _build_extra_bonus_text():
 	var lines = []
 	if classdata.has("tags") and classdata.tags.has("stable_fame"):
 		lines.append(tr("TAGSTABLE_FAME"))
+	if classdata.has("tags") and classdata.tags.has("noble"):
+		if person != null and person.is_noble_blocked(classdata.code):
+			lines.append("{color=red|%s}" % tr("TAGNOBLE"))
+		else:
+			lines.append(tr("TAGNOBLE"))
 	return PoolStringArray(lines).join("\n").strip_edges()
 
 

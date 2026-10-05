@@ -1907,6 +1907,9 @@ func setup_skill_button(newbutton, skill_id):
 	if activecharacter.has_status('no_combat_support') and skill.tags.has('support'):
 		newbutton.disabled = true
 		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+	if activecharacter.has_status('no_combat_attack') and skill.tags.has('damage'):
+		newbutton.disabled = true
+		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 #			if !activecharacter.check_cost(skill.cost):
 #				newbutton.disabled = true
 #				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -2362,6 +2365,22 @@ func finish_instant_combat():
 	emit_signal("combat_cleaned_up")
 
 
+#traits that grow with won fights: how many fought (summons aside), and whether the master was one
+func grow_traits_on_victory():
+	var fighters = []
+	var master_fought = false
+	for p in range(1, 7):
+		var ch = get_char_by_pos(p)
+		if ch == null or summons.has(p):
+			continue
+		fighters.push_back(ch)
+		if ch.is_master():
+			master_fought = true
+	for ch in fighters:
+		if !ch.is_koed():
+			ch.dyn_stats.grow_by_victory(fighters.size() == 1, master_fought)
+
+
 #to check next functions
 var victory_seq_run = false
 func victory():
@@ -2382,6 +2401,7 @@ func victory():
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
 	input_handler.StopMusic()
+	grow_traits_on_victory()
 	#on combat ends triggers
 	for p in range(1, 7):
 		if battlefield[p] == null:
@@ -2511,7 +2531,10 @@ func give_rewards():
 	var array = []
 	for i in playergroup.values():
 		array.append(i)
-	if global_turn < 3:
+	#instawin = sneaked/talked/scared past the enemies; the skip_combat cheat keeps the win lines
+	if combat_data.instawin:
+		input_handler.get_person_for_chat(array, 'combat_avoided')
+	elif global_turn < 3:
 		input_handler.get_person_for_chat(array, 'combat_won_fast')
 	else:
 		input_handler.get_person_for_chat(array, 'combat_won_slow')

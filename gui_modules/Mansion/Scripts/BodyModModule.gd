@@ -34,7 +34,7 @@ const COAT_PALETTE_STAT = 'body_color_tail'
 #drawn as a panel of pictures instead of a row, and every colour is drawn under the part it
 #paints - both are decided by LAYOUT, as on the creation screen. The body shape and the eye
 #shape are not on it: the room leaves those two as they are.
-const BODY_STATS = ['height', 'head_size', 'skin_coverage', 'ears', 'horns',
+const BODY_STATS = ['height', 'head_size', 'muscular', 'skin_coverage', 'freckles', 'ears', 'horns',
 	'tail', 'wings', 'eyeshape', 'eye_tex', 'eyebrows', 'nose', 'lips', 'chin',
 	'beard', 'hair_base', 'hair_base_length', 'hair_back', 'hair_back_length', 'hair_assist',
 	'hair_assist_length', 'tits_size', 'multiple_tits', 'multiple_tits_developed', 'ass_size',
@@ -63,7 +63,9 @@ const DESCRIPTION_ONLY_STATS = ['height', 'hair_length', 'hair_style', 'hair_col
 	'penis_type', 'penis_size', 'balls_size']
 
 #yes or no, so a box to tick
-const CHECK_STATS = ['multiple_tits_developed']
+const CHECK_STATS = ['multiple_tits_developed', 'freckles', 'muscular']
+#looks that belong to the whole skin rather than to a part of it: they stand with its colours
+const SKIN_TOGGLES = ['muscular', 'freckles']
 
 #A colour is only worth asking about while the thing it paints is worn: a human is not asked
 #what shade her wings are.
@@ -400,6 +402,11 @@ func _values_for(stat):
 			if int(person.get_stat('multiple_tits')) > 0:
 				return [false, true]
 			return []
+		'freckles':
+			return [false, true]
+		'muscular':
+			#the muscle overlays are cut for the female rig alone
+			return [] if str(person.get_stat('sex')) == 'male' else [false, true]
 		'hair_color':
 			#the description's own names for hair, which no one table lists whole: every race's list together
 			var colours = []
@@ -658,6 +665,12 @@ func RebuildStatsContainer():
 				and possible_vals.has(colour) and !possible_vals[colour].empty():
 			var skin_node = duplicate_visual_template('Colour')
 			setup_visual_stat_node(skin_node, colour, 'Colour')
+	#a build and freckles are the body itself rather than a part of it, so they stand with
+	#the skin's colours
+	if !_dolls_off():
+		for skin_stat in SKIN_TOGGLES:
+			if visual_option_is_shown(skin_stat):
+				setup_visual_stat_node(duplicate_visual_template('Checkbox'), skin_stat, 'Checkbox')
 	for menu in _submenus():
 		if !_menu_is_offered(menu):
 			continue
@@ -674,7 +687,7 @@ func RebuildStatsContainer():
 				_append_coat_colour_rows()
 	for stat in _row_stats():
 		#a colour gets a row of its own only where there is no wheel for it - see build_node_for_stat
-		if (LAYOUT.COLOUR_FOLLOWS.has(stat) and !_dolls_off()) or _submenu_of(stat) != '':
+		if (LAYOUT.COLOUR_FOLLOWS.has(stat) and !_dolls_off()) or _submenu_of(stat) != '' or stat in SKIN_TOGGLES:
 			continue
 		if !visual_option_is_shown(stat):
 			continue

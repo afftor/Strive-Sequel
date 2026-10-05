@@ -410,6 +410,8 @@ func invoke_postdamage():
 				caster.process_event(variables.TR_KILL, {skill = self, caster = caster, target = target})
 				effects_pool.process_event(variables.TR_KILL, {skill = self, caster = caster, target = s_skill2.target})
 				caster.add_stat('metrics_kills', 1)
+				if caster.has_method('on_kill'):
+					caster.on_kill(s_skill2.target)
 		else:
 			if !parent.tags.has('passive'):
 				s_skill2.target.process_event(variables.TR_POST_TARG, {skill = s_skill2, caster = caster, target = s_skill2.target})

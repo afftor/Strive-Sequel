@@ -1266,7 +1266,7 @@ var data = {
 				]
 			}
 		],
-		common_effects = [{code = "material_change", operant = "-", material = "vesperine_cage", value = 1}],
+		common_effects = [{code = "material_change", operant = "-", material = "vesperine_cage", value = 1}, {code = "affect_unique_character", name = "kuro", type = "set_faith", trait = "transcendent"}],
 		options = [
 			{
 				code = "close",
@@ -1380,7 +1380,7 @@ var data = {
 
 		],
 		text = "KURO3_BAD_3",
-		common_effects = [{code = "material_change", operant = "-", material = "vesperine_cage", value = 1}],
+		common_effects = [{code = "material_change", operant = "-", material = "vesperine_cage", value = 1}, {code = "affect_unique_character", name = "kuro", type = "set_faith", trait = "worldly"}],
 		options = [
 			{
 				code = "close",
@@ -1426,7 +1426,7 @@ var data = {
 
 		],
 		text = "KURO3_BAD_4",
-		common_effects = [{code = "material_change", operant = "-", material = "vesperine_cage", value = 1}],
+		common_effects = [{code = "material_change", operant = "-", material = "vesperine_cage", value = 1}, {code = "affect_unique_character", name = "kuro", type = "set_faith", trait = "worldly"}],
 		options = [
 			{
 				code = "close",

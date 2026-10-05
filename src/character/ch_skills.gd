@@ -277,6 +277,20 @@ func restore_skill_charge(code):
 	gui_controller.mansion.SkillModule.build_skill_panel()
 
 
+#a skill with a `special` handler leaves use_social_skill before anything is paid, so a handler
+#that runs a menu pays through here once the choice is made - a cancelled menu costs nothing
+func spend_special_skill(s_code):
+	var template = Skilldata.get_template(s_code, parent.get_ref())
+	parent.get_ref().pay_cost(template.cost)
+	parent.get_ref().add_stat('metrics_socskillused', 1)
+	social_cooldowns[s_code] = template.cooldown
+	if typeof(template.charges) == TYPE_INT && template.charges > 0 && ResourceScripts.game_globals.social_skill_unlimited_charges == false:
+		if social_skills_charges.has(s_code):
+			social_skills_charges[s_code] += 1
+		else:
+			social_skills_charges[s_code] = 1
+
+
 func use_social_skill(s_code, target, item, bulk = 1):
 	var template = Skilldata.get_template(s_code, parent.get_ref())
 	if template.has('special'):

@@ -171,6 +171,7 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
+					['event_magic_barrier',1],
 				],
 			},
 			dungeon_find_armory_easy = {
@@ -184,6 +185,7 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
+					['event_magic_barrier',1],
 				],
 			},
 			event_dungeon_prisoner = {
@@ -197,6 +199,7 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
+					['event_magic_barrier',1],
 				],
 			},
 			celena_shrine_find = {
@@ -210,8 +213,23 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
+					['event_magic_barrier',1],
 				],
-			}
+			},
+			
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+					['event_magic_barrier',1],
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -304,7 +322,7 @@ var dungeons = {
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
 				],
-			}
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -389,6 +407,18 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -497,6 +527,18 @@ var dungeons = {
 					['event_small_crack',1]
 				],
 			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
 			fountain = {
 				limit = 1,
 				weight = 1,
@@ -580,6 +622,20 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1]
+				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -687,7 +743,7 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_small_crack',1],
 				],
-			}
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -772,14 +828,6 @@ var dungeons = {
 					['event_fallen_bridge',1],
 				],
 			},
-#			lira_lost_event = {
-#				limit = 1,
-#				weight = 57,#75% chance
-#				floor_range = [0,0],
-#				icon = 'man',
-#				events = ['lira_lost_start'],
-#				possible_challenges = [],
-#			},
 		},
 		
 		event_room_number = [3,4],
@@ -1026,6 +1074,20 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['hybris_shrine_find',0.3]],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_magic_barrier',1],
@@ -1304,6 +1366,19 @@ var dungeons = {
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
 				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			}
 		},
 		
@@ -1533,6 +1608,19 @@ var dungeons = {
 					['event_small_crack',1],
 					['event_ancient_lock',1]
 				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -1602,6 +1690,19 @@ var dungeons = {
 					['event_small_crack',1],
 					['event_ancient_lock',1]
 				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -1662,6 +1763,19 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
@@ -1888,6 +2002,18 @@ var dungeons = {
 					['event_magic_barrier',1],
 					['event_fallen_bridge',1],
 				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+				],
 			}
 		},
 		
@@ -1980,6 +2106,20 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_magic_barrier',1],
@@ -2523,6 +2663,42 @@ var dungeons = {
 		difficulty = 'easy',
 		background = 'forest3',
 		custom_background = 'combat_forest',
+		enemyarray = [],
+		eventarray = [],
+		levels = [1, 1],
+		resources = '',
+		stages_per_level = [1, 1],
+		travel_time = [1, 1],
+		events = [],
+		tags = ['quest'],
+	},
+	quest_grasha_settlement = {
+		code = 'quest_grasha_settlement',
+		type = 'encounter',
+		name = tr("QUEST_GRASHA_SETTLEMENT_NAME"),
+		area = 'mountains',
+		classname = '',
+		descript = tr("QUEST_GRASHA_SETTLEMENT_DESC"),
+		difficulty = 'easy',
+		background = 'goblin_stronghold1',
+		enemyarray = [],
+		eventarray = [],
+		levels = [1, 1],
+		resources = '',
+		stages_per_level = [1, 1],
+		travel_time = [1, 1],
+		events = [],
+		tags = ['quest'],
+	},
+	quest_grasha_ruins = {
+		code = 'quest_grasha_ruins',
+		type = 'encounter',
+		name = tr("QUEST_GRASHA_RUINS_NAME"),
+		area = 'mountains',
+		classname = '',
+		descript = tr("QUEST_GRASHA_RUINS_DESC"),
+		difficulty = 'easy',
+		background = 'fort2',
 		enemyarray = [],
 		eventarray = [],
 		levels = [1, 1],
@@ -3291,6 +3467,20 @@ var dungeons = {
 					['event_small_crack',1],
 					['event_ancient_lock',1]
 				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -3483,6 +3673,18 @@ var dungeons = {
 					['event_small_crack',1]
 				],
 			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
 			fountain = {
 				limit = 1,
 				weight = 1,
@@ -3583,6 +3785,18 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
+			meditation_spot = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['meditation_spot', 'power_place_spot'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],

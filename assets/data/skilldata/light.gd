@@ -180,7 +180,7 @@ var skills = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 3})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 3, target_reqs = [{code = 'has_status', status = 'no_light_heal', check = false}]})], 
 		cost = {mp = 15}, 
 		charges = 0,
 		combatcooldown = 3,

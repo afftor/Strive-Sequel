@@ -344,6 +344,44 @@ react_fingering = {
 		"SEXACTION_FINGERING_REACT_AROUSAL1_MEAN_2",
 	]},
 
+	arousal_4_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [4,5],
+	},
+	lines = [
+		"SEXACTION_FINGERING_REACT_AROUSAL4_HESITANT_1",
+		"SEXACTION_FINGERING_REACT_AROUSAL4_HESITANT_2",
+	]},
+
+	arousal_3_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [3],
+	},
+	lines = [
+		"SEXACTION_FINGERING_REACT_AROUSAL3_HESITANT_1",
+	]},
+
+	arousal_2_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [2],
+	},
+	lines = [
+		"SEXACTION_FINGERING_REACT_AROUSAL2_HESITANT_1",
+	]},
+
+	arousal_1_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [1],
+	},
+	lines = [
+		"SEXACTION_FINGERING_REACT_AROUSAL1_HESITANT_1",
+		"SEXACTION_FINGERING_REACT_AROUSAL1_HESITANT_2",
+	]},
+
 },
 
 react_fingering_skill = {

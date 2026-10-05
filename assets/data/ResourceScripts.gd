@@ -105,12 +105,15 @@ onready var node_data = {
 	input_handler.NODE_SEX : {name = 'sex_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/InteractionMainModule.tscn") },
 	input_handler.NODE_DATE : {name = 'date_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/date.tscn") },
 	input_handler.NODE_TUTORIAL_PANEL : {name = 'tutorial_panel', mode = 'scene', scene = preload("res://gui_modules/Mansion/Modules/Tutorial.tscn") },
-	input_handler.NODE_TRAIREM_PANEL : {name = 'trait_removal', mode = 'scene', scene = preload("res://gui_modules/Inventory/Modules/TraitRemovePanel.tscn") },
 	input_handler.NODE_ARENA : {name = 'arena', mode = 'scene', scene = preload("res://gui_modules/arena/arena.tscn"), calls = 'open'},
 	input_handler.NODE_HARD_TUTORIAL_PANEL : {name = 'hard_tutorial_panel', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/hard_tutorial_panel.tscn")},
 	input_handler.NODE_HARD_TUTORIAL_LIST : {name = 'hard_tutorial_list', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/hard_tutorial_list.tscn")},
 	input_handler.NODE_ACHI_UNLOCK : {name = 'achi_unlock', mode = 'scene', scene = preload("res://gui_modules/achievements/unlock.tscn")},#calls = 'open'
 	input_handler.NODE_NUMBERSELECT : {name = 'number_select', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/NumberSelectPanel.tscn"), calls = 'open'},
+	#over the game menu (10), under the questions (15): it may open in the middle of anything
+	input_handler.NODE_TRAIT_REPLACE : {name = 'trait_replace', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/TraitReplacePanel.tscn"), layer = 14},
+	input_handler.NODE_TRAIT_TRANSFER : {name = 'trait_transfer', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/TraitTransferPanel.tscn")},
+	input_handler.NODE_STARTING_TRAITS : {name = 'starting_traits', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/StartingTraitsPanel.tscn")},
 	#Animations
 	input_handler.ANIM_TASK_AQUARED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_aquired.tscn") },
 	input_handler.ANIM_BATTLE_START : {name = 'ANIMBattleStart', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_battle_start.tscn") },
@@ -168,3 +171,4 @@ func revert_gamestate():
 	for s in gamestate:
 		set(s, scriptdict[s].new())
 	input_handler.connect("EnemyKilled", game_world, "quest_kill_receiver")
+	Traitdata.refresh_story_names()

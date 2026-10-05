@@ -357,6 +357,7 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				select_person = true,
+				person_reqs = [{code = "is_master", check = true, silent = true}],
 				challenge = "persuasion"
 			},
 			{
@@ -1247,6 +1248,7 @@ var data = {
 				]
 			}
 		],
+		common_effects = [{code = "affect_unique_character", name = "mae", type = "set_faith", trait = "faith_spirits_2"}],
 		options = [
 			{
 				code = "close",

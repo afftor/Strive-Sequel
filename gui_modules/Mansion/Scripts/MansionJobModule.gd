@@ -197,8 +197,12 @@ func update_characters():
 				if ch.has_status('no_craft'): 
 					newbutton.disabled = true
 			if job_data != null and job_data.id == 'gathering':
-				if ch.has_status('no_collect'): 
+				if ch.has_status('no_collect'):
 					newbutton.disabled = true
+			var vow_ban = ch.get_vow_ban('task', selected_job)
+			if vow_ban != '':
+				newbutton.disabled = true
+				globals.connecttexttooltip(newbutton, vow_ban)
 		if newbutton.disabled == true && selected_job != null:
 			newbutton.get_node('Name').set("custom_colors/font_color", variables.hexcolordict['red'])
 		newbutton.set_meta('slave', ch)
@@ -722,6 +726,11 @@ func show_brothel_options():
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 		newbutton.add_to_group('non_sex_option')
+		var vow_ban = person.get_vow_ban('service', i)
+		if vow_ban != '':
+			newbutton.disabled = true
+			newbutton.pressed = false
+			globals.connecttexttooltip(newbutton, vow_ban)
 #		if person.get_work() == '':
 #			newbutton.disabled = true
 	for i in brothel_rules.sexual:

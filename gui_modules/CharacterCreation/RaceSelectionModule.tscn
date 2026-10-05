@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=2]
@@ -16,10 +16,18 @@
 [ext_resource path="res://assets/images/gui/charpanel/CharScreen_0003_portrait-frame.png" type="Texture" id=14]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_24px.tres" type="DynamicFont" id=15]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/back_panel_hero_info.png" type="Texture" id=16]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Italic.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=18]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/buttonframe_pressed.png-ea80ec5faf1a5d4e7af34f6aeb3ad61f.stex"
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+use_filter = true
+font_data = ExtResource( 17 )
+fallback/0 = ExtResource( 18 )
 
 [node name="RaceSelectionModule" type="Panel"]
 anchor_right = 1.0
@@ -100,6 +108,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/italics_font = SubResource( 2 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Lorem Ipsum"

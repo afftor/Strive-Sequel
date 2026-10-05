@@ -144,7 +144,6 @@ enum {
 	NODE_SEX,
 	NODE_DATE,
 	NODE_TUTORIAL_PANEL,
-	NODE_TRAIREM_PANEL,
 	NODE_ARENA,
 	NODE_HARD_TUTORIAL_PANEL,
 	NODE_HARD_TUTORIAL_LIST,
@@ -164,6 +163,9 @@ enum {
 	ANIM_ITEM_FLIGHT,
 	ANIM_FACTOR_UPGRADE,
 	NODE_RACETOOLTIP,
+	NODE_TRAIT_REPLACE,
+	NODE_TRAIT_TRANSFER,
+	NODE_STARTING_TRAITS,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
@@ -250,6 +252,7 @@ var progress_data = {
 	achi_bonuses = [],
 	achi_points = 0,
 	seen_skills = [],
+	seen_trait_stages = [], # growing trait stages some character has reached; the rest show as ???
 	cheat_password = "", # password entered by the player, unlocks cheats on every save
 	supporter_prompt_dismissed = false, # player pressed "Don't show again" on the main menu notice
 	ngplus_unlocked = false, # cheat menu opened New Game+ without the act1 achievement
@@ -1896,7 +1899,7 @@ func play_animation_noq(animation, args = {}):
 				anim_scene.get_node("TextureRect").texture = load(tdata.icon)
 			else:
 				anim_scene.get_node("TextureRect").texture = tdata.icon
-			anim_scene.get_node("Label").text = "Training"
+			anim_scene.get_node("Label").text = tr("TRAIT_ACQUIRED_TITLE")
 			anim_scene.get_node("Label2").text = tdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("class_achieved")

@@ -46,8 +46,6 @@ question even though it names no file.
 - Make narrow edits to them and preserve existing formatting.
 - Avoid changing resource paths unless the task needs it. Do not change export presets unless asked.
 - All new or replaced game sound assets must use WAV (`.wav`); keep generator-source files outside game assets.
-- Before editing a `.tscn` by hand, or doing a visual check, offer to hand the job to Codex CLI and wait
-  for an explicit yes.
 
 ## UI Helpers
 
@@ -129,12 +127,17 @@ Common field-name exceptions:
 {type = 'faction_reputation', code = 'mages', operant = 'gte', value = 2000}
 {type = 'has_upgrade', name = 'upgrade_code', value = 1}
 {type = 'decision', value = 'PrincessDead', check = true}
-{type = 'quest_stage', name = 'quest_id', value = 3, operant = 'gte'}
+{type = 'active_quest_stage', value = 'quest_id', stage = 'stage_name'} # state = false negates, and is also true when the quest is not active
+{type = 'any_quest_stage', value = 'quest_id', stages = ['stage_a', 'stage_b']}
+{type = 'has_active_quest', name = 'quest_id', check = true}
+{type = 'quest_completed', name = 'quest_id', check = true}
 {type = 'has_items', name = 'itembase', operant = 'gte', value = 1}
 {code = 'reputation', name = 'mages', operant = '+', value = 100}
 {code = 'progress_quest', value = 'quest_id', stage = 'stage_name'}
-{code = 'start_combat', value = 'enemy_group_id'}
+{code = 'start_combat', value = 'encounter_id'} # an Enemydata.encounters key; event options use {code = 'quest_fight', args = 'encounter_id'}
 ```
+
+There is no `quest_stage` condition: `globals.valuecheck()` reports an unknown type and returns false.
 
 Quick field map:
 
@@ -148,7 +151,8 @@ Quick field map:
 | Faction id, global condition | `code` |
 | Faction id, reputation effect | `name` |
 | Upgrade code | `name` |
-| Quest id | `name` |
+| Quest id, `active_quest_stage` / `any_quest_stage` / `progress_quest` | `value` |
+| Quest id, `has_active_quest` / `quest_completed` | `name` |
 | Item base | `name` |
 | Hero code | `name` |
 | Decision id | `value` |

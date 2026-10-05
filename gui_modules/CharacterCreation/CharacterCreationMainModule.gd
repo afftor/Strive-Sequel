@@ -106,6 +106,8 @@ var params_to_save = [ #memo mostly
 	"personality",
 	"height",
 	"head_size",
+	"freckles",
+	"muscular",
 	"ears",
 	"eye_color",
 	"eye_shape",
@@ -180,11 +182,23 @@ const DOLL_ONLY_STATS = ['head_size', 'eyeshape', 'eye_tex', 'eyebrows', 'lips',
 	'body_color_tail', 'body_color_horns', 'body_color_animal', 'body_color_ears', 'hair_base',
 	'hair_base_length', 'hair_assist', 'hair_assist_length', 'hair_back', 'hair_back_length',
 	'hair_back_color_1', 'hair_back_color_2', 'hair_assist_color_1', 'hair_assist_color_2',
-	'hair_base_color_1', 'hair_base_color_2', 'beard', 'hair_facial_color']
+	'hair_base_color_1', 'hair_base_color_2', 'beard', 'hair_facial_color',
+	'freckles', 'muscular']
 #the description's hair, given rows of their own right after the height while dolls are off
 const DESCRIPTION_HAIR_STATS = ['hair_length', 'hair_style', 'hair_color']
+#looks that belong to the whole skin rather than to a part of it: they stand with its colours
+const SKIN_TOGGLES = ['muscular', 'freckles']
 #which of the two the rows were last built for, so a screen opened after the option changed builds them again
 var rows_built_dolls_off = null
+#the saved params that are not the look; the virginities and the factors are not either - is_appearance_stat
+const NOT_APPEARANCE_STATS = ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits",
+	"professions", "food_filter", "personality", "slave_class"]
+#a race's own parts and their colours: a race change rolls them anew unless the player picked them
+const RACE_FEATURE_STATS = ['ears', 'horns', 'tail', 'wings', 'body_lower', 'body_shape', 'skin_coverage',
+	'multiple_tits', 'multiple_tits_developed', 'penis_type', 'body_color_wings', 'body_color_tail',
+	'body_color_horns', 'body_color_animal', 'body_color_ears']
+#the race waiting on the player's answer to the appearance warning
+var pending_race = ''
 
 # Whether the picture tiles carry their value's name under them.  The pictures
 # are the choice - the character's own head wearing each option - and the caption
@@ -295,12 +309,59 @@ func reroll_race():
 	if available_races.size() > 1:
 		while new_race == current_race:
 			new_race = input_handler.random_from_array(available_races)
-	if current_race != new_race:
-		person.set_stat('race', new_race)
-		preservedsettings["race"] = new_race
-		preservedsettings.erase('surname')
-		rebuild_slave()
+	change_race(new_race)
+
+
+#Both race buttons. Only a name the player set is in preservedsettings, so an untouched one is rolled for the new race.
+func change_race(new_race):
+	if mode == 'freemode' or new_race == person.get_stat('race'):
+		return
+	pending_race = new_race
+	if has_edited_appearance():
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'confirm_race_change', tr('CHARCREATE_RACE_CHANGE_APPEARANCE_WARNING')])
+	else:
+		confirm_race_change()
+
+
+func confirm_race_change():
+	if pending_race == '':
+		return
+	if has_edited_appearance():
+		keep_current_look()
+	person.set_stat('race', pending_race)
+	preservedsettings["race"] = pending_race
+	pending_race = ''
+	rebuild_slave()
 	build_race()
+
+
+func is_appearance_stat(stat):
+	if !(stat in params_to_save or stat in DESCRIPTION_HAIR_STATS) or stat in NOT_APPEARANCE_STATS:
+		return false
+	return !stat.ends_with('_virgin') and !stat.ends_with('_factor')
+
+
+func has_edited_appearance():
+	for stat in preservedsettings:
+		if is_appearance_stat(stat):
+			return true
+	return false
+
+
+#The untouched rest of the look is kept as if picked; apply_preserved_settings drops what the new race refuses.
+#Not the description's hair: it is read off the doll's, and setting it rewrites the doll's.
+func keep_current_look():
+	for stat in params_to_save:
+		if !is_appearance_stat(stat) or stat in RACE_FEATURE_STATS or preservedsettings.has(stat):
+			continue
+		var value
+		#a colour left to its rule is stored empty, and its getter answers with the colour it follows
+		if statdata.statdata.has(stat) and statdata.statdata[stat].tags.has('custom_getter'):
+			value = person.statlist.statlist.get(stat)
+		else:
+			value = person.get_stat(stat)
+		if value != null:
+			preservedsettings[stat] = value
 
 
 func get_available_races():
@@ -319,11 +380,7 @@ func reroll_appearance():
 	build_possible_vals()
 	var updated_stats = []
 	for stat in params_to_save:
-		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter", "personality", "slave_class"]:
-			continue
-		if stat.ends_with('_virgin'):
-			continue
-		if stat.ends_with('_factor'):
+		if !is_appearance_stat(stat):
 			continue
 		if !possible_vals.has(stat):
 			continue
@@ -392,6 +449,7 @@ func if_can_assign(stat, value):
 
 
 func apply_preserved_settings(): #on regenerating char
+	var refused = []
 	for i in preservedsettings:
 #		if i == "food_love":
 #			person.food.food_love = preservedsettings["food_love"]
@@ -404,6 +462,14 @@ func apply_preserved_settings(): #on regenerating char
 		if i == 'slave_class':
 			continue
 		elif if_can_assign(i, preservedsettings[i]):
+			person.set_stat(i, preservedsettings[i])
+			build_node_for_stat(i)
+		else:
+			refused.append(i)
+	#the lists were made for the fresh roll; a part put back above decides which lengths and colours it may have
+	build_possible_vals()
+	for i in refused:
+		if if_can_assign(i, preservedsettings[i]):
 			person.set_stat(i, preservedsettings[i])
 			build_node_for_stat(i)
 	rebuild_ragdoll()
@@ -464,7 +530,8 @@ func build_possible_val_for_stat(stat):
 		if str(value) == current:
 			offered.append(value)
 			continue
-		if !LAYOUT.offered(stat, value):
+		#nor is a look carried over from another race, a bald head included
+		if !LAYOUT.offered(stat, value) and !(preservedsettings.has(stat) and str(preservedsettings[stat]) == str(value)):
 			continue
 		if !value_has_art(stat, value):
 			continue
@@ -543,6 +610,13 @@ func _collect_possible_vals(stat):
 		return
 	#The description's length and style: no race lists them - the sexes roll them - so every one the
 	#description has words for is offered.
+	#two looks the doll draws that no table names, each a yes or no; the muscle overlays
+	#are cut for the female rig alone
+	if stat in ['freckles', 'muscular']:
+		if stat == 'muscular' and str(person.get_stat('sex')) == 'male':
+			return
+		possible_vals[stat] = [false, true]
+		return
 	if stat in ['hair_length', 'hair_style']:
 		for val in ResourceScripts.descriptions.bodypartsdata[stat]:
 			possible_vals[stat].push_back(val)
@@ -1453,8 +1527,9 @@ func finish_character():
 		person.unlock_class(selected_class)
 		if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
 			person.create_s_trait_select(preservedsettings.sex_traits)
-		if preservedsettings.has("traits") && preservedsettings.traits != null:
-			person.add_trait(preservedsettings.traits)
+		for code in get_starting_traits():
+			person.add_trait(code)
+		person.add_default_traits()
 		#basic setup
 		person.set_stat('food_consumption', 3)
 		person.hp = person.get_stat('hpmax')
@@ -1700,6 +1775,11 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			continue
 		if str(LAYOUT.COLOUR_FOLLOWS[colour]) == '' and colour in params_to_save:
 			append_visual_colour_row(colour)
+	#a build and freckles are the body itself rather than a part of it, so they stand with
+	#the skin's colours
+	if !dolls_off:
+		for skin_stat in SKIN_TOGGLES:
+			append_visual_stat_row(skin_stat)
 
 	for menu in ([] if dolls_off else LAYOUT.SUBMENUS):
 		var menu_button = duplicate_visual_template('SubmenuButton')
@@ -1719,7 +1799,7 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			#its picture menu is gone, so the colour stands where the stat is listed
 			append_visual_colour_row(stat)
 			continue
-		if stat.ends_with('factor') or LAYOUT.COLOUR_FOLLOWS.has(stat) or _submenu_of(stat) != '':
+		if stat.ends_with('factor') or LAYOUT.COLOUR_FOLLOWS.has(stat) or _submenu_of(stat) != '' or stat in SKIN_TOGGLES:
 			continue
 		append_visual_stat_row(stat)
 		if !dolls_off:
@@ -2049,7 +2129,7 @@ func open_sex_traits():
 
 func open_traits():
 	hide_all_dialogues()
-	TraitSelection.build_trait()
+	input_handler.get_spec_node(input_handler.NODE_STARTING_TRAITS).open(self)
 
 
 func open_personality_selection():
@@ -2072,11 +2152,22 @@ func select_sex_trait(trait_id):
 	build_sex_trait()
 
 
-func select_trait(trait_id):
-	preservedsettings["traits"] = trait_id
-	$TraitSelection.hide()
+#The starting traits as a list; templates saved before the slot picker hold one code.
+func get_starting_traits():
+	var codes = preservedsettings.get("traits")
+	if codes is String:
+		codes = [codes]
+	var res = []
+	if codes is Array:
+		for code in codes:
+			if code is String and Traitdata.traits.has(code) and !res.has(code):
+				res.append(code)
+	return res
+
+
+func set_starting_traits(codes):
+	preservedsettings["traits"] = codes
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
-#	RebuildStatsContainer()
 	build_trait()
 
 
@@ -2206,9 +2297,14 @@ func apply_master_relationship():
 
 
 func build_trait():
-	if preservedsettings.has("traits") && preservedsettings.traits != null:
-		var trdata = Traitdata.traits[preservedsettings.traits]
-		$VBoxContainer/trait/Label.text = tr(trdata.name)
+	var codes = get_starting_traits()
+	$VBoxContainer/trait/Label.autowrap = true
+	if !codes.empty():
+		var trdata = Traitdata.traits[codes[0]]
+		var names = []
+		for code in codes:
+			names.append(tr(Traitdata.traits[code].name))
+		$VBoxContainer/trait/Label.text = PoolStringArray(names).join(", ")
 		if trdata.has('icon') and trdata.icon != null:
 			if trdata.icon is String:
 				$VBoxContainer/trait/icon.texture = load(trdata.icon)

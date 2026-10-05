@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://assets/Textures_v2/slave_quests/rank_B.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/slave_quests/rank_A.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/slave_quests/rank_S.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/icon hero/icon_hero_unactive.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/icon hero/icon_hero_hover.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/icon hero/icon_hero_active.png" type="Texture" id=29]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.042, 0.044, 0.038, 1 )
@@ -118,6 +121,30 @@ font_data = ExtResource( 1 )
 size = 14
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 27 )
+region_rect = Rect2( 0, 0, 35, 35 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 28 )
+region_rect = Rect2( 0, 0, 35, 35 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=28]
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 35, 35 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
 
 [node name="SlaveQuestModule" type="Panel"]
 margin_right = 1560.0
@@ -818,6 +845,17 @@ margin_bottom = 47.0
 mouse_filter = 2
 expand = true
 stretch_mode = 5
+
+[node name="PortraitFrame" type="Button" parent="CandidatesScroll/Candidates/Candidate"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 49.0
+margin_bottom = 49.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 27 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/normal = SubResource( 26 )
 
 [node name="Name" type="Label" parent="CandidatesScroll/Candidates/Candidate"]
 margin_left = 57.0

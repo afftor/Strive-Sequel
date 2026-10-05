@@ -252,16 +252,16 @@ mouse_filter = 0
 
 [node name="TokenIcon" type="TextureRect" parent="TokenBox"]
 margin_left = 8.0
-margin_top = 17.0
-margin_right = 48.0
-margin_bottom = 57.0
+margin_top = 6.0
+margin_right = 72.0
+margin_bottom = 70.0
 mouse_filter = 2
 expand = true
 stretch_mode = 5
 
 
 [node name="Tokens" type="Label" parent="TokenBox"]
-margin_left = 63.0
+margin_left = 86.0
 margin_top = 24.0
 margin_right = 470.0
 margin_bottom = 69.0
@@ -287,7 +287,7 @@ text = "-12"
 valign = 1
 
 [node name="Caption" type="Label" parent="TokenBox"]
-margin_left = 63.0
+margin_left = 86.0
 margin_top = 0.0
 margin_right = 470.0
 margin_bottom = 26.0
@@ -311,10 +311,10 @@ autowrap = true
 
 
 [node name="Help" type="TextureRect" parent="."]
-margin_left = 1476.0
-margin_top = 143.0
-margin_right = 1500.0
-margin_bottom = 167.0
+margin_left = 1470.0
+margin_top = 137.0
+margin_right = 1506.0
+margin_bottom = 173.0
 mouse_filter = 0
 expand = true
 stretch_mode = 5

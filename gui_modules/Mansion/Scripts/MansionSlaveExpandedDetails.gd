@@ -74,7 +74,7 @@ onready var StatRows = $Sections/Overview/Left/BaseStats/Content/Rows
 onready var CharacterRows = $Sections/Overview/Right/CharacterInfo/Content/Rows
 onready var Relationships = $Sections/Overview/Right/Relationships
 onready var Equipment = $Sections/Equipment/Content/Scroll/Items
-onready var Traits = $Sections/Traits/Content/Scroll/Items
+onready var TraitCategories = $Sections/Traits/Scroll/Categories
 onready var Buffs = $Sections/Buffs/Content/Scroll/Items
 onready var CombatStatItems = $Sections/CombatStats/Content/Stats/Items
 onready var ResistItems = $Sections/CombatStats/Content/Resists/Items
@@ -189,9 +189,9 @@ func _setup_overview_row(row, code, value, factor):
 	globals.connecttexttooltip(row, tooltip)
 
 
-#A factor reads as a digit or as a word, and the two want very different room: "6"
-#sits large over the medallion, while "Excellent" needs the whole width of the cell
-#in a small face. One label cannot be both, so the row carries two and shows one.
+#A factor reads as a digit or as a word under the medallion, and the two want different
+#faces: a bold "6" is enough as it is, while "Excellent" needs the whole width of the
+#cell in a small face. One label cannot be both, so the row carries two and shows one.
 #
 #The cell is 66 px wide and the word label 64 of that. Measured in the row's own
 #font, the longest English word only just fits at the template size, and a
@@ -358,12 +358,13 @@ func build_equipment():
 
 func build_traits():
 	if person != null:
-		globals.build_traitlist_for_char(person, Traits)
+		globals.build_trait_categories_for_char(person, TraitCategories)
 
 
 func build_buffs():
 	if person != null:
 		globals.build_buffs_for_char(person, Buffs, "mansion")
+		globals.add_uncategorized_traits_to_buffs(person, Buffs)
 
 
 func build_combat_stats():

@@ -30,6 +30,9 @@ var days_from_last_church_quest = 0
 var spouse = null
 var marriage_completed = false
 
+#uniques met before faiths existed got theirs (globals.repair_unique_faiths)
+var unique_faiths_set = false
+
 
 var work_quests_finished = []
 
@@ -166,7 +169,13 @@ func fix_serialization():
 			if line.begins_with("MARRIAGE"):
 				print("removed dialogue: " + line)
 				selected_dialogues.erase(line)
-	
+
+	#Grasha took Kurdan's place, and the mines scenes now read her decision names
+	var renamed_decisions = {KurdanRecruited = 'GrashaRecruited', KurdanFollowing = 'GrashaFollowing', KurdanKnightPaladinRoute = 'GrashaKnightPaladinRoute', kurdan_recruited = 'grasha_recruited'}
+	for old_code in renamed_decisions:
+		if decisions.has(old_code):
+			decisions.erase(old_code)
+			input_handler.append_not_duplicate(decisions, renamed_decisions[old_code])
 
 	if !seen_events.has("kuro3_init_1") && !timed_event_exists("kuro3_init_1") && completed_quests.has('kuro_errand_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]}])

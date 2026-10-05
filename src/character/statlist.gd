@@ -104,6 +104,8 @@ var template_direct = {
 	body_lower = '',
 	body_shape = 'humanoid',
 	skin_coverage = '',
+	freckles = false,
+	muscular = false,
 	facial_hair = '',
 	#new ones - eyeshape, nose and lips are in sex_binded_exterior
 	
@@ -274,7 +276,11 @@ var template_dynamic = {
 	sex_stamina = 0,
 	#
 	trainee_amount = 0,
-	
+	trait_slots_physical = 1,
+	trait_slots_mental = 1,
+	trait_slots_magic = 1,
+	trait_slots_religious = 1,
+
 	lusttick = variables.basic_lust_per_tick,
 	hpmax = variables.basic_max_hp,
 	mpmax = 50,
@@ -415,6 +421,8 @@ var resists = {
 	resist_blind = 0.0,
 	resist_shred = 0.0,
 	resist_shatter = 0.0,
+	resist_knock_prone = 0.0,
+	resist_ensnare = 0.0,
 }
 var damage_mods = { 
 	damage_mod_all = 1.0,

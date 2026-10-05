@@ -57,10 +57,23 @@ var list = {
 		vars = {
 			var_lost_money = 20,
 			var_lost_loyalty = 10,
-			var_lost_wits = 5
+			var_lost_wits = 5,
+			var_lost_nose_exp = 25
 		}
 	},
 	char_rnd_unwell = {
+		#a body this robust does not fall ill
+		special_reqs = {
+			char_reqs = [
+				{code = 'trait', trait = 'lively', check = false},
+				{code = 'trait', trait = 'healthy', check = false},
+				{code = 'trait', trait = 'fast_healer', check = false},
+				{code = 'trait', trait = 'troll_blood_1', check = false},
+				{code = 'trait', trait = 'troll_blood_2', check = false},
+				{code = 'trait', trait = 'troll_blood_3', check = false},
+				{code = 'trait', trait = 'undead', check = false},
+			]
+		},
 		vars = {
 			var_unwell_exp = 30,
 			var_unwell_charm = 5,
@@ -218,6 +231,11 @@ var list = {
 					code = 'slave_type',
 					operant = 'neq',
 					value = 'slave_trained'
+				},
+				#only someone who follows a god prays
+				{
+					code = 'has_faith',
+					check = true
 				}
 			]
 		},
@@ -266,7 +284,8 @@ var list = {
 			var_brokenvase_exp_replace = 25,
 			var_brokenvase_money = 30,
 			var_brokenvase_exp_punish = 20,
-			var_brokenvase_duration = 1
+			var_brokenvase_duration = 1,
+			var_brokenvase_exp_handy = 35
 		}
 	},
 	char_rnd_hunt_offering = {

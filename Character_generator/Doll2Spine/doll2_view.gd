@@ -44,6 +44,8 @@ const STATS = [
 	"hair_base_length", "hair_back_length", "hair_assist_length",
 	# the two piercings the customize menu offers once there is skin to see them on
 	"piercing_nipples", "piercing_navel",
+	# a yes or no each: the freckles the face wears and the muscle overlays
+	"freckles", "muscular",
 	# the crotch tattoo the doll draws, and which drawing it is
 	"tattoo_crotch", "tattoo_crotch_style",
 ]
@@ -1689,6 +1691,8 @@ func _apply():
 	# multiply, so a tall character with a big head is still small-headed for their
 	# height.
 	model.proportions["head_size"] = MODIFIERS.step_factor("head_size", stats.get("head_size", ""))
+	# the muscle overlays are drawn or not at all; the rig they are cut for is the female one
+	model.proportions["muscle_alpha"] = 100.0 if bool(stats.get("muscular", false)) else 0.0
 	_apply_colours()
 	model._rebuild_model()
 	_apply_coverage()

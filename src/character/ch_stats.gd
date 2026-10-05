@@ -93,6 +93,12 @@ func fix_serialize():
 		if Traitdata.sex_traits.has(tr): 
 			continue
 		unlocked_sex_traits.erase(tr)
+	for tr in unlocked_sex_traits:
+		remove_conflicting_dislikes(tr)
+	for tr in sex_traits.keys():
+		if sex_traits.has(tr):
+			for other in Traitdata.get_sex_trait_conflicts(tr):
+				sex_traits.erase(other)
 	for st in ['personality_bold', 'personality_kind',]:
 		statlist[st] = int(statlist[st])
 	statlist.consent = min(get_stat('consent'), 6)
@@ -703,6 +709,8 @@ func update_relationship_stat(stat, value, operant):
 	if stat == 'respect' and parent.get_ref().get_stat('unique') == 'zephyra':
 		min_value = 80
 	statlist[stat] = clamp(result, min_value, 100)
+	if parent.get_ref().is_in_game_party():
+		parent.get_ref().dyn_stats.check_bond_shift()
 
 
 func update_personality(value, operant = 'set'):
@@ -1639,8 +1647,13 @@ func add_sex_trait(code, known = false):
 		return
 	var trait = Traitdata.sex_traits[code]
 	if trait.negative == true:
+		if !get_conflicting_sex_traits(code).empty():
+			return
 		negative_sex_traits[code] = known
 	else:
+		remove_conflicting_dislikes(code)
+		for tr in Traitdata.get_sex_trait_conflicts(code):
+			sex_traits.erase(tr)
 		if !unlocked_sex_traits.has(code):
 			unlocked_sex_traits.push_back(code)
 		if !sex_traits.has(code):
@@ -1658,9 +1671,28 @@ func remove_sex_trait(code, absolute = true):
 
 
 func unlock_sex_trait(code):
-	if parent.get_ref().has_status("no_sex_traits"): 
-		return
+	if parent.get_ref().has_status("no_sex_traits"):
+		return []
 	unlocked_sex_traits.push_back(code)
+	return remove_conflicting_dislikes(code)
+
+
+func get_conflicting_sex_traits(code):
+	var res = []
+	for tr in Traitdata.get_sex_trait_conflicts(code):
+		if negative_sex_traits.has(tr) or sex_traits.has(tr) or unlocked_sex_traits.has(tr):
+			res.append(tr)
+	return res
+
+
+#a liking overcomes the dislikes it contradicts
+func remove_conflicting_dislikes(code):
+	var removed = []
+	for tr in Traitdata.get_sex_trait_conflicts(code):
+		if negative_sex_traits.has(tr):
+			negative_sex_traits.erase(tr)
+			removed.append(tr)
+	return removed
 
 
 func create_s_trait_select(trait_id):
@@ -1775,7 +1807,7 @@ func generate_random_character_from_data(adjust_difficulty = 0):
 	traitarray.clear()
 	rolls = 1
 	for i in Traitdata.sex_traits.values():
-		if i.negative == false && i.random_generation == true && parent.get_ref().checkreqs(i.acquire_reqs) == true:
+		if i.negative == false && i.random_generation == true && parent.get_ref().checkreqs(i.acquire_reqs) == true && get_conflicting_sex_traits(i.code).empty():
 			traitarray.append(i)
 	while rolls > 0:
 		var newtrait = input_handler.random_from_array(traitarray)
@@ -1790,6 +1822,10 @@ func generate_random_character_from_data(adjust_difficulty = 0):
 		if randf() >= 0.7:
 			update_stat(array, globals.rng.randi_range(1,15), 'add')
 		difficulty -= 1
+
+	#one face in twenty is freckled; a unique is built from their own data and never rolls here
+	if randf() < 0.05:
+		update_stat('freckles', true, 'set')
 
 
 func generate_simple_fighter(data):

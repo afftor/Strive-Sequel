@@ -15,7 +15,7 @@ var loyalty = 0
 var training_points = 0
 var training_metrics = {}
 var days_since_training = 0
-var resist_fail_counter = 0
+var failed_sessions = 0
 var acquired_turn = -1 #absolute turn the character joined the party, -1 for old saves
 
 var stored_reqs = {}
@@ -66,11 +66,14 @@ func get_loyalty_decay_grace():
 func get_loyalty_decay_amount():
 	return 10 + 2 * parent.get_ref().get_stat('authority_factor')
 
-#The habit this character would be worked on next: the first they have. One at a time, so the
-#room needs no list and the player no second choice.
+#The habit this character would be worked on next: the first one they can lose and know about. One at
+#a time, so the room needs no list and the player no second choice. Only habits of the mind are drilled out.
 func first_negative_trait():
-	var found = parent.get_ref().get_traits_by_tag('negative')
-	return found[0] if !found.empty() else null
+	var person = parent.get_ref()
+	for code in person.get_traits_by_tag('negative'):
+		if person.get_trait_category(code) == 'mental' and !person.is_trait_locked(code) and !person.is_trait_hidden(code):
+			return code
+	return null
 
 
 func get_trait_correction(code):
@@ -89,7 +92,7 @@ func clear_trait_correction(code):
 
 
 func get_training_points_cap():
-	return 50 + 10 * parent.get_ref().get_stat('tame_factor')
+	return 40 + 10 * parent.get_ref().get_stat('tame_factor')
 
 func is_broke_in():
 	return parent.get_ref().check_trait('training_broke_in')
@@ -227,7 +230,7 @@ func reset_training():
 	loyalty = 0
 	training_points = 0
 	days_since_training = 0
-	resist_fail_counter = 0
+	failed_sessions = 0
 	enable = true
 	training_metrics.clear()
 	
@@ -397,8 +400,11 @@ func apply_training(code):
 	if !Skilldata.training_actions.has(code):
 		print("no training data %s" % code)
 		return
-	
+	if ch_trainer.get_vow_ban('training', code) != '':
+		return
+
 	var effect_text = ""
+	var status_before = parent.get_ref().dyn_stats.get_bondage_status()
 	var result_tags = []
 	var data = Skilldata.training_actions[code]
 	var cat = data.type
@@ -447,14 +453,8 @@ func apply_training(code):
 	if !is_broke_in() and code != 'mindread' and result in ['success', 'crit_success']:
 		parent.get_ref().add_trait('training_broke_in')
 		effect_text += "{color=yellow|" + (tr('TRAININGBROKENINANNOUNCE') % parent.get_ref().get_short_name()) + "}\n"
-	if result in ['fail', 'resist']:
-		resist_fail_counter += 1
-		if resist_fail_counter >= parent.get_ref().get_stat('tame_factor') + 2:
-			resist_fail_counter = 0
-			var neg_trait = parent.get_ref().get_random_trait_tag('negative')
-			parent.get_ref().add_trait(neg_trait)
-			if neg_trait != null:
-				effect_text += "{color=red|" + (tr('TRAININGNEGATIVETRAITGAINED') % [parent.get_ref().get_short_name(), tr(Traitdata.traits[neg_trait].name)]) + "}\n"
+	if result in ['fail', 'resist'] and code != 'mindread':
+		failed_sessions += 1
 	var result_data = variables.training_results_base[result].duplicate(true)
 	for st in result_data:
 		if result_data[st] is Array:
@@ -517,6 +517,8 @@ func apply_training(code):
 			result_data.loyalty = 0
 	if result_data.training_points != 0:
 		result_data.training_points += parent.get_ref().get_stat('training_points_bonus')
+		if ch_trainer.is_master():
+			result_data.training_points += parent.get_ref().get_trait_sum('master_training_points')
 		result_data.training_points += result_data.training_points * ch_trainer.get_stat('trainer_training_points_bonus')
 		if result_data.training_points < 0:
 			result_data.training_points = 0
@@ -602,7 +604,7 @@ func apply_training(code):
 		if trainer_is_master:
 			affection_delta += globals.rng.randi_range(5, 10)
 		else:
-			ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, globals.rng.randi_range(5, 8))
+			ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, ch_trainer.id, globals.rng.randi_range(5, 8))
 	if cat in ['physical', 'humiliation', 'sexual', 'social']:
 		if result in ['success', 'crit_success']:
 			var respect_gain = globals.rng.randi_range(3, 6)
@@ -616,6 +618,10 @@ func apply_training(code):
 		parent.get_ref().add_stat('affection', affection_delta)
 		var affection_sign = "+" if affection_delta > 0 else "-"
 		effect_text += statdata.statdata.affection.name + " " + affection_sign + " " + str(abs(affection_delta)) + "\n"
+	parent.get_ref().dyn_stats.bondage_after_training(failed_sessions)
+	var status_now = parent.get_ref().dyn_stats.get_bondage_status()
+	if status_now != status_before and status_now != '':
+		effect_text += "{color=yellow|%s}\n" % parent.get_ref().translate(tr("TRAINING_STATUS_CHANGED")).replace("{new}", tr(Traitdata.traits[status_now].name))
 
 	if data.has('disposition_affects'):
 		for tag in data.disposition_affects:

@@ -467,7 +467,30 @@ func sell_char(ch_id):
 	input_handler.emit_signal("LocationSlavesUpdate")
 
 
+var pending_enslave = null
+
 func enslave_char(ch_id):
+	var question = globals.noble_loss_question(characters_pool.get_char_by_id(ch_id))
+	if question != '':
+		pending_enslave = ch_id
+		hide_slave_tooltip()
+		input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, 'confirm_enslave', 'cancel_enslave', question])
+		return
+	do_enslave_char(ch_id)
+
+
+func confirm_enslave():
+	var ch_id = pending_enslave
+	pending_enslave = null
+	if ch_id != null:
+		do_enslave_char(ch_id)
+
+
+func cancel_enslave():
+	pending_enslave = null
+
+
+func do_enslave_char(ch_id):
 	var location = get_location()
 	var enslaved = false
 	if location.captured_characters.has(ch_id):

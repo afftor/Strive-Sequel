@@ -324,7 +324,7 @@ var scenedict = {
 		text = 'DIALOGUECHESTLOCKPICKGASFAILURE',
 		tags = ['active_character_translate'],
 		image = 'chest',
-		bonus_effects = [{code = "affect_active_character", type = 'damage_percent', value = 25},{code = "affect_active_character", type = 'damage_mana_percent', value = 75}],
+		bonus_effects = [{code = "affect_active_character", type = 'damage_percent', value = 25},{code = "affect_active_character", type = 'damage_mana_percent', value = 0.75}],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
@@ -1013,6 +1013,64 @@ var scenedict = {
 	majorus_potion_penis = {text = tr("DIALOGUEMAJORUSPOTPENIS"), image = 'potmaj', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	majorus_potion_balls = {text = tr("DIALOGUEMAJORUSPOTBALLS"), image = 'potmaj', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	potion_no_effect = {text = tr("DIALOGUEPOTIONNOEFFECT"), image = 'potmaj', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+
+	#Genitalia Manipulation, the succubus skill: every option lands in custom_effects.genitalia_*
+	genitalia_manipulation_select = {text = tr("DIALOGUEGM_SELECT"),
+	tags = ['custom_effect','active_character_translate'],
+	image = 'seduce',
+	options = [
+	{code = 'genitalia_grow_small', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'eq', value = ''}]}], text = tr("DIALOGUEGM_GROW_SMALL")},
+	{code = 'genitalia_grow_average', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'eq', value = ''}]}], text = tr("DIALOGUEGM_GROW_AVERAGE")},
+	{code = 'genitalia_grow_big', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'eq', value = ''}]}], text = tr("DIALOGUEGM_GROW_BIG")},
+	{code = 'genitalia_cock_menu', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEGM_COCK_MENU")},
+	{code = 'genitalia_testicles_menu', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEGM_TESTICLES_MENU")},
+	{code = 'genitalia_absorb_cock', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEGM_ABSORB_COCK")},
+	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+	]
+	},
+	genitalia_manipulation_testicles_ask = {text = tr("DIALOGUEGM_TESTICLES_ASK"),
+	tags = ['custom_effect','active_character_translate'],
+	image = 'seduce',
+	options = [
+	{code = 'genitalia_with_testicles', reqs = [], text = tr("DIALOGUEGM_WITH_TESTICLES")},
+	{code = 'genitalia_without_testicles', reqs = [], text = tr("DIALOGUEGM_WITHOUT_TESTICLES")},
+	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+	]
+	},
+	genitalia_manipulation_testicles_pick = {text = tr("DIALOGUEGM_TESTICLES_PICK"),
+	tags = ['custom_effect','active_character_translate'],
+	image = 'seduce',
+	options = [
+	{code = 'genitalia_testicles_small', reqs = [], text = tr("DIALOGUEGM_TESTICLES_SMALL")},
+	{code = 'genitalia_testicles_average', reqs = [], text = tr("DIALOGUEGM_TESTICLES_AVERAGE")},
+	{code = 'genitalia_testicles_big', reqs = [], text = tr("DIALOGUEGM_TESTICLES_BIG")},
+	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+	]
+	},
+	genitalia_manipulation_cock_size = {text = tr("DIALOGUEGM_COCK_SIZE"),
+	tags = ['custom_effect','active_character_translate'],
+	image = 'seduce',
+	options = [
+	{code = 'genitalia_cock_small', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = 'small'}]}], text = tr("DIALOGUEGM_MAKE_SMALL")},
+	{code = 'genitalia_cock_average', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = 'average'}]}], text = tr("DIALOGUEGM_MAKE_AVERAGE")},
+	{code = 'genitalia_cock_big', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = 'big'}]}], text = tr("DIALOGUEGM_MAKE_BIG")},
+	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+	]
+	},
+	genitalia_manipulation_testicles = {text = tr("DIALOGUEGM_TESTICLES"),
+	tags = ['custom_effect','active_character_translate'],
+	image = 'seduce',
+	options = [
+	{code = 'genitalia_testicles_small', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'eq', value = ''}]}], text = tr("DIALOGUEGM_GROW_TESTICLES_SMALL")},
+	{code = 'genitalia_testicles_average', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'eq', value = ''}]}], text = tr("DIALOGUEGM_GROW_TESTICLES_AVERAGE")},
+	{code = 'genitalia_testicles_big', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'eq', value = ''}]}], text = tr("DIALOGUEGM_GROW_TESTICLES_BIG")},
+	{code = 'genitalia_testicles_small', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}, {code = 'bodypart', part = 'balls_size', operant = 'neq', value = 'small'}]}], text = tr("DIALOGUEGM_MAKE_TESTICLES_SMALL")},
+	{code = 'genitalia_testicles_average', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}, {code = 'bodypart', part = 'balls_size', operant = 'neq', value = 'average'}]}], text = tr("DIALOGUEGM_MAKE_TESTICLES_AVERAGE")},
+	{code = 'genitalia_testicles_big', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}, {code = 'bodypart', part = 'balls_size', operant = 'neq', value = 'big'}]}], text = tr("DIALOGUEGM_MAKE_TESTICLES_BIG")},
+	{code = 'genitalia_absorb_testicles', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEGM_ABSORB_TESTICLES")},
+	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+	]
+	},
 
 	writ_of_exemption = {
 		text = tr("DIALOGUEWRIT_CONFIRM"),
@@ -1789,7 +1847,7 @@ var scenedict = {
 #		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 #	},
 	hybris_character_convert = {
-		text = tr("HYBRIS_ALTAR_CHAR_RESULT2"),
+		text = tr("HYBRIS_ALTAR_CHAR_RESULT1"),
 		tags = ['active_character_translate'],
 		image = 'mindcontrol',
 		common_effects = [
@@ -1797,6 +1855,98 @@ var scenedict = {
 			{code = 'clear_subroom'},
 			{code = 'try_breakdown_scene_characters', value = 'brk_shrine_enslave'}
 			],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	#The strange ring in the floor: two events that look the same until someone steps in. The dungeon room
+	#rolls which one it holds - this quiet spot to meditate, or power_place_spot.
+	meditation_spot = {
+		text = tr("STRANGE_SPOT"),
+		tags = [],
+		image = 'spring',
+		options = [
+		{code = 'meditation_shrine_approach', select_person = true, reqs = [], text = tr("STRANGE_SPOT_STEP")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	power_place_spot = {
+		text = tr("STRANGE_SPOT"),
+		tags = [],
+		image = 'spring',
+		options = [
+		{code = 'power_shrine_approach', select_person = true, reqs = [], text = tr("STRANGE_SPOT_STEP")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	#'shrine' in the code keeps the pick to the fighting party (get_option_reqs_and_challenge)
+	power_shrine_approach = {
+		text = tr("POWER_PLACE"),
+		tags = ['shrine','active_character_translate'],
+		shrine = 'power_place',
+		image = 'energy',
+		options = []
+	},
+	meditation_shrine_approach = {
+		text = tr("MEDITATION_SPOT_PERSON"),
+		tags = ['shrine','active_character_translate'],
+		shrine = 'meditation',
+		image = 'spring',
+		options = [
+		{code = 'meditation_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	meditation_faith_accept = {
+		text = tr("MEDITATION_ACCEPTED"),
+		tags = ['active_character_translate'],
+		image = 'spring',
+		common_effects = [{code = 'clear_subroom'}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	meditation_faith_decline = {
+		text = tr("MEDITATION_DECLINED"),
+		tags = ['active_character_translate'],
+		image = 'spring',
+		common_effects = [{code = 'clear_subroom'}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	meditation_converted = {
+		text = tr("MEDITATION_CONVERTED"),
+		tags = ['active_character_translate'],
+		image = 'spring',
+		common_effects = [{code = 'clear_subroom'}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	meditation_deepened = {
+		text = tr("MEDITATION_DEEPEN"),
+		tags = ['active_character_translate'],
+		image = 'spring',
+		common_effects = [{code = 'clear_subroom'}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	#the place of power's reward when the player chose (Enemydata.power_place_reward); the room is already spent
+	power_place_gift = {
+		text = tr("POWER_PLACE_GIFT"),
+		tags = ['active_character_translate'],
+		image = 'energy_control',
+		common_effects = [{code = 'update_party'}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	power_place_exp = {
+		text = tr("POWER_PLACE_EXP_TAKEN"),
+		tags = ['active_character_translate'],
+		image = 'energy_control',
+		common_effects = [{code = 'update_party'}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	power_place_purged = {
+		text = tr("POWER_PLACE_PURGED"),
+		tags = ['active_character_translate'],
+		image = 'energy_control',
+		common_effects = [{code = 'update_party'}],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
@@ -1919,7 +2069,7 @@ var scenedict = {
 		text = tr("FOUNTAIN_MANA"),
 		tags = [],
 		image = 'spring',
-		bonus_effects = [{code = 'affect_active_party', type = 'damage_mana_percent', value = -40}],
+		bonus_effects = [{code = 'affect_active_party', type = 'damage_mana_percent', value = -0.4}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'clear_subroom'}]}
 		],
@@ -3227,6 +3377,22 @@ var quests = {
 			stage6 = {code = 'stage6', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_6"},
 		},
 		achi_bonus = "heleviel_start",
+	},
+	grasha_old_crew = {
+		code = 'grasha_old_crew',
+		summary = "GRASHA_OLD_CREW_QUEST_SUMMARY",
+		stages = {
+			start = {code = 'start', name = 'GRASHA_OLD_CREW_QUEST_NAME', descript = 'GRASHA_OLD_CREW_QUEST_STAGE_START'},
+		},
+	},
+	grasha_amulet = {
+		code = 'grasha_amulet',
+		summary = "GRASHA_AMULET_QUEST_SUMMARY",
+		stages = {
+			find_kargan = {code = 'find_kargan', name = 'GRASHA_AMULET_QUEST_NAME', descript = 'GRASHA_AMULET_QUEST_STAGE_FIND_KARGAN'},
+			retrieve_chronicle = {code = 'retrieve_chronicle', name = 'GRASHA_AMULET_QUEST_NAME', descript = 'GRASHA_AMULET_QUEST_STAGE_RETRIEVE_CHRONICLE'},
+			return_book = {code = 'return_book', name = 'GRASHA_AMULET_QUEST_NAME', descript = 'GRASHA_AMULET_QUEST_STAGE_RETURN_BOOK'},
+		},
 	},
 }
 

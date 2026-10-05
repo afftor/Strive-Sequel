@@ -3018,10 +3018,7 @@ func make_item(temp, character):
 			globals.AddItemToInventory(true_item)
 	#Not a row of its own: the turn's crafting is one report and this is a line behind its fold.
 	#See globals.mansion_activity_craft().
-	globals.mansion_activity_craft(character, tr("MANSION_ACTIVITY_CRAFT_COMPLETE") % [
-		character.get_short_name(),
-		globals.colorize_item_quality(product_name, product_quality),
-	])
+	globals.mansion_activity_craft(character, product_name, product_quality)
 	var product_icon = Items.materiallist[recipe.resultitem].icon if recipe.resultitemtype == 'material' else Items.itemlist[recipe.resultitem].icon
 	globals.emit_signal("work_produced", character.id, temp, product_icon)
 

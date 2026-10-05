@@ -2389,7 +2389,7 @@ func get_template(id, caster):
 	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
 		tres.reqs_text = caster.decipher_reqs(tres.reqs, true)
 		tres.descript += '\n\n' + tres.reqs_text
-	if tres.has('combatcooldown') and tres.combatcooldown > 1 and caster.get_stat('personality') == 'serious':
+	if tres.has('combatcooldown') and tres.combatcooldown > 1 and caster.has_status('short_cooldowns'):
 		tres.combatcooldown -= 1
 	return tres
 
@@ -2445,7 +2445,7 @@ func get_template_combat(id, caster):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
 	if tres.has('reqs') and !caster.checkreqs(tres.reqs):
 		tres.descript += '\n\n' + caster.decipher_reqs(tres.reqs, true)
-	if tres.has('combatcooldown') and tres.combatcooldown > 1 and caster.get_stat('personality') == 'serious':
+	if tres.has('combatcooldown') and tres.combatcooldown > 1 and caster.has_status('short_cooldowns'):
 		tres.combatcooldown -= 1
 	return tres
 

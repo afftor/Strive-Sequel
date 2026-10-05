@@ -115,119 +115,133 @@ var data = {
 	},
 	
 	half_dungeon_explored_start = {
-		image = null, character = "$kurdan", tags = ['dialogue_scene'],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_START", reqs = []} ],
+		image = null, character = "$grasha", tags = ['dialogue_scene'],
+		text = [ {text = "GRASHA_MINES_START", reqs = []} ],
 		options = [ {
-			code = 'half_dungeon_explored_1',
+			code = 'grasha_mines_introduction',
 			text = "HALF_DUNGEON_EXPLORED_OPTION_1", reqs = [], dialogue_argument = 1
 		}, {
-			code = 'half_dungeon_explored_1',
+			code = 'grasha_mines_introduction',
 			text = "HALF_DUNGEON_EXPLORED_OPTION_2", reqs = [], dialogue_argument = 2
 		}
 		],
 	},
-	
-	half_dungeon_explored_1 = {
-		image = null, character = "$kurdan", tags = ['dialogue_scene'],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_1", reqs = []} ],
+
+	grasha_mines_introduction = {
+		image = null, character = "$grasha", tags = ['dialogue_scene'],
+		text = [ {text = "GRASHA_MINES_INTRODUCTION", reqs = []} ],
 		options = [ {
-			code = 'half_dungeon_explored_2',
+			code = 'grasha_mines_orc_magic',
 			text = "HALF_DUNGEON_EXPLORED_OPTION_3", reqs = [], dialogue_argument = 3
-			}, {
-			code = 'half_dungeon_explored_3',
+		}, {
+			code = 'grasha_mines_amulet_question',
+			text = "GRASHA_MINES_OPTION_LETTER", reqs = [], dialogue_argument = 4
+		}, {
+			code = 'grasha_mines_no_answer',
 			text = "HALF_DUNGEON_EXPLORED_OPTION_5", reqs = [], dialogue_argument = 5
 		}
 		],
 	},
-	
-	half_dungeon_explored_2 = {
-		image = null, character = "$kurdan", tags = ['dialogue_scene'],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_2", reqs = [], previous_dialogue_option = 3},
-		{text = "HALF_DUNGEON_EXPLORED_3", reqs = [], previous_dialogue_option = 4},
-		],
+
+	grasha_mines_orc_magic = {
+		image = null, character = "$grasha", tags = ['dialogue_scene'],
+		text = [ {text = "GRASHA_MINES_ORC_MAGIC", reqs = []} ],
 		options = [ {
-			code = 'half_dungeon_explored_2',
-			text = "HALF_DUNGEON_EXPLORED_OPTION_3", reqs = [], dialogue_argument = 3
-			}, {
-			code = 'half_dungeon_explored_2',
-			text = "HALF_DUNGEON_EXPLORED_OPTION_4", reqs = [], dialogue_argument = 4
+			code = 'grasha_mines_amulet_question',
+			text = "GRASHA_MINES_OPTION_LETTER", reqs = [], dialogue_argument = 4
 		}, {
-			code = 'half_dungeon_explored_3',
+			code = 'grasha_mines_no_answer',
 			text = "HALF_DUNGEON_EXPLORED_OPTION_5", reqs = [], dialogue_argument = 5
 		}
 		],
 	},
-	
-	half_dungeon_explored_3 = {
-		image = null, character = "$kurdan", tags = ['dialogue_scene'],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_4", reqs = []} ],
+
+	grasha_mines_amulet_question = {
+		image = null, character = "$grasha", tags = ['dialogue_scene'],
+		text = [ {text = "GRASHA_MINES_AMULET_QUESTION", reqs = []} ],
 		options = [ {
-			code = 'half_dungeon_explored_end_left',
-			text = "HALF_DUNGEON_EXPLORED_OPTION_6", reqs = [], dialogue_argument = 6
-			}, {
-			code = 'half_dungeon_explored_5',
-			text = "HALF_DUNGEON_EXPLORED_OPTION_7", reqs = [], dialogue_argument = 7
+			code = 'grasha_mines_offer',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6
+		} ],
+	},
+
+	grasha_mines_no_answer = {
+		image = null, character = "$grasha", tags = ['dialogue_scene'],
+		text = [ {text = "GRASHA_MINES_NO_ANSWER", reqs = []} ],
+		options = [ {
+			code = 'grasha_mines_offer',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6
+		} ],
+	},
+
+	grasha_mines_offer = {
+		image = null, character = "$grasha", tags = ['dialogue_scene'],
+		text = [ {text = "GRASHA_MINES_OFFER", reqs = []} ],
+		options = [ {
+			code = 'grasha_mines_leave',
+			text = "GRASHA_MINES_OPTION_LEAVE", reqs = [], dialogue_argument = 7
 		}, {
-			code = 'half_dungeon_explored_end_follow',
-			text = "HALF_DUNGEON_EXPLORED_OPTION_8", reqs = [], dialogue_argument = 8
+			code = 'grasha_mines_mansion_offer',
+			text = "GRASHA_MINES_OPTION_MANSION", reqs = [], dialogue_argument = 8
+		}, {
+			code = 'grasha_mines_follow',
+			text = "GRASHA_MINES_OPTION_FOLLOW", reqs = [], dialogue_argument = 9
 		}
 		],
 	},
-	
-	half_dungeon_explored_end_left = {
-		image = null, character = "$kurdan", tags = ['KurdanLeft'],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_5", reqs = [], previous_dialogue_option = 6}],
+
+	grasha_mines_leave = {
+		image = null, character = "$grasha", tags = [],
+		text = [ {text = "GRASHA_MINES_LEAVE", reqs = []} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = []
 			}
 		],
 	},
-	
-	half_dungeon_explored_5 = {
+
+	grasha_mines_mansion_offer = {
 		variations = [ {
 			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}]}],
-			image = null, character = "$kurdan", tags = ['dialogue_scene'],
-			text = [ {text = "HALF_DUNGEON_EXPLORED_6", reqs = []} ],
+			image = null, character = "$grasha", tags = ['dialogue_scene'],
+			text = [ {text = "GRASHA_MINES_MANSION_OFFER", reqs = []} ],
 			options = [ {
-			code = 'half_dungeon_explored_im_sure',
-			text = "HALF_DUNGEON_EXPLORED_OPTION_9", reqs = [], dialogue_argument = 9
+			code = 'grasha_mines_accept_offer',
+			text = "HALF_DUNGEON_EXPLORED_OPTION_9", reqs = [], dialogue_argument = 10
 			}, {
-			code = 'half_dungeon_explored_3',
-			text = "HALF_DUNGEON_EXPLORED_OPTION_10", reqs = [], dialogue_argument = 10
+			code = 'grasha_mines_offer',
+			text = "HALF_DUNGEON_EXPLORED_OPTION_10", reqs = [], dialogue_argument = 11
 			} ]
 			}, {
 			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'lt', value = 4}]}],
-			image = null, character = "$kurdan", tags = ['dialogue_scene'],
-			text = [ {text = "HALF_DUNGEON_EXPLORED_7", reqs = []} ],
+			image = null, character = "$grasha", tags = ['dialogue_scene'],
+			text = [ {text = "GRASHA_MINES_MANSION_OFFER_FAILURE", reqs = []} ],
 			options = [ {
-				code = 'half_dungeon_explored_end_left',
-				text = "HALF_DUNGEON_EXPLORED_OPTION_6", reqs = [], dialogue_argument = 6
-				}, {
-				code = 'half_dungeon_explored_5',
-				text = "HALF_DUNGEON_EXPLORED_OPTION_7", reqs = [], dialogue_argument = 7
-			}, {
-				code = 'half_dungeon_explored_end_follow',
-				text = "HALF_DUNGEON_EXPLORED_OPTION_8", reqs = [], dialogue_argument = 8
-			} 
-			],
+				code = 'grasha_mines_follow',
+				text = "GRASHA_MINES_OPTION_FOLLOW", reqs = [], dialogue_argument = 9
+			} ],
 			}
 		]
 		},
-		
-	half_dungeon_explored_im_sure = {
-		image = null, character = "$kurdan", tags = [],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_8", reqs = [], previous_dialogue_option = 9, bonus_effects = [{code = 'decision', value = 'KurdanRecruited'}]
-		}],
-		common_effects = [{code = 'make_story_character', value = 'Kurdan', recruit_from_location = true, send_to_mansion = true}],
+
+	grasha_mines_accept_offer = {
+		image = null, character = "$grasha", tags = [],
+		text = [ {text = "GRASHA_MINES_ACCEPT_OFFER", reqs = []} ],
+		common_effects = [
+			{code = 'decision', value = 'GrashaRecruited'},
+			{code = 'make_story_character', value = 'Grasha', recruit_from_location = true, send_to_mansion = true},
+			{code = 'add_timed_event', value = 'grasha_old_crew_rumor', args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
+			{code = 'decision', value = 'GrashaCrewScheduled'},
+		],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = []
 			}
 		],
 	},
-	
-	half_dungeon_explored_end_follow = {
-		image = null, character = "$kurdan", tags = [],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_9", reqs = [], previous_dialogue_option = 8, bonus_effects = [{code = 'decision', value = 'KurdanFollowing'}]}], #Kurdan is following us in the dungeon and will be transformed by demon to fight us
+
+	grasha_mines_follow = {
+		image = null, character = "$grasha", tags = [],
+		text = [ {text = "GRASHA_MINES_FOLLOW", reqs = []} ],
+		common_effects = [{code = 'decision', value = 'GrashaFollowing'}], #she follows into the finale, where the demon takes her over
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = []
 			}

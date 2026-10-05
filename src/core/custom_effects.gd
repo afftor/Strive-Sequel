@@ -284,7 +284,7 @@ func writ_of_exemption_use(): #possibly rework
 #	else:
 #		acceptance_chance = character.get_stat('loyalty')
 #		acceptance_chance = acceptance_chance - acceptance_chance * variables.personality_conversion_rates[character.get_stat('personality')]
-	if acceptance_chance >= randf()*acceptance_req:
+	if acceptance_chance >= randf()*acceptance_req and !character.dyn_stats.leaves_when_freed():
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',{ch = character})
 		character.set_slave_category('servant')
 		character.add_trait('training_s_combat')
@@ -363,6 +363,136 @@ func swap_sex_of(character):
 	#the portrait on file shows the old body, and the booth only shoots by itself someone who never had one
 	input_handler.reshoot_portrait(character)
 	return character.get_stat('sex')
+
+
+#Genitalia Manipulation, the succubus skill. The genitalia_manipulation_* scenes are the menu steps:
+#a woman picks a cock size, then testicles or none and their size; a futa resizes the cock, changes
+#the testicles or absorbs the cock. Only the change itself pays, so Cancel on any step costs nothing.
+const GENITALIA_SKILL = 'genitalia_manipulation'
+var genitalia_person = null
+var genitalia_new_cock = ''
+
+func genitalia_manipulation(character):
+	genitalia_person = character
+	genitalia_new_cock = ''
+	input_handler.active_character = character
+	input_handler.interactive_message("genitalia_manipulation_select", 'custom_effect', {})
+
+func genitalia_grow_small():
+	genitalia_pick_cock('small')
+
+func genitalia_grow_average():
+	genitalia_pick_cock('average')
+
+func genitalia_grow_big():
+	genitalia_pick_cock('big')
+
+func genitalia_pick_cock(size):
+	genitalia_new_cock = size
+	input_handler.interactive_message_follow("genitalia_manipulation_testicles_ask", 'custom_effect', {})
+
+func genitalia_with_testicles():
+	input_handler.interactive_message_follow("genitalia_manipulation_testicles_pick", 'custom_effect', {})
+
+func genitalia_without_testicles():
+	genitalia_grow('')
+
+func genitalia_cock_menu():
+	input_handler.interactive_message_follow("genitalia_manipulation_cock_size", 'custom_effect', {})
+
+func genitalia_testicles_menu():
+	input_handler.interactive_message_follow("genitalia_manipulation_testicles", 'custom_effect', {})
+
+func genitalia_cock_small():
+	genitalia_set_cock('small')
+
+func genitalia_cock_average():
+	genitalia_set_cock('average')
+
+func genitalia_cock_big():
+	genitalia_set_cock('big')
+
+func genitalia_testicles_small():
+	genitalia_set_testicles('small')
+
+func genitalia_testicles_average():
+	genitalia_set_testicles('average')
+
+func genitalia_testicles_big():
+	genitalia_set_testicles('big')
+
+func genitalia_absorb_testicles():
+	genitalia_set_testicles('')
+
+func genitalia_grow(testicles):
+	var character = genitalia_person
+	character.set_stat('sex', 'futa')
+	if str(character.get_stat('penis_type')) in ['', 'Null']:
+		character.set_stat('penis_type', 'human')
+	character.set_stat('penis_size', genitalia_new_cock)
+	character.set_stat('balls_size', testicles)
+	character.set_stat('penis_virgin_lost', null)
+	var keys = ['DIALOGUEGM_GROWN']
+	var lines = [tr('STATSEX') + ": " + tr('BODYPARTSEXFUTA'), genitalia_size_line('STATPENIS_SIZE', genitalia_new_cock)]
+	if testicles != '':
+		keys.append('DIALOGUEGM_GROWN_TESTICLES')
+		lines.append(genitalia_size_line('STATBALLS_SIZE', testicles))
+	genitalia_new_cock = ''
+	genitalia_finish(keys, lines)
+
+func genitalia_set_cock(size):
+	genitalia_person.set_stat('penis_size', size)
+	genitalia_finish(['DIALOGUEGM_COCK_RESIZED'], [genitalia_size_line('STATPENIS_SIZE', size)])
+
+func genitalia_set_testicles(size):
+	#the woman's flow ends on the testicle size, which completes her new cock
+	if genitalia_new_cock != '':
+		genitalia_grow(size)
+		return
+	var key = 'DIALOGUEGM_TESTICLES_RESIZED'
+	if size == '':
+		key = 'DIALOGUEGM_TESTICLES_ABSORBED'
+	elif genitalia_person.get_stat('balls_size') == '':
+		key = 'DIALOGUEGM_TESTICLES_GROWN'
+	genitalia_person.set_stat('balls_size', size)
+	genitalia_finish([key], [genitalia_size_line('STATBALLS_SIZE', size)])
+
+func genitalia_absorb_cock():
+	var character = genitalia_person
+	character.set_stat('sex', 'female')
+	character.set_stat('penis_size', '')
+	character.set_stat('balls_size', '')
+	genitalia_finish(['DIALOGUEGM_COCK_ABSORBED'], [tr('STATSEX') + ": " + tr('BODYPARTSEXFEMALE')])
+
+func genitalia_size_line(stat_key, size):
+	if size == '':
+		return tr(stat_key) + ": " + tr('TOOLTIP_NONE')
+	return tr(stat_key) + ": " + tr('SIZE' + size.to_upper())
+
+func genitalia_finish(text_keys, lines):
+	var character = genitalia_person
+	character.skills.spend_special_skill(GENITALIA_SKILL)
+	character.set_stat('portrait_update', true)
+	input_handler.emit_signal('update_ragdoll')
+	var parts = []
+	for key in text_keys:
+		parts.append(tr(key))
+	var text = PoolStringArray(parts).join(" ") + "\n"
+	for line in lines:
+		text += "\n{color=green|" + line + "}"
+	input_handler.active_character = character
+	input_handler.interactive_message_custom({
+		text = text,
+		image = 'seduce',
+		tags = ['active_character_translate'],
+		options = [{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []}],
+	})
+	input_handler.emit_signal("SpellUsed")
+	input_handler.update_slave_list()
+	if gui_controller.mansion != null:
+		var popup = gui_controller.mansion.get_node_or_null("CharacterTrainingPopup")
+		if popup != null:
+			popup.update()
 	
 
 
@@ -397,8 +527,8 @@ func zephyra_underwear_use():
 	input_handler.interactive_message_follow("zephyra_underwear_use",'custom_effect', {})
 
 
-func trait_removal(character):
-	input_handler.get_spec_node(input_handler.NODE_TRAIREM_PANEL).open(character)
+func trait_transfer(character):
+	input_handler.get_spec_node(input_handler.NODE_TRAIT_TRANSFER).open(character)
 
 
 func pheromones(character):

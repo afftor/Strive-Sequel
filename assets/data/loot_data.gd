@@ -266,6 +266,7 @@ var loot_tables = {
 		{item = 'corruptive_essence', chance = 0.3},
 		{item = 'brooch', chance = 0.2},
 		{item = 'ritual_dagger', chance = 0.25},
+		{item = 'skillbook_forbidden_sun', chance = 0.1},
 		{selector = [
 			{loot_table = "medium_maps", weight = 2},
 			{loot_table = "hard_maps", weight = 3},
@@ -752,9 +753,9 @@ var loot_tables = {
 	]},
 	prod_task_farming_veges = {list = [
 		{material = 'vegetables'},
-		{material = 'cloth', chance = 0.3,
+		{material = 'cloth', chance = 0.6,
 			reqs = [{type = 'has_room_upgrade', name = 'garden', code = 'rich_soil', value = 1}]},
-		{material = 'clothsilk', chance = 0.1,
+		{material = 'clothsilk', chance = 0.3,
 			reqs = [{type = 'has_room_upgrade', name = 'garden', code = 'rich_soil', value = 1}]},
 	]},
 	prod_task_farming_grains = {material = 'grain'},

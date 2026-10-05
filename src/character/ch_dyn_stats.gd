@@ -9,6 +9,8 @@ var damage_mods = Statlist_init.damage_mods.duplicate(true)
 var task_efficiency = Statlist_init.task_efficiency.duplicate(true)
 var task_crit = Statlist_init.task_crit.duplicate(true)
 var traits_stored = {}
+var traits_revealed = {} #hidden traits the player has found out about
+var trait_progress = {} #hours a growing trait has gathered towards its next stage
 var body_upgrades = {}
 var professions = {}
 var masteries = {} #{magic = [], combat = [], universal = [], passive = [], enable = true},
@@ -40,7 +42,11 @@ func deserialize(savedict):
 	body_upgrades = savedict.body_upgrades.duplicate(true)
 	professions = savedict.professions.duplicate(true)
 	masteries = savedict.masteries.duplicate(true)
-	
+	if savedict.has('traits_revealed'):
+		traits_revealed = savedict.traits_revealed.duplicate()
+	if savedict.has('trait_progress'):
+		trait_progress = savedict.trait_progress.duplicate()
+
 	for stat in statlist:
 		if savedict.statlist.has(stat):
 			statlist[stat] = savedict.statlist[stat]
@@ -261,6 +267,16 @@ func process_trait_data(id, timestamp):
 	var traitdata = Traitdata.traits[id]
 	for stat in traitdata.bonusstats:
 		process_bonus_record(stat, traitdata.bonusstats[stat], 'trait', id, timestamp)
+	var daylight = traitdata.get('vows', {}).get('daylight', {})
+	if !daylight.empty() and is_daylight():
+		for stat in daylight:
+			process_bonus_record(stat, daylight[stat], 'trait', id, timestamp)
+	var hours = traitdata.get('daylight', {}) if is_daylight() else traitdata.get('night', {})
+	for stat in hours:
+		process_bonus_record(stat, hours[stat], 'trait', id, timestamp)
+	for skill in traitdata.get('combat_skills', []):
+		if !c_skills_real.has(skill):
+			c_skills_real.push_back(skill)
 	if id != 'core_trait':
 		for eff in traitdata.effects:
 			process_eid_add(eff, timestamp)
@@ -598,10 +614,23 @@ func fix_stat_data(stat, data):
 				if !data.bonuses.has('add_part'):
 					data.bonuses.add_part = []
 				data.bonuses.add_part.push_back({value = 0.1, src_type = 'room', src_value = 'dining_room', timestamp = 0})
+			#read here rather than cached: the master comes and goes without a stat rebuild
+			if stat == 'productivity':
+				var field = 'productivity_with_master' if master_nearby() else 'productivity_without_master'
+				for code in traits_stored:
+					var part = Traitdata.traits[code].get(field, 0.0)
+					if part != 0:
+						if !data.bonuses.has('add_part'):
+							data.bonuses.add_part = []
+						data.bonuses.add_part.push_back({value = part, src_type = 'trait', src_value = code, timestamp = 0})
 		'speed':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			#a second turn slot, the way two-turn bosses have one
+			if has_status('lone_wolf_turn'):
+				data.base_value = statlist.speed.duplicate()
+				data.base_value.push_back(statlist.speed[0])
 		'hitrate':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
@@ -781,12 +810,23 @@ func add_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	rebuild = variables.DYN_STATS_REBUILD
 	traits_stored[tr_code] = get_timestamp()
+	var placeholder = Traitdata.catalogue.defaults.get(trait.get('category', ''), '')
+	if placeholder != '' and placeholder != tr_code:
+		remove_trait(placeholder, true)
 	if trait.has('disposition_change'):
 		parent.get_ref().process_disposition_data(trait.disposition_change)
+	if trait.tags.has('clears_category'):
+		for code in traits_stored.keys():
+			if code != tr_code and get_trait_category(code) == get_trait_category(tr_code):
+				remove_trait(code, true)
 	if tr_code == 'undead':
-		parent.get_ref().add_stat('charm', -100)
-		parent.get_ref().set_work_rule("ration", false)
 		parent.get_ref().set_work_rule("contraceptive", false)
+	#a vow arriving takes the character off work it now forbids (Transcendent at a mine)
+	if trait.has('vows'):
+		var person = parent.get_ref()
+		var work = person.get_work()
+		if work != '' and person.get_vow_ban('task', work) != '':
+			person.remove_from_task()
 	if tr_code == 'master_communicative' and parent.get_ref().is_master():
 		ResourceScripts.game_globals.weekly_dates_left += 2
 		ResourceScripts.game_globals.update_weekly_dates()
@@ -812,12 +852,547 @@ func can_add_trait(tr_code):
 	return true
 
 
-func remove_trait(tr_code):
+func remove_trait(tr_code, forced = false):
 	var trait = Traitdata.traits[tr_code]
-	if !traits_stored.has(tr_code): 
+	if !traits_stored.has(tr_code):
+		return
+	if !forced and trait.tags.has('permanent'):
 		return
 	traits_stored.erase(tr_code)
 	rebuild = variables.DYN_STATS_REBUILD
+	#a trait that brought a slot takes whatever sat in it along (Unnatural Constitution)
+	for key in trait.get('bonusstats', {}):
+		if key.begins_with('trait_slots_'):
+			trim_trait_category(key.trim_prefix('trait_slots_'))
+
+
+#An overfull category loses its newest traits until it fits; locked ones stay put.
+func trim_trait_category(category):
+	while get_free_trait_slots(category) < 0:
+		var newest = ''
+		for code in traits_stored:
+			if get_trait_category(code) != category or is_trait_locked(code):
+				continue
+			if newest == '' or traits_stored[code] > traits_stored[newest]:
+				newest = code
+		if newest == '':
+			return
+		remove_trait(newest)
+
+
+#A trait with a category takes one of that category's slots, trait_slots_<category> of them.
+#Traits brought by a class, race or upgrade fill a slot too, but can no more be given up than permanent ones.
+func get_trait_category(tr_code):
+	if !Traitdata.traits.has(tr_code):
+		return ''
+	return Traitdata.traits[tr_code].get('category', '')
+
+
+func get_category_traits(category):
+	if rebuild < variables.DYN_STATS_PREAREA:
+		generate_data(variables.DYN_STATS_PREAREA)
+	var res = []
+	for tr in traits_real.keys() + traits_2_real.keys():
+		if get_trait_category(tr) == category and !res.has(tr):
+			res.push_back(tr)
+	return res
+
+
+#check_trait reads the cached list, which still holds a trait removed a moment ago
+func owns_trait(tr_code):
+	if rebuild < variables.DYN_STATS_PREAREA:
+		generate_data(variables.DYN_STATS_PREAREA)
+	return traits_real.has(tr_code) or traits_2_real.has(tr_code)
+
+
+func get_free_trait_slots(category):
+	var slots = get_stat_data('trait_slots_' + category, variables.DYN_STATS_PREAREA).result
+	var taken = get_category_traits(category)
+	taken.erase(Traitdata.catalogue.defaults.get(category, ''))
+	return slots - taken.size()
+
+
+#Generation leaves no slot category with a stand-in empty: no faith means Worldly.
+func add_default_traits():
+	for category in Traitdata.catalogue.defaults:
+		if get_category_traits(category).empty():
+			add_trait(Traitdata.catalogue.defaults[category])
+
+
+#A class can bring a trait into a category the stand-in holds; add_trait never sees those.
+func drop_displaced_defaults():
+	for category in Traitdata.catalogue.defaults:
+		var placeholder = Traitdata.catalogue.defaults[category]
+		if traits_stored.has(placeholder) and get_category_traits(category).size() > 1:
+			remove_trait(placeholder, true)
+
+
+#Every vow the character's traits hold, each mapped to the trait that holds it.
+func get_vows():
+	if rebuild < variables.DYN_STATS_PREAREA:
+		generate_data(variables.DYN_STATS_PREAREA)
+	var res = {}
+	for tr in traits_real.keys() + traits_2_real.keys():
+		for vow in Traitdata.traits[tr].get('vows', {}):
+			res[vow] = tr
+	return res
+
+
+#Mae, Kuro and Heleviel believe what their story makes them believe (pregen tag faith_locked): no prayer,
+#meditation or offer changes it, only set_faith() from the story itself.
+func is_category_locked(category):
+	return category == 'religious' and parent.get_ref().tags.has('faith_locked')
+
+
+#Whether prayer, meditation or a companion can still change what this character believes: not when
+#the story holds it, nor over a permanent trait (Airhead, Transcendent).
+func can_change_faith():
+	if is_category_locked('religious'):
+		return false
+	for tr in get_category_traits('religious'):
+		if Traitdata.traits[tr].tags.has('permanent'):
+			return false
+	return true
+
+
+#The story sets what the character believes, past any lock: the religious slot holds tr_code alone.
+func set_faith(tr_code):
+	for code in traits_stored.keys():
+		if code != tr_code and get_trait_category(code) == 'religious':
+			remove_trait(code, true)
+	add_trait(tr_code)
+
+
+#The religious trait that names a god, or '' for no faith (Worldly, Airhead, Mortal Pride, Transcendent).
+func get_faith():
+	for tr in get_category_traits('religious'):
+		if Traitdata.traits[tr].has('faith'):
+			return tr
+	return ''
+
+
+#Every faith held - two with Split Mind.
+func get_faiths():
+	var res = []
+	for tr in get_category_traits('religious'):
+		if Traitdata.traits[tr].has('faith'):
+			res.push_back(tr)
+	return res
+
+
+#The faith held in this god's name, '' for none.
+func get_god_faith(god):
+	for tr in get_faiths():
+		if Traitdata.traits[tr].faith == god:
+			return tr
+	return ''
+
+
+#The tier a held faith rises to next, '' at Adept or when the story holds it.
+func next_faith_tier(tr_code):
+	if tr_code == '' or !traits_stored.has(tr_code) or is_trait_locked(tr_code):
+		return ''
+	var data = Traitdata.traits[tr_code]
+	var next = 'faith_%s_%d' % [data.faith, data.tier + 1]
+	return next if Traitdata.traits.has(next) else ''
+
+
+#Prayer or meditation raises this faith, not whichever religious trait is oldest.
+func deepen_faith(tr_code):
+	var next = next_faith_tier(tr_code)
+	if next == '':
+		return false
+	swap_in_place(tr_code, next, true)
+	return true
+
+
+#Morning and day: the hours a Nixx vow or a trait's 'daylight' weighs on; the rest is 'night'.
+func is_daylight():
+	return ResourceScripts.game_globals != null and ResourceScripts.game_globals.hour <= 2
+
+
+func refresh_daylight_vows():
+	for tr in traits_real.keys() + traits_2_real.keys():
+		var data = Traitdata.traits[tr]
+		if data.get('vows', {}).has('daylight') or data.has('daylight') or data.has('night'):
+			rebuild = variables.DYN_STATS_REBUILD
+			return
+
+
+#The tier a held faith falls to, '' at Follower or when the story holds it.
+func prev_faith_tier(tr_code):
+	if tr_code == '' or !traits_stored.has(tr_code) or is_category_locked('religious'):
+		return ''
+	var data = Traitdata.traits[tr_code]
+	if data.get('tier', 1) <= 1:
+		return ''
+	return 'faith_%s_%d' % [data.faith, data.tier - 1]
+
+
+#Breaking a vow costs a tier; the first tier holds no vows, so it is as low as this goes.
+#A faith the story holds does not drop.
+func demote_faith(tr_code):
+	var prev = prev_faith_tier(tr_code)
+	if prev == '':
+		return false
+	swap_in_place(tr_code, prev, true)
+	return true
+
+
+#The tier this character holds in the god's faith, 0 for none.
+func faith_tier(god):
+	var code = get_god_faith(god)
+	return Traitdata.traits[code].tier if code != '' else 0
+
+
+#A growing trait moves on to its next stage in the slot it already holds - or, with grow.to, turns into that trait.
+func grow_trait(tr_code, log_type = 'work'):
+	var data = Traitdata.traits.get(tr_code, {})
+	if !traits_stored.has(tr_code) or !data.has('grow'):
+		return false
+	var next = data.grow.get('to', '')
+	if next == '':
+		next = '%s_%d' % [data.line, data.stage + 1]
+	trait_progress.erase(tr_code)
+	swap_in_place(tr_code, next, true)
+	var person = parent.get_ref()
+	if person.is_in_game_party():
+		input_handler.update_progress_data('seen_trait_stages', next)
+		globals.mansion_activity_log_add(log_type, person.translate(tr("TRAITGROWN")).replace("{old}", tr(data.name)).replace("{new}", tr(Traitdata.traits[next].name)))
+	return true
+
+
+func traits_growing_by(kind):
+	var res = []
+	for tr in traits_stored:
+		if Traitdata.traits[tr].get('grow', {}).get('by', '') == kind:
+			res.push_back(tr)
+	return res
+
+
+#Growth that waits on the character's own state - a mastery level, a base stat, a faith tier -
+#and the hours put into the job a trait asks for. Run every hour.
+func tick_trait_growth():
+	var task = ResourceScripts.game_res.tasks_progresses.get(parent.get_ref().get_work())
+	for tr in traits_stored.keys():
+		var grow = Traitdata.traits[tr].get('grow', {})
+		match grow.get('by', ''):
+			'work':
+				if task != null and task_mod(task) == grow.mod:
+					trait_progress[tr] = trait_progress.get(tr, 0) + 1
+					if trait_progress[tr] >= grow.days * variables.HoursPerDay:
+						grow_trait(tr)
+	check_trait_growth()
+
+
+#the job modifier a task is worked by; a gathering task saved before it carried one finds it on its template
+func task_mod(task):
+	if task.has('mod'):
+		return task.mod
+	var template = tasks.find_task_for_res(task.get('job', ''))
+	if template == null:
+		return ''
+	return tasks.tasklist[template].get('mod', '')
+
+
+func check_trait_growth():
+	for tr in traits_stored.keys():
+		var grow = Traitdata.traits[tr].get('grow', {})
+		match grow.get('by', ''):
+			'mastery':
+				if get_mastery_level(grow.school) >= grow.level:
+					grow_trait(tr)
+			'stat':
+				if parent.get_ref().get_stat(grow.stat) >= grow.value:
+					grow_trait(tr)
+			'faith':
+				if faith_tier(grow.god) >= grow.tier:
+					grow_trait(tr)
+
+
+#a killing blow in combat: a trait may be waiting on this kind of enemy
+func grow_by_kill(victim):
+	if !(victim is Object) or victim.get('npc_reference') == null:
+		return
+	for tr in traits_growing_by('kill'):
+		if Traitdata.traits[tr].grow.enemies.has(victim.npc_reference):
+			grow_trait(tr)
+
+
+#a grown trait passes on to children as the stage it started from
+func first_stage(tr_code):
+	var data = Traitdata.traits[tr_code]
+	return '%s_1' % data.line if data.has('line') else tr_code
+
+
+func is_trait_locked(tr_code):
+	var tags = Traitdata.traits[tr_code].tags
+	if tags.has('bondage') and parent.get_ref().get_stat('slave_class') in ['slave', 'slave_trained']:
+		return true
+	if is_category_locked(get_trait_category(tr_code)):
+		return true
+	return tags.has('permanent') or !traits_stored.has(tr_code)
+
+
+func is_trait_hidden(tr_code):
+	return Traitdata.traits[tr_code].tags.has('hidden') and !traits_revealed.has(tr_code)
+
+
+func reveal_trait(tr_code):
+	traits_revealed[tr_code] = true
+
+
+func get_replaceable_traits(category):
+	var res = []
+	for tr in get_category_traits(category):
+		if !is_trait_locked(tr):
+			res.push_back(tr)
+	return res
+
+
+#What offer_trait would do, without doing it: 'add', 'replace', 'ask' or 'skip'.
+#Modes: 'ask' puts a full slot to the player, 'force' replaces the oldest trait in the way,
+#'free_only' takes an empty slot or nothing.
+func preview_trait_offer(tr_code, mode = 'ask'):
+	if !Traitdata.traits.has(tr_code) or owns_trait(tr_code):
+		return 'skip'
+	var category = get_trait_category(tr_code)
+	if is_category_locked(category):
+		return 'skip'
+	#a god is followed at one tier only, and Airhead takes up no faith however many slots there are
+	var faith = Traitdata.traits[tr_code].get('faith', '')
+	if faith != '' and (get_god_faith(faith) != '' or has_status('no_faith')):
+		return 'skip'
+	#Undead takes its whole category: it always comes in, and add_trait clears the rest
+	if category == '' or get_free_trait_slots(category) > 0 or Traitdata.traits[tr_code].tags.has('clears_category'):
+		return 'add'
+	if mode == 'free_only' or get_replaceable_traits(category).empty():
+		return 'skip'
+	if mode == 'force':
+		return 'replace'
+	return 'ask'
+
+
+func offer_trait(tr_code, mode = 'ask'):
+	var result = preview_trait_offer(tr_code, mode)
+	match result:
+		'add':
+			add_trait(tr_code)
+		'replace':
+			replace_trait(get_forced_replacement(tr_code), tr_code)
+		'ask':
+			parent.get_ref().ask_trait_replacement(tr_code)
+	return result
+
+
+#The trait a forced offer writes over when its category is full.
+func get_forced_replacement(tr_code):
+	return get_oldest_trait(get_replaceable_traits(get_trait_category(tr_code)))
+
+
+func get_oldest_trait(codes):
+	var res = codes[0]
+	for tr in codes:
+		if traits_stored[tr] < traits_stored[res]:
+			res = tr
+	return res
+
+
+func replace_trait(old_code, new_code):
+	if is_trait_locked(old_code) or owns_trait(new_code):
+		return
+	swap_in_place(old_code, new_code)
+
+
+#The new trait takes the old one's slot age, so trimming an extra slot still finds the trait that came last.
+func swap_in_place(old_code, new_code, forced = false):
+	var stamp = traits_stored.get(old_code)
+	remove_trait(old_code, forced)
+	add_trait(new_code)
+	if stamp != null and traits_stored.has(new_code):
+		traits_stored[new_code] = stamp
+
+
+#Soul stone: the magic traits it can draw out of this character - their own, not locked, not hidden.
+func get_transferable_traits():
+	var res = []
+	for code in get_category_traits('magic'):
+		if traits_stored.has(code) and !is_trait_locked(code) and !is_trait_hidden(code):
+			res.push_back(code)
+	return res
+
+
+#Soul stone: what binding tr_code to this character costs - {lose = [...], free = bool, blocked = ''}.
+#An opposite element is simply written over; otherwise a free slot takes it, or the chosen trait gives
+#way (by default a negative one, else the oldest).
+func preview_trait_binding(tr_code, replace_code = ''):
+	var res = {lose = [], free = false, blocked = ''}
+	if owns_trait(tr_code):
+		res.blocked = 'owned'
+		return res
+	var data = Traitdata.traits[tr_code]
+	for code in traits_stored:
+		if data.get('conflicts', []).has(code) or Traitdata.traits[code].get('conflicts', []).has(tr_code):
+			if is_trait_locked(code):
+				res.blocked = 'locked'
+				return res
+			res.lose.push_back(code)
+	if !res.lose.empty():
+		return res
+	var category = get_trait_category(tr_code)
+	if get_free_trait_slots(category) > 0:
+		res.free = true
+		return res
+	var open = get_replaceable_traits(category)
+	if open.empty():
+		res.blocked = 'locked'
+	elif open.has(replace_code):
+		res.lose = [replace_code]
+	else:
+		var negative = []
+		for code in open:
+			if Traitdata.traits[code].tags.has('negative'):
+				negative.push_back(code)
+		res.lose = [negative[0] if !negative.empty() else get_oldest_trait(open)]
+	return res
+
+
+#every owned trait with a rule for the event ('freed', 'enslaved') turns into the trait it names;
+#a bondage status set free turns by its release rule
+func transform_traits(event):
+	for tr in traits_stored.keys():
+		var data = Traitdata.traits.get(tr)
+		if data == null:
+			continue
+		var next = ''
+		if data.has('transforms') and data.transforms.has(event):
+			next = data.transforms[event]
+		elif event == 'freed' and data.has('release'):
+			next = release_target(data.release)
+		if next == '':
+			continue
+		remove_trait(tr, true)
+		add_trait(next)
+
+
+func release_target(rule):
+	var cond = rule.get('becomes_if', {})
+	if !cond.empty() and parent.get_ref().get_stat(cond.stat) >= cond.at_least:
+		return cond.code
+	return rule.get('becomes', '')
+
+
+func get_bondage_status():
+	for code in traits_stored:
+		if Traitdata.traits[code].tags.has('bondage'):
+			return code
+	return ''
+
+
+func set_bondage_status(tr_code):
+	var old = get_bondage_status()
+	if old == tr_code:
+		return false
+	if old != '':
+		remove_trait(old, true)
+	return offer_trait(tr_code, 'force') in ['add', 'replace']
+
+
+func enslave_status():
+	var person = parent.get_ref()
+	if person.is_unique():
+		return
+	var options = Traitdata.catalogue.bondage.enslaved.get(person.get_stat('personality'), [])
+	if !options.empty():
+		set_bondage_status(input_handler.random_from_array(options))
+
+
+func market_status(faction):
+	var rules = Traitdata.catalogue.bondage.market
+	var stock = rules.get(faction, rules.default)
+	if faction == 'exotic_slave_trader' and !parent.get_ref().tags.has('exotic_stock'):
+		parent.get_ref().tags.append('exotic_stock')
+	if randf() < stock.chance:
+		set_bondage_status(input_handler.weightedrandom_dict(stock.weights))
+
+
+#the Writ lets a slave go; some statuses take the chance and leave
+func leaves_when_freed():
+	var code = get_bondage_status()
+	if code == '':
+		return false
+	var rule = Traitdata.traits[code].get('release', {}).get('leave_if', {})
+	return !rule.empty() and parent.get_ref().get_stat(rule.stat) < rule.below
+
+
+func grow_ready(grow):
+	var person = parent.get_ref()
+	if grow.get('slaves_only', false) and !(person.get_stat('slave_class') in ['slave', 'slave_trained']):
+		return false
+	for stat in grow.get('at_least', {}):
+		if person.get_stat(stat) < grow.at_least[stat]:
+			return false
+	for stat in grow.get('above', {}):
+		if person.get_stat(stat) <= grow.above[stat]:
+			return false
+	return true
+
+
+#affection or respect changed: a status may have earned its next form
+func check_bond_shift():
+	var code = get_bondage_status()
+	if code == '':
+		return
+	var grow = Traitdata.traits[code].get('grow', {})
+	if grow.get('by', '') == 'bond' and grow_ready(grow):
+		grow_trait(code, 'relationship')
+
+
+#too many failed training sessions break a slave
+func bondage_after_training(failed_sessions):
+	if failed_sessions > Traitdata.catalogue.bondage.broken_after_fails and get_bondage_status() != 'broken' and set_bondage_status('broken'):
+		var person = parent.get_ref()
+		globals.mansion_activity_log_add('training', person.translate(tr("TRAINING_STATUS_CHANGED")).replace("{new}", tr(Traitdata.traits.broken.name)))
+
+
+#the slave has just become a trained one: a status waiting on that moves on (Defiant with respect enough)
+func bondage_on_training_finished():
+	var code = get_bondage_status()
+	if code == '':
+		return
+	var grow = Traitdata.traits[code].get('grow', {})
+	if grow.get('by', '') == 'training' and grow_ready(grow):
+		grow_trait(code, 'training')
+
+
+#A won fight as one of its standing fighters saw it: alone (summons aside) and with the master or not.
+func grow_by_victory(alone, with_master):
+	for code in traits_stored.keys():
+		var grow = Traitdata.traits[code].get('grow', {})
+		match grow.get('by', ''):
+			'win':
+				trait_progress[code] = trait_progress.get(code, 0) + 1
+				if trait_progress[code] >= grow.count:
+					grow_trait(code)
+			'solo_win':
+				if alone and randf() < grow.chance:
+					grow_trait(code)
+			'master_win':
+				if with_master and grow_ready(grow) and randf() < grow.chance:
+					grow_trait(code)
+
+
+func get_trait_sum(field):
+	var res = 0.0
+	for code in traits_stored:
+		res += Traitdata.traits[code].get(field, 0.0)
+	return res
+
+
+func master_nearby():
+	var master = ResourceScripts.game_party.get_master()
+	var person = parent.get_ref()
+	return master != null and (master == person or person.same_location_with(master))
 
 
 func add_rare_trait():
@@ -853,6 +1428,8 @@ func get_traits_by_arg(arg, value):
 
 func get_random_trait_tag(tag, trait_blacklist = []):
 	var buf = {}
+	var free_slots = {}
+	var race_mult = Traitdata.catalogue.race_weights.get(parent.get_ref().get_stat('race'), {})
 	for tr in Traitdata.traits:
 		if !can_add_trait(tr):
 			 continue
@@ -863,9 +1440,18 @@ func get_random_trait_tag(tag, trait_blacklist = []):
 			 continue
 		if !data.tags.has(tag): 
 			continue
-		if !data.has('weight'): 
+		if !data.has('weight'):
 			continue # or not
-		buf[tr] = data.weight
+		var weight = data.weight * race_mult.get(tr, 1)
+		if weight <= 0:
+			continue
+		var category = data.get('category', '')
+		if category != '':
+			if !free_slots.has(category):
+				free_slots[category] = get_free_trait_slots(category)
+			if free_slots[category] <= 0:
+				continue
+		buf[tr] = weight
 	return input_handler.weightedrandom_dict(buf)
 
 
@@ -877,6 +1463,18 @@ func get_random_traits(trait_blacklist = []):
 		add_trait(get_random_trait_tag('negative', trait_blacklist))
 	if randf() < 0.5:
 		add_trait(get_random_trait_tag('negative', trait_blacklist))
+	roll_race_faith()
+	add_default_traits()
+
+
+func roll_race_faith():
+	var roll = randf()
+	var chances = Traitdata.catalogue.race_faith.get(parent.get_ref().get_stat('race'), {})
+	for code in chances:
+		roll -= chances[code]
+		if roll < 0:
+			add_trait(code)
+			return
 
 
 func get_traits_buffs():
@@ -930,6 +1528,7 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 		for eff in prof.persistent_effects:
 			add_stored_effect(eff)
 	rebuild = variables.DYN_STATS_REBUILD
+	drop_displaced_defaults()
 	if parent.get_ref().is_in_game_party():
 		globals.text_log_add('char', "%s: acquired profession %s" %
 			[parent.get_ref().get_short_name(), prof.name])
@@ -1118,6 +1717,7 @@ func upgrade_mastery(school, force_universal = false):
 	for c in cost:
 		for i in range(cost[c]):
 			masteries[school][c].push_back(ts)
+	check_trait_growth()
 
 
 func add_mastery_point_passive(school, value):

@@ -121,9 +121,9 @@ const LIST = {
 				code = 'furnishing',
 				icon = 'rooms_lux',
 				levels = {
-					1: {cost = {wood = 100, cloth = 50}, progress = 20, effect = {sex_slots = 1}},
-					2: {cost = {woodmagic = 50, clothsilk = 30, gold = 1000}, progress = 35, effect = {sex_slots = 2}},
-					3: {cost = {woodiron = 25, clothethereal = 15, gold = 2000}, progress = 55, effect = {sex_slots = 3}},
+					1: {cost = {wood = 100, cloth = 50, gold = 500}, progress = 20, effect = {sex_slots = 1}},
+					2: {cost = {woodmagic = 50, clothsilk = 30, gold = 2500}, progress = 35, effect = {sex_slots = 2}},
+					3: {cost = {woodiron = 25, clothethereal = 15, gold = 5000}, progress = 55, effect = {sex_slots = 3}},
 				},
 			},
 			#Extra beds beside the master's own, which is never freed.
@@ -131,9 +131,9 @@ const LIST = {
 				code = 'bed_size',
 				icon = 'bedroom',
 				levels = {
-					1: {cost = {leather = 50, cloth = 30}, progress = 15, effect = {sleep_slots = 1}},
-					2: {cost = {leatherthick = 50, clothsilk = 50}, progress = 35, effect = {sleep_slots = 2}},
-					3: {cost = {leathermythic = 20, clothethereal = 25}, progress = 30, effect = {sleep_slots = 3}},
+					1: {cost = {leather = 50, cloth = 30, gold = 1000}, progress = 15, effect = {sleep_slots = 1}},
+					2: {cost = {leatherthick = 50, clothsilk = 50, gold = 3000}, progress = 35, effect = {sleep_slots = 2}},
+					3: {cost = {leathermythic = 20, clothethereal = 25, gold = 5000}, progress = 30, effect = {sleep_slots = 3}},
 				},
 			},
 			#A bath of the master's own. What a bathhouse used to give the estate for simply standing -
@@ -143,7 +143,7 @@ const LIST = {
 				code = 'private_bath',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {stone = 150, woodmagic = 50}, progress = 30, effect = {}},
+					1: {cost = {stone = 150, woodmagic = 50, gold = 1000}, progress = 30, effect = {}},
 				},
 			},
 		},
@@ -165,7 +165,7 @@ const LIST = {
 				code = 'bedrooms_expansion',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {wood = 200, stone = 100, woodiron = 25}, progress = 50, effect = {sleep_slots = 4}},
+					1: {cost = {wood = 200, stone = 100, woodiron = 25, gold = 1000}, progress = 50, effect = {sleep_slots = 4}},
 				},
 			},
 		},
@@ -181,16 +181,16 @@ const LIST = {
 		slots = {sleep = 1},
 		work_job = null,
 		upkeep = 0,
-		build_cost = {wood = 90, cloth = 60},
+		build_cost = {wood = 50, cloth = 60, gold = 500},
 		build_progress = 25,
 		upgrades = {
 			luxury_expansion = {
 				code = 'luxury_expansion',
 				icon = 'rooms_lux',
 				levels = {
-					1: {cost = {woodiron = 50, cloth = 50}, progress = 25, effect = {sleep_slots = 1}},
-					2: {cost = {woodmagic = 50, clothmagic = 75}, progress = 40, effect = {sleep_slots = 2}},
-					3: {cost = {woodancient = 10, clothethereal = 15}, progress = 60, effect = {sleep_slots = 3}},
+					1: {cost = {woodiron = 50, clothsilk = 50, gold = 1000}, progress = 25, effect = {sleep_slots = 1}},
+					2: {cost = {woodmagic = 50, clothmagic = 75, gold = 2000}, progress = 40, effect = {sleep_slots = 2}},
+					3: {cost = {woodancient = 10, clothethereal = 15, gold = 5000}, progress = 60, effect = {sleep_slots = 3}},
 				},
 			},
 		},
@@ -230,8 +230,8 @@ const LIST = {
 				code = 'craft_expansion',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {stone = 50, steel = 30, leather = 20}, progress = 30, effect = {work_slots = 1}},
-					2: {cost = {mithril = 30, boneancient = 25}, progress = 50, effect = {work_slots = 2}},
+					1: {cost = {iron = 50, stone = 100, wood = 100, gold = 1000}, progress = 30, effect = {work_slots = 1}},
+					2: {cost = {mithril = 50, stone = 200, obsidian = 10, woodiron = 100, gold = 5000}, progress = 50, effect = {work_slots = 2}},
 				},
 			},
 			#Only this room's workers get it - that is the whole point of it being per-instance.
@@ -261,8 +261,8 @@ const LIST = {
 				code = 'craft_expansion',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {stone = 50, steel = 30, leather = 20}, progress = 30, effect = {work_slots = 1}},
-					2: {cost = {mithril = 30, boneancient = 25}, progress = 50, effect = {work_slots = 2}},
+					1: {cost = {obsidian = 20, woodmagic = 30, clothmagic = 30, gold = 1500}, progress = 30, effect = {work_slots = 1}},
+					2: {cost = {leathermythic = 20, woodancient = 10, boneancient = 30, gold = 4500}, progress = 50, effect = {work_slots = 2}},
 				},
 			},
 			#Only this room's workers get it - that is the whole point of it being per-instance.
@@ -292,8 +292,8 @@ const LIST = {
 				code = 'craft_expansion',
 				icon = 'rooms',
 				levels = {
-					1: {cost = {stone = 50, steel = 30, leather = 20}, progress = 30, effect = {work_slots = 1}},
-					2: {cost = {mithril = 30, boneancient = 25}, progress = 50, effect = {work_slots = 2}},
+					1: {cost = {woodiron = 50, stone = 50, clothsilk = 25, gold = 500}, progress = 30, effect = {work_slots = 1}},
+					2: {cost = {woodiron = 50, mithril = 25, clothmagic = 25, gold = 3500}, progress = 50, effect = {work_slots = 2}},
 				},
 			},
 			#Only this room's workers get it - that is the whole point of it being per-instance.
@@ -444,7 +444,7 @@ const LIST = {
 		craft_menu = 'enchant',
 		max_count = 1,
 		upkeep = 0,
-		build_cost = {stone = 60, mithril = 20, gold = 400},
+		build_cost = {stone = 60, mithril = 20, gold = 2500},
 		build_progress = 40,
 		#Flesh Rites is what brings the body rites to the mansion: once built, the card opens them
 		#(src/core/body_rites.gd, mansion_view's BodyRitesPanel). The first level opens the rites that
@@ -456,8 +456,8 @@ const LIST = {
 				code = 'flesh_rites',
 				icon = 'academy',
 				levels = {
-					1: {cost = {bone = 60, woodmagic = 30, gold = 2500}, progress = 45, effect = {work_slots = 2}},
-					2: {cost = {boneancient = 30, woodiron = 30, gold = 5000}, progress = 65, effect = {work_slots = 2}},
+					1: {cost = {bone = 60, woodmagic = 30, gold = 5000}, progress = 45, effect = {work_slots = 2}},
+					2: {cost = {boneancient = 30, woodiron = 30, gold = 10000}, progress = 65, effect = {work_slots = 2}},
 				},
 			},
 		},

@@ -1132,7 +1132,7 @@ func _refresh_expanded_rule_button(button):
 func _expanded_rule_is_visible(person, code):
 	if person.is_master() and code == "relationship":
 		return false
-	if person.check_trait("undead") and code in ["contraceptive", "ration"]:
+	if person.check_trait("undead") and code == "contraceptive":
 		return false
 	return true
 
@@ -1141,7 +1141,7 @@ func _expanded_rule_is_disabled(person, code):
 	match code:
 		"relationship":
 			return person.is_master()
-		"contraceptive", "ration":
+		"contraceptive":
 			return person.check_trait("undead")
 	return false
 
@@ -1756,7 +1756,7 @@ func _can_buy_class(person):
 			continue
 		if ResourceScripts.game_globals.unlock_all_classes:
 			return true
-		if !person.checkreqs(prof.showupreqs, true) or !person.checkreqs(prof.reqs, true):
+		if !person.checkreqs(prof.showupreqs, true) or !person.checkreqs(prof.reqs, true) or person.is_noble_blocked(prof.code):
 			continue
 		var blocked = false
 		for conflict in prof.conflict_classes:
@@ -2989,7 +2989,6 @@ func update_button(newbutton, t_mode = mode):
 	newbutton.get_node('rule_relationship').disabled = person.is_master()
 	newbutton.get_node('rule_nudity').disabled = !person.has_status('sexservice')
 	newbutton.get_node('rule_contraceptive').disabled = person.check_trait('undead')
-	newbutton.get_node('rule_ration').disabled = person.check_trait('undead')
 	#services
 	for rl in ['petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_brothel_rule(rl)
@@ -3020,7 +3019,6 @@ func update_button(newbutton, t_mode = mode):
 		newbutton.get_node('rule_constrain').visible = false
 	if person.check_trait('undead'):
 		newbutton.get_node('rule_contraceptive').visible = false
-		newbutton.get_node('rule_ration').visible = false
 	update_food_icon(newbutton, person)
 	_update_card_work_type(newbutton, person, job_label.text)
 	newbutton.get_node(CARD_WORK_LABEL).set("custom_colors/font_color", job_label.get("custom_colors/font_color"))
@@ -3131,7 +3129,7 @@ func update_food_icon(newbutton, person):
 		icon.visible = true
 		icon.modulate = Color(1, 1, 1)
 		match state.state:
-			'undead', 'none':
+			'none':
 				icon.visible = false
 			'starving':
 				icon.texture = TEX_FOOD_STARVING

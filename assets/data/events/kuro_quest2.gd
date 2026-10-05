@@ -322,6 +322,7 @@ var data = {
 
 						],
 						select_person = true,
+						person_reqs = [{code = "is_master", check = true, silent = true}],
 						challenge = "wisdom",
 						not_hide = true
 					},

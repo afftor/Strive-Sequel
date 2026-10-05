@@ -221,7 +221,7 @@ func impregnation_text(second_character, mother_is_self = true):
 		return "\n[color=silver]" + return_text + "[/color]"
 	
 	if return_text == '':
-		if preg_status.no_womb || preg_status.preg_disabled:
+		if preg_status.no_womb || preg_status.infertile || preg_status.preg_disabled:
 			return return_text #or "\n[color=silver]" + return_text + "[/color]" ?
 		
 		if preg_status.mother_breeder:
@@ -514,7 +514,7 @@ func actioneffect(values, scenedict_ids):
 			if i.checkreqs(trait.reqs, seek_group, scenedict) == false :
 				continue
 			for j in trait.effects:
-				if j.trigger == 'action_self':
+				if j.trigger == 'action_partner':
 					match j.effect:
 						'sens_bonus':
 							sens_mod = input_handler.math(j.operant, sens_mod, j.value)
@@ -548,7 +548,7 @@ func actioneffect(values, scenedict_ids):
 			continue
 
 		for k in trait.effects:
-			if k.trigger == 'action_partner':
+			if k.trigger == 'action_self':
 				match k.effect:
 					'sens_bonus':
 						sens_mod = input_handler.math(k.operant, sens_mod, k.value)

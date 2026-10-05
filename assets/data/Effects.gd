@@ -265,7 +265,8 @@ var effect_table = {
 		type = 'simple',
 		descript = '',
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'shy'}],
-		statchanges = {manacost_mod_mul = 0.85}
+		statchanges = {},
+		tags = ['upkeep_cut'],
 	},
 	e_person_kind = {
 		type = 'simple',
@@ -780,7 +781,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'target',
-				atomic = [{type = 'add_trait', trait = 'undead'}],
+				atomic = [{type = 'add_trait', trait = 'undead', mode = 'force'}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -1657,6 +1658,22 @@ var effect_table = {
 			},
 		]
 	},
+	#Troll Blood III: a twentieth of the body grows back at the start of every turn
+	e_tr_troll_blood = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		req_skill = false,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = {value = {obj = 'owner', func = 'stat', stat = 'hpmax'}},
+				atomic = [
+					{type = 'heal', value = [['parent_args', 'value'], '*', 0.05]},
+					],
+			},
+		]
+	},
 	mark_for_escape = {
 		type = 'temp_s',
 		target = 'target',
@@ -2436,6 +2453,8 @@ func get_effect_for_status(status):
 			return 'e_s_shred'
 		'shatter':
 			return 'e_s_shatter'
+		'ensnare':
+			return 'e_s_ensnare'
 		_:
 			return status
 

@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.1a'
+const gameversion = '0.16.2'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 
@@ -119,7 +119,7 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-	if OS.has_feature('editor') && false:
+	if OS.has_feature('editor'): #&& false:
 		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
 			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
 			if loc_code != "en":
@@ -544,12 +544,30 @@ func get_food_char_text(item, person):
 	return res
 
 
+#the noble classes a character would lose as a slave, '' when none (or a unique one, left to their story)
+func noble_class_names(person):
+	if person == null or person.is_unique():
+		return ''
+	var names = []
+	for prof in person.get_noble_classes():
+		names.push_back(tr(classesdata.professions[prof].name))
+	return PoolStringArray(names).join(", ")
+
+
+#the yes/no question asked before such a character is enslaved, '' when there is nothing to ask
+func noble_loss_question(person):
+	var names = noble_class_names(person)
+	if names == '':
+		return ''
+	return person.translate(tr("NOBLE_LOSS_CONFIRM")).replace("{classes}", names)
+
+
 func get_character_demand_tooltip(person, demand = null):
 	if demand == null:
 		demand = person.get_food_demand()
 	var text = "[center]{color=yellow|%s}[/center]\n%s" % [tr("DEMAND"), tr("DEMANDDESCRIPT")]
 	if person.food.ignores_demand():
-		text += "\n{color=green|%s}" % tr("DEMANDSLAVEEXEMPT")
+		text += "\n{color=green|%s}" % tr("DEMANDSLAVEEXEMPT" if person.get_stat('slave_class') in ['slave', 'slave_trained'] else "DEMANDBROKENEXEMPT")
 	var top_tier = variables.food_demand_order[variables.food_demand_order.size() - 1]
 	for tier in variables.food_demand_order:
 		var active = tier == demand
@@ -580,8 +598,6 @@ func get_food_state_tooltip(person):
 	if st.state == 'starving':
 		return ("[center]{color=red|%s}[/center]\n%s" %
 			[tr("FOODSTATESTARVING"), tr("TRAITEFFECTSTARVE").replace("%%", "%")])
-	if st.state == 'undead':
-		return "[center]%s[/center]\n%s" % [tr("FOODSTATEUNDEAD"), tr("FOODSTATEUNDEADDESCRIPT")]
 	if st.state == 'none':
 		return "[center]%s[/center]\n%s" % [tr("FOODSTATENONE"), tr("FOODSTATENONEDESCRIPT")]
 	var item = Items.materiallist[st.meal]
@@ -652,59 +668,183 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned', to
 
 
 
+#Slot traits first, category by category, then the buffs, body upgrades and traits that take no slot.
 func get_traitlist_for_char(person):
-	var traitlist = []
+	var by_category = {}
+	for category in Traitdata.catalogue.categories:
+		by_category[category] = []
+	var others = []
 	for b in person.get_all_buffs():
 		if !b.tags.has('show_in_traits'): continue
 		var text = person.translate(b.description)
 #		text += build_relationship_buff_names_text(person, b)
-		traitlist.append({
+		others.append({
 			icon = b.icon,
 			text = text
 		})
 	var upgrades_entry = get_body_upgrades_trait_entry(person)
 	if upgrades_entry != null:
-		traitlist.append(upgrades_entry)
-	var trlist = person.get_traits_by_arg('visible', true)
-	for tr in trlist:
-		var trdata = Traitdata.traits[tr]
-		var desc = person.translate(trdata.descript)
-		var bonus_desc = person.try_get_bonus_mastery_desc(tr)
-		if !bonus_desc.empty():
-#			desc += "\n" + bonus_desc
-			#it's a crude patch for monster_mastery descriptions, as they are same as names
-			#at the moment. Ideally there should be some systematic solution for traits, wich are
-			#also buffs, and therefore needs name in description
-			desc = bonus_desc
-		var entry = {
-			trait_code = tr,
-			name = tr(trdata.name),
-			text_with_name = "[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + desc,
-			text = desc
-		}
-		if trdata.has('tags') and trdata.tags.has('simple_icon'):
-			entry.icon = trdata.icon
+		others.append(upgrades_entry)
+	for code in person.get_traits_by_arg('visible', true):
+		var entry = get_trait_entry(person, code)
+		if entry.has('category'):
+			by_category[entry.category].append(entry)
 		else:
-			entry.complex_icon = true
-			if trdata.has('icon') and trdata.icon != null:
-				entry.icon = trdata.icon
-			if trdata.has('cross') and trdata.cross:
-				entry.cross = true
-			else:
-				if trdata.tags.has('positive'):
-					entry.positive = true
-				if trdata.tags.has('negative'):
-					entry.negative = true
-					#How far the practice room has talked them out of it. Only worth saying once
-					#the work has started - a nought on every bad habit is noise.
-					var mended = person.get_trait_correction(tr)
-					if mended > 0:
-						entry.correction = mended
-						var line = "\n" + tr("TRAITCORRECTION") % int(round(mended))
-						entry.text += line
-						entry.text_with_name += line
-		traitlist.append(entry)
-	return traitlist
+			others.append(entry)
+	var traitlist = []
+	for category in by_category:
+		traitlist += by_category[category]
+	return traitlist + others
+
+
+func get_trait_entry(person, code):
+	var trdata = Traitdata.traits[code]
+	var entry = {trait_code = code}
+	var category = trdata.get('category', '')
+	if category != '':
+		entry.category = category
+	if person.is_trait_hidden(code):
+		entry.name = tr("TRAITUNKNOWN")
+		entry.text = get_trait_flavor_text(person.translate(tr("TRAITHIDDENTOOLTIP")))
+		entry.text_with_name = get_trait_tooltip_head(entry.name, get_trait_tag_line(category)) + entry.text
+		entry.icon = HIDDEN_TRAIT_ICON
+		entry.complex_icon = true
+		return entry
+	entry.name = tr(trdata.name)
+	if trdata.has('tier'):
+		entry.text = get_faith_tiers_text(person, trdata)
+	elif trdata.has('line'):
+		entry.text = get_trait_stages_text(person, trdata)
+	else:
+		entry.text = get_trait_effects_text(person, code)
+	entry.text_with_name = get_trait_tooltip_head(entry.name, get_trait_tag_line(category, trdata.tags)) + entry.text
+	if trdata.tags.has('simple_icon'):
+		entry.icon = trdata.icon
+	else:
+		entry.complex_icon = true
+		if trdata.has('icon') and trdata.icon != null:
+			entry.icon = trdata.icon
+		if trdata.has('cross') and trdata.cross:
+			entry.cross = true
+		if trdata.tags.has('positive'):
+			entry.positive = true
+		if trdata.tags.has('negative'):
+			entry.negative = true
+			#How far the practice room has talked them out of it. Only worth saying once
+			#the work has started - a nought on every bad habit is noise.
+			var mended = person.get_trait_correction(code)
+			if mended > 0 and category == 'mental':
+				entry.correction = mended
+				var line = "\n" + tr("TRAITCORRECTION") % int(round(mended))
+				entry.text += line
+				entry.text_with_name += line
+	#the description goes under everything the trait does
+	var flavor = get_trait_flavor(person, code)
+	if flavor != '':
+		var flavor_line = "\n" + get_trait_flavor_text(flavor)
+		entry.text += flavor_line
+		entry.text_with_name += flavor_line
+	return entry
+
+
+func get_trait_effects_text(person, code):
+	var desc = person.translate(Traitdata.traits[code].descript)
+	var bonus_desc = person.try_get_bonus_mastery_desc(code)
+	if !bonus_desc.empty():
+#		desc += "\n" + bonus_desc
+		#it's a crude patch for monster_mastery descriptions, as they are same as names
+		#at the moment. Ideally there should be some systematic solution for traits, wich are
+		#also buffs, and therefore needs name in description
+		desc = bonus_desc
+	var vows = get_trait_vows(person, code)
+	if vows != '':
+		desc += "\n" + vows
+	return desc
+
+
+#the optional TRAIT<CODE>VOWS line, '' when the trait asks nothing
+func get_trait_vows(person, code):
+	var key = "TRAIT" + code.to_upper() + "VOWS"
+	if tr(key) == key:
+		return ''
+	return person.translate(tr(key))
+
+
+#A faith shows its whole ladder, the character's own rung lit and the others dimmed.
+func get_faith_tiers_text(person, trdata):
+	var lines = []
+	for tier in range(1, 4):
+		var code = 'faith_%s_%d' % [trdata.faith, tier]
+		var head = "%s %s" % [["I", "II", "III"][tier - 1], tr("TRAITFAITH_TIER_%d" % tier)]
+		var effects = person.translate(Traitdata.traits[code].descript)
+		var vows = get_trait_vows(person, code)
+		if vows != '':
+			effects += " " + vows
+		if tier == trdata.tier:
+			lines.append("{color=yellow|%s}: %s" % [head, effects])
+		else:
+			lines.append("[color=%s]%s: %s[/color]" % [TRAIT_TOOLTIP_MUTED, head, effects])
+	return PoolStringArray(lines).join("\n")
+
+
+#A growing trait shows every stage, its own lit. A stage nobody has reached yet in any game is
+#only "???", and how to reach it is never said.
+func get_trait_stages_text(person, trdata):
+	var lines = []
+	var stage = 1
+	while Traitdata.traits.has('%s_%d' % [trdata.line, stage]):
+		var code = '%s_%d' % [trdata.line, stage]
+		var data = Traitdata.traits[code]
+		if stage == trdata.stage:
+			lines.append("{color=yellow|%s}: %s" % [tr(data.name), person.translate(data.descript)])
+		elif stage < trdata.stage or input_handler.progress_data.seen_trait_stages.has(code):
+			lines.append("[color=%s]%s: %s[/color]" % [TRAIT_TOOLTIP_MUTED, tr(data.name), person.translate(data.descript)])
+		else:
+			lines.append("[color=%s]???[/color]" % TRAIT_TOOLTIP_MUTED)
+		stage += 1
+	return PoolStringArray(lines).join("\n")
+
+
+#the optional TRAIT<CODE>FLAVOR line, '' when the trait has none; a story rename brings its own
+func get_trait_flavor(person, code):
+	var data = Traitdata.traits[code]
+	var key = data.get('flavor_key', "TRAIT" + code.to_upper() + "FLAVOR")
+	#a faith's steps share TRAITFAITH_<GOD>FLAVOR unless a step has its own
+	if tr(key) == key and data.has('faith'):
+		key = "TRAITFAITH_" + data.faith.to_upper() + "FLAVOR"
+	if tr(key) == key:
+		return ''
+	return person.translate(tr(key))
+
+
+func get_trait_tooltip_head(name, tag_line):
+	var text = "[center][font=%s]{color=yellow|%s}[/font][/center]\n" % [TRAIT_TOOLTIP_NAME_FONT, name]
+	if tag_line != '':
+		text += "[font=%s]%s[/font]\n" % [TRAIT_TOOLTIP_TAG_FONT, tag_line]
+	return text
+
+
+#"Mental · Permanent · Negative"
+func get_trait_tag_line(category, tags = []):
+	var parts = []
+	if category != '':
+		parts.append("{color=%s|%s}" % [Traitdata.catalogue.categories[category].color, tr("TRAITCATEGORYNAME_" + category.to_upper())])
+	for tag in ['permanent', 'positive', 'negative']:
+		if tags.has(tag):
+			parts.append("[color=%s]%s[/color]" % [TRAIT_TOOLTIP_TAG, tr("TRAITTAG_" + tag.to_upper())])
+	return PoolStringArray(parts).join("[color=%s] · [/color]" % TRAIT_TOOLTIP_MUTED)
+
+
+func get_trait_flavor_text(text):
+	return "[font=%s][color=%s]%s[/color][/font]" % [TRAIT_TOOLTIP_FLAVOR_FONT, TRAIT_TOOLTIP_MUTED, text]
+
+
+func get_trait_category_color(category):
+	return Color(variables.hexcolordict[Traitdata.catalogue.categories[category].color])
+
+
+func get_empty_trait_slot_text(category):
+	return get_trait_tooltip_head(tr("TRAITSLOT_EMPTY"), get_trait_tag_line(category)) + get_trait_flavor_text(tr("TRAITSLOT_EMPTYDESCRIPT"))
 
 
 #Every body upgrade a character carries, as one icon in the trait row with one tooltip naming them all -
@@ -732,6 +872,16 @@ const TRAIT_CORRECTION_COLOR = Color(0.1, 0.1, 0.1, 0.55)
 
 
 const TRAIT_FRAME = "res://assets/images/iconstraits/grey.png"
+const HIDDEN_TRAIT_ICON = "res://assets/Textures_v2/icon_question_small.png"
+const TRAIT_CATEGORY_FRAME = "res://assets/images/iconstraits/frame_category.png"
+const TRAIT_CATEGORY_FRAME_EMPTY = "res://assets/images/iconstraits/frame_category_empty.png"
+#a slot trait sits on a dark ground, so its frame alone tells the category
+const TRAIT_CATEGORY_TILE = Color(0.24, 0.23, 0.27)
+const TRAIT_TOOLTIP_MUTED = "#a59f93"
+const TRAIT_TOOLTIP_TAG = "#b49a62"
+const TRAIT_TOOLTIP_NAME_FONT = "res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_24px.tres"
+const TRAIT_TOOLTIP_TAG_FONT = "res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_20px.tres"
+const TRAIT_TOOLTIP_FLAVOR_FONT = "res://assets/Fonts_v2/FontThemes/NOTO_SERIF_Italic_20px.tres"
 const TRAIT_CROSS = "res://assets/images/iconstraits/cross.png"
 const TRAIT_PLATE = "res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png"
 
@@ -761,9 +911,9 @@ func ensure_trait_templates(node, size = 50):
 	button.expand = true
 	button.rect_min_size = Vector2(size, size)
 	button.texture_normal = load(TRAIT_FRAME)
-	#the plate sits under the picture, the picture over it, the cross over both - the order
-	#they are added in is the order they paint in
-	for part in [['TextureRect', TRAIT_PLATE, 0], ['icon', null, 10], ['cross', TRAIT_CROSS, 10]]:
+	#the picture, the cross over it, the plate (a category frame, clear inside) over both, inset like the
+	#character card's tiles - the order they are added in is the order they paint in
+	for part in [['icon', null, 3], ['cross', TRAIT_CROSS, 3], ['TextureRect', TRAIT_PLATE, 0]]:
 		var piece = TextureRect.new()
 		piece.name = part[0]
 		piece.expand = true
@@ -800,45 +950,137 @@ func build_traitlist_for_char(person, node):
 		else:
 			var button = input_handler.DuplicateContainerTemplate(node, 'Button')
 			connecttexttooltip(button, tooltip_text)
-			if entry.has('icon'):
-				if entry.icon is String:
-					button.get_node('icon').texture = load(entry.icon)
-				else:
-					button.get_node('icon').texture = entry.icon
-			#The habit being worked out of somebody fills its own icon from the bottom as it
-			#goes. The overlay is made here rather than put in each panel's scene: five scenes
-			#draw trait icons from this one function, and a sixth added later would silently
-			#miss out.
-			var fill = button.get_node_or_null('Correction')
-			if fill == null and entry.has('correction'):
-				fill = ColorRect.new()
-				fill.name = 'Correction'
-				fill.color = TRAIT_CORRECTION_COLOR
-				#the icon under it keeps the tooltip - the overlay must not take the hover
-				fill.mouse_filter = Control.MOUSE_FILTER_IGNORE
-				fill.anchor_left = 0.0
-				fill.anchor_right = 1.0
-				fill.anchor_bottom = 1.0
-				fill.margin_left = 0
-				fill.margin_right = 0
-				fill.margin_bottom = 0
-				#added last, so it paints over the icon rather than under it
-				button.add_child(fill)
-			if fill != null:
-				fill.visible = entry.has('correction')
-				if fill.visible:
-					#the top edge slides down as the work goes on: nothing covered at nought,
-					#the whole icon at a hundred
-					fill.anchor_top = 1.0 - clamp(entry.correction / 100.0, 0.0, 1.0)
-					fill.margin_top = 0
-			if entry.has('cross'):
-				button.get_node('cross').visible = true
-			else:
-				button.get_node('cross').visible = false
-				if entry.has('positive'):
-					button.texture_normal = load("res://assets/images/iconstraits/green.png")
-				if entry.has('negative'):
-					button.texture_normal = load("res://assets/images/iconstraits/red.png")
+			fill_trait_button(button, entry)
+
+
+#A complex trait icon: a slot trait gets its category's frame on a dark ground (red if negative), an
+#empty slot the frame alone, dashed; the rest keep the green or red ground.
+func fill_trait_button(button, entry):
+	if entry.has('icon'):
+		if entry.icon is String:
+			button.get_node('icon').texture = load(entry.icon)
+		else:
+			button.get_node('icon').texture = entry.icon
+	#The habit being worked out of somebody fills its own icon from the bottom as it
+	#goes. The overlay is made here rather than put in each panel's scene: five scenes
+	#draw trait icons from this one function, and a sixth added later would silently
+	#miss out.
+	var fill = button.get_node_or_null('Correction')
+	if fill == null and entry.has('correction'):
+		fill = ColorRect.new()
+		fill.name = 'Correction'
+		fill.color = TRAIT_CORRECTION_COLOR
+		#the icon under it keeps the tooltip - the overlay must not take the hover
+		fill.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		fill.anchor_left = 0.0
+		fill.anchor_right = 1.0
+		fill.anchor_bottom = 1.0
+		fill.margin_left = 0
+		fill.margin_right = 0
+		fill.margin_bottom = 0
+		#added last, so it paints over the icon rather than under it
+		button.add_child(fill)
+	if fill != null:
+		fill.visible = entry.has('correction')
+		if fill.visible:
+			#the top edge slides down as the work goes on: nothing covered at nought,
+			#the whole icon at a hundred
+			fill.anchor_top = 1.0 - clamp(entry.correction / 100.0, 0.0, 1.0)
+			fill.margin_top = 0
+	button.get_node('cross').visible = entry.has('cross')
+	if entry.has('category'):
+		if entry.has('negative'):
+			button.texture_normal = load("res://assets/images/iconstraits/red.png")
+		else:
+			button.texture_normal = load(TRAIT_FRAME)
+			button.self_modulate = TRAIT_CATEGORY_TILE
+		var plate = button.get_node_or_null('Frame')
+		if plate == null:
+			plate = button.get_node_or_null('TextureRect')
+		if plate != null:
+			plate.texture = load(TRAIT_CATEGORY_FRAME_EMPTY if entry.has('empty') else TRAIT_CATEGORY_FRAME)
+			plate.self_modulate = get_trait_category_color(entry.category)
+		if entry.has('empty'):
+			button.modulate.a = 0.6
+		return
+	if entry.has('cross'):
+		return
+	if entry.has('positive'):
+		button.texture_normal = load("res://assets/images/iconstraits/green.png")
+	if entry.has('negative'):
+		button.texture_normal = load("res://assets/images/iconstraits/red.png")
+
+
+#The expanded card's category blocks, each as wide as its slots, an empty slot shown too.
+func build_trait_categories_for_char(person, node):
+	input_handler.ClearContainer(node, ['Category'])
+	var traitlist = get_traitlist_for_char(person)
+	var grids = []
+	for category in Traitdata.catalogue.categories:
+		var entries = []
+		for entry in traitlist:
+			if entry.get('category', '') == category:
+				entries.append(entry)
+		var slots = int(person.get_stat('trait_slots_' + category))
+		if entries.empty() and slots <= 0:
+			continue
+		var block = input_handler.DuplicateContainerTemplate(node, 'Category')
+		var color = get_trait_category_color(category)
+		block.get_node('Head/LineL').color = color
+		block.get_node('Head/LineR').color = color
+		var icon = block.get_node('Head/Icon')
+		icon.texture = load(Traitdata.catalogue.categories[category].icon)
+		icon.self_modulate = color
+		connecttexttooltip(icon, tr("TRAITCATEGORYNAME_" + category.to_upper()))
+		var items = block.get_node('Items')
+		for entry in entries:
+			var button = input_handler.DuplicateContainerTemplate(items, 'Button')
+			connecttexttooltip(button, entry.text_with_name)
+			fill_trait_button(button, entry)
+		for i in range(slots - entries.size()):
+			var button = input_handler.DuplicateContainerTemplate(items, 'Button')
+			connecttexttooltip(button, get_empty_trait_slot_text(category))
+			fill_trait_button(button, {category = category, empty = true})
+		items.columns = max(1, max(entries.size(), slots))
+		grids.append(items)
+	size_trait_blocks(node, grids)
+
+
+const TRAIT_TILE_MIN = 24
+
+#The card has no height to spare: the blocks stay in one row and a crowded row gets smaller tiles.
+func size_trait_blocks(node, grids):
+	var room = node.get_parent().rect_size.x
+	if grids.empty() or room <= 0:
+		return
+	var head = grids[0].get_parent().get_node('Head')
+	var head_width = head.get_node('Icon').rect_min_size.x + 2 * head.get_constant('separation')
+	var gap = grids[0].get_constant('hseparation')
+	var size = grids[0].get_node('Button').rect_min_size.x
+	while size > TRAIT_TILE_MIN:
+		var width = node.get_constant('separation') * (grids.size() - 1)
+		for items in grids:
+			width += max(head_width, items.columns * (size + gap) - gap)
+		if width <= room:
+			break
+		size -= 1
+	for items in grids:
+		for button in items.get_children():
+			button.rect_min_size = Vector2(size, size)
+
+
+#On the expanded card everything without a slot category rides with the buffs, as a plain icon.
+func add_uncategorized_traits_to_buffs(person, node):
+	for entry in get_traitlist_for_char(person):
+		if entry.has('category') or !entry.has('icon') or entry.icon == null:
+			continue
+		#a simple-icon trait is already in the row as its own buff
+		if entry.has('trait_code') and Traitdata.make_buff_for_trait(entry.trait_code) != null:
+			continue
+		var newnode = input_handler.DuplicateContainerTemplate(node, 'Button')
+		newnode.texture = load(entry.icon) if entry.icon is String else entry.icon
+		newnode.get_node("Label").hide()
+		connecttexttooltip(newnode, entry.get('text_with_name', entry.text))
 
 
 func build_training_traitlist(person, node):
@@ -979,7 +1221,8 @@ func build_sex_traits_list(person, node, capacity_label = null):
 			var button = input_handler.DuplicateContainerTemplate(node)
 			button.pressed = person.check_trait(code)
 			button.text = tr(Traitdata.sex_traits[code].name)
-			connecttexttooltip(button, person.translate(tr(Traitdata.sex_traits[code].descript)))
+			button.set_meta("sex_trait", code)
+			connecttexttooltip(button, person.translate(tr(Traitdata.sex_traits[code].descript)) + sex_trait_conflicts_text(code))
 			button.connect("toggled", self, 'toggle_sex_trait', [person, code, node, capacity_label])
 	build_known_sex_traits(person, node, all_traits_known)
 	update_sex_traits_capacity(person, node, capacity_label)
@@ -1010,6 +1253,7 @@ func build_known_sex_traits(person, node, all_traits_known):
 						sex_actions_dict[action].takers = []
 						traittext += sex_actions_dict[action].getname() + ", "
 					traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+			traittext += sex_trait_conflicts_text(code)
 			connecttexttooltip(newnode, traittext)
 			newnode.disabled = all_traits_known or ("Dislike" in tr(trait.name))
 		else:
@@ -1030,11 +1274,24 @@ func update_sex_traits_capacity(person, node, capacity_label = null):
 		child.disabled = capacity - used <= 0 && child.pressed == false
 
 
+func sex_trait_conflicts_text(code):
+	var names = []
+	for other in Traitdata.get_sex_trait_conflicts(code):
+		names.append(tr(Traitdata.sex_traits[other].name))
+	if names.empty():
+		return ""
+	return "\n\n" + tr("SEXTRAIT_CONFLICTS_LABEL") + ":[color=aqua] " + PoolStringArray(names).join(", ") + ".[/color]"
+
+
 func toggle_sex_trait(trait_status, person, code, node, capacity_label):
 	match trait_status:
 		true:
 			if !person.check_trait(code):
 				person.add_sex_trait(code, true)
+				#switching a trait on switched off the ones it conflicts with
+				for child in node.get_children():
+					if child.has_meta("sex_trait") && child.pressed && !person.get_sex_traits().has(child.get_meta("sex_trait")):
+						child.pressed = false
 		false:
 			if person.check_trait(code):
 				person.remove_sex_trait(code, false)
@@ -1164,6 +1421,10 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 			text += get_bonus_name_string(bonus, data, value)
 			text += make_bonus_value_string(bonus, data, value) + '\n'
 	return text
+
+#raw bbcode, not {color=...}: TextEncoder cannot nest braces and the lore is free text
+func race_lore_text(text):
+	return "[i][color=#cdbf9f]" + text.strip_edges() + "[/color][/i]"
 
 func get_bonus_name_string(bonus_type, data, value):
 	if bonus_type == 'set':
@@ -1668,6 +1929,7 @@ func LoadGame(filename):
 	loadscreen.set_progress(40)
 	yield(get_tree(), 'idle_frame')
 	ResourceScripts.game_progress.fix_serialization()
+	Traitdata.refresh_story_names()
 	loadscreen.set_progress(41)
 	yield(get_tree(), 'idle_frame')
 	characters_pool.purge_stale_fighters() #drops summons and enemies leaked by pre-fix saves
@@ -1682,6 +1944,8 @@ func LoadGame(filename):
 #	print(effects_pool.serialize())
 	#mind! that characters_pool's fix_serialization_postload is inside game_party's
 	ResourceScripts.game_party.fix_serialization_postload()
+	repair_unique_faiths()
+	repair_grasha_questline()
 	input_handler.clear_portrait_cache() #cached shots belong to the session that took them
 	ResourceScripts.game_party.force_update_portraits()
 	loadscreen.set_progress(45)
@@ -1730,6 +1994,56 @@ func repair_anastasia_virginity():
 	if broken != null and decisions.has('anastasia_rape') and !broken.get_stat('metrics_partners').has(master.id):
 		broken.take_virginity('vaginal', master.id)
 		broken.take_virginity('anal', master.id)
+
+
+#Saves from before faiths: once per save, every unique met so far gets the faith their pregen data names -
+#the story-locked ones (Mae, Kuro, Heleviel) the lock as well, at the faith their story has reached.
+func repair_unique_faiths():
+	if ResourceScripts.game_progress.unique_faiths_set:
+		return
+	ResourceScripts.game_progress.unique_faiths_set = true
+	for data in worlddata.pregen_characters.values():
+		var person = ResourceScripts.game_party.get_unique_slave(data.get('unique', ''))
+		if person == null:
+			continue
+		var faith = story_faith(person, data)
+		if data.tags.has('faith_locked'):
+			input_handler.append_not_duplicate(person.tags, 'faith_locked')
+			person.dyn_stats.set_faith(faith)
+			continue
+		var held = person.get_category_traits('religious')
+		held.erase(Traitdata.catalogue.defaults.religious)
+		if held.empty() and faith != Traitdata.catalogue.defaults.religious:
+			person.dyn_stats.set_faith(faith)
+
+
+#A Grasha converted from an old save's Kurdan gets the questline her recruitment scenes schedule
+func repair_grasha_questline():
+	if ResourceScripts.game_progress.decisions.has('GrashaCrewScheduled'):
+		return
+	if ResourceScripts.game_party.get_unique_slave('grasha') == null:
+		return
+	common_effects([
+		{code = 'add_timed_event', value = 'grasha_old_crew_rumor', args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
+		{code = 'decision', value = 'GrashaCrewScheduled'},
+	])
+
+
+#The religious trait a unique's pregen data gives, moved on by what their story has done since.
+func story_faith(person, data):
+	var res = Traitdata.catalogue.defaults.religious
+	for code in data.get('traits', []):
+		if Traitdata.traits.has(code) and Traitdata.traits[code].get('category', '') == 'religious':
+			res = code
+	match data.unique:
+		'mae':
+			for spirit in ['spirit_boar', 'spirit_satyr', 'spirit_owl']:
+				if person.dyn_stats.owns_trait(spirit):
+					res = 'faith_spirits_2'
+		'kuro':
+			if ResourceScripts.game_progress.completed_quests.has('kuro_quest_3'):
+				res = 'transcendent' if person.has_profession('satori') else Traitdata.catalogue.defaults.religious
+	return res
 
 
 #The screens of the game being replaced stay in the tree for the whole of a load, and both
@@ -1867,6 +2181,7 @@ func ImportGame(filename):
 		effects_pool.fix_durations()
 	
 	ResourceScripts.game_party.fix_serialization_postload()
+	repair_unique_faiths()
 
 	input_handler.ChangeScene('mansion');
 	yield(self, "scene_changed")
@@ -1940,6 +2255,10 @@ func preexit_clear_up():
 	#input_handler.ChangeScene('menu') was here in return_to_main_menu()
 	if gui_controller.dialogue != null:
 		gui_controller.dialogue.hide()
+	#the game menu sits on its own root layer and outlives the swap; its hide() would refresh the freed screen
+	if gui_controller.game_menu != null and is_instance_valid(gui_controller.game_menu):
+		gui_controller.game_menu.visible = false
+		gui_controller.game_menu.submodules.clear()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
 #	ResourceScripts.recreate_singletons()
@@ -1979,7 +2298,7 @@ func getrelativename(person, person2):
 
 
 func impregnate_check(father,mother):
-	var result = {value = true, preg_disabled = false, no_womb = false, male_contraceptive = false, female_contraceptive = false, mother_breeder = false, father_breeder = false, compatible = true, already_preg_visible = false, father_undead = false, mother_undead = false}
+	var result = {value = true, preg_disabled = false, no_womb = false, infertile = false, male_contraceptive = false, female_contraceptive = false, mother_breeder = false, father_breeder = false, compatible = true, already_preg_visible = false, father_undead = false, mother_undead = false}
 
 	if variables.pregenabled == false:
 		result.value = false
@@ -2003,6 +2322,8 @@ func impregnate_check(father,mother):
 		result.father_undead = true
 	if mother.check_trait('undead'):
 		result.mother_undead = true
+	if mother.has_status('infertile'):
+		result.infertile = true
 	
 	if father.get_stat('race') != mother.get_stat('race'):
 		for i in [father, mother]:
@@ -2039,7 +2360,7 @@ func impregnate_check(father,mother):
 	elif mother.get_stat('pregnancy_baby') != null:
 		result.value = false
 
-	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive || result.father_undead || result.mother_undead:
+	if result.no_womb || result.infertile || result.preg_disabled || result.male_contraceptive || result.female_contraceptive || result.father_undead || result.mother_undead:
 		result.value = false
 	
 	return result
@@ -2192,29 +2513,57 @@ func mansion_activity_service_exhausted(location_name):
 
 #One entry per turn for everything the benches finished, folded exactly like the service report
 #above. A single recipe can come off the bench several times in one turn and several people can
-#be working at once, so the row counts the products and the hands behind them; who made what,
-#and in what quality, is the line kept behind the fold.
+#be working at once, so the row counts the products and the hands behind them. Behind the fold is
+#one line per product and quality with how many came off and who made them - a bench repeating
+#one recipe all turn used to write the same line dozens of times.
 #
-#The colour on a product name is put there by the caller - see game_res.make_item() and
-#colorize_item_quality() - so the breakdown reads in the same quality colours the inventory uses.
-func mansion_activity_craft(character, detail_text):
+#`crafted` keeps the order the turn first saw each product, so the lines rebuilt from it keep
+#theirs and MansionLogModule can patch the rows already on screen. It is turn-local like the
+#lines: see game_globals._drop_turn_local_breakdown().
+func mansion_activity_craft(character, product_name, quality = ''):
 	var stamp = mansion_activity_stamp()
 	var entry = _mansion_activity_turn_report('craft', stamp)
 	if entry == null:
+		var crafted = []
+		_craft_tally(crafted, product_name, quality, character.get_short_name())
 		mansion_activity_log_add('craft', _craft_report_text(1, 1),
-			{total = 1, crafter_ids = [character.id], details = [detail_text]})
+			{total = 1, crafter_ids = [character.id], crafted = crafted,
+			details = _craft_detail_lines(crafted)})
 		return
 	entry.total = int(entry.get('total', 0)) + 1
 	if !entry.has('crafter_ids'):
 		entry.crafter_ids = []
 	if !(character.id in entry.crafter_ids):
 		entry.crafter_ids.append(character.id)
-	if !entry.has('details'):
-		entry.details = []
-	entry.details.append(detail_text)
+	if !entry.has('crafted'):
+		entry.crafted = []
+	_craft_tally(entry.crafted, product_name, quality, character.get_short_name())
+	entry.details = _craft_detail_lines(entry.crafted)
 	entry.text = _craft_report_text(entry.total, entry.crafter_ids.size())
 	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
 		mansion_activity_log_node.update_log_message(entry)
+
+
+func _craft_tally(crafted, product_name, quality, crafter_name):
+	for record in crafted:
+		if record.name == product_name and record.quality == quality:
+			record.count += 1
+			if !(crafter_name in record.crafters):
+				record.crafters.append(crafter_name)
+			return
+	crafted.append({name = product_name, quality = quality, count = 1, crafters = [crafter_name]})
+
+
+#The colour on a product name is its quality colour, the same one the inventory uses.
+func _craft_detail_lines(crafted):
+	var lines = []
+	for record in crafted:
+		var product = colorize_item_quality(record.name, record.quality)
+		if record.count > 1:
+			product += " [color=#e8aa55]×%d[/color]" % record.count
+		lines.append(_report_text("MANSION_ACTIVITY_CRAFT_COMPLETE",
+			[PoolStringArray(record.crafters).join(", "), product]))
+	return lines
 
 
 #One entry per turn for everything the estate's work pulled out of the ground, the water and the
@@ -2700,7 +3049,7 @@ func StartAreaCombat(): #rnd all and always
 
 
 func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
-	input_handler.encounter_win_script = null
+	input_handler.encounter_win_script = data.get('win_effects')
 	input_handler.encounter_lose_script = null
 	var enemydata
 	var enemygroup = {}
@@ -3369,7 +3718,7 @@ func common_effects(effects, from_event = false):
 					elif k.code == 'add_profession':
 						character.unlock_class(k.profession)
 					elif k.code == 'add_trait':
-						character.add_trait(k.trait)
+						character.offer_trait(k.trait, k.get('mode', 'ask'))
 					elif k.code == 'create_and_equip': #there should be static items only
 						var item = CreateGearItem(k.item, k.parts)
 						AddItemToInventory(item, false)
@@ -3391,7 +3740,10 @@ func common_effects(effects, from_event = false):
 					else:
 						character_stat_change(character, k)
 			'start_event':
-				input_handler.interactive_message(i.data, 'start_event', i.args)
+				if i.data is Dictionary:
+					input_handler.interactive_message(i.data, 'direct', i.get('args', {}))
+				else:
+					input_handler.interactive_message(i.data, 'start_event', i.args)
 			'spend_money_for_scene_character':
 				ResourceScripts.game_res.update_money('-', input_handler.scene_characters[i.value].calculate_price(true))
 #				money -= input_handler.scene_characters[i.value].calculate_price()
@@ -3581,6 +3933,7 @@ func common_effects(effects, from_event = false):
 						input_handler.play_animation("quest_completed", args)
 						break
 				ResourceScripts.game_progress.completed_quests.append(i.value)
+				Traitdata.refresh_story_names()
 				input_handler.achievements.try_add_quest_achimnt(i.value)
 			'complete_active_location':
 				declare_location_cleared(input_handler.active_location.id)
@@ -4068,8 +4421,10 @@ func valuecheck(dict):
 			if character == null:return false
 			return character.checkreqs(dict.value)
 		'scene_character_checks':
-			if input_handler.scene_characters.empty(): return false
-			var character = input_handler.scene_characters[0]
+			#char_num picks the character as affect_one_scene_character does; the first by default
+			var index = dict.get('char_num', 1) - 1
+			if index < 0 or index >= input_handler.scene_characters.size(): return false
+			var character = input_handler.scene_characters[index]
 			if character == null: return false
 			return character.checkreqs(dict.value)
 		'unique_character_checks':
@@ -4554,7 +4909,7 @@ func get_stat_name(stat):
 	return tr("STAT%s" % stat.to_upper())
 
 
-func get_tr_src(src, src_val):
+func get_tr_src(src, src_val, person = null):
 	match src:
 		'innate':
 			return ["", tr("INNATE")]
@@ -4565,7 +4920,11 @@ func get_tr_src(src, src_val):
 			var data = classesdata.professions[src_val]
 			return [tr("CLASS_LABEL"), data.name]
 		'trait':
+			if person != null and person.is_trait_hidden(src_val):
+				return [tr("TRAITS"), tr("TRAITUNKNOWN")]
 			var data = Traitdata.traits[src_val]
+			if data.tags.has('slave'):
+				return [tr("STATUS_LABEL"), data.name]
 			return [tr("TRAITS"), data.name]
 		'effect':
 			return [tr("EFFECT"), tr("EFFECTNAME_" + src_val.to_upper())]

@@ -891,6 +891,7 @@ var data = {
 
 				],
 				select_person = true,
+				loses_person = true,
 				person_reqs = [
 					{
 						code = "is_at_location",

@@ -1009,7 +1009,7 @@ var data = {
 		reqs = [], character = '$zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_16_3", reqs = []},
 		],
-		common_effects = [],
+		common_effects = [{code = "affect_unique_character", name = "zephyra", type = "reveal_trait", trait = "frail_constitution"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [
 					{
@@ -1044,7 +1044,7 @@ var data = {
 		reqs = [], 
 		text = [{text = "ZEPHYRA_BRUSH_17", reqs = []},
 		],
-		common_effects = [],
+		common_effects = [{code = "affect_unique_character", name = "zephyra", type = "reveal_trait", trait = "frail_constitution"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
@@ -1069,7 +1069,7 @@ var data = {
 		reqs = [], character = '$zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_18", reqs = []},
 		],
-		common_effects = [],
+		common_effects = [{code = "affect_unique_character", name = "zephyra", type = "reveal_trait", trait = "frail_constitution"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
 					{

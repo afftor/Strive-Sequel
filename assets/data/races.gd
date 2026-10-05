@@ -1406,6 +1406,65 @@ func kin_dedupe(race_list):
 	return res
 
 
+#what only this race gets - shown in character creation and in the race tooltip
+func get_exclusive_skills(race_id):
+	var race = racelist[race_id]
+	var skill_list = []
+	for group in ['social_skills', 'combat_skills', 'explore_skills']:
+		if !race.has(group):
+			continue
+		for skill_id in race[group]:
+			if !skill_list.has(skill_id):
+				skill_list.append(skill_id)
+	return skill_list
+
+
+#cached: the mansion list builds the race tooltip for every card
+var exclusive_classes_cache = {}
+
+func get_exclusive_classes(race_id):
+	if exclusive_classes_cache.has(race_id):
+		return exclusive_classes_cache[race_id]
+	var class_list = []
+	var race_is_beast = racelist[race_id].tags.has('beast')
+	for class_id in classesdata.professions:
+		var classdata = classesdata.professions[class_id]
+		if _is_disabled_class(classdata):
+			continue
+		if class_id == 'pet':
+			continue
+		if _has_matching_race_requirement(classdata.showupreqs, race_id, race_is_beast) or _has_matching_race_requirement(classdata.reqs, race_id, race_is_beast):
+			class_list.append(class_id)
+	class_list.sort()
+	exclusive_classes_cache[race_id] = class_list
+	return class_list
+
+
+func _has_matching_race_requirement(reqs, race_id, race_is_beast):
+	for req in reqs:
+		match req.code:
+			'race':
+				if req.check and req.race == race_id:
+					return true
+			'one_of_races':
+				if req.value.has(race_id):
+					return true
+			'race_is_beast':
+				if req.check == race_is_beast:
+					return true
+	return false
+
+
+func _is_disabled_class(classdata):
+	if classdata.tags.has('obsolete'):
+		return true
+	for req_group in ['showupreqs', 'reqs']:
+		for req in classdata[req_group]:
+			if req.code == 'disabled' and req.check:
+				return true
+	return false
+
+
 func get_random_race():
 	var array = []
 	for i in racelist.values():

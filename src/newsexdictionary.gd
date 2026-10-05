@@ -143,6 +143,16 @@ start_1_missionary = {
 		"SEXDICT_START_1_MISSIONARY_INSERT_MEAN_2",
 	]},
 
+	repeat_hesitant = {
+	conditions = {
+		link = ["missionary", "missionaryanal"],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_START_1_MISSIONARY_REPEAT_HESITANT_1",
+		"SEXDICT_START_1_MISSIONARY_REPEAT_HESITANT_2",
+	]},
+
 },
 
 start_1_doggy = {
@@ -247,6 +257,26 @@ start_1_doggy = {
 	lines = [
 		"SEXDICT_START_1_DOGGY_INSERT_MEAN_1",
 		"SEXDICT_START_1_DOGGY_INSERT_MEAN_2",
+	]},
+
+	repeat_hesitant = {
+	conditions = {
+		link = ["doggy", "doggyanal"],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_START_1_DOGGY_REPEAT_HESITANT_1",
+		"SEXDICT_START_1_DOGGY_REPEAT_HESITANT_2",
+	]},
+
+	insert_hesitant = {
+	conditions = {
+		link = [null],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_START_1_DOGGY_INSERT_HESITANT_1",
+		"SEXDICT_START_1_DOGGY_INSERT_HESITANT_2",
 	]},
 
 },
@@ -975,6 +1005,48 @@ main_1_sexv = {
 		"SEXDICT_MAIN_1_SEXV_TAKER_NOVICE_MEAN_2",
 	]},
 
+	hesitant = {
+	conditions = {
+		virgin = [false],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_HESITANT_2",
+	]},
+
+	facing_hesitant = {
+	conditions = {
+		virgin = [false],
+		facing = [true],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_FACING_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_FACING_HESITANT_2",
+	]},
+
+	nonfacing_hesitant = {
+	conditions = {
+		virgin = [false],
+		facing = [false],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_2",
+	]},
+
+	virgin_hesitant = {
+	conditions = {
+		virgin = [true],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_2",
+	]},
+
 },
 
 main_1_sexa = {
@@ -1117,6 +1189,48 @@ main_1_sexa = {
 	},
 	lines = [
 		"SEXDICT_MAIN_1_SEXA_DEFAULT_1",
+	]},
+
+	hesitant = {
+	conditions = {
+		virgin = [false],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_HESITANT_2",
+	]},
+
+	facing_hesitant = {
+	conditions = {
+		virgin = [false],
+		facing = [true],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_FACING_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_FACING_HESITANT_2",
+	]},
+
+	nonfacing_hesitant = {
+	conditions = {
+		virgin = [false],
+		facing = [false],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_2",
+	]},
+
+	virgin_hesitant = {
+	conditions = {
+		virgin = [true],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_1",
+		"SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_2",
 	]},
 
 },
@@ -1428,6 +1542,77 @@ react_1_sex = {
 		"SEXDICT_REACT_1_SEX_TAKER_NOVICE_MEAN_2",
 	]},
 
+	arousal_4_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [4,5],
+	},
+	lines = [
+		"SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_1",
+		"SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_2",
+		"SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_3",
+	]},
+
+	arousal_3_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [3],
+	},
+	lines = [
+		"SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_1",
+		"SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_2",
+		"SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_3",
+	]},
+
+	arousal_2_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [2],
+	},
+	lines = [
+		"SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_1",
+		"SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_2",
+		"SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_3",
+	]},
+
+	arousal_1_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [1],
+	},
+	lines = [
+		"SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_1",
+		"SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_2",
+		"SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_3",
+	]},
+
+	taker_mastered_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		taker_skill_level = ['mastered'],
+	},
+	lines = [
+		"SEXDICT_REACT_1_SEX_TAKER_MASTERED_HESITANT_1",
+	]},
+
+	taker_skilled_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		taker_skill_level = ['skilled'],
+	},
+	lines = [
+		"SEXDICT_REACT_1_SEX_TAKER_SKILLED_HESITANT_1",
+	]},
+
+	taker_novice_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		taker_skill_level = ['novice'],
+	},
+	lines = [
+		"SEXDICT_REACT_1_SEX_TAKER_NOVICE_HESITANT_1",
+	]},
+
 },
 
 react_1_fsex = {
@@ -1627,6 +1812,80 @@ react_2_sex = {
 	},
 	lines = [
 		"SEXDICT_REACT_2_SEX_GIVER_NOVICE_MEAN_1",
+		"",
+	]},
+
+	arousal_4_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [4,5],
+	},
+	lines = [
+		"SEXDICT_REACT_2_SEX_AROUSAL_4_HESITANT_1",
+		"SEXDICT_REACT_2_SEX_AROUSAL_4_HESITANT_2",
+		"",
+	]},
+
+	arousal_3_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [3],
+	},
+	lines = [
+		"SEXDICT_REACT_2_SEX_AROUSAL_3_HESITANT_1",
+		"SEXDICT_REACT_2_SEX_AROUSAL_3_HESITANT_2",
+		"",
+	]},
+
+	arousal_2_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [2],
+	},
+	lines = [
+		"SEXDICT_REACT_2_SEX_AROUSAL_2_HESITANT_1",
+		"SEXDICT_REACT_2_SEX_AROUSAL_2_HESITANT_2",
+		"",
+	]},
+
+	arousal_1_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [1],
+	},
+	lines = [
+		"SEXDICT_REACT_2_SEX_AROUSAL_1_HESITANT_1",
+		"SEXDICT_REACT_2_SEX_AROUSAL_1_HESITANT_2",
+		"",
+	]},
+
+	giver_mastered_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		giver_skill_level = ['mastered'],
+	},
+	lines = [
+		"SEXDICT_REACT_2_SEX_GIVER_MASTERED_HESITANT_1",
+		"",
+	]},
+
+	giver_skilled_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		giver_skill_level = ['skilled'],
+	},
+	lines = [
+		"SEXDICT_REACT_2_SEX_GIVER_SKILLED_HESITANT_1",
+		"",
+	]},
+
+	giver_novice_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		giver_skill_level = ['novice'],
+	},
+	lines = [
+		"SEXDICT_REACT_2_SEX_GIVER_NOVICE_HESITANT_1",
 		"",
 	]},
 

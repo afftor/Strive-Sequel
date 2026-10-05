@@ -1,3 +1,95 @@
+0.16.2
+Combat:
+	New animations: Winds of Hyperborea, Arrow Hail, Tempest, Black Tendrils, Void, Clarity
+	Charged casts (Lightning, Chain Lightning, Inferno, Meteor, Blizzard, Hailstorm, Gaze of the Abyss) now have new casting animation
+	Fighter cards now show freeze, poison, bleeding, burning, sleep, stun and In the Shadows; damage-over-time ticks pop out of the status icon
+	Buff icons now sit in one row that shrinks as effects pile up, with a "+N" chip for the overflow
+	New font for damage numbers
+	Personalities no longer give combat bonuses; those bonuses moved to the Adept tier of faiths
+	Pacifist can no longer use attacking abilities (was ATK -50%); it gets a Do Nothing ability to skip the turn
+	Light healing no longer works on Undead
+	Updated skill animations for Coalition, Jean, Dwarf King, Nixx, Kurdan, Ashmedai, Greg, Sebastian, Kuro, Elder Gryphon, Melchor, Rouge, White Stag, Reyan and bandits
+	Greg's Isolate can no longer miss
+
+Traits:
+	Traits are now split into Physical, Mental, Magic and Religious categories with limited slots; a new trait for a full category offers a replacement
+	Added permanent, hidden and growing traits
+	Reworked Undead trait effect from Necromancer
+	Opposing sex traits are now incompatible
+	Soul Stone now transfers a magic trait between characters instead of removing a trait
+	The practice room tutor now removes only negative Mental traits
+	Slaves have their own set of mental traits corresponding to their treatment/condition
+	Knight, Paladin, Archmage and Bishop are now noble classes, closed to slaves; enslaving warns about losing them
+
+Character creation and training:
+	Changing race asks first and keeps compatible looks
+	The training window has a trainee list with status badges
+	Repeated failed trainings lead to Broken instead of a random negative trait
+	Training point cap lowered to 40 + 10xTame (was 50 + 10xTame)
+	Post-training upgrades reworked
+	Added Genitalia Manipulation to the succubus trainings
+	Sex Toy class no longer requires Pet and Harlot
+
+Dungeons:
+	New dungeon room: a meditation spot or a place of power
+	Altars can grant or deepen faith
+	Tower of Dreams event rooms can now have magic barrier challenge
+
+Quests and events:
+	Story checks where the master acts now accept only the master
+	Options asking for a specific race or sex now check it properly
+	Options that hand a character over for good no longer offer the master and ask before giving away a unique character
+	Jean's arm-wrestle and carriage intimidation need 75 Physics (was 5)
+	Random events Lost Cargo, Unwell, Prayer, Broken Vase and Food Quarrel now react to traits and faith
+	Anastasia's post-election scenes record the master as her first partner
+	Updated Cali's portraits and CG art
+
+Interactions:
+	Actions a partner is one consent point short of now read as hesitant instead of refusal, with new lines
+	Let-Lead AI no longer picks refused actions and goes after its current desire first
+	Fixed sex-trait sensation bonuses applying to the wrong partner
+
+Enchanting:
+	Enchanting moved to the Ritual Room with a new panel
+	Enchantments now also cost mana, which donors can share
+	Already enchanted gear can get more levels
+	Improve Gear is now a button in Smithing
+
+Mansion:
+	Upgrade costs reworked and now include gold (Ritual Room 2500, was 400; Flesh Rites 5000/10000, was 2500/5000)
+	Room cards and task tooltips show the work stat and the tool that speeds it up
+	Excess materials sold by the storage clerk fetch half buy price (was full price)
+	Rich Soil yields cloth 60% and silk 30% (was 30%/10%)
+	The craft log groups identical products
+
+Slave market:
+	Commissions stay open 1-4 days longer at ranks C to S
+	The captives panel shows a yellow star for captives who fit a commission after training
+	Commissions no longer ask for noble classes
+	Clicking a candidate's portrait opens them in the mansion list
+	New Tokens of Recognition icon
+
+Map:
+	Travel groups can be locked; new recruits join the exploring party's group
+
+Paperdoll:
+	Added freckles, muscles and a long wavy hairstyle
+	Genitals are drawn in front of a pregnant belly
+
+Fixes:
+	Valkyrie's skill mana cost reduction now applies
+	Blessing of the Forest now gives its +15 Physics
+	Shy's subordinate tax reduction now applies
+	Selfish now blocks support abilities from hotkeys and the AI too
+	Fixed beastkin chest fur colouring on orange-white and black coats
+	Fixed the minor and major Curse of Hideous names being swapped
+	Fixed the Training button saying "can be trained today" after training was finished
+	Fixed the factor upgrade screen keeping a character from before a load
+	Fixed the chest gas trap and the mana fountain draining or restoring all mana
+	Fixed the enslavement text at Hybris's altar
+	Fixed an error after leaving to the main menu
+	Fixed Amelia's dress on the paperdoll and testicles drawn on futas without them
+
 0.16.1a
 Slave market:
 	Guild slave-delivery quests moved from the guild notice boards to the slave market as guild orders, one open order per guild

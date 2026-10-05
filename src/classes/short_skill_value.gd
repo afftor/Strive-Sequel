@@ -189,6 +189,9 @@ func calculate_dmg():
 		value *= (float(100 - reduction)/100.0)
 	if parent.tags.has('heal'):
 		reduction = parent.target.get_stat('resist_heal')
+		#light does not mend the undead
+		if damage_type == 'light' and parent.target.has_status('no_light_heal'):
+			reduction = 100
 		#it was critical error before - for reduction applies second time
 		if !template.nomod: #there may be errors due to damagestat templating
 			if reduction > 100:

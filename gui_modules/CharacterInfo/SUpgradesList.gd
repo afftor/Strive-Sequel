@@ -66,6 +66,8 @@ func build_trainings():
 	input_handler.ClearContainer(container, ['Button'])
 	for tr_id in Traitdata.succubus_trainings:
 		var u_data = Traitdata.succubus_trainings[tr_id]
+		if u_data.has('showupreqs') and !person.checkreqs(u_data.showupreqs):
+			continue
 		var panel = input_handler.DuplicateContainerTemplate(container, 'Button')
 		panel.rect_position = Vector2(u_data.position[1] * offset_x, u_data.position[0] * offset_y)
 		var unlocked = false

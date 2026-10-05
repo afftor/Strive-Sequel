@@ -92,7 +92,7 @@ func tick():
 			globals.emit_signal("slave_arrived", parent.get_ref())
 			globals.emit_signal("travel_completed")
 			parent.get_ref().remove_from_task(true)
-			input_handler.update_slave_list()
+			#no list refresh per arrival: the clock's rebuild_after_turn refreshes every card once
 			#Not a row of its own: everybody who arrives this turn shares one, with the travel
 			#groups folded away behind it. See globals.mansion_activity_arrival().
 			globals.mansion_activity_arrival(parent.get_ref(), location)

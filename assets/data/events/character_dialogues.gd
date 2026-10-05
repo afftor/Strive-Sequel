@@ -365,7 +365,7 @@ var data = {
 			}
 		]
 	},
-	kurdan_dialogue_start = {
+	grasha_dialogue_start = {
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -374,31 +374,31 @@ var data = {
 		reqs = [
 
 		],
-		character = "$kurdan",
+		character = "$grasha",
 		text = [
 			{
-				text = "KURDAN_EXTRA_GREET",
+				text = "GRASHA_EXTRA_GREET",
 				reqs = [
 
 				],
 				previous_dialogue_option = 0
 			},
 			{
-				text = "KURDAN_EXTRA_REPLY1",
+				text = "GRASHA_EXTRA_REPLY1",
 				reqs = [
 
 				],
 				previous_dialogue_option = 1
 			},
 			{
-				text = "KURDAN_EXTRA_REPLY2",
+				text = "GRASHA_EXTRA_REPLY2",
 				reqs = [
 
 				],
 				previous_dialogue_option = 2
 			},
 			{
-				text = "KURDAN_EXTRA_REPLY3",
+				text = "GRASHA_EXTRA_REPLY3",
 				reqs = [
 
 				],
@@ -407,8 +407,8 @@ var data = {
 		],
 		options = [
 			{
-				code = "kurdan_dialogue_start",
-				text = "KURDAN_EXTRA_OPTION1",
+				code = "grasha_dialogue_start",
+				text = "GRASHA_EXTRA_OPTION1",
 				reqs = [
 
 				],
@@ -416,8 +416,8 @@ var data = {
 				remove_after_first_use = true
 			},
 			{
-				code = "kurdan_dialogue_start",
-				text = "KURDAN_EXTRA_OPTION2",
+				code = "grasha_dialogue_start",
+				text = "GRASHA_EXTRA_OPTION2",
 				reqs = [
 
 				],
@@ -425,8 +425,8 @@ var data = {
 				remove_after_first_use = true
 			},
 			{
-				code = "kurdan_dialogue_start",
-				text = "KURDAN_EXTRA_OPTION3",
+				code = "grasha_dialogue_start",
+				text = "GRASHA_EXTRA_OPTION3",
 				reqs = [
 
 				],

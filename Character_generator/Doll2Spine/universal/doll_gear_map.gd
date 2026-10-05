@@ -153,6 +153,7 @@ const PER_DOLL = {
 		# pet suit of its own - so he keeps the collar and the hood and wears no
 		# paws
 		"worker_outfit": "outfit_waiter",
+		"amelia_dress": "outfit_waiter",
 		"outfit_petsuit": null,
 		"outfit_petsuit_hands": null,
 		"animal_gloves": null,
@@ -197,6 +198,9 @@ const ITEM_PARTS = {
 	# two working outfits, two sets: the apron for the smith, the serving dress for
 	# the worker
 	"worker_outfit": "outfit_waitress",
+	# Amelia's servant dress has no art of its own; without an entry it fell back
+	# to the slave set
+	"amelia_dress": "outfit_waitress",
 	"craftsman_suit": "outfit_smith",
 	# no item is called `servant`; the maid dress is `maid_dress`, and under the
 	# old name it matched nothing and drew nothing

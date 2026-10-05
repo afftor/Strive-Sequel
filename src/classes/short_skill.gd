@@ -210,6 +210,7 @@ func convert_to_new_template():
 		res_res.evade = 0
 	if template.has('armor_p'): res_res.armor_p = template.armor_p
 	if template.has('critchance'): res_res.critchance = template.critchance
+	if template.has('resist_cap'): res_res.resist_cap = template.resist_cap
 	if template.has('process_no_stat'): res_res.process_no_stat = template.process_no_stat
 	if template.has('follow_up'): res_res.follow_up = template.follow_up
 	if template.has('social_skill_stats'): res_res.social_skill_stats = template.social_skill_stats
@@ -309,6 +310,7 @@ func convert_to_new_template_combat():
 	if template.has('evade'): res_res.evade = template.evade
 	if template.has('armor_p'): res_res.armor_p = template.armor_p
 	if template.has('critchance'): res_res.critchance = template.critchance
+	if template.has('resist_cap'): res_res.resist_cap = template.resist_cap
 	if template.has('follow_up'): res_res.follow_up = template.follow_up
 	if template.has('number_rnd_targets'): 
 		if template.number_rnd_targets is Array:

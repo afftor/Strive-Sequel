@@ -966,6 +966,7 @@ func _get_final_lack_consent(member):
 	if member.lack_consent <= 0 || member.person.get_stat('unique') == 'rouge':
 		return 0.0
 	var final_lack = float(member.lack_consent)
+	final_lack *= max(0.0, 1.0 + member.person.get_trait_sum('lack_consent_mod'))
 	if member.horny >= 75:
 		final_lack *= 0.66
 	final_lack -= (member.orgasms * 3) + member.requestsdone
@@ -1504,6 +1505,16 @@ func count_action_consent(action, giver, taker):
 	return {giver_consent = giver_consent, taker_consent = taker_consent, giver_text = giver_text, taker_text = taker_text}
 #	var dict = {value = action.consent, giver_consent = giver.consent, taker_consent = taker.consent}
 #	return dict
+
+#how far the least willing giver and taker fall short of the action: 0 or less is white, 1 yellow, 2+ red
+func _get_missing_consent(action, action_givers, action_takers):
+	var missing = {giver = -100, taker = -100}
+	for g in action_givers:
+		for t in action_takers:
+			var consent = count_action_consent(action, g, t)
+			missing.giver = max(missing.giver, action.consent_giver - consent.giver_consent)
+			missing.taker = max(missing.taker, action.consent_taker - consent.taker_consent)
+	return missing
 
 func open_item_list(member):
 	itemusemember = member
@@ -2333,7 +2344,7 @@ func characterspeech(scene):
 
 	array.clear() #array will serve as speech selector
 	var dict = {}
-	var prevailing_lines = ['mute', 'silence', 'orgasm', 'resistorgasm', 'pain', 'painlike', 'resisthorny', 'resist', 'blowjob']
+	var prevailing_lines = ['mute', 'silence', 'orgasm', 'resistorgasm', 'hesitantorgasm', 'pain', 'painlike', 'resisthorny', 'resist', 'hesitanthorny', 'hesitant', 'blowjob']
 
 	if character.person.check_trait('Mute'):
 		dict.mute = [speechdict.mute, 1]
@@ -2345,23 +2356,31 @@ func characterspeech(scene):
 		dict.rough = [speechdict.rough, 1]
 #	if character.person.rules.silence == true:
 #		dict.silence = [speechdict.silence, 1]
-	var consent = count_action_consent(scene.scene, partner, character)
-	var lacks_consent = false
+	var missing_consent = 0
 	if character in scene.takers:
-		if consent.taker_consent < scene.scene.consent_taker:
-			lacks_consent = true
+		missing_consent = _get_missing_consent(scene.scene, scene.givers, [character]).taker
+	elif character in scene.givers:
+		missing_consent = _get_missing_consent(scene.scene, [character], scene.takers).giver
+	if missing_consent == 1:
+		#a yellow action: flustered and unsure rather than protesting
+		if character.horny >= 100:
+			dict.hesitanthorny = [speechdict.hesitanthorny, 1]
+		else:
+			dict.hesitant = [speechdict.hesitant, 1]
+	elif missing_consent > 1:
+		if character in scene.takers:
 			if character.horny >= 100:
 				dict.resisthorny = [speechdict.resisthorny, 1]
 			else:
 				dict.resist = [speechdict.resist, 1]
 			if scene.scene.code in ['missionaryanal', 'doggyanal', 'lotusanal','revlotusanal', 'inserttaila', 'insertinturnsass']:
 				dict.analrape = [speechdict.analrape, 1]
-	elif character in scene.givers:
-		if consent.giver_consent < scene.scene.consent_giver:
-			lacks_consent = true
+		else:
 			dict.resist = [speechdict.resist, 1]
 	if character.orgasm == true:
-		if lacks_consent:
+		if missing_consent == 1:
+			dict.hesitantorgasm = [speechdict.hesitantorgasm, 1]
+		elif missing_consent > 1:
 			dict.resistorgasm = [speechdict.resistorgasm, 1]
 		else:
 			dict.orgasm = [speechdict.orgasm, 1]
@@ -2411,6 +2430,9 @@ var speechdict = {
 resist = ["INTERACTION_SPEECH_RESIST_1", "INTERACTION_SPEECH_RESIST_2", "INTERACTION_SPEECH_RESIST_3", "INTERACTION_SPEECH_RESIST_4", "INTERACTION_SPEECH_RESIST_5"],
 resisthorny = ["INTERACTION_SPEECH_RESISTHORNY_1", "INTERACTION_SPEECH_RESISTHORNY_2", "INTERACTION_SPEECH_RESISTHORNY_3", "INTERACTION_SPEECH_RESISTHORNY_4", "INTERACTION_SPEECH_RESISTHORNY_5"],
 resistorgasm = ["INTERACTION_SPEECH_RESISTORGASM_1", "INTERACTION_SPEECH_RESISTORGASM_2", "INTERACTION_SPEECH_RESISTORGASM_3"],
+hesitant = ["INTERACTION_SPEECH_HESITANT_1", "INTERACTION_SPEECH_HESITANT_2", "INTERACTION_SPEECH_HESITANT_3", "INTERACTION_SPEECH_HESITANT_4", "INTERACTION_SPEECH_HESITANT_5"],
+hesitanthorny = ["INTERACTION_SPEECH_HESITANTHORNY_1", "INTERACTION_SPEECH_HESITANTHORNY_2", "INTERACTION_SPEECH_HESITANTHORNY_3", "INTERACTION_SPEECH_HESITANTHORNY_4", "INTERACTION_SPEECH_HESITANTHORNY_5"],
+hesitantorgasm = ["INTERACTION_SPEECH_HESITANTORGASM_1", "INTERACTION_SPEECH_HESITANTORGASM_2", "INTERACTION_SPEECH_HESITANTORGASM_3"],
 mute = ["INTERACTION_SPEECH_MUTE_1", "INTERACTION_SPEECH_MUTE_2", "INTERACTION_SPEECH_MUTE_3", "INTERACTION_SPEECH_MUTE_4"],
 blowjob = ["INTERACTION_SPEECH_BLOWJOB_1", "INTERACTION_SPEECH_BLOWJOB_2", "INTERACTION_SPEECH_BLOWJOB_3", "INTERACTION_SPEECH_BLOWJOB_4"],
 blowjobtake = ["INTERACTION_SPEECH_BLOWJOBTAKE_1", "INTERACTION_SPEECH_BLOWJOBTAKE_2", "INTERACTION_SPEECH_BLOWJOBTAKE_3"],
@@ -2562,16 +2584,13 @@ func output(scenescript, valid_lines, givers, takers):
 		for i in virginsource:
 			if i.person.get_stat(virginpart) == false:
 				checks.virgin = false
-	#assign consent
-	for j in takers:
-		var lowest_consent = 100
-		for i in givers:
-			var consent = count_action_consent(scenescript, i, j)
-			if consent.taker_consent < lowest_consent:
-				lowest_consent = consent.taker_consent
-		if lowest_consent < scenescript.consent_taker:
-			checks.consent = false
-			break
+	#assign consent: true when willing, 'hesitant' one point short (a yellow action), false when refusing
+	var taker_missing = _get_missing_consent(scenescript, givers, takers).taker
+	var hesitant = taker_missing == 1
+	if hesitant:
+		checks.consent = 'hesitant'
+	elif taker_missing > 0:
+		checks.consent = false
 	#based on screen values, subject to adjustment
 	if takers.size() == 1:
 		checks.arousal = int(clamp(ceil(takers[0].sens/200), 1, 5))
@@ -2605,10 +2624,15 @@ func output(scenescript, valid_lines, givers, takers):
 	var drop = false
 	for i in valid_lines:
 		linearray = []
+		var line_checks = checks
+		#a section with no hesitant lines for this moment shows its willing ones
+		if hesitant && !_has_matching_consent_lines([act_lines.get(i, {}), shared_lines.get(i, {})], checks):
+			line_checks = checks.duplicate()
+			line_checks.consent = true
 		if i in act_lines:
 			var has_matching_giver_tits_size = false
 			for j in act_lines[i]:
-				if act_lines[i][j].conditions.has('giver_tits_size') && act_lines[i][j].conditions.giver_tits_size.has(checks.giver_tits_size):
+				if act_lines[i][j].conditions.has('giver_tits_size') && act_lines[i][j].conditions.giver_tits_size.has(line_checks.giver_tits_size):
 					has_matching_giver_tits_size = true
 					break
 			for j in act_lines[i]:
@@ -2616,7 +2640,7 @@ func output(scenescript, valid_lines, givers, takers):
 				if has_matching_giver_tits_size && !act_lines[i][j].conditions.has('giver_tits_size'):
 					drop = true
 				for k in act_lines[i][j].conditions:
-					if checks.has(k) && !act_lines[i][j].conditions[k].has(checks[k]):
+					if line_checks.has(k) && !act_lines[i][j].conditions[k].has(line_checks[k]):
 						drop = true
 						break
 				if drop == false:
@@ -2625,7 +2649,7 @@ func output(scenescript, valid_lines, givers, takers):
 			for j in shared_lines[i]:
 				drop = false
 				for k in shared_lines[i][j].conditions:
-					if checks.has(k) && !shared_lines[i][j].conditions[k].has(checks[k]):
+					if line_checks.has(k) && !shared_lines[i][j].conditions[k].has(line_checks[k]):
 						drop = true
 						break
 				if drop == false:
@@ -2636,6 +2660,21 @@ func output(scenescript, valid_lines, givers, takers):
 			output += tr(picked)
 
 	return decoder(output, givers, takers)
+
+#whether any of these line sections has a group written for checks.consent whose other conditions hold too
+func _has_matching_consent_lines(sections, checks):
+	for section in sections:
+		for group in section.values():
+			if !group.conditions.has('consent'):
+				continue
+			var fits = true
+			for k in group.conditions:
+				if checks.has(k) && !group.conditions[k].has(checks[k]):
+					fits = false
+					break
+			if fits:
+				return true
+	return false
 
 func impregnationcheck(person1, person2):
 	var valid = true
@@ -2877,25 +2916,20 @@ func endencounter():
 			check = check_acquire_reqs(p, sex_traits[i].acquire_reqs)
 			chance = (randf()*100 < (5 + 5 * p.person.get_stat('sexuals_factor')))
 			if chance && check && !p.person.get_unlocked_sex_traits().has(i):
-				p.person.unlock_sex_trait(i)
+				var overcome = p.person.unlock_sex_trait(i)
 				text += tr("INTERACTION_END_TRAIT_LEARNED") % [p.name, Traitdata.sex_traits[i].name]
+				for diz in overcome:
+					text += tr("INTERACTION_END_TRAIT_LOST") % [p.name, Traitdata.sex_traits[diz].name]
 	### Removing Dislikes
-	var dislikes = []
 	for p in participants:
-		for diz in p.person.get_negative_sex_traits():
-			if diz.begins_with("dislike"):
-				dislikes.append(diz)
-			if dislikes.size() != 0:
-				for i in sex_traits:
-					if !i.begins_with("dislike"):
-						continue
-					if !i in dislikes:
-						continue
-					check = check_acquire_reqs(p, sex_traits[i].reqs)
-					chance = (randf()*100 < (5 + 5 * p.person.get_stat('sexuals_factor')))
-					if (chance && check) :
-						p.person.get_negative_sex_traits().erase(i) #bad practice still
-						text += tr("INTERACTION_END_TRAIT_LOST") % [p.name, Traitdata.sex_traits[i].name]
+		for i in p.person.get_negative_sex_traits().keys():
+			if !i.begins_with("dislike") or !sex_traits.has(i):
+				continue
+			check = check_acquire_reqs(p, sex_traits[i].reqs)
+			chance = (randf()*100 < (5 + 5 * p.person.get_stat('sexuals_factor')))
+			if chance && check:
+				p.person.remove_negative_sex_trait(i)
+				text += tr("INTERACTION_END_TRAIT_LOST") % [p.name, Traitdata.sex_traits[i].name]
 
 	get_node("Control").show()
 	get_node("Control/Panel/RichTextLabel").set_bbcode(globals.TextEncoder(text))
@@ -3004,94 +3038,32 @@ func askslaveforaction(chosen):
 			freeparticipants.erase(newparticipant)
 
 	#choosing action
-	var chosenpos = ''
-	var actions = []
 	var chosenaction = null
 	debug += 'chosing action: \n'
-	for i in categories:
-		for j in categories[i]:
-			clearstate()
-			debug += j.code + ": "
-			if j.code == 'wait':
-				continue
-			if j.code in takercategories:
-				if dom == 'taker':
-					givers += groupchosen
-					takers += grouptarget
-				else:
-					takers += groupchosen
-					givers += grouptarget
-			else:
-				if dom == 'taker':
-					takers += groupchosen
-					givers += grouptarget
-				else:
-					givers += groupchosen
-					takers += grouptarget
-			var result = checkaction(j, doubledildocheck())
-			if result[0] == 'allowed':
-				var value = 0
-				if chosen.person_sexexp.sexexp_actions.has(j.code):
-					value += chosen.person_sexexp.sexexp_actions[j.code]/2
-				if chosen.person_sexexp.sexexp_orgasms.has(j.code):
-					value += chosen.person_sexexp.sexexp_orgasms[j.code]*4
-				if chosen.person_sexexp.sexexp_seenactions.has(j.code):
-					value += chosen.person_sexexp.sexexp_seenactions[j.code]/10
-
-				if i in ['caress','fucking']:
-					value += 10
-
-				if !chosen.person.check_trait("Enjoys Anal") && j.code in analcategories:
-					if chosenpos == 'giver' && !takercategories.has(j.code):
-						value -= 5
-					elif chosenpos == 'taker' && takercategories.has(j.code):
-						value -= 5
-
-
-
-				if chosen.person.check_trait('Masochist') && j.code in punishcategories && chosenpos == 'taker':
-					value *= 2.5
-				if chosen.person.check_trait('Dominant') && j.code in punishcategories && chosenpos == 'giver':
-					value *= 2.5
-#				if target.submission < 20  && j.code in punishcategories && chosenpos == 'giver':
-#					value *= 3
-				if chosen.person.get_stat('penis_size') == 'none' && dom == 'giver' && j.code == 'strapon':
-					value *= 10
-				if chosen.person.check_trait("Pervert") && ((givers.has(chosen) && j.giverconsent == 'advanced') || (takers.has(chosen) && j.takerconsent == 'advanced')):
-					value += 15
-
-				if chosen.person.get_stat('vaginal_virgin') == true && j.category == 'fucking' && !j.code in analcategories:
-					value -= 25
-				if chosen.person.get_stat('anal_virgin') == true && j.category == 'fucking' && j.code in analcategories:
-					value -= 25
-
-				if j.category == 'fucking':
-					value += max(turns, 15)
-
-				if j.code in ['tribadism','doubledildo','doubledildoass','frottage'] && (chosen.strapon == true || target.strapon == true):
-					value = 0
-
-				debug += str(value) + '\n'
-				if value >= 0:
-					actions.append([j, value])
-	if actions.size() == 0:
-		actions.append([categories.other[0], 1])
-	chosenaction = input_handler.weightedrandom(actions)
-	clearstate()
-	if chosenaction.code in takercategories:
-		if dom == 'taker':
-			givers = groupchosen
-			takers = grouptarget
-		else:
-			takers = groupchosen
-			givers = grouptarget
+	#a desire the chosen can meet this turn comes first, with any partner and from either side
+	var desire_picks = _ai_desire_picks(chosen, targets)
+	if desire_picks.size() > 0:
+		var pick = input_handler.weightedrandom(desire_picks)
+		chosenaction = pick.action
+		dom = pick.dom
+		groupchosen = pick.groupchosen
+		grouptarget = pick.grouptarget
+		debug += 'desire ' + str(chosen.request) + ' - ' + chosenaction.code + '\n'
 	else:
-		if dom == 'taker':
-			takers = groupchosen
-			givers = grouptarget
-		else:
-			givers = groupchosen
-			takers = grouptarget
+		var actions = _ai_wanted_actions(chosen, dom, groupchosen, grouptarget)
+		#nothing it is willing to start from the rolled side: the other side, then a pass
+		if actions.size() == 0:
+			var other_side = 'giver' if dom == 'taker' else 'taker'
+			actions = _ai_wanted_actions(chosen, other_side, groupchosen, grouptarget)
+			if actions.size() > 0:
+				dom = other_side
+				debug += 'switched to ' + dom + '\n'
+		for i in actions:
+			debug += i[0].code + ": " + str(i[1]) + '\n'
+		if actions.size() == 0:
+			actions.append([categories.other[0], 1])
+		chosenaction = input_handler.weightedrandom(actions)
+	_ai_assign_sides(chosenaction, dom, groupchosen, grouptarget)
 	var cont = false
 	chosenaction.givers = givers
 	chosenaction.takers = takers
@@ -3101,6 +3073,138 @@ func askslaveforaction(chosen):
 	$PopupPanel/RichTextLabel.bbcode_text = debug
 	#$PopupPanel.popup()
 	startscene(chosenaction, cont, decoder(text, groupchosen, grouptarget))
+
+#the dominant side receives in takercategories actions
+func _ai_assign_sides(action, dom, groupchosen, grouptarget):
+	clearstate()
+	if (action.code in takercategories) == (dom == 'taker'):
+		givers += groupchosen
+		takers += grouptarget
+	else:
+		takers += groupchosen
+		givers += grouptarget
+
+#[[action, weight], ...] the chosen would start with these sides; red actions are left out, yellow ones weigh half
+func _ai_rate_actions(chosen, dom, groupchosen, grouptarget, desire_only = false):
+	var target = grouptarget[0]
+	var chosenpos = ''
+	var actions = []
+	for i in categories:
+		for j in categories[i]:
+			if j.code == 'wait':
+				continue
+			_ai_assign_sides(j, dom, groupchosen, grouptarget)
+			if desire_only && !_ai_meets_desire(chosen, j):
+				continue
+			var result = checkaction(j, doubledildocheck())
+			if result[0] != 'allowed':
+				continue
+			var missing = _get_missing_consent(j, givers, takers)
+			var missing_consent = max(missing.giver, missing.taker)
+			if missing_consent >= 2:
+				continue
+			var value = 0
+			if chosen.person_sexexp.sexexp_actions.has(j.code):
+				value += chosen.person_sexexp.sexexp_actions[j.code]/2
+			if chosen.person_sexexp.sexexp_orgasms.has(j.code):
+				value += chosen.person_sexexp.sexexp_orgasms[j.code]*4
+			if chosen.person_sexexp.sexexp_seenactions.has(j.code):
+				value += chosen.person_sexexp.sexexp_seenactions[j.code]/10
+
+			if i in ['caress','fucking']:
+				value += 10
+
+			if !chosen.person.check_trait("Enjoys Anal") && j.code in analcategories:
+				if chosenpos == 'giver' && !takercategories.has(j.code):
+					value -= 5
+				elif chosenpos == 'taker' && takercategories.has(j.code):
+					value -= 5
+
+			if chosen.person.check_trait('Masochist') && j.code in punishcategories && chosenpos == 'taker':
+				value *= 2.5
+			if chosen.person.check_trait('Dominant') && j.code in punishcategories && chosenpos == 'giver':
+				value *= 2.5
+			if chosen.person.get_stat('penis_size') == 'none' && dom == 'giver' && j.code == 'strapon':
+				value *= 10
+			if chosen.person.check_trait("Pervert") && ((givers.has(chosen) && j.giverconsent == 'advanced') || (takers.has(chosen) && j.takerconsent == 'advanced')):
+				value += 15
+
+			if chosen.person.get_stat('vaginal_virgin') == true && j.category == 'fucking' && !j.code in analcategories:
+				value -= 25
+			if chosen.person.get_stat('anal_virgin') == true && j.category == 'fucking' && j.code in analcategories:
+				value -= 25
+
+			if j.category == 'fucking':
+				value += max(turns, 15)
+
+			if j.code in ['tribadism','doubledildo','doubledildoass','frottage'] && (chosen.strapon == true || target.strapon == true):
+				value = 0
+
+			if missing_consent == 1:
+				value *= 0.5
+			if value >= 0:
+				actions.append([j, value])
+	clearstate()
+	return actions
+
+#an action rated at zero is never picked by weight, so it must not win by being the only one left
+func _ai_wanted_actions(chosen, dom, groupchosen, grouptarget):
+	var res = []
+	for i in _ai_rate_actions(chosen, dom, groupchosen, grouptarget):
+		if i[1] > 0:
+			res.append(i)
+	return res
+
+#line-ups in which the chosen meets its desire this turn: [{action, dom, groupchosen, grouptarget}, weight]
+func _ai_desire_picks(chosen, targets):
+	var picks = []
+	if chosen.request == null:
+		return picks
+	var lineups = []
+	if chosen.request == 'group':
+		for a in range(targets.size()):
+			for b in range(a + 1, targets.size()):
+				lineups.append([targets[a], targets[b]])
+	else:
+		for t in targets:
+			lineups.append([t])
+	for lineup in lineups:
+		var grouptarget = []
+		var target_weight = 0.0
+		for t in lineup:
+			grouptarget.append(t[0])
+			target_weight += t[1] / float(lineup.size())
+		for dom in ['giver', 'taker']:
+			for rated in _ai_rate_actions(chosen, dom, [chosen], grouptarget, true):
+				picks.append([{action = rated[0], dom = dom, groupchosen = [chosen], grouptarget = grouptarget}, max(rated[1], 1) * target_weight])
+	return picks
+
+#checkrequest's test for the sides now set up, with a body-part desire narrowed to the member's own part
+func _ai_meets_desire(member, action):
+	var side = 'giver' if givers.has(member) else 'taker'
+	var own_tags = action.get(side + 'tags')
+	match member.request:
+		'pet':
+			return side == 'taker' && action.takertags.has('pet')
+		'petgive':
+			return side == 'giver' && action.givertags.has('pet')
+		'fuck':
+			return side == 'taker' && action.takertags.has('penetration')
+		'fuckgive':
+			return side == 'giver' && action.takertags.has('penetration')
+		'pussy':
+			return own_tags.has('vagina')
+		'penis':
+			return own_tags.has('penis')
+		'anal':
+			return own_tags.has('anal')
+		'punish':
+			return side == 'taker' && action.takertags.has('punish')
+		'humiliate':
+			return side == 'taker' && action.takertags.has('shame')
+		'group':
+			return (takers if side == 'giver' else givers).size() > 1
+	return false
 
 func _on_finishbutton_pressed():
 	if ResourceScripts.core_animations.BeingAnimated.has(self):

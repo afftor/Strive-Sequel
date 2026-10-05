@@ -430,7 +430,7 @@ func try_rank_up():
 #--------------tokens of recognition--------------
 
 signal tokens_changed
-const TOKEN_ICON = "res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png"
+const TOKEN_ICON = "res://assets/Textures_v2/slave_quests/token_whip.png"
 const RANK_MEDAL = "res://assets/Textures_v2/slave_quests/rank_%s.png"
 
 func get_tokens():
@@ -985,6 +985,9 @@ func _class_available(prof, depth = 0):
 	if depth > CLASS_DEPTH or !classesdata.professions.has(prof):
 		return false
 	var data = classesdata.professions[prof]
+	#orders are filled with slaves, and a slave can't hold a noble class or one built on it
+	if data.get('tags', []).has('noble'):
+		return false
 	for req in data.get('showupreqs', []):
 		if req.code == 'class_unlocked' and !ResourceScripts.game_progress.if_class_unlocked(
 				req['class'], req.get('check', true), req.get('operant', 'eq')):

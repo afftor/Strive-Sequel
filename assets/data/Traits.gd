@@ -21,16 +21,6 @@ var traits = {
 		effects = [],
 		tags = ['simple_icon', 'trainer']
 	},
-	undead = {
-		code = 'undead',
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconsskills/trait_undead.png",
-		visible = true,
-		effects = [],
-		tags = ['simple_icon', 'neutral', 'permanent'],
-		bonusstats = {food_consumption_set = 0, resist_light = -50, resist_dark = 50}
-	},
 	stag_buff = {
 		code = 'stag_buff',
 		name = '',
@@ -305,7 +295,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-		bonusstats = {},
+		bonusstats = {disabled_masteries = ['leadership']},
 		tags = ['slave']
 	},
 	slave_trained = {
@@ -315,7 +305,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-		bonusstats = {},
+		bonusstats = {disabled_masteries = ['leadership']},
 		tags = ['trained', 'worker', 'combatant', 'slave']
 	},
 	#classes
@@ -695,514 +685,6 @@ var traits = {
 		tags = ['simple_icon', 'positive', 'sex_action_unlock', 'exclusive'],
 		bonusstats = {}
 	},
-	#positive
-	prodigy = {
-		code = 'prodigy',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/brain.png",
-		effects = [],
-		bonusstats = {exp_gain_mod = 0.25},
-		weight = 100,
-		conflicts = ['dim'],
-		tags = ['positive', 'can_start', 'disposition_change'],
-		disposition_change = {
-			positive = [['resist', 75],['neutral', 25]]
-		}
-	},
-	passive = {
-		code = 'passive',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/fist.png",
-		effects = [],
-		bonusstats = {training_loyalty = 2},
-		weight = 100,
-		conflicts = ['rebel'],
-		reqs = [{code = 'is_master', check = false}],
-		disposition_change = {
-			positive = [['weak', 50],['kink', 50]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	nimble = {
-		code = 'nimble',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/leg.png",
-		effects = [],
-		bonusstats = {speed = 10},
-		weight = 100,
-		conflicts = ['slow'],
-		disposition_change = {
-			sexual = [['weak', 75],['kink', 25]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	quick = {
-		code = 'quick',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/bag.png",
-		effects = [],
-		bonusstats = {mod_collect = 0.2},
-		weight = 100,
-		conflicts = ['blundering', 'clumsy'],
-		disposition_change = {
-			physical = [['weak', 50],['kink', 50]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	handy = {
-		code = 'handy',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/hammer.png",
-		effects = [],
-		bonusstats = {mod_tailor = 0.2, mod_smith = 0.2, mod_alchemy = 0.2, mod_cook = 0.2},
-		weight = 100,
-		conflicts = ['crude', 'inept'],
-		disposition_change = {
-			humiliation = [['weak', 50],['kink', 50]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	deadly = {
-		code = 'deadly',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/wound.png",
-		effects = [],
-		bonusstats = {critchance = 6},
-		weight = 100,
-		disposition_change = {
-			physical = [['weak', 50],['kink', 50]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	lively = {
-		code = 'lively',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
-		effects = [],
-		bonusstats = {hp_reg_add = 3},
-		weight = 100,
-		conflicts = ['sicky'],
-		tags = ['positive', 'can_start']
-	},
-	mvortex = {
-		code = 'mvortex',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/swirl.png",
-		effects = [],
-		bonusstats = {mp_reg_add = 1},
-		weight = 100,
-		conflicts = ['m_inept'],
-		disposition_change = {
-			magic = [['weak', 50],['kink', 50]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change', 'mansion_only']
-	},
-	bawdy = {
-		code = 'bawdy',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/bed.png",
-		effects = [],
-		weight = 100,
-		tags = ['positive', 'can_start', 'disposition_change'],
-		conflicts = ['chaste', 'frigid'],
-		disposition_change = {
-			sexual = [['weak', 25],['kink', 75]]
-		},
-		bonusstats = {mod_pros = 0.25}
-	},
-	sturdy = {
-		code = 'sturdy',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
-		effects = [],
-		bonusstats = {armor = 10},
-		weight = 100,
-		conflicts = ['frail'],
-		disposition_change = {
-			physical = [['resist', 50],['neutral', 50]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	talented = {
-		code = 'talented',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/brain.png",
-		effects = [],
-		bonusstats = {base_task_crit_chance = 0.15}, 
-		weight = 100,
-		conflicts = ['menial'],
-		disposition_change = {
-			humiliation = [['weak', 75],['neutral', 25]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	forager = {
-		code = 'forager',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/brain.png",
-		effects = [],
-		bonusstats = {}, #hardcoded
-		disposition_change = {
-			positive = [['weak', 75],['neutral', 25]]
-		},
-		tags = ['positive', 'disposition_change']
-	},
-	gifted = {
-		code = 'gifted',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/brain.png",
-		effects = [],
-		bonusstats = {mpmax_mul = 1.5},
-		weight = 100,
-		conflicts = ['magicmutt'],
-		disposition_change = {
-			magic = [['kink', 75],['weak', 25]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	belligerent = {
-		code = 'belligerent',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/sword.png",
-		effects = [],
-		bonusstats = {atk_add_part = 0.15},
-		weight = 100,
-		disposition_change = {
-			physical = [['resist', 50],['neutral', 50]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	hiddenpowers = {
-		code = 'hiddenpowers',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/scepter.png",
-		effects = [],
-		bonusstats = {matk_add_part = 0.10},
-		weight = 100,
-		conflicts = ['m_inept'],
-		disposition_change = {
-			magic = [['resist', 75],['neutral', 25]]
-		},
-		tags = ['positive', 'can_start', 'disposition_change']
-	},
-	healthy = {
-		code = 'healthy',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/hand.png",
-		effects = [],
-		bonusstats = {hpmax = 10},
-		weight = 100,
-		conflicts = ['sicky'],
-		tags = ['positive', 'can_start']
-	},
-	#negative
-	dim = {
-		code = 'dim',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/brain.png",
-		effects = [],
-		bonusstats = {exp_gain_mod = -0.25},
-		weight = 100,
-		conflicts = ['prodigy'],
-		disposition_change = {
-			magic = [['weak', 75],['neutral', 25]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	rebel = {
-		code = 'rebel',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/fist.png",
-		effects = [],
-		bonusstats = {training_loyalty = -2}, 
-		weight = 100,
-		conflicts = ['passive'],
-		disposition_change = {
-			sexual = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	slow = {
-		code = 'slow',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/leg.png",
-		effects = [],
-		bonusstats = {speed = -10},
-		weight = 100,
-		conflicts = ['nimble'],
-		disposition_change = {
-			social = [['kink', 75],['weak', 25]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	clumsy = {
-		code = 'clumsy',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/bag.png",
-		effects = [],
-		bonusstats = {mod_collect = -0.8},
-		weight = 100,
-		conflicts = ['quick', 'blundering'],
-		disposition_change = {
-			positive = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	inept = {
-		code = 'inept',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/hammer.png",
-		effects = [],
-		bonusstats = {mod_tailor = -0.8, mod_smith = -0.8, mod_alchemy = -0.8, mod_cook = -0.8},
-		weight = 100,
-		conflicts = ['handy', 'crude'],
-		disposition_change = {
-			magic = [['resist', 75],['neutral', 25]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	sicky = {
-		code = 'sicky',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
-		effects = [],
-		bonusstats = {hp_reg_add = -3},
-		weight = 100,
-		conflicts = ['lively', 'healthy'],
-		disposition_change = {
-			physical = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	frail = {
-		code = 'frail',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
-		effects = [],
-		bonusstats = {armor = -10},
-		weight = 100,
-		conflicts = ['sturdy'],
-		disposition_change = {
-			physical = [['kink', 75],['weak', 25]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	magicmutt = {
-		code = 'magicmutt',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/brain.png",
-		effects = [],
-		bonusstats = {mpmax_mul = 0.5},
-		weight = 100,
-		conflicts = ['gifted'],
-		disposition_change = {
-			magic = [['resist', 50],['neutral', 50]]
-		},
-		tags = ['negative', 'disposition_change']
-	},
-	blundering = {
-		code = 'blundering',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/bag.png",
-		cross = true,
-		effects = [],
-		bonusstats = {mod_collect = -0.8, mod_farm = -0.8, mod_fish = -0.8},
-		weight = 100,
-		conflicts = ['quick', 'clumsy'],
-		disposition_change = {
-			humiliation = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'disposition_change'],# 'no_collect']
-	},
-	crude = {
-		code = 'crude',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/hammer.png",
-		cross = true,
-		effects = [],
-		bonusstats = {mod_smith = -0.8, mod_tailor = -0.8, mod_alchemy = -0.8},
-		weight = 100,
-		conflicts = ['handy', 'inept'],
-		disposition_change = {
-			humiliation = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'disposition_change'],# 'no_craft']
-	},
-	chaste = {
-		code = 'chaste',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/bed.png",
-		cross = true,
-		effects = [],
-		bonusstats = {mod_pros = -0.8},
-		weight = 100,
-		conflicts = ['bawdy'],
-		disposition_change = {
-			sexual = [['resist', 50],['kink', 50]]
-		},
-		tags = ['negative', 'disposition_change'],# 'no_whoring']
-	},
-	pacifist = {
-		code = 'pacifist',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/pacific.png",
-		effects = [],
-		bonusstats = {atk_add_part = -0.5},
-		weight = 100,
-		disposition_change = {
-			physical = [['weak', 75],['neutral', 25]]
-		},
-		tags = ['negative', 'disposition_change'],# 'no_combat']
-	},
-	menial = {
-		code = 'menial',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/hammer.png",
-		effects = [],
-		bonusstats = {},
-		weight = 100,
-		conflicts = ['talented'],
-		disposition_change = {
-			humiliation = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'no_task_crit', 'disposition_change']
-	},
-	whimp = {
-		code = 'whimp',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/sword.png",
-		cross = true,
-		effects = [],
-		bonusstats = {hpmax_add_part = -0.4},
-		weight = 100,
-		disposition_change = {
-			social = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'disposition_change'],# 'no_combat_skills']
-	},
-	m_inept = {
-		code = 'm_inept',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/scepter.png",
-		cross = true,
-		effects = [],
-		bonusstats = {matk_add_part = -0.5},
-		weight = 100,
-		disposition_change = {
-			magic = [['resist', 75],['neutral', 25]]
-		},
-		conflicts = ['mvortex', 'hiddenpowers'],
-		tags = ['negative', 'disposition_change'],# 'no_combat_spells']
-	},
-	selfish = {
-		code = 'selfish',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/pray.png",
-		cross = true,
-		effects = [],
-		bonusstats = {},
-		weight = 100,
-		disposition_change = {
-			positive = [['weak', 50],['kink', 50]]
-		},
-		tags = ['negative', 'no_combat_support', 'disposition_change']
-	},
-	coward = {
-		code = 'coward',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/cat.png",
-		effects = [],
-		bonusstats = {hitrate = -50},
-		weight = 100,
-		disposition_change = {
-			positive = [['kink', 75],['weak', 25]],
-			humiliation = [['weak', 75],['kink', 25]],
-		},
-		tags = ['negative', 'disposition_change'],# 'no_social_skills']
-	},
-	frigid = {
-		code = 'frigid',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
-		cross = true,
-		effects = [],
-		bonusstats = {},
-#		bonusstats = {lustmax_mul = 0.5},
-		weight = 100,
-		conflicts = ['bawdy'],
-		disposition_change = {
-			sexual = [['resist', 75],['neutral', 25]]
-		},
-		tags = ['negative', 'no_sex_traits', 'disposition_change']
-	},
 	breakdown_test_trait = {
 		code = 'breakdown_test_trait',
 		name = '',
@@ -1477,71 +959,49 @@ var traits = {
 		bonusstats = {}, 
 		tags = ['sexservice', 'sexservice_adv', 'simple_icon', 'servant_training']
 	},
-	#training finished
+	#training finished: one of these is bought for 25 training points; a slave loses them on being freed
 	training_value = {
 		code = 'training_value',
 		visible = false,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_prestige.png", 
+		icon = "res://assets/images/iconstraits/l_prestige.png",
 		effects = [],
 		cost = 25,
-		bonusstats = {price_add_part = 0.25}, 
+		bonusstats = {price_add_part = 0.25},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_productivity = {
-		code = 'training_productivity',
+	training_stun = {
+		code = 'training_stun',
 		visible = false,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/work.png", 
+		icon = "res://assets/images/iconstraits/l_fortitude.png",
 		effects = [],
-		cost = 30,
-		bonusstats = {productivity = 0.3}, 
+		cost = 25,
+		bonusstats = {resist_stun = 200},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_xp = {
-		code = 'training_xp',
+	training_stealth = {
+		code = 'training_stealth',
 		visible = false,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_intelligence.png", 
+		icon = "res://assets/images/iconsskills/icon_hunters_mark.png",
 		effects = [],
-		cost = 30,
-		bonusstats = {exp_gain_mod = 0.2}, 
+		cost = 25,
+		bonusstats = {mastery_stealth = 2, mastery_marksmanship = 1},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_hp = {
-		code = 'training_hp',
+	training_collect = {
+		code = 'training_collect',
 		visible = false,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_crown.png", 
+		icon = "res://assets/images/iconstraits/l_worker.png",
 		effects = [],
-		cost = 20,
-		bonusstats = {hpmax_add = 25}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
-	},
-	training_atk = {
-		code = 'training_atk',
-		visible = false,
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_sword.png", 
-		effects = [],
-		cost = 15,
-		bonusstats = {atk = 10}, 
-		tags = ['training_final', 'training_success', 'simple_icon']
-	},
-	training_matk = {
-		code = 'training_matk',
-		visible = false,
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", 
-		effects = [],
-		cost = 20,
-		bonusstats = {matk = 10}, 
+		cost = 25,
+		bonusstats = {mod_collect = 0.3},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
 	training_def = {
@@ -1549,21 +1009,45 @@ var traits = {
 		visible = false,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_resilence.png", 
+		icon = "res://assets/images/iconstraits/l_resilence.png",
 		effects = [],
-		cost = 15,
-		bonusstats = {armor = 10}, 
+		cost = 25,
+		bonusstats = {armor = 10, mdef = 5},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
-	training_mdef = {
-		code = 'training_mdef',
+	training_pros = {
+		code = 'training_pros',
 		visible = false,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_fortitude.png", 
+		icon = "res://assets/images/iconstraits/l_pros.png",
 		effects = [],
-		cost = 15,
-		bonusstats = {mdef = 11}, 
+		cost = 25,
+		bonusstats = {mod_pros = 0.3},
+		tags = ['training_final', 'training_success', 'simple_icon']
+	},
+	training_dancer = {
+		code = 'training_dancer',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_dress2.png",
+		effects = [],
+		cost = 25,
+		bonusstats = {mod_dancer = 0.2, mod_hostess = 0.2},
+		tags = ['training_final', 'training_success', 'simple_icon']
+	},
+	training_farm = {
+		code = 'training_farm',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_progenecy.png",
+		effects = [],
+		cost = 25,
+		bonusstats = {},
+		farming_limit = 1,
+		farm_output = 0.25,
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
 	training_trainer = {
@@ -1573,8 +1057,8 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_communicative.png",
 		effects = [],
-		cost = 30,
-		bonusstats = {trainee_amount = 3}, 
+		cost = 25,
+		bonusstats = {trainee_amount = 2},
 		tags = ['training_final', 'training_success', 'simple_icon', 'trainer']
 	},
 	training_heal = {
@@ -1584,8 +1068,19 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_hand.png",
 		effects = [],
-		cost = 45,
-		bonusstats = {damage_mod_heal = 0.5}, 
+		cost = 25,
+		bonusstats = {damage_mod_heal = 0.4},
+		tags = ['training_final', 'training_success', 'simple_icon']
+	},
+	training_hunter = {
+		code = 'training_hunter',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_sword.png",
+		effects = [],
+		cost = 25,
+		bonusstats = {manhunt = 2, critmod = 0.2},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
 	#training_obsolete
@@ -1792,14 +1287,14 @@ var traits = {
 		effects = ['demoness_what_a_pain'],
 		tags = [],
 	},
-	kurdan_mind_controlled = {
-		code = 'kurdan_mind_controlled',
+	grasha_mind_controlled = {
+		code = 'grasha_mind_controlled',
 		name = '',
 		descript = '',
-		icon = null, 
+		icon = null,
 		visible = false,
-		effects = ['kurdan_mind_controlled','kurdan_mind_controlled_1'],
-		tags = ['kurdan_mind_controlled'],
+		effects = ['grasha_mind_controlled','grasha_mind_controlled_1'],
+		tags = ['grasha_mind_controlled'],
 	},
 	aire_overwatch_assignment = {
 		code = 'aire_overwatch_assignment',
@@ -2991,6 +2486,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "satisfied_partners", operant = "eq", value = 1},{code = "stat", type = "orgasm_partners", operant = "eq", value = 1}]}],
 		reqs = [],
 		effects = [],
+		conflicts = ['group'],
 	},
 	family_first = {
 		code = "family_first",
@@ -3024,6 +2520,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "deviant_orgasms", operant = "gte", value = 2}]}],
 		reqs = [],
 		effects = [],
+		conflicts = ['dislike_tail'],
 	},
 	group = {
 		code = "group",
@@ -3035,6 +2532,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "orgasm_partners", operant = "gte", value = 2}]}],
 		reqs = [],
 		effects = [],
+		conflicts = ['dislike_group', 'monogamous'],
 	},
 	shameless = {
 		code = "shameless",
@@ -3068,6 +2566,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "orgasm_tags", flag = "only", value = "tits"}]}],
 		reqs = [{code = "action_tag", value = "tits"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5, trigger = 'action_self'},{effect = 'horny_bonus', operant = "+", value = 0.5, trigger = 'action_self'}],
+		conflicts = ['dislike_tits'],
 	},
 	masochist = {
 		code = "masochist",
@@ -3079,6 +2578,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "mazo_actions", operant = "gte", value = 10}]}],
 		reqs = [{code = "action_tag", value = "punish"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5, trigger = 'action_self'}],
+		conflicts = ['dislike_bdsm', 'sadist'],
 		tags = ['likes_training']
 	},
 	sadist = {
@@ -3091,6 +2591,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "punish_actions", operant = "gte", value = 10}]}],
 		reqs = [{code = "action_partner_tag", value = "punish"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5, trigger = 'action_self'}],
+		conflicts = ['dislike_bdsm', 'masochist'],
 	},
 	dominant = {
 		code = "dominant",
@@ -3102,6 +2603,7 @@ var sex_traits = { #only for interaction tab
 		negative = false,
 		reqs = [{code = "action_tag", value = "dom"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.2, trigger = 'action_self'}],
+		conflicts = ['submissive', 'pushover'],
 	},
 	submissive = {
 		code = "submissive",
@@ -3113,6 +2615,7 @@ var sex_traits = { #only for interaction tab
 		negative = false,
 		reqs = [{code = "action_tag", value = "sub"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.2, trigger = 'action_self'}],
+		conflicts = ['dominant', 'dislike_bdsm'],
 		tags = ['likes_training']
 	},
 	nymphomania = {
@@ -3191,6 +2694,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "unconsented_orgasm", operant = "gte", value = 2}]}],
 		reqs = [],
 		effects = [],#{effect = 'consent_gain', operant = '*', value = 1.5, trigger = 'encounter_end'}],
+		conflicts = ['dislike_bdsm', 'dominant'],
 		tags = ['likes_training']
 	},
 	
@@ -3240,7 +2744,25 @@ var sex_traits = { #only for interaction tab
 	},
 
 }
+
+#a conflict may be listed on either side of the pair
+func get_sex_trait_conflicts(code):
+	var res = []
+	if !sex_traits.has(code):
+		return res
+	for other in sex_traits:
+		if other == code:
+			continue
+		if sex_traits[code].get('conflicts', []).has(other) or sex_traits[other].get('conflicts', []).has(code):
+			res.append(other)
+	return res
+
+var catalogue
+
 func _ready():
+	catalogue = load("res://assets/data/trait_catalogue.gd").new()
+	for id in catalogue.traits:
+		traits[id] = catalogue.traits[id]
 	for id in Skilldata.masteries:
 		var tmp = {
 			icon = Skilldata.masteries[id].icon,
@@ -3268,6 +2790,23 @@ func _ready():
 #		slave_profs[prof].code = prof
 #		slave_profs[prof].name = 'SLAVEPROFNAME_' + prof.trim_prefix('slave_').to_upper()
 #		slave_profs[prof].descript = 'SLAVEPROFDESCRIPT_' + prof.trim_prefix('slave_').to_upper()
+
+
+#A trait the story renames carries renamed = {quest, name, flavor}: once that quest is done it goes by the
+#new name and flavor (Nixx's faith after Kuro's third quest). Names are translated once at boot, so
+#ResourceScripts.revert_gamestate(), a load and the end of a quest all set them again.
+func refresh_story_names():
+	var done = ResourceScripts.game_progress.completed_quests if ResourceScripts.game_progress != null else []
+	for code in traits:
+		var renamed = traits[code].get('renamed')
+		if renamed == null:
+			continue
+		if done.has(renamed.quest):
+			traits[code].name = tr(renamed.name)
+			traits[code].flavor_key = renamed.flavor
+		else:
+			traits[code].name = tr("TRAIT" + code.to_upper())
+			traits[code].erase('flavor_key')
 
 
 var tattoodata = {
@@ -3527,7 +3066,17 @@ var succubus_trainings = {
 		position = [0.7, 2],
 		icon = load("res://assets/images/iconstraits/l_sword.png"),
 	},
-	
+	genitalia_manipulation = {
+		cost = {thrall_points = 2},
+		reqs = [],
+		showupreqs = [{code = 'sex', operant = 'neq', value = 'male'}],
+		mode = 'skill',
+		skill = 'genitalia_manipulation',
+		trait = null,
+		position = [1.4, 0],
+		icon = load("res://assets/images/iconstraits/genitalia_manipulation.png"),
+	},
+
 }
 
 

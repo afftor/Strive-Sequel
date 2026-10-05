@@ -510,10 +510,12 @@ func invoke_skillfinish():
 		queuenode.add_sfx(caster.displaynode, 'devastation_return', {})
 	if code in ['lightning', 'chain_lightning']:
 		queuenode.animationnode.clear_lightning_timing()
-	if code == 'supernova':
+	if code == 'forbidden_sun':
 		queuenode.animationnode.clear_supernova_counters()
 	if code == 'hyperborea':
 		queuenode.animationnode.clear_hyperborea_hits()
+	if code in ['black_tendrils', 'skill_void']:
+		queuenode.animationnode.clear_dark_hits()
 	if mode != variables.SKILL_AUTO and !tags.has('passive'):
 		process_event(variables.TR_SKILL_FINISH, {skill = self})
 		caster.process_event(variables.TR_SKILL_FINISH, {skill = self})

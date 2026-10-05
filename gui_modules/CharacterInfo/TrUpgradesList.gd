@@ -100,7 +100,7 @@ func find_action_button(code):
 
 func tut_get_training_bonus_btn():
 	for btn in RewardList.get_children():
-		if btn.get_meta('trait', "") == "training_productivity":
+		if btn.get_meta('trait', "") == "training_value":
 			return btn
 	return null
 
@@ -259,7 +259,7 @@ func build_trainer_list():
 
 	for id in ResourceScripts.game_party.character_order:
 		var tchar = characters_pool.get_char_by_id(id)
-		if !tchar.can_be_trainer():
+		if !tchar.can_be_trainer(true):
 			continue
 		var amount = tchar.get_stat('trainee_amount')
 		var used = tchar.get_trainees().size()
@@ -287,6 +287,11 @@ func build_trainer_list():
 			panel.disabled = true
 			panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
 			text += "\n" + tr('ALREADYTRAINER')
+		var vow_ban = tchar.get_vow_ban('trainer')
+		if vow_ban != '':
+			panel.disabled = true
+			panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+			text += "\n" + vow_ban
 		panel.get_node('desc').text = text
 
 	Picker.get_node('empty').visible = PickerList.get_child_count() <= 1
@@ -482,6 +487,12 @@ func build_action_button(grid, code, cat_data, trainer):
 	if !trainer.checkreqs(trdata.reqs_trainer):
 		panel.disabled = true
 		text = "{color=red|" + tr('ACTIONTRAINERREQSNOTMET') + "}\n\n" + text
+		grey_out(panel)
+		globals.connecttexttooltip(panel, text)
+		panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+	elif trainer.get_vow_ban('training', code) != '':
+		panel.disabled = true
+		text = "{color=red|" + trainer.get_vow_ban('training', code) + "}\n\n" + text
 		grey_out(panel)
 		globals.connecttexttooltip(panel, text)
 		panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))

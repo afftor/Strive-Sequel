@@ -404,32 +404,83 @@ func add_character_effect_feedback(character, stat, value, operant = ""):
 	input_handler.append_not_duplicate(pending_effect_feedback, feedback)
 
 
-func add_character_trait_feedback(character, trait_code, added):
-	if character == null or !Traitdata.traits.has(trait_code):
+func add_character_trait_feedback(character, trait_code, change, mode = 'ask'):
+	if character == null:
 		return
-	var message_key = "EVENT_EFFECT_TRAIT_GAINED" if added else "EVENT_EFFECT_TRAIT_LOST"
-	var trait_text = tr(message_key) % tr(Traitdata.traits[trait_code].name)
+	#these name no trait of their own: it is the character's faith, or the one held in the named god's name
+	match change:
+		"deepen_own_faith":
+			trait_code = character.dyn_stats.get_faith()
+			change = "deepen_faith"
+		"demote_faith":
+			trait_code = character.dyn_stats.get_god_faith(trait_code)
+	if !Traitdata.traits.has(trait_code):
+		return
+	#feedback is gathered before the effect runs: say nothing of a hidden trait, one that waits on the
+	#player's choice of slot, or one that will not actually come, go or show
+	var hidden = character.is_trait_hidden(trait_code)
+	var message_key = ""
+	match change:
+		"add_trait":
+			var offer = character.preview_trait_offer(trait_code, mode) if !hidden else 'skip'
+			if offer == 'replace':
+				var lost = character.dyn_stats.get_forced_replacement(trait_code)
+				if !character.is_trait_hidden(lost):
+					add_trait_feedback_line(character, lost, "EVENT_EFFECT_TRAIT_LOST")
+			if offer in ['add', 'replace']:
+				message_key = "EVENT_EFFECT_TRAIT_GAINED"
+		"remove_trait":
+			if !hidden and character.dyn_stats.owns_trait(trait_code) and !character.is_trait_locked(trait_code):
+				message_key = "EVENT_EFFECT_TRAIT_LOST"
+		"reveal_trait":
+			if hidden and character.dyn_stats.owns_trait(trait_code):
+				message_key = "EVENT_EFFECT_TRAIT_REVEALED"
+		"deepen_faith":
+			var next = character.dyn_stats.next_faith_tier(trait_code)
+			if next != '':
+				add_trait_feedback_line(character, next, "EVENT_EFFECT_TRAIT_GAINED")
+		"demote_faith":
+			var prev = character.dyn_stats.prev_faith_tier(trait_code)
+			if prev != '':
+				add_trait_feedback_line(character, trait_code, "EVENT_EFFECT_TRAIT_LOST")
+				add_trait_feedback_line(character, prev, "EVENT_EFFECT_TRAIT_GAINED")
+		"set_faith":
+			#the story's own word on what they believe: what goes is said as well as what comes
+			for code in character.get_category_traits('religious'):
+				if code != trait_code and code != Traitdata.catalogue.defaults.religious:
+					add_trait_feedback_line(character, code, "EVENT_EFFECT_TRAIT_LOST")
+			if !character.dyn_stats.owns_trait(trait_code):
+				message_key = "EVENT_EFFECT_TRAIT_GAINED"
+	if message_key == "":
+		return
+	add_trait_feedback_line(character, trait_code, message_key)
+
+
+func add_trait_feedback_line(character, trait_code, message_key):
+	var trait_text = globals._report_text(message_key, [tr(Traitdata.traits[trait_code].name)])
 	var feedback = tr("EVENT_EFFECT_CHARACTER") % [character.get_short_name(), color_effect_feedback(trait_text)]
 	input_handler.append_not_duplicate(pending_effect_feedback, feedback)
 
 
 func collect_character_effect_feedback(effect):
-	if effect.has("type") and effect.type in ["add_trait", "remove_trait"] and effect.has("trait"):
-		var added = effect.type == "add_trait"
+	if effect.has("type") and effect.type in ["add_trait", "remove_trait", "reveal_trait", "set_faith", "deepen_faith", "deepen_own_faith", "demote_faith"]:
+		var mode = effect.get("mode", "ask")
+		#demote_faith names a god instead, deepen_own_faith nothing
+		var trait_code = effect.get("trait", effect.get("god", ""))
 		match effect.code:
 			"real_affect_scene_characters":
 				for character in input_handler.scene_characters:
-					add_character_trait_feedback(character, effect.trait, added)
+					add_character_trait_feedback(character, trait_code, effect.type, mode)
 			"affect_one_scene_character":
 				if effect.has("char_num") and input_handler.scene_characters.size() >= effect.char_num:
-					add_character_trait_feedback(input_handler.scene_characters[effect.char_num - 1], effect.trait, added)
+					add_character_trait_feedback(input_handler.scene_characters[effect.char_num - 1], trait_code, effect.type, mode)
 			"affect_active_character":
-				add_character_trait_feedback(input_handler.active_character, effect.trait, added)
+				add_character_trait_feedback(input_handler.active_character, trait_code, effect.type, mode)
 			"affect_master":
-				add_character_trait_feedback(ResourceScripts.game_party.get_master(), effect.trait, added)
+				add_character_trait_feedback(ResourceScripts.game_party.get_master(), trait_code, effect.type, mode)
 			"affect_unique_character":
 				if effect.has("name"):
-					add_character_trait_feedback(ResourceScripts.game_party.get_unique_slave(str(effect.name).to_lower()), effect.trait, added)
+					add_character_trait_feedback(ResourceScripts.game_party.get_unique_slave(str(effect.name).to_lower()), trait_code, effect.type, mode)
 		return
 	if !effect.has("stat") or !effect.has("value"):
 		return
@@ -470,7 +521,7 @@ func collect_effect_feedback(effects, clear_existing = true):
 				if character != null and change.has("reqs") and !character.checkreqs(change.reqs):
 					continue
 				if change.has("code") and change.code == "add_trait" and change.has("trait"):
-					add_character_trait_feedback(character, change.trait, true)
+					add_character_trait_feedback(character, change.trait, "add_trait", change.get("mode", "ask"))
 				elif change.has("code") and change.has("value") and statdata.statdata.has(change.code):
 					add_character_effect_feedback(character, change.code, change.value, change.operant if change.has("operant") else "")
 		elif effect.code == "money_change" and effect.has("value"):
@@ -591,6 +642,8 @@ func recruit_option_safe():
 	if char_to_recruit == null:
 		print("error - no char")
 		return
+	if ask_noble_loss(char_to_recruit, 'recruit_option_safe'):
+		return
 	var state = char_to_recruit.src
 	input_handler.interactive_message_follow("recruit_captured_enslave", "story_event", {})
 	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
@@ -657,10 +710,14 @@ func add_shrine_options(scene):
 				scene.options.insert(0,{code = 'shrine_option', args = ['select_material'], reqs = [], text = "DIALOGUESHRINEITEM"})
 			'character': #this can cause lock if called at empty combat party
 				scene.options.insert(0,{code = 'shrine_option', args = ['character'], active_char_translate = true, reqs = [], text = "DIALOGUESHRINECHARACTER"})
+			'enslave':
+				scene.options.insert(0,{code = 'shrine_option', args = ['enslave'], active_char_translate = true, reqs = shrineoptions[i].get('reqs', []), text = "DIALOGUESHRINEENSLAVE"})
 			'destroy':
 				scene.options.insert(0,{code = 'shrine_option', args = ['destroy'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
 			'item':
 				scene.options.insert(0,{code = 'shrine_option', args = ['select_item'], reqs = [], text = "DIALOGUESHRINEEQUIP"})
+			'action':
+				scene.options.insert(0,{code = 'shrine_option', args = [i], active_char_translate = true, reqs = shrineoptions[i].get('reqs', []), text = shrineoptions[i].text})
 
 
 func shrine_option(option):
@@ -669,10 +726,10 @@ func shrine_option(option):
 			globals.ItemSelect(self, 'shrine_offering', 'shrine_mat_select')
 		'select_item':
 			globals.ItemSelect(self, 'gear', 'shrine_item_select')
-		"character":
+		"character", "enslave":
 			input_handler.scene_characters.append(input_handler.active_character)
 			update_scene_characters()
-			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character)
+			Enemydata.call(Enemydata.shrines[current_scene.shrine].options[option].output, input_handler.active_character)
 		'destroy':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
 		'shrine_offering_selected':
@@ -683,6 +740,13 @@ func shrine_option(option):
 			Enemydata.call(shrine_data.options['material'].output, selection)
 		'item_selected':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['item'].output, selected_item)
+		_:
+			#an 'action' option goes by its own name and acts on the character chosen at the shrine
+			var data = Enemydata.shrines[current_scene.shrine].options.get(option)
+			if data != null and data.input == 'action':
+				input_handler.append_not_duplicate(input_handler.scene_characters, input_handler.active_character)
+				update_scene_characters()
+				Enemydata.call(data.output, input_handler.active_character)
 
 
 func select_item_for_next_event(option):
@@ -784,7 +848,7 @@ func get_option_reqs_and_challenge(option):
 	var code = option.code
 	if option.has('person_reqs'):
 		reqs = option.person_reqs
-	if option.has('item_reqs'):
+	elif option.has('item_reqs'):
 		reqs = option.item_reqs
 	elif code.find('marriage')!= -1:
 		reqs = [
@@ -837,6 +901,9 @@ func get_option_reqs_and_challenge(option):
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
 #			{code = 'in_combat_party', value = true},
 		]
+	#the one picked leaves the party for good: never the master
+	if option.get('loses_person', false):
+		reqs = reqs + [{code = 'is_master', check = false, silent = true}]
 	var challenge = null
 	if option.has('challenge'):
 		challenge = option.challenge
@@ -885,26 +952,33 @@ func select_person_for_next_event(option): #needs a rework
 	stored_argument = 0
 	if option.has('dialogue_argument'):
 		stored_argument = option.dialogue_argument
+	stored_loses_person = option.get('loses_person', false)
+	unique_loss_person = null
 
 	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, false, req_data.challenge)
 
 
 func remove_person(code):
-	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
+	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}, {code = 'is_master', check = false}]
 	stored_scene = code
+	unique_loss_person = null
 	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
 
 func remove_non_master(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}, {code = 'is_master', check = false}]
 	stored_scene = code
+	unique_loss_person = null
 	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
 
 func remove_servant(code):
 	var reqs = [{code = 'stat', stat = 'slave_class', value = 'servant', check = true}]
 	stored_scene = code
+	unique_loss_person = null
 	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
 
 func remove_selected(person):
+	if ask_unique_loss(person, 'remove_selected'):
+		return
 	input_handler.active_character = person
 	ResourceScripts.game_party.add_fate(person.id, tr("SIBLINGMODULEFATEREMOVED"))
 	ResourceScripts.game_party.remove_slave(person, true)
@@ -916,6 +990,8 @@ func remove_selected(person):
 	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 func event_person_selected(person):
+	if stored_loses_person and ask_unique_loss(person, 'event_person_selected'):
+		return
 	input_handler.active_character = person
 	if stored_scene == 'lockpick_attempt':
 		lockpick_attempt(person)
@@ -998,8 +1074,83 @@ func recruit_from_scene(order = 0):
 	recruit()
 
 func capture_from_scene(order = 0):
+	noble_capture_order = order
+	if ask_noble_loss(input_handler.scene_characters[order], 'confirm_noble_capture'):
+		return
 	input_handler.active_character = input_handler.scene_characters[order]
 	recruit(true)
+
+
+var noble_capture_order = 0
+var noble_person_id = null
+var noble_confirmed_id = null
+var noble_yes_fn = ''
+
+func confirm_noble_capture():
+	capture_from_scene(noble_capture_order)
+
+
+#A noble class can't stay with a slave: ask before the capture takes it. True while the question is open.
+func ask_noble_loss(person, yes_fn):
+	if person == null or noble_confirmed_id == person.id:
+		return false
+	var question = globals.noble_loss_question(person)
+	if question == '':
+		return false
+	noble_person_id = person.id
+	noble_yes_fn = yes_fn
+	add_select_blocking_node(input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, 'noble_loss_yes', 'noble_loss_no', question]))
+	return true
+
+
+func noble_loss_yes():
+	noble_confirmed_id = noble_person_id
+	call(noble_yes_fn)
+
+
+#Declined: the option is free to pick again. A scene with nothing else to choose closes, and a captive
+#taken off the location for it goes back there.
+func noble_loss_no():
+	var choices = 0
+	for b in cur_opt_cont.get_children():
+		if b is BaseButton:
+			b.pressed = false
+			if b.visible and !b.disabled:
+				choices += 1
+	if choices > 1:
+		return
+	var person = characters_pool.get_char_by_id(noble_person_id)
+	var location = input_handler.active_location
+	if person != null and person.src == 'random_combat' and location != null and location.has('captured_characters') and !location.captured_characters.has(person.id):
+		location.captured_characters.append(person.id)
+		input_handler.emit_signal("LocationSlavesUpdate")
+	close()
+
+
+var stored_loses_person = false
+var unique_loss_person = null
+var unique_loss_fn = ''
+
+#A unique character who leaves the party is gone for good: ask first. True while the question is open.
+func ask_unique_loss(person, yes_fn):
+	if person == null or !person.is_unique() or unique_loss_person == person:
+		return false
+	unique_loss_person = person
+	unique_loss_fn = yes_fn
+	add_select_blocking_node(input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, 'unique_loss_yes', 'unique_loss_no', person.translate(tr("UNIQUE_LOSS_CONFIRM"))]))
+	return true
+
+
+func unique_loss_yes():
+	call(unique_loss_fn, unique_loss_person)
+
+
+#Declined: nothing was spent, the option can be picked again
+func unique_loss_no():
+	unique_loss_person = null
+	for b in cur_opt_cont.get_children():
+		if b is BaseButton:
+			b.pressed = false
 
 
 func recruit(capture = false):
@@ -1568,6 +1719,18 @@ func set_enemy(scene):
 		dialogue_enemy = scene.set_enemy
 
 
+#scenedata.gd runs option text through tr() at load, so Continue is matched both ways
+func get_option_icon(option):
+	var code = option.get('code')
+	if code in ['quest_fight', 'fight_skirmish']:
+		return 'fight'
+	if code in ['close', 'leave']:
+		return 'close'
+	if option.get('text_key') in ['DIALOGUECONTINUE', tr('DIALOGUECONTINUE')]:
+		return 'continue'
+	return null
+
+
 func handle_scene_options():
 	var option_number = 1
 	var options = current_scene.options
@@ -1622,6 +1785,7 @@ func handle_scene_options():
 			match i.type:
 				'next_dialogue':
 					newbutton.status = 'next_dialogue'
+		newbutton.option_icon = get_option_icon(i)
 		
 		if i.has('disabled') && i.disabled == true:
 			newbutton.status = 'disabled'

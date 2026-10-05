@@ -61,10 +61,10 @@ const PATTERNS = {
 			{"mask": "mask_besatkin 2.png", "color": Color("9e9595")},
 		],
 		"layers_alternate": [
-			{"mask": "white_mask.png", "color": Color("ad5c21")},
+			{"mask": "white_mask.png", "color": Color("ad5c21"), "layer": 0},
 		],
 		"layers_alternate_2": [
-			{"mask": "white_mask.png", "color": Color("9e9595")},
+			{"mask": "white_mask.png", "color": Color("9e9595"), "layer": 1},
 		],
 	},
 	"fur_white": {
@@ -107,10 +107,10 @@ const PATTERNS = {
 			{"mask": "mask_besatkin 2.png", "color": Color("363533")},
 		],
 		"layers_alternate": [
-			{"mask": "white_mask.png", "color": Color("191918")},
+			{"mask": "white_mask.png", "color": Color("191918"), "layer": 0},
 		],
 		"layers_alternate_2": [
-			{"mask": "white_mask.png", "color": Color("363533")},
+			{"mask": "white_mask.png", "color": Color("363533"), "layer": 1},
 		],
 	},
 	# The striped and tricolour cats use their own masks rather than the shared
@@ -204,13 +204,13 @@ static func default_colors(pattern_id):
 	return result
 
 
-static func alternate_colors(pattern_id, alternate = 0):
-	var result = []
-	if has_base(pattern_id):
-		result.append(pattern(pattern_id).base)
-	for layer in layers(pattern_id, alternate):
-		result.append(layer.color)
-	return result
+# Where in the colour row a layer's colour comes from. An alternate layer naming a
+# main `layer` follows that layer's picker, so a repainted coat stays one coat.
+static func colour_index(pattern_id, index, alternate = 0):
+	var list = layers(pattern_id, alternate)
+	if index >= 0 and index < list.size():
+		index = int(list[index].get("layer", index))
+	return index + (1 if has_base(pattern_id) else 0)
 
 
 static func color_count(pattern_id):

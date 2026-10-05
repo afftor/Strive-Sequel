@@ -303,7 +303,8 @@ const MODIFIERS = {
 		"steps": {
 			"default": "average",
 			"order": ["small", "average", "big"],
-			"values": {"small": 0.85, "average": 1.0, "big": 1.2},
+			# "" is a body without testicles; a zero scale would be singular, so shrink it out of sight
+			"values": {"": 0.01, "small": 0.85, "average": 1.0, "big": 1.2},
 		},
 		# The two are siblings under spine1, not a chain: scaling one leaves the
 		# other where it was.

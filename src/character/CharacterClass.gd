@@ -412,7 +412,7 @@ func remove_sex_trait(code, absolute = true):
 	statlist.remove_sex_trait(code, absolute)
 
 func unlock_sex_trait(code):
-	statlist.unlock_sex_trait(code)
+	return statlist.unlock_sex_trait(code)
 
 func create_s_trait_select(trait):
 	statlist.create_s_trait_select(trait)
@@ -653,6 +653,7 @@ func roll_static_masteries(list, lv, mul = 2.5):
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
 	process_chardata(data, true)
+	add_default_traits()
 	if data.has('service_boosters'):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
@@ -824,16 +825,20 @@ func setup_baby(mother, father):
 			if randf() <= 0.5:
 				add_stat(factor, 1)
 	
+	var breeder = mother.has_status("breeder") or father.has_status("breeder")
+	var inherited = []
 	for tr in mother.get_traits_by_tag('positive') + father.get_traits_by_tag('positive'):
-		if randf() <= 0.8 or mother.has_status("breeder") or father.has_status("breeder"):
-			add_trait(tr)
+		if randf() <= 0.8 or breeder:
+			inherited.push_back(tr)
 	for tr in mother.get_traits_by_tag('negative') + father.get_traits_by_tag('negative'):
-		if mother.has_status("breeder") or father.has_status("breeder"):
-			if randf() <= 0.1:
-				add_trait(tr)
-		elif randf() <= 0.5:
-			add_trait(tr)
-	
+		if randf() <= (0.1 if breeder else 0.5):
+			inherited.push_back(tr)
+	#two parents' traits can claim one slot: whichever comes first in a shuffled order gets it
+	inherited.shuffle()
+	for tr in inherited:
+		offer_trait(dyn_stats.first_stage(tr), 'free_only')
+	add_default_traits()
+
 	baby_transform(mother)
 	mother.set_stat('pregnancy_baby', id)
 	mother.set_stat('pregnancy_duration', variables.pregduration)
@@ -898,8 +903,90 @@ func add_trait(tr_code):
 func can_add_trait(tr_code):
 	return dyn_stats.can_add_trait(tr_code)
 
-func remove_trait(tr_code):
-	dyn_stats.remove_trait(tr_code)
+func remove_trait(tr_code, forced = false):
+	dyn_stats.remove_trait(tr_code, forced)
+
+func offer_trait(tr_code, mode = 'ask'):
+	return dyn_stats.offer_trait(tr_code, mode)
+
+func preview_trait_offer(tr_code, mode = 'ask'):
+	return dyn_stats.preview_trait_offer(tr_code, mode)
+
+func get_trait_category(tr_code):
+	return dyn_stats.get_trait_category(tr_code)
+
+func is_trait_locked(tr_code):
+	return dyn_stats.is_trait_locked(tr_code)
+
+func is_trait_hidden(tr_code):
+	return dyn_stats.is_trait_hidden(tr_code)
+
+func get_transferable_traits():
+	return dyn_stats.get_transferable_traits()
+
+func preview_trait_binding(tr_code, replace_code = ''):
+	return dyn_stats.preview_trait_binding(tr_code, replace_code)
+
+#Soul stone: moves a magic trait from this character to target, writing over what target's preview names.
+#Unnatural Constitution takes its physical slot along on both sides (remove_trait trims the category).
+func transfer_trait(tr_code, target, replace_code = ''):
+	if target == self or !get_transferable_traits().has(tr_code):
+		return false
+	var plan = target.preview_trait_binding(tr_code, replace_code)
+	if plan.blocked != '':
+		return false
+	remove_trait(tr_code)
+	for code in plan.lose:
+		target.remove_trait(code, true)
+	target.add_trait(tr_code)
+	return true
+
+#Soul stone: who can take a trait from this character - everyone else at home and not away on a quest.
+func get_transfer_recipients():
+	var res = []
+	for person in ResourceScripts.game_party.characters.values():
+		if person != self and person.is_free() and !person.is_unavaliable():
+			res.push_back(person)
+	return res
+
+#The slot is full: the player picks the trait that gives way, or keeps them and the offer is never made again.
+func ask_trait_replacement(new_code):
+	input_handler.get_spec_node(input_handler.NODE_TRAIT_REPLACE, null, true, false).offer(self, new_code)
+
+func on_kill(victim):
+	dyn_stats.grow_by_kill(victim)
+
+func replace_trait(old_code, new_code):
+	dyn_stats.replace_trait(old_code, new_code)
+
+func get_category_traits(category):
+	return dyn_stats.get_category_traits(category)
+
+func add_default_traits():
+	dyn_stats.add_default_traits()
+
+func get_faith():
+	return dyn_stats.get_faith()
+
+func get_trait_sum(field):
+	return dyn_stats.get_trait_sum(field)
+
+#a class tagged 'noble' is closed to slaves; the UI asks before enslaving takes one away
+func is_noble_blocked(prof_code):
+	return classesdata.professions[prof_code].tags.has('noble') and has_status('slave')
+
+func get_noble_classes():
+	var res = []
+	for prof in dyn_stats.professions:
+		if classesdata.professions.has(prof) and classesdata.professions[prof].tags.has('noble'):
+			res.push_back(prof)
+	return res
+
+func forget_noble_classes():
+	if is_unique():
+		return
+	for prof in get_noble_classes():
+		remove_class(prof)
 
 func first_negative_trait():
 	return training.first_negative_trait()
@@ -983,7 +1070,49 @@ func get_task_diff():
 	return xp_module.get_task_diff()
 
 func assign_to_task(taskcode):
+	if get_vow_ban('task', taskcode) != '':
+		return
 	xp_module.assign_to_task(taskcode)
+
+#Why the character's vows forbid it, or '' when they allow it: 'task' takes a task id,
+#'trainer' asks about the role, 'training' about an action this character would give as a trainer,
+#'service' about a brothel rule.
+func get_vow_ban(kind, arg = null):
+	var vows = dyn_stats.get_vows()
+	match kind:
+		'task':
+			if !ResourceScripts.game_res.tasks_progresses.has(arg):
+				return ''
+			if vows.has('no_wood') and is_wood_task(arg):
+				return vow_ban_text("VOWBAN_NO_WOOD", vows.no_wood)
+			if vows.has('no_labor') and is_labor_task(arg):
+				return vow_ban_text("VOWBAN_NO_LABOR", vows.no_labor)
+		'service':
+			if vows.has('no_service') and Traitdata.traits[vows.no_service].vows.no_service.has(arg):
+				return vow_ban_text("VOWBAN_NO_SERVICE", vows.no_service)
+		'trainer':
+			if vows.has('no_trainer'):
+				return vow_ban_text("VOWBAN_NO_TRAINER", vows.no_trainer)
+		'training':
+			if vows.has('gentle_trainer') and Skilldata.training_actions[arg].type in ['physical', 'humiliation']:
+				return vow_ban_text("VOWBAN_GENTLE_TRAINER", vows.gentle_trainer)
+	return ''
+
+func vow_ban_text(key, tr_code):
+	return translate(tr(key)).replace("{trait}", tr(Traitdata.traits[tr_code].name))
+
+func is_wood_task(task_id):
+	var data = ResourceScripts.game_res.tasks_progresses[task_id]
+	if !data.has('job') or !Items.materiallist.has(data.job):
+		return false
+	return Items.materiallist[data.job].get('type', '') == 'wood'
+
+#Gathering of every kind, farms and building: the work Transcendent will not stoop to.
+func is_labor_task(task_id):
+	var data = ResourceScripts.game_res.tasks_progresses[task_id]
+	if data.get('type', '') in ['gather', 'gather_simple', 'gather_limited']:
+		return true
+	return data.get('job', '') == 'building' or ResourceScripts.game_res.is_farming_work(task_id)
 
 func remove_from_task(travel = false):
 	xp_module.remove_from_task(travel)
@@ -1053,6 +1182,9 @@ func recruit(enslave = false):
 #	else:
 #		set_slave_category('servant')
 	ResourceScripts.game_party.add_slave(self)
+	if enslave == true:
+		dyn_stats.enslave_status()
+		forget_noble_classes()
 
 
 func add_to_captured():
@@ -1271,6 +1403,10 @@ func can_use_skill(skill):
 		 return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('disable_immunity'):
 		 return false
+	if has_status('no_combat_support') and skill.tags.has('support'):
+		return false
+	if has_status('no_combat_attack') and skill.tags.has('damage'):
+		return false
 	return true
 
 func has_status(status):
@@ -1361,6 +1497,20 @@ func set_slave_category(new_class):
 		finish_training(true)
 	else:
 		reset_training()
+	#characters still being set up are not in the party yet, and their first class is not a change of fate
+	if is_in_game_party():
+		var slave_before = oldclass in ['slave', 'slave_trained']
+		var slave_now = new_class in ['slave', 'slave_trained']
+		if slave_before and !slave_now:
+			dyn_stats.transform_traits('freed')
+			for tr_code in get_traits_by_tag('training_success'):
+				remove_trait(tr_code)
+		elif slave_now and !slave_before:
+			dyn_stats.transform_traits('enslaved')
+			dyn_stats.enslave_status()
+			forget_noble_classes()
+		if oldclass == 'slave' and new_class == 'slave_trained':
+			dyn_stats.bondage_on_training_finished()
 
 
 func use_social_skill(s_code, target):
@@ -1646,11 +1796,14 @@ func clear_training():
 func can_be_trained():
 	return training.can_be_trained()
 
-func can_be_trainer():
+func can_be_trainer(ignore_vows = false):
 	var res = true
 	if get_stat('slave_class') == 'slave':
 		res = !training.enable
-	return res and has_status('trainer')
+	res = res and has_status('trainer')
+	if res and !ignore_vows:
+		res = get_vow_ban('trainer') == ''
+	return res
 
 func finish_training(internal = false):
 	training.finish_training(internal)
@@ -1754,8 +1907,46 @@ func fix_serialization_postload():
 	statlist.fix_serialize()
 	dyn_stats.fix_serialize()
 	xp_module.fix_serialize()
-	
+	add_frail_constitution()
+	convert_kurdan_to_grasha()
+
 	reset_rebuild()
+
+
+#Zephyra joined many saves before Frail Constitution took Clumsy's place; it shows once she has her brush back
+func add_frail_constitution():
+	if get_stat('unique') != 'zephyra' or dyn_stats.owns_trait('frail_constitution'):
+		return
+	remove_trait('clumsy')
+	add_trait('frail_constitution')
+	for key in ['ZEPHYRA_BRUSH_16_3', 'ZEPHYRA_BRUSH_17', 'ZEPHYRA_BRUSH_18']:
+		if ResourceScripts.game_progress.seen_dialogues.has(key):
+			dyn_stats.reveal_trait('frail_constitution')
+
+
+#Grasha took Kurdan's place; an old save's Kurdan keeps his progress and takes her identity and body
+func convert_kurdan_to_grasha():
+	if get_stat('unique') != 'kurdan':
+		return
+	var data = worlddata.pregen_characters.Grasha.duplicate(true)
+	for key in ['affection', 'respect', 'sex_training']:
+		data.erase(key)
+	if statlist.statlist.name != 'CHARNAMEKURDAN':
+		data.erase('name')
+	statlist.apply_custom_bodychange('sex', 'female')
+	statlist.update_chardata(data)
+	set_stat('vaginal_virgin', data.vaginal_virgin)
+	statlist.exterior_alt.clear()
+	statlist.sex_names.clear()
+	statlist.statlist.player_selected_icon = false
+	statlist.statlist.player_selected_body = false
+	refresh_relatives_record()
+	var acquired = ResourceScripts.game_world.easter_egg_characters_acquired
+	while acquired.has('kurdan'):
+		acquired.erase('kurdan')
+	input_handler.append_not_duplicate(acquired, 'grasha')
+	if uses_paperdoll():
+		input_handler.reshoot_portrait(self)
 
 
 func fix_import():
@@ -1997,6 +2188,17 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			check = input_handler.operate(i.operant, get_stat(i.part), i.value)
 		'trait':
 			check = check_trait(i.trait) == i.check
+		'faith_open':
+			check = dyn_stats.can_change_faith() == i.check
+		'has_faith':
+			check = (dyn_stats.get_faith() != '') == i.check
+		'faith_can_deepen':
+			check = (dyn_stats.next_faith_tier(dyn_stats.get_faith()) != '') == i.check
+		'faith_tier':
+			check = input_handler.operate(i.operant, dyn_stats.faith_tier(i.god), i.value)
+		#whether offer_trait in this mode would actually give the trait
+		'trait_offer':
+			check = (preview_trait_offer(i.trait, i.get('mode', 'ask')) != 'skip') == i.check
 		'disabled':
 			check = !i.check
 		'has_status':
@@ -2037,6 +2239,15 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if input_handler.combat_node == null:
 				return !i.check
 			return (input_handler.combat_node.playergroupcounter == 1) == i.check
+		#the next four are live and leave summons out; all false out of a fight
+		'combat_company':
+			return (count_combat_company() > 0) == i.check
+		'alone_in_combat':
+			return (count_combat_company() == 0) == i.check
+		'fighting_with_master':
+			return (count_combat_company() >= 0 and master_in_combat()) == i.check
+		'fighting_without_master':
+			return (count_combat_company() >= 0 and !master_in_combat()) == i.check
 		'workrule':
 			return check_work_rule(i.value) == i.check
 		#sleeps in a mansion room tagged like this - see mansion_room_types.gd
@@ -2244,18 +2455,22 @@ func show_race_description():
 	var race = get_stat('race')
 	var temprace = races.racelist[race]
 	var text = ''
+	for class_id in races.get_exclusive_classes(race):
+		var prof_name = ResourceScripts.descriptions.get_class_name(classesdata.professions[class_id], self)
+		text += tr("RACE_EXCLUSIVE_CLASS_LABEL") % ("{color=k_yellow|" + prof_name + "}") + "\n"
+	for skill_id in races.get_exclusive_skills(race):
+		text += tr("RACE_EXCLUSIVE_SKILL_LABEL") % ("{color=k_yellow|" + Skilldata.Skilllist[skill_id].name + "}") + "\n"
+	if text != '':
+		text += "\n"
+	text += tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(temprace.race_bonus)
+	var lore = ''
 	if temprace.tags.has('beast'):
 		if race.find("Beastkin") >= 0:
-			text += tr("RACEBEASTKINDESCRIPT") + "\n\n"
+			lore += tr("RACEBEASTKINDESCRIPT") + "\n\n"
 		elif race.find("Halfkin") >= 0:
-			text += tr("RACEHALFKINDESCRIPT") + "\n\n"
-	text += temprace.descript
-	text += "\n\n" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(temprace.race_bonus)
-	if temprace.has("combat_skills"):
-		text += "\n" + tr("COMBAT_ABILS_LABEL") + ": "
-		for i in temprace.combat_skills:
-			text += Skilldata.Skilllist[i].name + "; "
-		text = text.substr(0, text.length() - 2) + "."
+			lore += tr("RACEHALFKINDESCRIPT") + "\n\n"
+	lore += temprace.descript
+	text = text.strip_edges() + "\n\n" + globals.race_lore_text(lore)
 	return text
 
 
@@ -2400,6 +2615,21 @@ func calculate_price(shopflag = false, no_fame = false, desc_ready = false):
 	if desc_ready:
 		temp_text += '   %s: %d ({color=green|+%s%%})\n' % [tr('PRICEDESC_TRAITS_POS'), tr_mul1, tr_mul1_mul * 100]
 		temp_text += '   %s: %d ({color=red|-%s%%})\n' % [tr('PRICEDESC_TRAITS_NEG'), tr_mul2, tr_mul2_mul * 100]
+	#a bondage status has its own price; the exotic trader's stock keeps its full one
+	var exotic_stock = tags.has('exotic_stock') and !is_in_game_party()
+	for code in get_traits_by_tag('bondage'):
+		var trdata = Traitdata.traits[code]
+		var part = trdata.get('price', 0.0)
+		if exotic_stock and trdata.has('price_exotic'):
+			part = trdata.price_exotic
+		if part == 0:
+			continue
+		mod_mul += part
+		if desc_ready:
+			if part > 0:
+				temp_text += '   %s: {color=green|+%s%%}\n' % [tr(trdata.name), part * 100]
+			else:
+				temp_text += '   %s: {color=red|%s%%}\n' % [tr(trdata.name), part * 100]
 	if shopflag:
 		if has_status('virgin'):
 			mod_mul2 += 0.25
@@ -2500,6 +2730,7 @@ func affect_char(template, manifest = false):
 				input_handler.combat_node.combatlogadd(tr("LOG_COMBAT_MANA") % [get_short_name(), int(tval)])
 			if manifest: globals.text_log_add('char', tr("LOG_MANA") % int(tval))
 		'damage_mana_percent':
+			#a fraction of max mana (0.4 is 40%), unlike damage_percent above, which takes percents
 			var tval = mana_update(-template.value * get_stat('mpmax'))
 			if manifest: globals.text_log_add('char', tr("LOG_MANA") % int(tval))
 		'stat', 'stat_add':
@@ -2599,7 +2830,23 @@ func affect_char(template, manifest = false):
 		'remove_trait':
 			remove_trait(template.trait)
 		'add_trait':
-			add_trait(template.trait)
+			offer_trait(template.trait, template.get('mode', 'ask'))
+		'replace_trait':
+			dyn_stats.replace_trait(template.old, template.trait)
+		'set_faith':
+			dyn_stats.set_faith(template.trait)
+		'deepen_faith':
+			dyn_stats.deepen_faith(template.trait)
+		'deepen_own_faith':
+			dyn_stats.deepen_faith(dyn_stats.get_faith())
+		'demote_faith':
+			var held = dyn_stats.get_god_faith(template.god)
+			if held != '':
+				dyn_stats.demote_faith(held)
+		'grow_trait':
+			dyn_stats.grow_trait(template.trait)
+		'reveal_trait':
+			dyn_stats.reveal_trait(template.trait)
 		'unlock_trait':
 			training.unlock_trait(template.trait)
 		'add_sex_trait':
@@ -2684,6 +2931,33 @@ func is_koed():
 	return (hp <= 0) or defeated or !is_active
 
 
+#Other party members standing in this fighter's battle, summons aside; -1 out of a fight.
+#Plain fields only: stat conditions call this while stats are being rebuilt.
+func count_combat_company():
+	var cn = input_handler.combat_node
+	if cn == null or position == null or !(position in range(1, 7)) or cn.battlefield[position] != id or is_koed():
+		return -1
+	var res = 0
+	for p in range(1, 7):
+		if p == position or cn.summons.has(p):
+			continue
+		var ch = cn.get_char_by_pos(p)
+		if ch != null and !ch.is_koed():
+			res += 1
+	return res
+
+
+func master_in_combat():
+	var cn = input_handler.combat_node
+	if cn == null:
+		return false
+	for p in range(1, 7):
+		var ch = cn.get_char_by_pos(p)
+		if ch != null and ch.is_master() and !ch.is_koed():
+			return true
+	return false
+
+
 func calculate_number_from_string_array(arr):
 	var array = arr.duplicate()
 	var endvalue = 0
@@ -2727,7 +3001,7 @@ func set_shield(value):
 	shield = max(0, value)
 
 
-func deal_damage(value, source = 'normal'):
+func deal_damage(value, source = 'normal', resist_cap = null):
 #	print(source)
 	if npc_reference == 'combat_global': return null
 	if has_status('warded') and !has_status('ward'):
@@ -2737,7 +3011,11 @@ func deal_damage(value, source = 'normal'):
 		return 0
 	value *= (1.0 - get_stat('damage_reduction')/100.0)
 	if source != 'true':
-		value *= (1.0 - get_stat('resist_' + source)/100.0)
+		var resist = get_stat('resist_' + source)
+		#a skill's resist_cap limits how much of its element the target can resist
+		if resist_cap != null:
+			resist = min(resist, resist_cap)
+		value *= (1.0 - resist/100.0)
 	value = int(value);
 	if value > 0:
 		if shield > value:
@@ -2934,6 +3212,8 @@ func update_portrait(ragdoll): # for ragdolls
 		return
 	if !get_stat('dynamic_portrait') and !uses_paperdoll():
 		return
+	if get_stat('player_selected_icon') and !uses_paperdoll(): #the player's own pick is never retaken
+		return
 	if !get_stat('portrait_update'):
 		return
 
@@ -2981,6 +3261,8 @@ func portrait_gear(): #empty unless the portrait is the doll's shot - a hand pic
 
 func portrait_ready(path): #called back by the ragdoll, the image is in the cache by then
 	if uses_paperdoll(): #get_icon reads the shot off doll_portrait_path, icon_image is left alone
+		return
+	if get_stat('player_selected_icon'): #picked while this shot was still in flight
 		return
 	set_stat('icon_image', path)
 
@@ -3121,9 +3403,13 @@ func get_value_upkeep():
 	return int(calculate_price(false, false, false) * variables.value_upkeep_rate * get_upkeep_multiplier())
 
 func get_upkeep_multiplier():
+	var res = 1.0
 	if has_status('standing_beloved'):
-		return 0.5
-	return 1.0
+		res = 0.5
+	#a Shy servant costs a tenth less a week (e_person_shy)
+	if has_status('upkeep_cut'):
+		res *= 0.9
+	return res
 
 func get_weekly_tax():
 	if !is_active:

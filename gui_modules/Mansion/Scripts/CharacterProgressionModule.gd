@@ -125,7 +125,7 @@ func update():
 		if !ResourceScripts.game_globals.unlock_all_classes:
 			if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs, true) || person.has_profession(i.code):
 				continue
-			if !$CheckBox.pressed && person.checkreqs(i.reqs, true) == false:
+			if !$CheckBox.pressed && (person.checkreqs(i.reqs, true) == false or person.is_noble_blocked(i.code)):
 				continue
 		array.append(i)
 	
@@ -138,13 +138,19 @@ func update():
 		if !ResourceScripts.game_globals.unlock_all_classes:
 			if i.has('altname') && person.checkreqs(i.altnamereqs):
 				name = i.altname
-			var f = person.checkreqs(i.reqs, true)
+			var f = person.checkreqs(i.reqs, true) and !person.is_noble_blocked(i.code)
 			for prof in i.conflict_classes:
 				f = f and !person.has_profession(prof)
 			if  f == false:
 				newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+			#a noble class wears a gold frame; when it is out of reach the lock frame turns gold
+			if i.tags.has('noble'):
+				if f:
+					newbutton.texture_normal = load("res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_square.png")
+				else:
+					newbutton.self_modulate = Color(1.0, 0.8, 0.35, newbutton.self_modulate.a)
 		newbutton.get_node('name').text = tr(name)
 		newbutton.connect('pressed',self,"open_class", [i.code])
 		newbutton.set_meta('class_code', i.code)
@@ -173,7 +179,7 @@ func open_class(classcode):
 	var tempclass = classesdata.professions[classcode]
 	var class_locked = true
 	if !ResourceScripts.game_globals.unlock_all_classes:
-		class_locked = !person.checkreqs(tempclass.reqs, true)
+		class_locked = !person.checkreqs(tempclass.reqs, true) or person.is_noble_blocked(classcode)
 	else:
 		class_locked = false
 	current_class = classcode

@@ -22,7 +22,9 @@ var encounters = {
 
 
 	rebel_group = {unittype = 'randomgroup', unitcode = 'rebel_group_mines', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_group_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	demon_kurdan = {unittype = 'randomgroup', unitcode = 'demon_kurdan', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_kurdan_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	demon_grasha = {unittype = 'randomgroup', unitcode = 'demon_grasha', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_grasha_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	grasha_old_crew_street = {unittype = 'randomgroup', unitcode = 'grasha_old_crew', bg = 'default', bgm = 'default', win_effects = [{code = 'decision', value = 'GrashaCrewBeaten'}, {code = 'start_event', data = 'grasha_old_crew_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	grasha_old_crew_mansion = {unittype = 'randomgroup', unitcode = 'grasha_old_crew', bg = 'default', bgm = 'default', win_effects = [{code = 'decision', value = 'GrashaCrewBeaten'}, {code = 'start_event', data = 'grasha_old_crew_beaten_home', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	demon = {unittype = 'randomgroup', unitcode = 'demon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	rebel_convoy = {unittype = 'randomgroup', unitcode = 'rebel_convoy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_convoy_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	event_rebels_1 = {unittype = 'randomgroup', unitcode = 'event_rebels_1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_1_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -204,7 +206,8 @@ var enemygroups = {
 	act4_road_grotus_phase2_group = {maxunits = 6, reqs = [], units = {grotus_king_boss = [1,1]}},
 
 	rebel_group_mines = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
-	demon_kurdan = {reqs = [], units = {demoness = [1,1],kurdan = [1,1], rebel_recruit = [2,2]}},
+	demon_grasha = {reqs = [], units = {demoness = [1,1],grasha = [1,1], rebel_recruit = [2,2]}},
+	grasha_old_crew = {reqs = [], units = {bandit_melee = [3,3]}},
 	demon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
 	rebel_convoy = {reqs = [], units = {rebel_recruit = [2,2], rebel_knight = [1,1], rebel_healer = [1,1], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	event_rebels_1 = {reqs = [], units = {rebel_recruit = [3,3], rebel_healer = [2,2], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
@@ -3119,8 +3122,8 @@ var enemies = {
 		allowed_mastery = [],
 	},
 	
-	kurdan = {
-		code = 'kurdan',
+	grasha = {
+		code = 'grasha',
 		name = '',
 		descript = '',
 		hpmax = 400,
@@ -3136,9 +3139,9 @@ var enemies = {
 		status_resists = {stun = 50, freeze = 50},
 		race = 'humanoid',
 		loot = 'bandit_loot',
-		icon = "res://assets/images/enemies/kurdan_enemy.png",
+		icon = "res://assets/images/portraits/Orc_female_prt.png",
 		skills = ['entangle','firearr','overwhelming_flame','i_must_resist'],
-		traits = ['boss_resists','kurdan_mind_controlled'],
+		traits = ['boss_resists','grasha_mind_controlled'],
 		tags = ['human','boss',],
 #		ai = [['ads', 66],['basic', 33]],
 		ai = [['basic', 33], ['damage',10], ['damage_spot', 66], ['ads', 66], ['support', 10]],
@@ -4434,7 +4437,7 @@ var shrines = {
 	erebus = {
 		options = {
 			"material" : {input = 'material', output = 'erebus_item'},
-			#"character" : {input = 'character', output = 'erebus_character'},
+			"character" : {input = 'character', output = 'erebus_character'},
 			"destroy" : {input = 'destroy', output = 'erebus_destroy'},
 			"item" : {input = "item", output = 'erebus_disenchant'},
 		},
@@ -4454,11 +4457,29 @@ var shrines = {
 		options = {
 			"material" : {input = 'material', output = 'hybris_item'},
 			"character" : {input = 'character', output = 'hybris_character'},
+			"enslave" : {input = 'enslave', output = 'hybris_enslave', reqs = [{type = 'active_character_checks', value = [{code = 'is_master', check = false}, {code = 'stat', stat = 'slave_class', operant = 'eq', value = 'servant'}]}]},
 			"destroy" : {input = 'destroy', output = 'hybris_destroy'}
 		},
 		bless = 'hybris_bless',
 		curse = 'hybris_curse',
 
+	},
+	meditation = {
+		options = {
+			"rest" : {input = 'action', output = 'meditation_rest', text = 'MEDITATION_REST_OPTION'},
+			"meditate" : {input = 'action', output = 'meditation_faith', text = 'MEDITATION_FAITH_OPTION', reqs = [{type = 'active_character_checks', value = [{code = 'faith_open', check = true}]}]},
+			"convert" : {input = 'action', output = 'meditation_convert', text = 'MEDITATION_CONVERT_OPTION', reqs = [{type = 'active_character_checks', value = [{code = 'faith_open', check = true}]}]},
+		},
+		bless = '',
+		curse = '',
+	},
+	power_place = {
+		options = {
+			"fight" : {input = 'action', output = 'power_place_fight', text = 'POWER_PLACE_FIGHT'},
+			"flee" : {input = 'action', output = 'power_place_flee', text = 'POWER_PLACE_FLEE'},
+		},
+		bless = '',
+		curse = '',
 	},
 }
 
@@ -4534,16 +4555,186 @@ func celena_item(code):
 		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
+#Praying at a god's altar: the god's believer climbs a tier up to Adept, a free religious slot takes the
+#faith up (a second one with Split Mind), a full one asks which trait gives way. Believers are always blessed.
+
+#Meditation spot. Rest gives the group back half its mana. Meditating raises a believer's faith a tier;
+#someone without a faith hears whichever of these gods suits them and may follow it. A companion of any
+#tier can bring the one meditating into their own faith.
+var meditation_calls = {
+	alios = [{code = 'stat', stat = 'mastery_air', operant = 'gte', value = 2}],
+	nixx = [{code = 'stat', stat = 'mastery_dark', operant = 'gte', value = 2}],
+	erebus = [{code = 'stat', stat = 'mastery_earth', operant = 'gte', value = 2}],
+	spirits = [{code = 'has_profession', profession = 'shaman', check = true}, {orflag = true, code = 'race_is_beast', check = true}],
+}
+
+func meditation_scene(text):
+	return {text = text, image = '', options = [], tags = ['active_character_translate', 'dialogue_scene'], common_effects = []}
+
+#nothing happened, so the spot is still there to use
+func meditation_way_back(dict):
+	dict.options.append({code = 'meditation_shrine_approach', reqs = [], text = 'BACK'})
+	dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
+
+func meditation_rest(person):
+	var dict = meditation_scene(tr('MEDITATION_REST'))
+	dict.common_effects = [{code = 'affect_active_party', type = 'damage_mana_percent', value = -0.5}, {code = 'clear_subroom'}]
+	dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func meditation_faith(person):
+	var dict
+	var rising = []
+	for code in person.dyn_stats.get_faiths():
+		if person.dyn_stats.next_faith_tier(code) != '':
+			rising.append(code)
+	if rising.size() == 1:
+		dict = meditation_scene(tr('MEDITATION_DEEPEN'))
+		dict.common_effects = [{code = 'affect_active_character', type = 'deepen_faith', trait = rising[0]}, {code = 'clear_subroom'}]
+		dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
+	elif rising.size() > 1:
+		#Split Mind with two faiths that can still grow: the player picks one
+		dict = meditation_scene(tr('MEDITATION_DEEPEN_PICK'))
+		for code in rising:
+			dict.options.append({code = 'meditation_deepened', reqs = [], text = Traitdata.traits[code].name, bonus_effects = [{code = 'affect_active_character', type = 'deepen_faith', trait = code}]})
+		meditation_way_back(dict)
+	elif !person.dyn_stats.get_faiths().empty() and person.dyn_stats.get_free_trait_slots('religious') <= 0:
+		dict = meditation_scene(tr('MEDITATION_PEAK'))
+		meditation_way_back(dict)
+	else:
+		#no faith yet, or Split Mind with a slot to spare: a god not followed already may call
+		var calls = []
+		for god in meditation_calls:
+			if person.dyn_stats.get_god_faith(god) == '' and person.checkreqs(meditation_calls[god]):
+				calls.append(god)
+		if calls.empty() or person.check_trait('airhead'):
+			dict = meditation_scene(tr('MEDITATION_NOTHING'))
+			meditation_way_back(dict)
+		else:
+			var god = calls[randi() % calls.size()]
+			dict = meditation_scene(tr('MEDITATION_CALL_' + god.to_upper()) + tr('MEDITATION_CALL_QUESTION'))
+			dict.options.append({code = 'meditation_faith_accept', reqs = [], text = 'MEDITATION_ACCEPT_OPTION', bonus_effects = [{code = 'affect_active_character', type = 'add_trait', trait = 'faith_%s_1' % god}]})
+			dict.options.append({code = 'meditation_faith_decline', reqs = [], text = 'MEDITATION_DECLINE_OPTION'})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func meditation_convert(person):
+	var dict = meditation_scene(tr('MEDITATION_CONVERT_PICK'))
+	var here = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}, {code = 'in_combat_party', value = true}]
+	for guide in ResourceScripts.game_party.characters.values():
+		if guide == person or !guide.checkreqs(here):
+			continue
+		for faith in guide.dyn_stats.get_faiths():
+			var god = Traitdata.traits[faith].faith
+			if person.dyn_stats.get_god_faith(god) != '':
+				continue
+			var line = tr('MEDITATION_CONVERT_BY').replace('{guide}', guide.get_short_name()).replace('{faith}', tr(Traitdata.traits[faith].name))
+			dict.options.append({code = 'meditation_converted', reqs = [], text = line, bonus_effects = [{code = 'affect_active_character', type = 'add_trait', trait = 'faith_%s_1' % god}]})
+	if dict.options.empty():
+		dict.text = tr('MEDITATION_CONVERT_NOBODY')
+	meditation_way_back(dict)
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+#Place of power, the strange spot's other half: stepping in calls an elite pack of this dungeon - one of its
+#own groups turned minibosses, as in the room before the stairs. The one who stepped in takes a trait from
+#the catalogue's power_place_traits after the win, or 300 experience when none of them fits - or, when they
+#have a negative physical or magic trait, the player may burn one of those out instead. Running away
+#closes the room for good.
+func power_place_fight(person):
+	var dungeon = gui_controller.exploration_dungeon
+	globals.reset_roll_data()
+	var group = input_handler.weightedrandom(dungeon.active_location.enemies)
+	var data = {enemy_code = group, enemies = globals.makerandomgroup(enemygroups[group]), rare = false, miniboss = true}
+	data.win_effects = [{code = 'start_event', data = power_place_reward(person), args = {set_active_character = person.id}}]
+	dungeon.StartCombat(data)
+	gui_controller.dialogue.close()
+
+func power_place_reward(person):
+	var open = []
+	for code in Traitdata.catalogue.power_place_traits:
+		if person.can_add_trait(code) and person.preview_trait_offer(code) != 'skip':
+			open.append(code)
+	var gift = {code = 'affect_active_character', type = 'stat', stat = 'base_exp', value = 300}
+	if !open.empty():
+		gift = {code = 'affect_active_character', type = 'add_trait', trait = input_handler.random_from_array(open)}
+	var flaws = power_place_flaws(person)
+	var dict
+	if flaws.empty():
+		dict = meditation_scene(tr('POWER_PLACE_WON' if !open.empty() else 'POWER_PLACE_WON_EXP'))
+		dict.image = 'energy_control'
+		dict.common_effects += [gift, {code = 'clear_subroom'}, {code = 'update_party'}]
+		dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
+		return dict
+	#a flaw to burn out: the power waits for the player's word, and the room is spent either way
+	dict = meditation_scene(tr('POWER_PLACE_WON_CHOICE'))
+	dict.image = 'energy_control'
+	dict.common_effects += [{code = 'clear_subroom'}, {code = 'update_party'}]
+	if !open.empty():
+		dict.options.append({code = 'power_place_gift', reqs = [], text = 'POWER_PLACE_GIFT_OPTION', bonus_effects = [gift]})
+	else:
+		dict.options.append({code = 'power_place_exp', reqs = [], text = 'POWER_PLACE_EXP_OPTION', bonus_effects = [gift]})
+	for code in flaws:
+		var line = tr('POWER_PLACE_PURGE_OPTION').replace('{trait}', tr(Traitdata.traits[code].name))
+		dict.options.append({code = 'power_place_purged', reqs = [], text = line, bonus_effects = [{code = 'affect_active_character', type = 'remove_trait', trait = code}]})
+	return dict
+
+#the negative physical and magic traits the place of power can burn out: the character's own, neither locked nor hidden
+func power_place_flaws(person):
+	var res = []
+	for category in ['physical', 'magic']:
+		for code in person.get_category_traits(category):
+			if Traitdata.traits[code].tags.has('negative') and !person.is_trait_locked(code) and !person.is_trait_hidden(code):
+				res.append(code)
+	return res
+
+func power_place_flee(person):
+	var dict = meditation_scene(tr('POWER_PLACE_FLED'))
+	dict.common_effects.append({code = 'clear_subroom'})
+	dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func shrine_faith(person, god):
+	var res = {effects = [], text = '', believer = false}
+	var current = person.dyn_stats.get_god_faith(god)
+	if current != '':
+		res.believer = true
+		if person.dyn_stats.next_faith_tier(current) != '':
+			res.effects.append({code = 'affect_active_character', type = 'deepen_faith', trait = current})
+			res.text = tr('ALTAR_FAITH_DEEPEN')
+		return res
+	var code = 'faith_%s_1' % god
+	match person.preview_trait_offer(code, 'ask'):
+		'add':
+			res.effects.append({code = 'affect_active_character', type = 'add_trait', trait = code})
+			res.text = tr('ALTAR_FAITH_JOIN')
+			res.believer = true
+		'ask':
+			res.effects.append({code = 'affect_active_character', type = 'add_trait', trait = code})
+			#another god's believer, or someone proud of needing none (Mortal Pride)
+			res.text = tr('ALTAR_FAITH_OTHER' if !person.dyn_stats.get_faiths().empty() else 'ALTAR_FAITH_PRIDE')
+	return res
+
+#a growing trait that waits on this god's altar takes its next stage from the prayer
+func shrine_growth(person, god):
+	var res = {effects = [], text = ''}
+	for code in person.dyn_stats.traits_growing_by('shrine'):
+		if Traitdata.traits[code].grow.god == god:
+			res.effects.append({code = 'affect_active_character', type = 'grow_trait', trait = code})
+			res.text += tr('ALTAR_GROW_' + code.to_upper())
+	return res
+
 func celena_character(person):
 
 	var dict = {text = tr('ALTAR_CHAR_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var faith = shrine_faith(person, 'celena')
 
-	if randf() <= 0.5:
+	if faith.believer or randf() <= 0.5:
 		dict.text += tr('ALTAR_CHAR_GOOD')
 
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_bless'})
 	else:
 		dict.text += tr('ALTAR_CHAR_BAD')
+	dict.text += faith.text
+	dict.common_effects += faith.effects
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	input_handler.interactive_message_follow(dict, 'direct', [])
@@ -4611,12 +4802,15 @@ func freya_character(person):
 			dict.text += tr('FREYA_CHAR_WOODEN')
 			dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
 		else:
-			if randf() >= 0.5 || person.get_stat('race') in ['Elf','DarkElf','TribalElf','Fairy','Dryad']:
+			var faith = shrine_faith(person, 'freya')
+			if faith.believer || randf() >= 0.5 || person.get_stat('race') in ['Elf','DarkElf','TribalElf','Fairy','Dryad']:
 				dict.text += tr('FREYA_CHAR_RACE_GOOD')
 
 				dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
 			else:
 				dict.text += tr('FREYA_CHAR_RACE_BAD')
+			dict.text += faith.text
+			dict.common_effects += faith.effects
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
@@ -4668,30 +4862,38 @@ func erebus_item(code):
 	input_handler.interactive_message_follow(dict, 'direct', [])
 	
 
+#Erebus has no blessing to give: the prayer only speaks to the faith.
 func erebus_character(person):
 
 	var dict = {text = tr('ALTAR_CHAR_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-
-	if randf() <= 0.5:
-		dict.text += tr('ALTAR_CHAR_GOOD')
-
-		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_bless'})
-	else:
-		dict.text += tr('ALTAR_CHAR_BAD')
+	var faith = shrine_faith(person, 'erebus')
+	dict.text += faith.text if faith.text != '' else tr('ALTAR_CHAR_BAD')
+	dict.common_effects += faith.effects
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func hybris_character(person):
-	var dict = {}
-	if person.get_stat('unique') != null || person.is_master():
-		dict = {text = tr('HYBRIS_ALTAR_CHAR_FAIL'), image = '', options = [], tags = ['active_character_translate','dialogue_scene'], common_effects = []}
+	var dict = {text = tr('ALTAR_CHAR_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var faith = shrine_faith(person, 'hybris')
+	var growth = shrine_growth(person, 'hybris')
+	var answer = faith.text + growth.text
+	dict.text += answer if answer != '' else tr('ALTAR_CHAR_BAD')
+	dict.common_effects += faith.effects + growth.effects
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+#Bending a servant into slavery. A unique character's will is too strong for the altar.
+func hybris_enslave(person):
+	var dict
+	if person.get_stat('unique') != null:
+		dict = {text = tr('HYBRIS_ALTAR_WILL'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 	else:
 		dict = {text = tr('HYBRIS_ALTAR_CHAR'), image = '', options = [], tags = ['active_character_translate','dialogue_scene'], common_effects = []}
-		if person.get_stat('slave_class') == 'servant':
-			dict.options.append({code = 'hybris_character_convert', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION1", dialogue_argument = 1})
-#		dict.options.append({code = 'hybris_character_loyalty', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION2", dialogue_argument = 1})
-	
+		var nobles = globals.noble_class_names(person)
+		if nobles != '':
+			dict.text += "\n\n" + tr('HYBRIS_NOBLE_LOSS').replace("{classes}", nobles)
+		dict.options.append({code = 'hybris_character_convert', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION1", dialogue_argument = 1})
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	input_handler.interactive_message_follow(dict, 'direct', [])
 

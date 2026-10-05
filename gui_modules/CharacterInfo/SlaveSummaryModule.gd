@@ -306,10 +306,10 @@ func set_color(value):
 
 
 var unique_dict = { #shows available talk characters. Scenes go in order from higher priority and reqs to lower. No scenes isn't supported yet
-	kurdan = {
-		code = 'kurdan', 
+	grasha = {
+		code = 'grasha', 
 		scenes = [
-			{code = 'kurdan_dialogue_start', reqs = []}
+			{code = 'grasha_dialogue_start', reqs = []}
 		]
 	},
 	

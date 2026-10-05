@@ -133,6 +133,7 @@ func serialize():
 static func _drop_turn_local_breakdown(entry):
 	if entry is Dictionary and entry.get("type") != "arrival":
 		entry.erase("details")
+		entry.erase("crafted")
 
 
 func autosave_due():
@@ -205,6 +206,9 @@ func advance_hour(managed = false, progress_target = null):
 			yield(advance_day(true), 'completed')
 		else:
 			advance_day()
+	for person in ResourceScripts.game_party.characters.values():
+		person.dyn_stats.refresh_daylight_vows()
+		person.dyn_stats.tick_trait_growth()
 	_report_turn_progress(progress_target, 1.0)
 
 

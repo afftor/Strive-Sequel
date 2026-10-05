@@ -523,6 +523,17 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
+
+	thoth_chronicle = {
+		code = 'thoth_chronicle',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/mysteriousbook.png"),
+		price = 0,
+		type = 'quest',
+		tier = '',
+		tags = ['no_random'],
+	},
 	
 	
 	
@@ -3378,7 +3389,7 @@ var itemlist = {
 		mansion_effect = 'pheromones',
 		interaction_effect = 'pheromones',
 	},
-	soul_stone = {# removes trait
+	soul_stone = {# moves a magic trait to another character
 		code = 'soul_stone',
 		name = "",
 		descript = "",
@@ -3392,7 +3403,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['save_on_use'], #saved on use in case of cancel, consumed during scene
-		mansion_effect = 'trait_removal',
+		mansion_effect = 'trait_transfer',
 	},
 	
 	lactation_pot = {
@@ -3966,6 +3977,28 @@ var itemlist = {
 		effects = [],
 		tags = ['skill_tooltip'],
 		skill = 'dark_flame',
+		mansion_effect = 'skill_granting',
+	},
+	skillbook_forbidden_sun = {
+		code = 'skillbook_forbidden_sun',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 2000,
+		icon = load("res://assets/images/iconsitems/book_red.png"),
+		tier = 'skillbook',
+		reqs = [
+			{code = 'has_skill', value = 'forbidden_sun', check = false},
+			{code = 'stat', stat = 'mastery_fire', value = 10, operant = 'gte'},
+			{code = 'trait', trait = 'literacy', check = true}
+		],
+		reqs_fail_message = "ITEMREQSMASTERYLIT",
+		effects = [],
+		tags = ['skill_tooltip'],
+		skill = 'forbidden_sun',
 		mansion_effect = 'skill_granting',
 	},
 

@@ -641,7 +641,7 @@ func select_brothel_activity():
 	var non_sex_rules = []
 	var sex_rules = []
 	
-	if brothel_rules.waitress:
+	if check_brothel_rule('waitress'):
 		parent.get_ref().add_stat('metrics_waitress', 1)
 	
 	var no_consent = false
@@ -908,14 +908,15 @@ func service_location():
 	return location
 
 
-#An act nobody here buys, or one their gear takes off the table, is not on offer however it is toggled.
+#An act nobody here buys, one their gear takes off the table, or one their faith forbids is not on offer
+#however it is toggled.
 func service_rule_offered(rule):
 	if !ResourceScripts.game_world.service_allows_rule(service_location(), rule):
 		return false
 	for gear in variables.service_gear_blocks:
 		if variables.service_gear_blocks[gear].has(rule) and parent.get_ref().equipment.check_gear_equipped(gear):
 			return false
-	return true
+	return parent.get_ref().get_vow_ban('service', rule) == ''
 
 
 func get_enabled_sex_actions():
@@ -1213,7 +1214,7 @@ func get_progress_resource(tempresource, count_crit = false): #do not like this 
 
 func get_progress_farm(res):
 	var task = tasks.farm_tasks[res]
-	return call(task.formula)
+	return call(task.formula) * (1.0 + parent.get_ref().get_trait_sum('farm_output'))
 
 
 func recruit_tick(task): #maybe incomplete
@@ -1237,7 +1238,7 @@ func special_tick(task): #maybe incomplete
 
 
 func get_farming_limit():
-	return max(parent.get_ref().get_stat('growth_factor') - 2, 1)
+	return max(parent.get_ref().get_stat('growth_factor') - 2, 1) + int(parent.get_ref().get_trait_sum('farming_limit'))
 
 func can_add_farming():
 	var n = get_farming_limit()

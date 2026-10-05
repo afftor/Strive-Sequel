@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=2]
 [ext_resource path="res://gui_modules/Universal/Scripts/TextTooltipPanel.gd" type="Script" id=3]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Italic.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 4 )
+fallback/0 = ExtResource( 1 )
 
 [node name="TextTooltipPanel" type="Panel"]
 margin_left = 662.327
@@ -31,5 +37,6 @@ margin_top = 24.0
 margin_right = 580.0
 margin_bottom = 317.0
 custom_colors/default_color = Color( 0.972549, 0.972549, 0.972549, 1 )
+custom_fonts/italics_font = SubResource( 2 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true

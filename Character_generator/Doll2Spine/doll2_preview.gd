@@ -2917,24 +2917,21 @@ func _apply_coverage(material, channel_id, slot_name = ""):
 	if channel.get("coverage_alternate_2", false):
 		alternate = 2
 	var layers = COVERAGE.layers(coverage_id, alternate)
-	var real_coverage_colors = COVERAGE.alternate_colors(coverage_id, alternate)
 	if coverage_id.empty() or layers.empty() or !channel.get("coverage", false) or !_coverage_available():
 		material.set_shader_param("coverage_count", 0)
 		return
 	material.set_shader_param("coverage_count", min(layers.size(), COVERAGE.MAX_LAYERS))
 	# The base, when the pattern has one, is the first colour of the row.
-	var offset = 0
 	if COVERAGE.has_base(coverage_id):
 		var base = coverage_colors[0] if coverage_colors.size() > 0 else Color(1, 1, 1)
 		material.set_shader_param("coverage_base", base)
 		material.set_shader_param("coverage_base_on", 0.0 if _is_neutral(base) else 1.0)
-		offset = 1
 	else:
 		material.set_shader_param("coverage_base_on", 0.0)
 	for i in range(min(layers.size(), COVERAGE.MAX_LAYERS)):
 		material.set_shader_param("coverage_mask%d" % (i + 1), _coverage_texture(COVERAGE.mask_path(coverage_id, i, alternate)))
-		var index = i + offset
-		material.set_shader_param("coverage_color%d" % (i + 1), real_coverage_colors[index] if index < real_coverage_colors.size() else Color(1, 1, 1))
+		var index = COVERAGE.colour_index(coverage_id, i, alternate)
+		material.set_shader_param("coverage_color%d" % (i + 1), coverage_colors[index] if index < coverage_colors.size() else Color(1, 1, 1))
 
 
 func _coverage_texture(path):

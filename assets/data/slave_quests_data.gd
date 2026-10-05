@@ -213,8 +213,8 @@ var base_stats = ['physics', 'wits', 'charm']
 
 #Advanced classes a quest may ask for; one still locked is skipped until the player unlocks it.
 var advanced_classes = [
-	'shieldbearer', 'knight', 'deathknight', 'paladin', 'spellsword', 'ranger', 'sniper',
-	'assassin', 'monk', 'priest', 'bishop',
+	'shieldbearer', 'deathknight', 'spellsword', 'ranger', 'sniper',
+	'assassin', 'monk', 'priest',
 ]
 
 var namepool = {

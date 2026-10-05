@@ -117,9 +117,9 @@ func is_liked(code):
 	return Items.materiallist[code].tags.has(food_love)
 
 
-#slaves eat what they are given
+#slaves eat what they are given, and so does anyone training broke
 func ignores_demand():
-	return parent.get_ref().get_stat('slave_class') in ['slave', 'slave_trained']
+	return parent.get_ref().get_stat('slave_class') in ['slave', 'slave_trained'] or parent.get_ref().check_trait('broken')
 
 
 #does this meal fall short of what the character expects? refreshes the demand first, so
@@ -165,6 +165,15 @@ func build_meal_order():
 	var res = []
 	for rec in scored:
 		res.push_back(rec[0])
+	#a vow keeps meat for when nothing else is left
+	if parent.get_ref().dyn_stats.get_vows().has('no_meat'):
+		var meat = []
+		for code in res:
+			if Items.materiallist[code].get('tags', []).has('meat'):
+				meat.push_back(code)
+		for code in meat:
+			res.erase(code)
+			res.push_back(code)
 	return res
 
 
@@ -200,8 +209,6 @@ func choose_meal(order):
 
 func tick():
 	var person = parent.get_ref()
-	if person.check_trait('undead'):
-		return
 	#characters that are not around do not eat and do not get hungry
 	if person.is_unavaliable():
 		return
@@ -214,25 +221,15 @@ func tick():
 
 
 func get_food():
-	var person = parent.get_ref()
-	if person.check_trait('undead'):
-		return
 	update_demand()
-	#a forager feeds themselves off the land, without touching the storage
-	var forager = person.check_trait('forager')
 	var order = build_meal_order()
-	var meal = null
-	if forager:
-		meal = null if order.empty() else order[0]
-	else:
-		meal = choose_meal(order)
+	var meal = choose_meal(order)
 	if meal == null:
 		starve()
 		return
-	if !forager:
-		var stock = ResourceScripts.game_res.materials
-		var portion = get_portion()
-		stock[meal] -= portion if stock[meal] >= portion else int(stock[meal])
+	var stock = ResourceScripts.game_res.materials
+	var portion = get_portion()
+	stock[meal] -= portion if stock[meal] >= portion else int(stock[meal])
 	consume(meal)
 
 
@@ -253,6 +250,9 @@ func consume(code):
 	last_meal = code
 	last_meal_poor = get_food_rank(code) < get_demand_rank() and !ignores_demand()
 	starvation = false
+	var vows = person.dyn_stats.get_vows()
+	if vows.has('no_meat') and item.get('tags', []).has('meat') and person.dyn_stats.demote_faith(vows.no_meat):
+		globals.mansion_activity_log_add("food", person.translate(tr("MANSION_ACTIVITY_VOW_MEAT")))
 	#effects tick once per turn while 'fed' drops by get_drain(), so the meal is worth
 	#fewer turns than its food_value whenever the character is on extra rations
 #	var turns = int(ceil(float(value) / float(get_drain())))
@@ -288,14 +288,11 @@ func starve():
 #prediction / ui
 #what the character's stomach currently looks like, for the slave list column. reads only
 #stored state, so it is cheap enough to call for every row on every update
-#	'undead'   - never eats
 #	'starving' - failed to eat
 #	'none'     - has not eaten yet, will take a meal on their next turn
 #	'poor'     - fed, but the last meal was below their demand
 #	'fed'      - fed on something acceptable
 func get_state():
-	if parent.get_ref().check_trait('undead'):
-		return {state = 'undead', fed = 0, meal = ''}
 	if starvation:
 		return {state = 'starving', fed = 0, meal = last_meal}
 	if fed <= 0 or !Items.materiallist.has(last_meal):
@@ -312,7 +309,7 @@ func get_state():
 #	'poor'     - they will eat this turn and the best that is left is below their demand
 func predict_meal_problem():
 	var person = parent.get_ref()
-	if person == null or person.check_trait('undead'):
+	if person == null:
 		return ''
 	#away from the estate they neither eat nor grow hungry, so there is nothing to promise
 	if person.is_unavaliable():
@@ -320,16 +317,11 @@ func predict_meal_problem():
 	#tick() drops the ration first and only eats once it is spent
 	if fed - get_drain() > 0:
 		return ''
-	var forager = person.check_trait('forager')
 	update_demand()
 	var demand_rank = get_demand_rank()
 	var ignore_demand = ignores_demand()
 	var order = build_meal_order()
-	var meal = null
-	if forager:
-		meal = null if order.empty() else order[0]
-	else:
-		meal = choose_meal(order)
+	var meal = choose_meal(order)
 	if meal == null:
 		return 'starve'
 	if !ignore_demand and get_food_rank(meal) < demand_rank:
@@ -338,10 +330,6 @@ func predict_meal_problem():
 
 
 func predict_food():
-	if parent.get_ref().check_trait('undead'):
-		return {}
-	if parent.get_ref().check_trait('forager'):
-		return {}
 	var order = build_meal_order()
 	if order.empty():
 		return {}

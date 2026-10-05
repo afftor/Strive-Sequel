@@ -461,8 +461,8 @@ var party_presets = {
 				#serious personality is -1 combat cooldown on skills above 1; wits factor 4 is the assassin's requirement
 				stats = {physics_factor = 6, wits_factor = 4, magic_factor = 3, charm_factor = 3, growth_factor = 6,
 					physics = 100, wits = 100, personality_kind = -100, personality_bold = 0},
-				#two starting traits, then the minor trainings a physical fighter gets anything from
-				traits = ['belligerent', 'deadly', 'table_manners', 'penmanship', 'courtly_arms'],
+				#a starting trait, then the minor trainings a physical fighter gets anything from
+				traits = ['deadly', 'table_manners', 'penmanship', 'courtly_arms'],
 				food = 'e_food_roasted_feast',
 				#physics potion: +80 until the next world turn
 				buffs = ['e_i_physbuf'],

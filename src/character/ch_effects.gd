@@ -436,6 +436,9 @@ func check_status_resist(eff_n):
 
 func apply_status(data):
 	var eff_id = data.effect
+	#skills put ensnare on by its effect id; resist it by its status name
+	if eff_id == 'e_s_ensnare':
+		eff_id = 'ensnare'
 	match eff_id:
 		'wet':
 			remove_all_temp_effects_tag('burn')

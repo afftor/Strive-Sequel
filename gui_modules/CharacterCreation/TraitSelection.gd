@@ -39,19 +39,3 @@ func build_personality():
 		globals.connecttexttooltip(newbutton, tr("INFOPERSONALITY" + code.to_upper()))
 	show()
 
-
-func build_trait():
-	person = get_parent().person
-	input_handler.ClearContainer($ScrollContainer/VBoxContainer, ['Button'])
-	for i in Traitdata.traits.values():
-		if !i.tags.has('can_start'):
-			continue
-		if i.has('reqs') and !person.checkreqs(i.reqs):
-			continue
-		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.text = i.name
-		if person.check_trait(i.code):
-			newbutton.pressed = true
-		newbutton.connect("pressed", get_parent(), "select_trait", [i.code])
-		globals.connecttexttooltip(newbutton, person.translate(i.descript))
-	show()

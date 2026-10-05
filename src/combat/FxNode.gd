@@ -13,6 +13,12 @@ const WHITE = Color(1, 1, 1)
 const ICE = [Color(0.941, 0.988, 1.0), Color(0.588, 0.843, 1.0)]
 const GOLD = [Color(1.0, 0.98, 0.886), Color(1.0, 0.8, 0.361)]
 const SLIVER = Color(0.824, 0.933, 1.0)
+const ABYSS = [Color(0.933, 0.886, 1.0), Color(0.588, 0.361, 1.0)]
+const TENTACLE_BODY = Color(0.055, 0.02, 0.094)
+const TENTACLE_MID = Color(0.149, 0.063, 0.243)
+const TENTACLE_RIM = Color(0.588, 0.376, 0.941)
+const TENTACLE_GLOW = Color(0.431, 0.204, 0.863)
+const TENTACLE_SUCKER = Color(0.706, 0.588, 0.894)
 
 #baked textures hold coverage in red; plain shapes pass through unchanged
 const COVER_SHADER = """shader_type canvas_item;
@@ -189,6 +195,17 @@ func local_rect(control):
 func screen_rect():
 	var rect = get_viewport().get_visible_rect()
 	return Rect2(get_global_transform().affine_inverse().xform(rect.position), rect.size)
+
+
+#A holder drawn right after `after`, a sibling of this node, in the same coordinates. Given the battlefield's last node
+#(CombatAnimations.field_end) what it holds lies over the field and under the interface. Without one it is this node.
+#The owner frees a holder of its own.
+func ground_after(after):
+	if after == null or !is_instance_valid(after) or after.get_parent() != get_parent(): return self
+	var node = Node2D.new()
+	node.transform = transform
+	after.get_parent().add_child_below_node(after, node)
+	return node
 
 
 func _draw_nothing(_layer):
@@ -623,6 +640,106 @@ func b_band(pts, width, col):
 			bi.append(k)
 
 
+#the band from `a` to `b` times each row's half width along its normal (tentacle_rows), as one strip
+func b_strip(rows, a, b, col):
+	var n = rows.size()
+	if n < 2 or col.a <= 0.004: return
+	if bi.size() > 12000: b_flush()
+	var base = bp.size()
+	for r in rows:
+		bp.append(r.p + r.n * (r.w * a))
+		bp.append(r.p + r.n * (r.w * b))
+		bc.append(col)
+		bc.append(col)
+		bu.append(UV_WHITE)
+		bu.append(UV_WHITE)
+	for i in range(n - 1):
+		var k = base + i * 2
+		for m in [k, k + 1, k + 3, k, k + 3, k + 2]:
+			bi.append(m)
+
+
+#--- tentacles: a smooth path grown by its length, a wave down it, a tapered strip in a few flat tones -------------
+
+#a smooth path through the waypoints (Catmull-Rom), n points to a span
+static func spline_path(wp, n):
+	var res = []
+	for i in range(wp.size() - 1):
+		var p0 = wp[max(0, i - 1)]
+		var p1 = wp[i]
+		var p2 = wp[i + 1]
+		var p3 = wp[min(wp.size() - 1, i + 2)]
+		for k in range(n):
+			var t1 = float(k) / n
+			var t2 = t1 * t1
+			var t3 = t2 * t1
+			res.append(0.5 * (2.0 * p1 + (p2 - p0) * t1 + (2.0 * p0 - 5.0 * p1 + 4.0 * p2 - p3) * t2 + (3.0 * p1 - p0 - 3.0 * p2 + p3) * t3))
+	res.append(wp.back())
+	return res
+
+
+#the first k of a path, by its length
+static func path_part(pts, k):
+	if k >= 1.0: return pts.duplicate()
+	var total = 0.0
+	for i in range(1, pts.size()):
+		total += pts[i].distance_to(pts[i - 1])
+	var want = total * max(0.0, k)
+	var res = [pts[0]]
+	var acc = 0.0
+	for i in range(1, pts.size()):
+		var l = pts[i].distance_to(pts[i - 1])
+		if acc + l <= want:
+			res.append(pts[i])
+			acc += l
+			continue
+		res.append(pts[i - 1].linear_interpolate(pts[i], (want - acc) / max(0.000001, l)))
+		break
+	return res
+
+
+#a wave running from the root to the tip, still at the root
+static func writhe(pts, amp, t, seed_):
+	var n = pts.size() - 1
+	if n < 1: return pts
+	var res = []
+	for j in range(n + 1):
+		var d = pts[min(n, j + 1)] - pts[max(0, j - 1)]
+		var o = amp * sin(j * 0.55 - t * 11.0 + seed_) * min(1.0, j * 2.5 / n)
+		res.append(pts[j] + Vector2(-d.y, d.x) / max(0.000001, d.length()) * o)
+	return res
+
+
+#cross sections along a spine: where, its normal, the half width tapering to the tip; `thick` swells it
+static func tentacle_rows(pts, w0, thick = 1.0):
+	var n = pts.size() - 1
+	var rows = []
+	for j in range(n + 1):
+		var d = pts[min(n, j + 1)] - pts[max(0, j - 1)]
+		rows.append({p = pts[j], n = Vector2(-d.y, d.x) / max(0.000001, d.length()),
+			w = w0 * thick * pow(1.0 - float(j) / max(1, n), 1.05) / 2.0 + 0.6})
+	return rows
+
+
+#for an additive layer
+func tentacle_glow(rows, al):
+	b_strip(rows, 2.6, -2.6, fade(TENTACLE_GLOW, 0.09 * al))
+
+
+#a dark body, a lighter band down its back, a violet rim on the lit side and pale suckers on the other
+func tentacle_body(rows, al):
+	b_strip(rows, 1.0, -1.0, fade(TENTACLE_BODY, al))
+	b_strip(rows, 0.5, 0.08, fade(TENTACLE_MID, 0.9 * al))
+	var rim = []
+	for r in rows:
+		rim.append(r.p + r.n * r.w)
+	b_polyline(rim, 1.2, fade(TENTACLE_RIM, 0.75 * al))
+	var sucker = fade(TENTACLE_SUCKER, 0.45 * al)
+	for j in range(4, rows.size() - 4, 4):
+		var r = rows[j]
+		b_disc(r.p - r.n * (r.w * 0.55), max(0.8, r.w * 0.26), sucker, 8)
+
+
 func blob(pos, r, col, a):
 	if a <= 0.004 or r <= 0.5: return
 	var c = fade(col, a)
@@ -737,6 +854,44 @@ static func out_cubic(k):
 
 static func out_back(k):
 	return 1.0 + 2.9 * pow(k - 1.0, 3) + 1.9 * pow(k - 1.0, 2)
+
+
+#hit-stops: the effect's clock stands still for d real seconds at each {at, d} of `stops`, sorted by `at`
+static func stop_to_anim(stops, r):
+	var acc = 0.0
+	for s in stops:
+		var rs = s.at + acc
+		if r <= rs: break
+		if r < rs + s.d: return s.at
+		acc += s.d
+	return r - acc
+
+
+static func stop_to_real(stops, a):
+	var acc = 0.0
+	for s in stops:
+		if a <= s.at: break
+		acc += s.d
+	return a + acc
+
+
+#the screen shake of `kicks` ({at, mag, dur, dir}) at real time `now`, `px` at full strength; mostly along the blow
+static func kick_shake(kicks, stops, now, px):
+	var best = 0.0
+	var dir = null
+	for k in kicks:
+		var a = now - stop_to_real(stops, k.at)
+		if a < 0.0 or a >= k.dur: continue
+		var m = px * k.mag * pow(1.0 - a / k.dur, 1.5)
+		if m > best:
+			best = m
+			dir = k.get('dir')
+	if best <= 0.01: return Vector2()
+	var tick = floor(now * 60.0)
+	var n1 = noise(57, tick, 1)
+	var n2 = noise(57, tick, 2)
+	if dir == null: return Vector2(best * n1, best * n2)
+	return Vector2(best * (n1 * dir.x - 0.35 * n2 * dir.y), best * (n1 * dir.y + 0.35 * n2 * dir.x))
 
 
 static func hash01(i):

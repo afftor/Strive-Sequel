@@ -342,6 +342,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	CHARNAMEZEPHYRA = "Zephyra",
 	CHARNAMEAIRE = "Aire",
 	CHARNAMEANASTASIA = "Anastasia",
+	CHARNAMEGRASHA = """Grasha""", # MISSING TRANSLATION
 	CHARNAMEKURDAN = "Kurdan",
 	CHARNAMEMAE = "Mae",
 	CHARNAMELILIA = "Lilia",
@@ -800,6 +801,7 @@ Sin embargo, aunque parezca que los terratenientes no sienten más que desprecio
 	DEMAND = """Demand""", # MISSING TRANSLATION
 	DEMANDDESCRIPT = """Character's demand is based on their self-worth. Not meeting it will reduce their performance.""", # MISSING TRANSLATION
 	DEMANDSLAVEEXEMPT = """Slaves aren't penalized for not meeting their demands.""", # MISSING TRANSLATION
+	DEMANDBROKENEXEMPT = """Broken characters ask for nothing.""", # MISSING TRANSLATION
 	DEMANDREQNONE = """None""", # MISSING TRANSLATION
 	DEMANDREQ = """Required: Fame %d, or value above %d""", # MISSING TRANSLATION
 	DEMANDLODGING = """Demands their own room, no longer being satisfied with communal barracks.""", # MISSING TRANSLATION
@@ -1133,6 +1135,21 @@ No se puede aplicar a caracteres únicos.""",
 	ITEMSTRONG_PHEROMONESDESCRIPT = "Una droga popular utilizada en las carreras bestiales. La inhalación provoca una gran oleada de euforia y lujuria en un individuo, haciéndolos aceptar casi cualquier tratamiento que generalmente sería demasiado tímido para considerar. Ineficaz para especies no bestiales y a menudo prohibidas en las comunidades afectadas.",
 	ITEMSOUL_STONE = "Piedra del alma",
 	ITEMSOUL_STONEDESCRIPT = "Permite eliminar un rasgo de carácter inherente.",
+	SOULSTONE_LEAD = """Draw a magic trait out of one character and bind it to another.""", # MISSING TRANSLATION
+	SOULSTONE_FROM = """Draw from""", # MISSING TRANSLATION
+	SOULSTONE_TO = """Bind to""", # MISSING TRANSLATION
+	SOULSTONE_SELECTED = """Selected""", # MISSING TRANSLATION
+	SOULSTONE_NOTHING = """[name] has no magic trait to draw out.""", # MISSING TRANSLATION
+	SOULSTONE_NOBODY = """Nobody else is at the mansion.""", # MISSING TRANSLATION
+	SOULSTONE_FREE_SLOT = """Free slot""", # MISSING TRANSLATION
+	SOULSTONE_FIT_FREE = """Free slot""", # MISSING TRANSLATION
+	SOULSTONE_FIT_REPLACES = """Replaces {trait}""", # MISSING TRANSLATION
+	SOULSTONE_FIT_OWNED = """Already has it""", # MISSING TRANSLATION
+	SOULSTONE_FIT_NO_ROOM = """No room""", # MISSING TRANSLATION
+	SOULSTONE_TRANSFER = """Transfer""", # MISSING TRANSLATION
+	SOULSTONE_COST = """Uses 1 Soul Stone · {count} left""", # MISSING TRANSLATION
+	SOULSTONE_NO_STONES = """No Soul Stones left""", # MISSING TRANSLATION
+	SOULSTONE_LOG = """{donor}'s {trait} was bound to {recipient}.""", # MISSING TRANSLATION
 	ITEMLACTATION_POT = "Poción de enfermería",
 	ITEMLACTATION_POTDESCRIPT = "Haga que el bebedor lactato o la lactancia inversa si existiera.",
 	ITEMPHYSICS_POT = "Elixir de la fuerza de Ogre",
@@ -1256,6 +1273,8 @@ Al lanzar un hechizo, tiene un 25% de posibilidades de lanzarlo un tiempo adicio
 	ITEMSKILLBOOK_ABYSS_GAZEDESCRIPT = "Enseña la habilidad: Mirada Abismal. Requisitos: Maestría Mental - 6, Maestría Oscura - 4",
 	ITEMSKILLBOOK_DARK_FLAME = "Tomo mágico: Llamas oscuras",
 	ITEMSKILLBOOK_DARK_FLAMEDESCRIPT = "Enseña la habilidad: Llamas oscuras. Requisitos: Maestría en fuego - 5, Maestría en oscuridad - 3",
+	ITEMSKILLBOOK_FORBIDDEN_SUN = """Magic Tome: Forbidden Sun""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_FORBIDDEN_SUNDESCRIPT = """Teaches Skill: Forbidden Sun. Requirements: Fire Mastery - 10, Proficiency in Literacy.""", # MISSING TRANSLATION
 	ITEMSKILLBOOK_HOLY_LANCE = "Tomo mágico: Lanza sagrada",
 	ITEMSKILLBOOK_HOLY_LANCEDESCRIPT = "Enseña la habilidad: Lanza Sagrada. Requisitos: Guerra 4. Maestría en Luz - 3.",
 	GEARSWORD = "Espadas",
@@ -1316,6 +1335,7 @@ Reducido por la evasión del enemigo""",
 	CHARCREATE_TOOLTIP_REROLL_NAME = """Volver a generar el nombre""",
 	CHARCREATE_TOOLTIP_RANDOM_RACE = """Raza aleatoria""",
 	CHARCREATE_TOOLTIP_REROLL_APPEARANCE = """Volver a generar el aspecto""",
+	CHARCREATE_RACE_CHANGE_APPEARANCE_WARNING = """You have changed this character's appearance. The new race keeps the details, colors and height it allows; everything else will be rerolled. Change race?""", # MISSING TRANSLATION
 	TOOLTIPSKIPPROLOGUE = "Se omiten las misiones del prólogo y se inicia el primer arco argumental. La misión de préstamo está desactivada.",
 	TOOLTIPSKILLPOINTS = "Los puntos de habilidad se obtienen en las batallas y se utilizan para comprar nuevas habilidades de combate.",
 	TOOLTIPSUCCUBUS = "[Succubus] obtiene poderes de {color=green|Cautivador} otros. Cada esclavo se enamora de [succubus] y hace [him] aumenta tu fuerza. Los puntos de desbloqueo se obtienen al cautivar a más personajes.",
@@ -1476,6 +1496,36 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	NOFITTINGITEMS = "No tienes artículos adecuados",
 	TRAITUNKNOWN = "Desconocido",
 	TRAITUNKNOWNTOOLTIP = "Aún no conoces este rasgo. Conoce mejor a [name] para saber cuáles son [his] preferencias.",
+	TRAITHIDDENTOOLTIP = """There is something about [name] you have yet to find out.""", # MISSING TRANSLATION
+	TRAIT_ACQUIRED_TITLE = """Trait Acquired""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_PHYSICAL = """Physical""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_MENTAL = """Mental""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_MAGIC = """Magic""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_RELIGIOUS = """Religious""", # MISSING TRANSLATION
+	TRAITSLOT_EMPTY = """Empty slot""", # MISSING TRANSLATION
+	TRAITSLOT_EMPTYDESCRIPT = """A new trait of this kind takes this slot without replacing anything.""", # MISSING TRANSLATION
+	TRAITTAG_PERMANENT = """Permanent""", # MISSING TRANSLATION
+	TRAITTAG_POSITIVE = """Positive""", # MISSING TRANSLATION
+	TRAITTAG_NEGATIVE = """Negative""", # MISSING TRANSLATION
+	STARTTRAITS_TITLE = """Starting Traits""", # MISSING TRANSLATION
+	STARTTRAITS_RULES = """A character has one Physical, one Mental and one Magic slot. Unnatural Constitution adds a second Physical slot.
+The first {color=green|positive} trait is free. {color=red|Negative} traits can always be taken, and each one lets you take one more {color=green|positive} trait.""", # MISSING TRANSLATION
+	STARTTRAITS_SLOTS = """{n} slots""", # MISSING TRANSLATION
+	STARTTRAITS_NEG_RULE = """Lets you take one more positive trait.""", # MISSING TRANSLATION
+	STARTTRAITS_LOCKED = """Take another negative trait to unlock this one.""", # MISSING TRANSLATION
+	STARTTRAITS_UNPAID = """Too many positive traits: take another negative trait or remove this one.""", # MISSING TRANSLATION
+	STARTTRAITS_REMOVE_HINT = """Click again to remove.""", # MISSING TRANSLATION
+	STARTTRAITS_CLEAR = """Clear""", # MISSING TRANSLATION
+	TRAITREPLACE_TITLE = """{name} can gain a new trait""", # MISSING TRANSLATION
+	TRAITREPLACE_LEAD_ONE = """[His] {category} slot is full. Pick a trait to replace, or keep the current one.""", # MISSING TRANSLATION
+	TRAITREPLACE_LEAD_MANY = """[His] {category} slots are full. Pick a trait to replace, or keep the current ones.""", # MISSING TRANSLATION
+	TRAITREPLACE_NEW = """New""", # MISSING TRANSLATION
+	TRAITREPLACE_REPLACE = """Replace""", # MISSING TRANSLATION
+	TRAITREPLACE_KEEP_ONE = """Keep current trait""", # MISSING TRANSLATION
+	TRAITREPLACE_KEEP_MANY = """Keep current traits""", # MISSING TRANSLATION
+	TRAITREPLACE_LOCK_PERMANENT = """Can't be replaced: permanent""", # MISSING TRANSLATION
+	TRAITREPLACE_LOCK_INNATE = """Can't be replaced: from class or race""", # MISSING TRANSLATION
+	TRAITREPLACE_LOCK_STATUS = """Can't be replaced: a slave's status""", # MISSING TRANSLATION
 	NOTALLTRAITSLEARNED = "No conoces todas las preferencias de [name]. Conócelas antes de poder asignar las activas.",
 	SYSNOFOOD = "Trabajo cancelado: Sin comida",
 	SYSNOWORKERENERGY = "Trabajo cancelado: Sin energía",
@@ -1500,6 +1550,7 @@ Nothing is forbidden by this choice - it only sets a preference.""", # MISSING T
 	TOTALWORKERS = "Total de trabajadores",
 	TUTORIAL = """Tutorial""",
 	TRAITS = "Rasgos",
+	STATUS_LABEL = """Status""", # MISSING TRANSLATION
 	TRAIT = "rasgo",
 	EFFECT = "efecto",
 	CLASSINFO = "Detalles de la clase",
@@ -1576,6 +1627,8 @@ Tecla de acceso rápido: 3""",
 	SKILLATTACK = "Ataque",
 	SKILLATTACKDESCRIPT = "Ataca al objetivo con el arma equipada.",
 	SKILLRANGED_ATTACK = "Ataque (a distancia)",
+	SKILLDO_NOTHING = """Do Nothing""", # MISSING TRANSLATION
+	SKILLDO_NOTHINGDESCRIPT = """Skips the turn.""", # MISSING TRANSLATION
 	SKILLCOMMAND = "Animar",
 	SKILLCOMMANDDESCRIPT = "Aumenta el ATK y MAG ATK del objetivo en un 50% durante 3 turnos.",
 	SKILLRESTORATION = "Restauración",
@@ -1923,6 +1976,8 @@ Silenciado: No puede usar habilidades de tipo hechizo.""",
 	SKILLPOISON_VAPORSDESCRIPT = "Inflige el 25% MAG ATK como daño de {color=yellow|Agua} a la columna enemiga. Aplica veneno durante 3 turnos.",
 	SKILLMETEOR = "Meteorito",
 	SKILLMETEORDESCRIPT = "Inflige el 200% MAG ATK como daño de {color=yellow|Fuego} y aplica Quemadura al objetivo durante 4 turnos.",
+	SKILLFORBIDDEN_SUN = """Forbidden Sun""", # MISSING TRANSLATION
+	SKILLFORBIDDEN_SUNDESCRIPT = """Deals 150% of MATK as {color=yellow|Fire} damage to all enemies, 75% more against burning targets. Fire Resist above 50 has no effect against this spell. Inflicts Blind for 1 turn.""", # MISSING TRANSLATION
 	SKILLSUPERNOVA = """Supernova""", # MISSING TRANSLATION
 	SKILLSUPERNOVADESCRIPT = """Deals 200% of MATK as {color=yellow|Fire} damage to all enemies.""", # MISSING TRANSLATION
 	SKILLABYSS_GAZE = "Mirada del abismo",
@@ -2115,6 +2170,7 @@ TODOS, incluidos aliados y lanzador, sufren Quemadura.""",
 	SKILLDOUBLE_BITTED_AXEDESCRIPT = """Golpea al objetivo dos veces por un 60% de daño de ATQ cada golpe. Aplica Sangrado.""",
 	SKILLPRISMATIC_BEAM = """Rayo prismático""",
 	SKILLPRISMATIC_BEAMDESCRIPT = """Inflige un 130% del ATQM como daño de Luz a un solo objetivo. Ciega.""",
+	SKILLROCK_SLIDE = """Rock Slide""", # MISSING TRANSLATION
 	SKILROCK_SLIDE = """Desprendimiento de rocas""",
 	SKILLROCK_SLIDEDESCRIPT = """Lanza rocas contra los enemigos, con probabilidad de infligir un 90% del ATQM como daño de {color=yellow|Tierra}. Puede aturdir a los objetivos alcanzados.""",
 	SKILLCOAL_PEBBLE_FIST = """Pebble Fist: Goliath Slayer""", # MISSING TRANSLATION
@@ -2862,6 +2918,9 @@ Mejora la disposición hacia acciones de {color=yellow|Aleatorio}. Costs 5 Mana.
 	TRAINING_TRAINER_NAME = """Trainer: %s""", # MISSING TRANSLATION
 	TRAINING_SLAVES_ASSIGNED = """%s - Slaves Assigned: %d/%d""", # MISSING TRANSLATION
 	TRAINING_TRAINER_SLOTS = """Assigned: %d/%d""", # MISSING TRANSLATION
+	TRAINING_ROSTER_LEFT_TODAY = """left today""", # MISSING TRANSLATION
+	TRAINING_ROSTER_READY = """Can be trained today""", # MISSING TRANSLATION
+	TRAINING_ROSTER_TOOLTIP = """Slaves in training who can still be trained today, out of all of them.""", # MISSING TRANSLATION
 	TRAINING_ASSIGN_TRAINER_BUTTON = """Assign trainer""", # MISSING TRANSLATION
 	TRAINING_RESET_BUTTON = """Reset Training""", # MISSING TRANSLATION
 	TRAININGTOOLTIPRESISTANCE = """La resistencia del esclava reduce la eficiencia del entrenamiento de acciones que no sean {color=yellow|positivas}.
@@ -3198,6 +3257,8 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATBODY_LOWER = "Parte inferior del cuerpo",
 	STATBODY_SHAPE = "Forma del cuerpo",
 	STATSKIN_COVERAGE = "Cobertura de la piel",
+	STATFRECKLES = """Freckles""", # MISSING TRANSLATION
+	STATMUSCULAR = """Muscular""", # MISSING TRANSLATION
 	STATFACIAL_HAIR = "Vello facial",
 	STATEYESHAPE = "Forma de los ojos",
 	STATNOSE = "Nariz",
@@ -3539,6 +3600,14 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATTRAINER_LOYALTY_BONUSDESCRIPT = """Bono de lealtad que recibe el aprendiz de este personaje""",
 	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """Bono de puntos de adiestramiento que recibe el aprendiz de este personaje""",
 	STATTRAINEE_AMOUNTDESCRIPT = """Número máximo de aprendices""",
+	STATTRAIT_SLOTS_PHYSICAL = """Physical Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MENTAL = """Mental Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MAGIC = """Magic Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_RELIGIOUS = """Religious Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_PHYSICALDESCRIPT = """How many physical traits the character can hold""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MENTALDESCRIPT = """How many mental traits the character can hold""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MAGICDESCRIPT = """How many magic traits the character can hold""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_RELIGIOUSDESCRIPT = """How many religious traits the character can hold""", # MISSING TRANSLATION
 	TRAITTRAINER = "Entrenador",
 	TRAITTRAINERDESCRIPT = "Puede supervisar a los esclavos",
 	CHARACTER_STANDING_ANTIPATHY = """Antipatía""",
@@ -3592,6 +3661,7 @@ Daño +15%, Salud +20.""",
 	EVENT_EFFECT_RELATIONSHIP = """%s y %s: relación %s""",
 	EVENT_EFFECT_TRAIT_GAINED = """Rasgo %s obtenido""",
 	EVENT_EFFECT_TRAIT_LOST = """Rasgo %s perdido""",
+	EVENT_EFFECT_TRAIT_REVEALED = """%s Trait revealed""", # MISSING TRANSLATION
 	STATRESISTANCE = "Fortaleza",
 	STATRESISTANCEDESCRIPT = "Resistencia DESCRIPCIÓN MARCADOR DE POSICIÓN.",
 	STATSUBMISSION = "Sumisión",
@@ -3661,6 +3731,8 @@ Daño +15%, Salud +20.""",
 	STATRESIST_CURSED = """Resistencia: Maldición""",
 	STATRESIST_DISARM = """Resistencia: Desarme""",
 	STATRESIST_SHRED = """Resistencia: Desgarro""",
+	STATRESIST_KNOCK_PRONE = """Knock Prone Resist""", # MISSING TRANSLATION
+	STATRESIST_ENSNARE = """Ensnare Resist""", # MISSING TRANSLATION
 	STATRESIST_FEAR = """Resistencia: Miedo""",
 	STATRESIST_FREEZE = """Resistencia: Congelación""",
 	STATRESIST_HEAL = """Resistencia: Curación""",
@@ -3695,6 +3767,8 @@ Daño +15%, Salud +20.""",
 	STATRESIST_RANGEDDESCRIPT = """Resistencia al daño a Distancia""",
 	STATRESIST_SHOCKDESCRIPT = """Resistencia al efecto Descarga""",
 	STATRESIST_SILENCEDESCRIPT = """Resistencia al efecto Silencio""",
+	STATRESIST_KNOCK_PRONEDESCRIPT = """Resistance to Knock Prone effect""", # MISSING TRANSLATION
+	STATRESIST_ENSNAREDESCRIPT = """Resistance to Ensnare effect""", # MISSING TRANSLATION
 	STATRESIST_SLEEPDESCRIPT = """Resistencia al efecto Sueño""",
 	STATRESIST_STUNDESCRIPT = """Resistencia al efecto Aturdimiento""",
 	STATRESIST_WETDESCRIPT = """Resistencia al efecto Mojado""",
@@ -3759,6 +3833,10 @@ Daño +15%, Salud +20.""",
 	FAME_RISE_MANIFEST = "¡La fama asciende! [He] es %s ahora.",
 	FAME_DEGRADE_MANIFEST = "¡La fama degrada! [He] es %s ahora.",
 	TAGSTABLE_FAME = "Fama estable: la fama no se degrada con el tiempo.",
+	TAGNOBLE = """Noble: not available to slaves.""", # MISSING TRANSLATION
+	NOBLE_LOSS_CONFIRM = """A slave can't keep a noble class: [name] will forget {classes}. Continue?""", # MISSING TRANSLATION
+	UNIQUE_LOSS_CONFIRM = """[name] is a unique character: once [he] leaves your party, [he] is gone for good. Continue?""", # MISSING TRANSLATION
+	HYBRIS_NOBLE_LOSS = """{color=yellow|A slave can't keep a noble class: [name] will forget {classes}.}""", # MISSING TRANSLATION
 	FAMEDESC_PRICE_BONUS = "Valor del personaje",
 	FAMEDESC_UPKEEP = 'Mantenimiento semanal subordinado',
 	FAMEDESC_LOYALTY_BONUS = 'Fidelización del aprendiz',
@@ -4202,6 +4280,49 @@ Lealtad: +25, Obediencia máxima.""",
 	SKILLSWAP_FORM = "Cambiar de forma",
 	SKILLSWAP_FORMDESCRIPT = """Alterna entre las formas Demoníaca y Normal. La forma Demoníaca otorga +15% de daño, +10 de Física e Ingenio. La forma Normal otorga +20 de Encanto y +25% de Productividad.""",
 	DIALOGUESWAP_FORMREPORT = "",
+	SKILLGENITALIA_MANIPULATION = """Genitalia Manipulation""", # MISSING TRANSLATION
+	SKILLGENITALIA_MANIPULATIONDESCRIPT = """Shape lust into flesh: grow a cock of the chosen size, with or without testicles. Once grown, the cock and the testicles can be resized, the testicles absorbed, or the cock absorbed completely.""", # MISSING TRANSLATION
+	DIALOGUEGM_SELECT = """[name] lets [his] lust pool low in [his] belly, warm and pliant, waiting to be given a shape.
+
+What will [he] make of it?""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_SMALL = """Grow a small cock""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_AVERAGE = """Grow an average cock""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_BIG = """Grow a big cock""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_MENU = """Change the size of the cock""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_MENU = """Change the testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_ABSORB_COCK = """Absorb the cock completely""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_ASK = """The flesh between [name]'s legs grows hot and begins to swell.
+
+Should the cock come with testicles?""", # MISSING TRANSLATION
+	DIALOGUEGM_WITH_TESTICLES = """With testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_WITHOUT_TESTICLES = """Without testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_PICK = """The lust sinks lower still. How big should the testicles be?""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_SMALL = """Small testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_AVERAGE = """Average testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_BIG = """Big testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_SIZE = """[name] runs a hand along [his] cock as lust gathers under the skin.
+
+What size should it be?""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_SMALL = """Make it small""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_AVERAGE = """Make it average""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_BIG = """Make it big""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES = """[name] lets the lust sink lower, beneath [his] cock.
+
+What should become of what lies there?""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_TESTICLES_SMALL = """Grow small testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_TESTICLES_AVERAGE = """Grow average testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_TESTICLES_BIG = """Grow big testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_TESTICLES_SMALL = """Make them small""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_TESTICLES_AVERAGE = """Make them average""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_TESTICLES_BIG = """Make them big""", # MISSING TRANSLATION
+	DIALOGUEGM_ABSORB_TESTICLES = """Absorb the testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_GROWN = """[name] closes [his] eyes and pulls the pooled lust down between [his] legs. The flesh there swells and takes shape — moments later a brand new cock stands where there was none, sensitive and untouched.""", # MISSING TRANSLATION
+	DIALOGUEGM_GROWN_TESTICLES = """A pair of testicles settles beneath it, heavy and warm.""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_RESIZED = """[name] wraps a hand around [his] cock and lets the lust flow into it. The flesh shifts under [his] fingers until it settles at the size [he] wanted.""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_GROWN = """Lust gathers beneath [name]'s cock, and a pair of testicles swells into place, heavy and warm.""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_RESIZED = """[name]'s testicles tighten and shift as the lust reshapes them, settling at the size [he] wanted.""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_ABSORBED = """[name]'s testicles soften and draw back into [his] body until only smooth skin remains beneath [his] cock.""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_ABSORBED = """[name] lets out a long breath as [his] cock softens and sinks back into [his] body, melting away until only smooth skin remains. The borrowed flesh returns to [him] as a pleasant, lingering warmth.""", # MISSING TRANSLATION
 	DEMONFORMDESCRIPT = "Forma demoníaca",
 	HUMANFORMDESCRIPT = "Forma normal",
 	MAGATTUNEMENTDESCRIPT = "Sintonización mágica",
@@ -4439,7 +4560,9 @@ Las acciones de entrenamiento Físico y Sexual tienen un 25% más de impacto."""
 	TRAITWEAPON_MASTERYDESCRIPT = "Permite el uso de armas cuerpo a cuerpo.",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = "Permite el uso de armas a distancia.",
 	TRAITMAGIC_TOOLSDESCRIPT = "Permite el uso de herramientas mágicas como bastones.",
+	TRAITUNDEAD = """Undead""", # MISSING TRANSLATION
 	TRAITUNDEADDESCRIPT = "[name] ya no es un ser vivo. El consumo de comida se reduce a 0; el encanto se reduce en 100; la resistencia a la luz -50; la resistencia a la oscuridad +50; el daño oscuro +20%%; no puede embarazar ni quedar embarazada.",
+	TRAITUNDEADFLAVOR = """[name] is no longer a living being.""", # MISSING TRANSLATION
 	TRAITNIXX_CHAMPIONDESCRIPT = "Las habilidades del elemento oscuro tienen una probabilidad de golpe de +30 e ignoran la DEF y MAG DEF del objetivo.",
 	TRAITNIXX_CHAMPION2DESCRIPT = """Las habilidades de elemento Oscuridad ignoran la DEF y DEFM del objetivo. Las habilidades cuerpo a cuerpo añaden un ataque adicional de Oscuridad al impactar.""",
 	TRAITSPOUSE = "Esposa",
@@ -4469,6 +4592,10 @@ Las acciones de entrenamiento Físico y Sexual tienen un 25% más de impacto."""
 	TRAITPACIFIST = "Pacifista",
 	TRAITWHIMP = "Delicado",
 	TRAITM_INEPT = "Mágicamente inepto",
+	TRAITWASTEFUL_CASTING = """Wasteful Casting""", # MISSING TRANSLATION
+	TRAITSNUFFED = """Snuffed""", # MISSING TRANSLATION
+	TRAITUNEARTHED = """Unearthed""", # MISSING TRANSLATION
+	TRAITBECALMED = """Becalmed""", # MISSING TRANSLATION
 	TRAITSELFISH = "Egoísta",
 	TRAITCOWARD = "Cobarde",
 	TRAITFRIGID = "Castrado",
@@ -4490,6 +4617,7 @@ Las acciones de entrenamiento Físico y Sexual tienen un 25% más de impacto."""
 	TRAITLIVELYDESCRIPT = "+3 Regeneración de salud",
 	TRAITMVORTEXDESCRIPT = "+1 Regeneración de maná",
 	TRAITGIFTEDDESCRIPT = "Maná máximo +50%.",
+	TRAITGIFTEDFLAVOR = """Ancient magic resides in [his] body.""", # MISSING TRANSLATION
 	TRAITBELLIGERENTDESCRIPT = """ATQ +15%.""",
 	TRAITHIDDENPOWERSDESCRIPT = "MAG ATK +10%.",
 	TRAITHEALTHYDESCRIPT = "+10 Salud máxima.",
@@ -4506,6 +4634,10 @@ Las acciones de entrenamiento Físico y Sexual tienen un 25% más de impacto."""
 	TRAITPACIFISTDESCRIPT = """ATQ -50%.""",
 	TRAITWHIMPDESCRIPT = """SALUD MÁX -40%.""",
 	TRAITM_INEPTDESCRIPT = "MAG ATK -50%.",
+	TRAITWASTEFUL_CASTINGDESCRIPT = """Ability mana costs +25%.""", # MISSING TRANSLATION
+	TRAITSNUFFEDDESCRIPT = """No Fire or Light magic.""", # MISSING TRANSLATION
+	TRAITUNEARTHEDDESCRIPT = """No Earth or Dark magic.""", # MISSING TRANSLATION
+	TRAITBECALMEDDESCRIPT = """No Water or Air magic.""", # MISSING TRANSLATION
 	TRAITSELFISHDESCRIPT = "No se pueden usar habilidades de apoyo al combate.",
 	TRAITCOWARDDESCRIPT = "Tasa de golpes -50.",
 	TRAITFRIGIDDESCRIPT = "No se pueden adquirir nuevos rasgos sexuales. La lujuria máxima se reduce un 50%.",
@@ -4515,6 +4647,205 @@ Las acciones de entrenamiento Físico y Sexual tienen un 25% más de impacto."""
 	TRAITMENIALDESCRIPT = "La probabilidad crítica de la tarea se establece en 0.",
 	TRAITSTURDYDESCRIPT = """+10 DEF.""",
 	TRAITFRAILDESCRIPT = """-10 DEF.""",
+	TRAITATHLETIC = """Athletic""", # MISSING TRANSLATION
+	TRAITATHLETICDESCRIPT = """+10 Physics.""", # MISSING TRANSLATION
+	TRAITLITHE = """Lithe""", # MISSING TRANSLATION
+	TRAITLITHEDESCRIPT = """Evasion +10.""", # MISSING TRANSLATION
+	TRAITFAST_HEALER = """Fast Healer""", # MISSING TRANSLATION
+	TRAITFAST_HEALERDESCRIPT = """Healing received +25%.""", # MISSING TRANSLATION
+	TRAITKEEN_NOSE = """Keen Nose""", # MISSING TRANSLATION
+	TRAITKEEN_NOSEDESCRIPT = """Hunt +20%.""", # MISSING TRANSLATION
+	TRAITPUNY = """Puny""", # MISSING TRANSLATION
+	TRAITPUNYDESCRIPT = """-10 Physics.""", # MISSING TRANSLATION
+	TRAITNEARSIGHTED = """Nearsighted""", # MISSING TRANSLATION
+	TRAITNEARSIGHTEDDESCRIPT = """Hit Rate -10.""", # MISSING TRANSLATION
+	TRAITSTIFF = """Stiff""", # MISSING TRANSLATION
+	TRAITSTIFFDESCRIPT = """Evasion -10.""", # MISSING TRANSLATION
+	TRAITSLOW_HEALER = """Slow Healer""", # MISSING TRANSLATION
+	TRAITSLOW_HEALERDESCRIPT = """Healing received -25%.""", # MISSING TRANSLATION
+	TRAITFRAIL_CONSTITUTION = """Frail Constitution""", # MISSING TRANSLATION
+	TRAITFRAIL_CONSTITUTIONDESCRIPT = """Can't get pregnant.""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_1 = """Troll Blood""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_1DESCRIPT = """+2 Health Regen, Fire Resist -10.""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_2 = """Troll Blood II""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_2DESCRIPT = """+4 Health Regen, Fire Resist -20.""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_3 = """Troll Blood III""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_3DESCRIPT = """+4 Health Regen. In combat, restores 5% of Max Health every turn. Fire Resist -30.""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_1 = """Stone Skin""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_1DESCRIPT = """+5 DEF, Earth Resist +10.""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_2 = """Stone Skin II""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_2DESCRIPT = """+15 DEF, Earth Resist +20, Speed -5.""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_1 = """Beast Blood""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_1DESCRIPT = """ATK +4, Crit Chance +3%.""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_2 = """Beast Blood II""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_2DESCRIPT = """ATK +6, Crit Chance +4%, Wits -10.""", # MISSING TRANSLATION
+	TRAITSUN_SICK_1 = """Sun-Sick""", # MISSING TRANSLATION
+	TRAITSUN_SICK_1DESCRIPT = """Morning and day: Hit Rate -10, Productivity -15%.""", # MISSING TRANSLATION
+	TRAITSUN_SICK_1FLAVOR = """Nothing is more annoying than being blinded by sunlight.""", # MISSING TRANSLATION
+	TRAITSUN_SICK_2 = """Night-Born""", # MISSING TRANSLATION
+	TRAITSUN_SICK_2DESCRIPT = """Morning and day: Hit Rate -10, Productivity -15%. Evening and night: Speed +10, Crit Chance +8%, Dark Resist +25.""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_1 = """Light-weight""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_1DESCRIPT = """-6 DEF, Evasion +5.""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_2 = """Light-weight II""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_2DESCRIPT = """-5 DEF, Speed +5, Evasion +10.""", # MISSING TRANSLATION
+	TRAITGROWN = """[name]'s {old} has grown into {new}.""", # MISSING TRANSLATION
+	TRAITBRAVE = """Brave""", # MISSING TRANSLATION
+	TRAITBRAVEDESCRIPT = """Damage taken -10%.""", # MISSING TRANSLATION
+	TRAITSPELL_FOCUS = """Otherworldly Affinity""", # MISSING TRANSLATION
+	TRAITSPELL_FOCUSDESCRIPT = """Ability mana costs -15%.""", # MISSING TRANSLATION
+	TRAITSPELL_FOCUSFLAVOR = """Demonic powers serve [his] cause.""", # MISSING TRANSLATION
+	TRAITEMBER_SOUL = """Ember Soul""", # MISSING TRANSLATION
+	TRAITEMBER_SOULDESCRIPT = """Fire Damage +15%, Fire Resist +15. Water Resist -15. Immune to Burn.""", # MISSING TRANSLATION
+	TRAITTIDECALLER = """Tidecaller""", # MISSING TRANSLATION
+	TRAITTIDECALLERDESCRIPT = """Water Damage +15%, Water Resist +15. Fire Resist -15. Immune to Freeze.""", # MISSING TRANSLATION
+	TRAITSTORMBORN = """Stormborn""", # MISSING TRANSLATION
+	TRAITSTORMBORNDESCRIPT = """Air Damage +15%, Air Resist +15. Earth Resist -15. Immune to Shock.""", # MISSING TRANSLATION
+	TRAITSTONEHEART = """Stoneheart""", # MISSING TRANSLATION
+	TRAITSTONEHEARTDESCRIPT = """Earth Damage +15%, Earth Resist +15. Air Resist -15. Immune to Knock Prone.""", # MISSING TRANSLATION
+	TRAITRADIANT = """Radiant""", # MISSING TRANSLATION
+	TRAITRADIANTDESCRIPT = """Light Damage +15%, Light Resist +15. Dark Resist -15. Immune to Blind.""", # MISSING TRANSLATION
+	TRAITUMBRAL = """Umbral""", # MISSING TRANSLATION
+	TRAITUMBRALDESCRIPT = """Dark Damage +15%, Dark Resist +15. Light Resist -15. Immune to Ensnare.""", # MISSING TRANSLATION
+	TRAITLUCID_MIND = """Lucid Mind""", # MISSING TRANSLATION
+	TRAITLUCID_MINDDESCRIPT = """Mind Damage +15%, Mind Resist +15. Normal Resist -10. Immune to Silence.""", # MISSING TRANSLATION
+	TRAITUNNATURAL_CONSTITUTION = """Unnatural Constitution""", # MISSING TRANSLATION
+	TRAITUNNATURAL_CONSTITUTIONDESCRIPT = """+1 Physical trait slot. Losing this trait also loses the physical trait in that slot.""", # MISSING TRANSLATION
+	TRAITUNNATURAL_CONSTITUTIONFLAVOR = """Wild magic has caused [his] body to have exceptional capabilities.""", # MISSING TRANSLATION
+	TRAITSPLIT_MIND = """Split Mind""", # MISSING TRANSLATION
+	TRAITSPLIT_MINDDESCRIPT = """+1 Religious trait slot. Losing this trait also loses the religious trait in that slot.""", # MISSING TRANSLATION
+	TRAITSPLIT_MINDFLAVOR = """Duality.""", # MISSING TRANSLATION
+	TRAITWORLDLY = """Worldly""", # MISSING TRANSLATION
+	TRAITWORLDLYDESCRIPT = """Follows no faith.""", # MISSING TRANSLATION
+	TRAITWORLDLYFLAVOR = """[His] life is already full of concern even without spirituality.""", # MISSING TRANSLATION
+	TRAITAIRHEAD = """Featherbrained""", # MISSING TRANSLATION
+	TRAITAIRHEADDESCRIPT = """Faithless by nature. Mind Resist +15, Charm +5.""", # MISSING TRANSLATION
+	TRAITAIRHEADFLAVOR = """Deities? Can you eat it?""", # MISSING TRANSLATION
+	TRAITMORTAL_PRIDE = """Mortal Pride""", # MISSING TRANSLATION
+	TRAITMORTAL_PRIDEDESCRIPT = """All Resists +5.""", # MISSING TRANSLATION
+	TRAITMORTAL_PRIDEFLAVOR = """I'm the only person who deserves my worship.""", # MISSING TRANSLATION
+	TRAITTRANSCENDENT = """Transcendent""", # MISSING TRANSLATION
+	TRAITTRANSCENDENTDESCRIPT = """Immune to Fear, Sleep, Taunt and Shatter.""", # MISSING TRANSLATION
+	TRAITTRANSCENDENTVOWS = """Won't gather, farm or build.""", # MISSING TRANSLATION
+	TRAITTRANSCENDENTFLAVOR = """Omniscience.""", # MISSING TRANSLATION
+	TRAITLONER = """Loner""", # MISSING TRANSLATION
+	TRAITLONERDESCRIPT = """With allies in a fight (summons don't count): Hit Rate -10, ATK -5.""", # MISSING TRANSLATION
+	TRAITLONERFLAVOR = """[name] likes to be left alone.""", # MISSING TRANSLATION
+	TRAITLONE_WOLF = """Lone Wolf""", # MISSING TRANSLATION
+	TRAITLONE_WOLFDESCRIPT = """Alone in a fight (summons don't count): acts twice a round. With allies: Damage -20%, Hit Rate -10.""", # MISSING TRANSLATION
+	TRAITLONE_WOLFFLAVOR = """[name] is exceptionally resourceful when left alone.""", # MISSING TRANSLATION
+	TRAITHAPPY_SLAVE = """Happy in Slavery""", # MISSING TRANSLATION
+	TRAITHAPPY_SLAVEDESCRIPT = """Price +20%. Service +15%. Takes well to positive training.""", # MISSING TRANSLATION
+	TRAITHAPPY_SLAVEFLAVOR = """Right at [his] place. Happy to serve.""", # MISSING TRANSLATION
+	TRAITDEFIANT = """Defiant""", # MISSING TRANSLATION
+	TRAITDEFIANTDESCRIPT = """Price -30%. Service -25%. Damage +10%. Resists positive training.""", # MISSING TRANSLATION
+	TRAITDEFIANTFLAVOR = """I've been turned into a slave against my will!""", # MISSING TRANSLATION
+	TRAITDEVOTED = """Devoted""", # MISSING TRANSLATION
+	TRAITDEVOTEDDESCRIPT = """Productivity +15%. Protection mastery +1.""", # MISSING TRANSLATION
+	TRAITDEVOTEDFLAVOR = """Slave or not, I shall serve my [master].""", # MISSING TRANSLATION
+	TRAITNAIVE = """Naive""", # MISSING TRANSLATION
+	TRAITNAIVEDESCRIPT = """Mind Resist -15. +2 Training Points from trainings by the master. Sex without consent weighs 25% less.""", # MISSING TRANSLATION
+	TRAITNAIVEFLAVOR = """These people are caring for me...""", # MISSING TRANSLATION
+	TRAITMEEK = """Meek""", # MISSING TRANSLATION
+	TRAITMEEKDESCRIPT = """+1 Training Point from every training. In the back row: Evasion +15. DEF -10.""", # MISSING TRANSLATION
+	TRAITMEEKFLAVOR = """Nothing bad will happen if I follow orders?""", # MISSING TRANSLATION
+	TRAITBRIDLED = """Bridled""", # MISSING TRANSLATION
+	TRAITBRIDLEDDESCRIPT = """Damage +10%. Service -5%. DEF +5, MDEF +5.""", # MISSING TRANSLATION
+	TRAITBRIDLEDFLAVOR = """I've changed so much that I started to like it...""", # MISSING TRANSLATION
+	TRAITBROKEN = """Broken""", # MISSING TRANSLATION
+	TRAITBROKENDESCRIPT = """Price -50%. Productivity -30%. Damage -25%. No food or lodging demands, even when free. Sex without consent weighs 75% less.""", # MISSING TRANSLATION
+	TRAITBROKENFLAVOR = """There's nothing but pain and suffering...""", # MISSING TRANSLATION
+	TRAITINSECURE = """Insecure""", # MISSING TRANSLATION
+	TRAITINSECUREDESCRIPT = """Without the master: Damage -20%, Evasion -15, Productivity -20%.""", # MISSING TRANSLATION
+	TRAITINSECUREFLAVOR = """Being left with no base is worse than slavery to some.""", # MISSING TRANSLATION
+	TRAITOBSESSED = """Obsessed""", # MISSING TRANSLATION
+	TRAITOBSESSEDDESCRIPT = """With the master: Damage +15%, Speed +10, Productivity +10%.""", # MISSING TRANSLATION
+	TRAITOBSESSEDFLAVOR = """Life for my [master]...""", # MISSING TRANSLATION
+	TRAITSELF_RIGHTEOUS = """Self-Righteous""", # MISSING TRANSLATION
+	TRAITSELF_RIGHTEOUSDESCRIPT = """Armor Penetration +5, Crit Chance +3%, Evasion -10.""", # MISSING TRANSLATION
+	TRAITSELF_RIGHTEOUSFLAVOR = """I must be the main character of the story.""", # MISSING TRANSLATION
+	TRAITFIRE_FORGED = """Fire-Forged""", # MISSING TRANSLATION
+	TRAITFIRE_FORGEDDESCRIPT = """All Resists +10. Counterattacks once a round, or once more with a shieldbearer's shield. Authority +1.""", # MISSING TRANSLATION
+	TRAITFIRE_FORGEDFLAVOR = """Went through hell and survived.""", # MISSING TRANSLATION
+	TRAINING_STATUS_CHANGED = """[name] is now {new}.""", # MISSING TRANSLATION
+	TRAITFAITH_TIER_1 = """Follower""", # MISSING TRANSLATION
+	TRAITFAITH_TIER_2 = """Disciple""", # MISSING TRANSLATION
+	TRAITFAITH_TIER_3 = """Adept""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_1 = """Follower of Celena""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_1DESCRIPT = """+2 Health Regen, Farming +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_2 = """Disciple of Celena""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_2DESCRIPT = """+3 Health Regen, Farming +15%, Healing +15%.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_2VOWS = """No dark magic.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_3 = """Adept of Celena""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_3DESCRIPT = """+5 Health Regen, Farming +20%, Healing +25%. Positive effects cast last 1 additional turn.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_3VOWS = """No dark magic. As a trainer, won't use physical or humiliating trainings.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENAFLAVOR = """Despite the darkness of this world, Celena's mercifulness still guides the weak.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_1 = """Follower of Freya""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_1DESCRIPT = """+0.5 Mana Regen, Alchemy +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_2 = """Disciple of Freya""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_2DESCRIPT = """+1 Mana Regen, Alchemy +15%, +2 Health Regen.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_2VOWS = """Won't eat meat: eating it lowers the faith.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_3 = """Adept of Freya""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_3DESCRIPT = """+2 Mana Regen, Alchemy +20%, +3 Health Regen, Earth Resist +15.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_3VOWS = """Won't eat meat: eating it lowers the faith. Won't cut wood.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYAFLAVOR = """The ancient power of wild nature and flora.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_1 = """Follower of Erebus""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_1DESCRIPT = """Upgrading +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_2 = """Disciple of Erebus""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_2DESCRIPT = """Upgrading +15%, +5 DEF.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_2VOWS = """Service -20%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_3 = """Adept of Erebus""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_3DESCRIPT = """Upgrading +20%, +10 DEF, Earth Resist +20, Mana Cost -15%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_3VOWS = """Service -40%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUSFLAVOR = """The dull sound of stones echoes through their souls.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_1 = """Follower of Hybris""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_1DESCRIPT = """Manhunt +1.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_2 = """Disciple of Hybris""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_2DESCRIPT = """Manhunt +1, Loyalty for trainee +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_2VOWS = """Healing received -25%.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_3 = """Adept of Hybris""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_3DESCRIPT = """Manhunt +2, Loyalty for trainee +20%, +1 Training Slot. Combat ability cooldowns -1 turn (not below 1).""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_3VOWS = """Healing received -50%. Can't use combat supporting abilities.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRISFLAVOR = """Dominance is an addictive substance.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_1 = """Follower of Alios""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_1DESCRIPT = """Air Damage +5%.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_2 = """Disciple of Alios""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_2DESCRIPT = """Air Damage +10%, Evasion +5.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_2VOWS = """Loyalty from Training -2.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_3 = """Adept of Alios""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_3DESCRIPT = """Speed +5, Air Damage +15%, Air Resist +20. Incoming negative effects last 1 fewer turn (those of 2+ turns).""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_3VOWS = """Loyalty from Training -4. Can't be a trainer.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOSFLAVOR = """Unbound wind.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_1 = """Follower of Nixx""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_1DESCRIPT = """Dark Resist +10.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_2 = """Disciple of Nixx""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_2DESCRIPT = """Dark Resist +15, Dark Damage +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_2VOWS = """Light Resist -10. No light magic. Morning and day: Productivity -10%, Max Health -10%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_3 = """Adept of Nixx""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_3DESCRIPT = """Dark Resist +25, Dark Damage +15%, Crit Chance +4%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_3VOWS = """Light Resist -25. No light magic. Morning and day: Productivity -20%, Max Health -20%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXXFLAVOR = """The Darkest Night.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_1 = """Way of the Spirits""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_1DESCRIPT = """Hunt +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_2 = """Way of the Spirits II""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_2DESCRIPT = """Hunt +15%, +1 Mana Regen, +1 Sex Stamina.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_2VOWS = """Charm -5. No Waitress or Hostess work.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_3 = """Way of the Spirits III""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_3DESCRIPT = """Hunt +20%, +1 Mana Regen, +2 Sex Stamina.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_3VOWS = """Charm -10. No Waitress, Hostess, Dancer or Stripper work.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITSFLAVOR = """One with nature.""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESS_1 = """Follower of Darkness""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESS_2 = """Disciple of Darkness""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESS_3 = """Adept of Darkness""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESSFLAVOR = """Nixx is no more, yet the darkness she ruled still answers those who pray to it.""", # MISSING TRANSLATION
+	TRAITALIOS = """Chosen of Alios""", # MISSING TRANSLATION
+	TRAITNIXX_CHAMPION = """Chosen of Nixx""", # MISSING TRANSLATION
+	TRAITNIXX_CHAMPION2 = """Vessel of Nixx""", # MISSING TRANSLATION
+	VOWBAN_NO_WOOD = """{trait}: won't cut wood.""", # MISSING TRANSLATION
+	VOWBAN_NO_LABOR = """{trait}: won't gather, farm or build.""", # MISSING TRANSLATION
+	VOWBAN_NO_SERVICE = """{trait}: won't do this work.""", # MISSING TRANSLATION
+	VOWBAN_NO_TRAINER = """{trait}: can't be a trainer.""", # MISSING TRANSLATION
+	VOWBAN_GENTLE_TRAINER = """Trainer ({trait}): no physical or humiliating trainings.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_VOW_MEAT = """[name] had nothing but meat to eat. [His] faith weakens.""", # MISSING TRANSLATION
 	TRAITSTUN_IMMUNITYDESCRIPT = "Hace que el usuario sea inmune al aturdimiento.",
 	TRAITETIQUETTE = "Protocolo real",
 	TRAITETIQUETTEDESCRIPT = "Entrenamiento en etiqueta cortesana para desenvolverse en la alta sociedad. Los personajes aprenden el decoro adecuado para las reuniones de la nobleza, aunque algunos pueden optar por desafiar las convenciones.",
@@ -4696,6 +5027,12 @@ Requiere consentimiento \"Dispuesto\" o superior.""",
 	FINISHTRAINING = """Finish training? Leftover spirit will be used to purchase additional bonuses.""", # MISSING TRANSLATION
 	TRAITTRAINING_VALUE = """Especialización adiestrada""",
 	TRAITTRAINING_VALUEDESCRIPT = """+25% de valor""",
+	TRAITTRAINING_STUN = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_STUNDESCRIPT = """Immune to stun""", # MISSING TRANSLATION
+	TRAITTRAINING_STEALTH = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_STEALTHDESCRIPT = """+2 Stealth mastery, +1 Marksmanship mastery""", # MISSING TRANSLATION
+	TRAITTRAINING_COLLECT = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_COLLECTDESCRIPT = """+30% Collection""", # MISSING TRANSLATION
 	TRAITTRAINING_PRODUCTIVITY = """Especialización adiestrada""",
 	TRAITTRAINING_PRODUCTIVITYDESCRIPT = """+30% de productividad""",
 	TRAITTRAINING_XP = """Especialización adiestrada""",
@@ -4708,12 +5045,20 @@ Requiere consentimiento \"Dispuesto\" o superior.""",
 	TRAITTRAINING_MATKDESCRIPT = """+10 ATQM""",
 	TRAITTRAINING_DEF = """Especialización adiestrada""",
 	TRAITTRAINING_DEFDESCRIPT = """+10 DEF""",
+	TRAITTRAINING_PROS = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_PROSDESCRIPT = """+30% Sex Service income""", # MISSING TRANSLATION
+	TRAITTRAINING_DANCER = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_DANCERDESCRIPT = """+20% Dancer and Hostess income""", # MISSING TRANSLATION
+	TRAITTRAINING_FARM = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_FARMDESCRIPT = """+1 farm product, +25% farm output""", # MISSING TRANSLATION
 	TRAITTRAINING_MDEF = """Especialización adiestrada""",
 	TRAITTRAINING_MDEFDESCRIPT = """+15 DEFM""",
 	TRAITTRAINING_TRAINER = """Especialización adiestrada""",
 	TRAITTRAINING_TRAINERDESCRIPT = """+3 espacios de aprendiz y estatus de instructor""",
 	TRAITTRAINING_HEAL = """Especialización adiestrada""",
 	TRAITTRAINING_HEALDESCRIPT = """+50% de eficacia de curación""",
+	TRAITTRAINING_HUNTER = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_HUNTERDESCRIPT = """+2 Manhunt, +20% Crit Mod""", # MISSING TRANSLATION
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginidad}[/center]
 Como [name] tiene una virginidad observable, esto lo hace que [him] sea más deseable para ciertos individuos.
 {color=yellow|El precio de venta se incrementa en 25%%}""",
@@ -4942,6 +5287,9 @@ Efecto de habilidades sociales: +10%.""",
 	BUFFDESCRIPTCONFUSE = "Confusión",
 	BUFFDESCRIPTFREEUSE = """Permite usar un objeto sin consumir turno""",
 	BUFFDESCRIPTPALADINGUARD = """Contraataca con un ataque básico cualquier daño en alcance cuerpo a cuerpo. Para personajes jugables requiere un escudo con bono de Evasión.""",
+	BUFFDESCRIPTLONEWOLF = """Lone Wolf: alone in the fight, acts twice a round.""", # MISSING TRANSLATION
+	BUFFDESCRIPTINSECURE = """Insecure: no master in the fight. Damage -20%%, Evasion -15.""", # MISSING TRANSLATION
+	BUFFDESCRIPTOBSESSED = """Obsessed: the master fights alongside. Damage +15%%, Speed +10.""", # MISSING TRANSLATION
 	BUFFDESTRAITEFFECTMASTERCOMBATCRIPTFREEUSE = "Permite utilizar un objeto sin necesidad de turno.",
 	BUFFDESCRIPTSHRED = "Destrozado: La DEF se reduce en un 50%%",
 	BUFFDESCRIPTSHATTER = "Destrozado: La MAG DEF se reduce en un 50%%",
@@ -5081,6 +5429,7 @@ Todo el daño recibido aumenta en un 15%%, la descarga adicional tiene la posibi
 	TRAIT_HECTOR_VAIN_PRIDE_S = """Vana soberbia: +10 ATQ y +10 de precisión. Necesaria para ciertas habilidades. Acumulable hasta 10 veces.""",
 	EFFECTNAME_DARK_GIFT = """Don oscuro""",
 	EFFECT_DARK_GIFT = """+20 ATQ y ATQM, -20 DEF y DEFM.""",
+	TRAIT_GRASHA_MIND_CONTROLLED = """-50 Mind resist. Devour Magic spell also deal 150% MATK damage when cast on this unit""", # MISSING TRANSLATION
 	TRAIT_KURDAN_MIND_CONTROLLED = """-50 de resistencia a Mente. El hechizo Devorar magia también inflige un 150% de daño de ATQM al lanzarse sobre esta unidad""",
 	EFFECTNAME_UNDERWATCHED = """Vigilancia de Aire""",
 	TRAIT_OVERWATCH_ASSIGNMENT = """Hasta 5 veces por turno:
@@ -7024,6 +7373,19 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	INTERACTION_SPEECH_RESISTORGASM_1 = """Ahh-hh... No...""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_RESISTORGASM_2 = """*Sob* why... this feels so good...""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_RESISTORGASM_3 = """No, Please stop, before I... Ahh... No *sob*""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_1 = """W-wait... I'm not sure about this...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_2 = """This is so embarrassing...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_3 = """D-don't stare at me like that, [name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_4 = """Are we really doing this...?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_5 = """I-if you really want to... I guess...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_1 = """I shouldn't be enjoying this so much...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_2 = """Ah... so embarrassing... but don't stop...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_3 = """Why does this feel so good... I'm so ashamed...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_4 = """Don't tell anyone how much I liked this, [name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_5 = """My face is burning... and not only my face...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTORGASM_1 = """Ah... ahh! D-don't look at me...!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTORGASM_2 = """I-I can't hold it... ahh!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTORGASM_3 = """So embarrassing... I'm... cumming...!""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_MUTE_1 = """...""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_MUTE_2 = """...!""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_MUTE_3 = """......""", # MISSING TRANSLATION
@@ -7186,6 +7548,14 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_KISS_REACT_AROUSAL1_NICE_2 = """[name2] hold[s/2] still""", # MISSING TRANSLATION
 	SEXACTION_KISS_REACT_AROUSAL1_MEAN_1 = """[name2] clench[es/2] [his2] jaw""", # MISSING TRANSLATION
 	SEXACTION_KISS_REACT_AROUSAL1_MEAN_2 = """[name2] turn[s/2] [his2] face away slightly""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_HESITANT_1 = """[name2] kiss[es/2] back {^eagerly:hungrily}, [his2] cheeks burning""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_HESITANT_2 = """[name2] {^melt[s/2]:sink[s/2]} into the kiss, {^forgetting:abandoning} [his2] shyness""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_HESITANT_1 = """[name2] {^shyly:timidly} kiss[es/2] back""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_HESITANT_2 = """[name2] let[s/2] out a {^muffled:small} {^squeak:sound} into the kiss""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} {^deeply:furiously}, [his2] lips trembling""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL2_HESITANT_2 = """[name2] {^hesitate[s/2]:falter[s/2]}, then {^slowly:carefully} return[s/2] the kiss""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} {^to the tips of [his2] ears:a deep red}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_HESITANT_2 = """[name2] {^lower[s/2]:avert[s/2]} [his2] eyes {^bashfully:shyly}""", # MISSING TRANSLATION
 	SEXACTION_FONDLETITS_FROM_BEHIND_NICE_1 = """[name1] reach[es/1] around from behind and {^squeeze[s/1]:fondle[s/1]:caress[es/1]} [names2] [tits2].""", # MISSING TRANSLATION
 	SEXACTION_FONDLETITS_FROM_BEHIND_NICE_2 = """[name1] {^slide[s/1]:bring[s/1]} [his1] hands around from behind, {^cupping:kneading:squeezing} [names2] [tits2].""", # MISSING TRANSLATION
 	SEXACTION_FONDLETITS_FROM_BEHIND_MEAN_1 = """[name1] reach[es/1] around from behind and {^grab[s/1]:seize[s/1]} [names2] [tits2].""", # MISSING TRANSLATION
@@ -7273,6 +7643,12 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_FINGERING_REACT_AROUSAL1_NICE_1 = """[names2] [pussy2] {^parts:yields} {^readily:willingly} around [names1] fingers""", # MISSING TRANSLATION
 	SEXACTION_FINGERING_REACT_AROUSAL1_MEAN_1 = """[names2] [pussy2] tighten[s/2] against [names1] fingers""", # MISSING TRANSLATION
 	SEXACTION_FINGERING_REACT_AROUSAL1_MEAN_2 = """[name2] tense[s/2] and look[s/2] away""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL4_HESITANT_1 = """[name2] {^hide[s/2]:cover[s/2]} [his2] {^flushed:burning} face, [his2] [pussy2] clenching {^eagerly:tightly} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL4_HESITANT_2 = """[name2] {^moan[s/2]:gasp[s/2]} aloud, then {^clap[s/2]:press[es/2]} a hand over [his2] mouth""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL3_HESITANT_1 = """[name2] {^squirm[s/2]:fidget[s/2]}, {^mortified:embarrassed} by how wet [he2] [is2] getting""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} and {^instinctively:reflexively} {^press[es/2]:squeeze[s/2]} [his2] thighs together""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL1_HESITANT_1 = """[name2] {^stiffen[s/2]:tense[s/2]} {^shyly:nervously}, unsure what to do with [his2] hands""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL1_HESITANT_2 = """[name2] {^avert[s/2]:lower[s/2]} [his2] eyes, [his2] cheeks {^reddening:flushing}""", # MISSING TRANSLATION
 	SEXACTION_FINGERING_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to find the right {^angle:depth:rhythm}.""", # MISSING TRANSLATION
 	SEXACTION_FINGERING_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a reaction despite [his1] {^inexperience:lack of practice}.""", # MISSING TRANSLATION
 	SEXACTION_FINGERING_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^maintain[s/1]:keep[s/1]} a {^steady:practiced} motion throughout.""", # MISSING TRANSLATION
@@ -7306,6 +7682,8 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXDICT_START_1_MISSIONARY_INSERT_NICE_2 = """[name2] {^shift:move}[s/2] onto [his2] back, letting [name1] {^settle:climb} {^atop:over} [him2]""", # MISSING TRANSLATION
 	SEXDICT_START_1_MISSIONARY_INSERT_MEAN_1 = """[name2] {^squirm[s/2]:struggle[s/2]} as [name1] {^pin[s/1]:hold[s/1]} [him2] down{^ on [his2] back:}""", # MISSING TRANSLATION
 	SEXDICT_START_1_MISSIONARY_INSERT_MEAN_2 = """[name1] {^force[s/1]:push[es/1]} [name2] onto [his2] back as [he2] {^tr[ies/y2] to resist:protest[s/2]}""", # MISSING TRANSLATION
+	SEXDICT_START_1_MISSIONARY_REPEAT_HESITANT_1 = """[name2] {^shyly:timidly} {^part[s/2]:open[s/2]} [his2] legs for [name1] again""", # MISSING TRANSLATION
+	SEXDICT_START_1_MISSIONARY_REPEAT_HESITANT_2 = """[name2] {^blush[es/2]:flush[es/2]} and look[s/2] away, but [his2] legs stay parted for [name1]""", # MISSING TRANSLATION
 	SEXDICT_START_1_DOGGY_REPEAT_NICE_1 = """[name2] {^push[es/2]:rock[s/2]} back against [name1]""", # MISSING TRANSLATION
 	SEXDICT_START_1_DOGGY_REPEAT_NICE_2 = """[name2] {^arches:raises}[s/2] [his2] back, {^inviting:welcoming} [name1] deeper""", # MISSING TRANSLATION
 	SEXDICT_START_1_DOGGY_REPEAT_NICE_3 = """[name2] {^grips:clutches}[s/2] the {^sheets:bedding} as [name1] continues""", # MISSING TRANSLATION
@@ -7328,6 +7706,10 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXDICT_START_1_DOGGY_INSERT_NICE_2 = """[name2] {^arches:raises}[s/2] [his2] back, {^presenting:offering} [himself2] to [name1]""", # MISSING TRANSLATION
 	SEXDICT_START_1_DOGGY_INSERT_MEAN_1 = """[name2] {^struggle[s/2]:resist[s/2]} as [name1] {^force[s/1]:push[es/1]} [him2] onto [his2] hands and knees""", # MISSING TRANSLATION
 	SEXDICT_START_1_DOGGY_INSERT_MEAN_2 = """[name1] {^pin[s/1]:hold[s/1]} [name2] down {^on all fours:on [his2] knees} as [he2] {^squirm[s/2]:protest[s/2]}""", # MISSING TRANSLATION
+	SEXDICT_START_1_DOGGY_REPEAT_HESITANT_1 = """[name2] {^bur[ies/y2]:hide[s/2]} [his2] {^flushed:burning} face in the {^sheets:bedding}""", # MISSING TRANSLATION
+	SEXDICT_START_1_DOGGY_REPEAT_HESITANT_2 = """[name2] {^stay[s/2]:remain[s/2]} on all fours, too {^flustered:embarrassed} to look back at [name1]""", # MISSING TRANSLATION
+	SEXDICT_START_1_DOGGY_INSERT_HESITANT_1 = """[name2] {^slowly:hesitantly} get[s/2] on all fours, [his2] {^cheeks burning:face flushed}""", # MISSING TRANSLATION
+	SEXDICT_START_1_DOGGY_INSERT_HESITANT_2 = """[name2] {^lower[s/2]:hang[s/2]} [his2] head {^shyly:bashfully} as [name1] move[s/1] behind [him2]""", # MISSING TRANSLATION
 	SEXDICT_START_1_LOTUS_REPEAT_NICE_1 = """[name1] {^hold[s/1]:grasp[s/1]:stead[ies/y1]} [name2] by [his2] [hips2]""", # MISSING TRANSLATION
 	SEXDICT_START_1_LOTUS_REPEAT_NICE_2 = """[name1] {^squeeze:knead:massage}[s/1] [names2] {^ass:butt}cheeks""", # MISSING TRANSLATION
 	SEXDICT_START_1_LOTUS_REPEAT_NICE_3 = """[name1] {^hug:hold:squeeze}[s/1] [name2] close to [his1] bod[y/ies1]""", # MISSING TRANSLATION
@@ -7460,6 +7842,14 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXDICT_MAIN_1_SEXA_NICE_2 = """[name2] {^spread[s/2]:part[s/2]} [his2] thighs {^to allow [name1] deeper:to give [name1] better access}""", # MISSING TRANSLATION
 	SEXDICT_MAIN_1_SEXA_MEAN_1 = """[name2] {^helplessly :fruitlessly :}struggle[s/2] against [name1]""", # MISSING TRANSLATION
 	SEXDICT_MAIN_1_SEXA_DEFAULT_1 = """[names2] {^ass:butt}hole {^envelop[s/#2]:wrap[s/#2] around:tug[s/#2] at} [names1] [penis1]""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_HESITANT_1 = """[name2] {^bite[s/2] [his2] lip:squeeze[s/2] [his2] eyes shut}, {^flustered:embarrassed}""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_HESITANT_2 = """[name2] {^hide[s/2]:cover[s/2]} [his2] {^flushed:burning} face with [his2] hands""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_FACING_HESITANT_1 = """[name2] {^glance[s/2]:peek[s/2]} up at [name1], then quickly look[s/2] away""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_FACING_HESITANT_2 = """[name2] can't bring [himself2] to meet [names1] eyes""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_1 = """[name2] keep[s/2] [his2] face turned away, glad [name1] can't see [him2] blush""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_2 = """[name2] {^sneak[s/2]:steal[s/2]} a {^shy:bashful} glance back at [name1]""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_1 = """[name2] {^tremble[s/2]:shiver[s/2]} with nerves, [his2] breath catching""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_2 = """[name2] {^squeeze[s/2] [his2] eyes shut:hold[s/2] [his2] breath}, {^nervous:anxious} but not pulling away""", # MISSING TRANSLATION
 	SEXDICT_MAIN_2_SEXV_VIRGIN_1 = """ as [color=#ff5df8][he1] {^rip:tear:break}[s/1] {^open:through} [partners2] hymen[/s2][/color]""", # MISSING TRANSLATION
 	SEXDICT_MAIN_2_SEXV_VIRGIN_2 = """ as [color=#ff5df8][he1] claim[s/1] [partners2] {^virginit[y/ies2]:virgin puss[y/ies2]}[/color]""", # MISSING TRANSLATION
 	SEXDICT_MAIN_2_SEXV_VIRGIN_3 = """ as [color=#ff5df8][he1] {^break[s/1] in:deflower[s/1]} [partners2] {^unused:virgin} puss[y/ies2][/color]""", # MISSING TRANSLATION
@@ -7519,6 +7909,21 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXDICT_REACT_1_SEX_TAKER_SKILLED_MEAN_1 = """[name2] {^tr[ies/y2] to stay:struggle[s/2] to remain} still as [his2] hips {^twitch:shift} on their own""", # MISSING TRANSLATION
 	SEXDICT_REACT_1_SEX_TAKER_NOVICE_MEAN_1 = """[name2] {^lock[s/2]:seize[s/2]} up, body rigid with {^shock:panic}""", # MISSING TRANSLATION
 	SEXDICT_REACT_1_SEX_TAKER_NOVICE_MEAN_2 = """[name2] {^shudder[s/2]:flinch[es/2]} with each thrust, unable to adapt""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_1 = """[name2] hide[s/2] [his2] face, but [his2] hips keep {^moving:rocking} on their own""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_2 = """[name2] {^moan[s/2]:cr[ies/y2] out} loudly, then {^flush[es/2]:blush[es/2]} {^bright red:crimson} at [his2] own voice""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_3 = """[name2] {^gasp[s/2]:pant[s/2]} {^helplessly:breathlessly}, too far gone to {^hide:mind} how [he2] sound[s/2]""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_1 = """[name2] cover[s/2] [his2] mouth, {^stifling:muffling} an {^embarrassing:unexpected} moan""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_2 = """[name2] {^squirm[s/2]:fidget[s/2]}, [his2] cheeks burning at how {^eagerly:readily} [his2] body responds""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_3 = """[name2] {^gasp[s/2]:whimper[s/2]} and quickly bite[s/2] [his2] lip""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} and avert[s/2] [his2] eyes""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_2 = """[name2] let[s/2] out a {^small:timid} sound, then fall[s/2] silent in embarrassment""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_3 = """[name2] {^peek[s/2]:glance[s/2]} at [name1], then look[s/2] away, flustered""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_1 = """[name2] {^stiffen[s/2]:hold[s/2] [his2] breath}, unsure what to do with [himself2]""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_2 = """[name2] {^shyly:timidly} turn[s/2] [his2] face away""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_3 = """[name2] fidget[s/2] {^nervously:uneasily}, [his2] cheeks {^reddening:flushing}""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_TAKER_MASTERED_HESITANT_1 = """[name2] move[s/2] with [name1] {^skillfully:expertly}, though [he2] can't bring [himself2] to look at [him1]""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_TAKER_SKILLED_HESITANT_1 = """[name2] {^tentatively:timidly} match[es/2] [names1] rhythm, blushing all the while""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_TAKER_NOVICE_HESITANT_1 = """[name2] {^freeze[s/2]:stiffen[s/2]} up, too embarrassed to {^move:do anything}""", # MISSING TRANSLATION
 	SEXDICT_REACT_1_FSEX_AROUSAL_4_1 = """[name1] dangle[s/1] [his1] tongue[/s1] out of [his1] mouth""", # MISSING TRANSLATION
 	SEXDICT_REACT_1_FSEX_AROUSAL_4_2 = """[name2] lose[s/1] focus and roll[s/1] [his1] eyes back""", # MISSING TRANSLATION
 	SEXDICT_REACT_1_FSEX_AROUSAL_4_3 = """[name2] {^cr[ies/y1] out:moans} {^wildly:passionately} with each movement""", # MISSING TRANSLATION
@@ -7555,6 +7960,17 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXDICT_REACT_2_SEX_GIVER_MASTERED_MEAN_1 = """, [his2] body {^surrendering:giving in} to [names1] {^expert:practiced} control despite [himself2]""", # MISSING TRANSLATION
 	SEXDICT_REACT_2_SEX_GIVER_SKILLED_MEAN_1 = """, [his2] resistance {^crumbling:faltering} under [names1] {^confident:relentless} pace""", # MISSING TRANSLATION
 	SEXDICT_REACT_2_SEX_GIVER_NOVICE_MEAN_1 = """, {^even through:despite} [names1] {^clumsy:fumbling} handling""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_4_HESITANT_1 = """, {^teetering:trembling} on the edge before [he2] know[s/2] it""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_4_HESITANT_2 = """, {^mortified:flustered} by how close to the edge [he2] already [is2]""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_3_HESITANT_1 = """, [his2] breathing {^quickening:growing ragged}""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_3_HESITANT_2 = """, [his2] {^reserve:hesitation} slowly giving way to pleasure""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_2_HESITANT_1 = """, {^shy:bashful} but not unwilling""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_2_HESITANT_2 = """, {^slowly:gradually} {^warming:opening} up to [name1]""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_1_HESITANT_1 = """, [his2] heart {^pounding:racing}""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_1_HESITANT_2 = """, torn between curiosity and {^nerves:embarrassment}""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_GIVER_MASTERED_HESITANT_1 = """, [his2] {^doubts:hesitation} melting under [names1] {^expert:practiced} touch""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_GIVER_SKILLED_HESITANT_1 = """, {^gradually:slowly} put at ease by [names1] {^steady:confident} rhythm""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_GIVER_NOVICE_HESITANT_1 = """, [names1] {^clumsy:fumbling} movements {^only making things more awkward:not helping [his2] nerves}""", # MISSING TRANSLATION
 	SEXDICT_REACT_2_FSEX_AROUSAL_4_1 = """, {^rapidly:quickly} {^nearing:approaching:edging toward} {^orgasm:[his1] climax:[his1] peak}""", # MISSING TRANSLATION
 	SEXDICT_REACT_2_FSEX_AROUSAL_4_2 = """, {^resting:teetering} on the {^verge:edge} of {^orgasm:climax}""", # MISSING TRANSLATION
 	SEXDICT_REACT_2_FSEX_AROUSAL_3_1 = """, [his1] {^enjoyment:pleasure:satisfaction} {^clearly :}{^showing:evident}""", # MISSING TRANSLATION
@@ -8064,6 +8480,11 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_ASSFINGERING_REACT_AROUSAL1_NICE_1 = """[names2] [anus2] {^yield[s/2]:give[s/2] way} to [names1] fingers""", # MISSING TRANSLATION
 	SEXACTION_ASSFINGERING_REACT_AROUSAL1_MEAN_1 = """[names2] [anus2] tighten[s/2] {^firmly:hard} against [names1] fingers""", # MISSING TRANSLATION
 	SEXACTION_ASSFINGERING_REACT_AROUSAL1_MEAN_2 = """[name2] tense[s/2] and {^look[s/2]:glare[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL4_HESITANT_1 = """[name2] push[es/2] back against [names1] hand[s/1], {^mortified:flushed} at [his2] own eagerness""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL3_HESITANT_1 = """[name2] hide[s/2] [his2] {^flushed:burning} face, [his2] [anus2] {^quivering:twitching} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL2_HESITANT_1 = """[name2] let[s/2] out an embarrassed {^squeak:whimper}, unsure whether [he2] like[s/2] it""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL1_HESITANT_1 = """[name2] {^tense[s/2]:clench[es/2]} {^nervously:shyly}, [his2] face {^burning:reddening}""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL1_HESITANT_2 = """[name2] glance[s/2] back at [name1] {^uncertainly:nervously}""", # MISSING TRANSLATION
 	SEXACTION_ASSFINGERING_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} with the {^angle:approach}, {^still learning:not quite getting it right}.""", # MISSING TRANSLATION
 	SEXACTION_ASSFINGERING_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a response despite [his1] {^inexperience:lack of technique}.""", # MISSING TRANSLATION
 	SEXACTION_ASSFINGERING_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^maintain[s/1]:keep[s/1]} a {^steady:practiced} pace with {^clear:evident} experience.""", # MISSING TRANSLATION
@@ -8094,6 +8515,11 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_NICE_1 = """[name2] {^twitch[es/2]:shiver[s/2]} slightly as [names1] mouth[/s1] {^closes:settles} on [his2] nipples""", # MISSING TRANSLATION
 	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_MEAN_1 = """[name2] {^squirm[s/2]:flinch[es/2]} as [names1] mouth[/s1] clamps down on [his2] nipples""", # MISSING TRANSLATION
 	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_MEAN_2 = """[name2] show[s/2] little reaction, still {^uncomfortable:unsettled}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL4_HESITANT_1 = """[name2] {^arch[es/2]:press[es/2]} into [names1] mouth[/s1], then hide[s/2] [his2] face in embarrassment""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL4_HESITANT_2 = """[name2] {^moan[s/2]:whimper[s/2]} {^breathlessly:helplessly}, [his2] cheeks {^burning:aflame}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL3_HESITANT_1 = """[name2] bite[s/2] [his2] lip, {^embarrassed:flustered} at how quickly [his2] nipples {^stiffen:harden}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL2_HESITANT_1 = """[name2] {^shiver[s/2]:squirm[s/2]}, [his2] cheeks {^reddening:flushing}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_HESITANT_1 = """[name2] {^tense[s/2]:stiffen[s/2]} {^nervously:awkwardly}, unsure where to look""", # MISSING TRANSLATION
 	SEXACTION_SUCKNIPPLES_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^nurse[s/1]:suckle[s/1]} somewhat {^awkwardly:inexpertly}, {^still finding:not yet finding} the right {^rhythm:technique}.""", # MISSING TRANSLATION
 	SEXACTION_SUCKNIPPLES_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a reaction despite [his1] {^inexperience:lack of practice}.""", # MISSING TRANSLATION
 	SEXACTION_SUCKNIPPLES_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^work[s/1]:attend[s/1] to} [names2] nipples with {^clear:evident} practice.""", # MISSING TRANSLATION
@@ -8122,6 +8548,11 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_NICE_1 = """[name2] {^spread[s/2]:part[s/2]} {^willingly:openly} for [names1] mouth[/s1]""", # MISSING TRANSLATION
 	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_1 = """[name2] {^squirm[s/2]:tense[s/2]} at [names1] touch, {^trying:attempting} to {^pull away:close [his2] thighs}""", # MISSING TRANSLATION
 	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away, {^refusing:trying not} to acknowledge [names1] actions""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL4_HESITANT_1 = """[name2] {^clamp[s/2]:press[es/2]} [his2] thighs around [names1] head, moaning despite [his2] embarrassment""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL3_HESITANT_1 = """[name2] {^cover[s/2]:clap[s/2] a hand over} [his2] mouth to {^stifle:muffle} a moan""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]}, not daring to watch [name1] between [his2] thighs""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_HESITANT_1 = """[name2] {^shyly:bashfully} tr[ies/y2] to cover [himself2]""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_HESITANT_2 = """[name2] {^squirm[s/2]:fidget[s/2]}, [his2] face {^burning:aflame} at being {^seen:looked at} so closely""", # MISSING TRANSLATION
 	SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to find the right {^spots:rhythm:approach}.""", # MISSING TRANSLATION
 	SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] manage[s/1] to draw a reaction despite [his1] {^inexperienced:unpolished} technique.""", # MISSING TRANSLATION
 	SEXACTION_CUNNILINGUS_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^lick[s/1]:work[s/1]} with {^clear:evident} skill, reading [names2] body {^well:accurately}.""", # MISSING TRANSLATION
@@ -8167,6 +8598,12 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_HANDJOB_REACT_AROUSAL1_NICE_1 = """[name2] {^accept[s/2]:allow[s/2]} [names1] touch without protest""", # MISSING TRANSLATION
 	SEXACTION_HANDJOB_REACT_AROUSAL1_MEAN_1 = """[name2] tense[s/2] at [names1] touch""", # MISSING TRANSLATION
 	SEXACTION_HANDJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL4_HESITANT_1 = """[name2] {^buck[s/2]:rock[s/2]} into [names1] hand[s/1], too far gone to hide it""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL4_HESITANT_2 = """[name2] let[s/2] out an {^embarrassing:unguarded} {^moan:groan} and quickly cover[s/2] [his2] mouth""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL3_HESITANT_1 = """[name2] bite[s/2] [his2] lip to keep quiet, [his2] face {^flushing:reddening}""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL2_HESITANT_1 = """[name2] {^exhale[s/2]:breathe[s/2]} {^shakily:unsteadily}, not sure where to look""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL1_HESITANT_1 = """[name2] {^shift[s/2]:fidget[s/2]} {^awkwardly:nervously} under [names1] touch""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL1_HESITANT_2 = """[name2] {^blush[es/2]:flush[es/2]}, avoiding [names1] eyes""", # MISSING TRANSLATION
 	SEXACTION_HANDJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to maintain a consistent rhythm.""", # MISSING TRANSLATION
 	SEXACTION_HANDJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] {^strain[s/1]:struggle[s/1]} to keep up as [he2] gets close.""", # MISSING TRANSLATION
 	SEXACTION_HANDJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1] {^maintain[s/1]:keep[s/1]} a {^steady:consistent} pace throughout.""", # MISSING TRANSLATION
@@ -8203,6 +8640,12 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_BLOWJOB_REACT_AROUSAL1_NICE_1 = """[name2] {^allow[s/2]:let[s/2]} [name1] work, {^relaxed:unhurried}""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_REACT_AROUSAL1_MEAN_1 = """[name2] tense[s/2] as [name1] begin[s/1]""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_HESITANT_1 = """[name2] {^grip[s/2]:clutch[es/2]} [names1] hair[/s1], then let[s/2] go {^sheepishly:in embarrassment}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_HESITANT_2 = """[name2] {^moan[s/2]:groan[s/2]} aloud and {^hastily:quickly} cover[s/2] [his2] mouth""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL3_HESITANT_1 = """[name2] let[s/2] out a {^low:soft} moan, [his2] face {^reddening:flushing}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL2_HESITANT_1 = """[name2] peek[s/2] down at [name1], then look[s/2] away {^flushed:blushing}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL1_HESITANT_1 = """[name2] fidget[s/2] {^awkwardly:uneasily}, unsure what to do with [his2] hands""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL1_HESITANT_2 = """[name2] {^blush[es/2]:flush[es/2]} and look[s/2] away""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} with the angle.""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] {^strain[s/1]:struggle[s/1]} to keep up as [he2] gets close.""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1] settle[s/1] into a {^steady:comfortable} rhythm.""", # MISSING TRANSLATION
@@ -8237,6 +8680,10 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_TITJOB_REACT_AROUSAL1_NICE_1 = """[name2] watch[es/2] [name1] with {^quiet:mild} interest""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_REACT_AROUSAL1_MEAN_1 = """[name2] tense[s/2] as [name1] begin[s/1]""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^stare[s/2]:look[s/2]} away""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL4_HESITANT_1 = """[name2] {^rock[s/2]:thrust[s/2]} between [names1] [tits1], [his2] cheeks burning at [his2] own eagerness""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL3_HESITANT_1 = """[name2] {^squirm[s/2]:fidget[s/2]}, embarrassed by how good it feels""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL2_HESITANT_1 = """[name2] {^glance[s/2]:peek[s/2]} down at [names1] [tits1], then {^quickly:hastily} look[s/2] away""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL1_HESITANT_1 = """[name2] {^fidget[s/2]:shift[s/2]} {^awkwardly:nervously}, not sure where to look""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble[s/1]:struggle[s/1]} to keep a consistent motion.""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] {^strain[s/1]:struggle[s/1]} to maintain the pace as [he2] gets close.""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1] rock[s/1] with {^steady:consistent} rhythm.""", # MISSING TRANSLATION
@@ -8693,6 +9140,7 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	DIALOGUESHRINEITEM = "Hacer una ofrenda",
 	DIALOGUESHRINEEQUIP = "Ofrecer un equipo",
 	DIALOGUESHRINECHARACTER = "Enviar a [name] al altar",
+	DIALOGUESHRINEENSLAVE = """Bend [name]'s will at the altar""", # MISSING TRANSLATION
 	DIALOGUESHRINEDESTROY = "Destruir el santuario",
 	DIALOGUECHESTLOCKPICK = "Intento de abrir la cerradura",
 	DIALOGUECHESTLOCKPICKFAILURE = "[name] no ha conseguido abrir la cerradura del cofre y el mecanismo se ha atascado. No queda otra opción que dejarlo ya...",
@@ -9074,6 +9522,7 @@ La mujer desaparece tan rápido como apareció ante ti, dejándote frente a la m
 	ENEMYGREG = "Greg",
 	ENEMYGREG_ACT4 = """Greg el Renegado""",
 	ENEMYAIRE = "Aire",
+	ENEMYGRASHA = """Grasha""", # MISSING TRANSLATION
 	ENEMYKURDAN = "Kurdan",
 	ENEMYLEON = "Leon",
 	ENEMYFAT_BANDIT = """Bandido gordo""",
@@ -10864,6 +11313,7 @@ Esta no es una información muy conocida, pero parece que los rebeldes sabían d
 	SKILLGLACIATION = "Glaciación",
 	SKILLNORTH_WIND = "Viento del Norte",
 	SKILLCRUELTY = "Crueldad",
+	SKILLHUNTERS_MARK = """Hunter's Mark""", # MISSING TRANSLATION
 	SKILLHUTERS_MARK = "Marca del cazador",
 	SKILLSHRILL_WHISTLE = "Silbido agudo",
 	SKILLHUNTING = "Cacería",
@@ -10882,6 +11332,12 @@ Esta no es una información muy conocida, pero parece que los rebeldes sabían d
 	SKILLMONSTROUS_SWING = "Columpio monstruoso",
 	SKILLMONSTROUS_GRIP = "Oscilación monstrous",
 	SKILLBILE_CORROSIVE = "Bilis corrosiva",
+	SKILLBLEEDING_STRIKE = """Bleeding Strike""", # MISSING TRANSLATION
+	SKILLPECKING = """Pecking""", # MISSING TRANSLATION
+	SKILLWINDBLAST = """Wind Blast""", # MISSING TRANSLATION
+	SKILLGROWL = """Growl""", # MISSING TRANSLATION
+	SKILLMAGICWARD = """Magic Ward""", # MISSING TRANSLATION
+	SKILLINFERNO_EN = """Inferno""", # MISSING TRANSLATION
 	 AIRE_AMELIA1 = """
 Amelia entró en la celda de Aire con una elegante cartera negra y una sonrisa en su rostro.
 
@@ -10996,6 +11452,29 @@ Te muestra un brazalete de metal opaco y poco común que cuelga de su muñeca.
 	HALF_DUNGEON_EXPLORED_6 = "— Bueno, en mi opinión, es una oferta generosa. ¿Estás seguro? Puede que no pueda rechazarla.",
 	HALF_DUNGEON_EXPLORED_OPTION_9 = "Estoy seguro",
 	HALF_DUNGEON_EXPLORED_OPTION_10 = "Después de madura reflexión...",
+	GRASHA_MINES_START = """You hear a boot scrape stone behind you. When you turn, an orc woman is coming down the shaft alone, one hand close to the strange amulet on her chest.
+
+She stops before you can draw a weapon, then offers a careful nod.
+
+{color=yellow|— Someone said the cult was meeting below. They did not mention guild blades.}""", # MISSING TRANSLATION
+	GRASHA_MINES_INTRODUCTION = """{color=yellow|— Name's Grasha. A person with a signet shoved a ciphered message into my hands. It named these mines and promised answers about something I have been studying.}
+
+She opens her satchel just enough to show folded notes covered in diagrams.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_LETTER = """Is a cultist's letter worth leaving home for?""", # MISSING TRANSLATION
+	GRASHA_MINES_ORC_MAGIC = """{color=yellow|— The war against Thoth left everyone afraid of old rites. Magic practices have been nothing short of outlawed.}""", # MISSING TRANSLATION
+	GRASHA_MINES_AMULET_QUESTION = """{color=yellow|— Maybe not. But this thing's got juice, and who knows what it's after. Playing dumb at home already bit me hard enough, and the letter promised a clue.}""", # MISSING TRANSLATION
+	GRASHA_MINES_NO_ANSWER = """{color=yellow|— Then we are both walking blind. It's a troubling position to be in...}""", # MISSING TRANSLATION
+	GRASHA_MINES_OFFER = """Grasha waits, one hand still near the amulet, to see what you decide.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_LEAVE = """You should leave the mine.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_MANSION = """I could use a magic user. Stay at my mansion.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_FOLLOW = """Come with me while I clear the rebels.""", # MISSING TRANSLATION
+	GRASHA_MINES_LEAVE = """{color=yellow|— Fine. I did not come to spoil someone's job. I will find another way out before the cult decides I am late.}""", # MISSING TRANSLATION
+	GRASHA_MINES_MANSION_OFFER = """Grasha studies you for a moment, then straightens as if accepting a challenge.
+
+{color=yellow|— A room, food, and books for useful work? Hell, better than trusting some hooded jackass. You damn well mean it?}""", # MISSING TRANSLATION
+	GRASHA_MINES_MANSION_OFFER_FAILURE = """{color=yellow|— Not bad. But screw that. I didn't crawl all this way just to turn tail now that I'm close. You're going deeper, and I'm going with you. I'd rather get what I'm after than sit around and let it jump me from behind.}""", # MISSING TRANSLATION
+	GRASHA_MINES_ACCEPT_OFFER = """{color=yellow|— Then I am in. I do not know all this thing can do, but I know enough to earn my keep. Give me directions to your estate.}""", # MISSING TRANSLATION
+	GRASHA_MINES_FOLLOW = """{color=yellow|— Fine. Lead on.}""", # MISSING TRANSLATION
 	HALF_DUNGEON_EXPLORED_7 = "— Lo siento, creo que estoy obligado a asistir a la reunión a la que vine. Pero gracias por la invitación, la consideraré en el futuro.",
 	HALF_DUNGEON_EXPLORED_8 = """— Está bien, entonces aceptaré en lugar de ponerme en peligro aquí.
 
@@ -11082,6 +11561,54 @@ Después de despedirte, abandonas las minas y regresas a Aliron.""",
 	PRE_FINAL_BOSS_19 = """— No es mucho, pero aún nos queda algo de mineral. Puedes llevártelo.
 
 Coge la recompensa del capataz y regresa a Aliron.""",
+	GRASHA_FINALE_AMULET = """
+
+{color=yellow|Demon: — A curious trinket, orc. I wondered who would answer that little invitation.}
+
+Grasha's fingers close around the amulet. Her face stays composed, but her weight shifts into a fighter's stance.
+
+{color=aqua|Grasha: — You sent it?}
+
+{color=yellow|Demon: — I sent many. You were simply the one who brought something interesting with you.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_AGREE = """{color=yellow|— Wise. We will take the miners and be gone before your guild can decide whom to blame.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_LEAVES = """Grasha watches the prisoners being driven away.
+
+{color=yellow|— I didn't think I'd see you sell people because it is easy. Farewell, stranger.}
+
+She follows the cultists into the dark.""", # MISSING TRANSLATION
+	GRASHA_FINALE_CONTROL = """{color=aqua|Demon: — Still trying to play the hero? Then let us see what your new companion thinks of that.}
+
+The demoness speaks a short phrase. The amulet on Grasha's chest answers with a thin violet pulse.""", # MISSING TRANSLATION
+	GRASHA_FINALE_CONTROL_KNIGHT = """
+
+{color=aqua|Demon: — Such noble words. Let us see whether they are enough to protect the woman standing beside you.}
+
+{color=yellow|Grasha: — [name], the amulet!}
+
+The demon cuts her off with a sharp gesture. Violet light runs along the amulet's edge.""", # MISSING TRANSLATION
+	GRASHA_FINALE_POSSESSED = """Grasha doubles over as the violet glow hardens. For an instant she fights it. Then the tension leaves her face.
+
+She raises one hand. Fire coils between her fingers with a skill too smooth to be hers, while her other hand goes for the dagger at her belt out of old habit.
+
+{color=aqua|Demon: — There. A little focus is all it takes. Show your benefactor what you can do, Grasha.}
+
+Grasha turns toward you without recognition in her eyes.""", # MISSING TRANSLATION
+	GRASHA_FINALE_DEMON_FLEES = """{color=yellow|— More trouble than you are worth. Keep the miners, then. I have other work to do.}
+
+She vanishes in a curl of dark magic before you can reach her.""", # MISSING TRANSLATION
+	GRASHA_FINALE_AFTERMATH = """Grasha falls to one knee, clutching the amulet until the violet light dies. When she looks up, she is breathing hard and furious with herself.
+
+{color=yellow|— Her spell went through the amulet like it was waiting for her. I can't take it off, that's so frustrating...}""", # MISSING TRANSLATION
+	GRASHA_FINALE_OPTION_RECRUIT = """Come with me. We can study it safely.""", # MISSING TRANSLATION
+	GRASHA_FINALE_RECRUIT = """Grasha looks from the darkened amulet to you.
+
+{color=yellow|— A place to work, a place to hide from whoever sent that message, and no more chasing cultists by myself. Okay. I'll come. I'll pull my weight, and we'll figure out what this thing has done to me.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_AUTHORITIES = """{color=yellow|— All right. I didn't ask for this, but I still went after you. I'll own up to it.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_LEAVE = """Grasha gives a short nod and forces herself to stand.
+
+{color=yellow|— Then I will find my own answer.}
+
+She leaves the chamber slowly, one hand held over the amulet.""", # MISSING TRANSLATION
 	AFTER_MINES_WORKERS_OPTION_1 = "He solucionado el problema con las minas.",
 	AFTER_MINES_SIGMUND_START = """— Es una gran noticia. Ya hice los preparativos, así que reanudaremos el trabajo lo antes posible. Te has ganado tu recompensa.
 
@@ -12893,6 +13420,180 @@ Empujas a Anastasia al suelo y ella abre bien las piernas para ti. La montas y e
 	ZEPHYRA_EXTRA_REPLY3 = """— Deberías continuar con tu negocio y no te preocupes por mí. Lo siento, no puedo indicarte la dirección correcta, yo tampoco tengo una. Una vez que se presente la situación, probablemente la reconoceremos.
 
 — Ah, y me temo que no podré realizar otro truco de barrera por un tiempo. No puedes usar milagros a la ligera. Sin embargo, eso hace que nuestro encuentro sea fatídico, ¿verdad?""",
+	GRASHA_EXTRA_GREET = """{color=yellow|— [name]. I have been making notes. Got questions?}""", # MISSING TRANSLATION
+	GRASHA_EXTRA_OPTION1 = """How do you like it here?""", # MISSING TRANSLATION
+	GRASHA_EXTRA_REPLY1 = """{color=yellow|— Safer than being out on the road. Your shelves are better than most libraries I've ever seen. I'm still not used to being so tired after work that should be a piece of cake. Right now, a locked door and a full belly are fine by me.}""", # MISSING TRANSLATION
+	GRASHA_EXTRA_OPTION2 = """About magic...""", # MISSING TRANSLATION
+	GRASHA_EXTRA_REPLY2 = """{color=yellow|— This amulet puts power right in my hands. But that don't mean I know what I'm doing. I can see how it works and do little tricks, but every time I try, I find something else I don't get. That demon showed someone else can use it too.}""", # MISSING TRANSLATION
+	GRASHA_EXTRA_OPTION3 = """About orcs...""", # MISSING TRANSLATION
+	GRASHA_EXTRA_REPLY3 = """{color=yellow|— My people got no time for magic after the war with Thoth. Most of them just want to call this thing cursed and smash it. I don't know who made it or what it wants from me. And that makes it scarier than any damn spellbook.}""", # MISSING TRANSLATION
+	GRASHA_CREW_RUMOR = """Word reaches the mansion that three rough-looking men have been asking around Aliron about an orc woman named Grasha.""", # MISSING TRANSLATION
+	GRASHA_CREW_START = """You are crossing an Aliron side street when three men step away from a shuttered shop. They have knives, scarred knuckles, and the look of people used to taking what they want.
+
+{color=yellow|Bandit: — Heard you got yourself an orc stashed away here. A Grasha. We wanna have a little chat with her.}""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_WHO = """Who are you to Grasha?""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_BRING = """Fine. Come with me and talk to her.""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_REFUSE = """You are not going near her.""", # MISSING TRANSLATION
+	GRASHA_CREW_WHO = """{color=yellow|Bandit: — Friends. Old friends. She walked off before we settled a few things.}""", # MISSING TRANSLATION
+	GRASHA_CREW_BRING = """You bring the men to the mansion. Grasha sees them from the courtyard and goes still.
+
+{color=aqua|Bandit: — There she is. Knew we'd find you living it up.}
+
+{color=yellow|Grasha: — What are you doing here?}
+
+{color=aqua|Bandit: — The band's not the same without you. We need our frontman back.}""", # MISSING TRANSLATION
+	GRASHA_CREW_REFUSE = """{color=yellow|Bandit: — That's not the answer I was looking for.}
+
+His smile twists into a sneer as he takes a step forward, his hand dropping to the hilt of his blade. The other two shift, their own knives glinting in the dim light, ready to close the distance.""", # MISSING TRANSLATION
+	GRASHA_CREW_AFTER_FIGHT = """The last bandit hits the ground hard enough to lose interest in his knife. The other two are still dragging themselves away when Grasha comes into view.
+
+{color=yellow|Grasha: — What the hell are you doing here? I warned you to leave me alone.}
+
+{color=aqua|Bandit: — You owe us, Grasha. You took the score and ran.}
+
+{color=yellow|Grasha: — I took one thing and made it out alive. You got your cut. That was supposed to be the end of it.}""", # MISSING TRANSLATION
+	GRASHA_CREW_REVEAL = """Grasha keeps one hand close to the amulet.
+
+{color=yellow|Grasha: — They were my crew. We used to... make some people part with their goods. Before I left.}
+
+{color=aqua|Bandit: — You've left all of a sudden soon after that one mission. We need to know what happened.}
+
+{color=yellow|Grasha: — It's none of your business.}""", # MISSING TRANSLATION
+	GRASHA_CREW_BEATEN = """Grasha looks over the bruised men, then at you.
+
+{color=yellow|Grasha: — I told you, it's over already. Leave.}
+
+The bandit leader spits into the dirt and waves the others away.
+
+{color=aqua|Bandit: — Fine, you've changed after this thing after all. Keep it to yourself.}""", # MISSING TRANSLATION
+	GRASHA_CREW_BEATEN_LEAVE_STREET = """
+
+The men leave with nothing as you and Grasha return to the mansion.""", # MISSING TRANSLATION
+	GRASHA_CREW_BEATEN_LEAVE_HOME = """
+
+The men leave with nothing.""", # MISSING TRANSLATION
+	GRASHA_CREW_STANDOFF = """{color=yellow|Grasha: — Forget it. If I planned to stay I would stay.}
+
+{color=aqua|Bandit: — This is really unwise of you. You owe us for what we went through together.}
+
+You notice that the men ready their weapons as the situation grows more hostile.""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_CHARM = """[Charm 60] This would be unwise for you to start a fight on my territory.""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_FIGHT = """Looks like you don't understand when being told "No". *Fight*""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_LEAVE = """I don't need this, get out and settle it outside.""", # MISSING TRANSLATION
+	GRASHA_CREW_CHARM = """{color=aqua|Bandit: — Big words. You think a house and a few guards scare us?}
+
+You make it clear that Grasha chose to stay and that trying to drag her away will cost more than she is worth to them. The leader looks over the mansion walls, then at his two men.
+
+{color=aqua|Bandit: — Fine. She picked her side. But we will not wait forever if she changes her mind.}
+
+{color=yellow|Grasha: — I won't.}""", # MISSING TRANSLATION
+	GRASHA_CREW_CHARM_FAIL = """{color=aqua|Bandit: — Is that your big threat? You sound like you are trying to convince yourself.}
+
+The men draw steel.""", # MISSING TRANSLATION
+	GRASHA_CREW_CHARM_2 = """The men depart through the gate. Grasha tracks their exit with a stern look.
+
+{color=yellow|— I could've handled that myself. But I guess I owe you one.}""", # MISSING TRANSLATION
+	GRASHA_CREW_AMULET_OPEN_STREET = """Back at the mansion, once the gate closes behind you, Grasha hooks two fingers under the amulet's chain and pulls. Violet sparks crawl over the links and hold it tight against her skin.""", # MISSING TRANSLATION
+	GRASHA_CREW_AMULET_OPEN_HOME = """Once the gate closes behind the last of them, Grasha hooks two fingers under the amulet's chain and pulls. Violet sparks crawl over the links and hold it tight against her skin.""", # MISSING TRANSLATION
+	GRASHA_CREW_AMULET_REVEAL = """
+
+{color=yellow|— You want to know why I ran? We cracked open a rich bastard's chest and found this thing inside. I put it on to see what it was worth. Then the magic grabbed hold of me.}
+
+{color=yellow|— Can't take it off while that magic has me. Then fire started jumping to my hand when I got mad. Little spells. Light. Heat. Enough to get people staring.}
+
+{color=yellow|— And it takes from me every time. The strength that used to be in my arms is going into its spells instead. Back home, an orc tied to magic gets chained up, sold, or worse. I was not waiting around for you lot to sell my story. So I ran.}""", # MISSING TRANSLATION
+	GRASHA_CREW_LEAVE = """You tell the men to leave your property and let Grasha settle it without you. For a moment, she only stares at you. Then she gives a short, bitter laugh.
+
+{color=yellow|— Fine. You want out of it? Stay out.}
+
+She walks through the gate with them. Their voices carry from the road for a while, then fade.
+
+By nightfall, Grasha's room is empty. Her notes are gone. One loose sheet remains, covered in crossed-out symbols you cannot read.""", # MISSING TRANSLATION
+	GRASHA_THOTH_INTRO = """Grasha finds you during the day, one hand pressed over the amulet.
+
+{color=yellow|— This damn thing is at it again. It pulls at me when I sleep. When I eat. Like it wants my powers. I know one orc who might know where to start. Kargan. He collects old histories, digs through junk everyone else burns. He lives in the settlement I came from.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_OPTION_WHY_NOT = """Why not go yourself?""", # MISSING TRANSLATION
+	GRASHA_THOTH_OPTION_WHY_KARGAN = """What makes Kargan useful?""", # MISSING TRANSLATION
+	GRASHA_THOTH_OPTION_GO = """Fine. Tell me where he is.""", # MISSING TRANSLATION
+	GRASHA_THOTH_WHY_NOT = """{color=yellow|— Because they would punish me before I got three words out. Taking loot is one thing. Nobody back there loses sleep over that. But not if you practice old magic.}
+
+She takes a pause, continuing her explanation.
+
+{color=yellow|— After the war with Thoth, they don't ask whether you chose it. They chain you, sell you, or make sure nobody hears from you again. I am not risking that.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_WHY_KARGAN = """{color=yellow|— He is no mage. But he knows old stories, old symbols, old places. If there is anything written about this cursed piece of metal, Kargan has a better chance of finding it than I do.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_ANSWER = """Grasha gives you the route, then looks toward the road as if she expects someone to be waiting there.
+
+{color=yellow|— I know I have no right to ask you to do this, but I trust you can help me.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT = """The settlement is built around low stone halls and training yards. A few warriors notice you before you can ask for anyone. They spread out across the path instead of letting you pass.
+
+{color=yellow|Orc warrior: — [race]. You are asking after Kargan.}
+
+Another warrior looks you over with open distrust.
+
+{color=aqua|Orc warrior: — And we hear you keep company with Grasha. The one who ran. Tell us why you are here.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_OPTION_GRASHA = """Grasha sent me to speak with her friend.""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_OPTION_DEFIANT = """I am here for Kargan, it doesn't concern you.""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_OPTION_BOOK = """I need an old history book. Nothing more.""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_GRASHA = """{color=yellow|Orc warrior: — So the runner still sends others to clean up after her.}
+
+The warrior steps aside, but not far.
+
+{color=yellow|Orc warrior: — Fine, just do it quickly. Then leave before you become another of her problems.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_DEFIANT = """The warrior's eyes narrow.
+
+{color=yellow|Orc warrior: — You have a sharp tongue for a guest.}
+
+After a long moment, he points toward a narrow hall at the edge of the settlement.
+
+{color=yellow|Orc warrior: — There. We will remember you.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_BOOK = """{color=yellow|Orc warrior: — An outsider who comes for books to an orc settlement? Are you playing us?}
+
+He gives a short, humorless laugh and nods toward a narrow hall at the edge of the settlement.
+
+{color=yellow|Orc warrior: — Kargan keeps that kind of trash. Do not make us regret pointing you there.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN = """Kargan's hall is cramped with bundled papers, broken tablets, and old weapons whose rust has been carefully cleaned away. He looks up from a page only after you say Grasha's name.
+
+{color=yellow|— Grasha? I thought she was smart enough to stay gone.}
+
+You explain what the amulet has done to her. Kargan's expression hardens, and he closes the shutters before answering.
+
+{color=yellow|— Keep your voice down. The warriors outside hear magic and lose their minds.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_2 = """{color=yellow|— I'll help you for a favor. A chronicle about Thoth was left in old ruins south of the settlement. It was ransacked by us some time ago but that particular book didn't make it into the loot. Find it, bring it to me. I think you are more suited for this than our warriors.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_LATER = """Maybe when I have time.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_BRING = """I will bring the book.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_3 = """Kargan marks a route on a scrap of paper.""", # MISSING TRANSLATION
+	GRASHA_THOTH_RUINS = """The ruins are little more than split walls and a buried store room. Most of the place has been picked clean. You spend some time searching through the rubble before finding a stone chest behind a collapsed shelf.
+
+Inside lies a dust-choked leather book, its cover stamped with a worn symbol of Thoth.""", # MISSING TRANSLATION
+	GRASHA_THOTH_RUINS_OPTION_TAKE = """Take the Chronicle of Thoth.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_RETURN = """Kargan takes the book carefully and turns through the brittle pages in silence. At last, he stops at a drawing of an amulet surrounded by damaged notes.
+
+{color=yellow|— Not the same piece. But close enough that I would bet blood on the connection. The shape, the marks, the way it drains the wearer... this is Thoth's work, or someone copying it well.}
+
+{color=yellow|— The book does not say what it was made to do. It only points to a place where more records were kept. An abandoned temple beyond the eastern ridge.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_MORE = """Can you tell me anything else?""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_DIRECTIONS = """Give me the directions.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_MORE = """{color=yellow|— Not without making things up. I know better than that. The temple may have answers. It may have nothing but dead walls. Either way, it is your best lead.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_FINISH = """Kargan copies the route to the abandoned temple onto a clean scrap of paper and presses it into your hand.
+
+{color=yellow|— Keep it hidden. The warriors already know you came for Grasha. Next time, they may decide that is enough reason to stop you.}""", # MISSING TRANSLATION
+	GRASHA_OLD_CREW_QUEST_NAME = """Grasha's Old Crew""", # MISSING TRANSLATION
+	GRASHA_OLD_CREW_QUEST_SUMMARY = """Men from Grasha's past are asking about her around Aliron.""", # MISSING TRANSLATION
+	GRASHA_OLD_CREW_QUEST_STAGE_START = """Visit Aliron while Grasha is at the mansion.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_NAME = """Grasha: Trace of the Amulet""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_SUMMARY = """The amulet bound to Grasha keeps draining her. Kargan, an orc who collects old histories in her home settlement, may know where it came from.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_STAGE_FIND_KARGAN = """Travel to Grasha's old settlement in the mountains and find Kargan.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_STAGE_RETRIEVE_CHRONICLE = """Search the old ruins south of the settlement for the Chronicle of Thoth.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_STAGE_RETURN_BOOK = """Return the Chronicle of Thoth to Kargan.""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_NAME = """Grasha's Old Settlement""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_DESC = """An orc settlement of low stone halls and training yards. Its warriors do not welcome outsiders.""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_OPTION_KARGAN = """Look for Kargan""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_OPTION_RETURN = """Return the Chronicle to Kargan""", # MISSING TRANSLATION
+	QUEST_GRASHA_RUINS_NAME = """Old Ruins""", # MISSING TRANSLATION
+	QUEST_GRASHA_RUINS_DESC = """Split walls and a buried store room south of the orc settlement, picked over long ago.""", # MISSING TRANSLATION
+	QUEST_GRASHA_RUINS_OPTION_SEARCH = """Search the ruins""", # MISSING TRANSLATION
+	MATERIALTHOTH_CHRONICLE = """Chronicle of Thoth""", # MISSING TRANSLATION
+	MATERIALTHOTH_CHRONICLEDESCRIPT = """A dust-choked leather book stamped with a worn symbol of Thoth. Kargan is waiting for it.""", # MISSING TRANSLATION
 	KURDAN_EXTRA_GREET = "— Saludos, [name]. ¿Tienes alguna pregunta para mí?",
 	KURDAN_EXTRA_OPTION1 = "¿Qué te parece aquí?",
 	KURDAN_EXTRA_REPLY1 = "— Tienes una casa muy bonita. Debo admitir que no es como en mi tierra natal, pero yo estaba de acuerdo con esto, ¿no? Bueno, es bueno no tener que preocuparse por dónde dormir y qué comer.",
@@ -21995,6 +22696,25 @@ Zephyra se congela al ver tu acción. Su rostro presagia tu perdición. El tiemp
 	COMBAT_WIN_LINE23 = "¿Por qué tuvimos que luchar?",
 	COMBAT_WIN_LINE24 = "¿No pudimos hablar de esto...?",
 	COMBAT_WIN_LINE25 = "Esperemos no tener que pelear otra vez...",
+	COMBAT_AVOID_LINE1 = """Phew... we got past them, [Master]...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE2 = """They got off easy this time.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE3 = """I'm glad we didn't have to fight...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE4 = """No one got hurt. That's how it should be.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE5 = """See? We didn't need to fight at all.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE6 = """Thank goodness... everyone's safe.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE7 = """If only it could always go like this...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE8 = """I-is it over? We don't have to fight?..""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE9 = """M-my hands are still shaking...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE10 = """I really didn't want to fight them...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE11 = """L-let's get away from here, quickly...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE12 = """That's it? I didn't even get a swing in!""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE13 = """Tch. Where's the fun in that?""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE14 = """Hey! I was itching for a fight!""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE15 = """Next time, let me knock them down, [Master].""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE16 = """An enemy left standing is an enemy we'll face later.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE17 = """Avoiding battle won't make us any stronger.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE18 = """Hmph. I'd rather have settled it properly.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE19 = """Let's move on. They won't stay idle for long.""", # MISSING TRANSLATION
 	SEX_START_LINE1 = "Um... ¿De verdad quieres que haga esto? No estoy segura de estar lista...",
 	SEX_START_LINE2 = "Me quieres para cosas lascivas, [Master]...",
 	SEX_START_LINE3 = "No estoy demasiado ansiosa por esto, pero si insistes.",
@@ -23367,6 +24087,7 @@ This stat will grow by attending to this job.""", # MISSING TRANSLATION
 	SPEND_REP_QUESTION_LABEL = "¿Estás seguro de que quieres gastar?",
 	REP_POINTS_LABEL = "puntos de reputación para ",
 	DISLIKED_ACTIONS_LABEL = "Acciones no deseadas",
+	SEXTRAIT_CONFLICTS_LABEL = """Incompatible with""", # MISSING TRANSLATION
 	NOSERVITUDE = "-Servidumbre",
 	COMBAT_ABILS_LABEL = "Habilidades de combate",
 	ONQUESTLABEL = """[name] no está disponible en este momento.""",
@@ -23679,12 +24400,69 @@ La ofrenda se encuentra en el altar sin que se produzca reacción alguna. Parece
 	ALTAR_CHAR_BAD = """
 
 Después de unos minutos todavía no pasa nada y [name] decide seguir adelante.""",
+	STRANGE_SPOT = """Off the main passage you come across a strange spot: a ring of smooth, pale stone set into the floor, untouched by the dust around it. The air above it feels thick, as if the place were holding its breath and waiting for someone to step in.""", # MISSING TRANSLATION
+	STRANGE_SPOT_STEP = """Have someone step into the ring""", # MISSING TRANSLATION
+	MEDITATION_SPOT_PERSON = """[name] steps into the ring, and the noise of this place falls away. The air is clear here and the silence almost tangible — a good spot to rest, or to listen to something beyond oneself.""", # MISSING TRANSLATION
+	POWER_PLACE = """The moment [name] steps into the ring, the pale stone flares with light. Power surges up through [him], raw and roaring, far too loud for a place like this. From somewhere deeper in the dungeon something answers: heavy steps are already coming your way.""", # MISSING TRANSLATION
+	POWER_PLACE_FIGHT = """Stand your ground""", # MISSING TRANSLATION
+	POWER_PLACE_FLEE = """Run before they arrive""", # MISSING TRANSLATION
+	POWER_PLACE_FLED = """You pull [name] out of the ring and the group hurries back the way it came. Behind you the light dies down, and by the time the footsteps fade there is nothing left of the ring to return to.""", # MISSING TRANSLATION
+	POWER_PLACE_WON = """The last of them falls, and the ring goes quiet. The power that called them has not faded: it has settled into [name], and [he] will carry it from now on.""", # MISSING TRANSLATION
+	POWER_PLACE_WON_EXP = """The last of them falls, and the ring goes quiet. The power that called them washes through [name] and fades, but the fight itself has taught [him] plenty.""", # MISSING TRANSLATION
+	POWER_PLACE_WON_CHOICE = """The last of them falls, and the ring goes quiet. The power that called them has not faded: it still hums around [name], waiting to take a shape. It could settle into [him] as something new — or burn away something [he] would be better off without.""", # MISSING TRANSLATION
+	POWER_PLACE_GIFT_OPTION = """Let the power settle in""", # MISSING TRANSLATION
+	POWER_PLACE_EXP_OPTION = """Let it wash through""", # MISSING TRANSLATION
+	POWER_PLACE_PURGE_OPTION = """Burn away {trait}""", # MISSING TRANSLATION
+	POWER_PLACE_GIFT = """The power sinks into [name] and settles there. [He] will carry it from now on.""", # MISSING TRANSLATION
+	POWER_PLACE_EXP_TAKEN = """The power washes through [name] and fades, but the fight itself has taught [him] plenty.""", # MISSING TRANSLATION
+	POWER_PLACE_PURGED = """[name] lets the power burn through [him]. For a moment [he] can barely stand, but when the light fades, something that always held [him] back is gone.""", # MISSING TRANSLATION
+	MEDITATION_REST_OPTION = """Rest""", # MISSING TRANSLATION
+	MEDITATION_FAITH_OPTION = """Let [name] meditate""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_OPTION = """Have a companion guide [name] in faith""", # MISSING TRANSLATION
+	MEDITATION_REST = """The group sits in the quiet for a while, and their strength flows back. Everyone recovers half of their mana.""", # MISSING TRANSLATION
+	MEDITATION_DEEPEN = """[name] sinks deep into prayer. When [he] finally opens [his] eyes, [his] faith burns brighter than before.""", # MISSING TRANSLATION
+	MEDITATION_PEAK = """[name]'s faith already runs as deep as it can. The silence has nothing more to teach [him].""", # MISSING TRANSLATION
+	MEDITATION_DEEPEN_PICK = """[name] carries two faiths, and the silence can only deepen one of them today. Which one?""", # MISSING TRANSLATION
+	MEDITATION_NOTHING = """[name] sits in silence for a long while. It is calming, but nothing answers.""", # MISSING TRANSLATION
+	MEDITATION_CALL_ALIOS = """A cool wind circles [name], though the air here never stirs. It carries a voice that speaks of open skies and of chains falling away.""", # MISSING TRANSLATION
+	MEDITATION_CALL_NIXX = """The shadows around [name] deepen and begin to whisper. Something in the dark has noticed [him] — and it is patient.""", # MISSING TRANSLATION
+	MEDITATION_CALL_EREBUS = """The stone beneath [name] hums with a slow, heavy pulse, steady as a heartbeat. The earth itself seems to hold [him] up.""", # MISSING TRANSLATION
+	MEDITATION_CALL_SPIRITS = """[name] hears the spirits of beasts and trees stirring around [him]. They call [him] by a name [he] did not know [he] had.""", # MISSING TRANSLATION
+	MEDITATION_CALL_QUESTION = """
+
+Should [name] follow this calling?""", # MISSING TRANSLATION
+	MEDITATION_ACCEPT_OPTION = """Follow the calling""", # MISSING TRANSLATION
+	MEDITATION_DECLINE_OPTION = """Turn away""", # MISSING TRANSLATION
+	MEDITATION_ACCEPTED = """[name] opens [his] heart to the calling and finds a faith.""", # MISSING TRANSLATION
+	MEDITATION_DECLINED = """[name] shakes off the feeling, and the moment passes.""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_PICK = """Who will guide [name]?""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_BY = """{guide}, {faith}""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_NOBODY = """No one here has a faith to share with [name].""", # MISSING TRANSLATION
+	MEDITATION_CONVERTED = """The two of them talk long into the quiet. By the end of it, [name] has come to share [his] companion's faith.""", # MISSING TRANSLATION
+	ALTAR_FAITH_JOIN = """
+
+[name] stays at the altar longer than [he] needs to. Something here has taken root in [him]: [he] has found a faith.""", # MISSING TRANSLATION
+	ALTAR_FAITH_DEEPEN = """
+
+[name] no longer prays like a stranger here. [His] faith runs deeper now.""", # MISSING TRANSLATION
+	ALTAR_FAITH_OTHER = """
+
+[name] hesitates. [His] heart belongs to another god, and this altar asks [him] to choose.""", # MISSING TRANSLATION
+	ALTAR_FAITH_PRIDE = """
+
+[name] hesitates. [He] has never needed a god, and this altar asks [him] to choose.""", # MISSING TRANSLATION
+	ALTAR_GROW_TROLL_BLOOD_1 = """
+
+Before the conqueror's altar [name]'s blood runs hot. Something old and hungry in it stirs awake, and [his] scars close faster now.""", # MISSING TRANSLATION
 	HYBRIS_ALTAR_CHAR = """
 
 {color=green|Un pequeño resplandor violeta emana del altar y envuelve a [name]. [His] movimientos se ralentizan de repente y [His] ojos pierden el foco. Parece que podrías influenciarlo de alguna manera...}""",
 	HYBRIS_ALTAR_CHAR_FAIL = """
 
 {color=red|Un pequeño resplandor púrpura emite desde el altar y envuelve a [name], sin embargo no parece ser lo suficientemente fuerte como para afectarlo...}""",
+	HYBRIS_ALTAR_WILL = """
+
+{color=red|A small purple glow emits from the altar and coils around [name], then breaks apart. [His] will is too strong for the altar to bend.}""", # MISSING TRANSLATION
 	HYBRIS_ALTAR_CHAR_OPTION1 = "Convertirse en esclavo",
 	HYBRIS_ALTAR_CHAR_OPTION2 = "Inducir lealtad",
 	HYBRIS_ALTAR_CHAR_RESULT1 = "Convences a [name] de que [his] vida siempre ha sido de tu propiedad. Debido a que está influenciado por los poderes oscuros del altar, [he] aparentemente lo aceptó de corazón.",
@@ -23936,9 +24714,11 @@ El carro está desequilibrado detrás de él, con una rueda cubierta de tierra. 
 	CHARRND_LOST_OPT_PUNISH = "Castigar",
 	CHARRND_LOST_OPT_PARDON = "Perdonar",
 	CHARRND_LOST_OPT_SEARCH = "Hazles buscar",
+	CHARRND_LOST_OPT_NOSE = """Track It by Scent""", # MISSING TRANSLATION
 	CHARRND_LOST_REPLY_PUNISH = "Le gritas a [name] con voz fría y le ordenas que pague un día por las hierbas perdidas. Él se estremece, aprieta la boca, pero asiente en silencio. Sus pasos se hacen pesados ​​mientras se aleja, con el resentimiento latente.",
 	CHARRND_LOST_REPLY_PARDON = "Agitas la mano y le dices a [name] que los errores ocurren. [His] ojos se abren de par en par, la tensión desaparece. [He] murmura gracias, aliviado, y promete tener más cuidado. El vínculo entre ustedes se mantiene firme, tal vez se fortalece un poco, a pesar de la caja perdida.",
 	CHARRND_LOST_REPLY_SEARCH = "Señalas el camino y le dices a [name] que busque las hierbas perdidas. Duda, luego se aleja con dificultad, refunfuñando en voz baja. Horas después, regresa, embarrado y con las manos vacías, pero con más conocimiento de la ruta. Su respeto por ti se agudiza, atenuado por el cansancio.",
+	CHARRND_LOST_REPLY_NOSE = """You remind [name] that few noses are as sharp as [his]. [He] blinks, then lifts [his] face into the wind and catches the bitter trace of the herbs. [He] follows it back down the muddy road at a near run and returns before dusk with the crate on [his] shoulder, dented but whole. Nothing is lost, and [he] carries [himself] a little taller for it.""", # MISSING TRANSLATION
 	CHARRND_UNWELL = """Encuentras a [name] apoyado en una pared de la cocina de la mansión, pálido y con la frente empapada de sudor. Se lleva una mano al estómago, admitiendo que se siente mal, quizá por la mala comida o por un escalofrío que se aproxima. Su voz es débil y se tambalea ligeramente, buscando tu consejo. El fuego crepita cerca, pero apenas calienta su cuerpo tembloroso.
 
 La habitación se siente sofocante, y los ojos de [name] están pesados, suplicando sin palabras. Tose una vez, luego se tranquiliza, esperando tu llamada. La decisión está ante ti: dale un respiro, aligera su carga o dale un empujón.""",
@@ -23948,6 +24728,9 @@ La habitación se siente sofocante, y los ojos de [name] están pesados, suplica
 	CHARRND_UNWELL_REPLY_REST = "Asientes y le dices a [name] que se tome el día libre. Exhala, la gratitud suaviza su rostro tenso, y se dirige arrastrando los pies a su habitación. El descanso lo tranquiliza, y cuando regresa, su confianza en ti brilla con más fuerza.",
 	CHARRND_UNWELL_REPLY_COMFORT = "Te acercas, apoyas una mano en el hombro de [name] y le hablas en voz baja. Él se inclina ante el gesto inesperado, y el color vuelve a sus mejillas al sentir alivio. Se anima y permanece cerca, más unido a ti por la pequeña calidez que le ofreces.",
 	CHARRND_UNWELL_REPLY_FORCE = "Te enderezas y le ordenas a [name] que vuelva a sus tareas, con voz firme. Hace una mueca, pero se incorpora con dificultad, tropezando para obedecer. El día lo agota, y su tos empeora, con el resentimiento asomando en su mirada cansada. Lo supera, pero el precio persiste.",
+	CHARRND_UNWELL_REPLY_SICKLY = """
+
+Even after the fever breaks, the cough stays. [name] tires faster than before and catches every chill that drifts through the mansion: the illness has settled into [him] for good.""", # MISSING TRANSLATION
 	CHARRND_ATTENTION = """Ves a [name] cerca del patio de la mansión, removiéndose incómodo al acercarse un desconocido. La voz del recién llegado es fuerte, con palabras cargadas de adulación o intención velada, y [he] intenta restarle importancia con una sonrisa forzada. [His] ojos se cruzan con los tuyos, una mezcla de inquietud y súplica silenciosa, mientras el desconocido insiste, ajeno o indiferente. El sol aprieta, haciendo que el aire se sienta denso y tenso.
 
 La mano del desconocido se cierne cerca de [name], tanteando los límites. [He] retrocede, pero la persecución no cesa. Te quedas al borde de la escena, el momento te atrae: apóyalo o interponte entre ellos.""",
@@ -23975,12 +24758,25 @@ La cama cruje cuando [name] se mueve, todavía tembloroso, con el sudor perlánd
 	CHARRND_HATED_FOOD = """Entras al comedor de la mansión y ves a [name1] y [name2] enfrascados en una acalorada discusión cerca de la mesa. [name1] hace un gesto brusco, insistiendo en que [his1] gusto en comida es mejor, mientras que [name2] se cruza de brazos, respondiendo que su propia preferencia es la única sensata. Alzan la voz, atrayendo miradas curiosas de los sirvientes, y el aire vibra con su tenaz enfrentamiento.
 
 La discusión se repite, cada vez más intensa, con los rostros enrojecidos por la frustración. [name1] señala con el dedo a [name2], quien se burla y aparta la mirada. Te quedas cerca, el ruido te atrae: tranquilízalos, revuelve el avispero o deja que se resuelva.""",
+	CHARRND_HATED_FOOD_MEAT1 = """You walk into the mansion's dining hall and find [name1] and [name2] glaring at each other over a platter of roast meat. [name1] has sworn off meat in Freya's name and wants the platter gone from [his1] end of the table, while [name2] calls the vow foolishness and refuses to live on bread and greens for somebody else's goddess. Their voices rise, drawing curious glances from the servants.
+
+[name1] grips the edge of the table, pale with anger, as [name2] carves a slice and eats it pointedly in front of [him1]. You stand nearby, the noise pulling you in: respect the vow, make [name1] eat like everyone else, stir the pot, or let it play out.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_MEAT2 = """You walk into the mansion's dining hall and find [name2] and [name1] glaring at each other over a platter of roast meat. [name2] has sworn off meat in Freya's name and wants the platter gone from [his2] end of the table, while [name1] calls the vow foolishness and refuses to live on bread and greens for somebody else's goddess. Their voices rise, drawing curious glances from the servants.
+
+[name2] grips the edge of the table, pale with anger, as [name1] carves a slice and eats it pointedly in front of [him2]. You stand nearby, the noise pulling you in: respect the vow, make [name2] eat like everyone else, stir the pot, or let it play out.""", # MISSING TRANSLATION
 	CHARRND_HATED_FOOD_OPT_RECON = "Conciliarlos",
 	CHARRND_HATED_FOOD_OPT_AGITATE = "Agitarlos",
 	CHARRND_HATED_FOOD_OPT_IGNORE = "Ignorarlo",
+	CHARRND_HATED_FOOD_OPT_VOW = """Respect the Vow""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_OPT_FORCE1 = """Make [name1] Eat It""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_OPT_FORCE2 = """Make [name2] Eat It""", # MISSING TRANSLATION
 	CHARRND_HATED_FOOD_REPLY_RECON = "Te interpones entre [name1] y [name2], instándolos a que lo dejen todo y compartan la comida de todos modos. Se quejan, pero tus palabras suavizan las cosas y se sientan juntos. [name1] le ofrece un bocado a [name2], quien acepta con un gesto reticente. La tensión se disipa y se acercan, unidos de nuevo.",
 	CHARRND_HATED_FOOD_REPLY_AGITATE = "Lanzas un comentario pícaro a la refriega, poniéndote del lado de uno lo justo para irritar al otro. La voz de [name1] se intensifica, y [name2] da un golpe en la mesa, avivando aún más la discusión. Se van furiosos, cada uno en su lado.",
 	CHARRND_HATED_FOOD_REPLY_IGNORE = "Te alejas, dejando a [name1] y [name2] con su riña. Sus voces resuenan tras de ti, agudas y mezquinas, hasta que se cansan. Se sientan aparte, comiendo en silencio, sin ceder. Te sientes en paz contigo mismo ignorando esta pequeña molestia.",
+	CHARRND_HATED_FOOD_REPLY_VOW1 = """You tell [name2] that a vow made to Freya is not a matter of taste, and that [he2] can enjoy [his2] roast without mocking anyone over it. [name2] grumbles, but slides the platter to [his2] own end of the table, and [name1] lets out a long breath. By the end of the meal they are talking again, [name2] passing the greens along without being asked.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_REPLY_VOW2 = """You tell [name1] that a vow made to Freya is not a matter of taste, and that [he1] can enjoy [his1] roast without mocking anyone over it. [name1] grumbles, but slides the platter to [his1] own end of the table, and [name2] lets out a long breath. By the end of the meal they are talking again, [name1] passing the greens along without being asked.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_REPLY_FORCE1 = """You push the platter toward [name1] and tell [him1] that in your house, [he1] eats what is served. [He1] stares at you, then at the meat, and finally takes a bite, chewing slowly with [his1] eyes on the table. [name2] smirks, and [name1] does not look at either of you for the rest of the meal. Something in [his1] devotion has broken along with the vow.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_REPLY_FORCE2 = """You push the platter toward [name2] and tell [him2] that in your house, [he2] eats what is served. [He2] stares at you, then at the meat, and finally takes a bite, chewing slowly with [his2] eyes on the table. [name1] smirks, and [name2] does not look at either of you for the rest of the meal. Something in [his2] devotion has broken along with the vow.""", # MISSING TRANSLATION
 	CHARRND_QUARREL = """Entras en el patio de la mansión y encuentras a [name1] y [name2] enfrentados, alzando la voz y apretando los puños. [name1] acusa a [name2] de holgazanear, mientras [name2] responde bruscamente, alegando que [name1] se lleva todo el mérito. Sus palabras son cortantes, y un pequeño grupo de sirvientes se queda cerca, susurrando. El sol cae a plomo, proyectando sombras ásperas a medida que su disputa se intensifica.
 
 La tensión crepita entre ellos, [name1] paseándose de un lado a otro mientras [name2] se mantiene firme, mirándote fijamente. Al principio, apenas te notan, demasiado atrapados en su furia.""",
@@ -24041,6 +24837,9 @@ El aire se siente pesado, el amuleto brilla tenuemente en [His ] mano. [name] te
 	CHARRND_PRAY_OPT_ALLOW = "Permitir el ritual",
 	CHARRND_PRAY_OPT_FORBID = "Ritual de prohibición",
 	CHARRND_PRAY_REPLY_ALLOW = "Miras el amuleto, pero sigues caminando sin decir palabra. [name] deja escapar un suspiro tembloroso, apretando los dedos alrededor del talismán. Al día siguiente, encuentras una faja tejida, un símbolo local de la fortuna, dejada en tu puerta. [His] ojos buscan los tuyos con más frecuencia, reconfortados por tu silenciosa aceptación.",
+	CHARRND_PRAY_REPLY_BLESSED = """
+
+In the days that follow, [name] keeps up the ritual and no longer hides it. [His] whispered prayers grow steady and sure, and whatever [he] asks of [his] god, [he] seems certain an answer came. [His] faith runs deeper than before.""", # MISSING TRANSLATION
 	CHARRND_PRAY_REPLY_FORBID = "Alzas la voz y le ordenas a [name] que suelte el amuleto. Él se estremece, dejándolo caer, y lo aplastas con tu bota. Su rostro palidece, pero permanece en silencio. Después, evita tu mirada, y a altas horas de la noche, oyes susurros desde el cuartel: palabras ásperas, no de paz, sino de resentimiento.",
 	CHARRND_LETTER = """Encuentras a [name] encorvado en un rincón oscuro de la mansión, leyendo una hoja de papel hecha jirones. Al verte, la tira torpemente. Las palabras garabateadas revelan la desesperada súplica de ayuda de su familia. Te mira fijamente, preparado para el castigo, con los ojos abiertos por el miedo.
 
@@ -24058,6 +24857,8 @@ El aire huele ligeramente a polvo y pulimento, el jarrón roto brilla bajo la lu
 	CHARRND_BROKENVASE_REPLY_REPAIR = "Asientes y le dices a [name] que siga con su reparación. Exhala, poniéndose a trabajar con herramientas toscas y pegamento pegajoso, lo que le ha costado un día entero. El jarrón regresa, abultado y desigual, pero sonríe de alivio. Su gratitud crece y, después, cuida más de ti.",
 	CHARRND_BROKENVASE_REPLY_REPLACE = "Sacudes la cabeza y le ordenas a [name] que reemplace el jarrón, sin excusas. Palidece, sabiendo que el costo supera con creces sus posibilidades, y promete ahorrar. Sus pasos se vuelven pesados, con los hombros hundidos, y un resentimiento silencioso arde en su mirada.",
 	CHARRND_BROKENVASE_REPLY_PUNISH = "Agarras el brazo de [name] y lo regañas por su descuido, descontándole la paga para compensar la pérdida. Se estremece, dejando caer los fragmentos y asiente en silencio. Su trabajo continúa, pero te evita, con la mirada baja, aún con el escozor de tus palabras.",
+	CHARRND_BROKENVASE_REPLY_HANDY = """You nod and tell [name] to go ahead with [his] repair. [He] lays every shard out on a cloth and sets to work with quick, sure fingers. By the time [his] chores are due, the vase stands on its pedestal again, the seams so fine you have to hunt for them. [He] lingers near you afterwards, plainly pleased with [himself].""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_REPLY_INEPT = """You nod and tell [name] to go ahead with [his] repair. [He] spends the whole day on it with glue, twine and growing desperation, and by nightfall the vase is a lopsided heap that cracks anew at every touch. Nothing can be saved, and you have to send to town for a new one at your own expense. [name] apologizes again and again, grateful at least that you let [him] try.""", # MISSING TRANSLATION
 	CHARRND_HUNT_OFFERING = """You nearly kick it. A rabbit, dead and neatly placed on the stone just outside your door, killed cleanly with a bite to the neck. [name] is crouched a few feet away, watching you with bright, patient eyes and a tail that is moving in slow, expectant sweeps. [He] caught it before dawn. [He] has been waiting here since. In [his] mind, this is a significant gesture — proof of worth, tribute to someone important. [He] is waiting to find out if you understand that.""", # MISSING TRANSLATION
 	CHARRND_HUNT_OFFERING_OPT_ACCEPT = """Pick it up and tell [him] it's a good catch""", # MISSING TRANSLATION
 	CHARRND_HUNT_OFFERING_OPT_EXPLAIN = """Accept it, but explain that this is not how things work here""", # MISSING TRANSLATION

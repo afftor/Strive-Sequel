@@ -192,6 +192,27 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
+	#the menu, the body change and the payment live in custom_effects.genitalia_manipulation
+	genitalia_manipulation = {
+		new_syntax = true,
+		code = 'genitalia_manipulation',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		social_skill_stats = [],
+		reqs = [{code = 'sex', operant = 'neq', value = 'male'}],
+		targetreqs = [],
+		effects = [],
+		cost = {lust = 20},
+		charges = 1,
+		cooldown = 1,
+		icon = load("res://assets/images/sexicons/futa.png"),
+		tags = ['succubus', 'no_target'],
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		special = 'genitalia_manipulation',
+	},
 }
 var effects = {
 	turn_thrall = {

@@ -188,6 +188,9 @@ func calculate_dmg():
 		value *= (float(100 - reduction)/100.0)
 	if parent.get_tags().has('heal'):
 		reduction = parent.target.get_stat('resist_heal')
+		#light does not mend the undead
+		if damage_type == 'light' and parent.target.has_status('no_light_heal'):
+			reduction = 100
 		#it was critical error before - for reduction applies second time
 		if !template.nomod: #there may be errors due to damagestat templating
 			if reduction > 100:
@@ -223,17 +226,18 @@ func execute():
 		return text
 	if damagestat == 'damage_hp' and dmgf == 0: #drain, damage, damage no log, drain no log
 		var rval
+		var resist_cap = parent.template.get('resist_cap')
 		if is_drain > 0.0 && parent.get_tags().has('no_log'):
-			rval = parent.target.deal_damage(value, damage_type)
+			rval = parent.target.deal_damage(value, damage_type, resist_cap)
 			var rval2 = parent.caster.heal(rval * is_drain)
 		elif is_drain > 0.0:
-			rval = parent.target.deal_damage(value, damage_type)
+			rval = parent.target.deal_damage(value, damage_type, resist_cap)
 			var rval2 = parent.caster.heal(rval * is_drain)
 			text += tr("LOG_COMBAT_DRAIN_HEALTH") % [parent.caster.get_short_name(), rval, parent.target.get_short_name(), rval2]
 		elif parent.get_tags().has('no_log') && is_drain <= 0.0:
-			rval = parent.target.deal_damage(value, damage_type)
+			rval = parent.target.deal_damage(value, damage_type, resist_cap)
 		else:
-			rval = parent.target.deal_damage(value, damage_type)
+			rval = parent.target.deal_damage(value, damage_type, resist_cap)
 			text += tr("LOG_COMBAT_HIT_DAMAGE") % [parent.target.get_short_name(), rval, get_ability_type(), get_damage_type_name()]#, s_skill2.value[i]]
 		if (rval > 0
 				and !input_handler.globalsettings.no_damage_shake

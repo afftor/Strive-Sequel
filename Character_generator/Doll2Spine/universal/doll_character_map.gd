@@ -365,6 +365,8 @@ static func selections_for(stats, doll_id = "female"):
 		var pierced = str(PIERCINGS[stat].values.get(str(stats.get(stat, "")), ""))
 		if pierced != "":
 			result[PIERCINGS[stat].group] = pierced
+	# the art carries one set of freckles, so the stat is a yes or no
+	result["freckles"] = "f2" if bool(stats.get("freckles", false)) else ""
 
 	var gear = GEAR.selections_for(stats.get("equipment", {}), undress, doll_id)
 	for group_id in gear.keys():

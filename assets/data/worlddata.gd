@@ -341,7 +341,7 @@ var factiondata = {
 			tags = [],
 			slavenumber = [2,3],
 			traits = ['training_s_combat','training_s_working','training_s_sexservice'],
-			no_traits = ['chaste','frigid'],
+			no_traits = ['chaste'],
 			fame = [0, 2]
 			}
 		],
@@ -1868,6 +1868,25 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_LIRA_GROVE_LOCATION1"),
 			reqs = [{type = 'active_quest_stage', value = 'lira_quest_1', stage = 'grove'}],
 			args = [{code = 'start_event', data = 'lira_quest_1_search_grove', args = []}]
+		},
+	],
+	quest_grasha_settlement = [
+		{
+			text = tr("QUEST_GRASHA_SETTLEMENT_OPTION_KARGAN"),
+			reqs = [{type = 'active_quest_stage', value = 'grasha_amulet', stage = 'find_kargan'}],
+			args = [{code = 'start_event', data = 'grasha_thoth_settlement', args = []}]
+		},
+		{
+			text = tr("QUEST_GRASHA_SETTLEMENT_OPTION_RETURN"),
+			reqs = [{type = 'active_quest_stage', value = 'grasha_amulet', stage = 'return_book'}, {type = 'has_material', material = 'thoth_chronicle', operant = 'gte', value = 1}],
+			args = [{code = 'start_event', data = 'grasha_thoth_kargan_return', args = []}]
+		},
+	],
+	quest_grasha_ruins = [
+		{
+			text = tr("QUEST_GRASHA_RUINS_OPTION_SEARCH"),
+			reqs = [{type = 'active_quest_stage', value = 'grasha_amulet', stage = 'retrieve_chronicle'}],
+			args = [{code = 'start_event', data = 'grasha_thoth_ruins', args = []}]
 		},
 	],
 	quest_lira_road_location = [

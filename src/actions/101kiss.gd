@@ -59,7 +59,7 @@ start_kiss = {
 	from_behind_nice = {
 	conditions = {
 		link_facing = [false],
-		consent = [true],
+		consent = [true, 'hesitant'],
 	},
 	lines = [
 		"SEXACTION_KISS_FROM_BEHIND_NICE_1",
@@ -96,10 +96,20 @@ start_kiss = {
 		"SEXACTION_KISS_INITIATE_3",
 	]},
 
+	hesitant = {
+	conditions = {
+		link_facing = [true, null],
+		consent = ['hesitant'],
+	},
+	lines = [
+		"SEXACTION_KISS_INITIATE_1",
+		"SEXACTION_KISS_INITIATE_3",
+	]},
+
 	novice_nice = {
 	conditions = {
 		link_facing = [true, null],
-		consent = [true],
+		consent = [true, 'hesitant'],
 		giver_skill_level = ['novice'],
 	},
 	lines = [
@@ -120,7 +130,7 @@ start_kiss = {
 	skilled_nice = {
 	conditions = {
 		link_facing = [true, null],
-		consent = [true],
+		consent = [true, 'hesitant'],
 		giver_skill_level = ['skilled'],
 	},
 	lines = [
@@ -141,7 +151,7 @@ start_kiss = {
 	mastered_nice = {
 	conditions = {
 		link_facing = [true, null],
-		consent = [true],
+		consent = [true, 'hesitant'],
 		giver_skill_level = ['mastered'],
 	},
 	lines = [
@@ -254,6 +264,46 @@ react_kiss = {
 	lines = [
 		"SEXACTION_KISS_REACT_AROUSAL1_MEAN_1",
 		"SEXACTION_KISS_REACT_AROUSAL1_MEAN_2",
+	]},
+
+	arousal_4_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [4,5],
+	},
+	lines = [
+		"SEXACTION_KISS_REACT_AROUSAL4_HESITANT_1",
+		"SEXACTION_KISS_REACT_AROUSAL4_HESITANT_2",
+	]},
+
+	arousal_3_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [3],
+	},
+	lines = [
+		"SEXACTION_KISS_REACT_AROUSAL3_HESITANT_1",
+		"SEXACTION_KISS_REACT_AROUSAL3_HESITANT_2",
+	]},
+
+	arousal_2_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [2],
+	},
+	lines = [
+		"SEXACTION_KISS_REACT_AROUSAL2_HESITANT_1",
+		"SEXACTION_KISS_REACT_AROUSAL2_HESITANT_2",
+	]},
+
+	arousal_1_hesitant = {
+	conditions = {
+		consent = ['hesitant'],
+		arousal = [1],
+	},
+	lines = [
+		"SEXACTION_KISS_REACT_AROUSAL1_HESITANT_1",
+		"SEXACTION_KISS_REACT_AROUSAL1_HESITANT_2",
 	]},
 
 },

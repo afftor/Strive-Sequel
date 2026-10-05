@@ -145,7 +145,7 @@ func select_stat(stat, btn):
 				add_to_temp_dict(dict_to_add, bonus_type, rec.src_type, rec.src_value, rec.value)
 			for src_type in dict_to_add:
 				for src_value in dict_to_add[src_type]:
-					var tr_src = globals.get_tr_src(src_type, src_value)
+					var tr_src = globals.get_tr_src(src_type, src_value, person)
 					var src_cat = tr_src[0]
 					if !src_cat.empty():
 						src_cat = "{color=yellow|%s} - " % src_cat

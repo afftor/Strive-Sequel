@@ -307,6 +307,11 @@ func add_rule(who, rule, sexual):
 		#marked so the summary can grey these out once sexual work is on
 		if rule in NON_SEX:
 			button.set_meta('non_sex', true)
+			var vow_ban = who.get_vow_ban('service', rule)
+			if vow_ban != '':
+				button.disabled = true
+				button.pressed = false
+				text = vow_ban
 		set_rule_tooltip(button, who, text)
 		return
 	text += "\n" + tr("BROTHELMINCONSENT") % tr(variables.consent_dict[

@@ -979,6 +979,10 @@ func assign_worker(slot_code, char_id, as_tutor = false):
 		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_NOTWORKER")))
 		return false
 	ResourceScripts.game_res.sync_room_tasks()
+	var vow_ban = person.get_vow_ban('task', room.task_id)
+	if vow_ban != '':
+		input_handler.SystemMessage(vow_ban)
+		return false
 	var task = tasks()[room.task_id]
 	#Already at this work. Putting somebody where they already stand is not a refusal, and
 	#promoting a pupil to teacher comes through here with the room at its limit.
@@ -1044,6 +1048,10 @@ func assign_location_worker(task_id, char_id):
 	if ResourceScripts.game_res.is_service_task(task_id) \
 			and !ResourceScripts.game_world.service_takes_race(task.get('location', ''), person):
 		input_handler.SystemMessage(person.translate(tr("MANSIONVIEW_ERR_SERVICERACE")))
+		return false
+	var vow_ban = person.get_vow_ban('task', task_id)
+	if vow_ban != '':
+		input_handler.SystemMessage(vow_ban)
 		return false
 	person.assign_to_task(task_id)
 	refresh_people()

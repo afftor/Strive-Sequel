@@ -324,6 +324,16 @@ var statdata = {
 		tags = ['custom_setter'],
 		default_bonus = 'set',
 	},
+	freckles = {
+		code = 'freckles',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	muscular = {
+		code = 'muscular',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
 	facial_hair = {
 		code = 'facial_hair',
 		tags = [],
@@ -817,6 +827,34 @@ var statdata = {
 		direct = false,
 		tags = ['integer', 'custom_bonuses'],
 		show_info = {category = 'non_combat'}
+	},
+	trait_slots_physical = {
+		code = 'trait_slots_physical',
+		name = '',
+		descript = '',
+		direct = false,
+		tags = ['integer'],
+	},
+	trait_slots_mental = {
+		code = 'trait_slots_mental',
+		name = '',
+		descript = '',
+		direct = false,
+		tags = ['integer'],
+	},
+	trait_slots_magic = {
+		code = 'trait_slots_magic',
+		name = '',
+		descript = '',
+		direct = false,
+		tags = ['integer'],
+	},
+	trait_slots_religious = {
+		code = 'trait_slots_religious',
+		name = '',
+		descript = '',
+		direct = false,
+		tags = ['integer'],
 	},
 	trainer_loyalty_bonus = {
 		code = 'trainer_loyalty_bonus',

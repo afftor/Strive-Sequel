@@ -282,6 +282,9 @@ func fill_candidate(node, entry):
 	if portrait is TextureRect:
 		portrait.texture = character.get_icon_small()
 		input_handler.queue_portrait(character)
+	var portrait_frame = _find(node, "PortraitFrame")
+	if portrait_frame is BaseButton:
+		portrait_frame.connect("pressed", self, "show_in_mansion", [character])
 	_put_text(node, "Name", character.get_short_name())
 	var name_label = _find(node, "Name")
 	if name_label is Label:
@@ -318,6 +321,18 @@ func _on_portrait_taken(id):
 		var character = characters_pool.get_char_by_id(id)
 		if portrait is TextureRect and character != null:
 			portrait.texture = character.get_icon_small()
+
+
+func show_in_mansion(character):
+	if input_handler.hard_tutorial_active:
+		return
+	if gui_controller.current_screen != gui_controller.mansion:
+		yield(gui_controller.nav_panel.return_to_mansion(), "completed")
+	#the list was rebuilt on arrival; its cards get their rects only after the container sorts
+	yield(get_tree(), "idle_frame")
+	var list = input_handler.slave_list_node
+	if list != null and is_instance_valid(list) and list.has_method('unfold_to_person'):
+		list.unfold_to_person(character)
 
 
 func _on_hide_unfit_toggled(_pressed):

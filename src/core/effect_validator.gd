@@ -41,6 +41,13 @@ var atomic_types = {
 	"escape": true,
 	"remove_trait": true,
 	"add_trait": true,
+	"replace_trait": true,
+	"grow_trait": true,
+	"reveal_trait": true,
+	"set_faith": true,
+	"deepen_faith": true,
+	"deepen_own_faith": true,
+	"demote_faith": true,
 	"unlock_trait": true,
 	"add_sex_trait": true,
 	"unlock_sex_trait": true,
@@ -76,6 +83,10 @@ var req_codes = {
 	"global_profession_limit": true,
 	"class_unlocked": true,
 	"status_count": true,
+	"combat_company": true,
+	"alone_in_combat": true,
+	"fighting_with_master": true,
+	"fighting_without_master": true,
 }
 
 var known_stats = {}
@@ -126,6 +137,8 @@ func _validate_traits(issues):
 				_validate_effect_ref(trait.effects[idx], "%s.effects[%d]" % [context, idx], issues)
 		if trait.has("bonusstats"):
 			_validate_stat_map(trait.bonusstats, context + ".bonusstats", issues)
+		if trait.has("combat_skills"):
+			_validate_skill_list(trait.combat_skills, context + ".combat_skills", issues)
 		if trait.has("reqs"):
 			_validate_reqs(trait.reqs, context + ".reqs", issues)
 		if trait.has("conflicts"):
@@ -148,6 +161,9 @@ func _validate_sex_traits(issues):
 			_validate_resource_path(trait.icon, context + ".icon", "sex trait icon", issues)
 		if trait.has("reqs"):
 			_validate_reqs(trait.reqs, context + ".reqs", issues)
+		for other in trait.get("conflicts", []):
+			if !Traitdata.sex_traits.has(other):
+				_add_issue(issues, "%s.conflicts names unknown sex trait '%s'." % [context, str(other)])
 
 
 func _validate_effect_table(issues):
@@ -296,7 +312,7 @@ func _validate_atomic(atomic, context, issues):
 			_validate_effect_ref(atomic.get("value", null), context + ".value", issues)
 		"remove_effect", "remove_all_effects":
 			_validate_removable_effect_tag(atomic.get("value", null), context + ".value", issues)
-		"add_trait", "remove_trait", "unlock_trait":
+		"add_trait", "remove_trait", "unlock_trait", "replace_trait", "grow_trait", "reveal_trait", "set_faith", "deepen_faith":
 			_validate_trait_ref(atomic.get("trait", null), context + ".trait", issues)
 		"add_sex_trait", "unlock_sex_trait":
 			_validate_sex_trait_ref(atomic.get("trait", null), context + ".trait", issues)
@@ -586,7 +602,7 @@ func _validate_data_tree_for_traits(value, context, issues):
 			_validate_trait_ref(value.trait, context + ".trait", issues)
 		if _dict_string_in(value, "code", ["add_trait", "remove_trait", "unlock_trait"]):
 			_validate_trait_ref(value.get("trait", null), context + ".trait", issues)
-		if _dict_string_in(value, "type", ["add_trait", "remove_trait", "unlock_trait"]):
+		if _dict_string_in(value, "type", ["add_trait", "remove_trait", "unlock_trait", "replace_trait", "grow_trait", "reveal_trait", "set_faith", "deepen_faith"]):
 			_validate_trait_ref(value.get("trait", null), context + ".trait", issues)
 		if _dict_string_equals(value, "code", "sextrait"):
 			_validate_sex_trait_ref(value.get("value", null), context + ".value", issues)

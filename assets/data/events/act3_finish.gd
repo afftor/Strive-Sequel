@@ -172,6 +172,7 @@ var data = {
 
 				],
 				select_person = true,
+				person_reqs = [{code = "is_master", check = true, silent = true}],
 				challenge = "dexterity",
 				not_hide = true
 			},
@@ -1831,6 +1832,7 @@ var data = {
 				],
 				type = "next_dialogue",
 				select_person = true,
+				loses_person = true,
 				person_reqs = [
 					{
 						code = "is_at_location",
@@ -2005,6 +2007,7 @@ var data = {
 				],
 				type = "next_dialogue",
 				select_person = true,
+				loses_person = true,
 				person_reqs = [
 					{
 						code = "is_at_location",
@@ -2224,6 +2227,7 @@ var data = {
 				],
 				type = "next_dialogue",
 				select_person = true,
+				person_reqs = [{code = "is_master", check = true, silent = true}],
 				challenge = "persuasion",
 				not_hide = true
 			},
@@ -3121,6 +3125,7 @@ var data = {
 				],
 				type = "next_dialogue",
 				select_person = true,
+				person_reqs = [{code = "is_master", check = true, silent = true}],
 				challenge = "strength",
 				not_hide = true
 			},
@@ -3132,6 +3137,7 @@ var data = {
 				],
 				type = "next_dialogue",
 				select_person = true,
+				person_reqs = [{code = "is_master", check = true, silent = true}],
 				challenge = "dexterity",
 				not_hide = true
 			},
@@ -3143,6 +3149,7 @@ var data = {
 				],
 				type = "next_dialogue",
 				select_person = true,
+				person_reqs = [{code = "is_master", check = true, silent = true}],
 				challenge = "wisdom",
 				not_hide = true
 			},
@@ -3154,6 +3161,7 @@ var data = {
 				],
 				type = "next_dialogue",
 				select_person = true,
+				person_reqs = [{code = "is_master", check = true, silent = true}],
 				challenge = "persuasion",
 				not_hide = true
 			},

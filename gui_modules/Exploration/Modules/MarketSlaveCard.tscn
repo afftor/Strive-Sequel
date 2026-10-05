@@ -61,7 +61,7 @@ font_data = ExtResource( 2 )
 fallback/0 = ExtResource( 31 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 24
+size = 18
 font_data = ExtResource( 3 )
 fallback/0 = ExtResource( 31 )
 
@@ -432,8 +432,8 @@ mouse_filter = 2
 custom_fonts/font = SubResource( 8 )
 text = "1"
 anchor_right = 1.0
-margin_top = 28.0
-margin_bottom = 60.0
+margin_top = 59.0
+margin_bottom = 78.0
 align = 1
 valign = 1
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -493,10 +493,10 @@ expand = true
 [node name="icon" type="TextureRect" parent="Right/TraitsSection/Padding/Content/Traits/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
 expand = true
 
@@ -504,10 +504,10 @@ expand = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
 texture = ExtResource( 12 )
 expand = true

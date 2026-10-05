@@ -71,7 +71,8 @@ const SUBMENUS = [
 ]
 
 # Yes or no, so a box to tick.
-const CHECKBOXES = ["penis_virgin", "vaginal_virgin", "anal_virgin", "mouth_virgin"]
+const CHECKBOXES = ["penis_virgin", "vaginal_virgin", "anal_virgin", "mouth_virgin",
+	"freckles", "muscular"]
 
 # A colour belongs under the thing it paints, not in a heap of swatches at the
 # bottom of the screen.  Left is the colour, right is the option it follows; a

@@ -654,6 +654,24 @@ var data = {
 					},
 					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
 				]
+			},
+			{
+				code = "char_rnd_lost2",
+				text = "CHARRND_LOST_OPT_NOSE",
+				dialogue_argument = 4,
+				type = "next_dialogue",
+				reqs = [
+					{type = "active_character_checks", value = [{code = "trait", trait = "keen_nose", check = true}]}
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_lost_nose_exp"
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
+				]
 			}
 		]
 	},
@@ -687,6 +705,13 @@ var data = {
 
 				],
 				previous_dialogue_option = 3
+			},
+			{
+				text = "CHARRND_LOST_REPLY_NOSE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 4
 			}
 		],
 		options = [
@@ -815,6 +840,18 @@ var data = {
 
 				],
 				previous_dialogue_option = 3
+			},
+			#working through it may leave the illness for good
+			{
+				text = "CHARRND_UNWELL_REPLY_SICKLY",
+				reqs = [
+					{type = "random", value = 25},
+					{type = "active_character_checks", value = [{code = "trait_offer", trait = "sicky", mode = "force", check = true}]}
+				],
+				previous_dialogue_option = 3,
+				bonus_effects = [
+					{code = "affect_active_character", type = "add_trait", trait = "sicky", mode = "force"}
+				]
 			}
 		],
 		options = [
@@ -1288,11 +1325,34 @@ var data = {
 			"few_scene_characters_translate"
 		],
 		image = "dining_table",
+		#a Disciple or Adept of Freya keeps from meat: when only one of the two does, the meat is what they fight over
 		text = [
 			{
 				text = "CHARRND_HATED_FOOD",
 				reqs = [
-
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]}
+				]
+			},
+			{
+				text = "CHARRND_HATED_FOOD",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]}
+				]
+			},
+			{
+				text = "CHARRND_HATED_FOOD_MEAT1",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]}
+				]
+			},
+			{
+				text = "CHARRND_HATED_FOOD_MEAT2",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]}
 				]
 			}
 		],
@@ -1303,7 +1363,8 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
-
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]}
 				],
 				bonus_effects = [
 					{
@@ -1311,6 +1372,94 @@ var data = {
 						value = "var_hated_food_relation_up"
 					},
 					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
+				]
+			},
+			{
+				code = "char_rnd_hated_food2",
+				text = "CHARRND_HATED_FOOD_OPT_RECON",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]}
+				],
+				bonus_effects = [
+					{
+						code = "change_relationship_precise",
+						value = "var_hated_food_relation_up"
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
+				]
+			},
+			{
+				code = "char_rnd_hated_food2",
+				text = "CHARRND_HATED_FOOD_OPT_VOW",
+				dialogue_argument = 4,
+				type = "next_dialogue",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]}
+				],
+				bonus_effects = [
+					{
+						code = "change_relationship_precise",
+						value = "var_hated_food_relation_up"
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
+				]
+			},
+			{
+				code = "char_rnd_hated_food2",
+				text = "CHARRND_HATED_FOOD_OPT_VOW",
+				dialogue_argument = 5,
+				type = "next_dialogue",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]}
+				],
+				bonus_effects = [
+					{
+						code = "change_relationship_precise",
+						value = "var_hated_food_relation_up"
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "respect", value = 20},
+				]
+			},
+			#eating meat breaks the vow, and a broken vow costs a tier of the faith
+			{
+				code = "char_rnd_hated_food2",
+				text = "CHARRND_HATED_FOOD_OPT_FORCE1",
+				dialogue_argument = 6,
+				type = "next_dialogue",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]}
+				],
+				bonus_effects = [
+					{code = "affect_one_scene_character", char_num = 1, type = "demote_faith", god = "freya"},
+					{
+						code = "change_relationship_precise",
+						value = "var_hated_food_relation_down"
+					},
+					{code = "affect_one_scene_character", char_num = 1, type = "stat", stat = "affection", value = -20},
+				]
+			},
+			{
+				code = "char_rnd_hated_food2",
+				text = "CHARRND_HATED_FOOD_OPT_FORCE2",
+				dialogue_argument = 7,
+				type = "next_dialogue",
+				reqs = [
+					{type = "scene_character_checks", char_num = 1, value = [{code = "faith_tier", god = "freya", operant = "lt", value = 2}]},
+					{type = "scene_character_checks", char_num = 2, value = [{code = "faith_tier", god = "freya", operant = "gte", value = 2}]}
+				],
+				bonus_effects = [
+					{code = "affect_one_scene_character", char_num = 2, type = "demote_faith", god = "freya"},
+					{
+						code = "change_relationship_precise",
+						value = "var_hated_food_relation_down"
+					},
+					{code = "affect_one_scene_character", char_num = 2, type = "stat", stat = "affection", value = -20},
 				]
 			},
 			{
@@ -1383,6 +1532,34 @@ var data = {
 
 				],
 				previous_dialogue_option = 3
+			},
+			{
+				text = "CHARRND_HATED_FOOD_REPLY_VOW1",
+				reqs = [
+
+				],
+				previous_dialogue_option = 4
+			},
+			{
+				text = "CHARRND_HATED_FOOD_REPLY_VOW2",
+				reqs = [
+
+				],
+				previous_dialogue_option = 5
+			},
+			{
+				text = "CHARRND_HATED_FOOD_REPLY_FORCE1",
+				reqs = [
+
+				],
+				previous_dialogue_option = 6
+			},
+			{
+				text = "CHARRND_HATED_FOOD_REPLY_FORCE2",
+				reqs = [
+
+				],
+				previous_dialogue_option = 7
 			}
 		],
 		options = [
@@ -2275,6 +2452,18 @@ var data = {
 				],
 				previous_dialogue_option = 1
 			},
+			#sometimes the prayer is answered: the faith rises a step, when it still can
+			{
+				text = "CHARRND_PRAY_REPLY_BLESSED",
+				reqs = [
+					{type = "random", value = 20},
+					{type = "active_character_checks", value = [{code = "faith_can_deepen", check = true}]}
+				],
+				previous_dialogue_option = 1,
+				bonus_effects = [
+					{code = "affect_active_character", type = "deepen_own_faith"}
+				]
+			},
 			{
 				text = "CHARRND_PRAY_REPLY_FORBID",
 				reqs = [
@@ -2438,7 +2627,10 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
-
+					{type = "active_character_checks", value = [
+						{code = "trait", trait = "handy", check = false},
+						{code = "trait", trait = "inept", check = false}
+					]}
 				],
 				bonus_effects = [
 					{
@@ -2446,6 +2638,67 @@ var data = {
 						type = "set_availability",
 						value = false,
 						duration = "var_brokenvase_duration"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_brokenvase_loyalty"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_brokenvase_exp_repair"
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
+				]
+			},
+			#a Handy hand mends it like new and loses no day over it
+			{
+				code = "char_rnd_brokenvase2",
+				text = "CHARRND_BROKENVASE_OPT_REPAIR",
+				dialogue_argument = 4,
+				type = "next_dialogue",
+				reqs = [
+					{type = "active_character_checks", value = [{code = "trait", trait = "handy", check = true}]}
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "loyalty",
+						value = "var_brokenvase_loyalty"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = "stat",
+						stat = "base_exp",
+						value = "var_brokenvase_exp_handy"
+					},
+					{code = "real_affect_scene_characters", type = "stat", stat = "affection", value = 20},
+				]
+			},
+			#an Inept one loses the day and ruins the vase for good, so a new one has to be bought
+			{
+				code = "char_rnd_brokenvase2",
+				text = "CHARRND_BROKENVASE_OPT_REPAIR",
+				dialogue_argument = 5,
+				type = "next_dialogue",
+				reqs = [
+					{type = "active_character_checks", value = [{code = "trait", trait = "inept", check = true}]}
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = "set_availability",
+						value = false,
+						duration = "var_brokenvase_duration"
+					},
+					{
+						code = "money_change",
+						value = "var_brokenvase_money",
+						operant = "-"
 					},
 					{
 						code = "real_affect_scene_characters",
@@ -2551,6 +2804,20 @@ var data = {
 
 				],
 				previous_dialogue_option = 3
+			},
+			{
+				text = "CHARRND_BROKENVASE_REPLY_HANDY",
+				reqs = [
+
+				],
+				previous_dialogue_option = 4
+			},
+			{
+				text = "CHARRND_BROKENVASE_REPLY_INEPT",
+				reqs = [
+
+				],
+				previous_dialogue_option = 5
 			}
 		],
 		options = [

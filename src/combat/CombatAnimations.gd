@@ -12,6 +12,9 @@ const ClarityGlow = preload("res://src/combat/ClarityGlow.gd")
 const StormCloud = preload("res://src/combat/StormCloud.gd")
 const StatusAura = preload("res://src/combat/StatusAura.gd")
 const ArrowRainEffect = preload("res://src/combat/ArrowRainEffect.gd")
+const TendrilsEffect = preload("res://src/combat/TendrilsEffect.gd")
+const VoidSphereEffect = preload("res://src/combat/VoidSphereEffect.gd")
+const SpaceBend = preload("res://src/combat/SpaceBend.gd")
 const AnimRegistry = preload("res://src/combat/anim_registry.gd")
 
 #The tuning numbers below (cast tables, motion distances, hit reactions, per-skill beats)
@@ -169,6 +172,9 @@ var rain_effects = []
 #target card -> the ArrowRainEffect whose arrows run its damage up, taken by hp_update and miss
 var rain_hits = {}
 var rain_count = 0
+var dark_effects = []
+#target card -> the TendrilsEffect or VoidSphereEffect that shows its damage, taken by hp_update and miss
+var dark_hits = {}
 #fighter card -> the StatusAura its poison, bleeding, burning, sleep, stun and stealth are shown with
 var status_auras = {}
 #fighter card -> the StatusAura whose DoT tick waits for its damage number, taken by hp_update
@@ -213,6 +219,10 @@ func force_end():
 		if is_instance_valid(effect): effect.queue_free()
 	rain_effects.clear()
 	rain_hits.clear()
+	for effect in dark_effects.duplicate():
+		if is_instance_valid(effect): effect.queue_free()
+	dark_effects.clear()
+	dark_hits.clear()
 	animation_delays.clear()
 	animations_queue.clear()
 	hp_update_delays.clear()
@@ -2117,12 +2127,25 @@ func counter_wait(node):
 		if is_instance_valid(effect): res = max(res, effect.counter_left(node))
 	for effect in supernova_effects:
 		if is_instance_valid(effect): res = max(res, effect.counter_left(node))
+	for effect in dark_effects:
+		if is_instance_valid(effect): res = max(res, effect.counter_left(node))
 	return res
 
 func _on_rain_exited(effect):
 	rain_effects.erase(effect)
 	for key in rain_hits.keys():
 		if rain_hits[key] == effect: rain_hits.erase(key)
+
+#the battlefield's last node among `root`'s children: what is drawn after it is the interface
+func field_end(root):
+	var res = null
+	var combat = input_handler.combat_node
+	if combat == null or !is_instance_valid(combat) or combat.get('battlefieldpositions') == null: return null
+	for key in combat.battlefieldpositions:
+		var node = combat.battlefieldpositions[key]
+		while node != null and node.get_parent() != root: node = node.get_parent()
+		if node != null and (res == null or node.get_index() > res.get_index()): res = node
+	return res
 
 #the six places of a side, front rows top to bottom and then back rows, whether or not anyone stands there
 func side_slots(player_side):
@@ -2133,6 +2156,66 @@ func side_slots(player_side):
 		var key = pos if player_side else pos + 6
 		if combat.battlefieldpositions.has(key): res.append(combat.battlefieldpositions[key])
 	return res
+
+
+#THE DARK: BLACK TENDRILS AND VOID
+#From the «Тьма» mockup: «Из глубины» (TendrilsEffect.gd) and «Сфера» (VoidSphereEffect.gd); both bend space through
+#SpaceBend.gd and lift the caster in the abyss colours
+var TENDRILS_RELEASE = 0.5 #the cast lets go; the floor starts to ripple
+var TENDRILS_STOP = 0.12 #hit-stop at the first squeeze is half of it
+var TENDRILS_SHAKE = 14.0
+var TENDRILS_HOLD = 0.15 #the queue waits this long after a target's number shows
+var VOID_SPHERE_RELEASE = 0.7 #the sphere leaves the hand
+var VOID_SPHERE_FLIGHT = 0.67 #how long it flies to the middle of the targets
+var VOID_SPHERE_STOP = 0.12 #hit-stop when space breaks is 1.2 of it
+var VOID_SPHERE_SHAKE = 16.0
+var VOID_SPHERE_HOLD = 0.2
+
+func dark_tendrils(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node) or !caster_node.is_inside_tree(): return HIT_TAIL
+	var player_side = group_side(node)
+	if player_side == null: return HIT_TAIL
+	var layer = get_parent() if get_parent() != null else self
+	var effect = TendrilsEffect.new()
+	layer.add_child(effect)
+	effect.grip(self, caster_node, args.hit_nodes if args.has('hit_nodes') else [], side_slots(player_side), get_fx_kit(), {
+		root = layer, world = field_end(layer), release = TENDRILS_RELEASE, stop = TENDRILS_STOP, shake = TENDRILS_SHAKE,
+		hold = TENDRILS_HOLD, seed = 6100 + dark_effects.size() * 131})
+	track_dark(effect)
+	caster_lift(caster_node, TENDRILS_RELEASE, 'abyss')
+	return effect.lock_time()
+
+func void_sphere(node, args = null):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node) or !caster_node.is_inside_tree(): return HIT_TAIL
+	var player_side = group_side(node)
+	if player_side == null: return HIT_TAIL
+	var layer = get_parent() if get_parent() != null else self
+	var effect = VoidSphereEffect.new()
+	layer.add_child(effect)
+	effect.cast(self, caster_node, args.hit_nodes if args.has('hit_nodes') else [], side_slots(player_side), get_fx_kit(), {
+		root = layer, world = field_end(layer), release = VOID_SPHERE_RELEASE, flight = VOID_SPHERE_FLIGHT,
+		stop = VOID_SPHERE_STOP, shake = VOID_SPHERE_SHAKE, hold = VOID_SPHERE_HOLD})
+	track_dark(effect)
+	caster_lift(caster_node, VOID_SPHERE_RELEASE, 'abyss')
+	return effect.lock_time()
+
+func track_dark(effect):
+	dark_effects.append(effect)
+	effect.connect('tree_exited', self, '_on_dark_exited', [effect], CONNECT_ONESHOT)
+	for hit_node in effect.target_cards():
+		dark_hits[hit_node] = effect
+
+func _on_dark_exited(effect):
+	dark_effects.erase(effect)
+	for key in dark_hits.keys():
+		if dark_hits[key] == effect: dark_hits.erase(key)
+
+func clear_dark_hits():
+	dark_hits.clear()
 
 
 #THE WINDS OF HYPERBOREA
@@ -2240,6 +2323,8 @@ func warm_up_statuses():
 	status_warm_up = StatusAura.new()
 	add_child(status_warm_up)
 	status_warm_up.warm_up(get_fx_kit())
+	#the dark spells' bend, once per kit as well: its shader is the kit's
+	SpaceBend.new().warm_up(self, get_fx_kit())
 
 func hit_pending(node):
 	for time in animations_queue:
@@ -2470,6 +2555,11 @@ func miss(node, args = null):#conflicting usage of tween node!!
 		var effect = rain_hits[node]
 		rain_hits.erase(node)
 		if is_instance_valid(effect): effect.missed(node)
+	#the tentacles close on nothing; the void's ripple rocks the card but deals no blow
+	if dark_hits.has(node):
+		var effect = dark_hits[node]
+		dark_hits.erase(node)
+		if is_instance_valid(effect): effect.missed(node)
 	var tween = get_tween(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
@@ -2616,6 +2706,14 @@ func hp_update(node, args):
 			crit_display.erase(node)
 			frozen_hit(node, 0.0)
 			return effect.start_counter(node, args, crit)
+	if dark_hits.has(node):
+		var effect = dark_hits[node]
+		dark_hits.erase(node)
+		if is_instance_valid(effect) and args.get('damage_float', false) and ceil(args.get('damage', 0)) <= -1:
+			var crit = crit_display.has(node)
+			crit_display.erase(node)
+			frozen_hit(node, effect.hit_delay(node))
+			return effect.take_hit(node, args, crit)
 	if hyperborea_hits.has(node):
 		var effect = hyperborea_hits[node]
 		hyperborea_hits.erase(node)

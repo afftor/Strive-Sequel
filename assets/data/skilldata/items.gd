@@ -548,9 +548,9 @@ var skills = {
 		tags = [],
 		special = 'skill_grant',
 	},
-	trait_removal = {
+	trait_transfer = {
 		new_syntax = true,
-		code = 'trait_removal',
+		code = 'trait_transfer',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -562,7 +562,7 @@ var skills = {
 		cooldown = 0,
 		icon = null,
 		tags = [],
-		special = 'trait_removal',
+		special = 'trait_transfer',
 	},
 	pheromones = {
 		new_syntax = true,

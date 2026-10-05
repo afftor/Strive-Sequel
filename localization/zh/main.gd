@@ -68,7 +68,7 @@ var TranslationDict = {
 %s
 
 一个新的空 mods.ini 文件已创建。请从“模组”菜单中重新启用兼容的模组。""",
-	SAVEMODDATASTRIPPED = """This save was made with mods that are not loaded now. What they had added was taken out of it so it could be opened:""", # MISSING TRANSLATION
+	SAVEMODDATASTRIPPED = """此存档是在使用了当前未加载的模组时创建的。为了能够正常读取，这些模组所添加的内容已被移除：""",
 	MENUCREDITSNAME = """Credits""",
 	MENUCREDITSDESC = """Game design, writing, programming: Maverik 
 
@@ -170,7 +170,7 @@ https://freesound.org/people/pfranzen/sounds/192072/""",
 	OPTAUDIOMASTERSOUND = """主音量""",
 	OPTAUDIOMUSIC = """音乐""",
 	OPTAUDIOSOUND = """音效""",
-	OPTAUDIOAMBIENT = """Ambient""", # MISSING TRANSLATION
+	OPTAUDIOAMBIENT = """环境音效""",
 	OPTAUDIOMUTE = """静音""",
 	OPTGRAPHICFULLSCREEN = """全屏""",
 	OPTGRAPHICFACTOR = """以文字显示潜力等级""",
@@ -349,6 +349,7 @@ https://freesound.org/people/pfranzen/sounds/192072/""",
 	CHARNAMEZEPHYRA = """泽菲拉""",
 	CHARNAMEAIRE = """爱蕊""",
 	CHARNAMEANASTASIA = """安娜斯塔西娅""",
+	CHARNAMEGRASHA = """Grasha""", # MISSING TRANSLATION
 	CHARNAMEKURDAN = """库黛""",
 	CHARNAMEMAE = """梅""",
 	CHARNAMELILIA = """莉莉娅""",
@@ -773,21 +774,21 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	LABELDESTINATION = """目的地""",
 	LABELSEXSKILLS = """性技巧""",
 	SLAVE_MARKET_SEX_SKILLS = """性技巧""",
-	SLAVE_MARKET_BUY_FOR = """Buy: %s""", # MISSING TRANSLATION
-	SLAVE_MARKET_SELL_FOR = """Sell: %s""", # MISSING TRANSLATION
-	SLAVE_MARKET_BUY_CONFIRM = """Buy [name] for %s gold?""", # MISSING TRANSLATION
-	SLAVE_MARKET_HIRE_FOR = """Hire: %s""", # MISSING TRANSLATION
-	SLAVE_MARKET_HIRE_CONFIRM = """Hire [name] for %s gold?""", # MISSING TRANSLATION
-	SLAVE_MARKET_EMPTY_HIRE = """Nobody is for sale here right now.""", # MISSING TRANSLATION
-	SLAVE_MARKET_EMPTY_SELL = """You have nobody the market would buy.""", # MISSING TRANSLATION
-	SLAVE_MARKET_COL_NAME = """Name""", # MISSING TRANSLATION
-	SLAVE_MARKET_COL_RACE = """Race""", # MISSING TRANSLATION
-	SLAVE_MARKET_COL_PRICE = """Price""", # MISSING TRANSLATION
-	SLAVE_MARKET_COL_TYPE = """Type""", # MISSING TRANSLATION
-	SLAVE_MARKET_RELINQUISH = """Relinquish""", # MISSING TRANSLATION
-	SLAVE_MARKET_RELINQUISH_FOR = """Relinquish: %s""", # MISSING TRANSLATION
-	SLAVE_MARKET_NO_CLASSES = """No classes yet""", # MISSING TRANSLATION
-	SLAVE_MARKET_NO_TRAITS = """No traits""", # MISSING TRANSLATION
+	SLAVE_MARKET_BUY_FOR = """购买：%s""",
+	SLAVE_MARKET_SELL_FOR = """出售：%s""",
+	SLAVE_MARKET_BUY_CONFIRM = """是否花费 %s 金币购买 [name]？""",
+	SLAVE_MARKET_HIRE_FOR = """雇佣：%s""",
+	SLAVE_MARKET_HIRE_CONFIRM = """是否花费 %s 金币雇佣 [name]？""",
+	SLAVE_MARKET_EMPTY_HIRE = """目前此处没有可供出售的人员。""",
+	SLAVE_MARKET_EMPTY_SELL = """你手头没有市场愿意收购的人选。""",
+	SLAVE_MARKET_COL_NAME = """名字""",
+	SLAVE_MARKET_COL_RACE = """种族""",
+	SLAVE_MARKET_COL_PRICE = """价格""",
+	SLAVE_MARKET_COL_TYPE = """类型""",
+	SLAVE_MARKET_RELINQUISH = """放弃""",
+	SLAVE_MARKET_RELINQUISH_FOR = """放弃：%s""",
+	SLAVE_MARKET_NO_CLASSES = """暂无职业""",
+	SLAVE_MARKET_NO_TRAITS = """无特质""",
 	SLAVE_TOOLTIP_SEX_SKILLS = """性技巧""",
 	MANSION_SEX_SKILLS = """性技巧""",
 	STARTINGADJ = """初始""",
@@ -806,6 +807,7 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	DEMAND = """需求""",
 	DEMANDDESCRIPT = """角色的需求取决于其自我价值。若无法满足，将降低其工作效率与表现。""",
 	DEMANDSLAVEEXEMPT = """奴隶即便需求未满足也不会产生惩罚。""",
+	DEMANDBROKENEXEMPT = """Broken characters ask for nothing.""", # MISSING TRANSLATION
 	DEMANDREQNONE = """无""",
 	DEMANDREQ = """要求：声望达 %d，或身价高于 %d""",
 	DEMANDLODGING = """要求拥有独立房间，不再满足于集体大通铺。""",
@@ -844,9 +846,9 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	MATERIALCATEGORYCOMPONENT = """消耗品""",
 	TOOLTIPHIDDENRESOURCE = """未知资源。
 推进主线剧情后解锁。""",
-	MAPRACES = """Races""", # MISSING TRANSLATION
-	MAPRACEUNKNOWN = """Unknown kind.
-Take one here to learn what it is.""", # MISSING TRANSLATION
+	MAPRACES = """种族""",
+	MAPRACEUNKNOWN = """未知种类。
+带一名来到此处即可了解其详情。""",
 MATERIALMEAT = """肉类""",
 	MATERIALMEATDESCRIPT = """营养丰富的食材。通过狩猎获得。""",
 	MATERIALFISH = """鱼类""",
@@ -1138,6 +1140,21 @@ MATERIALMEATSOUP = """肉汤""",
 	ITEMSTRONG_PHEROMONESDESCRIPT = """一种在兽人族中很流行的药物。吸入后会产生强烈的欣快感和性欲，使他们接受平时因为害羞而不敢考虑的各种待遇。对非兽人种族无效，且在受影响的社区中常被禁止。""",
 	ITEMSOUL_STONE = """灵魂石""",
 	ITEMSOUL_STONEDESCRIPT = """允许移除一个角色的先天特质。""",
+	SOULSTONE_LEAD = """Draw a magic trait out of one character and bind it to another.""", # MISSING TRANSLATION
+	SOULSTONE_FROM = """Draw from""", # MISSING TRANSLATION
+	SOULSTONE_TO = """Bind to""", # MISSING TRANSLATION
+	SOULSTONE_SELECTED = """Selected""", # MISSING TRANSLATION
+	SOULSTONE_NOTHING = """[name] has no magic trait to draw out.""", # MISSING TRANSLATION
+	SOULSTONE_NOBODY = """Nobody else is at the mansion.""", # MISSING TRANSLATION
+	SOULSTONE_FREE_SLOT = """Free slot""", # MISSING TRANSLATION
+	SOULSTONE_FIT_FREE = """Free slot""", # MISSING TRANSLATION
+	SOULSTONE_FIT_REPLACES = """Replaces {trait}""", # MISSING TRANSLATION
+	SOULSTONE_FIT_OWNED = """Already has it""", # MISSING TRANSLATION
+	SOULSTONE_FIT_NO_ROOM = """No room""", # MISSING TRANSLATION
+	SOULSTONE_TRANSFER = """Transfer""", # MISSING TRANSLATION
+	SOULSTONE_COST = """Uses 1 Soul Stone · {count} left""", # MISSING TRANSLATION
+	SOULSTONE_NO_STONES = """No Soul Stones left""", # MISSING TRANSLATION
+	SOULSTONE_LOG = """{donor}'s {trait} was bound to {recipient}.""", # MISSING TRANSLATION
 	ITEMLACTATION_POT = """哺乳药剂""",
 	ITEMLACTATION_POTDESCRIPT = """使饮用者开始哺乳，或者如果已经处于哺乳状态则将其逆转。""",
 	ITEMPHYSICS_POT = """食人魔力量药剂""",
@@ -1261,6 +1278,8 @@ MATERIALMEATSOUP = """肉汤""",
 	ITEMSKILLBOOK_ABYSS_GAZEDESCRIPT = """教授技能：深渊凝视。需求：心灵专精 - 6，暗系专精 - 4，识字能力。""",
 	ITEMSKILLBOOK_DARK_FLAME = """魔法书：暗影之焰""",
 	ITEMSKILLBOOK_DARK_FLAMEDESCRIPT = """教授技能：暗影之焰。需求：火系专精 - 5，暗系专精 - 3，识字能力。""",
+	ITEMSKILLBOOK_FORBIDDEN_SUN = """Magic Tome: Forbidden Sun""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_FORBIDDEN_SUNDESCRIPT = """Teaches Skill: Forbidden Sun. Requirements: Fire Mastery - 10, Proficiency in Literacy.""", # MISSING TRANSLATION
 	ITEMSKILLBOOK_HOLY_LANCE = """魔法书：圣枪""",
 	ITEMSKILLBOOK_HOLY_LANCEDESCRIPT = """教授技能：圣枪。需求：战争 - 4，光系专精 - 3，识字能力。""",
 	GEARSWORD = """剑类""",
@@ -1320,6 +1339,7 @@ MATERIALMEATSOUP = """肉汤""",
 	CHARCREATE_TOOLTIP_REROLL_NAME = """重置名称""",
 	CHARCREATE_TOOLTIP_RANDOM_RACE = """随机种族""",
 	CHARCREATE_TOOLTIP_REROLL_APPEARANCE = """重置外观""",
+	CHARCREATE_RACE_CHANGE_APPEARANCE_WARNING = """You have changed this character's appearance. The new race keeps the details, colors and height it allows; everything else will be rerolled. Change race?""", # MISSING TRANSLATION
 	TOOLTIPSKIPPROLOGUE = """跳过序章任务并开始第一个故事篇章。贷款任务将被禁用。""",
 	TOOLTIPSKILLPOINTS = """技能点数通过战斗获得，用于购买新的战斗技能。""",
 	TOOLTIPSUCCUBUS = """[魅魔] 通过 {color=green|诱惑} 他人获得力量。每个被俘虏的奴隶都会爱上[魅魔]并使[他]力量增长。解锁点数通过诱惑更多角色获得。""",
@@ -1480,6 +1500,36 @@ MATERIALMEATSOUP = """肉汤""",
 	NOFITTINGITEMS = """你没有合适的物品""",
 	TRAITUNKNOWN = """未知""",
 	TRAITUNKNOWNTOOLTIP = """你还不了解此特质。深入了解 [name] 以获知 [他] 的偏好。""",
+	TRAITHIDDENTOOLTIP = """There is something about [name] you have yet to find out.""", # MISSING TRANSLATION
+	TRAIT_ACQUIRED_TITLE = """Trait Acquired""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_PHYSICAL = """Physical""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_MENTAL = """Mental""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_MAGIC = """Magic""", # MISSING TRANSLATION
+	TRAITCATEGORYNAME_RELIGIOUS = """Religious""", # MISSING TRANSLATION
+	TRAITSLOT_EMPTY = """Empty slot""", # MISSING TRANSLATION
+	TRAITSLOT_EMPTYDESCRIPT = """A new trait of this kind takes this slot without replacing anything.""", # MISSING TRANSLATION
+	TRAITTAG_PERMANENT = """Permanent""", # MISSING TRANSLATION
+	TRAITTAG_POSITIVE = """Positive""", # MISSING TRANSLATION
+	TRAITTAG_NEGATIVE = """Negative""", # MISSING TRANSLATION
+	STARTTRAITS_TITLE = """Starting Traits""", # MISSING TRANSLATION
+	STARTTRAITS_RULES = """A character has one Physical, one Mental and one Magic slot. Unnatural Constitution adds a second Physical slot.
+The first {color=green|positive} trait is free. {color=red|Negative} traits can always be taken, and each one lets you take one more {color=green|positive} trait.""", # MISSING TRANSLATION
+	STARTTRAITS_SLOTS = """{n} slots""", # MISSING TRANSLATION
+	STARTTRAITS_NEG_RULE = """Lets you take one more positive trait.""", # MISSING TRANSLATION
+	STARTTRAITS_LOCKED = """Take another negative trait to unlock this one.""", # MISSING TRANSLATION
+	STARTTRAITS_UNPAID = """Too many positive traits: take another negative trait or remove this one.""", # MISSING TRANSLATION
+	STARTTRAITS_REMOVE_HINT = """Click again to remove.""", # MISSING TRANSLATION
+	STARTTRAITS_CLEAR = """Clear""", # MISSING TRANSLATION
+	TRAITREPLACE_TITLE = """{name} can gain a new trait""", # MISSING TRANSLATION
+	TRAITREPLACE_LEAD_ONE = """[His] {category} slot is full. Pick a trait to replace, or keep the current one.""", # MISSING TRANSLATION
+	TRAITREPLACE_LEAD_MANY = """[His] {category} slots are full. Pick a trait to replace, or keep the current ones.""", # MISSING TRANSLATION
+	TRAITREPLACE_NEW = """New""", # MISSING TRANSLATION
+	TRAITREPLACE_REPLACE = """Replace""", # MISSING TRANSLATION
+	TRAITREPLACE_KEEP_ONE = """Keep current trait""", # MISSING TRANSLATION
+	TRAITREPLACE_KEEP_MANY = """Keep current traits""", # MISSING TRANSLATION
+	TRAITREPLACE_LOCK_PERMANENT = """Can't be replaced: permanent""", # MISSING TRANSLATION
+	TRAITREPLACE_LOCK_INNATE = """Can't be replaced: from class or race""", # MISSING TRANSLATION
+	TRAITREPLACE_LOCK_STATUS = """Can't be replaced: a slave's status""", # MISSING TRANSLATION
 	NOTALLTRAITSLEARNED = """你还不了解 [name] 的所有偏好。在能够指定主动特质前请先了解它们。""",
 	SYSNOFOOD = """工作取消：无食物""",
 	SYSNOWORKERENERGY = """工作取消：无能量""",
@@ -1504,6 +1554,7 @@ MATERIALMEATSOUP = """肉汤""",
 	TOTALWORKERS = """总工人""",
 	TUTORIAL = """教程""",
 	TRAITS = """特质""",
+	STATUS_LABEL = """Status""", # MISSING TRANSLATION
 	TRAIT = """特质""",
 	EFFECT = """效果""",
 	CLASSINFO = """职业详情""",
@@ -1580,6 +1631,8 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLATTACK = """攻击""",
 	SKILLATTACKDESCRIPT = """用装备的武器攻击目标。""",
 	SKILLRANGED_ATTACK = """远程攻击""",
+	SKILLDO_NOTHING = """Do Nothing""", # MISSING TRANSLATION
+	SKILLDO_NOTHINGDESCRIPT = """Skips the turn.""", # MISSING TRANSLATION
 	SKILLCOMMAND = """指挥""",
 	SKILLCOMMANDDESCRIPT = """使目标的攻击力和魔法攻击力提升 50%，持续 3 回合。""",
 	SKILLRESTORATION = """恢复""",
@@ -1814,8 +1867,6 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLHASTEDESCRIPT = """使队友的速度增加 25，持续 4 回合。""",
 	SKILLCHAIN_LIGHTNING = """连锁闪电""",
 	SKILLCHAIN_LIGHTNINGDESCRIPT = """对 4-6 个目标造成 80% 的魔法 {color=yellow|风系} 伤害。""",
-	SKILLMILLENNIUM_STORM = """Storm of the Millennium""", # MISSING TRANSLATION
-	SKILLMILLENNIUM_STORMDESCRIPT = """Deals 110% of MATK as {color=yellow|Air} damage to all enemies.""", # MISSING TRANSLATION
 	SKILLAIR_SHIELD = """空气护盾""",
 	SKILLAIR_SHIELDDESCRIPT = """使目标队友获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。拥有风系精通时增加目标数量。""",
 	SKILLAIR_SHIELDDESCRIPT_1 = """使目标队友列获得 40 点土抗性和 10 点远程伤害抗性，持续 5 回合。驱散陷阱状态。拥有风系精通时增加目标数量。""",
@@ -1873,8 +1924,8 @@ MATERIALMEATSOUP = """肉汤""",
 	SKILLPOISON_VAPORSDESCRIPT = """对敌方所在列造成 25% 的魔法 {color=yellow|水系} 伤害。施加“中毒”效果，持续 3 回合。""",
 	SKILLMETEOR = """陨石术""",
 	SKILLMETEORDESCRIPT = """造成 200% 的魔法 {color=yellow|火系} 伤害，并对目标施加“灼烧”效果，持续 4 回合。""",
-	SKILLSUPERNOVA = """Supernova""", # MISSING TRANSLATION
-	SKILLSUPERNOVADESCRIPT = """Deals 200% of MATK as {color=yellow|Fire} damage to all enemies.""", # MISSING TRANSLATION
+	SKILLFORBIDDEN_SUN = """Forbidden Sun""", # MISSING TRANSLATION
+	SKILLFORBIDDEN_SUNDESCRIPT = """Deals 150% of MATK as {color=yellow|Fire} damage to all enemies, 75% more against burning targets. Fire Resist above 50 has no effect against this spell. Inflicts Blind for 1 turn.""", # MISSING TRANSLATION
 	SKILLABYSS_GAZE = """深渊凝视""",
 	SKILLABYSS_GAZEDESCRIPT = """对所有敌人造成 125% 的魔法 {color=yellow|心灵} 伤害。眩晕 2 回合。""",
 	SKILLDARK_FLAME = """暗黑烈焰""",
@@ -2065,6 +2116,7 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
     SKILLDOUBLE_BITTED_AXEDESCRIPT = """攻击目标两次，每次命中造成60%的物理伤害。施加流血。""",
     SKILLPRISMATIC_BEAM = """棱光折射激流""", 
     SKILLPRISMATIC_BEAMDESCRIPT = """对单一目标造成130%的魔法光属性伤害。施加致盲。""",
+	SKILLROCK_SLIDE = """Rock Slide""", # MISSING TRANSLATION
     SKILROCK_SLIDE = """山崩落石""", 
     SKILLROCK_SLIDEDESCRIPT = """向敌人投掷飞石，有几率造成90%的魔法{color=yellow|土属性}伤害。有几率使被击中的目标眩晕。""",
 	SKILLCOAL_PEBBLE_FIST = """飞石拳：弑巨者""",
@@ -2200,51 +2252,46 @@ SKILLARCANE_MASTERYDESCRIPT = """激活后，下一次施放的法术变为瞬�
 	SKILLCOAL_MOAB_BOOMDESCRIPT = """必中。移除【背水一战】，随后对战场上的所有单位造成毁灭性的{color=yellow|真实}伤害。""",
 	SKILLCOAL_MOAB_BOOM_ALLIES = """蘑菇云""",
 	SKILLCOAL_MOAB_BOOM_ALLIESDESCRIPT = """爆炸波及到了己方队伍。""",
-	SKILLJD_GREATER_FLAME_SPHERE = """Greater Flame Sphere""", # MISSING TRANSLATION
-	SKILLJD_GREATER_FLAME_SPHEREDESCRIPT = """A sphere of fire hangs over the field from the first moment. Deals 30% of each enemy's maximum health as {color=yellow|Fire} damage and sets them Burning for 3 turns.""", # MISSING TRANSLATION
-	SKILLJD_ABYSS = """Abyss""", # MISSING TRANSLATION
-	SKILLJD_ABYSSDESCRIPT = """Deals 160% of MATK as {color=yellow|Dark} damage to all enemies. Each one hit is struck Silent, Blind or Disarmed.
-Any Burning on target is transform into Dark Flame for 4 turns.""", # MISSING TRANSLATION
-	SKILLJD_SOIL_LIQUEFACTION = """Soil Liquefaction""", # MISSING TRANSLATION
-	SKILLJD_SOIL_LIQUEFACTIONDESCRIPT = """The ground turns to slurry. Deals 75% of MATK as {color=yellow|Earth} damage to every enemy standing on it, leaving them Wet and caught in {color=aqua|Quicksand} for 2 turns. Flying enemies are missed entirely.""", # MISSING TRANSLATION
-	SKILLJD_WINTERFALL = """Winterfall""", # MISSING TRANSLATION
-	SKILLJD_WINTERFALLDESCRIPT = """Deals 150% of MATK as {color=yellow|Water} damage to all enemies. Wet targets take 50% more, Frozen ones 60% more.
-A dry target is left Wet; a Wet one is frozen solid instead.""", # MISSING TRANSLATION
-	SKILLJD_PERFECT_STORM = """Perfect Storm""", # MISSING TRANSLATION
-	SKILLJD_PERFECT_STORMDESCRIPT = """Deals 120% of MATK as {color=yellow|Air} damage to all enemies and Shocks them for 2 turns. The storm does not disperse: for 3 turns it hangs over them as {color=aqua|Lingering Storm}.""", # MISSING TRANSLATION
-	SKILLJD_CATCH_BREATH = """Tch..! This body ain't used to this level of spellcasting just yet...""", # MISSING TRANSLATION
-	SKILLJD_CATCH_BREATHDESCRIPT = """The demon lets Jean's body catch up with what it is being asked to do, restoring 12% of her maximum health.""", # MISSING TRANSLATION
-	SKILLJD_VOLCANIC_ERUPTION = """Volcanic Eruption""", # MISSING TRANSLATION
-	SKILLJD_VOLCANIC_ERUPTIONDESCRIPT = """Fire bolt after fire bolt at whoever is nearest to hand: 5 to 6 hits of 75% MATK {color=yellow|Fire} damage on random enemies, each leaving Shatter and Burn for 3 turns.""", # MISSING TRANSLATION
-	SKILLJD_DEMONIC_STRUGGLE = """Demonic Struggle""", # MISSING TRANSLATION
-	SKILLJD_DEMONIC_STRUGGLEDESCRIPT = """With her voice taken, the demon wrings the body itself for 250% ATK damage and a Stun. Cannot be Silenced. Costs 8% of her maximum health.""", # MISSING TRANSLATION
-	SKILLJD_WARD_CAST_DIAMOND = """Warding Field: Diamond Shell""", # MISSING TRANSLATION
-	SKILLJD_WARD_CAST_DIAMONDDESCRIPT = """Hardens the air around her into a shell against steel.""", # MISSING TRANSLATION
-	SKILLJD_WARD_CAST_PLASMA = """Warding Field: Plasma Shell""", # MISSING TRANSLATION
-	SKILLJD_WARD_CAST_PLASMADESCRIPT = """Hardens the air around her into a shell against magic.""", # MISSING TRANSLATION
-	SKILLJD_ENGULFING_DREAM = """Engulfing Dream""", # MISSING TRANSLATION
-	SKILLJD_ENGULFING_DREAMDESCRIPT = """Drags one waking enemy 2 layers deep into {color=aqua|Deep Sleep}. Cannot be used on an enemy already {color=aqua|Comatose}.
-Against a lone opponent it can only manage ordinary Sleep.""", # MISSING TRANSLATION
-	SKILLJD_ONEIRIC_FEEDING = """Oneiric Feeding""", # MISSING TRANSLATION
-	SKILLJD_ONEIRIC_FEEDINGDESCRIPT = """Feeds on a sleeper's dream: Inflict 2 more layers of {color=aqua|Deep Sleep} on them, Demon gain 1 stack of {color=aqua|Empowerment}. Can only be used on an enemy in {color=aqua|Deep Sleep}.""", # MISSING TRANSLATION
-	SKILLJD_SAPID_UNREALITY = """Sapid Unreality""", # MISSING TRANSLATION
-	SKILLJD_SAPID_UNREALITYDESCRIPT = """Needs 5 stacks of {color=aqua|Empowerment} and an enemy already in {color=aqua|Deep Sleep}, whom it pushes 3 layers deeper.
-The dream spills over: dealing 110% MATK {color=yellow|Mind} damage to every enemy who is still awake.""", # MISSING TRANSLATION
-	SKILLJD_SAPID_WAVE = """Sapid Unreality""", # MISSING TRANSLATION
-	SKILLJD_SAPID_WAVEDESCRIPT = """The nightmare spills out over everyone still awake.""", # MISSING TRANSLATION
-	SKILLJD_ETERNAL_SLUMBER = """Eternal Slumber""", # MISSING TRANSLATION
-	SKILLJD_ETERNAL_SLUMBERDESCRIPT = """Once no one is left awake, the dream closes over the whole party. Every {color=aqua|Comatose} enemy dies where they lie.""", # MISSING TRANSLATION
-	SKILLJD_SHOW_BODY = """I'll Show You What This Body can Do!!""", # MISSING TRANSLATION
-	SKILLJD_SHOW_BODYDESCRIPT = """Deals 190% ATK damage at range and inflicts Shatter for 3 turns, with a 50% chance to Stun. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
-	SKILLJD_VISION_INDULGENCE = """Vision of Indulgence""", # MISSING TRANSLATION
-	SKILLJD_VISION_INDULGENCEDESCRIPT = """Deals 120% MATK {color=yellow|Mind} damage and scrambles the target's mind with the thing it wants most.
-Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
-	SKILLJD_VISION_SLEEP = """Vision of Indulgence""", # MISSING TRANSLATION
-	SKILLJD_VISION_SLEEPDESCRIPT = """The vision takes hold.""", # MISSING TRANSLATION
-	SKILLJD_MASS_ILLUSION = """Mass Illusion Mayhem""", # MISSING TRANSLATION
-	SKILLJD_MASS_ILLUSIONDESCRIPT = """Copies of the demon come from everywhere at once to strike any non-sleeping enemies 90% ATK damage each, and the user slips into {color=aqua|In The Shadows} behind them. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
-	SKILLJD_FAUSTIAN_DELIVERANCE = """Faustian Deliverance""", # MISSING TRANSLATION
-	SKILLJD_FAUSTIAN_DELIVERANCEDESCRIPT = """A beam of ruin down one column for 170% MATK {color=yellow|Dark} damage, leaving the Cursed behind it. Passes over sleepers. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
+	SKILLJD_GREATER_FLAME_SPHERE = """巨型烈焰球""",
+	SKILLJD_GREATER_FLAME_SPHEREDESCRIPT = """战斗开局即有一颗烈焰法球悬挂于战场之上。对所有敌人造成等同于其最大生命值 30% 的{color=yellow|火焰}伤害，并使其陷入{color=yellow|灼烧}状态，持续 3 回合。""",
+	SKILLJD_ABYSS = """深渊""",
+	SKILLJD_ABYSSDESCRIPT = """对所有敌人造成 160% 魔法攻击力的{color=yellow|暗属性}伤害。命中时会使每个目标陷入沉默、失明或缴械之一。目标身上的任何灼烧效果都会转化为持续 4 回合的暗焰。""",
+	SKILLJD_SOIL_LIQUEFACTION = """泥土液化""",
+	SKILLJD_SOIL_LIQUEFACTIONDESCRIPT = """地面化为泥浆。对站立于地面上的所有敌人造成 75% 魔法攻击力的{color=yellow|地属性}伤害，并使其陷入湿润与{color=aqua|流沙}状态，持续 2 回合。飞行单位可完全免疫此技能。""",
+	SKILLJD_WINTERFALL = """凛冬降临""",
+	SKILLJD_WINTERFALLDESCRIPT = """对所有敌人造成 150% 魔法攻击力的{color=yellow|水属性}伤害。处于湿润状态的目标受到的伤害增加 50%，处于冻结状态的目标受到的伤害增加 60%。未附带湿润的目标将被附加湿润；若目标已处于湿润状态，则会被直接冻结。""",
+	SKILLJD_PERFECT_STORM = """绝对风暴""",
+	SKILLJD_PERFECT_STORMDESCRIPT = """对所有敌人造成 120% 魔法攻击力的{color=yellow|风属性}伤害，并使其触电 2 回合。风暴不会消散：将在敌方头顶盘旋 3 回合，转化为{color=aqua|余威风暴}。""",
+	SKILLJD_CATCH_BREATH = """切……！这具身体还没习惯这种级别的施法……""",
+	SKILLJD_CATCH_BREATHDESCRIPT = """恶魔让简的身体稍微喘息以适应施法负担，恢复其最大生命值的 12%。""",
+	SKILLJD_VOLCANIC_ERUPTION = """火山喷发""",
+	SKILLJD_VOLCANIC_ERUPTIONDESCRIPT = """向最近的敌人接连发射火矢：随机对敌人造成 5 至 6 次 75% 魔法攻击力的{color=yellow|火焰}伤害，每次命中都会施加持续 3 回合的破甲与灼烧。""",
+	SKILLJD_DEMONIC_STRUGGLE = """恶魔挣扎""",
+	SKILLJD_DEMONIC_STRUGGLEDESCRIPT = """在无法发声的情况下，恶魔强行驱使身体造成 250% 物理攻击力的伤害并使其眩晕。无法被沉默。消耗其 8% 的最大生命值。""",
+	SKILLJD_WARD_CAST_DIAMOND = """防护气场：金刚法壳""",
+	SKILLJD_WARD_CAST_DIAMONDDESCRIPT = """使周身的空气凝固成一层抵御钢铁兵器的外壳。""",
+	SKILLJD_WARD_CAST_PLASMA = """防护气场：等离子壳""",
+	SKILLJD_WARD_CAST_PLASMADESCRIPT = """使周身的空气凝固成一层抵御魔法的外壳。""",
+	SKILLJD_ENGULFING_DREAM = """吞噬之梦""",
+	SKILLJD_ENGULFING_DREAMDESCRIPT = """将一名处于清醒状态的敌人拖入 2 层深度的{color=aqua|深层睡眠}。无法对已处于{color=aqua|昏迷}状态的敌人使用。若面对单一对手，则只能造成普通睡眠。""",
+	SKILLJD_ONEIRIC_FEEDING = """梦境汲取""",
+	SKILLJD_ONEIRIC_FEEDINGDESCRIPT = """以沉睡者的梦境为食：为其额外施加 2 层{color=aqua|深层睡眠}，恶魔获得 1 层{color=aqua|增幅}。只能对处于{color=aqua|深层睡眠}状态的敌人使用。""",
+	SKILLJD_SAPID_UNREALITY = """甘美虚幻""",
+	SKILLJD_SAPID_UNREALITYDESCRIPT = """需要 5 层{color=aqua|增幅}，且目标需已处于{color=aqua|深层睡眠}状态，可将其梦境再次加深 3 层。梦境溢出：对所有仍处于清醒状态的敌人造成 110% 魔法攻击力的{color=yellow|精神}伤害。""",
+	SKILLJD_SAPID_WAVE = """甘美虚幻""",
+	SKILLJD_SAPID_WAVEDESCRIPT = """噩梦漫延至所有仍然清醒的人。""",
+	SKILLJD_ETERNAL_SLUMBER = """永恒沉眠""",
+	SKILLJD_ETERNAL_SLUMBERDESCRIPT = """当不再有人保持清醒时，梦境将吞噬整个队伍。所有处于{color=aqua|昏迷}状态的敌人都会当场毙命。""",
+	SKILLJD_SHOW_BODY = """就让你见识见识这具身体的力量！！""",
+	SKILLJD_SHOW_BODYDESCRIPT = """造成 190% 物理攻击力的远程伤害，并施加持续 3 回合的破甲，且有 50% 的几率使其眩晕。无法对处于睡眠状态的敌人使用。""",
+	SKILLJD_VISION_INDULGENCE = """放纵幻象""",
+	SKILLJD_VISION_INDULGENCEDESCRIPT = """造成 120% 魔法攻击力的{color=yellow|精神}伤害，并用目标最渴望的事物扰乱其心智。剥夺清醒状态，随后施加持续 2 回合的睡眠与失明。无法对处于睡眠状态的敌人使用。""",
+	SKILLJD_VISION_SLEEP = """放纵幻象""",
+	SKILLJD_VISION_SLEEPDESCRIPT = """幻象开始生效。""",
+	SKILLJD_MASS_ILLUSION = """群体幻象狂潮""",
+	SKILLJD_MASS_ILLUSIONDESCRIPT = """恶魔的分身从四面八方涌出，对所有未处于睡眠状态的敌人各造成 90% 物理攻击力的伤害，使用者随后潜入其身后的{color=aqua|阴影中}。无法对处于睡眠状态的敌人使用。""",
+	SKILLJD_FAUSTIAN_DELIVERANCE = """浮士德的救赎""",
+	SKILLJD_FAUSTIAN_DELIVERANCEDESCRIPT = """一道毁灭光束贯穿一列，造成 170% 魔法攻击力的{color=yellow|暗属性}伤害，并使其陷入诅咒。光束会穿过沉睡者。无法对处于睡眠状态的敌人使用。""",
     SKILLACCELERATING_PLUNGE = """极速坠击""", 
     SKILLACCELERATING_PLUNGEDESCRIPT = """如果该单位没有受到定身效果影响，则获得1层[{color=aqua|灾难动能}]。
 否则，净化所有定身效果。""",
@@ -2569,9 +2616,9 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 	STATUSDESC_SHRED = """粉碎：防御力降低 25%。最多可叠加 2 层。""",
 	STATUSDESC_PARALYSIS = """麻痹：速度 -50、闪避 -80、命中率 -75。视为苦难状态。""",
 	STATUSDESC_CONTAGIOUS_CALAMITY = """传染性灾祸：视为中毒。受到的治疗效果减半。每回合损失 25% 最大生命值，并蔓延至最多 2 名随机盟友。""",
-	STATUSDESC_JD_DEEP_SLEEP = """Deep Sleep: cannot act. Any ability an ally aims at them shortens it, and so does Clarity at the end of each turn. At 8 layers' worth, it becomes Comatose.""", # MISSING TRANSLATION
-	STATUSDESC_JD_COMATOSE = """Comatose: cannot act, and cannot be woken before the battle is over.""", # MISSING TRANSLATION
-	STATUSDESC_JD_QUICKSAND = """Quicksand: -75% Evasion, -50 Speed, and this unit's melee attacks always miss. Counts as a trap.""", # MISSING TRANSLATION
+	STATUSDESC_JD_DEEP_SLEEP = """深层睡眠：无法行动。队友对其施加的任何技能都会减少其层数，每回合结束时的【清醒】效果亦然。当层数达到 8 层时，将转变为【昏迷】。""",
+	STATUSDESC_JD_COMATOSE = """昏迷：无法行动，且在战斗结束前无法被唤醒。""",
+	STATUSDESC_JD_QUICKSAND = """流沙：闪避 -75%，速度 -50，且该单位的近战攻击必定未命中。视为陷阱。""",
 	STATUSDESC_FEAR = """恐惧：造成的伤害降低 25%。""",
 	STATUSDESC_TAUNT = """嘲讽：强制攻击施法者""",
 	STATUSDESC_PROVOKE = """挑衅：强制攻击施法者，且只能使用单体技能。""",
@@ -2812,6 +2859,9 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 	TRAINING_TRAINER_NAME = """训练师：%s""",
 	TRAINING_SLAVES_ASSIGNED = """%s - 已分配奴隶：%d/%d""",
 	TRAINING_TRAINER_SLOTS = """已分配：%d/%d""",
+	TRAINING_ROSTER_LEFT_TODAY = """left today""", # MISSING TRANSLATION
+	TRAINING_ROSTER_READY = """Can be trained today""", # MISSING TRANSLATION
+	TRAINING_ROSTER_TOOLTIP = """Slaves in training who can still be trained today, out of all of them.""", # MISSING TRANSLATION
 	TRAINING_ASSIGN_TRAINER_BUTTON = """分配训练师""",
 	TRAINING_RESET_BUTTON = """重置训练""",
 	TRAINING_FINISH_BUTTON = """结束训练""",
@@ -2959,8 +3009,8 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 	SERVICESEXUALNONPENETRATIVE = """[name] 将通过服侍客户并提供不涉及性交的轻度性服务来招待他们。""",
 	SERVICENOSEX = """[name] 会服侍和招待客户，但会拒绝任何性服务。""",
 	SERVICEESTVALUE = """预计收入：%s 金币""", 
-	SERVICEESTVALUE_LIMITED = """Estimated income: up to %s gold, the clients' purse may run short""", # MISSING TRANSLATION
-	SERVICEESTVALUE_EXHAUSTED = """Estimated income: %s gold, at the %d%% rate until the purse refills""", # MISSING TRANSLATION
+	SERVICEESTVALUE_LIMITED = """预估收入：最高 %s 金币，顾客的钱袋可能会见底""",
+	SERVICEESTVALUE_EXHAUSTED = """预估收入：%s 金币，在钱袋补充前按 %d%% 的比例计算""",
     SERVICEDESIRABILITY = """吸引力：%s%%""", 
     SERVICEDESIRABILITYVALUE = """吸引力：%s""",
 	TASKMAINSTAT = """主要属性""",
@@ -2997,16 +3047,16 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 	MANSION_ACTIVITY_ARRIVAL_MANSION = """%s 返回了宅邸。""",
 	MANSION_ACTIVITY_ARRIVAL_MANSION_LINK = """%s 返回了 %s。""",
 	MANSION_ACTIVITY_ARRIVAL_LOCATION = """%s 抵达了 %s。""",
-	MANSION_ACTIVITY_ARRIVAL_REPORT = """%s arrived at %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_REPORT_MANSION = """%s returned to %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_REPORT_SPREAD = """%s arrived at %d locations.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_GROUP = """%s: %s""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_ARRIVAL_GROUP_AT = """%s at %s: %s""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_ARRIVAL_REPORT = """%s 抵达了 %s。""",
+	MANSION_ACTIVITY_ARRIVAL_REPORT_MANSION = """%s 返回了 %s。""",
+	MANSION_ACTIVITY_ARRIVAL_REPORT_SPREAD = """%s 抵达了 %d 个地点。""",
+	MANSION_ACTIVITY_ARRIVAL_GROUP = """%s：%s""",
+	MANSION_ACTIVITY_ARRIVAL_GROUP_AT = """%s（位于 %s）：%s""",
 	MANSION_ACTIVITY_AUTOBUY = """%s 从集市采买回来，带回了 %s，花费 %d 金币。""",
-	MANSION_ACTIVITY_RITES_PREPARED = """The Ritual Room's preparation is complete: a flesh rite can be performed.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_RITES_PREPARED = """仪式室筹备完毕：现可进行肉体仪式。""",
 	MANSION_ACTIVITY_SLEPTROUGH = """在 %s 无处安眠。""",
-	MANSION_ACTIVITY_NOBED_ESCAPE = """Ran away for want of a bed: %s.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_NOBED_BREAKDOWN = """Broke down for want of a bed: %s.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_NOBED_ESCAPE = """因缺乏床位而逃跑：%s。""",
+	MANSION_ACTIVITY_NOBED_BREAKDOWN = """因缺乏床位而崩溃：%s。""",
 	MANSION_ACTIVITY_CRAFT_COMPLETE = """%s 完成了 %s 的制作。""",
 	MANSION_ACTIVITY_CRAFT_REPORT = """工坊共完成了 [color=#e8aa55]%d[/color] 件制作产物，由府上 %d 人共同完成。""",
 	MANSION_ACTIVITY_TRAINING_COMPLETE = """%s 完成了对 %s 的调教。""",
@@ -3018,28 +3068,28 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 	MANSION_ACTIVITY_CHARACTER_FOUND = """%s 在 %s 找到了 %s。""",
 	MANSION_ACTIVITY_LOCATION_EMPTY = """%s 已经空无一人。""",
 	MANSION_ACTIVITY_LOCATION_GONE = """该地点已无法前往。""",
-	MANSION_ACTIVITY_TYPE_LOCATION = """Location""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_LOCATION_REMOVED = """%s has been left behind and is gone from the map.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_LOCATION_REMOVED_SOLD = """%d captive(s) left there were sold for [color=#f0c860]%d[/color] gold.""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_LOCATION_REMOVED_FREED = """%d captive(s) left there were let go.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_TYPE_LOCATION = """地点""",
+	MANSION_ACTIVITY_LOCATION_REMOVED = """%s 已被抛在身后，并从地图上消失。""",
+	MANSION_ACTIVITY_LOCATION_REMOVED_SOLD = """遗留在此处的 %d 名俘虏已被出售，获得 [color=#f0c860]%d[/color] 金币。""",
+	MANSION_ACTIVITY_LOCATION_REMOVED_FREED = """遗留在此处的 %d 名俘虏已被释放。""",
 	MANSION_ACTIVITY_SERVICE_REPORT = """侍奉服务共带来 [color=#f0c860]%d[/color] 金币收益，由府上 %d 人共同赚取。""",
-	MANSION_ACTIVITY_SERVICE_EXHAUSTED = """There are no more clients in %s who can afford service for now. Until the week is out, service there pays only a tenth of its usual rate.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_SERVICE_EXHAUSTED = """目前 %s 已无更多能够支付服务费用的顾客。在本周结束前，该处的服务收益将仅为正常水平的十分之一。""",
 	MANSION_ACTIVITY_PRODUCTION_REPORT = """生产劳作共带来 [color=#6fc0b0]%d[/color] 份资源，涵盖 %d 个种类。""",
 	MANSION_ACTIVITY_UPKEEP_REPORT = """每周维护共消耗领地 [color=#d05f5f]%d[/color] 金币，涉及 %d 项开支。""",
 	MANSION_ACTIVITY_UPKEEP_CHARACTER = """%s：[color=#d05f5f]%d[/color] 金币（%d 声望 + %d 价值）。""",
 	MANSION_ACTIVITY_UPKEEP_UPGRADES = """设施升级税：[color=#d05f5f]%d[/color] 金币。""",
 	MANSION_ACTIVITY_SERVICE_EXPAND = """展开""",
 	MANSION_ACTIVITY_SERVICE_COLLAPSE = """折叠""",
-	MANSION_ACTIVITY_FOLD = """Collapse activity log""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_UNFOLD = """Expand activity log""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_FOLD = """折叠活动日志""",
+	MANSION_ACTIVITY_UNFOLD = """展开活动日志""",
 	MANSION_ACTIVITY_TYPE_BEDROOM = """卧房""",
 	MANSION_ACTIVITY_BEDROOM_LIGHT = """%s 与 %s 在夜里享受了一段小小的欢愉。""",
 	MANSION_ACTIVITY_BEDROOM_PASSIONATE = """%s 和 %s 共同度过了一个激情洋溢的夜晚。""",
 	MANSION_ACTIVITY_BEDROOM_SKILL = """%s 现已达到 [color=#d95d8a]%s[/color] 级别的 %s 水平。""",
 	BROTHELLOGSEX = """%s 通过与一名 %s 客户进行 %s 服务，赚取了 %s 金币。""",
 	BROTHELLOGSEXPARTIAL = """%s 未能完全吸引客户，仅通过与 %s 客户进行 %s 服务赚取了 %s 金币。""", 
-	BROTHELLOGSEXGROUP = """%s earned %s gold performing %s with %s customers.""", # MISSING TRANSLATION
-	BROTHELLOGSEXPARTIALGROUP = """%s failed to fully attract customers and earned only %s gold performing %s with %s customers.""", # MISSING TRANSLATION
+	BROTHELLOGSEXGROUP = """%s 赚取了 %s 金币，通过提供 %s 服务（共 %s 名顾客）。""",
+	BROTHELLOGSEXPARTIALGROUP = """%s 未能完全吸引顾客，仅赚取了 %s 金币，通过提供 %s 服务（共 %s 名顾客）。""",
 	BROTHELLOGNO_SEX = """%s 作为 %s 工作，赚取了 %s 金币。""",
 	BROTHELTOOLTIP = """你可以选择角色在妓院工作时允许执行的任务。通过切换特定任务，仅允许被选中的任务。客户性别仅影响性任务。
 较高的角色价值会增加收入，较高的魅力值会增加被要求提供性服务的可能性。
@@ -3058,20 +3108,20 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 
 如果你的角色总数超过了可用房间数，你将无法结束回合。""",
 	CAPTUREDISMISSTOOLTIP = "遣散这名角色。", 
-	CAPTURE_HANDOVER_HINT = """Those who fit a slave market quest as they are get a green Hand Over strip: click it, pick the quest, and they are handed over from here, paid as at the market.""", # MISSING TRANSLATION
+	CAPTURE_HANDOVER_HINT = """符合奴隶市场任务要求的角色会带有绿色的【移交】长条：点击它，选择任务，即可在此处将其移交并获取与市场相同的报酬。""",
 	CAPTURE_HANDOVER_TOOLTIP = """[color=yellow]%s[/color]
-%s, %d of %d delivered.
-Hand over now: +%d gold.""", # MISSING TRANSLATION
-	CAPTURE_HANDOVER_CHOOSE = """Fits %d slave market quests - click to choose:""", # MISSING TRANSLATION
-	CAPTURE_HANDOVER_LINE = """%s: +%d gold""", # MISSING TRANSLATION
-	CAPTURE_CHOOSER_TITLE = """Hand %s over for:""", # MISSING TRANSLATION
-	CAPTURE_CHOOSER_META = """%s, %d of %d delivered""", # MISSING TRANSLATION
-	CAPTURE_QUICKSELL_TOOLTIP = """Sell every captive for quick cash and let the others go. Those who fit a slave market quest stay: hand them over with their Hand Over strip.""", # MISSING TRANSLATION
-	CAPTURE_QUICKSELL_CONFIRM = """Sell %d captive(s) for %d gold?""", # MISSING TRANSLATION
-	CAPTURE_QUICKSELL_CONFIRM_FREE = """Let %d captive(s) go?""", # MISSING TRANSLATION
+%s，已交付 %d / %d。
+立即移交：+%d 金币""",
+	CAPTURE_HANDOVER_CHOOSE = """符合 %d 个奴隶市场任务 - 点击选择：""",
+	CAPTURE_HANDOVER_LINE = """%s：+%d 金币""",
+	CAPTURE_CHOOSER_TITLE = """移交 %s 以完成：""",
+	CAPTURE_CHOOSER_META = """%s，已交付 %d / %d""",
+	CAPTURE_QUICKSELL_TOOLTIP = """变现出售所有俘虏并释放其他人。符合奴隶市场任务要求的俘虏将被保留：可使用其【移交】长条进行移交。""",
+	CAPTURE_QUICKSELL_CONFIRM = """是否出售 %d 名俘虏以换取 %d 金币？""",
+	CAPTURE_QUICKSELL_CONFIRM_FREE = """是否释放 %d 名俘虏？""",
    SERVICEBOOSTTOOLTIP = """你可以在此分配额外的物品消耗，这将提升服务产出。这些物品可以在农场生产。""",
-	SERVICEBOOSTNOSTOCK = """Not enough in stock""", # MISSING TRANSLATION
-	SERVICEBOOSTNEEDS = """Inactive: needs %s""", # MISSING TRANSLATION
+	SERVICEBOOSTNOSTOCK = """库存不足""",
+	SERVICEBOOSTNEEDS = """未激活：需要 %s""",
 	FARMTOOLTIP = """你可以分配角色去农场生产额外的材料，这些材料可用于提升服务产出或出售。""",
 	FACTOR_INCREASE_TOOLTIP = """通过牺牲不需要的角色，你可以提升其他角色的潜力，前提是捐赠角色的属性高于接收者。成长潜力每个捐赠者只能提升 1 点。最终价格由接收者的价值决定。""",
 	COMBAT_CHARACTER_CAPTURED = """角色""",
@@ -3155,6 +3205,8 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATBODY_LOWER = """下半身""",
 	STATBODY_SHAPE = """体型""",
 	STATSKIN_COVERAGE = """皮肤覆盖物""",
+	STATFRECKLES = """Freckles""", # MISSING TRANSLATION
+	STATMUSCULAR = """Muscular""", # MISSING TRANSLATION
 	STATFACIAL_HAIR = """面部毛发""",
 	STATEYESHAPE = """眼型""",
 	STATNOSE = """鼻子""",
@@ -3167,7 +3219,7 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATBODY_COLOR_HORNS = """角颜色""",
 	STATBODY_COLOR_ANIMAL = """动物部位颜色""",
 	STATBODY_COLOR_EARS = """""",
-	STATBODY_COLOR_NIPPLES = """Nipples color""", # MISSING TRANSLATION
+	STATBODY_COLOR_NIPPLES = """乳头颜色""",
 	STATHAIR_BASE = """基础发型""",
 	STATHAIR_ASSIST = """辅助发型""",
 	STATHAIR_BACK = """后部发型""",
@@ -3265,8 +3317,8 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATTATTOO_CROTCH = """""",
 	STATTATTOO_WAIST = """""",
 	STATTATTOO_ASS = """""",
-	STATTATTOO_CROTCH_STYLE = """""", # MISSING TRANSLATION
-	STATTATTOO_CROTCH_COLOR = """""", # MISSING TRANSLATION
+	STATTATTOO_CROTCH_STYLE = """""",
+	STATTATTOO_CROTCH_COLOR = """""",
 	STATARMOR_COLOR_BASE = """""",
 	STATARMOR_COLOR_LOWER = """""",
 	STATARMOR_COLOR_COLLAR = """""",
@@ -3282,8 +3334,8 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATPIERCING_CLIT = """""",
 	STATPIERCING_LABIA = """""",
 	STATPIERCING_PENIS = """""",
-	STATPIERCING_NIPPLES_COLOR = """""", # MISSING TRANSLATION
-	STATPIERCING_NAVEL_COLOR = """""", # MISSING TRANSLATION
+	STATPIERCING_NIPPLES_COLOR = """""",
+	STATPIERCING_NAVEL_COLOR = """""",
 	STATMETRICS_OWNERSHIP = """""",
 	STATMETRICS_SEX = """""",
 	STATMETRICS_DATES = """""",
@@ -3496,6 +3548,14 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATTRAINER_LOYALTY_BONUSDESCRIPT = """该角色培训的学员所获得的忠诚度加成""",
 	STATTRAINER_TRAINING_POINTS_BONUSDESCRIPT = """该角色培训的学员所获得的训练点数加成""",
     STATTRAINEE_AMOUNTDESCRIPT = """最大学员数量""",
+	STATTRAIT_SLOTS_PHYSICAL = """Physical Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MENTAL = """Mental Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MAGIC = """Magic Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_RELIGIOUS = """Religious Trait Slots""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_PHYSICALDESCRIPT = """How many physical traits the character can hold""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MENTALDESCRIPT = """How many mental traits the character can hold""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_MAGICDESCRIPT = """How many magic traits the character can hold""", # MISSING TRANSLATION
+	STATTRAIT_SLOTS_RELIGIOUSDESCRIPT = """How many religious traits the character can hold""", # MISSING TRANSLATION
     TRAITTRAINER = """训练师""",
     TRAITTRAINERDESCRIPT = """可以监管奴隶""",
     CHARACTER_STANDING_ANTIPATHY = """厌恶""",
@@ -3549,6 +3609,7 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
     EVENT_EFFECT_RELATIONSHIP = """%s 与 %s：关系 %s""", 
     EVENT_EFFECT_TRAIT_GAINED = """获得了 %s 特质""", 
     EVENT_EFFECT_TRAIT_LOST = """失去了 %s 特质""", 
+	EVENT_EFFECT_TRAIT_REVEALED = """%s Trait revealed""", # MISSING TRANSLATION
     STATRESISTANCE = """抗性""",
     STATRESISTANCEDESCRIPT = """抗性描述占位符。""",
     STATSUBMISSION = """顺从度""",
@@ -3618,6 +3679,8 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATRESIST_CURSED = """诅咒抗性""",
 	STATRESIST_DISARM = """缴械抗性""",
 	STATRESIST_SHRED = """撕裂抗性""",
+	STATRESIST_KNOCK_PRONE = """Knock Prone Resist""", # MISSING TRANSLATION
+	STATRESIST_ENSNARE = """Ensnare Resist""", # MISSING TRANSLATION
 	STATRESIST_FEAR = """恐惧抗性""",
 	STATRESIST_FREEZE = """冰冻抗性""",
 	STATRESIST_HEAL = """治疗抗性""",
@@ -3652,6 +3715,8 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATRESIST_RANGEDDESCRIPT = """远程伤害抗性""",
 	STATRESIST_SHOCKDESCRIPT = """电击效果抗性""",
 	STATRESIST_SILENCEDESCRIPT = """沉默效果抗性""",
+	STATRESIST_KNOCK_PRONEDESCRIPT = """Resistance to Knock Prone effect""", # MISSING TRANSLATION
+	STATRESIST_ENSNAREDESCRIPT = """Resistance to Ensnare effect""", # MISSING TRANSLATION
 	STATRESIST_SLEEPDESCRIPT = """睡眠效果抗性""",
 	STATRESIST_STUNDESCRIPT = """眩晕效果抗性""",
 	STATRESIST_WETDESCRIPT = """潮湿效果抗性""",
@@ -3691,8 +3756,8 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	BREAKDOWN_SHRINE = """[name] 因为在傲慢神殿被奴役而崩溃""",
 	BREAKDOWN_ENTHRALL = """[name] 因被奴役而崩溃""",
 	BREAKDOWN_ENTHRALLRELEASE = """[name] 因为失去了与 [name] 恶魔主人的联系而崩溃。""",
-	BREAKDOWN_NOBED = """[name] had a breakdown due to having no bed to sleep in""", # MISSING TRANSLATION
-	ESCAPE_NOBED = """[name] has run away during the night. With no bed to call [his] own, there was little left to keep [him] in your household.""", # MISSING TRANSLATION
+	BREAKDOWN_NOBED = """[name]因无床可睡而精神崩溃。""",
+	ESCAPE_NOBED = """[name]在夜里逃跑了。由于没有属于[his]自己的床铺，已经没有什么能让[him]继续留在这座宅邸中了。""",
 	STATFAME = """名声""",
 	STATFAMEDESCRIPT = """""",
 	STATFAME_DEGRADE_TIMER = """名声衰退计时器""",
@@ -3716,6 +3781,10 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	FAME_RISE_MANIFEST = """名声提升！[name] 现在是 %s。""",
 	FAME_DEGRADE_MANIFEST = """名声衰退！[name] 现在是 %s。""",
 	TAGSTABLE_FAME = """名声稳定：名声不会随时间衰退。""",
+	TAGNOBLE = """Noble: not available to slaves.""", # MISSING TRANSLATION
+	NOBLE_LOSS_CONFIRM = """A slave can't keep a noble class: [name] will forget {classes}. Continue?""", # MISSING TRANSLATION
+	UNIQUE_LOSS_CONFIRM = """[name] is a unique character: once [he] leaves your party, [he] is gone for good. Continue?""", # MISSING TRANSLATION
+	HYBRIS_NOBLE_LOSS = """{color=yellow|A slave can't keep a noble class: [name] will forget {classes}.}""", # MISSING TRANSLATION
 	FAMEDESC_PRICE_BONUS = """角色价值""",
 	FAMEDESC_UPKEEP = """下属每周维护费""",
 	FAMEDESC_LOYALTY_BONUS = """学员忠诚度""",
@@ -4169,6 +4238,49 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	SKILLSWAP_FORM = """切换形态""",
 	SKILLSWAP_FORMDESCRIPT = """在恶魔形态和普通形态之间切换。恶魔形态提供 +15% 伤害、+10 体质和智力。普通形态提供 +20 魅力和 +25% 生产力。""",
 	DIALOGUESWAP_FORMREPORT = """""",
+	SKILLGENITALIA_MANIPULATION = """Genitalia Manipulation""", # MISSING TRANSLATION
+	SKILLGENITALIA_MANIPULATIONDESCRIPT = """Shape lust into flesh: grow a cock of the chosen size, with or without testicles. Once grown, the cock and the testicles can be resized, the testicles absorbed, or the cock absorbed completely.""", # MISSING TRANSLATION
+	DIALOGUEGM_SELECT = """[name] lets [his] lust pool low in [his] belly, warm and pliant, waiting to be given a shape.
+
+What will [he] make of it?""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_SMALL = """Grow a small cock""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_AVERAGE = """Grow an average cock""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_BIG = """Grow a big cock""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_MENU = """Change the size of the cock""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_MENU = """Change the testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_ABSORB_COCK = """Absorb the cock completely""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_ASK = """The flesh between [name]'s legs grows hot and begins to swell.
+
+Should the cock come with testicles?""", # MISSING TRANSLATION
+	DIALOGUEGM_WITH_TESTICLES = """With testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_WITHOUT_TESTICLES = """Without testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_PICK = """The lust sinks lower still. How big should the testicles be?""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_SMALL = """Small testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_AVERAGE = """Average testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_BIG = """Big testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_SIZE = """[name] runs a hand along [his] cock as lust gathers under the skin.
+
+What size should it be?""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_SMALL = """Make it small""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_AVERAGE = """Make it average""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_BIG = """Make it big""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES = """[name] lets the lust sink lower, beneath [his] cock.
+
+What should become of what lies there?""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_TESTICLES_SMALL = """Grow small testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_TESTICLES_AVERAGE = """Grow average testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_GROW_TESTICLES_BIG = """Grow big testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_TESTICLES_SMALL = """Make them small""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_TESTICLES_AVERAGE = """Make them average""", # MISSING TRANSLATION
+	DIALOGUEGM_MAKE_TESTICLES_BIG = """Make them big""", # MISSING TRANSLATION
+	DIALOGUEGM_ABSORB_TESTICLES = """Absorb the testicles""", # MISSING TRANSLATION
+	DIALOGUEGM_GROWN = """[name] closes [his] eyes and pulls the pooled lust down between [his] legs. The flesh there swells and takes shape — moments later a brand new cock stands where there was none, sensitive and untouched.""", # MISSING TRANSLATION
+	DIALOGUEGM_GROWN_TESTICLES = """A pair of testicles settles beneath it, heavy and warm.""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_RESIZED = """[name] wraps a hand around [his] cock and lets the lust flow into it. The flesh shifts under [his] fingers until it settles at the size [he] wanted.""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_GROWN = """Lust gathers beneath [name]'s cock, and a pair of testicles swells into place, heavy and warm.""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_RESIZED = """[name]'s testicles tighten and shift as the lust reshapes them, settling at the size [he] wanted.""", # MISSING TRANSLATION
+	DIALOGUEGM_TESTICLES_ABSORBED = """[name]'s testicles soften and draw back into [his] body until only smooth skin remains beneath [his] cock.""", # MISSING TRANSLATION
+	DIALOGUEGM_COCK_ABSORBED = """[name] lets out a long breath as [his] cock softens and sinks back into [his] body, melting away until only smooth skin remains. The borrowed flesh returns to [him] as a pleasant, lingering warmth.""", # MISSING TRANSLATION
 	DEMONFORMDESCRIPT = """恶魔形态""",
 	HUMANFORMDESCRIPT = """普通形态""",
 	MAGATTUNEMENTDESCRIPT = """魔法调和""",
@@ -4394,11 +4506,11 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	SELECT_CHAR_BEFORE_ADV = """推进前请至少选择 1 名角色。""",
 	NO_STAMINA_LABEL = """体力不足""",
 	LOC_COMPLETE = """地点已完成""",
-	LOC_CLEARED = """Cleared""", # MISSING TRANSLATION
-	LOC_ABANDONED = """Abandoned""", # MISSING TRANSLATION
-	LOC_CLEARED_TOOLTIP = """There is nothing left to do here. The location no longer counts toward the region's limit and will leave the map on its own once none of your characters are here or on the road to or from it.""", # MISSING TRANSLATION
-	LOC_ABANDONED_TOOLTIP = """This place was left behind unfinished. It no longer counts toward the region's limit and will leave the map on its own once none of your characters are here or on the road to or from it.""", # MISSING TRANSLATION
-	LOC_REMOVAL_TIMER_LEFT = """Turns left: %d""", # MISSING TRANSLATION
+	LOC_CLEARED = """已清空""",
+	LOC_ABANDONED = """已放弃""",
+	LOC_CLEARED_TOOLTIP = """此处已无事可做。该地点不再计入该区域的上限，且一旦没有任何角色在此处或在往返此处的途中，它就会自动从地图上消失。""",
+	LOC_ABANDONED_TOOLTIP = """此地点在未完成的情况下被放弃。它不再计入该区域的上限，且一旦没有任何角色在此处或在往返此处的途中，它就会自动从地图上消失。""",
+	LOC_REMOVAL_TIMER_LEFT = """剩余回合：%d""",
 	CANT_PAY_COSTS_LABEL = """无法支付费用""",
 	NO_CHARGES_LEFT_LABEL = """没有剩余次数""",
 	CANT_USE_TODAY_LABEL = """该技能今日无法再使用""",
@@ -4433,6 +4545,7 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	SPEND_REP_QUESTION_LABEL = """你确定要花费""",
 	REP_POINTS_LABEL = """声望点数以获取 """,
 	DISLIKED_ACTIONS_LABEL = """厌恶的动作""",
+	SEXTRAIT_CONFLICTS_LABEL = """Incompatible with""", # MISSING TRANSLATION
 	NOSERVITUDE = """-服侍""",
 	COMBAT_ABILS_LABEL = """战斗能力""",
 	ONQUESTLABEL = """[name] 目前不可用。""",
@@ -4952,7 +5065,9 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	TRAITWEAPON_MASTERYDESCRIPT = """允许使用近战武器。""",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = """允许使用远程武器。""",
 	TRAITMAGIC_TOOLSDESCRIPT = """允许使用如法杖之类的魔法工具。""",
+	TRAITUNDEAD = """Undead""", # MISSING TRANSLATION
 	TRAITUNDEADDESCRIPT = """[name] 不再是活着的生物。食物消耗设为 0；魅力降低 100；光属性抗性 -50；暗属性抗性 +50；暗属性伤害 +20%%；无法使人受孕或怀孕。""",
+	TRAITUNDEADFLAVOR = """[name] is no longer a living being.""", # MISSING TRANSLATION
 	TRAITNIXX_CHAMPIONDESCRIPT = """暗属性能力命中率 +30，并无视目标的防御和魔抗。""",
 	TRAITNIXX_CHAMPION2DESCRIPT = """暗属性能力无视目标的防御和魔抗。近战技能在命中时附加额外的暗属性攻击。""",
 	TRAITSPOUSE = """配偶""",
@@ -4982,6 +5097,10 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	TRAITPACIFIST = """和平主义者""",
 	TRAITWHIMP = """懦夫""",
 	TRAITM_INEPT = """魔法白痴""",
+	TRAITWASTEFUL_CASTING = """Wasteful Casting""", # MISSING TRANSLATION
+	TRAITSNUFFED = """Snuffed""", # MISSING TRANSLATION
+	TRAITUNEARTHED = """Unearthed""", # MISSING TRANSLATION
+	TRAITBECALMED = """Becalmed""", # MISSING TRANSLATION
 	TRAITSELFISH = """自私""",
 	TRAITCOWARD = """胆小鬼""",
 	TRAITFRIGID = """冷淡""",
@@ -5003,6 +5122,7 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	TRAITLIVELYDESCRIPT = """+3 生命值恢复""",
 	TRAITMVORTEXDESCRIPT = """+1 法力值恢复""",
 	TRAITGIFTEDDESCRIPT = """最大法力值 +50%。""",
+	TRAITGIFTEDFLAVOR = """Ancient magic resides in [his] body.""", # MISSING TRANSLATION
 	TRAITBELLIGERENTDESCRIPT = """攻击力 +15%。""",
 	TRAITHIDDENPOWERSDESCRIPT = """魔力 +10%。""",
 	TRAITHEALTHYDESCRIPT = """+10 最大生命值。""",
@@ -5019,6 +5139,10 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	TRAITPACIFISTDESCRIPT = """攻击力 -50%。""",
 	TRAITWHIMPDESCRIPT = """最大生命值 -40%。""",
 	TRAITM_INEPTDESCRIPT = """魔力 -50%。""",
+	TRAITWASTEFUL_CASTINGDESCRIPT = """Ability mana costs +25%.""", # MISSING TRANSLATION
+	TRAITSNUFFEDDESCRIPT = """No Fire or Light magic.""", # MISSING TRANSLATION
+	TRAITUNEARTHEDDESCRIPT = """No Earth or Dark magic.""", # MISSING TRANSLATION
+	TRAITBECALMEDDESCRIPT = """No Water or Air magic.""", # MISSING TRANSLATION
 	TRAITSELFISHDESCRIPT = """无法使用战斗辅助技能。""",
 	TRAITCOWARDDESCRIPT = """命中率 -50。""",
 	TRAITFRIGIDDESCRIPT = """无法获得新的性特征。最大欲望值减少 50%。""",
@@ -5028,6 +5152,205 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	TRAITMENIALDESCRIPT = """任务暴击率设为 0。""",
 	TRAITSTURDYDESCRIPT = """+10 防御。""",
 	TRAITFRAILDESCRIPT = """-10 防御。""",
+	TRAITATHLETIC = """Athletic""", # MISSING TRANSLATION
+	TRAITATHLETICDESCRIPT = """+10 Physics.""", # MISSING TRANSLATION
+	TRAITLITHE = """Lithe""", # MISSING TRANSLATION
+	TRAITLITHEDESCRIPT = """Evasion +10.""", # MISSING TRANSLATION
+	TRAITFAST_HEALER = """Fast Healer""", # MISSING TRANSLATION
+	TRAITFAST_HEALERDESCRIPT = """Healing received +25%.""", # MISSING TRANSLATION
+	TRAITKEEN_NOSE = """Keen Nose""", # MISSING TRANSLATION
+	TRAITKEEN_NOSEDESCRIPT = """Hunt +20%.""", # MISSING TRANSLATION
+	TRAITPUNY = """Puny""", # MISSING TRANSLATION
+	TRAITPUNYDESCRIPT = """-10 Physics.""", # MISSING TRANSLATION
+	TRAITNEARSIGHTED = """Nearsighted""", # MISSING TRANSLATION
+	TRAITNEARSIGHTEDDESCRIPT = """Hit Rate -10.""", # MISSING TRANSLATION
+	TRAITSTIFF = """Stiff""", # MISSING TRANSLATION
+	TRAITSTIFFDESCRIPT = """Evasion -10.""", # MISSING TRANSLATION
+	TRAITSLOW_HEALER = """Slow Healer""", # MISSING TRANSLATION
+	TRAITSLOW_HEALERDESCRIPT = """Healing received -25%.""", # MISSING TRANSLATION
+	TRAITFRAIL_CONSTITUTION = """Frail Constitution""", # MISSING TRANSLATION
+	TRAITFRAIL_CONSTITUTIONDESCRIPT = """Can't get pregnant.""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_1 = """Troll Blood""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_1DESCRIPT = """+2 Health Regen, Fire Resist -10.""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_2 = """Troll Blood II""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_2DESCRIPT = """+4 Health Regen, Fire Resist -20.""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_3 = """Troll Blood III""", # MISSING TRANSLATION
+	TRAITTROLL_BLOOD_3DESCRIPT = """+4 Health Regen. In combat, restores 5% of Max Health every turn. Fire Resist -30.""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_1 = """Stone Skin""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_1DESCRIPT = """+5 DEF, Earth Resist +10.""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_2 = """Stone Skin II""", # MISSING TRANSLATION
+	TRAITSTONE_SKIN_2DESCRIPT = """+15 DEF, Earth Resist +20, Speed -5.""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_1 = """Beast Blood""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_1DESCRIPT = """ATK +4, Crit Chance +3%.""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_2 = """Beast Blood II""", # MISSING TRANSLATION
+	TRAITBEAST_BLOOD_2DESCRIPT = """ATK +6, Crit Chance +4%, Wits -10.""", # MISSING TRANSLATION
+	TRAITSUN_SICK_1 = """Sun-Sick""", # MISSING TRANSLATION
+	TRAITSUN_SICK_1DESCRIPT = """Morning and day: Hit Rate -10, Productivity -15%.""", # MISSING TRANSLATION
+	TRAITSUN_SICK_1FLAVOR = """Nothing is more annoying than being blinded by sunlight.""", # MISSING TRANSLATION
+	TRAITSUN_SICK_2 = """Night-Born""", # MISSING TRANSLATION
+	TRAITSUN_SICK_2DESCRIPT = """Morning and day: Hit Rate -10, Productivity -15%. Evening and night: Speed +10, Crit Chance +8%, Dark Resist +25.""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_1 = """Light-weight""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_1DESCRIPT = """-6 DEF, Evasion +5.""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_2 = """Light-weight II""", # MISSING TRANSLATION
+	TRAITLIGHT_WEIGHT_2DESCRIPT = """-5 DEF, Speed +5, Evasion +10.""", # MISSING TRANSLATION
+	TRAITGROWN = """[name]'s {old} has grown into {new}.""", # MISSING TRANSLATION
+	TRAITBRAVE = """Brave""", # MISSING TRANSLATION
+	TRAITBRAVEDESCRIPT = """Damage taken -10%.""", # MISSING TRANSLATION
+	TRAITSPELL_FOCUS = """Otherworldly Affinity""", # MISSING TRANSLATION
+	TRAITSPELL_FOCUSDESCRIPT = """Ability mana costs -15%.""", # MISSING TRANSLATION
+	TRAITSPELL_FOCUSFLAVOR = """Demonic powers serve [his] cause.""", # MISSING TRANSLATION
+	TRAITEMBER_SOUL = """Ember Soul""", # MISSING TRANSLATION
+	TRAITEMBER_SOULDESCRIPT = """Fire Damage +15%, Fire Resist +15. Water Resist -15. Immune to Burn.""", # MISSING TRANSLATION
+	TRAITTIDECALLER = """Tidecaller""", # MISSING TRANSLATION
+	TRAITTIDECALLERDESCRIPT = """Water Damage +15%, Water Resist +15. Fire Resist -15. Immune to Freeze.""", # MISSING TRANSLATION
+	TRAITSTORMBORN = """Stormborn""", # MISSING TRANSLATION
+	TRAITSTORMBORNDESCRIPT = """Air Damage +15%, Air Resist +15. Earth Resist -15. Immune to Shock.""", # MISSING TRANSLATION
+	TRAITSTONEHEART = """Stoneheart""", # MISSING TRANSLATION
+	TRAITSTONEHEARTDESCRIPT = """Earth Damage +15%, Earth Resist +15. Air Resist -15. Immune to Knock Prone.""", # MISSING TRANSLATION
+	TRAITRADIANT = """Radiant""", # MISSING TRANSLATION
+	TRAITRADIANTDESCRIPT = """Light Damage +15%, Light Resist +15. Dark Resist -15. Immune to Blind.""", # MISSING TRANSLATION
+	TRAITUMBRAL = """Umbral""", # MISSING TRANSLATION
+	TRAITUMBRALDESCRIPT = """Dark Damage +15%, Dark Resist +15. Light Resist -15. Immune to Ensnare.""", # MISSING TRANSLATION
+	TRAITLUCID_MIND = """Lucid Mind""", # MISSING TRANSLATION
+	TRAITLUCID_MINDDESCRIPT = """Mind Damage +15%, Mind Resist +15. Normal Resist -10. Immune to Silence.""", # MISSING TRANSLATION
+	TRAITUNNATURAL_CONSTITUTION = """Unnatural Constitution""", # MISSING TRANSLATION
+	TRAITUNNATURAL_CONSTITUTIONDESCRIPT = """+1 Physical trait slot. Losing this trait also loses the physical trait in that slot.""", # MISSING TRANSLATION
+	TRAITUNNATURAL_CONSTITUTIONFLAVOR = """Wild magic has caused [his] body to have exceptional capabilities.""", # MISSING TRANSLATION
+	TRAITSPLIT_MIND = """Split Mind""", # MISSING TRANSLATION
+	TRAITSPLIT_MINDDESCRIPT = """+1 Religious trait slot. Losing this trait also loses the religious trait in that slot.""", # MISSING TRANSLATION
+	TRAITSPLIT_MINDFLAVOR = """Duality.""", # MISSING TRANSLATION
+	TRAITWORLDLY = """Worldly""", # MISSING TRANSLATION
+	TRAITWORLDLYDESCRIPT = """Follows no faith.""", # MISSING TRANSLATION
+	TRAITWORLDLYFLAVOR = """[His] life is already full of concern even without spirituality.""", # MISSING TRANSLATION
+	TRAITAIRHEAD = """Featherbrained""", # MISSING TRANSLATION
+	TRAITAIRHEADDESCRIPT = """Faithless by nature. Mind Resist +15, Charm +5.""", # MISSING TRANSLATION
+	TRAITAIRHEADFLAVOR = """Deities? Can you eat it?""", # MISSING TRANSLATION
+	TRAITMORTAL_PRIDE = """Mortal Pride""", # MISSING TRANSLATION
+	TRAITMORTAL_PRIDEDESCRIPT = """All Resists +5.""", # MISSING TRANSLATION
+	TRAITMORTAL_PRIDEFLAVOR = """I'm the only person who deserves my worship.""", # MISSING TRANSLATION
+	TRAITTRANSCENDENT = """Transcendent""", # MISSING TRANSLATION
+	TRAITTRANSCENDENTDESCRIPT = """Immune to Fear, Sleep, Taunt and Shatter.""", # MISSING TRANSLATION
+	TRAITTRANSCENDENTVOWS = """Won't gather, farm or build.""", # MISSING TRANSLATION
+	TRAITTRANSCENDENTFLAVOR = """Omniscience.""", # MISSING TRANSLATION
+	TRAITLONER = """Loner""", # MISSING TRANSLATION
+	TRAITLONERDESCRIPT = """With allies in a fight (summons don't count): Hit Rate -10, ATK -5.""", # MISSING TRANSLATION
+	TRAITLONERFLAVOR = """[name] likes to be left alone.""", # MISSING TRANSLATION
+	TRAITLONE_WOLF = """Lone Wolf""", # MISSING TRANSLATION
+	TRAITLONE_WOLFDESCRIPT = """Alone in a fight (summons don't count): acts twice a round. With allies: Damage -20%, Hit Rate -10.""", # MISSING TRANSLATION
+	TRAITLONE_WOLFFLAVOR = """[name] is exceptionally resourceful when left alone.""", # MISSING TRANSLATION
+	TRAITHAPPY_SLAVE = """Happy in Slavery""", # MISSING TRANSLATION
+	TRAITHAPPY_SLAVEDESCRIPT = """Price +20%. Service +15%. Takes well to positive training.""", # MISSING TRANSLATION
+	TRAITHAPPY_SLAVEFLAVOR = """Right at [his] place. Happy to serve.""", # MISSING TRANSLATION
+	TRAITDEFIANT = """Defiant""", # MISSING TRANSLATION
+	TRAITDEFIANTDESCRIPT = """Price -30%. Service -25%. Damage +10%. Resists positive training.""", # MISSING TRANSLATION
+	TRAITDEFIANTFLAVOR = """I've been turned into a slave against my will!""", # MISSING TRANSLATION
+	TRAITDEVOTED = """Devoted""", # MISSING TRANSLATION
+	TRAITDEVOTEDDESCRIPT = """Productivity +15%. Protection mastery +1.""", # MISSING TRANSLATION
+	TRAITDEVOTEDFLAVOR = """Slave or not, I shall serve my [master].""", # MISSING TRANSLATION
+	TRAITNAIVE = """Naive""", # MISSING TRANSLATION
+	TRAITNAIVEDESCRIPT = """Mind Resist -15. +2 Training Points from trainings by the master. Sex without consent weighs 25% less.""", # MISSING TRANSLATION
+	TRAITNAIVEFLAVOR = """These people are caring for me...""", # MISSING TRANSLATION
+	TRAITMEEK = """Meek""", # MISSING TRANSLATION
+	TRAITMEEKDESCRIPT = """+1 Training Point from every training. In the back row: Evasion +15. DEF -10.""", # MISSING TRANSLATION
+	TRAITMEEKFLAVOR = """Nothing bad will happen if I follow orders?""", # MISSING TRANSLATION
+	TRAITBRIDLED = """Bridled""", # MISSING TRANSLATION
+	TRAITBRIDLEDDESCRIPT = """Damage +10%. Service -5%. DEF +5, MDEF +5.""", # MISSING TRANSLATION
+	TRAITBRIDLEDFLAVOR = """I've changed so much that I started to like it...""", # MISSING TRANSLATION
+	TRAITBROKEN = """Broken""", # MISSING TRANSLATION
+	TRAITBROKENDESCRIPT = """Price -50%. Productivity -30%. Damage -25%. No food or lodging demands, even when free. Sex without consent weighs 75% less.""", # MISSING TRANSLATION
+	TRAITBROKENFLAVOR = """There's nothing but pain and suffering...""", # MISSING TRANSLATION
+	TRAITINSECURE = """Insecure""", # MISSING TRANSLATION
+	TRAITINSECUREDESCRIPT = """Without the master: Damage -20%, Evasion -15, Productivity -20%.""", # MISSING TRANSLATION
+	TRAITINSECUREFLAVOR = """Being left with no base is worse than slavery to some.""", # MISSING TRANSLATION
+	TRAITOBSESSED = """Obsessed""", # MISSING TRANSLATION
+	TRAITOBSESSEDDESCRIPT = """With the master: Damage +15%, Speed +10, Productivity +10%.""", # MISSING TRANSLATION
+	TRAITOBSESSEDFLAVOR = """Life for my [master]...""", # MISSING TRANSLATION
+	TRAITSELF_RIGHTEOUS = """Self-Righteous""", # MISSING TRANSLATION
+	TRAITSELF_RIGHTEOUSDESCRIPT = """Armor Penetration +5, Crit Chance +3%, Evasion -10.""", # MISSING TRANSLATION
+	TRAITSELF_RIGHTEOUSFLAVOR = """I must be the main character of the story.""", # MISSING TRANSLATION
+	TRAITFIRE_FORGED = """Fire-Forged""", # MISSING TRANSLATION
+	TRAITFIRE_FORGEDDESCRIPT = """All Resists +10. Counterattacks once a round, or once more with a shieldbearer's shield. Authority +1.""", # MISSING TRANSLATION
+	TRAITFIRE_FORGEDFLAVOR = """Went through hell and survived.""", # MISSING TRANSLATION
+	TRAINING_STATUS_CHANGED = """[name] is now {new}.""", # MISSING TRANSLATION
+	TRAITFAITH_TIER_1 = """Follower""", # MISSING TRANSLATION
+	TRAITFAITH_TIER_2 = """Disciple""", # MISSING TRANSLATION
+	TRAITFAITH_TIER_3 = """Adept""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_1 = """Follower of Celena""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_1DESCRIPT = """+2 Health Regen, Farming +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_2 = """Disciple of Celena""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_2DESCRIPT = """+3 Health Regen, Farming +15%, Healing +15%.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_2VOWS = """No dark magic.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_3 = """Adept of Celena""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_3DESCRIPT = """+5 Health Regen, Farming +20%, Healing +25%. Positive effects cast last 1 additional turn.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENA_3VOWS = """No dark magic. As a trainer, won't use physical or humiliating trainings.""", # MISSING TRANSLATION
+	TRAITFAITH_CELENAFLAVOR = """Despite the darkness of this world, Celena's mercifulness still guides the weak.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_1 = """Follower of Freya""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_1DESCRIPT = """+0.5 Mana Regen, Alchemy +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_2 = """Disciple of Freya""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_2DESCRIPT = """+1 Mana Regen, Alchemy +15%, +2 Health Regen.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_2VOWS = """Won't eat meat: eating it lowers the faith.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_3 = """Adept of Freya""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_3DESCRIPT = """+2 Mana Regen, Alchemy +20%, +3 Health Regen, Earth Resist +15.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYA_3VOWS = """Won't eat meat: eating it lowers the faith. Won't cut wood.""", # MISSING TRANSLATION
+	TRAITFAITH_FREYAFLAVOR = """The ancient power of wild nature and flora.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_1 = """Follower of Erebus""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_1DESCRIPT = """Upgrading +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_2 = """Disciple of Erebus""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_2DESCRIPT = """Upgrading +15%, +5 DEF.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_2VOWS = """Service -20%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_3 = """Adept of Erebus""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_3DESCRIPT = """Upgrading +20%, +10 DEF, Earth Resist +20, Mana Cost -15%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUS_3VOWS = """Service -40%.""", # MISSING TRANSLATION
+	TRAITFAITH_EREBUSFLAVOR = """The dull sound of stones echoes through their souls.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_1 = """Follower of Hybris""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_1DESCRIPT = """Manhunt +1.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_2 = """Disciple of Hybris""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_2DESCRIPT = """Manhunt +1, Loyalty for trainee +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_2VOWS = """Healing received -25%.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_3 = """Adept of Hybris""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_3DESCRIPT = """Manhunt +2, Loyalty for trainee +20%, +1 Training Slot. Combat ability cooldowns -1 turn (not below 1).""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRIS_3VOWS = """Healing received -50%. Can't use combat supporting abilities.""", # MISSING TRANSLATION
+	TRAITFAITH_HYBRISFLAVOR = """Dominance is an addictive substance.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_1 = """Follower of Alios""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_1DESCRIPT = """Air Damage +5%.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_2 = """Disciple of Alios""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_2DESCRIPT = """Air Damage +10%, Evasion +5.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_2VOWS = """Loyalty from Training -2.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_3 = """Adept of Alios""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_3DESCRIPT = """Speed +5, Air Damage +15%, Air Resist +20. Incoming negative effects last 1 fewer turn (those of 2+ turns).""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOS_3VOWS = """Loyalty from Training -4. Can't be a trainer.""", # MISSING TRANSLATION
+	TRAITFAITH_ALIOSFLAVOR = """Unbound wind.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_1 = """Follower of Nixx""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_1DESCRIPT = """Dark Resist +10.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_2 = """Disciple of Nixx""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_2DESCRIPT = """Dark Resist +15, Dark Damage +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_2VOWS = """Light Resist -10. No light magic. Morning and day: Productivity -10%, Max Health -10%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_3 = """Adept of Nixx""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_3DESCRIPT = """Dark Resist +25, Dark Damage +15%, Crit Chance +4%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXX_3VOWS = """Light Resist -25. No light magic. Morning and day: Productivity -20%, Max Health -20%.""", # MISSING TRANSLATION
+	TRAITFAITH_NIXXFLAVOR = """The Darkest Night.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_1 = """Way of the Spirits""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_1DESCRIPT = """Hunt +10%.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_2 = """Way of the Spirits II""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_2DESCRIPT = """Hunt +15%, +1 Mana Regen, +1 Sex Stamina.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_2VOWS = """Charm -5. No Waitress or Hostess work.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_3 = """Way of the Spirits III""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_3DESCRIPT = """Hunt +20%, +1 Mana Regen, +2 Sex Stamina.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITS_3VOWS = """Charm -10. No Waitress, Hostess, Dancer or Stripper work.""", # MISSING TRANSLATION
+	TRAITFAITH_SPIRITSFLAVOR = """One with nature.""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESS_1 = """Follower of Darkness""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESS_2 = """Disciple of Darkness""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESS_3 = """Adept of Darkness""", # MISSING TRANSLATION
+	TRAITFAITH_DARKNESSFLAVOR = """Nixx is no more, yet the darkness she ruled still answers those who pray to it.""", # MISSING TRANSLATION
+	TRAITALIOS = """Chosen of Alios""", # MISSING TRANSLATION
+	TRAITNIXX_CHAMPION = """Chosen of Nixx""", # MISSING TRANSLATION
+	TRAITNIXX_CHAMPION2 = """Vessel of Nixx""", # MISSING TRANSLATION
+	VOWBAN_NO_WOOD = """{trait}: won't cut wood.""", # MISSING TRANSLATION
+	VOWBAN_NO_LABOR = """{trait}: won't gather, farm or build.""", # MISSING TRANSLATION
+	VOWBAN_NO_SERVICE = """{trait}: won't do this work.""", # MISSING TRANSLATION
+	VOWBAN_NO_TRAINER = """{trait}: can't be a trainer.""", # MISSING TRANSLATION
+	VOWBAN_GENTLE_TRAINER = """Trainer ({trait}): no physical or humiliating trainings.""", # MISSING TRANSLATION
+	MANSION_ACTIVITY_VOW_MEAT = """[name] had nothing but meat to eat. [His] faith weakens.""", # MISSING TRANSLATION
 	TRAITSTUN_IMMUNITYDESCRIPT = """赋予眩晕免疫。""",
 	TRAITETIQUETTE = """礼仪""",
 	TRAITETIQUETTEDESCRIPT = """学习宫廷礼仪以应对上流社会。角色将掌握贵族聚会中的得体举止，尽管有些人可能会选择打破常规。""",
@@ -5220,6 +5543,12 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	FINISHTRAINING = """结束训练？剩余的精神点数将用于购买额外奖励。""",
 	TRAITTRAINING_VALUE = """进阶特长""",
 	TRAITTRAINING_VALUEDESCRIPT = """+25% 价值""",
+	TRAITTRAINING_STUN = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_STUNDESCRIPT = """Immune to stun""", # MISSING TRANSLATION
+	TRAITTRAINING_STEALTH = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_STEALTHDESCRIPT = """+2 Stealth mastery, +1 Marksmanship mastery""", # MISSING TRANSLATION
+	TRAITTRAINING_COLLECT = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_COLLECTDESCRIPT = """+30% Collection""", # MISSING TRANSLATION
 	TRAITTRAINING_PRODUCTIVITY = """进阶特长""",
 	TRAITTRAINING_PRODUCTIVITYDESCRIPT = """+30% 生产力""",
 	TRAITTRAINING_XP = """进阶特长""",
@@ -5232,12 +5561,20 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	TRAITTRAINING_MATKDESCRIPT = """+10 魔力""",
 	TRAITTRAINING_DEF = """进阶特长""",
 	TRAITTRAINING_DEFDESCRIPT = """+10 防御""",
+	TRAITTRAINING_PROS = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_PROSDESCRIPT = """+30% Sex Service income""", # MISSING TRANSLATION
+	TRAITTRAINING_DANCER = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_DANCERDESCRIPT = """+20% Dancer and Hostess income""", # MISSING TRANSLATION
+	TRAITTRAINING_FARM = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_FARMDESCRIPT = """+1 farm product, +25% farm output""", # MISSING TRANSLATION
 	TRAITTRAINING_MDEF = """进阶特长""",
 	TRAITTRAINING_MDEFDESCRIPT = """+15 魔抗""",
 	TRAITTRAINING_TRAINER = """进阶特长""",
 	TRAITTRAINING_TRAINERDESCRIPT = """+3 训练师槽位及训练师身份""",
 	TRAITTRAINING_HEAL = """进阶特长""",
 	TRAITTRAINING_HEALDESCRIPT = """+50% 治疗效率""",
+	TRAITTRAINING_HUNTER = """Trained spec""", # MISSING TRANSLATION
+	TRAITTRAINING_HUNTERDESCRIPT = """+2 Manhunt, +20% Crit Mod""", # MISSING TRANSLATION
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|处子之身}[/center]
 由于 [name] 拥有可察觉的处子之身，这使 [name] 对某些人而言更具吸引力。
 {color=yellow|售价增加 25%%}""",
@@ -5466,6 +5803,9 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔力。""",
 	BUFFDESCRIPTCONFUSE = """混乱""",
 	BUFFDESCRIPTFREEUSE = """允许使用物品而不消耗回合""",
 	BUFFDESCRIPTPALADINGUARD = """以普通攻击反击近战范围内的伤害性攻击。对于玩家角色，需要装备带有闪避加成的盾牌。""",
+	BUFFDESCRIPTLONEWOLF = """Lone Wolf: alone in the fight, acts twice a round.""", # MISSING TRANSLATION
+	BUFFDESCRIPTINSECURE = """Insecure: no master in the fight. Damage -20%%, Evasion -15.""", # MISSING TRANSLATION
+	BUFFDESCRIPTOBSESSED = """Obsessed: the master fights alongside. Damage +15%%, Speed +10.""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHRED = """撕裂：防御力降低 25%%""",
 	BUFFDESCRIPTSHATTER = """破碎：魔抗降低 50%%""",
 	BUFFDESCRIPTGROWL = """速度和闪避降低""",
@@ -5604,6 +5944,7 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔力。""",
 	TRAIT_HECTOR_VAIN_PRIDE_S = """虚荣之心：+10 攻击力 & +10 命中率。某些技能所需。最多可叠加 10 层。""",
 	EFFECTNAME_DARK_GIFT = """黑暗馈赠""",
 	EFFECT_DARK_GIFT = """+20 攻击力和魔力，-20 防御和魔抗。""",
+	TRAIT_GRASHA_MIND_CONTROLLED = """-50 Mind resist. Devour Magic spell also deal 150% MATK damage when cast on this unit""", # MISSING TRANSLATION
 	TRAIT_KURDAN_MIND_CONTROLLED = """-50 心智抗性。当对该单位施放“吞噬魔法”时，额外造成 150% 魔力伤害。""",
 	EFFECTNAME_UNDERWATCHED = """爱蕊的监视""",
 	TRAIT_OVERWATCH_ASSIGNMENT = """当盟友被击中时，向攻击者发射一支箭。
@@ -5730,36 +6071,36 @@ TRAITEFFECTSUCCOMBAT = """欲望消耗：+25%% 攻击力和魔力。""",
 	EFFECTNAME_COAL_FUSE_1 = """引信""",
 	EFFECTNAME_COAL_FUSE_2 = """引信""",
 	EFFECTNAME_COAL_FUSE_3 = """引信""",
-	EFFECTNAME_JD_WARD = """Warding Field""", # MISSING TRANSLATION
-	EFFECT_JD_WARD_DIAMOND = """Warding Field: Diamond Shell. Clears Shred on arrival; immune to Shred, Poison and Bleed.
-+100 Armor and half damage from physical attacks. A spell landing on her flips it to the Plasma Shell, unless she is Silenced.""", # MISSING TRANSLATION
-	EFFECT_JD_WARD_PLASMA = """Warding Field: Plasma Shell. Clears Shatter on arrival; immune to Shatter, Burn and Wet.
-+100 MDEF and half damage from magic. A physical blow flips it to the Diamond Shell, unless she is Silenced.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_MOUTH_SHUT = """Second Mouth Shut""", # MISSING TRANSLATION
-	EFFECT_JD_MOUTH_SHUT = """The demon's own mouth has been burned shut: no Silence immunity and no extra {color=yellow|Light} weakness for 2 turns. When it opens again, any Silence on her is cleared.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_QUICKSAND = """Quicksand""", # MISSING TRANSLATION
-	EFFECT_JD_QUICKSAND = """Quicksand: -75% Evasion, -50 Speed, and this unit's melee attacks always miss. Counts as a trap.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_LINGERING_STORM = """Lingering Storm""", # MISSING TRANSLATION
-	EFFECT_JD_LINGERING_STORM = """Lingering Storm: at the start of each round the weather may pick this unit out for a bolt, dealing {color=yellow|Air} damage and Shocking them for 2 turns.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_ENRAGE = """Enrage""", # MISSING TRANSLATION
-	EFFECT_JD_ENRAGE = """Enraged: +20% damage dealt, 20% less damage taken, -20 {color=yellow|Mind} resistance.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_UNSILENCED = """Torn Gag""", # MISSING TRANSLATION
-	EFFECT_JD_UNSILENCED = """Five hundred years of being shut up were enough. Immune to Silence for the rest of the battle.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_EMPOWERMENT = """Empowerment""", # MISSING TRANSLATION
-	EFFECT_JD_EMPOWERMENT = """+10% ATK and MATK per stack.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_DEEP_SLEEP = """Deep Sleep""", # MISSING TRANSLATION
-	EFFECT_JD_DEEP_SLEEP = """Deep Sleep: cannot act.
-Any ability an ally aims at them burns one helping off, and so does Clarity at the end of their turn. Let it reach 8 layers and it becomes Comatose.""", # MISSING TRANSLATION
-	EFFECTNAME_JD_COMATOSE = """Comatose""", # MISSING TRANSLATION
-	EFFECT_JD_COMATOSE = """Comatose: cannot act, and cannot be woken before the battle is over.""", # MISSING TRANSLATION
-	TRAIT_JD_DEMON_ARROGANCE = """Undefilable Arrogance of a Demon: damage over time is cut further still.
-Too proud to be Taunted, too sure of itself to feel Fear, too damned to be Cursed.""", # MISSING TRANSLATION
-	TRAIT_JD_SECOND_MOUTH = """Second Mouth: the demon speaks in her place, so she is immune to Silence - but its mouth is an opening, and she takes far more {color=yellow|Light} damage.
-A hit of {color=yellow|Light} shuts it for 2 turns; when it opens again it clear out any Silence effect on self.""", # MISSING TRANSLATION
-	TRAIT_JD_DREAM_EATER = """Dream Eater's Self-Made Vessel: immune to Sleep and Disarm. Every blow that lands on a Sleeping, {color=aqua|Deep Sleeping} or {color=aqua|Comatose} enemy restores 20% of its maximum health.""", # MISSING TRANSLATION
-	TRAIT_JD_ENNUI = """500 Years of Ennui and Resentment: being held down - immobilised or Ensnared - sends it into {color=aqua|Enrage} for 3 turns.
-The first time it is driven below half health it tears off any Silence and cannot be Silenced again.""", # MISSING TRANSLATION
-    EFFECTNAME_OVERLOADED_GOLEM_CORE = "过载的魔像核心", 
+	EFFECTNAME_JD_WARD = """防护气场""",
+	EFFECT_JD_WARD_DIAMOND = """防护气场：金刚法壳。生效时清除【削甲】；免疫【削甲】、【中毒】与【流血】。
+护甲 +100，且受到的物理伤害减半。若受到法术命中，将切换为【等离子壳】（处于沉默状态时除外）。""",
+	EFFECT_JD_WARD_PLASMA = """防护气场：等离子壳。生效时清除【破甲】；免疫【破甲】、【灼烧】与【湿润】。
+魔法抗性 +100，且受到的魔法伤害减半。若受到物理攻击，将切换为【金刚法壳】（处于沉默状态时除外）。""",
+	EFFECTNAME_JD_MOUTH_SHUT = """第二之口闭合""",
+	EFFECT_JD_MOUTH_SHUT = """恶魔自身的嘴被烧得闭合：持续 2 回合失去沉默免疫且不再具有额外的{color=yellow|光属性}弱点。当嘴再次张开时，将清除自身所有的沉默效果。""",
+	EFFECTNAME_JD_QUICKSAND = """流沙""",
+	EFFECT_JD_QUICKSAND = """流沙：闪避 -75%，速度 -50，且该单位的近战攻击必定未命中。视为陷阱。""",
+	EFFECTNAME_JD_LINGERING_STORM = """余威风暴""",
+	EFFECT_JD_LINGERING_STORM = """余威风暴：每回合开始时，天气可能会降下落雷击中该单位，造成{color=yellow|风属性}伤害并使其触电 2 回合。""",
+	EFFECTNAME_JD_ENRAGE = """激怒""",
+	EFFECT_JD_ENRAGE = """激怒：造成伤害 +20%，受到伤害 -20%，{color=yellow|精神}抗性 -20。""",
+	EFFECTNAME_JD_UNSILENCED = """撕破的口塞""",
+	EFFECT_JD_UNSILENCED = """被禁言五百年的折磨已经够了。在剩余的战斗中免疫沉默。""",
+	EFFECTNAME_JD_EMPOWERMENT = """增幅""",
+	EFFECT_JD_EMPOWERMENT = """每层使物理攻击力与魔法攻击力 +10%。""",
+	EFFECTNAME_JD_DEEP_SLEEP = """深层睡眠""",
+	EFFECT_JD_DEEP_SLEEP = """深层睡眠：无法行动。
+队友对其施加的任何技能都会减少一层，其回合结束时的【清醒】效果亦然。当层数达到 8 层时，将转变为【昏迷】。""",
+	EFFECTNAME_JD_COMATOSE = """昏迷""",
+	EFFECT_JD_COMATOSE = """昏迷：无法行动，且在战斗结束前无法被唤醒。""",
+	TRAIT_JD_DEMON_ARROGANCE = """恶魔不可玷污的傲慢：持续伤害被进一步削减。
+因过于高傲而不会被【嘲讽】，因过于自信而不会感到【恐惧】，因早已遭诅咒而无法被【诅咒】。""",
+	TRAIT_JD_SECOND_MOUTH = """第二之口：恶魔替她发声，因此她免疫沉默——但这张嘴也是弱点所在，使她受到远更高的{color=yellow|光属性}伤害。
+受到{color=yellow|光属性}伤害命中会使其闭合 2 回合；当它再次张开时，会清除自身的所有沉默效果。""",
+	TRAIT_JD_DREAM_EATER = """食梦者自制的容器：免疫【睡眠】与【缴械】。对处于【睡眠】、{color=aqua|深层睡眠}或{color=aqua|昏迷}状态的敌人造成的每次攻击，都会恢复其最大生命值的 20%。""",
+	TRAIT_JD_ENNUI = """五百年的倦怠与怨恨：受到限制——处于定身或【缠绕】状态时——会使其陷入{color=aqua|激怒}，持续 3 回合。
+首次生命值降至半数以下时，会挣脱所有沉默效果，且无法再被沉默。""",
+	EFFECTNAME_OVERLOADED_GOLEM_CORE = """Overloaded Golem Core""", # MISSING TRANSLATION
     EFFECT_OVERLOADED_GOLEM_CORE = """所有攻击现在有70%几率附加点燃。
 回合结束时：对所有敌人造成微量火焰伤害。
 副作用：每回合流失15%最大生命值。
@@ -6330,7 +6671,7 @@ The first time it is driven below half health it tears off any Silence and canno
 	BODYPARTHAIR_STYLEBUN = """发髻""",
 	BODYPARTHAIR_STYLEBOB = """波波头""",
 	BODYPARTHAIR_STYLEMESSY = """凌乱发""",
-	BODYPARTHAIR_STYLEMESSY_EYEHIDE = """messy, over one eye""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEMESSY_EYEHIDE = """凌乱，遮住单眼""",
 	BODYPARTHAIR_STYLELAYERED = """层次发""",
 	BODYPARTHAIR_STYLEFRINGE = """齐刘海""",
 	BODYPARTHAIR_STYLECROWNBRAID = """冠状编发""",
@@ -6519,7 +6860,7 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
     BODYPARTHAIR_STYLEBUNDESCRIPT = """头发被盘成了一个整齐的[url=hair][color=aqua]发髻[/color][/url]。""",
 	BODYPARTHAIR_STYLEBOBDESCRIPT = """修剪成了整齐的[url=hair][color=aqua]波波头[/color][/url]。""",
 	BODYPARTHAIR_STYLEMESSYDESCRIPT = """散落成[url=hair][color=aqua]蓬乱纠缠[/color][/url]的一团。""",
-	BODYPARTHAIR_STYLEMESSY_EYEHIDEDESCRIPT = """It falls in a [url=hair][color=aqua]dishevelled[/color][/url] tangle over one eye.""", # MISSING TRANSLATION
+	BODYPARTHAIR_STYLEMESSY_EYEHIDEDESCRIPT = """头发[url=hair][color=aqua]蓬乱地[/color][/url]遮挡住了一只眼睛。""",
 	BODYPARTHAIR_STYLELAYEREDDESCRIPT = """修剪出修饰 [his] 脸型的[url=hair][color=aqua]层次感[/color][/url]。""",
 	BODYPARTHAIR_STYLEFRINGEDESCRIPT = """梳成了长长的[url=hair][color=aqua]斜刘海[/color][/url]。""",
 	BODYPARTHAIR_STYLECROWNBRAIDDESCRIPT = """盘成[url=hair][color=aqua]冠状编发[/color][/url]并收于脑后。""",
@@ -6585,8 +6926,8 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = """[name]皮肤部分覆盖着[color=aqua]鳞片[/color]。""",
 	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = """[name]皮肤部分覆盖着[color=aqua]鳞片[/color]。""",
 	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = """[name]皮肤部分覆盖着[color=aqua]鳞片[/color]。""",
-	BODYPARTSKIN_COVERAGEKOBOLDDESCRIPT = """[His] skin is covered in small, fine [color=aqua]scales[/color].""", # MISSING TRANSLATION
-	BODYPARTSKIN_COVERAGEKOBOLD_SPOTSDESCRIPT = """[His] skin is covered in small, fine [color=aqua]spotted scales[/color].""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGEKOBOLDDESCRIPT = """[His]的皮肤覆盖着细小的[color=aqua]鳞片[/color]。""",
+	BODYPARTSKIN_COVERAGEKOBOLD_SPOTSDESCRIPT = """[His]的皮肤覆盖着细小的[color=aqua]斑点鳞片[/color]。""",
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = """[name]身体多处覆盖着[color=aqua]鸟类羽毛[/color]。""",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = """[name]身体覆盖着厚实、柔软的[color=aqua]大理石色皮毛[/color]。""",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = """[name]身体覆盖着厚实、柔软的[color=aqua]灰色皮毛[/color]。""",
@@ -7547,6 +7888,19 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	INTERACTION_SPEECH_RESISTORGASM_1 = """啊哈……呜嗯……不要……要泄了……""",
 	INTERACTION_SPEECH_RESISTORGASM_2 = """呜呜……为什么……里面明明舒服得要死……""",
 	INTERACTION_SPEECH_RESISTORGASM_3 = """不行，求你快停下，再弄就要……啊！去、去了！呜呜……""",
+	INTERACTION_SPEECH_HESITANT_1 = """W-wait... I'm not sure about this...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_2 = """This is so embarrassing...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_3 = """D-don't stare at me like that, [name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_4 = """Are we really doing this...?""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANT_5 = """I-if you really want to... I guess...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_1 = """I shouldn't be enjoying this so much...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_2 = """Ah... so embarrassing... but don't stop...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_3 = """Why does this feel so good... I'm so ashamed...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_4 = """Don't tell anyone how much I liked this, [name2]...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTHORNY_5 = """My face is burning... and not only my face...""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTORGASM_1 = """Ah... ahh! D-don't look at me...!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTORGASM_2 = """I-I can't hold it... ahh!""", # MISSING TRANSLATION
+	INTERACTION_SPEECH_HESITANTORGASM_3 = """So embarrassing... I'm... cumming...!""", # MISSING TRANSLATION
 	INTERACTION_SPEECH_MUTE_1 = """……""",
 	INTERACTION_SPEECH_MUTE_2 = """……！""",
 	INTERACTION_SPEECH_MUTE_3 = """…………""",
@@ -7707,6 +8061,14 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	SEXACTION_KISS_REACT_AROUSAL1_NICE_2 = """[name2]老老实实地僵在原地一动不动""",
 	SEXACTION_KISS_REACT_AROUSAL1_MEAN_1 = """[name2]极其抗拒地死死咬紧了[name2]的牙关""",
 	SEXACTION_KISS_REACT_AROUSAL1_MEAN_2 = """[name2]带着几分厌恶，稍微把[name2]的脸蛋扭开试图躲避""",
+	SEXACTION_KISS_REACT_AROUSAL4_HESITANT_1 = """[name2] kiss[es/2] back {^eagerly:hungrily}, [his2] cheeks burning""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL4_HESITANT_2 = """[name2] {^melt[s/2]:sink[s/2]} into the kiss, {^forgetting:abandoning} [his2] shyness""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_HESITANT_1 = """[name2] {^shyly:timidly} kiss[es/2] back""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL3_HESITANT_2 = """[name2] let[s/2] out a {^muffled:small} {^squeak:sound} into the kiss""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} {^deeply:furiously}, [his2] lips trembling""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL2_HESITANT_2 = """[name2] {^hesitate[s/2]:falter[s/2]}, then {^slowly:carefully} return[s/2] the kiss""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} {^to the tips of [his2] ears:a deep red}""", # MISSING TRANSLATION
+	SEXACTION_KISS_REACT_AROUSAL1_HESITANT_2 = """[name2] {^lower[s/2]:avert[s/2]} [his2] eyes {^bashfully:shyly}""", # MISSING TRANSLATION
 	SEXACTION_FONDLETITS_FROM_BEHIND_NICE_1 = """[name1]从身后伸出双手环绕过来，极其色情地{^揉捏:肆意把玩:爱抚}[names2]的[tits2]。""",
 	SEXACTION_FONDLETITS_FROM_BEHIND_NICE_2 = """[name1]从身后{^滑入:探出}[name1]的双手，极其贪婪地{^用手心托起:揉捏:狠狠抓弄}[names2]的[tits2]。""",
 	SEXACTION_FONDLETITS_FROM_BEHIND_MEAN_1 = """[name1]从身后粗暴地伸出双手环绕过来，蛮横地{^一把抓住:死死揪住}[names2]的[tits2]。""",
@@ -7794,6 +8156,12 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	SEXACTION_FINGERING_REACT_AROUSAL1_NICE_1 = """[names2][pussy2]顺从地围绕着[names1]手指{^分开:迎合着顺从}。""",
 	SEXACTION_FINGERING_REACT_AROUSAL1_MEAN_1 = """[names2][pussy2]抗拒着[names1]手指而绞紧。""",
 	SEXACTION_FINGERING_REACT_AROUSAL1_MEAN_2 = """[name2]身体紧绷并扭过头去。""",
+	SEXACTION_FINGERING_REACT_AROUSAL4_HESITANT_1 = """[name2] {^hide[s/2]:cover[s/2]} [his2] {^flushed:burning} face, [his2] [pussy2] clenching {^eagerly:tightly} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL4_HESITANT_2 = """[name2] {^moan[s/2]:gasp[s/2]} aloud, then {^clap[s/2]:press[es/2]} a hand over [his2] mouth""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL3_HESITANT_1 = """[name2] {^squirm[s/2]:fidget[s/2]}, {^mortified:embarrassed} by how wet [he2] [is2] getting""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} and {^instinctively:reflexively} {^press[es/2]:squeeze[s/2]} [his2] thighs together""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL1_HESITANT_1 = """[name2] {^stiffen[s/2]:tense[s/2]} {^shyly:nervously}, unsure what to do with [his2] hands""", # MISSING TRANSLATION
+	SEXACTION_FINGERING_REACT_AROUSAL1_HESITANT_2 = """[name2] {^avert[s/2]:lower[s/2]} [his2] eyes, [his2] cheeks {^reddening:flushing}""", # MISSING TRANSLATION
 	SEXACTION_FINGERING_REACT_SKILL_NOVICE_LOW_1 = """。[name1]{^笨拙地摸索:艰难地尝试}着寻找正确的{^角度:深度:节奏}。""",
 	SEXACTION_FINGERING_REACT_SKILL_NOVICE_HIGH_1 = """。尽管[name1]{^缺乏经验:缺乏练习}，[name1]还是成功引导出了反应。""",
 	SEXACTION_FINGERING_REACT_SKILL_SKILLED_LOW_1 = """。[name1]自始至终{^维持:保持}着{^稳定:熟练}的动作。""",
@@ -7829,6 +8197,8 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	SEXDICT_START_1_MISSIONARY_INSERT_NICE_2 = """[name2]{^挪动身体:翻身}到[name2]背上，任由[name1]{^跨坐:爬}{^在上面:在身心之上}[name2]""",
 	SEXDICT_START_1_MISSIONARY_INSERT_MEAN_1 = """[name2]{^扭动:挣扎}，因为[name1]{^按住:死死压住}[name2]{^平躺在背上: }""",
 	SEXDICT_START_1_MISSIONARY_INSERT_MEAN_2 = """[name1]{^强行将:推倒}[name2]在[name2]背上，而[name2]则{^试图反抗:提出抗议}""",
+	SEXDICT_START_1_MISSIONARY_REPEAT_HESITANT_1 = """[name2] {^shyly:timidly} {^part[s/2]:open[s/2]} [his2] legs for [name1] again""", # MISSING TRANSLATION
+	SEXDICT_START_1_MISSIONARY_REPEAT_HESITANT_2 = """[name2] {^blush[es/2]:flush[es/2]} and look[s/2] away, but [his2] legs stay parted for [name1]""", # MISSING TRANSLATION
 	SEXDICT_START_1_DOGGY_REPEAT_NICE_1 = """[name2]{^向后挺身:向后摇晃}主动迎合着撞向[name1]""",
 	SEXDICT_START_1_DOGGY_REPEAT_NICE_2 = """[name2]{^塌下:抬高}[name2]腰肢，{^邀请:欢迎}着[name1]插得更深""",
 	SEXDICT_START_1_DOGGY_REPEAT_NICE_3 = """随着[name1]的继续，[name2]{^紧紧抓着:死死抠着}{^床单:被褥}""",
@@ -7851,6 +8221,10 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	SEXDICT_START_1_DOGGY_INSERT_NICE_2 = """[name2]{^塌下:抬高}[name2]腰肢，将[himself2]{^呈献给:主动奉献给}[name1]。""",
 	SEXDICT_START_1_DOGGY_INSERT_MEAN_1 = """[name2]{^挣扎:反抗}，因为[name1]{^强行将:推着}[name2]趴伏在[name2]双手和双膝上""",
 	SEXDICT_START_1_DOGGY_INSERT_MEAN_2 = """[name1]{^按住:死死固定住}[name2]{^四肢着地:双膝跪地}在地上，而[name2]则{^扭动:抗议}。""",
+	SEXDICT_START_1_DOGGY_REPEAT_HESITANT_1 = """[name2] {^bur[ies/y2]:hide[s/2]} [his2] {^flushed:burning} face in the {^sheets:bedding}""", # MISSING TRANSLATION
+	SEXDICT_START_1_DOGGY_REPEAT_HESITANT_2 = """[name2] {^stay[s/2]:remain[s/2]} on all fours, too {^flustered:embarrassed} to look back at [name1]""", # MISSING TRANSLATION
+	SEXDICT_START_1_DOGGY_INSERT_HESITANT_1 = """[name2] {^slowly:hesitantly} get[s/2] on all fours, [his2] {^cheeks burning:face flushed}""", # MISSING TRANSLATION
+	SEXDICT_START_1_DOGGY_INSERT_HESITANT_2 = """[name2] {^lower[s/2]:hang[s/2]} [his2] head {^shyly:bashfully} as [name1] move[s/1] behind [him2]""", # MISSING TRANSLATION
 	SEXDICT_START_1_LOTUS_REPEAT_NICE_1 = """[name1]{^搂住:抓牢:稳稳扶住}[name2]的[name2][hips2]。""",
 	SEXDICT_START_1_LOTUS_REPEAT_NICE_2 = """[name1]{^揉捏:掐弄:按摩}[names2]{^屁股:臀}瓣。""",
 	SEXDICT_START_1_LOTUS_REPEAT_NICE_3 = """[name1]{^紧抱住:抱紧:搂紧}[name2]让其紧贴着[name1]身体[y/ies1]。""",
@@ -7983,6 +8357,14 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	SEXDICT_MAIN_1_SEXA_NICE_2 = """[name2]{^张开:掰开}[name2]大腿{^以便让[name1]插得更深:以便给[name1]更好的侵入路径}""",
 	SEXDICT_MAIN_1_SEXA_MEAN_1 = """[name2]{^无助地:徒劳地:}反抗着[name1]""",
 	SEXDICT_MAIN_1_SEXA_DEFAULT_1 = """[names2]的{^肛门:后穴}{^包裹住:紧紧缠绕住:吸吮拉扯着}[names1]的[penis1]""",
+	SEXDICT_MAIN_1_SEX_HESITANT_1 = """[name2] {^bite[s/2] [his2] lip:squeeze[s/2] [his2] eyes shut}, {^flustered:embarrassed}""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_HESITANT_2 = """[name2] {^hide[s/2]:cover[s/2]} [his2] {^flushed:burning} face with [his2] hands""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_FACING_HESITANT_1 = """[name2] {^glance[s/2]:peek[s/2]} up at [name1], then quickly look[s/2] away""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_FACING_HESITANT_2 = """[name2] can't bring [himself2] to meet [names1] eyes""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_1 = """[name2] keep[s/2] [his2] face turned away, glad [name1] can't see [him2] blush""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_NONFACING_HESITANT_2 = """[name2] {^sneak[s/2]:steal[s/2]} a {^shy:bashful} glance back at [name1]""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_1 = """[name2] {^tremble[s/2]:shiver[s/2]} with nerves, [his2] breath catching""", # MISSING TRANSLATION
+	SEXDICT_MAIN_1_SEX_VIRGIN_HESITANT_2 = """[name2] {^squeeze[s/2] [his2] eyes shut:hold[s/2] [his2] breath}, {^nervous:anxious} but not pulling away""", # MISSING TRANSLATION
 	SEXDICT_MAIN_2_SEXV_VIRGIN_1 = """，随着[color=#ff5df8][name1]{^撕裂:刺破:破开}{^ :}[partners2]的处女膜[/s2][/color]""",
 	SEXDICT_MAIN_2_SEXV_VIRGIN_2 = """，随着[color=#ff5df8][name1]夺走[partners2]的{^初夜:处女之身}[/color]""",
 	SEXDICT_MAIN_2_SEXV_VIRGIN_3 = """，随着[color=#ff5df8][name1]{^破开:采摘}[partners2]{^未经开发的:青涩的}隐秘地带[/color]""",
@@ -8042,6 +8424,21 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	SEXDICT_REACT_1_SEX_TAKER_SKILLED_MEAN_1 = """当[name2]翘臀不由自主地{^挺弄:挪动}时，[name2]{^试图保持:挣扎着想要保持}身体不动""",
 	SEXDICT_REACT_1_SEX_TAKER_NOVICE_MEAN_1 = """[name2]整个人完全{^僵住:锁紧}了，身体因{^震惊:恐慌}而一片僵硬""",
 	SEXDICT_REACT_1_SEX_TAKER_NOVICE_MEAN_2 = """[name2]在每一次抽插中都会{^战栗:一哆嗦}，根本无法去适应""",
+	SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_1 = """[name2] hide[s/2] [his2] face, but [his2] hips keep {^moving:rocking} on their own""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_2 = """[name2] {^moan[s/2]:cr[ies/y2] out} loudly, then {^flush[es/2]:blush[es/2]} {^bright red:crimson} at [his2] own voice""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_4_HESITANT_3 = """[name2] {^gasp[s/2]:pant[s/2]} {^helplessly:breathlessly}, too far gone to {^hide:mind} how [he2] sound[s/2]""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_1 = """[name2] cover[s/2] [his2] mouth, {^stifling:muffling} an {^embarrassing:unexpected} moan""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_2 = """[name2] {^squirm[s/2]:fidget[s/2]}, [his2] cheeks burning at how {^eagerly:readily} [his2] body responds""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_3_HESITANT_3 = """[name2] {^gasp[s/2]:whimper[s/2]} and quickly bite[s/2] [his2] lip""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]} and avert[s/2] [his2] eyes""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_2 = """[name2] let[s/2] out a {^small:timid} sound, then fall[s/2] silent in embarrassment""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_2_HESITANT_3 = """[name2] {^peek[s/2]:glance[s/2]} at [name1], then look[s/2] away, flustered""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_1 = """[name2] {^stiffen[s/2]:hold[s/2] [his2] breath}, unsure what to do with [himself2]""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_2 = """[name2] {^shyly:timidly} turn[s/2] [his2] face away""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_AROUSAL_1_HESITANT_3 = """[name2] fidget[s/2] {^nervously:uneasily}, [his2] cheeks {^reddening:flushing}""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_TAKER_MASTERED_HESITANT_1 = """[name2] move[s/2] with [name1] {^skillfully:expertly}, though [he2] can't bring [himself2] to look at [him1]""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_TAKER_SKILLED_HESITANT_1 = """[name2] {^tentatively:timidly} match[es/2] [names1] rhythm, blushing all the while""", # MISSING TRANSLATION
+	SEXDICT_REACT_1_SEX_TAKER_NOVICE_HESITANT_1 = """[name2] {^freeze[s/2]:stiffen[s/2]} up, too embarrassed to {^move:do anything}""", # MISSING TRANSLATION
 	SEXDICT_REACT_1_FSEX_AROUSAL_4_1 = """[name1]{^吐出[name1]舌头:将舌头微吐出}悬在唇间""",
 	SEXDICT_REACT_1_FSEX_AROUSAL_4_2 = """[name2]眼神失焦，双眼爽得不由自主向上翻起""",
 	SEXDICT_REACT_1_FSEX_AROUSAL_4_3 = """随着每一次动作，[name2]都会{^疯狂地:动情地}{^哭喊:放声放浪地荡叫}""",
@@ -8078,6 +8475,17 @@ BODYPARTANAL_VIRGINTRUEDESCRIPT = """[name] {color=yellow|肛门处微身} 尚�
 	SEXDICT_REACT_2_SEX_GIVER_MASTERED_MEAN_1 = """，违背着[himself2]的意愿，[name2]身体还是在[names1]{^老练的:熟练的}掌控下彻底臣服沦陷了""",
 	SEXDICT_REACT_2_SEX_GIVER_SKILLED_MEAN_1 = """，在[names1]{^自信的:无情的}攻势频率下，[name2]反抗逐渐{^崩溃:动摇}""",
 	SEXDICT_REACT_2_SEX_GIVER_NOVICE_MEAN_1 = """，{^哪怕在:即使在}[names1]那{^笨拙的:手忙脚乱的}粗暴摆弄下""",
+	SEXDICT_REACT_2_SEX_AROUSAL_4_HESITANT_1 = """, {^teetering:trembling} on the edge before [he2] know[s/2] it""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_4_HESITANT_2 = """, {^mortified:flustered} by how close to the edge [he2] already [is2]""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_3_HESITANT_1 = """, [his2] breathing {^quickening:growing ragged}""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_3_HESITANT_2 = """, [his2] {^reserve:hesitation} slowly giving way to pleasure""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_2_HESITANT_1 = """, {^shy:bashful} but not unwilling""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_2_HESITANT_2 = """, {^slowly:gradually} {^warming:opening} up to [name1]""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_1_HESITANT_1 = """, [his2] heart {^pounding:racing}""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_AROUSAL_1_HESITANT_2 = """, torn between curiosity and {^nerves:embarrassment}""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_GIVER_MASTERED_HESITANT_1 = """, [his2] {^doubts:hesitation} melting under [names1] {^expert:practiced} touch""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_GIVER_SKILLED_HESITANT_1 = """, {^gradually:slowly} put at ease by [names1] {^steady:confident} rhythm""", # MISSING TRANSLATION
+	SEXDICT_REACT_2_SEX_GIVER_NOVICE_HESITANT_1 = """, [names1] {^clumsy:fumbling} movements {^only making things more awkward:not helping [his2] nerves}""", # MISSING TRANSLATION
 	SEXDICT_REACT_2_FSEX_AROUSAL_4_1 = """，{^迅速:很快}{^逼近:临近:被推向}{^高潮:[name1]顶点:[name1]极致的快乐}""",
 	SEXDICT_REACT_2_FSEX_AROUSAL_4_2 = """，在{^高潮:濒临决堤}的{^边缘:临界点}摇摇欲坠""",
 	SEXDICT_REACT_2_FSEX_AROUSAL_3_1 = """，[name1]{^享受:欢愉:满足感}{^明显地 :}{^展露无遗:显而易见}""",
@@ -8591,6 +8999,11 @@ SEXDESC_ASS_SMALL_1 = """小巧的""",
 	SEXACTION_ASSFINGERING_REACT_AROUSAL1_NICE_1 = """[names2][anus2]对[names1]的手指{^缴械顺从:彻底敞开}[yield:give]""",
 	SEXACTION_ASSFINGERING_REACT_AROUSAL1_MEAN_1 = """[names2][anus2]死死咬住{^坚硬地:死命地}[names1]的手指""",
 	SEXACTION_ASSFINGERING_REACT_AROUSAL1_MEAN_2 = """[name2]身体紧绷并{^转过头去:愤愤地瞪向别处}""",
+	SEXACTION_ASSFINGERING_REACT_AROUSAL4_HESITANT_1 = """[name2] push[es/2] back against [names1] hand[s/1], {^mortified:flushed} at [his2] own eagerness""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL3_HESITANT_1 = """[name2] hide[s/2] [his2] {^flushed:burning} face, [his2] [anus2] {^quivering:twitching} around [names1] fingers""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL2_HESITANT_1 = """[name2] let[s/2] out an embarrassed {^squeak:whimper}, unsure whether [he2] like[s/2] it""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL1_HESITANT_1 = """[name2] {^tense[s/2]:clench[es/2]} {^nervously:shyly}, [his2] face {^burning:reddening}""", # MISSING TRANSLATION
+	SEXACTION_ASSFINGERING_REACT_AROUSAL1_HESITANT_2 = """[name2] glance[s/2] back at [name1] {^uncertainly:nervously}""", # MISSING TRANSLATION
 	SEXACTION_ASSFINGERING_REACT_SKILL_NOVICE_LOW_1 = """. [name1]{^笨手笨脚地:挣扎着}找着{^角度:门径}，{^还在摸索:总觉得有点不对劲}。""",
 	SEXACTION_ASSFINGERING_REACT_SKILL_NOVICE_HIGH_1 = """. [name1]尽管{^缺乏经验:手法生疏}，但还是成功让对方有了反应。""",
 	SEXACTION_ASSFINGERING_REACT_SKILL_SKILLED_LOW_1 = """. [name1]凭着{^清淅可辨:显而易见}的经验，{^稳住:保持}着{^沉稳:熟练}的节奏。""",
@@ -8621,6 +9034,11 @@ SEXDESC_ASS_SMALL_1 = """小巧的""",
 	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_NICE_1 = """当[names1]的嘴巴{^含住:覆在}[name2]的乳头上时，[name2]微微{^抽搐:颤抖}了一下""",
 	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_MEAN_1 = """当[names1]的嘴巴狠狠叼住[name2]的乳头时，[name2]{^扭动:猛地一颤}""",
 	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_MEAN_2 = """[name2]没怎么显露出反应，依然显得{^有些不舒服:焦躁不安}""",
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL4_HESITANT_1 = """[name2] {^arch[es/2]:press[es/2]} into [names1] mouth[/s1], then hide[s/2] [his2] face in embarrassment""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL4_HESITANT_2 = """[name2] {^moan[s/2]:whimper[s/2]} {^breathlessly:helplessly}, [his2] cheeks {^burning:aflame}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL3_HESITANT_1 = """[name2] bite[s/2] [his2] lip, {^embarrassed:flustered} at how quickly [his2] nipples {^stiffen:harden}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL2_HESITANT_1 = """[name2] {^shiver[s/2]:squirm[s/2]}, [his2] cheeks {^reddening:flushing}""", # MISSING TRANSLATION
+	SEXACTION_SUCKNIPPLES_REACT_AROUSAL1_HESITANT_1 = """[name2] {^tense[s/2]:stiffen[s/2]} {^nervously:awkwardly}, unsure where to look""", # MISSING TRANSLATION
 	SEXACTION_SUCKNIPPLES_REACT_SKILL_NOVICE_LOW_1 = """. [name1]{^有些笨拙地:生疏地}含吮着，{^还在寻找:还没找到}合适的{^节奏:技巧}。""",
 	SEXACTION_SUCKNIPPLES_REACT_SKILL_NOVICE_HIGH_1 = """. [name1]尽管{^缺乏经验:缺乏练习}，但还是成功激发了对方的反应。""",
 	SEXACTION_SUCKNIPPLES_REACT_SKILL_SKILLED_LOW_1 = """. [name1]凭着{^清淅可辨:显而易见}的熟练度，{^侍弄着:伺候着}[names2]的乳头。""",
@@ -8649,6 +9067,11 @@ SEXDESC_ASS_SMALL_1 = """小巧的""",
 	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_NICE_1 = """[name2] {^顺从地:大方地}为[names1]的嘴巴张开了双腿。""",
 	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_1 = """[name2]感受到[names1]的触碰后{^扭动:紧绷}起来，{^试着:试图}{^挪开:并拢[name2]的大腿}。""",
 	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_MEAN_2 = """[name2]{^转过头:移开目光}，{^拒绝:试图不}去承认[names1]的挑逗。""",
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL4_HESITANT_1 = """[name2] {^clamp[s/2]:press[es/2]} [his2] thighs around [names1] head, moaning despite [his2] embarrassment""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL3_HESITANT_1 = """[name2] {^cover[s/2]:clap[s/2] a hand over} [his2] mouth to {^stifle:muffle} a moan""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL2_HESITANT_1 = """[name2] {^blush[es/2]:flush[es/2]}, not daring to watch [name1] between [his2] thighs""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_HESITANT_1 = """[name2] {^shyly:bashfully} tr[ies/y2] to cover [himself2]""", # MISSING TRANSLATION
+	SEXACTION_CUNNILINGUS_REACT_AROUSAL1_HESITANT_2 = """[name2] {^squirm[s/2]:fidget[s/2]}, [his2] face {^burning:aflame} at being {^seen:looked at} so closely""", # MISSING TRANSLATION
 	SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_LOW_1 = """. [name1]{^笨手笨脚地:挣扎着}想要找准{^敏感点:节奏:门径}。""",
 	SEXACTION_CUNNILINGUS_REACT_SKILL_NOVICE_HIGH_1 = """. [name1]尽管{^缺乏经验:手法不够圆滑}，但还是成功激发了对方的反应。""",
 	SEXACTION_CUNNILINGUS_REACT_SKILL_SKILLED_LOW_1 = """. [name1]凭着{^清淅可辨:显而易见}的技巧{^舔舐着:侍弄着}，精准地捕捉着[names2]的身体反应。""",
@@ -8694,6 +9117,12 @@ SEXDESC_ASS_SMALL_1 = """小巧的""",
 	SEXACTION_HANDJOB_REACT_AROUSAL1_NICE_1 = """[name2] 默许了[names1]的触碰，没有反抗""",
 	SEXACTION_HANDJOB_REACT_AROUSAL1_MEAN_1 = """[name2] 感觉到[names1]的触碰时紧绷起来""",
 	SEXACTION_HANDJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^瞪着:看着}别处""",
+	SEXACTION_HANDJOB_REACT_AROUSAL4_HESITANT_1 = """[name2] {^buck[s/2]:rock[s/2]} into [names1] hand[s/1], too far gone to hide it""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL4_HESITANT_2 = """[name2] let[s/2] out an {^embarrassing:unguarded} {^moan:groan} and quickly cover[s/2] [his2] mouth""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL3_HESITANT_1 = """[name2] bite[s/2] [his2] lip to keep quiet, [his2] face {^flushing:reddening}""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL2_HESITANT_1 = """[name2] {^exhale[s/2]:breathe[s/2]} {^shakily:unsteadily}, not sure where to look""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL1_HESITANT_1 = """[name2] {^shift[s/2]:fidget[s/2]} {^awkwardly:nervously} under [names1] touch""", # MISSING TRANSLATION
+	SEXACTION_HANDJOB_REACT_AROUSAL1_HESITANT_2 = """[name2] {^blush[es/2]:flush[es/2]}, avoiding [names1] eyes""", # MISSING TRANSLATION
 	SEXACTION_HANDJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^fumble:struggle} to maintain a consistent rhythm.""",
 	SEXACTION_HANDJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1]{^吃力地:挣扎着}想要跟上[name2]即将高潮的节奏。""",
 	SEXACTION_HANDJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1]{^保持:维系}着{^稳定:一致}的节奏。""",
@@ -8730,6 +9159,12 @@ SEXDESC_ASS_SMALL_1 = """小巧的""",
 	SEXACTION_BLOWJOB_REACT_AROUSAL1_NICE_1 = """[name2] {^任由:让} [name1]动作，{^身心放松:不急不躁}""",
 	SEXACTION_BLOWJOB_REACT_AROUSAL1_MEAN_1 = """[name2] 当[name1]开始时紧张起来""",
 	SEXACTION_BLOWJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^瞪着:看着}别处""",
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_HESITANT_1 = """[name2] {^grip[s/2]:clutch[es/2]} [names1] hair[/s1], then let[s/2] go {^sheepishly:in embarrassment}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL4_HESITANT_2 = """[name2] {^moan[s/2]:groan[s/2]} aloud and {^hastily:quickly} cover[s/2] [his2] mouth""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL3_HESITANT_1 = """[name2] let[s/2] out a {^low:soft} moan, [his2] face {^reddening:flushing}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL2_HESITANT_1 = """[name2] peek[s/2] down at [name1], then look[s/2] away {^flushed:blushing}""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL1_HESITANT_1 = """[name2] fidget[s/2] {^awkwardly:uneasily}, unsure what to do with [his2] hands""", # MISSING TRANSLATION
+	SEXACTION_BLOWJOB_REACT_AROUSAL1_HESITANT_2 = """[name2] {^blush[es/2]:flush[es/2]} and look[s/2] away""", # MISSING TRANSLATION
 	SEXACTION_BLOWJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1]{^笨手笨脚地:挣扎着}找角度。""",
 	SEXACTION_BLOWJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1]{^吃力地:挣扎着}想要跟上[name2]即将高潮的节奏。""",
 	SEXACTION_BLOWJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1]进入了{^平稳:舒适}的节奏。""",
@@ -8764,6 +9199,10 @@ SEXDESC_ASS_SMALL_1 = """小巧的""",
 	SEXACTION_TITJOB_REACT_AROUSAL1_NICE_1 = """[name2] {^安静地:带着些许兴趣}注视着[name1]""",
 	SEXACTION_TITJOB_REACT_AROUSAL1_MEAN_1 = """[name2] 当[name1]开始时身体紧绷起来""",
 	SEXACTION_TITJOB_REACT_AROUSAL1_MEAN_2 = """[name2] {^瞪着:看着}别处""",
+	SEXACTION_TITJOB_REACT_AROUSAL4_HESITANT_1 = """[name2] {^rock[s/2]:thrust[s/2]} between [names1] [tits1], [his2] cheeks burning at [his2] own eagerness""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL3_HESITANT_1 = """[name2] {^squirm[s/2]:fidget[s/2]}, embarrassed by how good it feels""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL2_HESITANT_1 = """[name2] {^glance[s/2]:peek[s/2]} down at [names1] [tits1], then {^quickly:hastily} look[s/2] away""", # MISSING TRANSLATION
+	SEXACTION_TITJOB_REACT_AROUSAL1_HESITANT_1 = """[name2] {^fidget[s/2]:shift[s/2]} {^awkwardly:nervously}, not sure where to look""", # MISSING TRANSLATION
 	SEXACTION_TITJOB_REACT_SKILL_NOVICE_LOW_1 = """. [name1] {^手忙脚乱地:挣扎着}想要保持动作连贯。""",
 	SEXACTION_TITJOB_REACT_SKILL_NOVICE_HIGH_1 = """. [name1] {^吃力地:挣扎着}想要跟上对方即将高潮的节奏。""",
 	SEXACTION_TITJOB_REACT_SKILL_SKILLED_LOW_1 = """. [name1] 以{^平稳:连贯}的节奏摇晃着。""",
@@ -9211,6 +9650,7 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	DIALOGUESHRINEITEM = """进行供奉""",
 	DIALOGUESHRINEEQUIP = """献祭一件装备""",
 	DIALOGUESHRINECHARACTER = """让[name]在祭坛前祈祷""",
+	DIALOGUESHRINEENSLAVE = """Bend [name]'s will at the altar""", # MISSING TRANSLATION
 	DIALOGUESHRINEDESTROY = """摧毁神龛""",
 	DIALOGUECHESTLOCKPICK = """尝试开锁""",
 	DIALOGUECHESTLOCKPICKFAILURE = """[name]尝试撬开箱子的锁失败，机关卡死了。现在别无他法，只能放弃了……""",
@@ -9439,10 +9879,10 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = """[center]{color=red|失败！}[/center]
 [name]没能威慑住这些叛军，他们正准备攻击你们。""",
 	DIALOGUEINTIMIDATE = """威慑""",
-	DIALOGUEALCOHOL_1REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
-	DIALOGUEALCOHOL_2REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
-	DIALOGUEALCOHOL_3REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
-	DIALOGUEALCOHOL_4REPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
+	DIALOGUEALCOHOL_1REPORT = """[name] 喝下了饮品，现在感觉有些微醺。""",
+	DIALOGUEALCOHOL_2REPORT = """[name] 喝下了饮品，现在感觉有些微醺。""",
+	DIALOGUEALCOHOL_3REPORT = """[name] 喝下了饮品，现在感觉有些微醺。""",
+	DIALOGUEALCOHOL_4REPORT = """[name] 喝下了饮品，现在感觉有些微醺。""",
 	DIALOGUEALCOHOL_1TEXT = """使用此饮料来喝醉或改变性格？""",
 	DIALOGUEALCOHOL_2TEXT = """使用此饮料来喝醉或改变性格？""",
 	DIALOGUEALCOHOL_3TEXT = """使用此饮料来喝醉或改变性格？""",
@@ -9590,6 +10030,7 @@ SEXACTION_TAILJOB_REACTION_1 = """[name2]对{^这种刺激:[names1]的努力:[na
 	ENEMYGREG = """格雷格""",
 	ENEMYGREG_ACT4 = """叛徒格雷格""",
 	ENEMYAIRE = """爱蕊""",
+	ENEMYGRASHA = """Grasha""", # MISSING TRANSLATION
 	ENEMYKURDAN = """库黛""",
 	ENEMYLEON = """里昂""",
 	ENEMYFAT_BANDIT = """胖强盗""",
@@ -10815,12 +11256,12 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_COMBAT3 = """接受“解决麻烦”任务。""",
 	TUTORIAL_COMBAT4 = """所有任务都会提供物品奖励和公会声望。声望可用于购买特殊的公会服务。“解决麻烦”任务需要前往一个随机生成的地点。""",
 	TUTORIAL_COMBAT5 = """打开地图菜单，了解如何将角色派往新地点。""",
-	TUTORIAL_COMBAT5_0 = """Close the notice board.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET1 = """Before leaving Aliron, visit its {color=yellow|Slave Market}: it buys and sells slaves and takes orders for them. Open it.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET2 = """The market opens on the orders the great houses post. Hand over a slave who meets one to earn gold and slaver rank - one house wants a human right now.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET3 = """Slaves are for sale here as well. Open {color=yellow|Hire}.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET4 = """Slaves for sale are listed with their prices; the button under a slave's card buys them.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET5 = """Press the {color=yellow|Slave Market} button again to close it.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT5_0 = """关闭公告栏。""",
+	TUTORIAL_MARKET1 = """在离开阿里隆之前，去拜访一下当地的{color=yellow|奴隶市场}：这里买卖奴隶并接收相关订单。打开它。""",
+	TUTORIAL_MARKET2 = """市场根据各大家族发布的订单开放。移交符合条件的奴隶即可赚取金币并提升奴隶主阶位——眼下正有一个家族需要一名人类。""",
+	TUTORIAL_MARKET3 = """这里也有待售的奴隶。打开{color=yellow|雇佣}界面。""",
+	TUTORIAL_MARKET4 = """待售的奴隶及其价格均已列出；点击奴隶卡片下方的按钮即可将其购买。""",
+	TUTORIAL_MARKET5 = """再次按下{color=yellow|奴隶市场}按钮以将其关闭。""",
 	TUTORIAL_COMBAT6 = """选择两名动身前往执行任务的角色。""",
 	TUTORIAL_COMBAT8 = """在地点列表中，找到你需要前往的特殊任务地点。""",
 	TUTORIAL_COMBAT9 = """点击“派遣”开始旅程。""",
@@ -10841,9 +11282,9 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_COMBAT22 = """辅助能力的操作方式类似，但目标是盟友。对你的“主人”施加“大地护盾”。""",
 	TUTORIAL_COMBAT24 = """结束战斗。""",
 	TUTORIAL_COMBAT26 = """战利品窗口会显示战斗结果。""",
-	TUTORIAL_COMBAT26_1 = """Fights often leave captives behind, and this one left two. The first fits the order you saw at the slave market: hand them over right here with the green {color=yellow|Hand Over} strip.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT26_1A = """A captive can fit several orders at once, so you choose which one gets them. Pick the order you saw at the slave market.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT26_2 = """Handing a captive over pays at once, just as at the market, and counts towards your slaver rank.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT26_1 = """战斗结束后往往会留下俘虏，这次留下了两名。第一名符合你在奴隶市场看到的订单要求：使用绿色的{color=yellow|移交}长条在此处直接将其移交。""",
+	TUTORIAL_COMBAT26_1A = """一名俘虏可能同时符合多份订单的要求，因此需要由你选择将其移交给哪份订单。选择你在奴隶市场看到的那份订单。""",
+	TUTORIAL_COMBAT26_2 = """移交俘虏会像在市场交易一样立即获得报酬，并且会计入你的奴隶主阶位进度。""",
 	TUTORIAL_COMBAT27 = """战斗结束后你获得了一个随机角色，这在地下城遭遇中很常见。选中她进行查看。""",
 	TUTORIAL_COMBAT28 = """不合心意的角色可以被立即卖掉、招募，或是直接收为奴隶。""",
 	TUTORIAL_COMBAT29 = """选择相应的选项来尝试说服她。""",
@@ -11176,10 +11617,10 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	BROTHELMINCONSENT = """同意等级：{color=aqua|%s}""", 
     BROTHELSKILLLEVEL = """技能等级：{color=aqua|%s}""",
 	BROTHELBLOCKEDBYGEAR = """
-{color=red|[name]'s gear keeps this one off the table.}""", # MISSING TRANSLATION
-	SERVICE_VIRGINITY_OFFER = """A regular of the house waits for [name] after [his] shift. Word has gone round that [he] goes only so far with anyone, and he would like to buy the exception. [His] first time, here and now.""", # MISSING TRANSLATION
-	SERVICE_VIRGINITY_SELL = """Sell [his] virginity (%d gold)""", # MISSING TRANSLATION
-	SERVICE_VIRGINITY_REFUSE = """Turn the offer down""", # MISSING TRANSLATION
+{color=red|[name] 的装备使其无法进行此项服务。}""",
+	SERVICE_VIRGINITY_OFFER = """一名常客在 [name] 下班后等待着 [him]。有传闻称 [he] 与任何人互动都保持着底线，而他想买下这次“例外”——就在此时此地，买下 [his] 的第一次。""",
+	SERVICE_VIRGINITY_SELL = """出售 [his] 的初夜（%d 金币）""",
+	SERVICE_VIRGINITY_REFUSE = """拒绝提议""",
 	STATOBDRAINREDUCTION = """服从度流失减缓""",
 	STATOBDRAININCREASE = """服从度流失加剧""",
 	ITEMCHEST_ADV_CLOTH = """高级魔法外套""",
@@ -11360,12 +11801,8 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	TRAVEL_MOVE_DOWN = """向下移动""",
 	TRAVEL_GROUP_LOCK = """Lock group""", # MISSING TRANSLATION
 	TRAVEL_GROUP_UNLOCK = """Unlock group""", # MISSING TRANSLATION
-	TRAVEL_GROUP_LOCK_DESC = """Random characters won't be added to a locked group. Characters recruited at its location start a group of their own.""", # MISSING TRANSLATION
+	TRAVEL_GROUP_LOCK_DESC = """Random characters won't be added to a locked group. Characters recruited at its location join the next unlocked group there instead.""", # MISSING TRANSLATION
 	TRAVEL_GROUP_LOCKED_DESC = """This group is locked.""", # MISSING TRANSLATION
-	TRAVEL_GROUP_CLOSE = """Close group""", # MISSING TRANSLATION
-	TRAVEL_GROUP_OPEN = """Open group""", # MISSING TRANSLATION
-	TRAVEL_GROUP_CLOSE_DESC = """A closed group takes no one new: nobody can be moved into it, and characters recruited at its location start a group of their own.""", # MISSING TRANSLATION
-	TRAVEL_GROUP_CLOSED_DESC = """This group is closed to new members.""", # MISSING TRANSLATION
 	SKILLPOISON_BITE = """毒液咬噬""",
 	SKILLPOISON_BITE_S = """毒液咬噬""",
 	SKILLENTANGLE_SA = """藤蔓缠绕""",
@@ -11387,6 +11824,7 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	SKILLGLACIATION = """冰川封冻""",
 	SKILLNORTH_WIND = """凛冽北风""",
 	SKILLCRUELTY = """残虐虐杀""",
+	SKILLHUNTERS_MARK = """Hunter's Mark""", # MISSING TRANSLATION
 	SKILLHUTERS_MARK = """猎人印记""",
 	SKILLSHRILL_WHISTLE = """尖锐哨音""",
 	SKILLHUNTING = """狩猎搜捕""",
@@ -11405,6 +11843,12 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	SKILLMONSTROUS_SWING = """怪力横扫""",
 	SKILLMONSTROUS_GRIP = """怪力拘束""",
 	SKILLBILE_CORROSIVE = """腐蚀毒胆""",
+	SKILLBLEEDING_STRIKE = """Bleeding Strike""", # MISSING TRANSLATION
+	SKILLPECKING = """Pecking""", # MISSING TRANSLATION
+	SKILLWINDBLAST = """Wind Blast""", # MISSING TRANSLATION
+	SKILLGROWL = """Growl""", # MISSING TRANSLATION
+	SKILLMAGICWARD = """Magic Ward""", # MISSING TRANSLATION
+	SKILLINFERNO_EN = """Inferno""", # MISSING TRANSLATION
 	AIRE_AMELIA1 = """艾米莉亚走进爱蕊的牢房，手里提着一个精致的黑色皮包，脸上挂着一抹笑意。
 
 {color=aqua|艾米莉亚: — 嗨，亲爱的。你是叫爱蕊对吧？希望那些狱卒对你还算温柔。看来我们的调查进度还是太慢了，所以上面让我来发挥点特长，撬开你的小嘴。}
@@ -11512,6 +11956,29 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	HALF_DUNGEON_EXPLORED_6 = """{color=yellow|— 哇哦，在我看来这真是一个极其慷慨的提议。你确定要这么做吗？那我可真要无法拒绝了。}""",
 	HALF_DUNGEON_EXPLORED_OPTION_9 = """我很确定。""",
 	HALF_DUNGEON_EXPLORED_OPTION_10 = """不过话又说回来……""",
+	GRASHA_MINES_START = """You hear a boot scrape stone behind you. When you turn, an orc woman is coming down the shaft alone, one hand close to the strange amulet on her chest.
+
+She stops before you can draw a weapon, then offers a careful nod.
+
+{color=yellow|— Someone said the cult was meeting below. They did not mention guild blades.}""", # MISSING TRANSLATION
+	GRASHA_MINES_INTRODUCTION = """{color=yellow|— Name's Grasha. A person with a signet shoved a ciphered message into my hands. It named these mines and promised answers about something I have been studying.}
+
+She opens her satchel just enough to show folded notes covered in diagrams.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_LETTER = """Is a cultist's letter worth leaving home for?""", # MISSING TRANSLATION
+	GRASHA_MINES_ORC_MAGIC = """{color=yellow|— The war against Thoth left everyone afraid of old rites. Magic practices have been nothing short of outlawed.}""", # MISSING TRANSLATION
+	GRASHA_MINES_AMULET_QUESTION = """{color=yellow|— Maybe not. But this thing's got juice, and who knows what it's after. Playing dumb at home already bit me hard enough, and the letter promised a clue.}""", # MISSING TRANSLATION
+	GRASHA_MINES_NO_ANSWER = """{color=yellow|— Then we are both walking blind. It's a troubling position to be in...}""", # MISSING TRANSLATION
+	GRASHA_MINES_OFFER = """Grasha waits, one hand still near the amulet, to see what you decide.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_LEAVE = """You should leave the mine.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_MANSION = """I could use a magic user. Stay at my mansion.""", # MISSING TRANSLATION
+	GRASHA_MINES_OPTION_FOLLOW = """Come with me while I clear the rebels.""", # MISSING TRANSLATION
+	GRASHA_MINES_LEAVE = """{color=yellow|— Fine. I did not come to spoil someone's job. I will find another way out before the cult decides I am late.}""", # MISSING TRANSLATION
+	GRASHA_MINES_MANSION_OFFER = """Grasha studies you for a moment, then straightens as if accepting a challenge.
+
+{color=yellow|— A room, food, and books for useful work? Hell, better than trusting some hooded jackass. You damn well mean it?}""", # MISSING TRANSLATION
+	GRASHA_MINES_MANSION_OFFER_FAILURE = """{color=yellow|— Not bad. But screw that. I didn't crawl all this way just to turn tail now that I'm close. You're going deeper, and I'm going with you. I'd rather get what I'm after than sit around and let it jump me from behind.}""", # MISSING TRANSLATION
+	GRASHA_MINES_ACCEPT_OFFER = """{color=yellow|— Then I am in. I do not know all this thing can do, but I know enough to earn my keep. Give me directions to your estate.}""", # MISSING TRANSLATION
+	GRASHA_MINES_FOLLOW = """{color=yellow|— Fine. Lead on.}""", # MISSING TRANSLATION
 	HALF_DUNGEON_EXPLORED_7 = """{color=yellow|— 抱歉，我想我必须去参加我原本要去的那个集会。但还是要谢谢你的邀请，我以后会考虑的。}""",
 	HALF_DUNGEON_EXPLORED_8 = """{color=yellow|— 那好吧，与其在这附近让自己身陷险境，我不如接受你的好意。}
 
@@ -11597,6 +12064,54 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 	PRE_FINAL_BOSS_19 = """{color=yellow|— 虽然不算丰厚，但我们这儿还剩一些成色极好的特殊原矿。请您务必收下，好好慰劳一下身体。}
 
 你收下了工头递过来的犒赏，心满意足地启程返回阿里隆。""",
+	GRASHA_FINALE_AMULET = """
+
+{color=yellow|Demon: — A curious trinket, orc. I wondered who would answer that little invitation.}
+
+Grasha's fingers close around the amulet. Her face stays composed, but her weight shifts into a fighter's stance.
+
+{color=aqua|Grasha: — You sent it?}
+
+{color=yellow|Demon: — I sent many. You were simply the one who brought something interesting with you.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_AGREE = """{color=yellow|— Wise. We will take the miners and be gone before your guild can decide whom to blame.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_LEAVES = """Grasha watches the prisoners being driven away.
+
+{color=yellow|— I didn't think I'd see you sell people because it is easy. Farewell, stranger.}
+
+She follows the cultists into the dark.""", # MISSING TRANSLATION
+	GRASHA_FINALE_CONTROL = """{color=aqua|Demon: — Still trying to play the hero? Then let us see what your new companion thinks of that.}
+
+The demoness speaks a short phrase. The amulet on Grasha's chest answers with a thin violet pulse.""", # MISSING TRANSLATION
+	GRASHA_FINALE_CONTROL_KNIGHT = """
+
+{color=aqua|Demon: — Such noble words. Let us see whether they are enough to protect the woman standing beside you.}
+
+{color=yellow|Grasha: — [name], the amulet!}
+
+The demon cuts her off with a sharp gesture. Violet light runs along the amulet's edge.""", # MISSING TRANSLATION
+	GRASHA_FINALE_POSSESSED = """Grasha doubles over as the violet glow hardens. For an instant she fights it. Then the tension leaves her face.
+
+She raises one hand. Fire coils between her fingers with a skill too smooth to be hers, while her other hand goes for the dagger at her belt out of old habit.
+
+{color=aqua|Demon: — There. A little focus is all it takes. Show your benefactor what you can do, Grasha.}
+
+Grasha turns toward you without recognition in her eyes.""", # MISSING TRANSLATION
+	GRASHA_FINALE_DEMON_FLEES = """{color=yellow|— More trouble than you are worth. Keep the miners, then. I have other work to do.}
+
+She vanishes in a curl of dark magic before you can reach her.""", # MISSING TRANSLATION
+	GRASHA_FINALE_AFTERMATH = """Grasha falls to one knee, clutching the amulet until the violet light dies. When she looks up, she is breathing hard and furious with herself.
+
+{color=yellow|— Her spell went through the amulet like it was waiting for her. I can't take it off, that's so frustrating...}""", # MISSING TRANSLATION
+	GRASHA_FINALE_OPTION_RECRUIT = """Come with me. We can study it safely.""", # MISSING TRANSLATION
+	GRASHA_FINALE_RECRUIT = """Grasha looks from the darkened amulet to you.
+
+{color=yellow|— A place to work, a place to hide from whoever sent that message, and no more chasing cultists by myself. Okay. I'll come. I'll pull my weight, and we'll figure out what this thing has done to me.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_AUTHORITIES = """{color=yellow|— All right. I didn't ask for this, but I still went after you. I'll own up to it.}""", # MISSING TRANSLATION
+	GRASHA_FINALE_LEAVE = """Grasha gives a short nod and forces herself to stand.
+
+{color=yellow|— Then I will find my own answer.}
+
+She leaves the chamber slowly, one hand held over the amulet.""", # MISSING TRANSLATION
 	AFTER_MINES_WORKERS_OPTION_1 = """我已经把那座矿山的麻烦彻底摆平了。""",
 	AFTER_MINES_SIGMUND_START = """{color=yellow|— 那可真是天大的好消息。我已经让下面的人做好了准备，我们会尽快恢复开工。这是你应得的丰厚奖赏。}
 
@@ -13200,6 +13715,180 @@ MIND_CONTROL_19 = """{color=yellow|— 好吧，等一下。}
 	ZEPHYRA_EXTRA_REPLY3 = """{color=yellow|— 你应该继续忙你的事，别担心我。抱歉，我不能给你指明方向，我自己也没什么头绪。一旦时机成熟，我们大概就能察觉到了。}
 
 {color=yellow|— 哦，还有，恐怕我暂时无法再施展那种屏障戏法了。奇迹可不能随便用。不过这让我们的相遇变得命中注定，对吧？}""",
+	GRASHA_EXTRA_GREET = """{color=yellow|— [name]. I have been making notes. Got questions?}""", # MISSING TRANSLATION
+	GRASHA_EXTRA_OPTION1 = """How do you like it here?""", # MISSING TRANSLATION
+	GRASHA_EXTRA_REPLY1 = """{color=yellow|— Safer than being out on the road. Your shelves are better than most libraries I've ever seen. I'm still not used to being so tired after work that should be a piece of cake. Right now, a locked door and a full belly are fine by me.}""", # MISSING TRANSLATION
+	GRASHA_EXTRA_OPTION2 = """About magic...""", # MISSING TRANSLATION
+	GRASHA_EXTRA_REPLY2 = """{color=yellow|— This amulet puts power right in my hands. But that don't mean I know what I'm doing. I can see how it works and do little tricks, but every time I try, I find something else I don't get. That demon showed someone else can use it too.}""", # MISSING TRANSLATION
+	GRASHA_EXTRA_OPTION3 = """About orcs...""", # MISSING TRANSLATION
+	GRASHA_EXTRA_REPLY3 = """{color=yellow|— My people got no time for magic after the war with Thoth. Most of them just want to call this thing cursed and smash it. I don't know who made it or what it wants from me. And that makes it scarier than any damn spellbook.}""", # MISSING TRANSLATION
+	GRASHA_CREW_RUMOR = """Word reaches the mansion that three rough-looking men have been asking around Aliron about an orc woman named Grasha.""", # MISSING TRANSLATION
+	GRASHA_CREW_START = """You are crossing an Aliron side street when three men step away from a shuttered shop. They have knives, scarred knuckles, and the look of people used to taking what they want.
+
+{color=yellow|Bandit: — Heard you got yourself an orc stashed away here. A Grasha. We wanna have a little chat with her.}""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_WHO = """Who are you to Grasha?""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_BRING = """Fine. Come with me and talk to her.""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_REFUSE = """You are not going near her.""", # MISSING TRANSLATION
+	GRASHA_CREW_WHO = """{color=yellow|Bandit: — Friends. Old friends. She walked off before we settled a few things.}""", # MISSING TRANSLATION
+	GRASHA_CREW_BRING = """You bring the men to the mansion. Grasha sees them from the courtyard and goes still.
+
+{color=aqua|Bandit: — There she is. Knew we'd find you living it up.}
+
+{color=yellow|Grasha: — What are you doing here?}
+
+{color=aqua|Bandit: — The band's not the same without you. We need our frontman back.}""", # MISSING TRANSLATION
+	GRASHA_CREW_REFUSE = """{color=yellow|Bandit: — That's not the answer I was looking for.}
+
+His smile twists into a sneer as he takes a step forward, his hand dropping to the hilt of his blade. The other two shift, their own knives glinting in the dim light, ready to close the distance.""", # MISSING TRANSLATION
+	GRASHA_CREW_AFTER_FIGHT = """The last bandit hits the ground hard enough to lose interest in his knife. The other two are still dragging themselves away when Grasha comes into view.
+
+{color=yellow|Grasha: — What the hell are you doing here? I warned you to leave me alone.}
+
+{color=aqua|Bandit: — You owe us, Grasha. You took the score and ran.}
+
+{color=yellow|Grasha: — I took one thing and made it out alive. You got your cut. That was supposed to be the end of it.}""", # MISSING TRANSLATION
+	GRASHA_CREW_REVEAL = """Grasha keeps one hand close to the amulet.
+
+{color=yellow|Grasha: — They were my crew. We used to... make some people part with their goods. Before I left.}
+
+{color=aqua|Bandit: — You've left all of a sudden soon after that one mission. We need to know what happened.}
+
+{color=yellow|Grasha: — It's none of your business.}""", # MISSING TRANSLATION
+	GRASHA_CREW_BEATEN = """Grasha looks over the bruised men, then at you.
+
+{color=yellow|Grasha: — I told you, it's over already. Leave.}
+
+The bandit leader spits into the dirt and waves the others away.
+
+{color=aqua|Bandit: — Fine, you've changed after this thing after all. Keep it to yourself.}""", # MISSING TRANSLATION
+	GRASHA_CREW_BEATEN_LEAVE_STREET = """
+
+The men leave with nothing as you and Grasha return to the mansion.""", # MISSING TRANSLATION
+	GRASHA_CREW_BEATEN_LEAVE_HOME = """
+
+The men leave with nothing.""", # MISSING TRANSLATION
+	GRASHA_CREW_STANDOFF = """{color=yellow|Grasha: — Forget it. If I planned to stay I would stay.}
+
+{color=aqua|Bandit: — This is really unwise of you. You owe us for what we went through together.}
+
+You notice that the men ready their weapons as the situation grows more hostile.""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_CHARM = """[Charm 60] This would be unwise for you to start a fight on my territory.""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_FIGHT = """Looks like you don't understand when being told "No". *Fight*""", # MISSING TRANSLATION
+	GRASHA_CREW_OPTION_LEAVE = """I don't need this, get out and settle it outside.""", # MISSING TRANSLATION
+	GRASHA_CREW_CHARM = """{color=aqua|Bandit: — Big words. You think a house and a few guards scare us?}
+
+You make it clear that Grasha chose to stay and that trying to drag her away will cost more than she is worth to them. The leader looks over the mansion walls, then at his two men.
+
+{color=aqua|Bandit: — Fine. She picked her side. But we will not wait forever if she changes her mind.}
+
+{color=yellow|Grasha: — I won't.}""", # MISSING TRANSLATION
+	GRASHA_CREW_CHARM_FAIL = """{color=aqua|Bandit: — Is that your big threat? You sound like you are trying to convince yourself.}
+
+The men draw steel.""", # MISSING TRANSLATION
+	GRASHA_CREW_CHARM_2 = """The men depart through the gate. Grasha tracks their exit with a stern look.
+
+{color=yellow|— I could've handled that myself. But I guess I owe you one.}""", # MISSING TRANSLATION
+	GRASHA_CREW_AMULET_OPEN_STREET = """Back at the mansion, once the gate closes behind you, Grasha hooks two fingers under the amulet's chain and pulls. Violet sparks crawl over the links and hold it tight against her skin.""", # MISSING TRANSLATION
+	GRASHA_CREW_AMULET_OPEN_HOME = """Once the gate closes behind the last of them, Grasha hooks two fingers under the amulet's chain and pulls. Violet sparks crawl over the links and hold it tight against her skin.""", # MISSING TRANSLATION
+	GRASHA_CREW_AMULET_REVEAL = """
+
+{color=yellow|— You want to know why I ran? We cracked open a rich bastard's chest and found this thing inside. I put it on to see what it was worth. Then the magic grabbed hold of me.}
+
+{color=yellow|— Can't take it off while that magic has me. Then fire started jumping to my hand when I got mad. Little spells. Light. Heat. Enough to get people staring.}
+
+{color=yellow|— And it takes from me every time. The strength that used to be in my arms is going into its spells instead. Back home, an orc tied to magic gets chained up, sold, or worse. I was not waiting around for you lot to sell my story. So I ran.}""", # MISSING TRANSLATION
+	GRASHA_CREW_LEAVE = """You tell the men to leave your property and let Grasha settle it without you. For a moment, she only stares at you. Then she gives a short, bitter laugh.
+
+{color=yellow|— Fine. You want out of it? Stay out.}
+
+She walks through the gate with them. Their voices carry from the road for a while, then fade.
+
+By nightfall, Grasha's room is empty. Her notes are gone. One loose sheet remains, covered in crossed-out symbols you cannot read.""", # MISSING TRANSLATION
+	GRASHA_THOTH_INTRO = """Grasha finds you during the day, one hand pressed over the amulet.
+
+{color=yellow|— This damn thing is at it again. It pulls at me when I sleep. When I eat. Like it wants my powers. I know one orc who might know where to start. Kargan. He collects old histories, digs through junk everyone else burns. He lives in the settlement I came from.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_OPTION_WHY_NOT = """Why not go yourself?""", # MISSING TRANSLATION
+	GRASHA_THOTH_OPTION_WHY_KARGAN = """What makes Kargan useful?""", # MISSING TRANSLATION
+	GRASHA_THOTH_OPTION_GO = """Fine. Tell me where he is.""", # MISSING TRANSLATION
+	GRASHA_THOTH_WHY_NOT = """{color=yellow|— Because they would punish me before I got three words out. Taking loot is one thing. Nobody back there loses sleep over that. But not if you practice old magic.}
+
+She takes a pause, continuing her explanation.
+
+{color=yellow|— After the war with Thoth, they don't ask whether you chose it. They chain you, sell you, or make sure nobody hears from you again. I am not risking that.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_WHY_KARGAN = """{color=yellow|— He is no mage. But he knows old stories, old symbols, old places. If there is anything written about this cursed piece of metal, Kargan has a better chance of finding it than I do.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_ANSWER = """Grasha gives you the route, then looks toward the road as if she expects someone to be waiting there.
+
+{color=yellow|— I know I have no right to ask you to do this, but I trust you can help me.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT = """The settlement is built around low stone halls and training yards. A few warriors notice you before you can ask for anyone. They spread out across the path instead of letting you pass.
+
+{color=yellow|Orc warrior: — [race]. You are asking after Kargan.}
+
+Another warrior looks you over with open distrust.
+
+{color=aqua|Orc warrior: — And we hear you keep company with Grasha. The one who ran. Tell us why you are here.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_OPTION_GRASHA = """Grasha sent me to speak with her friend.""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_OPTION_DEFIANT = """I am here for Kargan, it doesn't concern you.""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_OPTION_BOOK = """I need an old history book. Nothing more.""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_GRASHA = """{color=yellow|Orc warrior: — So the runner still sends others to clean up after her.}
+
+The warrior steps aside, but not far.
+
+{color=yellow|Orc warrior: — Fine, just do it quickly. Then leave before you become another of her problems.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_DEFIANT = """The warrior's eyes narrow.
+
+{color=yellow|Orc warrior: — You have a sharp tongue for a guest.}
+
+After a long moment, he points toward a narrow hall at the edge of the settlement.
+
+{color=yellow|Orc warrior: — There. We will remember you.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_SETTLEMENT_BOOK = """{color=yellow|Orc warrior: — An outsider who comes for books to an orc settlement? Are you playing us?}
+
+He gives a short, humorless laugh and nods toward a narrow hall at the edge of the settlement.
+
+{color=yellow|Orc warrior: — Kargan keeps that kind of trash. Do not make us regret pointing you there.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN = """Kargan's hall is cramped with bundled papers, broken tablets, and old weapons whose rust has been carefully cleaned away. He looks up from a page only after you say Grasha's name.
+
+{color=yellow|— Grasha? I thought she was smart enough to stay gone.}
+
+You explain what the amulet has done to her. Kargan's expression hardens, and he closes the shutters before answering.
+
+{color=yellow|— Keep your voice down. The warriors outside hear magic and lose their minds.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_2 = """{color=yellow|— I'll help you for a favor. A chronicle about Thoth was left in old ruins south of the settlement. It was ransacked by us some time ago but that particular book didn't make it into the loot. Find it, bring it to me. I think you are more suited for this than our warriors.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_LATER = """Maybe when I have time.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_BRING = """I will bring the book.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_3 = """Kargan marks a route on a scrap of paper.""", # MISSING TRANSLATION
+	GRASHA_THOTH_RUINS = """The ruins are little more than split walls and a buried store room. Most of the place has been picked clean. You spend some time searching through the rubble before finding a stone chest behind a collapsed shelf.
+
+Inside lies a dust-choked leather book, its cover stamped with a worn symbol of Thoth.""", # MISSING TRANSLATION
+	GRASHA_THOTH_RUINS_OPTION_TAKE = """Take the Chronicle of Thoth.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_RETURN = """Kargan takes the book carefully and turns through the brittle pages in silence. At last, he stops at a drawing of an amulet surrounded by damaged notes.
+
+{color=yellow|— Not the same piece. But close enough that I would bet blood on the connection. The shape, the marks, the way it drains the wearer... this is Thoth's work, or someone copying it well.}
+
+{color=yellow|— The book does not say what it was made to do. It only points to a place where more records were kept. An abandoned temple beyond the eastern ridge.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_MORE = """Can you tell me anything else?""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_OPTION_DIRECTIONS = """Give me the directions.""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_MORE = """{color=yellow|— Not without making things up. I know better than that. The temple may have answers. It may have nothing but dead walls. Either way, it is your best lead.}""", # MISSING TRANSLATION
+	GRASHA_THOTH_KARGAN_FINISH = """Kargan copies the route to the abandoned temple onto a clean scrap of paper and presses it into your hand.
+
+{color=yellow|— Keep it hidden. The warriors already know you came for Grasha. Next time, they may decide that is enough reason to stop you.}""", # MISSING TRANSLATION
+	GRASHA_OLD_CREW_QUEST_NAME = """Grasha's Old Crew""", # MISSING TRANSLATION
+	GRASHA_OLD_CREW_QUEST_SUMMARY = """Men from Grasha's past are asking about her around Aliron.""", # MISSING TRANSLATION
+	GRASHA_OLD_CREW_QUEST_STAGE_START = """Visit Aliron while Grasha is at the mansion.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_NAME = """Grasha: Trace of the Amulet""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_SUMMARY = """The amulet bound to Grasha keeps draining her. Kargan, an orc who collects old histories in her home settlement, may know where it came from.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_STAGE_FIND_KARGAN = """Travel to Grasha's old settlement in the mountains and find Kargan.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_STAGE_RETRIEVE_CHRONICLE = """Search the old ruins south of the settlement for the Chronicle of Thoth.""", # MISSING TRANSLATION
+	GRASHA_AMULET_QUEST_STAGE_RETURN_BOOK = """Return the Chronicle of Thoth to Kargan.""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_NAME = """Grasha's Old Settlement""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_DESC = """An orc settlement of low stone halls and training yards. Its warriors do not welcome outsiders.""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_OPTION_KARGAN = """Look for Kargan""", # MISSING TRANSLATION
+	QUEST_GRASHA_SETTLEMENT_OPTION_RETURN = """Return the Chronicle to Kargan""", # MISSING TRANSLATION
+	QUEST_GRASHA_RUINS_NAME = """Old Ruins""", # MISSING TRANSLATION
+	QUEST_GRASHA_RUINS_DESC = """Split walls and a buried store room south of the orc settlement, picked over long ago.""", # MISSING TRANSLATION
+	QUEST_GRASHA_RUINS_OPTION_SEARCH = """Search the ruins""", # MISSING TRANSLATION
+	MATERIALTHOTH_CHRONICLE = """Chronicle of Thoth""", # MISSING TRANSLATION
+	MATERIALTHOTH_CHRONICLEDESCRIPT = """A dust-choked leather book stamped with a worn symbol of Thoth. Kargan is waiting for it.""", # MISSING TRANSLATION
 	KURDAN_EXTRA_GREET = """{color=yellow|— 你好，[name]。有什么问题想问我吗？}""",
 	KURDAN_EXTRA_OPTION1 = """你喜欢这里吗？""",
 	KURDAN_EXTRA_REPLY1 = """{color=yellow|— 你这儿倒是个不错的住处。我得承认，这里和我家乡不一样，但我确实答应过留下来，不是吗？嗯，不用操心睡哪儿和吃什么，这也算是一种好处。}""",
@@ -22160,6 +22849,25 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	COMBAT_WIN_LINE23 = """我们非打不可吗？..""",
 	COMBAT_WIN_LINE24 = """我们就不能好好谈谈吗……？""",
 	COMBAT_WIN_LINE25 = """但愿我们不需要再战斗了……""",
+	COMBAT_AVOID_LINE1 = """Phew... we got past them, [Master]...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE2 = """They got off easy this time.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE3 = """I'm glad we didn't have to fight...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE4 = """No one got hurt. That's how it should be.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE5 = """See? We didn't need to fight at all.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE6 = """Thank goodness... everyone's safe.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE7 = """If only it could always go like this...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE8 = """I-is it over? We don't have to fight?..""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE9 = """M-my hands are still shaking...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE10 = """I really didn't want to fight them...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE11 = """L-let's get away from here, quickly...""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE12 = """That's it? I didn't even get a swing in!""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE13 = """Tch. Where's the fun in that?""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE14 = """Hey! I was itching for a fight!""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE15 = """Next time, let me knock them down, [Master].""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE16 = """An enemy left standing is an enemy we'll face later.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE17 = """Avoiding battle won't make us any stronger.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE18 = """Hmph. I'd rather have settled it properly.""", # MISSING TRANSLATION
+	COMBAT_AVOID_LINE19 = """Let's move on. They won't stay idle for long.""", # MISSING TRANSLATION
 	SEX_START_LINE1 = """嗯……您真的要人家做这种事吗？我不确定自己准备好了没……""",
 	SEX_START_LINE2 = """您想对我做些下流的事情呢，[Master]……""",
 	SEX_START_LINE3 = """虽然人家没那么饥渴，但如果您硬要的话。""",
@@ -23300,6 +24008,60 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	ALTAR_CHAR_BAD = """
 
 几分钟过去，依旧毫无动静，[name]决定继续前进。""",
+	STRANGE_SPOT = """Off the main passage you come across a strange spot: a ring of smooth, pale stone set into the floor, untouched by the dust around it. The air above it feels thick, as if the place were holding its breath and waiting for someone to step in.""", # MISSING TRANSLATION
+	STRANGE_SPOT_STEP = """Have someone step into the ring""", # MISSING TRANSLATION
+	MEDITATION_SPOT_PERSON = """[name] steps into the ring, and the noise of this place falls away. The air is clear here and the silence almost tangible — a good spot to rest, or to listen to something beyond oneself.""", # MISSING TRANSLATION
+	POWER_PLACE = """The moment [name] steps into the ring, the pale stone flares with light. Power surges up through [him], raw and roaring, far too loud for a place like this. From somewhere deeper in the dungeon something answers: heavy steps are already coming your way.""", # MISSING TRANSLATION
+	POWER_PLACE_FIGHT = """Stand your ground""", # MISSING TRANSLATION
+	POWER_PLACE_FLEE = """Run before they arrive""", # MISSING TRANSLATION
+	POWER_PLACE_FLED = """You pull [name] out of the ring and the group hurries back the way it came. Behind you the light dies down, and by the time the footsteps fade there is nothing left of the ring to return to.""", # MISSING TRANSLATION
+	POWER_PLACE_WON = """The last of them falls, and the ring goes quiet. The power that called them has not faded: it has settled into [name], and [he] will carry it from now on.""", # MISSING TRANSLATION
+	POWER_PLACE_WON_EXP = """The last of them falls, and the ring goes quiet. The power that called them washes through [name] and fades, but the fight itself has taught [him] plenty.""", # MISSING TRANSLATION
+	POWER_PLACE_WON_CHOICE = """The last of them falls, and the ring goes quiet. The power that called them has not faded: it still hums around [name], waiting to take a shape. It could settle into [him] as something new — or burn away something [he] would be better off without.""", # MISSING TRANSLATION
+	POWER_PLACE_GIFT_OPTION = """Let the power settle in""", # MISSING TRANSLATION
+	POWER_PLACE_EXP_OPTION = """Let it wash through""", # MISSING TRANSLATION
+	POWER_PLACE_PURGE_OPTION = """Burn away {trait}""", # MISSING TRANSLATION
+	POWER_PLACE_GIFT = """The power sinks into [name] and settles there. [He] will carry it from now on.""", # MISSING TRANSLATION
+	POWER_PLACE_EXP_TAKEN = """The power washes through [name] and fades, but the fight itself has taught [him] plenty.""", # MISSING TRANSLATION
+	POWER_PLACE_PURGED = """[name] lets the power burn through [him]. For a moment [he] can barely stand, but when the light fades, something that always held [him] back is gone.""", # MISSING TRANSLATION
+	MEDITATION_REST_OPTION = """Rest""", # MISSING TRANSLATION
+	MEDITATION_FAITH_OPTION = """Let [name] meditate""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_OPTION = """Have a companion guide [name] in faith""", # MISSING TRANSLATION
+	MEDITATION_REST = """The group sits in the quiet for a while, and their strength flows back. Everyone recovers half of their mana.""", # MISSING TRANSLATION
+	MEDITATION_DEEPEN = """[name] sinks deep into prayer. When [he] finally opens [his] eyes, [his] faith burns brighter than before.""", # MISSING TRANSLATION
+	MEDITATION_PEAK = """[name]'s faith already runs as deep as it can. The silence has nothing more to teach [him].""", # MISSING TRANSLATION
+	MEDITATION_DEEPEN_PICK = """[name] carries two faiths, and the silence can only deepen one of them today. Which one?""", # MISSING TRANSLATION
+	MEDITATION_NOTHING = """[name] sits in silence for a long while. It is calming, but nothing answers.""", # MISSING TRANSLATION
+	MEDITATION_CALL_ALIOS = """A cool wind circles [name], though the air here never stirs. It carries a voice that speaks of open skies and of chains falling away.""", # MISSING TRANSLATION
+	MEDITATION_CALL_NIXX = """The shadows around [name] deepen and begin to whisper. Something in the dark has noticed [him] — and it is patient.""", # MISSING TRANSLATION
+	MEDITATION_CALL_EREBUS = """The stone beneath [name] hums with a slow, heavy pulse, steady as a heartbeat. The earth itself seems to hold [him] up.""", # MISSING TRANSLATION
+	MEDITATION_CALL_SPIRITS = """[name] hears the spirits of beasts and trees stirring around [him]. They call [him] by a name [he] did not know [he] had.""", # MISSING TRANSLATION
+	MEDITATION_CALL_QUESTION = """
+
+Should [name] follow this calling?""", # MISSING TRANSLATION
+	MEDITATION_ACCEPT_OPTION = """Follow the calling""", # MISSING TRANSLATION
+	MEDITATION_DECLINE_OPTION = """Turn away""", # MISSING TRANSLATION
+	MEDITATION_ACCEPTED = """[name] opens [his] heart to the calling and finds a faith.""", # MISSING TRANSLATION
+	MEDITATION_DECLINED = """[name] shakes off the feeling, and the moment passes.""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_PICK = """Who will guide [name]?""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_BY = """{guide}, {faith}""", # MISSING TRANSLATION
+	MEDITATION_CONVERT_NOBODY = """No one here has a faith to share with [name].""", # MISSING TRANSLATION
+	MEDITATION_CONVERTED = """The two of them talk long into the quiet. By the end of it, [name] has come to share [his] companion's faith.""", # MISSING TRANSLATION
+	ALTAR_FAITH_JOIN = """
+
+[name] stays at the altar longer than [he] needs to. Something here has taken root in [him]: [he] has found a faith.""", # MISSING TRANSLATION
+	ALTAR_FAITH_DEEPEN = """
+
+[name] no longer prays like a stranger here. [His] faith runs deeper now.""", # MISSING TRANSLATION
+	ALTAR_FAITH_OTHER = """
+
+[name] hesitates. [His] heart belongs to another god, and this altar asks [him] to choose.""", # MISSING TRANSLATION
+	ALTAR_FAITH_PRIDE = """
+
+[name] hesitates. [He] has never needed a god, and this altar asks [him] to choose.""", # MISSING TRANSLATION
+	ALTAR_GROW_TROLL_BLOOD_1 = """
+
+Before the conqueror's altar [name]'s blood runs hot. Something old and hungry in it stirs awake, and [his] scars close faster now.""", # MISSING TRANSLATION
 	HYBRIS_ALTAR_CHAR = """
 
 {color=green|祭坛发出一阵微弱的紫色光芒，笼罩了[name]。[name]动作突然迟缓下来，[name]双眼失去焦点。看来你或许能以某种方式影响[name]……}
@@ -23308,6 +24070,9 @@ LILITH_PATRON_QUEST_SUMMARY = """莉莉丝的性格发生了转变，现在新�
 	HYBRIS_ALTAR_CHAR_FAIL = """
 
 {color=red|祭坛发出一阵微弱的紫色光芒，笼罩了[name]，然而这股力量似乎不足以影响[name]……}""",
+	HYBRIS_ALTAR_WILL = """
+
+{color=red|A small purple glow emits from the altar and coils around [name], then breaks apart. [His] will is too strong for the altar to bend.}""", # MISSING TRANSLATION
 	HYBRIS_ALTAR_CHAR_OPTION1 = """转化为奴隶""",
 	HYBRIS_ALTAR_CHAR_OPTION2 = """灌输忠诚""",
 HYBRIS_ALTAR_CHAR_RESULT1 = """你劝说[name]，使[name]相信[name]的生命始终是你的财产。受祭坛黑暗力量的影响，[name]似乎从心底接受了这一点。""",
@@ -23559,9 +24324,11 @@ FREYA_CHAR_RACE_BAD = """
 	CHARRND_LOST_OPT_PUNISH = """惩罚""",
 	CHARRND_LOST_OPT_PARDON = """宽恕""",
 	CHARRND_LOST_OPT_SEARCH = """责令找回""",
+	CHARRND_LOST_OPT_NOSE = """Track It by Scent""", # MISSING TRANSLATION
 	CHARRND_LOST_REPLY_PUNISH = """你冲 [name] 厉声呵斥，声音冷得像冰，命令 [name] 用一天的工钱来抵丢失的草药。 [name] 身子一颤，抿紧嘴唇，但还是无声地点了点头。 [name] 拖着沉重的脚步走开了，怨恨在心底暗暗滋生。""",
 	CHARRND_LOST_REPLY_PARDON = """你摆摆手，告诉 [name] 是人都会犯错。 [name] 双眼睁大，紧绷的身体松弛了下来。 [name] 喃喃着感激的话，松了口气，保证以后会更小心。尽管丢了一箱货，你们之间的联结依旧牢固，甚至可能因此更添几分。""",
 	CHARRND_LOST_REPLY_SEARCH = """你指向回路的方向，让 [name] 去把丢失的草药找回来。 [name] 犹豫片刻，然后拖着沉重的步子走了，嘴里低声嘟囔着。几个小时后，[name] 回来了，浑身泥泞，两手空空，但总归对路线更熟悉了些。 [name] 对你的敬畏因疲惫而变得更为深切。""",
+	CHARRND_LOST_REPLY_NOSE = """You remind [name] that few noses are as sharp as [his]. [He] blinks, then lifts [his] face into the wind and catches the bitter trace of the herbs. [He] follows it back down the muddy road at a near run and returns before dusk with the crate on [his] shoulder, dented but whole. Nothing is lost, and [he] carries [himself] a little taller for it.""", # MISSING TRANSLATION
 	CHARRND_UNWELL = """你在宅邸厨房里发现 [name] 倚靠着墙，脸色苍白，眉头满是冷汗。 [name] 一手按住 [name] 肚子，说 [name] 感觉不舒服，可能是吃坏了东西或是着了凉。 [name] 声音虚弱，身子微微发晃，求助地望向你。身边的炉火烧得噼啪作响，却丝毫不能驱散 [name] 浑身的寒颤。
 
 屋里闷得让人难受，[name] 目光沉重，无声地恳求着。 [name] 轻咳了一声，努力稳住 [himself]，等着你发话。抉择就在你面前：放 [name] 去歇着、缓和 [name] 难受，还是逼 [name] 继续干活。""",
@@ -23571,6 +24338,9 @@ FREYA_CHAR_RACE_BAD = """
 	CHARRND_UNWELL_REPLY_REST = """你点点头，告诉 [name] 今天就去歇着吧。 [name] 长舒一口气，感激之情柔和了 [name] 紧绷的面容，然后拖着步子朝 [name] 住处走去。休息让 [name] 恢复了些元气，等 [name] 再回来时，[name] 眼中对你的信赖更亮了。""",
 	CHARRND_UNWELL_REPLY_COMFORT = """你靠近了些，一手搭在 [name] 的肩头，低声说着安慰的话。 [name] 向着这意外的举动靠了靠，脸上渐渐恢复了血色，多少好受了些。 [name] 精神为之一振，留在你身边不愿离去，你给的这点小小温情将 [name] 与你绑得更紧了些。""",
 	CHARRND_UNWELL_REPLY_FORCE = """你挺直了身子，喝令 [name] 回去干活，语气不容置疑。 [name] 露出痛苦的表情，但还是强撑着站起来，跌跌撞撞去服从命令。这一整天把 [name] 耗尽了，[name] 咳嗽得越发厉害，疲惫的目光中闪烁着怨恨。 [name] 撑过去了，但代价却久久难消。""",
+	CHARRND_UNWELL_REPLY_SICKLY = """
+
+Even after the fever breaks, the cough stays. [name] tires faster than before and catches every chill that drifts through the mansion: the illness has settled into [him] for good.""", # MISSING TRANSLATION
 	CHARRND_ATTENTION = """你在宅邸庭院附近瞧见 [name] 正浑身不自在地扭捏着，一个陌生人越凑越近。那来者嗓门很大，话语里满是谄媚或别有用心，而 [name] 只挂着僵硬的笑容试图敷衍过去。 [name] 眼睛捕捉到了你的目光，眼神混杂着不安和无声的祈求，可那陌生人却毫无察觉，或是毫不在乎，仍在步步紧逼。日头毒辣辣地照着，让空气更显凝滞而紧绷。
 
 那陌生人的手在 [name] 周围游移，试探着边界。 [name] 退后了一步，可对方的纠缠并未退缩。你立在局外边缘，这情景将你卷入其中：是推 [name] 一把，还是挡在两人中间。""",
@@ -23598,12 +24368,25 @@ FREYA_CHAR_RACE_BAD = """
 CHARRND_HATED_FOOD = """你走进庄园的餐厅，正撞见[name1]和[name2]在餐桌旁吵得不可开交。[name1]激烈地比划着，坚称[name1]对食物的品味更高，而[name2]抱起胳膊，回呛说只有[name2]自己的偏好才是唯一合理的。两人嗓门越来越高，引来仆人们好奇的侧目，空气里满是他们倔强的碰撞。
 
 争执兜来转去，谁也不肯退让，脸上满是怒火。[name1]朝[name2]戳着一根手指，[name2]嗤笑一声，把[name2]头扭开。你站在不远处，这股吵闹把你卷了进去：是安抚他们，拱火添乱，还是随他们去。""",
+	CHARRND_HATED_FOOD_MEAT1 = """You walk into the mansion's dining hall and find [name1] and [name2] glaring at each other over a platter of roast meat. [name1] has sworn off meat in Freya's name and wants the platter gone from [his1] end of the table, while [name2] calls the vow foolishness and refuses to live on bread and greens for somebody else's goddess. Their voices rise, drawing curious glances from the servants.
+
+[name1] grips the edge of the table, pale with anger, as [name2] carves a slice and eats it pointedly in front of [him1]. You stand nearby, the noise pulling you in: respect the vow, make [name1] eat like everyone else, stir the pot, or let it play out.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_MEAT2 = """You walk into the mansion's dining hall and find [name2] and [name1] glaring at each other over a platter of roast meat. [name2] has sworn off meat in Freya's name and wants the platter gone from [his2] end of the table, while [name1] calls the vow foolishness and refuses to live on bread and greens for somebody else's goddess. Their voices rise, drawing curious glances from the servants.
+
+[name2] grips the edge of the table, pale with anger, as [name1] carves a slice and eats it pointedly in front of [him2]. You stand nearby, the noise pulling you in: respect the vow, make [name2] eat like everyone else, stir the pot, or let it play out.""", # MISSING TRANSLATION
 	CHARRND_HATED_FOOD_OPT_RECON = """让他们和好""",
 	CHARRND_HATED_FOOD_OPT_AGITATE = """煽风点火""",
 	CHARRND_HATED_FOOD_OPT_IGNORE = """置之不理""",
+	CHARRND_HATED_FOOD_OPT_VOW = """Respect the Vow""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_OPT_FORCE1 = """Make [name1] Eat It""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_OPT_FORCE2 = """Make [name2] Eat It""", # MISSING TRANSLATION
 	CHARRND_HATED_FOOD_REPLY_RECON = """你跨步走到[name1]和[name2]中间，劝他们把这事放下，好歹一起把这顿饭吃了。两人咕哝了几句，但你的话磨平了棱角，他们终究还是一起坐了下来。[name1]递了一口吃的给[name2]，[name2]勉为其难地点了点头，接受了下来。紧张消散，两人又挨得更近，重新亲密起来。""",
 	CHARRND_HATED_FOOD_REPLY_AGITATE = """你抛出一句狡黠的挑拨，只帮着一方说了那么一句，正好点燃另一方。[name1]的声音猛地拔高，[name2]一掌拍在桌子上，争吵越发激烈。他们气冲冲地朝相反方向走开，愤恨难消。""",
 	CHARRND_HATED_FOOD_REPLY_IGNORE = """你转身离开，任由[name1]和[name2]继续吵去。他们尖刻琐碎的声音在身后回响，直到两人都吵累了。他们分开坐着，默默吃着自己的，谁也不服谁。你对躲开这点小麻烦感到心安理得。""",
+	CHARRND_HATED_FOOD_REPLY_VOW1 = """You tell [name2] that a vow made to Freya is not a matter of taste, and that [he2] can enjoy [his2] roast without mocking anyone over it. [name2] grumbles, but slides the platter to [his2] own end of the table, and [name1] lets out a long breath. By the end of the meal they are talking again, [name2] passing the greens along without being asked.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_REPLY_VOW2 = """You tell [name1] that a vow made to Freya is not a matter of taste, and that [he1] can enjoy [his1] roast without mocking anyone over it. [name1] grumbles, but slides the platter to [his1] own end of the table, and [name2] lets out a long breath. By the end of the meal they are talking again, [name1] passing the greens along without being asked.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_REPLY_FORCE1 = """You push the platter toward [name1] and tell [him1] that in your house, [he1] eats what is served. [He1] stares at you, then at the meat, and finally takes a bite, chewing slowly with [his1] eyes on the table. [name2] smirks, and [name1] does not look at either of you for the rest of the meal. Something in [his1] devotion has broken along with the vow.""", # MISSING TRANSLATION
+	CHARRND_HATED_FOOD_REPLY_FORCE2 = """You push the platter toward [name2] and tell [him2] that in your house, [he2] eats what is served. [He2] stares at you, then at the meat, and finally takes a bite, chewing slowly with [his2] eyes on the table. [name1] smirks, and [name2] does not look at either of you for the rest of the meal. Something in [his2] devotion has broken along with the vow.""", # MISSING TRANSLATION
 CHARRND_QUARREL = """你走进庄园的庭院，发现[name1]和[name2]正对峙着，嗓门拔高，拳头紧攥。[name1]指责[name2]偷懒，而[name2]反唇相讥，说[name1]把功劳全占去了。言辞锋利，附近几个仆人窃窃私语地围观着。烈日当头，投下刺眼的影子，他们的争吵越来越凶。
 
 紧张的氛围在他们之间噼啪作响，[name1]来回踱步，[name2]稳稳站着，怒目而视。起初他们几乎没留意到你，完全被怒火吞没。""",
@@ -23664,6 +24447,9 @@ CHARRND_QUARREL = """你走进庄园的庭院，发现[name1]和[name2]正对峙
 	CHARRND_PRAY_OPT_ALLOW = """允许仪式""",
 	CHARRND_PRAY_OPT_FORBID = """禁止仪式""",
 	CHARRND_PRAY_REPLY_ALLOW = """你瞥了一眼护身符，一言不发地继续走开。[name]如释重负地松了口气，手指把符咒攥得更紧。第二天，你发现门口放了一条编织的饰带——当地象征幸运的信物。[name]的目光更频繁地寻找着你，因你沉默的接纳而温暖。""",
+	CHARRND_PRAY_REPLY_BLESSED = """
+
+In the days that follow, [name] keeps up the ritual and no longer hides it. [His] whispered prayers grow steady and sure, and whatever [he] asks of [his] god, [he] seems certain an answer came. [His] faith runs deeper than before.""", # MISSING TRANSLATION
 	CHARRND_PRAY_REPLY_FORBID = """你提高嗓门，命令[name]扔掉护身符。[name]畏缩着让符咒掉落在地，你一脚将它踩得粉碎。[name]脸色变得苍白，但[name]一言不发。在那之后，[name]总是避开你的目光，深夜里，你会听到营房传来窃窃私语，尖锐的话语无关安宁，只有怨恨。""",
 CHARRND_LETTER = """你撞见[name]蜷在宅邸一处昏暗角落里，正在读一张破烂的信纸。当[name]发现你时，[name]手忙脚乱地把它掉在了地上。潦草的字迹透露出[name]家人绝望的求助。[name]盯着你，做好了受罚的准备，眼中满是恐惧。
 
@@ -23681,6 +24467,8 @@ CHARRND_LETTER = """你撞见[name]蜷在宅邸一处昏暗角落里，正在读
 	CHARRND_BROKENVASE_REPLY_REPAIR = """你点了点头，告诉[name]尽管放手去做[name]的修补。[name]松了一口气，抄起笨拙的工具和黏糊糊的胶水开始忙活，这一弄就耗去了[name]整整一天。花瓶放了回来，歪歪扭扭、凹凸不平，但[name]却如释重负地眉开眼笑。[name]对你的感激更深了，此后[name]在你身边总是格外小心。""",
 	CHARRND_BROKENVASE_REPLY_REPLACE = """你摇摇头，命令[name]必须赔偿这只花瓶，没有借口可讲。[name]脸色发白，心里清楚这价钱远不是[name]能负担得起的，只好保证攒钱来赔。[name]的脚步变得沉重，肩膀垮了下去，[name]的目光中悄然燃起一丝无声的怨恨。""",
 	CHARRND_BROKENVASE_REPLY_PUNISH = """你一把抓住[name]的胳膊，厉声斥责[name]的粗心大意，扣了[name]的工钱来抵偿损失。[name]吓得一缩，手里的碎片掉落一地，默默地点头。[name]的活计照旧做着，但[name]总是低垂着目光回避你，你话语里的刺痛久久不散。""",
+	CHARRND_BROKENVASE_REPLY_HANDY = """You nod and tell [name] to go ahead with [his] repair. [He] lays every shard out on a cloth and sets to work with quick, sure fingers. By the time [his] chores are due, the vase stands on its pedestal again, the seams so fine you have to hunt for them. [He] lingers near you afterwards, plainly pleased with [himself].""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_REPLY_INEPT = """You nod and tell [name] to go ahead with [his] repair. [He] spends the whole day on it with glue, twine and growing desperation, and by nightfall the vase is a lopsided heap that cracks anew at every touch. Nothing can be saved, and you have to send to town for a new one at your own expense. [name] apologizes again and again, grateful at least that you let [him] try.""", # MISSING TRANSLATION
 	CHARRND_HUNT_OFFERING = """你差点一脚踢上去。一只死兔子，整齐地摆放在你门外的石板上，脖颈处被干净利落地咬断。[name]蹲在几步远的地方，用明亮而耐心的眼睛望着你，尾巴缓缓地、满怀期待地扫来扫去。[name]在天亮前就捕到了它，从那会儿起一直守在这里。在[name]看来，这是一个意义重大的表示——是价值的证明，是献给重要之人的贡品。[name]正等着看你是否懂得这份心意。""",
 	CHARRND_HUNT_OFFERING_OPT_ACCEPT = """拎起来告诉[name]这是个好猎物""",
 	CHARRND_HUNT_OFFERING_OPT_EXPLAIN = """收下，但解释一下这里不兴这么做""",
@@ -32248,9 +33036,9 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONUPG_BED_SIZEBONUS1 = """床位 +1""",
 	MANSIONUPG_BED_SIZEBONUS2 = """床位 +2""",
 	MANSIONUPG_BED_SIZEBONUS3 = """床位 +3""",
-	MANSIONUPG_PRIVATE_BATH = """Bath""", # MISSING TRANSLATION
-	MANSIONUPG_PRIVATE_BATHDESCRIPT = """Mansion's bath. Gives every slave +1 training point per training and +20% mana recovery to everyone.""", # MISSING TRANSLATION
-	MANSIONUPG_PRIVATE_BATHBONUS1 = """+1 training point per training, +20% mana recovery""", # MISSING TRANSLATION
+	MANSIONUPG_PRIVATE_BATH = """浴室""",
+	MANSIONUPG_PRIVATE_BATHDESCRIPT = """府邸的浴室。使所有奴隶每次调教额外获得 +1 调教点数，并使所有人的法力恢复速度 +20%。""",
+	MANSIONUPG_PRIVATE_BATHBONUS1 = """每次调教 +1 调教点数，+20% 法力恢复""",
 	MANSIONUPG_BEDROOMS_EXPANSION = """扩建""",
 	MANSIONUPG_BEDROOMS_EXPANSIONDESCRIPT = """增加此房间的床位数量。""",
 	MANSIONUPG_BEDROOMS_EXPANSIONBONUS1 = """床位 +4""",
@@ -32279,80 +33067,80 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	MANSIONUPG_BODY_MODIFICATIONS = """肉体改造""",
 	MANSIONUPG_BODY_MODIFICATIONSDESCRIPT = """用于重塑府内成员身形的工具与药剂：任何特征、颜色以及毛发开关皆可自由设定。修改完全免费且立即生效。""",
 	MANSIONUPG_BODY_MODIFICATIONSBONUS1 = """可在此处自由修改外貌""",
-	MANSIONUPG_FLESH_RITES = """Flesh Rites""", # MISSING TRANSLATION
-	MANSIONUPG_FLESH_RITESDESCRIPT = """A circle cut into the floor for reshaping flesh. Its rites change a body's appearance, sex, form or virginity; second level will unlock stronger options. Room must be prepared by apt individuals before a rite can be held.""", # MISSING TRANSLATION
-	MANSIONUPG_FLESH_RITESBONUS1 = """Unlocks the appearance, sex, form and virginity rites and 2 work slots for preparing the circle""", # MISSING TRANSLATION
-	MANSIONUPG_FLESH_RITESBONUS2 = """Unlocks body upgrades""", # MISSING TRANSLATION
-	MANSIONVIEW_BODY_RITES = """Body upgrades""", # MISSING TRANSLATION
-	MANSIONVIEW_PREPARATION = """Preparation""", # MISSING TRANSLATION
-	MANSIONVIEW_RITES_UNPREPARED = """The circle is not prepared yet. Put residents to work in the ritual room until its preparation reaches 100.""", # MISSING TRANSLATION
-	BODYRITE_TITLE = """Body Upgrades""", # MISSING TRANSLATION
-	BODYRITE_SUBJECTS = """Subject""", # MISSING TRANSLATION
-	BODYRITE_UPGRADES = """Upgrades""", # MISSING TRANSLATION
-	BODYRITE_NO_SUBJECTS = """Nobody is at the mansion.""", # MISSING TRANSLATION
-	BODYRITE_PICK_SUBJECT = """Choose whose body to change.""", # MISSING TRANSLATION
-	BODYRITE_PICK_UPGRADE = """Choose an upgrade.""", # MISSING TRANSLATION
-	BODYRITE_STATE_OWNED = """Received""", # MISSING TRANSLATION
-	BODYRITE_STATE_LOCKED = """Requirements not met""", # MISSING TRANSLATION
-	BODYRITE_STATE_NO_POINTS = """Not enough upgrade points""", # MISSING TRANSLATION
-	BODYRITE_STATE_SEALED = """Needs Flesh Rites level 2""", # MISSING TRANSLATION
-	BODYRITE_PRICE = """Price""", # MISSING TRANSLATION
-	BODYRITE_GOLD = """Gold""", # MISSING TRANSLATION
-	BODYRITE_POINTS = """Upgrade points""", # MISSING TRANSLATION
-	BODYRITE_MANA = """Mana""", # MISSING TRANSLATION
-	BODYRITE_POINTS_LEFT = """Left after the rite""", # MISSING TRANSLATION
-	BODYRITE_REQUIREMENTS = """Requirements""", # MISSING TRANSLATION
-	BODYRITE_CHECK_BODY = """The body meets the requirements""", # MISSING TRANSLATION
-	BODYRITE_CHECK_POINTS = """Enough upgrade points""", # MISSING TRANSLATION
-	BODYRITE_CHECK_GOLD = """Enough gold""", # MISSING TRANSLATION
-	BODYRITE_CHECK_MANA = """Enough mana from donors""", # MISSING TRANSLATION
-	BODYRITE_DONORS = """Mana Donors""", # MISSING TRANSLATION
-	BODYRITE_NO_DONORS = """Nobody else at the mansion can give mana.""", # MISSING TRANSLATION
-	BODYRITE_DONOR_GIVES = """Gives""", # MISSING TRANSLATION
-	BODYRITE_PERFORM = """Perform the Rite""", # MISSING TRANSLATION
-	BODYRITE_REMOVE = """Unshape""", # MISSING TRANSLATION
-	BODYRITE_REMOVE_TOOLTIP = """Undoes this upgrade: the body returns to how it was and its upgrade points are freed.""", # MISSING TRANSLATION
-	BODYRITE_MANA_AVAILABLE = """Available""", # MISSING TRANSLATION
-	BODYRITE_POINTS_TOOLTIP = """Upgrade points are how much reshaping a body can take. Every point of {color=yellow|Growth Factor} gives %d. Each upgrade the body carries uses its cost in points; removing an upgrade returns them.""", # MISSING TRANSLATION
-	BODYRITE_ANIM_TITLE = """Body Upgrade""", # MISSING TRANSLATION
-	BODYRITE_APPEARANCE = """Appearance Change""", # MISSING TRANSLATION
-	BODYRITE_APPEARANCE_DESCRIPT = """Once the rite is done, [name]'s appearance can be adjusted at will.""", # MISSING TRANSLATION
-	BODYRITE_APPEARANCE_DONE = """[name] has taken on a new look.""", # MISSING TRANSLATION
-	BODYRITE_SEX_CHANGE = """Sex Change""", # MISSING TRANSLATION
-	BODYRITE_SEX_CHANGE_DESCRIPT = """[name]'s body will be reshaped into the opposite sex.""", # MISSING TRANSLATION
-	BODYRITE_REQ_NOT_UNIQUE = """Not a unique character""", # MISSING TRANSLATION
-	BODYRITE_REQ_MALE_OR_FEMALE = """Male or female""", # MISSING TRANSLATION
-	BODYRITE_BEFORE = """Before""", # MISSING TRANSLATION
-	BODYRITE_AFTER = """After""", # MISSING TRANSLATION
-	BODYRITE_NEW_NAME = """A New Name""", # MISSING TRANSLATION
-	BODYRITE_NEW_NAME_HINT = """After changing [name]'s sex you can assign a new name to [him].""", # MISSING TRANSLATION
-	BODYRITE_RENAME = """Rename""", # MISSING TRANSLATION
-	BODYRITE_KEEP_NAME = """Keep the Name""", # MISSING TRANSLATION
-	BODYRITE_BEASTKIN_FORM = """Beastkin Form""", # MISSING TRANSLATION
-	BODYRITE_BEASTKIN_FORM_DESCRIPT = """[name]'s body will take the full beast form of its kind, with fur and muzzle.""", # MISSING TRANSLATION
-	BODYRITE_BEASTKIN_FORM_DONE = """[name] has taken beastkin form""", # MISSING TRANSLATION
-	BODYRITE_HALFKIN_FORM = """Halfkin Form""", # MISSING TRANSLATION
-	BODYRITE_HALFKIN_FORM_DESCRIPT = """[name]'s body will take the halfkin form of its kind: a human body that keeps the ears and the tail.""", # MISSING TRANSLATION
-	BODYRITE_HALFKIN_FORM_DONE = """[name] has taken halfkin form""", # MISSING TRANSLATION
-	BODYRITE_VIRGINITY = """Virginity Restoration""", # MISSING TRANSLATION
-	BODYRITE_VIRGINITY_DESCRIPT = """[name]'s hymen will grow back, as if it had never been touched.""", # MISSING TRANSLATION
-	BODYRITE_PERSONALITY = """Personality Change""", # MISSING TRANSLATION
-	BODYRITE_PERSONALITY_DESCRIPT = """[name]'s personality will be reshaped into the one you choose during the rite.""", # MISSING TRANSLATION
-	BODYRITE_REQ_VIRGINITY_LOST = """Virginity already lost""", # MISSING TRANSLATION
-	BODYRITE_ANIM_RITE_TITLE = """Flesh Rite""", # MISSING TRANSLATION
-	BODYRITE_ANIM_UNSHAPED_TITLE = """Unshaped""", # MISSING TRANSLATION
-	BODYRITE_SCENE_UPGRADE = """The ritual circle flares as the gathered mana pours into [name]. As [he] loses consciousness, [his] body slowly begin to change...""", # MISSING TRANSLATION
-	BODYRITE_SCENE_FORM_CHANGE = """The ritual circle flares as the gathered mana pours into [name]. As [he] loses consciousness, [his] body is being transformed by your whim.""", # MISSING TRANSLATION
-	BODYRITE_SCENE_SEX_CHANGE = """The ritual circle flares as the gathered mana pours into [name]. . Vile magic changes [his] form into that of opposite sex...""", # MISSING TRANSLATION
-	BODYRITE_SCENE_VIRGINITY = """The ritual circle flares as the gathered mana pours into [name]. [His] hymen grows back with an utmost care, restoring [his] body to a fresher state.""", # MISSING TRANSLATION
-	BODYRITE_SCENE_PERSONALITY = """The ritual circle flares as the gathered mana pours into [name]. As [he] loses consciousness, [his] mind lies open before you, waiting to be given a new shape...""", # MISSING TRANSLATION
-	BODYRITE_REQ_OR = """ or """, # MISSING TRANSLATION
-	BODYRITE_REQ_FUR = """Fur""", # MISSING TRANSLATION
-	BODYRITE_REQ_SCALES = """Scales""", # MISSING TRANSLATION
-	BODYRITE_REQ_NO_FUR = """No fur""", # MISSING TRANSLATION
-	BODYRITE_REQ_NO_SCALES = """No scales""", # MISSING TRANSLATION
-	BODYRITE_REQ_TITS_SIZE = """Breasts of average size or bigger""", # MISSING TRANSLATION
-	BODYRITE_REQ_HAS_WOMB = """Has a womb""", # MISSING TRANSLATION
+	MANSIONUPG_FLESH_RITES = """肉体仪式""",
+	MANSIONUPG_FLESH_RITESDESCRIPT = """刻于地面上用于重塑肉体的法阵。其仪式可改变身体的外观、性别、形态或处子之身；二级将解锁更强大的选项。在举行仪式之前，房间必须由合适的人员进行准备。""",
+	MANSIONUPG_FLESH_RITESBONUS1 = """解锁外貌、性别、形态与贞洁仪式，并提供 2 个用于筹备法阵的工作岗位""",
+	MANSIONUPG_FLESH_RITESBONUS2 = """解锁肉体改造""",
+	MANSIONVIEW_BODY_RITES = """肉体改造""",
+	MANSIONVIEW_PREPARATION = """筹备进度""",
+	MANSIONVIEW_RITES_UNPREPARED = """法阵尚未准备就绪。指派居民在仪式室工作，直到筹备进度达到 100。""",
+	BODYRITE_TITLE = """肉体改造""",
+	BODYRITE_SUBJECTS = """受术者""",
+	BODYRITE_UPGRADES = """改造项""",
+	BODYRITE_NO_SUBJECTS = """府邸内没有任何人。""",
+	BODYRITE_PICK_SUBJECT = """选择要对其身体进行改造的目标。""",
+	BODYRITE_PICK_UPGRADE = """选择一项改造。""",
+	BODYRITE_STATE_OWNED = """已获得""",
+	BODYRITE_STATE_LOCKED = """未满足要求""",
+	BODYRITE_STATE_NO_POINTS = """改造点数不足""",
+	BODYRITE_STATE_SEALED = """需要肉体仪式达到 2 级""",
+	BODYRITE_PRICE = """消耗""",
+	BODYRITE_GOLD = """金币""",
+	BODYRITE_POINTS = """改造点数""",
+	BODYRITE_MANA = """法力""",
+	BODYRITE_POINTS_LEFT = """仪式后剩余""",
+	BODYRITE_REQUIREMENTS = """需求条件""",
+	BODYRITE_CHECK_BODY = """身体满足需求条件""",
+	BODYRITE_CHECK_POINTS = """改造点数充足""",
+	BODYRITE_CHECK_GOLD = """金币充足""",
+	BODYRITE_CHECK_MANA = """供能者的法力充足""",
+	BODYRITE_DONORS = """法力供能者""",
+	BODYRITE_NO_DONORS = """府邸内没有其他人可以提供法力。""",
+	BODYRITE_DONOR_GIVES = """提供""",
+	BODYRITE_PERFORM = """举行仪式""",
+	BODYRITE_REMOVE = """移除改造""",
+	BODYRITE_REMOVE_TOOLTIP = """撤销此改造：身体恢复原状，并释放其占用的改造点数。""",
+	BODYRITE_MANA_AVAILABLE = """可用""",
+	BODYRITE_POINTS_TOOLTIP = """改造点数代表身体所能承受的重塑极限。每点{color=yellow|生长因子}提供 %d 点。身体拥有的每项改造都会消耗相应的点数；移除改造将返还这些点数。""",
+	BODYRITE_ANIM_TITLE = """肉体改造""",
+	BODYRITE_APPEARANCE = """外貌变更""",
+	BODYRITE_APPEARANCE_DESCRIPT = """仪式完成后，可以随意调整 [name] 的外貌。""",
+	BODYRITE_APPEARANCE_DONE = """[name] 换上了全新的容貌。""",
+	BODYRITE_SEX_CHANGE = """性别转变""",
+	BODYRITE_SEX_CHANGE_DESCRIPT = """[name] 的身体将被重塑为异性。""",
+	BODYRITE_REQ_NOT_UNIQUE = """非独特角色""",
+	BODYRITE_REQ_MALE_OR_FEMALE = """男性或女性""",
+	BODYRITE_BEFORE = """重塑前""",
+	BODYRITE_AFTER = """重塑后""",
+	BODYRITE_NEW_NAME = """新名字""",
+	BODYRITE_NEW_NAME_HINT = """在改变 [name] 的性别后，你可以为其赋予一个新名字。""",
+	BODYRITE_RENAME = """重新命名""",
+	BODYRITE_KEEP_NAME = """保留原名""",
+	BODYRITE_BEASTKIN_FORM = """兽人形态""",
+	BODYRITE_BEASTKIN_FORM_DESCRIPT = """[name] 的身体将转变为其种族的完整兽人形态，拥有毛发与兽吻。""",
+	BODYRITE_BEASTKIN_FORM_DONE = """[name] 已转变为兽人形态""",
+	BODYRITE_HALFKIN_FORM = """半兽形态""",
+	BODYRITE_HALFKIN_FORM_DESCRIPT = """[name] 的身体将转变为其种族的半兽形态：保留兽耳和尾巴的人类身体。""",
+	BODYRITE_HALFKIN_FORM_DONE = """[name] 已转变为半兽形态""",
+	BODYRITE_VIRGINITY = """贞洁重塑""",
+	BODYRITE_VIRGINITY_DESCRIPT = """[name] 的处女膜将重新生长，宛如从未被触碰过一般。""",
+	BODYRITE_PERSONALITY = """性格重塑""",
+	BODYRITE_PERSONALITY_DESCRIPT = """[name] 的性格将在仪式期间被重塑为你所选择的类型。""",
+	BODYRITE_REQ_VIRGINITY_LOST = """已失去贞洁""",
+	BODYRITE_ANIM_RITE_TITLE = """肉体仪式""",
+	BODYRITE_ANIM_UNSHAPED_TITLE = """还原改造""",
+	BODYRITE_SCENE_UPGRADE = """随着汇聚的法力涌入 [name]，仪式法阵绽放光芒。当 [he] 失去意识时，[his] 的身体开始缓缓发生变化……""",
+	BODYRITE_SCENE_FORM_CHANGE = """随着汇聚的法力涌入 [name]，仪式法阵绽放光芒。当 [he] 失去意识时，[his] 的身体顺应你的心意发生了转变。""",
+	BODYRITE_SCENE_SEX_CHANGE = """随着汇聚的法力涌入 [name]，仪式法阵绽放光芒。邪异的魔法将其身体转变为了异性……""",
+	BODYRITE_SCENE_VIRGINITY = """随着汇聚的法力涌入 [name]，仪式法阵绽放光芒。[His] 的处女膜以极其细致的方式重新生长，使其身体恢复到了更加清纯的状态。""",
+	BODYRITE_SCENE_PERSONALITY = """随着汇聚的法力涌入 [name]，仪式法阵绽放光芒。当 [he] 失去意识时，[his] 的心灵毫无保留地展现在你面前，等待着被赋予全新的形状……""",
+	BODYRITE_REQ_OR = """ 或 """,
+	BODYRITE_REQ_FUR = """皮毛""",
+	BODYRITE_REQ_SCALES = """鳞片""",
+	BODYRITE_REQ_NO_FUR = """无皮毛""",
+	BODYRITE_REQ_NO_SCALES = """无鳞片""",
+	BODYRITE_REQ_TITS_SIZE = """中等或更大尺寸的乳房""",
+	BODYRITE_REQ_HAS_WOMB = """拥有子宫""",
 	ENCHANTING_TITLE = """Enchanting""", # MISSING TRANSLATION
 	ENCHANTING_ITEMS = """Item""", # MISSING TRANSLATION
 	ENCHANTING_FILTER_ALL = """All""", # MISSING TRANSLATION
@@ -32453,8 +33241,8 @@ Levels can be added to gear that is already enchanted. Worn gear is taken off fo
 	MANSIONVIEW_AUTOBUY_BUTTON = """市场补货""",
 	MANSIONVIEW_AUTOBUY_TITLE = """市场补货""",
 	MANSIONVIEW_AUTOBUY_EXPLAIN = """每天清晨，文员会购买足够的物资，使各项库存达到设定的水平。""",
-	MANSIONVIEW_AUTOBUY_HELP = """[center]{color=yellow|Market Restock}[/center]
-The assigned character will try to purchase set items from the local market. Only items actually existing there can be purchased.""", # MISSING TRANSLATION
+	MANSIONVIEW_AUTOBUY_HELP = """[center]{color=yellow|集市采买}[/center]
+被指派的角色将尝试从当地集市购买设定的物品。只有当地集市实际存在的物品才能被购买。""",
 	MANSIONVIEW_AUTOBUY_CLERK = """%s 需支付市场卖价的 %d%%。""",
 	MANSIONVIEW_AUTOBUY_NOCLERK = """办公桌前无人值守。订单将予以保留，但不会购买任何物品。""",
 	MANSIONVIEW_AUTOBUY_ITEM = """存货""",
@@ -32566,20 +33354,20 @@ The assigned character will try to purchase set items from the local market. Onl
 	MANSIONVIEW_TASKADDHINT = """点击将其安排至此工作。""",
 	MANSIONVIEW_TASKREMOVEHINT = """点击将其从该工作上撤下。""",
 	MANSIONVIEW_SERVICEEARNS = """%s 金币/回合""",
-	MANSIONVIEW_SERVICEEARNS_LIMITED = """up to %s gold/turn""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEEARNS_EXHAUSTED = """%s gold/turn (%d%% rate)""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEPOOL_BAR = """Saturation""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEPOOL_HINT = """Saturation presents the gold you can earn until next week. Once it's depleted, service income from this location will greatly drop.""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICENORULES = """尚未设置许可项目。""",
-	MANSIONVIEW_SERVICERULESHINT = """点击设置允许其执行的操作。""",
-	MANSIONVIEW_ERR_SERVICERACE = """The clients here will not buy service from [race].""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICELIMIT_RULES = """Not allowed: {color=red|%s}""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICELIMIT_RACES = """Allowed races: {color=yellow|%s}""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEBONUS_DEMAND = """In demand: {color=aqua|%s}""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEBONUS_FACTOR = """%s %d+""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEBONUS_MONSTERS = """Monstrous races""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEBONUS_REWARD = """+%d%% gold, +%d%% if both match""", # MISSING TRANSLATION
-	MANSIONVIEW_SERVICEBONUS_REWARD_ONE = """+%d%% gold""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICEEARNS_LIMITED = """每回合最多 %s 金币""",
+	MANSIONVIEW_SERVICEEARNS_EXHAUSTED = """%s 金币/回合（收益率 %d%%）""",
+	MANSIONVIEW_SERVICEPOOL_BAR = """饱和度""",
+	MANSIONVIEW_SERVICEPOOL_HINT = """饱和度代表你在下周到来前所能赚取的金币上限。一旦耗尽，该地点的服务收入将大幅下降。""",
+	MANSIONVIEW_SERVICENORULES = """Allowed nothing yet.""", # MISSING TRANSLATION
+	MANSIONVIEW_SERVICERULESHINT = """Click to set what they may do.""", # MISSING TRANSLATION
+	MANSIONVIEW_ERR_SERVICERACE = """此处的顾客不会购买来自 [race] 的服务。""",
+	MANSIONVIEW_SERVICELIMIT_RULES = """未许可项目：{color=red|%s}""",
+	MANSIONVIEW_SERVICELIMIT_RACES = """许可种族：{color=yellow|%s}""",
+	MANSIONVIEW_SERVICEBONUS_DEMAND = """热门需求：{color=aqua|%s}""",
+	MANSIONVIEW_SERVICEBONUS_FACTOR = """%s %d+""",
+	MANSIONVIEW_SERVICEBONUS_MONSTERS = """魔物种族""",
+	MANSIONVIEW_SERVICEBONUS_REWARD = """金币 +%d%%，若同时满足两项则 +%d%%""",
+	MANSIONVIEW_SERVICEBONUS_REWARD_ONE = """金币 +%d%%""",
 	MANSIONROOM_STAIRS = """楼梯""",
 	MANSIONROOM_STAIRSDESCRIPT = """宅邸固有结构。使用按钮可切换楼层。""",
 	MANSIONVIEW_GOUP = """上楼""",
@@ -32592,7 +33380,7 @@ The assigned character will try to purchase set items from the local market. Onl
 	MANSIONVIEW_TRAITREMOVED = """%s 已摆脱特质 %s。""",
 	MANSIONROOM_RITUAL_ROOM = """仪式室""",
 	MANSIONROOM_RITUAL_ROOMDESCRIPT = """无工作位。允许领地对装备进行附魔。仅限建造一个。""",
-	MANSIONROOM_RITUAL_ROOMHELP = """Flesh Rites require preparation of the room before they can be performed. Characters with higher {color=yellow|Wits} will perform those faster. Performing any upgrade or rite, or unshaping an upgrade, spends all of it and needs a new preparation.""", # MISSING TRANSLATION
+	MANSIONROOM_RITUAL_ROOMHELP = """举行肉体仪式之前，需要先对房间进行筹备。{color=yellow|才智}较高的角色能更快完成筹备。每当执行一次改造或仪式，或是移除一项改造，都会消耗掉所有的筹备进度，并需要重新进行筹备。""",
 	MANSIONROOM_STORE_ROOM = """储藏室""",
 	MANSIONROOM_STORE_ROOMDESCRIPT = """每种材料可储存 200 个，配备【货架】后最高可达 20000 个。最多可建 3 个储藏室且容量可叠加。交付时超出上限的部分将丢失，除非有【会计】在此工作将其按市场价售出。""",
 	MANSIONUPG_SHELVES = """货架""",
@@ -32614,7 +33402,7 @@ The assigned character will try to purchase set items from the local market. Onl
 	BODYMOD_TITLE = """肉体改造""",
 	BODYMOD_COLOUR_AUTO = """自动""",
 	BODYMOD_COAT_COLOUR = """毛色""",
-	BODYMOD_DONE = """Done""", # MISSING TRANSLATION
+	BODYMOD_DONE = """完成""",
 	BEAUTYPARLOR_PICKCHAR = """请先选择一名角色。""",
 	BEAUTYPARLOR_AWAY = """正在外出执行任务。""",
 	BEAUTYPARLOR_NOTHERE = """不在宅邸中。""",
@@ -32708,13 +33496,13 @@ The assigned character will try to purchase set items from the local market. Onl
 	DOLL2_PREVIEW_DOLL_FEMALE = """女性""",
 	DOLL2_PREVIEW_DOLL_MALE = """男性""",
 	DOLL2_PREVIEW_MANY_TITS = """额外乳头""",
-	DOLL2_PREVIEW_MANY_TITS_DEVELOPED = """Developed breasts""", # MISSING TRANSLATION
+	DOLL2_PREVIEW_MANY_TITS_DEVELOPED = """发育成熟的乳房""",
 	DOLL2_PREVIEW_POSE_DEFAULT = """绑定姿势""",
 	DOLL2_STYLE_HAIR_BASE_BACK = """大背头""",
 	DOLL2_STYLE_HAIR_BASE_BRAIDS = """地沟辫""",
 	DOLL2_STYLE_HAIR_BASE_DEFAULT = """中分""",
-	DOLL2_STYLE_HAIR_BASE_DISHEVELED = """Disheveled""", # MISSING TRANSLATION
-	DOLL2_STYLE_HAIR_BASE_DISHEVELED_EYEHIDE = """Disheveled, eye hidden""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_DISHEVELED = """蓬乱""",
+	DOLL2_STYLE_HAIR_BASE_DISHEVELED_EYEHIDE = """蓬乱遮眼""",
 	DOLL2_STYLE_HAIR_BASE_FRINGE = """侧分刘海""",
 	DOLL2_STYLE_HAIR_BASE_FRINGE_2 = """发冠编发""",
 	DOLL2_STYLE_HAIR_BASE_BOBCUT = """波波头""",
@@ -32724,19 +33512,19 @@ The assigned character will try to purchase set items from the local market. Onl
 	DOLL2_STYLE_HAIR_BASE_SLAVE = """紧梳后发""",
 	DOLL2_STYLE_HAIR_BASE_STRAIGHT = """长直发""",
 	DOLL2_STYLE_HAIR_BASE_UNDERCUT = """铲边头""",
-	DOLL2_STYLE_HAIR_BASE_DEFAULT_MONOFRINGE = """Fringe""", # MISSING TRANSLATION
-	DOLL2_STYLE_HAIR_BASE_FRINGE_2_MONOFRINGE = """Fringe v2""", # MISSING TRANSLATION
+	DOLL2_STYLE_HAIR_BASE_DEFAULT_MONOFRINGE = """刘海""",
+	DOLL2_STYLE_HAIR_BASE_FRINGE_2_MONOFRINGE = """刘海 2""",
 	DOLL2_STYLE_HAIRS_BASE_DOPPLE = """中分长刘海""",
-	DOLL2_STYLE_TATOO_WOMB1 = """Horned heart""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB2 = """Crest""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB3 = """Tribal""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB4 = """Tribal mask""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB5 = """Bat""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB6 = """Ringed heart""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB7 = """Infinity heart""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB8 = """Rose""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB9 = """Owl""", # MISSING TRANSLATION
-	DOLL2_STYLE_TATOO_WOMB10 = """Butterfly""", # MISSING TRANSLATION
+	DOLL2_STYLE_TATOO_WOMB1 = """角心纹""",
+	DOLL2_STYLE_TATOO_WOMB2 = """徽纹""",
+	DOLL2_STYLE_TATOO_WOMB3 = """部落纹""",
+	DOLL2_STYLE_TATOO_WOMB4 = """部落面具""",
+	DOLL2_STYLE_TATOO_WOMB5 = """蝙蝠""",
+	DOLL2_STYLE_TATOO_WOMB6 = """环心纹""",
+	DOLL2_STYLE_TATOO_WOMB7 = """无限心""",
+	DOLL2_STYLE_TATOO_WOMB8 = """玫瑰""",
+	DOLL2_STYLE_TATOO_WOMB9 = """猫头鹰""",
+	DOLL2_STYLE_TATOO_WOMB10 = """蝴蝶""",
 	DOLL2_STYLE_HAIR_BACK_BOBCUT = """齐颔发""",
 	DOLL2_STYLE_HAIR_BACK_CARE = """及颔短发""",
 	DOLL2_STYLE_HAIR_BACK_DOUBLE_TAIL_LONG = """长双马尾""",
@@ -32809,18 +33597,18 @@ The assigned character will try to purchase set items from the local market. Onl
 	DOLL2_HAIR_NONE = """无""",
 	DOLL2_HAIR_COLOUR = """发色""",
 	DOLL2_BEARD_STYLE = """胡须""",
-	DOLL2_PIERCING_NIPPLES = """Nipple piercing""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NIPPLES_RING = """Rings""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NIPPLES_STUD = """Barbells""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NIPPLES_CHAIN = """Chained rings""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NIPPLES_COLOUR = """Nipples - colour""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NAVEL = """Navel piercing""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NAVEL_STUD = """Gem""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NAVEL_RING = """Ring""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NAVEL_CHARM = """Charm""", # MISSING TRANSLATION
-	DOLL2_PIERCING_NAVEL_COLOUR = """Navel - colour""", # MISSING TRANSLATION
-	DOLL2_TATTOO_CROTCH_STYLE = """Tattoo""", # MISSING TRANSLATION
-	DOLL2_TATTOO_CROTCH_COLOUR = """Tattoo - colour""", # MISSING TRANSLATION
+	DOLL2_PIERCING_NIPPLES = """乳头穿孔""",
+	DOLL2_PIERCING_NIPPLES_RING = """环形""",
+	DOLL2_PIERCING_NIPPLES_STUD = """杠铃钉""",
+	DOLL2_PIERCING_NIPPLES_CHAIN = """连体链环""",
+	DOLL2_PIERCING_NIPPLES_COLOUR = """乳头饰品 - 颜色""",
+	DOLL2_PIERCING_NAVEL = """肚脐穿孔""",
+	DOLL2_PIERCING_NAVEL_STUD = """宝石钉""",
+	DOLL2_PIERCING_NAVEL_RING = """肚脐环""",
+	DOLL2_PIERCING_NAVEL_CHARM = """吊坠""",
+	DOLL2_PIERCING_NAVEL_COLOUR = """肚脐饰品 - 颜色""",
+	DOLL2_TATTOO_CROTCH_STYLE = """纹身""",
+	DOLL2_TATTOO_CROTCH_COLOUR = """纹身 - 颜色""",
 	DOLL2_BEARD_COLOUR = """胡须颜色""",
 	DOLL2_EYEBROWS_COLOUR = """眉毛颜色""",
 	DOLL2_LIPS_COLOUR = """唇色""",
@@ -32847,7 +33635,7 @@ The assigned character will try to purchase set items from the local market. Onl
 	CHARCREATE_MENU_EYES = """眼睛""",
 	CHARCREATE_MENU_CHIN = """下巴""",
 	CHARCREATE_MENU_HORNS = """角""",
-	CHARCREATE_MENU_WINGS = """Wings""", # MISSING TRANSLATION
+	CHARCREATE_MENU_WINGS = """翅膀""",
 	CHARCREATE_MENU_COVERAGE = """皮毛与鳞片""",
 	COVERAGE_FUR_ORANGE = """橙色皮毛""",
 	COVERAGE_FUR_ORANGE_WHITE = """橙白相间皮毛""",
@@ -32880,126 +33668,126 @@ The assigned character will try to purchase set items from the local market. Onl
 	DOLL2_PREVIEW_EYES_TINT = """眼色调色""",
 	DOLL2_PREVIEW_NONE = """— 无 —""",
 	DOLL2_PREVIEW_NOTE = """独立测试场景。源 JSON、三个图集页面、261 根骨骼、插槽顺序以及加权网格均保存在此文件夹中。""",
-	SQ_MODE_QUESTS = """Quests""", # MISSING TRANSLATION
-	SQ_RANK_LABEL = """Slaver Rank: %s""", # MISSING TRANSLATION
-	SQ_RANK_XP_MAX = """Highest rank reached""", # MISSING TRANSLATION
-	SQ_RANK_SALES = """Slaves sold: %s/%s""", # MISSING TRANSLATION
-	SQ_RANK_HELP = """Every quest listed here is already yours: hand over a slave who meets it before its days run out. Completed and expired quests are replaced the next day, and a higher rank keeps more of them open and pays better.
-The icons in each row show what the quest wants of a slave; hover over one for the details. Some requirements are met as found, others (listed under "Needs work first") take training.
-To reach the next rank you need rank experience from completed quests and a number of slaves sold at the market or quick-sold from captives.
-Captives marked with a green star fit an open quest as they are; a yellow star means they fit it once they have been worked on.
-Completed quests, new ranks and each rank's slaves-sold target also earn Tokens of Recognition, spent on factor upgrades in the Upgrades tab.
-Guild orders pay gold and reputation with their guild instead of rank experience and tokens. A guild posts harder orders as your reputation with it grows.""", # MISSING TRANSLATION
-	SQ_RANK_HELP_ROW = """Rank %s to %s: %s experience and %s slaves sold.""", # MISSING TRANSLATION
-	SQ_RANK_UP_LOG = """The slave market now counts you a rank [color=#e0c060]%s[/color] slaver and offers you more work.""", # MISSING TRANSLATION
-	SQ_NEXT_RANK = """Next rank: %s""", # MISSING TRANSLATION
-	SQ_RANK_UNLOCKS_TITLE = """Factor Upgrades by Rank""", # MISSING TRANSLATION
-	SQ_RANK_UNLOCKS_ROW_LOCKED = """Rank %s.""", # MISSING TRANSLATION
-	SQ_RANK_UNLOCKS_ROW_FIRST = """Rank %s: factor upgrade unlocked, factors raised up to level %s""", # MISSING TRANSLATION
-	SQ_RANK_UNLOCKS_ROW = """Rank %s: factors raised up to level %s""", # MISSING TRANSLATION
-	SQ_GOLD_PER_SLAVE = """%s per slave""", # MISSING TRANSLATION
-	SQ_POPUP_SALE_TITLE = """Slave sold""", # MISSING TRANSLATION
-	SQ_POPUP_DELIVERY_TITLE = """Slave handed over""", # MISSING TRANSLATION
-	SQ_POPUP_RANK_CAPTION = """Slaver rank %s""", # MISSING TRANSLATION
-	SQ_POPUP_LABEL_XP = """Rank experience""", # MISSING TRANSLATION
-	SQ_POPUP_LABEL_DELIVERED = """Slaves delivered""", # MISSING TRANSLATION
-	SQ_POPUP_LABEL_SOLD = """Slaves sold""", # MISSING TRANSLATION
-	SQ_POPUP_NEED_SALES = """Sell %s more slaves to reach the next rank""", # MISSING TRANSLATION
-	SQ_POPUP_RANK_UP = """Slaver rank %s reached""", # MISSING TRANSLATION
-	SQ_POPUP_GOLD_LABEL = """Gold received""", # MISSING TRANSLATION
-	SQ_PANEL_TITLE = """Market Commissions""", # MISSING TRANSLATION
-	SQ_PANEL_SUBTITLE = """Open orders from the factions""", # MISSING TRANSLATION
-	SQ_COL_QUEST = """Quest""", # MISSING TRANSLATION
-	SQ_COL_WANTS = """Wants""", # MISSING TRANSLATION
-	SQ_COL_REWARD = """Reward""", # MISSING TRANSLATION
-	SQ_COL_DAYS = """Days""", # MISSING TRANSLATION
-	SQ_COL_SLAVES = """Slaves""", # MISSING TRANSLATION
-	SQ_SALES_HEADING = """Slaves sold""", # MISSING TRANSLATION
-	SQ_XP_HEADING = """Rank experience""", # MISSING TRANSLATION
-	SQ_REWARD_HEADING = """Reward""", # MISSING TRANSLATION
-	SQ_DEADLINE_HEADING = """Deadline""", # MISSING TRANSLATION
-	SQ_DELIVERED_HEADING = """Delivered""", # MISSING TRANSLATION
-	MANSION_ACTIVITY_TYPE_SLAVER_RANK = """Slaver Rank""", # MISSING TRANSLATION
-	SQ_SALE_TARGET_MET = """Enough slaves sold: complete quests for the next rank""", # MISSING TRANSLATION
-	SQ_STATE_COMPLETE = """Completed""", # MISSING TRANSLATION
-	SQ_NO_QUESTS = """No quests right now. New ones arrive tomorrow.""", # MISSING TRANSLATION
-	SQ_REQS_ANY = """Any slave.""", # MISSING TRANSLATION
-	SQ_REQS_ADVANCED = """Needs work first""", # MISSING TRANSLATION
-	STATREQ_BASE_STAT = """%s: %s %s.""", # MISSING TRANSLATION
-	SQ_DELIVER = """Hand Over""", # MISSING TRANSLATION
-	SQ_DELIVER_CONFIRM = """Hand [name] over for %s gold?""", # MISSING TRANSLATION
-	STATREQ_IS_UNIQUE = """Must be a unique character""", # MISSING TRANSLATION
-	STATREQ_NOT_UNIQUE = """Must not be a unique character""", # MISSING TRANSLATION
-	SQ_STAR_GREEN = """Fits a slave market quest as they are:""", # MISSING TRANSLATION
-	SQ_STAR_YELLOW = """Fits a slave market quest after some work:""", # MISSING TRANSLATION
-	SQ_CANDIDATES = """Hand Over""", # MISSING TRANSLATION
-	SQ_NO_CANDIDATES = """Nobody in your household can be handed over for this quest.""", # MISSING TRANSLATION
-	SQ_HIDE_UNFIT = """Only those who fit""", # MISSING TRANSLATION
-	SQ_CAND_MET = """Meets it""", # MISSING TRANSLATION
-	SQ_CAND_TRAIN = """Can be trained up to it""", # MISSING TRANSLATION
-	SQ_CAND_NO = """Does not meet it""", # MISSING TRANSLATION
-	SQ_CAND_YELLOW = """Fits once worked on: train them up first.""", # MISSING TRANSLATION
-	SQ_CAND_RED = """Does not fit this quest.""", # MISSING TRANSLATION
-	SQ_RACE_KIN_PAIR = """Race: %s or %s.""", # MISSING TRANSLATION
-	SQ_BASIC_NAME_1 = """Standing Order""", # MISSING TRANSLATION
-	SQ_BASIC_NAME_2 = """Fresh Stock Wanted""", # MISSING TRANSLATION
-	SQ_BASIC_NAME_3 = """A Discreet Purchase""", # MISSING TRANSLATION
-	SQ_BASIC_NAME_4 = """Household Replacement""", # MISSING TRANSLATION
-	SQ_BASIC_NAME_5 = """Private Commission""", # MISSING TRANSLATION
-	SQ_BASIC_NAME_6 = """Collector's Request""", # MISSING TRANSLATION
-	SQ_BASIC_DESC_1 = """[factionname] has placed a standing order with the market. Any slave who fits the description below will do, just as they are.""", # MISSING TRANSLATION
-	SQ_BASIC_DESC_2 = """An agent of [factionname] is buying through the market this week and will take a slave matching the requirements below without further training.""", # MISSING TRANSLATION
-	SQ_BASIC_DESC_3 = """[factionname] wants a new acquisition delivered quietly and quickly. Bring a slave who meets the requirements below.""", # MISSING TRANSLATION
-	SQ_ADVANCED_NAME_1 = """Refined Tastes""", # MISSING TRANSLATION
-	SQ_ADVANCED_NAME_2 = """Finished Goods""", # MISSING TRANSLATION
-	SQ_ADVANCED_NAME_3 = """A Demanding Patron""", # MISSING TRANSLATION
-	SQ_ADVANCED_NAME_4 = """Trained to Order""", # MISSING TRANSLATION
-	SQ_ADVANCED_NAME_5 = """Special Commission""", # MISSING TRANSLATION
-	SQ_ADVANCED_NAME_6 = """Polished Acquisition""", # MISSING TRANSLATION
-	SQ_ADVANCED_DESC_1 = """[factionname] will pay well for a slave shaped to its tastes. Raw stock will not do: bring one who already meets every requirement below.""", # MISSING TRANSLATION
-	SQ_ADVANCED_DESC_2 = """A patron from [factionname] has particular demands. Work on a slave until they meet the requirements below, then hand them over.""", # MISSING TRANSLATION
-	SQ_ADVANCED_DESC_3 = """[factionname] is looking for finished goods, not fresh captives. Only a slave brought up to the requirements below will satisfy it.""", # MISSING TRANSLATION
-	SQ_TOKENS = """Tokens of Recognition""", # MISSING TRANSLATION
-	SQ_TOKENS_OWNED = """You have %s.""", # MISSING TRANSLATION
-	SQ_REWARD_ON_LAST = """Given when the last slave is handed over.""", # MISSING TRANSLATION
-	SQ_REWARD_ON_DELIVERY = """Given when the slave is handed over.""", # MISSING TRANSLATION
-	SQ_TOKENS_PER_SLAVE = """Also +%s for each slave handed over.""", # MISSING TRANSLATION
-	SQ_GUILD_ORDER_GUILD = """%s Guild""", # MISSING TRANSLATION
-	SQ_GUILD_REPUTATION = """%s reputation""", # MISSING TRANSLATION
-	SQ_GUILD_REPUTATION_NOW = """Your reputation with the %s: %s""", # MISSING TRANSLATION
-	SQ_TOKENS_TOOLTIP = """[center]{color=yellow|Tokens of Recognition}[/center]
-The slave market's own currency, spent on factor upgrades in the Upgrades tab.
+	SQ_MODE_QUESTS = """任务""",
+	SQ_RANK_LABEL = """奴隶主阶位：%s""",
+	SQ_RANK_XP_MAX = """已达到最高阶位""",
+	SQ_RANK_SALES = """出售奴隶：%s/%s""",
+	SQ_RANK_HELP = """此处列出的每项任务均已归你接取：在天数耗尽前移交一名符合要求的奴隶即可。已完成和已过期的任务将在次日被替换，更高阶位能维持更多开放任务且报酬更高。
+每行中的图标展示了任务对奴隶的要求；悬停于图标上可查看详情。部分要求在获取奴隶时即已满足，其他要求（列于“需要先进行调教”下）则需要经过调教。
+要提升至下一阶位，你需要通过完成任务获取阶位经验，并在市场出售或从俘虏中快速出售一定数量的奴隶。
+标记有绿星的俘虏可直接满足某项开放任务；黄星则代表其经过调教后即可满足要求。
+完成任务、提升至新阶位以及达成每个阶位的奴隶出售目标，还能获得认可徽记，用于在升级选项卡中购买要素升级。
+公会订单支付金币和对应公会的声望，而非阶位经验和徽记。随着你在公会的声望增加，公会将发布难度更高的订单。""",
+	SQ_RANK_HELP_ROW = """阶位 %s 到 %s：%s 经验与出售 %s 名奴隶。""",
+	SQ_RANK_UP_LOG = """奴隶市场现在将你视作 [color=#e0c060]%s[/color] 阶位的奴隶主，并为你提供更多工作。""",
+	SQ_NEXT_RANK = """下一阶位：%s""",
+	SQ_RANK_UNLOCKS_TITLE = """按阶位解锁要素升级""",
+	SQ_RANK_UNLOCKS_ROW_LOCKED = """阶位 %s。""",
+	SQ_RANK_UNLOCKS_ROW_FIRST = """阶位 %s：解锁要素升级，要素上限提升至等级 %s""",
+	SQ_RANK_UNLOCKS_ROW = """阶位 %s：要素上限提升至等级 %s""",
+	SQ_GOLD_PER_SLAVE = """每名奴隶 %s""",
+	SQ_POPUP_SALE_TITLE = """奴隶已出售""",
+	SQ_POPUP_DELIVERY_TITLE = """奴隶已移交""",
+	SQ_POPUP_RANK_CAPTION = """奴隶主阶位 %s""",
+	SQ_POPUP_LABEL_XP = """阶位经验""",
+	SQ_POPUP_LABEL_DELIVERED = """已移交奴隶""",
+	SQ_POPUP_LABEL_SOLD = """已出售奴隶""",
+	SQ_POPUP_NEED_SALES = """再出售 %s 名奴隶即可提升至下一阶位""",
+	SQ_POPUP_RANK_UP = """达到奴隶主阶位 %s""",
+	SQ_POPUP_GOLD_LABEL = """获得金币""",
+	SQ_PANEL_TITLE = """市场委托""",
+	SQ_PANEL_SUBTITLE = """来自各大阵营的开放订单""",
+	SQ_COL_QUEST = """任务""",
+	SQ_COL_WANTS = """需求""",
+	SQ_COL_REWARD = """报酬""",
+	SQ_COL_DAYS = """天数""",
+	SQ_COL_SLAVES = """奴隶""",
+	SQ_SALES_HEADING = """出售奴隶""",
+	SQ_XP_HEADING = """阶位经验""",
+	SQ_REWARD_HEADING = """报酬""",
+	SQ_DEADLINE_HEADING = """截止期限""",
+	SQ_DELIVERED_HEADING = """已移交""",
+	MANSION_ACTIVITY_TYPE_SLAVER_RANK = """奴隶主阶位""",
+	SQ_SALE_TARGET_MET = """奴隶出售数量已达标：完成任务以提升至下一阶位""",
+	SQ_STATE_COMPLETE = """已完成""",
+	SQ_NO_QUESTS = """目前没有任务。新任务将于明日送达。""",
+	SQ_REQS_ANY = """任意奴隶。""",
+	SQ_REQS_ADVANCED = """需要先进行调教""",
+	STATREQ_BASE_STAT = """%s：%s %s。""",
+	SQ_DELIVER = """移交""",
+	SQ_DELIVER_CONFIRM = """以 %s 金币移交 [name]？""",
+	STATREQ_IS_UNIQUE = """必须为独特角色""",
+	STATREQ_NOT_UNIQUE = """不能为独特角色""",
+	SQ_STAR_GREEN = """当前状态已符合奴隶市场任务：""",
+	SQ_STAR_YELLOW = """经过调教后符合奴隶市场任务：""",
+	SQ_CANDIDATES = """移交""",
+	SQ_NO_CANDIDATES = """你的府邸中没有人可以用于移交此任务。""",
+	SQ_HIDE_UNFIT = """仅显示符合条件的奴隶""",
+	SQ_CAND_MET = """已满足""",
+	SQ_CAND_TRAIN = """可通过调教达标""",
+	SQ_CAND_NO = """未满足""",
+	SQ_CAND_YELLOW = """经过调教后即可符合要求：请先对其进行调教。""",
+	SQ_CAND_RED = """不符合此任务的要求。""",
+	SQ_RACE_KIN_PAIR = """种族：%s 或 %s。""",
+	SQ_BASIC_NAME_1 = """长期订单""",
+	SQ_BASIC_NAME_2 = """征求新货""",
+	SQ_BASIC_NAME_3 = """隐秘采购""",
+	SQ_BASIC_NAME_4 = """家仆替换""",
+	SQ_BASIC_NAME_5 = """私人委托""",
+	SQ_BASIC_NAME_6 = """收藏家的委托""",
+	SQ_BASIC_DESC_1 = """[factionname] 在市场上下了一份长期订单。任何符合以下描述的奴隶皆可，无需额外处理。""",
+	SQ_BASIC_DESC_2 = """[factionname] 的代理人本周正在市场进行采购，并将直接接收符合以下要求的奴隶，无需进一步调教。""",
+	SQ_BASIC_DESC_3 = """[factionname] 希望快速且隐密地获得新奴隶。请带来一名符合以下要求的奴隶。""",
+	SQ_ADVANCED_NAME_1 = """考究品味""",
+	SQ_ADVANCED_NAME_2 = """成品货色""",
+	SQ_ADVANCED_NAME_3 = """苛刻的雇主""",
+	SQ_ADVANCED_NAME_4 = """按需调教""",
+	SQ_ADVANCED_NAME_5 = """特殊委托""",
+	SQ_ADVANCED_NAME_6 = """精雕细琢""",
+	SQ_ADVANCED_DESC_1 = """[factionname] 愿意为符合其品味的奴隶支付高价。未经雕琢的新货可不行：请带来一名已经满足以下全部要求的奴隶。""",
+	SQ_ADVANCED_DESC_2 = """来自 [factionname] 的顾主有着特殊的要求。对奴隶进行调教直到其满足以下要求，然后再将其移交。""",
+	SQ_ADVANCED_DESC_3 = """[factionname] 在寻找培养完成的成品，而非新鲜的俘虏。只有调教至满足以下要求的奴隶才能令其满意。""",
+	SQ_TOKENS = """认可徽记""",
+	SQ_TOKENS_OWNED = """你拥有 %s 个。""",
+	SQ_REWARD_ON_LAST = """将在移交最后一名奴隶时发放。""",
+	SQ_REWARD_ON_DELIVERY = """将在移交奴隶时发放。""",
+	SQ_TOKENS_PER_SLAVE = """每移交一名奴隶额外获得 +%s。""",
+	SQ_GUILD_ORDER_GUILD = """%s公会""",
+	SQ_GUILD_REPUTATION = """%s声望""",
+	SQ_GUILD_REPUTATION_NOW = """你在%s的声望：%s""",
+	SQ_TOKENS_TOOLTIP = """[center]{color=yellow|认可徽记}[/center]
+奴隶市场自身的专属货币，用于在“升级”选项卡中购买要素升级。
 
-Earned for every completed quest, for every new rank (5 at C and 5 more for each rank after it) and for meeting a rank's slaves-sold target (10). At rank S every 10 slaves sold earn 10 tokens; slaves you bought at a market do not count.""", # MISSING TRANSLATION
-	SQ_SALES_HEADING_TOP = """Slaves sold: every %s earn %s tokens""", # MISSING TRANSLATION
-	SQ_TOP_SALES_MET = """Another round of sales recognised""", # MISSING TRANSLATION
-	SLAVE_MARKET_TAB_UPGRADES = """Upgrades""", # MISSING TRANSLATION
-	SQ_UPGRADE_TITLE = """Factor Upgrades""", # MISSING TRANSLATION
-	SQ_UPGRADE_HELP = """[center]{color=yellow|Factor Upgrades}[/center]
-Raise a character's factors with Tokens of Recognition and gold, one level at a time.
+每完成一项任务、提升至一个新阶位（达到C阶获得5个，此后每升一阶再获得5个）以及达成某个阶位的奴隶出售目标（10个）均可获得。在S阶位，每出售10名奴隶即可获得10个徽记；从市场购买的奴隶不计入此数量。""",
+	SQ_SALES_HEADING_TOP = """出售奴隶：每出售 %s 名获得 %s 个徽记""",
+	SQ_TOP_SALES_MET = """新一轮销售已获得认可""",
+	SLAVE_MARKET_TAB_UPGRADES = """升级""",
+	SQ_UPGRADE_TITLE = """要素升级""",
+	SQ_UPGRADE_HELP = """[center]{color=yellow|要素升级}[/center]
+使用认可徽记与金币逐级提升角色的要素等级。
 
-Each level costs as many tokens as the level it reaches (the 6th always costs 10), plus gold: 500 for level 2, 750 for 3, 1000 for 4, 1500 for 5 and 2500 for 6. Your slaver rank sets the highest level on sale: C up to 3, B up to 4, A up to 5, S up to 6.
+每级消耗与目标等级相同数量的徽记（第6级固定消耗10个），并消耗金币：升至2级需500，3级需750，4级需1000，5级需1500，6级需2500。你的奴隶主阶位决定了可购买的最高等级：C阶最多3级，B阶最多4级，A阶最多5级，S阶最多6级。
 
-Plan as many levels and factors as you like, then confirm them all at once.""", # MISSING TRANSLATION
-	SQ_UPGRADE_PICK = """Choose a character to upgrade.""", # MISSING TRANSLATION
-	SQ_UPGRADE_BUY = """Upgrade""", # MISSING TRANSLATION
-	SQ_UPGRADE_RESET = """Reset""", # MISSING TRANSLATION
-	SQ_UPGRADE_COL_FACTOR = """Factor""", # MISSING TRANSLATION
-	SQ_UPGRADE_COL_NOW = """Now""", # MISSING TRANSLATION
-	SQ_UPGRADE_COL_PLANNED = """Planned""", # MISSING TRANSLATION
-	SQ_UPGRADE_COL_COST = """Cost""", # MISSING TRANSLATION
-	SQ_UPGRADE_LIMIT = """Your rank allows factors up to %s.""", # MISSING TRANSLATION
-	SQ_UPGRADE_LOCKED = """Factor upgrades open at slaver rank %s.""", # MISSING TRANSLATION
-	SQ_UPGRADE_STEP = """Raise to %s: %s tokens and %s gold.""", # MISSING TRANSLATION
-	SQ_UPGRADE_AT_TOP = """Already at the highest level.""", # MISSING TRANSLATION
-	SQ_UPGRADE_AT_LIMIT = """Your slaver rank allows no higher level yet.""", # MISSING TRANSLATION
-	SQ_UPGRADE_NOTHING = """Plan at least one level first.""", # MISSING TRANSLATION
-	SQ_UPGRADE_NOT_HERE = """This character is not at hand.""", # MISSING TRANSLATION
-	SQ_UPGRADE_PAST_LIMIT = """Your slaver rank does not allow that level.""", # MISSING TRANSLATION
-	SQ_UPGRADE_SHORT_TOKENS = """Not enough Tokens of Recognition.""", # MISSING TRANSLATION
-	SQ_UPGRADE_SHORT_GOLD = """Not enough gold.""", # MISSING TRANSLATION
-	SQ_UPGRADE_BUY_TOOLTIP = """Buy every planned level at once.""", # MISSING TRANSLATION
-	SQ_UPGRADE_ASK = """Spend %s Tokens of Recognition and %s gold to raise [name]'s factors?""", # MISSING TRANSLATION
+你可以随意计划多个等级与要素的升级，然后一次性进行确认。""",
+	SQ_UPGRADE_PICK = """选择一名要升级的角色。""",
+	SQ_UPGRADE_BUY = """升级""",
+	SQ_UPGRADE_RESET = """重置""",
+	SQ_UPGRADE_COL_FACTOR = """要素""",
+	SQ_UPGRADE_COL_NOW = """当前""",
+	SQ_UPGRADE_COL_PLANNED = """计划后""",
+	SQ_UPGRADE_COL_COST = """消耗""",
+	SQ_UPGRADE_LIMIT = """你的阶位允许要素最高提升至 %s。""",
+	SQ_UPGRADE_LOCKED = """要素升级将在达到奴隶主阶位 %s 时解锁。""",
+	SQ_UPGRADE_STEP = """提升至 %s：需要 %s 个徽记和 %s 金币。""",
+	SQ_UPGRADE_AT_TOP = """已达到最高等级。""",
+	SQ_UPGRADE_AT_LIMIT = """你的奴隶主阶位目前尚不允许更高的等级。""",
+	SQ_UPGRADE_NOTHING = """请先设定至少一级的升级计划。""",
+	SQ_UPGRADE_NOT_HERE = """该角色不在身边。""",
+	SQ_UPGRADE_PAST_LIMIT = """你的奴隶主阶位不允许该等级。""",
+	SQ_UPGRADE_SHORT_TOKENS = """认可徽记不足。""",
+	SQ_UPGRADE_SHORT_GOLD = """金币不足。""",
+	SQ_UPGRADE_BUY_TOOLTIP = """一次性购买所有计划好的等级。""",
+	SQ_UPGRADE_ASK = """是否花费 %s 个认可徽记和 %s 金币来提升 [name] 的要素？""",
 
 
 

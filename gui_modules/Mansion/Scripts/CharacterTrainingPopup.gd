@@ -33,6 +33,20 @@ const DEFAULT_SIZE = Vector2(860, 880)
 #the screen edge so the character sits in the empty space rather than against the border.
 const PORTRAIT_BAND = 600.0
 const PORTRAIT_EDGE_INSET = 50.0
+#The trainee rail: every slave in daily training, down the strip left of the window, marked with
+#what today still allows. Clicking one swaps the window over to them.
+const ROSTER_WIDTH = 108.0
+const ROSTER_GAP = 8.0
+#the rail's order - whoever can still be trained today comes first
+const ROSTER_STATES = ["ready", "notrainer", "rebel", "spent", "away"]
+const ROSTER_BADGES = {
+	ready = preload("res://assets/Textures_v2/CHAR_INFO/training/roster/badge_ready.png"),
+	notrainer = preload("res://assets/Textures_v2/CHAR_INFO/training/roster/badge_notrainer.png"),
+	rebel = preload("res://assets/Textures_v2/CHAR_INFO/training/roster/badge_rebel.png"),
+	spent = preload("res://assets/Textures_v2/CHAR_INFO/training/roster/badge_spent.png"),
+	away = preload("res://assets/Textures_v2/CHAR_INFO/training/roster/badge_away.png"),
+}
+const ROSTER_GREY_MATERIAL = preload("res://assets/sfx/bw_shader.tres")
 
 onready var pages = $Popup/Pages
 onready var tab_rail = $Popup/TabRail
@@ -43,6 +57,8 @@ onready var training_page = $Popup/Pages/Training
 onready var master_page = $Popup/Pages/MasterUpg/UpgradesList2
 onready var minor_page = $Popup/Pages/MinorUpg/UpgradesList3
 onready var succubus_page = $Popup/Pages/Succubus
+onready var roster = $Roster
+onready var roster_list = $Roster/Scroll/List
 
 var person
 var current_tab = ""
@@ -71,6 +87,9 @@ func _ready():
 	globals.connecttexttooltip(tab_rail.get_node("succubus"), tr("SIBLINGMODULESUCCUBUS"))
 	globals.connecttexttooltip(tab_rail.get_node("trainings"), tr("SIBLINGMODULETRAININGS"))
 	globals.connecttexttooltip(tab_rail.get_node("minor_upg"), tr("SIBLINGMODULEMINORTRAINING"))
+	$Roster/Caption.text = tr("TRAINING_ROSTER_LEFT_TODAY")
+	globals.connecttexttooltip($Roster/Count, tr("TRAINING_ROSTER_TOOLTIP"), true)
+	globals.connecttexttooltip($Roster/Caption, tr("TRAINING_ROSTER_TOOLTIP"), true)
 	apply_popup_size(current_size)
 	_reset_popup_visuals()
 	hide()
@@ -125,6 +144,9 @@ func default_tab():
 func open(t_person, tab = null):
 	if t_person == null:
 		return
+	#a click on the trainee rail swaps the character inside a window that is already up: the
+	#window stays put and only the page slides, the way a tab change does
+	var switching = visible
 	person = t_person
 	input_handler.interacted_character = person
 	open_sequence += 1
@@ -132,13 +154,16 @@ func open(t_person, tab = null):
 	_build_header()
 	show()
 	raise()
-	_hide_clock()
+	if !switching:
+		_hide_clock()
 	portrait_slot.show()
 	if tab == null or !(tab in available_tabs()):
 		tab = default_tab()
-	open_tab(tab, false)
+	open_tab(tab, switching)
+	build_roster()
 	call_deferred("build_portrait")
-	call_deferred("_play_open_animation", sequence)
+	if !switching:
+		call_deferred("_play_open_animation", sequence)
 	if !gui_controller.windows_opened.has(self):
 		gui_controller.windows_opened.append(self)
 
@@ -150,6 +175,7 @@ func close():
 	_reset_popup_visuals()
 	hide()
 	portrait_slot.hide()
+	roster.hide()
 	set_process(false)
 	gui_controller.windows_opened.erase(self)
 	_restore_clock()
@@ -168,6 +194,8 @@ func switch_character(newchar):
 	if newchar == null:
 		return
 	input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP).hide()
+	#the rail rebuilds under the cursor, so its tooltip would be left hanging off a freed tile
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	open(newchar, current_tab)
 
 
@@ -228,6 +256,11 @@ func apply_popup_size(size):
 		rect_size.x + $Popup.margin_left,
 		rect_size.y * 0.5 + $Popup.margin_top
 	)
+	#the trainee rail hangs off the window's left edge, whatever width the page asked for
+	roster.margin_right = $Popup.margin_left - ROSTER_GAP
+	roster.margin_left = roster.margin_right - ROSTER_WIDTH
+	roster.margin_top = $Popup.margin_top
+	roster.margin_bottom = $Popup.margin_bottom
 	#the portrait column just changed shape, and the doll only refits while it is rebuilt
 	if changed and visible and person != null:
 		call_deferred("build_portrait")
@@ -242,6 +275,7 @@ func update():
 		return
 	_build_header()
 	open_tab(current_tab, false)
+	build_roster()
 	call_deferred("build_portrait")
 
 
@@ -254,6 +288,8 @@ func match_state():
 		training_page.match_state()
 	update_footer()
 	refresh_size()
+	#a trainer assigned or taken away changes what the rail says about this character
+	build_roster()
 
 
 func _build_header():
@@ -263,6 +299,119 @@ func _build_header():
 	var tabs = available_tabs()
 	for id in TAB_PAGES:
 		tab_rail.get_node(id).visible = id in tabs
+
+
+func roster_members():
+	var list = []
+	for id in ResourceScripts.game_party.character_order:
+		var t_person = characters_pool.get_char_by_id(id)
+		if t_person == null or t_person.is_master():
+			continue
+		if t_person.training.is_slave() and t_person.training.enable:
+			list.append(t_person)
+	return list
+
+
+#The card's Training button asks the same questions in the same order
+#(MansionSlaveListModule._get_training_availability). Test mode lifts the day limit and the rebel
+#block, as it does on the training page.
+func roster_state(t_person):
+	if t_person.is_on_quest():
+		return "away"
+	var test_mode = training_page.in_test_mode()
+	if !test_mode and t_person.training.is_rebel_blocked():
+		return "rebel"
+	if !test_mode and !t_person.training.has_category_not_in_cd():
+		return "spent"
+	if t_person.training.trainer == null:
+		return "notrainer"
+	return "ready"
+
+
+#Days until loyalty starts to slip, 0 or less once it has. Null for anyone without a trainer,
+#since day_tick only counts the days of those under one.
+func roster_decay_days(t_person):
+	if !t_person.training.is_in_training():
+		return null
+	return int(floor(t_person.training.get_loyalty_decay_grace())) + 1 - t_person.training.days_since_training
+
+
+func build_roster():
+	var members = roster_members()
+	#a rail of one is no help, and it belongs only to the people it lists
+	if person == null or members.size() < 2 or !members.has(person):
+		roster.hide()
+		return
+	roster.show()
+	var groups = {}
+	for state in ROSTER_STATES:
+		groups[state] = []
+	for t_person in members:
+		groups[roster_state(t_person)].append(t_person)
+	input_handler.ClearContainer(roster_list, ['Pad', 'Tile', 'Separator'])
+	var selected_tile = null
+	var first_group = true
+	for state in ROSTER_STATES:
+		if groups[state].empty():
+			continue
+		if !first_group:
+			input_handler.DuplicateContainerTemplate(roster_list, 'Separator')
+		first_group = false
+		for t_person in groups[state]:
+			var tile = _build_roster_tile(t_person, state)
+			if t_person == person:
+				selected_tile = tile
+	var ready_count = groups["ready"].size()
+	$Roster/Count.text = "%d/%d" % [ready_count, members.size()]
+	var count_color = variables.hexcolordict.k_green if ready_count > 0 else variables.hexcolordict.k_yellow_dark
+	$Roster/Count.set("custom_colors/font_color", Color(count_color))
+	if selected_tile != null:
+		$Roster/Scroll.call_deferred("ensure_control_visible", selected_tile)
+
+
+func _build_roster_tile(t_person, state):
+	var tile = input_handler.DuplicateContainerTemplate(roster_list, 'Tile')
+	tile.get_node('Portrait').texture = t_person.get_icon()
+	tile.get_node('Badge').texture = ROSTER_BADGES[state]
+	tile.get_node('Selected').visible = t_person == person
+	#a spent day and an absence are greyed, the way the mansion greys an action it cannot take
+	tile.get_node('Portrait').material = ROSTER_GREY_MATERIAL if state in ["spent", "away"] else null
+	tile.disabled = state == "away"
+	tile.modulate.a = 0.55 if state == "away" else 1.0
+	var decay_days = roster_decay_days(t_person)
+	var decay = tile.get_node('Decay')
+	decay.visible = decay_days != null and decay_days <= 1
+	decay.modulate.a = 1.0 if decay_days != null and decay_days <= 0 else 0.6
+	globals.connecttexttooltip(tile, _roster_tooltip(t_person, state, decay_days), true)
+	if state != "away":
+		tile.connect("pressed", self, "switch_character", [t_person])
+	return tile
+
+
+func _roster_tooltip(t_person, state, decay_days):
+	var text = "[center]{color=k_yellow|" + t_person.get_full_name() + "}[/center]\n"
+	match state:
+		"ready":
+			text += "{color=k_green|" + tr("TRAINING_ROSTER_READY") + "}"
+		"spent":
+			text += tr("ACTIONALREADYDONETODAY")
+		"notrainer":
+			text += "{color=factor2|" + t_person.translate(tr("TRAINNOTRAINER")) + "}"
+		"rebel":
+			text += "{color=k_red|" + tr("ACTIONREBELBLOCKED") + "}"
+		"away":
+			text += t_person.translate(tr("ONQUESTLABEL"))
+	var trainer = t_person.get_trainer()
+	if trainer != null:
+		text += "\n" + tr("TRAINING_TRAINER_NAME") % trainer.get_full_name()
+	text += "\n%s: %d%%" % [tr(statdata.statdata.loyalty.name), int(t_person.get_stat('loyalty'))]
+	if decay_days != null:
+		var amount = t_person.training.get_loyalty_decay_amount()
+		if decay_days > 0:
+			text += "\n" + tr("TRAININGDECAYSIN") % [decay_days, amount]
+		else:
+			text += "\n{color=k_red|" + tr("TRAININGDECAYING") % amount + "}"
+	return text
 
 
 #The full-height picture beside the pages. Same source order the mansion card uses: a stored
@@ -393,7 +542,9 @@ func _play_open_animation(sequence):
 	popup.modulate = Color(1, 1, 1, 0)
 	$Dim.modulate = Color(1, 1, 1, 0)
 	portrait_slot.modulate = Color(1, 1, 1, 0)
+	roster.modulate = Color(1, 1, 1, 0)
 	tween.interpolate_property(portrait_slot, "modulate:a", 0.0, 1.0, 0.3, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(roster, "modulate:a", 0.0, 1.0, 0.3, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(popup, "rect_position", popup.rect_position, target_position, 0.28, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(popup, "rect_scale", popup.rect_scale, Vector2(1, 1), 0.28, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(popup, "modulate:a", 0.0, 1.0, 0.22, Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -420,6 +571,7 @@ func _reset_popup_visuals():
 	$Popup.modulate = Color.white
 	$Dim.modulate = Color.white
 	portrait_slot.modulate = Color.white
+	roster.modulate = Color.white
 	pages.rect_position = pages_target_position
 	pages.modulate = Color.white
 
