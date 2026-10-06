@@ -894,6 +894,12 @@ static func kick_shake(kicks, stops, now, px):
 	return Vector2(best * (n1 * dir.x - 0.35 * n2 * dir.y), best * (n1 * dir.y + 0.35 * n2 * dir.x))
 
 
+#where a shaken root comes back to: the combat screen's own rest position, since the live one may be mid-shake
+static func shake_home(root):
+	var home = root.get('rest_position')
+	return home if home is Vector2 else root.rect_position
+
+
 static func hash01(i):
 	var x = sin(float(i) * 127.1 + 311.7) * 43758.5453
 	return x - floor(x)

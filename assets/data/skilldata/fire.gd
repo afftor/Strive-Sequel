@@ -233,7 +233,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		resist_cap = 50,
-		sfx = [{code = 'supernova', target = 'target_group', period = 'predamage', sync_to_hit = true}],
+		sfx = [{code = 'supernova', target = 'target_group', period = 'predamage', sync_to_hit = true, sounds = [{sound = 'firehit', on = 'counter', gap = 0.1}]}],
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'spell_explosion', hittype = 'static'},
 		hitfx = [],
 		value = 1.5,

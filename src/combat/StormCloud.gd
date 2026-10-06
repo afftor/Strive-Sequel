@@ -168,7 +168,7 @@ func gather(new_anim, target_nodes, kit, opts = {}):
 	equip(kit)
 	use_kit(kit)
 	root = opts.get('root')
-	if root is Control: root_home = root.rect_position
+	if root is Control: root_home = shake_home(root)
 	release = float(opts.get('release', 0.5))
 	shake_px = float(opts.get('shake', 14.0))
 	strike_t = release + 0.55

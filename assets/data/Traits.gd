@@ -1923,13 +1923,15 @@ var traits = {
 		icon = null,
 		effects = [],
 	},
-	heavy_armor = {#removes penalty from heavy armor
+	heavy_armor = {#class trait; a trained slave can also buy it for 25 training points and loses the bought copy on being freed
 		code = 'heavy_armor',
 		name = '',
 		descript = '',
 		visible = false,
-		icon = null,
+		icon = "res://assets/images/iconstraits/l_protection.png",
 		effects = [],
+		cost = 25,
+		tags = ['training_final', 'training_success', 'simple_icon'],
 	},
 	lockpicking = { #allows to pick locks on random events
 		code = 'lockpicking',

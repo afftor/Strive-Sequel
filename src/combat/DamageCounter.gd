@@ -1,7 +1,8 @@
 extends Reference
 #A card's damage run up as a counter over it instead of one floating number. Its hp_update is handed over, the real
 #damage is shared out over ticks - equal shares, or weighted, like arrows of two sizes - the HP bar and label follow
-#the running value, and the exact figures land when it is done. SupernovaEffect and ArrowRainEffect draw with it.
+#the running value, and the exact figures land when it is done. SupernovaEffect, ArrowRainEffect and the dark effects
+#draw with it, and each share can play the animation's counter cues (`sounds`).
 #It also holds the one look of every floating damage number (assets/fonts/DamageFont.tres): make_fonts and draw_number.
 
 const COUNT = 0.14 #each share runs in over this long
@@ -25,6 +26,14 @@ var slam_time = 0.32
 var ring = true
 #px it trembles by while it runs
 var tremble = 1.5
+#[{sound, gap}]: what plays as each share lands - the animation's sound cues with on = 'counter'
+#(CombatAnimations.counter_cues). Shares landing together, on one card or on several, make one sound:
+#a cue keeps quiet for `gap` seconds after it has played.
+var sounds = []
+var sounded = {}
+#the combat lab's trace (CombatAnimations.sound_trace): every share as it lands, under the animation's code
+var trace = null
+var trace_code = ''
 
 
 #DamageFont at `size` with its dark outline scaled along, and a shadow of the same face without the outline
@@ -79,7 +88,7 @@ func start(node, args, crit, ticks, weights, now):
 	var counter = {
 		ticks = times, shares = shares, total = total, value = 0.0, last = -1.0, start = now, done = times.back() + COUNT,
 		newhp = args.newhp, newhpp = args.newhpp, old_hp = old_hp, drain = 1.0 if old_hp == float(args.newhp) + total else (old_hp - float(args.newhp)) / total,
-		hpmax = hpmax, hpnode = hpnode, crit = crit, finished = false,
+		hpmax = hpmax, hpnode = hpnode, crit = crit, finished = false, heard = 0,
 		text = str(ceil(args.damage)) + ('!' if crit else ''), seed = counters.size() * 37 + 5,
 	}
 	counters[node] = counter
@@ -104,6 +113,10 @@ func update(t):
 			if at > t: break
 			value += c.shares[k] * min(1.0, (t - at) / COUNT)
 			last = at
+			if k >= c.heard:
+				c.heard = k + 1
+				hear(t)
+				if trace != null: trace.append({kind = 'tick', node = node, code = trace_code})
 		c.value = value
 		c.last = last
 		if t >= c.done:
@@ -113,6 +126,14 @@ func update(t):
 		var hpp = hp * 100.0 / c.hpmax
 		if c.hpnode != null: c.hpnode.value = hpp
 		node.update_hp_label(hp, hpp)
+
+
+func hear(t):
+	for i in range(sounds.size()):
+		var cue = sounds[i]
+		if sounded.has(i) and t - sounded[i] < cue.gap: continue
+		sounded[i] = t
+		if audio.sounds.has(cue.sound): input_handler.PlaySound(cue.sound)
 
 
 func finish(node, c):

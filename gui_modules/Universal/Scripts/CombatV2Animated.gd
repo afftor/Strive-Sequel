@@ -20,6 +20,8 @@ var CombatAnimations = ResourceScripts.scriptdict.combat_animation.new()
 var ActionQueue
 var queue_script = preload("res://src/combat/action_queue.gd")
 var popup_opened = null
+#where the screen rests: every shake of it comes back here, not to a spot read while another shake had it moved
+var rest_position = Vector2()
 
 var debug = false
 
@@ -104,6 +106,7 @@ onready var screen_block = $screen_block
 onready var turnorder_cont = $Panel4/container
 
 func _ready():
+	rest_position = rect_position
 	if gui_controller.mansion != null:
 		debug = gui_controller.mansion.in_test_mode
 	autoskill_dummy = ResourceScripts.scriptdict.class_slave.new("combat_dummy")
@@ -296,6 +299,8 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'combatthem
 	input_handler.emit_signal("CombatStarted", encountercode)
 	# input_handler.ActivateTutorial("combat")
 	show()
+	#the screen outlives the fight, so whatever moved it in the last one must not carry over
+	rect_position = rest_position
 	input_handler.combat_node = self
 	gui_controller.combat = self
 	gui_controller.previous_screen = gui_controller.current_screen

@@ -267,7 +267,7 @@ func setup(new_anim, caster_node, hit_nodes, ally_nodes, settings, combat_root, 
 	speed = max(200.0, float(settings.wind))
 	shake_px = float(settings.shake)
 	hold = max(0.0, float(settings.hold))
-	if root is Control: root_home = root.rect_position
+	if root is Control: root_home = shake_home(root)
 	view = screen_rect()
 	if caster.has_method('get_attack_vector') and caster.get_attack_vector().x < 0.0: away = -1.0
 	var r = local_rect(caster)

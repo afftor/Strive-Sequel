@@ -245,7 +245,8 @@ func execute():
 				and input_handler.combat_node.is_visible_in_tree()
 			):
 			var params = get_shake_params(rval)
-			ResourceScripts.core_animations.ShakeAnimation(input_handler.combat_node, params.time, params.magnitude)
+			ResourceScripts.core_animations.ShakeAnimation(input_handler.combat_node, params.time, params.magnitude,
+				input_handler.combat_node.get('rest_position'))
 	elif damagestat == 'damage_hp' and dmgf == 1: #heal, heal no log
 		if parent.get_tags().has('no_log'):
 			var rval = parent.target.heal(value)

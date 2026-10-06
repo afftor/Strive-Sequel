@@ -94,7 +94,7 @@ var skills = {
 		value = 1.2,
 		random_factor_p = 0.1,
 		sfx = [
-			{code = 'arrow_rain', target = 'target_group', period = 'predamage', sync_to_hit = true}], 
+			{code = 'arrow_rain', target = 'target_group', period = 'predamage', sync_to_hit = true, sounds = [{sound = 'fleshhit', on = 'counter'}]}],
 		sounddata = {initiate = null, strike = 'arrow', hit = null},
 		hitfx = [],
 		variations = [

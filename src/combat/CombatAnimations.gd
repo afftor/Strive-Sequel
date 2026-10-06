@@ -226,6 +226,8 @@ func force_end():
 	animation_delays.clear()
 	animations_queue.clear()
 	hp_update_delays.clear()
+	sound_cues.clear()
+	cues_this_slot.clear()
 	custom_delays.clear()
 	buffs_update_delays.clear()
 	crit_display.clear()
@@ -294,6 +296,7 @@ func _process(delta):
 			trace_frame()
 	refresh_rate()
 	delta *= rate
+	if !sound_cues.empty(): play_sound_cues(delta)
 	for node in animation_delays:
 		animation_delays[node] -= delta
 		if animation_delays[node] <= 0:
@@ -339,8 +342,10 @@ func check_start():
 func advance_timer():
 	hp_update_delays.clear()
 	status_tick_cards.clear()
+	cues_this_slot.clear()
 	if animations_queue.empty(): return
 	cur_timer = animations_queue.keys().min()
+	if sound_trace != null: sound_trace.append({kind = 'slot', slot = cur_timer})
 	trace('--- slot %s, %d node(s)' % [str(cur_timer), animations_queue[cur_timer].size()])
 	try_clear_custom_delays()
 	#print (cur_timer)
@@ -388,6 +393,8 @@ func start_animation(node):
 			hit_fx_now = data.params.get('hit_fx', null)
 			hit_fx_nodes = data.params.get('hit_fx_nodes', null)
 			hit_fx_key = data.params.get('hit_fx_key', null)
+			if data.params.has('sounds'): queue_sound_cues(data.params.sounds)
+		if sound_trace != null: sound_trace.append({kind = 'anim', slot = cur_timer, node = data.node, type = str(data.type)})
 		var lock = call(true_type, data.node, data.params)
 		hit_fx_now = null
 		hit_fx_nodes = null
@@ -1818,6 +1825,9 @@ var PROJ_FIRE_BOOM_TIME = 0.42
 #A sound that resolves to nothing, or to an id audio.sounds does not know, is skipped with
 #a note instead of reaching PlaySound and dying on the lookup.
 func play_skill_sound(phase, template, caster, target, tags = null):
+	if sound_trace != null:
+		sound_trace.append({kind = 'call', phase = phase, slot = input_handler.combat_node.turns, code = str(template.get('code', '')),
+			caster = caster, target = target})
 	var sounddata = {}
 	if template.has('sounddata') and template.sounddata is Dictionary:
 		sounddata = template.sounddata
@@ -1843,7 +1853,70 @@ func play_skill_sound(phase, template, caster, target, tags = null):
 	if !audio.sounds.has(sound):
 		print('combat sound %s is not in audio.sounds (phase %s)' % [str(sound), phase])
 		return
+	#sounddata.hitstack = false: an area blow plays each hit sound once, not once on every target it lands
+	#on - targets sharing a sound make one. Every target of a blow is queued in the same slot.
+	if phase.begins_with('hit') and sounddata.get('hitstack', true) == false:
+		var slot = input_handler.combat_node.turns
+		if slot != hit_sound_slot:
+			hit_sound_slot = slot
+			hit_sounds_in_slot.clear()
+		if hit_sounds_in_slot.has(sound): return
+		hit_sounds_in_slot[sound] = true
 	node.process_sound(sound)
+
+var hit_sound_slot = -1
+var hit_sounds_in_slot = {}
+
+#SOUND CUES
+#An sfx entry - or an effect's sfx atomic, through its params - can carry `sounds`, a list of cues:
+#   {sound = 'id', at = 1.2}                   plays 1.2 s after the queue starts the animation
+#   {sound = 'id', on = 'counter', gap = 0.1}  plays as each share of the animation's damage counter
+#                                              lands (COUNTER_ANIMATIONS), then keeps quiet `gap` s
+#A cue plays once per slot: an entry queued on every target of a blow is still one animation.
+const COUNTER_ANIMATIONS = ['supernova', 'arrow_rain', 'dark_tendrils', 'void_sphere']
+var COUNTER_SOUND_GAP = 0.06 #how long a counter cue keeps quiet after it has played, unless it says
+var sound_cues = []
+var cues_this_slot = {}
+#The combat lab sets this to an Array to learn every moment a sound could play - each skill sound call,
+#with a sound or without, each slot and animation start, each share of a damage counter - and works out
+#what the skill's current data would play there. null in the game: nothing is recorded.
+var sound_trace = null
+
+#a counter effect's DamageCounter takes the animation's counter cues, and the trace of its shares
+func arm_counter(counter, args, code):
+	counter.sounds = counter_cues(args)
+	counter.trace = sound_trace
+	counter.trace_code = code
+
+func queue_sound_cues(cues):
+	if !(cues is Array) or cues.empty(): return
+	var key = str(cues)
+	if cues_this_slot.has(key): return
+	cues_this_slot[key] = true
+	for cue in cues:
+		if !(cue is Dictionary) or cue.get('on', null) != null: continue
+		var sound = cue.get('sound', null)
+		if sound == null or !audio.sounds.has(sound): continue
+		var at = float(cue.get('at', 0.0))
+		if at <= 0.0: input_handler.PlaySound(sound)
+		else: sound_cues.append({left = at, sound = sound})
+
+#on the animation clock: fast combat brings the cues forward with everything else
+func play_sound_cues(delta):
+	for i in range(sound_cues.size() - 1, -1, -1):
+		sound_cues[i].left -= delta
+		if sound_cues[i].left <= 0.0:
+			input_handler.PlaySound(sound_cues[i].sound)
+			sound_cues.remove(i)
+
+#an animation's counter cues, for the DamageCounter of its effect
+func counter_cues(args):
+	var res = []
+	if args == null or !(args.get('sounds', null) is Array): return res
+	for cue in args.sounds:
+		if cue is Dictionary and str(cue.get('on', '')) == 'counter' and cue.get('sound', null) != null:
+			res.append({sound = str(cue.sound), gap = float(cue.get('gap', COUNTER_SOUND_GAP))})
+	return res
 
 #Delays are set by several animations on the same node; the later one must never shorten
 #what an earlier one asked for.
@@ -2049,6 +2122,7 @@ func supernova(node, args = null):
 		size = SUPERNOVA_BALL_SIZE, rays = SUPERNOVA_RAYS, gain = SUPERNOVA_GAIN, soft = SUPERNOVA_SOFT, tint = SUPERNOVA_TINT,
 		field_dim = SUPERNOVA_FIELD_DIM, screen_dim = SUPERNOVA_SCREEN_DIM,
 	}, layer, supernova_shared)
+	arm_counter(effect.counter, args, 'supernova')
 	supernova_effects.append(effect)
 	effect.connect('tree_exited', self, '_on_supernova_exited', [effect], CONNECT_ONESHOT)
 	for hit_node in hit_nodes:
@@ -2093,6 +2167,7 @@ func arrow_rain(node, args = null):
 	effect.rain(self, caster_node, args.hit_nodes if args.has('hit_nodes') else [], side_slots(player_side), get_fx_kit(), {
 		root = layer, shot = shot, arrows = ARROW_RAIN_ARROWS, time = ARROW_RAIN_TIME, stop = ARROW_RAIN_STOP,
 		shake = ARROW_RAIN_SHAKE, hold = ARROW_RAIN_HOLD, seed = 4100 + rain_count * 131})
+	arm_counter(effect.counter, args, 'arrow_rain')
 	rain_effects.append(effect)
 	effect.connect('tree_exited', self, '_on_rain_exited', [effect], CONNECT_ONESHOT)
 	for hit_node in effect.target_cards():
@@ -2183,6 +2258,7 @@ func dark_tendrils(node, args = null):
 	effect.grip(self, caster_node, args.hit_nodes if args.has('hit_nodes') else [], side_slots(player_side), get_fx_kit(), {
 		root = layer, world = field_end(layer), release = TENDRILS_RELEASE, stop = TENDRILS_STOP, shake = TENDRILS_SHAKE,
 		hold = TENDRILS_HOLD, seed = 6100 + dark_effects.size() * 131})
+	arm_counter(effect.counter, args, 'dark_tendrils')
 	track_dark(effect)
 	caster_lift(caster_node, TENDRILS_RELEASE, 'abyss')
 	return effect.lock_time()
@@ -2199,6 +2275,7 @@ func void_sphere(node, args = null):
 	effect.cast(self, caster_node, args.hit_nodes if args.has('hit_nodes') else [], side_slots(player_side), get_fx_kit(), {
 		root = layer, world = field_end(layer), release = VOID_SPHERE_RELEASE, flight = VOID_SPHERE_FLIGHT,
 		stop = VOID_SPHERE_STOP, shake = VOID_SPHERE_SHAKE, hold = VOID_SPHERE_HOLD})
+	arm_counter(effect.counter, args, 'void_sphere')
 	track_dark(effect)
 	caster_lift(caster_node, VOID_SPHERE_RELEASE, 'abyss')
 	return effect.lock_time()

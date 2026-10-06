@@ -7,6 +7,7 @@ extends Node2D
 
 const ScreenGlare = preload("res://src/combat/ScreenGlare.gd")
 const DamageCounter = preload("res://src/combat/DamageCounter.gd")
+const FxNode = preload("res://src/combat/FxNode.gd")
 
 const HANG = Vector2(960, 250)
 const RISE = 36.0
@@ -171,7 +172,7 @@ func setup(caster_node, hit_nodes, settings, combat_root, new_shared):
 	r_charge = 42.0 * size
 	r_hang = 84.0 * size
 	rng.seed = 7001
-	if root is Control: root_home = root.rect_position
+	if root is Control: root_home = FxNode.shake_home(root)
 	hold = hold_point()
 	build_layers()
 	set_process(true)
