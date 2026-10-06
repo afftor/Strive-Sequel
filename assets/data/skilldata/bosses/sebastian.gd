@@ -764,7 +764,10 @@ var skills = {
 		damage_type = 'water',
 		value = 0.45,
 		random_factor_p = 0.1,
-		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.32, hit_motion = 'push', arc = 1050.0, color = 'befe5b'},
+			{code = 'acid_bomb', target = 'target', period = 'predamage'},
+			{code = 'at_bite', target = 'caster', period = 'windup', is_cast = true},], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	quick_death = {

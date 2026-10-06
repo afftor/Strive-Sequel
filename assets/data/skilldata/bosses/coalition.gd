@@ -1122,7 +1122,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.25, hit_motion = 'push', arc = 45.0, color = '21551d'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.25, hit_motion = 'push', arc = 260.0, color = '21551d'},
 			{code = 'magma_blast', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['caster.matk', '*1.0']],
@@ -1148,7 +1148,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [
-			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.25, hit_motion = 'push', arc = 45.0, color = '21551d'},
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.25, hit_motion = 'push', arc = 260.0, color = '21551d'},
 			{code = 'magma_blast', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['caster.matk', '*1.0']],
@@ -1178,7 +1178,7 @@ var skills = {
 		damage_type = 'weapon',
 		chance = 70,
 		evade = 0,
-		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'bolt_trap', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'explosion', hit = null},
 		value = 0.5,
 	},
