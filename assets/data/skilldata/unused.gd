@@ -480,8 +480,11 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'air',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.4, speed = 1.2, no_delays = true, color = '87fff1'},
+			{code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
+			{code = 'cast_air', target = 'caster', period = 'windup', is_cast = true, no_delays = true}],
+		sounddata = {initiate = null, strike = 'spell_break', hit = null, hittype = 'static'},
 		value = [['caster.atk','*0.2'],0.85],
 		damagestat = ['no_stat', '+damage_hp'],
 		follow_up = 'air_cutter_1'
@@ -509,8 +512,11 @@ var skills = {
 		damage_type = 'air',
 		random_target = true,
 		not_final = true,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [
+			{code = 'projectile_fireball', target = 'target', period = 'predamage', duration = 0.4, speed = 1.2, no_delays = true, color = '87fff1'},
+			{code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true},
+		],
+		sounddata = {initiate = null, strike = 'spell_break', hit = null, hittype = 'static'},
 		value = [['caster.atk','*0.2'],0.7],
 		damagestat = ['no_stat', '+damage_hp'],
 	},
