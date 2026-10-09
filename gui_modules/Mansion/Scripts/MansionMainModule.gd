@@ -963,6 +963,11 @@ func try_rebuild_slave_list():
 	if gui_controller.current_screen != self: return
 	SlaveListModule.rebuild()
 
+#breakdowns come in bursts (a bedless night, the food check) and share one rebuild at the end of the frame
+func try_queue_slave_list_rebuild():
+	if gui_controller.current_screen != self: return
+	SlaveListModule.queue_rebuild()
+
 
 #The floorplan keeps its own list of who is idle and who is at work, and nothing in the model
 #tells it when that changed. Whatever moves somebody in or out of work from off this screen -

@@ -795,7 +795,7 @@ func remove_slave(tempslave, permanent = false):
 		tempslave.is_active = false
 	character_order.erase(tempslave.id)
 #	input_handler.update_slave_list()
-	input_handler.rebuild_slave_list()
+	input_handler.queue_slave_list_rebuild()
 	gui_controller.mansion.set_active_person(ResourceScripts.game_party.get_master())
 	gui_controller.nav_panel.build_accessible_locations()
 

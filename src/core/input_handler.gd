@@ -1372,6 +1372,10 @@ func update_slave_list():
 func rebuild_slave_list():
 	slave_list_node.rebuild()
 
+#a bedless night can send several people away at once - one rebuild at the end of the frame, not one each
+func queue_slave_list_rebuild():
+	slave_list_node.queue_rebuild()
+
 
 func rebuild_skill_list():
 	skill_list_node.build_skill_panel()

@@ -427,7 +427,7 @@ func make_unavaliable(days = -1):
 		quest_time_init = -1
 		unaval_time_remains = days
 		parent.get_ref().combat_position = 0
-		gui_controller.mansion.try_rebuild_slave_list()
+		gui_controller.mansion.try_queue_slave_list_rebuild()
 
 
 func make_avaliable():
