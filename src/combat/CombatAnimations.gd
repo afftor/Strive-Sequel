@@ -15,6 +15,8 @@ const ArrowRainEffect = preload("res://src/combat/ArrowRainEffect.gd")
 const TendrilsEffect = preload("res://src/combat/TendrilsEffect.gd")
 const VoidSphereEffect = preload("res://src/combat/VoidSphereEffect.gd")
 const SpaceBend = preload("res://src/combat/SpaceBend.gd")
+const SwordUltEffect = preload("res://src/combat/SwordUltEffect.gd")
+const ScreenSlice = preload("res://src/combat/ScreenSlice.gd")
 const AnimRegistry = preload("res://src/combat/anim_registry.gd")
 
 #The tuning numbers below (cast tables, motion distances, hit reactions, per-skill beats)
@@ -110,6 +112,129 @@ func card_home(node):
 	if node.has_method('get_attack_vector'): return Vector2(0, 0)
 	return node.rect_position
 
+#The whole rest look of a card, for the motions that take it over and give it back (caster lift, holy lance,
+#devastation). The same rule as card_home for the turn, the size and the tint: a fighter card rests upright, at full
+#size and untinted, and a hit reaction still running when such a motion started used to be given back for good -
+#the card left tilted, squashed and red after Devastation (2026-10-09).
+func card_rest(node):
+	var rest = {position = card_home(node), rotation = node.rect_rotation, scale = node.rect_scale,
+		pivot = node.rect_pivot_offset, modulate = node.modulate}
+	if node.has_method('get_attack_vector'):
+		rest.rotation = 0.0
+		rest.scale = Vector2(1, 1)
+		rest.modulate = Color(1, 1, 1, 1)
+	return rest
+
+#REST GUARD
+#Whatever an animation fails to give back - a fighter card off its mark, tilted, squashed or tinted, its portrait shifted
+#in the frame, the combat screen moved or zoomed - eases back to rest once the queue is idle and it has stood still off
+#its rest look for REST_GUARD_TIME. Animations move what they hold every frame, so a still, off-rest look while nothing
+#plays is a leftover, never a pose. A card hidden behind a flying copy stands still too, so the guard waits while one is
+#out (an execution's return outlives the queue by up to two seconds).
+var REST_GUARD_TIME = 1.0
+var REST_GUARD_EASE = 0.2
+#node -> {look, still, settle (-1 when not easing back), from}
+var rest_watch = {}
+
+func rest_guard(delta):
+	var combat = get_parent()
+	if combat == null or !is_instance_valid(combat) or combat.get('battlefieldpositions') == null: return
+	if is_busy or flight_out(combat):
+		rest_watch.clear()
+		return
+	var seen = {}
+	for pos in combat.battlefieldpositions:
+		var card = combat.battlefieldpositions[pos].get_node_or_null('Character')
+		if card == null or !is_instance_valid(card) or !card.visible or !card.has_method('float_busy'): continue
+		seen[card] = true
+		var look = card_look(card)
+		var icon_rest = card.get('icon_rest')
+		guard_rest(card, look, {pos = card_home(card), rot = 0.0, scale = Vector2(1, 1), mod = Color(1, 1, 1, 1),
+			icon = icon_rest if icon_rest != null else look.icon}, card.float_busy(), delta)
+	if combat.get('rest_position') != null:
+		seen[combat] = true
+		var shaking = false
+		for s in ResourceScripts.core_animations.ShakingNodes:
+			shaking = shaking or s.node == combat
+		guard_rest(combat, {pos = combat.rect_position, scale = combat.rect_scale},
+			{pos = combat.rest_position, scale = Vector2(1, 1)}, shaking, delta)
+	for node in rest_watch.keys():
+		if !seen.has(node): rest_watch.erase(node)
+
+#flight copies (execution, holy lance, devastation, the sword ults) go into the combat screen itself
+func flight_out(combat):
+	for child in combat.get_children():
+		if child.name.find('Flight') >= 0: return true
+	return false
+
+#the active card's float owns its height
+func card_look(card):
+	var icon = card.get_node_or_null('Icon')
+	var at = card.rect_position
+	if card.get('float_shifted'): at.y = 0.0
+	return {pos = at, rot = card.rect_rotation, scale = card.rect_scale, mod = card.modulate,
+		icon = icon.rect_position if icon != null else Vector2()}
+
+func guard_rest(node, look, rest, busy, delta):
+	var w = rest_watch.get(node)
+	if w == null:
+		w = {look = look, still = 0.0, settle = -1.0, from = look}
+		rest_watch[node] = w
+	if busy:
+		w.still = 0.0
+		w.settle = -1.0
+		w.look = look
+		return
+	if w.settle >= 0.0:
+		w.settle += delta
+		var k = smoothstep(0.0, 1.0, min(1.0, w.settle / REST_GUARD_EASE))
+		put_look(node, blend_looks(w.from, rest, k))
+		if w.settle >= REST_GUARD_EASE:
+			w.settle = -1.0
+			w.still = 0.0
+			w.look = rest
+		return
+	if looks_alike(look, w.look): w.still += delta
+	else:
+		w.still = 0.0
+		w.look = look
+	if w.still >= REST_GUARD_TIME and !looks_alike(look, rest):
+		trace('  rest guard eases %s back to rest' % node_label(node))
+		w.from = look
+		w.settle = 0.0
+
+func looks_alike(a, b):
+	for key in a:
+		var x = a[key]
+		var y = b[key]
+		match typeof(x):
+			TYPE_VECTOR2:
+				if x.distance_to(y) > 0.5: return false
+			TYPE_COLOR:
+				if abs(x.r - y.r) > 0.01 or abs(x.g - y.g) > 0.01 or abs(x.b - y.b) > 0.01 or abs(x.a - y.a) > 0.01: return false
+			_:
+				if abs(x - y) > 0.05: return false
+	return true
+
+func blend_looks(a, b, k):
+	var res = {}
+	for key in a:
+		match typeof(a[key]):
+			TYPE_VECTOR2: res[key] = a[key].linear_interpolate(b[key], k)
+			TYPE_COLOR: res[key] = a[key].linear_interpolate(b[key], k)
+			_: res[key] = lerp(a[key], b[key], k)
+	return res
+
+func put_look(node, look):
+	if look.has('rot'):
+		node.rect_pivot_offset = node.rect_size / 2
+		node.rect_rotation = look.rot
+	node.rect_scale = look.scale
+	if node.get('float_shifted'): node.rect_position.x = look.pos.x
+	else: node.rect_position = look.pos
+	if look.has('mod'): node.modulate = look.mod
+	if look.has('icon') and node.has_node('Icon'): node.get_node('Icon').rect_position = look.icon
+
 #Put the card back on its mark before an animation reads from it. Only touches a card
 #that is off its mark, so an ordinary animation starts exactly as it did before.
 func settle_card(node):
@@ -173,7 +298,7 @@ var rain_effects = []
 var rain_hits = {}
 var rain_count = 0
 var dark_effects = []
-#target card -> the TendrilsEffect or VoidSphereEffect that shows its damage, taken by hp_update and miss
+#target card -> the TendrilsEffect, VoidSphereEffect or SwordUltEffect that shows its damage, taken by hp_update and miss
 var dark_hits = {}
 #fighter card -> the StatusAura its poison, bleeding, burning, sleep, stun and stealth are shown with
 var status_auras = {}
@@ -295,6 +420,7 @@ func _process(delta):
 			trace_clock += delta
 			trace_frame()
 	refresh_rate()
+	rest_guard(delta)
 	delta *= rate
 	if !sound_cues.empty(): play_sound_cues(delta)
 	for node in animation_delays:
@@ -707,16 +833,10 @@ func caster_lift(node, release, palette):
 	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
 	var key = node.get_instance_id()
 	if caster_lift_states.has(key): caster_lift_restore(key, true)
-	var origin = {
-		node = node,
-		position = card_home(node),
-		rotation = node.rect_rotation,
-		scale = node.rect_scale,
-		pivot = node.rect_pivot_offset,
-		modulate = node.modulate,
-		ground = card_home(node) + Vector2(node.rect_size.x / 2.0, node.rect_size.y - 4.0),
-		effects = [],
-	}
+	var origin = card_rest(node)
+	origin.node = node
+	origin.ground = card_home(node) + Vector2(node.rect_size.x / 2.0, node.rect_size.y - 4.0)
+	origin.effects = []
 	var settings = {release = release, rise = CASTER_LIFT_RISE, radius = CASTER_LIFT_RADIUS,
 		tilt = CASTER_LIFT_TILT, perspective = CASTER_LIFT_PERSPECTIVE, palette = palette}
 	#the far half goes under the card's portrait, the near half and the pillar over every card
@@ -1188,14 +1308,9 @@ func holy_lance_step(node, args = null):
 	if !node.is_inside_tree() or !node.has_method('get_attack_vector'):
 		return 0.0
 
-	var origin = {
-		position = card_home(node),
-		rotation = node.rect_rotation,
-		scale = node.rect_scale,
-		pivot = node.rect_pivot_offset,
-		modulate = node.modulate,
-	}
+	var origin = card_rest(node)
 	var visual_node = holy_lance_flight_copy(node, args)
+	visual_node.modulate = origin.modulate
 	visual_node.rect_pivot_offset = visual_node.rect_size/2
 	var p = card_home(visual_node)
 	var v = node.get_attack_vector().normalized()
@@ -1317,14 +1432,9 @@ func devastation_dash(node, args = null):
 	if devastation_states.has(key):
 		devastation_restore(key)
 
-	var origin = {
-		position = card_home(node),
-		rotation = node.rect_rotation,
-		scale = node.rect_scale,
-		pivot = node.rect_pivot_offset,
-		modulate = node.modulate,
-	}
+	var origin = card_rest(node)
 	var visual_node = devastation_flight_copy(node, args)
+	visual_node.modulate = origin.modulate
 	visual_node.rect_pivot_offset = visual_node.rect_size/2
 	visual_node.rect_rotation = origin.rotation
 	visual_node.rect_scale = origin.scale
@@ -1873,7 +1983,7 @@ var hit_sounds_in_slot = {}
 #   {sound = 'id', on = 'counter', gap = 0.1}  plays as each share of the animation's damage counter
 #                                              lands (COUNTER_ANIMATIONS), then keeps quiet `gap` s
 #A cue plays once per slot: an entry queued on every target of a blow is still one animation.
-const COUNTER_ANIMATIONS = ['supernova', 'arrow_rain', 'dark_tendrils', 'void_sphere']
+const COUNTER_ANIMATIONS = ['supernova', 'arrow_rain', 'dark_tendrils', 'void_sphere', 'sword_sheath', 'sword_chain', 'sword_rend']
 var COUNTER_SOUND_GAP = 0.06 #how long a counter cue keeps quiet after it has played, unless it says
 var sound_cues = []
 var cues_this_slot = {}
@@ -2295,6 +2405,42 @@ func clear_dark_hits():
 	dark_hits.clear()
 
 
+#THE SWORD: THREE ULTS OF THE SWORDSMAN
+#The «Меч» entry of the «Арсенал ульт» mockup in SwordUltEffect.gd: «Ножны» (sword_sheath), «Цепь рывков»
+#(sword_chain) and «Разлом» (sword_rend). Each plays once on the targets' group and lands every target's damage at its
+#final blow; the effect takes the hp_update and the miss through dark_hits, as the dark spells do
+var SWORD_STOP = 0.12 #hit-stop at the final blow
+var SWORD_SHAKE = 18.0
+var SWORD_HOLD = 0.2 #the queue waits this long after a target's number shows
+var SWORD_SHEATH_CUTS = 14
+var SWORD_REND_CUTS = 14
+
+func sword_sheath(node, args = null):
+	return sword_ult(node, args, 'sheath')
+
+func sword_chain(node, args = null):
+	return sword_ult(node, args, 'chain')
+
+func sword_rend(node, args = null):
+	return sword_ult(node, args, 'rend')
+
+func sword_ult(node, args, variant):
+	if args == null: args = {}
+	var caster_node = args.caster_node if args.has('caster_node') else null
+	if caster_node == null or !is_instance_valid(caster_node) or !caster_node.is_inside_tree(): return HIT_TAIL
+	var player_side = group_side(node)
+	if player_side == null: return HIT_TAIL
+	var layer = get_parent() if get_parent() != null else self
+	var effect = SwordUltEffect.new()
+	layer.add_child(effect)
+	effect.cast(self, caster_node, args.hit_nodes if args.has('hit_nodes') else [], side_slots(player_side), get_fx_kit(), {
+		variant = variant, root = layer, world = field_end(layer), stop = SWORD_STOP, shake = SWORD_SHAKE, hold = SWORD_HOLD,
+		cuts = SWORD_REND_CUTS if variant == 'rend' else SWORD_SHEATH_CUTS, seed = 4100 + dark_effects.size() * 131})
+	arm_counter(effect.counter, args, 'sword_' + variant)
+	track_dark(effect)
+	return effect.lock_time()
+
+
 #THE WINDS OF HYPERBOREA
 #One clock in HyperboreaEffect.gd; these are the knobs of its mockup page («Северный ветер»)
 var HYPERBOREA_RELEASE = 1.15 #the cast lets the wind go
@@ -2402,6 +2548,8 @@ func warm_up_statuses():
 	status_warm_up.warm_up(get_fx_kit())
 	#the dark spells' bend, once per kit as well: its shader is the kit's
 	SpaceBend.new().warm_up(self, get_fx_kit())
+	#and the sword's broken picture
+	ScreenSlice.new().warm_up(self, get_fx_kit())
 
 func hit_pending(node):
 	for time in animations_queue:

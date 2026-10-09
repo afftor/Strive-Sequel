@@ -969,7 +969,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "$cali",
+		character = "cali_origin",
 		text = [
 			{
 				text = "GOT_CALI_1_2",
@@ -1263,7 +1263,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "$cali",
+		character = "cali_origin",
 		text = [
 			{
 				text = "GOT_CALI_2_2",
@@ -1318,7 +1318,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "$cali",
+		character = "cali_origin",
 		text = [
 			{
 				text = "GOT_CALI_3_2",

@@ -1,3 +1,19 @@
+0.16.2a
+Updated and fixed multiple combat animations
+Changed Cali's initial sprite to fit more with her original vision
+
+Traits:
+	Added Heavy Hitter (physical): skills that cost mana cost twice as much and deal 30% more damage; spells are unaffected
+	Added Blending with Shadows (physical): ranged skills used while In the Shadows get +25% crit chance and +25% crit damage
+	Heavy Armor can now be bought as a post-training upgrade for 25 training points; the bought trait is lost when the slave is freed
+	Selfish and the Adept of Hybris vows now allow support abilities used on oneself
+	Pacifist now gives +25 Speed
+
+Fixes:
+	Rebel Redoubt locations now get rebel names instead of Bandit Fort ones
+	Characters who leave part of a travel group, by travelling elsewhere or being sent back to the mansion, now form a new group; those who stay keep the group's name and lock
+	Fixed buffs and effects piling up in memory across save loads and causing errors when the game closes, including when quitting mid-fight
+
 0.16.2
 Combat:
 	New animations: Winds of Hyperborea, Arrow Hail, Tempest, Black Tendrils, Void, Clarity

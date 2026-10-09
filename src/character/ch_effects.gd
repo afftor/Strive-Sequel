@@ -27,6 +27,19 @@ var delay_rebuild = false
 var counters = []
 
 
+#A stack and its buffs hold each other (Buff.parent), so a stack dropped from here would never be freed
+func release_temp_stacks():
+	for stack in effects_temp_real.values():
+		stack.buffs.clear()
+	effects_temp_real.clear()
+
+
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		for stack in effects_temp_real.values():
+			stack.buffs.clear()
+
+
 func reset_rebuild():
 	rebuild = variables.DYN_STATS_REBUILD
 	delay_rebuild = false

@@ -260,7 +260,7 @@ var data = {
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_1", reqs = []}],
 		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
 			{code = 'unique_variation', operant = '=', value = "collar"},
-			{code = 'body_image', operant = '=', value = "cali_collar_body"},
+			{code = 'body_image', operant = '=', value = "cali_origin_collar_body"},
 			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/cali_collar_prt.png"}]},
 			{code = 'update_prts'},],
 		options = [ {
@@ -338,7 +338,7 @@ var data = {
 		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_1_2", reqs = []}],
 		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
 			{code = 'unique_variation', operant = '=', value = "collar"},
-			{code = 'body_image', operant = '=', value = "cali_collar_body"},
+			{code = 'body_image', operant = '=', value = "cali_origin_collar_body"},
 			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/cali_collar_prt.png"}]},
 			{code = 'update_prts'},],
 		options = [ {

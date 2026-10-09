@@ -576,7 +576,7 @@ var pregen_characters = {
 		authority_factor = 4,
 		food_consumption = 3,
 		icon_image = 'cali',
-		body_image = "cali_body",
+		body_image = "cali_origin_body",
 		physics = 35.0,
 		wits = 9.0,
 		charm = 5.0,
@@ -1329,9 +1329,15 @@ var unique_sprites = {
 		default = {
 			name = "Default",
 			descript = "",
-			path = "cali_body", 
+			path = "cali_origin_body",
 			face_path = "cali",
 			unlocked = true
+			},
+		feminine = {
+			name = "Feminine",
+			descript = "",
+			path = "cali_body",
+			face_path = "cali",
 			},
 		halloween = {
 			name = "Halloween",
@@ -1343,9 +1349,15 @@ var unique_sprites = {
 		collar = {
 			name = "Collar",
 			descript = "",
-			path = "cali_collar_body", 
+			path = "cali_origin_collar_body",
 			face_path = "cali_collar",
 #			unlock_reqs = [{type = 'decision', value = 'cali_normal_collar', check = true}, {type = 'decision', value = 'cali_exquisite_collar', check = true, orflag = true}]
+			},
+		feminine_collar = {
+			name = "Feminine Collar",
+			descript = "",
+			path = "cali_collar_body",
+			face_path = "cali_collar",
 			},
 		nude = {
 			name = "Nude",

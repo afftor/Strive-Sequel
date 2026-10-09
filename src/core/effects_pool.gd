@@ -131,6 +131,7 @@ func cleanup():
 	for id in stacks.keys().duplicate():
 		if stacks[id].effects.empty():
 			stacks[id].cleanup()
+			stacks[id].buffs.clear()
 			stacks.erase(id)
 
 
@@ -155,6 +156,8 @@ func remove_ids(doomed: Dictionary):
 			if doomed.has(sid):
 				stack.effects.erase(sid)
 	for id in doomed:
+		if effects.has(id):
+			effects[id].buffs.clear()
 		effects.erase(id)
 
 
@@ -256,7 +259,22 @@ func e_createfromtemplate(buff_t, caller = null):
 	return tmp
 
 
+#An effect or stack and its buffs hold each other (Buff.parent): whatever leaves the pool has to
+#let its buffs go first, or the pair outlives the pool - a load and the exit both drop it whole
+func release_buffs():
+	for eff in effects.values():
+		eff.buffs.clear()
+	for stack in stacks.values():
+		stack.buffs.clear()
+
+
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		release_buffs()
+
+
 func deserialize(tmp):
+	release_buffs()
 	effects.clear()
 	stacks.clear()
 	for k in tmp.keys():

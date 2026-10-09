@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.2'
+const gameversion = '0.16.2a'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 

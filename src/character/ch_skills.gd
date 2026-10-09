@@ -73,6 +73,8 @@ func get_damage_mod(skill):
 		if skill.ability_type == 'skill': 
 			res += parent.get_ref().get_stat('damage_mod_skill') - 1
 			#print(res, ' damage mod skill')
+			if skill.has('cost') and skill.cost.get('mp', 0) > 0:
+				res += parent.get_ref().get_stat('damage_mod_mana_skill') - 1
 			if skill.target_range == 'any': 
 				res += parent.get_ref().get_stat('damage_mod_ranged') - 1
 				#print(res, ' damage mod ranged')
@@ -97,6 +99,10 @@ func get_manacost_for_skill(skill):
 	for st in skill.tags:
 		if statdata.statdata.has('manacost_mod_' + st):
 			res *= parent.get_ref().get_stat('manacost_mod_' + st)
+	#combat templates carry ability_type as a tag, out-of-combat ones (tooltips, AI checks) don't
+	var ability = skill.get('ability_type', '')
+	if !skill.tags.has(ability) and statdata.statdata.has('manacost_mod_' + ability):
+		res *= parent.get_ref().get_stat('manacost_mod_' + ability)
 	return res
 
 

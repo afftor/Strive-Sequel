@@ -727,6 +727,26 @@ func get_travel_group_for_newcomer(loc_id):
 			return group_name
 	return make_new_travel_group_name()
 
+#leavers whose group partly stays behind share a fresh name, so the old name stays with those left
+#behind - otherwise the map renames whichever copy it meets second, often the ones who stayed
+func split_leaving_travel_group(ids):
+	var new_names = {}
+	for id in ids:
+		if !characters.has(id):
+			continue
+		var person = characters[id]
+		var group_name = person.get_loc_group()
+		if !new_names.has(group_name):
+			new_names[group_name] = group_name
+			for other_id in characters:
+				var other = characters[other_id]
+				if !ids.has(other_id) and other.get_loc_group() == group_name and other.travel.location == person.travel.location:
+					new_names[group_name] = make_new_travel_group_name()
+					if is_travel_group_locked(group_name):
+						set_travel_group_locked(new_names[group_name], true)
+					break
+		person.set_loc_group(new_names[group_name])
+
 
 func add_slave(person, child = false):
 	if is_travel_group_locked(person.get_loc_group()):

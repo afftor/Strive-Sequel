@@ -110,6 +110,27 @@ var effects = {
 			}
 		],
 	},
+	#Blending with Shadows: a Skills.gd global variation puts it on the skill, whose TR_CAST runs before
+	#the caster's - In the Shadows is gone once the caster's own TR_CAST has fired
+	e_tr_blending_shadows = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['target_range', 'eq', 'any']},
+			{type = 'caster', value = [{code = 'has_status', status = 'hide', check = true}]},
+		],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [
+					{type = 'stat_add', stat = 'critchance', value = 25},
+					{type = 'stat_add', stat = 'critmod', value = 0.25},
+				],
+			}
+		],
+	},
 }
 var atomic_effects = {}
 var buffs = {

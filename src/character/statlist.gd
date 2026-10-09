@@ -439,6 +439,7 @@ var damage_mods = {
 	damage_mod_physic = 1.0,
 	damage_mod_spell = 1.0,
 	damage_mod_skill = 1.0,
+	damage_mod_mana_skill = 1.0,
 	damage_mod_aoe = 1.0, 
 	damage_mod_true = 1.0,
 	damage_mod_heal = 1.0,

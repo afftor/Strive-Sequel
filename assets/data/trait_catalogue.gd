@@ -350,6 +350,31 @@ var traits = {
 		weight = 100,
 		tags = ['positive']
 	},
+	heavy_hitter = {
+		code = 'heavy_hitter',
+		category = 'physical',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/Heavy-Strike.png",
+		effects = [],
+		bonusstats = {manacost_mod_skill_mul = 2.0, damage_mod_mana_skill = 0.3},
+		weight = 100,
+		tags = ['positive']
+	},
+	#the bonus is e_tr_blending_shadows, put on ranged skills by a Skills.gd global variation
+	blending_shadows = {
+		code = 'blending_shadows',
+		category = 'physical',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/skill_veil.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['positive']
+	},
 	puny = {
 		code = 'puny',
 		category = 'physical',
@@ -724,7 +749,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/pacific.png",
 		effects = [],
-		bonusstats = {},
+		bonusstats = {speed = 25},
 		combat_skills = ['do_nothing'],
 		weight = 100,
 		disposition_change = {

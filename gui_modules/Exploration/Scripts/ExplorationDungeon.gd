@@ -752,6 +752,7 @@ func return_character(character):
 
 
 func return_character_confirm(by_teleport = false):
+	ResourceScripts.game_party.split_leaving_travel_group([selectedperson.id])
 	selectedperson.return_to_mansion(by_teleport)
 	build_location_group()
 

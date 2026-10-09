@@ -1813,6 +1813,15 @@ var global_variations = [
 		reqs = [],
 		append = {tags = 'targets_ally'},
 	},
+	{
+		template_reqs = [
+			{attribute = 'ability_type', operant = 'eq', value = 'skill'},
+			{attribute = 'target_range', operant = 'in', value = ['any', 'weapon']},
+			{attribute = 'tags', operant = 'has', value = 'damage'},
+			],
+		reqs = [{code = 'trait', trait = 'blending_shadows', check = true}],
+		append = {effects = 'e_tr_blending_shadows'},
+	},
 ]
 
 

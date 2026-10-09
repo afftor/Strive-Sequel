@@ -659,6 +659,59 @@ func b_strip(rows, a, b, col):
 			bi.append(m)
 
 
+#--- blades: the cut a blade leaves and the trail of its swing ----------------------------------------------------
+
+#a needle from `a` to `b`: sharp at both ends, widest a little past the middle
+func b_needle(a, b, width, col):
+	if col.a <= 0.004 or width <= 0.05: return
+	var d = b - a
+	var length = d.length()
+	if length < 1.0: return
+	var nrm = Vector2(-d.y, d.x) / length
+	var left = a
+	var right = a
+	for i in range(1, 17):
+		var u = i / 16.0
+		var h = width * 0.5 * pow(max(0.0, sin(PI * pow(u, 0.85))), 0.55)
+		var p = a + d * u
+		b_quad(left, p + nrm * h, p - nrm * h, right, col, col, col, col)
+		left = p + nrm * h
+		right = p - nrm * h
+
+
+#a swing's trail: the arc of radius `r` round `c` from angle a0 to a1, drawn from `tail` to `head` (0..1 of it),
+#`thick` deep at its middle and thinning to nothing at both ends; bright on the outer edge, fading inward through
+#`pal` [core, glow, deep]
+func b_crescent(c, r, a0, a1, tail, head, thick, life, pal):
+	if head - tail < 0.01 or life <= 0.01: return
+	if bi.size() > 12000: b_flush()
+	var n = 36
+	var base = bp.size()
+	var edge = []
+	for i in range(n + 1):
+		var an = lerp(a0, a1, lerp(tail, head, float(i) / n))
+		var dir = Vector2(cos(an), sin(an))
+		var inner = r - thick * life * pow(max(0.0, sin(PI * i / n)), 0.7)
+		for rr in [inner, max(inner, r - 0.45 * thick), max(inner, r - 0.08 * thick), r]:
+			bp.append(c + dir * rr)
+			bc.append(crescent_colour(clamp((rr - (r - thick)) / thick, 0.0, 1.0), life, pal))
+			bu.append(UV_WHITE)
+		edge.append(c + dir * r)
+	for i in range(n):
+		for ring in range(3):
+			var k = base + i * 4 + ring
+			for m in [k, k + 1, k + 5, k, k + 5, k + 4]:
+				bi.append(m)
+	b_polyline(edge, 2.5, fade(pal[0], 0.9 * life))
+
+
+#the trail's colour at `g` (0 its inner reach, 1 the outer edge)
+static func crescent_colour(g, life, pal):
+	if g < 0.55: return fade(pal[2], 0.0).linear_interpolate(fade(pal[1], 0.22 * life), g / 0.55)
+	if g < 0.92: return fade(pal[1], 0.22 * life).linear_interpolate(fade(pal[1], 0.7 * life), (g - 0.55) / 0.37)
+	return fade(pal[1], 0.7 * life).linear_interpolate(fade(pal[0], 0.95 * life), (g - 0.92) / 0.08)
+
+
 #--- tentacles: a smooth path grown by its length, a wave down it, a tapered strip in a few flat tones -------------
 
 #a smooth path through the waypoints (Catmull-Rom), n points to a span

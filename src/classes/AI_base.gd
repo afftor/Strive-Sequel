@@ -160,6 +160,12 @@ func _calculate_targets_for_skill(app_obj, s_id, hide_ignore = false):
 					continue
 				var target_dir = {target = target.position, quality = _calculate_target_value(app_obj, target.position, t_skill)}
 				target_array.push_back(target_dir)
+	if app_obj.is_support_self_only(t_skill):
+		var own = []
+		for t in target_array:
+			if t.target == app_obj.position:
+				own.push_back(t)
+		target_array = own
 	skill_targets[s_id] = target_array
 
 

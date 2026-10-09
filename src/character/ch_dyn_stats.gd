@@ -130,7 +130,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	buffs.clear()
 	#stored effects_duplicating
 	effects_real = effects_stored.duplicate()
-	effects_temp_real.clear()
+	release_temp_stacks()
 	#Where a dangling stack id is finally dropped. Storing the failed clone would have put a null
 	#into effects_temp_real, and everything below reads that dictionary unguarded - add_eff_to_stack,
 	#process_effects_expand, has_status, clear_nonstored_effs all called straight into it.

@@ -68,9 +68,13 @@ var float_on = false
 #var float_shadow_y = 0.0
 var float_time = 0.0
 var float_shifted = false
+#where the portrait sits in the card: every card is a copy of the scene's template, so _ready still finds it there
+#(CombatAnimations.rest_guard puts it back after an animation that shifted it)
+var icon_rest = null
 
 
 func _ready():
+	if has_node('Icon'): icon_rest = $Icon.rect_position
 	set_process(false)
 	connect("gui_input", self, "_on_Button_gui_input")
 	if has_node("Buffs"):

@@ -999,7 +999,23 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 1
+				dialogue_argument = 1,
+				bonus_effects = [
+					{
+						code = "add_timed_event",
+						value = "cali_new_look",
+						args = [
+							{
+								type = "add_to_date",
+								date = [
+									1,
+									1
+								],
+								hour = 1
+							}
+						]
+					}
+				]
 			}
 		]
 	},

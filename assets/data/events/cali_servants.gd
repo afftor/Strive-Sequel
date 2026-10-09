@@ -175,13 +175,30 @@ var data = {
 		options = [{
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
+				{code = 'add_timed_event', value = "cali_new_look", args = [{type = 'add_to_date', date = [1,1], hour = 1}]},
 				{code = 'add_timed_event', value = "cali_sex_5", args = [{type = 'add_to_date', date = [2,2], hour = 2}]},
 				{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [4,4], hour = 2}]},
 				{code = 'complete_quest', value = 'cali_servants_quest'},# or advance
 			 ]
 		},],
 	},
-	
+
+	cali_new_look = {
+		image = null, music = "cali_theme", tags = ['dialogue_scene', 'master_translate'],
+		reqs = [
+			{type = 'unique_character_checks', name = 'cali', value = [{code = 'true'}], negative = 'cancel'},
+			{type = 'unique_character_at_mansion', name = 'cali', check = true, negative = 'repeat_next_day'},
+		],
+		character = "$cali",
+		unlocked_char_sprites = {cali = ["feminine", "feminine_collar"]},
+		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'body_image', operant = '=', value = "cali_body"}]}],
+		text = [ {text = "CALI_NEW_LOOK", reqs = []} ],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+		} ],
+	},
+
 	cali_sex_5 = {
 		image = null,
 		music = "cali_theme",

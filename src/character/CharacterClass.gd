@@ -1403,11 +1403,22 @@ func can_use_skill(skill):
 		 return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('disable_immunity'):
 		 return false
-	if has_status('no_combat_support') and skill.tags.has('support'):
+	if is_support_self_only(skill) and !can_support_self(skill):
 		return false
 	if has_status('no_combat_attack') and skill.tags.has('damage'):
 		return false
 	return true
+
+#no_combat_support (selfish, hybris vows) leaves support skills usable on the caster only
+func is_support_self_only(skill):
+	return has_status('no_combat_support') and skill.tags.has('support')
+
+func can_support_self(skill):
+	if skill.target == 'self':
+		return true
+	if !(skill.target in ['ally', 'all']) or skill.target_number != 'single':
+		return false
+	return !(skill.target_range in ['dead', 'not_caster'])
 
 func has_status(status):
 	var res = dyn_stats.has_status(status) or statlist.has_status(status) or tags.has(status)
@@ -1909,6 +1920,7 @@ func fix_serialization_postload():
 	xp_module.fix_serialize()
 	add_frail_constitution()
 	convert_kurdan_to_grasha()
+	restore_cali_origin_outfit()
 
 	reset_rebuild()
 
@@ -1947,6 +1959,18 @@ func convert_kurdan_to_grasha():
 	input_handler.append_not_duplicate(acquired, 'grasha')
 	if uses_paperdoll():
 		input_handler.reshoot_portrait(self)
+
+
+#Cali's current outfit now comes from Amelia's lessons; before them she wears the origin one
+func restore_cali_origin_outfit():
+	if get_stat('unique') != 'cali' or statlist.statlist.player_selected_body:
+		return
+	var seen = ResourceScripts.game_progress.seen_dialogues
+	if seen.has('CALI_SERVANTS_9') or seen.has('CALI_SERVANTS_NEW_LEADER_9'):
+		return
+	var origin = {cali_body = 'cali_origin_body', cali_collar_body = 'cali_origin_collar_body'}
+	if origin.has(statlist.statlist.body_image):
+		statlist.statlist.body_image = origin[statlist.statlist.body_image]
 
 
 func fix_import():

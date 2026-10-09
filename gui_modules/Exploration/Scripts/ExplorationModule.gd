@@ -638,6 +638,7 @@ func return_character(character):
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [teleport_base, 'teleport_check', character.translate(tr("SENDCHARBACKQUESTION"))])
 
 func return_character_confirm(by_teleport = false):
+	ResourceScripts.game_party.split_leaving_travel_group([selectedperson.id])
 	selectedperson.return_to_mansion(by_teleport)
 	build_location_group()
 

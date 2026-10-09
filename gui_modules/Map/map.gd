@@ -1257,6 +1257,7 @@ func confirm_travel(by_teleport = false):
 	if from_loc == to_loc:
 		return
 	var flocdata = ResourceScripts.world_gen.get_location_from_code(from_loc)
+	ResourceScripts.game_party.split_leaving_travel_group(selected_chars)
 	for chid in selected_chars:
 		var person = characters_pool.get_char_by_id(chid)
 		person.remove_from_task()
