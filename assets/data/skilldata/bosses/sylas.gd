@@ -104,7 +104,9 @@ var skills = {
 		damage_type = 'weapon',
 		repeat = 2,
 		sfx = [
-			{code = 'sunder', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
+			{code = '', code_repeat = {
+				1 : "targetattack", 2 : "devastation_2",}, 
+				target = 'target', period = 'predamage', duration = 0.2, hit_motion = 'tilt', no_repeat_delays = true},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = 0.6,
@@ -130,7 +132,7 @@ var skills = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'devastation_2', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'},
+			{code = 'execution', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = 1.2,
@@ -183,7 +185,7 @@ var skills = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'execution', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
+			{code = 'earth_spike', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'}],
 		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = 1.1,
@@ -210,7 +212,7 @@ var skills = {
 		damage_type = 'weapon',
 		critchance = 100,
 		sfx = [
-			{code = 'strike', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'},
+			{code = 'assassinate', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
 		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = 1.5,
@@ -242,8 +244,11 @@ var skills = {
 		next_target = variables.NT_ANY,
 		repeat = 5,
 		sfx = [
-			{code = 'strike', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'push'},
-			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
+			{code = '', code_repeat = {
+				1 : "devastation_1", 2 : "devastation_2", 3 : "devastation_3", 4 : "devastation_4", 5 : "devastation_5",}, 
+				target = 'target', period = 'predamage', duration = 0.2, hit_motion = 'squash', no_repeat_delays = true},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}
+			],
 		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = 0.75,
 		follow_up = 'sylas_showstopper_finale',
@@ -268,8 +273,9 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'cleave', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'push'},
-			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true}],
+			{code = 'earthquake', target = 'target_group', period = 'predamage',sync_to_hit = true},
+			{code = 'shake_target', target = 'target_group', period = 'predamage', alt_slot = 'SFX_BG'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'}],
 		sounddata = {initiate = null, strike = 'melee_attack', hit = null},
 		value = 1.2,
 	},
@@ -412,7 +418,7 @@ var effects = {
 	sylas_vitality = {
 		type = 'simple',
 		statchanges = {
-			bleed_damage = 0.5, poison_damage = 0.5, burn_damage = 0.5, darkflame_damage = 0.5,
+			bleed_damage = 0.2, poison_damage = 0.2, burn_damage = 0.3, darkflame_damage = 0.15,
 			resist_mind = 35, resist_dark = 35, resist_light = -35,
 		},
 		tags = ['sylas_vitality'],
@@ -436,7 +442,7 @@ var effects = {
 			{code = 'has_status', status = 'disarm', check = false},
 			{code = 'has_status', status = 'blind', check = false},
 		],
-		statchanges = {critchance = 20},
+		statchanges = {critchance = 25},
 		tags = [],
 		buffs = [],
 	},
