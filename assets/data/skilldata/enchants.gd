@@ -325,7 +325,10 @@ var effects = {
 		type = 'trigger',
 		stack = 'manasiphon',
 		trigger = [variables.TR_CAST],
-		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+		],
 		req_skill = true,
 		sub_effects = [{
 			type = 'oneshot',
@@ -340,7 +343,10 @@ var effects = {
 		type = 'trigger',
 		stack = 'manasiphon',
 		trigger = [variables.TR_CAST],
-		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+		],
 		req_skill = true,
 		sub_effects = [{
 			type = 'oneshot',
@@ -355,7 +361,10 @@ var effects = {
 		type = 'trigger',
 		stack = 'manasiphon',
 		trigger = [variables.TR_CAST],
-		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+		],
 		req_skill = true,
 		sub_effects = [{
 			type = 'oneshot',
