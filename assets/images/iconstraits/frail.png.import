@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/faith_featherbrained.png-f00e341cbcb229a72342d8503b002a8a.stex"
+path="res://.import/frail.png-50e665052e6f51d8d9f23e456b5c47f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconstraits/faith_featherbrained.png"
-dest_files=[ "res://.import/faith_featherbrained.png-f00e341cbcb229a72342d8503b002a8a.stex" ]
+source_file="res://assets/images/iconstraits/frail.png"
+dest_files=[ "res://.import/frail.png-50e665052e6f51d8d9f23e456b5c47f9.stex" ]
 
 [params]
 
