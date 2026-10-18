@@ -1176,7 +1176,7 @@ func get_job_value(temptask, count_crit = false):
 	var task = tasks.tasklist[temptask]
 	var value = call(task.progress_function)
 	fill_task_mods(task)
-	value *= 1.0 + get_task_efficiency_tool()
+	value *= get_task_efficiency_tool()
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(task.mod)/100.0)
 	
 	if count_crit == true && randf() <= get_task_crit_chance():
@@ -1198,7 +1198,7 @@ func get_progress_resource(tempresource, count_crit = false): #do not like this 
 	var value = call(resource.progress_formula)
 	fill_task_mods_res(resource)
 	
-	value *= 1.0 + get_task_efficiency_tool()
+	value *= get_task_efficiency_tool()
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(resource.workmod)/100.0) 
 	
 	if count_crit == true && randf() <= get_task_crit_chance():
