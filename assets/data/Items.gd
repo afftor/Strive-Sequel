@@ -1936,7 +1936,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'], #to correctly set stats with fixed levels
-		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
+		basestats = {atk = 60, critchance = 10, hitrate = 15, armorpenetration = 10, enchant_capacity = 200},
 	},
 	
 	holy_sword = {
@@ -1957,7 +1957,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 5, operant = 'gte'}],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 50, hitrate = 50, critmod = 0.20, damage_mod_light = 0.5, enchant_capacity = 500},
+		basestats = {atk = 99, hitrate = 55, critmod = 0.20, damage_mod_light = 0.3, enchant_capacity = 450},
 		achievement = "item_holy_sword"
 	},
 	holy_spear = {
@@ -1977,7 +1977,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 4, operant = 'gte'}],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 45, hitrate = 25, damage_mod_air = 0.20, armor = 20, enchant_capacity = 500},
+		basestats = {atk = 77, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
 	},
 	
 	aire_bow = {
@@ -1987,7 +1987,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/airesbow.png"),
 		tier = 'hard',
 		price = 1000,
-		basestats = {atk = 25, critchance = 10, hitrate = 20, mod_hunt = 0.2, enchant_capacity = 300},
+		basestats = {atk = 55, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
 		crafttype = 'basic',
 		type = 'gear',
 		itemtype = 'weapon',
@@ -2124,7 +2124,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 3, operant = 'gte'},],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 38, speed = -10, critchance = 3, enchant_capacity = 200},
+		basestats = {atk = 50, speed = -10, critchance = 4, enchant_capacity = 220},
 	},
 	erlen_sword = {
 		code = 'erlen_sword',
@@ -2144,7 +2144,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 3, operant = 'gte'},],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 50, speed = 5, evasion = 15, enchant_capacity = 400},
+		basestats = {atk = 70, speed = 7, evasion = 20, enchant_capacity = 425},
 	},
 	ayneris_rapier = {
 		code = 'ayneris_rapier',
@@ -2163,7 +2163,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 3, operant = 'gte'},],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 37, speed = 15, evasion = 5, enchant_capacity = 350},
+		basestats = {atk = 50, speed = 15, evasion = 8, enchant_capacity = 375},
 	},
 	hector_armor = {
 		code = 'hector_armor',
@@ -2180,7 +2180,7 @@ var itemlist = {
 		tier = 'hard',
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {armor = 40, mdef = 15, enchant_capacity = 200},
+		basestats = {armor = 65, mdef = 35, enchant_capacity = 250},
 	},
 	garb_of_forest = {
 		code = 'garb_of_forest',
@@ -2197,7 +2197,7 @@ var itemlist = {
 		tier = 'hard',
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {armor = 60, mdef = 30, evasion = 25, enchant_capacity = 300},
+		basestats = {armor = 90, mdef = 60, evasion = 40, enchant_capacity = 650},
 	},
 	chloe_goggles = {
 		code = 'chloe_goggles',
@@ -6409,14 +6409,14 @@ var fixed_quality_stats = {
 	cali_heirloom_active = { #example of data format
 		"" : {},
 		good = {
-			bonusstats = {atk = 40, critchance = 10, hitrate = 15, armorpenetration = 10, enchant_capacity = 200},
+			bonusstats = {atk = 60, critchance = 10, hitrate = 15, armorpenetration = 10, enchant_capacity = 200},
 			improve_materials = {steel = 8, obsidian = 2},},
 		epic = {
-			bonusstats = {atk = 45, critchance = 15, hitrate = 20, armorpenetration = 10, enchant_capacity = 300},
+			bonusstats = {atk = 75, critchance = 15, hitrate = 20, armorpenetration = 10, enchant_capacity = 300},
 			improve_materials = {mithril = 6, crystalized_ether = 2},
 		},
 		legendary = {
-			bonusstats = {atk = 55, critchance = 20, hitrate = 25, armorpenetration = 20, enchant_capacity = 500},
+			bonusstats = {atk = 100, critchance = 20, hitrate = 25, armorpenetration = 20, enchant_capacity = 500},
 			improve_materials = {adamantine = 8, crystalized_ether = 4},
 			icon = "res://assets/images/iconsitems/cali_heirloom.png",
 			effects = [] #not displayed in tooltip, but may be visible after equip
@@ -6425,78 +6425,78 @@ var fixed_quality_stats = {
 	holy_sword = {
 		"" : {},
 		epic = {
-			bonusstats = {atk = 65, hitrate = 55, critmod = 0.20, damage_mod_light = 0.3, enchant_capacity = 450},
-			improve_materials = {mithril = 8, crystalized_ether = 3},
+			bonusstats = {atk = 99, hitrate = 55, critmod = 0.20, damage_mod_light = 0.3, enchant_capacity = 450},
+			improve_materials = {mithril = 8, fire_ruby = 3},
 			},
 		legendary = {
-			bonusstats = {atk = 75, hitrate = 65, critmod = 0.25, damage_mod_light = 0.5, enchant_capacity = 550},
-			improve_materials = {adamantine = 12, crystalized_ether = 12},
+			bonusstats = {atk = 123, hitrate = 65, critmod = 0.25, damage_mod_light = 0.5, enchant_capacity = 550},
+			improve_materials = {adamantine = 12, fire_ruby = 6},
 		}
 	},
 	holy_spear = { 
 		"" : {},
 		epic = {
-			bonusstats = {atk = 55, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
+			bonusstats = {atk = 77, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
 			improve_materials = {mithril = 6, woodmagic = 6},
 			},
 		legendary = {
-			bonusstats = {atk = 65, hitrate = 40, damage_mod_air = 0.20, armor = 25, enchant_capacity = 550},
+			bonusstats = {atk = 111, hitrate = 40, damage_mod_air = 0.30, armor = 25, enchant_capacity = 550},
 			improve_materials = {adamantine = 8, woodancient = 6, crystalized_ether = 4},
 		}
 	},
 	aire_bow = { 
 		"" : {},
 		good = {
-			bonusstats = {atk = 45, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
+			bonusstats = {atk = 55, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
 			improve_materials = {woodmagic = 6, spider_silk = 6},
 			},
 		epic = {
-			bonusstats = {atk = 50, critchance = 10, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 350},
+			bonusstats = {atk = 73, critchance = 10, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 350},
 			improve_materials = {woodancient = 4, spider_silk = 10, leathermythic = 2},
 			},
 		legendary = {
-			bonusstats = {atk = 60, critchance = 15, hitrate = 30, mod_hunt = 0.3, enchant_capacity = 400},
+			bonusstats = {atk = 95, critchance = 15, hitrate = 30, mod_hunt = 0.3, enchant_capacity = 400},
 			improve_materials = {woodancient = 8, leatherdragon = 4, crystalized_ether = 3},
 		}
 	},
 	garb_of_forest = {
 		"" : {},
 		epic = {
-			bonusstats = {armor = 70, mdef = 40, evasion = 30, enchant_capacity = 350},
+			bonusstats = {armor = 90, mdef = 60, evasion = 40, enchant_capacity = 650},
 			improve_materials = {leathermythic = 8, woodmagic = 6},
 			},
 		legendary = {
-			bonusstats = {armor = 80, mdef = 50, evasion = 35, enchant_capacity = 450},
-			improve_materials = {leatherdragon = 10, woodancient = 4, crystalized_ether = 3},
+			bonusstats = {armor = 140, mdef = 90, evasion = 100, enchant_capacity = 900},
+			improve_materials = {leatherdragon = 10, woodancient = 4, earth_shard = 3},
 		}
 	},
 	hector_armor = {
 		"" : {},
 		good = {
-			bonusstats = {armor = 50, mdef = 20, enchant_capacity = 250},
+			bonusstats = {armor = 65, mdef = 35, enchant_capacity = 250},
 			improve_materials = {steel = 10, leatherthick = 3},
 			},
 		epic = {
-			bonusstats = {armor = 55, mdef = 25, enchant_capacity = 300},
+			bonusstats = {armor = 80, mdef = 40, enchant_capacity = 300},
 			improve_materials = {mithril = 8, leatherthick = 5},
 			},
 		legendary = {
-			bonusstats = {armor = 65, mdef = 30,enchant_capacity = 400},
-			improve_materials = {adamantine = 10, leathermythic = 4, crystalized_ether = 2},
+			bonusstats = {armor = 95, mdef = 45,enchant_capacity = 400},
+			improve_materials = {adamantine = 10, leathermythic = 4},
 		}
 	},
 	ramont_axe = {
 		"" : {},
 		good = {
-			bonusstats = {atk = 42, speed = -10, critchance = 4, enchant_capacity = 220},
+			bonusstats = {atk = 50, speed = -10, critchance = 4, enchant_capacity = 220},
 			improve_materials = {steel = 10, woodiron = 4},
 			},
 		epic = {
-			bonusstats = {atk = 47, speed = -10, critchance = 5, enchant_capacity = 250},
+			bonusstats = {atk = 69, speed = -10, critchance = 5, enchant_capacity = 250},
 			improve_materials = {mithril = 6, woodiron = 6, ogre_teeth = 4},
 			},
 		legendary = {
-			bonusstats = {atk = 55, speed = -10, critchance = 7, enchant_capacity = 275},
+			bonusstats = {atk = 88, speed = -10, critchance = 7, enchant_capacity = 275},
 			improve_materials = {meteorite_iron = 10, woodancient = 4, earth_shard = 3},
 		}
 		
@@ -6504,26 +6504,26 @@ var fixed_quality_stats = {
 	erlen_sword = {
 		"" : {},
 		epic = {
-			bonusstats = {atk = 60, speed = 7, evasion = 20, enchant_capacity = 425},
+			bonusstats = {atk = 70, speed = 7, evasion = 20, enchant_capacity = 425},
 			improve_materials = {mithril = 8, woodmagic = 4},
 			},
 		legendary = {
-			bonusstats = {atk = 70, speed = 10, evasion = 25, enchant_capacity = 450},
+			bonusstats = {atk = 85, speed = 10, evasion = 25, enchant_capacity = 450},
 			improve_materials = {mithril = 12, ice_crystal = 6, crystalized_ether = 3},
 			}
 	},
 	ayneris_rapier = {
 		"" : {},
 		good = {
-			bonusstats = {atk = 43, speed = 15, evasion = 8, enchant_capacity = 375},
+			bonusstats = {atk = 50, speed = 15, evasion = 8, enchant_capacity = 375},
 			improve_materials = {steel = 6, clothsilk = 4},
 			},
 		epic = {
-			bonusstats = {atk = 49, speed = 15, evasion = 11, enchant_capacity = 400},
+			bonusstats = {atk = 60, speed = 15, evasion = 11, enchant_capacity = 400},
 			improve_materials = {mithril = 6, clothmagic = 3},
 			},
 		legendary = {
-			bonusstats = {atk = 57, speed = 20, evasion = 15, enchant_capacity = 450},
+			bonusstats = {atk = 70, speed = 20, evasion = 15, enchant_capacity = 450},
 			improve_materials = {adamantine = 6, fire_ruby = 4, crystalized_ether = 3},
 			}
 		
