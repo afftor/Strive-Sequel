@@ -2232,8 +2232,7 @@ var training_categories = {
 		bonus_changes = [
 			{type = 'trainer_class', check = 'master', chance = {success_add = 15, crit_success_add = 5}},
 			{type = 'trainer_class', check = 'renown_royalty', chance = {success_add = 10}},
-			{type = 'trainer_class', check = 'succubus', chance = {resist_add = -30, fail_add = -30}},
-			{type = 'trainer_class', check = 'true_succubus', chance = {resist_add = -30, fail_add = -30}},
+			{type = 'trainer_trait', check = 'succubus', chance = {resist_add = -30, fail_add = -30}},
 			{type = 'trainer_class', check = 'sadist', effect = {loyalty_mul = 1.5}},
 			{type = 'trainer_class', check = 'headgirl', chance = {success_add = 10}},
 			{type = 'trainer_class', check = 'director', chance = {resist_add = -10, fail_add = -10}},

@@ -139,6 +139,8 @@ func _validate_traits(issues):
 			_validate_stat_map(trait.bonusstats, context + ".bonusstats", issues)
 		if trait.has("combat_skills"):
 			_validate_skill_list(trait.combat_skills, context + ".combat_skills", issues)
+		if trait.has("social_skills"):
+			_validate_skill_list(trait.social_skills, context + ".social_skills", issues)
 		if trait.has("reqs"):
 			_validate_reqs(trait.reqs, context + ".reqs", issues)
 		if trait.has("conflicts"):

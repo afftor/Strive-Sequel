@@ -85,7 +85,10 @@ const VALUES = {
 		"bunny": "ears_rabbit", "bunny_standing": "ears_rabbit2",
 		"bunny_drooping": "ears_rabbit3", "orcish": "ears_orc",
 		"normal": "ears_human", "fish": "ears_nereid",
-		"demon": "", "feathered": "",
+		# Neither rig has demon or feathered ears.  The old doll wore the elven pair
+		# for both (Demons, Harpies); left unmapped they fell back to the catalogue's
+		# human ears.
+		"demon": "ears_elven", "feathered": "ears_elven",
 		"elven2": "ears_elven2",
 		# The August re-export dropped `ears_fox` and `ears_fox2` for four new
 		# cuts, so the two names the game has carried since the old doll have no

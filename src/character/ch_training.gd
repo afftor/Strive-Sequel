@@ -363,6 +363,10 @@ func gather_chance_entries(data, cat_data, ch_trainer, disposition):
 					if ch_trainer.has_profession(eff.check):
 						applies = true
 						label = tr('CHANCELOG_SRC_TRAINERCLASS') % tr(classesdata.professions[eff.check].name)
+				'trainer_trait':
+					if ch_trainer.check_trait(eff.check):
+						applies = true
+						label = tr('CHANCELOG_SRC_TRAINERCLASS') % globals.get_trait_entry(ch_trainer, eff.check).name
 				'disposition':
 					if disposition in eff.check:
 						applies = true

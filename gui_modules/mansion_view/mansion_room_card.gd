@@ -1884,7 +1884,6 @@ func person_yield(character, job_id, builder = false):
 func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = false):
 	$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll.visible = true
 	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
-	var offered = 0
 	var current = room()
 	#Who this place may be offered to, in the order the player wants to read them in.
 	var pool = []
@@ -1912,6 +1911,7 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 				if !pool.has(worker_id):
 					pool.append(worker_id)
 	var master_room = current != null and RoomTypes.get_type(current.type).master_only
+	var offered = []
 	for char_id in pool:
 		var character = view.get_character(char_id)
 		if character == null:
@@ -1924,6 +1924,14 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 			continue
 		if sleeping and !bed_candidate(character, current, master_room):
 			continue
+		offered.append(char_id)
+	#Work is offered best hand first: the figure beside each face is what the choice is made on,
+	#so the list is read from the top rather than searched. A bed and a tutor's chair print no
+	#figure and keep the order built above.
+	if !sleeping and !tutor_slot:
+		offered = by_yield(offered, job_id, builder)
+	for char_id in offered:
+		var character = view.get_character(char_id)
 		var button = input_handler.DuplicateContainerTemplate(
 			$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
 		#drawn the way a resident is, by the same call - a face is how the player tells them
@@ -1936,8 +1944,7 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 		show_person_yield(button, character, sleeping, tutor_slot, job_id, builder)
 		button.connect("pressed", self, "pick_candidate",
 			[char_id, sleeping, tutor_slot, job_id, builder])
-		offered += 1
-	if offered == 0:
+	if offered.empty():
 		var button = input_handler.DuplicateContainerTemplate(
 			$Body/Columns/LeftScroll/LeftColumn/PeopleColumn/CandidateScroll/CandidateList)
 		button.get_node('Name').text = tr("MANSIONVIEW_NOCANDIDATES")
@@ -1949,6 +1956,25 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 	update_column_layout()
 	settle_body()
 	fit_to_body()
+
+
+#Highest yield first. sort_custom is not stable, so the place each one held in the household's
+#order settles ties - otherwise two people worth the same could swap on every reopening.
+func by_yield(char_ids, job_id, builder):
+	var rows = []
+	for i in range(char_ids.size()):
+		rows.append([person_yield(view.get_character(char_ids[i]), job_id, builder), i, char_ids[i]])
+	rows.sort_custom(self, "yield_before")
+	var res = []
+	for row in rows:
+		res.append(row[2])
+	return res
+
+
+func yield_before(a, b):
+	if a[0] != b[0]:
+		return a[0] > b[0]
+	return a[1] < b[1]
 
 
 
@@ -2017,6 +2043,12 @@ func on_craft():
 	var job = craft_category_of(current)
 	if job == ENCHANTING_BENCH:
 		view.open_enchanting()
+		return
+	#The workshop panel over the plan - except while the hard tutorial is walking the player
+	#through the older craft screen, whose buttons its steps point at.
+	var trade = RoomTypes.get_craft_menu(current.type)
+	if trade in ['smith', 'tailor', 'alchemy', 'cooking'] and !input_handler.hard_tutorial_active:
+		view.open_crafting(trade)
 		return
 	var mansion = view.get_parent()
 	#the plan is also used on its own, with no mansion above it - there the button does nothing

@@ -451,6 +451,7 @@ var task_efficiency = {
 	task_efficiency_hunt_knife = 1.0,
 	task_efficiency_hammer = 1.0,
 	task_efficiency_sickle = 1.0,
+	task_efficiency_dishware = 1.0,
 }
 var task_crit = {
 	task_crit_axe = 0.0,
@@ -459,4 +460,5 @@ var task_crit = {
 	task_crit_hunt_knife = 0.0,
 	task_crit_hammer = 0.0,
 	task_crit_sickle = 0.0,
+	task_crit_dishware = 0.0,
 }

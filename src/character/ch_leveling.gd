@@ -1138,7 +1138,9 @@ func _get_base_crafting_diff(): #2add
 func fill_task_mods(task):
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = _get_base_crafting_diff()
-	task_mods.eff = 0
+	#eff is the whole multiplier on the work, so work that takes no tool goes at the plain rate,
+	#the same as a tool category nobody has a bonus for (task_efficiency_* start at 1.0)
+	task_mods.eff = 1.0
 	if task.has('worktool'):
 		var item = task.worktool
 		task_mods.eff = parent.get_ref().get_stat('task_efficiency_' + item)
@@ -1157,7 +1159,7 @@ func fill_task_mods(task):
 func fill_task_mods_res(task): 
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = 0
-	task_mods.eff = 0
+	task_mods.eff = 1.0 #see fill_task_mods
 	if task.has('tool_type'): #!!! change to worktool in case of proper rework to passing taskdata
 		var item = task.tool_type
 		task_mods.eff = parent.get_ref().get_stat('task_efficiency_' + item)

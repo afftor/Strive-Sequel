@@ -1,7 +1,8 @@
 extends "res://gui_modules/Universal/Scripts/tooltip_main.gd"
 #What a character portrait on the mansion screen says when the mouse rests on it: the line the
-#plain text tooltip used to carry - the name, the work, how to pick them up - and then the four
-#numbers the expanded card leads with, the tools they are carrying, and the buffs on them.
+#plain text tooltip used to carry - the name, the work, how to pick them up - and then the classes
+#they hold, the four numbers the expanded card leads with, the tools they are carrying, and the
+#buffs on them.
 #
 #It is its own panel rather than the text tooltip because none of that can be said in text: the
 #tools and the buffs are pictures. The rows are all templates in the scene; nothing here builds
@@ -26,12 +27,14 @@ var hint = ""
 
 onready var body = $Panel/Margin/Body
 onready var header_label = $Panel/Margin/Body/Header
+onready var class_row = $Panel/Margin/Body/Classes
 onready var stat_rows = $Panel/Margin/Body/Stats
 onready var exp_label = $Panel/Margin/Body/Experience
 onready var tool_row = $Panel/Margin/Body/Tools
 onready var buff_row = $Panel/Margin/Body/Buffs
 onready var hint_label = $Panel/Margin/Body/Hint
 onready var hint_rule = $Panel/Margin/Body/HintRule
+onready var buff_rule = $Panel/Margin/Body/IconRule
 
 
 #Hover a portrait: the cell hands over who it is drawing and the line it wants at the top.
@@ -64,16 +67,19 @@ func fill(who, text, foot = ""):
 	person = who
 	header = text
 	hint = foot
-	header_label.bbcode_text = text
+	header_label.bbcode_text = header_bbcode(who, text)
 	hint_label.text = foot
 	hint_label.visible = foot != ""
 	hint_rule.visible = foot != ""
 	if !is_instance_valid(who):
+		class_row.visible = false
 		stat_rows.visible = false
 		exp_label.visible = false
 		tool_row.visible = false
 		buff_row.visible = false
+		buff_rule.visible = false
 		return
+	build_classes(who)
 	build_stats(who)
 	build_experience(who)
 	build_tools(who)
@@ -84,6 +90,32 @@ func fill(who, text, foot = ""):
 	for icon in buff_row.get_children():
 		globals.disconnect_text_tooltip(icon)
 	buff_row.visible = shown_children(buff_row) > 0
+	#the rule is there to set the buffs apart; with none it sat right on top of the hint's own
+	#rule and the foot of the panel read as two lines with nothing between them
+	buff_rule.visible = buff_row.visible
+
+
+#The name heads the panel the way the titles under it do, centred over the stats; the lines after
+#it - what they make here, why they are away - stay notes. Only a first line that is the name: a
+#cell that has a reason to give instead of a name hands that over as it is.
+func header_bbcode(who, text):
+	var lines = text.split("\n")
+	if !is_instance_valid(who) or lines.empty() or lines[0] != who.get_short_name():
+		return text
+	lines[0] = "[center]%s[/center]" % lines[0]
+	return lines.join("\n")
+
+
+#Who they are before what they can do: the classes they hold, as the pictures the expanded card
+#and the market card draw them with. No tooltip of their own - see the buffs above.
+func build_classes(who):
+	input_handler.ClearContainer(class_row, ['Entry'])
+	for code in who.get_professions():
+		if !classesdata.professions.has(code):
+			continue
+		var entry = input_handler.DuplicateContainerTemplate(class_row, 'Entry')
+		entry.get_node("Icon").texture = classesdata.professions[code].icon
+	class_row.visible = shown_children(class_row) > 0
 
 
 func build_stats(who):

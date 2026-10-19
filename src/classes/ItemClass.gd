@@ -389,11 +389,43 @@ func fix_gear():
 
 			if owner != null:
 				owner = null
+		sync_tool_template(template)
 	fix_obsolete_bonusstats()
 	for id in enchants:
 		enchants[id] = int(enchants[id])
 	if !bonusstats.has('enchant_capacity') and template.basestats.has('enchant_capacity'):
 		bonusstats['enchant_capacity'] = template.basestats['enchant_capacity']
+
+
+#A tool keeps the work categories it was made with, and its template can move on since: a save's
+#axes and pickaxes come back as Axe&Picks (Items.retired_itembases) that still know only the one
+#job. The task bonuses their parts gave are handed to every category the template has now, and
+#the slot, icon and name follow the template too.
+func sync_tool_template(template):
+	var current = template.get('tool_category')
+	if !(current is Array) or toolcategory == current:
+		return
+	for prefix in ['task_efficiency_', 'task_crit_']:
+		var value = null
+		if toolcategory is Array:
+			for category in toolcategory:
+				var key = prefix + category
+				if !bonusstats.has(key):
+					continue
+				if value == null or bonusstats[key] > value:
+					value = bonusstats[key]
+				bonusstats.erase(key)
+		if value != null:
+			for category in current:
+				bonusstats[prefix + category] = value
+	toolcategory = current.duplicate()
+	slots = template.slots.duplicate()
+	if template.icon != null:
+		icon = template.icon.get_path()
+	if parts.has(template.partmaterialname):
+		name = Items.materiallist[parts[template.partmaterialname]].adjective + " " + template.name
+	else:
+		name = template.name
 
 
 func fix_obsolete_bonusstats():
@@ -472,11 +504,7 @@ func tooltiptext():
 		text = text.substr(0, text.length() -2) + "\n"
 
 	if toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": "
-		for i in toolcategory:
-			text += statdata.worktoolnames[i] +", "
-		text = text.substr(0, text.length()-2)
-		text += "\n"
+		text += tr("TOOLWORKCATEGORY") + ": " + statdata.worktool_names_text(toolcategory) + "\n"
 	if description != null:
 		text += description
 	if !reqs.empty():
@@ -511,10 +539,7 @@ func tooltiptext_1():
 		text = text.substr(0, text.length() -2) + "\n"
 
 	if toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": "
-		for i in toolcategory:
-			text += statdata.worktoolnames[i] +", "
-		text = text.substr(0, text.length()-2)
+		text += tr("TOOLWORKCATEGORY") + ": " + statdata.worktool_names_text(toolcategory)
 	if !reqs.empty():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item_1")
 		text +=  "\n{color=yellow|" + tempslave.decipher_reqs(reqs) + "}"
@@ -604,21 +629,9 @@ func calculatematerials():
 	return materialsdict
 
 func calculateprice():
-	var price = 0
 	if itemtype == 'usable' || Items.itemlist[itembase].crafttype == 'basic':
-		price = Items.itemlist[itembase].price
-	else:
-		var materialsdict = calculatematerials()
-		for i in materialsdict:
-			price += Items.materiallist[i].price*materialsdict[i]
-		price += round(Items.recipes[itembase].workunits * 5)
-		if quality != "":
-			price = price*(variables.itemquality_multiplier[quality]*0.66)
-		if enchants.size() > 0:
-			price = price * (1 + enchants.size() * 0.15)
-		if curse != null:
-			price = price * 0.60
-	return int(price)
+		return int(Items.itemlist[itembase].price)
+	return Items.ModularEconomy.price(Items.get_modular_material_cost(itembase, parts), quality, enchants.size(), curse != null)
 
 func use_explore(character, caller = null):
 	var itemskill = Items.itemlist[itembase].explor_effect
@@ -847,6 +860,8 @@ func set_quality_level(val): #this method can change quality of any item, use wi
 	if Items.fixed_quality_stats.has(itembase):
 		var newdata = Items.fixed_quality_stats[itembase][val]
 		for st in newdata:
+			if st == 'improve_materials': #the price of reaching this level (item_improving), not a property
+				continue
 			if newdata[st] is Array or newdata[st] is Dictionary:
 				set(st, newdata[st].duplicate(true))
 			else:

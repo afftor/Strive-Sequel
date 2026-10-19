@@ -982,6 +982,9 @@ func make_slave_statreq_text(req):
 				text += "%s " % tr("OPERANTNEQ")
 			text += "%s." % Traitdata.traits[req.trait].name
 			return text
+		'trait_offer':
+			var key = "STATREQ_TRAIT_OFFER" if req.get('check', true) else "STATREQ_TRAIT_OFFER_NOT"
+			return globals._report_text(key, [tr(Traitdata.traits[req.trait].name)])
 		'has_profession':
 			var text = "%s: " % tr('REQHASCLASS')
 			if req.has('check') and !req.check:

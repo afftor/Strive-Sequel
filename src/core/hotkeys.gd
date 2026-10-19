@@ -268,10 +268,7 @@ func run_action(code):
 		'quickload':
 			return globals.QuickLoad()
 		'fullscreen':
-			OS.window_fullscreen = !OS.window_fullscreen
-			input_handler.globalsettings.fullscreen = OS.window_fullscreen
-			if !input_handler.globalsettings.fullscreen:
-				OS.window_position = Vector2(0, 0)
+			input_handler.toggle_fullscreen()
 			return true
 	return false
 

@@ -2,6 +2,8 @@ extends Node
 const gameversion = '0.16.2a'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
+#same rule as the sanitizer
+const ItemMigrations = preload("res://src/core/item_migrations.gd")
 
 #time
 signal hour_tick
@@ -505,6 +507,10 @@ func connectmaterialtooltip(node, material, bonustext = '', type = null, tooltip
 		type = 'materialowned'
 	node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext, type, tooltip_node])
 
+func disconnect_material_tooltip(node):
+	if node.is_connected("mouse_entered",self,'mattooltip'):
+		node.disconnect("mouse_entered",self,'mattooltip')
+
 #'tooltip_node' names a panel to use instead of the shared one, the way connecttexttooltip and
 #connectmaterialtooltip already take one. A caller drawing inside a CanvasLayer needs it: that
 #layer is painted over everything at the tree root whatever order they were added in, so the
@@ -711,6 +717,9 @@ func get_trait_entry(person, code):
 		entry.complex_icon = true
 		return entry
 	entry.name = tr(trdata.name)
+	#named for what the character is, as a class's altname is: Succubus, Incubus for a man
+	if trdata.has('altname') and person.checkreqs(trdata.altnamereqs):
+		entry.name = tr(trdata.altname)
 	if trdata.has('tier'):
 		entry.text = get_faith_tiers_text(person, trdata)
 	elif trdata.has('line'):
@@ -1887,6 +1896,9 @@ func LoadGame(filename):
 	loadscreen.set_progress(14)
 	yield(get_tree(), 'idle_frame')
 
+	#items the game has since folded into others are renamed first - the sanitizer would take
+	#them for mod leftovers and drop them
+	ItemMigrations.run(savedict, Items.retired_itembases)
 	#anything the save owes to a mod that is no longer loaded goes here, before the first
 	#object is built out of the dictionary
 	var sanitized = sanitize_save(savedict, filename)
@@ -2158,6 +2170,7 @@ func ImportGame(filename):
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
+	ItemMigrations.run(savedict, Items.retired_itembases)
 	var sanitized = sanitize_save(savedict, filename)
 
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
@@ -4279,6 +4292,8 @@ func common_effects(effects, from_event = false):
 					print("wrong change relationship setup")
 			'open_arena':
 				input_handler.get_spec_node(input_handler.NODE_ARENA)
+			'faith_conversion':
+				ResourceScripts.custom_effects.faith_conversion_open(i.value)
 			'try_breakdown_scene_characters':
 				for chara in input_handler.scene_characters:
 					chara.try_breakdown(i.value)

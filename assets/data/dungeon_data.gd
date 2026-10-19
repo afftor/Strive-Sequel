@@ -219,7 +219,7 @@ var dungeons = {
 			
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -415,7 +415,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -529,7 +529,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -632,7 +632,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 2,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -1084,7 +1084,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -1369,7 +1369,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -1611,7 +1611,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -1693,7 +1693,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -1772,7 +1772,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -2005,7 +2005,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -2116,7 +2116,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -3470,7 +3470,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -3675,7 +3675,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],
@@ -3793,7 +3793,7 @@ var dungeons = {
 			},
 			meditation_spot = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['meditation_spot', 'power_place_spot'],

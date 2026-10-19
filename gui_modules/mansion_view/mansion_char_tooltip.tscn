@@ -102,6 +102,43 @@ margin_bottom = 65.0
 mouse_filter = 2
 custom_styles/separator = SubResource( 2 )
 
+[node name="Classes" type="GridContainer" parent="Panel/Margin/Body"]
+margin_left = 146.0
+margin_top = 74.0
+margin_right = 146.0
+margin_bottom = 74.0
+mouse_filter = 2
+size_flags_horizontal = 4
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 7
+
+[node name="Entry" type="Control" parent="Panel/Margin/Body/Classes"]
+visible = false
+margin_right = 36.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Panel/Margin/Body/Classes/Entry"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Frame" type="TextureRect" parent="Panel/Margin/Body/Classes/Entry"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
 [node name="StatsTitle" type="Label" parent="Panel/Margin/Body"]
 margin_top = 74.0
 margin_right = 292.0

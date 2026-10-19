@@ -27,6 +27,9 @@ var e_skills_real = []
 var stat_bonuses = {}
 var buffs = []
 var masteries_sources = {}
+#transient: the trait each offer writes over, picked before the skill, item or temple rite behind it was paid
+#(ch_skills, TraitReplacePanel.confirm_first); offer_trait spends a pick on the one offer it was made for
+var trait_choices = {}
 
 
 func _init().():
@@ -70,9 +73,16 @@ func fix_serialize():
 	if !(statlist.speed is Array):
 		statlist.speed = [statlist.speed]
 	for tr in traits_stored.duplicate():
-		if Traitdata.traits.has(tr): 
+		if Traitdata.traits.has(tr):
 			continue
 		traits_stored.erase(tr)
+	#Succubus was a class before it was a magic trait. An old save's succubus keeps the trait past a full
+	#magic slot: the transformation is long done, and nothing they had is taken for it.
+	for prof in ['succubus', 'true_succubus', 'succubus_old']:
+		if professions.has(prof):
+			if !traits_stored.has('succubus'):
+				traits_stored['succubus'] = professions[prof]
+			professions.erase(prof)
 	for prof in professions.keys():
 		#commented code below fixed some error in profs data manipulation that caused loss of classes persistent effects. since this error was long ago - there is little value in keeping this fix. and more to it - it causes errors with togglable auras (cause they are classes persistent effects) loading. 
 #		remove_all_temp_effects_tag('class_' + prof)
@@ -240,7 +250,7 @@ func process_race_data(id, process_skills = true):
 				skills_real.push_back(id)
 	if data.has("combat_skills") and process_skills:
 		for id in data.combat_skills:
-			if !c_skills_real.has(id):
+			if !c_skills_real.has(id) and !parent.get_ref().is_race_skill_spent(id):
 				c_skills_real.push_back(id)
 
 
@@ -277,6 +287,9 @@ func process_trait_data(id, timestamp):
 	for skill in traitdata.get('combat_skills', []):
 		if !c_skills_real.has(skill):
 			c_skills_real.push_back(skill)
+	for skill in traitdata.get('social_skills', []):
+		if !skills_real.has(skill):
+			skills_real.push_back(skill)
 	if id != 'core_trait':
 		for eff in traitdata.effects:
 			process_eid_add(eff, timestamp)
@@ -821,6 +834,9 @@ func add_trait(tr_code):
 				remove_trait(code, true)
 	if tr_code == 'undead':
 		parent.get_ref().set_work_rule("contraceptive", false)
+	#a succubus is nobody's thrall: Turn Succubus ends the bond only once the transformation takes
+	if tr_code == 'succubus':
+		parent.get_ref().set_stat('thrall_master', null)
 	#a vow arriving takes the character off work it now forbids (Transcendent at a mine)
 	if trait.has('vows'):
 		var person = parent.get_ref()
@@ -1181,8 +1197,30 @@ func offer_trait(tr_code, mode = 'ask'):
 		'replace':
 			replace_trait(get_forced_replacement(tr_code), tr_code)
 		'ask':
+			var picked = get_trait_choice(tr_code)
+			if picked != '':
+				trait_choices.erase(tr_code)
+				replace_trait(picked, tr_code)
+				return 'replace'
 			parent.get_ref().ask_trait_replacement(tr_code)
 	return result
+
+
+#The trait already picked to give way for tr_code, '' with no pick or one that can no longer be replaced.
+func get_trait_choice(tr_code):
+	var picked = trait_choices.get(tr_code, '')
+	if picked != '' and get_replaceable_traits(get_trait_category(tr_code)).has(picked):
+		return picked
+	return ''
+
+
+#Kept only when the offer will put the slot to the player: a free slot just takes the trait, and a pick left
+#unspent there would answer some later offer of it.
+func set_trait_choice(tr_code, old_code):
+	if preview_trait_offer(tr_code) == 'ask':
+		trait_choices[tr_code] = old_code
+	else:
+		trait_choices.erase(tr_code)
 
 
 #The trait a forced offer writes over when its category is full.

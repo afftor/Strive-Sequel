@@ -13,8 +13,10 @@ onready var cards = $Center/Window/VBox/Body/Choice/CurCol/Cards
 onready var keep_button = $Center/Window/VBox/Body/Foot/Keep
 
 var queue = []
+var current = {}
 var person
 var new_code
+var free_slot = '' #the category's stand-in (Worldly) put up as the slot a confirm_first trait takes
 var is_set_up = false
 
 
@@ -33,6 +35,22 @@ func offer(t_person, code):
 		show_next()
 
 
+#The same choice, put before the skill or item that brings the trait is paid for (ch_skills.ask_offered_trait_first):
+#a pick calls obj.method(old_code, args...), keeping the current trait calls nothing and nothing is spent.
+func ask_first(t_person, code, obj, method, args = []):
+	queue.append({id = t_person.id, trait = code, callback = [obj, method, args]})
+	if is_set_up and !visible:
+		show_next()
+
+
+#A trait the player asked for (a temple's conversion): the choice is put up even when a slot is free, and that
+#free slot is the one card to pick. texts may name title, lead and keep keys of the offer's own.
+func confirm_first(t_person, code, obj, method, args = [], texts = {}):
+	queue.append({id = t_person.id, trait = code, callback = [obj, method, args], confirm = true, texts = texts})
+	if is_set_up and !visible:
+		show_next()
+
+
 #An offer that waited may have gone stale: a slot freed meanwhile just takes the trait.
 func show_next():
 	while !queue.empty():
@@ -42,30 +60,52 @@ func show_next():
 			continue
 		match p.preview_trait_offer(rec.trait):
 			'ask':
+				current = rec
 				open_for(p, rec.trait)
 				return
 			'add':
-				p.add_trait(rec.trait)
+				if rec.get('confirm', false):
+					current = rec
+					open_for(p, rec.trait)
+					return
+				if rec.has('callback'):
+					run_callback(rec, '')
+				else:
+					p.add_trait(rec.trait)
+	current = {}
 	person = null
 	hide()
 	gui_controller.request_screen_refresh()
 
 
+func run_callback(rec, old_code):
+	var cb = rec.callback
+	cb[0].callv(cb[1], [old_code] + cb[2])
+
+
 func open_for(p, code):
 	person = p
 	new_code = code
+	var texts = current.get('texts', {})
 	var category = person.get_trait_category(code)
-	var current = []
-	for item in person.get_category_traits(category):
-		if Traitdata.traits[item].get('visible', true):
-			current.append(item)
-	var title = tr("TRAITREPLACE_TITLE").split("{name}")
+	free_slot = ''
+	if current.get('confirm', false) and person.dyn_stats.get_free_trait_slots(category) > 0:
+		free_slot = Traitdata.catalogue.defaults.get(category, '')
+	var shown = []
+	if free_slot != '':
+		shown.append(free_slot)
+	else:
+		for item in person.get_category_traits(category):
+			if Traitdata.traits[item].get('visible', true):
+				shown.append(item)
+	var title = tr(texts.get('title', "TRAITREPLACE_TITLE")).split("{name}")
 	title_before.text = title[0]
 	title_name.text = person.get_short_name()
 	title_after.text = title[1] if title.size() > 1 else ""
-	var many = current.size() > 1
+	var many = shown.size() > 1
 	var category_name = tr("TRAITCATEGORYNAME_" + category.to_upper()).to_lower()
-	lead.text = person.translate(tr("TRAITREPLACE_LEAD_MANY" if many else "TRAITREPLACE_LEAD_ONE")).replace("{category}", category_name)
+	var lead_key = texts.get('lead', "TRAITREPLACE_LEAD_MANY" if many else "TRAITREPLACE_LEAD_ONE")
+	lead.text = person.translate(tr(lead_key)).replace("{category}", category_name)
 	var color = globals.get_trait_category_color(category)
 	cat_head.get_node("LineL").color = color
 	cat_head.get_node("LineR").color = color
@@ -85,10 +125,10 @@ func open_for(p, code):
 	fill_card(new_card, code, false)
 
 	input_handler.ClearContainer(cards, ['Card'])
-	for item in current:
+	for item in shown:
 		fill_card(input_handler.DuplicateContainerTemplate(cards, 'Card'), item, true)
 
-	keep_button.text = tr("TRAITREPLACE_KEEP_MANY" if many else "TRAITREPLACE_KEEP_ONE")
+	keep_button.text = tr(texts.get('keep', "TRAITREPLACE_KEEP_MANY" if many else "TRAITREPLACE_KEEP_ONE"))
 	show()
 	if gui_controller.dialogue != null and gui_controller.dialogue.is_visible():
 		gui_controller.dialogue.add_select_blocking_node(self)
@@ -118,7 +158,8 @@ func fill_card(card, code, is_current):
 	reason.hide()
 	if !is_current:
 		return
-	if person.is_trait_locked(code):
+	#an empty slot beside a held trait (Split Mind) shows as the stand-in, which the character does not hold
+	if code != free_slot and person.is_trait_locked(code):
 		reason.show()
 		var lock_key = "TRAITREPLACE_LOCK_INNATE"
 		if data.tags.has('permanent'):
@@ -135,8 +176,18 @@ func fill_card(card, code, is_current):
 func replace(old_code):
 	if person == null:
 		return
-	person.replace_trait(old_code, new_code)
-	show_next()
+	if !current.has('callback'):
+		person.replace_trait(old_code, new_code)
+		show_next()
+		return
+	#the use is paid for only now; the panel goes first so the use's own dialogue is not opened under it
+	var rec = current
+	current = {}
+	person = null
+	hide()
+	run_callback(rec, old_code)
+	if !visible:
+		show_next()
 
 
 func keep():

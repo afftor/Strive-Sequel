@@ -1665,6 +1665,9 @@ func make_trait_known(trait):
 func get_gear(slot):
 	return equipment.get_gear(slot)
 
+func has_worktool(category):
+	return equipment.has_worktool(category)
+
 func has_shield_with_evasion_bonus():
 	if !is_players_character:
 		return true
@@ -1878,12 +1881,20 @@ func fix_serialization():
 	if equipment is Dictionary:
 		if equipment.gear.has('tool'):
 			equipment.gear.tool_axe = null
-			equipment.gear.tool_pickaxe = null
+			equipment.gear.tool_dishware = null
 			equipment.gear.tool_hammer = null
 			equipment.gear.tool_rod = null
 			equipment.gear.tool_sickle = null
 			equipment.gear.tool_hunt_knife = null
 			equipment.gear.erase('tool')
+		#The pickaxe's slot went to dishware once the Axe&Pick took over its work. Whatever it held
+		#moves to the axe slot when that is free; a save had it unequipped by ItemMigrations if not.
+		if equipment.gear.has('tool_pickaxe'):
+			if equipment.gear.get('tool_axe') == null:
+				equipment.gear.tool_axe = equipment.gear.tool_pickaxe
+			equipment.gear.erase('tool_pickaxe')
+		if !equipment.gear.has('tool_dishware'):
+			equipment.gear.tool_dishware = null
 		equipment = dict2inst(equipment)
 	if skills is Dictionary:
 		skills = dict2inst(skills)
@@ -1918,9 +1929,11 @@ func fix_serialization_postload():
 	statlist.fix_serialize()
 	dyn_stats.fix_serialize()
 	xp_module.fix_serialize()
+	enthrall.fix_old_save()
 	add_frail_constitution()
 	convert_kurdan_to_grasha()
 	restore_cali_origin_outfit()
+	remove_erdyna_flight()
 
 	reset_rebuild()
 
@@ -1971,6 +1984,16 @@ func restore_cali_origin_outfit():
 	var origin = {cali_body = 'cali_origin_body', cali_collar_body = 'cali_origin_collar_body'}
 	if origin.has(statlist.statlist.body_image):
 		statlist.statlist.body_image = origin[statlist.statlist.body_image]
+
+
+#Wingless Erdyna loses her racial flight on recruitment; before racial combat skills could be spent the race gave it back
+func remove_erdyna_flight():
+	if get_stat('unique') != 'erdyna' or is_race_skill_spent('fly_evasion') or skills.combat_skills.has('fly_evasion'):
+		return
+	skills.spent_race_skills.append('fly_evasion')
+	for slot in skills.combat_skill_panel.keys():
+		if skills.combat_skill_panel[slot] == 'fly_evasion':
+			skills.combat_skill_panel.erase(slot)
 
 
 func fix_import():

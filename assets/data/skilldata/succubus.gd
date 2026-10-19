@@ -10,7 +10,9 @@ var skills = {
 		tags = ['positive', 'no_target'],
 		reqs = [],
 		targetreqs = [],
-		effects = ['make_succubus'], 
+		effects = ['make_succubus'],
+		#a full magic slot is put to the player before the essence is spent (ch_skills.ask_offered_trait_first)
+		offers_trait = 'succubus',
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -152,8 +154,12 @@ var skills = {
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
 			{code = 'stat', stat = 'consent', operant = 'gte', value = 5},
+			{code = 'trait_offer', trait = 'succubus', check = true},
 			],
-		effects = ['release_thrall', 'make_succubus'],
+		#the thrall's bond ends when the trait comes in (ch_dyn_stats.add_trait), so keeping the old magic trait keeps the thrall
+		effects = ['make_succubus'],
+		#a full magic slot is put to the player before mana, lust or the cooldown is spent
+		offers_trait = 'succubus',
 		cost = {mp = 50, lust = 50},
 		charges = 1,
 		cooldown = 7,
@@ -250,6 +256,7 @@ var effects = {
 			}
 		]
 	},
+	#the succubus magic trait: a free magic slot takes it, a full one asks the player what it replaces
 	make_succubus = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
@@ -260,7 +267,7 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'target',
-				atomic = [{type = 'add_class', class = 'succubus'}],
+				atomic = [{type = 'add_trait', trait = 'succubus', mode = 'ask'}],
 			}
 		]
 	},

@@ -3,6 +3,8 @@ extends Reference
 # Colour tables only - no singletons - so this is safe in the preload chain.
 const DOLL_COLORS = preload("res://Character_generator/Doll2Spine/universal/doll_colors.gd")
 const DOLL_COVERAGE = preload("res://Character_generator/Doll2Spine/universal/doll_coverage.gd")
+# Name tables only as well - it touches no singleton either.
+const DOLL_MAP = preload("res://Character_generator/Doll2Spine/universal/doll_character_map.gd")
 
 var parent: WeakRef = null
 
@@ -892,6 +894,15 @@ func _stored_hair(h_stat):
 	return statlist.get(h_stat)
 
 
+#A hair layer under the name get_combined_hairs_data reads.  Generation stores the short name (`bobcut`), but the
+#customize menu stores the art's own part id (`hair_base_bobcut`, `hairs_base_dopple`) - none of which the matches
+#knew, so a cut picked by hand left the length at 0 and the description called the character bald.
+func _described_hair_part(h_stat):
+	var value = str(statlist.get(h_stat, ''))
+	var short = DOLL_MAP.value_for_part(h_stat, value)
+	return short if short != '' else value
+
+
 func get_combined_hairs_data():
 	var res = {
 		hair_color ='',
@@ -901,7 +912,8 @@ func get_combined_hairs_data():
 	var lenghthes = ['bald', 'ear', 'neck', 'shoulder', 'waist', 'hips' ]
 	var color_parts = ['hair_base_color_1', 'hair_back_color_2', 'hair_assist_color_1']
 	var length = 0
-	match statlist.hair_base: #adjust as you see fit, length is not reverse-compartible with presets autoset
+	var hair_base = _described_hair_part('hair_base')
+	match hair_base: #adjust as you see fit, length is not reverse-compartible with presets autoset
 	#i hate this conversion to older constants, but we are using those - until descriptions are totally rewritten we need this
 		'braids' :
 			res.hair_style = 'twinbraids'
@@ -1042,8 +1054,12 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 				'short', 'default':
 					length = int(max(length, 1))
-	
-	match statlist.hair_assist:
+		_:
+			#a cut with no branch here yet is still hair on the head; only the length below says bald
+			if !DOLL_MAP.is_absent(hair_base):
+				length = int(max(length, 1))
+
+	match _described_hair_part('hair_assist'):
 		'braid':
 			res.hair_style = 'braid'
 			match exterior.hair_assist_length:
@@ -1091,8 +1107,9 @@ func get_combined_hairs_data():
 		_:
 			color_parts.erase('hair_assist_color_1')
 	
-	match statlist.hair_back: 
-		'very_long', 'double_tail', 'ponytail_long': 
+	#the art spells some backs its own way (`wawe`, `verylong1`), and those are what the customize menu writes
+	match _described_hair_part('hair_back'):
+		'very_long', 'double_tail', 'ponytail_long', 'verylong1', 'verylong_wave', 'double_tail_long':
 			length = 5
 #		'double_tail', 'ponytail_long' :
 #			color_parts.push_back('hair_back_color_1')
@@ -1112,7 +1129,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 2))
 				'short', 'default':
 					length = int(max(length, 2))
-		'spiral', 'straight', 'wave' :
+		'spiral', 'straight', 'wave', 'wawe' :
 			match exterior.hair_back_length:
 				'long':
 					length = int(max(length, 3))

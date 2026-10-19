@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/mansion_view.gd" type="Script" id=1]
 [ext_resource path="res://gui_modules/mansion_view/mansion_floor_grid.gd" type="Script" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://gui_modules/mansion_view/backdrop/glows_over_rooms.gd" type="Script" id=39]
 [ext_resource path="res://gui_modules/mansion_view/body_rites_panel.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gui_modules/mansion_view/enchant_panel.tscn" type="PackedScene" id=46]
+[ext_resource path="res://gui_modules/mansion_view/craft_panel.tscn" type="PackedScene" id=47]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/fog_over_rooms.gd" type="Script" id=42]
 [ext_resource path="res://gui_modules/mansion_view/backdrop/lamps_over_rooms.gd" type="Script" id=43]
 [ext_resource path="res://gui_modules/mansion_view/garden/garden_rain.tscn" type="PackedScene" id=44]
@@ -3013,6 +3014,9 @@ clip_text = true
 visible = false
 
 [node name="EnchantPanel" parent="Overlay" instance=ExtResource( 46 )]
+visible = false
+
+[node name="CraftPanel" parent="Overlay" instance=ExtResource( 47 )]
 visible = false
 
 [node name="PickPreview" type="TextureRect" parent="Overlay"]

@@ -89,6 +89,26 @@ func set_alt_form(value):
 			parent.get_ref().set_stat(stat, revert_appearance[stat])
 	parent.get_ref().set_stat('portrait_update', true)
 
+
+#Human form once cleared a demon's horns twice and never the wings, and left the demon ears: a demon saved
+#in human form still has them.
+func fix_old_save():
+	if !alt_form or parent.get_ref().get_stat('race') != 'Demon':
+		return
+	var person = parent.get_ref()
+	var changed = false
+	if !alt_appearance.has('wings'):
+		alt_appearance.wings = ''
+		person.set_stat('wings', '')
+		changed = true
+	if !alt_appearance.has('ears'):
+		revert_appearance.ears = person.get_stat('ears')
+		alt_appearance.ears = 'normal'
+		person.set_stat('ears', 'normal')
+		changed = true
+	if changed:
+		person.set_stat('portrait_update', true)
+
 #other
 func can_add_thrall():
 	return get_thrall_count() < get_thrall_max_count()
@@ -134,10 +154,13 @@ func gather_alt_appearance():
 				alt_appearance.horns = ''
 			revert_appearance.wings = parent.get_ref().get_stat('wings')
 			if !alt_appearance.has('wings'):
-				alt_appearance.horns = ''
+				alt_appearance.wings = ''
 			revert_appearance.tail = parent.get_ref().get_stat('tail')
 			if !alt_appearance.has('tail'):
 				alt_appearance.tail = ''
+			revert_appearance.ears = parent.get_ref().get_stat('ears')
+			if !alt_appearance.has('ears'):
+				alt_appearance.ears = 'normal'
 		_:
 			revert_appearance.body_color_skin = parent.get_ref().get_stat('body_color_skin')
 			if !alt_appearance.has('body_color_skin'):

@@ -4655,10 +4655,41 @@ var shrines = {
 		bless = '',
 		curse = '',
 	},
+	#the place of power picks nobody until its fight is won (power_place_enter): every step is a 'scene' option
+	power_place_spot = {
+		options = {
+			"step" : {input = 'scene', output = 'power_place_enter', text = 'STRANGE_SPOT_STEP'},
+		},
+		bless = '',
+		curse = '',
+	},
 	power_place = {
 		options = {
-			"fight" : {input = 'action', output = 'power_place_fight', text = 'POWER_PLACE_FIGHT'},
-			"flee" : {input = 'action', output = 'power_place_flee', text = 'POWER_PLACE_FLEE'},
+			"fight" : {input = 'scene', output = 'power_place_fight', text = 'POWER_PLACE_FIGHT'},
+			"flee" : {input = 'scene', output = 'power_place_flee', text = 'POWER_PLACE_FLEE'},
+		},
+		bless = '',
+		curse = '',
+	},
+	power_place_claim = {
+		options = {
+			"claim" : {input = 'scene', output = 'power_place_claim', text = 'POWER_PLACE_CLAIM_OPTION'},
+		},
+		bless = '',
+		curse = '',
+	},
+	#the same, when someone in the group has a flaw the power could burn out instead
+	power_place_claim_purge = {
+		options = {
+			"claim" : {input = 'scene', output = 'power_place_claim', text = 'POWER_PLACE_CLAIM_OPTION'},
+			"purge" : {input = 'scene', output = 'power_place_purge', text = 'POWER_PLACE_PURGE_CHOOSE_OPTION'},
+		},
+		bless = '',
+		curse = '',
+	},
+	power_place_purge = {
+		options = {
+			"back" : {input = 'scene', output = 'power_place_won', text = 'BACK'},
 		},
 		bless = '',
 		curse = '',
@@ -4816,48 +4847,143 @@ func meditation_convert(person):
 	meditation_way_back(dict)
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
-#Place of power, the strange spot's other half: stepping in calls an elite pack of this dungeon - one of its
-#own groups turned minibosses, as in the room before the stairs. The one who stepped in takes a trait from
-#the catalogue's power_place_traits after the win, or 300 experience when none of them fits - or, when they
-#have a negative physical or magic trait, the player may burn one of those out instead. Running away
-#closes the room for good.
-func power_place_fight(person):
+#Place of power, the strange spot's other half. Nobody is picked to step in: the ring flares as the group comes
+#near and shows what it holds - a trait from the catalogue's power_place_traits that someone in the group can
+#take, or 300 experience when none fits. The offer is rolled once and kept on the subroom, so a lost fight
+#brings the same one back. Standing ground calls an elite pack of this dungeon - one of its own groups turned
+#minibosses, as in the room before the stairs. After the win the player picks who claims the power, or -
+#when someone has a negative physical or magic trait - whose flaw it burns out instead. Running away closes
+#the room for good.
+const POWER_PLACE_EXP = 300
+
+#shrine names the Enemydata.shrines entry whose 'scene' options the scene carries
+func power_place_scene(text, shrine = ''):
+	var dict = {text = text, image = 'energy', options = [], tags = ['dialogue_scene'], common_effects = []}
+	if shrine != '':
+		dict.tags.append('shrine')
+		dict.shrine = shrine
+	return dict
+
+#the subroom the ring stands in, which keeps its offer
+func power_place_subroom():
+	var dungeon = gui_controller.exploration_dungeon
+	return ResourceScripts.game_world.rooms[dungeon.selected_room].subrooms[dungeon.active_subroom]
+
+#the ones who could step into the ring: the fighting party, here
+func power_place_party_reqs():
+	return [{code = 'is_at_location', value = input_handler.active_location.id, check = true}, {code = 'in_combat_party', value = true}]
+
+func power_place_party():
+	var res = []
+	var here = power_place_party_reqs()
+	for person in ResourceScripts.game_party.characters.values():
+		if person.checkreqs(here):
+			res.append(person)
+	return res
+
+#who may take the trait: room for it, and none of the traits it conflicts with
+func power_place_trait_reqs(code):
+	var res = [{code = 'trait_offer', trait = code, check = true}]
+	for other in Traitdata.traits[code].get('conflicts', []):
+		res.append({code = 'trait', trait = other, check = false})
+	return res
+
+func power_place_takers(code):
+	var res = []
+	var reqs = power_place_trait_reqs(code)
+	for person in power_place_party():
+		if person.checkreqs(reqs):
+			res.append(person)
+	return res
+
+#the trait the ring holds, '' for experience
+func power_place_offer():
+	var subroom = power_place_subroom()
+	if subroom.has('power_trait'):
+		return subroom.power_trait
+	var open = []
+	for code in Traitdata.catalogue.power_place_traits:
+		if !power_place_takers(code).empty():
+			open.append(code)
+	subroom.power_trait = ''
+	if !open.empty():
+		subroom.power_trait = input_handler.random_from_array(open)
+	return subroom.power_trait
+
+#"Troll Blood · Physical" over what it does
+func power_place_trait_line(code):
+	var data = Traitdata.traits[code]
+	return "{color=yellow|%s} · %s\n%s" % [tr(data.name), globals.get_trait_tag_line(data.category), tr(data.descript)]
+
+func power_place_enter():
+	var code = power_place_offer()
+	var text = tr('POWER_PLACE_REVEAL') + "\n\n"
+	if code != '':
+		text += tr('POWER_PLACE_OFFER') + "\n" + power_place_trait_line(code)
+	else:
+		text += tr('POWER_PLACE_OFFER_EXP')
+	input_handler.interactive_message_follow(power_place_scene(text, 'power_place'), 'direct', {})
+
+func power_place_fight():
 	var dungeon = gui_controller.exploration_dungeon
 	globals.reset_roll_data()
 	var group = input_handler.weightedrandom(dungeon.active_location.enemies)
 	var data = {enemy_code = group, enemies = globals.makerandomgroup(enemygroups[group]), rare = false, miniboss = true}
-	data.win_effects = [{code = 'start_event', data = power_place_reward(person), args = {set_active_character = person.id}}]
+	data.win_effects = [{code = 'start_event', data = power_place_won_scene()}]
 	dungeon.StartCombat(data)
 	gui_controller.dialogue.close()
 
-func power_place_reward(person):
-	var open = []
-	for code in Traitdata.catalogue.power_place_traits:
-		if person.can_add_trait(code) and person.preview_trait_offer(code) != 'skip':
-			open.append(code)
-	var gift = {code = 'affect_active_character', type = 'stat', stat = 'base_exp', value = 300}
-	if !open.empty():
-		gift = {code = 'affect_active_character', type = 'add_trait', trait = input_handler.random_from_array(open)}
-	var flaws = power_place_flaws(person)
-	var dict
-	if flaws.empty():
-		dict = meditation_scene(tr('POWER_PLACE_WON' if !open.empty() else 'POWER_PLACE_WON_EXP'))
-		dict.image = 'energy_control'
-		dict.common_effects += [gift, {code = 'clear_subroom'}, {code = 'update_party'}]
-		dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
-		return dict
-	#a flaw to burn out: the power waits for the player's word, and the room is spent either way
-	dict = meditation_scene(tr('POWER_PLACE_WON_CHOICE'))
-	dict.image = 'energy_control'
-	dict.common_effects += [{code = 'clear_subroom'}, {code = 'update_party'}]
-	if !open.empty():
-		dict.options.append({code = 'power_place_gift', reqs = [], text = 'POWER_PLACE_GIFT_OPTION', bonus_effects = [gift]})
+#after the win the power waits over the ring for someone to claim it
+func power_place_won_scene():
+	var code = power_place_offer()
+	var text = tr('POWER_PLACE_CLAIM') + "\n\n"
+	if code != '':
+		text += power_place_trait_line(code)
 	else:
-		dict.options.append({code = 'power_place_exp', reqs = [], text = 'POWER_PLACE_EXP_OPTION', bonus_effects = [gift]})
-	for code in flaws:
-		var line = tr('POWER_PLACE_PURGE_OPTION').replace('{trait}', tr(Traitdata.traits[code].name))
-		dict.options.append({code = 'power_place_purged', reqs = [], text = line, bonus_effects = [{code = 'affect_active_character', type = 'remove_trait', trait = code}]})
+		text += tr('POWER_PLACE_CLAIM_EXP')
+	var dict = power_place_scene(text, 'power_place_claim' if power_place_flawed().empty() else 'power_place_claim_purge')
+	dict.image = 'energy_control'
 	return dict
+
+#back from someone's flaws to the power itself
+func power_place_won():
+	input_handler.scene_characters.clear()
+	input_handler.interactive_message_follow(power_place_won_scene(), 'direct', {})
+
+func power_place_claim():
+	var code = power_place_offer()
+	if code != '' and power_place_takers(code).empty():
+		#whoever could take it fell in the fight: what is left only teaches
+		code = ''
+		power_place_subroom().power_trait = code
+	var reqs = power_place_party_reqs()
+	var prompt = tr('POWER_PLACE_CLAIM_PROMPT_EXP')
+	if code != '':
+		reqs += power_place_trait_reqs(code)
+		prompt = tr('POWER_PLACE_CLAIM_PROMPT').replace('{trait}', tr(Traitdata.traits[code].name))
+	input_handler.ShowSlaveSelectPanel(self, 'power_place_claimed', reqs, false, null, prompt)
+
+#a full slot asks which trait gives way before anything is given; keeping it leaves the power waiting
+func power_place_claimed(person):
+	if power_place_offer() == '':
+		power_place_take('', person)
+		return
+	input_handler.get_spec_node(input_handler.NODE_TRAIT_REPLACE, null, true, false).ask_first(person, power_place_offer(), self, 'power_place_take', [person])
+
+func power_place_take(old_code, person):
+	var code = power_place_offer()
+	if old_code != '':
+		#the add_trait below writes over the trait picked here instead of asking again
+		person.dyn_stats.set_trait_choice(code, old_code)
+	var dict = meditation_scene(tr('POWER_PLACE_GIFT' if code != '' else 'POWER_PLACE_EXP_TAKEN'))
+	dict.image = 'energy_control'
+	if code != '':
+		dict.common_effects.append({code = 'affect_active_character', type = 'add_trait', trait = code})
+	else:
+		dict.common_effects.append({code = 'affect_active_character', type = 'stat', stat = 'base_exp', value = POWER_PLACE_EXP})
+	dict.common_effects += [{code = 'clear_subroom'}, {code = 'update_party'}]
+	dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
+	input_handler.interactive_message_follow(dict, 'direct', {set_active_character = person.id, scene_characters_add = [person.id]})
 
 #the negative physical and magic traits the place of power can burn out: the character's own, neither locked nor hidden
 func power_place_flaws(person):
@@ -4868,11 +4994,34 @@ func power_place_flaws(person):
 				res.append(code)
 	return res
 
-func power_place_flee(person):
-	var dict = meditation_scene(tr('POWER_PLACE_FLED'))
+#ids of the group with a flaw to burn out
+func power_place_flawed():
+	var res = []
+	for person in power_place_party():
+		if !power_place_flaws(person).empty():
+			res.append(person.id)
+	return res
+
+func power_place_purge():
+	var reqs = power_place_party_reqs() + [{code = 'is_id', operant = 'in', value = power_place_flawed(), silent = true}]
+	input_handler.ShowSlaveSelectPanel(self, 'power_place_purge_chosen', reqs, false, null, tr('POWER_PLACE_PURGE_PROMPT'))
+
+func power_place_purge_chosen(person):
+	var dict = meditation_scene(tr('POWER_PLACE_PURGE_PICK'))
+	dict.image = 'energy_control'
+	for code in power_place_flaws(person):
+		var line = tr('POWER_PLACE_PURGE_OPTION').replace('{trait}', tr(Traitdata.traits[code].name))
+		dict.options.append({code = 'power_place_purged', reqs = [], text = line, bonus_effects = [{code = 'affect_active_character', type = 'remove_trait', trait = code}]})
+	#Back goes under the flaws, so it is added by hand rather than through the 'shrine' tag
+	dict.shrine = 'power_place_purge'
+	dict.options.append({code = 'shrine_option', args = ['back'], reqs = [], text = 'BACK'})
+	input_handler.interactive_message_follow(dict, 'direct', {set_active_character = person.id, scene_characters_add = [person.id]})
+
+func power_place_flee():
+	var dict = power_place_scene(tr('POWER_PLACE_RAN'))
 	dict.common_effects.append({code = 'clear_subroom'})
 	dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
-	input_handler.interactive_message_follow(dict, 'direct', [])
+	input_handler.interactive_message_follow(dict, 'direct', {})
 
 func shrine_faith(person, god):
 	var res = {effects = [], text = '', believer = false}

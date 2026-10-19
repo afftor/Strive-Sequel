@@ -1537,14 +1537,14 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("oblivion_potion", 10))
 		globals.AddItemToInventory(globals.CreateUsableItem("skillbook_hyperborea", 3))
 		globals.AddItemToInventory(
-			globals.CreateGearItemShop("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+			globals.CreateGearItemShop("axe_pick", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop("dagger", {WeaponHandle = 'wood', Blade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItemShop("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+			globals.CreateGearItemShop("dishware", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop("staffadv", {Rod = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})

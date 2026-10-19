@@ -290,7 +290,7 @@ var loot_tables = {
 		{item = 'sword', quality = 'poor', amount = 1, parts = {WeaponHandle = 'wood', Blade = 'iron'}},
 		{item = 'chest_base_leather', quality = 'poor', amount = 1, parts = {ArmorBaseMed = 'leather', ArmorTrim = 'wood'}}]},
 	workers_join_reward = {list = [
-		{item = 'axe', quality = 'poor', amount = 1, parts = {ToolHandle = 'wood', ToolBlade = 'iron'}},
+		{item = 'axe_pick', quality = 'poor', amount = 1, parts = {ToolHandle = 'wood', ToolBlade = 'iron'}},
 		{item = 'worker_outfit', amount = 1}]},#autoassign_quality = true
 	servants_join_reward = {list = [
 		{item = 'elegant_choker', amount = 1},#autoassign_quality = true
@@ -394,11 +394,11 @@ var loot_tables = {
 			{item = 'club'}]},
 		{repeat_min = 3, repeat_max = 6, chance = 0.8, selector = [
 			{item = 'sword'},
-			{item = 'axe'},
+			{item = 'axe_pick'},
 			{item = 'spear'},
 			{item = 'mace'},
 			{item = 'battleaxe'},
-			{item = 'pickaxe'},
+			{item = 'dishware'},
 			{item = 'hammer'},
 			{item = 'fishingtools'},
 			{item = 'sickle'},
@@ -493,7 +493,7 @@ var loot_tables = {
 			{item = 'mace'},
 			{item = 'battleaxe'},
 			{item = 'spear'},
-			{item = 'pickaxe'},
+			{item = 'axe_pick'},
 			{item = 'hammer'},
 			{item = 'shield'}]},
 		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
@@ -589,8 +589,8 @@ var loot_tables = {
 		{item = 'lifeshard', min = 2, max = 6, chance = 0.9},
 		{material = 'bandage', min = 4, max = 6, chance = 0.8},
 		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
-			{item = 'axe'},
-			{item = 'pickaxe'},
+			{item = 'axe_pick'},
+			{item = 'dishware'},
 			{item = 'fishingtools'},
 			{item = 'sickle'},
 			{item = 'club'},
@@ -618,7 +618,7 @@ var loot_tables = {
 		{item = 'lifeshard', min = 3, max = 6, chance = 0.9},
 		{material = 'bandage', min = 3, max = 5, chance = 0.9},
 		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
-			{item = 'axe'},
+			{item = 'axe_pick'},
 			{item = 'sickle'},
 			{item = 'club'},
 			{item = 'shield'},
@@ -842,15 +842,15 @@ var loot_tables = {
 	rq_workers_resources_easy = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.4, 1.5]},
 		{weight = 0.3, selector = [
-			{item = 'axe', parts = [['rq_easy', 5], ['rq_medium', 1]]},
-			{item = 'pickaxe', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+			{item = 'axe_pick', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+			{item = 'dishware', parts = [['rq_easy', 5], ['rq_medium', 1]]},
 			{item = 'sickle', parts = [['rq_easy', 5], ['rq_medium', 1]]}]}
 		]},
 	rq_workers_resources_medium = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.5, 1.8]},
 		{weight = 0.3, selector = [
-			{item = 'axe', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
-			{item = 'pickaxe', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'axe_pick', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'dishware', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
 			{item = 'sickle', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
 			{item = 'hammer', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
 			{item = 'fishingtools', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]}]}
@@ -938,16 +938,16 @@ var loot_tables = {
 	rq_workers_threat_easy = {selector = [
 		{weight = 1.0, gold = true, min = 100, max = 150},
 		{weight = 1.0, selector = [
-			{item = 'axe', parts = [['rq_easy', 5], ['rq_medium', 2]]},
-			{item = 'pickaxe', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'axe_pick', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'dishware', parts = [['rq_easy', 5], ['rq_medium', 2]]},
 			{item = 'sickle', parts = [['rq_easy', 5], ['rq_medium', 2]]}]},
 		{weight = 0.5, item = 'worker_outfit'}
 		]},
 	rq_workers_threat_medium = {selector = [
 		{weight = 1.0, gold = true, min = 250, max = 400},
 		{weight = 1.0, selector = [
-			{item = 'axe', parts = [['rq_easy', 1], ['rq_medium', 3]]},
-			{item = 'pickaxe', parts = [['rq_easy', 1], ['rq_medium', 3]]},
+			{item = 'axe_pick', parts = [['rq_easy', 1], ['rq_medium', 3]]},
+			{item = 'dishware', parts = [['rq_easy', 1], ['rq_medium', 3]]},
 			{item = 'sickle', parts = [['rq_easy', 1], ['rq_medium', 3]]},
 			{item = 'hunt_knife', parts = [['rq_easy', 1], ['rq_medium', 3]]}]},
 		]},

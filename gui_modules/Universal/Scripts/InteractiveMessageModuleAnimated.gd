@@ -423,10 +423,16 @@ func add_character_trait_feedback(character, trait_code, change, mode = 'ask'):
 	match change:
 		"add_trait":
 			var offer = character.preview_trait_offer(trait_code, mode) if !hidden else 'skip'
+			var lost = ''
 			if offer == 'replace':
-				var lost = character.dyn_stats.get_forced_replacement(trait_code)
-				if !character.is_trait_hidden(lost):
-					add_trait_feedback_line(character, lost, "EVENT_EFFECT_TRAIT_LOST")
+				lost = character.dyn_stats.get_forced_replacement(trait_code)
+			elif offer == 'ask':
+				#a slot picked ahead (a temple's conversion) is written over without asking again
+				lost = character.dyn_stats.get_trait_choice(trait_code)
+				if lost != '':
+					offer = 'replace'
+			if lost != '' and !character.is_trait_hidden(lost):
+				add_trait_feedback_line(character, lost, "EVENT_EFFECT_TRAIT_LOST")
 			if offer in ['add', 'replace']:
 				message_key = "EVENT_EFFECT_TRAIT_GAINED"
 		"remove_trait":
@@ -632,9 +638,9 @@ func add_recruit_option(scene):
 	if char2 != null:
 		scene.options.insert(1,{code = 'recruit_option', reqs = [], text = "DIALOGUERECRUITATTEMPT"})
 		#needs rework. but idk how it was intended - for now it is not working that way definetely
-		if char2.has_profession("succubus") || char2.has_profession("true_succubus"):
-			scene.options.insert(1, {code = 'recruit_succubus', reqs = [{type = 'active_character_checks', value = [{code = 'has_any_profession', value = ['succubus','true_succubus']}, {code = 'stat', stat = 'mp', operant = 'gte', value = 30}]}], text = "DIALOGUERECRUITSUCCUBUS"})
-		elif char2.has_profession("succubus") || char2.has_profession("true_succubus") && char2.get_stat('lust') < 30:
+		if char2.check_trait("succubus"):
+			scene.options.insert(1, {code = 'recruit_succubus', reqs = [{type = 'active_character_checks', value = [{code = 'trait', trait = 'succubus', check = true}, {code = 'stat', stat = 'mp', operant = 'gte', value = 30}]}], text = "DIALOGUERECRUITSUCCUBUS"})
+		elif char2.check_trait("succubus") && char2.get_stat('lust') < 30:
 			scene.options.insert(1, {code = 'recruit_succubus', disabled = true, reqs = [], text = "DIALOGUERECRUITSUCCUBUS"})
 
 func recruit_option_safe():
@@ -718,6 +724,8 @@ func add_shrine_options(scene):
 				scene.options.insert(0,{code = 'shrine_option', args = ['select_item'], reqs = [], text = "DIALOGUESHRINEEQUIP"})
 			'action':
 				scene.options.insert(0,{code = 'shrine_option', args = [i], active_char_translate = true, reqs = shrineoptions[i].get('reqs', []), text = shrineoptions[i].text})
+			'scene':
+				scene.options.insert(0,{code = 'shrine_option', args = [i], reqs = shrineoptions[i].get('reqs', []), text = shrineoptions[i].text})
 
 
 func shrine_option(option):
@@ -741,12 +749,15 @@ func shrine_option(option):
 		'item_selected':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['item'].output, selected_item)
 		_:
-			#an 'action' option goes by its own name and acts on the character chosen at the shrine
+			#an 'action' option goes by its own name and acts on the character chosen at the shrine;
+			#a 'scene' one has nobody chosen and builds what comes next itself
 			var data = Enemydata.shrines[current_scene.shrine].options.get(option)
 			if data != null and data.input == 'action':
 				input_handler.append_not_duplicate(input_handler.scene_characters, input_handler.active_character)
 				update_scene_characters()
 				Enemydata.call(data.output, input_handler.active_character)
+			elif data != null and data.input == 'scene':
+				Enemydata.call(data.output)
 
 
 func select_item_for_next_event(option):
@@ -953,9 +964,10 @@ func select_person_for_next_event(option): #needs a rework
 	if option.has('dialogue_argument'):
 		stored_argument = option.dialogue_argument
 	stored_loses_person = option.get('loses_person', false)
+	stored_trait_confirm = option.get('trait_confirm', {})
 	unique_loss_person = null
 
-	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, false, req_data.challenge)
+	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, false, req_data.challenge, tr(option.get('select_prompt', '')))
 
 
 func remove_person(code):
@@ -996,7 +1008,21 @@ func event_person_selected(person):
 	if stored_scene == 'lockpick_attempt':
 		lockpick_attempt(person)
 		return
-	var data = scenedata.scenedict[stored_scene]
+	#trait_confirm = {trait, title, lead, keep}: the slot the trait takes is picked first, and keeping the old
+	#one stays on this scene; the next scene pays and adds the trait (add_trait spends the pick)
+	if !stored_trait_confirm.empty():
+		input_handler.get_spec_node(input_handler.NODE_TRAIT_REPLACE, null, true, false).confirm_first(person, stored_trait_confirm.trait, self, 'event_person_trait_confirmed', [person], stored_trait_confirm)
+		return
+	follow_stored_scene()
+
+
+func event_person_trait_confirmed(old_code, person):
+	person.dyn_stats.set_trait_choice(stored_trait_confirm.trait, old_code)
+	input_handler.active_character = person
+	follow_stored_scene()
+
+
+func follow_stored_scene():
 	var event_type = 'story_event'
 	if scenedata.scenedict[stored_scene].has('default_event_type'):
 		event_type = scenedata.scenedict[stored_scene].default_event_type
@@ -1128,6 +1154,7 @@ func noble_loss_no():
 
 
 var stored_loses_person = false
+var stored_trait_confirm = {}
 var unique_loss_person = null
 var unique_loss_fn = ''
 
