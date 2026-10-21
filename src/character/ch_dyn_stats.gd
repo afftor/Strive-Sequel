@@ -1942,6 +1942,12 @@ func get_buff_number(status):
 		if ef_stack.code != status:
 			continue
 		if ef_stack.template['type'] == 'stack_a':
+			#A show_amount stack shows how many of its effects are active, so count those. Reading the
+			#number off its built buff gave 0 inside a stat rebuild: generate_data checks 'simple'
+			#effect conditions before update_buffs, and leon's bloodthrist_t5 never switched on.
+			if ef_stack.template.has('buff') and Effectdata.buffs[ef_stack.template.buff].get('tags', []).has('show_amount'):
+				result += ef_stack.get_active_effects().size()
+				continue
 			if ef_stack.buffs.empty():
 				continue
 			if ef_stack.buffs[0].tags.has('show_amount'):

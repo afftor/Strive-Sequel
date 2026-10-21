@@ -2580,6 +2580,41 @@ Gain {color=aqua|Blackened Blade}.""",
 Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
 The last hit deals increased damage.
 {color=red|On Kill: Reset cooldown.}""",
+	SKILLERDYNA_LETS_SEE_WHAT_YOU_GOT = "Let's See What You Got",
+	SKILLERDYNA_LETS_SEE_WHAT_YOU_GOTDESCRIPT = """Cannot target an enemy affected by {color=aqua|Subject of Observation} or {color=aqua|Evaluated}.
+Before the hit, remove {color=aqua|In the Shadow} from the target and {color=aqua|Blind} from self.
+Deals 80% of ATK as physical damage to an enemy.
+Hit or miss, inflict {color=aqua|Subject of Observation} on the target and gain {color=aqua|Observing}.""",
+	SKILLERDYNA_SLICE_AND_DIVE = "Slice & Dive",
+	SKILLERDYNA_SLICE_AND_DIVEDESCRIPT = """Deals 90% of ATK as physical damage to a row of enemies.
+If the user is not {color=aqua|Ensnared}, strike a random row once more.""",
+	SKILLERDYNA_ASSAULT_AND_BATTERY = "Assault & Battery",
+	SKILLERDYNA_ASSAULT_AND_BATTERYDESCRIPT = """Deals 75% of ATK as physical damage to an enemy 2 times.
+On hit, if the target has more than 50% HP, inflict {color=aqua|Shred} for 2 turns.""",
+	SKILLERDYNA_NAIL_IT = "Nail it!",
+	SKILLERDYNA_NAIL_ITDESCRIPT = """Toss the dagger, dealing 50% of ATK as physical damage to an enemy. The toss has +100 Hit Rate against a target affected by {color=aqua|Subject of Observation} or {color=aqua|Evaluated}.
+If it hits, follow up with a melee strike against the same target that deals 120% of ATK and cannot miss.
+The melee strike inflicts {color=aqua|Impale} if the target is affected by {color=aqua|Bleed}.""",
+	SKILLERDYNA_DECEPTIVE_RUSE = "Deceptive Ruse",
+	SKILLERDYNA_DECEPTIVE_RUSEDESCRIPT = """Can be used while {color=aqua|Disarmed}.
+Remove all negative effects from self.
+Stun 1-3 random enemies for 1 turn. A target that cannot be stunned is {color=aqua|Disarmed} and {color=aqua|Silenced} for 1 turn instead.""",
+	SKILLERDYNA_RULES_OF_THE_BACKSTREET = "Rules of the Backstreet",
+	SKILLERDYNA_RULES_OF_THE_BACKSTREETDESCRIPT = """Can be used while {color=aqua|Disarmed}.
+Deals 150% of ATK as physical damage to an enemy.
+If the user is not {color=aqua|Disarmed}, inflict 1 {color=aqua|Fragile} on hit.
+Repeat once for each stack of {color=aqua|Battle Precognition}.
+On kill, gain {color=aqua|Battle Precognition}.""",
+	SKILLERDYNA_HOW_PREDICTABLE = "How Predictable~",
+	SKILLERDYNA_HOW_PREDICTABLEDESCRIPT = """Can only be used while {color=aqua|Observing}. Can be used while {color=aqua|Disarmed}.
+Consume {color=aqua|Observing} to gain {color=aqua|Battle Precognition}.
+Heal self for 10% of Max HP.
+Turn every {color=aqua|Subject of Observation} on enemies into {color=aqua|Evaluated}.""",
+	SKILLERDYNA_EQUALIZER = "Equalizer",
+	SKILLERDYNA_EQUALIZERDESCRIPT = """Deals 100% of ATK as physical damage to an enemy. A miss turns into a hit that deals half damage.
+After the hit, the target taunts the user for 4 turns, and every other enemy takes 50% of the user's ATK as damage and is {color=aqua|Subdued} for 2 turns.""",
+	SKILLERDYNA_OBSERVATION_LOST = "Lost Sight",
+	SKILLERDYNA_OBSERVATION_LOSTDESCRIPT = "Remove {color=aqua|Subject of Observation} from all enemies.",
 	SKILLOMINOUS_WHISPERS = "Ominous Whispers",
 	SKILLOMINOUS_WHISPERSDESCRIPT = "Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.",
 	SKILLHEXED_COFFIN_NAIL = "Hexed Coffin Nail",
@@ -6280,6 +6315,51 @@ This effect is removed if the applier fell for a taunt or is immobilised.""",
 	EFFECTNAME_BLACKEN_BLADE = "Blacken Blade",
 	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
 All attacks have a 20% chance to inflict Bleed.""",
+	EFFECT_ERDYNA_HARDY_CONSTITUTION_DESCRIPT = """Hardy Constitution:
+Take further reduced damage from DoT effects.
+Immune to Burn. +50 Fire resist.
+30% chance to reduce physical damage taken by 50%.
+Gain Unstoppable when HP drops below 50%.""",
+	EFFECT_ERDYNA_DRACONIC_CONSTITUTION_DESCRIPT = """Draconic Constitution:
+Take further reduced damage from DoT effects.
+Immune to Burn. +50 Fire resist.
+30% chance to reduce physical damage taken by 50%.
+Gain Unstoppable when HP drops below 50%.""",
+	EFFECT_ERDYNA_KING_OF_BANDITS_DESCRIPT = """King of Bandits:
+Immune to Provoke.
+When attacked in melee while Disarmed, 50% chance to remove Disarm from self and Disarm the attacker for 2 turns.
+At the start of combat, and when HP drops below 50% for the first time, use Equalizer on a random enemy.""",
+	EFFECT_ERDYNA_HOARDER_INCISOR_DESCRIPT = """Hoarder Incisor:
+While not Disarmed, physical attacks have a 25% chance to inflict Bleed for 2 turns and a 30% chance to remove a random positive effect from the target.
+A target that cannot be Disarmed, such as one under Hardened Grip, keeps its positive effects.""",
+	EFFECT_ERDYNA_HOW_COULD_YOU_DESCRIPT = """How could you...:
+Deal 20% more damage to you.""",
+	EFFECTNAME_ERDYNA_OBSERVING = "Observing",
+	EFFECT_ERDYNA_OBSERVING = """+150 Evasion. Allows the use of How Predictable~.
+When struck by a physical attack or Blinded, lose this effect and free every enemy from Subject of Observation.""",
+	EFFECTNAME_ERDYNA_SUBJECT_OF_OBSERVATION = "Subject of Observation",
+	EFFECT_ERDYNA_SUBJECT_OF_OBSERVATION = """-25% ATK and MATK. -25 Hit Rate and Evasion.
+Removed when Erdyna loses Observing or when the battle ends.""",
+	EFFECTNAME_ERDYNA_EVALUATED = "Evaluated",
+	EFFECT_ERDYNA_EVALUATED = """-50% ATK and MATK. -50 Hit Rate and Evasion. Take 20% more damage.
+Removed when the battle ends.""",
+	EFFECTNAME_ERDYNA_BATTLE_PRECOGNITION = "Battle Precognition",
+	EFFECT_ERDYNA_BATTLE_PRECOGNITION = """+20 ATK, +10% Crit Rate, +20 Hit Rate and +10% damage reduction per stack (Max 6).
+At 3+ stacks: immune to Disarm.""",
+	EFFECT_ERDYNA_EQUALIZER_FOCUS = "Taunted by the target of Equalizer.",
+	EFFECTNAME_ERDYNA_SUBDUED = "Subdued",
+	EFFECT_ERDYNA_SUBDUED = """-50 Hit Rate. Damaging spells have a 25% chance to miss.
+Melee attacks and non-damaging skills used on enemies always miss.
+-75% outgoing healing.
+Under Blood Boil, the duration drops by one extra turn at the end of each turn.""",
+	ERDYNA_EQUALIZER_OPENING = """
+Erdyna: Let's even the odds a little.""",
+	ERDYNA_EQUALIZER_HALF_HP = """
+Erdyna: Fine. No more playing around!""",
+	ERDYNA_OBSERVATION_BROKEN = """
+Erdyna loses her focus - the observation is broken!""",
+	ERDYNA_DISARM_REVERSAL = """
+Erdyna snatches her blade back and turns the grip against the attacker!""",
 	EFFECT_CURSED_GIRL_DESCRIPT = "Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.",
 	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = "Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.",
 	SEB_RILU_ATTACK = """
@@ -10026,6 +10106,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYCOAL_MOAB = "Mother of All Bombs",
 	ENEMYKURO = "Kuro",
 	ENEMYERDYNA = "Erdyna",
+	ENEMYERDYNA_BETRAYAL = "Erdyna",
 	ENEMYNIXX = "Nixx",
 	ENEMYUNLIT_BRAZIER = "Unlit Brazier",
 	ENEMYLIGHTED_BRAZIER = "Lighted Brazier",

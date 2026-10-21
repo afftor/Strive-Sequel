@@ -292,7 +292,7 @@ var effects = {
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 4,
-		tags = ['buff'],
+		tags = ['buff', 'bloodboil'],
 		statchanges = {atk_add_part = 0.25, resist_stun = 200, resist_wet = 200, resist_fear = 200},
 		buffs = [
 			{
