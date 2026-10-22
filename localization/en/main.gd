@@ -6327,7 +6327,7 @@ Immune to Burn. +50 Fire resist.
 Gain Unstoppable when HP drops below 50%.""",
 	EFFECT_ERDYNA_KING_OF_BANDITS_DESCRIPT = """King of Bandits:
 Immune to Provoke.
-When attacked in melee while Disarmed, 50% chance to remove Disarm from self and Disarm the attacker for 2 turns.
+When being melee attacked while Disarmed, 50% chance to remove Disarm from self and Disarm the attacker for 2 turns.
 At the start of combat, and when HP drops below 50% for the first time, use Equalizer on a random enemy.""",
 	EFFECT_ERDYNA_HOARDER_INCISOR_DESCRIPT = """Hoarder Incisor:
 While not Disarmed, physical attacks have a 25% chance to inflict Bleed for 2 turns and a 30% chance to remove a random positive effect from the target.
@@ -6353,9 +6353,11 @@ Melee attacks and non-damaging skills used on enemies always miss.
 -75% outgoing healing.
 Under Blood Boil, the duration drops by one extra turn at the end of each turn.""",
 	ERDYNA_EQUALIZER_OPENING = """
-Erdyna: Let's even the odds a little.""",
+Erdyna: Let's even the odds a little.
+""",
 	ERDYNA_EQUALIZER_HALF_HP = """
-Erdyna: Fine. No more playing around!""",
+Erdyna: Fine. No more playing around!
+""",
 	ERDYNA_OBSERVATION_BROKEN = """
 Erdyna loses her focus - the observation is broken!""",
 	ERDYNA_DISARM_REVERSAL = """

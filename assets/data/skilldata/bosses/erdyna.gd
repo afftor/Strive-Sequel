@@ -65,10 +65,10 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		keep_target = variables.TARGET_NOKEEP,
-		next_target = variables.NT_ANY,
+		next_target = variables.NT_MELEE,
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'provocation', target = 'caster', period = 'windup'},
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'},
 			{code = 'strike', target = 'target', period = 'predamage'},
 		],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
@@ -196,7 +196,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.25, arc = 45.0, boom_size = 150.0, size = 1.1},],
+		sfx = [{code = 'leader_mark', target = 'target', period = 'predamage'},{code = 'provocation', target = 'caster', period = 'windup'},],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
 		random_factor_p = 0.1,
@@ -225,7 +225,7 @@ var skills = {
 		next_target = variables.NT_ANY,
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'strike', target = 'target', period = 'predamage'},
+			{code = 'strike', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
 		],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
@@ -264,7 +264,9 @@ var skills = {
 		next_target = variables.NT_MELEE,
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'strike', target = 'target', period = 'predamage'},
+			{code = '', code_repeat = {
+				1 : "targetattack", 2 : "back_kick",}, 
+				target = 'target', period = 'predamage', duration = 0.2, hit_motion = 'squash', no_repeat_delays = true},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
 		],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
@@ -331,7 +333,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		sfx = [{code = 'smokescreen', target = 'target_group', period = 'windup'}],
-		sounddata = {initiate = null, strike = null, hit = null, hittype = null},
+		sounddata = {initiate = null, strike = 'spell_void', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
 		critchance = 0,
@@ -358,7 +360,7 @@ var skills = {
 		next_target = variables.NT_MELEE,
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'execution', target = 'target', period = 'predamage'},
+			{code = 'execution', target = 'target', period = 'predamage',sync_to_hit = true, hit_motion = 'tilt'},
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
 		],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
@@ -434,10 +436,9 @@ var effects = {
 		statchanges = {},
 		buffs = ['b_erdyna_draconic_constitution_display'],
 	},
-	#greg_final_stand's DoT numbers, on top of boss_resists
 	erdyna_constitution = {
 		type = 'simple',
-		statchanges = {bleed_damage = 0.20, poison_damage = 0.33, burn_damage = 0.33, darkflame_damage = 0.33, resist_burn_set = 200, resist_fire = 50},
+		statchanges = {bleed_damage = 0.20, poison_damage = 0.15, burn_damage = 0.2, darkflame_damage = 0.33, resist_burn_set = 200, resist_fire = 50},
 	},
 	erdyna_constitution_guard = {
 		type = 'trigger',
@@ -498,7 +499,7 @@ var effects = {
 	#melee attacker while she is disarmed: 50% to hand the disarm back to them
 	erdyna_disarm_reversal = {
 		type = 'trigger',
-		trigger = [variables.TR_POST_TARG],
+		trigger = [variables.TR_PREDEF],
 		req_skill = true,
 		conditions = [
 			{type = 'owner', value = [{code = 'has_status', status = 'disarm', check = true}]},
@@ -897,11 +898,11 @@ var buffs = {
 		description = "EFFECT_ERDYNA_DRACONIC_CONSTITUTION_DESCRIPT",
 	},
 	b_erdyna_king_of_bandits_display = {
-		icon = "res://assets/images/iconsskills/Authority.png",
+		icon = "res://assets/images/iconsclasses/thief.png",
 		description = "EFFECT_ERDYNA_KING_OF_BANDITS_DESCRIPT",
 	},
 	b_erdyna_hoarder_incisor_display = {
-		icon = "res://assets/images/iconsskills/swipe.png",
+		icon = "res://assets/images/iconsclasses/assassin.png",
 		description = "EFFECT_ERDYNA_HOARDER_INCISOR_DESCRIPT",
 	},
 	b_erdyna_how_could_you_display = {
@@ -932,6 +933,7 @@ var buffs = {
 	b_erdyna_subdued = {
 		icon = "res://assets/images/iconsskills/Magic Shackles.png",
 		description = "EFFECT_ERDYNA_SUBDUED",
+		aura = 'stun',
 	},
 }
 var stacks = {
