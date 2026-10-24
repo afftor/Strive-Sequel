@@ -1122,7 +1122,7 @@ var effects = {
 		tick_event = [variables.TR_NONE],
 		rem_event = [variables.TR_COMBAT_F],
 		tags = ['debuff', 'disable', 'jd_comatose'],
-		statchanges = {},
+		statchanges = { counterattacks_max_set = 0 },
 		buffs = ['b_jd_comatose'],
 	},
 	#Anything he throws passes straight over a sleeper - which is also what keeps the wave from
