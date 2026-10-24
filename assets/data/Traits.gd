@@ -564,14 +564,7 @@ var traits = {
 #		effects = [],
 #		tags = ['summon_dog']
 #	},
-	succubus = {#+100% exp from prostitution
-		code = 'succubus',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default', 'succubus_thralls_0', 'succubus_thralls_1', 'succubus_thralls_2', 'succubus_thralls_3', 'succubus_thralls_4', 'succubus_thralls_5', 'succubus_thralls_6', ],
-	}, #hardcoded
+	#succubus itself is a magic trait in trait_catalogue.gd
 	succubus_magic = {
 		code = 'succubus_magic',
 		name = '',
@@ -1858,6 +1851,54 @@ var traits = {
 		icon = null,
 		visible = false,
 		effects = ['greg_relation'],
+		tags = [],
+	},
+	#Erdyna. Effects live in assets/data/skilldata/bosses/erdyna.gd.
+	#The two constitution traits are the same effects under two names: Hardy in the duel,
+	#Draconic in the betrayal fight, which also adds how_could_you.
+	erdyna_hardy_constitution = {
+		code = 'erdyna_hardy_constitution',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['erdyna_hardy_constitution_display','erdyna_constitution','erdyna_constitution_guard','erdyna_constitution_arm'],
+		tags = [],
+	},
+	erdyna_draconic_constitution = {
+		code = 'erdyna_draconic_constitution',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['erdyna_draconic_constitution_display','erdyna_constitution','erdyna_constitution_guard','erdyna_constitution_arm'],
+		tags = [],
+	},
+	erdyna_king_of_bandits = {
+		code = 'erdyna_king_of_bandits',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['erdyna_king_of_bandits_display','erdyna_disarm_reversal','erdyna_king_of_bandits_opening','erdyna_precognition_grip'],
+		tags = [],
+	},
+	erdyna_hoarder_incisor = {
+		code = 'erdyna_hoarder_incisor',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['erdyna_hoarder_incisor_display','erdyna_hoarder_incisor_bleed','erdyna_hoarder_incisor_steal'],
+		tags = [],
+	},
+	erdyna_how_could_you = {
+		code = 'erdyna_how_could_you',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['erdyna_how_could_you_display','erdyna_how_could_you'],
 		tags = [],
 	},
 	cursed_girl = {

@@ -24,7 +24,6 @@
 [ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/inventory/slot_axe.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/gui/inventory/slot_sickle.png" type="Texture" id=34]
-[ext_resource path="res://assets/images/gui/inventory/slot_pickaxe.png" type="Texture" id=35]
 [ext_resource path="res://assets/images/iconsitems/cell/slot_fishing.png" type="Texture" id=36]
 [ext_resource path="res://assets/images/gui/inventory/slot_knife.png" type="Texture" id=37]
 
@@ -663,7 +662,7 @@ texture = ExtResource( 33 )
 expand = true
 stretch_mode = 6
 
-[node name="tool_pickaxe" type="TextureButton" parent="InventorySlots"]
+[node name="tool_dishware" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 56.568
 margin_top = 440.0
@@ -675,7 +674,7 @@ texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
 
-[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_pickaxe"]
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool_dishware"]
 visible = false
 show_behind_parent = true
 margin_left = 1.0
@@ -689,7 +688,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="icon" type="TextureRect" parent="InventorySlots/tool_pickaxe"]
+[node name="icon" type="TextureRect" parent="InventorySlots/tool_dishware"]
 show_behind_parent = true
 light_mask = 0
 margin_left = -1.0
@@ -700,14 +699,14 @@ texture = ExtResource( 28 )
 expand = true
 stretch_mode = 6
 
-[node name="icon2" type="TextureRect" parent="InventorySlots/tool_pickaxe"]
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool_dishware"]
 show_behind_parent = true
 light_mask = 0
 margin_left = -1.0
 margin_right = 99.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 35 )
+texture = ExtResource( 28 )
 expand = true
 stretch_mode = 6
 

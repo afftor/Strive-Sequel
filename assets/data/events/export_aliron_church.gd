@@ -150,6 +150,20 @@ var data = {
 			{code = 'act4_sebastian_offer_alternative_site_1', text = "ACT4_SEBASTIAN_CHURCH_ENTER_OPTION", reqs = [{type = 'active_quest_stage', value = 'sebastian_railroad_quest', stage = 'offer_alternative_site'}], dialogue_argument = 0, type = 'next_dialogue'},
 			{code = 'act4_sebastian_ginny_parishioners_persuaded', text = "ACT4_SEBASTIAN_CHURCH_ENTER_OPTION", reqs = [{type = 'active_quest_stage', value = 'sebastian_railroad_quest', stage = 'parishioners_persuaded'}], dialogue_argument = 0, type = 'next_dialogue'},
 			{code = 'act4_sebastian_report_warehouse_solution_1', text = "ACT4_SEBASTIAN_CHURCH_ENTER_OPTION", reqs = [{type = 'active_quest_stage', value = 'sebastian_railroad_quest', stage = 'report_warehouse_solution'}], dialogue_argument = 0, type = 'next_dialogue'},
+			#conversion: someone in Aliron is picked, then the religious slot Celena's faith takes; faith_conversion_celena pays and adds it
+			{code = 'faith_conversion_celena', text = "FAITH_CONVERSION_CELENA_OPTION", reqs = [
+				{type = 'quest_completed', name = 'aliron_church_quest', check = true},
+				{type = 'has_money', value = 200},
+				], dialogue_argument = 0, type = 'next_dialogue', select_person = true, select_prompt = "FAITH_CONVERSION_CELENA_PROMPT",
+				person_reqs = [
+					{code = 'is_at_location', value = 'aliron', check = true},
+					{code = 'trait_offer', trait = 'faith_celena_1', check = true},
+				],
+				trait_confirm = {trait = 'faith_celena_1', title = "FAITH_CONVERSION_TITLE", lead = "FAITH_CONVERSION_CELENA_LEAD", keep = "FAITH_CONVERSION_KEEP"}},
+			{code = 'faith_conversion_celena', text = "FAITH_CONVERSION_CELENA_OPTION", reqs = [
+				{type = 'quest_completed', name = 'aliron_church_quest', check = true},
+				{type = 'has_money', value = 200, check = false},
+				], disabled = true},
 
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4},
 		],

@@ -28,8 +28,8 @@ func getongoingdescription(givers, takers):
 	
 func requirements():
 	var valid = true
-#	if ResourceScripts.game_res.materials.rope < takers.size():
-#		valid = false
+	if ResourceScripts.game_res.materials.rope < takers.size():
+		valid = false
 	if takers.size() < 1 || givers.size() < 1:
 		valid = false
 	elif givers.size() > 2:

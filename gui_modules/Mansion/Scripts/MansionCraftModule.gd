@@ -277,7 +277,7 @@ func rebuild_recipe_list():
 
 		var progressnode = newbutton.get_node("WorkUnits")
 		progressnode.texture = images.get_icon(i.worktype)
-		progressnode.get_node("Label").text = str(i.workunits)
+		progressnode.get_node("Label").text = '—' if i.crafttype == 'modular' else str(i.workunits)
 		globals.connecttexttooltip(progressnode, tr('TOOLTIPPROGRESSREQUIRED'))
 
 
@@ -310,6 +310,9 @@ func rebuild_scheldue():
 	var queue = ResourceScripts.game_res.crafting_lists[craft_category]
 	for i in queue:
 		var pdata = ResourceScripts.game_res.tasks_progresses[i]
+		#improve orders share the queue but are made and listed in the mansion's craft panel
+		if !Items.recipes.has(pdata.id):
+			continue
 		var newnode = input_handler.DuplicateContainerTemplate($CraftSchedule/ScrollContainer/VBoxContainer)
 		var recipe_data = Items.recipes[pdata.id]
 		var item_data
@@ -426,6 +429,7 @@ func cancel_item_craft():
 func selectcraftitem(item):
 	globals.disconnect_text_tooltip($MaterialSetupPanel/EndItemFrame)
 	globals.disconnect_temp_item_tooltip($MaterialSetupPanel/EndItemFrame)
+	globals.disconnect_material_tooltip($MaterialSetupPanel/EndItemFrame)
 	itemparts = {}
 	update_buttons(item)
 	checkcreatingitem(item.code)
@@ -436,7 +440,7 @@ func selectcraftitem(item):
 	itemtemplate = item.resultitem
 	$NumberSelect/TextureRect.texture = images.get_icon(item.worktype)
 	$NumberSelect/TextureRect.show()
-	$NumberSelect/workunits.text = str(item.workunits)
+	$NumberSelect/workunits.text = '—' if item.crafttype == 'modular' else str(item.workunits)
 	$NumberSelect/workunits.show()
 	if item.resultamount > 1:
 		$MaterialSetupPanel/EndItemFrame/Label.text = str(item.resultamount)
@@ -461,7 +465,8 @@ func selectcraftitem(item):
 		var baseitem
 		if Items.materiallist.has(item.resultitem):
 			baseitem = Items.materiallist[item.resultitem]
-			globals.connecttempitemtooltip($MaterialSetupPanel/EndItemFrame, baseitem, 'material')
+			#the same material tooltip as everywhere else, so food shows its demand, turns and buff
+			globals.connectmaterialtooltip($MaterialSetupPanel/EndItemFrame, baseitem)
 		elif item.crafttype == 'basic' && item.crafttype != 'modular':
 			baseitem = Items.itemlist[item.resultitem]
 			globals.connecttempitemtooltip($MaterialSetupPanel/EndItemFrame, baseitem, 'geartemplate')
@@ -698,6 +703,7 @@ func checkcreatingitem(item):
 		temppartdict[i] = itemparts[i].material
 	enditem = globals.CreateGearItemQuality(item, temppartdict, '') #item emulation, no enchants, no quality
 	partdict = temppartdict
+	$NumberSelect/workunits.text = str(Items.get_recipe_workunits(selected_item.code, partdict)) if fullrecipe else '—'
 	#enditem.CreateGear(item, partdict)
 	text = multipart_item_text(enditem)
 	globals.connecttexttooltip($MaterialSetupPanel/EndItemFrame, enditem.tooltiptext())
@@ -730,10 +736,7 @@ func multipart_item_text(item):
 		text = text.substr(0, text.length() -2)
 
 	if item.toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": "
-		for i in item.toolcategory:
-			text += statdata.worktoolnames[i] +", "
-		text = text.substr(0, text.length()-2)
+		text += tr("TOOLWORKCATEGORY") + ": " + statdata.worktool_names_text(item.toolcategory)
 	if item.description != null:
 		text += item.description
 	if !item.reqs.empty():

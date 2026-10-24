@@ -550,6 +550,60 @@ func lactation_pot(character):
 	else:
 		input_handler.interactive_message_follow("lactation_potion_reverse",'char_translate',{ch = character})
 
+
+#Temple conversions on a city button (worlddata.fixed_location_options, {code = 'faith_conversion', value = <key>}):
+#someone in that city is picked, then the religious slot the faith takes (TraitReplacePanel.confirm_first);
+#nothing is paid until then, and the scene takes the offering and adds the faith (assets/data/events/faith_conversion.gd).
+#Aliron's church asks from its own dialogue instead, through an option's trait_confirm (export_aliron_church.gd).
+const FAITH_CONVERSIONS = {
+	freya = {
+		location = 'elf_capital',
+		cost_reqs = [{type = 'has_material', material = 'clothsilk', operant = 'gte', value = 5}],
+		no_cost = "FAITH_CONVERSION_FREYA_NO_COST",
+		prompt = "FAITH_CONVERSION_FREYA_PROMPT",
+		scene = 'faith_conversion_freya',
+		trait_confirm = {trait = 'faith_freya_1', title = "FAITH_CONVERSION_TITLE", lead = "FAITH_CONVERSION_FREYA_LEAD", keep = "FAITH_CONVERSION_KEEP"},
+	},
+	spirits = {
+		location = 'beastkin_capital',
+		cost_reqs = [{type = 'has_material', material = 'meat', operant = 'gte', value = 30}],
+		no_cost = "FAITH_CONVERSION_SPIRITS_NO_COST",
+		prompt = "FAITH_CONVERSION_SPIRITS_PROMPT",
+		scene = 'faith_conversion_spirits',
+		trait_confirm = {trait = 'faith_spirits_1', title = "FAITH_CONVERSION_TITLE", lead = "FAITH_CONVERSION_SPIRITS_LEAD", keep = "FAITH_CONVERSION_KEEP"},
+	},
+}
+var faith_conversion = ''
+
+func faith_conversion_open(code):
+	if !faith_conversion_affordable(code):
+		return
+	faith_conversion = code
+	var data = FAITH_CONVERSIONS[code]
+	var reqs = [
+		{code = 'is_at_location', value = data.location, check = true},
+		{code = 'trait_offer', trait = data.trait_confirm.trait, check = true},
+	]
+	input_handler.ShowSlaveSelectPanel(self, 'faith_conversion_selected', reqs, false, null, tr(data.prompt))
+
+func faith_conversion_selected(character):
+	var data = FAITH_CONVERSIONS[faith_conversion]
+	input_handler.get_spec_node(input_handler.NODE_TRAIT_REPLACE, null, true, false).confirm_first(character, data.trait_confirm.trait, self, 'faith_conversion_confirmed', [character], data.trait_confirm)
+
+func faith_conversion_confirmed(old_code, character):
+	if !faith_conversion_affordable(faith_conversion):
+		return
+	var data = FAITH_CONVERSIONS[faith_conversion]
+	character.dyn_stats.set_trait_choice(data.trait_confirm.trait, old_code)
+	input_handler.interactive_message(data.scene, 'char_translate', {ch = character})
+
+func faith_conversion_affordable(code):
+	if globals.checkreqs(FAITH_CONVERSIONS[code].cost_reqs):
+		return true
+	input_handler.SystemMessage(tr(FAITH_CONVERSIONS[code].no_cost))
+	input_handler.PlaySound("error")
+	return false
+
 func close():#for the cancel function
 	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close()
 

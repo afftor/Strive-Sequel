@@ -1917,7 +1917,18 @@ var worktoolnames = {
 	sickle = '',
 	hammer = '',
 	hunt_knife = '',
+	dishware = '',
 }
+
+#The tools an item works as, for its tooltip - each name once, since categories one tool covers
+#together share a name (the Axe&Pick's axe and pickaxe work).
+func worktool_names_text(categories):
+	var names = []
+	for category in categories:
+		var name = worktoolnames.get(category, category)
+		if !names.has(name):
+			names.append(name)
+	return PoolStringArray(names).join(", ")
 
 func _ready():
 	for i in Skilldata.masteries: #this is not technicaly a stat. added for a proper building of descriptions and a proper binding of processing

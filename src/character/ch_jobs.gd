@@ -111,13 +111,13 @@ func cooking_progress():
 	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/50.0))
 
 func tailor_progress():
-	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/66.0 + parent.get_ref().get_stat('physics')/150.0))
+	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/150.0 + parent.get_ref().get_stat('physics')/350.0))
 
 func forge_progress():
-	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/150.0 + parent.get_ref().get_stat('physics')/66.0)) * (1+0.25*ResourceScripts.game_res.findupgradelevel('forgeworkshop'))
+	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/350.0 + parent.get_ref().get_stat('physics')/150.0)) * (1+0.25*ResourceScripts.game_res.findupgradelevel('forgeworkshop'))
 
 func alchemy_progress():
-	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/50.0))
+	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/120.0))
 
 const buildertools_speed_bonus = [0.0, 0.25, 0.5, 1.0]
 
@@ -223,9 +223,9 @@ func farm_milk():
 		'average','average_high', 'average_narrow','average_wide':
 			tits_size = 2
 		'big', 'big_high', 'big_narrow':
-			tits_size = 3 
+			tits_size = 3
 		'huge','huge_high','huge_narrow','huge_wide':
-			tits_size = 4 
+			tits_size = 4
 	var res = 1.0 + 0.2 * parent.get_ref().get_stat('physics_factor') + 0.3 * tits_size
 	if parent.get_ref().get_stat('race') == 'Taurus':
 		res *= 1.25
@@ -254,7 +254,7 @@ func farm_eggs():
 		'average':
 			ass_size = 2
 		'big':
-			ass_size = 3 
+			ass_size = 3
 	var res = 1.0 + 0.2 * parent.get_ref().get_stat('physics_factor') + 0.3 * ass_size
 	return res
 

@@ -175,6 +175,13 @@ Mansion and combat keys are independent - the same key may be used by both.""",
 	OPTAUDIOAMBIENT = "Ambient",
 	OPTAUDIOMUTE = "Mute",
 	OPTGRAPHICFULLSCREEN = "Full Screen",
+	OPTWINDOWMODE = "Window mode",
+	OPTWINDOWMODEWINDOWED = "Windowed",
+	OPTWINDOWMODEFULLSCREEN = "Fullscreen",
+	OPTWINDOWMODEBORDERLESS = "Borderless",
+	OPTWINDOWMODE_DESCRIPT = "[color=yellow]Windowed[/color] — the game in a window of the size picked under Resolution.\n[color=yellow]Fullscreen[/color] — the game takes over the screen.\n[color=yellow]Borderless[/color] — a borderless window covering the whole screen. Looks the same as fullscreen, but switching to other windows is instant.\n\nThe Toggle fullscreen hotkey (F11 by default) switches between the window and the last fullscreen mode.",
+	OPTRESOLUTION = "Resolution",
+	OPTRESOLUTION_DESCRIPT = "[color=yellow]Windowed[/color] — the size of the game window.\n[color=yellow]Fullscreen[/color] and [color=yellow]Borderless[/color] — the resolution the game is drawn at before it is stretched over the screen. A lower one is easier on the graphics card but blurrier; the screen's own resolution, the last one in the list, is the sharpest.\n\nWindowed and fullscreen each remember their own resolution.",
 	OPTGRAPHICFACTOR = "Factors as words",
 	OPTGRAPHICRANDOMPORTRAIT = "Random Portraits",
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Disable Animation backgrounds",
@@ -334,7 +341,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	SIBLINGMODULEFATEREMOVED = "Gone",
 	SIBLINGMODULEFATERDEAD = "Dead",
 	SIBLINGMODULEFATERESCAPE = "Escaped",
-	FAILALREADYSUCCUBUS = "Can't use corruptive essence on Thralls or Succubi",
+	FAILALREADYSUCCUBUS = "Can't use corruptive essence on Thralls, Succubi or characters whose magic trait can't be replaced",
 	MINORTRAINMAXREACHED = "Maximum Proficiencies unlocked",
 	MINORTRAIN_TRAIT_AQUIRED = "trait %s aquired",
 	SYSMESSAGEATLEAST1CHAR = "Select at least 1 character to fight.",
@@ -1020,8 +1027,8 @@ Otherwise: +3 Physics""",
 	ITEMSLOTRHAND = "Right Hand",
 	ITEMSLOTNECK = "Neck",
 	ITEMSLOTTOOL = "Tool",
-	ITEMSLOTTOOL_AXE = "Tool - Axe",
-	ITEMSLOTTOOL_PICKAXE = "Tool - Pickaxe",
+	ITEMSLOTTOOL_AXE = "Tool - Axe&Pick",
+	ITEMSLOTTOOL_DISHWARE = "Tool - Dishware",
 	ITEMSLOTTOOL_ROD = "Tool - Fishing Rod",
 	ITEMSLOTTOOL_HAMMER = "Tool - Hammer",
 	ITEMSLOTTOOL_SICKLE = "Tool - Sickle",
@@ -1188,8 +1195,8 @@ Can't be applied to unique characters.""",
 When casting a spell has 25% chance to cast it an additional time.
 
 {color=yellow|Only equippable by Zephyra}""",
-	ITEMAXE = "Axe",
-	ITEMPICKAXE = "Pickaxe",
+	ITEMAXE_PICK = "Axe&Pick",
+	ITEMDISHWARE = "Dishware",
 	ITEMSWORD = "Sword",
 	ITEMDAGGER = "Dagger",
 	ITEMCLUB = "Club",
@@ -1204,14 +1211,14 @@ When casting a spell has 25% chance to cast it an additional time.
 	ITEMHAMMER = "Forge Hammer",
 	ITEMHUNT_KNIFE = "Hunting Knife",
 	ITEMSHIELD = "Shield",
-	ITEMAXEDESCRIPT = "Can be used for cutting wood and combat.",
+	ITEMAXE_PICKDESCRIPT = "An axe blade on one side and a pick on the other: one tool for felling trees and breaking rock.",
 	ITEMSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	ITEMDAGGERDESCRIPT = "Easily hidden, cheap weapon which can be used by anyone.",
 	ITEMCLUBDESCRIPT = "A weapon of your ancestors. Not outstanding, but easy to make and can be held by anyone.",
 	ITEMMACEDESCRIPT = "The club's older brother. A better alternative when have to deal with armored target.",
 	ITEMBATTLEAXEDESCRIPT = "The best weapon to carry if you wanna look intimidating. However, it's somewhat unwieldy.",
 	ITEMSPEARDESCRIPT = "One of the earliest weapons known to man. Not as flexible as a sword, but it has its strengths... Mostly in cost.",
-	ITEMPICKAXEDESCRIPT = "An irreplaceable tool for miners.",
+	ITEMDISHWAREDESCRIPT = "Pots, pans and ladles for the kitchen and the alchemy lab alike.",
 	ITEMBOWDESCRIPT = "Simple weapon for ranged fighters.",
 	ITEMCROSSBOWDESCRIPT = "An unrefined mechanical weapon offering better penetration properties than a bow.",
 	ITEMSTAFFDESCRIPT = "A simple tool for magic users.",
@@ -2573,6 +2580,41 @@ Gain {color=aqua|Blackened Blade}.""",
 Sequentially inflict {color=aqua|Ensnare}, {color=aqua|Disarm}, {color=aqua|Blind}, and {color=aqua|Shred}.
 The last hit deals increased damage.
 {color=red|On Kill: Reset cooldown.}""",
+	SKILLERDYNA_LETS_SEE_WHAT_YOU_GOT = "Let's See What You Got",
+	SKILLERDYNA_LETS_SEE_WHAT_YOU_GOTDESCRIPT = """Cannot target an enemy affected by {color=aqua|Subject of Observation} or {color=aqua|Evaluated}.
+Before the hit, remove {color=aqua|In the Shadow} from the target and {color=aqua|Blind} from self.
+Deals 80% of ATK as physical damage to an enemy.
+Hit or miss, inflict {color=aqua|Subject of Observation} on the target and gain {color=aqua|Observing}.""",
+	SKILLERDYNA_SLICE_AND_DIVE = "Slice & Dive",
+	SKILLERDYNA_SLICE_AND_DIVEDESCRIPT = """Deals 90% of ATK as physical damage to a row of enemies.
+If the user is not {color=aqua|Ensnared}, strike a random row once more.""",
+	SKILLERDYNA_ASSAULT_AND_BATTERY = "Assault & Battery",
+	SKILLERDYNA_ASSAULT_AND_BATTERYDESCRIPT = """Deals 75% of ATK as physical damage to an enemy 2 times.
+On hit, if the target has more than 50% HP, inflict {color=aqua|Shred} for 2 turns.""",
+	SKILLERDYNA_NAIL_IT = "Nail it!",
+	SKILLERDYNA_NAIL_ITDESCRIPT = """Toss the dagger, dealing 50% of ATK as physical damage to an enemy. The toss has +100 Hit Rate against a target affected by {color=aqua|Subject of Observation} or {color=aqua|Evaluated}.
+If it hits, follow up with a melee strike against the same target that deals 120% of ATK and cannot miss.
+The melee strike inflicts {color=aqua|Impale} if the target is affected by {color=aqua|Bleed}.""",
+	SKILLERDYNA_DECEPTIVE_RUSE = "Deceptive Ruse",
+	SKILLERDYNA_DECEPTIVE_RUSEDESCRIPT = """Can be used while {color=aqua|Disarmed}.
+Remove all negative effects from self.
+Stun 1-3 random enemies for 1 turn. A target that cannot be stunned is {color=aqua|Disarmed} and {color=aqua|Silenced} for 1 turn instead.""",
+	SKILLERDYNA_RULES_OF_THE_BACKSTREET = "Rules of the Backstreet",
+	SKILLERDYNA_RULES_OF_THE_BACKSTREETDESCRIPT = """Can be used while {color=aqua|Disarmed}.
+Deals 150% of ATK as physical damage to an enemy.
+If the user is not {color=aqua|Disarmed}, inflict 1 {color=aqua|Fragile} on hit.
+Repeat once for each stack of {color=aqua|Battle Precognition}.
+On kill, gain {color=aqua|Battle Precognition}.""",
+	SKILLERDYNA_HOW_PREDICTABLE = "How Predictable~",
+	SKILLERDYNA_HOW_PREDICTABLEDESCRIPT = """Can only be used while {color=aqua|Observing}. Can be used while {color=aqua|Disarmed}.
+Consume {color=aqua|Observing} to gain {color=aqua|Battle Precognition}.
+Heal self for 10% of Max HP.
+Turn every {color=aqua|Subject of Observation} on enemies into {color=aqua|Evaluated}.""",
+	SKILLERDYNA_EQUALIZER = "Equalizer",
+	SKILLERDYNA_EQUALIZERDESCRIPT = """Deals 100% of ATK as physical damage to an enemy. A miss turns into a hit that deals half damage.
+After the hit, the target taunts the user for 4 turns, and every other enemy takes 50% of the user's ATK as damage and is {color=aqua|Subdued} for 2 turns.""",
+	SKILLERDYNA_OBSERVATION_LOST = "Lost Sight",
+	SKILLERDYNA_OBSERVATION_LOSTDESCRIPT = "Remove {color=aqua|Subject of Observation} from all enemies.",
 	SKILLOMINOUS_WHISPERS = "Ominous Whispers",
 	SKILLOMINOUS_WHISPERSDESCRIPT = "Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.",
 	SKILLHEXED_COFFIN_NAIL = "Hexed Coffin Nail",
@@ -2909,13 +2951,14 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	WITSREVEALDISPOSITION = "Disposition figured out:",
 	MINDREADREVEALDISPOSITION = "Dispositions revealed:",
 	WORKTOOL = "Work Tool",
-	WORKTOOLAXE = "Lumber Axe",
+	WORKTOOLAXE = "Axe&Pick",
 	WORKTOOLROD = "Fishing Tools",
-	WORKTOOLPICKAXE = "Pickaxe",
+	WORKTOOLPICKAXE = "Axe&Pick",
 	WORKTOOLHAMMER = "Hammer",
 	WORKTOOLBOW = "Hunting Bow",
 	WORKTOOLSICKLE = "Sickle",
 	WORKTOOLHUNT_KNIFE = "Hunting Knife",
+	WORKTOOLDISHWARE = "Dishware",
 	MAXIMUM_WORKERS = "Maximum workers",
 	REQUIRED_UPGRADE_NAME = "Upgrade name",
 	WORKERS_PER_UPGRADE = "Workers per upgrade",
@@ -2935,11 +2978,11 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	TASKCOOKING = "Cooking",
 	TASKCOOKINGDESCRIPT = "Craft food items. Must have chosen a recipe to cook. ",
 	TASKTAILOR = "Tailor",
-	TASKTAILORDESCRIPT = "Craft cloth and leather items and gear. Must have chosen the items to craft. ",
+	TASKTAILORDESCRIPT = "Craft cloth and leather items and gear, bows and crossbows. Must have chosen the items to craft. ",
 	TASKSMITH = "Smith",
 	TASKSMITHDESCRIPT = "Craft forge and metal items and gear. Must have chosen the items to craft. ",
 	TASKALCHEMY = "Alchemy",
-	TASKALCHEMYDESCRIPT = "Craft alchemical potions and items. Must have chosen the items to craft. ",
+	TASKALCHEMYDESCRIPT = "Craft alchemical potions and items, and staves. Must have chosen the items to craft. ",
 	TASKBUILDING = "Upgrading",
 	TASKBUILDINGDESCRIPT = "Work on the current upgrade. Upgrade must be set in Upgrades menu. ",
 	TASKTRAVEL = "Travel",
@@ -3933,10 +3976,10 @@ Sex Factor directly affects sexual service income.
 	STATFED = "Fed",
 	STATFEDDESCRIPT = "Turns of food a character has left. It drops by one every turn and is topped up whenever they eat. At zero they eat again, or starve if nothing is available.",
 	STATTASK_EFFICIENCY_TOOL = "Task Efficiency Bonus",
-	STATTASK_EFFICIENCY_AXE = "Task Efficiency - Axe",
-	STATTASK_EFFICIENCY_AXEDESCRIPT = "Task Efficiency Bonus with Axe",
-	STATTASK_EFFICIENCY_PICKAXE = "Task Efficiency - Pickaxe",
-	STATTASK_EFFICIENCY_PICKAXEDESCRIPT = "Task Efficiency Bonus with Pickaxe",
+	STATTASK_EFFICIENCY_AXE = "Task Efficiency - Woodcutting",
+	STATTASK_EFFICIENCY_AXEDESCRIPT = "Task Efficiency Bonus for woodcutting with Axe&Pick",
+	STATTASK_EFFICIENCY_PICKAXE = "Task Efficiency - Mining",
+	STATTASK_EFFICIENCY_PICKAXEDESCRIPT = "Task Efficiency Bonus for mining with Axe&Pick",
 	STATTASK_EFFICIENCY_ROD = "Task Efficiency - Rod",
 	STATTASK_EFFICIENCY_RODDESCRIPT = "Task Efficiency Bonus with Fishing Rod",
 	STATTASK_EFFICIENCY_HAMMER = "Task Efficiency - Hammer",
@@ -3945,11 +3988,13 @@ Sex Factor directly affects sexual service income.
 	STATTASK_EFFICIENCY_SICKLEDESCRIPT = "Task Efficiency Bonus with Sickle",
 	STATTASK_EFFICIENCY_HUNT_KNIFE = "Task Efficiency - Knife",
 	STATTASK_EFFICIENCY_HUNT_KNIFEDESCRIPT = "Task Efficiency Bonus with Hunting Knife",
+	STATTASK_EFFICIENCY_DISHWARE = "Task Efficiency - Dishware",
+	STATTASK_EFFICIENCY_DISHWAREDESCRIPT = "Task Efficiency Bonus for cooking and alchemy with Dishware",
 	STATTASK_CRIT_CHANCE = "Task Crit Chance",
-	STATTASK_CRIT_AXE = "Task Crit Chance - Axe",
-	STATTASK_CRIT_AXEDESCRIPT = "Task Crit Chance with Axe",
-	STATTASK_CRIT_PICKAXE = "Task Crit Chance - Pickaxe",
-	STATTASK_CRIT_PICKAXEDESCRIPT = "Task Crit Chance with Pickaxe",
+	STATTASK_CRIT_AXE = "Task Crit Chance - Woodcutting",
+	STATTASK_CRIT_AXEDESCRIPT = "Task Crit Chance for woodcutting with Axe&Pick",
+	STATTASK_CRIT_PICKAXE = "Task Crit Chance - Mining",
+	STATTASK_CRIT_PICKAXEDESCRIPT = "Task Crit Chance for mining with Axe&Pick",
 	STATTASK_CRIT_ROD = "Task Crit Chance - Rod",
 	STATTASK_CRIT_RODDESCRIPT = "Task Crit Chance with Fishing Rod",
 	STATTASK_CRIT_HAMMER = "Task Crit Chance - Hammer",
@@ -3958,6 +4003,8 @@ Sex Factor directly affects sexual service income.
 	STATTASK_CRIT_SICKLEDESCRIPT = "Task Crit Chance with Sickle",
 	STATTASK_CRIT_HUNT_KNIFE = "Task Crit Chance - Knife",
 	STATTASK_CRIT_HUNT_KNIFEDESCRIPT = "Task Crit Chance with Hunting Knife",
+	STATTASK_CRIT_DISHWARE = "Task Crit Chance - Dishware",
+	STATTASK_CRIT_DISHWAREDESCRIPT = "Task Crit Chance for cooking and alchemy with Dishware",
 	STATMAGIC_FIND = "Magic Find",
 	STATMAGIC_FINDDESCRIPT = "Improves quality of items found",
 	STATMANHUNT = "Manhunt",
@@ -4956,9 +5003,14 @@ Training has higher chance of success.""",
 	TRAITBREEDERDESCRIPT = """Allows breeding with any race.
 Pregnancy Debuffs are weaker
 Offspring will inherit only this parent's stats.""",
+	TRAITSUCCUBUS = "Succubus",
+	TRAITSUCCUBUSALT = "Incubus",
 	TRAITSUCCUBUSDESCRIPT = """Sex activities provide 50% more experience.
 Can infallibly recruit random characters by using Lust.
-Sexual Training actions have lower chance to fail.""",
+Sexual Training actions have lower chance to fail.
++2 Sex Stamina, +1 Training Slot, +1 Magic Mastery Point.
+Grants Lust Drain, Enthrall, Release Thrall and Euphoria. Gains strength with each Thrall.""",
+	TRAITSUCCUBUSFLAVOR = "Demonic essence has remade [him] for good. Lust is no longer something [he] feels, but something [he] wields.",
 	TRAITPETDESCRIPT = "Prostitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 20% more efficient. Unlocks sextoy service assignment.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
@@ -6263,6 +6315,53 @@ This effect is removed if the applier fell for a taunt or is immobilised.""",
 	EFFECTNAME_BLACKEN_BLADE = "Blacken Blade",
 	EFFECT_BLACKEN_BLADE_DESCRIPT = """Deals additional 50% of caster's MATK as {color=yellow|Dark} damage on every hit
 All attacks have a 20% chance to inflict Bleed.""",
+	EFFECT_ERDYNA_HARDY_CONSTITUTION_DESCRIPT = """Hardy Constitution:
+Take further reduced damage from DoT effects.
+Immune to Burn. +50 Fire resist.
+30% chance to reduce physical damage taken by 50%.
+Gain Unstoppable when HP drops below 50%.""",
+	EFFECT_ERDYNA_DRACONIC_CONSTITUTION_DESCRIPT = """Draconic Constitution:
+Take further reduced damage from DoT effects.
+Immune to Burn. +50 Fire resist.
+30% chance to reduce physical damage taken by 50%.
+Gain Unstoppable when HP drops below 50%.""",
+	EFFECT_ERDYNA_KING_OF_BANDITS_DESCRIPT = """King of Bandits:
+Immune to Provoke.
+When being melee attacked while Disarmed, 50% chance to remove Disarm from self and Disarm the attacker for 2 turns.
+At the start of combat, and when HP drops below 50% for the first time, use Equalizer on a random enemy.""",
+	EFFECT_ERDYNA_HOARDER_INCISOR_DESCRIPT = """Hoarder Incisor:
+While not Disarmed, physical attacks have a 25% chance to inflict Bleed for 2 turns and a 30% chance to remove a random positive effect from the target.
+A target that cannot be Disarmed, such as one under Hardened Grip, keeps its positive effects.""",
+	EFFECT_ERDYNA_HOW_COULD_YOU_DESCRIPT = """How could you...:
+Deal 20% more damage to you.""",
+	EFFECTNAME_ERDYNA_OBSERVING = "Observing",
+	EFFECT_ERDYNA_OBSERVING = """+150 Evasion. Allows the use of How Predictable~.
+When struck by a physical attack or Blinded, lose this effect and free every enemy from Subject of Observation.""",
+	EFFECTNAME_ERDYNA_SUBJECT_OF_OBSERVATION = "Subject of Observation",
+	EFFECT_ERDYNA_SUBJECT_OF_OBSERVATION = """-25% ATK and MATK. -25 Hit Rate and Evasion.
+Removed when Erdyna loses Observing or when the battle ends.""",
+	EFFECTNAME_ERDYNA_EVALUATED = "Evaluated",
+	EFFECT_ERDYNA_EVALUATED = """-50% ATK and MATK. -50 Hit Rate and Evasion. Take 20% more damage.
+Removed when the battle ends.""",
+	EFFECTNAME_ERDYNA_BATTLE_PRECOGNITION = "Battle Precognition",
+	EFFECT_ERDYNA_BATTLE_PRECOGNITION = """+20 ATK, +10% Crit Rate, +20 Hit Rate and +10% damage reduction per stack (Max 6).
+At 3+ stacks: immune to Disarm.""",
+	EFFECT_ERDYNA_EQUALIZER_FOCUS = "Taunted by the target of Equalizer.",
+	EFFECTNAME_ERDYNA_SUBDUED = "Subdued",
+	EFFECT_ERDYNA_SUBDUED = """-50 Hit Rate. Damaging spells have a 25% chance to miss.
+Melee attacks and non-damaging skills used on enemies always miss.
+-75% outgoing healing.
+Under Blood Boil, the duration drops by one extra turn at the end of each turn.""",
+	ERDYNA_EQUALIZER_OPENING = """
+Erdyna: Let's even the odds a little.
+""",
+	ERDYNA_EQUALIZER_HALF_HP = """
+Erdyna: Fine. No more playing around!
+""",
+	ERDYNA_OBSERVATION_BROKEN = """
+Erdyna loses her focus - the observation is broken!""",
+	ERDYNA_DISARM_REVERSAL = """
+Erdyna snatches her blade back and turns the grip against the attacker!""",
 	EFFECT_CURSED_GIRL_DESCRIPT = "Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.",
 	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = "Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.",
 	SEB_RILU_ATTACK = """
@@ -10009,6 +10108,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYCOAL_MOAB = "Mother of All Bombs",
 	ENEMYKURO = "Kuro",
 	ENEMYERDYNA = "Erdyna",
+	ENEMYERDYNA_BETRAYAL = "Erdyna",
 	ENEMYNIXX = "Nixx",
 	ENEMYUNLIT_BRAZIER = "Unlit Brazier",
 	ENEMYLIGHTED_BRAZIER = "Lighted Brazier",
@@ -22603,9 +22703,9 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	CALI_SERVANTS_QUEST_STAGE_1 = "Visit Servants Guild on Cali's behalf",
 	CALI_HEIRLOOM_QUEST_SUMMARY = "Cali's past finally caught up with her. You'll have to help her sort it out if you want to keep her at your side...",
 	CALI_HEIRLOOM_QUEST_NAME = "Cali: Pariah",
-	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Village ",
-	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to Peasant",
-	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to Peasant",
+	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Stonevale. Cali must be there with you.",
+	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to the Farmer in Stonevale. Cali must be there with you.",
+	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to the Farmer in Stonevale. Cali must be there with you.",
 	CALI_HEIRLOOM_QUEST_STAGE_3 = "Search For Bandits",
 	CALI_HEIRLOOM_QUEST_STAGE_4 = "Ask about Collector at streets of Aliron",
 	CALI_HEIRLOOM_QUEST_STAGE_5 = "It seems you won't be able to meet William just yet... Perhaps you'll have to do something else for now.",
@@ -24242,15 +24342,20 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	STRANGE_SPOT = "Off the main passage you come across a strange spot: a ring of smooth, pale stone set into the floor, untouched by the dust around it. The air above it feels thick, as if the place were holding its breath and waiting for someone to step in.",
 	STRANGE_SPOT_STEP = "Have someone step into the ring",
 	MEDITATION_SPOT_PERSON = "[name] steps into the ring, and the noise of this place falls away. The air is clear here and the silence almost tangible — a good spot to rest, or to listen to something beyond oneself.",
-	POWER_PLACE = "The moment [name] steps into the ring, the pale stone flares with light. Power surges up through [him], raw and roaring, far too loud for a place like this. From somewhere deeper in the dungeon something answers: heavy steps are already coming your way.",
+	POWER_PLACE_REVEAL = "As you draw near, the pale stone flares with light before anyone can set foot in the ring. Power surges up from it, raw and roaring, far too loud for a place like this. From somewhere deeper in the dungeon something answers: heavy steps are already coming your way.",
+	POWER_PLACE_OFFER = "Within the glare the power has already taken a shape. Whoever claims it once the fight is won will carry it from then on:",
+	POWER_PLACE_OFFER_EXP = "The power stays wild and shapeless — it would settle into none of you. Whoever claims it once the fight is won will only learn from it.",
 	POWER_PLACE_FIGHT = "Stand your ground",
 	POWER_PLACE_FLEE = "Run before they arrive",
-	POWER_PLACE_FLED = "You pull [name] out of the ring and the group hurries back the way it came. Behind you the light dies down, and by the time the footsteps fade there is nothing left of the ring to return to.",
-	POWER_PLACE_WON = "The last of them falls, and the ring goes quiet. The power that called them has not faded: it has settled into [name], and [he] will carry it from now on.",
-	POWER_PLACE_WON_EXP = "The last of them falls, and the ring goes quiet. The power that called them washes through [name] and fades, but the fight itself has taught [him] plenty.",
-	POWER_PLACE_WON_CHOICE = "The last of them falls, and the ring goes quiet. The power that called them has not faded: it still hums around [name], waiting to take a shape. It could settle into [him] as something new — or burn away something [he] would be better off without.",
-	POWER_PLACE_GIFT_OPTION = "Let the power settle in",
-	POWER_PLACE_EXP_OPTION = "Let it wash through",
+	POWER_PLACE_RAN = "The group hurries back the way it came. Behind you the light dies down, and by the time the footsteps fade there is nothing left of the ring to return to.",
+	POWER_PLACE_CLAIM = "The last of them falls, and the ring goes quiet. The power that called them has not faded: it hums above the pale stone, waiting for someone to step in and take it.",
+	POWER_PLACE_CLAIM_EXP = "It has no shape to settle into anyone, but whoever takes it will learn from it all the same.",
+	POWER_PLACE_CLAIM_OPTION = "Choose who steps into the ring",
+	POWER_PLACE_CLAIM_PROMPT = "Who will take {trait}?",
+	POWER_PLACE_CLAIM_PROMPT_EXP = "Who will take the power?",
+	POWER_PLACE_PURGE_CHOOSE_OPTION = "Let it burn away a flaw instead",
+	POWER_PLACE_PURGE_PROMPT = "Whose flaw will the power burn away?",
+	POWER_PLACE_PURGE_PICK = "[name] steps into the ring, and the power closes around [him], hot enough to burn. It could take away something [he] would be better off without.",
 	POWER_PLACE_PURGE_OPTION = "Burn away {trait}",
 	POWER_PLACE_GIFT = "The power sinks into [name] and settles there. [He] will carry it from now on.",
 	POWER_PLACE_EXP_TAKEN = "The power washes through [name] and fades, but the fight itself has taught [him] plenty.",
@@ -32466,9 +32571,9 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONROOM_FORGE = "Forge",
 	MANSIONROOM_FORGEDESCRIPT = "Metalworks can be accomplished in here. Allows to craft weapon and armor",
 	MANSIONROOM_ALCHEMY_ROOM = "Alchemy Room",
-	MANSIONROOM_ALCHEMY_ROOMDESCRIPT = "Allows to craft potions and alchemical compounds.",
+	MANSIONROOM_ALCHEMY_ROOMDESCRIPT = "Allows to craft potions, alchemical compounds and staves.",
 	MANSIONROOM_TAILOR_WORKSHOP = "Tailor Workshop",
-	MANSIONROOM_TAILOR_WORKSHOPDESCRIPT = "Allows to craft cloth and leather items and gear.",
+	MANSIONROOM_TAILOR_WORKSHOPDESCRIPT = "Allows to craft cloth and leather items and gear, as well as bows and crossbows.",
 	MANSIONROOM_KITCHEN = "Kitchen",
 	MANSIONROOM_KITCHENDESCRIPT = "Allows to craft food items.",
 	MANSIONROOM_DINING_ROOM = "Dining Room",
@@ -32689,6 +32794,99 @@ You leave her in the shade and return to the others, carrying with you the stran
 	ENCHANTING_NO_DONORS = "Nobody at the mansion can give mana.",
 	ENCHANTING_PERFORM = "Enchant",
 	ENCHANTING_ANIM_TITLE = "Enchanted",
+
+	CRAFTPANEL_TITLE = "Crafting",
+	CRAFTPANEL_JOB_SMITH = "Blacksmith",
+	CRAFTPANEL_JOB_TAILOR = "Tailoring",
+	CRAFTPANEL_JOB_ALCHEMY = "Alchemy",
+	CRAFTPANEL_JOB_COOKING = "Cooking",
+	CRAFTPANEL_TAB_HINT = "%s work a turn · %d in the queue",
+	CRAFTPANEL_CRAFTERS = "Crafters",
+	CRAFTPANEL_CRAFTERS_HELP = "Everyone working in this trade's rooms, and how much work each of them puts into the queue in a turn. A room's tools multiply what its crafters do.\nClick a free place to put somebody on it, or a crafter to take them off.",
+	CRAFTPANEL_PER_TURN = "%s a turn",
+	CRAFTPANEL_NO_ROOM = "No room for this trade yet",
+	CRAFTPANEL_TOOLS_HINT = "Tools in this room: work ×%s",
+	CRAFTPANEL_SKILL = "%s %s",
+	CRAFTPANEL_TAKE_OFF = "Click to take %s off this work",
+	CRAFTPANEL_ADD_CRAFTER = "+ Add a crafter",
+	CRAFTPANEL_PICK_FOR = "Who works in the %s?",
+	CRAFTPANEL_BACK = "Back",
+	CRAFTPANEL_NOBODY_FREE = "Nobody at the mansion can take this place.",
+	CRAFTPANEL_IDLE = "Idle",
+	CRAFTPANEL_NOW = "Now: %s",
+	CRAFTPANEL_MODE_RECIPES = "Recipes",
+	CRAFTPANEL_MODE_IMPROVE = "Improve gear",
+	CRAFTPANEL_FILTER_ALL = "All",
+	CRAFTPANEL_FILTER_MATERIALS = "Materials",
+	CRAFTPANEL_FILTER_GEAR = "Gear",
+	CRAFTPANEL_FILTER_COSTUME = "Costumes",
+	CRAFTPANEL_FILTER_USABLES = "Usables",
+	CRAFTPANEL_ITEMS_ALL = "All",
+	CRAFTPANEL_ITEMS_WEAPONS = "Weapons",
+	CRAFTPANEL_ITEMS_ARMOR = "Armor",
+	CRAFTPANEL_NO_RECIPES = "No recipes match.",
+	CRAFTPANEL_IN_QUEUE = "Already in the queue",
+	CRAFTPANEL_NEEDS_EXPANSION = "Needs Expansion %s",
+	CRAFTPANEL_ANY_MATERIAL = "%s: any fitting material, chosen on the bench",
+	CRAFTPANEL_EDITING = "Changing a queued order. Its materials are fixed.",
+	CRAFTPANEL_NEW_ORDER = "New order",
+	CRAFTPANEL_CARD_META = "in store %d",
+	CRAFTPANEL_STATS = "Stats",
+	CRAFTPANEL_STATS_POOR = "At Poor quality",
+	CRAFTPANEL_CHOOSE = "Choose",
+	CRAFTPANEL_PICK_BELOW = "pick below",
+	CRAFTPANEL_CHOOSE_MATERIAL = "· choose a material",
+	CRAFTPANEL_CAPACITY_BONUS = "Enchant Capacity: %s",
+	CRAFTPANEL_NO_BONUS = "no bonus",
+	CRAFTPANEL_AMOUNT_BATCH = "Batch",
+	CRAFTPANEL_AMOUNT_KEEP = "Keep in stock",
+	CRAFTPANEL_AMOUNT_ENDLESS = "Endless",
+	CRAFTPANEL_ORDER_HELP = "Batch makes a set number of runs. Keep in stock starts again whenever the store drops below the lower number and stops at the upper one. Endless runs until you remove it.\nMaterials are taken when each run starts; an order that is short of them waits and the next one is worked.",
+	CRAFTPANEL_RUNS = "Runs",
+	CRAFTPANEL_FROM = "from",
+	CRAFTPANEL_TO = "to",
+	CRAFTPANEL_UNTIL_REMOVED = "until you remove it",
+	CRAFTPANEL_TURN = "%d turn",
+	CRAFTPANEL_TURNS = "%d turns",
+	CRAFTPANEL_CHOOSE_FOR = "Choose a material for %s",
+	CRAFTPANEL_SHORT_OF = "Short of %s. The order waits for it",
+	CRAFTPANEL_SHORT_FIRST_STEP = "Short of %s for the first step. The order waits for it",
+	CRAFTPANEL_ADD = "Add to queue",
+	CRAFTPANEL_SAVE = "Save changes",
+	CRAFTPANEL_NO_ITEMS = "No gear this workshop can improve.",
+	CRAFTPANEL_HIGHEST = "highest quality",
+	CRAFTPANEL_STEP_WORK = "Work for the next step",
+	CRAFTPANEL_STEP_GOLD = "Gold for the next step, paid when the work on it starts",
+	CRAFTPANEL_GOLD_BY_STEP = "Gold for each step, paid when the work on it starts:",
+	CRAFTPANEL_MATERIAL_BY_STEP = "For each step, taken when the work on it starts:",
+	CRAFTPANEL_WORN_BY = "Worn by %s",
+	CRAFTPANEL_ON_BENCH = "In the workshop",
+	CRAFTPANEL_ON_BENCH_NOW = "On the bench now",
+	CRAFTPANEL_STEP_OF = "Step %d of %d",
+	CRAFTPANEL_NOW_QUALITY = "now",
+	CRAFTPANEL_TO_CRAFT = "%s to craft",
+	CRAFTPANEL_AT_BEST = "This piece is at its best already.",
+	CRAFTPANEL_SEND = "Send to the %s",
+	CRAFTPANEL_QUEUE = "Queue",
+	CRAFTPANEL_QUEUE_HELP = "Every room of this trade works this one queue from the top. Click an order to change it, drag it or use the arrows to move it.\nImproving gear takes the piece off whoever wears it and out of storage until the work is done; it goes back to them after.",
+	CRAFTPANEL_QUEUE_EMPTY = "Nothing is queued. Whoever works here rests.",
+	CRAFTPANEL_ORDER_LEFT = "%d left to make",
+	CRAFTPANEL_ORDER_ENDLESS = "Endless",
+	CRAFTPANEL_ORDER_KEEP = "Keep %d–%d · have %d",
+	CRAFTPANEL_STATUS_WORKING = "Working",
+	CRAFTPANEL_STATUS_WAITING = "Next",
+	CRAFTPANEL_STATUS_NOMAT = "No materials",
+	CRAFTPANEL_STATUS_NOGOLD = "No gold",
+	CRAFTPANEL_STATUS_NOWORKERS = "No workers",
+	CRAFTPANEL_STATUS_HELD = "Held",
+	CRAFTPANEL_STATUS_STOCKED = "Stocked",
+	CRAFTPANEL_ONGOING = "Ongoing",
+	CRAFTPANEL_REMOVE_ORDER = "Remove this order?",
+	CRAFTPANEL_STOP_IMPROVE = "Stop and take the piece back?",
+	CRAFTPANEL_REMOVE = "Remove",
+	CRAFTPANEL_KEEP = "Keep",
+	CRAFTPANEL_LOG_IMPROVED = "%s is now %s.",
+	CRAFTPANEL_LOG_BACK_WITH = "%s has it back.",
 
 	MANSIONVIEW_REST = "Idle",
 	MANSIONVIEW_ATWORK = "At work",
@@ -33273,4 +33471,49 @@ You leave her in the shade and return to the others, carrying with you the stran
 	SQ_UPGRADE_SHORT_GOLD = "Not enough gold.",
 	SQ_UPGRADE_BUY_TOOLTIP = "Buy every planned level at once.",
 	SQ_UPGRADE_ASK = "Spend %s Tokens of Recognition and %s gold to raise [name]'s factors?",
+	STATREQ_TRAIT_OFFER = "Can take the trait: %s",
+	STATREQ_TRAIT_OFFER_NOT = "Can't take the trait: %s",
+	FAITH_CONVERSION_TITLE = "{name} can embrace a new faith",
+	FAITH_CONVERSION_KEEP = "Not now",
+	FAITH_CONVERSION_CELENA_OPTION = "Bring someone into Celena's faith (200 gold)",
+	FAITH_CONVERSION_CELENA_PROMPT = "Who will be welcomed into Celena's faith? The church asks a donation of 200 gold.",
+	FAITH_CONVERSION_CELENA_LEAD = "The church asks a donation of 200 gold for the rite. Choose the belief Celena's faith takes the place of, or let [name] keep [his] own.",
+	FAITH_CONVERSION_CELENA = """Ginny leads [name] to the altar and lights a single candle before Celena's image.
+
+{color=yellow|Ginny: — Celena asks for no oath sworn in fear. Only that you share what you have and turn away no one who comes in need. Will you carry that with you?}
+
+{color=aqua|[name]: — I will.}
+
+Ginny touches [his] forehead with blessed water and smiles warmly.
+
+{color=yellow|Ginny: — Then be welcome among her faithful. May the Goddess keep you in good health and your harvests plentiful.}""",
+	FAITH_CONVERSION_FREYA_OPTION = "Follow Freya (5 Silk)",
+	FAITH_CONVERSION_FREYA_PROMPT = "Who will be consecrated to Freya? The temple asks an offering of 5 Silk.",
+	FAITH_CONVERSION_FREYA_LEAD = "The temple asks an offering of 5 Silk for the rite. Choose the belief Freya's faith takes the place of, or let [name] keep [his] own.",
+	FAITH_CONVERSION_FREYA_NO_COST = "Not enough Silk: the temple asks an offering of 5.",
+	FAITH_CONVERSION_FREYA_LIRA = """Lira receives the silk herself and lays it at the roots of the temple's great tree, then beckons [name] closer.
+
+{color=yellow|Lira: — Freya doesn't ask where you were born. I'm proof of that. She only asks that you take from the forest no more than you need, and give back what you can.}
+
+She marks [name]'s brow with a drop of sap and whispers a short prayer in the old elven tongue.
+
+{color=yellow|Lira: — There. The forest knows you now. Walk gently in it.}""",
+	FAITH_CONVERSION_FREYA_HELEVIEL = """Heleviel looks the silk over with a critical eye before setting it on the altar beneath the temple's great tree.
+
+{color=yellow|Heleviel: — Freya's grace is not handed out lightly, but neither is it refused to those who come with an honest heart. Kneel.}
+
+[name] kneels, and the High Priestess anoints [his] brow with fragrant oil while intoning an old elven prayer.
+
+{color=yellow|Heleviel: — Rise. Take from the forest only what you need, and Freya will not forget you.}""",
+	FAITH_CONVERSION_SPIRITS_OPTION = "Walk the Way of the Spirits (30 Meat)",
+	FAITH_CONVERSION_SPIRITS_PROMPT = "Who will walk the Way of the Spirits? The tribe asks 30 Meat for the feast that seals the rite.",
+	FAITH_CONVERSION_SPIRITS_LEAD = "The tribe asks 30 Meat for the feast that seals the rite. Choose the belief the Way of the Spirits takes the place of, or let [name] keep [his] own.",
+	FAITH_CONVERSION_SPIRITS_NO_COST = "Not enough Meat: the tribe asks 30 for the rite's feast.",
+	FAITH_CONVERSION_SPIRITS = """Savra has the meat carried to the fire pit and sits [name] down across the flames from her. The smoke smells of herbs and roasting game.
+
+{color=yellow|Savra: — The spirits don't care for temples or fancy words. They live in the hunt, the wind and the old trees. Breathe the smoke and listen.}
+
+For a long moment [name] stares into the fire. Something stirs at the edge of [his] senses — a rustle, a distant howl, a presence gone as soon as [he] turns toward it.
+
+{color=yellow|Savra: — They heard you. From now on you hunt with them, not only for yourself. Now eat — a rite isn't done until the feast is.}""",
 }

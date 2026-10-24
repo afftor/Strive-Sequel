@@ -35,7 +35,10 @@ var picked_char = null
 var picked_char_from = null
 var picked_char_kind = 'work'
 var drag_end_frame = -1
-var grounds_card_return = -1
+#The grounds while a grounds plot's card is open, -1 otherwise - see floor_index(). Kept on this
+#screen rather than in the layout's current_floor, which is saved: a save made with that card open
+#used to load onto the grounds, a floor with no picture and no staircase back to the house.
+var card_floor = -1
 var zoom = 1.0
 var pan = Vector2.ZERO
 var panning = false
@@ -54,6 +57,7 @@ onready var location_panel = $LocationPanel
 onready var service_panel = $Overlay/ServicePanel
 onready var body_rites_panel = $Overlay/BodyRitesPanel
 onready var enchant_panel = $Overlay/EnchantPanel
+onready var craft_panel = $Overlay/CraftPanel
 
 
 const EMBEDDED_MARGIN = 16
@@ -87,6 +91,7 @@ func _ready():
 	service_panel.setup(self)
 	body_rites_panel.setup(self)
 	enchant_panel.setup(self)
+	craft_panel.setup(self)
 	$ExpelZone.setup(self)
 	connect("resized", self, "layout_view")
 	connect("visibility_changed", self, "on_visibility_changed")
@@ -251,6 +256,7 @@ func on_visibility_changed():
 		return
 	body_rites_panel.close()
 	enchant_panel.close()
+	craft_panel.close()
 	close_card()
 	clear_char_pick()
 
@@ -677,6 +683,7 @@ func lay_out_location_panel(room):
 	var columns = int(min(LOCATION_GRID_MAX_COLUMNS,
 		max(1, floor(inner / LOCATION_CARD_WIDTH))))
 	rooms.columns = columns
+	break_after_quests(rooms, columns)
 	var card_count = 0
 	for child in rooms.get_children():
 		if child.visible and !child.is_queued_for_deletion():
@@ -699,6 +706,52 @@ func lay_out_location_panel(room):
 	place_child($LocationPanel/Title, Rect2(24, 12, min(800, inner), 40))
 	place_service_mark()
 	place_child($LocationPanel/Empty, Rect2(24, 64, min(900, inner), 36))
+
+
+#Quests stand at the head of the grid as a group of their own (tasks_for lists them first), and
+#the rest of the work starts on a fresh row after them, so a quest never shares a row with a job
+#or a plot. A grid has no row break, so the quests' last row is filled out with blank cells - and
+#how many depends on the column count, which is only known here.
+func break_after_quests(rooms, columns):
+	var gaps = []
+	var last_quest = null
+	var quests = 0
+	var after = false
+	for child in rooms.get_children():
+		if child.is_queued_for_deletion():
+			continue
+		if child.has_meta('quest_gap'):
+			gaps.append(child)
+			continue
+		if !child.visible:
+			continue
+		var card_entry = child.get('entry')
+		if card_entry is Dictionary and card_entry.get('quest', false):
+			quests += 1
+			last_quest = child
+		elif last_quest != null:
+			after = true
+	var needed = 0
+	if quests > 0 and after:
+		needed = (columns - quests % columns) % columns
+	while gaps.size() > needed:
+		var gap = gaps.pop_back()
+		gap.hide()
+		gap.queue_free()
+	while gaps.size() < needed:
+		var gap = Control.new()
+		gap.set_meta('quest_gap', true)
+		gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		#as big as a card, or the columns it is alone in would close up
+		gap.rect_min_size = rooms.get_node("Button").rect_min_size
+		rooms.add_child(gap)
+		gaps.append(gap)
+	if last_quest == null:
+		return
+	var at = last_quest.get_position_in_parent() + 1
+	for gap in gaps:
+		rooms.move_child(gap, at)
+		at += 1
 
 
 #Where the strips sit is the panel's own business - it has two of them and knows how tall each
@@ -748,11 +801,13 @@ func party():
 
 
 func floor_index():
+	if card_floor >= 0:
+		return card_floor
 	return int(layout().current_floor)
 
 
 func current_floor():
-	return MansionLayout.get_current_floor(layout())
+	return MansionLayout.get_floor(layout(), floor_index())
 
 
 func floor_plan():
@@ -962,7 +1017,12 @@ func busy_elsewhere(person):
 #so measuring an ordinary drop against that limit let the pupils eat the teacher's chair: four
 #people in three desks, with the tutor's place still showing free beside them.
 func assign_worker(slot_code, char_id, as_tutor = false):
-	var room = get_room(slot_code)
+	return assign_worker_to_room(get_room(slot_code), char_id, as_tutor)
+
+
+#The same door for a room on any floor: the craft panel staffs every room of a trade, not only the
+#ones on the floor the plan happens to be showing.
+func assign_worker_to_room(room, char_id, as_tutor = false):
 	if room == null or room.task_id == null:
 		input_handler.SystemMessage(tr("MANSIONVIEW_ERR_VOID"))
 		return false
@@ -1525,9 +1585,7 @@ func grounds_slots():
 
 
 func open_grounds_card(slot_code):
-	var was = floor_index()
-	layout().current_floor = MansionLayout.grounds_floor(layout())
-	grounds_card_return = was
+	card_floor = MansionLayout.grounds_floor(layout())
 	card.open(slot_code, $Overlay/CardCatcher.get_global_rect())
 	$Overlay/CardCatcher.visible = true
 
@@ -1564,6 +1622,21 @@ func open_enchanting():
 func close_enchanting():
 	enchant_panel.close()
 	set_card_aside(false)
+
+
+#The workshop, opened on a trade's tab - see craft_panel.gd. Whoever it moved or whatever it
+#queued is on the plan again when it closes.
+func open_crafting(job = null):
+	set_card_aside(true)
+	craft_panel.open(job)
+
+
+func close_crafting():
+	craft_panel.close()
+	set_card_aside(false)
+	if card != null and card.visible:
+		card.rebuild()
+	refresh_people()
 
 
 func refresh_marks():
@@ -2345,9 +2418,7 @@ func open_card(slot_code):
 func close_card():
 	if card == null:
 		return
-	if grounds_card_return >= 0:
-		layout().current_floor = grounds_card_return
-		grounds_card_return = -1
+	card_floor = -1
 	card.visible = false
 	$Overlay/RoomDetails.visible = false
 	$Overlay/CardCatcher.visible = false

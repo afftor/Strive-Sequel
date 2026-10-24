@@ -883,7 +883,7 @@ func character_hovered(button, person):
 		if jobdata.has("worktool"):
 			req_tool = jobdata.worktool
 		if req_tool != null:
-			if person.get_gear('tool_' + req_tool) != null:
+			if person.has_worktool(req_tool):
 				$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['green'])
 
 
@@ -1073,6 +1073,10 @@ func build_predicted(root):
 			if upgradedata.upgradelist.has(task_id):
 				var udata = upgradedata.upgradelist[task_id]
 				root.get_node('icon').texture = images.upgrade_icons[udata.icon]
+		elif !Items.recipes.has(task.id):
+			#an improve order: the piece on the bench rather than a recipe's product
+			root.get_node('icon').texture = ResourceScripts.game_res.craft_result_icon(task_id)
+			root.get_node('icon').material = null
 		else:
 			var recipe_data = Items.recipes[task.id]
 			var item_data

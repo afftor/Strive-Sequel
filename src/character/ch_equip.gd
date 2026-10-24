@@ -11,8 +11,8 @@ var gear = {
 	hands = null,
 	legs = null,
 #	'tool' : null,
-	tool_axe = null,
-	tool_pickaxe = null,
+	tool_axe = null, #the Axe&Pick, which does the axe's and the pickaxe's work
+	tool_dishware = null,
 	tool_hammer = null,
 	tool_rod = null,
 	tool_sickle = null,
@@ -78,6 +78,16 @@ func check_wooden_gear_equipped():
 
 func get_gear(slot):
 	return gear[slot]
+
+
+#Whether something worn does the work of this tool category. Asked of the tools rather than of a
+#slot named after the category: one tool can serve several, the way the Axe&Pick covers the
+#axe's and the pickaxe's work from the axe slot.
+func has_worktool(category):
+	for item in get_equiped_items():
+		if item.toolcategory is Array and item.toolcategory.has(category):
+			return true
+	return false
 
 
 func get_gear_type(slot):

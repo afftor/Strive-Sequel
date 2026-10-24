@@ -21,6 +21,10 @@ var tax = 0
 #goods sold to shops, kept until the next turn so the player can undo a sale
 #{shop_key: [{kind, code, amount, price, data}]} - kind is material/usable/gear
 var buyback = {}
+#Gear on a workshop bench being improved, keyed by the improve order working on it. It is out of
+#the inventory while it is there - nothing can equip, sell or enchant a piece being reforged - and
+#goes back when its last step is done or the order is taken off the queue. See add_improve_task().
+var workshop_items = {}
 
 #new tasks system
 #One queue of craft orders per craft type - items and materials together, worked from the top
@@ -78,6 +82,14 @@ func fix_serialization():
 		materials.erase(i)
 	oldmaterials = materials.duplicate()
 	merge_craft_queues()
+	if !(workshop_items is Dictionary):
+		workshop_items = {}
+	for i in workshop_items.keys():
+		if workshop_items[i] is Dictionary:
+			workshop_items[i] = dict2inst(workshop_items[i])
+			if workshop_items[i].type == 'gear':
+				workshop_items[i].fix_gear()
+	settle_workshop()
 	#A save from before the tree was retired can have one of its upgrades queued for building.
 	#Nothing can describe it any more - the readers index upgradelist to draw its icon and
 	#name - so the queue is swept before anybody asks.
@@ -102,6 +114,7 @@ func fix_serialization():
 			ResourceScripts.game_res.materials[item] = 0
 			print_debug("Added res on load: " + item)
 	fix_food_task_limits()
+	fix_modular_task_limits()
 	ensure_mansion_layout()
 #	fix_items_inventory(false)
 
@@ -1341,12 +1354,33 @@ func fix_food_task_limits():
 			task_progress.progress = float(task_progress.progress) * float(new_limit) / old_limit
 		task_progress.progress_limit = new_limit
 
+func fix_modular_task_limits():
+	for task_id in tasks_progresses:
+		var task = tasks_progresses[task_id]
+		#a piece on the bench was priced at its recipe's flat work; its step now follows its materials
+		if is_improve_task(task):
+			var cost = improve_step_cost(task)
+			if cost != null and cost.work > 0.0:
+				Items.ModularEconomy.update_task_work(task, cost.work)
+			continue
+		if task.get('crafttype', '') != 'modular' or task.get('type', '') != 'progress_item':
+			continue
+		if !Items.recipes.has(task.id) or !task.has('partdict'):
+			continue
+		var new_limit = Items.get_recipe_workunits(task.id, task.partdict)
+		if new_limit > 0.0:
+			Items.ModularEconomy.update_task_work(task, new_limit)
+
+
 func serialize():
 #	fix_items_inventory(true)
 	var res = inst2dict(self).duplicate(true)
 	res.items = {}
 	for i in items:
 		res.items[i] = inst2dict(items[i])
+	res.workshop_items = {}
+	for i in workshop_items:
+		res.workshop_items[i] = inst2dict(workshop_items[i])
 #	fix_items_inventory(false)
 	return res
 
@@ -1481,7 +1515,7 @@ func add_recipe_task(recipe_id, parts = {}, amount = {fixed = 1}):
 	var template = {
 		id = recipe_id, 
 		progress = 0, 
-		progress_limit = rdata.workunits, 
+		progress_limit = Items.get_recipe_workunits(recipe_id, parts),
 		type = 'progress_item', 
 		status = 'init', 
 		resultamount = rdata.resultamount,
@@ -1505,6 +1539,163 @@ func add_recipe_task(recipe_id, parts = {}, amount = {fixed = 1}):
 	tasks_progresses[id] = template
 	crafting_lists[template.job].push_back(id)
 	return id
+
+
+#### improving gear in a workshop ####
+
+const ITEM_IMPROVING = "res://src/core/item_improving.gd"
+
+
+#The price list and the rules of improving. Loaded where it is asked for rather than preloaded:
+#this file's preload chain is kept to scripts that name no autoloads.
+func improving():
+	return load(ITEM_IMPROVING)
+
+
+#Puts a piece of gear on the queue of the workshop that makes it, to be raised to 'target' one
+#quality at a time. The piece leaves the inventory for the bench: taken off whoever wears it, and
+#split off its stack when there are several. Each step is paid for when it starts, the way a recipe
+#run is (_active_task_find), and worked like one (_add_improve_value). Answers the order's id.
+func add_improve_task(item_id, target):
+	var Improving = improving()
+	var item = items.get(item_id, null)
+	if item == null or !Improving.improvable(item):
+		return null
+	var steps = Improving.steps_to(item, target)
+	if steps.empty():
+		return null
+	var job = Improving.job_of(item)
+	if !has_craft_queue(job):
+		return null
+	var owner_id = item.owner
+	if item.owner != null:
+		var person = characters_pool.get_char_by_id(item.owner)
+		if person != null:
+			person.unequip(item, false)
+		item.owner = null
+	if item.amount > 1:
+		item.amount -= 1
+		item = item.clone()
+	else:
+		items.erase(item.id)
+	var id = _get_new_task_id()
+	var tdata = tasks.tasklist[job]
+	var template = {
+		id = 'improve_item',
+		type = 'improve_item',
+		job = job,
+		bench = id,
+		name = item.name,
+		from = Improving.current(item),
+		steps = steps,
+		step = 0,
+		owner = owner_id,
+		progress = 0,
+		progress_limit = Improving.step_cost(item, steps[0]).work,
+		status = 'init',
+		workstat = tdata.workstat,
+		mod = tdata.mod,
+	}
+	if tdata.has('worktool'):
+		template.worktool = tdata.worktool
+	workshop_items[id] = item
+	tasks_progresses[id] = template
+	crafting_lists[job].push_back(id)
+	return id
+
+
+func is_improve_task(task):
+	return task is Dictionary and task.get('type') == 'improve_item'
+
+
+func workshop_item(task_id):
+	return workshop_items.get(task_id, null)
+
+
+#What the step the order is on asks for, or nothing once the piece has gone from the bench.
+func improve_step_cost(task):
+	var item = workshop_items.get(task.get('bench'), null)
+	if item == null or task.step >= task.steps.size():
+		return null
+	return improving().step_cost(item, task.steps[task.step])
+
+
+#A finished step: the piece takes the new quality, keeping its enchantments and any curse
+#(set_quality_level lays them on again), and either goes on to its next step or, after the last
+#one, back off the bench.
+func finish_improve_step(task_id, character):
+	var task = tasks_progresses[task_id]
+	var item = workshop_items.get(task_id, null)
+	if item == null:
+		task.status = 'completed'
+		return
+	var quality = task.steps[task.step]
+	item.set_quality_level(quality)
+	task.step += 1
+	if character != null:
+		globals.emit_signal("work_produced", character.id, task_id, item.icon)
+	if task.step < task.steps.size():
+		task.progress_limit = improving().step_cost(item, task.steps[task.step]).work
+		task.status = 'init'
+		return
+	task.status = 'completed'
+	var person = return_workshop_item(task_id)
+	var text = tr("CRAFTPANEL_LOG_IMPROVED") % [item.name, tr("QUALITY" + quality.to_upper())]
+	if person != null:
+		text += " " + tr("CRAFTPANEL_LOG_BACK_WITH") % person.get_short_name()
+	#'work' rather than 'craft': a craft row is the turn's folded report, and a line written into
+	#it would be overwritten by the next recipe finished in the same hour
+	globals.mansion_activity_log_add('work', text)
+
+
+#Hands a piece back from the bench. Whoever wore it puts it straight back on when they are here and
+#the places it goes on are free; otherwise it goes to storage, joining a stack it now matches.
+#Answers the person who took it back, or null.
+func return_workshop_item(task_id):
+	var item = workshop_items.get(task_id, null)
+	if item == null:
+		return null
+	workshop_items.erase(task_id)
+	var task = tasks_progresses.get(task_id, {})
+	globals.AddItemToInventory(item, false, false)
+	var owner_id = task.get('owner', null)
+	if owner_id != null and party_is_loaded() and item.id != null and items.has(item.id):
+		var person = characters_pool.get_char_by_id(owner_id)
+		if person != null and !person.is_on_quest() and _gear_places_free(person, item):
+			person.equip(item)
+			if item.owner == person.id:
+				return person
+	globals.restack_item(item)
+	return null
+
+
+func _gear_places_free(person, item):
+	for place in item.slots:
+		if person.get_gear(place) != null:
+			return false
+	return !item.slots.empty()
+
+
+#Improve orders and the gear on their benches have to agree: an order whose piece is gone has
+#nothing to work on, and a piece whose order is gone would never come back.
+func settle_workshop():
+	for id in tasks_progresses.keys():
+		var task = tasks_progresses[id]
+		if !is_improve_task(task):
+			continue
+		if workshop_items.has(id) and has_craft_queue(task.get('job')):
+			if !crafting_lists[task.job].has(id):
+				crafting_lists[task.job].append(id)
+			continue
+		for job in crafting_lists:
+			crafting_lists[job].erase(id)
+		tasks_progresses.erase(id)
+	for id in workshop_items.keys():
+		if tasks_progresses.has(id):
+			continue
+		var item = workshop_items[id]
+		workshop_items.erase(id)
+		globals.AddItemToInventory(item, false, false)
 
 
 func if_has_crafting_recipe(recipe_id):
@@ -1938,6 +2129,11 @@ func clean_task(id):
 		'progress_item':
 			crafting_lists[val.job].erase(id)
 			was_on_screen = true #craft orders are listed whether or not anyone is on them
+		'improve_item':
+			crafting_lists[val.job].erase(id)
+			was_on_screen = true
+			#an order taken off before its last step gives its piece back as it now stands
+			return_workshop_item(id)
 	if active_tasks.has(val.id):
 		active_tasks[val.id].erase(id)
 	tasks_progresses.erase(id)
@@ -2406,6 +2602,9 @@ func has_craft_queue(job):
 func craft_result_name(task_id):
 	if task_id == null or !tasks_progresses.has(task_id):
 		return ""
+	if is_improve_task(tasks_progresses[task_id]):
+		var piece = workshop_items.get(task_id, null)
+		return piece.name if piece != null else ""
 	var recipe = Items.recipes.get(tasks_progresses[task_id].id, null)
 	if recipe == null:
 		return ""
@@ -2421,6 +2620,11 @@ func craft_result_name(task_id):
 func craft_result_icon(task_id):
 	if task_id == null or !tasks_progresses.has(task_id):
 		return null
+	if is_improve_task(tasks_progresses[task_id]):
+		var piece = workshop_items.get(task_id, null)
+		if piece == null or piece.icon == null:
+			return null
+		return load(piece.icon) if piece.icon is String else piece.icon
 	var recipe = Items.recipes.get(tasks_progresses[task_id].id, null)
 	if recipe == null:
 		return null
@@ -2634,6 +2838,8 @@ func _add_craft_value(curupgrade, value, character):
 		return value
 	else:
 		var tprogress = tasks_progresses[curupgrade]
+		if is_improve_task(tprogress):
+			return _add_improve_value(curupgrade, value, character)
 		#batch limits, as we can't use recursion for crafting items (proved before)
 		var limit1 = 0 #how much can be crafted
 		if value >= tprogress.progress_limit - tprogress.progress:
@@ -2691,6 +2897,23 @@ func _add_craft_value(curupgrade, value, character):
 				else:
 					tprogress.status = 'init' #next item not started and not paid for
 			return 0
+
+
+#Work put into an improve order. Its steps differ in price, so unlike a recipe it is never worked
+#several at once: a step that finishes hands the rest of the work on, and the next step is paid
+#for by _active_task_find like any run that has not started.
+func _add_improve_value(task_id, value, character):
+	var tprogress = tasks_progresses[task_id]
+	var need = tprogress.progress_limit - tprogress.progress
+	if value < need:
+		tprogress.progress += value
+		return 0
+	value -= need
+	tprogress.progress = 0
+	finish_improve_step(task_id, character)
+	if value <= 0:
+		return 0
+	return _add_craft_value(_active_task_find(crafting_lists[tprogress.job]), value, character)
 
 
 func _add_gather_value(task_id, tprogress, value, character):
@@ -3087,6 +3310,11 @@ func check_recipe_resources(temp):
 
 func check_recipe_amount(temprecipe):
 #	var temprecipe = tasks_progresses[temp]
+	#an improve order pays one step at a time, in gold and, for a unique piece, materials - see
+	#_add_improve_value()
+	if is_improve_task(temprecipe):
+		var cost = improve_step_cost(temprecipe)
+		return 1 if cost != null and improving().can_pay(cost) else 0
 	var recipe = Items.recipes[temprecipe.id]
 	var res = 9999
 	if recipe.crafttype == 'basic':
@@ -3115,6 +3343,13 @@ func spend_resources(temp, amount = 1):
 	if amount <= 0:
 		return
 	var temprecipe = tasks_progresses[temp]
+	if is_improve_task(temprecipe):
+		var cost = improve_step_cost(temprecipe)
+		if cost != null:
+			money -= cost.gold
+			for i in cost.materials:
+				materials[i] -= cost.materials[i]
+		return
 	var recipe = Items.recipes[temprecipe.id]
 	if recipe.crafttype == 'basic':
 		for i in recipe.materials:

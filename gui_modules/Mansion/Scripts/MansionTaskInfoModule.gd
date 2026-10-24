@@ -247,6 +247,9 @@ func show_resources_info():
 			var progress_data = ResourceScripts.game_res.tasks_progresses[task_id]
 			if progress_data.status in ['completed', 'stopped', 'init']:
 				continue
+			#an improve order shares the queue but names no recipe - see game_res.add_improve_task()
+			if !Items.recipes.has(progress_data.id):
+				continue
 			var recipe_data = Items.recipes[progress_data.id]
 			var newtask = _create_task_node(task_id)
 			if progress_data.status == 'no_resources':

@@ -4,6 +4,9 @@ var ReloadPanel
 var SwitchLanguage
 var NGPlusButton
 var NGPlusButtonY #its place in the scene, kept so the button can be moved back to it
+#In game this panel sits in the game menu's CanvasLayer, which is drawn over the shared tooltip
+#at the tree root - so the panel's tooltips go through a tooltip of its own instead.
+onready var Tooltip = $TextTooltip
 
 #warning-ignore-all:return_value_discarded
 # var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
@@ -17,9 +20,14 @@ func _ready():
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
-	$TabContainer/Visuals/fullscreen.connect("pressed",self,"togglefullscreen")
+	for i in [-1, 1]:
+		var arrow = 'LArr' if i < 0 else 'RArr'
+		get_node("TabContainer/Visuals/window_mode/" + arrow).connect("pressed", self, "change_window_mode", [i])
+		get_node("TabContainer/Visuals/resolution/" + arrow).connect("pressed", self, "change_resolution", [i])
+	globals.connecttexttooltip($TabContainer/Visuals/window_mode, tr("OPTWINDOWMODE_DESCRIPT"), false, Tooltip)
+	globals.connecttexttooltip($TabContainer/Visuals/resolution, tr("OPTRESOLUTION_DESCRIPT"), false, Tooltip)
+	input_handler.connect("window_mode_changed", self, "update_display_options")
 	$CloseButton.connect("pressed",self,'close')
-	$TabContainer/Visuals/fullscreen.pressed = input_handler.globalsettings.fullscreen
 	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
 	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
 	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_amount.min_value = variables.autosave_number_min
@@ -32,6 +40,9 @@ func _ready():
 	ReloadPanel = $ReloadGameLanguage
 	SwitchLanguage = $TabContainer/Visuals/SwitchLanguage
 	SwitchLanguage.OkPanel = ReloadPanel
+	#the flags were hooked to the shared tooltip in their own _ready, before this one ran
+	for flag in SwitchLanguage.get_children():
+		globals.connecttexttooltip(flag, SwitchLanguage.locale_names[flag.name], false, Tooltip)
 
 	$ReloadGameLanguage/Button.connect('pressed', self, 'language_restart')
 
@@ -42,7 +53,7 @@ func _ready():
 	for i in ['diff_permadeath', 'diff_bonus_taskmod', 'diff_bonus_loot', 'diff_stop_loan', 'diff_free_gather','easytrain']:
 		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).connect("pressed", self, "gamestate_rule",  [i])
 		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).pressed = ResourceScripts.game_globals.get(i)
-		globals.connecttexttooltip(get_node("TabContainer/Gameplay2/Scroll/Box/" + i), tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
+		globals.connecttexttooltip(get_node("TabContainer/Gameplay2/Scroll/Box/" + i), tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'), false, Tooltip)
 	for i in ['generate_portraits', 'factors_as_words', 'no_damage_shake', 'item_flight_animation', 'fps_meter', 'fast_combat']:
 		get_node("TabContainer/Visuals/" + i).connect("pressed", self, "gameplay_rule", ['Visuals', i])
 		get_node("TabContainer/Visuals/" + i).pressed = input_handler.globalsettings[i]
@@ -63,7 +74,7 @@ func _ready():
 	NGPlusButton = $TabContainer/Cheats/OpenCheatsMenu/UnlockNGP
 	NGPlusButtonY = NGPlusButton.rect_position.y
 	NGPlusButton.connect("pressed", self, "unlock_ngplus")
-	globals.connecttexttooltip(NGPlusButton, tr("OPTCHEATUNLOCKNGPTOOLTIP"))
+	globals.connecttexttooltip(NGPlusButton, tr("OPTCHEATUNLOCKNGPTOOLTIP"), false, Tooltip)
 
 
 func enable_tutorials(pressed):
@@ -138,18 +149,69 @@ func open():
 	autosave_amount_change(input_handler.globalsettings.autosave_number)
 	autosave_frequency_change(input_handler.globalsettings.autosave_frequency)
 	$TabContainer/Visuals/DisableAnimations.pressed = input_handler.globalsettings.animatedbackground
-	
+	#a window the player dragged to another size keeps it: the selector starts from there
+	if window_mode() == 'windowed' and !OS.window_maximized and !OS.window_minimized:
+		input_handler.globalsettings.window_size = OS.window_size
+	update_display_options()
+
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = input_handler.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = input_handler.globalsettings[i.name+'mute']
 		i.editable = !i.get_node("CheckBox").pressed
 
 
-func togglefullscreen():
-	input_handler.globalsettings.fullscreen = $TabContainer/Visuals/fullscreen.pressed
-	OS.window_fullscreen = input_handler.globalsettings.fullscreen
-	if input_handler.globalsettings.fullscreen == false:
-		OS.window_position = Vector2(0,0)
+#the order the window mode selector steps through
+const WINDOW_MODES = ['windowed', 'fullscreen', 'borderless']
+
+func window_mode():
+	if !input_handler.globalsettings.fullscreen:
+		return 'windowed'
+	return 'borderless' if input_handler.globalsettings.borderless_fullscreen else 'fullscreen'
+
+
+func change_window_mode(step):
+	var mode = WINDOW_MODES[posmod(WINDOW_MODES.find(window_mode()) + step, WINDOW_MODES.size())]
+	input_handler.globalsettings.fullscreen = (mode != 'windowed')
+	#windowed keeps the kind of fullscreen it came from, so the fullscreen hotkey returns to that one
+	if mode != 'windowed':
+		input_handler.globalsettings.borderless_fullscreen = (mode == 'borderless')
+	input_handler.apply_window_mode(true)
+
+
+#The resolution selector picks the window's size in a window, and in fullscreen what the game
+#draws at before it is stretched over the screen - (0, 0) there being the screen's own.
+func resolution_options():
+	if window_mode() == 'windowed':
+		return input_handler.get_window_resolutions()
+	return input_handler.get_fullscreen_resolutions()
+
+
+func current_resolution():
+	if window_mode() == 'windowed':
+		return input_handler.globalsettings.window_size
+	return input_handler.render_resolution()
+
+
+func change_resolution(step):
+	var options = resolution_options()
+	var picked = options[posmod(options.find(current_resolution()) + step, options.size())]
+	if window_mode() == 'windowed':
+		input_handler.globalsettings.window_size = picked
+	else:
+		input_handler.globalsettings.fullscreen_resolution = picked
+	input_handler.apply_window_mode(true)
+
+
+func update_display_options():
+	$TabContainer/Visuals/window_mode/Label.text = tr("OPTWINDOWMODE" + window_mode().to_upper())
+	var node = $TabContainer/Visuals/resolution
+	var size = current_resolution()
+	if size == Vector2():
+		size = OS.get_screen_size(OS.current_screen)
+	node.get_node("Label").text = "%d × %d" % [size.x, size.y]
+	var arrows_shown = resolution_options().size() > 1
+	node.get_node("LArr").visible = arrows_shown
+	node.get_node("RArr").visible = arrows_shown
 
 func soundsliderchange(value,name):
 	if value <= -39:

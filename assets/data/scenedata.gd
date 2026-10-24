@@ -1868,21 +1868,15 @@ var scenedict = {
 		{code = 'meditation_shrine_approach', select_person = true, reqs = [], text = tr("STRANGE_SPOT_STEP")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
+	#nobody is picked here: stepping closer shows what the ring offers (Enemydata.power_place_enter), and who
+	#takes it is chosen after its fight
 	power_place_spot = {
 		text = tr("STRANGE_SPOT"),
-		tags = [],
+		tags = ['shrine'],
+		shrine = 'power_place_spot',
 		image = 'spring',
 		options = [
-		{code = 'power_shrine_approach', select_person = true, reqs = [], text = tr("STRANGE_SPOT_STEP")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
-	},
-	#'shrine' in the code keeps the pick to the fighting party (get_option_reqs_and_challenge)
-	power_shrine_approach = {
-		text = tr("POWER_PLACE"),
-		tags = ['shrine','active_character_translate'],
-		shrine = 'power_place',
-		image = 'energy',
-		options = []
 	},
 	meditation_shrine_approach = {
 		text = tr("MEDITATION_SPOT_PERSON"),
@@ -1925,28 +1919,12 @@ var scenedict = {
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
-	#the place of power's reward when the player chose (Enemydata.power_place_reward); the room is already spent
-	power_place_gift = {
-		text = tr("POWER_PLACE_GIFT"),
-		tags = ['active_character_translate'],
-		image = 'energy_control',
-		common_effects = [{code = 'update_party'}],
-		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
-	},
-	power_place_exp = {
-		text = tr("POWER_PLACE_EXP_TAKEN"),
-		tags = ['active_character_translate'],
-		image = 'energy_control',
-		common_effects = [{code = 'update_party'}],
-		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
-	},
+	#a flaw the place of power burned out instead of its gift (Enemydata.power_place_purge_chosen)
 	power_place_purged = {
 		text = tr("POWER_PLACE_PURGED"),
 		tags = ['active_character_translate'],
 		image = 'energy_control',
-		common_effects = [{code = 'update_party'}],
+		common_effects = [{code = 'clear_subroom'}, {code = 'update_party'}],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},

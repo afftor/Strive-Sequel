@@ -37,13 +37,9 @@ func _ready():
 	#$char_sprite.texture = images.sprites[input_handler.progress_data.characters[randi()%input_handler.progress_data.characters.size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	yield(get_tree().create_timer(0.1), "timeout")
-	OS.window_fullscreen = input_handler.globalsettings.fullscreen
-	if OS.window_fullscreen == false:
-		OS.window_size = input_handler.globalsettings.window_size
-		OS.window_position = input_handler.globalsettings.window_pos
+	#also brings back a window whose saved place is off the screens
+	input_handler.apply_window_mode()
 
-	if OS.window_position.y < 0:
-		OS.window_position.y = 50
 	_load_changelog()
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])

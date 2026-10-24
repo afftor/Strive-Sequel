@@ -120,6 +120,15 @@ func slave_position_selected(character):
 	emit_signal("group_changed")
 
 
+#A place keeps its group between visits, and leaving it by the map or a teleport takes nobody out
+#of it, so it can still name people who are elsewhere by now. Only those standing here fight here -
+#the same rule selectfighter offers candidates by.
+func is_here(character):
+	if allow_remote or duel:
+		return true
+	return character.check_location(input_handler.active_location.id, true)
+
+
 func build_location_group():
 	for i in positiondict:
 		var position = 'pos'+str(i)
@@ -128,19 +137,20 @@ func build_location_group():
 		var position_node = get_node(positiondict[i])
 		position_node.modulate.a = 1.0
 		if group.has(position):
-			character = ResourceScripts.game_party.characters[group[position]]
-			if character != null:
-				if !character.has_status('no_combat'):
-					character.combat_position = i
-					get_node(positiondict[i]+"/Image").texture = character.get_icon()
-					get_node(positiondict[i]+"/Image").show()
-					get_node(positiondict[i]+"/Image/hp").text = str(ceil(character.hp)) + '/' + str(ceil(character.get_stat('hpmax')))
-					get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.get_stat('mpmax')))
-				else:
-					character.combat_position = 0
-					group.erase(position)
-					free_pos = true
+			character = ResourceScripts.game_party.characters.get(group[position])
+			if character == null or !is_here(character):
+				#combat_position is left alone: it is the slot they hold in the party where they are
+				group.erase(position)
+				free_pos = true
+			elif !character.has_status('no_combat'):
+				character.combat_position = i
+				get_node(positiondict[i]+"/Image").texture = character.get_icon()
+				get_node(positiondict[i]+"/Image").show()
+				get_node(positiondict[i]+"/Image/hp").text = str(ceil(character.hp)) + '/' + str(ceil(character.get_stat('hpmax')))
+				get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.get_stat('mpmax')))
 			else:
+				character.combat_position = 0
+				group.erase(position)
 				free_pos = true
 		else:
 			free_pos = true

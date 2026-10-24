@@ -174,19 +174,35 @@ var data = {
 		} ],
 	},
 	cali_farmer_4 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		#the wood hand-in stays visible (greyed out) when short on wood; the discount is its own variation so only one hand-in shows
+		variations = [
+			{
+				reqs = [{type = "decision", value = "cali_wood_discount", check = true}],
+				image = null, tags = ['dialogue_scene', 'master_translate'],
+				character = "$cali",
+				text = [
+					{text = "CALI_FARMER_4_1", reqs = [{type = 'any_quest_stage', value = 'cali_heirloom_quest', stages = ['stage2', 'stage2_1']}]}, #return text
+					{text = "CALI_FARMER_4_2", reqs = [], previous_dialogue_option = 2}, #normal first time text
+					{text = "CALI_FARMER_4_3", reqs = [], previous_dialogue_option = 3}, #get discount text
+					],
+				options = [ {
+					code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'}], not_hide = true, dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'material_change', operant = '-', material = 'wood', value = 100}],
+				},
+				{
+					code = 'cali_farmer_6', text = "CALI_FARMER_4_OPTION_3", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+				} ],
+			},
+		],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		character = "$cali",
-		text = [ 
+		text = [
 			{text = "CALI_FARMER_4_1", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'}]}, #return text
 			{text = "CALI_FARMER_4_2", reqs = [], previous_dialogue_option = 2}, #normal first time text
 			{text = "CALI_FARMER_4_3", reqs = [], previous_dialogue_option = 3}, #get discount text
-			], 
+			],
 		options = [ {
-			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1", reqs = [{type = 'has_material', operant = 'gte', value = 200, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = false}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'material_change', operant = '-', material = 'wood', value = 200}],
-		},
-		{
-			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'material_change', operant = '-', material = 'wood', value = 100}],
+			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1", reqs = [{type = 'has_material', operant = 'gte', value = 200, material = 'wood'}], not_hide = true, dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'material_change', operant = '-', material = 'wood', value = 200}],
 		},
 		{
 			code = 'cali_farmer_4', text = "CALI_FARMER_4_OPTION_2", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'worker', check = true}]}], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true, bonus_effects = [{code = 'decision', value = 'cali_wood_discount'},],
@@ -224,8 +240,13 @@ var data = {
 		character = "$cali",
 		text = [ {text = "CALI_FARMER_6", reqs = []} ], 
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
+			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = "decision", value = "cali_wood_discount", check = false}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
 				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage2'}, {code = 'update_location'}
+			]
+		},
+		{
+			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
+				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage2_1'}, {code = 'update_location'}
 			]
 		}, ],
 	},

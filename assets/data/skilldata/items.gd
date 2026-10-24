@@ -394,7 +394,7 @@ var skills = {
 		sfx = [], 
 		sound = [],
 		value = [['1'], ['1'], ['1']],
-		random_factor = [2,1,0],
+		random_factor = [1,1,0],
 		damagestat = ['tame_factor','authority_factor','-wits_factor']
 	},
 	ragedrug = {

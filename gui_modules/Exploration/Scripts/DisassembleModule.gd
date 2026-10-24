@@ -314,10 +314,7 @@ func gear_detailed_tooltip(data, item = null):
 		text = text.substr(0, text.length() -2)
 
 	if item.toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": "
-		for i in item.toolcategory:
-			text += statdata.worktoolnames[i] +", "
-		text = text.substr(0, text.length()-2)
+		text += tr("TOOLWORKCATEGORY") + ": " + statdata.worktool_names_text(item.toolcategory)
 	if item.description != null:
 		text += item.description
 	if !item.reqs.empty():

@@ -51,6 +51,8 @@ signal SpellUsed
 signal animatedbackground_changed
 #one of the doll options changed; a doll on screen re-reads them
 signal doll_settings_changed
+#the window changed mode or size through apply_window_mode; the options panel re-reads it
+signal window_mode_changed
 #the player put an item on a character; a doll showing them may pull a face at it
 signal character_item_equipped(character, item)
 
@@ -183,6 +185,12 @@ var globalsettings = {
 
 	#Window settings
 	fullscreen = true,
+	#which fullscreen: a borderless window over the screen instead of the video driver's own
+	#fullscreen, so switching to another window is instant
+	borderless_fullscreen = false,
+	#what a fullscreen game draws at before it is stretched over the screen; (0, 0) is the
+	#screen's own resolution. A window always draws at its own size (window_size)
+	fullscreen_resolution = Vector2(0,0),
 	window_size = Vector2(1366,768),
 	window_pos = Vector2(0,0),
 
@@ -422,16 +430,189 @@ func quit():
 	if globals._save_thread.is_active():
 		globals._save_thread.wait_to_finish()
 	characters_pool.cleanup(true)
-	globalsettings.window_size = OS.window_size
-	globalsettings.window_pos = OS.window_position
+	#only a plain window's size and place are the player's own; a fullscreen, maximized or
+	#minimized one would overwrite the resolution picked in the options
+	if !OS.window_fullscreen and !OS.window_borderless and !OS.window_maximized and !OS.window_minimized:
+		globalsettings.window_size = OS.window_size
+		globalsettings.window_pos = OS.window_position
 	settings_save(globalsettings)
 	#get_tree().get_root().queue_free()
 	get_tree().quit()
 
 
+#Resolutions the options offer, as a window's size or as what a fullscreen game draws at.
+#All are 16:9 like the 1920x1080 layout, so none of them letterboxes the game.
+const RESOLUTIONS = [Vector2(1280, 720), Vector2(1366, 768), Vector2(1600, 900), Vector2(1920, 1080), Vector2(2560, 1440), Vector2(3200, 1800), Vector2(3840, 2160)]
+
+
+#a window as tall as its screen has nowhere to put its title bar
+func window_fits_screen(size, screen_size):
+	return size.x <= screen_size.x and size.y < screen_size.y
+
+
+#`size` if a window of it fits on the screen, otherwise the largest offered size that does.
+#Older versions saved the fullscreen size as the window size, which never fits
+func fitting_window_size(size, screen_size):
+	if window_fits_screen(size, screen_size):
+		return size
+	var result = (screen_size * 0.75).floor()
+	for option in RESOLUTIONS:
+		if window_fits_screen(option, screen_size):
+			result = option
+	return result
+
+
+#the windowed sizes for the screen the game is on, plus the current one if the player
+#dragged the window to a size of their own
+func get_window_resolutions():
+	var screen_size = OS.get_screen_size(OS.current_screen)
+	var result = []
+	for option in RESOLUTIONS:
+		if window_fits_screen(option, screen_size):
+			result.append(option)
+	var current = fitting_window_size(globalsettings.window_size, screen_size)
+	if !result.has(current):
+		result.append(current)
+		result.sort()
+	return result
+
+
+#the layout every screen is built for: project.godot's window size
+func base_resolution():
+	return Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
+
+
+#the part of a screen of this size the game fills; the rest is black bars
+func game_area(screen_size):
+	var base = base_resolution()
+	if screen_size.x * base.y > screen_size.y * base.x:
+		return Vector2(floor(screen_size.y * base.x / base.y), screen_size.y)
+	return Vector2(screen_size.x, floor(screen_size.x * base.y / base.x))
+
+
+#what a fullscreen game can draw at on the screen it is on: the offered resolutions below the
+#screen's own, then the screen's own as (0, 0)
+func get_fullscreen_resolutions():
+	var area = game_area(OS.get_screen_size(OS.current_screen))
+	var result = []
+	for option in RESOLUTIONS:
+		if option.x < area.x and option.y < area.y:
+			result.append(option)
+	result.append(Vector2())
+	return result
+
+
+#what the game draws at now; (0, 0) when that is just the size of the window or screen
+func render_resolution():
+	if !globalsettings.fullscreen:
+		return Vector2()
+	#one picked on a bigger screen is not offered on this one, which gets its own instead
+	if !get_fullscreen_resolutions().has(globalsettings.fullscreen_resolution):
+		return Vector2()
+	return globalsettings.fullscreen_resolution
+
+
+#project.godot's own stretch: the game drawn at the window's size
+func restore_project_stretch():
+	var modes = {'disabled': SceneTree.STRETCH_MODE_DISABLED, '2d': SceneTree.STRETCH_MODE_2D, 'viewport': SceneTree.STRETCH_MODE_VIEWPORT}
+	var aspects = {'ignore': SceneTree.STRETCH_ASPECT_IGNORE, 'keep': SceneTree.STRETCH_ASPECT_KEEP,
+		'keep_width': SceneTree.STRETCH_ASPECT_KEEP_WIDTH, 'keep_height': SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, 'expand': SceneTree.STRETCH_ASPECT_EXPAND}
+	#clears the bars apply_render_resolution drew; the stretch below draws its own if the
+	#window needs any
+	VisualServer.black_bars_set_margins(0, 0, 0, 0)
+	get_tree().set_screen_stretch(modes[ProjectSettings.get_setting("display/window/stretch/mode")],
+		aspects[ProjectSettings.get_setting("display/window/stretch/aspect")], base_resolution(),
+		ProjectSettings.get_setting("display/window/stretch/shrink"))
+
+
+#Draws a fullscreen game at the resolution picked for it and stretches that over the game's
+#area of the screen. The engine's '2d' stretch only ever draws at the window's own size, so
+#the root viewport is set up by hand the same way '2d' sets it, just with a smaller drawing -
+#and set up again after each resize, which puts the engine's values back (_on_screen_resized).
+#The 'disabled' stretch underneath is there for its font oversampling: text gets rasterised
+#at the size it is finally drawn at, so it stays sharp at any resolution.
+func apply_render_resolution():
+	var res = render_resolution()
+	if res == Vector2():
+		restore_project_stretch()
+		return
+	var base = base_resolution()
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_DISABLED, SceneTree.STRETCH_ASPECT_KEEP, base, res.x / base.x)
+	var window = OS.window_size
+	var area = game_area(window)
+	var margin = ((window - area) / 2).floor()
+	var root = get_tree().root
+	root.size = res
+	root.set_attach_to_screen_rect(Rect2(margin, area))
+	root.size_override_stretch = true
+	root.set_size_override(true, base)
+	VisualServer.black_bars_set_margins(int(margin.x), int(margin.y), int(window.x - area.x - margin.x), int(window.y - area.y - margin.y))
+
+
+func _on_screen_resized():
+	if render_resolution() != Vector2():
+		apply_render_resolution()
+
+
+#Whether a window placed at `pos` has enough of its title bar on some screen to be dragged back.
+#A saved place can be off every screen: its monitor unplugged, or the resolution lowered.
+#A few pixels over the top edge are fine - that is where dragging up to the top leaves a window.
+func title_bar_on_screen(pos):
+	var bar = Rect2(pos, Vector2(OS.get_real_window_size().x, max(OS.get_real_window_size().y - OS.window_size.y, 1)))
+	for screen in OS.get_screen_count():
+		var shown = Rect2(OS.get_screen_position(screen), OS.get_screen_size(screen)).clip(bar)
+		if shown.size.x >= min(100, bar.size.x) and shown.size.y >= bar.size.y / 2:
+			return true
+	return false
+
+
+#Puts the window in the mode the settings ask for. A window goes back to its saved size and
+#place, or with `center` - or when that place is off the screens - to the middle of the screen
+#it is on.
+func apply_window_mode(center = false):
+	var screen = OS.current_screen
+	var screen_pos = OS.get_screen_position(screen)
+	var screen_size = OS.get_screen_size(screen)
+	if globalsettings.fullscreen and !globalsettings.borderless_fullscreen:
+		#fullscreen first, so a borderless window does not get its frame back on the way
+		OS.window_fullscreen = true
+		OS.window_borderless = false
+	elif globalsettings.fullscreen:
+		#borderless first: leaving fullscreen with it already set keeps the window frameless
+		#instead of flashing the title bar
+		OS.window_borderless = true
+		OS.window_fullscreen = false
+		OS.window_maximized = false
+		OS.window_position = screen_pos
+		#Windows video drivers take a window exactly the size of the screen for exclusive
+		#fullscreen - the slow alt-tab this mode is there to avoid. One row past the bottom
+		#edge keeps it an ordinary window
+		if OS.get_name() == "Windows":
+			screen_size.y += 1
+		OS.window_size = screen_size
+	else:
+		OS.window_fullscreen = false
+		OS.window_borderless = false
+		OS.window_maximized = false
+		globalsettings.window_size = fitting_window_size(globalsettings.window_size, screen_size)
+		OS.window_size = globalsettings.window_size
+		if center or !title_bar_on_screen(globalsettings.window_pos):
+			var pos = screen_pos + ((screen_size - OS.get_real_window_size()) / 2).floor()
+			pos.y = max(pos.y, screen_pos.y)
+			globalsettings.window_pos = pos
+		OS.window_position = globalsettings.window_pos
+	apply_render_resolution()
+	emit_signal("window_mode_changed")
+
+
+func toggle_fullscreen():
+	globalsettings.fullscreen = !globalsettings.fullscreen
+	apply_window_mode(true)
+
+
 func _init():
 	settings_load()
-	OS.window_size = globalsettings.window_size
+	OS.window_size = fitting_window_size(globalsettings.window_size, OS.get_screen_size(OS.current_screen))
 	OS.window_position = globalsettings.window_pos
 	settings_load()
 	load_progress_data()
@@ -472,6 +653,7 @@ func _ready():
 	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 	connect("animation_finished", self, "animation_queue_start_force")
+	get_tree().connect("screen_resized", self, "_on_screen_resized")
 	achievements = load("res://src/core/achievements.gd").new()
 	achievements.prepare_data()
 	start_anim_autopilot()
@@ -709,9 +891,6 @@ func _input(event):
 
 
 func _process(delta):
-	if OS.window_position.y < 0:
-		OS.window_position.y = 0
-
 	for i in CloseableWindowsArray:
 		if typeof(i) == TYPE_STRING: continue
 		if i.is_visible_in_tree() == false:

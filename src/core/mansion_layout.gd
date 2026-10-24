@@ -1103,6 +1103,11 @@ static func validate(layout, party = null):
 			layout.next_room_id = max(layout.next_room_id, used + 1)
 
 	layout.current_floor = int(clamp(int(layout.get('current_floor', 0)), 0, max(0, layout.floors.size() - 1)))
+	#The grounds are never the floor the house is looked at from - the local tasks screen draws them,
+	#and no staircase leads back from there. Saves made while a grounds card was open kept them here.
+	if is_grounds(layout, layout.current_floor):
+		var house = house_floors(layout)
+		layout.current_floor = house[0] if !house.empty() else 0
 	ensure_mandatory_rooms(layout)
 	prune_occupants(layout, party)
 	return true

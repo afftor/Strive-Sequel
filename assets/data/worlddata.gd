@@ -1143,6 +1143,11 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'active_quest_stage', value = 'erdyna_quest', stage = 'dragonhunters'}],
 			args = [{code = 'start_event', data = 'act4_erdyna_lineage_1', args = []}]
 		},
+		{
+			text = tr("FAITH_CONVERSION_FREYA_OPTION"),
+			reqs = [{type = 'decision', value = 'act2_finish', check = true}],
+			args = [{code = 'faith_conversion', value = 'freya'}]
+		},
 	],
 	dwarf_capital = [
 		{
@@ -1400,6 +1405,15 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = "active_quest_stage", value = "mae_spirit_quest", stage = "stage4"}],
 			args = [{code = "start_event", data = "mae_spirit_visit_savra", args = []}]
 		},
+		{
+			#after the ritual with Mae, or once Savra's supplies were brought instead: both go on to stage8
+			text = tr("FAITH_CONVERSION_SPIRITS_OPTION"),
+			reqs = [{type = 'or_list', or_list = [
+				{type = 'any_quest_stage', value = 'sword_artifact_quest', stages = ['stage8', 'stage9', 'stage10', 'stage11', 'stage12', 'stage13', 'stage14', 'stage15', 'stage16']},
+				{type = 'quest_completed', name = 'sword_artifact_quest', check = true},
+			]}],
+			args = [{code = 'faith_conversion', value = 'spirits'}]
+		},
 	],
 	
 	empire_capital = [
@@ -1656,7 +1670,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("SETTLEMENT_PLAINS2_2"), 
 			reqs = [ 
-				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
+				{type = 'any_quest_stage', value = 'cali_heirloom_quest', stages = ['stage2', 'stage2_1']},{type = "location_has_specific_slaves", check = true, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
 			],
 			args = [{code = 'start_event', data = 'cali_farmer_4', args = []}]
 		},

@@ -102,14 +102,16 @@ static func tasks_for(code):
 	if location.has('locked') and location.locked:
 		return res
 
-	for r_task in ['recruit_easy', 'recruit_hard']:
-		if location.has('tags') and location.tags.has(r_task):
-			res.append(entry_for(ResourceScripts.game_res.add_recruiting_job_temp(r_task, code)))
-
+	#Quests come first, as a group of their own: they are what the player was sent here for, and
+	#the panel starts the rest of the work on a fresh row after them (mansion_view.break_after_quests).
 	for task_id in ResourceScripts.game_res.active_tasks.special:
 		var jobdata = ResourceScripts.game_res.tasks_progresses[task_id]
 		if jobdata.location == code:
 			res.append(entry_for(task_id))
+
+	for r_task in ['recruit_easy', 'recruit_hard']:
+		if location.has('tags') and location.tags.has(r_task):
+			res.append(entry_for(ResourceScripts.game_res.add_recruiting_job_temp(r_task, code)))
 
 	#Each kind of place gathers from exactly one source, never two. The estate works its own
 	#land through the global task list, gated by what its upgrades have unlocked; everywhere

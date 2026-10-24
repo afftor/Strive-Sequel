@@ -15,7 +15,7 @@ var defaults = {
 	religious = 'worldly',
 }
 
-#the place of power's reward (Enemydata.power_place_reward), one at random: the traits nothing else gives yet
+#the place of power's reward (Enemydata.power_place_offer), one at random: the traits nothing else gives yet
 var power_place_traits = ['beast_blood_1', 'troll_blood_1', 'stone_skin_1', 'light_weight_1', 'unnatural_constitution',
 	'split_mind', 'spell_focus', 'lucid_mind', 'ember_soul', 'tidecaller', 'stormborn', 'stoneheart', 'radiant', 'umbral']
 
@@ -1241,6 +1241,23 @@ var traits = {
 		bonusstats = {trait_slots_physical = 1},
 		weight = 30,
 		tags = ['positive']
+	},
+	#the succubus transformation (corruptive essence, Turn Succubus): offered into the magic slot, kept for good.
+	#A man is an Incubus by its altname. Gaining it ends a thrall's bond (ch_dyn_stats.add_trait).
+	succubus = {
+		code = 'succubus',
+		category = 'magic',
+		name = '',
+		descript = '',
+		altname = 'TRAITSUCCUBUSALT',
+		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
+		visible = true,
+		icon = "res://assets/images/iconsskills/demonform.png",
+		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default', 'succubus_thralls_0', 'succubus_thralls_1', 'succubus_thralls_2', 'succubus_thralls_3', 'succubus_thralls_4', 'succubus_thralls_5', 'succubus_thralls_6'],
+		bonusstats = {sex_stamina = 2, trainee_amount = 1, mastery_point_magic = 1},
+		social_skills = ['succubus_lust_skill', 'enthrall', 'release_thrall'],
+		combat_skills = ['euphoria_apply'],
+		tags = ['permanent']
 	},
 	#religious
 	worldly = {

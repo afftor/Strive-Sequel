@@ -88,11 +88,13 @@ func refresh():
 		$icon.texture = ICON_BUILD if kind == 'build' else null
 		#dimmed, so it reads as a place waiting to be filled rather than as somebody standing in it
 		$icon.self_modulate = Color(1, 1, 1, 0.55)
+		view.connect_char_tooltip(self, null, "")
 		globals.connecttexttooltip(self, empty_tooltip(), true)
 		return
 	var character = view.get_character(char_id)
 	if character == null:
 		$icon.texture = null
+		view.connect_char_tooltip(self, null, "")
 		return
 	if is_picked():
 		$bg.color = COLOR_PICKED
@@ -106,19 +108,18 @@ func refresh():
 	if $icon.texture == null:
 		$icon.texture = character.get_class_icon()
 	input_handler.queue_portrait(character)
+	#The same panel the top strip opens - classes, numbers, tools, buffs - so a person reads the
+	#same wherever they are hovered. What a place adds is what they are worth in it this turn,
+	#under the name; the hints are about what the mouse can do next, so they go to the foot.
 	var text = character.get_short_name()
-	#What they are worth here this turn, between the name and the hints: the hints are about what
-	#the mouse can do next, this is about the person the mouse is over.
 	var made = view.person_yield_text(character, kind, holder, holder_floor)
 	if made != "":
 		text += "\n" + made
 	if is_away():
 		text += "\n" + tr("MANSIONVIEW_AWAYHINT")
-	if would_be_swapped_out():
-		text += "\n" + tr("MANSIONVIEW_SWAPHINT")
-	else:
-		text += "\n" + tr("MANSIONVIEW_PUTBACKHINT" if is_picked() else "MANSIONVIEW_PICKHINT")
-	globals.connecttexttooltip(self, text, true)
+	var hint = tr("MANSIONVIEW_SWAPHINT") if would_be_swapped_out() \
+		else tr("MANSIONVIEW_PUTBACKHINT" if is_picked() else "MANSIONVIEW_PICKHINT")
+	view.connect_char_tooltip(self, character, text, hint)
 
 
 func empty_tooltip():

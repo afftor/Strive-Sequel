@@ -1,6 +1,18 @@
 extends Node
 
 var loot = preload("res://src/core/loot.gd").new()
+const ModularEconomy = preload("res://src/core/modular_item_economy.gd")
+
+
+func get_modular_material_cost(item_code, selected_parts):
+	return ModularEconomy.material_cost(itemlist[item_code].parts, selected_parts, materiallist)
+
+
+func get_recipe_workunits(recipe_id, selected_parts = {}):
+	var recipe = recipes[recipe_id]
+	if recipe.crafttype != 'modular':
+		return recipe.workunits
+	return ModularEconomy.work_units(get_modular_material_cost(recipe.resultitem, selected_parts))
 
 func _init():
 	for i in partmaterials:
@@ -816,6 +828,7 @@ var materiallist = {
 		progress_formula = 'farming_cloth',
 		workstat = 'physics',
 		workmod = 'mod_collect',
+		tool_type = 'sickle',
 		type = 'cloth',
 		tier = 'easy',
 		tags = [],
@@ -971,6 +984,7 @@ var materiallist = {
 		progress_formula = 'hunt_leather_hard',
 		workmod = 'mod_hunt',
 		workstat = 'physics',
+		tool_type = 'hunt_knife',
 		type = 'gem',
 		tier = 'hard',
 		tags = ["no_random"],
@@ -1922,7 +1936,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'], #to correctly set stats with fixed levels
-		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
+		basestats = {atk = 60, critchance = 10, hitrate = 15, armorpenetration = 10, enchant_capacity = 200},
 	},
 	
 	holy_sword = {
@@ -1943,7 +1957,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 5, operant = 'gte'}],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 50, hitrate = 50, critmod = 0.20, damage_mod_light = 0.5, enchant_capacity = 500},
+		basestats = {atk = 99, hitrate = 55, critmod = 0.20, damage_mod_light = 0.3, enchant_capacity = 450},
 		achievement = "item_holy_sword"
 	},
 	holy_spear = {
@@ -1963,7 +1977,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 4, operant = 'gte'}],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 45, hitrate = 25, damage_mod_air = 0.20, armor = 20, enchant_capacity = 500},
+		basestats = {atk = 77, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
 	},
 	
 	aire_bow = {
@@ -1973,7 +1987,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/airesbow.png"),
 		tier = 'hard',
 		price = 1000,
-		basestats = {atk = 25, critchance = 10, hitrate = 20, mod_hunt = 0.2, enchant_capacity = 300},
+		basestats = {atk = 55, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
 		crafttype = 'basic',
 		type = 'gear',
 		itemtype = 'weapon',
@@ -2110,7 +2124,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 3, operant = 'gte'},],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 38, speed = -10, critchance = 3, enchant_capacity = 200},
+		basestats = {atk = 50, speed = -10, critchance = 4, enchant_capacity = 220},
 	},
 	erlen_sword = {
 		code = 'erlen_sword',
@@ -2130,7 +2144,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 3, operant = 'gte'},],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 50, speed = 5, evasion = 15, enchant_capacity = 400},
+		basestats = {atk = 70, speed = 7, evasion = 20, enchant_capacity = 425},
 	},
 	ayneris_rapier = {
 		code = 'ayneris_rapier',
@@ -2149,7 +2163,7 @@ var itemlist = {
 			{code = 'stat', stat = 'mastery_warfare', value = 3, operant = 'gte'},],
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {atk = 37, speed = 15, evasion = 5, enchant_capacity = 350},
+		basestats = {atk = 50, speed = 15, evasion = 8, enchant_capacity = 375},
 	},
 	hector_armor = {
 		code = 'hector_armor',
@@ -2166,7 +2180,7 @@ var itemlist = {
 		tier = 'hard',
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {armor = 40, mdef = 15, enchant_capacity = 200},
+		basestats = {armor = 65, mdef = 35, enchant_capacity = 250},
 	},
 	garb_of_forest = {
 		code = 'garb_of_forest',
@@ -2183,7 +2197,7 @@ var itemlist = {
 		tier = 'hard',
 		effects = [],
 		tags = ['no_random','enchantable', 'upgradable'],
-		basestats = {armor = 60, mdef = 30, evasion = 25, enchant_capacity = 300},
+		basestats = {armor = 90, mdef = 60, evasion = 40, enchant_capacity = 650},
 	},
 	chloe_goggles = {
 		code = 'chloe_goggles',
@@ -2257,11 +2271,14 @@ var itemlist = {
 	
 	
 	#gear
-	axe = {
-		name = "",
-		code = 'axe',
-		description = tr("WEAPONAXEDESCRIPT"),
-		icon = load("res://assets/images/iconsgear/AxeBasic.png"),
+	#One tool for both woodcutting and mining: it answers to the axe's and the pickaxe's work alike,
+	#so its parts' task bonuses count for both (ItemClass.CreateGear). It took the axe's slot; the
+	#pickaxe's went to dishware. Saves made before still hold axes and pickaxes - see retired_itembases.
+	axe_pick = {
+		name = '',
+		code = 'axe_pick',
+		description = '',
+		icon = load("res://assets/images/iconsgear/AxePick.png"),
 		tier = 'easy',
 		price = 0,
 		basestats = {},
@@ -2269,7 +2286,7 @@ var itemlist = {
 		crafttype = 'modular',
 		type = 'gear',
 		itemtype = 'tool',
-		tool_category = ["axe"],
+		tool_category = ["axe", "pickaxe"],
 		geartype = 'tool',
 		weaponrange = 'melee',
 		reqs = [],
@@ -2281,11 +2298,11 @@ var itemlist = {
 		hitsound = 'blade',
 		effects = [],
 	},
-	pickaxe = {
+	dishware = {
 		name = '',
-		code = 'pickaxe',
+		code = 'dishware',
 		description = '',
-		icon = load("res://assets/images/iconsgear/PickaxeBasic.png"),
+		icon = load("res://assets/images/iconsgear/Dishware.png"),
 		tier = 'easy',
 		price = 0,
 		basestats = {},
@@ -2293,15 +2310,15 @@ var itemlist = {
 		crafttype = 'modular',
 		type = 'gear',
 		itemtype = 'tool',
-		tool_category = ["pickaxe"],
+		tool_category = ["dishware"],
 		geartype = 'tool',
 		weaponrange = 'melee',
 		reqs = [],
-		parts = {ToolBlade = 10, ToolHandle = 5},
+		parts = {ToolBlade = 8, ToolHandle = 4},
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
 		tags = ['tool', 'recipe'],
-		slots = ['tool_pickaxe'],
+		slots = ['tool_dishware'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -3230,7 +3247,8 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [
 			{code = 'trait', trait = 'succubus', check = false},
-			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null}
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null},
+			{code = 'trait_offer', trait = 'succubus', check = true},
 			],
 		effects = [],
 		tags = ['no_random', 'request_confirm'],
@@ -4895,27 +4913,27 @@ var recipes = {
 		workunits = 3,
 		worktype = 'tailor'
 	},
-	axe = {
-		code = 'axe',
+	axe_pick = {
+		code = 'axe_pick',
 		materials = {},
 		items = {},
 		unlockreqs = [],
 		crafttype = 'modular',
 		resultamount = 1,
 		resultitemtype = 'item',
-		resultitem = 'axe',
+		resultitem = 'axe_pick',
 		workunits = 3,
 		worktype = 'smith'
 	},
-	pickaxe = {
-		code = 'pickaxe',
+	dishware = {
+		code = 'dishware',
 		materials = {},
 		items = {},
 		unlockreqs = [],
 		crafttype = 'modular',
 		resultamount = 1,
 		resultitemtype = 'item',
-		resultitem = 'pickaxe',
+		resultitem = 'dishware',
 		workunits = 3,
 		worktype = 'smith'
 	},
@@ -5115,25 +5133,25 @@ var recipes = {
 		code = 'bowadv',
 		materials = {},
 		items = {},
-		unlockreqs = [{type = "has_craft_room", name = 'forge', value = 3}],
+		unlockreqs = [{type = "has_craft_room", name = 'tailor_workshop', value = 3}],
 		crafttype = 'modular',
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'bowadv',
 		workunits = 25,
-		worktype = 'smith'
+		worktype = 'tailor'
 	},
 	crossbowadv = {
 		code = 'crossbowadv',
 		materials = {},
 		items = {},
-		unlockreqs = [{type = "has_craft_room", name = 'forge', value = 3}],
+		unlockreqs = [{type = "has_craft_room", name = 'tailor_workshop', value = 3}],
 		crafttype = 'modular',
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'crossbowadv',
 		workunits = 25,
-		worktype = 'smith'
+		worktype = 'tailor'
 	},
 	spearadv = {
 		code = 'spearadv',
@@ -6386,16 +6404,20 @@ var curses = {
 }
 
 
+#improve_materials on a level: what the workshop asks for to raise the piece to it (item_improving.gd)
 var fixed_quality_stats = {
 	cali_heirloom_active = { #example of data format
 		"" : {},
 		good = {
-			bonusstats = {atk = 40, critchance = 10, hitrate = 15, armorpenetration = 10, enchant_capacity = 200},},
+			bonusstats = {atk = 60, critchance = 10, hitrate = 15, armorpenetration = 10, enchant_capacity = 200},
+			improve_materials = {steel = 8, obsidian = 2},},
 		epic = {
-			bonusstats = {atk = 45, critchance = 15, hitrate = 20, armorpenetration = 10, enchant_capacity = 300},
+			bonusstats = {atk = 75, critchance = 15, hitrate = 20, armorpenetration = 10, enchant_capacity = 300},
+			improve_materials = {mithril = 6, crystalized_ether = 2},
 		},
 		legendary = {
-			bonusstats = {atk = 55, critchance = 20, hitrate = 25, armorpenetration = 20, enchant_capacity = 500},
+			bonusstats = {atk = 100, critchance = 20, hitrate = 25, armorpenetration = 20, enchant_capacity = 500},
+			improve_materials = {adamantine = 8, crystalized_ether = 4},
 			icon = "res://assets/images/iconsitems/cali_heirloom.png",
 			effects = [] #not displayed in tooltip, but may be visible after equip
 		}
@@ -6403,86 +6425,106 @@ var fixed_quality_stats = {
 	holy_sword = {
 		"" : {},
 		epic = {
-			bonusstats = {atk = 65, hitrate = 55, critmod = 0.20, damage_mod_light = 0.3, enchant_capacity = 450},
+			bonusstats = {atk = 99, hitrate = 55, critmod = 0.20, damage_mod_light = 0.3, enchant_capacity = 450},
+			improve_materials = {mithril = 8, fire_ruby = 3},
 			},
 		legendary = {
-			bonusstats = {atk = 75, hitrate = 65, critmod = 0.25, damage_mod_light = 0.5, enchant_capacity = 550},
+			bonusstats = {atk = 123, hitrate = 65, critmod = 0.25, damage_mod_light = 0.5, enchant_capacity = 550},
+			improve_materials = {adamantine = 12, fire_ruby = 6},
 		}
 	},
 	holy_spear = { 
 		"" : {},
 		epic = {
-			bonusstats = {atk = 55, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
+			bonusstats = {atk = 77, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
+			improve_materials = {mithril = 6, woodmagic = 6},
 			},
 		legendary = {
-			bonusstats = {atk = 65, hitrate = 40, damage_mod_air = 0.20, armor = 25, enchant_capacity = 550},
+			bonusstats = {atk = 111, hitrate = 40, damage_mod_air = 0.30, armor = 25, enchant_capacity = 550},
+			improve_materials = {adamantine = 8, woodancient = 6, crystalized_ether = 4},
 		}
 	},
 	aire_bow = { 
 		"" : {},
 		good = {
-			bonusstats = {atk = 45, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
+			bonusstats = {atk = 55, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
+			improve_materials = {woodmagic = 6, spider_silk = 6},
 			},
 		epic = {
-			bonusstats = {atk = 50, critchance = 10, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 350},
+			bonusstats = {atk = 73, critchance = 10, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 350},
+			improve_materials = {woodancient = 4, spider_silk = 10, leathermythic = 2},
 			},
 		legendary = {
-			bonusstats = {atk = 60, critchance = 15, hitrate = 30, mod_hunt = 0.3, enchant_capacity = 400},
+			bonusstats = {atk = 95, critchance = 15, hitrate = 30, mod_hunt = 0.3, enchant_capacity = 400},
+			improve_materials = {woodancient = 8, leatherdragon = 4, crystalized_ether = 3},
 		}
 	},
 	garb_of_forest = {
 		"" : {},
 		epic = {
-			bonusstats = {armor = 70, mdef = 40, evasion = 30, enchant_capacity = 350},
+			bonusstats = {armor = 90, mdef = 60, evasion = 40, enchant_capacity = 650},
+			improve_materials = {leathermythic = 8, woodmagic = 6},
 			},
 		legendary = {
-			bonusstats = {armor = 80, mdef = 50, evasion = 35, enchant_capacity = 450},
+			bonusstats = {armor = 140, mdef = 90, evasion = 100, enchant_capacity = 900},
+			improve_materials = {leatherdragon = 10, woodancient = 4, earth_shard = 3},
 		}
 	},
 	hector_armor = {
 		"" : {},
 		good = {
-			bonusstats = {armor = 50, mdef = 20, enchant_capacity = 250},
+			bonusstats = {armor = 65, mdef = 35, enchant_capacity = 250},
+			improve_materials = {steel = 10, leatherthick = 3},
 			},
 		epic = {
-			bonusstats = {armor = 55, mdef = 25, enchant_capacity = 300},
+			bonusstats = {armor = 80, mdef = 40, enchant_capacity = 300},
+			improve_materials = {mithril = 8, leatherthick = 5},
 			},
 		legendary = {
-			bonusstats = {armor = 65, mdef = 30,enchant_capacity = 400},
+			bonusstats = {armor = 95, mdef = 45,enchant_capacity = 400},
+			improve_materials = {adamantine = 10, leathermythic = 4},
 		}
 	},
 	ramont_axe = {
 		"" : {},
 		good = {
-			bonusstats = {atk = 42, speed = -10, critchance = 4, enchant_capacity = 220},
+			bonusstats = {atk = 50, speed = -10, critchance = 4, enchant_capacity = 220},
+			improve_materials = {steel = 10, woodiron = 4},
 			},
 		epic = {
-			bonusstats = {atk = 47, speed = -10, critchance = 5, enchant_capacity = 250},
+			bonusstats = {atk = 69, speed = -10, critchance = 5, enchant_capacity = 250},
+			improve_materials = {mithril = 6, woodiron = 6, ogre_teeth = 4},
 			},
 		legendary = {
-			bonusstats = {atk = 55, speed = -10, critchance = 7, enchant_capacity = 275},
+			bonusstats = {atk = 88, speed = -10, critchance = 7, enchant_capacity = 275},
+			improve_materials = {meteorite_iron = 10, woodancient = 4, earth_shard = 3},
 		}
 		
 	},
 	erlen_sword = {
 		"" : {},
 		epic = {
-			bonusstats = {atk = 60, speed = 7, evasion = 20, enchant_capacity = 425},
+			bonusstats = {atk = 70, speed = 7, evasion = 20, enchant_capacity = 425},
+			improve_materials = {mithril = 8, woodmagic = 4},
 			},
 		legendary = {
-			bonusstats = {atk = 70, speed = 10, evasion = 25, enchant_capacity = 450},
+			bonusstats = {atk = 85, speed = 10, evasion = 25, enchant_capacity = 450},
+			improve_materials = {mithril = 12, ice_crystal = 6, crystalized_ether = 3},
 			}
 	},
 	ayneris_rapier = {
 		"" : {},
 		good = {
-			bonusstats = {atk = 43, speed = 15, evasion = 8, enchant_capacity = 375},
+			bonusstats = {atk = 50, speed = 15, evasion = 8, enchant_capacity = 375},
+			improve_materials = {steel = 6, clothsilk = 4},
 			},
 		epic = {
-			bonusstats = {atk = 49, speed = 15, evasion = 11, enchant_capacity = 400},
+			bonusstats = {atk = 60, speed = 15, evasion = 11, enchant_capacity = 400},
+			improve_materials = {mithril = 6, clothmagic = 3},
 			},
 		legendary = {
-			bonusstats = {atk = 57, speed = 20, evasion = 15, enchant_capacity = 450},
+			bonusstats = {atk = 70, speed = 20, evasion = 15, enchant_capacity = 450},
+			improve_materials = {adamantine = 6, fire_ruby = 4, crystalized_ether = 3},
 			}
 		
 	},
@@ -6497,6 +6539,14 @@ var obsolete_bonusstats = {
 	'mod_serivce': 'mod_service', #legacy typo in cali_collar_enchanted_2, fixed post-0.15.0
 	'training_spirit': 'training_points_bonus', #renamed in the training rework (b51a4fb61)
 	'resistance_red': null, #dropped in the training rework (b51a4fb61), no replacement stat
+}
+
+#Item bases folded into another one. A save still names them wherever it keeps an item or an
+#item code - gear, craft orders, shop stock, guild requests, buyback - and item_migrations.gd
+#rewrites every such place on load, before anything indexes itemlist with them.
+var retired_itembases = {
+	axe = 'axe_pick',
+	pickaxe = 'axe_pick',
 }
 
 

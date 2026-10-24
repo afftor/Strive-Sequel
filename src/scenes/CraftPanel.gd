@@ -165,7 +165,7 @@ func rebuild_recipe_list():
 		
 		var progressnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 		progressnode.texture = images.get_icon('craft_time')
-		progressnode.get_node("Label").text = str(i.workunits)
+		progressnode.get_node("Label").text = '—' if i.crafttype == 'modular' else str(i.workunits)
 		progressnode.hint_tooltip = 'Progress required per craft'
 
 func sort_craft_list(first, second):
@@ -211,7 +211,7 @@ func confirm_craft():
 	data.code = selected_item.code
 	data.repeats = repeats
 	data.workunits = 0
-	data.workunits_needed = selected_item.workunits
+	data.workunits_needed = Items.get_recipe_workunits(selected_item.code, partdict if selected_item.crafttype == 'modular' else {})
 	data.materials = selected_item.items.duplicate()
 	data.resources_taken = false
 	ResourceScripts.game_res.craftinglists[list].append(data)

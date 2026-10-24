@@ -175,6 +175,9 @@ func learn_skill(skill):
 
 func learn_c_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]
+	if spent_race_skills.has(skill):
+		spent_race_skills.erase(skill)
+		parent.get_ref().reset_rebuild()
 	if !combat_skills.has(skill):
 		combat_skills.append(skill)
 		parent.get_ref().reset_rebuild()
@@ -204,6 +207,10 @@ func unlearn_skill(skill):
 
 func unlearn_c_skill(skill):
 	combat_skills.erase(skill)
+	#race skills are re-added on every stat rebuild, so a removed one has to be remembered
+	var race_data = races.racelist.get(parent.get_ref().get_stat('race'))
+	if race_data != null and race_data.get('combat_skills', []).has(skill) and !spent_race_skills.has(skill):
+		spent_race_skills.append(skill)
 	combat_cooldowns.erase(skill)
 	daily_cooldowns.erase(skill)
 	for i in range(1,22):
@@ -317,6 +324,8 @@ func use_social_skill(s_code, target, item, bulk = 1):
 			#input_handler.SystemMessage(check.descript)
 			globals.text_log_add('char',check.descript)
 			return
+	if ask_offered_trait_first(s_code, target, 'use_social_skill', [s_code, target, item, bulk]):
+		return
 	parent.get_ref().add_stat('metrics_socskillused', 1)
 	social_cooldowns[s_code] = template.cooldown
 	if template.has('social_skill_stats'):
@@ -594,6 +603,26 @@ func use_social_skill(s_code, target, item, bulk = 1):
 	input_handler.update_slave_list()
 	#input_handler.update_slave_panel()
 
+#A skill or item whose effect offers its target a trait (offers_trait: corruptive essence, Turn Succubus)
+#puts a full slot to the player before anything is paid. Keeping the old trait spends nothing; a pick runs
+#method(args) again, and the offer writes over the trait picked. True while the use waits on that choice.
+#Read off the raw skill data: get_template converts a legacy skill and leaves fields like this one behind.
+func ask_offered_trait_first(s_code, target, method, args):
+	var code = Skilldata.Skilllist.get(s_code, {}).get('offers_trait', '')
+	if code == '' or target == null or target.dyn_stats.trait_choices.has(code):
+		return false
+	if target.preview_trait_offer(code) != 'ask':
+		return false
+	input_handler.get_spec_node(input_handler.NODE_TRAIT_REPLACE, null, true, false).ask_first(target, code, self, 'resume_with_trait_choice', [target, code, method, args])
+	return true
+
+
+func resume_with_trait_choice(old_code, target, code, method, args):
+	target.dyn_stats.trait_choices[code] = old_code
+	callv(method, args)
+	target.dyn_stats.trait_choices.erase(code)
+
+
 #how many copies of a stack one action may spend: always 1 unless the item is tagged
 #'bulk_use', and never more than the stack holds or the per-target cap still allows
 func get_item_use_limit(item, amount = 1):
@@ -624,6 +653,8 @@ func use_mansion_item(item, amount = 1):
 	#before the item is spent - the effect itself never sees the item
 	if skill == 'map' and !ResourceScripts.custom_effects.can_use_map(itembase.map):
 		input_handler.SystemMessage(tr("CANT_PURCHASE_LOC_LABEL"))
+		return
+	if ask_offered_trait_first(skill, parent.get_ref(), 'use_mansion_item', [item, amount]):
 		return
 	amount = get_item_use_limit(item, amount)
 	if itembase.has("uses_per_target"):
