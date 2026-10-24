@@ -856,9 +856,16 @@ var data = {
 		image = 'lira_shopping',
 		tags = ['dialogue_scene'],
 		reqs = [],
-		text = "LIRA_QUEST2_TOSS_BAG_COINS_SMILING_VENDOR", 
+		text = "LIRA_QUEST2_TOSS_BAG_COINS_SMILING_VENDOR",
+		unlocked_char_sprites = {lira = ["tribal"]},
 		options = [
-			{code = 'lira_quest2_costume_admire', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'lira_quest2_costume_admire', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
+				{code = 'unique_character_changes', value = 'lira', args = [
+				{code = 'unique_variation', operant = '=', value = "tribal"},
+				{code = 'body_image', operant = '=', value = "lira_tribal_body"},
+				{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/lira_tribal_prt.png"}]},
+				{code = 'update_prts'},
+			]},
 		],
 	},
 	lira_quest2_costume_admire = {

@@ -402,8 +402,9 @@ const LIST = {
 		icon = 'rooms',
 		color = '3f5a6b',
 	},
-	#Somewhere to keep the books. Having one is the whole of it - everybody on the estate
-	#learns a little faster.
+	#Somewhere to keep the books. Having one is enough for everybody on the estate to learn a
+	#little faster; its improvements are what open the paid educations offered to a newborn
+	#(scenedata.select_tutelage asks for them through 'has_room_upgrade').
 	masters_office = {
 		code = 'masters_office',
 		slots = {},
@@ -413,13 +414,26 @@ const LIST = {
 		build_cost = {wood = 100, cloth = 40, gold = 300},
 		build_progress = 35,
 		upgrades = {
-			#Books kept properly. The room's crafters stop taking whatever is at the head of the
-			#estate's queue and work the list this room was given instead.
-			ledgers = {
-				code = 'ledgers',
+			#the three Slave Training courses: workforce, warrior and service
+			slave_curriculum = {
+				code = 'slave_curriculum',
+				icon = 'tortureroom',
+				levels = {
+					1: {cost = {cloth = 60, leather = 40, gold = 500}, progress = 25, effect = {}},
+				},
+			},
+			academy_patronage = {
+				code = 'academy_patronage',
+				icon = 'academy',
+				levels = {
+					1: {cost = {clothmagic = 40, woodiron = 40, gold = 2500}, progress = 40, effect = {}},
+				},
+			},
+			heir_tutors = {
+				code = 'heir_tutors',
 				icon = 'rooms_lux',
 				levels = {
-					1: {cost = {clothmagic = 50, gold = 500}, progress = 40, effect = {craft_rules = 1}},
+					1: {cost = {clothmagic = 60, woodancient = 5, gold = 5000}, progress = 50, effect = {}},
 				},
 			},
 		},

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://gui_modules/mansion_view/craft_panel.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=2]
@@ -203,6 +203,38 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 23 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.0352941, 0.0235294, 0.0196078, 0.96 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.65098, 0.52549, 0.266667, 0.9 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=20]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.0784314, 0.0509804, 0.0392157, 0.98 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.976471, 0.760784, 0.25098, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="CraftPanel" type="Panel"]
 anchor_right = 1.0
@@ -1618,6 +1650,7 @@ text = "Runs"
 valign = 1
 
 [node name="Runs" type="HBoxContainer" parent="Body/Columns/Queue/AmountRow"]
+size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_constants/separation = 4
 
@@ -1635,13 +1668,23 @@ mouse_default_cursor_shape = 2
 custom_fonts/font = ExtResource( 7 )
 text = "−"
 
-[node name="Value" type="Label" parent="Body/Columns/Queue/AmountRow/Runs"]
-rect_min_size = Vector2( 34, 30 )
+[node name="Value" type="LineEdit" parent="Body/Columns/Queue/AmountRow/Runs"]
+rect_min_size = Vector2( 56, 30 )
+size_flags_horizontal = 3
+custom_colors/selection_color = Color( 0.976471, 0.760784, 0.25098, 0.35 )
+custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 0.898039, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_uneditable = Color( 0.976471, 0.882353, 0.505882, 0.3 )
 custom_fonts/font = ExtResource( 6 )
+custom_styles/read_only = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/normal = SubResource( 19 )
 text = "1"
 align = 1
-valign = 1
+max_length = 5
+context_menu_enabled = false
+caret_blink = true
 
 [node name="Plus" type="Button" parent="Body/Columns/Queue/AmountRow/Runs"]
 rect_min_size = Vector2( 30, 30 )
@@ -1665,6 +1708,7 @@ text = "from"
 valign = 1
 
 [node name="Low" type="HBoxContainer" parent="Body/Columns/Queue/AmountRow"]
+size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_constants/separation = 4
 
@@ -1675,13 +1719,23 @@ mouse_default_cursor_shape = 2
 custom_fonts/font = ExtResource( 7 )
 text = "−"
 
-[node name="Value" type="Label" parent="Body/Columns/Queue/AmountRow/Low"]
-rect_min_size = Vector2( 34, 30 )
+[node name="Value" type="LineEdit" parent="Body/Columns/Queue/AmountRow/Low"]
+rect_min_size = Vector2( 56, 30 )
+size_flags_horizontal = 3
+custom_colors/selection_color = Color( 0.976471, 0.760784, 0.25098, 0.35 )
+custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 0.898039, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_uneditable = Color( 0.976471, 0.882353, 0.505882, 0.3 )
 custom_fonts/font = ExtResource( 6 )
+custom_styles/read_only = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/normal = SubResource( 19 )
 text = "1"
 align = 1
-valign = 1
+max_length = 5
+context_menu_enabled = false
+caret_blink = true
 
 [node name="Plus" type="Button" parent="Body/Columns/Queue/AmountRow/Low"]
 rect_min_size = Vector2( 30, 30 )
@@ -1698,6 +1752,7 @@ text = "to"
 valign = 1
 
 [node name="High" type="HBoxContainer" parent="Body/Columns/Queue/AmountRow"]
+size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_constants/separation = 4
 
@@ -1708,13 +1763,23 @@ mouse_default_cursor_shape = 2
 custom_fonts/font = ExtResource( 7 )
 text = "−"
 
-[node name="Value" type="Label" parent="Body/Columns/Queue/AmountRow/High"]
-rect_min_size = Vector2( 34, 30 )
+[node name="Value" type="LineEdit" parent="Body/Columns/Queue/AmountRow/High"]
+rect_min_size = Vector2( 56, 30 )
+size_flags_horizontal = 3
+custom_colors/selection_color = Color( 0.976471, 0.760784, 0.25098, 0.35 )
+custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 0.898039, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_uneditable = Color( 0.976471, 0.882353, 0.505882, 0.3 )
 custom_fonts/font = ExtResource( 6 )
+custom_styles/read_only = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/normal = SubResource( 19 )
 text = "1"
 align = 1
-valign = 1
+max_length = 5
+context_menu_enabled = false
+caret_blink = true
 
 [node name="Plus" type="Button" parent="Body/Columns/Queue/AmountRow/High"]
 rect_min_size = Vector2( 30, 30 )

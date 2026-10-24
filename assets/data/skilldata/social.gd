@@ -264,7 +264,7 @@ var skills = {
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
-		reqs = [],
+		reqs = [{code = 'false'}], #switched off for now (see the succubus trait); keeps it dead on panels of old saves
 		targetreqs = [{code = 'stat', stat = 'lust', operant = 'gte', value = 50}],
 		effects = [],
 		cost = {mp = 15},

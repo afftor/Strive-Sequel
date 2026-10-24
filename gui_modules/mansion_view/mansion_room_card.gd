@@ -568,7 +568,7 @@ func build_for_room(current):
 	detail("Actions/DemolishButton").disabled = !MansionLayout.can_demolish(view.layout(), view.floor_index(), slot_code).ok
 	build_move_button()
 	build_people(current)
-	build_order_list(current)
+	build_work_choice(current)
 	build_upgrade_list(current)
 
 
@@ -1710,112 +1710,20 @@ func set_practice_target(code):
 	rebuild()
 
 
-#### the room's own order of work ####
+#### what the room is told to work on ####
 
-#Only a craft room keeps its own list, and only once the estate has bought Ledgers - which
-#happens on the master's office, not here. Everything the estate has queued for this
-#room's discipline is offered; ticking a recipe puts it on the list, and the order they are
-#ticked in is the order the room works them. An empty list means the estate's own order,
-#which is what every craft room does without the upgrade.
-func build_order_list(current):
+#A farm's produce or what a practice room drills; every other room works what it works, and
+#the list under its people stays down.
+func build_work_choice(current):
 	$Body/Columns/LeftScroll/LeftColumn/FarmList.visible = false
 	$Body/Columns/LeftScroll/LeftColumn/FarmHeader.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = false
+	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.visible = false
 	if farm_rules_shown(current):
 		build_farm_rules(current)
 		return
 	if practice_choice_shown(current):
 		build_practice_choice(current)
-		return
-	var job = RoomTypes.get_work_job(current.type)
-	#bought once on the master's office, spent on every craft room the estate has
-	var owned = ResourceScripts.game_res.has_ledgers()
-	#a real craft discipline, not one of the jobs that only name a room - the estate's recipe
-	#queue is the test, since that is what an order would be drawn from
-	var crafts = ResourceScripts.game_res.has_craft_queue(job)
-	$Body/Columns/LeftScroll/LeftColumn/OrderList.visible = owned and crafts
-	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.visible = $Body/Columns/LeftScroll/LeftColumn/OrderList.visible
-	if !$Body/Columns/LeftScroll/LeftColumn/OrderList.visible:
-		return
-	$Body/Columns/LeftScroll/LeftColumn/OrderHeader.text = tr("MANSIONVIEW_ORDERHEADER")
-	input_handler.ClearContainer($Body/Columns/LeftScroll/LeftColumn/OrderList)
-	var offered = 0
-	for task_id in ResourceScripts.game_res.crafting_lists[job]:
-		var button = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/OrderList)
-		button.text = order_label(current, task_id)
-		button.pressed = current.craft_rules.has(task_id)
-		button.connect("pressed", self, "toggle_order", [task_id])
-		offered += 1
-	if offered == 0:
-		var button = input_handler.DuplicateContainerTemplate($Body/Columns/LeftScroll/LeftColumn/OrderList)
-		button.text = tr("MANSIONVIEW_NOORDERS")
-		button.disabled = true
-
-
-#The recipe's name, with its place in this room's list in front of it when it is on one and
-#how much of it the estate wants after it.
-func order_label(current, task_id):
-	var task = ResourceScripts.game_res.tasks_progresses.get(task_id, null)
-	var name = craft_task_name(task, task_id)
-	var wanted = craft_task_amount(task)
-	if wanted != "":
-		name += ": " + wanted
-	var place = current.craft_rules.find(task_id)
-	if place < 0:
-		return "  %s" % name
-	return "%d. %s" % [place + 1, name]
-
-
-#What a queued recipe is called. A crafting task carries the code of the recipe rather than a
-#name of its own - the name belongs to the thing it makes - so the product is what has to be
-#asked, the same way the craft screen and game_res.make_item ask it. Only the standing tasks
-#(crafting, farming) and the estate's works carry a name of their own, and those answer first.
-#Anything that cannot be named at all falls back to its id, which is what the whole list used
-#to show.
-func craft_task_name(task, task_id):
-	if task == null:
-		return task_id
-	if task.has('name'):
-		return tr(task.name)
-	var recipe = Items.recipes.get(task.get('id', ''), null)
-	if recipe == null:
-		return task_id
-	var product = Items.materiallist if recipe.resultitemtype == 'material' else Items.itemlist
-	if !product.has(recipe.resultitem):
-		return task_id
-	return tr(product[recipe.resultitem].name)
-
-
-#How much of it is wanted, written as the craft screen writes it: a fixed number of runs, for
-#ever, or up to a ceiling with what is in store already beside it.
-func craft_task_amount(task):
-	if task == null:
-		return ""
-	if task.has('repeat'):
-		return str(task.repeat)
-	if task.has('continuous'):
-		return "∞"
-	if !task.has('cap_up'):
-		return ""
-	var recipe = Items.recipes.get(task.get('id', ''), null)
-	if recipe == null:
-		return str(task.cap_up)
-	var have = 0
-	if recipe.resultitemtype == 'material':
-		have = ResourceScripts.game_res.materials.get(recipe.resultitem, 0)
-	else:
-		have = ResourceScripts.game_res.get_item_amount(recipe.resultitem)
-	return "%d / %d" % [task.cap_up, have]
-
-
-func toggle_order(task_id):
-	var current = room()
-	if current == null:
-		return
-	if current.craft_rules.has(task_id):
-		current.craft_rules.erase(task_id)
-	else:
-		current.craft_rules.append(task_id)
-	rebuild()
 
 
 
@@ -2044,10 +1952,10 @@ func on_craft():
 	if job == ENCHANTING_BENCH:
 		view.open_enchanting()
 		return
-	#The workshop panel over the plan - except while the hard tutorial is walking the player
-	#through the older craft screen, whose buttons its steps point at.
+	#The workshop panel over the plan. The hard tutorial teaches it too - its steps point at the
+	#panel's own buttons (craft_panel.register_tutorial_buttons).
 	var trade = RoomTypes.get_craft_menu(current.type)
-	if trade in ['smith', 'tailor', 'alchemy', 'cooking'] and !input_handler.hard_tutorial_active:
+	if trade in ['smith', 'tailor', 'alchemy', 'cooking']:
 		view.open_crafting(trade)
 		return
 	var mansion = view.get_parent()

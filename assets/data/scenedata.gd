@@ -111,6 +111,7 @@ var scenedict = {
 				text = tr('DIALOGUETUTSLAVE1'), 
 				reqs = [
 					{type = 'has_money', value = 500},
+					{type = 'has_room_upgrade', name = 'masters_office', code = 'slave_curriculum', value = 1},
 					{type = 'scene_character_checks', value = [{code = 'has_status', status = 'slave', check = true}]} # i add this to prevent duplicating features for non-slave children
 				], 
 				not_hide = true, 
@@ -125,6 +126,7 @@ var scenedict = {
 				text = tr('DIALOGUETUTSLAVE2'), 
 				reqs = [
 					{type = 'has_money', value = 500},
+					{type = 'has_room_upgrade', name = 'masters_office', code = 'slave_curriculum', value = 1},
 					{type = 'scene_character_checks', value = [{code = 'has_status', status = 'slave', check = true}]} # i add this to prevent duplicating features for non-slave children
 				], 
 				not_hide = true, 
@@ -139,6 +141,7 @@ var scenedict = {
 				text = tr('DIALOGUETUTSLAVE3'), 
 				reqs = [
 					{type = 'has_money', value = 500},
+					{type = 'has_room_upgrade', name = 'masters_office', code = 'slave_curriculum', value = 1},
 					{type = 'scene_character_checks', value = [{code = 'has_status', status = 'slave', check = true}]} # i add this to prevent duplicating features for non-slave children
 				], 
 				not_hide = true, 
@@ -153,8 +156,7 @@ var scenedict = {
 				text = tr('DIALOGUETUTACADEMY'), 
 				reqs = [
 					{type = 'has_money', value = 1500}, 
-					{type = "has_room_upgrade", name = 'practice_room',
-						code = 'tutoring_area', value = 1}
+					{type = 'has_room_upgrade', name = 'masters_office', code = 'academy_patronage', value = 1}
 				], 
 				not_hide = true, 
 				bonus_effects = [
@@ -168,6 +170,7 @@ var scenedict = {
 				text = tr('DIALOGUETUTHEIR'), 
 				reqs = [
 					{type = 'has_money', value = 5000}, 
+					{type = 'has_room_upgrade', name = 'masters_office', code = 'heir_tutors', value = 1},
 					{type = 'scene_character_checks', value = [{code = 'trait', trait = 'heir', check = true}]}
 				], 
 				not_hide = true, 

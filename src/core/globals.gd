@@ -1958,6 +1958,8 @@ func LoadGame(filename):
 	ResourceScripts.game_party.fix_serialization_postload()
 	repair_unique_faiths()
 	repair_grasha_questline()
+	repair_removed_portraits()
+	repair_lira_tribal_outfit()
 	input_handler.clear_portrait_cache() #cached shots belong to the session that took them
 	ResourceScripts.game_party.force_update_portraits()
 	loadscreen.set_progress(45)
@@ -2039,6 +2041,33 @@ func repair_grasha_questline():
 		{code = 'add_timed_event', value = 'grasha_old_crew_rumor', args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
 		{code = 'decision', value = 'GrashaCrewScheduled'},
 	])
+
+
+#Uniques' portraits used to be picked by personality and kept in per-character folders; those files are
+#gone. A save's unique whose icon still names one (update_prt leaves it alone while a chosen outfit is
+#kept) gets that variation's portrait, looked up by file name.
+func repair_removed_portraits():
+	var regex = RegEx.new()
+	regex.compile("^(.+?)(_default)?_prt_(bold|kind|shy|serious|angry|nude)$")
+	for pool in [ResourceScripts.game_party.characters, characters_pool.characters]:
+		for person in pool.values():
+			var icon = person.get_stat('icon_image')
+			if person.get_stat('unique') == null or !(icon is String) or !icon.begins_with("res://assets/images/portraits/") or ResourceLoader.exists(icon):
+				continue
+			var key = icon.get_file().get_basename()
+			var found = regex.search(key)
+			if found != null:
+				key = found.get_string(1) + "_prt"
+			if !images.portraits.has(key):
+				key = "%s_prt" % person.get_stat('unique')
+			if images.portraits.has(key):
+				person.set_stat('icon_image', images.portraits[key])
+
+
+#lira_quest_2 bought Lira her tribal outfit before the wardrobe had it: a save past the quest unlocks it
+func repair_lira_tribal_outfit():
+	if ResourceScripts.game_progress.completed_quests.has('lira_quest_2'):
+		input_handler.update_progress_data("unique_sprites", {lira = ["tribal"]})
 
 
 #The religious trait a unique's pregen data gives, moved on by what their story has done since.

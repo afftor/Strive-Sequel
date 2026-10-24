@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/iconsraces/halfwolf.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/portraits/cali_prt.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_female.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_info.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/yes.png" type="Texture" id=21]

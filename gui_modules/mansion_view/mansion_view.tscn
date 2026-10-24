@@ -2114,9 +2114,9 @@ columns = 3
 
 [node name="Cost" type="Control" parent="Overlay/RoomDetails/Body/DetailsScroll/DetailsColumn/UpgradeList/Row/Costs"]
 visible = false
-margin_right = 60.0
+margin_right = 74.0
 margin_bottom = 26.0
-rect_min_size = Vector2( 60, 26 )
+rect_min_size = Vector2( 74, 26 )
 
 [node name="Icon" type="TextureRect" parent="Overlay/RoomDetails/Body/DetailsScroll/DetailsColumn/UpgradeList/Row/Costs/Cost"]
 margin_right = 26.0
@@ -2127,7 +2127,7 @@ stretch_mode = 6
 
 [node name="Amount" type="Label" parent="Overlay/RoomDetails/Body/DetailsScroll/DetailsColumn/UpgradeList/Row/Costs/Cost"]
 margin_left = 28.0
-margin_right = 60.0
+margin_right = 74.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 27 )
 text = "00"

@@ -272,65 +272,60 @@ var tutorials = {
 			panel_pos = Vector2(1330, 200),
 			delay = 0.5
 		},{
-			#the craft screen opens on the room's own discipline
-			buttons = ['bread_button'],
-			text = "TUTORIAL_WORK_ROOM16",
-			panel_pos = Vector2(733, 50),
+			#The workshop panel (gui_modules/mansion_view/craft_panel.gd) opens over the plan on
+			#the room's own trade. It stands from x 120 to 1800: crafters, recipes, the bench and
+			#the queue left to right, with the order controls under the queue - so the text sits
+			#over the bench while a step points at either side of it.
+			buttons = ['craftpanel_recipe_bread'],
+			text = "TUTORIAL_WORK_CRAFT1",
+			panel_pos = Vector2(820, 380),
 			delay = 0.5
 		},{
-			buttons = ['craft_confirm_button'],
-			text = "TUTORIAL_WORK_ROOM17",
-			panel_pos = Vector2(733, 50)
+			buttons = ['craftpanel_runs_plus10'],
+			text = "TUTORIAL_WORK_CRAFT2",
+			panel_pos = Vector2(900, 600)
 		},{
-			buttons = ['craft_plus_button'],
-			text = "TUTORIAL_WORK_ROOM18",
-			panel_pos = Vector2(733, 50)
+			buttons = ['craftpanel_add'],
+			text = "TUTORIAL_WORK_CRAFT3",
+			panel_pos = Vector2(900, 700)
 		},{
-			buttons = ['craft_confirm2_button'],
-			text = "TUTORIAL_WORK_ROOM19",
-			panel_pos = Vector2(733, 50)
+			buttons = ['craftpanel_recipe_meatsoup'],
+			text = "TUTORIAL_WORK_CRAFT4",
+			panel_pos = Vector2(820, 380)
 		},{
-			buttons = ['meatsoup_button'],
-			text = "TUTORIAL_WORK_ROOM20",
-			panel_pos = Vector2(733, 50)
+			buttons = ['craftpanel_add'],
+			text = "TUTORIAL_WORK_CRAFT5",
+			panel_pos = Vector2(900, 700)
 		},{
-			buttons = ['craft_confirm_button'],
-			text = "TUTORIAL_WORK_ROOM21",
-			panel_pos = Vector2(733, 50)
+			buttons = ['craftpanel_order_meatsoup'],
+			text = "TUTORIAL_WORK_CRAFT6",
+			panel_pos = Vector2(900, 200)
 		},{
-			buttons = ['craft_confirm2_button'],
-			text = "TUTORIAL_WORK_ROOM22",
-			panel_pos = Vector2(733, 50)
+			buttons = ['craftpanel_order_remove'],
+			text = "TUTORIAL_WORK_CRAFT7",
+			panel_pos = Vector2(900, 200)
 		},{
-			buttons = ['meatsoup_delete'],
-			text = "TUTORIAL_WORK_ROOM23",
-			panel_pos = Vector2(733, 50)
-		},{
-			buttons = ['alert_panel_yes'],
-			text = "TUTORIAL_WORK_ROOM24",
-			panel_pos = Vector2(733, 50)
-		},{
-			#every mansion state but 'default' wants the whole slave list back
-			#(MansionSlaveListModule.apply_state_fold), and coming back to 'default' during a
-			#hard tutorial deliberately leaves it as it is - so the strip has to be folded away
-			#again here or the next step would have nobody to pick up
-			buttons = ['craft_back_button'],
-			listen = ['close_by_RMB_sig'],
-			pass_RMB = true,
-			additional_func = 'fold_slave_list',
-			text = "TUTORIAL_WORK_ROOM25",
-			panel_pos = Vector2(733, 50)
+			buttons = ['craftpanel_remove_yes'],
+			text = "TUTORIAL_WORK_CRAFT8",
+			panel_pos = Vector2(900, 200)
 		},{
 			#an order is only a plan until somebody stands in the room: game_res.process_rooms()
 			#walks the rooms that have workers and no others
-			buttons = ['mansion_rest_daisy'],
-			text = "TUTORIAL_WORK_ROOM26",
-			panel_pos = Vector2(660, 500),
-			delay = 0.6
+			buttons = ['craftpanel_add_crafter'],
+			text = "TUTORIAL_WORK_CRAFT9",
+			panel_pos = Vector2(450, 200)
 		},{
-			buttons = ['mansion_work_place'],
-			text = "TUTORIAL_WORK_ROOM27",
-			panel_pos = Vector2(1330, 300)
+			#the place's own list of everyone who could take it, in the same column
+			buttons = ['craftpanel_crafter_daisy'],
+			text = "TUTORIAL_WORK_CRAFT10",
+			panel_pos = Vector2(450, 200)
+		},{
+			#The panel lives on the plan's own overlay and leaves the mansion's state alone, so the
+			#slave list stays folded the way the rooms chapter left it - the old craft screen was a
+			#mansion state of its own and needed it folded away again here.
+			buttons = ['craftpanel_close'],
+			text = "TUTORIAL_WORK_CRAFT11",
+			panel_pos = Vector2(1200, 170)
 		},{
 			buttons = ['finish_turn'],
 			text = "TUTORIAL_WORK_ROOM28",
@@ -1149,7 +1144,9 @@ func prepare_general_tut():
 	ResourceScripts.game_res.materials['fish'] = 20
 	ResourceScripts.game_res.materials['bread'] = 20
 	ResourceScripts.game_res.materials['vegetables'] = 20
-	ResourceScripts.game_res.materials['grain'] = 20
+	#the rooms chapter orders 11 runs of bread at 2 grain each; the workshop shows an order's whole
+	#need against the store and marks it in warning colours when the store falls short
+	ResourceScripts.game_res.materials['grain'] = 30
 	globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 1))
 #	var has_tut_quest = false
 #	for quest_id in ResourceScripts.game_world.areas['plains'].quests.factions['workers']:
@@ -1319,12 +1316,13 @@ func close_char_context_menu():
 			menu.hide()
 
 
-#What the beds lesson needs standing before it opens. Two things the rooms chapter left the
-#other way round: the strip of portraits is under the slave list, which the crafting steps put
-#back up, and there is nobody to house - the estate seats every arrival itself, so a tutorial
-#household is always fully bedded. Daisy gives her bed up for the length of the lesson and
-#takes it straight back at the end of it; being without one costs a night's rest and nothing
-#else (game_res.mark_slept_rough), and the chapter has no turn left to end.
+#What the beds lesson needs standing before it opens. Two things the rooms chapter may have left
+#the other way round: the strip of portraits has to be out from under the slave list (folded
+#again here in case anything put the list back up), and there is nobody to house - the estate
+#seats every arrival itself, so a tutorial household is always fully bedded. Daisy gives her bed
+#up for the length of the lesson and takes it straight back at the end of it; being without one
+#costs a night's rest and nothing else (game_res.mark_slept_rough), and the chapter has no turn
+#left to end.
 func open_bed_lesson():
 	set_slave_list_folded(true)
 	var character = ResourceScripts.game_party.get_unique_slave('daisy')

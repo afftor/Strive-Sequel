@@ -1502,7 +1502,7 @@ var unique_sprites = {
 			name = "Wed",
 			descript = "",
 			path = "lilia_wed_body",
-			face_path = "lilia_nude",
+			face_path = "lilia_wed",
 			},
 	},
 	lilith = {
@@ -1630,9 +1630,15 @@ var unique_sprites = {
 		wed = {
 			name = "Wed",
 			descript = "",
-			path = "lira_wed_body", 
-#			path = "", 
+			path = "lira_wed_body",
+#			path = "",
 			face_path = "lira_wed",
+			},
+		tribal = { #bought for her in lira_quest_2
+			name = "LIRA_TRIBAL_OUTFIT_NAME",
+			descript = "",
+			path = "lira_tribal_body",
+			face_path = "lira_tribal",
 			},
 	},
 	amelia = {
@@ -1659,8 +1665,8 @@ var unique_sprites = {
 		halloween = {
 			name = "Halloween",
 			descript = "",
-			path = "amelia_halloween_body", 
-			face_path = "amelia", 
+			path = "amelia_halloween_body",
+			face_path = "amelia_halloween",
 			},
 	},
 	grasha = {
@@ -1739,11 +1745,33 @@ var unique_sprites = {
 		wed = {
 			name = "Wedding",
 			descript = "",
-			path = "rouge_wed_body", 
+			path = "rouge_wed_body",
 			face_path = "rouge_wed",
 			},
 	},
-	
+	erdyna = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "erdyna_body",
+			face_path = "erdyna",
+			unlocked = true
+			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "erdyna_nude_body",
+			face_path = "erdyna_nude",
+			unlocked = true
+			},
+		wed = {
+			name = "Wedding",
+			descript = "",
+			path = "erdyna_wed_body",
+			face_path = "erdyna_wed",
+			},
+	},
+
 	
 	
 }

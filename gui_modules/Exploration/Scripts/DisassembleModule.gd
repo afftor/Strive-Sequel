@@ -38,6 +38,9 @@ func _close(what):
 		$ItemInfo.hide()
 	elif what == "all":
 		self.hide()
+		#the mansion registers this screen as an open window when the forge opens it; hidden but
+		#still registered, it went on switching off the floorplan's wheel and drag
+		gui_controller.windows_opened.erase(self)
 	for button in itemcontainer.get_children():
 		if !button.has_meta("item"):
 			continue

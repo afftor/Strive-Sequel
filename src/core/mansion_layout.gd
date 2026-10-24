@@ -119,9 +119,6 @@ static func make_room(type_code):
 		task_id = null,     #key into game_res.tasks_progresses, set by assign_room_id
 		occupants = [],     #who sleeps here
 		upgrades = {},      #{upgrade_code: level}
-		#The order this room works its discipline's queue in, as task ids. Empty means the
-		#estate's own order, which is what every room did before Ledgers existed.
-		craft_rules = [],
 		#what a practice room is set to work on. 'stat' is the basic stat being drilled;
 		#'trainer' is who is tutoring, if anybody; 'target' is a negative trait being worked
 		#out instead, with 'progress' counting towards being rid of it
@@ -1270,14 +1267,9 @@ static func validate_floor(floor_plan, floor_data):
 			room.build = null
 		if !room.has('task_id'):
 			room.task_id = null
-		#a save made before Ledgers existed has no such key
-		if !room.has('craft_rules') or !(room.craft_rules is Array):
-			room.craft_rules = []
-		else:
-			#recipes finished or cancelled since the save was made are simply gone
-			for task_id in room.craft_rules.duplicate():
-				if !(task_id is String):
-					room.craft_rules.erase(task_id)
+		#a craft room's own order of work went with the Ledgers upgrade; the upgrade itself is
+		#dropped below with every other one the type no longer offers
+		room.erase('craft_rules')
 		#a save made before practice rooms existed has no such key, and JSON floats the
 		#progress on one that does
 		if !room.has('practice') or !(room.practice is Dictionary):

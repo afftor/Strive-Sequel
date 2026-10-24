@@ -34,7 +34,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_DAISY_DESC",
 		hint = "ACHIEVEMENT_WED_DAISY_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/daisy_prt/daisy_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/daisy_wed_prt.png",
 		points = 3
 	},
 	wedding_heleviel = {
@@ -42,7 +42,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_HELEVIEL_DESC",
 		hint = "ACHIEVEMENT_WED_HELEVIEL_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/heleviel_prt/heleviel_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/heleviel_wed_prt.png",
 		points = 3
 	},
 	wedding_amelia = {
@@ -50,7 +50,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_AMELIA_DESC",
 		hint = "ACHIEVEMENT_WED_AMELIA_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/amelia_prt/amelia_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/amelia_wed_prt.png",
 		points = 3
 	},
 	wedding_cali = {
@@ -58,7 +58,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_CALI_DESC",
 		hint = "ACHIEVEMENT_WED_CALI_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/cali_prt/cali_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/cali_wed_prt.png",
 		points = 3
 	},
 	wedding_lilia = {
@@ -66,7 +66,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_LILIA_DESC",
 		hint = "ACHIEVEMENT_WED_LILIA_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/lilia_prt/lilia_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/lilia_wed_prt.png",
 		points = 3
 	},
 	wedding_lilith = {
@@ -74,7 +74,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_LILITH_DESC",
 		hint = "ACHIEVEMENT_WED_LILITH_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/lilia_prt/lilith_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/lilith_wed_prt.png",
 		points = 3
 	},
 	wedding_kuro = {
@@ -82,7 +82,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_KURO_DESC",
 		hint = "ACHIEVEMENT_WED_KURO_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/kuro_prt/kuro_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/kuro_wed_prt.png",
 		points = 3
 	},
 	wedding_anastasia = {
@@ -90,7 +90,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_ANA_DESC",
 		hint = "ACHIEVEMENT_WED_ANA_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/anastasia_prt/anastasia_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/anastasia_wed_prt.png",
 		points = 3
 	},
 	wedding_zephyra = {
@@ -98,7 +98,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_ZEPHYRA_DESC",
 		hint = "ACHIEVEMENT_WED_ZEPHYRA_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/zephyra_prt/zephyra_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/zephyra_wed_prt.png",
 		points = 3
 	},
 	wedding_mae = {
@@ -106,7 +106,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_MAE_DESC",
 		hint = "ACHIEVEMENT_WED_MAE_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/mae_prt/mae_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/mae_wed_prt.png",
 		points = 3
 	},
 	wedding_jean = {
@@ -114,7 +114,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_JEAN_DESC",
 		hint = "ACHIEVEMENT_WED_JEAN_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/jean_prt/jean_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/jean_wed_prt.png",
 		points = 3
 	},
 	wedding_hara = {
@@ -122,7 +122,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_HARA_DESC",
 		hint = "ACHIEVEMENT_WED_HARA_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/hara_prt/hara_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/hara_wed_prt.png",
 		points = 3
 	},
 	wedding_lira = {
@@ -130,7 +130,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_LIRA_DESC",
 		hint = "ACHIEVEMENT_WED_LIRA_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/lira_prt/lira_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/lira_wed_prt.png",
 		points = 3
 	},
 	wedding_rouge = {
@@ -138,7 +138,7 @@ var achievements = {
 		description = "ACHIEVEMENT_WED_ROUGE_DESC",
 		hint = "ACHIEVEMENT_WED_ROUGE_HINT",
 		group = "wedding",
-		icon = "res://assets/images/portraits/rouge_prt/rouge_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/rouge_wed_prt.png",
 		points = 3
 	},
 	#The workshops, finished. 'room' names the mansion room type the achievement is about, and
@@ -512,7 +512,7 @@ var achi_groups = {
 		name = "ACHIGROUP_WEDDING_NAME",
 		description = "ACHIGROUP_WEDDING_DESC",
 #		hint = "ACHIGROUP_WEDDING_HINT",
-		icon = "res://assets/images/portraits/daisy_prt/daisy_wed_prt_kind.png",
+		icon = "res://assets/images/portraits/daisy_wed_prt.png",
 	},
 	dungeons = {
 		name = "ACHIGROUP_DUNGEONS_NAME",
@@ -531,7 +531,7 @@ var bonuses = {
 		name = "ACHIBONUS_DAISY_START",
 		description = "ACHIBONUS_DAISY_START_DESC",
 		hint = "ACHIBONUS_DAISY_START_HINT",
-		icon = "res://assets/images/portraits/daisy_prt/daisy_default_prt_bold.png",
+		icon = "res://assets/images/portraits/daisy_prt.png",
 		preparation = "prep_daisy_start",
 		cost = 5
 	},
@@ -539,7 +539,7 @@ var bonuses = {
 		name = "ACHIBONUS_CALI_START",
 		description = "ACHIBONUS_CALI_START_DESC",
 		hint = "ACHIBONUS_CALI_START_HINT",
-		icon = "res://assets/images/portraits/cali_prt/cali_default_prt_kind.png",
+		icon = "res://assets/images/portraits/cali_prt.png",
 		preparation = "prep_cali_start",
 		cost = 10
 	},
@@ -555,7 +555,7 @@ var bonuses = {
 		name = "ACHIBONUS_ANA_START",
 		description = "ACHIBONUS_ANA_START_DESC",
 		hint = "ACHIBONUS_ANA_START_HINT",
-		icon = "res://assets/images/portraits/anastasia_prt/anastasia_default_prt_kind.png",
+		icon = "res://assets/images/portraits/anastasia_prt.png",
 		preparation = "prep_ana_start",
 		cost = 15
 	},
@@ -563,7 +563,7 @@ var bonuses = {
 		name = "ACHIBONUS_AMELIA_START",
 		description = "ACHIBONUS_AMELIA_START_DESC",
 		hint = "ACHIBONUS_AMELIA_START_HINT",
-		icon = "res://assets/images/portraits/amelia_prt/amelia_default_prt_kind.png",
+		icon = "res://assets/images/portraits/amelia_prt.png",
 		preparation = "prep_amelia_start",
 		cost = 15
 	},
@@ -571,7 +571,7 @@ var bonuses = {
 		name = "ACHIBONUS_HELEVIEL_START",
 		description = "ACHIBONUS_HELEVIEL_START_DESC",
 		hint = "ACHIBONUS_HELEVIEL_START_HINT",
-		icon = "res://assets/images/portraits/heleviel_prt/heleviel_default_prt_kind.png",
+		icon = "res://assets/images/portraits/heleviel_prt.png",
 		preparation = "prep_heleviel_start",
 		cost = 20
 	},
@@ -579,7 +579,7 @@ var bonuses = {
 		name = "ACHIBONUS_LIRA_START",
 		description = "ACHIBONUS_LIRA_START_DESC",
 		hint = "ACHIBONUS_LIRA_START_HINT",
-		icon = "res://assets/images/portraits/lira_prt/lira_default_prt_kind.png",
+		icon = "res://assets/images/portraits/lira_prt.png",
 		preparation = "prep_lira_start",
 		cost = 15
 	},
@@ -587,7 +587,7 @@ var bonuses = {
 		name = "ACHIBONUS_KURO_START",
 		description = "ACHIBONUS_KURO_START_DESC",
 		hint = "ACHIBONUS_KURO_START_HINT",
-		icon = "res://assets/images/portraits/kuro_prt/kuro_default_prt_bold.png",
+		icon = "res://assets/images/portraits/Kuro_prt.png",
 		preparation = "prep_kuro_start",
 		cost = 25
 	},
@@ -595,7 +595,7 @@ var bonuses = {
 		name = "ACHIBONUS_ZEPHYRA_START",
 		description = "ACHIBONUS_ZEPHYRA_START_DESC",
 		hint = "ACHIBONUS_ZEPHYRA_START_HINT",
-		icon = "res://assets/images/portraits/zephyra_prt/zephyra_default_prt_kind.png",
+		icon = "res://assets/images/portraits/zephyra_prt.png",
 		preparation = "prep_zephyra_start",
 		cost = 20
 	},
@@ -603,7 +603,7 @@ var bonuses = {
 		name = "ACHIBONUS_MAE_START",
 		description = "ACHIBONUS_MAE_START_DESC",
 		hint = "ACHIBONUS_MAE_START_HINT",
-		icon = "res://assets/images/portraits/mae_prt/mae_default_prt_kind.png",
+		icon = "res://assets/images/portraits/mae_prt.png",
 		preparation = "prep_mae_start",
 		cost = 15
 	},
@@ -611,7 +611,7 @@ var bonuses = {
 		name = "ACHIBONUS_JEAN_START",
 		description = "ACHIBONUS_JEAN_START_DESC",
 		hint = "ACHIBONUS_JEAN_START_HINT",
-		icon = "res://assets/images/portraits/jean_prt/jean_default_prt_kind.png",
+		icon = "res://assets/images/portraits/jean_prt.png",
 		preparation = "prep_jean_start",
 		cost = 15
 	},
@@ -619,7 +619,7 @@ var bonuses = {
 		name = "ACHIBONUS_HARA_START",
 		description = "ACHIBONUS_HARA_START_DESC",
 		hint = "ACHIBONUS_HARA_START_HINT",
-		icon = "res://assets/images/portraits/hara_prt/hara_default_prt_kind.png",
+		icon = "res://assets/images/portraits/hara_prt.png",
 		preparation = "prep_hara_start",
 		cost = 20
 	},
@@ -627,7 +627,7 @@ var bonuses = {
 		name = "ACHIBONUS_LILIA_START",
 		description = "ACHIBONUS_LILIA_START_DESC",
 		hint = "ACHIBONUS_LILIA_START_HINT",
-		icon = "res://assets/images/portraits/lilia_prt/lilia_default_prt_kind.png",
+		icon = "res://assets/images/portraits/lilia_prt.png",
 		restricted_by = ["lilith_start"],
 		preparation = "prep_lilia_start",
 		cost = 15
@@ -636,7 +636,7 @@ var bonuses = {
 		name = "ACHIBONUS_LILITH_START",
 		description = "ACHIBONUS_LILITH_START_DESC",
 		hint = "ACHIBONUS_LILITH_START_HINT",
-		icon = "res://assets/images/portraits/lilia_prt/lilith_default_prt_kind.png",
+		icon = "res://assets/images/portraits/lilith_prt.png",
 		restricted_by = ["lilia_start"],
 		preparation = "prep_lilith_start",
 		cost = 20
@@ -645,7 +645,7 @@ var bonuses = {
 		name = "ACHIBONUS_ROUGE_START",
 		description = "ACHIBONUS_ROUGE_START_DESC",
 		hint = "ACHIBONUS_ROUGE_START_HINT",
-		icon = "res://assets/images/portraits/rouge_prt/rouge_default_prt_kind.png",
+		icon = "res://assets/images/portraits/rouge_prt.png",
 		preparation = "prep_rouge_start",
 		cost = 25
 	},

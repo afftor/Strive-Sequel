@@ -450,9 +450,14 @@ valign = 1
 margin_top = 82.0
 margin_right = 524.0
 margin_bottom = 82.0
-scroll_vertical_enabled = false
+rect_min_size = Vector2( 0, 70 )
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+scroll_horizontal_enabled = false
 
-[node name="Races" type="HBoxContainer" parent="InfoPanel/VBoxContainer/RaceScroll"]
+[node name="Races" type="GridContainer" parent="InfoPanel/VBoxContainer/RaceScroll"]
+custom_constants/hseparation = 3
+columns = 7
 
 [node name="Button" type="TextureRect" parent="InfoPanel/VBoxContainer/RaceScroll/Races"]
 visible = false

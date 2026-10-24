@@ -2409,7 +2409,7 @@ func process_rooms():
 			if character == null:
 				continue
 			var value = character.get_job_value(tprogress.job, true) * modifier
-			if _spend_room_work(tprogress.job, value, character, room):
+			if _spend_room_work(tprogress.job, value, character):
 				character.work_tick_values(tprogress.workstat)
 			else:
 				globals.text_log_add('work', character.get_short_name() + ": No available craft task.")
@@ -2569,19 +2569,15 @@ func process_room_builds():
 #The craft type's one queue from the top, through the same helpers process_craft uses.
 #_add_craft_value returns the work it could not spend, so nothing was done when it hands
 #the whole value back.
-func _spend_room_work(job, value, character, room = null):
-	var left = _add_craft_value(_active_task_find(room_queue(room, crafting_lists[job])), value, character)
+func _spend_room_work(job, value, character):
+	var left = _add_craft_value(_active_task_find(crafting_lists[job]), value, character)
 	return left < value
 
 
-#Has the estate's books been put in order? Ledgers is bought once, on the master's office,
-#and what it buys is the right to tell every craft room what to work on - so it is asked of
-#the estate, not of the room being asked to obey it.
 #What a craft room counts as, on the scale recipes are written against. The old global
 #'forge'/'tailor'/'alchemy' upgrades had three levels; a room has itself and two levels of
 #Better Tools, so they line up one for one: built is 1, and each level of tools is another.
-#What this room is actually working on this turn: the head of the queue it will reach for,
-#which is its own list when Ledgers has given it one, and the estate's otherwise. Asked in the
+#What this room is actually working on this turn: the head of its trade's queue. Asked in the
 #same order the work itself takes, so the room cannot say one thing and make another.
 func room_current_craft(room):
 	if room == null:
@@ -2589,7 +2585,7 @@ func room_current_craft(room):
 	var job = RoomTypes.get_work_job(room.type)
 	if !has_craft_queue(job):
 		return null
-	return _active_task_find(room_queue(room, crafting_lists[job]))
+	return _active_task_find(crafting_lists[job])
 
 
 #Whether a job takes recipe orders: a craft type, with its queue in crafting_lists. 'building'
@@ -2671,13 +2667,6 @@ func has_fully_upgraded_room(room_type):
 	return false
 
 
-func has_ledgers():
-	var office = MansionLayout.first_room_of_type(mansion_layout, 'masters_office')
-	if office == null:
-		return false
-	return MansionLayout.upgrade_level(office, 'ledgers') > 0
-
-
 #Whether the ritual room has its Flesh Rites circle, which is what opens the body rites on the
 #mansion - see src/core/body_rites.gd.
 func has_body_rites():
@@ -2739,23 +2728,6 @@ func prepare_rites(room, workers):
 	#the turn the circle fills goes in the activity log: the room card is rarely open when it happens
 	if !was_ready and preparation >= RITE_PREPARATION_FULL:
 		globals.mansion_activity_log_add('work', tr("MANSION_ACTIVITY_RITES_PREPARED"))
-
-
-#The order this room works its discipline's queue in. Without Ledgers, or with nothing chosen,
-#that is the estate's own order - which is what every room did before the upgrade existed.
-#With a list, only what is on it, in the order it is on it: a room told to make nails and
-#given nothing else to make sits idle rather than quietly falling back on the estate's queue,
-#because falling back is precisely what the player bought the upgrade to stop.
-func room_queue(room, queue):
-	if room == null or !has_ledgers():
-		return queue
-	if !(room.craft_rules is Array) or room.craft_rules.empty():
-		return queue
-	var res = []
-	for task_id in room.craft_rules:
-		if queue.has(task_id):
-			res.append(task_id)
-	return res
 
 
 func _process_spec_task(id):

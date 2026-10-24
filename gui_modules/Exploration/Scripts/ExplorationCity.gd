@@ -61,6 +61,7 @@ func _ready():
 	var upgrades_mode = $SlaveMarket.get_node_or_null("UpgradesMode")
 	if upgrades_mode != null:
 		upgrades_mode.connect("pressed", self, "change_mode", ["upgrades"])
+	build_market_sort_headers()
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
 	$TestButton.visible = gui_controller.mansion.in_test_mode
@@ -711,13 +712,10 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 			$SlaveMarket/SlaveList/ScrollContainer/VBoxContainer
 		)
 		fill_market_row(newbutton, tchar, tchar.calculate_price(true))
-	var person_id
-	var person
+	var rows = apply_market_sort()
 	if !active_faction.slaves.empty():
 		$SlaveMarket/HireMode.disabled = false
-		person_id = active_faction.slaves[0]
-		person = characters_pool.get_char_by_id(person_id)
-		show_slave_info(person)
+		show_slave_info(rows[0].get_meta("person"))
 	else:
 		$SlaveMarket/HireMode.disabled = true
 		if market_mode != "guild_slaves":
@@ -837,10 +835,9 @@ func sell_slave():
 	for tchar in char_list:
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 		fill_market_row(newbutton, tchar, market_sale_price(tchar))
-	if !char_list.empty():
-		var person = char_list[0]
-		show_slave_info(person)
-		char_list.clear()
+	var rows = apply_market_sort()
+	if !rows.empty():
+		show_slave_info(rows[0].get_meta("person"))
 	else:
 		show_market_empty()
 
@@ -871,6 +868,105 @@ func _sell_row_before(a, b):
 		if key_a[i] != key_b[i]:
 			return key_a[i] < key_b[i]
 	return false
+
+
+### Column sorting ###
+
+const MARKET_SORT_HEADERS = {ColName = 'name', ColRace = 'race', ColType = 'type', ColPrice = 'price'}
+const MARKET_SORT_CLASS_ORDER = ['servant', 'servant_notax', 'slave_trained', 'slave']
+const MARKET_SORT_HOVER_COLOR = Color(1, 1, 1)
+
+var market_sort_key = ''
+var market_sort_desc = false
+
+func build_market_sort_headers():
+	var header = $SlaveMarket/SlaveList.get_node_or_null("TableHeader")
+	if header == null:
+		return
+	for node_name in MARKET_SORT_HEADERS:
+		var nd = header.get_node_or_null(node_name)
+		if nd == null:
+			continue
+		nd.set_meta("sort_title", nd.text)
+		nd.set_meta("idle_color", nd.get("custom_colors/font_color"))
+		nd.mouse_filter = MOUSE_FILTER_STOP
+		nd.mouse_default_cursor_shape = CURSOR_POINTING_HAND
+		nd.connect('gui_input', self, 'market_sort_header_input', [MARKET_SORT_HEADERS[node_name]])
+		nd.connect('mouse_entered', self, 'market_sort_header_hover', [nd, true])
+		nd.connect('mouse_exited', self, 'market_sort_header_hover', [nd, false])
+		globals.connecttexttooltip(nd, tr("SLAVE_MARKET_SORT_HINT"))
+	update_market_sort_headers()
+
+
+#a column cycles through ascending, descending and back to the market's own order
+func market_sort_header_input(event, key):
+	if !(event is InputEventMouseButton) or event.button_index != BUTTON_LEFT or !event.pressed:
+		return
+	if market_sort_key != key:
+		market_sort_key = key
+		market_sort_desc = false
+	elif !market_sort_desc:
+		market_sort_desc = true
+	else:
+		market_sort_key = ''
+		market_sort_desc = false
+	update_market_sort_headers()
+	apply_market_sort()
+
+
+func market_sort_header_hover(nd, hovered):
+	nd.set("custom_colors/font_color", MARKET_SORT_HOVER_COLOR if hovered else nd.get_meta("idle_color"))
+
+
+func update_market_sort_headers():
+	var header = $SlaveMarket/SlaveList.get_node_or_null("TableHeader")
+	if header == null:
+		return
+	for node_name in MARKET_SORT_HEADERS:
+		var nd = header.get_node_or_null(node_name)
+		if nd == null or !nd.has_meta("sort_title"):
+			continue
+		var text = tr(nd.get_meta("sort_title"))
+		if MARKET_SORT_HEADERS[node_name] == market_sort_key:
+			text += " ▼" if market_sort_desc else " ▲"
+		nd.text = text
+
+
+#rows are only moved around, so the selected one stays pressed; ties keep the market's own order.
+#returns the rows in their new order
+func apply_market_sort():
+	var entries = []
+	for row in SlaveMarketList.get_children():
+		if !row.has_meta("market_order") or row.is_queued_for_deletion():
+			continue
+		entries.append({row = row, base = row.get_meta("market_order"), value = market_sort_value(row)})
+	entries.sort_custom(self, "_market_row_before")
+	var rows = []
+	for i in entries.size():
+		SlaveMarketList.move_child(entries[i].row, i)
+		rows.append(entries[i].row)
+	return rows
+
+
+func market_sort_value(row):
+	var tchar = row.get_meta("person")
+	match market_sort_key:
+		'name':
+			return tchar.get_short_name().to_lower()
+		'race':
+			return tchar.get_short_race().to_lower()
+		'type':
+			var rank = MARKET_SORT_CLASS_ORDER.find(tchar.get_stat('slave_class'))
+			return rank if rank >= 0 else MARKET_SORT_CLASS_ORDER.size()
+		'price':
+			return row.get_meta("price")
+	return 0
+
+
+func _market_row_before(a, b):
+	if a.value != b.value:
+		return a.value > b.value if market_sort_desc else a.value < b.value
+	return a.base < b.base
 
 
 func market_sale_price(tchar):
@@ -912,6 +1008,8 @@ func fill_market_row(row, tchar, price):
 	row.get_node('icon').texture = tchar.get_icon_small()
 	input_handler.queue_portrait(tchar) #a slave nobody opened has no picture yet
 	row.set_meta("person", tchar)
+	row.set_meta("price", price)
+	row.set_meta("market_order", row.get_index()) #rows are added in the market's own order
 	row.connect("pressed", self, 'show_slave_info', [tchar])
 	row.connect('gui_input', self, 'double_clicked')
 	var star = row.get_node_or_null("QuestStar")

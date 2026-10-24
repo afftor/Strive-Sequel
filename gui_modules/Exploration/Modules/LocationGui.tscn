@@ -41,7 +41,7 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
-[ext_resource path="res://assets/images/portraits/cali_prt/cali_default_prt_bold.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/portraits/cali_prt.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=43]
 
 [ext_resource path="res://assets/Textures_v2/MANSION/yes.png" type="Texture" id=44]

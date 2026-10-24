@@ -28,7 +28,9 @@ const FILTERS = {All = 'all', Materials = 'materials', Gear = 'gear', Costume = 
 const ITEM_FILTERS = {All = 'all', Weapons = 'weapons', Armor = 'armor'}
 const ARMOR_TYPES = ['heavy', 'medium', 'cloth']
 const AMOUNT_MODES = {Batch = 'batch', Keep = 'keep', Endless = 'endless'}
-const MAX_AMOUNT = 999
+const MAX_AMOUNT = 99999
+#the order's numbers the player can type; each is AmountRow/<Field>/Value
+const AMOUNT_FIELDS = ['runs', 'low', 'high']
 #where the lines from the item card meet before they drop to the slots
 const WIRE_BUS = 14.0
 const WIRE_WIDTH = 2.0
@@ -101,6 +103,12 @@ func setup(view_node):
 	row.get_node("Low/Plus").connect("pressed", self, "change_amount", ['low', 1])
 	row.get_node("High/Minus").connect("pressed", self, "change_amount", ['high', -1])
 	row.get_node("High/Plus").connect("pressed", self, "change_amount", ['high', 1])
+	for field in AMOUNT_FIELDS:
+		var input = amount_input(field)
+		input.max_length = str(MAX_AMOUNT).length()
+		input.connect("text_changed", self, "amount_typed", [field])
+		input.connect("text_entered", self, "amount_entered", [field])
+		input.connect("focus_exited", self, "amount_left", [field])
 	order.get_node("Perform").connect("pressed", self, "perform")
 	var content = bench.get_node("Scroll/Content")
 	content.get_node("Wire").connect("draw", self, "draw_wire", [content.get_node("Wire")])
@@ -110,6 +118,7 @@ func setup(view_node):
 	globals.connecttexttooltip(order.get_node("OrderRow/Help"), tr("CRAFTPANEL_ORDER_HELP"), false, tooltip_node())
 	globals.connecttexttooltip($Body/Columns/Queue/HeaderRow/Help, tr("CRAFTPANEL_QUEUE_HELP"), false, tooltip_node())
 	set_static_texts()
+	register_tutorial_buttons()
 	visible = false
 
 
@@ -145,6 +154,116 @@ func order_box():
 #What the bench says about the thing on it: the description, between the card and the materials.
 func info_box():
 	return $Body/Columns/Bench/Scroll/Content
+
+
+#### the hard tutorial ####
+
+#The rooms chapter gives the kitchen its orders and its cook on this panel. Every list here is
+#built again on each change, and ClearContainer only hides the old rows until the frame ends, so
+#each of these is a search through the rows really shown rather than a node kept from the last
+#build. A search that comes up empty answers null, which the tutorial reads as "not built yet" and
+#asks again on the next frame - that is how a step can wait for the row its last click put there.
+func register_tutorial_buttons():
+	input_handler.register_btn_source('craftpanel_recipe_bread', self, 'tut_get_bread_recipe')
+	input_handler.register_btn_source('craftpanel_recipe_meatsoup', self, 'tut_get_meatsoup_recipe')
+	input_handler.register_btn_source('craftpanel_runs_plus10', self, 'tut_get_runs_plus10')
+	input_handler.register_btn_source('craftpanel_add', self, 'tut_get_add')
+	input_handler.register_btn_source('craftpanel_order_meatsoup', self, 'tut_get_meatsoup_order')
+	input_handler.register_btn_source('craftpanel_order_remove', self, 'tut_get_meatsoup_remove')
+	input_handler.register_btn_source('craftpanel_remove_yes', self, 'tut_get_meatsoup_remove_yes')
+	input_handler.register_btn_source('craftpanel_add_crafter', self, 'tut_get_free_place')
+	input_handler.register_btn_source('craftpanel_crafter_daisy', self, 'tut_get_daisy')
+	input_handler.register_btn_source('craftpanel_close', self, 'tut_get_close')
+
+
+func tut_get_bread_recipe():
+	return tut_get_recipe_row('bread')
+
+
+func tut_get_meatsoup_recipe():
+	return tut_get_recipe_row('meatsoup')
+
+
+func tut_get_recipe_row(code):
+	if !visible or mode != 'craft':
+		return null
+	for row in shown_children($Body/Columns/Recipes/Scroll/List, 'Button'):
+		if row.get_meta("recipe", "") == code:
+			return row
+	return null
+
+
+#The order box stands whatever is on the bench, so a button of it only counts while it is drawn.
+func tut_get_order_button(path):
+	var button = order_box().get_node(path)
+	return button if visible and button.is_visible_in_tree() else null
+
+
+func tut_get_runs_plus10():
+	return tut_get_order_button("AmountRow/Runs/Plus10")
+
+
+func tut_get_add():
+	return tut_get_order_button("Perform")
+
+
+#A queued order is found by what it makes rather than by where it stands in the queue.
+func tut_get_order_row(code):
+	if !visible:
+		return null
+	for row in shown_children($Body/Columns/Queue/Scroll/List, 'Order'):
+		var task = game_res().tasks_progresses.get(row.arraydata, null)
+		if task != null and !game_res().is_improve_task(task) and task.id == code:
+			return row
+	return null
+
+
+func tut_get_meatsoup_order():
+	return tut_get_order_row('meatsoup')
+
+
+#The row's own buttons are only shown on the order that is open, and the question only once asked.
+func tut_get_meatsoup_remove():
+	var row = tut_get_order_row('meatsoup')
+	if row == null or !row.get_node("Actions").visible:
+		return null
+	return row.get_node("Actions/Remove")
+
+
+func tut_get_meatsoup_remove_yes():
+	var row = tut_get_order_row('meatsoup')
+	if row == null or !row.get_node("Confirm").visible:
+		return null
+	return row.get_node("Confirm/Yes")
+
+
+#The first free place in the trade's rooms - the tutorial household has the one kitchen. The
+#column mixes room headers, crafters and free places, so the place is told by its mark.
+func tut_get_free_place():
+	if !visible or picking != null:
+		return null
+	for row in shown_children($Body/Columns/Crafters/Scroll/List, 'Free'):
+		if row.has_meta("free_place"):
+			return row
+	return null
+
+
+#Daisy among the people offered for that place. The list is sorted by skill, so she is found by
+#who she is rather than by where she lands in it.
+func tut_get_daisy():
+	if !visible or picking == null:
+		return null
+	for row in shown_children($Body/Columns/Crafters/Scroll/List, 'Worker'):
+		if !row.has_meta("char_id"):
+			continue
+		var character = person(row.get_meta("char_id"))
+		if character != null and character.get_stat('unique') == 'daisy':
+			return row
+	return null
+
+
+func tut_get_close():
+	return $CloseButton if visible else null
 
 
 func open(code = null):
@@ -390,6 +509,7 @@ func build_crafters():
 			row.connect("pressed", self, "take_off", [id])
 		for i in range(max(0, places - workers.size())):
 			var free = input_handler.DuplicateContainerTemplate(list, 'Free')
+			free.set_meta("free_place", true)
 			free.text = tr("CRAFTPANEL_ADD_CRAFTER")
 			free.connect("pressed", self, "start_pick", [entry.floor, entry.slot])
 
@@ -411,6 +531,7 @@ func build_candidates(list, entry, rooms):
 		if doing != null and doing.text != "":
 			sub = tr("CRAFTPANEL_NOW") % doing.text
 		var row = build_worker_row(list, character, worker_yield(character, entry.room), sub)
+		row.set_meta("char_id", id)
 		row.connect("pressed", self, "put_on", [id, entry.floor, entry.slot])
 
 
@@ -617,6 +738,7 @@ func by_recipe_order(first, second):
 func build_recipe_row(list, data, queued):
 	var row = input_handler.DuplicateContainerTemplate(list, 'Button')
 	row.pressed = picked_recipe.get(job) == data.code
+	row.set_meta("recipe", data.code)
 	var icon = row.get_node("Quality/Item")
 	icon.texture = stock_icon(data.resultitem)
 	icon.material = load("res://assets/ItemShader.tres").duplicate() if data.crafttype == 'modular' else null
@@ -681,7 +803,7 @@ func pick_recipe(code, redraw = true):
 	if changed:
 		fill_parts(data)
 		var have = result_stock(data)
-		amount = {mode = 'batch', runs = 1, low = int(max(data.resultamount, round(have / 2.0))), high = int(max(have + data.resultamount * 5, 20))}
+		amount = {mode = 'batch', runs = 1, low = clamp_amount('low', max(data.resultamount, round(have / 2.0))), high = clamp_amount('high', max(have + data.resultamount * 5, 20))}
 		$Body/Columns/Bench/Scroll.scroll_vertical = 0
 	if redraw:
 		rebuild()
@@ -1111,16 +1233,30 @@ func build_order_row(data, locked):
 	row.visible = true
 	row.get_node("RunsLabel").visible = amount.mode == 'batch'
 	row.get_node("Runs").visible = amount.mode == 'batch'
-	row.get_node("Runs/Value").text = str(amount.runs)
 	for part in ['LowLabel', 'Low', 'HighLabel', 'High']:
 		row.get_node(part).visible = amount.mode == 'keep'
-	row.get_node("Low/Value").text = str(amount.low)
-	row.get_node("High/Value").text = str(amount.high)
 	row.get_node("EndlessLabel").visible = amount.mode == 'endless'
-	for stepper in ['Runs', 'Low', 'High']:
-		for button in row.get_node(stepper).get_children():
+	for field in AMOUNT_FIELDS:
+		show_amount(field)
+		amount_input(field).editable = !locked
+		for button in row.get_node(field.capitalize()).get_children():
 			if button is BaseButton:
 				button.disabled = locked
+
+
+func amount_input(field):
+	return order_box().get_node("AmountRow/" + field.capitalize() + "/Value")
+
+
+#A number the player is still typing is left as typed; anything else that changed the amount is
+#written in. Writing only on a difference also keeps a text_changed from the write from looping.
+func show_amount(field):
+	var input = amount_input(field)
+	if input.has_focus() and input.text != "" and int(input.text) == amount[field]:
+		return
+	if input.text != str(amount[field]):
+		input.text = str(amount[field])
+		input.caret_position = input.text.length()
 
 
 #Beside the button only what holds the order back is said; how it is getting on is the queue's to show.
@@ -1162,13 +1298,76 @@ func set_amount_mode(value):
 
 
 func change_amount(field, step):
-	amount[field] = int(clamp(amount[field] + step, 1 if field != 'low' else 0, MAX_AMOUNT))
-	if amount.high <= amount.low:
-		if field == 'high':
-			amount.low = max(0, amount.high - 1)
-		else:
-			amount.high = amount.low + 1
+	amount[field] = clamp_amount(field, amount[field] + step)
+	keep_limits_apart(field)
 	rebuild()
+
+
+#Runs and the top of the stock start at one, its bottom at nothing; the bottom stops one short of
+#MAX_AMOUNT so the top still fits above it.
+func clamp_amount(field, value):
+	if field == 'low':
+		return int(clamp(value, 0, MAX_AMOUNT - 1))
+	return int(clamp(value, 1, MAX_AMOUNT))
+
+
+#The stock's top must stay above its bottom; the limit just changed wins and the other one moves.
+func keep_limits_apart(field):
+	if field == 'runs' or amount.high > amount.low:
+		return
+	if field == 'high':
+		amount.low = amount.high - 1
+	else:
+		amount.high = amount.low + 1
+
+
+#Typing changes the order as it goes, so the bench follows the number. The stock limits are put
+#apart only once the player leaves the field: a "to" typed digit by digit would otherwise drag
+#"from" down to its first digit.
+func amount_typed(text, field):
+	var input = amount_input(field)
+	var digits = ""
+	var caret = 0
+	for i in range(text.length()):
+		if text[i] >= '0' and text[i] <= '9':
+			digits += text[i]
+			if i < input.caret_position:
+				caret += 1
+	if digits != text:
+		input.text = digits
+		input.caret_position = caret
+	if digits == "":
+		return
+	amount[field] = clamp_amount(field, int(digits))
+	rebuild()
+
+
+func amount_entered(_text, field):
+	amount_input(field).release_focus()
+
+
+func amount_left(field):
+	var low = amount.low
+	var high = amount.high
+	keep_limits_apart(field)
+	if amount.low != low or amount.high != high:
+		rebuild()
+	else:
+		show_amount(field)
+
+
+#Godot keeps the caret in a field until another control takes the focus, and no button on this
+#panel takes it, so a click anywhere off the field being typed in finishes the number. _input runs
+#before the click reaches its button, which then sees the number already in order.
+func _input(event):
+	if !(event is InputEventMouseButton) or !event.pressed or !is_visible_in_tree():
+		return
+	if event.button_index != BUTTON_LEFT and event.button_index != BUTTON_RIGHT:
+		return
+	for field in AMOUNT_FIELDS:
+		var input = amount_input(field)
+		if input.has_focus() and !input.get_global_rect().has_point(event.position):
+			input.release_focus()
 
 
 func amount_order():
@@ -1786,13 +1985,14 @@ func pick_order(id):
 			parts[task.id] = task.partdict.duplicate()
 		amount = {mode = 'batch', runs = 1, low = 10, high = 40}
 		if task.has('repeat'):
-			amount.runs = int(max(1, task.repeat))
+			amount.runs = clamp_amount('runs', task.repeat)
 		elif task.has('continuous'):
 			amount.mode = 'endless'
 		elif task.has('cap_up'):
 			amount.mode = 'keep'
-			amount.low = int(task.cap_low)
-			amount.high = int(task.cap_up)
+			amount.low = clamp_amount('low', task.cap_low)
+			amount.high = clamp_amount('high', task.cap_up)
+			keep_limits_apart('high')
 	rebuild()
 
 

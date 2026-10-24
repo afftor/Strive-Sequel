@@ -354,7 +354,7 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = true,
-		icon = "res://assets/images/iconsskills/Heavy-Strike.png",
+		icon = "res://assets/images/iconstraits/fist.png",
 		effects = [],
 		bonusstats = {manacost_mod_skill_mul = 2.0, damage_mod_mana_skill = 0.3},
 		weight = 100,
@@ -367,7 +367,7 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = true,
-		icon = "res://assets/images/iconsskills/skill_veil.png",
+		icon = "res://assets/images/iconstraits/blending_shadows.png",
 		effects = [],
 		bonusstats = {},
 		weight = 100,
@@ -1020,7 +1020,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/gifted.png",
 		effects = [],
-		bonusstats = {mpmax_mul = 1.5, matk_add_part = 0.05},
+		bonusstats = {mpmax_mul = 1.4, matk_add_part = 0.05},
 		weight = 100,
 		conflicts = ['magicmutt'],
 		disposition_change = {
@@ -1255,7 +1255,9 @@ var traits = {
 		icon = "res://assets/images/iconsskills/demonform.png",
 		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default', 'succubus_thralls_0', 'succubus_thralls_1', 'succubus_thralls_2', 'succubus_thralls_3', 'succubus_thralls_4', 'succubus_thralls_5', 'succubus_thralls_6'],
 		bonusstats = {sex_stamina = 2, trainee_amount = 1, mastery_point_magic = 1},
-		social_skills = ['succubus_lust_skill', 'enthrall', 'release_thrall'],
+		#Lust Drain (succubus_lust_skill) is switched off for now: only succubi still have a lustmax,
+		#so it had no one left to drain. The skill itself is kept in social.gd.
+		social_skills = ['enthrall', 'release_thrall'],
 		combat_skills = ['euphoria_apply'],
 		tags = ['permanent']
 	},

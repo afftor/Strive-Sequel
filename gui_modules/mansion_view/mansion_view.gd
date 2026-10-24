@@ -1238,10 +1238,9 @@ func person_yield_at(character, place_kind, place_holder, place_floor = -1):
 	return person_yield_in_room(character, room, place_holder)
 
 
-#Has this room a recipe to work on? Asked in the same order the work itself takes - the room's
-#own queue when Ledgers has given it one, the estate's otherwise - because game_res.room_current_craft
-#is the same question _spend_room_work asks first. Rooms that are not workshops at all have no
-#queue to be empty and answer no.
+#Has this room a recipe to work on? Asked in the same order the work itself takes, because
+#game_res.room_current_craft is the same question _spend_room_work asks first. Rooms that are
+#not workshops at all have no queue to be empty and answer no.
 func idle_workshop(room):
 	if room == null:
 		return false
@@ -1851,13 +1850,14 @@ func set_zoom(value):
 	var centre = $GridViewport.rect_size / 2
 	pan = centre - (centre - pan) * (clamped / zoom)
 	zoom = clamped
-	close_card()
 	apply_view()
 
 
+#Neither this nor set_zoom closes the room card any more. It used to stand beside its room and
+#would have been left pointing at nothing; it stands in the middle of the screen now (see
+#mansion_room_card.position_near), so the plan can move under it.
 func pan_by(delta):
 	pan += delta
-	close_card()
 	apply_view()
 
 
@@ -1978,7 +1978,7 @@ func _input(event):
 	#_input runs before the GUI and before the autoloads' own handlers, so anything swallowed
 	if input_handler.hard_tutorial_active:
 		return
-	if !gui_controller.windows_opened.empty():
+	if window_is_open():
 		return
 	if !mansion_is_the_screen():
 		return
@@ -1993,6 +1993,20 @@ func _input(event):
 			get_tree().set_input_as_handled()
 		return
 	handle_view_input(event)
+
+
+#Only a window that is still on screen stands over the plan. Some close buttons hide their window
+#without taking it out of gui_controller.windows_opened, and one such leftover used to switch the
+#wheel and the middle-button drag off on the whole plan until Esc happened to clear it.
+func window_is_open():
+	for window in gui_controller.windows_opened:
+		if typeof(window) != TYPE_OBJECT:
+			return true
+		if !is_instance_valid(window):
+			continue
+		if !(window is CanvasItem) or window.is_visible_in_tree():
+			return true
+	return false
 
 
 func pointer_over_plan(position):
@@ -2023,8 +2037,10 @@ func pointer_over_plan(position):
 	return true
 
 
-#Tooltips follow the cursor and answer to nobody; they are not something to scroll.
-const WHEEL_TRANSPARENT = ['TextTooltip', 'ItemTooltip']
+#Tooltips follow the cursor and answer to nobody; they are not something to scroll. The sheet
+#behind the room card is there to close the card on a click and nothing else - the wheel and the
+#middle-button drag go through it to the plan, so the house can be looked around with a card open.
+const WHEEL_TRANSPARENT = ['TextTooltip', 'ItemTooltip', 'CardCatcher']
 
 
 func covered_by_own_panels(position):
@@ -2450,8 +2466,11 @@ func set_card_aside(aside):
 	$Overlay/CardCatcher.visible = !aside
 
 
+#Only a click closes the card. Off the plan - over the log, the rail - the wheel still lands on this
+#sheet, and a turn of it used to shut the card it was meant to leave alone.
 func catcher_input(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed \
+			and event.button_index in [BUTTON_LEFT, BUTTON_RIGHT]:
 		close_card()
 
 

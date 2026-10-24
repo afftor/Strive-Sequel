@@ -3367,15 +3367,18 @@ func update_prt():
 	if get_stat("player_selected_body"):
 		return
 	var prt_name: String
+	var prt_unique = get_stat("unique")
+	if prt_unique.to_lower() == 'anastasiabroken': #drawn with Anastasia's portraits, as her wardrobe is
+		prt_unique = 'anastasia'
 	var variation = "default"
 	if has_work_rule('nudity'):
 		variation = "nude"
 	if get_stat("unique_variation") != null:
 		variation = get_stat("unique_variation")
-	
+
 	# check for unique nude portrait for example cali_nude_collar_prt
 	if has_work_rule('nudity') and variation != "default":
-		if images.portraits.keys().has("%s_%s_%s_prt" % [get_stat("unique"), "nude", variation]):
+		if images.portraits.keys().has("%s_%s_%s_prt" % [prt_unique, "nude", variation]):
 			variation = "nude_%s" % get_stat("unique_variation")
 	
 	# check for unique wedding portrait
@@ -3384,12 +3387,11 @@ func update_prt():
 		if spouse_person.get_stat('unique') == get_stat('unique'):
 			variation = "wed"
 	
-	if get_stat("personality") != "neutral":
-		prt_name = "%s_%s_prt_%s" % [get_stat("unique"), variation, get_stat("personality")]
-	elif variation == "default":
-		prt_name = "%s_prt" % [get_stat("unique")]
+	#one portrait per variation - personality no longer picks the face
+	if variation == "default":
+		prt_name = "%s_prt" % [prt_unique]
 	else: # example daisy_maid_prt
-		prt_name = "%s_%s_prt" % [get_stat("unique"), variation]
+		prt_name = "%s_%s_prt" % [prt_unique, variation]
 	
 	if images.portraits.keys().has(prt_name):
 		set_stat('icon_image', images.portraits[prt_name])
