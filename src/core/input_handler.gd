@@ -1028,6 +1028,15 @@ func SetMusic(name, store = false, delay = 0):
 	musicnode.play(0)
 
 func StopMusic(instant = false):
+	if instant:
+		musicfading = false
+		#before the first track there is no player to stop, and making one here would fail when
+		#called from a _ready: the root takes no children while it sets up the scene
+		var musicnode = get_tree().get_root().get_node_or_null(ResourceScripts.node_data[self.NODE_MUSIC].name)
+		if musicnode != null:
+			musicnode.stop()
+			musicnode.stream = null #SetMusic skips the track it finds loaded, so a stopped one must go
+		return
 	musicfading = true
 
 func GetMusicNode(): #get_spec_node(input_handler.NODE_MUSIC)
@@ -2062,6 +2071,15 @@ func play_animation_noq(animation, args = {}):
 				anim_scene.sound = args.sound
 			anim_scene.get_node("Label").text = args.label
 			anim_scene.get_node("SelectedQuest").text = args.info
+			anim_scene.play("task_aquared")
+		"settlement_management": #(where) - the capitals whose Settlement Management just opened
+			anim_scene = get_spec_node(ANIM_TASK_AQUARED)
+			anim_scene.sound = "class_aquired"
+			anim_scene.get_node("Label").text = tr("EXPLORESETTLEMENTMANAGEMENT")
+			anim_scene.get_node("SelectedQuest").text = globals._report_text("SETTLEMENT_MANAGEMENT_UNLOCKED", [args.where])
+			#two capitals open at once, and the title runs long in some languages
+			font_size_adjust(anim_scene.get_node("Label"), 0)
+			font_size_adjust(anim_scene.get_node("SelectedQuest"), 0)
 			anim_scene.play("task_aquared")
 		"class_unlocked": #(new_class)
 			anim_scene = get_spec_node(ANIM_CLASS_UNLOCKED)

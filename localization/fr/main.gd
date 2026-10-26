@@ -299,6 +299,7 @@ Les touches du manoir et du combat sont indépendantes : une même touche peut s
 	EXPLORESHOP = "Boutique",
 	EXPLORBUYDUNGEON = "Acheter un donjon",
 	EXPLORENOTICEBOARD = "Tableau d'affichage",
+	EXPLORESETTLEMENTMANAGEMENT = "Gestion de la ville",
 	EXPLOREHIRE = "Location",
 	EXPLORESELLCHR = "Vendre des personnages",
 	EXPLOREQUESTS = "Quêtes",
@@ -1611,8 +1612,7 @@ The first {color=green|positive} trait is free. {color=red|Negative} traits can 
 	TRAITREPLACE_LEAD_MANY = """[His] {category} slots are full. Pick a trait to replace, or keep the current ones.""", # MISSING TRANSLATION
 	TRAITREPLACE_NEW = """New""", # MISSING TRANSLATION
 	TRAITREPLACE_REPLACE = """Replace""", # MISSING TRANSLATION
-	TRAITREPLACE_KEEP_ONE = """Keep current trait""", # MISSING TRANSLATION
-	TRAITREPLACE_KEEP_MANY = """Keep current traits""", # MISSING TRANSLATION
+	TRAITREPLACE_KEEP = """Garder""",
 	TRAITREPLACE_LOCK_PERMANENT = """Can't be replaced: permanent""", # MISSING TRANSLATION
 	TRAITREPLACE_LOCK_INNATE = """Can't be replaced: from class or race""", # MISSING TRANSLATION
 	TRAITREPLACE_LOCK_STATUS = """Can't be replaced: a slave's status""", # MISSING TRANSLATION
@@ -10615,9 +10615,9 @@ La luxure satisfaite, vous la regardez gisant là, épuisée, brisée et sans d�
 	ABORTTUTORIAL = """Abandonner le tutoriel""",
 	PROMPTTUTORIAL = """Pour les nouveaux joueurs, il est recommandé de suivre le tutoriel afin d'apprendre les commandes et mécaniques de base.""",
 	TUTORIAL_TRAINING1 = """Ce tutoriel explique les mécaniques de base de la gestion de votre manoir et de vos personnages. Votre personnage {color=yellow|Maître} vous représente et se charge de gérer les autres personnages.""",
-	TUTORIAL_TRAINING1_0 = """Everyone living on the estate is listed here. The list is folded down to its bar right now - click the bar to unfold it.""", # MISSING TRANSLATION
-	TUTORIAL_RMB_MENU1 = """Before you set out, one shortcut worth knowing. The strip along the top holds everyone with nothing to do - try a {color=yellow|right-click} on your Master's portrait there.""", # MISSING TRANSLATION
-	TUTORIAL_RMB_MENU2 = """A right click on any portrait puts up this menu, and it is the short way to nearly everything: their card, classes and masteries, training, their bag, their info sheet, and whatever social skills they have to hand. Every portrait in the game answers to it. Right-click again to close the menu.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING1_0 = """Tous ceux qui vivent sur le domaine sont listés ici. C'est la vue sur laquelle s'ouvre le manoir ; le plan de la maison se trouve derrière.""",
+	TUTORIAL_RMB_MENU1 = """Avant de partir, un raccourci à connaître. La bande du haut regroupe tous ceux qui n'ont rien à faire - essayez un {color=yellow|clic droit} sur le portrait de votre Maître.""",
+	TUTORIAL_RMB_MENU2 = """Un clic droit sur n'importe quel portrait ouvre ce menu, le raccourci vers presque tout : sa fiche, ses classes et maîtrises, l'entraînement, son sac, sa feuille d'informations et les compétences sociales dont il dispose. Tous les portraits du jeu y répondent. Faites un nouveau clic droit pour fermer le menu.""",
 	TUTORIAL_TRAINING1_1 = """Cliquez sur la carte de votre Maître pour la déplier. La carte étendue contient ses détails, ses règles de travail et ses compétences sociales.""",
 	TUTORIAL_TRAINING2 = """Commençons par utiliser la compétence par défaut du Maître, Mentor, sur l'un de vos subordonnés. Elle augmentera l'expérience qu'il gagne pendant une journée.""",
 	TUTORIAL_TRAINING3 = """Sélectionnez un personnage dans la liste pour terminer l'incantation.""",
@@ -10626,7 +10626,7 @@ La luxure satisfaite, vous la regardez gisant là, épuisée, brisée et sans d�
 	TUTORIAL_TRAINING6 = """Sélectionnez Filtre alimentaire pour voir tous les repas que ce personnage est autorisé à manger.""",
 	TUTORIAL_TRAINING7 = """Cliquez sur un aliment pour l'autoriser ou l'interdire à ce personnage.""",
 	TUTORIAL_TRAINING8 = """Maintenant que c'est fait, fermez le panneau d'informations du personnage.""",
-	TUTORIAL_TRAINING8_1 = """Right-click anywhere to fold the card back, so the rest of the list is reachable again.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING8_1 = """Faites un clic droit n'importe où pour replier la fiche, afin que le reste de la liste soit de nouveau accessible.""",
 	TUTORIAL_TRAINING9 = """Sélectionnez Daisy pour accéder à ses détails et informations.""",
 	TUTORIAL_TRAINING10 = """Vous pouvez ouvrir la fenêtre d'un personnage par un double-clic ou avec le bouton Informations du personnage.""",
 	TUTORIAL_TRAINING11 = """Daisy est classée comme esclave non formée et nécessite un formateur pour superviser et mener son entraînement. Les esclaves non formés ne travaillent pas sans formateur.""",
@@ -10650,7 +10650,7 @@ La luxure satisfaite, vous la regardez gisant là, épuisée, brisée et sans d�
 	TUTORIAL_WORK8 = """Vous pouvez maintenant quitter ce menu.""",
 	TUTORIAL_WORK9 = """Cliquez sur Terminer le tour pour faire avancer le temps afin que vos personnages progressent dans leur travail et leur apprentissage.""",
 	TUTORIAL_WORK10 = """Examinons maintenant la tâche Service. Elle diffère des autres tâches du menu Travail et applique des règles supplémentaires au personnage.""",
-	TUTORIAL_WORK11 = """Service allows you to assign a character to various types of service work, including sexual services. Non-sexual tasks have different stat correlations and bonuses, so be sure to read the details. Assign Daisy to work as a waitress.""", # MISSING TRANSLATION
+	TUTORIAL_WORK11 = """Le service vous permet d'affecter un personnage à différents types de travail de service, y compris des services sexuels. Les tâches non sexuelles dépendent d'autres statistiques et donnent d'autres bonus, alors lisez bien les détails. Affectez Marguerite au poste de serveuse.""",
 	TUTORIAL_WORK12 = """Retournez au menu Travail.""",
 	TUTORIAL_WORK13 = """Même si vous l'avez choisie comme serveuse, vous devez d'abord la faire passer de l'artisanat au service.""",
 	TUTORIAL_WORK14 = """Ici, vous pouvez consulter les règles et avantages supplémentaires du travail de service. En travaillant, les personnages génèrent chaque tour de l'expérience et une statistique liée à leur tâche.""",
@@ -10679,21 +10679,32 @@ Fermez ce menu.""",
 	TUTORIAL_WORK27_1 = """Retournez au menu cuisine.""",
 	TUTORIAL_WORK28 = """Annulez la cuisson du pain.""",
 	TUTORIAL_WORK29 = """Et confirmez.""",
-	TUTORIAL_WORK_ROOM1 = """The estate came to you half-ruined. Most of its rooms are still buried under rubble, and clearing them out is how the house grows - the plan hands out nothing else.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM1_1 = """The plan of the house is behind the character list. Fold the list away with the handle in its corner - the people with nothing to do wait on the strip under the bar, ready to be picked up and put to work.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM2 = """Click the cluttered room to open its card.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM3 = """Clearing out costs no materials, only time. Start it.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM4 = """Work needs hands. Daisy has none of her own to do - pick her up from the Rest strip.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM5 = """Now put her on the scaffolding. The yellow place with the hammer is where builders stand.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM6 = """Finish the turn so she can put a day's work in.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM7 = """Clearing out takes a set number of turns whoever does it, and a second pair of hands will not hurry it along. Finish another turn.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM8 = """The room is open. Click it again to see what can be built here.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM9 = """Each room does one thing and costs materials to raise. Build a Kitchen - nothing is cooked in this house until there is one.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM10 = """Pick Daisy up again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM11 = """And put her back on the scaffolding.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM12 = """Building is measured in work rather than in days, so a better builder raises a room sooner. This one is nearly up - finish the turn.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM14 = """The kitchen is standing. Open it.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM15 = """A craft room is where its own orders are given. Open the craft menu from here.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM1 = """Le domaine vous est parvenu à moitié en ruine. La plupart de ses salles sont encore ensevelies sous les décombres, et c'est en les déblayant que la maison s'agrandit - le plan ne donne rien d'autre.""",
+	TUTORIAL_WORK_ROOM1_1 = """Le plan de la maison se trouve derrière la liste des personnages. Repliez la liste avec la poignée dans son coin - ceux qui n'ont rien à faire attendent sur la bande sous la barre, prêts à être pris et mis au travail.""",
+	TUTORIAL_WORK_ROOM2 = """Cliquez sur la salle encombrée pour ouvrir sa fiche.""",
+	TUTORIAL_WORK_ROOM3 = """Le déblaiement ne coûte aucun matériau, seulement du temps. Lancez-le.""",
+	TUTORIAL_WORK_ROOM4 = """Le travail demande des bras. Marguerite n'a rien à faire - prenez-la depuis la bande de repos.""",
+	TUTORIAL_WORK_ROOM5 = """Placez-la maintenant sur l'échafaudage. L'emplacement jaune avec le marteau est celui des bâtisseurs.""",
+	TUTORIAL_WORK_ROOM6 = """Terminez le tour pour qu'elle puisse fournir sa journée de travail.""",
+	TUTORIAL_WORK_ROOM7 = """Le déblaiement prend un nombre fixe de tours, quel que soit celui qui s'en charge, et une deuxième paire de bras ne le hâtera pas. Terminez un autre tour.""",
+	TUTORIAL_WORK_ROOM8 = """La salle est dégagée. Cliquez à nouveau dessus pour voir ce qu'on peut y construire.""",
+	TUTORIAL_WORK_ROOM9 = """Chaque salle a une fonction et sa construction coûte des matériaux. Construisez une Cuisine - rien ne se cuisine dans cette maison tant qu'il n'y en a pas.""",
+	TUTORIAL_WORK_ROOM10 = """Reprenez Marguerite.""",
+	TUTORIAL_WORK_ROOM11 = """Et remettez-la sur l'échafaudage.""",
+	TUTORIAL_WORK_ROOM12 = """La construction se mesure en travail plutôt qu'en jours, donc un meilleur bâtisseur élève une salle plus vite. Celle-ci est presque terminée - finissez le tour.""",
+	TUTORIAL_WORK_ROOM14 = """La cuisine est debout. Ouvrez-la.""",
+	TUTORIAL_WORK_ROOM15 = """Une salle d'artisanat ouvre l'atelier sur son propre métier. Ouvrez-le d'ici.""",
+	TUTORIAL_WORK_CRAFT1 = """Voici l'atelier. L'onglet Cuisine, le métier de cette salle, est déjà ouvert, et ses recettes sont listées au centre. Choisissez le pain.""",
+	TUTORIAL_WORK_CRAFT2 = """L'établi montre ce que produit une série et ce qu'elle consomme. La commande elle-même se règle sous la file, à droite : un {color=yellow|Lot} de séries, {color=yellow|Garder en stock} entre deux nombres, ou {color=yellow|Sans fin}. Augmentez ce lot de 10 séries.""",
+	TUTORIAL_WORK_CRAFT3 = """Appuyez sur {color=yellow|Ajouter à la file}.""",
+	TUTORIAL_WORK_CRAFT4 = """Les commandes s'ajoutent à la file au lieu de se remplacer, et chaque salle d'un métier les traite par le haut. Ajoutez-en une deuxième - choisissez la soupe de viande.""",
+	TUTORIAL_WORK_CRAFT5 = """Ajoutez-la aussi à la file.""",
+	TUTORIAL_WORK_CRAFT6 = """Les deux commandes attendent maintenant dans la file. Une commande peut être modifiée, montée ou descendue, ou annulée - cliquez sur la soupe pour l'ouvrir.""",
+	TUTORIAL_WORK_CRAFT7 = """Annulez-la.""",
+	TUTORIAL_WORK_CRAFT8 = """Et confirmez.""",
+	TUTORIAL_WORK_CRAFT9 = """Une commande n'est qu'un projet tant que personne n'y travaille. La colonne de gauche contient les salles du métier et leurs places - appuyez sur {color=yellow|+ Ajouter un artisan}.""",
+	TUTORIAL_WORK_CRAFT10 = """Tous ceux du manoir qui pourraient prendre la place sont proposés, avec le travail qu'ils fourniraient à chaque tour. Choisissez Marguerite.""",
+	TUTORIAL_WORK_CRAFT11 = """La cuisine a sa commande et sa cuisinière. Fermez l'atelier.""",
 	TUTORIAL_WORK_ROOM16 = """The kitchen's own trade is already selected. Choose bread.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM17 = """Confirm.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM18 = """You can adjust the quantity. Add 10 more units.""", # MISSING TRANSLATION
@@ -10706,18 +10717,18 @@ Fermez ce menu.""",
 	TUTORIAL_WORK_ROOM25 = """Close the craft window.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM26 = """An order is only a plan until somebody stands in the room to work it. Pick Daisy up.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM27 = """Put her at the kitchen's workplace.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM28 = """Finish the turn. What she baked is listed in the estate log.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM29 = """Not all of the estate's work happens indoors. Open Local Tasks.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM30 = """The grounds carry buildings of their own, and each is worked by its own hands. Pick Aeris up.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM31 = """Put her in the kitchen garden. She will bring in vegetables every turn.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM32 = """Finish the turn. What the grounds bring in is what the kitchen cooks with - that meat soup wanted vegetables.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM33 = """That is the loop the estate runs on: clear a room out, raise something in it, and put people where the work is. Go back to the mansion.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED1 = """Everyone on the estate also needs somewhere to sleep. Daisy has just lost her bed - anyone without one spends the night on the floor and suffers for it. Switch the plan to {color=yellow|Beds} to see where the household sleeps.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED2 = """The plan now shows beds instead of workplaces, and the strip above it lists everyone who has none. Click Daisy to pick her up.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED3 = """Now click a free bed in the bedroom to put her in it. Dragging her there does the same thing, and {color=yellow|Bed them down} above the strip seats everyone at once.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED4 = """She has a bed again. Switch the plan back to {color=yellow|Work} - beds only need arranging when somebody new arrives or a bedroom is built.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM28 = """Terminez le tour. Marguerite n'est pas encore une grande cuisinière, une série de pain lui prend donc plusieurs tours - la file de l'atelier montre où elle en est, et chaque série terminée est inscrite dans le journal du manoir.""",
+	TUTORIAL_WORK_ROOM29 = """Tout le travail du domaine ne se fait pas à l'intérieur. Ouvrez Tâches locales.""",
+	TUTORIAL_WORK_ROOM30 = """Le domaine a ses propres bâtiments, et chacun a ses propres travailleurs. Prenez Aeris.""",
+	TUTORIAL_WORK_ROOM31 = """Placez-la dans le potager. Elle rapportera des légumes à chaque tour.""",
+	TUTORIAL_WORK_ROOM32 = """Terminez le tour. Ce que rapportent les terres, c'est ce que la cuisine cuisine - cette soupe de viande demandait des légumes.""",
+	TUTORIAL_WORK_ROOM33 = """Voilà le cycle du domaine : déblayer une salle, y construire quelque chose et placer les gens là où se trouve le travail. Retournez au manoir.""",
+	TUTORIAL_WORK_BED1 = """Tout le monde sur le domaine a aussi besoin d'un endroit où dormir. Marguerite vient de perdre son lit - quiconque n'en a pas passe la nuit par terre et en pâtit. Passez le plan en mode {color=yellow|Lits} pour voir où dort la maisonnée.""",
+	TUTORIAL_WORK_BED2 = """Le plan affiche maintenant les lits au lieu des postes de travail, et la bande au-dessus liste tous ceux qui n'en ont pas. Cliquez sur Marguerite pour la prendre.""",
+	TUTORIAL_WORK_BED3 = """Cliquez maintenant sur un lit libre de la chambre pour l'y installer. La faire glisser jusque-là revient au même, et {color=yellow|Les coucher} au-dessus de la bande installe tout le monde d'un coup.""",
+	TUTORIAL_WORK_BED4 = """Elle a de nouveau un lit. Remettez le plan en mode {color=yellow|Travail} - les lits ne se réorganisent que lorsque quelqu'un arrive ou qu'une chambre est construite.""",
 	TUTORIAL_LEVELING0 = """En parlant d'expérience, voyons un autre moyen d'en gagner.""",
-	TUTORIAL_LEVELING1_0 = """What the estate owns is kept in its store room. Open it.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING1_0 = """Ce que possède le domaine est conservé dans sa réserve. Ouvrez-la.""",
 	TUTORIAL_LEVELING1 = """Sélectionnez Inventaire pour consulter vos possessions.""",
 	TUTORIAL_LEVELING2 = """Sélectionnez votre Maître comme personnage actif à gérer.""",
 	TUTORIAL_LEVELING3 = """Utilisez un Parchemin de savoir pour octroyer de l'expérience à votre Maître. C'est un moyen simple d'augmenter rapidement la puissance d'un nouveau personnage.""",
@@ -10738,12 +10749,12 @@ Fermez ce menu.""",
 	TUTORIAL_COMBAT3 = """Acceptez la quête Résolution de problèmes.""",
 	TUTORIAL_COMBAT4 = """Toutes les quêtes rapportent des objets et de la réputation de guilde. La réputation permet d'acheter des services spéciaux de guilde. Résolution de problèmes nécessite de voyager vers un lieu généré procéduralement.""",
 	TUTORIAL_COMBAT5 = """Ouvrez le menu de la carte pour apprendre à envoyer des personnages vers un nouveau lieu.""",
-	TUTORIAL_COMBAT5_0 = """Close the notice board.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET1 = """Before leaving Aliron, visit its {color=yellow|Slave Market}: it buys and sells slaves and takes orders for them. Open it.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET2 = """The market opens on the orders the great houses post. Hand over a slave who meets one to earn gold and slaver rank - one house wants a human right now.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET3 = """Slaves are for sale here as well. Open {color=yellow|Hire}.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET4 = """Slaves for sale are listed with their prices; the button under a slave's card buys them.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET5 = """Press the {color=yellow|Slave Market} button again to close it.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT5_0 = """Fermez le tableau d'affichage.""",
+	TUTORIAL_MARKET1 = """Avant de quitter Aliron, visitez son {color=yellow|Marché aux esclaves} : on y achète et vend des esclaves, et on y prend des commandes. Ouvrez-le.""",
+	TUTORIAL_MARKET2 = """Le marché s'ouvre sur les commandes que publient les grandes maisons. Livrez un esclave qui en remplit une pour gagner de l'or et du rang d'esclavagiste - une maison veut un humain en ce moment.""",
+	TUTORIAL_MARKET3 = """On vend aussi des esclaves ici. Ouvrez {color=yellow|Location}.""",
+	TUTORIAL_MARKET4 = """Les esclaves à vendre sont listés avec leur prix ; le bouton sous la fiche d'un esclave permet de l'acheter.""",
+	TUTORIAL_MARKET5 = """Appuyez à nouveau sur le bouton {color=yellow|Marché aux esclaves} pour le fermer.""",
 	TUTORIAL_COMBAT6 = """Sélectionnez deux personnages qui voyageront pour accomplir la tâche.""",
 	TUTORIAL_COMBAT8 = """Dans la liste des lieux, trouvez le lieu de quête spécial à visiter.""",
 	TUTORIAL_COMBAT9 = """Cliquez sur Envoyer pour commencer le voyage.""",
@@ -10764,9 +10775,9 @@ Fermez ce menu.""",
 	TUTORIAL_COMBAT22 = """Les capacités de soutien fonctionnent de la même façon, mais ciblent des alliés. Appliquez Bouclier de terre sur votre Maître.""",
 	TUTORIAL_COMBAT24 = """Terminez le combat.""",
 	TUTORIAL_COMBAT26 = """La fenêtre de butin affiche les résultats du combat.""",
-	TUTORIAL_COMBAT26_1 = """Fights often leave captives behind, and this one left two. The first fits the order you saw at the slave market: hand them over right here with the green {color=yellow|Hand Over} strip.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT26_1A = """A captive can fit several orders at once, so you choose which one gets them. Pick the order you saw at the slave market.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT26_2 = """Handing a captive over pays at once, just as at the market, and counts towards your slaver rank.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT26_1 = """Les combats laissent souvent des captifs, et celui-ci en a laissé deux. Le premier correspond à la commande vue au marché aux esclaves : livrez-le ici même avec la bande verte {color=yellow|Livrer}.""",
+	TUTORIAL_COMBAT26_1A = """Un captif peut correspondre à plusieurs commandes à la fois, c'est donc vous qui choisissez laquelle le reçoit. Choisissez la commande vue au marché aux esclaves.""",
+	TUTORIAL_COMBAT26_2 = """Livrer un captif rapporte immédiatement, comme au marché, et compte pour votre rang d'esclavagiste.""",
 	TUTORIAL_COMBAT27 = """Vous avez reçu un personnage aléatoire après le combat, ce qui est courant dans les donjons. Sélectionnez-le pour l'examiner.""",
 	TUTORIAL_COMBAT28 = """Les personnages indésirables peuvent être vendus immédiatement, recrutés ou asservis.""",
 	TUTORIAL_COMBAT29 = """Tentez de les persuader en sélectionnant l'option appropriée.""",
@@ -11897,7 +11908,7 @@ Sans attendre, Myr commença à psalmodier un puissant sortilège. En quelques i
 
 marmonna Duncan pour lui-même. Cependant, Greg était bien plus surpris par ce qui se passait. Il réalisa qu'il venait de perdre son avantage tactique et se retira rapidement du combat.
 
-{Greg : - Sorciers maudits. Repliez-vous dans les murs de la ville !}
+{color=yellow|Greg : - Sorciers maudits. Repliez-vous dans les murs de la ville !}
 
 Suite à cet ordre, les forces rebelles se replient, mais l'armée des guildes prend rapidement l'initiative et entre en action.""",
 	BETRAYAL_CONFIRMED_10 = """Cependant, avant que le gros des forces de la guilde ne puisse entrer dans la ville, un gigantesque dôme blanc a enveloppé le refuge des rebelles. Une magie d'une ampleur inégalée bloqua complètement toute avancée ou attaque de l'armée de la guilde.
@@ -12098,7 +12109,7 @@ Elle vous tend un rouleau de papier qu'elle a pris dans la pile posée sur une p
 
 {color=yellow|Aire : - On dirait qu'ils ont réussi à pénétrer à l'intérieur. Leur armée principale n'attendait que ça. Je crains que nous ne tenions pas longtemps.}
 
-{Greg : - Bon sang. Ordonnez la retraite. Et assure-toi que la princesse est en sécurité. Maudite soit cette championne inutile, elle n'a pas intérêt à s'en sortir vivante,}""",
+{color=aqua|Greg : - Bon sang. Ordonnez la retraite. Et assure-toi que la princesse est en sécurité. Maudite soit cette championne inutile, elle n'a pas intérêt à s'en sortir vivante,}""",
 	DIVINE_SYMBOL_45_AIRE_DEAD = """{color=aqua|Greg: — What the hell... Shit, what happened to the barrier!?}
 
 {color=yellow|Rebel Officer: — It seems they somehow made it inside. Their main army has been waiting for this. I'm afraid we won't hold for long.}
@@ -12213,7 +12224,7 @@ Vous vous préparez, vous et votre groupe, pour le combat à venir. Duncan se d�
 
 {color=yellow|Anastasia : - C'est mal, je ne peux pas laisser tout le monde derrière moi.}
 
-{Greg : - Ça suffit, nous perdons du temps. Aire ! Faites partir la princesse et revenez me voir immédiatement.}""",
+{color=aqua|Greg : - Ça suffit, nous perdons du temps. Aire ! Faites partir la princesse et revenez me voir immédiatement.}""",
 	GUILD_ATTACK_ON_HIDEOUT_3 = """{color=yellow|Aire : - ...je comprends. Par ici, votre Altesse.}
 
 {color=aqua|Anastasia : - Non, qu'est-ce que je vais faire après ça ?}
@@ -12244,7 +12255,7 @@ GUILD_ATTACK_ON_HIDEOUT_4_2 = """Dans les pièces les plus profondes de la cache
 
 {color=yellow|Anastasia : - C'est mal, je ne peux pas laisser tout le monde derrière moi.}
 
-{Greg : - Ce n'est pas un débat. Vous serez exécuté si vous vous retrouvez entre leurs mains. Allez-y, nous allons les retenir pour qu'ils ne vous poursuivent pas.}
+{color=aqua|Greg : - Ce n'est pas un débat. Vous serez exécuté si vous vous retrouvez entre leurs mains. Allez-y, nous allons les retenir pour qu'ils ne vous poursuivent pas.}
 
 {color=yellow|Anastasia : - ...}""",
 
@@ -12301,7 +12312,7 @@ Avant qu'elle ne puisse dire quoi que ce soit d'autre, les hommes de Duncan s'em
 
 {color=aqua|Duncan : - Greg, baisse-toi et rends-toi. Cette rébellion pathétique est terminée.}
 
-{Greg : - Ah, Duncan. J'aurais pu m'attendre à ce que tu te montres ici. Dommage pour toi, Anastasia est déjà loin d'ici.}
+{color=yellow|Greg : - Ah, Duncan. J'aurais pu m'attendre à ce que tu te montres ici. Dommage pour toi, Anastasia est déjà loin d'ici.}
 
 {color=aqua|Duncan : - Nous verrons cela, mes hommes ont déjà encerclé la zone. Maintenant, lâchez votre w-}
 
@@ -12697,7 +12708,7 @@ La prêtresse prend encore une longue pause pour contempler la situation et fini
 	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refus*""",
 	LOOKING_FOR_PRINCESS_43 = """Vous avez choisi le sacrifice pour prendre la place d'Anastasia. En vous séparant de [name], vous ne vous attendez pas à revoir [lui].
 
-{Partez maintenant et dites à vos maîtres que nous tenons toujours à notre accord.}
+{color=aqua|Partez maintenant et dites à vos maîtres que nous tenons toujours à notre accord.}
 
 Anastasia observe tranquillement [name] être emmené, s'en voulant peut-être d'avoir causé une autre mort.""",
 	LOOKING_FOR_PRINCESS_44 = """{color=aqua|Prêtresse : - Alors nous allons procéder comme nous l'avons décidé.}
@@ -12763,7 +12774,7 @@ Il est temps de rentrer chez soi.""",
 	PRE_ANASTASIA_EXECUTION_10 = """- D'accord, mais nous ne pouvons pas simplement l'achever et en finir. Pas tout seul en tout cas. Venez.""",
 	PRE_ANASTASIA_EXECUTION_11 = """Les guildes et les propriétaires se sont de nouveau rassemblés, principalement pour célébrer la fin de la guerre maintenant qu'elle a été gagnée.
 
-{Comme beaucoup l'ont déjà appris, la princesse rebelle a finalement été capturée par [name], qui deviendra le prochain maire de la ville à la lumière de [ses] accomplissements. Aujourd'hui, nous, les chefs de guilde, décidons du sort de la princesse. }
+{color=aqua|Comme beaucoup l'ont déjà appris, la princesse rebelle a finalement été capturée par [name], qui deviendra le prochain maire de la ville à la lumière de [ses] accomplissements. Aujourd'hui, nous, les chefs de guilde, décidons du sort de la princesse. }
 
 {color=yellow|Myr : - Comme chacun le sait, elle est à l'origine de la guerre civile qui a entraîné de nombreuses pertes, tant en vies humaines qu'en biens...}""",
 	PRE_ANASTASIA_EXECUTION_12 = """{color=aqua|Sigmund : - Vous tenez vraiment à vos jouets magiques, hein. Les mages ont-ils toujours été aussi mercantiles ?}
@@ -14375,7 +14386,7 @@ La voix d'Amelia devient plus douce et plus soyeuse tandis qu'elle commence à v
 
 Amelia dégrafe lentement le devant de sa chemise en satin pour mettre à nu ses seins voluptueux. Elle trace de petits cercles avec ses doigts huileux autour de ses mamelons durs et arque gracieusement son dos en se penchant vers votre bite. 
 
-{Amelia : - Si cela vous fait plaisir, monseigneur ?}
+{color=yellow|Amelia : - Si cela vous fait plaisir, monseigneur ?}
 
 Sans attendre de réponse, Amelia prend ses seins lourds dans ses mains et les presse ensemble autour de la tige de votre bite. En partant des hanches, elle presse ses seins pour masser votre pénis. De l'huile s'étale sur sa peau lisse tandis qu'elle rebondit légèrement de haut en bas avec votre bite entourée de son décolleté.""",
 	AMELIA_SILK_REPLY_1_1_6 = """Amelia baisse le menton et commence à lécher la tête de votre pénis qui glisse entre ses seins. A chaque rebond, sa langue se rapproche jusqu'à ce que ta bite atteigne ses lèvres avides et qu'elle l'aspire dans sa bouche. Elle te suce de manière experte tout en continuant à masser ton pénis avec ses seins.
@@ -14585,7 +14596,7 @@ Vos poussées s'accélèrent et vous pilonnez la chatte d'Amelia sans ménagemen
 
 Une fois que ses cris se sont calmés, vous saisissez sa taille étroite à deux mains pour pouvoir la baiser plus fort. Vos deux corps sont couverts d'une fine couche de sueur. Amelia halète bruyamment tandis que votre pénis s'enfonce violemment dans sa chatte. Vous sentez que votre orgasme approche à grands pas. 
 
-{Amelia : - Joue en moi [Maître], jouis dans ma petite chatte désobéissante !}
+{color=yellow|Amelia : - Joue en moi [Maître], jouis dans ma petite chatte désobéissante !}
 
 Votre dernière poussée puissante la soulève du sol. Empalée sur votre bite. Elle est suspendue au harnais tandis que votre sperme jaillit dans sa chatte meurtrie. Amelia hurle, le dos arqué, pendant que votre sperme l'envahit, puis miaule longuement lorsque vous vous retirez.""",
 	AMELIA_BONDAGE_8 = """Amelia chantonne doucement alors qu'elle se tient sur une jambe, le sperme coulant de sa chatte gonflée sur ses bas. Vous lui demandez si elle a appris sa leçon ou si elle a besoin d'une autre discipline.
@@ -15942,7 +15953,7 @@ Vous quittez la pièce et attendez qu'ils aient fini.""",
 
 {color=aqua|Myr : - Excellent. Je suis sûr qu'[il] aura un travail qui vous conviendra. Peut-être que tu trouveras aussi un homme et que tu cesseras d'être une telle emmerdeuse. Adios.}
 
-{Jean : - Attendez, je n'ai pas fini !}
+{color=yellow|Jean : - Attendez, je n'ai pas fini !}
 
 Avant que Jean n'ait pu protester, la puissante force magique vous a poussés tous les deux hors du bureau de Myr.""",
 	JEAN_INTRO_4 = """ - Maudite sorcière... ! Merde... 
@@ -16891,7 +16902,7 @@ Tout est silencieux pendant quelques instants alors que tu la tiens là, son sou
 	
 	CALI_AMELIA_1 = """Comme d'habitude aujourd'hui, Cali a suivi ses cours avec Amelia à la Guilde des serviteurs. Mais cette fois-ci, Amelia ne peut s'empêcher de remarquer que la jeune fille est distraite, et que son effort est loin d'être habituel.
 
-{Cali, dis-moi, y a-t-il quelque chose qui te tracasse ?}
+{color=aqua|Cali, dis-moi, y a-t-il quelque chose qui te tracasse ?}
 
 Cali releva la tête alors qu'elle était plongée dans ses pensées, regardant Amelia d'un air quelque peu surpris.
 
@@ -16900,7 +16911,7 @@ Cali releva la tête alors qu'elle était plongée dans ses pensées, regardant 
 {color=yellow|Amelia : - C'est bon Cali, tu peux me faire confiance. Si ce n'est pas en tant que mentor, au moins en tant qu'amie.}""",
 	CALI_AMELIA_2 = """Cali réfléchit un long moment avant de prendre une lente inspiration.
 
-{J'ai essayé d'attirer l'attention du [Maître] ces derniers temps. Mais ça ne marche pas. C'est comme s'[il] ne me remarquait pas du tout...}
+{color=yellow|J'ai essayé d'attirer l'attention du [Maître] ces derniers temps. Mais ça ne marche pas. C'est comme s'[il] ne me remarquait pas du tout...}
 
 {color=aqua|Amelia : - Je vois. Oui, ce serait décourageant.}
 
@@ -16936,7 +16947,7 @@ CALI_AMELIA_4_1 = """Cali se laissait distraire par la conversation alors qu'Ame
 Cali commença à répondre, mais au lieu de cela, elle laissa échapper un petit gémissement doux quand Amelia fit glisser le haut de la fille, sa main saisissant les doux seins de la jeune fille. Ils n'étaient pas très gros, mais le corps de la jeune fille était si beau qu'Amelia ne pouvait s'empêcher de les explorer.""",
 	CALI_AMELIA_5 = """Quelques instants plus tard, les deux s'embrassaient à nouveau, sans interruption dès que leurs langues se rencontraient. Les hanches d'Amelia se frottaient doucement sur sa jambe nue. Après que le souffle leur ait demandé de rompre le baiser, le visage de Cali devint d'un rouge profond lorsque la main d'Amelia se glissa plus bas, écartant sa culotte.
 
-{Cali : - A-ah!}
+{color=yellow|Cali : - A-ah!}
 
 Cali parlait dans une panique hébétée avant de transformer ses protestations en un gémissement de besoin lorsque la femme commença à frotter doucement. Les protestations maintenant étouffées, Amelia continuait à faire ce qui était nécessaire. Quelques instants après la stimulation de la jeune fille, Amelia déplace sa main vers sa robe, la tirant vers le bas pour exposer ses seins à la jeune fille.""",
 	CALI_AMELIA_6 = """Cali se penchera bientôt sur Amelia pour l'embrasser à nouveau, les baisers étant nécessaires et désespérés à mesure que le désir de la jeune fille grandit. Le doux son des lèvres et des langues entrelacées est bientôt interrompu par un gémissement guttural, Amelia ayant glissé ses doigts dans la jeune fille.
@@ -24492,6 +24503,22 @@ You'll get between %s and %s of %s.""", # MISSING TRANSLATION
 	FACTION_POINTS = "Points de faction",
 	UNSPENT_POINTS = "Points non dépensés",
 	UPGRADES_INFO = """Les effets des améliorations et les paramètres de quête se mettent à jour après un certain temps.""",
+	SETTLEMENT_MANAGEMENT_LABEL = "Gestion de la ville",
+	SETTLEMENT_MANAGEMENT_INFO = "Payé sur le trésor. Chaque amélioration prend effet immédiatement.",
+	SETTLEMENT_MANAGEMENT_GOLD = "Or : %d",
+	SETTLEMENT_MANAGEMENT_SATURATION = "Saturation : %d",
+	SETTLEMENT_MANAGEMENT_SATURATION_BONUS = "Saturation : %d (+%d%%)",
+	SETTLEMENT_MANAGEMENT_UNLOCKED = "Désormais ouverte : %s",
+	SETTLEMENT_MANAGEMENT_UNLOCKED_LOG = "La Gestion de la ville est désormais ouverte : %s. C'est la première option du menu de la ville.",
+	SETTLEMENT_UPGRADE_PRICE = "Coût : %d or",
+	SETTLEMENT_UPGRADE_BUILT = "Construit",
+	SETTLEMENT_UPGRADE_TRADE_POST = "Comptoir commercial",
+	SETTLEMENT_UPGRADE_TRADE_POST_DISC = "Des marchands acheminent les marchandises de cette ville jusqu'au marché d'Aliron, où elles sont vendues avec tout le reste.",
+	SETTLEMENT_UPGRADE_TRADE_POST_NOW = "Ses marchandises sont en vente au marché d'Aliron.",
+	SETTLEMENT_UPGRADE_TAVERN = "Taverne",
+	SETTLEMENT_UPGRADE_TAVERN_DISC = "Attire davantage de clients en quête de compagnie.",
+	SETTLEMENT_UPGRADE_TAVERN_NEXT = "Suivant : saturation +%d%% (%d → %d par semaine).",
+	SETTLEMENT_UPGRADE_TAVERN_NOW = "Saturation +%d%%.",
 	UNLOCKED_LABEL = """Unlocked""", # MISSING TRANSLATION
 	POINTS_LABEL = """points""",
 	CANT_PURCHASE_LOC_LABEL = """Achat impossible désormais""",
@@ -24730,7 +24757,7 @@ This stat will grow by attending to this job.""", # MISSING TRANSLATION
 	RENCONTRE_PULLTAIL_ACCEPT_1 = "Malgré une douleur intense, {^[nom2] :[race2] [garçon2] :[il2]} supporte stoïquement vos sévices",
 	DATING_PULLTAIL_RESIST_1 = "{^[name2] :[race2] [boy2] :[he2]} a l'air {^mad:en colère} et essaie de se libérer",
 	DATING_PULLTAIL_RESIST_2 = "{^[nom2] :[race2] [garçon2] :[he2]} {^whines:cry} en signe de protestation{^ :, implorant la pitié}.",
-	DATING_SLAP_INITIATE_1 = "Vous giflez {^[nom2] :[race2] [garçon2]} au visage{ : laissant une marque sur [sa2] joue}.",
+	DATING_SLAP_INITIATE_1 = "Vous giflez {^[name2]:[race2] [boy2]} au visage{^:, laissant une marque sur [his2] joue}.",
 	DATING_SLAP_ACCEPT_1 = "Malgré une douleur intense, {^[name2] :[race2] [boy2] :[he2]} supporte stoïquement votre violence",
 	DATING_SLAP_RESIST_1 = "{^[name2] :[race2] [boy2] :[he2]} a l'air {^mad:très agité}.", 
 	DATING_FOOD_INITIATE_1 = "Vous offrez à {^[nom2] :[race2] [garçon2] :[he2]} une gâterie de [nourriture].",
@@ -28990,7 +29017,7 @@ Upon your arrival, she turns toward you. Her eyes still glow that unsettling vio
 	JEAN_SYLAS_SEARCH_JEAN_OPTION_RECORDS = """I read the records, alright. You were sealed five hundred years ago. Doesn't even sound that long for a creature like you.""", # MISSING TRANSLATION
 	JEAN_SYLAS_DEMON_TIME_LONG = """{color=aqua|Jean: — Five hundred years, dammit! Five hundred years sealed in a piece of glass! All just because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}""", # MISSING TRANSLATION
 	JEAN_SYLAS_DEMON_TIME_RECORDS = """{color=aqua|Jean: — Fuck you! Five hundred years isn't long when you're having fun, not when you're stuck in one place! And all because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}""", # MISSING TRANSLATION
-	JEAN_SYLAS_DEMON_MONOLOGUE_1 = """{color=reed|Jean: — I was so bored and could do nothing about it! Well... almost nothing. Of course, I tirelessly worked on my plan to escape, but that's a given.}
+	JEAN_SYLAS_DEMON_MONOLOGUE_1 = """{color=aqua|Jean: — I was so bored and could do nothing about it! Well... almost nothing. Of course, I tirelessly worked on my plan to escape, but that's a given.}
 
 The creature continues, clearly reveling in its own cunning, savoring each word like a well‑earned victory.""", # MISSING TRANSLATION
 	JEAN_SYLAS_DEMON_MONOLOGUE_2 = """{color=aqua|Jean: — Even stuck in that glass, I shaped legends. I guided discoveries. I nudged the curious exactly where I needed them. I changed dozens of hosts just to grab a tiny bit more power for myself each time...}
@@ -34124,6 +34151,99 @@ Levels can be added to gear that is already enchanted. Worn gear is taken off fo
 	ENCHANTING_NO_DONORS = """Nobody at the mansion can give mana.""", # MISSING TRANSLATION
 	ENCHANTING_PERFORM = """Enchant""", # MISSING TRANSLATION
 	ENCHANTING_ANIM_TITLE = """Enchanted""", # MISSING TRANSLATION
+	CRAFTPANEL_TITLE = """Atelier""",
+	CRAFTPANEL_JOB_SMITH = """Forge""",
+	CRAFTPANEL_JOB_TAILOR = """Couture""",
+	CRAFTPANEL_JOB_ALCHEMY = """Alchimie""",
+	CRAFTPANEL_JOB_COOKING = """Cuisine""",
+	CRAFTPANEL_TAB_HINT = """%s de travail par tour · %d dans la file""",
+	CRAFTPANEL_CRAFTERS = """Artisans""",
+	CRAFTPANEL_CRAFTERS_HELP = """Tous ceux qui travaillent dans les salles de ce métier, et le travail que chacun apporte à la file à chaque tour. Les outils d'une salle multiplient ce que font ses artisans.\nCliquez sur une place libre pour y mettre quelqu'un, ou sur un artisan pour le retirer.""",
+	CRAFTPANEL_PER_TURN = """%s par tour""",
+	CRAFTPANEL_NO_ROOM = """Pas encore de salle pour ce métier""",
+	CRAFTPANEL_TOOLS_HINT = """Outils de cette salle : travail ×%s""",
+	CRAFTPANEL_SKILL = """%s %s""",
+	CRAFTPANEL_TAKE_OFF = """Cliquez pour retirer %s de ce travail""",
+	CRAFTPANEL_ADD_CRAFTER = """+ Ajouter un artisan""",
+	CRAFTPANEL_PICK_FOR = """%s : qui y travaille ?""",
+	CRAFTPANEL_BACK = """Retour""",
+	CRAFTPANEL_NOBODY_FREE = """Personne au manoir ne peut prendre cette place.""",
+	CRAFTPANEL_IDLE = """Sans tâche""",
+	CRAFTPANEL_NOW = """Actuellement : %s""",
+	CRAFTPANEL_MODE_RECIPES = """Recettes""",
+	CRAFTPANEL_MODE_IMPROVE = """Améliorations""",
+	CRAFTPANEL_FILTER_ALL = """Tout""",
+	CRAFTPANEL_FILTER_MATERIALS = """Matériaux""",
+	CRAFTPANEL_FILTER_GEAR = """Équipement""",
+	CRAFTPANEL_FILTER_COSTUME = """Costumes""",
+	CRAFTPANEL_FILTER_USABLES = """Consommables""",
+	CRAFTPANEL_ITEMS_ALL = """Tout""",
+	CRAFTPANEL_ITEMS_WEAPONS = """Armes""",
+	CRAFTPANEL_ITEMS_ARMOR = """Armures""",
+	CRAFTPANEL_NO_RECIPES = """Aucune recette ne correspond.""",
+	CRAFTPANEL_IN_QUEUE = """Déjà dans la file""",
+	CRAFTPANEL_NEEDS_EXPANSION = """Requiert Agrandissement %s""",
+	CRAFTPANEL_ANY_MATERIAL = """%s : tout matériau adapté, choisi sur l'établi""",
+	CRAFTPANEL_EDITING = """Modification d'une commande. Matériaux fixés.""",
+	CRAFTPANEL_NEW_ORDER = """Nouvelle commande""",
+	CRAFTPANEL_CARD_META = """en stock %d""",
+	CRAFTPANEL_STATS = """Statistiques""",
+	CRAFTPANEL_STATS_POOR = """En qualité Médiocre""",
+	CRAFTPANEL_CHOOSE = """Choisir""",
+	CRAFTPANEL_PICK_BELOW = """choisissez ci-dessous""",
+	CRAFTPANEL_CHOOSE_MATERIAL = """· choisissez un matériau""",
+	CRAFTPANEL_CAPACITY_BONUS = """Capacité d'enchantement : %s""",
+	CRAFTPANEL_NO_BONUS = """aucun bonus""",
+	CRAFTPANEL_AMOUNT_BATCH = """Lot""",
+	CRAFTPANEL_AMOUNT_KEEP = """Garder en stock""",
+	CRAFTPANEL_AMOUNT_ENDLESS = """Sans fin""",
+	CRAFTPANEL_ORDER_HELP = """Lot fait un nombre fixe de séries. Garder en stock reprend dès que le stock passe sous le nombre bas et s'arrête au nombre haut. Sans fin continue jusqu'à ce que vous la retiriez.\nLes matériaux sont pris au début de chaque série ; une commande qui en manque attend et la suivante est traitée.""",
+	CRAFTPANEL_RUNS = """Séries""",
+	CRAFTPANEL_FROM = """de""",
+	CRAFTPANEL_TO = """à""",
+	CRAFTPANEL_UNTIL_REMOVED = """jusqu'à son retrait""",
+	CRAFTPANEL_TURN = """%d tour""",
+	CRAFTPANEL_TURNS = """%d tours""",
+	CRAFTPANEL_CHOOSE_FOR = """Choisissez un matériau pour : %s""",
+	CRAFTPANEL_SHORT_OF = """Il manque %s. La commande attend""",
+	CRAFTPANEL_SHORT_FIRST_STEP = """Il manque %s pour la première étape. La commande attend""",
+	CRAFTPANEL_ADD = """Ajouter à la file""",
+	CRAFTPANEL_SAVE = """Enregistrer""",
+	CRAFTPANEL_NO_ITEMS = """Aucun équipement que cet atelier puisse améliorer.""",
+	CRAFTPANEL_HIGHEST = """qualité maximale""",
+	CRAFTPANEL_STEP_WORK = """Travail pour l'étape suivante""",
+	CRAFTPANEL_STEP_GOLD = """Or pour l'étape suivante, payé au début de son travail""",
+	CRAFTPANEL_GOLD_BY_STEP = """Or pour chaque étape, payé au début de son travail :""",
+	CRAFTPANEL_MATERIAL_BY_STEP = """Pour chaque étape, pris au début de son travail :""",
+	CRAFTPANEL_WORN_BY = """Porté par %s""",
+	CRAFTPANEL_ON_BENCH = """À l'atelier""",
+	CRAFTPANEL_ON_BENCH_NOW = """Sur l'établi""",
+	CRAFTPANEL_STEP_OF = """Étape %d sur %d""",
+	CRAFTPANEL_NOW_QUALITY = """actuel""",
+	CRAFTPANEL_TO_CRAFT = """%s pour fabriquer""",
+	CRAFTPANEL_AT_BEST = """Cette pièce est déjà à son meilleur.""",
+	CRAFTPANEL_SEND = """Envoyer à : %s""",
+	CRAFTPANEL_QUEUE = """File""",
+	CRAFTPANEL_QUEUE_HELP = """Toutes les salles de ce métier traitent cette même file par le haut. Cliquez sur une commande pour la modifier, faites-la glisser ou utilisez les flèches pour la déplacer.\nAméliorer un équipement le retire à celui qui le porte et de la réserve jusqu'à la fin du travail ; il lui revient ensuite.""",
+	CRAFTPANEL_QUEUE_EMPTY = """Rien dans la file. Ceux qui travaillent ici se reposent.""",
+	CRAFTPANEL_ORDER_LEFT = """reste %d""",
+	CRAFTPANEL_ORDER_ENDLESS = """Sans fin""",
+	CRAFTPANEL_ORDER_KEEP = """Stock %d–%d · %d en réserve""",
+	CRAFTPANEL_STATUS_WORKING = """En cours""",
+	CRAFTPANEL_STATUS_WAITING = """Suivant""",
+	CRAFTPANEL_STATUS_NOMAT = """Rupture""",
+	CRAFTPANEL_STATUS_NOGOLD = """Sans or""",
+	CRAFTPANEL_STATUS_NOWORKERS = """Personne""",
+	CRAFTPANEL_STATUS_HELD = """Bloquée""",
+	CRAFTPANEL_STATUS_STOCKED = """Stock plein""",
+	CRAFTPANEL_ONGOING = """En continu""",
+	CRAFTPANEL_REMOVE_ORDER = """Retirer cette commande ?""",
+	CRAFTPANEL_STOP_IMPROVE = """Arrêter et reprendre la pièce ?""",
+	CRAFTPANEL_REMOVE = """Retirer""",
+	CRAFTPANEL_KEEP = """Garder""",
+	CRAFTPANEL_LOG_IMPROVED = """%s est maintenant %s.""",
+	CRAFTPANEL_LOG_BACK_WITH = """%s l'a récupérée.""",
+
 	MANSIONVIEW_REST = """Idle""", # MISSING TRANSLATION
 	MANSIONVIEW_ATWORK = """At work""", # MISSING TRANSLATION
 	MANSIONVIEW_HOUSEALL = """Bed them down""", # MISSING TRANSLATION

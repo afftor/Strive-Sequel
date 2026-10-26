@@ -35,6 +35,13 @@ var service_gold = {}
 #save its bonuses. See roll_service_bonuses().
 var service_bonuses = {}
 
+#What each capital's Settlement Management has bought there, by capital code: {upgrade code: level}.
+#The upgrades themselves are worlddata.settlement_upgrades; see buy_settlement_upgrade().
+var settlement_upgrades = {}
+
+#The capitals whose Settlement Management the player has been told about - see announce_settlement_management().
+var settlement_management_announced = []
+
 var serial_quest_items#only for serialize
 
 func _ready():
@@ -108,11 +115,13 @@ func fix_serialization():
 			if j.has('progress'):
 				for cat in j.progress:
 					j.progress[cat]  = int(j.progress[cat])
-		#temporal patch. Probably need to check capital_options here for all areas
-		if i.code == 'plains':
-			for option in worlddata.lands.plains.capital_options:
+		#An area's capital options are copied into the save when the world is made, so whatever has been
+		#added to worlddata.lands since then is put back here - in every area, not only the plains.
+		if worlddata.lands.has(i.code) and i.has('capital_options'):
+			for option in worlddata.lands[i.code].capital_options:
 				if !(option in i.capital_options):
 					i.capital_options.append(option)
+		if i.code == 'plains':
 			i.capital.aliron.difficulty = 'infinite'
 #	for area in areas.values():
 #		for guild in area.factions.values():
@@ -151,6 +160,13 @@ func fix_serialization():
 		pool.current = int(pool.get('current', 0))
 		pool.max = int(pool.get('max', 0))
 		pool.reported = bool(pool.get('reported', false))
+	if !(settlement_upgrades is Dictionary):
+		settlement_upgrades = {}
+	for bought in settlement_upgrades.values():
+		for upgrade in bought.keys():
+			bought[upgrade] = int(bought[upgrade])
+	if !(settlement_management_announced is Array):
+		settlement_management_announced = []
 	fix_broken_item_links()
 	
 	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
@@ -313,14 +329,19 @@ func get_default_area_name():
 
 func advance_day():
 	ResourceScripts.slave_quests.tick_quests()
+	var restock = int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 1 or variables.shop_restock_days == 1
 	for i in areas.values():
 		update_guilds(i)
-		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 1 or variables.shop_restock_days == 1:
+		if restock:
 			ResourceScripts.world_gen.update_area_shop(i)
 			for k in i.locations.values():
 				if k.has('shop'):
 					ResourceScripts.world_gen.update_area_shop(k)
+	#after every area has restocked, so the home market is not rolled over the top of what came in
+	if restock:
+		bring_trade_post_goods()
 	update_locations()
+	announce_settlement_management()
 
 
 #### service gold pool ####
@@ -338,9 +359,25 @@ func get_service_gold(code):
 func _refill_service_gold_pool(code):
 	var limit = variables.service_gold_limits[code]
 	var pool = service_gold[code]
-	pool.max = int(limit.base) + globals.rng.randi_range(0, int(limit.random))
+	pool.max = int(round((int(limit.base) + globals.rng.randi_range(0, int(limit.random))) * service_gold_mult(code)))
 	pool.current = pool.max
 	pool.reported = false
+
+
+#How much a capital's Tavern raises its pool: 1.0 without one. tavern_level asks about a level other
+#than the one bought.
+func service_gold_mult(code, tavern_level = -1):
+	if tavern_level < 0:
+		tavern_level = get_settlement_upgrade(code, 'tavern')
+	return 1.0 + variables.settlement_tavern_service_bonus * tavern_level
+
+
+#What a settlement's clients pay in a week before the weekly roll adds its random part on top - the
+#figure Settlement Management shows, which does not jump about from one week to the next.
+func base_service_gold(code, tavern_level = -1):
+	if !variables.service_gold_limits.has(code):
+		return 0
+	return int(round(int(variables.service_gold_limits[code].base) * service_gold_mult(code, tavern_level)))
 
 
 #Every week start (game_globals.advance_day). The maximum is rolled again, not carried over.
@@ -500,6 +537,120 @@ func get_service_location_name(code):
 	if location_links.has(code) and str(location_links[code].get('name', '')) != '':
 		return tr(location_links[code].name)
 	return str(code).capitalize()
+
+
+#### settlement management ####
+
+func get_settlement_upgrade(code, upgrade):
+	if !(settlement_upgrades is Dictionary) or !settlement_upgrades.has(code):
+		return 0
+	return int(settlement_upgrades[code].get(upgrade, 0))
+
+
+#Gold for that level of the upgrade in this capital, or -1 where that level is not sold.
+func settlement_upgrade_price(code, upgrade, level):
+	var cost = worlddata.settlement_upgrades[upgrade].cost
+	if cost is Dictionary:
+		cost = cost.get(code, [])
+	if level < 1 or level > cost.size():
+		return -1
+	return int(cost[level - 1])
+
+
+#Whether this capital sells the upgrade at all. A Trade Post carries goods to the estate's own market,
+#so there is none where the estate stands; a Tavern raises the service pool, so only where there is one.
+func settlement_upgrade_offered(code, upgrade):
+	var data = worlddata.settlement_upgrades[upgrade]
+	if data.get('not_at_home', false) and code == mansion_location:
+		return false
+	if data.get('needs_service', false) and !variables.service_gold_limits.has(code):
+		return false
+	return settlement_upgrade_price(code, upgrade, 1) >= 0
+
+
+#Whether the capital's Settlement Management option is up yet - see worlddata.settlement_management_reqs.
+func settlement_management_open(code):
+	return worlddata.settlement_management_reqs.has(code) and globals.checkreqs(worlddata.settlement_management_reqs[code])
+
+
+#Tells the player about every capital whose Settlement Management has opened since the last call: one banner
+#for all of them and a log line saying where the option is. Runs after a decision is taken and at day's end -
+#the latter is what tells an older save about the capitals it had already opened.
+func announce_settlement_management():
+	var names = []
+	for code in worlddata.settlement_management_reqs:
+		if settlement_management_announced.has(code) or !settlement_management_open(code):
+			continue
+		settlement_management_announced.append(code)
+		names.append(get_service_location_name(code))
+	if names.empty():
+		return
+	var where = PoolStringArray(names).join(", ")
+	input_handler.play_animation("settlement_management", {where = where})
+	globals.text_log_add("quest", globals._report_text("SETTLEMENT_MANAGEMENT_UNLOCKED_LOG", [where]))
+
+
+#Pays for the next level and puts it to work at once. false when it cannot be bought.
+func buy_settlement_upgrade(code, upgrade):
+	if !settlement_upgrade_offered(code, upgrade):
+		return false
+	var level = get_settlement_upgrade(code, upgrade)
+	var price = settlement_upgrade_price(code, upgrade, level + 1)
+	if price < 0 or ResourceScripts.game_res.money < price:
+		return false
+	ResourceScripts.game_res.money -= price
+	var old_mult = service_gold_mult(code)
+	if !settlement_upgrades.has(code):
+		settlement_upgrades[code] = {}
+	settlement_upgrades[code][upgrade] = level + 1
+	match upgrade:
+		'tavern':
+			rescale_service_gold(code, old_mult)
+		'trade_post':
+			bring_trade_post_goods([code])
+	return true
+
+
+#A Tavern bought mid-week: this week's pool grows by what the new level adds instead of waiting for the
+#refill. A pool not made yet is left alone - it is made with the new level already counted.
+func rescale_service_gold(code, old_mult):
+	if !service_gold.has(code) or old_mult <= 0:
+		return
+	var pool = service_gold[code]
+	var grown = int(round(pool.max * service_gold_mult(code) / old_mult)) - int(pool.max)
+	pool.max = int(pool.max) + grown
+	pool.current = int(pool.current) + grown
+	if pool.current > 0:
+		pool.reported = false
+
+
+#Where the estate trades: the market of the area it stands in - the shop the Market screen sells from and
+#game_res.autobuy_shop() buys from.
+func home_market_area():
+	return ResourceScripts.world_gen.get_area_from_location_code(mansion_location)
+
+
+#Every Trade Post's capital sends a load of its goods to the estate's market: the capital's shop list is
+#rolled once more and poured in with loot.merge_shop_dict - the same goods add up, new ones join the list -
+#so the Market screen and the clerk's standing orders both see them. The capital's own shop is left as it
+#is. Run after every restock, and for a post on the day it is bought.
+func bring_trade_post_goods(codes = null):
+	var home = home_market_area()
+	if home == null or !(home.get('shop', null) is Dictionary):
+		return
+	if codes == null:
+		codes = []
+		for code in settlement_upgrades:
+			if get_settlement_upgrade(code, 'trade_post') > 0:
+				codes.append(code)
+	var loot = Items.get_loot()
+	for code in codes:
+		if code == mansion_location:
+			continue
+		var area = ResourceScripts.world_gen.get_area_from_location_code(code)
+		if area == null or area.code == home.code or !(area.get('area_shop_items', null) is String):
+			continue
+		loot.merge_shop_dict(home.shop, loot.get_shop_list(area.area_shop_items))
 
 
 func advance_hour():

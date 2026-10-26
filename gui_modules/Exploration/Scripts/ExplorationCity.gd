@@ -21,6 +21,7 @@ var selectedquest
 var city_options = {
 	#location_purchase = "EXPLORBUYDUNGEON",
 	quest_board = "EXPLORENOTICEBOARD",
+	settlement_management = "EXPLORESETTLEMENTMANAGEMENT",
 }
 
 var faction_actions = {
@@ -198,7 +199,18 @@ func build_area_menu(area_actions):
 	input_handler.ClearContainer(AreaActions)
 	var newbutton
 	var has_exotic_slaver = false
-	for option in selected_area.capital_options:
+	#Settlement Management heads the menu in every capital, whatever order a save keeps the options in -
+	#an older save has it appended after the rest (game_world.fix_serialization)
+	var options = selected_area.capital_options.duplicate()
+	if options.has('settlement_management'):
+		options.erase('settlement_management')
+		options.push_front('settlement_management')
+	for option in options:
+		if !city_options.has(option):
+			continue
+		#waits until the capital's part of the story is over
+		if option == 'settlement_management' and !ResourceScripts.game_world.settlement_management_open(selected_area.capital_code):
+			continue
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = tr(city_options[option])
 		newbutton.connect("toggled", self, option, [newbutton])
@@ -606,6 +618,8 @@ func faction_upgrade(pressed, pressed_button, guild):
 	self.current_pressed_area_btn = pressed_button
 	# $FactionDetails.visible = pressed
 	input_handler.ClearContainer($FactionDetails/Scroll/VBoxContainer)
+	#the panel is shared with Settlement Management, which writes its own title
+	$FactionDetails/Label.text = tr("UPGRADES_LABEL")
 	$FactionDetails/RichTextLabel.text = tr("UPGRADES_INFO")
 	$FactionDetails/FactionPoints.text = tr("FACTION_POINTS") + ": " + str(active_faction.totalreputation)
 	$FactionDetails/UnspentPoints.text = tr("UNSPENT_POINTS") + ": " + str(active_faction.reputation)
@@ -1138,6 +1152,145 @@ func quest_board(pressed, pressed_button):
 		unfade($QuestBoard)
 	else:
 		fade($QuestBoard)
+
+
+#The capital's own improvements (worlddata.settlement_upgrades), sold for gold on the guilds' Upgrades
+#panel. build_area_menu only puts the option up once the capital's part of the story is over.
+func settlement_management(pressed, pressed_button):
+	gui_controller.win_btn_connections_handler(pressed, $FactionDetails, pressed_button)
+	self.current_pressed_area_btn = pressed_button
+	#the panel's top is see-through, and in a guild it sits on the guild's backdrop; on the city screen the
+	#guilds strip would show through its title, so the strip steps aside while the panel is up
+	if pressed:
+		guilds_strip_hidden = $GuildsPanel.visible
+		$GuildsPanel.hide()
+		build_settlement_management()
+		unfade($FactionDetails, 0.3)
+	else:
+		if guilds_strip_hidden:
+			guilds_strip_hidden = false
+			$GuildsPanel.show()
+		fade($FactionDetails, 0.3)
+
+
+var guilds_strip_hidden = false
+
+
+func build_settlement_management():
+	var code = selected_area.capital_code
+	var world = ResourceScripts.game_world
+	input_handler.ClearContainer($FactionDetails/Scroll/VBoxContainer)
+	$FactionDetails/Label.text = tr("SETTLEMENT_MANAGEMENT_LABEL")
+	$FactionDetails/RichTextLabel.text = tr("SETTLEMENT_MANAGEMENT_INFO")
+	$FactionDetails/UnspentPoints.text = globals._report_text("SETTLEMENT_MANAGEMENT_GOLD", [ResourceScripts.game_res.money])
+	#the base of the week's purse, not this week's roll, so the figure only moves when a Tavern is bought
+	$FactionDetails/FactionPoints.text = ""
+	if variables.service_gold_limits.has(code):
+		var tavern = world.get_settlement_upgrade(code, 'tavern')
+		if tavern > 0:
+			$FactionDetails/FactionPoints.text = globals._report_text("SETTLEMENT_MANAGEMENT_SATURATION_BONUS",
+				[world.base_service_gold(code), tavern_percent(tavern)])
+		else:
+			$FactionDetails/FactionPoints.text = globals._report_text("SETTLEMENT_MANAGEMENT_SATURATION",
+				[world.base_service_gold(code)])
+	for upgrade in worlddata.settlement_upgrades.values():
+		if !world.settlement_upgrade_offered(code, upgrade.code):
+			continue
+		var level = world.get_settlement_upgrade(code, upgrade.code)
+		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/Scroll/VBoxContainer)
+		fit_settlement_row(newnode)
+		#the upgrade's name is the row's heading, its level beside it, and the description starts below
+		var text = "[font=%s][color=#f9e181]%s[/color][/font]" % [SETTLEMENT_ROW_TITLE_FONT, tr(upgrade.name)]
+		if upgrade.maxlevel > 1:
+			text += "  [color=#c0b9ac]%d/%d[/color]" % [level, upgrade.maxlevel]
+		text += "\n" + tr(upgrade.descript)
+		var confirm = newnode.get_node("confirm")
+		var price_label = newnode.get_node("Price")
+		if level >= upgrade.maxlevel:
+			text += "\n[color=#8ad98a]%s[/color]" % settlement_upgrade_now_text(upgrade.code, level)
+			#bought out: nothing left to press, so no greyed button that reads as "can't afford"
+			confirm.hide()
+			price_label.text = tr("SETTLEMENT_UPGRADE_BUILT")
+		else:
+			var next_text = settlement_upgrade_next_text(code, upgrade.code, level + 1)
+			if next_text != "":
+				text += "\n[color=#8ad98a]%s[/color]" % next_text
+			var price = world.settlement_upgrade_price(code, upgrade.code, level + 1)
+			price_label.text = globals._report_text("SETTLEMENT_UPGRADE_PRICE", [price])
+			if ResourceScripts.game_res.money < price:
+				confirm.disabled = true
+				price_label.add_color_override("font_color", Color(0.95, 0.35, 0.35))
+			confirm.connect("pressed", self, "buy_settlement_upgrade", [upgrade.code])
+		var label = newnode.get_node("text")
+		#no scrollbar: the row grows to fit instead, and a scrollbar shown while the text is measured
+		#would narrow it and make it wrap - and measure - taller than it is
+		label.scroll_active = false
+		label.bbcode_enabled = true
+		label.bbcode_text = text
+	grow_settlement_rows()
+
+
+const SETTLEMENT_ROW_TITLE_FONT = "res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres"
+#A heading line on top of the description needs more room than the guilds' rows have: the row is
+#made taller, its backdrop with it, and the text and the button move down to sit in the middle.
+const SETTLEMENT_ROW_HEIGHT = 230.0
+const SETTLEMENT_ROW_TEXT_TOP = 16.0
+const SETTLEMENT_ROW_TEXT_BOTTOM = 14.0
+
+
+func fit_settlement_row(row, height = SETTLEMENT_ROW_HEIGHT):
+	var grow = height - row.rect_min_size.y
+	row.set_meta('settlement_row', true)
+	row.rect_min_size.y = height
+	row.get_node("FactionBG2").margin_bottom = height
+	var label = row.get_node("text")
+	label.margin_top = SETTLEMENT_ROW_TEXT_TOP
+	label.margin_bottom = height - SETTLEMENT_ROW_TEXT_BOTTOM
+	for node in [row.get_node("confirm"), row.get_node("Price")]:
+		node.margin_top += grow / 2.0
+		node.margin_bottom += grow / 2.0
+
+
+#A description can run longer in some languages than the row was made for. The label only knows how
+#tall its text is once it has been laid out, so the rows are measured a couple of frames later and the
+#ones that need it grow, rather than showing a scrollbar inside the row.
+func grow_settlement_rows():
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	for row in $FactionDetails/Scroll/VBoxContainer.get_children():
+		if !is_instance_valid(row) or row.is_queued_for_deletion() or !row.has_meta('settlement_row'):
+			continue
+		var needed = ceil(row.get_node("text").get_content_height() + SETTLEMENT_ROW_TEXT_TOP + SETTLEMENT_ROW_TEXT_BOTTOM)
+		if needed > row.rect_min_size.y:
+			fit_settlement_row(row, needed)
+
+
+func tavern_percent(level):
+	return int(round(variables.settlement_tavern_service_bonus * 100.0 * level))
+
+
+#What the next level adds, or "" when the description already says it all.
+func settlement_upgrade_next_text(code, upgrade_code, level):
+	match upgrade_code:
+		'tavern':
+			var world = ResourceScripts.game_world
+			return globals._report_text("SETTLEMENT_UPGRADE_TAVERN_NEXT",
+				[tavern_percent(level), world.base_service_gold(code, level - 1), world.base_service_gold(code, level)])
+	return ""
+
+
+func settlement_upgrade_now_text(upgrade_code, level):
+	match upgrade_code:
+		'tavern':
+			return globals._report_text("SETTLEMENT_UPGRADE_TAVERN_NOW", [tavern_percent(level)])
+		'trade_post':
+			return tr("SETTLEMENT_UPGRADE_TRADE_POST_NOW")
+	return ""
+
+
+func buy_settlement_upgrade(upgrade_code):
+	if ResourceScripts.game_world.buy_settlement_upgrade(selected_area.capital_code, upgrade_code):
+		build_settlement_management()
 
 func change_texture(button, state):
 	match state:

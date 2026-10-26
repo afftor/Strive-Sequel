@@ -1,3 +1,47 @@
+0.16.3
+New boss fights: Sylas (Jean's quest) and Erdyna
+Crafting reworked around a new workshop panel
+Added Settlement Management to capitals
+Added faith conversion at temples
+Halloween: seasonal main menu and Halloween Candy dropped by undead
+
+Crafting:
+	New workshop panel in craft rooms: assign crafters, choose recipes and materials, manage one queue per trade
+	Gear is improved in the workshop for gold and work instead of by sacrificing other gear
+	Craft time and price of modular items now depend on their materials
+	Axe and Pickaxe merged into Axe&Pick; new Dishware tool for Cooking and Alchemy
+	Fixed jobs that use a tool producing about twice the intended amount
+
+Combat:
+	Skill cooldowns that didn't work before now apply in combat
+	Rebalanced unique weapons and armor
+
+Traits:
+	Succubus is now a Magic trait instead of a class; old saves are converted
+	Items and skills that grant a trait ask which one to replace before anything is spent
+	New icons for most traits
+
+Mansion:
+	Master's Office improvements now unlock education for newborns
+	Floorplan usability improvements and fixes
+
+World:
+	Place of power reworked: the reward is shown before the fight, and you choose who claims it afterwards
+	Meditation spots and places of power appear more often
+
+Characters:
+	Unique portraits no longer depend on personality
+	New outfits for Lira, Jean and Erdyna; updated Jean's and Cali's sprites
+
+Interface:
+	Window mode and resolution options
+	Slave market can be sorted by column
+
+Fixes:
+	Fixed an endless fight against demon Jean
+	Fixed Cali's heirloom quest after getting the wood discount
+	Fixed several appearance issues with demons and hairstyles
+
 0.16.2a
 Updated and fixed multiple combat animations
 Changed Cali's initial sprite to fit more with her original vision

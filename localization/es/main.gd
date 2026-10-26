@@ -279,6 +279,7 @@ pero conservarás todos tus personajes, objetos e inventario. Usa este modo para
 	EXPLORESHOP = "Mercado",
 	EXPLORBUYDUNGEON = "Comprar mazmorra",
 	EXPLORENOTICEBOARD = "Tablón de anuncios",
+	EXPLORESETTLEMENTMANAGEMENT = "Gestión de la ciudad",
 	EXPLOREHIRE = "Comprar",
 	EXPLORESELLCHR = "Vender personajes",
 	EXPLOREQUESTS = "Misiones",
@@ -1521,8 +1522,7 @@ The first {color=green|positive} trait is free. {color=red|Negative} traits can 
 	TRAITREPLACE_LEAD_MANY = """[His] {category} slots are full. Pick a trait to replace, or keep the current ones.""", # MISSING TRANSLATION
 	TRAITREPLACE_NEW = """New""", # MISSING TRANSLATION
 	TRAITREPLACE_REPLACE = """Replace""", # MISSING TRANSLATION
-	TRAITREPLACE_KEEP_ONE = """Keep current trait""", # MISSING TRANSLATION
-	TRAITREPLACE_KEEP_MANY = """Keep current traits""", # MISSING TRANSLATION
+	TRAITREPLACE_KEEP = """Mantener""",
 	TRAITREPLACE_LOCK_PERMANENT = """Can't be replaced: permanent""", # MISSING TRANSLATION
 	TRAITREPLACE_LOCK_INNATE = """Can't be replaced: from class or race""", # MISSING TRANSLATION
 	TRAITREPLACE_LOCK_STATUS = """Can't be replaced: a slave's status""", # MISSING TRANSLATION
@@ -10624,9 +10624,9 @@ Sin embargo, puedes actualizar el archivo.
 	ABORTTUTORIAL = """Abandonar el tutorial""",
 	PROMPTTUTORIAL = """A los jugadores primerizos se les recomienda completar el tutorial para aprender los controles y mecánicas básicas.""",
 	TUTORIAL_TRAINING1 = """Este tutorial explica las mecánicas básicas de la gestión de tu mansión y tus personajes. Tu personaje {color=yellow|Amo} te representa y se encarga de gestionar a los demás.""",
-	TUTORIAL_TRAINING1_0 = """Everyone living on the estate is listed here. The list is folded down to its bar right now - click the bar to unfold it.""", # MISSING TRANSLATION
-	TUTORIAL_RMB_MENU1 = """Before you set out, one shortcut worth knowing. The strip along the top holds everyone with nothing to do - try a {color=yellow|right-click} on your Master's portrait there.""", # MISSING TRANSLATION
-	TUTORIAL_RMB_MENU2 = """A right click on any portrait puts up this menu, and it is the short way to nearly everything: their card, classes and masteries, training, their bag, their info sheet, and whatever social skills they have to hand. Every portrait in the game answers to it. Right-click again to close the menu.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING1_0 = """Aquí aparecen todos los que viven en la finca. Es la vista con la que se abre la mansión; el plano de la casa está detrás de ella.""",
+	TUTORIAL_RMB_MENU1 = """Antes de partir, un atajo que conviene conocer. La franja de arriba reúne a todos los que no tienen nada que hacer - prueba a hacer {color=yellow|clic derecho} sobre el retrato de tu Amo.""",
+	TUTORIAL_RMB_MENU2 = """Un clic derecho sobre cualquier retrato abre este menú, el camino corto a casi todo: su ficha, clases y maestrías, entrenamiento, su bolsa, su hoja de información y las habilidades sociales que tenga a mano. Todos los retratos del juego responden a él. Vuelve a hacer clic derecho para cerrar el menú.""",
 	TUTORIAL_TRAINING1_1 = """Haz clic en la tarjeta de tu Amo para desplegarla. La tarjeta ampliada contiene sus detalles, reglas de trabajo y habilidades sociales.""",
 	TUTORIAL_TRAINING2 = """Empecemos usando la habilidad predeterminada del Amo, Mentor, en uno de tus subordinados. Aumentará la experiencia que gana durante un día.""",
 	TUTORIAL_TRAINING3 = """Selecciona un personaje de la lista para terminar de lanzar la habilidad.""",
@@ -10635,7 +10635,7 @@ Sin embargo, puedes actualizar el archivo.
 	TUTORIAL_TRAINING6 = """Selecciona Filtro de comida para ver todas las comidas que este personaje puede comer.""",
 	TUTORIAL_TRAINING7 = """Haz clic en un alimento para permitirlo o prohibirlo a este personaje.""",
 	TUTORIAL_TRAINING8 = """Ahora que está hecho, cierra el panel de información del personaje.""",
-	TUTORIAL_TRAINING8_1 = """Right-click anywhere to fold the card back, so the rest of the list is reachable again.""", # MISSING TRANSLATION
+	TUTORIAL_TRAINING8_1 = """Haz clic derecho en cualquier parte para plegar la ficha y volver a tener a mano el resto de la lista.""",
 	TUTORIAL_TRAINING9 = """Selecciona a Daisy para acceder a sus detalles e información.""",
 	TUTORIAL_TRAINING10 = """Puedes abrir la ventana de un personaje con doble clic o con el botón Información del personaje.""",
 	TUTORIAL_TRAINING11 = """Daisy está clasificada como esclava sin adiestrar y necesita un instructor que supervise y dirija su adiestramiento. Los esclavos sin adiestrar no trabajan sin instructor.""",
@@ -10659,7 +10659,7 @@ Sin embargo, puedes actualizar el archivo.
 	TUTORIAL_WORK8 = """Ahora puedes salir de este menú.""",
 	TUTORIAL_WORK9 = """Haz clic en Terminar turno para avanzar el tiempo y que tus personajes progresen en su trabajo y aprendizaje.""",
 	TUTORIAL_WORK10 = """Ahora veamos la tarea de Servicio. Se diferencia de las otras tareas del menú Trabajo y aplica reglas adicionales al personaje.""",
-	TUTORIAL_WORK11 = """Service allows you to assign a character to various types of service work, including sexual services. Non-sexual tasks have different stat correlations and bonuses, so be sure to read the details. Assign Daisy to work as a waitress.""", # MISSING TRANSLATION
+	TUTORIAL_WORK11 = """El servicio te permite asignar a un personaje a varios tipos de trabajo de servicio, incluidos los servicios sexuales. Las tareas no sexuales dependen de otras estadísticas y dan otras bonificaciones, así que lee los detalles. Asigna a Daisy como camarera.""",
 	TUTORIAL_WORK12 = """Vuelve al menú Trabajo.""",
 	TUTORIAL_WORK13 = """Aunque la hayas elegido como camarera, primero debes reasignarla del trabajo artesanal al de servicio.""",
 	TUTORIAL_WORK14 = """Aquí puedes revisar las reglas y ventajas adicionales del trabajo de servicio. Mientras trabajan, los personajes generan cada turno experiencia y una estadística relacionada con su tarea.""",
@@ -10688,21 +10688,32 @@ Cierra este menú.""",
 	TUTORIAL_WORK27_1 = """Vuelve al menú de cocina.""",
 	TUTORIAL_WORK28 = """Cancela el horneado de pan.""",
 	TUTORIAL_WORK29 = """Y confirma.""",
-	TUTORIAL_WORK_ROOM1 = """The estate came to you half-ruined. Most of its rooms are still buried under rubble, and clearing them out is how the house grows - the plan hands out nothing else.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM1_1 = """The plan of the house is behind the character list. Fold the list away with the handle in its corner - the people with nothing to do wait on the strip under the bar, ready to be picked up and put to work.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM2 = """Click the cluttered room to open its card.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM3 = """Clearing out costs no materials, only time. Start it.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM4 = """Work needs hands. Daisy has none of her own to do - pick her up from the Rest strip.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM5 = """Now put her on the scaffolding. The yellow place with the hammer is where builders stand.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM6 = """Finish the turn so she can put a day's work in.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM7 = """Clearing out takes a set number of turns whoever does it, and a second pair of hands will not hurry it along. Finish another turn.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM8 = """The room is open. Click it again to see what can be built here.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM9 = """Each room does one thing and costs materials to raise. Build a Kitchen - nothing is cooked in this house until there is one.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM10 = """Pick Daisy up again.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM11 = """And put her back on the scaffolding.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM12 = """Building is measured in work rather than in days, so a better builder raises a room sooner. This one is nearly up - finish the turn.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM14 = """The kitchen is standing. Open it.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM15 = """A craft room is where its own orders are given. Open the craft menu from here.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM1 = """La finca te llegó medio en ruinas. La mayoría de sus salas siguen enterradas bajo los escombros, y despejarlas es como crece la casa - el plano no regala nada más.""",
+	TUTORIAL_WORK_ROOM1_1 = """El plano de la casa está detrás de la lista de personajes. Pliega la lista con el asa de su esquina - los que no tienen nada que hacer esperan en la franja bajo la barra, listos para que los tomes y los pongas a trabajar.""",
+	TUTORIAL_WORK_ROOM2 = """Haz clic en la sala llena de escombros para abrir su ficha.""",
+	TUTORIAL_WORK_ROOM3 = """Despejarla no cuesta materiales, solo tiempo. Empieza.""",
+	TUTORIAL_WORK_ROOM4 = """El trabajo necesita manos. Daisy no tiene nada que hacer - tómala de la franja de descanso.""",
+	TUTORIAL_WORK_ROOM5 = """Ahora ponla en el andamio. El puesto amarillo con el martillo es donde se colocan los constructores.""",
+	TUTORIAL_WORK_ROOM6 = """Termina el turno para que pueda hacer su jornada de trabajo.""",
+	TUTORIAL_WORK_ROOM7 = """Despejar una sala lleva un número fijo de turnos, la haga quien la haga, y un segundo par de manos no lo acelera. Termina otro turno.""",
+	TUTORIAL_WORK_ROOM8 = """La sala está despejada. Haz clic de nuevo en ella para ver qué se puede construir aquí.""",
+	TUTORIAL_WORK_ROOM9 = """Cada sala cumple una función y construirla cuesta materiales. Construye una Cocina - en esta casa no se cocina nada hasta que haya una.""",
+	TUTORIAL_WORK_ROOM10 = """Toma de nuevo a Daisy.""",
+	TUTORIAL_WORK_ROOM11 = """Y vuelve a ponerla en el andamio.""",
+	TUTORIAL_WORK_ROOM12 = """La construcción se mide en trabajo, no en días, así que un mejor constructor levanta una sala antes. Esta ya casi está - termina el turno.""",
+	TUTORIAL_WORK_ROOM14 = """La cocina ya está en pie. Ábrela.""",
+	TUTORIAL_WORK_ROOM15 = """Una sala de oficio abre el taller en su propio oficio. Ábrelo desde aquí.""",
+	TUTORIAL_WORK_CRAFT1 = """Este es el taller. Ya está abierta la pestaña Cocina, el oficio de esta sala, y sus recetas aparecen en el centro. Elige el pan.""",
+	TUTORIAL_WORK_CRAFT2 = """El banco de trabajo muestra lo que produce una tanda y lo que consume. El pedido en sí se configura bajo la cola, a la derecha: un {color=yellow|Lote} de tandas, {color=yellow|Mantener en reserva} entre dos números o {color=yellow|Sin fin}. Aumenta este lote en 10 tandas.""",
+	TUTORIAL_WORK_CRAFT3 = """Pulsa {color=yellow|Añadir a la cola}.""",
+	TUTORIAL_WORK_CRAFT4 = """Los pedidos se ponen en cola en lugar de reemplazarse unos a otros, y cada sala de un oficio los trabaja desde arriba. Añade un segundo - elige el estofado de carne.""",
+	TUTORIAL_WORK_CRAFT5 = """Añádelo también a la cola.""",
+	TUTORIAL_WORK_CRAFT6 = """Ahora ambos pedidos esperan en la cola. Un pedido se puede cambiar, subir o bajar, o cancelar - haz clic en el estofado para abrirlo.""",
+	TUTORIAL_WORK_CRAFT7 = """Cancélalo.""",
+	TUTORIAL_WORK_CRAFT8 = """Y confírmalo.""",
+	TUTORIAL_WORK_CRAFT9 = """Un pedido no es más que un plan hasta que alguien lo trabaja. La columna de la izquierda muestra las salas del oficio y sus puestos - pulsa {color=yellow|+ Añadir artesano}.""",
+	TUTORIAL_WORK_CRAFT10 = """Aquí aparecen todos los de la mansión que podrían ocupar el puesto, con cuánto trabajo aportarían cada turno. Elige a Daisy.""",
+	TUTORIAL_WORK_CRAFT11 = """La cocina ya tiene su pedido y su cocinera. Cierra el taller.""",
 	TUTORIAL_WORK_ROOM16 = """The kitchen's own trade is already selected. Choose bread.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM17 = """Confirm.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM18 = """You can adjust the quantity. Add 10 more units.""", # MISSING TRANSLATION
@@ -10715,18 +10726,18 @@ Cierra este menú.""",
 	TUTORIAL_WORK_ROOM25 = """Close the craft window.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM26 = """An order is only a plan until somebody stands in the room to work it. Pick Daisy up.""", # MISSING TRANSLATION
 	TUTORIAL_WORK_ROOM27 = """Put her at the kitchen's workplace.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM28 = """Finish the turn. What she baked is listed in the estate log.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM29 = """Not all of the estate's work happens indoors. Open Local Tasks.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM30 = """The grounds carry buildings of their own, and each is worked by its own hands. Pick Aeris up.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM31 = """Put her in the kitchen garden. She will bring in vegetables every turn.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM32 = """Finish the turn. What the grounds bring in is what the kitchen cooks with - that meat soup wanted vegetables.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_ROOM33 = """That is the loop the estate runs on: clear a room out, raise something in it, and put people where the work is. Go back to the mansion.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED1 = """Everyone on the estate also needs somewhere to sleep. Daisy has just lost her bed - anyone without one spends the night on the floor and suffers for it. Switch the plan to {color=yellow|Beds} to see where the household sleeps.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED2 = """The plan now shows beds instead of workplaces, and the strip above it lists everyone who has none. Click Daisy to pick her up.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED3 = """Now click a free bed in the bedroom to put her in it. Dragging her there does the same thing, and {color=yellow|Bed them down} above the strip seats everyone at once.""", # MISSING TRANSLATION
-	TUTORIAL_WORK_BED4 = """She has a bed again. Switch the plan back to {color=yellow|Work} - beds only need arranging when somebody new arrives or a bedroom is built.""", # MISSING TRANSLATION
+	TUTORIAL_WORK_ROOM28 = """Termina el turno. Daisy aún no es buena cocinera, así que una tanda de pan le lleva varios turnos - la cola del taller muestra cuánto lleva, y cada tanda terminada aparece en el registro de la mansión.""",
+	TUTORIAL_WORK_ROOM29 = """No todo el trabajo de la finca se hace bajo techo. Abre Tareas locales.""",
+	TUTORIAL_WORK_ROOM30 = """Los terrenos tienen sus propios edificios, y cada uno tiene sus propias manos. Toma a Aeris.""",
+	TUTORIAL_WORK_ROOM31 = """Ponla en el huerto. Recogerá verduras cada turno.""",
+	TUTORIAL_WORK_ROOM32 = """Termina el turno. Lo que dan los terrenos es con lo que cocina la cocina - aquel estofado de carne pedía verduras.""",
+	TUTORIAL_WORK_ROOM33 = """Así funciona la finca: despeja una sala, construye algo en ella y pon a la gente donde está el trabajo. Vuelve a la mansión.""",
+	TUTORIAL_WORK_BED1 = """Todos en la finca necesitan además un sitio donde dormir. Daisy acaba de perder su cama - quien no tiene una pasa la noche en el suelo y lo paga. Cambia el plano a {color=yellow|Camas} para ver dónde duerme la casa.""",
+	TUTORIAL_WORK_BED2 = """Ahora el plano muestra camas en lugar de puestos de trabajo, y la franja de arriba recoge a todos los que no tienen. Haz clic en Daisy para tomarla.""",
+	TUTORIAL_WORK_BED3 = """Ahora haz clic en una cama libre del dormitorio para acostarla en ella. Arrastrarla hasta allí hace lo mismo, y {color=yellow|Acostarlos} sobre la franja acomoda a todos de una vez.""",
+	TUTORIAL_WORK_BED4 = """Vuelve a tener cama. Cambia el plano de nuevo a {color=yellow|Trabajo} - las camas solo hay que organizarlas cuando llega alguien nuevo o se construye un dormitorio.""",
 	TUTORIAL_LEVELING0 = """Hablando de experiencia, veamos otra forma de conseguirla.""",
-	TUTORIAL_LEVELING1_0 = """What the estate owns is kept in its store room. Open it.""", # MISSING TRANSLATION
+	TUTORIAL_LEVELING1_0 = """Lo que posee la finca se guarda en su almacén. Ábrelo.""",
 	TUTORIAL_LEVELING1 = """Selecciona Inventario para ver tus posesiones.""",
 	TUTORIAL_LEVELING2 = """Selecciona a tu Amo como personaje activo a gestionar.""",
 	TUTORIAL_LEVELING3 = """Usa un Pergamino de conocimiento para dar experiencia a tu Amo. Es una forma sencilla de aumentar rápidamente el poder de un personaje nuevo.""",
@@ -10747,12 +10758,12 @@ Cierra este menú.""",
 	TUTORIAL_COMBAT3 = """Acepta la misión Resolución de problemas.""",
 	TUTORIAL_COMBAT4 = """Todas las misiones dan objetos y reputación de gremio. La reputación sirve para comprar servicios especiales del gremio. Resolución de problemas requiere viajar a un lugar generado proceduralmente.""",
 	TUTORIAL_COMBAT5 = """Abre el menú del mapa para aprender a enviar personajes a un nuevo lugar.""",
-	TUTORIAL_COMBAT5_0 = """Close the notice board.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET1 = """Before leaving Aliron, visit its {color=yellow|Slave Market}: it buys and sells slaves and takes orders for them. Open it.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET2 = """The market opens on the orders the great houses post. Hand over a slave who meets one to earn gold and slaver rank - one house wants a human right now.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET3 = """Slaves are for sale here as well. Open {color=yellow|Hire}.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET4 = """Slaves for sale are listed with their prices; the button under a slave's card buys them.""", # MISSING TRANSLATION
-	TUTORIAL_MARKET5 = """Press the {color=yellow|Slave Market} button again to close it.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT5_0 = """Cierra el tablón de anuncios.""",
+	TUTORIAL_MARKET1 = """Antes de salir de Aliron, visita su {color=yellow|Mercado de esclavos}: allí se compran y venden esclavos y se aceptan encargos de ellos. Ábrelo.""",
+	TUTORIAL_MARKET2 = """El mercado se abre con los encargos que publican las grandes casas. Entrega un esclavo que cumpla uno para ganar oro y rango de esclavista - ahora mismo una casa quiere un humano.""",
+	TUTORIAL_MARKET3 = """Aquí también se venden esclavos. Abre {color=yellow|Comprar}.""",
+	TUTORIAL_MARKET4 = """Los esclavos en venta aparecen con su precio; el botón bajo la ficha de un esclavo lo compra.""",
+	TUTORIAL_MARKET5 = """Pulsa de nuevo el botón {color=yellow|Mercado de esclavos} para cerrarlo.""",
 	TUTORIAL_COMBAT6 = """Selecciona dos personajes que viajarán para completar la tarea.""",
 	TUTORIAL_COMBAT8 = """En la lista de ubicaciones, busca la ubicación especial de la misión que debes visitar.""",
 	TUTORIAL_COMBAT9 = """Haz clic en Enviar para comenzar el viaje.""",
@@ -10773,9 +10784,9 @@ Cierra este menú.""",
 	TUTORIAL_COMBAT22 = """Las habilidades de apoyo funcionan igual, pero seleccionan aliados. Aplica Escudo de tierra a tu Amo.""",
 	TUTORIAL_COMBAT24 = """Termina el combate.""",
 	TUTORIAL_COMBAT26 = """La ventana de botín muestra los resultados del combate.""",
-	TUTORIAL_COMBAT26_1 = """Fights often leave captives behind, and this one left two. The first fits the order you saw at the slave market: hand them over right here with the green {color=yellow|Hand Over} strip.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT26_1A = """A captive can fit several orders at once, so you choose which one gets them. Pick the order you saw at the slave market.""", # MISSING TRANSLATION
-	TUTORIAL_COMBAT26_2 = """Handing a captive over pays at once, just as at the market, and counts towards your slaver rank.""", # MISSING TRANSLATION
+	TUTORIAL_COMBAT26_1 = """Los combates suelen dejar cautivos, y este ha dejado dos. El primero cumple el encargo que viste en el mercado de esclavos: entrégalo aquí mismo con la franja verde {color=yellow|Entregar}.""",
+	TUTORIAL_COMBAT26_1A = """Un cautivo puede cumplir varios encargos a la vez, así que tú eliges cuál se lo lleva. Elige el encargo que viste en el mercado de esclavos.""",
+	TUTORIAL_COMBAT26_2 = """Entregar un cautivo se paga al instante, igual que en el mercado, y cuenta para tu rango de esclavista.""",
 	TUTORIAL_COMBAT27 = """Tras el combate has recibido un personaje aleatorio, algo habitual en los encuentros de mazmorra. Selecciónalo para examinarlo.""",
 	TUTORIAL_COMBAT28 = """Los personajes no deseados pueden venderse de inmediato, reclutarse o esclavizarse.""",
 	TUTORIAL_COMBAT29 = """Intenta persuadirles seleccionando la opción apropiada.""",
@@ -12481,7 +12492,7 @@ Antes de que pudiera decir nada más, saltaste sobre Anastasia y le diste una fu
 {color=aqua|Sacerdotisa: — Disculparé esta exhibición indecorosa por ahora. Ahora vete y recuerda nuestra agencia en el futuro.}
 
 Diciendo esto, la sacerdotisa abandonó el salón y los guardias te llevaron a la salida. Sin palabras y atada, Anastasia no tuvo más opción que dejar que la arrastraras.""",
-	LOOKING_FOR_PRINCESS_32_f = """{color=rojo|Fracaso}
+	LOOKING_FOR_PRINCESS_32_f = """{color=red|Fracaso}
 
 """,
 	LOOKING_FOR_PRINCESS_32 = """{color=aqua|Anastasia: — ¡Bastardos traidores, sois peores que esta gente! Vosotros y vuestra podrida Freya debéis haber sido...}
@@ -23971,6 +23982,22 @@ You'll get between %s and %s of %s.""", # MISSING TRANSLATION
 	FACTION_POINTS = "Puntos de facción",
 	UNSPENT_POINTS = "Puntos no gastados",
 	UPGRADES_INFO = """Los efectos de las mejoras y los ajustes de misión se actualizan pasado un tiempo.""",
+	SETTLEMENT_MANAGEMENT_LABEL = "Gestión de la ciudad",
+	SETTLEMENT_MANAGEMENT_INFO = "Se paga con el tesoro. Cada mejora surte efecto de inmediato.",
+	SETTLEMENT_MANAGEMENT_GOLD = "Oro: %d",
+	SETTLEMENT_MANAGEMENT_SATURATION = "Saturación: %d",
+	SETTLEMENT_MANAGEMENT_SATURATION_BONUS = "Saturación: %d (+%d%%)",
+	SETTLEMENT_MANAGEMENT_UNLOCKED = "Ahora disponible en %s",
+	SETTLEMENT_MANAGEMENT_UNLOCKED_LOG = "La Gestión de la ciudad ya está disponible en %s: es la primera opción del menú de la ciudad.",
+	SETTLEMENT_UPGRADE_PRICE = "Costo: %d de oro",
+	SETTLEMENT_UPGRADE_BUILT = "Construido",
+	SETTLEMENT_UPGRADE_TRADE_POST = "Puesto comercial",
+	SETTLEMENT_UPGRADE_TRADE_POST_DISC = "Los mercaderes llevan los bienes de esta ciudad al mercado de Aliron, donde se venden junto con todo lo demás.",
+	SETTLEMENT_UPGRADE_TRADE_POST_NOW = "Sus bienes están a la venta en el mercado de Aliron.",
+	SETTLEMENT_UPGRADE_TAVERN = "Taberna",
+	SETTLEMENT_UPGRADE_TAVERN_DISC = "Atrae a más clientes en busca de compañía.",
+	SETTLEMENT_UPGRADE_TAVERN_NEXT = "Siguiente: saturación +%d%% (%d → %d por semana).",
+	SETTLEMENT_UPGRADE_TAVERN_NOW = "Saturación +%d%%.",
 	UNLOCKED_LABEL = """Unlocked""", # MISSING TRANSLATION
 	POINTS_LABEL = """puntos""",
 	CANT_PURCHASE_LOC_LABEL = """Ya no se puede comprar""",
@@ -24202,7 +24229,7 @@ Ya no te queda más tiempo.""",
 	DATING_PULLTAIL_ACCEPT_1 = "A pesar del intenso dolor, {^[name2]:[race2] [boy2]:[he2]} soporta estoicamente tu abuso.",
 	DATING_PULLTAIL_RESIST_1 = "{^[name2]:[race2] [boy2]:[he2]} parece {^mad:angry} y trata de liberarse.",
 	DATING_PULLTAIL_RESIST_2 = "{^[name2]:[race2] [boy2]:[he2]} {^whines:cries} En protesta{^:, begging for mercy}.",
-	DATING_SLAP_INITIATE_1 = "Tu das una bofetada {^[name2]:[race2] [boy2]} a través de la cara{: dejando una marca en [his2] mejilla}.",
+	DATING_SLAP_INITIATE_1 = "Tu das una bofetada {^[name2]:[race2] [boy2]} a través de la cara{^:, dejando una marca en [his2] mejilla}.",
 	DATING_SLAP_ACCEPT_1 = "A pesar del intenso dolor, {^[name2]:[race2] [boy2]:[he2]} soporta estoicamente tu abuso.",
 	DATING_SLAP_RESIST_1 = "{^[name2]:[race2] [boy2]:[he2]} parece {^mad:very agited}.",
 	DATING_FOOD_INITIATE_1 = "Tu ofreces {^[name2]:[race2] [boy2]:[he2]} un regalo de [food].",
@@ -28477,7 +28504,7 @@ Upon your arrival, she turns toward you. Her eyes still glow that unsettling vio
 	JEAN_SYLAS_SEARCH_JEAN_OPTION_RECORDS = """I read the records, alright. You were sealed five hundred years ago. Doesn't even sound that long for a creature like you.""", # MISSING TRANSLATION
 	JEAN_SYLAS_DEMON_TIME_LONG = """{color=aqua|Jean: — Five hundred years, dammit! Five hundred years sealed in a piece of glass! All just because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}""", # MISSING TRANSLATION
 	JEAN_SYLAS_DEMON_TIME_RECORDS = """{color=aqua|Jean: — Fuck you! Five hundred years isn't long when you're having fun, not when you're stuck in one place! And all because one of those fucking zealots turned out to be oh so holy and raised an alarm after noticing my presence!}""", # MISSING TRANSLATION
-	JEAN_SYLAS_DEMON_MONOLOGUE_1 = """{color=reed|Jean: — I was so bored and could do nothing about it! Well... almost nothing. Of course, I tirelessly worked on my plan to escape, but that's a given.}
+	JEAN_SYLAS_DEMON_MONOLOGUE_1 = """{color=aqua|Jean: — I was so bored and could do nothing about it! Well... almost nothing. Of course, I tirelessly worked on my plan to escape, but that's a given.}
 
 The creature continues, clearly reveling in its own cunning, savoring each word like a well‑earned victory.""", # MISSING TRANSLATION
 	JEAN_SYLAS_DEMON_MONOLOGUE_2 = """{color=aqua|Jean: — Even stuck in that glass, I shaped legends. I guided discoveries. I nudged the curious exactly where I needed them. I changed dozens of hosts just to grab a tiny bit more power for myself each time...}
@@ -33611,6 +33638,99 @@ Levels can be added to gear that is already enchanted. Worn gear is taken off fo
 	ENCHANTING_NO_DONORS = """Nobody at the mansion can give mana.""", # MISSING TRANSLATION
 	ENCHANTING_PERFORM = """Enchant""", # MISSING TRANSLATION
 	ENCHANTING_ANIM_TITLE = """Enchanted""", # MISSING TRANSLATION
+	CRAFTPANEL_TITLE = """Taller""",
+	CRAFTPANEL_JOB_SMITH = """Herrería""",
+	CRAFTPANEL_JOB_TAILOR = """Sastrería""",
+	CRAFTPANEL_JOB_ALCHEMY = """Alquimia""",
+	CRAFTPANEL_JOB_COOKING = """Cocina""",
+	CRAFTPANEL_TAB_HINT = """%s de trabajo por turno · %d en la cola""",
+	CRAFTPANEL_CRAFTERS = """Artesanos""",
+	CRAFTPANEL_CRAFTERS_HELP = """Todos los que trabajan en las salas de este oficio y cuánto trabajo aporta cada uno a la cola por turno. Las herramientas de una sala multiplican lo que hacen sus artesanos.\nHaz clic en un puesto libre para poner a alguien en él, o en un artesano para retirarlo.""",
+	CRAFTPANEL_PER_TURN = """%s por turno""",
+	CRAFTPANEL_NO_ROOM = """Aún no hay sala para este oficio""",
+	CRAFTPANEL_TOOLS_HINT = """Herramientas de esta sala: trabajo ×%s""",
+	CRAFTPANEL_SKILL = """%s %s""",
+	CRAFTPANEL_TAKE_OFF = """Haz clic para retirar a %s de este trabajo""",
+	CRAFTPANEL_ADD_CRAFTER = """+ Añadir artesano""",
+	CRAFTPANEL_PICK_FOR = """%s: ¿quién trabaja aquí?""",
+	CRAFTPANEL_BACK = """Atrás""",
+	CRAFTPANEL_NOBODY_FREE = """Nadie en la mansión puede ocupar este puesto.""",
+	CRAFTPANEL_IDLE = """Sin tarea""",
+	CRAFTPANEL_NOW = """Ahora: %s""",
+	CRAFTPANEL_MODE_RECIPES = """Recetas""",
+	CRAFTPANEL_MODE_IMPROVE = """Mejorar equipo""",
+	CRAFTPANEL_FILTER_ALL = """Todo""",
+	CRAFTPANEL_FILTER_MATERIALS = """Materiales""",
+	CRAFTPANEL_FILTER_GEAR = """Equipo""",
+	CRAFTPANEL_FILTER_COSTUME = """Disfraces""",
+	CRAFTPANEL_FILTER_USABLES = """Consumibles""",
+	CRAFTPANEL_ITEMS_ALL = """Todo""",
+	CRAFTPANEL_ITEMS_WEAPONS = """Armas""",
+	CRAFTPANEL_ITEMS_ARMOR = """Armaduras""",
+	CRAFTPANEL_NO_RECIPES = """Ninguna receta coincide.""",
+	CRAFTPANEL_IN_QUEUE = """Ya está en la cola""",
+	CRAFTPANEL_NEEDS_EXPANSION = """Requiere Ampliación %s""",
+	CRAFTPANEL_ANY_MATERIAL = """%s: cualquier material adecuado, se elige en el banco""",
+	CRAFTPANEL_EDITING = """Editando un pedido. Materiales fijados.""",
+	CRAFTPANEL_NEW_ORDER = """Nuevo pedido""",
+	CRAFTPANEL_CARD_META = """en almacén %d""",
+	CRAFTPANEL_STATS = """Estadísticas""",
+	CRAFTPANEL_STATS_POOR = """Con calidad Pobre""",
+	CRAFTPANEL_CHOOSE = """Elegir""",
+	CRAFTPANEL_PICK_BELOW = """elige abajo""",
+	CRAFTPANEL_CHOOSE_MATERIAL = """· elige un material""",
+	CRAFTPANEL_CAPACITY_BONUS = """Capacidad de encantamiento: %s""",
+	CRAFTPANEL_NO_BONUS = """sin bonificación""",
+	CRAFTPANEL_AMOUNT_BATCH = """Lote""",
+	CRAFTPANEL_AMOUNT_KEEP = """Mantener en reserva""",
+	CRAFTPANEL_AMOUNT_ENDLESS = """Sin fin""",
+	CRAFTPANEL_ORDER_HELP = """Lote hace un número fijo de tandas. Mantener en reserva vuelve a empezar cada vez que el almacén baja del número inferior y se detiene en el superior. Sin fin sigue hasta que lo quites.\nLos materiales se toman al empezar cada tanda; un pedido al que le faltan espera y se trabaja el siguiente.""",
+	CRAFTPANEL_RUNS = """Tandas""",
+	CRAFTPANEL_FROM = """de""",
+	CRAFTPANEL_TO = """a""",
+	CRAFTPANEL_UNTIL_REMOVED = """hasta que lo quites""",
+	CRAFTPANEL_TURN = """%d turno""",
+	CRAFTPANEL_TURNS = """%d turnos""",
+	CRAFTPANEL_CHOOSE_FOR = """Elige un material para: %s""",
+	CRAFTPANEL_SHORT_OF = """Falta %s. El pedido espera""",
+	CRAFTPANEL_SHORT_FIRST_STEP = """Falta %s para el primer paso. El pedido espera""",
+	CRAFTPANEL_ADD = """Añadir a la cola""",
+	CRAFTPANEL_SAVE = """Guardar cambios""",
+	CRAFTPANEL_NO_ITEMS = """No hay equipo que este taller pueda mejorar.""",
+	CRAFTPANEL_HIGHEST = """calidad máxima""",
+	CRAFTPANEL_STEP_WORK = """Trabajo para el siguiente paso""",
+	CRAFTPANEL_STEP_GOLD = """Oro para el siguiente paso, se paga al empezar su trabajo""",
+	CRAFTPANEL_GOLD_BY_STEP = """Oro por cada paso, se paga al empezar su trabajo:""",
+	CRAFTPANEL_MATERIAL_BY_STEP = """Para cada paso, se toma al empezar su trabajo:""",
+	CRAFTPANEL_WORN_BY = """Lo lleva %s""",
+	CRAFTPANEL_ON_BENCH = """En el taller""",
+	CRAFTPANEL_ON_BENCH_NOW = """Ahora en el banco""",
+	CRAFTPANEL_STEP_OF = """Paso %d de %d""",
+	CRAFTPANEL_NOW_QUALITY = """ahora""",
+	CRAFTPANEL_TO_CRAFT = """%s para fabricar""",
+	CRAFTPANEL_AT_BEST = """Esta pieza ya está en su mejor estado.""",
+	CRAFTPANEL_SEND = """Enviar a: %s""",
+	CRAFTPANEL_QUEUE = """Cola""",
+	CRAFTPANEL_QUEUE_HELP = """Todas las salas de este oficio trabajan esta misma cola desde arriba. Haz clic en un pedido para cambiarlo; arrástralo o usa las flechas para moverlo.\nMejorar equipo se lo quita a quien lo lleva y lo saca del almacén hasta que termina el trabajo; después vuelve a su dueño.""",
+	CRAFTPANEL_QUEUE_EMPTY = """No hay nada en cola. Quien trabaja aquí descansa.""",
+	CRAFTPANEL_ORDER_LEFT = """faltan %d""",
+	CRAFTPANEL_ORDER_ENDLESS = """Sin fin""",
+	CRAFTPANEL_ORDER_KEEP = """Reserva %d–%d · hay %d""",
+	CRAFTPANEL_STATUS_WORKING = """En curso""",
+	CRAFTPANEL_STATUS_WAITING = """Siguiente""",
+	CRAFTPANEL_STATUS_NOMAT = """Sin material""",
+	CRAFTPANEL_STATUS_NOGOLD = """Sin oro""",
+	CRAFTPANEL_STATUS_NOWORKERS = """Sin gente""",
+	CRAFTPANEL_STATUS_HELD = """Bloqueado""",
+	CRAFTPANEL_STATUS_STOCKED = """Completo""",
+	CRAFTPANEL_ONGOING = """Continuo""",
+	CRAFTPANEL_REMOVE_ORDER = """¿Quitar este pedido?""",
+	CRAFTPANEL_STOP_IMPROVE = """¿Detener y recuperar la pieza?""",
+	CRAFTPANEL_REMOVE = """Quitar""",
+	CRAFTPANEL_KEEP = """Mantener""",
+	CRAFTPANEL_LOG_IMPROVED = """%s ahora es %s.""",
+	CRAFTPANEL_LOG_BACK_WITH = """%s la vuelve a tener.""",
+
 	MANSIONVIEW_REST = """Idle""", # MISSING TRANSLATION
 	MANSIONVIEW_ATWORK = """At work""", # MISSING TRANSLATION
 	MANSIONVIEW_HOUSEALL = """Bed them down""", # MISSING TRANSLATION

@@ -285,6 +285,7 @@ https://freesound.org/people/pfranzen/sounds/192072/""",
 	EXPLORESHOP = """市场""",
 	EXPLORBUYDUNGEON = """购买地牢""",
 	EXPLORENOTICEBOARD = """公告板""",
+	EXPLORESETTLEMENTMANAGEMENT = """城市管理""",
 	EXPLOREHIRE = """雇佣""",
 	EXPLORESELLCHR = """出售角色""",
 	EXPLOREQUESTS = """任务""",
@@ -1525,8 +1526,7 @@ The first {color=green|positive} trait is free. {color=red|Negative} traits can 
 	TRAITREPLACE_LEAD_MANY = """[His] {category} slots are full. Pick a trait to replace, or keep the current ones.""", # MISSING TRANSLATION
 	TRAITREPLACE_NEW = """New""", # MISSING TRANSLATION
 	TRAITREPLACE_REPLACE = """Replace""", # MISSING TRANSLATION
-	TRAITREPLACE_KEEP_ONE = """Keep current trait""", # MISSING TRANSLATION
-	TRAITREPLACE_KEEP_MANY = """Keep current traits""", # MISSING TRANSLATION
+	TRAITREPLACE_KEEP = """保留""",
 	TRAITREPLACE_LOCK_PERMANENT = """Can't be replaced: permanent""", # MISSING TRANSLATION
 	TRAITREPLACE_LOCK_INNATE = """Can't be replaced: from class or race""", # MISSING TRANSLATION
 	TRAITREPLACE_LOCK_STATUS = """Can't be replaced: a slave's status""", # MISSING TRANSLATION
@@ -4429,6 +4429,22 @@ What should become of what lies there?""", # MISSING TRANSLATION
 	FACTION_POINTS = """派系点数""",
 	UNSPENT_POINTS = """未分配点数""",
 	UPGRADES_INFO = """升级效果和任务设置将在一段时间后更新。""",
+	SETTLEMENT_MANAGEMENT_LABEL = """城市管理""",
+	SETTLEMENT_MANAGEMENT_INFO = """从国库支付。每项改进都会立即生效。""",
+	SETTLEMENT_MANAGEMENT_GOLD = """金币：%d""",
+	SETTLEMENT_MANAGEMENT_SATURATION = """饱和度：%d""",
+	SETTLEMENT_MANAGEMENT_SATURATION_BONUS = """饱和度：%d（+%d%%）""",
+	SETTLEMENT_MANAGEMENT_UNLOCKED = """现已开放：%s""",
+	SETTLEMENT_MANAGEMENT_UNLOCKED_LOG = """城市管理现已开放：%s。它是城市菜单中的第一个选项。""",
+	SETTLEMENT_UPGRADE_PRICE = """价格：%d 金币""",
+	SETTLEMENT_UPGRADE_BUILT = """已建成""",
+	SETTLEMENT_UPGRADE_TRADE_POST = """贸易站""",
+	SETTLEMENT_UPGRADE_TRADE_POST_DISC = """商人会把这座城市的货物运到阿利隆市场，与其他商品一同出售。""",
+	SETTLEMENT_UPGRADE_TRADE_POST_NOW = """其货物正在阿利隆市场出售。""",
+	SETTLEMENT_UPGRADE_TAVERN = """酒馆""",
+	SETTLEMENT_UPGRADE_TAVERN_DISC = """吸引更多寻求陪伴的客人。""",
+	SETTLEMENT_UPGRADE_TAVERN_NEXT = """下一级：饱和度 +%d%%（每周 %d → %d）。""",
+	SETTLEMENT_UPGRADE_TAVERN_NOW = """饱和度 +%d%%。""",
 	UNLOCKED_LABEL = """已解锁""",
 	POINTS_LABEL = """点数""",
 	CANT_PURCHASE_LOC_LABEL = """无法继续购买""",
@@ -4660,7 +4676,7 @@ What should become of what lies there?""", # MISSING TRANSLATION
 	DATING_PULLTAIL_ACCEPT_1 = """尽管剧痛无比，{^[name2]:[race2] [boy2]:[name2]} 仍冷静地忍受着你的虐待。""",
 	DATING_PULLTAIL_RESIST_1 = """{^[name2]:[race2] [boy2]:[name2]} 看起来很 {^恼火:愤怒}，并试图挣脱。""",
 	DATING_PULLTAIL_RESIST_2 = """{^[name2]:[race2] [boy2]:[name2]} 在抗议中 {^呜咽:哭喊}{^:, 祈求怜悯}。""",
-	DATING_SLAP_INITIATE_1 = """你扇了 {^[name2]:[race2] [boy2]} 一记耳光{: 在 [name2] 的脸颊上留下了一个印记}。""",
+	DATING_SLAP_INITIATE_1 = """你扇了 {^[name2]:[race2] [boy2]} 一记耳光{^:，在 [name2] 的脸颊上留下了一个印记}。""",
 	DATING_SLAP_ACCEPT_1 = """尽管剧痛无比，{^[name2]:[race2] [boy2]:[name2]} 仍冷静地忍受着你的虐待。""",
 	DATING_SLAP_RESIST_1 = """{^[name2]:[race2] [boy2]:[name2]} 看起来很 {^恼火:激动}。""",
 	DATING_FOOD_INITIATE_1 = """你给 {^[name2]:[race2] [boy2]} 提供了一份 [food] 作为款待。""",
@@ -11211,7 +11227,18 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_WORK_ROOM11 = """然后将她放回脚手架上。""",
 	TUTORIAL_WORK_ROOM12 = """建造进度取决于工作量而非天数，因此更优秀的建筑工能更快建好房间。这座房间即将完工——结束本回合。""",
 	TUTORIAL_WORK_ROOM14 = """厨房已建成。打开它。""",
-	TUTORIAL_WORK_ROOM15 = """制作类房间可以在内部下达生产订单。从此处打开制作菜单。""",
+	TUTORIAL_WORK_ROOM15 = """制作类房间会打开对应行业的工坊。从此处打开它。""",
+	TUTORIAL_WORK_CRAFT1 = """这里是工坊。厨房对应的行业“烹饪”已经打开，其配方列在中间。选择“面包”。""",
+	TUTORIAL_WORK_CRAFT2 = """工作台会显示每轮制作的产出和消耗。订单本身在右侧队列下方设置：按{color=yellow|批量}制作若干轮、在两个数值之间{color=yellow|保持库存}，或{color=yellow|无限}制作。将这一批增加 10 轮。""",
+	TUTORIAL_WORK_CRAFT3 = """点击{color=yellow|加入队列}。""",
+	TUTORIAL_WORK_CRAFT4 = """订单会按顺序排队，而非相互覆盖，同一行业的每个房间都会从队首开始处理。再添加一个订单——选择“肉汤”。""",
+	TUTORIAL_WORK_CRAFT5 = """同样将它加入队列。""",
+	TUTORIAL_WORK_CRAFT6 = """两个订单现在都在队列中等待。订单可以修改、上移或下移，或取消——点击肉汤将其打开。""",
+	TUTORIAL_WORK_CRAFT7 = """取消它。""",
+	TUTORIAL_WORK_CRAFT8 = """确认取消。""",
+	TUTORIAL_WORK_CRAFT9 = """在有人动手之前，订单只是一份计划。左侧一栏列出了该行业的房间及其岗位——点击{color=yellow|+ 添加工匠}。""",
+	TUTORIAL_WORK_CRAFT10 = """宅邸中所有能担任该岗位的人都会列出，并显示他们每回合能投入多少工作量。选择黛西。""",
+	TUTORIAL_WORK_CRAFT11 = """厨房已经有了订单和厨师。关闭工坊。""",
 	TUTORIAL_WORK_ROOM16 = """厨房专有的工作类别已自动选中。选择“面包”。""",
 	TUTORIAL_WORK_ROOM17 = """确认。""",
 	TUTORIAL_WORK_ROOM18 = """你可以调整数量。再增加 10 份。""",
@@ -11224,7 +11251,7 @@ ACHIBONUS_HELEVIEL_START_DESC = """在拥有赫蕾维尔的情况下开始新游
 	TUTORIAL_WORK_ROOM25 = """关闭制作窗口。""",
 	TUTORIAL_WORK_ROOM26 = """在有人站在房间里工作之前，订单只是一张计划。选中黛西。""",
 	TUTORIAL_WORK_ROOM27 = """将她放置在厨房的工作岗位上。""",
-	TUTORIAL_WORK_ROOM28 = """结束回合。她烘焙出的产物会记录在庄园日志中。""",
+	TUTORIAL_WORK_ROOM28 = """结束回合。黛西的厨艺还不够好，一轮面包需要她花几个回合——工坊的队列会显示进度，每完成一轮都会记录在庄园日志中。""",
 	TUTORIAL_WORK_ROOM29 = """并非庄园的所有工作都在室内进行。打开“区域任务”。""",
 	TUTORIAL_WORK_ROOM30 = """外围场地拥有各自的设施，且每项设施都需要独立的人手。选中艾里斯。""",
 	TUTORIAL_WORK_ROOM31 = """将她分配到菜园。她每个回合都会收割蔬菜。""",
@@ -11484,7 +11511,7 @@ ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: — 哼，所以你现在是
 
 {color=yellow|胖强盗：—— 就是，我可不想继续呆在这个鬼地方了。}
 
-{color=aqua|老大：—— 行了行了，给300金币，这家伙就归你了。""",
+{color=aqua|老大：—— 行了行了，给300金币，这家伙就归你了。}""",
 	FINDFRED_BRIBE_TAKEN = """你把钱递给他们，他们便准备离开。
 
 {color=aqua|老大：—— 合作愉快。哦，对了，万一有别人找过来，可没必要提起咱们之间的小交易。}""",
@@ -12733,7 +12760,7 @@ DIVINE_SYMBOL_18_1 = """{color=yellow|第一守卫：——嗯？怎么，你讨
 	SEARCH_SERVANTS_1 = """{color=yellow|— 嗯，也许可以去问问邓肯，看能不能让你跟那个精灵女孩谈谈。她和其他被抓来的反抗军看起来不太一样，很特别。}
 
 {color=yellow|— 不过，如果你不擅长交涉，法师公会可能有些其他办法。魔法的用途可是很广泛的。}""",
-   SEARCH_SERVANTS_2 = """{color=yellow|— 哼，那些战士抓回来的叛军看起来都只是些喽啰。我怀疑从他们嘴里能问出什么有价值的情报，如果能问出东西才怪。
+   SEARCH_SERVANTS_2 = """{color=yellow|— 哼，那些战士抓回来的叛军看起来都只是些喽啰。我怀疑从他们嘴里能问出什么有价值的情报，如果能问出东西才怪。}
 
 {color=yellow|— 不过话说回来，你或许可以找Myr帮帮忙。魔法这玩意儿，用处可是多得很呢。}""",
 	SEARCH_SERVANTS_OPTION = """谢了，我这就去办。""",
@@ -14980,7 +15007,7 @@ Inside lies a dust-choked leather book, its cover stamped with a worn symbol of 
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = """这把剑已经不在我们手里了。""",
 	ZEPHYRA_RECRUITMENT_4 = """你向泽菲拉解释了内战初期发生的事情。
 
-{color=aqua|{color=yellow|泽菲拉：— 嗯，这下麻烦了。在战争初期有个恶魔拿走了那把剑？这可能就是我被警告过的那种危险。真是太可惜了，但这只会让我们更迫切地需要专注于收集其他神器。}}
+{color=aqua|{color=yellow|泽菲拉：— 嗯，这下麻烦了。在战争初期有个恶魔拿走了那把剑？这可能就是我被警告过的那种危险。真是太可惜了，但这只会让我们更迫切地需要专注于收集其他神器。}
 
 {color=yellow|泽菲拉：— 神器目前并没有什么太大威力，但因为它们与神祇相连，它们可能会变得非常危险。我认为我们必须在那个恶魔染指它们之前将其保护起来。下一个最近的神器一定在森林精灵手中。}""",
 	ZEPHYRA_RECRUITMENT_4_OPTION_1 = """我怎么知道你的目标是好的？""",
@@ -15810,7 +15837,7 @@ Inside lies a dust-choked leather book, its cover stamped with a worn symbol of 
 
 	ERLEN_LIRA_7_OPTION_1 = """我还没完全理解目标，你们到底在争取什么？""",
    ERLEN_LIRA_7_OPTION_2 = """好吧，那么计划是什么？""",
-	ERLEN_LIRA_8_1_1 = """埃伦沉默了许久，整理了一下思绪才终于开口。 {color=aqua|{color=yellow|埃伦：— 我并不认同我们精灵族作为一个民族正在走的道路。近几十年来，男性和女性的隔离变得比以往任何时候都更加严重。大多数男性在最好的情况下被当作仆人，在最坏的情况下被当作流放者。芙蕾雅的侍僧们被禁止与他们接触，我们之间往往充满敌意。}} {color=yellow|埃伦：— 海勒维尔非常赞同继续这种政策，但一位新的大祭司可能会推动真正的变革。我们需要一些空间来缓解这种摩擦。这就是我让你带莉拉来这里的原因。}""",
+	ERLEN_LIRA_8_1_1 = """埃伦沉默了许久，整理了一下思绪才终于开口。 {color=aqua|{color=yellow|埃伦：— 我并不认同我们精灵族作为一个民族正在走的道路。近几十年来，男性和女性的隔离变得比以往任何时候都更加严重。大多数男性在最好的情况下被当作仆人，在最坏的情况下被当作流放者。芙蕾雅的侍僧们被禁止与他们接触，我们之间往往充满敌意。} {color=yellow|埃伦：— 海勒维尔非常赞同继续这种政策，但一位新的大祭司可能会推动真正的变革。我们需要一些空间来缓解这种摩擦。这就是我让你带莉拉来这里的原因。}""",
 	ERLEN_LIRA_8_1_2 = """{color=yellow|莉拉：— 我……我很感激你对我的信任，但我对这种大事还是没底。我当初进神殿只是因为他们的好意。我甚至不是本地人，现在你竟然提议让我成为下一任大祭司？就算我对你有好感，这也……太强人所难了……} {color=aqua|埃伦：— 你个人的感受并不重要。如果芙蕾雅认为你有资格，那你就能做到。我已经受够了这种现状，我愿意把我所有的信念都押在你身上。}""",
 	ERLEN_LIRA_8_2 = """{color=aqua|埃伦：— 鉴于目前的情况，我们只有一条路可走。我们必须在仪式达到顶峰的那一刻冲进去。你不在的时候我已经准备好了一切。再等两天，然后去精灵首都，里昂到那时应该也赶到了。在此之前，最好别在那附近逗留。}""",
 	ERLEN_LIRA_8_OPTION_1 = """希望你没忘了我们的交易。""",
@@ -15821,7 +15848,7 @@ Inside lies a dust-choked leather book, its cover stamped with a worn symbol of 
 	ERLEN_LEON_1_OPTION_1 = """我们该怎么做？""",
 	ERLEN_LEON_1_OPTION_2 = """那我们最好别浪费时间废话了。""",
 	ERLEN_LEON_2 = """{color=aqua|埃伦：— 我们必须强行突入。大部分士兵此刻应该都被部署在远离首都的地方，但剩下的那些肯定会被抽调去保卫仪式。} {color=yellow|里昂：— 听起来很容易。有什么陷阱吗？} {color=aqua|埃伦：— 我们必须在仪式结束前把莉拉送进神殿。我们会带头潜入。}""",
-	ERLEN_LEON_3 = """在埃伦的带领下，你们穿过小巷，他对首都了如指掌，成功避开了所有的巡逻队。你们的队伍规模不大，由精灵和兽人首领以及你的私人团队组成。当你们靠近主神殿时，不得不走出藏身处，穿过通往神殿大门的桥梁。然而，桥上有守卫。当你们被发现时，士兵们冲向你们。埃伦走到了他们前面。 {color=aqua|埃伦：— 放松。这些人是跟我一起的。}} {color=yellow|守卫：— 抱歉，指挥官，但我们接到的命令是阻止您进入。} {color=aqua|埃伦：— 妈的。看来得打一场了。}""",
+	ERLEN_LEON_3 = """在埃伦的带领下，你们穿过小巷，他对首都了如指掌，成功避开了所有的巡逻队。你们的队伍规模不大，由精灵和兽人首领以及你的私人团队组成。当你们靠近主神殿时，不得不走出藏身处，穿过通往神殿大门的桥梁。然而，桥上有守卫。当你们被发现时，士兵们冲向你们。埃伦走到了他们前面。 {color=aqua|埃伦：— 放松。这些人是跟我一起的。} {color=yellow|守卫：— 抱歉，指挥官，但我们接到的命令是阻止您进入。} {color=aqua|埃伦：— 妈的。看来得打一场了。}""",
 	ERLEN_LEON_4 = """你们成功击败了巡逻队并穿过了桥。然而，当你们靠近大门时，发现后方有一大队士兵正朝你们逼近。 {color=yellow|里昂：— 你该走了，否则就来不及了。我们会拦住他们。} {color=aqua|埃伦：— 我的手下也会留下。快走，[name]，没多少时间了！}""",
 	CEREMONY_1 = """仪式已经进行了一段时间，这时一名侍僧冲到海勒维尔身边，向她汇报正在发生的袭击。她面无表情，只是下令继续仪式。看来她认为后卫部队应该能拦住埃伦足够长的时间，让她完成计划。海勒维尔也听闻了一些关于兽人采取行动的风声，但她决定这事可以等到她的大祭司身份得到确认后再处理。""",
 	CEREMONY_2 = """当你们的小队闯入时，你们意识到仪式已经启动。房间里充满了白光。你们在最后一刻赶到了。""",
@@ -16864,7 +16891,7 @@ LILIA_STARTING_2_2 = """{color=yellow|— 嘿，嘿，你到底是为了什么�
 	LILIA_SEX_SCENE_3 = """交配持续了一会儿，直到你在她体内搏动，少女早已气喘吁吁，随着一阵销魂的呻吟，你将炽热的精华喷洒在她体内，灌满了她的子宫。她保持着姿势，腰肢摇晃，死死夹着你的肉棒，小腹因被填满而微微隆起，大口喘息着。
 
 {color=yellow|— ……太棒了！下次我们再来一次好吗？}""",
-	LILIA_RECRUIT_1_1 = """{color=yellow|— 诶？我不知道，我觉得我还不够了解你，[name]。""",
+	LILIA_RECRUIT_1_1 = """{color=yellow|— 诶？我不知道，我觉得我还不够了解你，[name]。}""",
 	LILIA_RECRUIT_1_2 = """{color=yellow|— 跟你一起走……？呃，我不确定，我从没离开过森林。我听说人类很可怕。}""",
 	LILIA_RECRUIT_1_OPTION_1 = """[Charm Factor] 我很想让你住到我那里去。""",
 	LILIA_RECRUIT_1_OPTION_2 = """慢慢你就会习惯的。""",
@@ -17703,7 +17730,7 @@ CHRISTMAS_EVENT_4 = """{color=yellow|黛西: — 这、这、这是什么衣服�
 
 {color=yellow|卡莉：— [Master]……}
 
-{color=aqua|泽菲拉：— 你总是这么照顾我们，做得太棒了。
+{color=aqua|泽菲拉：— 你总是这么照顾我们，做得太棒了。}
 
 {color=yellow|卡莉：— 我们说好了，想要为此好好谢谢你。}
 
@@ -20084,7 +20111,7 @@ AMELIA_TRIAL_NORMAL_5_OPTION_3 = """我没有其他异议了。""",
 
 与你预想的截然不同，莉莉丝对此似乎完全没有表现出丝毫恐惧。
 
-{color=莉莉丝：—— 去你的，如果这会伤害到 [name]，我是绝不会再这样做了。}
+{color=yellow|莉莉丝：—— 去你的，如果这会伤害到 [name]，我是绝不会再这样做了。}
 
 {color=yellow|声音：—— 给我退下，我决不允许你违抗我的意志。}""",
 	LILITH_DEMON_VOICE_OPTION_1 = """那你就最好乖乖承受老子的毒打吧 *开战*""",
@@ -22162,7 +22189,7 @@ Ketch迅速闪身逃离，只留下珂洛呆立在原地，震惊地看着濒死
 
 尽管珂洛的回答可能稍显争议，但泽菲拉的态度却发生了转变，仿佛她刚发现了一位志同道合的新闺蜜。
 
-{color=泽菲拉：— 如果你真是这么想的话……你看，我正好有个主意，能让我们好好取悦我们的[Master]……}""",
+{color=yellow|泽菲拉：— 如果你真是这么想的话……你看，我正好有个主意，能让我们好好取悦我们的[Master]……}""",
 	KURO_ZEPH_TAILJOB3 = """珂洛和泽菲拉双双钻进你的被窝，脸上都带着狡黠的微笑。对泽菲拉来说这是常态，但对珂洛而言却极度罕见。她们纤细的手指在你身上游走，轻柔的触碰让你渐渐燥热起来。她们赤身裸体，挺立的乳尖抵在你的身体两侧，你的肉棒也随之昂扬抬头。
 
 {color=yellow|泽菲拉：— 早安啊[Master]，看起来很惊讶？}
@@ -25742,7 +25769,7 @@ Cerab死死地别过头去，用动作表明他拒不开口。黑不爽地瞪着
 
 即便她意识到请求者本身就是芙蕾雅的前任大祭司，这位萨满的表现依然显得十分随意。
 
-{color=萨夫拉：—— 不过，我不能就这么白白送给你，对吧？海勒维尔女士，我需要你帮我一个忙。}""",
+{color=yellow|萨夫拉：—— 不过，我不能就这么白白送给你，对吧？海勒维尔女士，我需要你帮我一个忙。}""",
 	HELEVIEL_SLAVE_BEASTKIN_OPTION_1 = """她会答应你的一切要求""",
 	HELEVIEL_SLAVE_BEASTKIN_OPTION_2 = """好吧，只要是合理的要求""",
 	HELEVIEL_SLAVE_BEASTKIN_REPLY = """精灵女子虽然身体僵硬了一下，但还是继续说了下去，她知道在这里她别无选择。
@@ -26301,7 +26328,7 @@ Cerab死死地别过头去，用动作表明他拒不开口。黑不爽地瞪着
 	MAE_SPIRIT_AFTER_CHOICE_OPTION_3 = """你刚才面对鸡巴的时候可比这紧张多了。""",
 	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_1 = """{color=yellow|梅: — 你说得对。我能做到的……嗯，至少有你在帮我。}""",
 	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_2 = """{color=yellow|梅: — 谢谢你，[name]。很高兴你站在我这边。}""",
-	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_3 = """{color=yellow|梅: — 嘿，别这么说。我是认真的。""",
+	MAE_SPIRIT_AFTER_CHOICE_RESPONSE_3 = """{color=yellow|梅: — 嘿，别这么说。我是认真的。}""",
 	MAE_SPIRIT_AFTER_CHOICE_LEAVE = """你和梅一起离开，准备完成这项任务。""",
 	MAE_ANCIENT_JUNGLE_START = """你在一个偏僻、杂草丛生的房间里发现了一个半毁的小祭坛。梅赞许地点了点头。
 
@@ -30640,7 +30667,7 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 """,
 	LIRA_QUEST_1_WATCH_REASON_FOLLOWUP_3 = """{color=yellow|莉拉：— 您能告诉我您对我有什么期望吗？我应该成为什么样的人？}
 
-{color=red考虑到她孤身一人来到这里，而你是她在精灵王国之外唯一真正认识的人，你的回答将明确地对她如何看待自己的未来产生重大影响。}""",
+考虑到她孤身一人来到这里，而你是她在精灵王国之外唯一真正认识的人，你的回答将明确地对她如何看待自己的未来产生重大影响。""",
 	LIRA_QUEST_1_OPTION_SERVE_AS_YOU_SERVED_FREYA = """你应该像侍奉芙蕾雅那样尽心尽力地侍奉我。这正是身为奴隶的意义所在，不是吗？""",
 	LIRA_QUEST_1_OPTION_WHAT_WOULD_YOU_WANT = """虽然从形式上讲你是我的奴隶，但我并没有严苛的限制。所以我问你，你想要什么？""",
 	LIRA_QUEST_1_EXPECTATIONS_ANSWER_1 = """莉拉沉默了片刻进行思考，然后点了点头。
@@ -33181,6 +33208,99 @@ Levels can be added to gear that is already enchanted. Worn gear is taken off fo
 	ENCHANTING_NO_DONORS = """Nobody at the mansion can give mana.""", # MISSING TRANSLATION
 	ENCHANTING_PERFORM = """Enchant""", # MISSING TRANSLATION
 	ENCHANTING_ANIM_TITLE = """Enchanted""", # MISSING TRANSLATION
+	CRAFTPANEL_TITLE = """工坊""",
+	CRAFTPANEL_JOB_SMITH = """锻造""",
+	CRAFTPANEL_JOB_TAILOR = """裁缝""",
+	CRAFTPANEL_JOB_ALCHEMY = """炼金术""",
+	CRAFTPANEL_JOB_COOKING = """烹饪""",
+	CRAFTPANEL_TAB_HINT = """每回合工作量 %s · 队列中 %d 个""",
+	CRAFTPANEL_CRAFTERS = """工匠""",
+	CRAFTPANEL_CRAFTERS_HELP = """在该行业房间中工作的所有人，以及每人每回合为队列投入的工作量。房间的工具会成倍提升其中工匠的产出。\n点击空闲岗位可安排人手，点击工匠可将其撤下。""",
+	CRAFTPANEL_PER_TURN = """每回合 %s""",
+	CRAFTPANEL_NO_ROOM = """尚无该行业的房间""",
+	CRAFTPANEL_TOOLS_HINT = """该房间的工具：工作量 ×%s""",
+	CRAFTPANEL_SKILL = """%s %s""",
+	CRAFTPANEL_TAKE_OFF = """点击将 %s 从该工作中撤下""",
+	CRAFTPANEL_ADD_CRAFTER = """+ 添加工匠""",
+	CRAFTPANEL_PICK_FOR = """谁在%s工作？""",
+	CRAFTPANEL_BACK = """返回""",
+	CRAFTPANEL_NOBODY_FREE = """宅邸中没有人能担任这个岗位。""",
+	CRAFTPANEL_IDLE = """空闲""",
+	CRAFTPANEL_NOW = """当前：%s""",
+	CRAFTPANEL_MODE_RECIPES = """配方""",
+	CRAFTPANEL_MODE_IMPROVE = """强化装备""",
+	CRAFTPANEL_FILTER_ALL = """全部""",
+	CRAFTPANEL_FILTER_MATERIALS = """材料""",
+	CRAFTPANEL_FILTER_GEAR = """装备""",
+	CRAFTPANEL_FILTER_COSTUME = """服饰""",
+	CRAFTPANEL_FILTER_USABLES = """消耗品""",
+	CRAFTPANEL_ITEMS_ALL = """全部""",
+	CRAFTPANEL_ITEMS_WEAPONS = """武器""",
+	CRAFTPANEL_ITEMS_ARMOR = """防具""",
+	CRAFTPANEL_NO_RECIPES = """没有匹配的配方。""",
+	CRAFTPANEL_IN_QUEUE = """已在队列中""",
+	CRAFTPANEL_NEEDS_EXPANSION = """需要扩建 %s""",
+	CRAFTPANEL_ANY_MATERIAL = """%s：任意合适材料，在工作台上选择""",
+	CRAFTPANEL_EDITING = """正在修改队列中的订单。其材料已固定。""",
+	CRAFTPANEL_NEW_ORDER = """新订单""",
+	CRAFTPANEL_CARD_META = """库存 %d""",
+	CRAFTPANEL_STATS = """属性""",
+	CRAFTPANEL_STATS_POOR = """粗糙品质时""",
+	CRAFTPANEL_CHOOSE = """选择""",
+	CRAFTPANEL_PICK_BELOW = """在下方选择""",
+	CRAFTPANEL_CHOOSE_MATERIAL = """· 选择材料""",
+	CRAFTPANEL_CAPACITY_BONUS = """附魔容量：%s""",
+	CRAFTPANEL_NO_BONUS = """无加成""",
+	CRAFTPANEL_AMOUNT_BATCH = """批量""",
+	CRAFTPANEL_AMOUNT_KEEP = """保持库存""",
+	CRAFTPANEL_AMOUNT_ENDLESS = """无限""",
+	CRAFTPANEL_ORDER_HELP = """批量：制作固定轮数。保持库存：库存低于下限时重新开始，达到上限时停止。无限：一直制作，直到你将其移除。\n每轮开始时扣除材料；材料不足的订单会等待，并先处理下一个订单。""",
+	CRAFTPANEL_RUNS = """轮数""",
+	CRAFTPANEL_FROM = """从""",
+	CRAFTPANEL_TO = """到""",
+	CRAFTPANEL_UNTIL_REMOVED = """直到你移除它""",
+	CRAFTPANEL_TURN = """%d 回合""",
+	CRAFTPANEL_TURNS = """%d 回合""",
+	CRAFTPANEL_CHOOSE_FOR = """为%s选择材料""",
+	CRAFTPANEL_SHORT_OF = """缺少%s。订单将等待""",
+	CRAFTPANEL_SHORT_FIRST_STEP = """第一步缺少%s。订单将等待""",
+	CRAFTPANEL_ADD = """加入队列""",
+	CRAFTPANEL_SAVE = """保存修改""",
+	CRAFTPANEL_NO_ITEMS = """没有该工坊可以强化的装备。""",
+	CRAFTPANEL_HIGHEST = """最高品质""",
+	CRAFTPANEL_STEP_WORK = """下一步所需工作量""",
+	CRAFTPANEL_STEP_GOLD = """下一步所需金币，在开始该步工作时支付""",
+	CRAFTPANEL_GOLD_BY_STEP = """每一步所需金币，在开始该步工作时支付：""",
+	CRAFTPANEL_MATERIAL_BY_STEP = """每一步所需材料，在开始该步工作时扣除：""",
+	CRAFTPANEL_WORN_BY = """%s正在穿戴""",
+	CRAFTPANEL_ON_BENCH = """在工坊中""",
+	CRAFTPANEL_ON_BENCH_NOW = """正在工作台上""",
+	CRAFTPANEL_STEP_OF = """第 %d 步，共 %d 步""",
+	CRAFTPANEL_NOW_QUALITY = """当前""",
+	CRAFTPANEL_TO_CRAFT = """制作需 %s""",
+	CRAFTPANEL_AT_BEST = """这件装备已是最佳状态。""",
+	CRAFTPANEL_SEND = """送往%s""",
+	CRAFTPANEL_QUEUE = """队列""",
+	CRAFTPANEL_QUEUE_HELP = """该行业的所有房间都从队首开始处理这同一个队列。点击订单可修改，拖动或使用箭头可调整顺序。\n强化装备期间，该装备会从穿戴者身上卸下并移出仓库，完成后再归还。""",
+	CRAFTPANEL_QUEUE_EMPTY = """队列为空。在这里工作的人会休息。""",
+	CRAFTPANEL_ORDER_LEFT = """还需 %d 份""",
+	CRAFTPANEL_ORDER_ENDLESS = """无限""",
+	CRAFTPANEL_ORDER_KEEP = """保持 %d–%d · 现有 %d""",
+	CRAFTPANEL_STATUS_WORKING = """进行中""",
+	CRAFTPANEL_STATUS_WAITING = """等待中""",
+	CRAFTPANEL_STATUS_NOMAT = """缺少材料""",
+	CRAFTPANEL_STATUS_NOGOLD = """缺少金币""",
+	CRAFTPANEL_STATUS_NOWORKERS = """无人工作""",
+	CRAFTPANEL_STATUS_HELD = """受阻""",
+	CRAFTPANEL_STATUS_STOCKED = """库存已满""",
+	CRAFTPANEL_ONGOING = """持续进行""",
+	CRAFTPANEL_REMOVE_ORDER = """移除这个订单？""",
+	CRAFTPANEL_STOP_IMPROVE = """停止并取回装备？""",
+	CRAFTPANEL_REMOVE = """移除""",
+	CRAFTPANEL_KEEP = """保留""",
+	CRAFTPANEL_LOG_IMPROVED = """%s 现在是%s。""",
+	CRAFTPANEL_LOG_BACK_WITH = """%s已拿回它。""",
+
 	MANSIONVIEW_REST = """闲置""",
 	MANSIONVIEW_ATWORK = """工作中""",
 	MANSIONVIEW_HOUSEALL = """安排住宿""",

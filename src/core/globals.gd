@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.2a'
+const gameversion = '0.16.3'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 #same rule as the sanitizer
@@ -4012,6 +4012,8 @@ func common_effects(effects, from_event = false):
 			'decision':
 				if !ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.append(i.value)
+					#deferred, so a quest completed by the same effects gets its banner first
+					ResourceScripts.game_world.call_deferred("announce_settlement_management")
 			'remove_decision':
 				if ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.erase(i.value)

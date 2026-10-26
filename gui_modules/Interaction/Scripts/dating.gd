@@ -1499,13 +1499,38 @@ func food(person, counter):
 		newbutton.get_node("Amount").text = str(ResourceScripts.game_res.materials[item.code])
 		newbutton.connect("pressed", self, "usefood", [item])
 		globals.connectmaterialtooltip(newbutton, item)
+	#treats are usable items rather than food materials
+	for item in ResourceScripts.game_res.items.values():
+		if item.type == 'gear' or !Items.itemlist[item.itembase].tags.has('date_food'):
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate($Items/ScrollContainer/HBoxContainer)
+		newbutton.get_node("ItemTexture").texture = load(item.icon)
+		newbutton.get_node("Label").text = item.name
+		newbutton.get_node("Amount").text = str(item.amount)
+		newbutton.connect("pressed", self, "usetreat", [item])
+		globals.connectitemtooltip_v2(newbutton, item)
 	prev_action = "food"
 
 
 func usefood(food):
-	var text = input_handler.weightedrandom(date_lines.food_initiate).replace("[food]", food.name) + "\n\n"
 	$Items.hide()
 	ResourceScripts.game_res.set_material(food.code, '-', 1)
+	var state = 'neutral'
+	if food.tags.has(person.food.food_love):
+		state = 'like'
+	#a meal below what they expect out of you goes down badly
+	elif person.food.is_below_demand(food.code):
+		state = 'hate'
+	serve_food(food.name, state)
+
+#a treat (tag 'date_food') goes down as well as the favourite food
+func usetreat(item):
+	$Items.hide()
+	ResourceScripts.game_res.remove_item(item.itembase, 1)
+	serve_food(item.name, 'like')
+
+func serve_food(food_name, state):
+	var text = input_handler.weightedrandom(date_lines.food_initiate).replace("[food]", food_name) + "\n\n"
 	self.turn -=1
 
 	if person.has_status('resist_state'):
@@ -1514,13 +1539,6 @@ func usefood(food):
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'treat_food_resist')) + "\n"
 	else:
-		var state = 'neutral'
-		if food.tags.has(person.food.food_love):
-			state = 'like'
-		#a meal below what they expect out of you goes down badly
-		elif person.food.is_below_demand(food.code):
-			state = 'hate'
-
 		if state == 'like':
 			text += "{color=green|"
 			text += input_handler.weightedrandom(date_lines.food_liked)

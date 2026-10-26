@@ -23,7 +23,7 @@ var lands = {
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
 		tags = [],
-		capital_options = ['quest_board'],#,'location_purchase'],
+		capital_options = ['settlement_management', 'quest_board'],#,'location_purchase'],
 		area_shop_items = 'plains_area_shop',
 		capital_background = 'aliron',
 		capital_icon = 'aliron',
@@ -48,7 +48,7 @@ var lands = {
 		guilds = ['elvish_slave_trader'],
 		events = [],
 		tags = [],
-		capital_options = [],
+		capital_options = ['settlement_management'],
 		area_shop_items = 'forests_area_shop',
 		capital_background = 'elf_capital',
 		capital_icon = 'elf_capital',
@@ -74,7 +74,7 @@ var lands = {
 		locationpool = ['dungeon_undead_crypt'],
 		guilds = [],
 		tags = [],
-		capital_options = [],
+		capital_options = ['settlement_management'],
 		area_shop_items = 'mountain_area_shop',
 		capital_background = 'dwarfs_city',
 		capital_icon = 'dwarfs_city',
@@ -100,7 +100,7 @@ var lands = {
 		locationpool = [],
 		guilds = [],
 		area_shop_items = 'empire_area_shop',
-		capital_options = [],
+		capital_options = ['settlement_management'],
 		capital_background = 'empire',
 		capital_icon = 'empire',
 		capital_name = tr("CAPITALEMPIRE"),
@@ -124,7 +124,7 @@ var lands = {
 		starting_locations = [],
 		guilds = ['beastkin_slave_trader'],
 		events = [],
-		capital_options = [],
+		capital_options = ['settlement_management'],
 		area_shop_items = 'beastkin_area_shop',
 		capital_background = 'beastkin_capital',
 		capital_icon = 'beastkin_capital',
@@ -190,6 +190,46 @@ var guild_upgrades = {
 		effects = [],
 	},
 
+}
+
+
+#What a capital's Settlement Management sells, bought with gold and kept per capital in
+#game_world.settlement_upgrades. cost[level] is the gold for the level after it; a dictionary of
+#such lists prices the capitals apart. name / descript are localization keys.
+#	not_at_home - not offered where the estate stands (game_world.mansion_location)
+#	needs_service - only where clients pay for service (variables.service_gold_limits)
+#What each one does is game_world's: buy_settlement_upgrade() and what it calls.
+var settlement_upgrades = {
+	trade_post = {
+		code = 'trade_post',
+		name = "SETTLEMENT_UPGRADE_TRADE_POST",
+		descript = "SETTLEMENT_UPGRADE_TRADE_POST_DISC",
+		maxlevel = 1,
+		cost = {elf_capital = [4000], beastkin_capital = [3000], dwarf_capital = [5000], empire_capital = [8000]},
+		not_at_home = true,
+	},
+	tavern = {
+		code = 'tavern',
+		name = "SETTLEMENT_UPGRADE_TAVERN",
+		descript = "SETTLEMENT_UPGRADE_TAVERN_DISC",
+		maxlevel = 5,
+		cost = [1000, 2500, 5000, 8000, 12000],
+		needs_service = true,
+	},
+}
+
+#When each capital's Settlement Management option appears: once that capital's part of the story is
+#over. Palatine opens with act 4, and asks for act 3's end as well - game_progress.gd hands saves older
+#than 0.14.3 the emp_city_init letter on load, so act4_start alone can come early for them.
+var settlement_management_reqs = {
+	aliron = [{type = 'decision', value = 'act1_finish', check = true}],
+	elf_capital = [{type = 'decision', value = 'act2_finish', check = true}],
+	beastkin_capital = [{type = 'decision', value = 'act2_finish', check = true}],
+	dwarf_capital = [{type = 'decision', value = 'act3_finish', check = true}],
+	empire_capital = [
+		{type = 'decision', value = 'act3_finish', check = true},
+		{type = 'decision', value = 'act4_start', check = true},
+	],
 }
 
 var factiondata = {

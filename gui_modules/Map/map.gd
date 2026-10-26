@@ -225,6 +225,10 @@ var locs_count = {}
 var return_screen = null
 var return_nav_module = null
 var return_location = null
+#The mansion panels open() hid to make room for the map. A close that leaves for another screen
+#puts back only these: showing every child instead also showed the closed training and
+#progression popups, whose _process then kept the clock hidden in the city.
+var covered_siblings = []
 
 
 func _input(event):
@@ -348,8 +352,11 @@ func close():
 			gui_controller.clock.visible = true
 	else:
 		gui_controller.current_screen = screen_to_restore
-		input_handler.node_children_visible(get_parent(), null, true)
-	
+		for node in covered_siblings:
+			if is_instance_valid(node):
+				node.show()
+	covered_siblings.clear()
+
 #	get_parent().match_state()
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()
@@ -395,6 +402,11 @@ func open():
 	update_selected_area()
 	match_state()
 	build_info(null)
+	if !visible:
+		covered_siblings.clear()
+		for node in get_parent().get_children():
+			if node != self and node is CanvasItem and node.visible:
+				covered_siblings.append(node)
 	show()
 	input_handler.node_children_visible(get_parent(), self, false)
 	ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)

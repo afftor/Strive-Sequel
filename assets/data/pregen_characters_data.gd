@@ -1569,7 +1569,14 @@ var unique_sprites = {
 			descript = "",
 			path = "jean_pb_body", 
 			face_path = "jean_pb",
-			unlock_reqs = [{type = 'quest_completed', check = true, name = 'jean_sylas_quest'}] 
+			unlock_reqs = [{type = 'quest_completed', check = true, name = 'jean_sylas_quest'}]
+			},
+		academy = {
+			name = "JEAN_ACADEMY_OUTFIT_NAME",
+			descript = "",
+			path = "jean_hp_body",
+			face_path = "jean_hp",
+			unlocked = true #available from the start until it gets its own unlock
 			},
 		wed = {
 			name = "Wed",

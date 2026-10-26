@@ -73,7 +73,8 @@ var loot_tables = {
 		{item = 'lifeshard', chance = 0.05}]},
 	willowisp_loot = {list = [
 		{item = 'lifeshard', chance = 0.3},
-		{item = 'energyshard', chance = 0.2}]},
+		{item = 'energyshard', chance = 0.2},
+		{loot_table = 'halloween_candy_drop'}]},
 	spider_loot = {list = [
 		{material = 'clothsilk', amount = 2, chance_per_unit = 0.5},
 		{item = 'lifeshard', chance = 0.1},
@@ -126,7 +127,8 @@ var loot_tables = {
 		{item = 'energygem', chance = 0.2}]},
 	lich_loot = {list = [
 		{material = 'boneancient', amount = 2, chance_per_unit = 0.5},
-		{item = 'energygem', chance = 0.5}]},
+		{item = 'energygem', chance = 0.5},
+		{loot_table = 'halloween_candy_drop', repeat = 3}]},
 	magma_beast_loot = {list = [
 		{material = 'lizard_skin', amount = 5, chance_per_unit = 0.8},
 		{material = 'obsidian', amount = 6, chance_per_unit = 0.8},
@@ -160,10 +162,13 @@ var loot_tables = {
 		{material = 'stone', amount = 5, chance_per_unit = 0.6},
 		{item = 'lifegem', chance = 0.1}]},
 	salamander_loot = {material = 'lizard_skin', chance = 0.4},
-	skeleton_archer_loot = {material = 'bone', amount = 2, chance_per_unit = 0.5},
+	skeleton_archer_loot = {list = [
+		{material = 'bone', amount = 2, chance_per_unit = 0.5},
+		{loot_table = 'halloween_candy_drop'}]},
 	skeleton_melee_loot = {list = [
 		{material = 'bone', amount = 3, chance_per_unit = 0.5},
-		{item = 'lifeshard', chance = 0.1}]},
+		{item = 'lifeshard', chance = 0.1},
+		{loot_table = 'halloween_candy_drop'}]},
 	troll_loot = {list = [
 		{material = 'troll_blood'},
 		{gold = true, max = 15, min = 10}]},
@@ -173,8 +178,12 @@ var loot_tables = {
 		{material = 'bone', chance = 0.2}]},
 	zombie_loot = {list = [
 		{material = 'cloth', amount = 2, chance_per_unit = 0.5},
-		{gold = true, max = 3, min = 1}]},
-	
+		{gold = true, max = 3, min = 1},
+		{loot_table = 'halloween_candy_drop'}]},
+	#undead drop candy only while the halloween season event runs (scenedata.season_events_range)
+	halloween_candy_drop = {item = 'halloween_candy', chance = 0.15,
+		reqs = [{type = 'real_date_range', start = [15,10], end = [15,11]}]},
+
 	#chest loot
 	#mind! Tiers are different for materials and items!
 	easy_chest_usable = {list = [

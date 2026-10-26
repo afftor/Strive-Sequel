@@ -164,6 +164,8 @@ var service_gold_limits = {
 	empire_capital = {base = 12000, random = 1200},
 	beastkin_capital = {base = 2500, random = 250},
 }
+#each Tavern level a capital buys at its Settlement Management adds this share to its pool's max
+var settlement_tavern_service_bonus = 0.25
 var service_gold_exhausted_mult = 0.1 #share of a payout still paid for the part the settlement's pool cannot cover
 
 #What a settlement will not buy and whom it will not take. No entry here means it buys everything from anybody.

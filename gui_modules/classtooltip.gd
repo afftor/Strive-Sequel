@@ -120,9 +120,9 @@ func _build_passive_mastery_bonus_tooltip(bonusstats, mul = 1):
 	return PoolStringArray(result).join("\n")
 
 
-func _build_mastery_tooltip_text(mastery_id):
+func _build_mastery_tooltip_text(mastery_id, amount):
 	var mastery_data = Skilldata.masteries[mastery_id]
-	var text = "[center]" + tr("MASTERY" + mastery_id.to_upper()) + "[/center]\n"
+	var text = "[center]%s +%d[/center]\n" % [tr(statdata.statdata['mastery_' + mastery_id].name), amount]
 	text += tr("LVLBONUSPERPOINT") + ":\n"
 	text += _build_passive_mastery_bonus_tooltip(mastery_data.passive) + "\n"
 	var pools = _get_mastery_pools(mastery_data)
@@ -135,27 +135,72 @@ func _build_mastery_tooltip_text(mastery_id):
 	return text
 
 
+#All class mastery gains share one panel: a title, then one row of icons (mastery points first,
+#then mastery levels) with the amount drawn over each icon's corner. Names move to the hover tooltip.
+func _add_mastery_panel(stats):
+	var panel = input_handler.DuplicateContainerTemplate(_mastery_container, 'Panel')
+	var row = panel.get_node('HBoxContainer')
+	var frame_template = row.get_node('frame')
+	var label_template = row.get_node('statname')
+	frame_template.hide()
+	label_template.hide()
+	row.alignment = BoxContainer.ALIGN_CENTER
+	row.add_constant_override("separation", 30)
+	var badge_font = label_template.get_font("font").duplicate()
+	if badge_font is DynamicFont:
+		badge_font.size = 26
+		badge_font.outline_size = 3
+		badge_font.outline_color = Color(0, 0, 0)
+	for stat in stats:
+		var amount = classdata.statchanges[stat]
+		var frame = frame_template.duplicate()
+		frame.show()
+		frame.mouse_filter = Control.MOUSE_FILTER_STOP
+		frame.get_node('icon').mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if stat.begins_with("mastery_point_"):
+			frame.texture = images.get_icon('frame_trait')
+			frame.get_node('icon').texture = images.get_icon(stat)
+			globals.connecttexttooltip(frame, "%s +%d" % [tr(statdata.statdata[stat].name), amount])
+		else:
+			var mastery_id = stat.trim_prefix("mastery_")
+			frame.texture = images.get_icon('frame_skill')
+			frame.get_node('icon').texture = images.get_icon(Skilldata.masteries[mastery_id].icon)
+			globals.connecttexttooltip(frame, person.translate(_build_mastery_tooltip_text(mastery_id, amount)))
+		row.add_child(frame)
+		var label = label_template.duplicate()
+		label.show()
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		label.add_font_override("font", badge_font)
+		label.align = Label.ALIGN_RIGHT
+		label.valign = Label.VALIGN_BOTTOM
+		label.text = "+%d" % amount
+		frame.add_child(label)
+		label.set_anchors_and_margins_preset(Control.PRESET_WIDE)
+		#the line box keeps room for descenders, push it so the digits sit on the icon's corner
+		label.margin_right = 6
+		label.margin_bottom = 7
+	var box = VBoxContainer.new()
+	panel.remove_child(row)
+	panel.add_child(box)
+	var title = Label.new()
+	title.text = tr("CLASS_MASTERIES_LABEL")
+	title.align = Label.ALIGN_CENTER
+	box.add_child(title)
+	box.add_child(row)
+
+
 func _fill_mastery_container():
 	input_handler.ClearContainer(_mastery_container, ['Panel'])
-	var has_rows = false
+	var stats = []
 	for stat in classdata.statchanges:
 		if stat.begins_with("mastery_point_"):
-			has_rows = true
-			var panel = input_handler.DuplicateContainerTemplate(_mastery_container, 'Panel')
-			panel.get_node('HBoxContainer/frame').texture = images.get_icon('frame_trait')
-			panel.get_node('HBoxContainer/frame/icon').texture = images.get_icon(stat)
-			panel.get_node('HBoxContainer/statname').text = "%s +%d" % [tr(statdata.statdata[stat].name), classdata.statchanges[stat]]
+			stats.append(stat)
 	for stat in classdata.statchanges:
 		if stat.begins_with("mastery_") and !stat.begins_with("mastery_point_"):
-			has_rows = true
-			var panel = input_handler.DuplicateContainerTemplate(_mastery_container, 'Panel')
-			panel.get_node('HBoxContainer/frame').texture = images.get_icon('frame_skill')
-			var mastery_id = stat.trim_prefix("mastery_")
-			var mastery_data = Skilldata.masteries[mastery_id]
-			panel.get_node('HBoxContainer/frame/icon').texture = images.get_icon(mastery_data.icon)
-			panel.get_node('HBoxContainer/statname').text = "%s +%d" % [tr(statdata.statdata[stat].name), classdata.statchanges[stat]]
-			globals.connecttexttooltip(panel, person.translate(_build_mastery_tooltip_text(mastery_id)))
-	_mastery_container.visible = has_rows
+			stats.append(stat)
+	if !stats.empty():
+		_add_mastery_panel(stats)
+	_mastery_container.visible = !stats.empty()
 
 
 func _fill_skill_container():

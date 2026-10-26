@@ -327,7 +327,12 @@ var tutorials = {
 			text = "TUTORIAL_WORK_CRAFT11",
 			panel_pos = Vector2(1200, 170)
 		},{
+			#Closing the workshop hands the room card back (mansion_view.close_crafting), and the
+			#sheet behind the card sits on the plan's overlay layer, above the clock: the first
+			#click anywhere only puts the card away, Finish Turn included. Put away here, so the
+			#click this step asks for is the one that ends the turn.
 			buttons = ['finish_turn'],
+			tut_func = 'close_room_card',
 			text = "TUTORIAL_WORK_ROOM28",
 			panel_pos = Vector2(1150, 640)
 		},
@@ -1300,6 +1305,13 @@ func close_expanded_card():
 	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
 		return
 	gui_controller.mansion.SlaveListModule.close_expanded_character()
+
+
+#The room card on the plan, put away along with the sheet that catches clicks around it.
+func close_room_card():
+	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
+		return
+	gui_controller.mansion.RoomsModule.close_card()
 
 
 #The menu a right click on a portrait puts up. It is a popup, so it would go away on its own

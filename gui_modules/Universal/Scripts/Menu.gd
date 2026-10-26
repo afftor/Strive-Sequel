@@ -2,6 +2,12 @@ extends Control
 
 
 var lastsave = null
+var seasonal = null #today's SEASONAL_BACKGROUNDS entry, if any
+var menu_music = "opening"
+var art_gate = false #the background is shown alone and input held back until the menu has faded in
+var menu_revealed = false
+var held_nodes = []
+const MENU_FADE_TIME = 0.4
 
 onready var newgame_cont = $NewGameCont
 onready var newgame_node = $NewGameCont/NewGamePanel
@@ -14,6 +20,10 @@ var current_preset = 'easy'
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
+	seasonal = get_seasonal_entry(OS.get_date())
+	if seasonal != null:
+		show_seasonal_art()
+	hold_menu_for_art()
 	newgame_node.get_node("CloseButton").connect("pressed", gui_controller, 'close_scene', [newgame_cont])
 	gui_controller.add_close_button($saveloadpanel)
 	gui_controller.add_close_button($Options)
@@ -46,7 +56,8 @@ func _ready():
 	if input_handler.globalsettings.warnseen == true:
 		$DemoPanel.hide()
 		$WarnScreen.hide()
-		input_handler.SetMusic("opening")
+		if !art_gate:
+			input_handler.SetMusic(menu_music)
 	# input_handler.AddPanelOpenCloseAnimation(newgame_cont)
 	input_handler.AddPanelOpenCloseAnimation($Changelogpanel)
 	globals.connecttexttooltip(newgame_node.get_node("tip"), tr('NEWGAMESETTINGINFO'))
@@ -71,7 +82,65 @@ func show_mod_list_safety_message():
 	$ModListSafetyPopup.show()
 	$ModListSafetyPopup.raise()
 
+#seasonal art replaces the background slideshow and the logo, and may bring its own menu music;
+#windows are month * 100 + day, both ends inclusive
+const SEASONAL_BACKGROUNDS = [
+	{image = "halloween_menu", music = "kuro_theme", from = 1015, to = 1115},
+]
+
+func get_seasonal_entry(date):
+	var day = date.month * 100 + date.day
+	for i in SEASONAL_BACKGROUNDS:
+		var active = day >= i.from and day <= i.to
+		if i.from > i.to: #window wraps over the new year
+			active = day >= i.from or day <= i.to
+		if active:
+			return i
+	return null
+
+func show_seasonal_art():
+	$background.texture = images.get_background(seasonal.image)
+	$MainLabel.hide()
+	if seasonal.has('music'):
+		menu_music = seasonal.music
+
+#The background is shown on its own until the first click or key, then the rest of the menu fades
+#in and its music starts. The first-launch warning must be seen at once, and a player coming back
+#from character creation is mid-way through the new game panel, so both skip the wait.
+func hold_menu_for_art():
+	if input_handler.globalsettings.warnseen != true or globals.new_game_setup != null:
+		return
+	art_gate = true
+	#a track left over from the game would otherwise play on under the art
+	input_handler.StopMusic(true)
+	for i in get_children():
+		if i is CanvasItem and i != $background:
+			i.modulate.a = 0
+			held_nodes.append(i)
+
+func reveal_menu():
+	menu_revealed = true
+	var tw = Tween.new()
+	add_child(tw)
+	for i in held_nodes:
+		tw.interpolate_property(i, "modulate:a", 0.0, 1.0, MENU_FADE_TIME)
+	tw.start()
+	yield(tw, "tween_all_completed")
+	tw.queue_free()
+	art_gate = false
+	input_handler.SetMusic(menu_music)
+
+func _input(event):
+	if !art_gate:
+		return
+	#nothing under the art may react, hover included; the fade swallows input too
+	get_tree().set_input_as_handled()
+	if !menu_revealed and event.is_pressed() and !event.is_echo():
+		reveal_menu()
+
 func cycle_backgrounds():
+	if seasonal != null:
+		return
 	var arr = [images.get_background("forest1_menu"),
 		images.get_background("mountain1_menu"),
 		images.get_background("mountain2_menu"),

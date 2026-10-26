@@ -607,9 +607,19 @@ func recipe_category(data):
 
 
 func recipe_offered(data):
-	if data.worktype != job or data.get('unique', false):
+	if data.worktype != job:
 		return false
 	return globals.checkreqs(data.unlockreqs) or room_level_needed(data) != null
+
+
+#A unique recipe is a quest's own piece, made once: it is ordered a single run at a time, and not
+#again while that order still waits in the queue.
+func one_off(data):
+	return data.get('unique', false)
+
+
+func already_ordered(data):
+	return one_off(data) and queued_recipes().has(data.code)
 
 
 func recipe_locked(data):
@@ -1218,7 +1228,7 @@ func choose_material(part, code):
 #### the order ####
 
 #The order's kind on one row and how much of it on the row under it: the stock limits of Keep in
-#stock do not fit beside the three buttons.
+#stock do not fit beside the three buttons. A one-off piece has neither - it is made once.
 func build_order_row(data, locked):
 	var modes = order_box().get_node("OrderRow")
 	for code in AMOUNT_MODES:
@@ -1226,11 +1236,11 @@ func build_order_row(data, locked):
 		button.visible = true
 		button.pressed = AMOUNT_MODES[code] == amount.mode
 		button.disabled = locked
-	modes.visible = true
+	modes.visible = !one_off(data)
 	modes.get_node("Help").visible = true
 	modes.get_node("Notes").visible = false
 	var row = order_box().get_node("AmountRow")
-	row.visible = true
+	row.visible = !one_off(data)
 	row.get_node("RunsLabel").visible = amount.mode == 'batch'
 	row.get_node("Runs").visible = amount.mode == 'batch'
 	for part in ['LowLabel', 'Low', 'HighLabel', 'High']:
@@ -1264,16 +1274,19 @@ func build_summary(data, locked, task):
 	var summary = order_box().get_node("Summary")
 	var perform = order_box().get_node("Perform")
 	var warning = ""
+	var ordered = task == null and already_ordered(data)
 	if locked:
 		warning = "[color=#d98175]" + tr("CRAFTPANEL_NEEDS_EXPANSION") % input_handler.roman_number_converter(max(1, room_level_needed(data) - 1)) + "[/color]"
 	elif !all_parts_chosen(data):
 		warning = "[color=#f9ab5a]" + tr("CRAFTPANEL_CHOOSE_FOR") % missing_part_names(data) + "[/color]"
+	elif ordered:
+		warning = "[color=#f9ab5a]" + tr("CRAFTPANEL_IN_QUEUE") + "[/color]"
 	elif task == null and !short_of(run_needs(data)).empty():
 		warning = "[color=#f9ab5a]" + tr("CRAFTPANEL_SHORT_OF") % names_of(short_of(run_needs(data))) + "[/color]"
 	summary.bbcode_text = warning
 	summary.visible = warning != ""
 	perform.text = tr("CRAFTPANEL_SAVE") if task != null else tr("CRAFTPANEL_ADD")
-	perform.disabled = locked or !all_parts_chosen(data)
+	perform.disabled = locked or !all_parts_chosen(data) or ordered
 
 
 func missing_part_names(data):
@@ -1390,7 +1403,9 @@ func perform():
 	if task != null:
 		save_order(task)
 		return
-	game_res().add_recipe_task(data.code, chosen_parts(data).duplicate() if data.crafttype == 'modular' else {}, amount_order())
+	if already_ordered(data):
+		return
+	game_res().add_recipe_task(data.code, chosen_parts(data).duplicate() if data.crafttype == 'modular' else {}, {fixed = 1} if one_off(data) else amount_order())
 	editing = null
 	rebuild()
 
