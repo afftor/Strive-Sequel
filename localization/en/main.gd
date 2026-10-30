@@ -2616,6 +2616,69 @@ Turn every {color=aqua|Subject of Observation} on enemies into {color=aqua|Evalu
 After the hit, the target taunts the user for 4 turns, and every other enemy takes 50% of the user's ATK as damage and is {color=aqua|Subdued} for 2 turns.""",
 	SKILLERDYNA_OBSERVATION_LOST = "Lost Sight",
 	SKILLERDYNA_OBSERVATION_LOSTDESCRIPT = "Remove {color=aqua|Subject of Observation} from all enemies.",
+	SKILLTHALENDIR_SPEAR_SHOT = "Spear Shot",
+	SKILLTHALENDIR_SPEAR_SHOTDESCRIPT = """Throw the spear, dealing 90% of ATK as physical damage to an enemy.
+On hit, if the target survives, inflict {color=aqua|Nested Spear} on it and become {color=aqua|Disarmed} for 6 turns.""",
+	SKILLTHALENDIR_RECALL_SPEAR = "Recall Spear",
+	SKILLTHALENDIR_RECALL_SPEARDESCRIPT = """Can only be used while {color=aqua|Disarmed}, against an enemy with {color=aqua|Nested Spear}.
+Remove {color=aqua|Disarmed} from self.
+The spear tears out: the target takes 130% of ATK as physical damage that cannot be evaded, loses {color=aqua|Nested Spear} and suffers {color=aqua|Bleed} for 3 turns.""",
+	SKILLTHALENDIR_BRANDED_ENEMY = "I Branded you the Enemy of our House!",
+	SKILLTHALENDIR_BRANDED_ENEMYDESCRIPT = """Cannot be used against a Dragon, a Dragonkin or an enemy affected by {color=aqua|Draconic Accusation}.
+Inflict {color=aqua|Draconic Accusation} on an enemy for 3 turns. Cannot be evaded.""",
+	SKILLTHALENDIR_REVITALIZING_MAGIC = "Revitalizing Magic",
+	SKILLTHALENDIR_REVITALIZING_MAGICDESCRIPT = """Cannot be used with 3 stacks of {color=aqua|Vengeance}. Cannot target self or a mechanical ally.
+Heal an ally for 80% of MATK, remove a negative effect from it and grant it {color=aqua|Soothe}.""",
+	SKILLTHALENDIR_ON_MY_COMMAND = "On my Command, Fire!",
+	SKILLTHALENDIR_ON_MY_COMMANDDESCRIPT = """Can only be used while a Dracalista is alive.
+Remove {color=aqua|Disarmed} and {color=aqua|Blinded} from every Dracalista and order each of them to fire Dragonbane Shot at the target.""",
+	SKILLTHALENDIR_DRAGON_SKEWER = "Dragon Skewer",
+	SKILLTHALENDIR_DRAGON_SKEWERDESCRIPT = """Can only be used with 3 stacks of {color=aqua|Vengeance}.
+Deal 150% of ATK as physical damage to a row of enemies and inflict {color=aqua|Shred} for 2 turns. 50% chance to {color=aqua|Stun} for 1 turn.
+Deals 25% more damage to a Dragon, a Dragonkin or a target affected by {color=aqua|Draconic Accusation}.""",
+	SKILLTHALENDIR_STAKE_FLAK_SALVO = "Stake Flak Salvo",
+	SKILLTHALENDIR_STAKE_FLAK_SALVODESCRIPT = """Can only be used against an enemy with {color=aqua|Mark for Staking}. Cannot be evaded.
+Deal 50% of ATK as physical damage. On hit, remove {color=aqua|Flight} and {color=aqua|Wing Dash} and inflict {color=aqua|Staked} for 1 turn.""",
+	SKILLTHALENDIR_DRAGONBANE_SHOT = "Dragonbane Shot",
+	SKILLTHALENDIR_DRAGONBANE_SHOTDESCRIPT = """Deal 110% of ATK as physical damage to an enemy and inflict {color=aqua|Shred} for 2 turns. -20 Hit Rate.
+Deals 25% more damage to a Dragon, a Dragonkin or a target affected by {color=aqua|Draconic Accusation}.""",
+	SKILLTHALENDIR_SWEEPING_BARRAGE = "Sweeping Barrage",
+	SKILLTHALENDIR_SWEEPING_BARRAGEDESCRIPT = """Deal 90% of ATK as physical damage to the frontmost enemy of each row.
+A target with less than 35 Evasion has a 50% chance to suffer {color=aqua|Impale} for 3 turns.""",
+	SKILLTHALENDIR_FRIGHTENING_BELLOW = "Frightening Bellow",
+	SKILLTHALENDIR_FRIGHTENING_BELLOWDESCRIPT = """Deal 50% of MATK as {color=yellow|Mind} damage to all enemies and inflict {color=aqua|Fear} for 3 turns.
+While the user is above 50% HP, each target also has a 50% chance to be {color=aqua|Shocked} for 1 turn.""",
+	SKILLTHALENDIR_INTERLOPER = "Interloper is Not Welcome Here!",
+	SKILLTHALENDIR_INTERLOPERDESCRIPT = """Deal 130% of MATK as {color=yellow|Earth} damage to an enemy and {color=aqua|Ensnare} it for 4 turns.
+If the target is already {color=aqua|Ensnared}, {color=aqua|Stun} it for 1 turn instead.""",
+	SKILLTHALENDIR_SCALE_SCRAPER = "Scale Scraper",
+	SKILLTHALENDIR_SCALE_SCRAPERDESCRIPT = """Deal 90% of ATK as physical damage to an enemy and inflict {color=aqua|Shred} for 5 turns.
+If the target already has {color=aqua|Shred}, also inflict {color=aqua|Bleed} for 3 turns.""",
+	SKILLTHALENDIR_DECAPITATE_DRAGON = "Decapitate Dragon",
+	SKILLTHALENDIR_DECAPITATE_DRAGONDESCRIPT = """Can only be used against a Dragon, a Dragonkin or an enemy affected by {color=aqua|Draconic Accusation}.
+Deal 145% of ATK as physical damage. Crit chance is 100% minus the target's Evasion.""",
+	SKILLTHALENDIR_SECURITY_GLYPH = "Activate Security Glyph",
+	SKILLTHALENDIR_SECURITY_GLYPHDESCRIPT = "Place a {color=aqua|Security Glyph} on 2 random enemies for 3 turns.",
+	SKILLTHALENDIR_BATTLEFIELD_REPAIR = "Battlefield Repair",
+	SKILLTHALENDIR_BATTLEFIELD_REPAIRDESCRIPT = "Repair a mechanical ally for 50 to 400 HP. The more HP the user has left, the more it repairs.",
+	SKILLTHALENDIR_WING_CLIPPER = "Wing Clipper",
+	SKILLTHALENDIR_WING_CLIPPERDESCRIPT = """Strike an enemy twice, each hit dealing 75% of ATK as physical damage.
+The first hit has a 30% chance to {color=aqua|Disarm} for 1 turn, the second a 30% chance to {color=aqua|Silence} for 1 turn.""",
+	SKILLTHALENDIR_DRAGON_CUTTER = "Dragon Cutter",
+	SKILLTHALENDIR_DRAGON_CUTTERDESCRIPT = """Can only be used against a Dragon, a Dragonkin or an enemy affected by {color=aqua|Draconic Accusation}.
+Deal 130% of ATK as physical damage, inflict {color=aqua|Bleed} for 5 turns and 1 {color=aqua|Fragile}.""",
+	SKILLTHALENDIR_DETERRENCE_SETUP = "Anti-Dragon Ballista",
+	SKILLTHALENDIR_DETERRENCE_SETUPDESCRIPT = "Put {color=aqua|Flight Deterrence} on every enemy.",
+	SKILLTHALENDIR_FIRING_SOLUTION_SETUP = "Firing Solution Calculator",
+	SKILLTHALENDIR_FIRING_SOLUTION_SETUPDESCRIPT = "Watch every enemy for evaded attacks.",
+	SKILLTHALENDIR_UNYIELDING_SETUP = "Unyielding Dragonslayer",
+	SKILLTHALENDIR_UNYIELDING_SETUPDESCRIPT = "Stand guard over every Dracalista.",
+	SKILLTHALENDIR_MLADY_SETUP = "M'lady is Under my Protection",
+	SKILLTHALENDIR_MLADY_SETUPDESCRIPT = "Stand guard over Vaeloria.",
+	SKILLTHALENDIR_PHALANX_SETUP = "Phalanx Formation",
+	SKILLTHALENDIR_PHALANX_SETUPDESCRIPT = "Every ally takes less AoE damage.",
+	SKILLTHALENDIR_VENGEANCE_CALL = "Vengeance",
+	SKILLTHALENDIR_VENGEANCE_CALLDESCRIPT = "Every other ally under Thalendir Duty gains 1 {color=aqua|Vengeance}.",
 	SKILLOMINOUS_WHISPERS = "Ominous Whispers",
 	SKILLOMINOUS_WHISPERSDESCRIPT = "Deal low {color=yellow|Mind} magical damage to all enemies and inflict {color=aqua|Fear}. If target HP is below 50%, also inflict {color=aqua|Shattered}.",
 	SKILLHEXED_COFFIN_NAIL = "Hexed Coffin Nail",
@@ -6380,6 +6443,52 @@ Erdyna: Fine. No more playing around!
 Erdyna loses her focus - the observation is broken!""",
 	ERDYNA_DISARM_REVERSAL = """
 Erdyna snatches her blade back and turns the grip against the attacker!""",
+	EFFECT_THALENDIR_DUTY_DESCRIPT = """Thalendir Duty:
+Immune to Fear. +30 Fire and Physical resist. Takes reduced damage from Burn.
+Deals 15% more damage to Dragons, Dragonkin and targets affected by Draconic Accusation.
+On death, every other ally under Thalendir Duty gains 1 Vengeance.""",
+	EFFECT_THALENDIR_FIRING_SOLUTION_DESCRIPT = """Firing Solution Calculator:
+When an enemy evades an attack from an ally, it gains Mark for Staking.""",
+	EFFECT_THALENDIR_UNYIELDING_DESCRIPT = """Unyielding Dragonslayer:
+At 3 stacks of Vengeance, single-target melee attacks against a Dracalista are redirected to this unit.
+At 3 stacks of Vengeance, counterattacks enemies that attack it in melee range, once per round for each stack.""",
+	EFFECT_THALENDIR_PHALANX_DESCRIPT = """Phalanx Formation:
+While this unit is alive, all allies take 20% less AoE damage.
+Counterattacks enemies that attack it in melee range, once per round.""",
+	EFFECT_THALENDIR_MLADY_DESCRIPT = """M'lady is Under my Protection:
+While above 30% HP, single-target ranged attacks against Vaeloria are redirected to this unit.""",
+	EFFECT_THALENDIR_ADAMETEOR_DESCRIPT = """Adameteor-718 Superalloy:
++80 Fire resist, +50 Physical resist, +30 Light and Water resist.
+Takes 30% less AoE damage. Immune to Shred.""",
+	EFFECT_THALENDIR_BALLISTA_DESCRIPT = """Anti-Dragon Ballista:
+While this unit is alive, all enemies have Flight Deterrence.
+Deals 20% more damage to Dragons, Dragonkin and targets affected by Draconic Accusation.""",
+	EFFECT_THALENDIR_FLIGHT_DETERRENCE = """Flight Deterrence:
+At the end of this unit's turn, if it has Flight or Wing Dash, the Dracalista that applied this attacks it, unless that Dracalista is Disarmed or Blinded.
+Lasts while that Dracalista is alive.""",
+	EFFECTNAME_THALENDIR_VENGEANCE = "Vengeance",
+	EFFECT_THALENDIR_VENGEANCE = """Vengeance:
+Per stack: deal 10% more damage, take 10% less damage and counterattack one more time per round (Max 3).""",
+	EFFECTNAME_THALENDIR_DRACONIC_ACCUSATION = "Draconic Accusation",
+	EFFECT_THALENDIR_DRACONIC_ACCUSATION = """Draconic Accusation:
+Counts as a dragon for House Thalendir.""",
+	EFFECTNAME_THALENDIR_MARK_FOR_STAKING = "Mark for Staking",
+	EFFECT_THALENDIR_MARK_FOR_STAKING = """Mark for Staking:
+Can be targeted by the Dracalista's Stake Flak Salvo.""",
+	EFFECTNAME_THALENDIR_STAKED = "Staked",
+	EFFECT_THALENDIR_STAKED = """Staked:
+Evasion is set to 0. -50 Earth resist.""",
+	EFFECTNAME_THALENDIR_NESTED_SPEAR = "Nested Spear",
+	EFFECT_THALENDIR_NESTED_SPEAR = """Nested Spear:
+-30 Speed, -30 Armor, -20 Evasion. Healing received is reduced by 50%.
+Lasts until the battle ends or Vaeloria uses Recall Spear.""",
+	EFFECTNAME_THALENDIR_SECURITY_GLYPH = "Security Glyph",
+	EFFECT_THALENDIR_SECURITY_GLYPH = """Security Glyph:
+Trap. When this unit casts a spell: it takes 120 Air damage, is Silenced and Ensnared for 2 turns and loses In the Shadow.""",
+	THALENDIR_DETERRENCE_VOLLEY = """
+%s fires at the airborne target!""",
+	THALENDIR_SECURITY_GLYPH_TRIGGERED = """
+A Security Glyph flares up under %s!""",
 	EFFECT_CURSED_GIRL_DESCRIPT = "Cursed Girl: When hit by Devour magic spell, gain shock and 3 fragiles. When hit by Light damage, there is a 20% chance to become stunned.",
 	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = "Guardian Spirit Protection [Frenzied]: When being hit by non-light damage, 30% chance to inflict Cursed to the attacker. When being hit by a Cursed enemy, reduce damage taken by 30% and inflict Dark damage back to the attacker.",
 	SEB_RILU_ATTACK = """
@@ -10127,6 +10236,10 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYKURO = "Kuro",
 	ENEMYERDYNA = "Erdyna",
 	ENEMYERDYNA_BETRAYAL = "Erdyna",
+	ENEMYTHALENDIR_VAELORIA = "Vaeloria",
+	ENEMYTHALENDIR_DRACALISTA = "Dracalista",
+	ENEMYTHALENDIR_CAPTAIN = "Thalendir Captain",
+	ENEMYTHALENDIR_GUARD = "Thalendir Guard",
 	ENEMYNIXX = "Nixx",
 	ENEMYUNLIT_BRAZIER = "Unlit Brazier",
 	ENEMYLIGHTED_BRAZIER = "Lighted Brazier",
