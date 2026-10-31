@@ -2638,7 +2638,8 @@ Deal 150% of ATK as physical damage to a row of enemies and inflict {color=aqua|
 Deals 25% more damage to a Dragon, a Dragonkin or a target affected by {color=aqua|Draconic Accusation}.""",
 	SKILLTHALENDIR_STAKE_FLAK_SALVO = "Stake Flak Salvo",
 	SKILLTHALENDIR_STAKE_FLAK_SALVODESCRIPT = """Can only be used against an enemy with {color=aqua|Mark for Staking}. Cannot be evaded.
-Deal 50% of ATK as physical damage. On hit, remove {color=aqua|Flight} and {color=aqua|Wing Dash} and inflict {color=aqua|Staked} for 1 turn.""",
+Deal 50% of ATK as physical damage. On hit, remove {color=aqua|Flight}, {color=aqua|Wing Dash}, and {color=aqua|Mark for Staking}.
+Inflict {color=aqua|Staked} for 1 turn.""",
 	SKILLTHALENDIR_DRAGONBANE_SHOT = "Dragonbane Shot",
 	SKILLTHALENDIR_DRAGONBANE_SHOTDESCRIPT = """Deal 110% of ATK as physical damage to an enemy and inflict {color=aqua|Shred} for 2 turns. -20 Hit Rate.
 Deals 25% more damage to a Dragon, a Dragonkin or a target affected by {color=aqua|Draconic Accusation}.""",
