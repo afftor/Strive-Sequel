@@ -207,7 +207,8 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
-			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.35, arc = 12.0, boom_size = 260.0, size = 2.0},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.35, arc = 12.0, boom_size = 260.0, size = 3.0},
+			{code = 'earth_spike', target = 'target', period = 'postdamage'},
 		],
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 1.1,
@@ -234,7 +235,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'strike', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'}],
+		sfx = [
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
+			{code = 'strike', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'squash'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.75,
 		random_factor_p = 0.1,
@@ -266,7 +269,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
-			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.25, arc = 6.0, boom_size = 180.0, size = 1.6},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.25, arc = 6.0, boom_size = 180.0, size = 1.8},
 		],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.9,
@@ -296,7 +299,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'strike_through', target = 'target', period = 'predamage'}],
+		sfx = [
+			{code = 'cast_light', target = 'caster', period = 'windup', is_cast = true},
+			{code = 'strike_through', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3,
 		random_factor_p = 0.1,
@@ -324,7 +329,7 @@ var skills = {
 		catalysts = {},
 		target = 'enemy',
 		target_number = 'single',
-		target_range = 'any',
+		target_range = 'melee', #change to melee cause most enemy skill are melee.
 		damage_type = 'mind',
 		sfx = [
 			{code = 'cast_mind', target = 'caster', period = 'windup', is_cast = true},
@@ -442,6 +447,7 @@ var skills = {
 		effects = [
 			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('flight')}),
 			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('fly')}),
+			Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('thalendir_mark_for_staking')}),
 			Effectdata.rebuild_template({effect = 'thalendir_staked', duration = 1}),
 		],
 		cost = {},
@@ -455,7 +461,11 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
-			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.3, arc = 30.0, boom_size = 220.0, size = 1.6},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.15, arc = 30.0, boom_size = 220.0, size = 0.8},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.15, arc = 200.0, boom_size = 220.0, size = 0.8},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.15, arc = 150.0, boom_size = 220.0, size = 0.8},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.15, arc = 500.0, boom_size = 220.0, size = 0.8},
+			{code = 'trap', target = 'target', period = 'postdamage'},
 		],
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.5,
@@ -484,7 +494,8 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
-			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.35, arc = 12.0, boom_size = 260.0, size = 2.0},
+			{code = 'projectile_arrow', target = 'target', period = 'predamage', duration = 0.35, arc = 12.0, boom_size = 260.0, size = 3.0},
+			{code = 'earth_spike', target = 'target', period = 'postdamage'},
 		],
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 1.1,
@@ -542,7 +553,7 @@ var skills = {
 		damage_type = 'mind',
 		sfx = [
 			{code = 'provocation', target = 'caster', period = 'windup'},
-			{code = 'tauntwave', target = 'target', period = 'predamage'},
+			{code = 'tauntwave', target = 'caster', period = 'predamage'},
 		],
 		sounddata = {initiate = null, strike = 'spell_void', hit = null},
 		value = 0.5,
@@ -633,9 +644,8 @@ var skills = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		sfx = [
-			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
 			{code = 'execution', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
-		],
+			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true, motion = 'execution_leap'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.45,
 		random_factor_p = 0.1,
@@ -747,7 +757,7 @@ var skills = {
 		damage_type = 'weapon',
 		sfx = [
 			{code = 'cast_weapon', target = 'caster', period = 'windup', is_cast = true},
-			{code = 'sunder', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
+			{code = 'draw_blood', target = 'target', period = 'predamage', sync_to_hit = true, hit_motion = 'tilt'},
 		],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3,
@@ -822,6 +832,7 @@ var effects = {
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_MISS]},
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'caster', value = [{code = 'stat', stat = 'combatgroup', operant = 'eq', value = 'enemy'}]},
+			{type = 'caster', value = [{code = 'has_status', status = 'thalendir_flight_deterrence', check = false},]}
 		],
 		sub_effects = ['thalendir_mark_for_staking'],
 	},
