@@ -483,8 +483,8 @@ func build_action_button(grid, code, cat_data, trainer):
 		grey_out(panel)
 		globals.connecttexttooltip(panel, text)
 		return
-	#reqs check
-	if !trainer.checkreqs(trdata.reqs_trainer):
+	#reqs check - an action Allure opened to this character needs nothing of the trainer
+	if !person.training.is_action_unlocked(code) and !trainer.checkreqs(trdata.reqs_trainer):
 		panel.disabled = true
 		text = "{color=red|" + tr('ACTIONTRAINERREQSNOTMET') + "}\n\n" + text
 		grey_out(panel)

@@ -487,13 +487,194 @@ func genitalia_finish(text_keys, lines):
 		tags = ['active_character_translate'],
 		options = [{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []}],
 	})
+	succubus_skill_used()
+
+
+#a succubus skill paid for: the panels that show its charges and the caster's lust catch up
+func succubus_skill_used():
 	input_handler.emit_signal("SpellUsed")
 	input_handler.update_slave_list()
 	if gui_controller.mansion != null:
 		var popup = gui_controller.mansion.get_node_or_null("CharacterTrainingPopup")
 		if popup != null:
 			popup.update()
-	
+
+
+#One-step result window for the succubus skills below: the text, then Close.
+func succubus_skill_report(character, text, image):
+	input_handler.active_character = character
+	input_handler.interactive_message_custom({
+		text = text,
+		image = image,
+		tags = ['custom_effect'],
+		options = [{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []}],
+	})
+
+
+func caster_target_text(character, target, key):
+	return target.translate(character.translate(tr(key)).replace("[target", "["))
+
+
+#Allure, the succubus skill: training points for anybody it reaches. On the caster's own thrall it
+#also offers one training action to open to them for good, whoever trains them - the actions some
+#trainers cannot give (ch_training.get_lockable_actions). Options come back through allure_unlock.
+const ALLURE_SKILL = 'allure'
+var allure_target = null
+
+func allure(character, target):
+	character.skills.spend_special_skill(ALLURE_SKILL)
+	var before = target.get_stat('training_points')
+	target.add_stat('training_points', character.get_stat('charm_factor') + 5)
+	var gained = target.get_stat('training_points') - before
+	var text = caster_target_text(character, target, "DIALOGUEALLUREREPORT")
+	text += "\n\n{color=green|%s, %s: +%d}" % [target.get_short_name(), tr("STATTRAINING_POINTS"), gained]
+	var options = []
+	if target.get_stat('thrall_master') == character.id:
+		for code in target.training.get_lockable_actions():
+			options.append({code = 'allure_unlock', args = [code], text = tr(Skilldata.training_actions[code].name), reqs = []})
+	if !options.empty():
+		allure_target = target
+		text += "\n\n" + caster_target_text(character, target, "DIALOGUEALLURE_UNLOCK")
+	options.append({code = 'close', text = tr('DIALOGUECLOSE'), reqs = []})
+	input_handler.active_character = character
+	input_handler.interactive_message_custom({text = text, image = 'charm', tags = ['custom_effect'], options = options})
+	succubus_skill_used()
+
+
+func allure_unlock(code):
+	var target = allure_target
+	allure_target = null
+	if target == null:
+		close()
+		return
+	target.training.unlock_action(code)
+	var text = target.translate(tr("DIALOGUEALLURE_UNLOCKED")).replace("{action}", tr(Skilldata.training_actions[code].name))
+	succubus_skill_report(input_handler.active_character, text, 'charm')
+
+
+#A thrall's type, granted from the succubus page (SuccubusPage.grant_type): the offer is put in the event
+#window first, the way a dialogue skill is, and the grant skill runs on yes - its own report follows.
+#Cancel costs nothing; the skill pays only once it is cast.
+var thrall_type_caster = null
+var thrall_type_target = null
+
+func thrall_type_offer(character, target, skill, type_name, effects_text, cost_text):
+	thrall_type_caster = character
+	thrall_type_target = target
+	var template = Skilldata.get_template(skill, character)
+	var text = caster_target_text(character, target, "DIALOGUETHRALLTYPE_OFFER")
+	text += "\n\n{color=yellow|%s}\n%s" % [type_name, effects_text]
+	input_handler.active_character = character
+	input_handler.interactive_message_custom({
+		text = text,
+		image = template.get('dialogue_image', 'charm'),
+		tags = ['custom_effect'],
+		options = [
+			{code = 'thrall_type_grant', args = [skill], text = "%s (%s)" % [tr(template.name), cost_text], reqs = []},
+			{code = 'close', text = tr('DIALOGUECANCEL'), reqs = []},
+		],
+	})
+
+
+func thrall_type_grant(skill):
+	var character = thrall_type_caster
+	var target = thrall_type_target
+	thrall_type_caster = null
+	thrall_type_target = null
+	if character == null or target == null or !character.check_skill_availability(skill, target).check:
+		close()
+		return
+	character.use_social_skill(skill, target)
+
+
+#Perverted Mind, the succubus skill: the target learns one sex skill a step up, never past the caster's own
+#level in what teaches it. Penetration teaches the target to take it, vaginally or anally, and taking it
+#teaches penetration; the rest teach themselves. Bodies are checked the way the master's bed checks them
+#(game_res._bed_night_anatomy_ok). Only the lesson pays, so Cancel costs nothing.
+const PERVERTED_MIND_SKILL = 'perverted_mind'
+const SEX_TRAINING_LEVELS = ['novice', 'skilled', 'mastered']
+#what the target learns: the caster's skills that teach it
+const PERVERTED_MIND_SOURCES = {
+	petting = ['petting'],
+	penetration = ['pussy', 'anal'],
+	pussy = ['penetration'],
+	oral = ['oral'],
+	anal = ['penetration'],
+	tail = ['tail'],
+}
+var perverted_mind_caster = null
+var perverted_mind_target = null
+
+func perverted_mind(character, target):
+	perverted_mind_caster = character
+	perverted_mind_target = target
+	var lessons = perverted_mind_lessons(character, target)
+	var options = []
+	for skill in lessons:
+		options.append({
+			code = 'perverted_mind_teach',
+			args = [skill],
+			text = "%s: %s" % [tr('CHARINFO_SEX_TRAINING_' + skill.to_upper()), tr('SEX_TRAINING_LEVEL_' + lessons[skill].to_upper())],
+			reqs = [],
+		})
+	var key = "DIALOGUEPERVERTED_MIND_SELECT" if !lessons.empty() else "DIALOGUEPERVERTED_MIND_NOTHING"
+	options.append({code = 'close', text = tr('DIALOGUECANCEL' if !lessons.empty() else 'DIALOGUECLOSE'), reqs = []})
+	input_handler.active_character = character
+	input_handler.interactive_message_custom({
+		text = caster_target_text(character, target, key),
+		image = 'succubuslust',
+		tags = ['custom_effect'],
+		options = options,
+	})
+
+
+#{skill = the level the target would reach} for every lesson the caster can give this target
+func perverted_mind_lessons(character, target):
+	var res = {}
+	for skill in PERVERTED_MIND_SOURCES:
+		if !perverted_mind_body_ok(target, skill):
+			continue
+		var cap = 0
+		for source in PERVERTED_MIND_SOURCES[skill]:
+			cap = int(max(cap, SEX_TRAINING_LEVELS.find(character.get_stat('sex_training_' + source))))
+		var current = int(max(0, SEX_TRAINING_LEVELS.find(target.get_stat('sex_training_' + skill))))
+		if current < cap:
+			res[skill] = SEX_TRAINING_LEVELS[current + 1]
+	return res
+
+
+#taking a cock vaginally needs a pussy, giving one needs a cock or a strapon, a tail skill a long tail
+func perverted_mind_body_ok(target, skill):
+	match skill:
+		'tail':
+			return variables.longtails.has(target.get_stat('tail'))
+		'penetration':
+			return ResourceScripts.game_res._bed_night_has_phallus(target)
+		'pussy':
+			return target.get_stat('has_pussy')
+	return true
+
+
+func perverted_mind_teach(skill):
+	var character = perverted_mind_caster
+	var target = perverted_mind_target
+	perverted_mind_caster = null
+	perverted_mind_target = null
+	if character == null or target == null:
+		close()
+		return
+	var lessons = perverted_mind_lessons(character, target)
+	if !lessons.has(skill):
+		close()
+		return
+	character.skills.spend_special_skill(PERVERTED_MIND_SKILL)
+	target.set_stat('sex_training_' + skill, lessons[skill])
+	#a fresh level starts on a fresh checklist, the way the master's bed does it
+	target.statlist.sex_mastery_progress[skill] = []
+	var text = caster_target_text(character, target, "DIALOGUEPERVERTED_MIND_TAUGHT")
+	text += "\n\n{color=green|%s, %s: %s}" % [target.get_short_name(), tr('CHARINFO_SEX_TRAINING_' + skill.to_upper()), tr('SEX_TRAINING_LEVEL_' + lessons[skill].to_upper())]
+	succubus_skill_report(character, text, 'succubuslust')
+	succubus_skill_used()
 
 
 #the ritual room's personality change: each option of body_rite_personality comes here

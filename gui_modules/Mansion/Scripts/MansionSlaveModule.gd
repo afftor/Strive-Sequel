@@ -141,7 +141,7 @@ func build_legacy_info():
 		get_node("base_stats/" + stat_code).max_value = person.get_stat(stat_code + 'max')
 		get_node("base_stats/" + stat_code).value = person.get_stat(stat_code)
 		get_node("base_stats/" + stat_code + '/Label').text = str(floor(person.get_stat(stat_code))) + "/" + str(floor(person.get_stat(stat_code + 'max')))
-	$base_stats/lust.visible = person.check_trait('succubus')
+	$base_stats/lust.visible = person.has_lust_meter()
 	$growth.text = tr(ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))])
 	$growth.set("custom_colors/font_color", variables.hexcolordict['factor' + str(int(floor(person.get_stat('growth_factor'))))])
 	for stat_code in ['physics', 'wits', 'charm']:

@@ -307,6 +307,10 @@ func update_exp(value, is_set):
 func fix_serialize():
 	if parent.get_ref().travel.travel_time <= 0 and work == 'travel':
 		work = ''
+	#finish_learning used to crash halfway when no trait could be rolled, leaving the character stuck in training
+	if work == 'learning' and !is_on_quest and quest_time_remains <= 0:
+		work = ''
+		quest_id = ''
 	for type in priority_items:
 		priority_items[type] = int(priority_items[type])
 	for type in priority_materials:
@@ -521,8 +525,10 @@ func finish_learning():
 	var res_text = "\n\n{color=aqua|" + parent.get_ref().get_short_name() + "} finished training."
 	match quest_id:
 		'nothing':
+			var tr = null
 			if randf() < 0.5:
-				var tr = parent.get_ref().get_random_trait_tag('negative')
+				tr = parent.get_ref().get_random_trait_tag('negative')
+			if tr != null: #null when every fitting trait slot is already taken
 				parent.get_ref().add_trait(tr)
 				res_text += "\nAcquired %s" % tr(Traitdata.traits[tr].name)
 			else:
@@ -624,8 +630,9 @@ func finish_learning():
 				res_text += "\n%s + %d" % [statdata.statdata[st].name, 1]
 				res_text += "\n%s + %d" % [statdata.statdata[st1].name, 1]
 			var tr = parent.get_ref().get_random_trait_tag('positive')
-			parent.get_ref().add_trait(tr)
-			res_text += "\nAcquired %s" % tr(Traitdata.traits[tr].name)
+			if tr != null: #null when every fitting trait slot is already taken
+				parent.get_ref().add_trait(tr)
+				res_text += "\nAcquired %s" % tr(Traitdata.traits[tr].name)
 			parent.get_ref().add_stat('base_exp_direct', 1000)
 			res_text += "\n%s + 1000" % statdata.statdata.base_exp.name
 		_: pass

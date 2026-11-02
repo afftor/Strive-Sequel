@@ -2136,7 +2136,7 @@ func _update_card_button(newbutton, person):
 	_update_card_progress(newbutton.get_node(CARD_HP_BAR), tr("STATHP"), person.hp, person.get_stat('hpmax'))
 	_update_card_progress(newbutton.get_node(CARD_MP_BAR), tr("STATMP"), person.mp, person.get_stat('mpmax'))
 	var lust_bar = newbutton.get_node(CARD_LUST_BAR)
-	lust_bar.visible = person.check_trait('succubus')
+	lust_bar.visible = person.has_lust_meter()
 	if lust_bar.visible:
 		_update_card_progress(lust_bar, tr("STATLUST"), person.get_stat('lust'), person.get_stat('lustmax'))
 	var job_display = _get_card_job_display(person)
@@ -2848,7 +2848,7 @@ func update_button(newbutton, t_mode = mode):
 	_update_card_progress(newbutton.get_node(CARD_HP_BAR), tr("STATHP"), person.hp, person.get_stat('hpmax'))
 	_update_card_progress(newbutton.get_node(CARD_MP_BAR), tr("STATMP"), person.mp, person.get_stat('mpmax'))
 	var lust_bar = newbutton.get_node(CARD_LUST_BAR)
-	lust_bar.visible = person.check_trait('succubus')
+	lust_bar.visible = person.has_lust_meter()
 	if lust_bar.visible:
 		_update_card_progress(lust_bar, tr("STATLUST"), person.get_stat('lust'), person.get_stat('lustmax'))
 	if is_traveling:

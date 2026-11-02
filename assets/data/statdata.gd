@@ -127,6 +127,24 @@ var statdata = {
 		tags = ['integer'],
 		default_bonus = 'set' #no setter actually
 	},
+	succubus_exp = {
+		code = 'succubus_exp',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['integer'],
+		default_bonus = 'set' #no setter actually
+	},
+	succubus_level = {
+		code = 'succubus_level',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['integer'],
+		default_bonus = 'set' #no setter actually
+	},
 	food_love = {
 		code = 'food_love',
 		name = '',
@@ -785,7 +803,7 @@ var statdata = {
 		type = 'mental_stat',
 		default_bonus = 'add_part',
 		direct = false,
-		tags = ['numeric']
+		tags = ['numeric', 'custom_bonuses']
 	},
 	lustmax = {
 		code = 'lustmax',
@@ -795,7 +813,7 @@ var statdata = {
 		type = 'mental_stat',
 		default_bonus = 'add_part',
 		direct = false,
-		tags = ['numeric']
+		tags = ['numeric', 'custom_bonuses']
 	},
 	#training
 	training_loyalty = {
@@ -1122,7 +1140,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
-		tags = ['integer'],
+		tags = ['integer', 'custom_bonuses'],
 		direct = false,
 		innate_bonuses = {maxcap = 85},
 		show_info = {category = 'combat'}
@@ -2012,6 +2030,8 @@ func _ready():
 				container = 'damage_mods',
 				show_info = {category = 'combat', hide_if_1 = true}
 			}
+	#Chosen Consort's bonus beside the succubus is read live (ch_dyn_stats.add_thrall_master_bonuses)
+	statdata.damage_mod_all.tags.append('custom_bonuses')
 	for st in Statlist_init.manacost_mods:
 		statdata[st] = {
 				code = st,

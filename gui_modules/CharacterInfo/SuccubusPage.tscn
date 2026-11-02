@@ -1,0 +1,845 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://gui_modules/CharacterInfo/SuccubusPage.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesBig.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_GoldButton.tres" type="Theme" id=10]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_prassed.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_hover.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/panels/hourglass.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/gui icons/icon_lock.png" type="Texture" id=20]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0352941, 0.0235294, 0.0196078, 0.92 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.431373, 0.352941, 0.211765, 0.95 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0705882, 0.0431373, 0.027451, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.7 )
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0705882, 0.0431373, 0.027451, 1 )
+border_width_left = 2
+border_width_top = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0627451, 0.0431373, 0.0313726, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.768627, 0.521569, 0.258824, 0.6 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0627451, 0.0431373, 0.0313726, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.996078, 0.784314, 0.321569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0627451, 0.0431373, 0.0313726, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.768627, 0.521569, 0.258824, 0.6 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0705882, 0.0431373, 0.027451, 0.96 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.996078, 0.784314, 0.321569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.164706, 0.109804, 0.0627451, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.996078, 0.784314, 0.321569, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.0431373, 0.0313726, 0.0235294, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.431373, 0.352941, 0.211765, 0.95 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.964706, 0.388235, 0.713726, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.0431373, 0.0313726, 0.0235294, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.0784314, 0.0509804, 0.0392157, 0.98 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.65098, 0.52549, 0.266667, 0.9 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.505882, 0.666667, 0.976471, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Succubus" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Tree" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 232.0
+margin_bottom = -84.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Title" type="Label" parent="Tree"]
+margin_left = 16.0
+margin_top = 4.0
+margin_right = 600.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "SUCCUBUS_POWERS"
+valign = 1
+
+[node name="Rows" type="VBoxContainer" parent="Tree"]
+margin_left = 16.0
+margin_top = 44.0
+margin_right = 924.0
+margin_bottom = 436.0
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="Row" type="Control" parent="Tree/Rows"]
+visible = false
+margin_right = 908.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 908, 62 )
+mouse_filter = 2
+
+[node name="Level" type="Panel" parent="Tree/Rows/Row"]
+margin_left = 2.0
+margin_top = 9.0
+margin_right = 46.0
+margin_bottom = 53.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 13 )
+
+[node name="Label" type="Label" parent="Tree/Rows/Row/Level"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "I"
+align = 1
+valign = 1
+
+[node name="Cells" type="HBoxContainer" parent="Tree/Rows/Row"]
+margin_left = 60.0
+margin_right = 908.0
+margin_bottom = 62.0
+mouse_filter = 2
+custom_constants/separation = 13
+
+[node name="Power" type="Button" parent="Tree/Rows/Row/Cells"]
+visible = false
+margin_right = 274.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 274, 62 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="Tile" type="Panel" parent="Tree/Rows/Row/Cells/Power"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 52.0
+margin_bottom = 53.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 10 )
+
+[node name="Icon" type="TextureRect" parent="Tree/Rows/Row/Cells/Power/Tile"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Text" type="VBoxContainer" parent="Tree/Rows/Row/Cells/Power"]
+margin_left = 60.0
+margin_top = 2.0
+margin_right = 268.0
+margin_bottom = 60.0
+mouse_filter = 2
+custom_constants/separation = 0
+alignment = 1
+
+[node name="Name" type="Label" parent="Tree/Rows/Row/Cells/Power/Text"]
+margin_top = 4.0
+margin_right = 208.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+
+[node name="State" type="Label" parent="Tree/Rows/Row/Cells/Power/Text"]
+margin_top = 30.0
+margin_right = 208.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 5 )
+
+[node name="Gap" type="Control" parent="Tree/Rows/Row/Cells"]
+visible = false
+margin_right = 274.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 274, 62 )
+mouse_filter = 2
+
+[node name="Or" type="Control" parent="Tree/Rows/Row/Cells"]
+visible = false
+margin_right = 274.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 274, 62 )
+mouse_filter = 2
+
+[node name="LineLeft" type="ColorRect" parent="Tree/Rows/Row/Cells/Or"]
+margin_left = -13.0
+margin_top = 21.0
+margin_right = 119.0
+margin_bottom = 23.0
+mouse_filter = 2
+color = Color( 0.772549, 0.521569, 0.258824, 0.6 )
+
+[node name="LineRight" type="ColorRect" parent="Tree/Rows/Row/Cells/Or"]
+margin_left = 155.0
+margin_top = 21.0
+margin_right = 287.0
+margin_bottom = 23.0
+mouse_filter = 2
+color = Color( 0.772549, 0.521569, 0.258824, 0.6 )
+
+[node name="Hint" type="Label" parent="Tree/Rows/Row/Cells/Or"]
+margin_top = 40.0
+margin_right = 274.0
+margin_bottom = 62.0
+custom_colors/font_color = Color( 0.560784, 0.509804, 0.415686, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "SUCCUBUS_CHOOSE_ONE"
+align = 1
+valign = 1
+
+[node name="Coin" type="Panel" parent="Tree/Rows/Row/Cells/Or"]
+margin_left = 119.0
+margin_top = 4.0
+margin_right = 155.0
+margin_bottom = 40.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 13 )
+
+[node name="Label" type="Label" parent="Tree/Rows/Row/Cells/Or/Coin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "SUCCUBUS_OR"
+align = 1
+valign = 1
+
+[node name="Spells" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -76.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Title" type="Label" parent="Spells"]
+margin_left = 16.0
+margin_right = 160.0
+margin_bottom = 76.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "SUCCUBUS_SPELLS"
+valign = 1
+
+[node name="List" type="HBoxContainer" parent="Spells"]
+margin_left = 150.0
+margin_top = 10.0
+margin_right = 660.0
+margin_bottom = 66.0
+custom_constants/separation = 8
+
+[node name="Button" type="TextureButton" parent="Spells/List"]
+visible = false
+margin_right = 56.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 56, 56 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 18 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="Spells/List/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+expand = true
+
+[node name="value" type="Label" parent="Spells/List/Button"]
+margin_left = 22.0
+margin_top = 35.0
+margin_right = 53.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.505882, 0.666667, 0.976471, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 8 )
+text = "10"
+align = 2
+
+[node name="value2" type="Label" parent="Spells/List/Button"]
+margin_left = 4.0
+margin_top = 35.0
+margin_right = 35.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.964706, 0.388235, 0.713726, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 8 )
+text = "10"
+
+[node name="value3" type="Label" parent="Spells/List/Button"]
+visible = false
+margin_top = 12.0
+margin_right = 56.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 1, 0.25, 0.25, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 7 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="cdicon" type="TextureRect" parent="Spells/List/Button"]
+visible = false
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 20.0
+mouse_filter = 2
+texture = ExtResource( 19 )
+expand = true
+
+[node name="Bars" type="Control" parent="Spells"]
+margin_left = 680.0
+margin_top = 6.0
+margin_right = 924.0
+margin_bottom = 70.0
+mouse_filter = 2
+
+[node name="LustLabel" type="Label" parent="Spells/Bars"]
+margin_right = 60.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.964706, 0.388235, 0.713726, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "STATLUST"
+valign = 1
+
+[node name="LustBar" type="ProgressBar" parent="Spells/Bars"]
+margin_left = 64.0
+margin_top = 10.0
+margin_right = 170.0
+margin_bottom = 18.0
+custom_styles/fg = SubResource( 11 )
+custom_styles/bg = SubResource( 10 )
+percent_visible = false
+
+[node name="LustValue" type="Label" parent="Spells/Bars"]
+margin_left = 176.0
+margin_right = 244.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.909804, 0.862745, 0.760784, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+
+[node name="MpLabel" type="Label" parent="Spells/Bars"]
+margin_top = 36.0
+margin_right = 60.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.505882, 0.666667, 0.976471, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "STATMP"
+valign = 1
+
+[node name="MpBar" type="ProgressBar" parent="Spells/Bars"]
+margin_left = 64.0
+margin_top = 46.0
+margin_right = 170.0
+margin_bottom = 54.0
+custom_styles/fg = SubResource( 15 )
+custom_styles/bg = SubResource( 10 )
+percent_visible = false
+
+[node name="MpValue" type="Label" parent="Spells/Bars"]
+margin_left = 176.0
+margin_top = 36.0
+margin_right = 244.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.909804, 0.862745, 0.760784, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+
+[node name="Shade" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.55 )
+
+[node name="Thralls" type="Panel" parent="."]
+anchor_right = 1.0
+margin_bottom = 224.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Head" type="HBoxContainer" parent="Thralls"]
+margin_left = 16.0
+margin_top = 4.0
+margin_right = 400.0
+margin_bottom = 48.0
+mouse_filter = 2
+custom_constants/separation = 12
+
+[node name="Title" type="Label" parent="Thralls/Head"]
+margin_top = 2.0
+margin_right = 88.0
+margin_bottom = 42.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "SIBLINGMODULETHRALLLIST"
+valign = 1
+
+[node name="Count" type="Label" parent="Thralls/Head"]
+margin_left = 100.0
+margin_top = 6.0
+margin_right = 150.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 0.909804, 0.862745, 0.760784, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "0 / 0"
+valign = 1
+
+[node name="Center" type="HBoxContainer" parent="Thralls"]
+anchor_right = 1.0
+margin_top = 6.0
+margin_bottom = 46.0
+mouse_filter = 2
+custom_constants/separation = 12
+alignment = 1
+
+[node name="Level" type="Label" parent="Thralls/Center"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
+valign = 1
+mouse_filter = 0
+
+[node name="ExpBar" type="ProgressBar" parent="Thralls/Center"]
+margin_left = 52.0
+margin_top = 15.0
+margin_right = 182.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 130, 10 )
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 11 )
+custom_styles/bg = SubResource( 10 )
+max_value = 1.0
+percent_visible = false
+
+[node name="ExpValue" type="Label" parent="Thralls/Center"]
+margin_left = 194.0
+margin_right = 234.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.560784, 0.509804, 0.415686, 1 )
+custom_fonts/font = ExtResource( 5 )
+valign = 1
+mouse_filter = 0
+
+[node name="Sep" type="ColorRect" parent="Thralls/Center"]
+margin_left = 246.0
+margin_top = 7.0
+margin_right = 247.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 1, 26 )
+mouse_filter = 2
+size_flags_vertical = 4
+color = Color( 0.431373, 0.352941, 0.211765, 0.95 )
+
+[node name="Lust" type="Label" parent="Thralls/Center"]
+margin_left = 259.0
+margin_right = 299.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
+valign = 1
+mouse_filter = 0
+
+[node name="Slots" type="HBoxContainer" parent="Thralls"]
+margin_left = 16.0
+margin_top = 50.0
+margin_right = 924.0
+margin_bottom = 216.0
+mouse_filter = 2
+custom_constants/separation = 13
+
+[node name="Slot" type="Control" parent="Thralls/Slots"]
+visible = false
+margin_right = 140.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 140, 166 )
+mouse_filter = 2
+
+[node name="Frame" type="Button" parent="Thralls/Slots/Slot"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 120.0
+margin_bottom = 104.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="Portrait" type="TextureRect" parent="Thralls/Slots/Slot/Frame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+expand = true
+stretch_mode = 7
+
+[node name="Plus" type="Label" parent="Thralls/Slots/Slot/Frame"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 0.6 )
+custom_fonts/font = ExtResource( 9 )
+text = "+"
+align = 1
+valign = 1
+
+[node name="Lock" type="TextureRect" parent="Thralls/Slots/Slot/Frame"]
+visible = false
+modulate = Color( 0.55, 0.53, 0.5, 1 )
+margin_left = 34.0
+margin_top = 32.0
+margin_right = 66.0
+margin_bottom = 68.0
+mouse_filter = 2
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="Quest" type="TextureRect" parent="Thralls/Slots/Slot/Frame"]
+visible = false
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 28.0
+margin_bottom = 28.0
+mouse_filter = 2
+texture = ExtResource( 19 )
+expand = true
+
+[node name="Pip" type="Panel" parent="Thralls/Slots/Slot/Frame"]
+visible = false
+margin_left = 4.0
+margin_top = 70.0
+margin_right = 30.0
+margin_bottom = 96.0
+custom_styles/panel = SubResource( 12 )
+
+[node name="Icon" type="TextureRect" parent="Thralls/Slots/Slot/Frame/Pip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+expand = true
+stretch_mode = 7
+
+[node name="Up" type="Button" parent="Thralls/Slots/Slot"]
+visible = false
+margin_left = 104.0
+margin_top = -6.0
+margin_right = 132.0
+margin_bottom = 22.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 1, 0.945098, 0.756863, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.945098, 0.756863, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "+"
+
+[node name="Name" type="Label" parent="Thralls/Slots/Slot"]
+margin_top = 106.0
+margin_right = 140.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Bond" type="ProgressBar" parent="Thralls/Slots/Slot"]
+visible = false
+margin_left = 28.0
+margin_top = 136.0
+margin_right = 112.0
+margin_bottom = 144.0
+custom_styles/fg = SubResource( 14 )
+custom_styles/bg = SubResource( 10 )
+percent_visible = false
+
+[node name="Tick" type="ColorRect" parent="Thralls/Slots/Slot/Bond"]
+margin_left = 62.0
+margin_top = -3.0
+margin_right = 64.0
+margin_bottom = 11.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="BondValue" type="Label" parent="Thralls/Slots/Slot"]
+visible = false
+margin_top = 144.0
+margin_right = 140.0
+margin_bottom = 166.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Drawer" type="Panel" parent="."]
+visible = false
+margin_top = 256.0
+margin_right = 910.0
+margin_bottom = 546.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Notch" type="Panel" parent="Drawer"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_rotation = 45.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="Note" type="RichTextLabel" parent="Drawer"]
+visible = false
+margin_left = 16.0
+margin_top = 14.0
+margin_right = 424.0
+margin_bottom = 74.0
+mouse_filter = 2
+custom_colors/default_color = Color( 0.909804, 0.862745, 0.760784, 1 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Cards" type="HBoxContainer" parent="Drawer"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 300.0
+margin_bottom = 276.0
+mouse_filter = 2
+custom_constants/separation = 12
+
+[node name="Card" type="Panel" parent="Drawer/Cards"]
+visible = false
+margin_right = 286.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 286, 440 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Icon" type="TextureRect" parent="Drawer/Cards/Card"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 52.0
+margin_bottom = 52.0
+mouse_filter = 2
+expand = true
+stretch_mode = 7
+
+[node name="Name" type="Label" parent="Drawer/Cards/Card"]
+margin_left = 62.0
+margin_top = 12.0
+margin_right = 276.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 3 )
+valign = 1
+clip_text = true
+
+[node name="Body" type="RichTextLabel" parent="Drawer/Cards/Card"]
+margin_left = 12.0
+margin_top = 58.0
+margin_right = 274.0
+margin_bottom = 372.0
+mouse_filter = 2
+custom_colors/default_color = Color( 0.909804, 0.862745, 0.760784, 1 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Cost" type="HBoxContainer" parent="Drawer/Cards/Card"]
+margin_left = 12.0
+margin_top = 376.0
+margin_right = 274.0
+margin_bottom = 400.0
+mouse_filter = 2
+custom_constants/separation = 12
+
+[node name="Title" type="Label" parent="Drawer/Cards/Card/Cost"]
+margin_right = 40.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 0.560784, 0.509804, 0.415686, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "SUCCUBUS_COST"
+valign = 1
+
+[node name="Lust" type="Label" parent="Drawer/Cards/Card/Cost"]
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 0.964706, 0.388235, 0.713726, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+
+[node name="Mp" type="Label" parent="Drawer/Cards/Card/Cost"]
+margin_left = 56.0
+margin_right = 96.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 0.505882, 0.666667, 0.976471, 1 )
+custom_fonts/font = ExtResource( 7 )
+valign = 1
+
+[node name="Button" type="Button" parent="Drawer/Cards/Card"]
+margin_left = 12.0
+margin_top = 404.0
+margin_right = 274.0
+margin_bottom = 436.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 10 )
+text = "SUCCUBUS_TYPE_CHOOSE"

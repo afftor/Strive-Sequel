@@ -1918,7 +1918,11 @@ func select_option(number):
 		elif code == 'cancel_skill_usage':
 			cancel_skill_usage()
 	elif current_scene.tags.has("custom_effect"):
-		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
+		#an option built at runtime can name its choice in args (custom_effects.perverted_mind)
+		if option.has('args'):
+			ResourceScripts.custom_effects.callv(code, option.args)
+		else:
+			ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight', 'quest_fight_duel']):
 		
 		hold_selection = true

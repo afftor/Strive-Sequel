@@ -138,7 +138,8 @@ func mansion_place_shown():
 
 
 func mansion_rooms():
-	if gui_controller.mansion == null:
+	#is_instance_valid: a freed node still passes != null
+	if gui_controller.mansion == null or !is_instance_valid(gui_controller.mansion):
 		return null
 	return gui_controller.mansion.get_node_or_null("MansionRoomsModule")
 

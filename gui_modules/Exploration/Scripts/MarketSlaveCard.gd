@@ -50,7 +50,7 @@ func fill_identity():
 	fill_bar("hp", "STATHP", person.get_stat('hp'), person.get_stat('hpmax'))
 	fill_bar("mp", "STATMP", person.get_stat('mp'), person.get_stat('mpmax'))
 	var lust = _node("lust")
-	lust.visible = person.check_trait('succubus')
+	lust.visible = person.has_lust_meter()
 	if lust.visible:
 		fill_bar("lust", "STATLUST", person.get_stat('lust'), person.get_stat('lustmax'))
 	var current_exp = int(floor(person.get_stat("base_exp")))

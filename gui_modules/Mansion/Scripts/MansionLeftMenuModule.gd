@@ -86,7 +86,7 @@ func activate_category(code):
 			#nothing to open. A craft room's own card opens its bench as well
 			if !craft_available():
 				return false
-			return toggle_state("craft")
+			return toggle_crafting()
 		'inventory':
 			open_inventory()
 			return true
@@ -105,6 +105,16 @@ func activate_category(code):
 func toggle_state(state):
 	var parent = get_parent()
 	parent.mansion_state = "default" if parent.mansion_state == state else state
+	return true
+
+
+#The workshop panel over the floorplan - the one a craft room's card opens - rather than the old
+#craft screen. It is drawn over the plan, so whatever other screen was up gives way to the default view.
+func toggle_crafting():
+	var parent = get_parent()
+	if !parent.RoomsModule.craft_panel.visible:
+		parent.mansion_state = "default"
+	parent.RoomsModule.toggle_crafting()
 	return true
 
 

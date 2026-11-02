@@ -3,6 +3,8 @@ extends Reference
 var parent: WeakRef
 var social_skills = []
 var social_cooldowns = {}
+#turns left for a skill whose template counts its cooldown in turns (turn_cooldown) rather than days
+var social_turn_cooldowns = {}
 var social_skills_charges = {}
 var combat_skills = []
 var explore_skills = []
@@ -256,6 +258,23 @@ func cooldown_tick():
 		daily_cooldowns.erase(i)
 
 
+#every turn: a skill with turn_cooldown gets its charges back once its turns have run out
+func turn_tick():
+	for code in social_turn_cooldowns.keys():
+		social_turn_cooldowns[code] -= 1
+		if social_turn_cooldowns[code] <= 0:
+			social_turn_cooldowns.erase(code)
+			social_skills_charges.erase(code)
+
+
+#the cooldown a use starts: in turns for a turn_cooldown skill, in days for the rest
+func start_social_cooldown(s_code, template):
+	if template.has('turn_cooldown'):
+		social_turn_cooldowns[s_code] = template.turn_cooldown
+	else:
+		social_cooldowns[s_code] = template.cooldown
+
+
 func reset_cooldowns():
 	for skill in combat_cooldowns.keys().duplicate():
 		if skill == 'rally':
@@ -282,6 +301,7 @@ func restore_skill_charge(code):
 		social_skills_charges[code] -= 1
 		if social_skills_charges[code] <= 0:
 			social_cooldowns.erase(code)
+			social_turn_cooldowns.erase(code)
 			social_skills_charges.erase(code)
 	if ResourceScripts.game_party.global_skills_used.has(code):
 		ResourceScripts.game_party.global_skills_used[code] -= 1
@@ -296,7 +316,7 @@ func spend_special_skill(s_code):
 	var template = Skilldata.get_template(s_code, parent.get_ref())
 	parent.get_ref().pay_cost(template.cost)
 	parent.get_ref().add_stat('metrics_socskillused', 1)
-	social_cooldowns[s_code] = template.cooldown
+	start_social_cooldown(s_code, template)
 	if typeof(template.charges) == TYPE_INT && template.charges > 0 && ResourceScripts.game_globals.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):
 			social_skills_charges[s_code] += 1
@@ -313,7 +333,13 @@ func use_social_skill(s_code, target, item, bulk = 1):
 			ResourceScripts.custom_effects.call(template.special, item.map)
 		elif s_code == 'skill_granting':
 			ResourceScripts.custom_effects.call(template.special, parent.get_ref(), item.skill)
-		elif s_code == 'class_copy':
+		#a handler with a target checks the use itself and pays through spend_special_skill
+		elif template.tags.has('special_with_target'):
+			if target != null:
+				var target_check = parent.get_ref().check_skill_availability(s_code, target)
+				if target_check.check == false:
+					globals.text_log_add('char', target_check.descript)
+					return
 			ResourceScripts.custom_effects.call(template.special, parent.get_ref(), target)
 		else:
 			ResourceScripts.custom_effects.call(template.special, parent.get_ref())
@@ -327,7 +353,7 @@ func use_social_skill(s_code, target, item, bulk = 1):
 	if ask_offered_trait_first(s_code, target, 'use_social_skill', [s_code, target, item, bulk]):
 		return
 	parent.get_ref().add_stat('metrics_socskillused', 1)
-	social_cooldowns[s_code] = template.cooldown
+	start_social_cooldown(s_code, template)
 	if template.has('social_skill_stats'):
 		for i in template.social_skill_stats:
 			parent.get_ref().add_stat(i, rand_range(0.4,0.8))
@@ -603,7 +629,7 @@ func use_social_skill(s_code, target, item, bulk = 1):
 	input_handler.update_slave_list()
 	#input_handler.update_slave_panel()
 
-#A skill or item whose effect offers its target a trait (offers_trait: corruptive essence, Turn Succubus)
+#A skill or item whose effect offers its target a trait (offers_trait: corruptive essence, the grant skills)
 #puts a full slot to the player before anything is paid. Keeping the old trait spends nothing; a pick runs
 #method(args) again, and the offer writes over the trait picked. True while the use waits on that choice.
 #Read off the raw skill data: get_template converts a legacy skill and leaves fields like this one behind.

@@ -68,18 +68,7 @@ func build_starting_relations(char1):
 						break
 
 
-func check_enthralled_relationship(char1, char2):
-	var ch_m1 = characters_pool.get_char_by_id(char1).get_stat('thrall_master')
-	var ch_m2 = characters_pool.get_char_by_id(char2).get_stat('thrall_master')
-	var data = relationship_data[_get_key(char1, char2)]
-	if ch_m1 == char2 or ch_m2 == char1:
-		data.status = 'lovers'
-		data.value = variables.relationship_base[data.status]
-	return false
-
-
 func check_locked_relationship(char1, char2):
-	check_enthralled_relationship(char1, char2)
 	var ch1 = characters_pool.get_char_by_id(char1).get_stat('unique')
 	var ch2 = characters_pool.get_char_by_id(char2).get_stat('unique')
 	if ch1 == null:
@@ -108,37 +97,59 @@ func check_locked_relationship(char1, char2):
 	return false
 
 
-func add_relationship_value(char1, char2, value = 0):
-	if characters_pool.get_char_by_id(char1).is_master(): 
-		return 
-	if characters_pool.get_char_by_id(char2).is_master(): 
+#allow_romance false: the value moves and the status follows it, but no romance is tried - a thrall's
+#bond grows every turn (ch_enthrall.tick) and would otherwise roll for love four times a day
+func add_relationship_value(char1, char2, value = 0, allow_romance = true):
+	if characters_pool.get_char_by_id(char1).is_master():
 		return
-	
-	if char1 == char2: 
+	if characters_pool.get_char_by_id(char2).is_master():
 		return
-	
+
+	if char1 == char2:
+		return
+
 	var key = _get_key(char1, char2)
-	
+
 	if relationship_data.has(key):
 		if relationship_data[key].status in ['friends', 'lovers', 'freelovers'] && value < 0:
 			value *= 0.5 #makes established relationship reduce slower
 	else:
 		relationship_data[key] = {value = variables.relationship_base.default, status = 'acquaintances'}
-	
+
 	if check_locked_relationship(char1, char2):
 		return
 	relationship_data[key].value += value
 	relationship_data[key].value = clamp(relationship_data[key].value, 0, 100)
-	update_relationship_status(relationship_data[key], char1, char2)
+	update_relationship_status(relationship_data[key], char1, char2, allow_romance)
 
 
-func update_relationship_status(data, char1, char2):
-	if characters.has(char1) and characters[char1].is_master(): 
-		return 
-	if characters.has(char2) and characters[char2].is_master(): 
-		return 
+#the pair's value, or the starting one when they have no record yet; nothing is written
+func get_relationship_value(char1, char2):
+	var key = _get_key(char1, char2)
+	if relationship_data.has(key):
+		return relationship_data[key].value
+	return variables.relationship_base.default
+
+
+#lifts the pair to at least value (a fresh thrall's grudge against the succubus gives way to indifference)
+func raise_relationship_value(char1, char2, value):
+	var current = get_relationship_value(char1, char2)
+	if current < value:
+		add_relationship_value(char1, char2, value - current, false)
+
+
+#one of the two holds the other as a thrall
+func is_thrall_pair(meta1, meta2, char1, char2):
+	return meta1.thrall_master == char2 or meta2.thrall_master == char1
+
+
+func update_relationship_status(data, char1, char2, allow_romance = true):
+	if characters.has(char1) and characters[char1].is_master():
+		return
+	if characters.has(char2) and characters[char2].is_master():
+		return
 	if char1 == char2: return
-	
+
 	var value = data.value
 	var status = data.status
 	if value <= 25:
@@ -148,7 +159,7 @@ func update_relationship_status(data, char1, char2):
 		if !['friends','lovers','freelovers'].has(status):
 			change_relationship_status(char1, char2, 'friends')
 		else:
-			if randf() >= 0.2 && check_lover_possibility(data, char1, char2) && _in_same_location(char1, char2):
+			if allow_romance && randf() >= 0.2 && check_lover_possibility(data, char1, char2) && _in_same_location(char1, char2):
 				attempt_romance(char1, char2)
 	elif status in ['friends','lovers','freelovers'] && value >= 60:
 			pass
@@ -268,10 +279,6 @@ func _daily_relationships_in_same_location(meta1, meta2):
 
 func _check_daily_locked_relationship(char1, char2, key, meta1, meta2):
 	var data = relationship_data[key]
-	if meta1.thrall_master == char2 or meta2.thrall_master == char1:
-		data.status = 'lovers'
-		data.value = variables.relationship_base[data.status]
-
 	var unique1 = meta1.unique
 	var unique2 = meta2.unique
 	# Match check_locked_relationship: fixed relations only apply when both
@@ -346,6 +353,9 @@ func _daily_relationship_change_same_loc(char1, char2, cache):
 	# Same random roll as weightedrandom(), without allocating two temporary
 	# arrays for every character pair.
 	var positive = positive_weight >= rand_range(0, positive_weight + negative_weight)
+	#a thrall's day with the succubus holding them never goes badly
+	if is_thrall_pair(meta1, meta2, char1, char2):
+		positive = true
 	var value = int(rand_range(3, 7)) if positive else int(rand_range(-3, -7))
 	_add_daily_relationship_value(char1, char2, value, key, cache)
 
@@ -369,6 +379,9 @@ func _advance_daily_relationships(managed = false):
 					value = -4
 				elif relationship_data[key].value < 50:
 					value = 4
+				#apart, a thrall's bond does not fade
+				if value < 0 and is_thrall_pair(meta1, meta2, chars[0], chars[1]):
+					value = 0
 				_add_daily_relationship_value(chars[0], chars[1], value, key, cache)
 		if managed and OS.get_ticks_msec() - slice >= variables.turn_frame_budget_msec:
 			yield(globals.get_tree(), 'idle_frame')

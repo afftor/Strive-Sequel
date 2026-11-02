@@ -100,7 +100,11 @@ func update():
 		if skill.has("reqs_text"):
 			text += "\n" + skill.reqs_text
 	
-	if skill.charges > 0 and skill.cooldown > 0:
+	if skill.charges > 0 and skill.has('turn_cooldown'):
+		text += "\n%s: {color=yellow|%s}. %s: {color=yellow|%s} %s" % [
+			tr("MAX_CHARGES"), str(skill.charges),
+			tr("TOOLTIP_COOLDOWN"), str(skill.turn_cooldown), tr("TOOLTIP_TURNS")]
+	elif skill.charges > 0 and skill.cooldown > 0:
 		text += "\n%s: {color=yellow|%s}. %s: {color=yellow|%s} %s" % [
 			tr("MAX_CHARGES"), str(skill.charges),
 			tr("TOOLTIP_COOLDOWN"), str(skill.cooldown), tr("TOOLTIP_DAY_S")]

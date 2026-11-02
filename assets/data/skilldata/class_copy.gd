@@ -14,7 +14,7 @@ var skills = {
 		charges = 1,
 		cooldown = 0,
 		icon = load("res://assets/images/iconsskills/icon_mirror_image.png"),
-		tags = [],
+		tags = ['special_with_target'],
 		special = 'class_copy',
 	},
 	

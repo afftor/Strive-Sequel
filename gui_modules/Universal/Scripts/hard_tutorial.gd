@@ -1071,11 +1071,23 @@ func check_travel_select():
 
 #--------------
 
+#ESC opens the menu and, once it is up, backs out of it the way it came in: the open question
+#first, then the menu itself. It used to only open it - every later press was swallowed like
+#any other key, and the menu looked impossible to close.
+func on_esc():
+	if tut_menu != null and is_instance_valid(tut_menu) and tut_menu.visible:
+		tut_menu.close_by_esc()
+	elif can_open_menu():
+		tutorial_menu()
+
 func tutorial_menu():
 	if tut_menu == null:
 		tut_menu = input_handler.get_spec_node(input_handler.NODE_HARD_TUTORIAL_LIST)
 	tut_menu.raise()
 	tut_menu.show()
+	#also stops the frame re-measuring the step's button, which would put it back among the
+	#clickable ones while the menu is up (get_true_rect)
+	tut_panel.suspend()
 	temp_active_btns = active_btns.duplicate()
 	temp_cur_dont_listen = cur_dont_listen
 	active_btns.clear()
@@ -1095,6 +1107,7 @@ func abort_tutorial():
 func on_tutorial_menu_hide(got_back = false):
 	active_btns.clear()
 	free_listeners()
+	tut_panel.resume(got_back)
 	cur_dont_listen = null
 	if temp_active_btns != null and got_back:
 		cur_dont_listen = temp_cur_dont_listen

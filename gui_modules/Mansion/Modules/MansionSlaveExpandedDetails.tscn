@@ -3,7 +3,7 @@
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionSlaveExpandedDetails.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBarThin.tres" type="Theme" id=4]
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=5]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=6]
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png" type="Texture" id=7]
@@ -116,7 +116,7 @@ margin_top = 5.0
 margin_right = 490.0
 margin_bottom = 843.0
 mouse_filter = 2
-custom_constants/separation = 5
+custom_constants/separation = 4
 
 [node name="Classes" type="PanelContainer" parent="Sections"]
 margin_right = 485.0

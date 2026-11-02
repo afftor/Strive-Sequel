@@ -1850,6 +1850,8 @@ func show_candidates(sleeping, tutor_slot = false, job_id = null, builder = fals
 		#what they would be worth on this particular work, so the choice is made on something
 		#other than the order they happen to be listed in
 		show_person_yield(button, character, sleeping, tutor_slot, job_id, builder)
+		#the same panel a resident's face opens, so the choice can be weighed on more than a name
+		globals.connectslavetooltip(button, character, slave_tooltip())
 		button.connect("pressed", self, "pick_candidate",
 			[char_id, sleeping, tutor_slot, job_id, builder])
 	if offered.empty():

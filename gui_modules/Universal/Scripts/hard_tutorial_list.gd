@@ -87,6 +87,14 @@ func abort_tutorial():
 func go_back():
 	hide_menu(true)
 
+#ESC inside a tutorial (hard_tutorial.on_esc): the question first, then the menu - and the menu
+#only the way Back would, so with no tutorial to go back to it stays
+func close_by_esc():
+	if $ask_panel.visible:
+		$ask_panel.hide()
+	elif menu_back.visible:
+		go_back()
+
 func hide_menu(got_back = false):
 	if input_handler.hard_tutorial != null:
 		input_handler.hard_tutorial.on_tutorial_menu_hide(got_back)

@@ -240,19 +240,13 @@ var effect_table = {
 		},],
 	},
 	
+	#The old thrall penalty (Wits -10, EXP -10%, price -75%) is gone with the succubus rework and no longer
+	#in core_trait. Kept empty because a save stores core effects by id and reads them back unguarded.
 	e_thrall = {
 		type = 'simple',
 		descript = '',
 		conditions = [{code = 'stat', stat = 'thrall_master', value = null, operant = 'neq'}],
-		statchanges = {wits_bonus = -10, exp_gain_mod = -0.1, price_add_part = -0.75},
-		tags = ['tr_obedience', 'tr_obed_donate'],
-		buffs = [ 
-			{
-			icon = "res://assets/images/iconstraits/broke_in.png",
-			description = "THRALLDESCRIPT",
-			tags = ['show_in_traits', 'mansion_only']
-		}
-		],
+		statchanges = {},
 		sub_effects = [],
 	},
 	#personality

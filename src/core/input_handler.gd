@@ -711,8 +711,8 @@ func _input(event):
 	if hard_tutorial_active:
 		var pass_event = false
 		if !hard_tutorial.active_btns.empty():
-			if event.is_action_pressed("ESC") and hard_tutorial.can_open_menu():
-				hard_tutorial.tutorial_menu()
+			if event.is_action_pressed("ESC"):
+				hard_tutorial.on_esc()
 			pass_event = event is InputEventMouseMotion
 			if event.is_action("RMB"):
 				#The whole gesture, not only its end. Nodes that close on a right click do it

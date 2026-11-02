@@ -8,6 +8,7 @@ var loadmode = "load"
 func _ready():
 #warning-ignore:return_value_discarded
 	$LineEdit.connect("text_entered",self,'PressSaveGame')
+	$SaveButton.connect("pressed", self, 'PressSaveButton')
 	$DetailsPanel/MasterIcon.hide()
 	$Update.connect("pressed", self, "update_save_file")
 
@@ -103,6 +104,7 @@ func SavePanelOpen():
 	saveloadmode = 'save'
 	refresh_input_lock()
 	$ImportMode.visible = false
+	$SaveButton.visible = true
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = true
 	for i in input_handler.dir_contents(variables.userfolder + 'saves'):
@@ -137,6 +139,7 @@ func LoadPanelOpen():
 	loadmode = "load"
 	refresh_input_lock()
 	$ImportMode.visible = true
+	$SaveButton.visible = false
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = false
 	$LineEdit.text = ''
@@ -205,6 +208,19 @@ func PressSaveGame(savename):
 		#input_handler.ShowConfirmPanel(self, 'SaveGame',tr("OVERWRITECONFIRM"))
 	else:
 		SaveGame()
+
+
+#Enter in the name field is not the only way to save: a phone has no keyboard for it, so an
+#empty field saves under the current date and time
+func PressSaveButton():
+	if $LineEdit.text.strip_edges() == '':
+		$LineEdit.text = DefaultSaveName()
+	PressSaveGame(null)
+
+
+func DefaultSaveName():
+	var time = OS.get_datetime()
+	return "Save_%04d-%02d-%02d_%02d-%02d-%02d" % [time.year, time.month, time.day, time.hour, time.minute, time.second]
 
 func DeleteSaveGame(savename):
 	$LineEdit.text = savename

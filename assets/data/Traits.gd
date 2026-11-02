@@ -8,7 +8,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_auth6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious', 'e_love', 'e_friend', 'e_rival', 'e_standing_love_pest', 'e_standing_housemate', 'e_standing_sworn_servant', 'e_standing_beloved', 'work_rule_luxury', 'room_office_exp', 'room_masters_bed', 'sleep_demand_unmet', 'slept_rough', 'work_rule_ration', 'work_rule_shifts', 'work_rule_masturbation', 'work_rule_constrain', 'e_pregnancy', 'e_pregnancy1', 'e_pregnancy_breeder', 'e_thrall',
+		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_auth6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious', 'e_love', 'e_friend', 'e_rival', 'e_standing_love_pest', 'e_standing_housemate', 'e_standing_sworn_servant', 'e_standing_beloved', 'work_rule_luxury', 'room_office_exp', 'room_masters_bed', 'sleep_demand_unmet', 'slept_rough', 'work_rule_ration', 'work_rule_shifts', 'work_rule_masturbation', 'work_rule_constrain', 'e_pregnancy', 'e_pregnancy1', 'e_pregnancy_breeder',
 		'e_food_meat', 'e_food_fish', 'e_food_vege', 'e_food_grain', 'e_food_fishcakes', 'e_food_meatsoup', 'e_food_curry', 'e_food_vegetable_stirfry', 'e_food_roasted_feast', 'e_food_miners_lunch', 'e_food_fried_salmon', 'e_food_defenders_meal', 'e_food_demand', 'e_starve'],#'e_atkpass'],
 #		tags = ['bleed']
 	},
@@ -580,7 +580,39 @@ var traits = {
 		visible = false,
 		icon = null, #2change
 		effects = ['combat_atunement_passive', 'combat_atunement_trigger'],
-	}, 
+	},
+	#the first succubus power (succubus_trainings): taking thralls and letting them go
+	enthrallment = {
+		code = 'enthrallment',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		social_skills = ['enthrall', 'release_thrall'],
+	},
+	#a succubus power (succubus_trainings): the grant skills, every thrall type, need it
+	thrall_specialization = {
+		code = 'thrall_specialization',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	#a thrall status that takes no slot (the other three are in trait_catalogue.gd): its bonuses count
+	#only beside the succubus - ch_dyn_stats.add_thrall_master_bonuses
+	chosen_consort = {
+		code = 'chosen_consort',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/Inspire.png",
+		effects = [],
+		bonusstats = {},
+		with_thrall_master = {productivity = 0.15, damage_mod_all = 0.15, damage_reduction = 10},
+		tags = ['thrall_status'],
+	},
 	true_succubus = {
 		code = 'true_succubus',
 		name = '',
@@ -3154,84 +3186,119 @@ var tattoodata = {
 #		]
 #	},
 #}
+#Succubus progression (src/character/ch_enthrall.gd). An elder succubus levels on what her thralls bring
+#in; her level is her thrall slots, picks the succubus_level_N passive (skilldata/succubus.gd) and brings
+#the unlock points her powers (succubus_trainings) are bought with.
+var succubus_levels = {
+	exp = [0, 20, 60, 125, 225, 375], #experience levels 1..6 start at
+	points = [1, 2, 2, 2, 2, 2], #unlock points levels 1..6 bring - 11, every power with one attunement. Level 1's comes with the trait (ch_enthrall.become_succubus)
+	exp_new_thrall = 20, #a character enthralled for the first time ever
+	exp_per_thrall_tick = 1, #every turn, for each thrall held
+	lesser_slots = 2, #a lesser succubus has no level
+	bond_per_tick = 2, #a thrall's affection or relationship with the master, every turn
+	bond_per_tick_near = 5, #...in the same place
+	lust_per_thrall = 2, #lust growth each thrall gives the master every turn
+	lust_per_doll = 4,
+	status_bond = 75, #the bond a thrall needs before a succubus grants a status
+	status_caps = {lesser_succubus = 2, chosen_consort = 1}, #per elder succubus
+}
+
+#The succubus powers, a row per level on the succubus page (SuccubusPage.gd): `level` is the level a power
+#opens at and its row, `column` 0..2 its place in the row, the attunements in the outer columns of the last
+#row with OR between them. Every level's points pay for that row, so by level 6 there is enough for
+#everything; an incubus, without Genitalia Manipulation, has 1 to spare.
 var succubus_trainings = {
-#	enthrall = {
-#		cost = {thrall_points = 0},
-#		mode = 'skill',
-#		skill = 'enthrall',
-#		trait = null,
-#	},
-#	release_thrall = {
-#		cost = {thrall_points = 0},
-#		mode = 'skill',
-#		skill = 'release_thrall',
-#		trait = null,
-#	},
+	enthrallment = {
+		cost = {thrall_points = 1},
+		level = 1,
+		column = 1,
+		reqs = [],
+		mode = 'trait',
+		skill = null,
+		trait = 'enthrallment',
+		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),
+	},
 	corrupt = {
 		cost = {thrall_points = 1},
+		level = 2,
+		column = 0,
 		reqs = [],
 		mode = 'skill',
 		skill = 'corrupt',
 		trait = null,
-		position = [0, 0],
 		icon = load("res://assets/images/iconstraits/corrupt.png"),
 	},
 	allure = {
 		cost = {thrall_points = 1},
+		level = 2,
+		column = 2,
 		reqs = [],
 		mode = 'skill',
 		skill = 'allure',
 		trait = null,
-		position = [0, 1],
 		icon = load("res://assets/images/iconstraits/allure.png"),
 	},
-	turn_succubus = {
-		cost = {thrall_points = 3},
-		reqs = [],
-		mode = 'skill',
-		skill = 'turn_succubus',
-		trait = null,
-		position = [0, 2],
-		icon = load("res://assets/images/iconstraits/turn_succubus.png"),
-	},
-	swap_form = {
-		cost = {thrall_points = 3},
-		reqs = [],
-		mode = 'skill',
-		skill = 'swap_form',
-		trait = null,
-		position = [0.7, 0],
-		icon = load("res://assets/images/iconstraits/change_form.png"),
-	},
-	succubus_magic = {
-		cost = {thrall_points = 5},
-		reqs = [{code = 'trait', trait = 'succubus_combat', check = false},],
-		mode = 'trait',
-		skill = null,
-		trait = 'succubus_magic',
-		position = [0.7, 1],
-		icon = load("res://assets/images/iconstraits/l_sorcery.png"),
-	},
-	succubus_combat = {
-		cost = {thrall_points = 5},
-		reqs = [{code = 'trait', trait = 'succubus_magic', check = false},],
-		mode = 'trait',
-		skill = null,
-		trait = 'succubus_combat',
-		position = [0.7, 2],
-		icon = load("res://assets/images/iconstraits/l_sword.png"),
-	},
 	genitalia_manipulation = {
-		cost = {thrall_points = 2},
+		cost = {thrall_points = 1},
+		level = 3,
+		column = 0,
 		reqs = [],
 		showupreqs = [{code = 'sex', operant = 'neq', value = 'male'}],
 		mode = 'skill',
 		skill = 'genitalia_manipulation',
 		trait = null,
-		position = [1.4, 0],
 		icon = load("res://assets/images/iconstraits/genitalia_manipulation.png"),
 	},
-
+	thrall_specialization = {
+		cost = {thrall_points = 2},
+		level = 3,
+		column = 1,
+		reqs = [],
+		mode = 'trait',
+		skill = null,
+		trait = 'thrall_specialization',
+		icon = load("res://assets/images/iconstraits/turn_succubus.png"),
+	},
+	perverted_mind = {
+		cost = {thrall_points = 1},
+		level = 4,
+		column = 1,
+		reqs = [],
+		mode = 'skill',
+		skill = 'perverted_mind',
+		trait = null,
+		icon = load("res://assets/images/iconsskills/Mindblast.png"),
+	},
+	swap_form = {
+		cost = {thrall_points = 2},
+		level = 5,
+		column = 1,
+		reqs = [],
+		mode = 'skill',
+		skill = 'swap_form',
+		trait = null,
+		icon = load("res://assets/images/iconstraits/change_form.png"),
+	},
+	succubus_magic = {
+		cost = {thrall_points = 2},
+		level = 6,
+		column = 0,
+		reqs = [{code = 'trait', trait = 'succubus_combat', check = false},],
+		mode = 'trait',
+		skill = null,
+		trait = 'succubus_magic',
+		icon = load("res://assets/images/iconstraits/l_sorcery.png"),
+	},
+	succubus_combat = {
+		cost = {thrall_points = 2},
+		level = 6,
+		column = 2,
+		reqs = [{code = 'trait', trait = 'succubus_magic', check = false},],
+		mode = 'trait',
+		skill = null,
+		trait = 'succubus_combat',
+		icon = load("res://assets/images/iconstraits/l_sword.png"),
+	},
 }
 
 
