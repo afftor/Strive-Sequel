@@ -1270,18 +1270,18 @@ var traits = {
 		icon = "res://assets/images/iconstraits/succubus.png",
 		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default', 'succubus_level_1', 'succubus_level_2', 'succubus_level_3', 'succubus_level_4', 'succubus_level_5', 'succubus_level_6'],
 		bonusstats = {sex_stamina = 2, trainee_amount = 1, mastery_point_magic = 1},
-		#Lust Drain (succubus_lust_skill) is switched off for now: only succubi and the thralls they charm
+		#Lust Drain (succubus_lust_skill) is switched off for now: only succubi and the thralls they ascend
 		#have a lustmax, so it has next to no one to drain. The skill itself is kept in social.gd.
 		#Enthrall, Release Thrall and Perverted Mind are bought among the succubus powers (Traitdata.succubus_trainings)
-		social_skills = ['grant_charmed_thrall', 'grant_lesser_succubus', 'grant_lust_doll', 'grant_chosen_consort'],
+		social_skills = ['grant_ascended_thrall', 'grant_lesser_succubus', 'grant_lust_doll', 'grant_chosen_consort'],
 		combat_skills = ['euphoria_apply'],
 		tags = ['permanent']
 	},
 	#Thrall statuses a succubus grants (skilldata/succubus.gd, grant_*). They end with the bond
 	#(ch_enthrall.remove_thrall_statuses); the lust bar both of these have is sized and filled by
 	#consent - ch_dyn_stats.fix_stat_data.
-	charmed_thrall = {
-		code = 'charmed_thrall',
+	ascended_thrall = {
+		code = 'ascended_thrall',
 		category = 'magic',
 		name = '',
 		descript = '',
@@ -1292,7 +1292,7 @@ var traits = {
 		social_skills = ['corrupt', 'allure', 'genitalia_manipulation'],
 		tags = ['thrall_status']
 	},
-	#grows out of a Charmed Thrall and takes its slot; still the elder succubus's thrall
+	#grows out of an Ascended Thrall and takes its slot; still the elder succubus's thrall
 	lesser_succubus = {
 		code = 'lesser_succubus',
 		category = 'magic',

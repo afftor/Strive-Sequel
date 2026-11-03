@@ -1176,7 +1176,7 @@ func stock_the_test_wardrobe():
 
 
 #Test mode: the master as an elder succubus with a thrall of every kind, for the succubus page of the
-#training popup - a Charmed Thrall to raise, a Lust Doll, one ready for a type and one still short of the
+#training popup - an Ascended Thrall to raise, a Lust Doll, one ready for a type and one still short of the
 #Affection a type needs. Level 5, so a free slot and a locked one show as well. Test mode teaches every
 #social skill, so three of the tree's powers are forgotten again to leave something to buy.
 const TEST_SUCCUBUS = true
@@ -1197,7 +1197,7 @@ func setup_test_succubus():
 			continue
 		picked.append(ch)
 	#[affection, type] for each thrall in turn
-	var setups = [[95, 'charmed_thrall'], [80, 'lust_doll'], [85, ''], [30, '']]
+	var setups = [[95, 'ascended_thrall'], [80, 'lust_doll'], [85, ''], [30, '']]
 	for i in range(picked.size()):
 		var thrall = picked[i]
 		thrall.set_stat('thrall_master', master.id)

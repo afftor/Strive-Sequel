@@ -1584,6 +1584,22 @@ custom_fonts/font = ExtResource( 28 )
 text = "1"
 align = 2
 
+[node name="lustcost" type="Label" parent="ExpandedCharacter/Extra/SocialPanel/Margin/Content/SocialSkills/Button"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -38.0
+margin_top = -22.0
+margin_right = -4.0
+margin_bottom = -2.0
+custom_colors/font_color = Color( 0.964706, 0.388235, 0.713726, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 28 )
+text = "1"
+align = 2
+
 [node name="RulesPanel" type="PanelContainer" parent="ExpandedCharacter/Extra"]
 margin_left = 7.0
 margin_top = 409.0

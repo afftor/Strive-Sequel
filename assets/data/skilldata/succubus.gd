@@ -166,8 +166,8 @@ var skills = {
 	#Thrall statuses: a succubus raises a thrall attached enough to her (Traitdata.succubus_levels.status_bond)
 	#to one of them. They are traits tagged 'thrall_status' and end with the bond - ch_enthrall.remove_thrall_statuses.
 	#Every one of them needs the Thrall Specialization power (Traitdata.succubus_trainings).
-	grant_charmed_thrall = {
-		code = 'grant_charmed_thrall',
+	grant_ascended_thrall = {
+		code = 'grant_ascended_thrall',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -176,11 +176,11 @@ var skills = {
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
 			{code = 'thrall_status_ready', check = true},
-			{code = 'thrall_status_offer', trait = 'charmed_thrall', check = true},
+			{code = 'thrall_status_offer', trait = 'ascended_thrall', check = true},
 			],
-		effects = ['grant_charmed_thrall'],
+		effects = ['grant_ascended_thrall'],
 		#a full magic slot is put to the player before the cooldown is spent
-		offers_trait = 'charmed_thrall',
+		offers_trait = 'ascended_thrall',
 		cost = {mp = 20, lust = 30},
 		charges = 1,
 		cooldown = 1,
@@ -349,13 +349,13 @@ var effects = {
 			}
 		]
 	},
-	grant_charmed_thrall = {
+	grant_ascended_thrall = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
 		conditions = [],
 		args = {target = {obj = 'target', func = 'eq'}},
-		sub_effects = [{type = 'oneshot', target = 'target', atomic = [{type = 'thrall_status', trait = 'charmed_thrall'}]}]
+		sub_effects = [{type = 'oneshot', target = 'target', atomic = [{type = 'thrall_status', trait = 'ascended_thrall'}]}]
 	},
 	grant_lesser_succubus = {
 		type = 'trigger',

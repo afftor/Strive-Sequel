@@ -639,7 +639,7 @@ func fix_stat_data(stat, data):
 				add_thrall_master_bonuses(stat, data, 'add_part')
 		'damage_mod_all', 'damage_reduction':
 			add_thrall_master_bonuses(stat, data, 'add')
-		#A lust bar of one's own never fills by itself: the thralls fill a succubus's, and a charmed
+		#A lust bar of one's own never fills by itself: the thralls fill a succubus's, and an ascended
 		#thrall's own consent fills theirs and sets its size.
 		'lusttick':
 			var person = parent.get_ref()
@@ -648,10 +648,10 @@ func fix_stat_data(stat, data):
 				if !data.bonuses.has('add'):
 					data.bonuses.add = []
 				data.bonuses.add.push_back({value = person.enthrall.get_thrall_lust_tick(), src_type = 'trait', src_value = 'thralls', timestamp = 0})
-				if has_charmed_lust():
+				if has_ascended_lust():
 					data.bonuses.add.push_back({value = person.get_stat('consent'), src_type = 'stat', src_value = 'consent', timestamp = 0})
 		'lustmax':
-			if has_charmed_lust():
+			if has_ascended_lust():
 				if !data.bonuses.has('add'):
 					data.bonuses.add = []
 				data.bonuses.add.push_back({value = parent.get_ref().get_stat('consent') * 10, src_type = 'stat', src_value = 'consent', timestamp = 0})
@@ -1448,23 +1448,23 @@ func grow_by_victory(alone, with_master):
 					grow_trait(code)
 
 
-#The statuses a succubus grants her thralls (tag 'thrall_status'). A Lesser Succubus grows out of a
-#Charmed Thrall and takes its slot; a Lust Doll pushes a bondage status out of the mental slot, locked
+#The statuses a succubus grants her thralls (tag 'thrall_status'). A Lesser Succubus grows out of an
+#Ascended Thrall and takes its slot; a Lust Doll pushes a bondage status out of the mental slot, locked
 #or not; the rest come in the way any trait offer does.
-#A thrall holds one of them at a time: the only change is a Charmed Thrall growing into a Lesser Succubus.
+#A thrall holds one of them at a time: the only change is an Ascended Thrall growing into a Lesser Succubus.
 func can_take_thrall_status(tr_code):
 	if owns_trait(tr_code):
 		return false
 	for code in traits_stored:
 		if !Traitdata.traits[code].tags.has('thrall_status'):
 			continue
-		if !(tr_code == 'lesser_succubus' and code == 'charmed_thrall'):
+		if !(tr_code == 'lesser_succubus' and code == 'ascended_thrall'):
 			return false
 	match tr_code:
-		'charmed_thrall':
+		'ascended_thrall':
 			return !owns_trait('lesser_succubus') and preview_trait_offer(tr_code) != 'skip'
 		'lesser_succubus':
-			return traits_stored.has('charmed_thrall')
+			return traits_stored.has('ascended_thrall')
 		'lust_doll':
 			return get_bondage_status() != '' or preview_trait_offer(tr_code) != 'skip'
 	return preview_trait_offer(tr_code) != 'skip'
@@ -1475,7 +1475,7 @@ func grant_thrall_status(tr_code):
 		return
 	match tr_code:
 		'lesser_succubus':
-			swap_in_place('charmed_thrall', tr_code, true)
+			swap_in_place('ascended_thrall', tr_code, true)
 			return
 		'lust_doll':
 			var bondage = get_bondage_status()
@@ -1523,9 +1523,9 @@ func add_thrall_master_bonuses(stat, data, op):
 			data.bonuses[op].push_back({value = value, src_type = 'trait', src_value = code, timestamp = 0})
 
 
-#a charmed thrall's lust bar, and a lesser succubus's after it, is sized and filled by consent
-func has_charmed_lust():
-	return traits_stored.has('charmed_thrall') or traits_stored.has('lesser_succubus')
+#an ascended thrall's lust bar, and a lesser succubus's after it, is sized and filled by consent
+func has_ascended_lust():
+	return traits_stored.has('ascended_thrall') or traits_stored.has('lesser_succubus')
 
 
 func add_rare_trait():

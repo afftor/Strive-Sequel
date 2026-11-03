@@ -1856,9 +1856,9 @@ func add_thrall(chid):
 func clear_enthrall():
 	enthrall.cleanup()
 
-#a lust bar of one's own: the succubi, and the thralls a succubus has charmed
+#a lust bar of one's own: the succubi, and the thralls a succubus has ascended
 func has_lust_meter():
-	return check_trait('succubus') or check_trait('charmed_thrall') or check_trait('lesser_succubus')
+	return check_trait('succubus') or check_trait('ascended_thrall') or check_trait('lesser_succubus')
 
 
 func serialize():
@@ -2898,7 +2898,13 @@ func affect_char(template, manifest = false):
 		'add_trait':
 			offer_trait(template.trait, template.get('mode', 'ask'))
 		'thrall_status':
+			#a full slot can put the grant off to the replace panel, so only a type that came in is shown
+			var had_status = dyn_stats.owns_trait(template.trait)
 			dyn_stats.grant_thrall_status(template.trait)
+			if !had_status and dyn_stats.owns_trait(template.trait):
+				input_handler.play_animation("body_upgrade", {person = self, title = "SUCCUBUS_TRANSFORM_ANIM_TITLE",
+					icon = input_handler.loadimage(Traitdata.traits[template.trait].icon, 'icons'),
+					name = globals.get_trait_entry(self, template.trait).name})
 		'replace_trait':
 			dyn_stats.replace_trait(template.old, template.trait)
 		'set_faith':

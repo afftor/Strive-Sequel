@@ -8,18 +8,18 @@ var root
 
 #a thrall holds one type at a time (ch_dyn_stats.can_take_thrall_status); these skills grant them
 const TYPE_SKILLS = {
-	charmed_thrall = 'grant_charmed_thrall',
+	ascended_thrall = 'grant_ascended_thrall',
 	lust_doll = 'grant_lust_doll',
 	chosen_consort = 'grant_chosen_consort',
 	lesser_succubus = 'grant_lesser_succubus',
 }
-const TYPE_CHOICES = ['charmed_thrall', 'lust_doll', 'chosen_consort']
+const TYPE_CHOICES = ['ascended_thrall', 'lust_doll', 'chosen_consort']
 #the power every grant skill needs (Traitdata.succubus_trainings)
 const SPECIALIZATION = 'thrall_specialization'
 #the order a type is read in - a save from before types were exclusive can hold several
-const TYPE_ORDER = ['lesser_succubus', 'charmed_thrall', 'lust_doll', 'chosen_consort']
+const TYPE_ORDER = ['lesser_succubus', 'ascended_thrall', 'lust_doll', 'chosen_consort']
 const TYPE_COLORS = {
-	charmed_thrall = Color('#f663b6'),
+	ascended_thrall = Color('#f663b6'),
 	lust_doll = Color('#b07cff'),
 	chosen_consort = Color('#f9e181'),
 	lesser_succubus = Color('#e0525e'),
@@ -272,7 +272,7 @@ func thrall_type(tchar):
 	return ''
 
 
-#what the cross on a portrait opens: 'type' for a thrall without one, 'raise' for a Charmed Thrall
+#what the cross on a portrait opens: 'type' for a thrall without one, 'raise' for an Ascended Thrall
 #that can still become a Lesser Succubus, '' for none. The grant skills need Thrall Specialization and
 #the thrall at hand.
 func up_mode(tchar):
@@ -285,7 +285,7 @@ func up_mode(tchar):
 	match thrall_type(tchar):
 		'':
 			return 'type'
-		'charmed_thrall':
+		'ascended_thrall':
 			if cap_left('lesser_succubus'):
 				return 'raise'
 	return ''
@@ -379,13 +379,13 @@ func drawer_note(tchar):
 
 
 #The cards a thrall's drawer shows: the three types for a thrall without one; a thrall with a type gets
-#only that type's details, and a Charmed Thrall the Lesser Succubus it can still grow into beside them.
+#only that type's details, and an Ascended Thrall the Lesser Succubus it can still grow into beside them.
 func drawer_codes(tchar):
 	var current = thrall_type(tchar)
 	if current == '':
 		return TYPE_CHOICES
-	if current == 'charmed_thrall':
-		return ['charmed_thrall', 'lesser_succubus']
+	if current == 'ascended_thrall':
+		return ['ascended_thrall', 'lesser_succubus']
 	return [current]
 
 
@@ -440,7 +440,7 @@ func fill_card(card, code, tchar):
 
 
 #[met, text] for everything a type needs: Thrall Specialization (listed only while missing), the bond,
-#a Charmed Thrall to grow from, room under the succubus's limit, the thrall at hand, the day's use of the skill
+#an Ascended Thrall to grow from, room under the succubus's limit, the thrall at hand, the day's use of the skill
 func requirement_lines(code, tchar):
 	var data = Traitdata.succubus_levels
 	var res = []
@@ -449,7 +449,7 @@ func requirement_lines(code, tchar):
 	var bond = int(clamp(tchar.enthrall.get_bond(), 0, 100))
 	res.append([bond >= data.status_bond, "%d %s (%d)" % [data.status_bond, bond_label(), bond]])
 	if code == 'lesser_succubus':
-		res.append([thrall_type(tchar) == 'charmed_thrall', trait_name('charmed_thrall', tchar)])
+		res.append([thrall_type(tchar) == 'ascended_thrall', trait_name('ascended_thrall', tchar)])
 	var cap = data.status_caps.get(code, -1)
 	if cap > 0:
 		var held = person.enthrall.count_thralls_with_trait(code)
@@ -472,7 +472,7 @@ func requirement_lines(code, tchar):
 
 func type_note(code, tchar):
 	match code:
-		'charmed_thrall':
+		'ascended_thrall':
 			return tr("SUCCUBUS_TYPE_CAN_RAISE") % trait_name('lesser_succubus', tchar)
 		'lust_doll':
 			return tr("SUCCUBUS_TYPE_REPLACES_SLAVE_STATUS")
@@ -648,12 +648,16 @@ func add_training(tr_id):
 func add_training_confirm():
 	var u_data = Traitdata.succubus_trainings[cashed_training]
 	person.pay_cost(u_data.cost)
+	var name_key
 	match u_data.mode:
 		'skill':
 			person.learn_skill(u_data.skill)
+			name_key = Skilldata.Skilllist[u_data.skill].name
 		'trait':
 			person.add_trait(u_data.trait)
+			name_key = Traitdata.traits[u_data.trait].name
 	refresh()
+	input_handler.play_animation("body_upgrade", {person = person, icon = u_data.icon, name = name_key, title = "SUCCUBUS_POWER_ANIM_TITLE"})
 
 
 #the succubus's spells, mana bottom right and lust bottom left, and her Lust and Mana beside them; the

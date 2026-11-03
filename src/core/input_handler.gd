@@ -2092,7 +2092,7 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label").text = "Class Acquired"
 			anim_scene.get_node("Label2").text = args.current_class.capitalize()
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
-			anim_scene.play("class_achieved")
+			play_class_achieved(anim_scene)
 		"trait_aquired":
 			var tdata = Traitdata.traits[args.current_trait]
 			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
@@ -2103,7 +2103,7 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label").text = tr("TRAIT_ACQUIRED_TITLE")
 			anim_scene.get_node("Label2").text = tdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
-			anim_scene.play("class_achieved")
+			play_class_achieved(anim_scene)
 		"slave_spec_aquired":
 			var tdata = Traitdata.slave_profs[args.current_trait]
 			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
@@ -2114,7 +2114,7 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label").text = "Training"
 			anim_scene.get_node("Label2").text = tdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
-			anim_scene.play("class_achieved")
+			play_class_achieved(anim_scene)
 		"mastery_aquired":
 			var masdata = Skilldata.masteries[args.mastery]
 			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
@@ -2125,8 +2125,8 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label").text = "Mastery"
 			anim_scene.get_node("Label2").text = masdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
-			anim_scene.play("class_achieved")
-		"body_upgrade": #(person, upgrade or icon + name, title) - a body rite performed in the ritual room
+			play_class_achieved(anim_scene)
+		"body_upgrade": #(person, upgrade or icon + name, title) - a body rite, or a succubus power learned
 			var rite_icon = args.get('icon')
 			var rite_name = args.get('name')
 			if !args.has('icon'):
@@ -2140,17 +2140,14 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label").text = tr(args.get('title', "BODYRITE_ANIM_TITLE"))
 			anim_scene.get_node("Label2").text = tr(rite_name)
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
-			anim_scene.play("class_achieved")
+			play_class_achieved(anim_scene)
 		"enchanted": #(item, subtitle) - gear enchanted in the ritual room
 			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
 			args.item.set_icon(anim_scene.get_node("TextureRect"))
 			anim_scene.get_node("Label").text = tr("ENCHANTING_ANIM_TITLE")
 			anim_scene.get_node("Label2").text = tr(args.item.name)
 			anim_scene.get_node("Label3").text = args.get('subtitle', "")
-			#gear names and enchantment lists run longer than class names
-			font_size_adjust(anim_scene.get_node("Label2"), 0)
-			font_size_adjust(anim_scene.get_node("Label3"), 0)
-			anim_scene.play("class_achieved")
+			play_class_achieved(anim_scene)
 		"quest_completed":
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
 			anim_scene.get_node("Label3").text = args.name
@@ -2193,6 +2190,14 @@ func play_animation_noq(animation, args = {}):
 		"runaway":
 			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_RUNAWAY)
 			anim_scene.play("runaway")
+
+
+#only the title's label spans the whole frame, so only it keeps the standard padding
+func play_class_achieved(anim_scene):
+	font_size_adjust(anim_scene.get_node("Label"))
+	font_size_adjust(anim_scene.get_node("Label2"), 0)
+	font_size_adjust(anim_scene.get_node("Label3"), 0)
+	anim_scene.play("class_achieved")
 
 
 

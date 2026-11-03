@@ -1072,6 +1072,7 @@ func build_expanded_social_skills(person):
 		button.get_node("cooldown").hide()
 		button.get_node("manacost").hide()
 		button.get_node("energycost").hide()
+		button.get_node("lustcost").hide()
 		button.disabled = false
 		if !source.has(position):
 			button.connect("pressed", self, "_select_expanded_social_position", [position])
@@ -1085,6 +1086,9 @@ func build_expanded_social_skills(person):
 		if skill.cost.has("energy"):
 			button.get_node("energycost").text = str(int(skill.cost.energy))
 			button.get_node("energycost").show()
+		if skill.cost.has("lust"):
+			button.get_node("lustcost").text = str(int(skill.cost.lust))
+			button.get_node("lustcost").show()
 		var used_charges = person.skills.social_skills_charges.get(skill.code, 0)
 		var charges_left = skill.charges - used_charges
 		button.get_node("charges").text = str(charges_left) + "/" + str(skill.charges)
