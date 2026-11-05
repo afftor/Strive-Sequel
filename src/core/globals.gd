@@ -5,6 +5,8 @@ const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 #same rule as the sanitizer
 const ItemMigrations = preload("res://src/core/item_migrations.gd")
 
+const CENSORMODE = false
+
 #time
 signal hour_tick
 signal task_added
