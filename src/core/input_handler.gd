@@ -620,8 +620,11 @@ func _init():
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
 		var loc_code = i.replace(variables.LocalizationFolder, '')
-		TranslationData[i.replace(variables.LocalizationFolder, '')] = {data = (i + "/main.gd"), info = i + "/info.gd"}
-		
+		TranslationData[loc_code] = {data = [i + "/main.gd"], info = i + "/info.gd"}
+		for j in scanfolder(i):
+			if j.ends_with("main.gd") or j.ends_with("info.gd"):
+				continue
+			TranslationData[loc_code].data.push_back(j)
 #			file.open(ifile, File.READ)
 #			var data = file.get_as_text()
 #	for i in dir_contents(LocalizationFolder):
@@ -633,10 +636,11 @@ func _init():
 		globalsettings.ActiveLocalization = 'zh'
 	if TranslationData.has(globalsettings.ActiveLocalization) == false:
 		globalsettings.ActiveLocalization = 'en'
-	var translationscript = load(TranslationData[globalsettings.ActiveLocalization].data).new()
 	activetranslation.set_locale(globalsettings.ActiveLocalization)
-	for i in translationscript.TranslationDict:
-		activetranslation.add_message(i, translationscript.TranslationDict[i])
+	for path in TranslationData[globalsettings.ActiveLocalization].data:
+		var translationscript = load(path).new()
+		for i in translationscript.TranslationDict:
+			activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
 	change_locale()
 
@@ -648,8 +652,12 @@ func _ready():
 	GUISoundManagerInit()
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
-		for ifile in dir_contents(i):
-			TranslationData[i.replace(variables.LocalizationFolder, '')] = ifile
+		var loc_code = i.replace(variables.LocalizationFolder, '')
+		TranslationData[loc_code] = {data = [i + "/main.gd"], info = i + "/info.gd"}
+		for j in scanfolder(i):
+			if j.ends_with("main.gd") or j.ends_with("info.gd"):
+				continue
+			TranslationData[loc_code].data.push_back(j)
 	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 	connect("animation_finished", self, "animation_queue_start_force")

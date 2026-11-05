@@ -4761,110 +4761,122 @@ func scan_localization_line(line: String, in_multiline: bool) -> Dictionary:
 
 #MIND! This func writes file to "res://", so it wouldn't (and shouldn't) work in exported version
 func update_localization_file(update_loc: String, primary_loc = "en"):
-	# find all main.gd files
 	var TranslationData = {}
 	for i in input_handler.scanfolder(variables.LocalizationFolder):
-		TranslationData[i.replace(variables.LocalizationFolder, '')] = {data = (i + "/main.gd"), info = i + "/info.gd"}
+		var loc_code = i.replace(variables.LocalizationFolder, '')
+		TranslationData[loc_code] = {data = [i + "/main.gd"], info = i + "/info.gd"}
+		for j in input_handler.scanfolder(i):
+			if j.ends_with("main.gd") or j.ends_with("info.gd"):
+				continue
+			TranslationData[loc_code].data.push_back(j)
 	if !TranslationData.has(primary_loc):
 		return
 	if !TranslationData.has(update_loc):
 		return
 	
-	# load english translation from file
-	var primary_dict = load(TranslationData[primary_loc].data).new().TranslationDict
-	var update_dict = load(TranslationData[update_loc].data).new().TranslationDict
+	for path in TranslationData[primary_loc].data:
+		var target_path = path.replace("/%s/" % primary_loc, "/%s/" % update_loc)
+		var temp_path = target_path + '_'
+		
+		var primary_dict = load(path).new().TranslationDict
+		var update_dict = {}
+		if File.new().file_exists(target_path):
+			update_dict = load(target_path).new().TranslationDict
+		else:
+			var tmp_file = File.new()
+			tmp_file.open(target_path, File.WRITE)
+			tmp_file.close()
 	
-	# if size of dicts isn't equal then compare
-	if primary_dict.size() != update_dict.size():
-		var missing_keys = {} # a pair of previous key and arrays of missing keys after it. Needed to save order
-		var previous_pos = 1
-		var consecutive_key = false
-		for i in primary_dict.keys().size():
-			if not (primary_dict.keys()[i] in update_dict) and i > 0:
-				if consecutive_key:
-					previous_pos += 1
-					missing_keys[primary_dict.keys()[i-previous_pos]].append({"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]})
+		# if size of dicts isn't equal then compare
+		if primary_dict.size() != update_dict.size():
+			var missing_keys = {} # a pair of previous key and arrays of missing keys after it. Needed to save order
+			var previous_pos = 1
+			var consecutive_key = false
+			for i in primary_dict.keys().size():
+				if not (primary_dict.keys()[i] in update_dict) and i > 0:
+					if consecutive_key:
+						previous_pos += 1
+						missing_keys[primary_dict.keys()[i-previous_pos]].append({"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]})
+					else:
+						missing_keys[primary_dict.keys()[i-previous_pos]] = [{"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]}]
+					consecutive_key = true
 				else:
-					missing_keys[primary_dict.keys()[i-previous_pos]] = [{"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]}]
-				consecutive_key = true
-			else:
-				previous_pos = 1
-				consecutive_key = false
-		if missing_keys.size() == 0:
-			return
-
-		# open localization file to add keys into it
-		var loc_file = File.new()
-		var open_result = loc_file.open(TranslationData[update_loc].data, File.READ)
-		if open_result != OK:
-			return
-		
-		# look for keys in text lines (full word that's followed by = symbol)
-		var regex = RegEx.new()
-		regex.compile("([A-Z_0-9]+(?=\\s*=))")
-		
-		# create new temporary file named main2.gd
-		var tmp_file = File.new()
-		var tmp_path = TranslationData[update_loc].data.replace("main.gd", "main2.gd")
-		var tmp_open_result = tmp_file.open(tmp_path, File.WRITE)
-		if tmp_open_result != OK:
-			loc_file.close()
-			return
-		
-		# iterate through main.gd file
-		var key = ""
-		var inserted_anchors = {}
-		var in_multiline = false #inside a """ value that spans several lines
-		while loc_file.get_position() < loc_file.get_len():
-			var line = loc_file.get_line()
-			var was_in_multiline = in_multiline
-			var scanned = scan_localization_line(line, in_multiline)
-			in_multiline = scanned.in_multiline
-
-			# a line in the middle of a multi-line value is plain text, copy it untouched
-			if was_in_multiline and in_multiline:
-				tmp_file.store_line(line)
+					previous_pos = 1
+					consecutive_key = false
+			if missing_keys.size() == 0:
 				continue
 
-			var code = scanned.code
-			if !was_in_multiline:
-				# a key can only be declared on a line that starts outside a string.
-				# search the code part so a word in a trailing comment is never taken for a key
-				var regex_result = regex.search(code)
-				if regex_result:
-					key = regex_result.get_string()
-				# the line only opens the value - its entry ends on the closing line below
-				if in_multiline:
+			# open localization file to add keys into it
+			var loc_file = File.new()
+			var open_result = loc_file.open(target_path, File.READ)
+			if open_result != OK:
+				continue
+			
+			# look for keys in text lines (full word that's followed by = symbol)
+			var regex = RegEx.new()
+			regex.compile("([A-Z_0-9]+(?=\\s*=))")
+			
+			# create new temporary file named main2.gd
+			var tmp_file = File.new()
+			var tmp_open_result = tmp_file.open(temp_path, File.WRITE)
+			if tmp_open_result != OK:
+				loc_file.close()
+				continue
+			
+			# iterate through main.gd file
+			var key = ""
+			var inserted_anchors = {}
+			var in_multiline = false #inside a """ value that spans several lines
+			while loc_file.get_position() < loc_file.get_len():
+				var line = loc_file.get_line()
+				var was_in_multiline = in_multiline
+				var scanned = scan_localization_line(line, in_multiline)
+				in_multiline = scanned.in_multiline
+
+				# a line in the middle of a multi-line value is plain text, copy it untouched
+				if was_in_multiline and in_multiline:
 					tmp_file.store_line(line)
 					continue
 
-			# here `line` holds the last line of a complete entry: comments, blank lines and the
-			# closing brace all reduce to code that ends in neither a quote nor a comma
-			if key in missing_keys.keys() and !inserted_anchors.has(key):
-				var check_line = code.strip_edges()
-				# last entry of a file may have no trailing comma, add it or nothing gets inserted after it
-				if check_line.ends_with('"') or check_line.ends_with("'"):
-					line = code + "," + line.substr(code.length())
-					check_line += ","
-				if check_line.ends_with(","):
-					tmp_file.store_line(line)
-					inserted_anchors[key] = true
-					for i in missing_keys[key].size():
-						var insert_line = "	%s = \"\"\"%s\"\"\", # MISSING TRANSLATION"
-						tmp_file.store_line(insert_line % [missing_keys[key][i].key, missing_keys[key][i].text])
-					continue
-			tmp_file.store_line(line)
-		tmp_file.close()
-		loc_file.close()
-		
-		# remove old localization and rename our temporary main2.gd into main.gd
-		var dir = Directory.new()
-		var remove_result = dir.remove(TranslationData[update_loc].data)
-		if remove_result != OK:
-			return
-		var rename_result = dir.rename(tmp_path, TranslationData[update_loc].data)
-		if rename_result != OK:
-			return
+				var code = scanned.code
+				if !was_in_multiline:
+					# a key can only be declared on a line that starts outside a string.
+					# search the code part so a word in a trailing comment is never taken for a key
+					var regex_result = regex.search(code)
+					if regex_result:
+						key = regex_result.get_string()
+					# the line only opens the value - its entry ends on the closing line below
+					if in_multiline:
+						tmp_file.store_line(line)
+						continue
+
+				# here `line` holds the last line of a complete entry: comments, blank lines and the
+				# closing brace all reduce to code that ends in neither a quote nor a comma
+				if key in missing_keys.keys() and !inserted_anchors.has(key):
+					var check_line = code.strip_edges()
+					# last entry of a file may have no trailing comma, add it or nothing gets inserted after it
+					if check_line.ends_with('"') or check_line.ends_with("'"):
+						line = code + "," + line.substr(code.length())
+						check_line += ","
+					if check_line.ends_with(","):
+						tmp_file.store_line(line)
+						inserted_anchors[key] = true
+						for i in missing_keys[key].size():
+							var insert_line = "	%s = \"\"\"%s\"\"\", # MISSING TRANSLATION"
+							tmp_file.store_line(insert_line % [missing_keys[key][i].key, missing_keys[key][i].text])
+						continue
+				tmp_file.store_line(line)
+			tmp_file.close()
+			loc_file.close()
+			
+			# remove old localization and rename our temporary main2.gd into main.gd
+			var dir = Directory.new()
+			var remove_result = dir.remove(target_path)
+			if remove_result != OK:
+				continue
+			var rename_result = dir.rename(temp_path, target_path)
+			if rename_result != OK:
+				continue
 
 
 func get_sex_action(code):

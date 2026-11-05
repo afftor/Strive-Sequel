@@ -94,16 +94,16 @@ func process_data_mods():
 		process_data_mod(m)
 	emit_signal("data_loaded")
 
-func process_translation_mods():
+func process_translation_mods(): 
 	var activetranslation = Translation.new()
-	var translationscript = load(input_handler.TranslationData[input_handler.globalsettings.ActiveLocalization]).new()
 	
 	#locale (en only rn)
 	activetranslation.set_locale(input_handler.globalsettings.ActiveLocalization)
 	
-	#Reload main.gd
-	for i in translationscript.TranslationDict:
-		activetranslation.add_message(i, translationscript.TranslationDict[i])
+	for path in input_handler.TranslationData[input_handler.globalsettings.ActiveLocalization].data:
+		var translationscript = load(path).new()
+		for i in translationscript.TranslationDict:
+			activetranslation.add_message(i, translationscript.TranslationDict[i])
 	
 	for m in mods_list:
 		var mconf = m.config
