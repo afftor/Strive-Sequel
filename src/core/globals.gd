@@ -4765,7 +4765,7 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 	for i in input_handler.scanfolder(variables.LocalizationFolder):
 		var loc_code = i.replace(variables.LocalizationFolder, '')
 		TranslationData[loc_code] = {data = [i + "/main.gd"], info = i + "/info.gd"}
-		for j in input_handler.scanfolder(i):
+		for j in input_handler.dir_contents(i):
 			if j.ends_with("main.gd") or j.ends_with("info.gd"):
 				continue
 			TranslationData[loc_code].data.push_back(j)
@@ -4780,12 +4780,17 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 		
 		var primary_dict = load(path).new().TranslationDict
 		var update_dict = {}
-		if File.new().file_exists(target_path):
-			update_dict = load(target_path).new().TranslationDict
-		else:
-			var tmp_file = File.new()
-			tmp_file.open(target_path, File.WRITE)
-			tmp_file.close()
+		var target_file = File.new()
+		if target_file.file_exists(target_path) and target_file.open(target_path, File.READ) == OK:
+			var has_content = target_file.get_len() > 0
+			target_file.close()
+			if has_content: #load() of an empty .gd fails, so only load non-empty files
+				update_dict = load(target_path).new().TranslationDict
+		if update_dict.empty():
+			# no target file or it has no translations yet: take the whole primary file as-is
+			var dir = Directory.new()
+			dir.copy(path, target_path)
+			continue
 	
 		# if size of dicts isn't equal then compare
 		if primary_dict.size() != update_dict.size():

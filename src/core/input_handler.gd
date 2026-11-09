@@ -621,7 +621,7 @@ func _init():
 	for i in scanfolder(variables.LocalizationFolder):
 		var loc_code = i.replace(variables.LocalizationFolder, '')
 		TranslationData[loc_code] = {data = [i + "/main.gd"], info = i + "/info.gd"}
-		for j in scanfolder(i):
+		for j in dir_contents(i):
 			if j.ends_with("main.gd") or j.ends_with("info.gd"):
 				continue
 			TranslationData[loc_code].data.push_back(j)
@@ -654,7 +654,7 @@ func _ready():
 	for i in scanfolder(variables.LocalizationFolder):
 		var loc_code = i.replace(variables.LocalizationFolder, '')
 		TranslationData[loc_code] = {data = [i + "/main.gd"], info = i + "/info.gd"}
-		for j in scanfolder(i):
+		for j in dir_contents(i):
 			if j.ends_with("main.gd") or j.ends_with("info.gd"):
 				continue
 			TranslationData[loc_code].data.push_back(j)
@@ -1995,13 +1995,27 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		dir.make_dir(path)
 	if dir.open(path) == OK:
 		dir.list_dir_begin()
-
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir() && !file_name in ['.','..',null]:
 				array.append(path + file_name)
 			file_name = dir.get_next()
 		return array
+
+
+func scanfolder_files(path): #makes an array of all files in a folder
+	var dir = Directory.new()
+	var array = []
+	if dir.open(path) != OK:
+		return array
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if !dir.current_is_dir() && file_name.ends_with(".gd"):
+			array.append(path + "/" + file_name)
+		file_name = dir.get_next()
+	array.sort()
+	return array
 
 
 func CenterNode(node):
