@@ -24,10 +24,10 @@ const BREAST_BONES = [
 	"nipple4_l", "nipple4_r", "nipple5_l", "nipple5_r",
 ]
 
-# spine1 widens the pelvis for Butt size, but the two thigh roots must keep the
+# spine1 widens the pelvis for Butt size, but ordinary and animated thigh roots keep the
 # world basis they had before that widening.  Their positions still inherit the
 # wider pelvis; only the scale basis is compensated in doll2_preview.gd.
-const BUTT_SCALE_COMPENSATION_BONES = ["spine46", "bone"]
+const BUTT_SCALE_COMPENSATION_BONES = ["spine46", "bone", "spine128", "spine135"]
 
 # Shoulder width scales the collarbone along its length.  The arm root must move
 # with its tip, but the collarbone's anisotropic basis must not enter the arm:
@@ -50,7 +50,14 @@ const BONE_ALIASES = {
 		"collarbone_l": "collarb_l",
 		"collarbone_r": "collarb_r",
 		"spine46": "hip_l",
+		"spine47": "shin_l",
+		"spine48": "foot_l",
 		"bone": "hip_r",
+		"bone2": "shin_r",
+		"bone3": "foot_r",
+		# Separate female animated legs have no counterpart on the male rig.
+		"spine128": null, "spine129": null, "spine130": null,
+		"spine135": null, "spine136": null, "spine137": null,
 		"chest_l": null,
 		"chest_r": null,
 		"nipple2_l": null, "nipple2_r": null,
@@ -244,6 +251,13 @@ const MODIFIERS = {
 			{"bone": "bone", "axis": "y", "op": "mul"},
 			{"bone": "bone2", "axis": "y", "op": "mul"},
 			{"bone": "bone3", "axis": "y", "op": "mul"},
+			# Hip/Shin meshes (human, orc and beastkin) share these new chains.
+			{"bone": "spine128", "axis": "y", "op": "mul"},
+			{"bone": "spine129", "axis": "y", "op": "mul"},
+			{"bone": "spine130", "axis": "y", "op": "mul"},
+			{"bone": "spine135", "axis": "y", "op": "mul"},
+			{"bone": "spine136", "axis": "y", "op": "mul"},
+			{"bone": "spine137", "axis": "y", "op": "mul"},
 		],
 	},
 	# The character's `ass_size`, and the only handle the pelvis has.  Named sizes

@@ -37,6 +37,19 @@ const GROUP_DEFS = {
 # with the shared channels, because only this rig has them; the two groups draw
 # into slots of their own, so nothing is claimed away from another channel.
 const COLOR_CHANNELS = {
+	# Runtime-selected alternatives share slots but use different paint modes.
+	"anatomy_penis/penis": {"anchor": "body", "groups": []},
+	"anatomy_penis/penis2": {"anchor": "body", "groups": []},
+	"anatomy_penis/penis3": {"anchor": "body", "groups": []},
+	"anatomy_penis/penis_minet": {"anchor": "body", "groups": []},
+	"anatomy_penis_f/penis": {"anchor": "body", "groups": []},
+	"anatomy_penis_f/penis2": {"anchor": "body", "groups": []},
+	"anatomy_penis_f/penis3": {"anchor": "body", "groups": []},
+	"anatomy_penis_f/penis_minet": {"anchor": "body", "groups": []},
+	"anatomy_falos/penis": {"anchor": "body", "groups": [], "gear": true},
+	"anatomy_falos/penis2": {"anchor": "body", "groups": [], "gear": true},
+	"anatomy_falos/penis3": {"anchor": "body", "groups": [], "gear": true},
+	"anatomy_falos/penis_minet": {"anchor": "body", "groups": [], "gear": true},
 	"piercing_nipple": {"anchor": "piercing_nipple", "groups": ["piercing_nipple"]},
 	"piercing_belly": {"anchor": "piercing_belly", "groups": ["piercing_belly"]},
 }
@@ -91,6 +104,9 @@ const AXES = {
 # Slot -> axis.  An axis is only applied when a part owns more than one
 # attachment in that slot; a single attachment is always assigned directly.
 const SLOT_AXES = {
+	# Separate animated shins use the same racial cut as the ordinary legs.
+	"ShinL": "legs",
+	"ShinR": "legs",
 	"belly": "belly_shape",
 	"piercing_belly": "pregnancy",
 	"piercing_nipple_1_0": "tits_size",
@@ -219,6 +235,10 @@ const OPTION_AXIS_GROUPS = {
 # that collides with `Hand_armorL3` on hand pose 3; the right hand only ships
 # `Hand_armorR3`, so the unnumbered name is the one that matches.
 const EXCLUDE = [
+	# Selected per slot by the animation viewer, not another body preset.
+	"falos", "falos_minet", "penis_f", "penis_minet_f",
+	# Technical X-ray overlay is rendered only by the preview inset.
+	"xray/00_body_nude_female/xray",
 	"hand3_armorl3",
 	# The plate set puts the flat torso nipple mask into the breast slot, where it
 	# wins over the body's size-matched nipple: a big chest ended up wearing the
