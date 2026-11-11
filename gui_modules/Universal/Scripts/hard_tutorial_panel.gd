@@ -79,6 +79,29 @@ func clamp_panel_pos(pos):
 func hide_text():
 	$Top/panel.hide()
 
+#The tutorial's own menu (ESC) is an ordinary node under the tree root, so $Top's layer draws
+#the step on top of it: the curtain dims the menu and the frame keeps pointing at the step's
+#button - which is now under the menu, so whichever menu button covers it looks like the thing
+#to press. Put away while the menu is up and brought back the way it was.
+var suspended_state = null
+
+func suspend():
+	if suspended_state != null:
+		return
+	suspended_state = {panel = $Top/panel.visible, highlight = $Top/highlight.visible}
+	$Top/panel.hide()
+	$Top/highlight.hide()
+
+#restore = false when the menu was left for a new start or an abort: the next step draws itself
+#and close_panel() puts the old one away, so what the old step showed is only forgotten
+func resume(restore = true):
+	if suspended_state == null:
+		return
+	if restore:
+		$Top/panel.visible = suspended_state.panel
+		$Top/highlight.visible = suspended_state.highlight
+	suspended_state = null
+
 #Draw the frame around these rectangles, and keep watching where they came from. The caller
 #hands over what it measured plus how to measure it again; without the second part the frame
 #is a snapshot.

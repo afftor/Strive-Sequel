@@ -183,6 +183,10 @@ func get_stat(statname, nobonus = false, desc_ready = false):
 		return enthrall.get_thrall_count()
 	if statname == 'thralls_amount_max':
 		return enthrall.get_thrall_max_count()
+	if statname == 'succubus_exp':
+		return enthrall.succubus_exp
+	if statname == 'succubus_level':
+		return enthrall.get_succubus_level()
 	if statname == 'price':
 		return calculate_price()
 	if statname == 'food_demand':
@@ -1852,6 +1856,10 @@ func add_thrall(chid):
 func clear_enthrall():
 	enthrall.cleanup()
 
+#a lust bar of one's own: the succubi, and the thralls a succubus has ascended
+func has_lust_meter():
+	return check_trait('succubus') or check_trait('ascended_thrall') or check_trait('lesser_succubus')
+
 
 func serialize():
 	var res = inst2dict(self)
@@ -2332,6 +2340,15 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return get_work() == i.value
 		'can_add_thrall':
 			return enthrall.can_add_thrall() == i.check
+		#a thrall attached enough to whoever holds them (affection, or their relationship) for a status
+		'thrall_status_ready':
+			return (enthrall.get_bond() >= Traitdata.succubus_levels.status_bond) == i.check
+		#how many of this master's thralls hold a status, against Traitdata.succubus_levels.status_caps
+		'thrall_status_free':
+			var cap = Traitdata.succubus_levels.status_caps.get(i.trait, -1)
+			return (cap < 0 or enthrall.count_thralls_with_trait(i.trait) < cap) == i.check
+		'thrall_status_offer':
+			return dyn_stats.can_take_thrall_status(i.trait) == i.check
 		'or_list':
 			var or_check = false
 			for j in i.or_list:
@@ -2555,6 +2572,8 @@ func tick(): #work ticks are not here - as they are called in tasks order, not i
 	call_deferred('deferred_brk_check_food')
 	
 	statlist.tick()
+	enthrall.tick()
+	skills.turn_tick()
 	if get_work() == 'travel':
 		#fatigue -= 1
 		travel.tick()
@@ -2878,6 +2897,14 @@ func affect_char(template, manifest = false):
 			remove_trait(template.trait)
 		'add_trait':
 			offer_trait(template.trait, template.get('mode', 'ask'))
+		'thrall_status':
+			#a full slot can put the grant off to the replace panel, so only a type that came in is shown
+			var had_status = dyn_stats.owns_trait(template.trait)
+			dyn_stats.grant_thrall_status(template.trait)
+			if !had_status and dyn_stats.owns_trait(template.trait):
+				input_handler.play_animation("body_upgrade", {person = self, title = "SUCCUBUS_TRANSFORM_ANIM_TITLE",
+					icon = input_handler.loadimage(Traitdata.traits[template.trait].icon, 'icons'),
+					name = globals.get_trait_entry(self, template.trait).name})
 		'replace_trait':
 			dyn_stats.replace_trait(template.old, template.trait)
 		'set_faith':
@@ -3435,14 +3462,6 @@ func try_breakdown_on_char_loss(lost_char):
 func deferred_brk_check_food():
 	if has_status('food_demand_unmet'):
 		try_breakdown('brk_dislike_food')
-
-func try_breakdown_on_enthrall():
-#	if xp_module.is_unavaliable(): return#has it in try_breakdown()
-	try_breakdown('brk_enthrall')
-
-func try_breakdown_on_release():
-#	if xp_module.is_unavaliable(): return#has it in try_breakdown()
-	try_breakdown('brk_enthrall_release')
 
 #Fame. Maybe should be withdrawn to separate module
 func get_upkeep():

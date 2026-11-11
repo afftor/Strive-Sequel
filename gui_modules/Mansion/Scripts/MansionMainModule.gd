@@ -1174,6 +1174,49 @@ func stock_the_test_wardrobe():
 		made += 1
 	print("test mode: %d pieces of gear in the wardrobe" % made)
 
+
+#Test mode: the master as an elder succubus with a thrall of every kind, for the succubus page of the
+#training popup - an Ascended Thrall to raise, a Lust Doll, one ready for a type and one still short of the
+#Affection a type needs. Level 5, so a free slot and a locked one show as well. Test mode teaches every
+#social skill, so three of the tree's powers are forgotten again to leave something to buy.
+const TEST_SUCCUBUS = true
+
+func setup_test_succubus():
+	if !TEST_SUCCUBUS:
+		return
+	var master = ResourceScripts.game_party.get_master()
+	if master == null:
+		return
+	if !master.check_trait('succubus'):
+		master.add_trait('succubus')
+	var picked = []
+	for ch in ResourceScripts.game_party.characters.values():
+		if picked.size() >= 4:
+			break
+		if ch == master or !(ch.get_stat('unique') in [null, '']) or ch.is_on_quest():
+			continue
+		picked.append(ch)
+	#[affection, type] for each thrall in turn
+	var setups = [[95, 'ascended_thrall'], [80, 'lust_doll'], [85, ''], [30, '']]
+	for i in range(picked.size()):
+		var thrall = picked[i]
+		thrall.set_stat('thrall_master', master.id)
+		thrall.set_stat('affection', setups[i][0])
+		if setups[i][1] != '':
+			thrall.add_trait(setups[i][1])
+	master.enthrall.succubus_exp = Traitdata.succubus_levels.exp[4] + 5
+	#what levels 1..5 bring, as if she had earned them, Enthrallment already bought with level 1's
+	master.add_trait('enthrallment')
+	master.enthrall.thrall_points = master.enthrall.get_level_points(5) - Traitdata.succubus_trainings.enthrallment.cost.thrall_points
+	master.enthrall.points_from_levels = true
+	for skill in ['swap_form', 'genitalia_manipulation']:
+		master.unlearn_skill(skill)
+	master.reset_rebuild()
+	master.set_stat('lust', master.get_stat('lustmax'))
+	master.set_stat('mp', master.get_stat('mpmax'))
+	print("test mode: %s is a succubus with %d thralls" % [master.get_short_name(), picked.size()])
+
+
 func test_mode():
 	input_handler.CurrentScene = self
 	gui_controller.mansion = self
@@ -1669,6 +1712,7 @@ func test_mode():
 #				args = [{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'}]},
 #			]
 #		)
+		setup_test_succubus()
 		ResourceScripts.game_globals.reset_limits()
 		yield(get_tree(), 'idle_frame')
 		#input_handler.add_random_chat_message(character2, 'hire')

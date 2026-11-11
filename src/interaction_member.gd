@@ -103,6 +103,9 @@ var gave_orgasm = false
 var skill_xp_bonus = 0
 var actions_remaining = 0
 var sex_spell_uses = {}
+#the body a cock grown for this encounter replaced (src/actions/605manifestcock.gd), null when none
+var manifested_cock = null
+const MANIFEST_COCK_STATS = ['sex', 'penis_size', 'penis_type', 'penis_virgin_lost']
 
 var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms = 0, oppositesex = 0, oppositesexorgasms = 0, punishments = 0, group = 0, actions = {}}
 
@@ -136,6 +139,27 @@ func setup_person(ch, no_loyal = false):
 				match k.effect:
 					'maximize_hornyness':
 						horny = 100
+
+#An average cock for this encounter only. The sex follows the body - a woman is a futa while it lasts -
+#so the doll draws it and it can father a child like any other.
+func manifest_cock():
+	manifested_cock = {}
+	for stat in MANIFEST_COCK_STATS:
+		manifested_cock[stat] = person.get_stat(stat)
+	if str(person.get_stat('penis_type')) in ['', 'Null']:
+		person.set_stat('penis_type', 'human')
+	person.set_stat('penis_size', 'average')
+	person.set_stat('sex', 'futa' if person.get_stat('has_pussy') else 'male')
+	sex = person.get_stat('sex')
+
+#the encounter is over: the body and the sex are put back, its first use of the cock forgotten with it
+func dismiss_cock():
+	if manifested_cock == null:
+		return
+	for stat in manifested_cock:
+		person.set_stat(stat, manifested_cock[stat])
+	sex = person.get_stat('sex')
+	manifested_cock = null
 
 func lust_set(value):
 	lust = min(value, 1000)

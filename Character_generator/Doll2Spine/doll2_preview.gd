@@ -75,6 +75,9 @@ const UPPER_EAR_PARTS = [
 	"ears_wolf",
 ]
 const FRINGE_BACK_EAR_PARTS = ["ears_human"]
+# Base cuts with no fringe piece whose sides hang over the ear roots: the side
+# ears go behind the base hair instead of sitting on top of it.
+const EARS_BEHIND_HAIR_PARTS = ["hair_base_parting"]
 
 # These broad back-hair meshes do not gain enough visible length from their
 # authored bone weights alone.  The back-hair slider therefore scales their
@@ -3612,6 +3615,8 @@ func _apply_selected_ear_draw_order(order):
 	var ear_part = str(selections.get("ears", ""))
 	var anchor = ""
 	if UPPER_EAR_PARTS.has(ear_part):
+		anchor = "hairs_base"
+	elif EARS_BEHIND_HAIR_PARTS.has(str(selections.get("hair", ""))):
 		anchor = "hairs_base"
 	elif FRINGE_BACK_EAR_PARTS.has(ear_part):
 		# Human ears stay between the base hair and its fringe. Enforce this on

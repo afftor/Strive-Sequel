@@ -177,6 +177,8 @@ func close():
 	portrait_slot.hide()
 	roster.hide()
 	set_process(false)
+	#an open thrall-type drawer is forgotten, so the succubus page opens on its slots next time
+	succubus_page.reset_drawer()
 	gui_controller.windows_opened.erase(self)
 	_restore_clock()
 	#trainings and upgrades bought in here move stats, traits and availability, all of which the
@@ -188,7 +190,7 @@ func _custom_gui_controller_close():
 	close()
 
 
-#the succubus tree lets the player click through to a thrall, which means swapping the whole
+#the trainee rail lets the player click through to another character, which means swapping the whole
 #popup over to that character rather than only redrawing the page
 func switch_character(newchar):
 	if newchar == null:

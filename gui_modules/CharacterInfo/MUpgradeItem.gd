@@ -32,7 +32,10 @@ func setup_upgrade(upgrade_id):
 		visible = true
 	$name.text = tr(upgrade_data.name)
 	var tooltip_text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
-	tooltip_text += tr(upgrade_data.descript) + "\n"
+	#a description left as " " (its bonus lines already say everything) would only add an empty line
+	var descript = tr(upgrade_data.descript)
+	if descript.strip_edges() != "":
+		tooltip_text += descript + "\n"
 	tooltip_text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats)
 	#setup icon
 	if upgrade_data.icon is String:

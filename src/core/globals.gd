@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.3'
+const gameversion = '0.16.4'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 #same rule as the sanitizer
@@ -121,7 +121,7 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-	if OS.has_feature('editor') && false:
+	if OS.has_feature('editor'):# && false:
 		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
 			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
 			if loc_code != "en":
@@ -2280,9 +2280,15 @@ func fastif(value, result1, result2):
 		return result2
 
 func preexit_clear_up():
+	#gui_controller goes on naming these screens (and the nav panel inside the mansion) after
+	#they are freed, and a freed node still passes != null. The next game's mansion builds its
+	#nav strip during the starting sequence, before it sets gui_controller.mansion to itself, and
+	#asked the old, freed one for its rooms.
+	var freed_screens = [input_handler.CurrentScene, gui_controller.exploration,
+		gui_controller.exploration_city, gui_controller.exploration_dungeon]
 	if input_handler.CurrentScene != null:
 		input_handler.CurrentScene.queue_free()
-	
+
 	if gui_controller.exploration != null:
 		gui_controller.exploration.queue_free()
 	if gui_controller.exploration_city != null:
@@ -2293,7 +2299,9 @@ func preexit_clear_up():
 	gui_controller.exploration = null
 	gui_controller.exploration_city = null
 	gui_controller.exploration_dungeon = null
-	
+	#queue_free() leaves them valid until the frame ends, so their children are still found
+	gui_controller.forget_nodes(freed_screens)
+
 	#input_handler.ChangeScene('menu') was here in return_to_main_menu()
 	if gui_controller.dialogue != null:
 		gui_controller.dialogue.hide()

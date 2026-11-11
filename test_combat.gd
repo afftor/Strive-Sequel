@@ -545,7 +545,10 @@ func _ready():
 #	setup_player()
 	for id in Enemydata.enemygroups:
 		combatlist.push_back(id)
-	
+	#fixed formations; make_enemies places them by position
+	for id in Enemydata.predeterminatedgroups:
+		combatlist.push_back(id)
+
 	combatlist.sort()
 	combatlist.push_front(TOWER_ELITES)
 

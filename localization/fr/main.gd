@@ -181,6 +181,20 @@ Les touches du manoir et du combat sont indépendantes : une même touche peut s
 	OPTAUDIOMUTE = "Mute",
 	
 	OPTGRAPHICFULLSCREEN = "Plein écran",
+	OPTWINDOWMODE = """Window mode""", # MISSING TRANSLATION
+	OPTWINDOWMODEWINDOWED = """Windowed""", # MISSING TRANSLATION
+	OPTWINDOWMODEFULLSCREEN = """Fullscreen""", # MISSING TRANSLATION
+	OPTWINDOWMODEBORDERLESS = """Borderless""", # MISSING TRANSLATION
+	OPTWINDOWMODE_DESCRIPT = """[color=yellow]Windowed[/color] — the game in a window of the size picked under Resolution.
+[color=yellow]Fullscreen[/color] — the game takes over the screen.
+[color=yellow]Borderless[/color] — a borderless window covering the whole screen. Looks the same as fullscreen, but switching to other windows is instant.
+
+The Toggle fullscreen hotkey (F11 by default) switches between the window and the last fullscreen mode.""", # MISSING TRANSLATION
+	OPTRESOLUTION = """Resolution""", # MISSING TRANSLATION
+	OPTRESOLUTION_DESCRIPT = """[color=yellow]Windowed[/color] — the size of the game window.
+[color=yellow]Fullscreen[/color] and [color=yellow]Borderless[/color] — the resolution the game is drawn at before it is stretched over the screen. A lower one is easier on the graphics card but blurrier; the screen's own resolution, the last one in the list, is the sharpest.
+
+Windowed and fullscreen each remember their own resolution.""", # MISSING TRANSLATION
 	OPTGRAPHICFACTOR = "Facteurs en tant que mots",
 	OPTGRAPHICRANDOMPORTRAIT = "Portraits aléatoires",
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Désactiver les arrière-plans d'animation",
@@ -854,6 +868,7 @@ Cependant, bien qu'il semble que les propriétaires terriens n'aient que du mép
 	SLAVE_MARKET_COL_RACE = """Race""", # MISSING TRANSLATION
 	SLAVE_MARKET_COL_PRICE = """Price""", # MISSING TRANSLATION
 	SLAVE_MARKET_COL_TYPE = """Type""", # MISSING TRANSLATION
+	SLAVE_MARKET_SORT_HINT = """Click to sort by this column, click again to reverse it, once more to go back to the default order.""", # MISSING TRANSLATION
 	SLAVE_MARKET_RELINQUISH = """Relinquish""", # MISSING TRANSLATION
 	SLAVE_MARKET_RELINQUISH_FOR = """Relinquish: %s""", # MISSING TRANSLATION
 	SLAVE_MARKET_NO_CLASSES = """No classes yet""", # MISSING TRANSLATION
@@ -1097,6 +1112,7 @@ Food type: Vegetables.""", # MISSING TRANSLATION
 	ITEMSLOTNECK = "Cou",
 	ITEMSLOTTOOL = "Outil",
 	ITEMSLOTTOOL_AXE = """Outil - Hache""",
+	ITEMSLOTTOOL_DISHWARE = """Tool - Dishware""", # MISSING TRANSLATION
 	ITEMSLOTTOOL_PICKAXE = """Outil - Pioche""",
 	ITEMSLOTTOOL_ROD = """Outil - Canne à pêche""",
 	ITEMSLOTTOOL_HAMMER = """Outil - Marteau""",
@@ -1265,6 +1281,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	ITEMWITCH_HATDESCRIPT = "Un chapeau canonique aux pouvoirs magiques",
 	ITEMZEPHYRA_BRUSH = "Brosse à sétaire",
 	ITEMZEPHYRA_BRUSHDESCRIPT = "Un pinceau mystique dont les poils ont une certaine ressemblance avec la queue d'un renard... On dit que les queues de renard possèdent un pouvoir mystique qui leur permet d'invoquer des merveilles d'un simple coup de pinceau.\nLorsque vous lancez un sort, vous avez 25 % de chances de le lancer une fois de plus.\n{color=yellow|Seule Zephyra peut l'équiper}",
+	ITEMAXE_PICK = """Axe&Pick""", # MISSING TRANSLATION
+	ITEMDISHWARE = """Dishware""", # MISSING TRANSLATION
 	
 	
 	#Items
@@ -1284,6 +1302,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	ITEMHAMMER = "Marteau de forge",
 	ITEMHUNT_KNIFE = "Couteau de chasse",
 	ITEMSHIELD = "Bouclier",
+	ITEMAXE_PICKDESCRIPT = """An axe blade on one side and a pick on the other: one tool for felling trees and breaking rock.""", # MISSING TRANSLATION
 
 
 	ITEMAXEDESCRIPT = "La hache peut être utilisée pour couper du bois et pour le combat",
@@ -1293,6 +1312,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	ITEMMACEDESCRIPT = "Le grand frère du club. Une meilleure alternative lorsqu'il s'agit de faire face à une cible blindée.",
 	ITEMBATTLEAXEDESCRIPT = "La meilleure arme à porter si vous voulez avoir l'air intimidant. Cependant, elle n'est pas très maniable.",
 	ITEMSPEARDESCRIPT = "L'une des premières armes connues de l'homme. Elle n'est pas aussi flexible qu'une épée, mais elle a ses points forts... Principalement au niveau du coût.",
+	ITEMDISHWAREDESCRIPT = """Pots, pans and ladles for the kitchen and the alchemy lab alike.""", # MISSING TRANSLATION
 	ITEMPICKAXEDESCRIPT = "Un outil irremplaçable pour les mineurs",
 	ITEMBOWDESCRIPT = "Une arme simple pour les combattants à distance",
 	ITEMCROSSBOWDESCRIPT = "Arme mécanique non raffinée offrant de meilleures propriétés de pénétration qu'un arc",
@@ -2289,6 +2309,32 @@ Strips Clarity, then inflicts Sleep and Blind for 2 turns. Cannot be used on a s
 	SKILLJD_MASS_ILLUSIONDESCRIPT = """Copies of the demon come from everywhere at once to strike any non-sleeping enemies 90% ATK damage each, and the user slips into {color=aqua|In The Shadows} behind them. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
 	SKILLJD_FAUSTIAN_DELIVERANCE = """Faustian Deliverance""", # MISSING TRANSLATION
 	SKILLJD_FAUSTIAN_DELIVERANCEDESCRIPT = """A beam of ruin down one column for 170% MATK {color=yellow|Dark} damage, leaving the Cursed behind it. Passes over sleepers. Cannot be used on a sleeping enemy.""", # MISSING TRANSLATION
+	SKILLSYLAS_RAPTOR_PACK = """Slaughtering a Pack of Raptors""", # MISSING TRANSLATION
+	SKILLSYLAS_RAPTOR_PACKDESCRIPT = """Deals 90% of ATK damage to the enemy front line. Every foe who evades the cleave is chased down by a follow-up strike for 75% of ATK damage.""", # MISSING TRANSLATION
+	SKILLSYLAS_RAPTOR_POUNCE = """Slaughtering a Pack of Raptors""", # MISSING TRANSLATION
+	SKILLSYLAS_RAPTOR_POUNCEDESCRIPT = """Runs down a foe who slipped past the cleave for 75% of ATK damage.""", # MISSING TRANSLATION
+	SKILLSYLAS_GUT_STABBING = """Gut Stabbing""", # MISSING TRANSLATION
+	SKILLSYLAS_GUT_STABBINGDESCRIPT = """Strikes the target for 125% of ATK damage and makes it Bleed for 2 turns. Critical hits deal 15% more damage. Counts as a basic attack.""", # MISSING TRANSLATION
+	SKILLSYLAS_TROLL = """Slaughtering a Troll""", # MISSING TRANSLATION
+	SKILLSYLAS_TROLLDESCRIPT = """Hits one enemy twice for 60% of ATK damage, each hit inflicting Shred, then follows up with 120% of ATK damage on the same enemy.""", # MISSING TRANSLATION
+	SKILLSYLAS_TROLL_FINISHER = """Slaughtering a Troll""", # MISSING TRANSLATION
+	SKILLSYLAS_TROLL_FINISHERDESCRIPT = """Drives the last blow into the spot the first two wore down for 120% of ATK damage.""", # MISSING TRANSLATION
+	SKILLSYLAS_COME_AND_GET_IT = """Come and Get It!!""", # MISSING TRANSLATION
+	SKILLSYLAS_COME_AND_GET_ITDESCRIPT = """Sylas gains {color=aqua|Domineering Performance}: 20% less damage taken and a counterattack on every enemy who hits him in melee, until his next turn or 3 counterattacks.""", # MISSING TRANSLATION
+	SKILLSYLAS_GRYPHON = """Slaughtering a Gryphon""", # MISSING TRANSLATION
+	SKILLSYLAS_GRYPHONDESCRIPT = """Removes Flying from the target, deals 110% of ATK damage to a single melee enemy and inflicts Knock Prone, then follows up with 150% of ATK damage on the same enemy that always crits if it lands.
+Can be used while Disarmed, but then deals 50% less damage.""", # MISSING TRANSLATION
+	SKILLSYLAS_GRYPHON_DIVE = """Slaughtering a Gryphon""", # MISSING TRANSLATION
+	SKILLSYLAS_GRYPHON_DIVEDESCRIPT = """Comes down on the grounded foe for 150% of ATK damage. Always crits if it lands.""", # MISSING TRANSLATION
+	SKILLSYLAS_SHOWSTOPPER = """Gruesome Showstopper""", # MISSING TRANSLATION
+	SKILLSYLAS_SHOWSTOPPERDESCRIPT = """Needs {color=aqua|Indelible Taste of Fanfare} and consumes it. Deals 75% of ATK damage to a random enemy 5 times, then 120% of ATK damage to all enemies. Afterwards Sylas gains 3 stacks of Fragile.
+Can be used while Disarmed, but then deals 50% less damage and cannot crit.""", # MISSING TRANSLATION
+	SKILLSYLAS_SHOWSTOPPER_FINALE = """Gruesome Showstopper""", # MISSING TRANSLATION
+	SKILLSYLAS_SHOWSTOPPER_FINALEDESCRIPT = """The closing blow: 120% of ATK damage to all enemies.""", # MISSING TRANSLATION
+	SKILLSYLAS_SUMMON_MUTANT = """Monstrous Reinforcement""", # MISSING TRANSLATION
+	SKILLSYLAS_SUMMON_MUTANTDESCRIPT = """A Mutant joins the fight on Sylas's side.""", # MISSING TRANSLATION
+	SKILLSYLAS_SUMMON_DEFORMED = """Monstrous Reinforcement""", # MISSING TRANSLATION
+	SKILLSYLAS_SUMMON_DEFORMEDDESCRIPT = """A Deformed joins the fight on Sylas's side.""", # MISSING TRANSLATION
 	SKILLACCELERATING_PLUNGE = """Plongeon accélérant""",
 	SKILLACCELERATING_PLUNGEDESCRIPT = """Si cette unité n'a pas d'effet d'immobilisation, gagne une charge d'[{color=aqua|Élan catastrophique}].
 Sinon, dissipe tous les effets d'immobilisation.""",
@@ -2555,6 +2601,105 @@ Octroie {color=aqua|Lame noircie}.""",
 Applique successivement {color=aqua|Entrave}, {color=aqua|Désarmement}, {color=aqua|Aveuglement} et {color=aqua|Lacération}.
 Le dernier coup inflige des dégâts accrus.
 {color=red|En cas de mise à mort : réinitialise le temps de recharge.}""",
+	SKILLERDYNA_LETS_SEE_WHAT_YOU_GOT = """Let's See What You Got""", # MISSING TRANSLATION
+	SKILLERDYNA_LETS_SEE_WHAT_YOU_GOTDESCRIPT = """Cannot target an enemy affected by {color=aqua|Subject of Observation} or {color=aqua|Evaluated}.
+Before the hit, remove {color=aqua|In the Shadow} from the target and {color=aqua|Blind} from self.
+Deals 80% of ATK as physical damage to an enemy.
+Hit or miss, inflict {color=aqua|Subject of Observation} on the target and gain {color=aqua|Observing}.""", # MISSING TRANSLATION
+	SKILLERDYNA_SLICE_AND_DIVE = """Slice & Dive""", # MISSING TRANSLATION
+	SKILLERDYNA_SLICE_AND_DIVEDESCRIPT = """Deals 90% of ATK as physical damage to a row of enemies.
+If the user is not {color=aqua|Ensnared}, strike a random row once more.""", # MISSING TRANSLATION
+	SKILLERDYNA_ASSAULT_AND_BATTERY = """Assault & Battery""", # MISSING TRANSLATION
+	SKILLERDYNA_ASSAULT_AND_BATTERYDESCRIPT = """Deals 75% of ATK as physical damage to an enemy 2 times.
+On hit, if the target has more than 50% HP, inflict {color=aqua|Shred} for 2 turns.""", # MISSING TRANSLATION
+	SKILLERDYNA_NAIL_IT = """Nail it!""", # MISSING TRANSLATION
+	SKILLERDYNA_NAIL_ITDESCRIPT = """Toss the dagger, dealing 50% of ATK as physical damage to an enemy. The toss has +100 Hit Rate against a target affected by {color=aqua|Subject of Observation} or {color=aqua|Evaluated}.
+If it hits, follow up with a melee strike against the same target that deals 120% of ATK and cannot miss.
+The melee strike inflicts {color=aqua|Impale} if the target is affected by {color=aqua|Bleed}.""", # MISSING TRANSLATION
+	SKILLERDYNA_DECEPTIVE_RUSE = """Deceptive Ruse""", # MISSING TRANSLATION
+	SKILLERDYNA_DECEPTIVE_RUSEDESCRIPT = """Can be used while {color=aqua|Disarmed}.
+Remove all negative effects from self.
+Stun 1-3 random enemies for 1 turn. A target that cannot be stunned is {color=aqua|Disarmed} and {color=aqua|Silenced} for 1 turn instead.""", # MISSING TRANSLATION
+	SKILLERDYNA_RULES_OF_THE_BACKSTREET = """Rules of the Backstreet""", # MISSING TRANSLATION
+	SKILLERDYNA_RULES_OF_THE_BACKSTREETDESCRIPT = """Can be used while {color=aqua|Disarmed}.
+Deals 150% of ATK as physical damage to an enemy.
+If the user is not {color=aqua|Disarmed}, inflict 1 {color=aqua|Fragile} on hit.
+Repeat once for each stack of {color=aqua|Battle Precognition}.
+On kill, gain {color=aqua|Battle Precognition}.""", # MISSING TRANSLATION
+	SKILLERDYNA_HOW_PREDICTABLE = """How Predictable~""", # MISSING TRANSLATION
+	SKILLERDYNA_HOW_PREDICTABLEDESCRIPT = """Can only be used while {color=aqua|Observing}. Can be used while {color=aqua|Disarmed}.
+Consume {color=aqua|Observing} to gain {color=aqua|Battle Precognition}.
+Heal self for 10% of Max HP.
+Turn every {color=aqua|Subject of Observation} on enemies into {color=aqua|Evaluated}.""", # MISSING TRANSLATION
+	SKILLERDYNA_EQUALIZER = """Equalizer""", # MISSING TRANSLATION
+	SKILLERDYNA_EQUALIZERDESCRIPT = """Deals 100% of ATK as physical damage to an enemy. A miss turns into a hit that deals half damage.
+After the hit, the target taunts the user for 4 turns, and every other enemy takes 50% of the user's ATK as damage and is {color=aqua|Subdued} for 2 turns.""", # MISSING TRANSLATION
+	SKILLERDYNA_OBSERVATION_LOST = """Lost Sight""", # MISSING TRANSLATION
+	SKILLERDYNA_OBSERVATION_LOSTDESCRIPT = """Remove {color=aqua|Subject of Observation} from all enemies.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SPEAR_SHOT = """Spear Shot""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SPEAR_SHOTDESCRIPT = """Throw the spear, dealing 90% of ATK as physical damage to an enemy.
+On hit, if the target survives, inflict {color=aqua|Nested Spear} on it and become {color=aqua|Disarmed} for 6 turns.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_RECALL_SPEAR = """Recall Spear""", # MISSING TRANSLATION
+	SKILLTHALENDIR_RECALL_SPEARDESCRIPT = """Can only be used while {color=aqua|Disarmed}, against an enemy with {color=aqua|Nested Spear}.
+Remove {color=aqua|Disarmed} from self.
+The spear tears out: the target takes 130% of ATK as physical damage that cannot be evaded, loses {color=aqua|Nested Spear} and suffers {color=aqua|Bleed} for 3 turns.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_BRANDED_ENEMY = """I Branded you the Enemy of our House!""", # MISSING TRANSLATION
+	SKILLTHALENDIR_BRANDED_ENEMYDESCRIPT = """Cannot be used against a Dragon, a Dragonkin or an enemy affected by {color=aqua|Draconic Accusation}.
+Inflict {color=aqua|Draconic Accusation} on an enemy for 3 turns. Cannot be evaded.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_REVITALIZING_MAGIC = """Revitalizing Magic""", # MISSING TRANSLATION
+	SKILLTHALENDIR_REVITALIZING_MAGICDESCRIPT = """Cannot be used with 3 stacks of {color=aqua|Vengeance}. Cannot target self or a mechanical ally.
+Heal an ally for 80% of MATK, remove a negative effect from it and grant it {color=aqua|Soothe}.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_ON_MY_COMMAND = """On my Command, Fire!""", # MISSING TRANSLATION
+	SKILLTHALENDIR_ON_MY_COMMANDDESCRIPT = """Can only be used while a Dracalista is alive.
+Remove {color=aqua|Disarmed} and {color=aqua|Blinded} from every Dracalista and order each of them to fire Dragonbane Shot at the target.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DRAGON_SKEWER = """Dragon Skewer""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DRAGON_SKEWERDESCRIPT = """Can only be used with 3 stacks of {color=aqua|Vengeance}.
+Deal 150% of ATK as physical damage to a row of enemies and inflict {color=aqua|Shred} for 2 turns. 50% chance to {color=aqua|Stun} for 1 turn.
+Deals 25% more damage to a Dragon, a Dragonkin or a target affected by {color=aqua|Draconic Accusation}.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_STAKE_FLAK_SALVO = """Stake Flak Salvo""", # MISSING TRANSLATION
+	SKILLTHALENDIR_STAKE_FLAK_SALVODESCRIPT = """Can only be used against an enemy with {color=aqua|Mark for Staking}. Cannot be evaded.
+Deal 50% of ATK as physical damage. On hit, remove {color=aqua|Flight}, {color=aqua|Wing Dash}, and {color=aqua|Mark for Staking}.
+Inflict {color=aqua|Staked} for 1 turn.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DRAGONBANE_SHOT = """Dragonbane Shot""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DRAGONBANE_SHOTDESCRIPT = """Deal 110% of ATK as physical damage to an enemy and inflict {color=aqua|Shred} for 2 turns. -20 Hit Rate.
+Deals 25% more damage to a Dragon, a Dragonkin or a target affected by {color=aqua|Draconic Accusation}.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SWEEPING_BARRAGE = """Sweeping Barrage""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SWEEPING_BARRAGEDESCRIPT = """Deal 90% of ATK as physical damage to the frontmost enemy of each row.
+A target with less than 35 Evasion has a 50% chance to suffer {color=aqua|Impale} for 3 turns.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_FRIGHTENING_BELLOW = """Frightening Bellow""", # MISSING TRANSLATION
+	SKILLTHALENDIR_FRIGHTENING_BELLOWDESCRIPT = """Deal 50% of MATK as {color=yellow|Mind} damage to all enemies and inflict {color=aqua|Fear} for 3 turns.
+While the user is above 50% HP, each target also has a 50% chance to be {color=aqua|Shocked} for 1 turn.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_INTERLOPER = """Interloper is Not Welcome Here!""", # MISSING TRANSLATION
+	SKILLTHALENDIR_INTERLOPERDESCRIPT = """Deal 130% of MATK as {color=yellow|Earth} damage to an enemy and {color=aqua|Ensnare} it for 4 turns.
+If the target is already {color=aqua|Ensnared}, {color=aqua|Stun} it for 1 turn instead.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SCALE_SCRAPER = """Scale Scraper""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SCALE_SCRAPERDESCRIPT = """Deal 90% of ATK as physical damage to an enemy and inflict {color=aqua|Shred} for 5 turns.
+If the target already has {color=aqua|Shred}, also inflict {color=aqua|Bleed} for 3 turns.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DECAPITATE_DRAGON = """Decapitate Dragon""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DECAPITATE_DRAGONDESCRIPT = """Can only be used against a Dragon, a Dragonkin or an enemy affected by {color=aqua|Draconic Accusation}.
+Deal 145% of ATK as physical damage. Crit chance is 100% minus the target's Evasion.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SECURITY_GLYPH = """Activate Security Glyph""", # MISSING TRANSLATION
+	SKILLTHALENDIR_SECURITY_GLYPHDESCRIPT = """Place a {color=aqua|Security Glyph} on 2 random enemies for 3 turns.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_BATTLEFIELD_REPAIR = """Battlefield Repair""", # MISSING TRANSLATION
+	SKILLTHALENDIR_BATTLEFIELD_REPAIRDESCRIPT = """Repair a mechanical ally for 50 to 400 HP. The more HP the user has left, the more it repairs.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_WING_CLIPPER = """Wing Clipper""", # MISSING TRANSLATION
+	SKILLTHALENDIR_WING_CLIPPERDESCRIPT = """Strike an enemy twice, each hit dealing 75% of ATK as physical damage.
+The first hit has a 30% chance to {color=aqua|Disarm} for 1 turn, the second a 30% chance to {color=aqua|Silence} for 1 turn.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DRAGON_CUTTER = """Dragon Cutter""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DRAGON_CUTTERDESCRIPT = """Can only be used against a Dragon, a Dragonkin or an enemy affected by {color=aqua|Draconic Accusation}.
+Deal 130% of ATK as physical damage, inflict {color=aqua|Bleed} for 5 turns and 1 {color=aqua|Fragile}.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DETERRENCE_SETUP = """Anti-Dragon Ballista""", # MISSING TRANSLATION
+	SKILLTHALENDIR_DETERRENCE_SETUPDESCRIPT = """Put {color=aqua|Flight Deterrence} on every enemy.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_FIRING_SOLUTION_SETUP = """Firing Solution Calculator""", # MISSING TRANSLATION
+	SKILLTHALENDIR_FIRING_SOLUTION_SETUPDESCRIPT = """Watch every enemy for evaded attacks.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_UNYIELDING_SETUP = """Unyielding Dragonslayer""", # MISSING TRANSLATION
+	SKILLTHALENDIR_UNYIELDING_SETUPDESCRIPT = """Stand guard over every Dracalista.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_MLADY_SETUP = """M'lady is Under my Protection""", # MISSING TRANSLATION
+	SKILLTHALENDIR_MLADY_SETUPDESCRIPT = """Stand guard over Vaeloria.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_PHALANX_SETUP = """Phalanx Formation""", # MISSING TRANSLATION
+	SKILLTHALENDIR_PHALANX_SETUPDESCRIPT = """Every ally takes less AoE damage.""", # MISSING TRANSLATION
+	SKILLTHALENDIR_VENGEANCE_CALL = """Vengeance""", # MISSING TRANSLATION
+	SKILLTHALENDIR_VENGEANCE_CALLDESCRIPT = """Every other ally under Thalendir Duty gains 1 {color=aqua|Vengeance}.""", # MISSING TRANSLATION
 	SKILLOMINOUS_WHISPERS = """Murmures sinistres""",
 	SKILLOMINOUS_WHISPERSDESCRIPT = """Inflige de faibles dégâts magiques {color=yellow|Esprit} à tous les ennemis et applique {color=aqua|Peur}. Si les PV de la cible sont sous 50 %, applique aussi {color=aqua|Brisé}.""",
 	SKILLHEXED_COFFIN_NAIL = """Clou de cercueil maudit""",
@@ -3006,6 +3151,12 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	SKILLSTRIKE_THROUGHDESCRIPT = """Frappe la rangée de la cible pour 110 % de l'ATQ. Si la cible de devant est Lacérée, aveugle celle derrière elle pendant 2 tours.""",
 	SKILLEXECUTION = """Execution""", # MISSING TRANSLATION
 	SKILLEXECUTIONDESCRIPT = """Frappe la cible pour 225 % de l'ATQ. Si elle meurt, applique Peur à tous les ennemis pendant 1 tour.""",
+	SKILLSWORD_ULT_SHEATH = """Sheathe""", # MISSING TRANSLATION
+	SKILLSWORD_ULT_SHEATHDESCRIPT = """Template for a swordsman's ultimate. Strike all enemies for 100% of ATK.""", # MISSING TRANSLATION
+	SKILLSWORD_ULT_CHAIN = """Dash Chain""", # MISSING TRANSLATION
+	SKILLSWORD_ULT_CHAINDESCRIPT = """Template for a swordsman's ultimate. Strike all enemies for 100% of ATK.""", # MISSING TRANSLATION
+	SKILLSWORD_ULT_REND = """Rend""", # MISSING TRANSLATION
+	SKILLSWORD_ULT_RENDDESCRIPT = """Template for a swordsman's ultimate. Strike all enemies for 100% of ATK.""", # MISSING TRANSLATION
 	SKILLDISARM_ENEMY = """Désarmer""",
 	SKILLDISARM_ENEMYDESCRIPT = """Frappe la cible pour 130 % de l'ATQ et la désarme pendant 3 tours.""",
 	SKILLPROVOCATION = """Provocation""", # MISSING TRANSLATION
@@ -3058,6 +3209,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""", # 
 	WORKTOOLBOW = "Arc de chasse",
 	WORKTOOLSICKLE = "Faucille",
 	WORKTOOLHUNT_KNIFE = "Couteau de chasse",
+	WORKTOOLDISHWARE = """Dishware""", # MISSING TRANSLATION
 
 	MAXIMUM_WORKERS = "Nombre maximum de travailleurs",
 	REQUIRED_UPGRADE_NAME = "Nom de la mise à jour",
@@ -3402,6 +3554,10 @@ Hand over now: +%d gold.""", # MISSING TRANSLATION
 	STATTHRALL_POINTS = """Points de déblocage""",
 	STATTHRALLS_AMOUNT_MAX = """Serviteurs maximum""",
 	STATTHRALLS_AMOUNT = """Serviteurs actuels""",
+	STATSUCCUBUS_LEVEL = """Succubus Level""", # MISSING TRANSLATION
+	STATSUCCUBUS_LEVELDESCRIPT = """Each level opens a Thrall slot, brings Unlock Points and makes the succubus stronger.""", # MISSING TRANSLATION
+	STATSUCCUBUS_EXP = """Succubus Experience""", # MISSING TRANSLATION
+	STATSUCCUBUS_EXPDESCRIPT = """Earned by enthralling new characters and, every turn, by holding Thralls.""", # MISSING TRANSLATION
 	STATPERSONALITY_BOLD = """""", # MISSING TRANSLATION
 	STATPERSONALITY_KIND = """""", # MISSING TRANSLATION
 	STATPERSONALITY_SHY = """""", # MISSING TRANSLATION
@@ -4141,6 +4297,8 @@ Dégâts +15 %, santé +20.""",
 	STATTASK_EFFICIENCY_SICKLEDESCRIPT = """Bonus d'efficacité de tâche avec : Faucille""",
 	STATTASK_EFFICIENCY_HUNT_KNIFE = """Efficacité de tâche - Couteau""",
 	STATTASK_EFFICIENCY_HUNT_KNIFEDESCRIPT = """Bonus d'efficacité de tâche avec : Couteau de chasse""",
+	STATTASK_EFFICIENCY_DISHWARE = """Task Efficiency - Dishware""", # MISSING TRANSLATION
+	STATTASK_EFFICIENCY_DISHWAREDESCRIPT = """Task Efficiency Bonus for cooking and alchemy with Dishware""", # MISSING TRANSLATION
 	STATTASK_CRIT_CHANCE = "Chance de réussite de la tâche", 
 	STATTASK_CRIT_AXE = """Chance de critique de tâche - Hache""",
 	STATTASK_CRIT_AXEDESCRIPT = """Chance de critique de tâche avec : Hache""",
@@ -4154,6 +4312,8 @@ Dégâts +15 %, santé +20.""",
 	STATTASK_CRIT_SICKLEDESCRIPT = """Chance de critique de tâche avec : Faucille""",
 	STATTASK_CRIT_HUNT_KNIFE = """Chance de critique de tâche - Couteau""",
 	STATTASK_CRIT_HUNT_KNIFEDESCRIPT = """Chance de critique de tâche avec : Couteau de chasse""",
+	STATTASK_CRIT_DISHWARE = """Task Crit Chance - Dishware""", # MISSING TRANSLATION
+	STATTASK_CRIT_DISHWAREDESCRIPT = """Task Crit Chance for cooking and alchemy with Dishware""", # MISSING TRANSLATION
 	STATMAGIC_FIND = "Recherche magique",
 	STATMAGIC_FINDDESCRIPT = """Améliore la qualité des objets trouvés""",
 	STATMANHUNT = """Chasse à l'homme""",
@@ -4413,6 +4573,27 @@ Dégâts +15 %, santé +20.""",
 	DIALOGUEEDUCEREPORT = "[name] s'est approché de [nom de la cible] et après quelques instants a laissé [targethim] perplexe. Malgré son calme visuel, [targetname] est clairement tombé amoureux de [lui].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] s'est approché de [nom de la cible] et, après quelques instants, a laissé [targethim] perplexe. [Son esprit a été envahi par un fort désir, ce qui l'a rendu assez docile.",
 	DIALOGUEALLUREREPORT = "[name] a donné à [targetname] un petit encouragement privé.",
+	DIALOGUEALLURE_UNLOCK = """Under [name]'s allure, [targetname] would go further than before. Which training action should be open to [targethim] for good?""", # MISSING TRANSLATION
+	DIALOGUEALLURE_UNLOCKED = """[name] can now be put through {color=yellow|{action}} by any trainer.""", # MISSING TRANSLATION
+	SKILLPERVERTED_MIND = """Perverted Mind""", # MISSING TRANSLATION
+	SKILLPERVERTED_MINDDESCRIPT = """Pour some of the caster's experience into the target's mind, raising one of their sex skills a step, never past the caster's own level. The caster's Penetration teaches Vaginal or Anal, and Vaginal or Anal teach Penetration; other skills teach themselves.""", # MISSING TRANSLATION
+	DIALOGUEPERVERTED_MIND_SELECT = """[name] slips into [targetname]'s thoughts, ready to leave something of [his] own experience behind.
+
+What should [targethe] learn?""", # MISSING TRANSLATION
+	DIALOGUEPERVERTED_MIND_NOTHING = """[name] slips into [targetname]'s thoughts, but has nothing to teach [targethim] that [targethe] does not already know.""", # MISSING TRANSLATION
+	DIALOGUEPERVERTED_MIND_TAUGHT = """Images and sensations flood [targetname]'s mind. When they fade, [targethe] knows things [targethe] never knew before.""", # MISSING TRANSLATION
+	SKILLGRANT_ASCENDED_THRALL = """Ascend Thrall""", # MISSING TRANSLATION
+	SKILLGRANT_ASCENDED_THRALLDESCRIPT = """Make a devoted Thrall an Ascended Thrall: a Lust bar of their own and the Corrupt, Allure and Genitalia Manipulation spells. Takes the magic trait slot. The Thrall needs 75 Affection, or 75 relationship with a caster who is not the Master. A Thrall holds one type at a time.""", # MISSING TRANSLATION
+	DIALOGUEGRANT_ASCENDED_THRALLREPORT = """[name] lets a thread of [his] own lust settle in [targetname]. [targetname] feels it stir inside, waiting to be used.""", # MISSING TRANSLATION
+	SKILLGRANT_LESSER_SUCCUBUS = """Turn into Lesser Succubus""", # MISSING TRANSLATION
+	SKILLGRANT_LESSER_SUCCUBUSDESCRIPT = """Turn a devoted Ascended Thrall into a Lesser Succubus or Incubus: Change Form, and up to 2 Thralls of their own, while still serving the caster. At most 2 for each succubus.""", # MISSING TRANSLATION
+	DIALOGUEGRANT_LESSER_SUCCUBUSREPORT = """[name]'s essence takes root in [targetname]. Something demonic wakes in [targethim] - and it still answers to [name].""", # MISSING TRANSLATION
+	SKILLGRANT_LUST_DOLL = """Turn into Lust Doll""", # MISSING TRANSLATION
+	SKILLGRANT_LUST_DOLLDESCRIPT = """Turn a devoted Thrall into a Lust Doll, who feeds the caster twice the Lust. Takes the mental trait slot, pushing out a slave status. A Thrall holds one type at a time.""", # MISSING TRANSLATION
+	DIALOGUEGRANT_LUST_DOLLREPORT = """[name] empties [targetname]'s mind of everything but desire. [targetname] looks up at [him] with a hungry, vacant smile.""", # MISSING TRANSLATION
+	SKILLGRANT_CHOSEN_CONSORT = """Turn into Consort""", # MISSING TRANSLATION
+	SKILLGRANT_CHOSEN_CONSORTDESCRIPT = """Name a devoted Thrall the caster's Chosen Consort, stronger at the caster's side. Takes no trait slot. Only one for each succubus. A Thrall holds one type at a time.""", # MISSING TRANSLATION
+	DIALOGUEGRANT_CHOSEN_CONSORTREPORT = """[name] names [targetname] [his] Chosen Consort. [targetname] stands a little taller at [his] side.""", # MISSING TRANSLATION
 	SKILLTURN_SUCCUBUS = """Turn into Succubus""", # MISSING TRANSLATION
 	SKILLTURN_SUCCUBUSDESCRIPT = """Turn your Thrall into a full time Succubus (or Incubus). Target must have Consent level of Kinky or higher. """, # MISSING TRANSLATION
 	DIALOGUETURN_SUCCUBUSREPORT = """A part of [name]'s lust essence seeps into [targetname], turning [targethim] into a [targetsuccubus].""", # MISSING TRANSLATION
@@ -4467,6 +4648,57 @@ What should become of what lies there?""", # MISSING TRANSLATION
 	HUMANFORMDESCRIPT = """Forme normale""",
 	MAGATTUNEMENTDESCRIPT = """Harmonie magique""",
 	COMBATATTUNEMENTDESCRIPT = """Harmonie de combat""",
+	SUCCUBUSLEVEL1DESCRIPT = """Succubus level 1""", # MISSING TRANSLATION
+	SUCCUBUSLEVEL2DESCRIPT = """Succubus level 2""", # MISSING TRANSLATION
+	SUCCUBUSLEVEL3DESCRIPT = """Succubus level 3""", # MISSING TRANSLATION
+	SUCCUBUSLEVEL4DESCRIPT = """Succubus level 4""", # MISSING TRANSLATION
+	SUCCUBUSLEVEL5DESCRIPT = """Succubus level 5""", # MISSING TRANSLATION
+	SUCCUBUSLEVEL6DESCRIPT = """Succubus level 6""", # MISSING TRANSLATION
+	SUCCUBUS_LEVEL_UP = """[name]'s demonic power grows: Succubus level {level}.""", # MISSING TRANSLATION
+	SUCCUBUS_LEVEL_UP_POINTS = """+%d Unlock Points.""", # MISSING TRANSLATION
+	SUCCUBUS_LEVELS_TOOLTIP = """[name] grows in power with [his] Succubus level, earned from [his] Thralls. Levels bring the Unlock Points for Succubus Powers.""", # MISSING TRANSLATION
+	SUCCUBUS_LEVELS_TOOLTIP_POINTS = """+%d Unlock Points""", # MISSING TRANSLATION
+	SUCCUBUS_LEVELS_TOOLTIP_SLOTS = """Thrall slots:""", # MISSING TRANSLATION
+	SUCCUBUS_LUST_PER_TURN = """Lust +%s / turn""", # MISSING TRANSLATION
+	SUCCUBUS_LUST_FROM_THRALLS = """Lust from Thralls, every turn""", # MISSING TRANSLATION
+	SUCCUBUS_SLOT_LOCKED = """Opens at Succubus Level %d (%d experience).""", # MISSING TRANSLATION
+	SUCCUBUS_BOND_TOOLTIP = """{color=yellow|%s: %d}
++%d every turn in the same place, +%d apart.
+At %d a type can be chosen for [name].""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_READY = """Choose a type for [name]""", # MISSING TRANSLATION
+	SUCCUBUS_RAISE_READY = """Raise [name] to %s""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_CHOOSE = """Choose""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_RAISE = """Raise""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_CANT_TAKE = """Cannot be granted now""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_USED = """Used today""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_ON_QUEST = """Away on a quest""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_AWAY = """Not in the same place""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_ONLY_ONE = """Only one for each succubus""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_AT_MOST = """At most %d for each succubus""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_REPLACES_SLAVE_STATUS = """Replaces a slave status""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_CAN_RAISE = """Can grow into %s""", # MISSING TRANSLATION
+	SUCCUBUS_NOT_ENOUGH = """Not enough %s""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_NOT_READY = """Once [his] %s grows, [name] can take on a new role.""", # MISSING TRANSLATION
+	SUCCUBUS_POWER_LEARNED = """Learned""", # MISSING TRANSLATION
+	SUCCUBUS_POWER_ANIM_TITLE = """Power Unlocked""", # MISSING TRANSLATION
+	SUCCUBUS_TRANSFORM_ANIM_TITLE = """Transformation""", # MISSING TRANSLATION
+	SUCCUBUS_POWER_UNLOCK = """Unlock: %d pt""", # MISSING TRANSLATION
+	SUCCUBUS_POWER_NEEDS = """Needs %d pt""", # MISSING TRANSLATION
+	SUCCUBUS_POWER_COST = """%d pt""", # MISSING TRANSLATION
+	SUCCUBUS_TYPE_NEEDS_SPECIALIZATION = """Learn %s among the Succubus Powers to give Thralls a role.""", # MISSING TRANSLATION
+	SUCCUBUS_SLOT_ENTHRALL = """Choose a character: Enthrall will be cast on them, and they will become a Thrall.""", # MISSING TRANSLATION
+	SUCCUBUS_SLOT_NEEDS_POWER = """Learn %s among the Succubus Powers to take Thralls.""", # MISSING TRANSLATION
+	SUCCUBUS_POWER_EXCLUSIVE = """Other path chosen""", # MISSING TRANSLATION
+	SUCCUBUS_SPELL_COOLDOWN = """On cooldown: %s""", # MISSING TRANSLATION
+	SUCCUBUS_REQUIRES = """Requires""", # MISSING TRANSLATION
+	SUCCUBUS_GIVES = """Gives""", # MISSING TRANSLATION
+	SUCCUBUS_COST = """Cost:""", # MISSING TRANSLATION
+	DIALOGUETHRALLTYPE_OFFER = """[name] holds [targetname]'s gaze. What [targethe] feels for [him] runs deep enough now to be shaped into something more.""", # MISSING TRANSLATION
+	SUCCUBUS_POWERS = """Succubus Powers""", # MISSING TRANSLATION
+	SUCCUBUS_CHOOSE_ONE = """choose one""", # MISSING TRANSLATION
+	SUCCUBUS_POWER_CLOSES = """%s will be closed for good.""", # MISSING TRANSLATION
+	SUCCUBUS_OR = """OR""", # MISSING TRANSLATION
+	SUCCUBUS_SPELLS = """Spells""", # MISSING TRANSLATION
 	THRALLDESCRIPT = """Serviteur
 Esprit : -10 ; Gain d'XP : -10 % ; le prix de vente est fortement réduit.""",
 	THRALLS6DESCRIPT = """Possède 6 serviteur(s)""",
@@ -4546,12 +4778,35 @@ Esprit : -10 ; Gain d'XP : -10 % ; le prix de vente est fortement réduit.""",
 	TRAITMASTER_TAILORDESCRIPT = """Les objets de couture fabriqués sont au moins de qualité normale.""",
 	TRAITFARMERDESCRIPT = "L'agriculture est 50% plus efficace. ",
 	TRAITBREEDERDESCRIPT = "Permet de se reproduire avec n'importe quelle race.\nLes effets négatifs de la grossesse sont plus faibles",
+	TRAITSUCCUBUS = """Succubus""", # MISSING TRANSLATION
+	TRAITSUCCUBUSALT = """Incubus""", # MISSING TRANSLATION
 	TRAITHARLOTDESCRIPT = "La prostitution est 50% plus efficace",
 	TRAITCOURTESAN = """Courtisane""",
 	TRAITCOURTESANDESCRIPT = """La renommée peut monter jusqu'au niveau 5 grâce aux tâches de service au lieu du plafond habituel, et le bonus de désirabilité octroyé par la renommée est doublé.""",
 	TRAITPETBEAST = """Chouchou du public""",
 	TRAITPETBEASTDESCRIPT = """Le facteur d'apprivoisement apporte de plus grands bénéfices aux tâches de service et à la désirabilité.""",
 	TRAITSUCCUBUSDESCRIPT = "Les activités sexuelles fournissent 50% d'expérience en plus.\nPeut infailliblement recruter des personnages aléatoires en utilisant Lust. ",
+	TRAITSUCCUBUSFLAVOR = """Demonic essence has remade [him] for good. Lust is no longer something [he] feels, but something [he] wields.""", # MISSING TRANSLATION
+	TRAITASCENDED_THRALL = """Ascended Thrall""", # MISSING TRANSLATION
+	TRAITASCENDED_THRALLDESCRIPT = """{color=green|Has personal Lust resource based on Consent level}
+{color=green|Can cast Corrupt, Allure and Genitalia Manipulation}
+Can be further transformed into Lesser Succubus""", # MISSING TRANSLATION
+	TRAITLESSER_SUCCUBUS = """Lesser Succubus""", # MISSING TRANSLATION
+	TRAITLESSER_SUCCUBUSALT = """Lesser Incubus""", # MISSING TRANSLATION
+	TRAITLESSER_SUCCUBUSDESCRIPT = """{color=green|Has personal Lust resource based on Consent level}
+{color=green|can cast Enthrall, Corrupt, Allure, Genitalia Manipulation and Change Form}
+{color=green|Holds up to 2 Thralls of [his] own}""", # MISSING TRANSLATION
+	TRAITLUST_DOLL = """Lust Doll""", # MISSING TRANSLATION
+	TRAITLUST_DOLLDESCRIPT = """{color=green|Prostitution: +30%}
+{color=green|Desirability: +5 per Consent level}
+{color=green|Gives [his] master 4 Lust every turn instead of 2}
+{color=red|Wits: -10}
+{color=red|Damage: -25%}""", # MISSING TRANSLATION
+	TRAITCHOSEN_CONSORT = """Chosen Consort""", # MISSING TRANSLATION
+	TRAITCHOSEN_CONSORTDESCRIPT = """In the same place as [his] master:
+{color=green|Productivity: +15%}
+{color=green|Damage: +15%}
+{color=green|Damage taken: -10%}""", # MISSING TRANSLATION
 	TRAITPETDESCRIPT = "La prostitution est 25% plus efficace",
 	TRAITSEXTOYDESCRIPT = "La prostitution est 50% plus efficace",
 	TRAITWITCRITDESCRIPT = "Augmente les chances de coup critique de 3% par facteur d'intelligence",
@@ -4729,6 +4984,10 @@ Ne peut pas être entraîné ni recevoir de loyauté.""",
 	TRAITFAST_HEALERDESCRIPT = """Healing received +25%.""", # MISSING TRANSLATION
 	TRAITKEEN_NOSE = """Keen Nose""", # MISSING TRANSLATION
 	TRAITKEEN_NOSEDESCRIPT = """Hunt +20%.""", # MISSING TRANSLATION
+	TRAITHEAVY_HITTER = """Heavy Hitter""", # MISSING TRANSLATION
+	TRAITHEAVY_HITTERDESCRIPT = """Skills (not spells) that cost mana: mana cost doubled, damage +30%.""", # MISSING TRANSLATION
+	TRAITBLENDING_SHADOWS = """Blending with Shadows""", # MISSING TRANSLATION
+	TRAITBLENDING_SHADOWSDESCRIPT = """While In The Shadows, ranged skills get Crit Chance +25% and Crit Damage +25%.""", # MISSING TRANSLATION
 	TRAITPUNY = """Puny""", # MISSING TRANSLATION
 	TRAITPUNYDESCRIPT = """-10 Physics.""", # MISSING TRANSLATION
 	TRAITNEARSIGHTED = """Nearsighted""", # MISSING TRANSLATION
@@ -5052,6 +5311,10 @@ Only one attunement can be taken""", # MISSING TRANSLATION
 	TRAITSUCCUBUS_COMBAT = """Combat attunement""", # MISSING TRANSLATION
 	TRAITSUCCUBUS_COMBATDESCRIPT = """HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage.
 Only one attunement can be taken""", # MISSING TRANSLATION
+	TRAITENTHRALLMENT = """Enthrallment""", # MISSING TRANSLATION
+	TRAITENTHRALLMENTDESCRIPT = """The succubus learns Enthrall, to make a character her Thrall, and Release Thrall, to let one go.""", # MISSING TRANSLATION
+	TRAITTHRALL_SPECIALIZATION = """Thrall Specialization""", # MISSING TRANSLATION
+	TRAITTHRALL_SPECIALIZATIONDESCRIPT = """The succubus can give her Thralls a role: Ascended Thrall, Lust Doll or Chosen Consort, and raise an Ascended Thrall into a Lesser Succubus.""", # MISSING TRANSLATION
 	FINISHTRAINING = """Finish training? Leftover spirit will be used to purchase additional bonuses.""", # MISSING TRANSLATION
 	TRAITTRAINING_VALUE = """Spécialisation acquise""",
 	TRAITTRAINING_VALUEDESCRIPT = """+25 % de valeur""",
@@ -5573,6 +5836,20 @@ A hit of {color=yellow|Light} shuts it for 2 turns; when it opens again it clear
 	TRAIT_JD_DREAM_EATER = """Dream Eater's Self-Made Vessel: immune to Sleep and Disarm. Every blow that lands on a Sleeping, {color=aqua|Deep Sleeping} or {color=aqua|Comatose} enemy restores 20% of its maximum health.""", # MISSING TRANSLATION
 	TRAIT_JD_ENNUI = """500 Years of Ennui and Resentment: being held down - immobilised or Ensnared - sends it into {color=aqua|Enrage} for 3 turns.
 The first time it is driven below half health it tears off any Silence and cannot be Silenced again.""", # MISSING TRANSLATION
+	EFFECTNAME_SYLAS_ARENA_MARK = """Memory of the Arena""", # MISSING TRANSLATION
+	EFFECT_SYLAS_ARENA_MARK = """Critical hits remembered. At 3, Sylas gains {color=aqua|Indelible Taste of Fanfare}.""", # MISSING TRANSLATION
+	EFFECTNAME_SYLAS_ARENA_REST = """Memory of the Arena: Spent""", # MISSING TRANSLATION
+	EFFECT_SYLAS_ARENA_REST = """The crowd has had its moment: Sylas's critical hits are not counted for now.""", # MISSING TRANSLATION
+	EFFECTNAME_SYLAS_FANFARE = """Indelible Taste of Fanfare""", # MISSING TRANSLATION
+	EFFECT_SYLAS_FANFARE = """Indelible Taste of Fanfare: +35 ATK, 20% less damage taken. Enables Gruesome Showstopper.""", # MISSING TRANSLATION
+	EFFECTNAME_SYLAS_DOMINEERING = """Domineering Performance""", # MISSING TRANSLATION
+	EFFECT_SYLAS_DOMINEERING = """Domineering Performance: 20% less damage taken. Counterattacks every enemy who hits him in melee. Lasts until his next turn or 3 counterattacks.""", # MISSING TRANSLATION
+	TRAIT_SYLAS_MEMORY_OF_ARENA = """Memory of the Arena: after dealing 3 critical hits, Sylas gains {color=aqua|Indelible Taste of Fanfare}. His critical hits are then not counted for his next 2 turns.""", # MISSING TRANSLATION
+	TRAIT_SYLAS_VITALITY = """Vitality and Power from ???: damage over time is cut further still. +35 {color=yellow|Mind} and {color=yellow|Dark} resistance, -35 {color=yellow|Light} resistance. Regenerates 50 health every turn.
++20 Crit Rate while not Disarmed or Blind.""", # MISSING TRANSLATION
+	TRAIT_SYLAS_QUICK_RETRIEVAL = """Quick Retrieval: any Disarm on Sylas is removed at the end of his turn.""", # MISSING TRANSLATION
+	TRAIT_SYLAS_REINFORCEMENT = """Monstrous Reinforcement: opens the fight with 2 Mutants and 2 Deformed, then calls in another at the start of every round while fewer than 5 fighters stand on his side. The battle ends when Sylas falls.""", # MISSING TRANSLATION
+	TRAIT_SYLAS_MINION = """Arena Monster: fights for Sylas. The battle ends when Sylas falls, whether it still stands or not.""", # MISSING TRANSLATION
 	EFFECTNAME_OVERLOADED_GOLEM_CORE = """Noyau de golem surchargé""",
 	EFFECT_OVERLOADED_GOLEM_CORE = """Toutes les attaques ont désormais 70 % de chance d'infliger Brûlure.
 En fin de tour : inflige de légers dégâts de feu à tous les ennemis.
@@ -5774,6 +6051,99 @@ L'effet est retiré si l'applicateur succombe à une provocation ou est immobili
 	EFFECTNAME_BLACKEN_BLADE = """Lame noircie""",
 	EFFECT_BLACKEN_BLADE_DESCRIPT = """Chaque coup inflige en plus 50 % de l'ATQM du lanceur en dégâts {color=yellow|Ténèbres}.
 Toutes les attaques ont 20 % de chance d'infliger Saignement.""",
+	EFFECT_ERDYNA_HARDY_CONSTITUTION_DESCRIPT = """Hardy Constitution:
+Take further reduced damage from DoT effects.
+Immune to Burn. +50 Fire resist.
+30% chance to reduce physical damage taken by 50%.
+Gain Unstoppable when HP drops below 50%.""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_DRACONIC_CONSTITUTION_DESCRIPT = """Draconic Constitution:
+Take further reduced damage from DoT effects.
+Immune to Burn. +50 Fire resist.
+30% chance to reduce physical damage taken by 50%.
+Gain Unstoppable when HP drops below 50%.""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_KING_OF_BANDITS_DESCRIPT = """King of Bandits:
+Immune to Provoke.
+When being melee attacked while Disarmed, 50% chance to remove Disarm from self and Disarm the attacker for 2 turns.
+At the start of combat, and when HP drops below 50% for the first time, use Equalizer on a random enemy.""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_HOARDER_INCISOR_DESCRIPT = """Hoarder Incisor:
+While not Disarmed, physical attacks have a 25% chance to inflict Bleed for 2 turns and a 30% chance to remove a random positive effect from the target.
+A target that cannot be Disarmed, such as one under Hardened Grip, keeps its positive effects.""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_HOW_COULD_YOU_DESCRIPT = """How could you...:
+Deal 20% more damage to you.""", # MISSING TRANSLATION
+	EFFECTNAME_ERDYNA_OBSERVING = """Observing""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_OBSERVING = """+150 Evasion. Allows the use of How Predictable~.
+When struck by a physical attack or Blinded, lose this effect and free every enemy from Subject of Observation.""", # MISSING TRANSLATION
+	EFFECTNAME_ERDYNA_SUBJECT_OF_OBSERVATION = """Subject of Observation""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_SUBJECT_OF_OBSERVATION = """-25% ATK and MATK. -25 Hit Rate and Evasion.
+Removed when Erdyna loses Observing or when the battle ends.""", # MISSING TRANSLATION
+	EFFECTNAME_ERDYNA_EVALUATED = """Evaluated""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_EVALUATED = """-50% ATK and MATK. -50 Hit Rate and Evasion. Take 20% more damage.
+Removed when the battle ends.""", # MISSING TRANSLATION
+	EFFECTNAME_ERDYNA_BATTLE_PRECOGNITION = """Battle Precognition""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_BATTLE_PRECOGNITION = """+20 ATK, +10% Crit Rate, +20 Hit Rate and +10% damage reduction per stack (Max 6).
+At 3+ stacks: immune to Disarm.""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_EQUALIZER_FOCUS = """Taunted by the target of Equalizer.""", # MISSING TRANSLATION
+	EFFECTNAME_ERDYNA_SUBDUED = """Subdued""", # MISSING TRANSLATION
+	EFFECT_ERDYNA_SUBDUED = """-50 Hit Rate. Damaging spells have a 25% chance to miss.
+Melee attacks and non-damaging skills used on enemies always miss.
+-75% outgoing healing.
+Under Blood Boil, the duration drops by one extra turn at the end of each turn.""", # MISSING TRANSLATION
+	ERDYNA_EQUALIZER_OPENING = """
+Erdyna: Let's even the odds a little.
+""", # MISSING TRANSLATION
+	ERDYNA_EQUALIZER_HALF_HP = """
+Erdyna: Fine. No more playing around!
+""", # MISSING TRANSLATION
+	ERDYNA_OBSERVATION_BROKEN = """
+Erdyna loses her focus - the observation is broken!""", # MISSING TRANSLATION
+	ERDYNA_DISARM_REVERSAL = """
+Erdyna snatches her blade back and turns the grip against the attacker!""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_DUTY_DESCRIPT = """Thalendir Duty:
+Immune to Fear. +30 Fire and Physical resist. Takes reduced damage from Burn.
+Deals 15% more damage to Dragons, Dragonkin and targets affected by Draconic Accusation.
+On death, every other ally under Thalendir Duty gains 1 Vengeance.""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_FIRING_SOLUTION_DESCRIPT = """Firing Solution Calculator:
+When an enemy evades an attack from an ally, it gains Mark for Staking.""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_UNYIELDING_DESCRIPT = """Unyielding Dragonslayer:
+At 3 stacks of Vengeance, single-target melee attacks against a Dracalista are redirected to this unit.
+At 3 stacks of Vengeance, counterattacks enemies that attack it in melee range, once per round for each stack.""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_PHALANX_DESCRIPT = """Phalanx Formation:
+While this unit is alive, all allies take 20% less AoE damage.
+Counterattacks enemies that attack it in melee range, once per round.""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_MLADY_DESCRIPT = """M'lady is Under my Protection:
+While above 30% HP, single-target ranged attacks against Vaeloria are redirected to this unit.""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_ADAMETEOR_DESCRIPT = """Adameteor-718 Superalloy:
++80 Fire resist, +50 Physical resist, +30 Light and Water resist.
+Takes 30% less AoE damage. Immune to Shred.""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_BALLISTA_DESCRIPT = """Anti-Dragon Ballista:
+While this unit is alive, all enemies have Flight Deterrence.
+Deals 20% more damage to Dragons, Dragonkin and targets affected by Draconic Accusation.""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_FLIGHT_DETERRENCE = """Flight Deterrence:
+At the end of this unit's turn, if it has Flight or Wing Dash, the Dracalista that applied this attacks it, unless that Dracalista is Disarmed or Blinded.
+Lasts while that Dracalista is alive.""", # MISSING TRANSLATION
+	EFFECTNAME_THALENDIR_VENGEANCE = """Vengeance""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_VENGEANCE = """Vengeance:
+Per stack: deal 10% more damage, take 10% less damage and counterattack one more time per round (Max 3).""", # MISSING TRANSLATION
+	EFFECTNAME_THALENDIR_DRACONIC_ACCUSATION = """Draconic Accusation""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_DRACONIC_ACCUSATION = """Draconic Accusation:
+Counts as a dragon for House Thalendir.""", # MISSING TRANSLATION
+	EFFECTNAME_THALENDIR_MARK_FOR_STAKING = """Mark for Staking""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_MARK_FOR_STAKING = """Mark for Staking:
+Can be targeted by the Dracalista's Stake Flak Salvo.""", # MISSING TRANSLATION
+	EFFECTNAME_THALENDIR_STAKED = """Staked""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_STAKED = """Staked:
+Evasion is set to 0. -50 Earth resist.""", # MISSING TRANSLATION
+	EFFECTNAME_THALENDIR_NESTED_SPEAR = """Nested Spear""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_NESTED_SPEAR = """Nested Spear:
+-30 Speed, -30 Armor, -20 Evasion. Healing received is reduced by 50%.
+Lasts until the battle ends or Vaeloria uses Recall Spear.""", # MISSING TRANSLATION
+	EFFECTNAME_THALENDIR_SECURITY_GLYPH = """Security Glyph""", # MISSING TRANSLATION
+	EFFECT_THALENDIR_SECURITY_GLYPH = """Security Glyph:
+Trap. When this unit casts a spell: it takes 120 Air damage, is Silenced and Ensnared for 2 turns and loses In the Shadow.""", # MISSING TRANSLATION
+	THALENDIR_DETERRENCE_VOLLEY = """
+%s fires at the airborne target!""", # MISSING TRANSLATION
+	THALENDIR_SECURITY_GLYPH_TRIGGERED = """
+A Security Glyph flares up under %s!""", # MISSING TRANSLATION
 	EFFECT_CURSED_GIRL_DESCRIPT = """Fille maudite : touchée par le sort Dévoration, subit Choc et 3 charges de Fragile. Touchée par des dégâts de Lumière, 20 % de chance d'être étourdie.""",
 	EFFECT_GUARDIAN_SPIRIT_PROTECTION_FRENZIED_DESCRIPT = """Protection de l'esprit gardien [Frénétique] : touchée par des dégâts non lumineux, 30 % de chance d'infliger Malédiction à l'attaquant. Touchée par un ennemi maudit, réduit les dégâts subis de 30 % et renvoie des dégâts de Ténèbres à l'attaquant.""",
 	SEB_RILU_ATTACK = """
@@ -9164,6 +9534,8 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_EMPATHIC_INSIGHT_RESULT = """[name1] understand[s/1] the shape of the moment more clearly, finding the fragile places where trust can still be built.""", # MISSING TRANSLATION
 	SEXACTION_REFRESHING_PULSE_INITIATE = """Soft light gathers around [name1] before spreading through the room in a warm pulse.""", # MISSING TRANSLATION
 	SEXACTION_REFRESHING_PULSE_RESULT = """The glow leaves everyone steadier and more awake, ready to keep moving.""", # MISSING TRANSLATION
+	SEXACTION_MANIFEST_COCK_INITIATE = """[name1] slide[s/1] a hand between [his1] thighs as demonic heat gathers under [his1] fingers, and a cock swells into being there.""", # MISSING TRANSLATION
+	SEXACTION_MANIFEST_COCK_RESULT = """[name1] give[s/1] the new shaft a slow, testing stroke. It will last until the encounter is over.""", # MISSING TRANSLATION
 	SEXACTION_TEASING_WINDS_INITIATE = """[name1] smile[s/1] like [he1] know[s/1] exactly what [name2] wants, then flick[s/1] [his1] fingers and send[s/1] a sly current of air under every vulnerable edge of [names2] body.""", # MISSING TRANSLATION
 	SEXACTION_TEASING_WINDS_RESULT = """The breeze curls and presses with almost deliberate cruelty, ghosting over [names2] most sensitive places until [his2] breath catches and [his2] body tightens, teased raw but kept just short of release.""", # MISSING TRANSLATION
 	SEXACTION_DARK_RAPTURE_INITIATE_1 = """[name1] seize[s/1] the moment with a cold, possessive look, drawing dark power into [his1] hand before pushing it deep into [names2] trembling body.""", # MISSING TRANSLATION
@@ -9208,6 +9580,7 @@ Pheromones were used on %s, but they had no effect on [him]. """, # MISSING TRAN
 	SEXACTION_LOTUS = """Lotus""", # MISSING TRANSLATION
 	SEXACTION_LOTUS_ANAL = """Lotus Anal""", # MISSING TRANSLATION
 	SEXACTION_LOTUS_PEGGING = """Lotus Pegging""", # MISSING TRANSLATION
+	SEXACTION_MANIFEST_COCK = """Manifest Cock""", # MISSING TRANSLATION
 	SEXACTION_MASSAGE_WITH_FOOT = """Massage with foot""", # MISSING TRANSLATION
 	SEXACTION_MILKER = """Milker""", # MISSING TRANSLATION
 	SEXACTION_MISSIONARY = """Missionary""", # MISSING TRANSLATION
@@ -9639,6 +10012,11 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYCOAL_MOAB = """Mother of All Bombs""", # MISSING TRANSLATION
 	ENEMYKURO = """Kuro""", # MISSING TRANSLATION
 	ENEMYERDYNA = """Erdyna""", # MISSING TRANSLATION
+	ENEMYERDYNA_BETRAYAL = """Erdyna""", # MISSING TRANSLATION
+	ENEMYTHALENDIR_VAELORIA = """Vaeloria""", # MISSING TRANSLATION
+	ENEMYTHALENDIR_DRACALISTA = """Dracalista""", # MISSING TRANSLATION
+	ENEMYTHALENDIR_CAPTAIN = """Thalendir Captain""", # MISSING TRANSLATION
+	ENEMYTHALENDIR_GUARD = """Thalendir Guard""", # MISSING TRANSLATION
 	ENEMYNIXX = """Nixx""", # MISSING TRANSLATION
 	ENEMYUNLIT_BRAZIER = """Brasier éteint""",
 	ENEMYLIGHTED_BRAZIER = """Brasier allumé""",
@@ -9647,6 +10025,8 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYMUTANT2 = """Difforme""",
 	ENEMYSYLAS = """Sylas""", # MISSING TRANSLATION
 	ENEMYSYLAS_WEAK = """Sylas affaibli""",
+	ENEMYSYLAS_MUTANT = """Mutant""", # MISSING TRANSLATION
+	ENEMYSYLAS_DEFORMED = """Deformed""", # MISSING TRANSLATION
 	ENEMYJEAN_EVIL = """Jean""", # MISSING TRANSLATION
 	ENEMYJEAN_DEMON = """Démon""",
 	ENEMYCLANSMAN_GUARD = """Garde du clan""",
@@ -9736,6 +10116,9 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ITEMMAJORUS_POTIONDESCRIPT = "Une potion spéciale, qui peut être utilisée pour augmenter la taille d'une partie spécifique du corps d'une personne. Peut être utilisée sur les seins, les fesses, les pénis et les boules",
 	ITEMEXP_SCROLL = """Scroll of Knowledge""", # MISSING TRANSLATION
 	ITEMEXP_SCROLLDESCRIPT = """Grants 100 points of experience to the user.""", # MISSING TRANSLATION
+	ITEMHALLOWEEN_CANDY = """Halloween Candy""", # MISSING TRANSLATION
+	ITEMHALLOWEEN_CANDYDESCRIPT = """A sweet in an orange and black wrapper, found only around Halloween. Eating it grants 25 points of experience. On a date it can be offered as a treat that is always to the other's liking.""", # MISSING TRANSLATION
+	DIALOGUEHALLOWEEN_CANDYREPORT = """[name] unwraps the candy and pops it into [his] mouth. The rush of sugar seems to sharpen [his] mind a little.""", # MISSING TRANSLATION
 	ITEMBOUQUET = """Bouquet""", # MISSING TRANSLATION
 	ITEMBOUQUETDESCRIPT = """A bouquet of fresh flowers. Gifting it raises Affection towards the giver.""", # MISSING TRANSLATION
 	DIALOGUEBOUQUETREPORT = """You give [name] a bouquet. [He] smiles warmly at the thoughtful gift.""", # MISSING TRANSLATION
@@ -11329,6 +11712,7 @@ La princesse remarque qu'Aire se crispe en réponse à la question.
 	STATDAMAGE_MOD_PHYSIC = """Dégâts : Physique""",
 	STATDAMAGE_MOD_SPELL = """Dégâts : Sort""",
 	STATDAMAGE_MOD_TRUE = """Dégâts : Pur""",
+	STATDAMAGE_MOD_MANA_SKILL = """Mana Skill Damage""", # MISSING TRANSLATION
 	STATDAMAGE_MOD_FIREDESCRIPT = """Modifie les dégâts : Feu""",
 	STATDAMAGE_MOD_WATERDESCRIPT = """Modifie les dégâts : Eau""",
 	STATDAMAGE_MOD_AIRDESCRIPT = """Modifie les dégâts : Air""",
@@ -11344,6 +11728,7 @@ La princesse remarque qu'Aire se crispe en réponse à la question.
 	STATDAMAGE_MOD_PHYSICDESCRIPT = """Modifie les dégâts : Physique""",
 	STATDAMAGE_MOD_SPELLDESCRIPT = """Modifie les dégâts : Sort""",
 	STATDAMAGE_MOD_TRUEDESCRIPT = """Modifie les dégâts : Pur""",
+	STATDAMAGE_MOD_MANA_SKILLDESCRIPT = """Modifies damage of skills (not spells) that cost mana""", # MISSING TRANSLATION
 
 	ENEMYMANEATER_PLANT = "Plante mangeuse d'hommes",
 	ENEMYCENTIPEDE = "Mille-pattes",
@@ -16374,6 +16759,11 @@ Vous remarquez que Cali regarde maintenant Amelia avec respect. Finalement, enco
 {color=yellow|Amelia : - C'est une bonne fille, tu ferais mieux de ne pas trahir la confiance qu'elle a en toi}.
 
 Sans attendre votre réponse, elle disparaît aussi nonchalamment qu'elle est apparue. \n{color=green|Cali : Facteur de charme +1\nCali : Charme +10}""",
+	CALI_NEW_LOOK = """In the morning Cali finds you in the main hall, and it takes you a moment to see what's different. The loose vest she always wore has been swapped for a snug, cropped one, and her plain skirt for a shorter, flared one, cinched at the waist with a belt.
+
+{color=yellow|— Amelia said I don't need frilly dresses, just clothes that suit me. So I picked these out myself! Not bad, right, [Master]?}
+
+She gives a quick twirl, her tail swishing behind her, and for once the move comes out more graceful than clumsy. Before you can answer, she flashes you a grin and hurries off to her chores.""", # MISSING TRANSLATION
 	CALI_SEX_5 = """Vers midi, vous êtes absorbé dans une forme ou une autre dans le hall principal. Cali s'approche de vous en trottinant, l'énergie de son pas l'identifiant bien avant qu'elle ne soit visible. S'arrêtant à une distance respectueuse de vous, elle vous regarde attentivement, attendant que vous la reconnaissiez. Après que vous ayez levé les yeux vers elle, elle s'exprime enfin d'un ton excité.
 
 - [Maître] ! Hé, [Maître], le chariot de nourriture est de retour devant le manoir. Leurs boulettes de viande sentent si bon ! Je me demandais si vous pouviez nous en acheter...
@@ -23850,6 +24240,11 @@ You'll get between %s and %s of %s.""", # MISSING TRANSLATION
 	BANDIT_FORT_ADJS3 = """Brigand""",
 	BANDIT_FORT_ADJS4 = """Voleur""",
 	BANDIT_FORT_ADJS5 = "Egorgeur",
+	REBEL_REDOUBT_ADJS1 = """Rebel""", # MISSING TRANSLATION
+	REBEL_REDOUBT_ADJS2 = """Insurgent""", # MISSING TRANSLATION
+	REBEL_REDOUBT_ADJS3 = """Renegade""", # MISSING TRANSLATION
+	REBEL_REDOUBT_ADJS4 = """Defiant""", # MISSING TRANSLATION
+	REBEL_REDOUBT_ADJS5 = """Partisan""", # MISSING TRANSLATION
 	
 	GOBLIN_CAVE_NOUNS1 = "Grotte",
 	GOBLIN_CAVE_NOUNS2 = """Tunnel""",
@@ -24407,6 +24802,27 @@ You'll get between %s and %s of %s.""", # MISSING TRANSLATION
 	TOOLTIP_RANGE_MELEE = """Corps à corps""",
 	TOOLTIP_RANGE_NOT_CASTER = """Tout le monde sauf le lanceur""",
 	TOOLTIP_RANGE_DEAD = """Morts uniquement""",
+	SKILLTIP_READY = """Ready""", # MISSING TRANSLATION
+	SKILLTIP_READY_IN = """Ready in""", # MISSING TRANSLATION
+	SKILLTIP_REQS_UNMET = """Requirements not met""", # MISSING TRANSLATION
+	SKILLTIP_NOT_ENOUGH = """Not enough""", # MISSING TRANSLATION
+	SKILLTIP_NO_MATERIALS = """Not enough materials""", # MISSING TRANSLATION
+	SKILLTIP_NO_CHARGES = """No charges left""", # MISSING TRANSLATION
+	SKILLTIP_BLOCKED = """Can't be used now""", # MISSING TRANSLATION
+	SKILLTIP_HAVE = """have""", # MISSING TRANSLATION
+	SKILLTIP_OWNED = """owned""", # MISSING TRANSLATION
+	SKILLTIP_TURN = """turn""", # MISSING TRANSLATION
+	SKILLTIP_TURNS = """turns""", # MISSING TRANSLATION
+	SKILLTIP_DAY = """day""", # MISSING TRANSLATION
+	SKILLTIP_DAYS = """days""", # MISSING TRANSLATION
+	SKILLTIP_COOLDOWN = """cooldown""", # MISSING TRANSLATION
+	SKILLTIP_LEFT = """left""", # MISSING TRANSLATION
+	SKILLTIP_CHARGES = """charges""", # MISSING TRANSLATION
+	SKILLTIP_BACK_IN = """back in""", # MISSING TRANSLATION
+	SKILLTIP_APPLIES = """Applies""", # MISSING TRANSLATION
+	SKILLTIP_PROPERTIES = """Properties""", # MISSING TRANSLATION
+	SKILLTIP_PROP_INSTANT = """Instant: does not end the turn""", # MISSING TRANSLATION
+	SKILLTIP_PROP_STEALTH = """Does not break stealth""", # MISSING TRANSLATION
 	SKILL_SWITCH_TOOLTIP = "Compétences sociales/combat",
 	SLAVE_LOYALTY = "Loyauté",
 	RACE_BONUSES = "Bonus de race",
@@ -24416,6 +24832,7 @@ You'll get between %s and %s of %s.""", # MISSING TRANSLATION
 	RACE_EXCLUSIVE_CLASS_LABEL = """Classe exclusive : %s""",
 	CLASS_SOCIAL_SKILL_LABEL = """Capacité sociale""",
 	CLASS_COMBAT_SKILL_LABEL = """Capacité de combat""",
+	CLASS_MASTERIES_LABEL = """Masteries""", # MISSING TRANSLATION
 	PERSONAL_STAT = "Statistiques personnelles",
 	PERSONAL_METRICS = """Metrics""", # MISSING TRANSLATION
 	REMOVE_BUTTON = "Libérer",
@@ -24953,9 +25370,21 @@ No relationship change.""", # MISSING TRANSLATION
 	STRANGE_SPOT = """Off the main passage you come across a strange spot: a ring of smooth, pale stone set into the floor, untouched by the dust around it. The air above it feels thick, as if the place were holding its breath and waiting for someone to step in.""", # MISSING TRANSLATION
 	STRANGE_SPOT_STEP = """Have someone step into the ring""", # MISSING TRANSLATION
 	MEDITATION_SPOT_PERSON = """[name] steps into the ring, and the noise of this place falls away. The air is clear here and the silence almost tangible — a good spot to rest, or to listen to something beyond oneself.""", # MISSING TRANSLATION
+	POWER_PLACE_REVEAL = """As you draw near, the pale stone flares with light before anyone can set foot in the ring. Power surges up from it, raw and roaring, far too loud for a place like this. From somewhere deeper in the dungeon something answers: heavy steps are already coming your way.""", # MISSING TRANSLATION
+	POWER_PLACE_OFFER = """Within the glare the power has already taken a shape. Whoever claims it once the fight is won will carry it from then on:""", # MISSING TRANSLATION
+	POWER_PLACE_OFFER_EXP = """The power stays wild and shapeless — it would settle into none of you. Whoever claims it once the fight is won will only learn from it.""", # MISSING TRANSLATION
 	POWER_PLACE = """The moment [name] steps into the ring, the pale stone flares with light. Power surges up through [him], raw and roaring, far too loud for a place like this. From somewhere deeper in the dungeon something answers: heavy steps are already coming your way.""", # MISSING TRANSLATION
 	POWER_PLACE_FIGHT = """Stand your ground""", # MISSING TRANSLATION
 	POWER_PLACE_FLEE = """Run before they arrive""", # MISSING TRANSLATION
+	POWER_PLACE_RAN = """The group hurries back the way it came. Behind you the light dies down, and by the time the footsteps fade there is nothing left of the ring to return to.""", # MISSING TRANSLATION
+	POWER_PLACE_CLAIM = """The last of them falls, and the ring goes quiet. The power that called them has not faded: it hums above the pale stone, waiting for someone to step in and take it.""", # MISSING TRANSLATION
+	POWER_PLACE_CLAIM_EXP = """It has no shape to settle into anyone, but whoever takes it will learn from it all the same.""", # MISSING TRANSLATION
+	POWER_PLACE_CLAIM_OPTION = """Choose who steps into the ring""", # MISSING TRANSLATION
+	POWER_PLACE_CLAIM_PROMPT = """Who will take {trait}?""", # MISSING TRANSLATION
+	POWER_PLACE_CLAIM_PROMPT_EXP = """Who will take the power?""", # MISSING TRANSLATION
+	POWER_PLACE_PURGE_CHOOSE_OPTION = """Let it burn away a flaw instead""", # MISSING TRANSLATION
+	POWER_PLACE_PURGE_PROMPT = """Whose flaw will the power burn away?""", # MISSING TRANSLATION
+	POWER_PLACE_PURGE_PICK = """[name] steps into the ring, and the power closes around [him], hot enough to burn. It could take away something [he] would be better off without.""", # MISSING TRANSLATION
 	POWER_PLACE_FLED = """You pull [name] out of the ring and the group hurries back the way it came. Behind you the light dies down, and by the time the footsteps fade there is nothing left of the ring to return to.""", # MISSING TRANSLATION
 	POWER_PLACE_WON = """The last of them falls, and the ring goes quiet. The power that called them has not faded: it has settled into [name], and [he] will carry it from now on.""", # MISSING TRANSLATION
 	POWER_PLACE_WON_EXP = """The last of them falls, and the ring goes quiet. The power that called them washes through [name] and fades, but the fight itself has taught [him] plenty.""", # MISSING TRANSLATION
@@ -31087,6 +31516,8 @@ She looks up at you, and there's a fire in her eyes that wasn't there before.
 A few minutes later, she steps out.
 
 The costume fits her as if it were made for her. The leather and feathers frame her body in a way that is both wild and elegant, the headdress lending her a strange, fierce grace she's never shown before.""", # MISSING TRANSLATION
+	LIRA_TRIBAL_OUTFIT_NAME = """Tribal""", # MISSING TRANSLATION
+	JEAN_ACADEMY_OUTFIT_NAME = """Academy Uniform""", # MISSING TRANSLATION
 	LIRA_QUEST2_CATCHES_REFLECTION_NEARBY_LANTERN_PAUSES = """She catches her reflection in a nearby lantern and pauses, her hand rising to touch the feathers at her shoulder. Her cheeks are still slightly flushed, but a slow smile spreads across her face. She turn to you, her ears twitching slightly.
 
 {color=yellow|Lira: — Well... Do you like how I look, [master]?}""", # MISSING TRANSLATION
@@ -34028,6 +34459,15 @@ You leave her in the shade and return to the others, carrying with you the stran
 	MANSIONUPG_TUTORING_AREA = """Tutoring Area""", # MISSING TRANSLATION
 	MANSIONUPG_TUTORING_AREADESCRIPT = """Adds a slot for a tutor. A tutor raises the stat gain and is required to remove a negative trait.""", # MISSING TRANSLATION
 	MANSIONUPG_TUTORING_AREABONUS1 = """+1 tutor slot, and negative traits can be removed""", # MISSING TRANSLATION
+	MANSIONUPG_SLAVE_CURRICULUM = """Training Manuals""", # MISSING TRANSLATION
+	MANSIONUPG_SLAVE_CURRICULUMDESCRIPT = """Manuals on raising obedient servants. Slave children born on the estate can be sent to Slave Training: Workforce, Warrior or Service.""", # MISSING TRANSLATION
+	MANSIONUPG_SLAVE_CURRICULUMBONUS1 = """Unlocks Slave Training for newborns""", # MISSING TRANSLATION
+	MANSIONUPG_ACADEMY_PATRONAGE = """Academy Patronage""", # MISSING TRANSLATION
+	MANSIONUPG_ACADEMY_PATRONAGEDESCRIPT = """An arrangement with an academy, where children born on the estate can study.""", # MISSING TRANSLATION
+	MANSIONUPG_ACADEMY_PATRONAGEBONUS1 = """Unlocks Academy for newborns""", # MISSING TRANSLATION
+	MANSIONUPG_HEIR_TUTORS = """Heir's Tutors""", # MISSING TRANSLATION
+	MANSIONUPG_HEIR_TUTORSDESCRIPT = """Private tutors fit to raise a successor. Heirs born on the estate can receive Heir Education.""", # MISSING TRANSLATION
+	MANSIONUPG_HEIR_TUTORSBONUS1 = """Unlocks Heir Education for newborns""", # MISSING TRANSLATION
 	MANSIONUPG_LEDGERS = """Ledgers""", # MISSING TRANSLATION
 	MANSIONUPG_LEDGERSDESCRIPT = """This room's crafters follow its own order of work instead of the estate's queue.""", # MISSING TRANSLATION
 	MANSIONUPG_LEDGERSBONUS1 = """This room keeps its own order of work""", # MISSING TRANSLATION
@@ -34884,6 +35324,51 @@ Plan as many levels and factors as you like, then confirm them all at once.""", 
 	SQ_UPGRADE_SHORT_GOLD = """Not enough gold.""", # MISSING TRANSLATION
 	SQ_UPGRADE_BUY_TOOLTIP = """Buy every planned level at once.""", # MISSING TRANSLATION
 	SQ_UPGRADE_ASK = """Spend %s Tokens of Recognition and %s gold to raise [name]'s factors?""", # MISSING TRANSLATION
+	STATREQ_TRAIT_OFFER = """Can take the trait: %s""", # MISSING TRANSLATION
+	STATREQ_TRAIT_OFFER_NOT = """Can't take the trait: %s""", # MISSING TRANSLATION
+	FAITH_CONVERSION_TITLE = """{name} can embrace a new faith""", # MISSING TRANSLATION
+	FAITH_CONVERSION_KEEP = """Not now""", # MISSING TRANSLATION
+	FAITH_CONVERSION_CELENA_OPTION = """Bring someone into Celena's faith (200 gold)""", # MISSING TRANSLATION
+	FAITH_CONVERSION_CELENA_PROMPT = """Who will be welcomed into Celena's faith? The church asks a donation of 200 gold.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_CELENA_LEAD = """The church asks a donation of 200 gold for the rite. Choose the belief Celena's faith takes the place of, or let [name] keep [his] own.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_CELENA = """Ginny leads [name] to the altar and lights a single candle before Celena's image.
+
+{color=yellow|Ginny: — Celena asks for no oath sworn in fear. Only that you share what you have and turn away no one who comes in need. Will you carry that with you?}
+
+{color=aqua|[name]: — I will.}
+
+Ginny touches [his] forehead with blessed water and smiles warmly.
+
+{color=yellow|Ginny: — Then be welcome among her faithful. May the Goddess keep you in good health and your harvests plentiful.}""", # MISSING TRANSLATION
+	FAITH_CONVERSION_FREYA_OPTION = """Follow Freya (5 Silk)""", # MISSING TRANSLATION
+	FAITH_CONVERSION_FREYA_PROMPT = """Who will be consecrated to Freya? The temple asks an offering of 5 Silk.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_FREYA_LEAD = """The temple asks an offering of 5 Silk for the rite. Choose the belief Freya's faith takes the place of, or let [name] keep [his] own.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_FREYA_NO_COST = """Not enough Silk: the temple asks an offering of 5.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_FREYA_LIRA = """Lira receives the silk herself and lays it at the roots of the temple's great tree, then beckons [name] closer.
+
+{color=yellow|Lira: — Freya doesn't ask where you were born. I'm proof of that. She only asks that you take from the forest no more than you need, and give back what you can.}
+
+She marks [name]'s brow with a drop of sap and whispers a short prayer in the old elven tongue.
+
+{color=yellow|Lira: — There. The forest knows you now. Walk gently in it.}""", # MISSING TRANSLATION
+	FAITH_CONVERSION_FREYA_HELEVIEL = """Heleviel looks the silk over with a critical eye before setting it on the altar beneath the temple's great tree.
+
+{color=yellow|Heleviel: — Freya's grace is not handed out lightly, but neither is it refused to those who come with an honest heart. Kneel.}
+
+[name] kneels, and the High Priestess anoints [his] brow with fragrant oil while intoning an old elven prayer.
+
+{color=yellow|Heleviel: — Rise. Take from the forest only what you need, and Freya will not forget you.}""", # MISSING TRANSLATION
+	FAITH_CONVERSION_SPIRITS_OPTION = """Walk the Way of the Spirits (30 Meat)""", # MISSING TRANSLATION
+	FAITH_CONVERSION_SPIRITS_PROMPT = """Who will walk the Way of the Spirits? The tribe asks 30 Meat for the feast that seals the rite.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_SPIRITS_LEAD = """The tribe asks 30 Meat for the feast that seals the rite. Choose the belief the Way of the Spirits takes the place of, or let [name] keep [his] own.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_SPIRITS_NO_COST = """Not enough Meat: the tribe asks 30 for the rite's feast.""", # MISSING TRANSLATION
+	FAITH_CONVERSION_SPIRITS = """Savra has the meat carried to the fire pit and sits [name] down across the flames from her. The smoke smells of herbs and roasting game.
+
+{color=yellow|Savra: — The spirits don't care for temples or fancy words. They live in the hunt, the wind and the old trees. Breathe the smoke and listen.}
+
+For a long moment [name] stares into the fire. Something stirs at the edge of [his] senses — a rustle, a distant howl, a presence gone as soon as [he] turns toward it.
+
+{color=yellow|Savra: — They heard you. From now on you hunt with them, not only for yourself. Now eat — a rite isn't done until the feast is.}""", # MISSING TRANSLATION
 	
 }
 

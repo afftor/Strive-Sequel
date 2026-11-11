@@ -127,6 +127,10 @@ func update_spells():
 				panel.get_node('cd2').visible = true
 				panel.get_node('cdicon').visible = true
 				panel.get_node('cd2').text = str(caster.skills.social_cooldowns[sp_id])
+			if caster.skills.social_turn_cooldowns.has(sp_id):
+				panel.get_node('cd2').visible = true
+				panel.get_node('cdicon').visible = true
+				panel.get_node('cd2').text = str(caster.skills.social_turn_cooldowns[sp_id])
 			if caster.skills.daily_cooldowns.has(sp_id):
 				panel.get_node('cd2').visible = true
 				panel.get_node('cdicon').visible = true

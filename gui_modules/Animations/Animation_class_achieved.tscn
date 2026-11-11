@@ -427,6 +427,7 @@ custom_colors/font_color = Color( 0.54902, 0.658824, 0.529412, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Class aquired"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -436,11 +437,12 @@ self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 895.25
 margin_top = 227.478
 margin_right = 1216.25
-margin_bottom = 294.478
+margin_bottom = 283.761
 custom_colors/font_color = Color( 0.87451, 1, 0.85098, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Barbarian"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -450,11 +452,12 @@ self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 894.786
 margin_top = 284.405
 margin_right = 1215.79
-margin_bottom = 351.405
+margin_bottom = 334.317
 custom_colors/font_color = Color( 0.596078, 0.466667, 0.345098, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Hettie Darkmane"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

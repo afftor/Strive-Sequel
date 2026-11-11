@@ -79,7 +79,7 @@ texture_hover = ExtResource( 7 )
 [node name="LineEdit" type="LineEdit" parent="."]
 margin_left = 52.0
 margin_top = 700.0
-margin_right = 586.0
+margin_right = 416.0
 margin_bottom = 744.057
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
@@ -231,6 +231,16 @@ custom_fonts/font = ExtResource( 10 )
 shortcut_in_tooltip = false
 text = "LSPIMPORTMODE"
 clip_text = true
+
+[node name="SaveButton" type="Button" parent="."]
+margin_left = 426.0
+margin_top = 700.0
+margin_right = 586.0
+margin_bottom = 744.057
+theme = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "PAUSEMENUSAVE"
 
 [connection signal="pressed" from="openfolder" to="." method="_on_openfolder_pressed"]
 [connection signal="pressed" from="ImportMode" to="." method="_on_ImportMode_pressed"]

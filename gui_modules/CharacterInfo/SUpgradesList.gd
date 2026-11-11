@@ -24,20 +24,28 @@ func update():
 	build_trainings()
 	build_spells()
 	build_thralls_tooltip()
-#	basic_tooltip()
 
 
-func build_info(): 
+#level, experience toward the next one, thralls held of the level's slots, lust growth, unlock points
+func build_info():
 	var container = $info/VBoxContainer
-	var list = ['lusttick', 'thralls_amount_max','thrall_points']
 	input_handler.ClearContainer(container, ['record'])
-	for id in list:
-		var stdata = statdata.statdata[id]
-		var panel = input_handler.DuplicateContainerTemplate(container, 'record')
-		var value = person.get_stat(id)
-		panel.get_node('stat').text = tr(stdata.name) + ":"
-		panel.get_node('value').text = str(value)
-	#add more info
+	var level = person.get_stat('succubus_level')
+	var thresholds = Traitdata.succubus_levels.exp
+	var exp_text = str(person.get_stat('succubus_exp'))
+	if level < thresholds.size():
+		exp_text += "/" + str(thresholds[level])
+	add_info_record(container, 'succubus_level', str(level))
+	add_info_record(container, 'succubus_exp', exp_text)
+	add_info_record(container, 'thralls_amount', "%d/%d" % [person.get_stat('thralls_amount'), person.get_stat('thralls_amount_max')])
+	add_info_record(container, 'lusttick', str(person.get_stat('lusttick')))
+	add_info_record(container, 'thrall_points', str(person.get_stat('thrall_points')))
+
+
+func add_info_record(container, stat, value_text):
+	var panel = input_handler.DuplicateContainerTemplate(container, 'record')
+	panel.get_node('stat').text = tr(statdata.statdata[stat].name) + ":"
+	panel.get_node('value').text = value_text
 
 
 func build_thralls(): 
@@ -69,7 +77,7 @@ func build_trainings():
 		if u_data.has('showupreqs') and !person.checkreqs(u_data.showupreqs):
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(container, 'Button')
-		panel.rect_position = Vector2(u_data.position[1] * offset_x, u_data.position[0] * offset_y)
+		panel.rect_position = Vector2(u_data.column * offset_x, (u_data.level - 1) * offset_y)
 		var unlocked = false
 		match u_data.mode:
 			'skill':
@@ -179,6 +187,12 @@ func build_spells():
 				panel.get_node('value3').visible = true
 				panel.get_node('value2').visible = false
 				panel.get_node('value').visible = false
+			if person.skills.social_turn_cooldowns.has(id):
+				panel.get_node('cdicon').visible = true
+				panel.get_node('value3').text = str(person.skills.social_turn_cooldowns[id])
+				panel.get_node('value3').visible = true
+				panel.get_node('value2').visible = false
+				panel.get_node('value').visible = false
 
 
 func select_spell(sp_id):
@@ -206,15 +220,15 @@ func open_spells():
 	gui_controller.emit_signal("screen_changed")
 
 
+#each level's thrall slots and passive, the current one in green
 func build_thralls_tooltip():
-	var text = person.translate("[name] gains more powers based on the number of thralls [he] controls.\n\n")
-	for i in range(7):
-		var text2 = globals.build_oneline_desc_for_bonusstats(Effectdata.effect_table['succubus_thralls_%d' % i].statchanges) 
-		if i == person.get_stat('thralls_amount'):
-			text += '{color=green|' + str(i) + ": " + text2 + '}\n'
+	var text = person.translate(tr("SUCCUBUS_LEVELS_TOOLTIP")) + "\n\n"
+	var level = person.get_stat('succubus_level')
+	for i in range(1, Traitdata.succubus_levels.exp.size() + 1):
+		var line = "%d: %s %d. %s" % [i, tr("SUCCUBUS_LEVELS_TOOLTIP_SLOTS"), i,
+			globals.build_oneline_desc_for_bonusstats(Effectdata.effect_table['succubus_level_%d' % i].statchanges)]
+		if i == level:
+			text += '{color=green|' + line + '}\n'
 		else:
-			text +=  str(i) + ': '+text2 + '\n'
+			text += line + '\n'
 	globals.connecttexttooltip($thralls/ThrallsTooltip, text.trim_suffix('\n'))
-#
-#func basic_tooltip():
-#	globals.connecttexttooltip($SuccubusTrainingTooltip, person.translate(tr(("TOOLTIPSUCCUBUS"))))

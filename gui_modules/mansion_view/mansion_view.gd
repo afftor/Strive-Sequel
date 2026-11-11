@@ -47,6 +47,9 @@ var pending_cancel = null
 #Whether the panel beside the card was up when the card stepped aside.  A room with nothing
 #to say never had one, so it must not be conjured up on the way back - see set_card_aside().
 var details_were_shown = false
+#Whether the workshop opened over a room card. The rail's craft button and its key open it with
+#no room picked, and closing it then must not bring back a card nobody had open.
+var crafting_from_card = false
 var place = LocationTasks.MANSION_CODE
 var local_tasks = false
 
@@ -1626,16 +1629,28 @@ func close_enchanting():
 #The workshop, opened on a trade's tab - see craft_panel.gd. Whoever it moved or whatever it
 #queued is on the plan again when it closes.
 func open_crafting(job = null):
+	crafting_from_card = card != null and card.visible
 	set_card_aside(true)
 	craft_panel.open(job)
 
 
 func close_crafting():
 	craft_panel.close()
-	set_card_aside(false)
+	if crafting_from_card:
+		set_card_aside(false)
+	crafting_from_card = false
 	if card != null and card.visible:
 		card.rebuild()
 	refresh_people()
+
+
+#The mansion rail's craft button and its key: no room picked, so the workshop comes up on the trade
+#it was last left at. Asked for again while it is up, it closes.
+func toggle_crafting():
+	if craft_panel.visible:
+		close_crafting()
+	else:
+		open_crafting()
 
 
 func refresh_marks():
@@ -1982,8 +1997,12 @@ func _input(event):
 		return
 	if !mansion_is_the_screen():
 		return
+	#event.position, never event.global_position: in _input the engine scales only position into
+	#the 1920x1080 canvas the panels are measured in, and global_position stays in window pixels.
+	#In any window but 1920x1080 the plan was asked about a point off towards the top left of the
+	#cursor - over a room near the strip or the task list that point was a panel, and the wheel died.
 	if event is InputEventMouseMotion and picked_char != null:
-		move_pick_preview(event.global_position)
+		move_pick_preview(event.position)
 	if event.is_action_pressed("ESC") or event.is_action_pressed("RMB"):
 		if picked_char != null:
 			clear_char_pick()
@@ -2094,7 +2113,7 @@ func handle_view_input(event):
 		if event.button_index == BUTTON_MIDDLE and !event.pressed:
 			panning = false
 			return
-		if !pointer_over_plan(event.global_position):
+		if !pointer_over_plan(event.position):
 			return
 		match event.button_index:
 			BUTTON_WHEEL_UP:

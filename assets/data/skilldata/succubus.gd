@@ -30,17 +30,18 @@ var skills = {
 		value = [['0']],
 		damagestat = ['no_stat']
 	},
-	enthrall = { 
+	enthrall = {
 		code = 'enthrall',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		chance = [['caster.charm_factor', '*15'], '-', ['target.wits_factor', '*10'], '_10'],
 		reqs = [{code = 'can_add_thrall', check = true}],
 		targetreqs = [
+			{code = 'is_master', check = false},
 			{code = 'has_status', status = 'no_trainings', check = false},
 			{code = 'trait', trait = 'succubus', check = false},
+			{code = 'trait', trait = 'lesser_succubus', check = false},
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null}
 			],
 		effects = ['turn_thrall'],
@@ -48,9 +49,8 @@ var skills = {
 		charges = 1,
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),
-		tags = ['succubus', 'can_miss'],
+		tags = ['succubus'],
 		dialogue_report = '',
-		dialogue_report_failed = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'mindcontrol',
 		value = [['100']],
@@ -81,15 +81,13 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
-	corrupt = { 
+	corrupt = {
 		code = 'corrupt',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [
-#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
-		],
+		reqs = [],
 		chance = {
 			condition = [{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}],
 			value = 100,
@@ -97,7 +95,6 @@ var skills = {
 			},
 		targetreqs = [
 			{code = 'is_master', check = false},
-#			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = [],
 		cost = {mp = 6, lust = 15},
@@ -118,52 +115,100 @@ var skills = {
 			}
 		]
 	},
-	allure = { 
+	#training points for anybody; on the caster's own thrall it also opens one training action to them
+	#for good. The points, the menu and the payment live in custom_effects.allure
+	allure = {
+		new_syntax = true,
 		code = 'allure',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [
-#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
-		],
+		reqs = [],
 		targetreqs = [
-			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
+			{code = 'is_master', check = false},
+			{code = 'is_id', operant = 'neq', value = ['caster.id']},
 			],
 		effects = [],
 		cost = {mp = 10, lust = 25},
 		charges = 1,
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Charm.png"),
-		tags = ['succubus', 'refine_targetreqs'],
-		dialogue_report = '',
-		dialogue_show_repeat = false,
-		dialogue_image = 'charm',
-		value = [['caster.charm_factor', '+5'],],
-		damagestat = ['+loyalty',],
+		tags = ['succubus', 'refine_targetreqs', 'special_with_target'],
+		target_number = 'single',
+		target_range = 'any',
+		special = 'allure',
 	},
-	turn_succubus = { 
-		code = 'turn_succubus',
+	#teaches the target a sex skill the caster has; the menu and the payment live in
+	#custom_effects.perverted_mind. turn_cooldown: usable again next turn, not next day
+	perverted_mind = {
+		new_syntax = true,
+		code = 'perverted_mind',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [
-#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
-		],
+		reqs = [],
+		targetreqs = [
+			{code = 'is_id', operant = 'neq', value = ['caster.id']},
+			],
+		effects = [],
+		cost = {mp = 5, lust = 20},
+		charges = 1,
+		cooldown = 0,
+		turn_cooldown = 1,
+		icon = load("res://assets/images/iconsskills/Mindblast.png"),
+		tags = ['succubus', 'refine_targetreqs', 'special_with_target'],
+		target_number = 'single',
+		target_range = 'any',
+		special = 'perverted_mind',
+	},
+	#Thrall statuses: a succubus raises a thrall attached enough to her (Traitdata.succubus_levels.status_bond)
+	#to one of them. They are traits tagged 'thrall_status' and end with the bond - ch_enthrall.remove_thrall_statuses.
+	#Every one of them needs the Thrall Specialization power (Traitdata.succubus_trainings).
+	grant_ascended_thrall = {
+		code = 'grant_ascended_thrall',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		social_skill_stats = [],
+		reqs = [{code = 'trait', trait = 'thrall_specialization', check = true}],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
-			{code = 'stat', stat = 'consent', operant = 'gte', value = 5},
-			{code = 'trait_offer', trait = 'succubus', check = true},
+			{code = 'thrall_status_ready', check = true},
+			{code = 'thrall_status_offer', trait = 'ascended_thrall', check = true},
 			],
-		#the thrall's bond ends when the trait comes in (ch_dyn_stats.add_trait), so keeping the old magic trait keeps the thrall
-		effects = ['make_succubus'],
-		#a full magic slot is put to the player before mana, lust or the cooldown is spent
-		offers_trait = 'succubus',
-		cost = {mp = 50, lust = 50},
+		effects = ['grant_ascended_thrall'],
+		#a full magic slot is put to the player before the cooldown is spent
+		offers_trait = 'ascended_thrall',
+		cost = {mp = 20, lust = 30},
 		charges = 1,
-		cooldown = 7,
-		icon = load("res://assets/images/iconsskills/turnsuccubus.png"),
+		cooldown = 1,
+		icon = load("res://assets/images/iconsskills/Attract.png"),
+		tags = ['succubus', 'refine_targetreqs'],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'charm',
+		value = [['0']],
+		damagestat = 'no_stat',
+	},
+	grant_lesser_succubus = {
+		code = 'grant_lesser_succubus',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		social_skill_stats = [],
+		reqs = [{code = 'trait', trait = 'thrall_specialization', check = true}, {code = 'thrall_status_free', trait = 'lesser_succubus', check = true}],
+		targetreqs = [
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
+			{code = 'thrall_status_ready', check = true},
+			{code = 'thrall_status_offer', trait = 'lesser_succubus', check = true},
+			],
+		effects = ['grant_lesser_succubus'],
+		cost = {mp = 50, lust = 60},
+		charges = 1,
+		cooldown = 1,
+		icon = load("res://assets/images/iconsskills/demonform.png"),
 		tags = ['succubus', 'refine_targetreqs'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
@@ -171,18 +216,66 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
-	swap_form = { 
+	grant_lust_doll = {
+		code = 'grant_lust_doll',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		social_skill_stats = [],
+		reqs = [{code = 'trait', trait = 'thrall_specialization', check = true}],
+		targetreqs = [
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
+			{code = 'thrall_status_ready', check = true},
+			{code = 'thrall_status_offer', trait = 'lust_doll', check = true},
+			],
+		effects = ['grant_lust_doll'],
+		#a mental slot full of something other than a bondage status is put to the player first
+		offers_trait = 'lust_doll',
+		cost = {mp = 10, lust = 40},
+		charges = 1,
+		cooldown = 1,
+		icon = load("res://assets/images/iconsskills/Seduce.png"),
+		tags = ['succubus', 'refine_targetreqs'],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'succubuslust',
+		value = [['0']],
+		damagestat = 'no_stat',
+	},
+	grant_chosen_consort = {
+		code = 'grant_chosen_consort',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		social_skill_stats = [],
+		reqs = [{code = 'trait', trait = 'thrall_specialization', check = true}, {code = 'thrall_status_free', trait = 'chosen_consort', check = true}],
+		targetreqs = [
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
+			{code = 'thrall_status_ready', check = true},
+			{code = 'thrall_status_offer', trait = 'chosen_consort', check = true},
+			],
+		effects = ['grant_chosen_consort'],
+		cost = {mp = 30, lust = 20},
+		charges = 1,
+		cooldown = 1,
+		icon = load("res://assets/images/iconsskills/Inspire.png"),
+		tags = ['succubus', 'refine_targetreqs'],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'charm',
+		value = [['0']],
+		damagestat = 'no_stat',
+	},
+	swap_form = {
 		code = 'swap_form',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [
-#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
-		],
+		reqs = [],
 		targetreqs = [],
 		effects = ['swap_form'],
-		cost = {lust = 75},
+		cost = {lust = 50},
 		charges = 1,
 		cooldown = 1,
 		icon = load("res://assets/images/iconsskills/demonform.png"),
@@ -256,6 +349,38 @@ var effects = {
 			}
 		]
 	},
+	grant_ascended_thrall = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [],
+		args = {target = {obj = 'target', func = 'eq'}},
+		sub_effects = [{type = 'oneshot', target = 'target', atomic = [{type = 'thrall_status', trait = 'ascended_thrall'}]}]
+	},
+	grant_lesser_succubus = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [],
+		args = {target = {obj = 'target', func = 'eq'}},
+		sub_effects = [{type = 'oneshot', target = 'target', atomic = [{type = 'thrall_status', trait = 'lesser_succubus'}]}]
+	},
+	grant_lust_doll = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [],
+		args = {target = {obj = 'target', func = 'eq'}},
+		sub_effects = [{type = 'oneshot', target = 'target', atomic = [{type = 'thrall_status', trait = 'lust_doll'}]}]
+	},
+	grant_chosen_consort = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [],
+		args = {target = {obj = 'target', func = 'eq'}},
+		sub_effects = [{type = 'oneshot', target = 'target', atomic = [{type = 'thrall_status', trait = 'chosen_consort'}]}]
+	},
 	#the succubus magic trait: a free magic slot takes it, a full one asks the player what it replaces
 	make_succubus = {
 		type = 'trigger',
@@ -295,7 +420,11 @@ var effects = {
 		conditions = [
 			{code = 'stat', stat = 'alt_form', value = false, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'eq'},
-			{code = 'has_skill', check = true, value = 'swap_form', learned = true}
+			#a lesser succubus has Change Form from her trait, which a learned-skill check does not see
+			{code = 'or_list', or_list = [
+				{code = 'has_skill', check = true, value = 'swap_form', learned = true},
+				{code = 'trait', trait = 'lesser_succubus', check = true},
+				]},
 			],
 		tags = ['demon_form'],
 		statchanges = {wits_bonus = 10, physics_bonus = 10, damage_mod_all = 0.15},
@@ -332,7 +461,10 @@ var effects = {
 		conditions = [
 			{code = 'stat', stat = 'alt_form', value = false, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'neq'},
-			{code = 'has_skill', check = true, value = 'swap_form', learned = true}
+			{code = 'or_list', or_list = [
+				{code = 'has_skill', check = true, value = 'swap_form', learned = true},
+				{code = 'trait', trait = 'lesser_succubus', check = true},
+				]},
 			],
 		tags = ['human_form'],
 		statchanges = {charm_bonus = 20, productivity = 0.25},
@@ -365,9 +497,7 @@ var effects = {
 	magic_atunement = {
 		type = 'simple',
 		descript = '',
-		conditions = [
-#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
-		],
+		conditions = [],
 		tags = ['magic_atunement'],
 		statchanges = {matk = 10, mpmax_add = 25, mp_reg_add_part = 0.5},
 		buffs = [ 
@@ -382,9 +512,7 @@ var effects = {
 	combat_atunement_passive = {
 		type = 'simple',
 		descript = '',
-		conditions = [
-#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
-		],
+		conditions = [],
 		tags = ['combat_atunement'],
 		statchanges = {hpmax_add_part = 0.2, hp_reg_add_part = 1.0},
 		buffs = [ 
@@ -398,9 +526,7 @@ var effects = {
 	},
 	combat_atunement_trigger = {
 		type = 'base',
-		conditions = [
-#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
-		],
+		conditions = [],
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -418,107 +544,94 @@ var effects = {
 			},
 		]
 	},
-	succubus_thralls_0 = {
+	#the elder succubus's level passives (Traitdata.succubus_levels); her lust growth comes from the
+	#thralls themselves - ch_dyn_stats.fix_stat_data 'lusttick'
+	succubus_level_1 = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 0}
+			{code = 'stat', stat = 'succubus_level', operant = 'eq', value = 1}
 		],
-		statchanges = {lustmax_add = 10, lusttick_add = 1, chg_persuasion_max = 1,},
-		buffs = [ 
+		statchanges = {lustmax_add = 10, charm_bonus = 5, chg_persuasion_max = 1,},
+		buffs = [
 			{
-				icon = "res://assets/images/iconstraits/trait_lovers.png", 
-				description = "THRALLS0DESCRIPT",
+				icon = "res://assets/images/iconstraits/trait_lovers.png",
+				description = "SUCCUBUSLEVEL1DESCRIPT",
 				tags = ['mansion_only']
 			}
 		],
 	},
-	succubus_thralls_1 = {
+	succubus_level_2 = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 1}
+			{code = 'stat', stat = 'succubus_level', operant = 'eq', value = 2}
 		],
-		statchanges = {lustmax_add = 20, lusttick_add = 3, charm_bonus = 5, chg_persuasion_max = 1,},
-		buffs = [ 
+		statchanges = {lustmax_add = 25, charm_bonus = 5, chg_persuasion_max = 2,},
+		buffs = [
 			{
-				icon = "res://assets/images/iconstraits/trait_lovers.png", 
-				description = "THRALLS1DESCRIPT",
+				icon = "res://assets/images/iconstraits/trait_lovers.png",
+				description = "SUCCUBUSLEVEL2DESCRIPT",
 				tags = ['mansion_only']
 			}
 		],
 	},
-	succubus_thralls_2 = {
+	succubus_level_3 = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 2}
+			{code = 'stat', stat = 'succubus_level', operant = 'eq', value = 3}
 		],
-		statchanges = {lustmax_add = 30, lusttick_add = 4.5, charm_bonus = 5, chg_persuasion_max = 2,},
-		buffs = [ 
+		statchanges = {lustmax_add = 40, charm_bonus = 10, chg_persuasion_max = 2,},
+		buffs = [
 			{
-				icon = "res://assets/images/iconstraits/trait_lovers.png", 
-				description = "THRALLS2DESCRIPT",
+				icon = "res://assets/images/iconstraits/trait_lovers.png",
+				description = "SUCCUBUSLEVEL3DESCRIPT",
 				tags = ['mansion_only']
 			}
 		],
 	},
-	succubus_thralls_3 = {
+	succubus_level_4 = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 3}
+			{code = 'stat', stat = 'succubus_level', operant = 'eq', value = 4}
 		],
-		statchanges = {lustmax_add = 45, lusttick_add = 6, charm_bonus = 10, chg_persuasion_max = 2,},
-		buffs = [ 
+		statchanges = {lustmax_add = 55, charm_bonus = 10, chg_persuasion_max = 2,},
+		buffs = [
 			{
-				icon = "res://assets/images/iconstraits/trait_lovers.png", 
-				description = "THRALLS3DESCRIPT",
+				icon = "res://assets/images/iconstraits/trait_lovers.png",
+				description = "SUCCUBUSLEVEL4DESCRIPT",
 				tags = ['mansion_only']
 			}
 		],
 	},
-	succubus_thralls_4 = {
+	succubus_level_5 = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 4}
+			{code = 'stat', stat = 'succubus_level', operant = 'eq', value = 5}
 		],
-		statchanges = {lustmax_add = 60, lusttick_add = 7.5, charm_bonus = 10, chg_persuasion_max = 2,},
-		buffs = [ 
+		statchanges = {lustmax_add = 70, charm_bonus = 15, chg_persuasion_max = 3,},
+		buffs = [
 			{
-				icon = "res://assets/images/iconstraits/trait_lovers.png", 
-				description = "THRALLS4DESCRIPT",
+				icon = "res://assets/images/iconstraits/trait_lovers.png",
+				description = "SUCCUBUSLEVEL5DESCRIPT",
 				tags = ['mansion_only']
 			}
 		],
 	},
-	succubus_thralls_5 = {
+	succubus_level_6 = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 5}
+			{code = 'stat', stat = 'succubus_level', operant = 'eq', value = 6}
 		],
-		statchanges = {lustmax_add = 80, lusttick_add = 9, charm_bonus = 15, chg_persuasion_max = 3,},
-		buffs = [ 
+		statchanges = {lustmax_add = 90, charm_bonus = 20, chg_persuasion_max = 3,},
+		buffs = [
 			{
-				icon = "res://assets/images/iconstraits/trait_lovers.png", 
-				description = "THRALLS5DESCRIPT",
-				tags = ['mansion_only']
-			}
-		],
-	},
-	succubus_thralls_6 = {
-		type = 'simple',
-		descript = '',
-		conditions = [
-			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 6}
-		],
-		statchanges = {lustmax_add = 100, lusttick_add = 12, charm_bonus = 20, chg_persuasion_max = 3,},
-		buffs = [ 
-			{
-				icon = "res://assets/images/iconstraits/trait_lovers.png", 
-				description = "THRALLS6DESCRIPT",
+				icon = "res://assets/images/iconstraits/trait_lovers.png",
+				description = "SUCCUBUSLEVEL6DESCRIPT",
 				tags = ['mansion_only']
 			}
 		],

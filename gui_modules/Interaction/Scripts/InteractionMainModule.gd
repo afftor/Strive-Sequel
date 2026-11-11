@@ -953,7 +953,7 @@ func _update_character_resource_bars(node, member):
 		globals.connecttexttooltip(mana_node.get_node("Label"), mana_tooltip)
 	if container.has_node("lust"):
 		var lust_node = container.get_node("lust")
-		if member.person.check_trait("succubus"):
+		if member.person.has_lust_meter():
 			var lust_tooltip = tr("STATLUST") + ": " + str(round(member.person.get_stat('lust'))) + "/" + str(round(member.person.get_stat('lustmax')))
 			lust_node.visible = true
 			lust_node.get_node("Label").text = str(round(member.person.get_stat('lust')))
@@ -2767,6 +2767,9 @@ func endencounter():
 		ResourceScripts.game_party.characters.erase(id)
 		ResourceScripts.game_party.character_order.erase(id)
 	test_dummy_ids.clear()
+	#a cock grown for the encounter goes before anything below reads the body
+	for i in participants:
+		i.dismiss_cock()
 	var text = ''
 	var consenttext = {}
 	set_process_input(false)

@@ -20,6 +20,9 @@ var acquired_turn = -1 #absolute turn the character joined the party, -1 for old
 
 var stored_reqs = {}
 
+#training actions opened to this character whatever the trainer can do (the succubus's Allure)
+var unlocked_actions = []
+
 #How far each bad habit has been talked out of this character, 0..100. Kept here rather than on
 #the practice room because the room mends whoever happens to be standing in it: somebody moved
 #out and back in again picks up where they left off, and two pupils do not share one bar.
@@ -726,6 +729,28 @@ func unlock_trait(arr):
 		arr = [arr]
 	for id in arr:
 		stored_reqs[id] = true
+
+
+func unlock_action(code):
+	input_handler.append_not_duplicate(unlocked_actions, code)
+
+
+func is_action_unlocked(code):
+	return unlocked_actions.has(code)
+
+
+#What Allure could still open here: actions some trainers cannot give (reqs_trainer), leaving out the ones
+#that only show for a particular trainer (showup_reqs) and the ones already opened.
+func get_lockable_actions():
+	var res = []
+	for code in Skilldata.training_actions:
+		var trdata = Skilldata.training_actions[code]
+		if trdata.reqs_trainer.empty() or !trdata.get('showup_reqs', []).empty():
+			continue
+		if unlocked_actions.has(code) or !globals.checkreqs(trdata.reqs):
+			continue
+		res.push_back(code)
+	return res
 
 
 func check_stored_reqs(id):

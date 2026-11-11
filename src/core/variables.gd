@@ -725,8 +725,6 @@ var breakdown_info = {
 	brk_soul_stone = {chance = 0.5, text = "BREAKDOWN_SOUL"},
 	brk_oblivion = {chance = 1.0, text = "BREAKDOWN_OBLIVION"},
 	brk_shrine_enslave = {chance = 1.0, text = "BREAKDOWN_SHRINE"},
-	brk_enthrall = {chance = 0.1, text = "BREAKDOWN_ENTHRALL"},
-	brk_enthrall_release = {chance = 0.5, text = "BREAKDOWN_ENTHRALLRELEASE"},
 	#certain: the night's own roll has already decided it
 	brk_no_bed = {chance = 1.0, text = "BREAKDOWN_NOBED"},
 }

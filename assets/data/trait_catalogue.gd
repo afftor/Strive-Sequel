@@ -995,6 +995,21 @@ var traits = {
 		bonusstats = {resist_normal = 10, resist_fire = 10, resist_earth = 10, resist_air = 10, resist_water = 10, resist_light = 10, resist_dark = 10, resist_mind = 10, authority_factor = 1},
 		tags = ['bondage']
 	},
+	#a thrall status (skilldata/succubus.gd, grant_lust_doll): pushes a bondage status out of the slot and
+	#keeps it out (ch_dyn_stats.set_bondage_status); feeds the succubus more lust (ch_enthrall.get_thrall_lust_tick)
+	lust_doll = {
+		code = 'lust_doll',
+		category = 'mental',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/Seduce.png",
+		effects = [],
+		bonusstats = {wits_bonus = -10, damage_mod_all = -0.25, mod_pros = 0.3},
+		desirability_per_consent = 5,
+		#not 'negative': the practice room drills out a negative mental trait (ch_training.first_negative_trait)
+		tags = ['thrall_status']
+	},
 	#magic
 	mvortex = {
 		code = 'mvortex',
@@ -1242,7 +1257,7 @@ var traits = {
 		weight = 30,
 		tags = ['positive']
 	},
-	#the succubus transformation (corruptive essence, Turn Succubus): offered into the magic slot, kept for good.
+	#the succubus transformation (corruptive essence): offered into the magic slot, kept for good.
 	#A man is an Incubus by its altname. Gaining it ends a thrall's bond (ch_dyn_stats.add_trait).
 	succubus = {
 		code = 'succubus',
@@ -1252,14 +1267,45 @@ var traits = {
 		altname = 'TRAITSUCCUBUSALT',
 		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		visible = true,
-		icon = "res://assets/images/iconsskills/demonform.png",
-		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default', 'succubus_thralls_0', 'succubus_thralls_1', 'succubus_thralls_2', 'succubus_thralls_3', 'succubus_thralls_4', 'succubus_thralls_5', 'succubus_thralls_6'],
+		icon = "res://assets/images/iconstraits/succubus.png",
+		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default', 'succubus_level_1', 'succubus_level_2', 'succubus_level_3', 'succubus_level_4', 'succubus_level_5', 'succubus_level_6'],
 		bonusstats = {sex_stamina = 2, trainee_amount = 1, mastery_point_magic = 1},
-		#Lust Drain (succubus_lust_skill) is switched off for now: only succubi still have a lustmax,
-		#so it had no one left to drain. The skill itself is kept in social.gd.
-		social_skills = ['enthrall', 'release_thrall'],
+		#Lust Drain (succubus_lust_skill) is switched off for now: only succubi and the thralls they ascend
+		#have a lustmax, so it has next to no one to drain. The skill itself is kept in social.gd.
+		#Enthrall, Release Thrall and Perverted Mind are bought among the succubus powers (Traitdata.succubus_trainings)
+		social_skills = ['grant_ascended_thrall', 'grant_lesser_succubus', 'grant_lust_doll', 'grant_chosen_consort'],
 		combat_skills = ['euphoria_apply'],
 		tags = ['permanent']
+	},
+	#Thrall statuses a succubus grants (skilldata/succubus.gd, grant_*). They end with the bond
+	#(ch_enthrall.remove_thrall_statuses); the lust bar both of these have is sized and filled by
+	#consent - ch_dyn_stats.fix_stat_data.
+	ascended_thrall = {
+		code = 'ascended_thrall',
+		category = 'magic',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/Attract.png",
+		effects = [],
+		bonusstats = {},
+		social_skills = ['corrupt', 'allure', 'genitalia_manipulation'],
+		tags = ['thrall_status']
+	},
+	#grows out of an Ascended Thrall and takes its slot; still the elder succubus's thrall
+	lesser_succubus = {
+		code = 'lesser_succubus',
+		category = 'magic',
+		name = '',
+		descript = '',
+		altname = 'TRAITLESSER_SUCCUBUSALT',
+		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
+		visible = true,
+		icon = "res://assets/images/iconsskills/demonform.png",
+		effects = ['human_form', 'demon_form', 'human_form_default', 'demon_form_default'],
+		bonusstats = {},
+		social_skills = ['corrupt', 'allure', 'genitalia_manipulation', 'enthrall', 'release_thrall', 'swap_form'],
+		tags = ['thrall_status']
 	},
 	#religious
 	worldly = {
