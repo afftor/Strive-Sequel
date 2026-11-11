@@ -30,6 +30,25 @@ const ANIMATION_LABELS = {
 const TITJUMP_ANIMATION = "titjump"
 const EARJUMP_ANIMATION = "earjump"
 const TAILMOVE_ANIMATION = "tailmove"
+# These authored full-body takes use their own anatomical layers. They share
+# the exclusive pose dropdown with idle poses and temporarily hide worn gear.
+const ANATOMY_ANIMATIONS = ["sex1", "sex2", "sex3", "sex4", "sex5", "sex6", "sex7", "sex8", "sex9", "sex10", "sex11", "sex12", "xray"]
+const ANATOMY_SLOTS = [
+	"ass", "ahole", "HipL", "HipL_muscle", "HipR", "HipR_muscle",
+	"HipL_up", "HipL_muscle_up", "HipR_up", "HipR_muscle_up",
+	"ShinL", "ShinL_muscle", "ShinR", "ShinR_muscle",
+	"vagina", "vagina2", "vagina2_muscle", "vhole", "penis", "penis2",
+	"penis_minet", "penis_minet2", "penis3", "fingL", "fingR",
+]
+# The export supplies only one shared version of these layers.
+const SHARED_ANATOMY_SLOTS = ["vhole", "penis", "penis2", "penis_minet", "penis_minet2", "penis3"]
+const ANATOMY_ALTERNATIVES = {
+	"penis": "00_body_nude_female/falos",
+	"penis2": "00_body_nude_female/falos",
+	"penis3": "00_body_nude_female/falos",
+	"penis_minet": "00_body_nude_female/falos_minet",
+}
+var anatomy_alternatives = {}
 # A beastkin's extra rows under the chest are weighted to the smallest breast
 # size's bones, which the titjump take swings along with every other size's, so
 # the rows bounced with a chest they are not part of.  They are skinned from a
@@ -209,12 +228,18 @@ var asset_dir = ""
 var editor_strings = {}
 var rendered_meshes = 0
 var mesh_records = []
+var xray_enabled = false
+var xray_root = null
+var xray_records = []
+var xray_mask = {}
+var xray_pivot = Vector2.ZERO
 var animation_states = {}
 # What the running animations currently say about the slots: which attachment
 # each holds and in what order they draw.  Both change which meshes exist, so a
 # change here needs a rebuild rather than a re-pose.
 var animation_attachments = {}
 var animation_signature = 0
+var animation_attachment_signature = 0
 var animation_times = {}
 var animation_durations = {}
 const POSE_TRANSITION_DURATION = 0.35
@@ -380,10 +405,17 @@ func _process(delta):
 			animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
 			pose_changed = true
 	if pose_changed:
-		# A pose can swap an attachment or reorder the slots part way through, and
-		# neither survives a plain re-pose.
+		# An order-only key reuses meshes; attachment changes still rebuild them.
 		if _animation_signature().hash() != animation_signature:
-			_rebuild_model()
+			if _animation_attachments().hash() == animation_attachment_signature:
+				_reorder_animated_slots()
+				_update_animated_pose()
+				animation_signature = _animation_signature().hash()
+			else:
+				# New slot state and geometry must sample the same animation time,
+				# including the first frame after wrapping around the loop.
+				_solve_pose()
+				_rebuild_model()
 		else:
 			_update_animated_pose()
 
@@ -1065,6 +1097,19 @@ func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
 		_apply_ik_constraint(constraint)
 	_apply_hand_handles()
 	_apply_post_ik_visual_scales()
+	_apply_beastkin_mouth_offset()
+
+
+# Apply after all hierarchy/IK passes so limb sliders cannot erase the offset.
+# Spine's world Y points up. Moving the root once also moves lips2/lips3 and
+# every closed/open/emotion mouth skinned to them, without changing the export.
+func _apply_beastkin_mouth_offset():
+	if !CATALOGUE.has_tag(str(selections.get("body", "")), "beastkin") or !bones.has("lips"):
+		return
+	var mouth = bones["lips"]
+	mouth.y = float(mouth.y) + 10.0
+	bones["lips"] = mouth
+	_update_ik_descendants(["lips"])
 
 
 # Every bone at its setup values and solved: the pose every solve starts from.  It
@@ -2058,18 +2103,20 @@ func _apply_model_origin():
 	var origin = _display_origin()
 	if is_instance_valid(bone_root):
 		bone_root.position = origin
-	for record in mesh_records:
+	for record in mesh_records + xray_records:
 		if is_instance_valid(record.polygon):
 			record.polygon.position = origin
 	# The handles are projected through the same origin, so they move with it -
 	# without this the foot handles of a freshly switched doll sit off-screen.
 	_update_handle_buttons()
+	_update_xray_view()
 
 
 func _apply_view():
 	if is_instance_valid(model_root):
 		model_root.position = view_offset
 		model_root.scale = Vector2.ONE * view_zoom
+	_update_xray_view()
 	# The handles live on a CanvasLayer, which the model's transform does not
 	# reach, so they have to be projected through the same view by hand.
 	_update_handle_buttons()
@@ -2196,18 +2243,30 @@ func _build_interface():
 	tail_toggle.connect("toggled", self, "set_tail_animation")
 	box.add_child(tail_toggle)
 	ui["tail_animation"] = tail_toggle
+	var xray_toggle = CheckButton.new()
+	xray_toggle.text = "X-ray"
+	xray_toggle.pressed = xray_enabled
+	xray_toggle.disabled = !skin_map.get(SKIN_NAME, {}).get("attachments", {}).has("XRAY")
+	xray_toggle.connect("toggled", self, "set_xray")
+	box.add_child(xray_toggle)
+	ui["xray"] = xray_toggle
 	var handles_toggle = CheckButton.new()
 	handles_toggle.text = _text("DOLL2_PREVIEW_SHOW_HANDLES")
 	handles_toggle.pressed = handles_visible
 	handles_toggle.connect("toggled", self, "_on_handles_toggled")
 	box.add_child(handles_toggle)
+	_add_anatomy_options(box)
 	_add_preset_select(box)
 	_add_undress_row(box)
 	for group_id in CATALOGUE.group_order():
 		var group = CATALOGUE.group(group_id)
 		if group.parts.empty():
 			continue
-		_add_select(box, group.label, group_id, group.parts, group.optional, CATALOGUE.channels_for_group(group_id))
+		var channels = CATALOGUE.channels_for_group(group_id).duplicate()
+		for channel in channels.duplicate():
+			if str(channel).begins_with("anatomy_"):
+				channels.erase(channel)
+		_add_select(box, group.label, group_id, group.parts, group.optional, channels)
 	for axis in _sorted_axes():
 		var definition = CATALOGUE.axes()[axis]
 		# an axis the body decides is not the player's to pick
@@ -2236,6 +2295,83 @@ func _build_interface():
 	box.add_child(note)
 	_refresh_zone_pickers()
 	_update_handle_buttons()
+
+
+func _add_anatomy_options(parent):
+	for slot_name in ANATOMY_ALTERNATIVES.keys():
+		var variants = _anatomy_variants(slot_name)
+		if variants.empty():
+			continue
+		var row = HBoxContainer.new()
+		var label = Label.new()
+		label.text = slot_name
+		row.add_child(label)
+		parent.add_child(row)
+		var select = OptionButton.new()
+		for variant in variants.keys():
+			select.add_item(variant)
+			select.set_item_metadata(select.get_item_count() - 1, variant)
+		select.select(variants.keys().find(_selected_anatomy_variant(slot_name)))
+		select.connect("item_selected", self, "_on_anatomy_alternative_selected", [slot_name])
+		row.add_child(select)
+		ui["anatomy_alternative/" + slot_name] = select
+		# Each slot and each variant keeps its own palette when switching back.
+		for variant in variants.keys():
+			var colours = HBoxContainer.new()
+			row.add_child(colours)
+			ui["anatomy_colours/%s/%s" % [slot_name, variant]] = colours
+			_add_channel_picker(colours, _anatomy_colour_channel(slot_name, variant))
+		_refresh_anatomy_colours(slot_name)
+
+
+func _anatomy_variants(slot_name):
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
+	var result = {}
+	if !ANATOMY_ALTERNATIVES.has(slot_name) or !attachments.has(ANATOMY_ALTERNATIVES[slot_name]):
+		return result
+	var original = "00_body_nude_female/" + str(slot_name)
+	if attachments.has(original):
+		result["penis"] = original
+	result["falos"] = ANATOMY_ALTERNATIVES[slot_name]
+	var names = attachments.keys()
+	names.sort()
+	for name in names:
+		if str(name).ends_with("_f"):
+			result[str(name).get_file()] = name
+	return result
+
+
+func _selected_anatomy_variant(slot_name):
+	var value = anatomy_alternatives.get(slot_name, "penis")
+	# Accept the former two-way state when an existing viewer is reused.
+	if typeof(value) == TYPE_BOOL:
+		value = "falos" if value else "penis"
+	var variants = _anatomy_variants(slot_name)
+	return str(value) if variants.has(str(value)) else "penis"
+
+
+func _anatomy_colour_channel(slot_name, variant):
+	var paint = "penis_f" if str(variant).ends_with("_f") else str(variant)
+	return "anatomy_%s/%s" % [paint, slot_name]
+
+
+func _refresh_anatomy_colours(slot_name):
+	var selected = _selected_anatomy_variant(slot_name)
+	for variant in _anatomy_variants(slot_name).keys():
+		var key = "anatomy_colours/%s/%s" % [slot_name, variant]
+		if ui.has(key):
+			ui[key].visible = selected == variant
+
+
+func _on_anatomy_alternative_selected(index, slot_name):
+	if !ANATOMY_ALTERNATIVES.has(slot_name):
+		return
+	var select = ui.get("anatomy_alternative/" + slot_name)
+	if select == null or index < 0 or index >= select.get_item_count():
+		return
+	anatomy_alternatives[slot_name] = str(select.get_item_metadata(index))
+	_refresh_anatomy_colours(slot_name)
+	_rebuild_model()
 
 
 func _sorted_axes():
@@ -2590,7 +2726,7 @@ func _refresh_coverage_pickers():
 # Coverage is a per-mesh uniform, so it is pushed straight to the live meshes
 # rather than rebuilding the model.
 func _apply_coverage_to_meshes():
-	for record in mesh_records:
+	for record in mesh_records + xray_records:
 		if !is_instance_valid(record.polygon) or record.polygon.material == null:
 			continue
 		_apply_coverage(record.polygon.material, record.get("channel", ""), record.slot.get("name", ""))
@@ -2741,7 +2877,7 @@ func _add_picker_button(parent, channel_id, secondary):
 # palette the game paints from is offered directly; the names go in the tooltip
 # because a preset is only a square.
 func _add_swatches(picker, channel_id):
-	var swatches = COLORS.swatches(channel_id)
+	var swatches = COLORS.swatches("skin" if str(channel_id).begins_with("anatomy_penis") else channel_id)
 	if swatches.empty():
 		return
 	var names = []
@@ -2828,6 +2964,10 @@ func _apply_zone_colours(channel_id):
 func _refresh_zone_pickers():
 	for channel_id in CATALOGUE.color_channels().keys():
 		var zones = CATALOGUE.channel_zones(channel_id, selections)
+		# Alternatives are outside wardrobe composition. Keep the clothing
+		# shader's three hue-zone controls available for their own palette.
+		if str(channel_id).begins_with("anatomy_falos/"):
+			zones = range(CATALOGUE.zone_hues().size())
 		for i in range(CATALOGUE.zone_hues().size()):
 			var key = "color/%s/zone%d" % [channel_id, i]
 			if ui.has(key):
@@ -2950,7 +3090,7 @@ func _propagate_channel(channel_id):
 	var template = channel_materials.get(channel_id)
 	if template == null:
 		return
-	for record in mesh_records:
+	for record in mesh_records + xray_records:
 		if record.get("channel", "") != channel_id or !is_instance_valid(record.polygon):
 			continue
 		var material = record.polygon.material
@@ -3275,6 +3415,10 @@ func _on_preset_selected(_item_index, select):
 	if preset_id.empty():
 		return
 	selections = CATALOGUE.apply_preset(selections, preset_id)
+	# Match the race-driven leg selection used by Doll2View in the game.
+	if axis_values.has("legs"):
+		axis_values["legs"] = "orc" if preset_id in ["orc", "goblin"] else "default"
+		_select_ui_value("axis/legs", axis_values["legs"])
 	_follow_body_tag()
 	for group_id in selections.keys():
 		_select_ui_value(group_id, selections[group_id])
@@ -3294,10 +3438,12 @@ func _rebuild_model():
 	_sync_pose_offsets()
 	var authored_animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
+	animation_attachment_signature = authored_animation_attachments.hash()
 	var worn = _worn_selections()
 	composed = CATALOGUE.compose(worn, axis_values, hidden_slots)
 	_apply_say_lips(worn)
 	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
+	animation_attachments = _match_animated_body(animation_attachments)
 	composed_textures = CATALOGUE.compose_textures(worn)
 	composed_unpainted = CATALOGUE.unpainted_slots(worn)
 	# A stripped character keeps the pieces of the set that are not there for
@@ -3328,6 +3474,7 @@ func _rebuild_model():
 		composed.erase("breasts_beastkin_many")
 		composed_textures.erase("breasts_beastkin_many")
 	if model_root != null:
+		model_root.hide()
 		model_root.queue_free()
 	mesh_records.clear()
 	gradient_bounds.clear()
@@ -3337,11 +3484,21 @@ func _rebuild_model():
 	_bake_bone_hierarchy()
 	rendered_meshes = 0
 	var rows = {}
+	var clipping = {}
 	for slot in _draw_ordered_slots():
 		var attachment = _resolve_attachment(slot)
-		if attachment.empty():
+		if attachment.get("type", "") == "clipping":
+			# Spine does not nest masks. An end equal to the start slot means
+			# clip through the rest of the draw order, not an empty interval.
+			if clipping.empty():
+				clipping = {"slot": slot, "attachment": attachment}
 			continue
-		_add_attachment(slot, attachment, rows)
+		if !attachment.empty():
+			_add_attachment(slot, attachment, rows, clipping)
+		# The end slot is inclusive, even when it has no visible attachment.
+		if !clipping.empty() and str(slot.name) == str(clipping.attachment.get("end", "")):
+			clipping = {}
+	_rebuild_xray(rows)
 	# The screens all re-pose straight after a rebuild and would have caught this
 	# on that call; the preview's own rebuilds do not, so a layer that has only
 	# just been put on is solved here rather than left a frame behind.  Costs a
@@ -3364,6 +3521,8 @@ func _rebuild_model():
 # same as choosing nothing - so the level is applied on the way to the model.
 func _worn_selections():
 	var level = GEAR.normalise(undress_level)
+	if _anatomy_animation_active():
+		level = GEAR.NAKED
 	if level == GEAR.DRESSED:
 		return selections
 	var result = selections.duplicate()
@@ -3380,6 +3539,30 @@ func _worn_selections():
 	# question this level is here to answer.  The weapons go with the clothes.
 	result["weapon_belt"] = ""
 	result["weapon_back"] = ""
+	return result
+
+
+func _anatomy_animation_active():
+	if doll_id != "female":
+		return false
+	for animation_name in ANATOMY_ANIMATIONS:
+		if bool(animation_states.get(animation_name, false)):
+			return true
+	return false
+
+
+# Use the selected body's counterpart, including attachment names that do not
+# contain a beastkin suffix. The catalogue routes them by their source folder.
+func _match_animated_body(authored):
+	if !_anatomy_animation_active():
+		return authored
+	var result = authored.duplicate()
+	for slot_name in ANATOMY_SLOTS:
+		if !result.has(slot_name) or str(result[slot_name]).empty():
+			continue
+		if slot_name in SHARED_ANATOMY_SLOTS:
+			continue
+		result[slot_name] = str(composed.get(slot_name, ""))
 	return result
 
 
@@ -3451,10 +3634,19 @@ func _apply_selected_ear_draw_order(order):
 # corrections are rules rather than positions, so they are re-applied afterwards
 # instead of being carried through the shuffle - the arms cross the tattoo slot
 # on their way forward, and an index would land one slot out.
+func _draw_order_timeline(animation_name):
+	var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
+	# Small/flat chests keep sex7's endpoint order throughout the take.
+	# Filter at runtime so changing size restores the authored keys immediately.
+	if doll_id == "female" and animation_name == "sex7" and str(axis_values.get("tits_size", "")) in ["small", "flat"] and timeline.size() > 2:
+		return [timeline[0], timeline[timeline.size() - 1]]
+	return timeline
+
+
 func _animation_draw_order():
 	var entry = []
 	for animation_name in _ordered_active_animations():
-		var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
+		var timeline = _draw_order_timeline(animation_name)
 		if timeline.empty():
 			continue
 		var time = float(animation_times.get(animation_name, 0.0))
@@ -3507,7 +3699,7 @@ func _animation_draw_order():
 func _animation_signature():
 	var result = [_animation_attachments()]
 	for animation_name in _ordered_active_animations():
-		var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
+		var timeline = _draw_order_timeline(animation_name)
 		if timeline.empty():
 			continue
 		var time = float(animation_times.get(animation_name, 0.0))
@@ -3562,8 +3754,9 @@ func _animation_attachments():
 				if float(key.get("time", 0.0)) <= time:
 					value = key.get("name", null)
 					found = true
-			if found and value != null:
-				result[slot_name] = str(value)
+			if found:
+				# A missing/null name is an explicit hide key, not an absent track.
+				result[slot_name] = str(value) if value != null else ""
 	return result
 
 
@@ -3597,9 +3790,25 @@ func _match_animated_hands(authored, worn):
 		"hand_right": "equip_hand_right",
 	}
 	for body_slot in paired_slots.keys():
+		var attachment_name = str(authored.get(body_slot, ""))
 		if !authored.has(body_slot):
-			continue
-		var pose_value = _hand_pose_for_attachment(body_slot, str(authored[body_slot]))
+			# Before a hand timeline's first key, Spine uses the setup attachment,
+			# not the wardrobe's default hand pose. sex8 keys its right palm only
+			# at the end, so its setup handr2 must be race-matched for the full take.
+			var has_hand_timeline = false
+			for animation_name in _ordered_active_animations():
+				var frames = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).get(body_slot, {}).get("attachment", [])
+				if !frames.empty():
+					has_hand_timeline = true
+					break
+			if !has_hand_timeline:
+				continue
+			for slot in slot_data:
+				if str(slot.name) == body_slot:
+					attachment_name = str(slot.get("attachment", ""))
+					break
+		# An explicit null/hide key stays empty; only absent keys use setup.
+		var pose_value = _hand_pose_for_attachment(body_slot, attachment_name)
 		if pose_value.empty():
 			continue
 		var posed_axes = axis_values.duplicate()
@@ -3670,7 +3879,34 @@ func _update_bone_nodes():
 # the catalogue already decided which attachment every slot holds.
 func _resolve_attachment(slot):
 	var slot_name = slot.get("name", "")
+	# These are exclusive to the inset, never wardrobe items on the main doll.
+	if slot_name in ["XRAY", "xray"]:
+		return {}
 	var attachment_name = str(composed.get(slot_name, ""))
+	# Clipping is skeleton state, not a selectable wardrobe/catalogue part.
+	# Resolve setup and attachment keys even though it has no atlas texture.
+	var source_attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
+	var helper_name = str(animation_attachments.get(slot_name, slot.get("attachment", "")))
+	if source_attachments.get(helper_name, {}).get("type", "") == "clipping":
+		var helper = source_attachments[helper_name].duplicate()
+		helper["_attachment_name"] = helper_name
+		helper["_skin_name"] = SKIN_NAME
+		return helper
+	var anatomy_active = _anatomy_animation_active()
+	# The restriction also applies to animation keys and externally supplied
+	# selections, so neither can bring clothing back during these takes.
+	if anatomy_active and (str(slot_name).begins_with("equip_") or slot_name in ["weapon_belt", "weapon_back"]):
+		return {}
+	if slot_name in ANATOMY_SLOTS:
+		if !anatomy_active:
+			return {}
+		# Honour setup visibility and delayed keys instead of showing every
+		# catalogue body part. A setup attachment needs the selected race too.
+		attachment_name = str(slot.get("attachment", ""))
+		if !attachment_name.empty() and !(slot_name in SHARED_ANATOMY_SLOTS):
+			attachment_name = str(composed.get(slot_name, ""))
+	if anatomy_active and animation_attachments.has(slot_name):
+		attachment_name = str(animation_attachments[slot_name])
 	var emotion_slot = _active_emotion_animates_slot(slot_name)
 	# Emotion art is intentionally absent from the ordinary appearance
 	# selection.  Blush is a setup attachment animated only through RGBA, while
@@ -3692,6 +3928,13 @@ func _resolve_attachment(slot):
 	if attachment_name.empty():
 		return {}
 	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
+	# Apply only after animation visibility and authored attachment keys. A
+	# replacement must not materialise a hidden slot or be reset by every key.
+	if ANATOMY_ALTERNATIVES.has(slot_name):
+		# The dropdown owns the variant, while the animation owns visibility.
+		var chosen = str(_anatomy_variants(slot_name).get(_selected_anatomy_variant(slot_name), ""))
+		if attachments.get(slot_name, {}).has(chosen):
+			attachment_name = chosen
 	if !attachments.has(slot_name) or !attachments[slot_name].has(attachment_name):
 		push_warning("Doll2Preview: composed attachment `%s/%s` is not in the export" % [slot_name, attachment_name])
 		return {}
@@ -3762,6 +4005,10 @@ func _is_emotion_setup_slot(slot_name):
 func _emotion_setup_slot_alpha(slot_name):
 	if !_is_emotion_setup_slot(slot_name):
 		return 1.0
+	# Full-body poses can introduce blush themselves. An active emotion still
+	# owns its own keyed colour and transition when both channels address it.
+	if _anatomy_animation_active() and !_active_emotion_animates_slot(slot_name) and animation_attachments.has(slot_name):
+		return 0.0 if str(animation_attachments[slot_name]).empty() else 1.0
 	if emotion_transition_elapsed >= EMOTION_TRANSITION_DURATION:
 		return 1.0 if slot_name in _active_emotion_setup_slots() else 0.0
 	var first = 1.0 if slot_name in emotion_setup_slots_from else 0.0
@@ -3771,7 +4018,7 @@ func _emotion_setup_slot_alpha(slot_name):
 	return lerp(first, second, amount)
 
 
-func _add_attachment(slot, attachment, rows = {}):
+func _add_attachment(slot, attachment, rows = {}, clipping = {}, inset = false):
 	var attachment_type = attachment.get("type", "region")
 	if attachment_type == "clipping" or attachment_type == "path" or attachment_type == "point":
 		return
@@ -3792,7 +4039,7 @@ func _add_attachment(slot, attachment, rows = {}):
 	# A mod can repaint a part: its image replaces the atlas page while the mesh,
 	# its weights and its UVs stay exactly as the export authored them.
 	var mod_texture = _mod_texture(slot.get("name", ""), region)
-	var data = _attachment_geometry(slot, attachment, region, page.size, _attachment_deform(slot, attachment), mod_texture, _pose_for(slot), false, _skinning_rows(slot, rows))
+	var data = _attachment_geometry(slot, attachment, region, page.size, _attachment_deform(slot, attachment), mod_texture, _pose_for(slot), false, _skinning_rows(slot, rows), rows)
 	if data.empty():
 		return
 	var polygon = Polygon2D.new()
@@ -3805,16 +4052,26 @@ func _add_attachment(slot, attachment, rows = {}):
 	# shader never runs on it and the art reaches the screen untouched.
 	if composed_unpainted.has(slot.get("name", "")):
 		channel = ""
+	if ANATOMY_ALTERNATIVES.has(str(slot.get("name", ""))):
+		var variant = "falos" if str(attachment.get("_attachment_name", "")) == str(ANATOMY_ALTERNATIVES[str(slot.name)]) else "penis"
+		if str(attachment.get("_attachment_name", "")).ends_with("_f"):
+			variant = "penis_f"
+		channel = _anatomy_colour_channel(str(slot.name), variant)
 	# Coverage needs the mesh's own place on the art canvas, so those meshes get
 	# their own material instead of sharing the channel's.
 	polygon.material = _mesh_material(channel, region, page.size, slot.get("name", ""))
-	var points = _scale_back_hair_mesh(data.points, slot)
+	var points = _apply_mesh_size_modifiers(data.points, slot)
 	_track_gradient_bounds(channel, points)
-	polygon.polygon = points
-	polygon.uv = data.uvs
-	polygon.polygons = data.triangles
-	model_root.add_child(polygon)
-	mesh_records.append({"polygon": polygon, "slot": slot, "attachment": attachment, "region": region, "page_size": page.size, "mod_texture": mod_texture, "channel": channel})
+	var displayed = {"points": points, "uvs": data.uvs, "triangles": data.triangles}
+	if !clipping.empty():
+		displayed = _clip_mesh_geometry(displayed, _clipping_points(clipping, rows))
+	if inset:
+		displayed = _clip_mesh_geometry(displayed, _clipping_points(xray_mask, rows))
+	_set_polygon_geometry(polygon, displayed)
+	var target = xray_root if inset else model_root
+	target.add_child(polygon)
+	var records = xray_records if inset else mesh_records
+	records.append({"polygon": polygon, "slot": slot, "attachment": attachment, "region": region, "page_size": page.size, "mod_texture": mod_texture, "channel": channel, "clipping": clipping, "uvs": data.uvs, "triangles": data.triangles, "inset": inset})
 	rendered_meshes += 1
 
 
@@ -3852,14 +4109,253 @@ func _update_mesh_geometry():
 	# animation, and every mesh used to build and sort it twice.
 	var active = _ordered_active_animations()
 	var rows = {}
-	for record in mesh_records:
+	var clip_points = {}
+	var aperture = _clipping_points(xray_mask, rows, active) if !xray_mask.empty() else PoolVector2Array()
+	for record in mesh_records + xray_records:
 		if !is_instance_valid(record.polygon):
 			continue
 		var deform = _attachment_deform(record.slot, record.attachment, active)
-		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot), true, _skinning_rows(record.slot, rows))
+		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot), true, _skinning_rows(record.slot, rows), rows)
 		if !data.empty():
-			record.polygon.polygon = _scale_back_hair_mesh(data.points, record.slot)
+			var points = _apply_mesh_size_modifiers(data.points, record.slot)
+			var displayed = {"points": points, "uvs": record.uvs, "triangles": record.triangles}
+			if !record.clipping.empty():
+				var key = str(record.clipping.slot.name)
+				if !clip_points.has(key):
+					clip_points[key] = _clipping_points(record.clipping, rows, active)
+				displayed = _clip_mesh_geometry(displayed, clip_points[key])
+			if record.get("inset", false):
+				displayed = _clip_mesh_geometry(displayed, aperture)
+			if !record.clipping.empty() or record.get("inset", false) or record.get("clipping_changed", false):
+				_set_polygon_geometry(record.polygon, displayed)
+				record.erase("clipping_changed")
+			else:
+				record.polygon.polygon = points
 		record.polygon.color = _attachment_colour(record.slot, record.attachment, active)
+	_update_xray_pivot(aperture)
+	_update_xray_view()
+
+
+func set_xray(enabled):
+	xray_enabled = bool(enabled)
+	if !skeleton.empty():
+		_rebuild_model()
+
+
+func _xray_attachment(slot):
+	var name = str(slot.get("name", ""))
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(name, {})
+	var key = "XRAY" if name == "XRAY" else str(slot.get("attachment", ""))
+	if key.empty() and attachments.size() == 1:
+		key = str(attachments.keys()[0])
+	if !attachments.has(key):
+		return {}
+	var result = attachments[key].duplicate()
+	result["_attachment_name"] = key
+	result["_skin_name"] = SKIN_NAME
+	return result
+
+
+func _reorder_animated_slots():
+	_reorder_mesh_records(mesh_records, model_root, _draw_ordered_slots())
+	if is_instance_valid(xray_root):
+		_reorder_mesh_records(xray_records, xray_root, _xray_draw_ordered_slots(), true)
+
+
+# Reassign clipping too: moving a slot across a mask boundary changes which
+# mask applies, even though its attachment and Polygon2D stay the same.
+func _reorder_mesh_records(records, root, ordered, inset = false):
+	var by_slot = {}
+	for record in records:
+		by_slot[str(record.slot.name)] = record
+	var clipping = {}
+	var reordered = []
+	for slot in ordered:
+		var name = str(slot.name)
+		if inset and name == "XRAY":
+			continue
+		var attachment = _xray_attachment(slot) if inset and name == "xray" else _resolve_attachment(slot)
+		if attachment.get("type", "") == "clipping":
+			if clipping.empty():
+				clipping = {"slot": slot, "attachment": attachment}
+			continue
+		if by_slot.has(name):
+			var record = by_slot[name]
+			record.clipping = clipping
+			record["clipping_changed"] = true
+			root.move_child(record.polygon, root.get_child_count() - 1)
+			reordered.append(record)
+		if !clipping.empty() and name == str(clipping.attachment.get("end", "")):
+			clipping = {}
+	records.clear()
+	records.append_array(reordered)
+
+
+func _xray_draw_ordered_slots():
+	# Keep the inset's authored override on top of animated slot ordering.
+	var ordered = _draw_ordered_slots()
+	var front = {}
+	for slot in ordered.duplicate():
+		if str(slot.name) in ["xray", "penis"]:
+			front[str(slot.name)] = slot
+			ordered.erase(slot)
+	var insertion = ordered.size()
+	for i in range(ordered.size()):
+		if str(ordered[i].name) == "vagina2_muscle":
+			insertion = i + 1
+	for name in ["xray", "penis"]:
+		if front.has(name):
+			ordered.insert(insertion, front[name])
+			insertion += 1
+	return ordered
+
+
+func _rebuild_xray(rows):
+	if is_instance_valid(xray_root):
+		xray_root.hide()
+		xray_root.queue_free()
+	xray_root = null
+	xray_records.clear()
+	xray_mask = {}
+	if !xray_enabled:
+		return
+	for slot in slot_data:
+		if str(slot.name) == "XRAY":
+			var attachment = _xray_attachment(slot)
+			if attachment.get("type", "") == "clipping":
+				xray_mask = {"slot": slot, "attachment": attachment}
+	if xray_mask.empty():
+		return
+	xray_root = Node2D.new()
+	xray_root.name = "XRayModel"
+	add_child(xray_root)
+	# Spine's tree lists the frontmost slots first. Keep all other ordering,
+	# but draw these three back-to-front as vagina2_muscle, xray, penis.
+	var ordered = _xray_draw_ordered_slots()
+	var clipping = {}
+	for slot in ordered:
+		if str(slot.name) == "XRAY":
+			continue # applied independently, in addition to authored local masks
+		var attachment = _xray_attachment(slot) if str(slot.name) == "xray" else _resolve_attachment(slot)
+		if attachment.get("type", "") == "clipping":
+			if clipping.empty():
+				clipping = {"slot": slot, "attachment": attachment}
+			continue
+		if !attachment.empty():
+			_add_attachment(slot, attachment, rows, clipping, true)
+		if !clipping.empty() and str(slot.name) == str(clipping.attachment.get("end", "")):
+			clipping = {}
+	_update_xray_pivot(_clipping_points(xray_mask, rows))
+	_update_xray_view()
+
+
+func _update_xray_pivot(points):
+	if points.empty():
+		return
+	var bounds = Rect2(points[0], Vector2.ZERO)
+	for point in points:
+		bounds = bounds.expand(point)
+	xray_pivot = bounds.position + bounds.size * 0.5
+
+
+func _update_xray_view():
+	if !is_instance_valid(xray_root):
+		return
+	# Enlarge about the aperture centre, so the inset stays beside the source
+	# rather than jumping upwards when the model is zoomed to 200%.
+	var pivot = _display_origin() + xray_pivot
+	xray_root.scale = Vector2.ONE * view_zoom * 2.0
+	xray_root.position = view_offset + Vector2(250.0, -250.0) - pivot * view_zoom
+
+
+func _clipping_points(clipping, rows, active = null):
+	var slot = clipping.slot
+	var attachment = clipping.attachment
+	var vertices = attachment.get("vertices", [])
+	var coordinate_count = int(attachment.get("vertexCount", 0)) * 2
+	var deform = _attachment_deform(slot, attachment, active)
+	var pose = _pose_for(slot)
+	if vertices.size() != coordinate_count:
+		return _mesh_points(vertices, coordinate_count, deform, pose, _skinning_rows(slot, rows))
+	# Unlike weighted vertices, plain clipping vertices are local to the slot bone.
+	var points = PoolVector2Array()
+	for i in range(0, coordinate_count, 2):
+		var offset = Vector2(float(deform[i]), float(deform[i + 1])) if i + 1 < deform.size() else Vector2.ZERO
+		points.append(_world_point(pose[slot.get("bone", "root")], Vector2(float(vertices[i]), float(vertices[i + 1])) + offset))
+	return points
+
+
+# Clip each textured triangle independently. Barycentric UV interpolation keeps
+# the atlas mapping intact at newly introduced edge vertices, including concave
+# masks which can split one triangle into multiple disjoint polygons.
+func _clip_mesh_geometry(data, mask):
+	var points = PoolVector2Array()
+	var uvs = PoolVector2Array()
+	var triangles = []
+	if mask.size() < 3:
+		return {"points": points, "uvs": uvs, "triangles": triangles}
+	for triangle in data.triangles:
+		var a = data.points[triangle[0]]
+		var b = data.points[triangle[1]]
+		var c = data.points[triangle[2]]
+		var determinant = (b - a).cross(c - a)
+		if abs(determinant) < 0.000001:
+			continue
+		for piece in Geometry.intersect_polygons_2d(PoolVector2Array([a, b, c]), mask):
+			var indices = Geometry.triangulate_polygon(piece)
+			if indices.empty():
+				continue
+			var start = points.size()
+			for point in piece:
+				var wb = (point - a).cross(c - a) / determinant
+				var wc = (b - a).cross(point - a) / determinant
+				points.append(point)
+				uvs.append(data.uvs[triangle[0]] * (1.0 - wb - wc) + data.uvs[triangle[1]] * wb + data.uvs[triangle[2]] * wc)
+			for i in range(0, indices.size(), 3):
+				triangles.append(PoolIntArray([start + indices[i], start + indices[i + 1], start + indices[i + 2]]))
+	return {"points": points, "uvs": uvs, "triangles": triangles}
+
+
+func _set_polygon_geometry(polygon, data):
+	# Empty `polygons` means automatic triangulation in Godot: hide a fully
+	# clipped mesh explicitly so it cannot fall back to drawing the original.
+	polygon.polygons = []
+	polygon.uv = PoolVector2Array()
+	polygon.polygon = data.points
+	polygon.uv = data.uvs
+	polygon.polygons = data.triangles
+	polygon.visible = !data.triangles.empty()
+
+
+# Both human and beastkin ass attachments belong to the same slot. Scale the
+# freshly skinned mesh about its centre, preserving the authored pose and UVs.
+# Legs has asymmetric limits; map each half to -15% / +25% mesh scale.
+func _apply_mesh_size_modifiers(points, slot):
+	if str(slot.get("name", "")) != "ass":
+		return _scale_back_hair_mesh(points, slot)
+	if points.empty():
+		return points
+	var limits = MODIFIERS.MODIFIERS["legs"].range
+	var neutral = float(limits.default)
+	var value = clamp(float(proportions.get("legs", neutral)), float(limits.minimum), float(limits.maximum))
+	if is_equal_approx(value, neutral):
+		return points
+	var span = float(limits.maximum) - neutral if value > neutral else neutral - float(limits.minimum)
+	var amplitude = 0.25 if value > neutral else 0.15
+	var factor = 1.0 + amplitude * (value - neutral) / span
+	var minimum = points[0]
+	var maximum = points[0]
+	for point in points:
+		minimum.x = min(minimum.x, point.x)
+		minimum.y = min(minimum.y, point.y)
+		maximum.x = max(maximum.x, point.x)
+		maximum.y = max(maximum.y, point.y)
+	var pivot = (minimum + maximum) * 0.5
+	var scaled = PoolVector2Array()
+	scaled.resize(points.size())
+	for i in range(points.size()):
+		scaled[i] = pivot + (points[i] - pivot) * factor
+	return scaled
 
 
 # Extra world-axis scale for the three broad back-hair meshes.  Bone length is
@@ -3958,7 +4454,7 @@ func _attachment_deform_key(slot, attachment):
 func _capture_animated_attachment_deforms():
 	var result = {}
 	var active = _ordered_active_animations()
-	for record in mesh_records:
+	for record in mesh_records + xray_records:
 		result[_attachment_deform_key(record.slot, record.attachment)] = _attachment_deform(record.slot, record.attachment, active).duplicate()
 	return result
 
@@ -3966,6 +4462,8 @@ func _capture_animated_attachment_deforms():
 func _deform_length(attachment):
 	var vertices = attachment.get("vertices", [])
 	var uv_size = attachment.get("uvs", []).size()
+	if attachment.get("type", "") == "clipping":
+		uv_size = int(attachment.get("vertexCount", 0)) * 2
 	if vertices.size() == uv_size:
 		return vertices.size()
 	var cursor = 0
@@ -4042,7 +4540,7 @@ func _attachment_colour(slot, _attachment, active = null):
 	var slot_name = str(slot.get("name", ""))
 	colour *= _animated_slot_colour(slot_name, active)
 	colour.a *= _emotion_setup_slot_alpha(slot_name)
-	if slot_name.ends_with("_muscle"):
+	if _is_muscle_slot(slot_name):
 		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
 	if slot_name == "freckles":
 		colour.a *= clamp(float(proportions.get("freckles_alpha", 100.0)) / 100.0, 0.0, 1.0)
@@ -4073,7 +4571,7 @@ func _animated_slot_colour(slot_name, active = null):
 func _capture_animated_slot_colours():
 	var result = {}
 	var drawn_slots = {}
-	for record in mesh_records:
+	for record in mesh_records + xray_records:
 		drawn_slots[str(record.slot.get("name", ""))] = true
 	for slot in skeleton.get("slots", []):
 		var slot_name = str(slot.get("name", ""))
@@ -4112,16 +4610,20 @@ func _sample_rgba_timeline(frames, time):
 
 
 func _apply_muscle_alpha():
-	for record in mesh_records:
+	for record in mesh_records + xray_records:
 		if !is_instance_valid(record.polygon):
 			continue
-		if !str(record.slot.get("name", "")).ends_with("_muscle"):
+		if !_is_muscle_slot(str(record.slot.get("name", ""))):
 			continue
 		record.polygon.color = _attachment_colour(record.slot, record.attachment)
 
 
+func _is_muscle_slot(slot_name):
+	return slot_name.ends_with("_muscle") or slot_name.ends_with("_muscle_up")
+
+
 func _apply_freckles_alpha():
-	for record in mesh_records:
+	for record in mesh_records + xray_records:
 		if !is_instance_valid(record.polygon):
 			continue
 		if str(record.slot.get("name", "")) != "freckles":
@@ -4152,7 +4654,7 @@ func _spine_colour(hex_value):
 # and nothing else, while the UV projection and the triangle list are fixed by
 # the art.  Building them anyway and throwing them away - which is what an
 # animated frame did - cost 3.2 ms a doll.
-func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_texture = null, pose = null, points_only = false, rows = null):
+func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_texture = null, pose = null, points_only = false, rows = null, geometry_cache = null):
 	if pose == null:
 		pose = bones
 	var raw_vertices = attachment.get("vertices", [])
@@ -4161,6 +4663,7 @@ func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_
 		if raw_vertices.empty():
 			return {}
 		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose, rows)
+		points = _align_shin_knee(points, slot, attachment, deform, pose, geometry_cache)
 		if points_only:
 			return {"points": points}
 		var uv_points = PoolVector2Array()
@@ -4245,7 +4748,125 @@ func _skinning_rows(slot, rows):
 	var key = "" if pose == bones else str(slot.get("name", ""))
 	if !rows.has(key):
 		rows[key] = _pose_table(pose)
+	# All attachments in Shin slots, including orc/beastkin and muscle overlays,
+	# share a mesh-only correction. The skeleton and all other meshes keep the
+	# full Legs factor. Cache separately so correction never leaks into Hip/ass.
+	if str(slot.get("name", "")).to_lower().begins_with("shin"):
+		var corrected_key = "shin_mesh/" + key
+		if !rows.has(corrected_key):
+			rows[corrected_key] = _compensate_shin_skinning_rows(rows[key])
+		return rows[corrected_key]
 	return rows[key]
+
+
+func _compensate_shin_skinning_rows(source_rows):
+	var value = float(proportions.get("legs", 1.0))
+	if is_equal_approx(value, 1.0):
+		return source_rows
+	var factors = MODIFIERS.post_ik_visual_factors({"legs": value}, contract.CONTRACT_ID)
+	var corrected = source_rows.duplicate(true)
+	for i in range(bone_names_by_index.size()):
+		var factor = factors.get(bone_names_by_index[i], Vector2.ONE)
+		# Reduce the deviation from neutral by 30%, not the whole size.
+		# Undo only Legs' contribution to each weighted vertex's local basis;
+		# keep the animated joint positions and unrelated modifiers untouched.
+		var ratio_x = (1.0 + (factor.x - 1.0) * 0.7) / factor.x if factor.x != 0.0 else 1.0
+		var ratio_y = (1.0 + (factor.y - 1.0) * 0.7) / factor.y if factor.y != 0.0 else 1.0
+		corrected[i][0] *= ratio_x
+		corrected[i][2] *= ratio_x
+		corrected[i][1] *= ratio_y
+		corrected[i][3] *= ratio_y
+	return corrected
+
+
+# Keep the knee overlap on the same deformation field as the adjoining Hip.
+# A uniform Shin scale cannot do this: Hip vertices have different bone weights.
+# Preserve the neutral artwork offset, transfer the nearest Hip surface motion,
+# then fade back to the ordinary compensated Shin over the upper calf.
+func _align_shin_knee(points, slot, attachment, deform, pose, rows):
+	var name = str(slot.get("name", "")).to_lower()
+	if !name.begins_with("shin") or is_equal_approx(float(proportions.get("legs", 1.0)), 1.0):
+		return points
+	var hip_name = "HipL" if name.begins_with("shinl") else "HipR" if name.begins_with("shinr") else ""
+	var knee_name = "spine136" if hip_name == "HipL" else "spine129"
+	if hip_name.empty() or !pose.has(knee_name):
+		return points
+	if rows == null:
+		rows = {}
+	var key = "knee_surface/" + hip_name
+	if !rows.has(key):
+		var hip_slot = {}
+		for candidate in slot_data:
+			if str(candidate.get("name", "")) == hip_name:
+				hip_slot = candidate
+				break
+		var hip = _resolve_attachment(hip_slot) if !hip_slot.empty() else {}
+		if hip.get("vertices", []).empty() or hip.get("triangles", []).empty():
+			rows[key] = {}
+		else:
+			var full = _pose_table(pose)
+			var neutral = full.duplicate(true)
+			var factors = MODIFIERS.post_ik_visual_factors({"legs": float(proportions.get("legs", 1.0))}, contract.CONTRACT_ID)
+			for i in range(bone_names_by_index.size()):
+				var factor = factors.get(bone_names_by_index[i], Vector2.ONE)
+				neutral[i][0] /= factor.x
+				neutral[i][2] /= factor.x
+				neutral[i][1] /= factor.y
+				neutral[i][3] /= factor.y
+			var hip_deform = _attachment_deform(hip_slot, hip)
+			var knee = neutral[bone_names_by_index.find(knee_name)]
+			var scale = _display_scale()
+			var knee_transform = Transform2D(Vector2(knee[0], -knee[2]) * scale, Vector2(knee[1], -knee[3]) * scale, Vector2(knee[4], -knee[5]) * scale)
+			rows[key] = {
+				"rows": neutral,
+				"neutral": _mesh_points(hip.vertices, hip.get("uvs", []).size(), hip_deform, pose, neutral),
+				"drawn": _mesh_points(hip.vertices, hip.get("uvs", []).size(), hip_deform, pose, full),
+				"triangles": hip.triangles,
+				"knee_inverse": knee_transform.affine_inverse(),
+				"length": float(pose[knee_name].definition.get("length", 250.0)),
+			}
+	var surface = rows[key]
+	if surface.empty():
+		return points
+	var baseline = _mesh_points(attachment.vertices, attachment.get("uvs", []).size(), deform, pose, surface.rows)
+	var result = PoolVector2Array(points)
+	for i in range(points.size()):
+		var along = surface.knee_inverse.xform(baseline[i]).x
+		var blend = clamp((along - surface.length * 0.08) / (surface.length * 0.27), 0.0, 1.0)
+		if blend >= 1.0:
+			continue
+		blend = blend * blend * (3.0 - 2.0 * blend)
+		var joined = baseline[i] + _nearest_mesh_motion(baseline[i], surface.neutral, surface.drawn, surface.triangles)
+		result[i] = joined.linear_interpolate(points[i], blend)
+	return result
+
+
+func _nearest_mesh_motion(point, neutral, drawn, triangles):
+	var nearest_distance = INF
+	var motion = Vector2.ZERO
+	for i in range(0, triangles.size(), 3):
+		var ia = int(triangles[i])
+		var ib = int(triangles[i + 1])
+		var ic = int(triangles[i + 2])
+		var a = neutral[ia]
+		var b = neutral[ib]
+		var c = neutral[ic]
+		var determinant = (b - a).cross(c - a)
+		if abs(determinant) > 0.000001:
+			var wb = (point - a).cross(c - a) / determinant
+			var wc = (b - a).cross(point - a) / determinant
+			if wb >= 0.0 and wc >= 0.0 and wb + wc <= 1.0:
+				return (drawn[ia] - a) * (1.0 - wb - wc) + (drawn[ib] - b) * wb + (drawn[ic] - c) * wc
+		for edge in [[ia, ib], [ib, ic], [ic, ia]]:
+			var start = neutral[edge[0]]
+			var end = neutral[edge[1]]
+			var segment = end - start
+			var amount = clamp((point - start).dot(segment) / segment.length_squared(), 0.0, 1.0) if segment.length_squared() > 0.000001 else 0.0
+			var distance = point.distance_squared_to(start + segment * amount)
+			if distance < nearest_distance:
+				nearest_distance = distance
+				motion = (drawn[edge[0]] - start).linear_interpolate(drawn[edge[1]] - end, amount)
+	return motion
 
 
 func _mesh_points(vertices, uv_size, deform = [], pose = null, rows = null):

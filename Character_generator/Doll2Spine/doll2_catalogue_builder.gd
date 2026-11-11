@@ -234,6 +234,10 @@ func _collect_records(attachments, slot_order, bone_names = []):
 		names.sort()
 		for name in names:
 			var entry = attachments[slot_name][name]
+			# Non-renderable Spine helpers have no texture or selectable body part.
+			# Keep them in the source skeleton, not in atlas/wardrobe validation.
+			if str(entry.get("type", "region")) in ["clipping", "path", "point", "boundingbox"]:
+				continue
 			var path = str(entry.get("path", name))
 			var folder = ""
 			var base = path
