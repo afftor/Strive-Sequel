@@ -9,12 +9,12 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 780,
+	"attachment_count": 782,
 	"bone_count": 309,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "T325IlU61/A",
-	"slot_count": 111,
+	"skeleton_hash": "2M21rj+7MM8",
+	"slot_count": 112,
 	"spine_version": "4.2.43",
 }
 
@@ -123,6 +123,7 @@ const SLOT_ORDER = [
 	"equip_head",
 	"horns",
 	"penis",
+	"ahole1",
 	"vagina2_muscle",
 	"penis2",
 	"penis_minet2",
@@ -237,6 +238,7 @@ const DRAW_ORDER = [
 	"equip_head",
 	"horns",
 	"penis",
+	"ahole1",
 	"vagina2_muscle",
 	"penis2",
 	"penis_minet2",
@@ -780,6 +782,7 @@ const COLOR_CHANNELS = {
 			"ShinR",
 			"ShinR_muscle",
 			"ahole",
+			"ahole1",
 			"ass",
 			"belly",
 			"belly_muscle",
@@ -910,6 +913,7 @@ const SLOT_COLORS = {
 	"ShinR": "skin",
 	"ShinR_muscle": "skin",
 	"ahole": "skin",
+	"ahole1": "skin",
 	"animal_body": "animal",
 	"animal_frontbody": "animal",
 	"arm_left": "skin_alternate",
@@ -1054,6 +1058,7 @@ const GROUPS = {
 			"ShinR",
 			"ShinR_muscle",
 			"ahole",
+			"ahole1",
 			"arm_left",
 			"arm_right",
 			"ass",
@@ -1375,6 +1380,7 @@ const GROUPS = {
 			"lips_m2",
 			"lips_m3",
 			"lips_m4",
+			"lips_o1",
 			"lips_orc",
 			"lips_orc_1",
 			"lips_orc_2",
@@ -1644,7 +1650,6 @@ const PARTS = {
 			"dick": "dick_furry_up",
 			"testicle": "testicle_furry",
 		},
-		"zones": [0],
 	},
 	"Dick_horse_up": {
 		"folders": ["13_dicks"],
@@ -1653,7 +1658,6 @@ const PARTS = {
 			"dick": "dick_horse_up__body_female_beastkin",
 			"testicle": "testicle_furry",
 		},
-		"zones": [0],
 	},
 	"Dick_human_up": {
 		"folders": ["13_dicks"],
@@ -1971,6 +1975,7 @@ const PARTS = {
 			},
 			"ShinR_muscle": "00_body_nude_female/ShinR_muscle",
 			"ahole": "00_body_nude_female/ahole",
+			"ahole1": "00_body_nude_female/ahole",
 			"arm_left": "arml1",
 			"arm_right": "armr1",
 			"ass": "00_body_nude_female/ass",
@@ -3101,6 +3106,13 @@ const PARTS = {
 		"group": "lips",
 		"slots": {
 			"lips": "lips_m4",
+		},
+	},
+	"lips_o1": {
+		"folders": ["12_lips"],
+		"group": "lips",
+		"slots": {
+			"lips_say": "12_lips/lips_o1",
 		},
 	},
 	"lips_orc": {

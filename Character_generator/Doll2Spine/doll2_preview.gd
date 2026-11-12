@@ -34,14 +34,16 @@ const TAILMOVE_ANIMATION = "tailmove"
 # the exclusive pose dropdown with idle poses and temporarily hide worn gear.
 const ANATOMY_ANIMATIONS = ["sex1", "sex2", "sex3", "sex4", "sex5", "sex6", "sex7", "sex8", "sex9", "sex10", "sex11", "sex12", "xray"]
 const ANATOMY_SLOTS = [
-	"ass", "ahole", "HipL", "HipL_muscle", "HipR", "HipR_muscle",
+	"ass", "ahole", "ahole1", "HipL", "HipL_muscle", "HipR", "HipR_muscle",
 	"HipL_up", "HipL_muscle_up", "HipR_up", "HipR_muscle_up",
 	"ShinL", "ShinL_muscle", "ShinR", "ShinR_muscle",
 	"vagina", "vagina2", "vagina2_muscle", "vhole", "penis", "penis2",
 	"penis_minet", "penis_minet2", "penis3", "fingL", "fingR",
 ]
 # The export supplies only one shared version of these layers.
-const SHARED_ANATOMY_SLOTS = ["vhole", "penis", "penis2", "penis_minet", "penis_minet2", "penis3"]
+# ahole1 is the second layer keyed by sex3/sex4 for both bodies; the main
+# ahole slot still resolves to the selected body's own mesh.
+const SHARED_ANATOMY_SLOTS = ["ahole1", "vhole", "penis", "penis2", "penis_minet", "penis_minet2", "penis3"]
 const ANATOMY_ALTERNATIVES = {
 	"penis": "00_body_nude_female/falos",
 	"penis2": "00_body_nude_female/falos",
@@ -1110,7 +1112,7 @@ func _apply_beastkin_mouth_offset():
 	if !CATALOGUE.has_tag(str(selections.get("body", "")), "beastkin") or !bones.has("lips"):
 		return
 	var mouth = bones["lips"]
-	mouth.y = float(mouth.y) + 10.0
+	mouth.y = float(mouth.y) + 5.0
 	bones["lips"] = mouth
 	_update_ik_descendants(["lips"])
 
@@ -3898,6 +3900,9 @@ func _resolve_attachment(slot):
 		helper["_skin_name"] = SKIN_NAME
 		return helper
 	var anatomy_active = _anatomy_animation_active()
+	# This pose omits the lower-leg layers for every selected body.
+	if anatomy_active and bool(animation_states.get("sex5", false)) and slot_name in ["ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle"]:
+		return {}
 	# The restriction also applies to animation keys and externally supplied
 	# selections, so neither can bring clothing back during these takes.
 	if anatomy_active and (str(slot_name).begins_with("equip_") or slot_name in ["weapon_belt", "weapon_back"]):
@@ -4801,11 +4806,20 @@ func _align_shin_knee(points, slot, attachment, deform, pose, rows):
 	var key = "knee_surface/" + hip_name
 	if !rows.has(key):
 		var hip_slot = {}
-		for candidate in slot_data:
-			if str(candidate.get("name", "")) == hip_name:
-				hip_slot = candidate
+		var hip = {}
+		# Some takes replace Hip with Hip_up. Resolve the visible attachment,
+		# including the selected race, instead of using a hidden setup mesh.
+		for candidate_name in [hip_name, hip_name + "_up"]:
+			for candidate in slot_data:
+				if str(candidate.get("name", "")) != candidate_name:
+					continue
+				var resolved = _resolve_attachment(candidate)
+				if !resolved.get("vertices", []).empty() and !resolved.get("triangles", []).empty():
+					hip_slot = candidate
+					hip = resolved
 				break
-		var hip = _resolve_attachment(hip_slot) if !hip_slot.empty() else {}
+			if !hip.empty():
+				break
 		if hip.get("vertices", []).empty() or hip.get("triangles", []).empty():
 			rows[key] = {}
 		else:
@@ -4819,13 +4833,26 @@ func _align_shin_knee(points, slot, attachment, deform, pose, rows):
 				neutral[i][1] /= factor.y
 				neutral[i][3] /= factor.y
 			var hip_deform = _attachment_deform(hip_slot, hip)
+			# The thigh may have a separate layer pose. Sample its actual drawn
+			# deformation field while keeping the shin's own neutral baseline.
+			var hip_pose = _pose_for(hip_slot)
+			var hip_full = _pose_table(hip_pose)
+			var hip_neutral = hip_full.duplicate(true)
+			for i in range(bone_names_by_index.size()):
+				var factor = factors.get(bone_names_by_index[i], Vector2.ONE)
+				hip_neutral[i][0] /= factor.x
+				hip_neutral[i][2] /= factor.x
+				hip_neutral[i][1] /= factor.y
+				hip_neutral[i][3] /= factor.y
 			var knee = neutral[bone_names_by_index.find(knee_name)]
 			var scale = _display_scale()
 			var knee_transform = Transform2D(Vector2(knee[0], -knee[2]) * scale, Vector2(knee[1], -knee[3]) * scale, Vector2(knee[4], -knee[5]) * scale)
 			rows[key] = {
+				"slot": hip_slot.name,
+				"attachment": hip.get("_attachment_name", ""),
 				"rows": neutral,
-				"neutral": _mesh_points(hip.vertices, hip.get("uvs", []).size(), hip_deform, pose, neutral),
-				"drawn": _mesh_points(hip.vertices, hip.get("uvs", []).size(), hip_deform, pose, full),
+				"neutral": _mesh_points(hip.vertices, hip.get("uvs", []).size(), hip_deform, hip_pose, hip_neutral),
+				"drawn": _mesh_points(hip.vertices, hip.get("uvs", []).size(), hip_deform, hip_pose, hip_full),
 				"triangles": hip.triangles,
 				"knee_inverse": knee_transform.affine_inverse(),
 				"length": float(pose[knee_name].definition.get("length", 250.0)),

@@ -426,6 +426,7 @@ const SLOTS = [
 	"equip_head",
 	"horns",
 	"penis",
+	"ahole1",
 	"vagina2_muscle",
 	"penis2",
 	"penis_minet2",
