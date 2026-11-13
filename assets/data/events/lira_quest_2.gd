@@ -927,7 +927,6 @@ var data = {
 			{code = 'update_city'}
 		],
 		options = [
-			{code = 'lira_bonus2_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,},
 			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,},
 		],
 	},
