@@ -33,6 +33,113 @@ const TAILMOVE_ANIMATION = "tailmove"
 # These authored full-body takes use their own anatomical layers. They share
 # the exclusive pose dropdown with idle poses and temporarily hide worn gear.
 const ANATOMY_ANIMATIONS = ["sex_standing", "sex_missionary", "anal_missionary", "double_pen", "deepthroat", "blowjob", "titjob", "handjob2", "handjob1", "simult_handjob", "handjobside1", "handjobside2", "test_combo", "xray"]
+# Sets a take has been fitted to, which it keeps on instead of stripping the doll.
+const FITTED_UNDERWEAR = [
+	"outfit_underwear2", "outfit_underwear2_legs",
+	"outfit_underwear1", "outfit_underwear1_legs",
+	"outfit_gipure1", "outfit_gipure1_legs",
+	"outfit_gipure2", "outfit_gipure2_legs",
+	"outfit_slave", "outfit_slave_legs",
+]
+# armour and ordinary clothes, the same way
+const FITTED_COSTUMES = [
+	"outfit_maid", "outfit_maid_legs", "outfit_maid_hands",
+	"outfit_cloth", "outfit_cloth_legs",
+	"outfit_cloth3", "outfit_cloth3_legs",
+	"outfit_leather", "outfit_leather_legs",
+	"outfit_leather2", "outfit_leather2_legs",
+	"outfit_plate", "outfit_plate_legs",
+	"outfit_plate2", "outfit_plate2_legs",
+	"outfit_jacket", "outfit_jacket_legs",
+	"outfit_latex", "outfit_latex_legs", "outfit_latex_hands",
+	"outfit_waitress", "outfit_waitress_legs",
+	"outfit_smith", "outfit_smith_legs",
+	"outfit_tentacle", "outfit_tentacle_legs",
+	"outfit_playboy", "outfit_playboy_legs", "outfit_playboy_hands",
+	"outfit_petsuit", "outfit_petsuit_legs", "outfit_petsuit_hands",
+]
+const ANATOMY_OUTFITS = {
+	"sex_standing": FITTED_UNDERWEAR + FITTED_COSTUMES,
+	"sex_missionary": FITTED_UNDERWEAR + FITTED_COSTUMES,
+}
+# Pelvis pieces that hang onto the legs, rebound while fitted (_pelvis_gear_rebind):
+# `straps` - each run of vertices leaning on an everyday thigh is a garter strap,
+# blended from the pelvis at its top to the fitted thigh at its end, so it
+# stretches from the waist to the stocking whatever the leg does; `rigid` puts the
+# whole piece on one bone, so a loincloth stops flying up with raised thighs;
+# `lift` hikes it up (_pelvis_gear_lift): each column of the piece shortens from
+# its top edge to `centre` of its drop over the crotch, easing to `sides` from
+# `inner` to `outer` of the half-width out.  `behind_raised_legs` draws the legs of
+# a LEG_GEAR_RAISED_TAKES take over it (_current_draw_order): a skirt hanging from
+# the waist falls behind thighs raised towards the viewer.  `no_thighs` hands every
+# thigh share to the pelvis, so a leotard's leg openings stop tearing.
+const SKIRT = {"rigid": "spine1", "lift": {"centre": 0.33, "sides": 0.9, "inner": 0.15, "outer": 0.7},
+	"behind_raised_legs": true}
+const PELVIS_GEAR = {
+	# the raised thighs sit in front of the hips, so they hide the panties' sides
+	"pelvis_armor_gipure1": {"straps": true, "behind_raised_legs": true},
+	"pelvis_armor_underwear2": {"behind_raised_legs": true},
+	"pelvis_armor_underwear1": {"behind_raised_legs": true},
+	"pelvis_armor_gipure2": {"behind_raised_legs": true},
+	"pelvis_armor_slave": SKIRT,
+	"pelvis_armor_maidu": SKIRT,
+	"pelvis_armor_cloth2": SKIRT,
+	# a tabard down to the ankles: a third of it still hangs over the crotch
+	"pelvis_armor_cloth": {"rigid": "spine1", "lift": {"centre": 0.17, "sides": 0.45, "inner": 0.3, "outer": 0.95},
+		"behind_raised_legs": true},
+	"pelvis_armor_plate": SKIRT,
+	"pelvis_armor_waitress": SKIRT,
+	"pelvis_armor_smith": SKIRT,
+	"pelvis_armor_tentackle": {"no_thighs": true},
+	"pelvis_armor_playboy": {"no_thighs": true},
+	"pelvis_armor_latex": {"no_thighs": true},
+}
+# Gloves with one drawing for every hand pose: on a hand the take gives a grip
+# they would hang beside it, so that hand goes bare.
+const POSELESS_GLOVES = {"equip_hand_left": ["hand2_petsuitl3"], "equip_hand_right": ["hand2_petsuitr3"]}
+# Pieces a fitted take leaves off: shorts cover the crotch whole and balloon on
+# raised thighs, so for sex the bottoms come off and the top stays.
+const ANATOMY_HIDDEN_PIECES = [
+	"pelvis_armor_jacket", "legl_armor_jacket", "legr_armor_jacket",
+	"pelvis_armor_leather", "pelvis_armor_leather2",
+	"legl_armor_smith", "legr_armor_smith",
+]
+# Leg pieces that draw the shorts and the boots in one mesh: a fitted take keeps
+# only the triangles lying wholly below this setup height, the boots.  The leather
+# set's shorts and boots are islands with nothing between 421 and 552; the second
+# set runs on up the thigh in straps, cut above its knee guards.
+const ANATOMY_TRIMMED_PIECES = {
+	"legl_armor_leather": 480.0, "legr_armor_leather": 480.0,
+	"legl_armor_leather_beastkin": 480.0, "legr_armor_leather_beastkin": 480.0,
+	"legl_armor_leather2": 428.0, "legr_armor_leather2": 428.0,
+	"legl_armor_leather2_beastkin": 428.0, "legr_armor_leather2_beastkin": 428.0,
+}
+# Pieces a fitted take pulls aside (see _pull_offsets): the gusset swings about a
+# point on the right groin and gathers into a strip there, easing off with the
+# distance from its lowest point, so the left side of the V curves into it and the
+# waistband stays put.  Installed into the take as a deform when the export is read.
+const GUSSET_PULL = {"slot": "equip_pelvis",
+	"attachments": ["pelvis_armor_underwear2", "pelvis_armor_underwear1", "pelvis_armor_gipure1", "pelvis_armor_gipure2",
+		"pelvis_armor_latex", "pelvis_armor_tentackle", "pelvis_armor_playboy"],
+	"radius": 95.0, "turn": 15.0, "pivot": Vector2(60, 55), "narrow": 0.5, "pull": Vector2(28, 12)}
+# per piece, what differs from the shared pull: a leotard's crotch is wider than a
+# gusset and goes further aside to bare the same
+const LEOTARD_PULL = {"radius": 120.0, "pull": Vector2(46, 16), "narrow": 0.4}
+const GUSSET_PULL_TUNING = {
+	"pelvis_armor_latex": LEOTARD_PULL,
+	"pelvis_armor_tentackle": LEOTARD_PULL,
+	"pelvis_armor_playboy": LEOTARD_PULL,
+}
+const ANATOMY_OUTFIT_PULLS = {
+	"sex_standing": [GUSSET_PULL],
+	"sex_missionary": [GUSSET_PULL],
+}
+# A worn leg piece is drawn over the leg it dresses, whichever of the leg's
+# layers a take brings forward - the raised thighs and the shins in front of them.
+const LEG_GEAR_OVER = {
+	"equip_leg_left": ["leg_left", "legl_muscle", "HipL", "HipL_muscle", "HipL_up", "HipL_muscle_up", "ShinL", "ShinL_muscle"],
+	"equip_leg_right": ["leg_right", "legr_muscle", "HipR", "HipR_muscle", "HipR_up", "HipR_muscle_up", "ShinR", "ShinR_muscle"],
+}
 const ANATOMY_SLOTS = [
 	"ass", "ahole", "ahole1", "HipL", "HipL_muscle", "HipR", "HipR_muscle",
 	"HipL_up", "HipL_muscle_up", "HipR_up", "HipR_muscle_up",
@@ -854,6 +961,12 @@ func _load_source():
 	keyed_bones_of = {}
 	pose_composer = null
 	composed_info = {}
+	leg_gear_alignment = {}
+	leg_gear_contours = {}
+	leg_gear_reskins = {}
+	pelvis_gear_rebinds = {}
+	pelvis_gear_layouts = {}
+	pelvis_gear_lifts = {}
 	emotion_eased_bones = null
 	bone_parents.clear()
 	handle_definitions = contract.HANDLES.duplicate(true)
@@ -892,6 +1005,7 @@ func _load_source():
 	atlas = shared.atlas
 	pages = shared.pages
 	animation_durations = shared.animation_durations
+	_install_outfit_pulls()
 	_solve_pose()
 	_initialize_handles()
 
@@ -1116,6 +1230,1225 @@ func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
 	_apply_hand_handles()
 	_apply_post_ik_visual_scales()
 	_apply_beastkin_mouth_offset()
+	_fit_leg_gear()
+
+
+# Leg gear is weighted to the everyday legs (spine46.., bone..), which an anatomy
+# take hides for a second pair of its own (spine135.., spine128..) standing in
+# another stance and drawn to another outline.  While a set fitted to the take is
+# worn, each everyday thigh and shin bone is laid onto its counterpart by the
+# affine that carries the everyday leg's outline onto the counterpart's - length,
+# width and the drift of the centre line, fitted on cross-sections - so stockings
+# cover the legs the doll is drawn with.  The feet hang off the fitted shins.
+const LEG_GEAR_FOLLOWS = {"spine46": "spine135", "spine47": "spine136", "bone": "spine128", "bone2": "spine129"}
+# foot -> [its everyday shin, the counterpart shin, the counterpart foot]
+const LEG_GEAR_FEET = {"spine48": ["spine47", "spine136", "spine137"], "bone3": ["bone2", "spine129", "spine130"]}
+# bone -> [the everyday leg slot, the counterpart's slot], whose outlines are fitted
+const LEG_GEAR_OUTLINES = {"spine46": ["leg_left", "HipL"], "spine47": ["leg_left", "ShinL"],
+	"bone": ["leg_right", "HipR"], "bone2": ["leg_right", "ShinR"]}
+# Takes that raise the thighs draw them with the `_up` meshes instead.
+const LEG_GEAR_RAISED_THIGHS = {"HipL": "HipL_up", "HipR": "HipR_up"}
+const LEG_GEAR_RAISED_TAKES = ["sex_missionary", "anal_missionary", "double_pen"]
+const LEG_GEAR_STATIONS = [0.2, 0.5, 0.75]
+
+
+func _leg_gear_outline(bone_name):
+	var outline = LEG_GEAR_OUTLINES[bone_name]
+	if _anatomy_lower_take() in LEG_GEAR_RAISED_TAKES and LEG_GEAR_RAISED_THIGHS.has(outline[1]):
+		return [outline[0], LEG_GEAR_RAISED_THIGHS[outline[1]]]
+	return outline
+const LEG_GEAR_MARGIN = 0.0
+var leg_gear_alignment = {}
+
+func _fit_leg_gear():
+	if !_anatomy_animation_active() or _anatomy_wearable_parts().empty():
+		return
+	for everyday in LEG_GEAR_FOLLOWS.keys():
+		var counterpart = LEG_GEAR_FOLLOWS[everyday]
+		if bones.has(everyday) and bones.has(counterpart):
+			_set_world_from(everyday, bones[counterpart], _leg_gear_fit_for(everyday))
+	for foot in LEG_GEAR_FEET.keys():
+		var shins = LEG_GEAR_FEET[foot]
+		if bones.has(foot) and bones.has(shins[1]):
+			_set_world_from(foot, bones[shins[1]], _leg_gear_fit_for(foot))
+
+
+# The fit of one everyday leg bone, worked out on first use for the leg meshes the
+# doll has on; a foot's needs its shin's first.
+func _leg_gear_fit_for(bone_name):
+	var shin = bone_name
+	if LEG_GEAR_FEET.has(bone_name):
+		shin = LEG_GEAR_FEET[bone_name][0]
+		_leg_gear_fit_for(shin)
+	if !LEG_GEAR_OUTLINES.has(shin):
+		return []
+	var outline = _leg_gear_outline(shin)
+	var key = "%s|%s|%s" % [bone_name, composed.get(outline[0], ""), composed.get(outline[1], "")]
+	if !leg_gear_alignment.has(key):
+		if LEG_GEAR_FEET.has(bone_name):
+			leg_gear_alignment[key] = _leg_gear_foot(bone_name, LEG_GEAR_FEET[bone_name])
+		else:
+			leg_gear_alignment[key] = _leg_gear_alignment(bone_name, LEG_GEAR_FOLLOWS[bone_name])
+	return leg_gear_alignment[key]
+
+
+# A fitted pelvis piece rebound per its PELVIS_GEAR rule, as new vertices bound
+# where the fitted bones put each one at setup; [] when there is no rule.  A
+# strap vertex gains influences, so `pelvis_gear_layouts` keeps what the take's
+# own deform needs to be read against the new vertices (_pelvis_layout_deform).
+var pelvis_gear_rebinds = {}
+var pelvis_gear_layouts = {}
+
+func _pelvis_gear_rebind(slot_name, attachment):
+	if slot_name != "equip_pelvis" or !_anatomy_animation_active() or _anatomy_wearable_parts().empty():
+		return []
+	var name = str(attachment.get("_attachment_name", ""))
+	var rule = PELVIS_GEAR.get(name, {})
+	if !rule.has("straps") and !rule.has("rigid") and !rule.has("no_thighs"):
+		return []
+	var key = "%s|%s" % [name, _anatomy_lower_take()]
+	for thigh_bone in ["spine46", "bone"]:
+		var outline = _leg_gear_outline(thigh_bone)
+		key += "|%s|%s|%s" % [composed.get(outline[0], ""), outline[1], composed.get(outline[1], "")]
+	attachment["_pelvis_key"] = key
+	if pelvis_gear_rebinds.has(key):
+		return pelvis_gear_rebinds[key]
+	var vertices = attachment.get("vertices", [])
+	if vertices.size() <= attachment.get("uvs", []).size():
+		return []
+	var bone_list = skeleton.get("bones", [])
+	var index_of = {}
+	for index in range(bone_list.size()):
+		index_of[str(bone_list[index].get("name", ""))] = index
+	# each vertex: where the fitted bones put it at setup, where it is drawn, its
+	# influences, its leaning
+	var points = []
+	var drawn = []
+	var counts = []
+	var thighs = []
+	var anchors = []
+	var read = 0
+	while read < vertices.size():
+		var count = int(vertices[read])
+		var point = Vector2.ZERO
+		var raw_point = Vector2.ZERO
+		var thigh = ["", 0.0, 0.0]
+		var anchor = ["", 0.0]
+		for influence in range(count):
+			var at = read + 1 + influence * 4
+			var bone = str(bone_list[int(vertices[at])].get("name", ""))
+			var weight = float(vertices[at + 3])
+			var world = _fitted_setup_world(bone)
+			point += Vector2(world[0] * float(vertices[at + 1]) + world[1] * float(vertices[at + 2]) + world[4],
+				world[2] * float(vertices[at + 1]) + world[3] * float(vertices[at + 2]) + world[5]) * weight
+			var raw = _raw_setup_world(bone)
+			raw_point += Vector2(raw[0] * float(vertices[at + 1]) + raw[1] * float(vertices[at + 2]) + raw[4],
+				raw[2] * float(vertices[at + 1]) + raw[3] * float(vertices[at + 2]) + raw[5]) * weight
+			if LEG_GEAR_FOLLOWS.has(bone):
+				thigh[2] += weight
+				if weight > thigh[1]:
+					thigh = [bone, weight, thigh[2]]
+			elif weight > anchor[1]:
+				anchor = [bone, weight]
+		points.append(point)
+		drawn.append(raw_point)
+		counts.append(count)
+		thighs.append(thigh)
+		anchors.append(anchor[0])
+		read += 1 + count * 4
+	# per vertex {bone: [weight, the setup point it is bound at]}, {} to keep it
+	var bound = []
+	if rule.has("rigid"):
+		for point in points:
+			bound.append({str(rule.rigid): [1.0, point]})
+	elif rule.has("straps"):
+		bound = _pelvis_strap_weights(attachment, points, drawn, thighs, anchors)
+	else:
+		for point in points:
+			bound.append({})
+	var result = []
+	var layout = []
+	read = 0
+	for index in range(points.size()):
+		var weights = bound[index]
+		if weights.empty():
+			# Off the straps the thigh's share goes to the pelvis: the take's raised
+			# thigh drags a half-weighted leg opening into a spike.  Binds are kept,
+			# so the take's deform still lines up.
+			var kept = vertices.slice(read, read + counts[index] * 4)
+			if anchors[index] != "" and thighs[index][2] > 0.0:
+				for influence in range(counts[index]):
+					var at = 1 + influence * 4
+					var bone = str(bone_list[int(kept[at])].get("name", ""))
+					if LEG_GEAR_FOLLOWS.has(bone):
+						kept[at + 3] = 0.0
+					elif bone == anchors[index]:
+						kept[at + 3] = float(kept[at + 3]) + thighs[index][2]
+			result.append_array(kept)
+			layout.append([counts[index], counts[index], true])
+		else:
+			result.append(weights.size())
+			for bone in weights.keys():
+				var world = _fitted_setup_world(bone)
+				var det = world[0] * world[3] - world[1] * world[2]
+				var dx = weights[bone][1].x - world[4]
+				var dy = weights[bone][1].y - world[5]
+				result.append_array([index_of.get(bone, 0), (world[3] * dx - world[1] * dy) / det,
+					(-world[2] * dx + world[0] * dy) / det, weights[bone][0]])
+			layout.append([counts[index], weights.size(), false])
+		read += 1 + counts[index] * 4
+	pelvis_gear_rebinds[key] = result
+	pelvis_gear_layouts[key] = {"length": _deform_length(attachment), "map": layout}
+	return result
+
+
+# Per vertex, {bone: [weight, bind point]} for a garter strap vertex, {} for the
+# rest.  A strap is a run of vertices leaning on one thigh; along it from its top
+# to its end the weight passes from the pelvis bone next to its top to the thigh.
+# The pelvis holds each vertex as if it sat at the strap's top and the thigh as if
+# at its end (plus its offset across), so the strap runs straight from the waist
+# to the stocking: binding both at the vertex itself crumples it where the thigh
+# turns far from the pelvis.  The pelvis takes the strap where it is drawn
+# (`drawn`), next to the panties; the thigh where the fit puts it (`points`) - the
+# fitted top sits off the panties and thinned the strap's top.
+const STRAP_THIGH_SHARE = 0.6
+
+func _pelvis_strap_weights(attachment, points, drawn, thighs, anchors):
+	var on_strap = []
+	for thigh in thighs:
+		on_strap.append(thigh[2] >= STRAP_THIGH_SHARE)
+	var neighbours = []
+	for _index in range(points.size()):
+		neighbours.append([])
+	var triangles = attachment.get("triangles", [])
+	for t in range(0, triangles.size() - 2, 3):
+		for corner in range(3):
+			var a = int(triangles[t + corner])
+			var b = int(triangles[t + (corner + 1) % 3])
+			neighbours[a].append(b)
+			neighbours[b].append(a)
+	var result = []
+	for _index in range(points.size()):
+		result.append({})
+	var seen = {}
+	for start in range(points.size()):
+		if !on_strap[start] or seen.has(start):
+			continue
+		var strap = []
+		var queue = [start]
+		seen[start] = true
+		while !queue.empty():
+			var at = queue.pop_back()
+			strap.append(at)
+			for next in neighbours[at]:
+				if on_strap[next] and !seen.has(next):
+					seen[next] = true
+					queue.append(next)
+		var top = strap[0]
+		var end = strap[0]
+		for index in strap:
+			if drawn[index].y > drawn[top].y:
+				top = index
+			if drawn[index].y < drawn[end].y:
+				end = index
+		var anchor = ""
+		var nearest = INF
+		for index in range(points.size()):
+			if !on_strap[index] and anchors[index] != "" and drawn[index].distance_to(drawn[top]) < nearest:
+				nearest = drawn[index].distance_to(drawn[top])
+				anchor = anchors[index]
+		var thigh = thighs[end][0]
+		var drawn_axis = drawn[end] - drawn[top]
+		if anchor == "" or thigh == "" or drawn_axis.length() < 1.0:
+			continue
+		for index in strap:
+			var along = clamp((drawn[index] - drawn[top]).dot(drawn_axis) / drawn_axis.length_squared(), 0.0, 1.0)
+			var drawn_across = drawn[index] - drawn[top].linear_interpolate(drawn[end], along)
+			# the take turns the thigh away from the pelvis: its share is laid
+			# against that turn, so the strap keeps its width down to the clip
+			var turned = drawn_across.rotated(deg2rad(_take_turn(anchor) - _take_turn(LEG_GEAR_FOLLOWS.get(thigh, thigh))))
+			result[index] = {anchor: [1.0 - along, drawn[top] + drawn_across], thigh: [along, points[end] + turned]}
+	return result
+
+
+# How far the running anatomy take turns a bone from its setup angle, at its start.
+func _take_turn(bone_name):
+	for animation_name in animation_states.keys():
+		if bool(animation_states[animation_name]) and _is_anatomy_animation(animation_name):
+			var keyed = skeleton.get("animations", {}).get(animation_name, {}).get("bones", {}).get(bone_name, {})
+			return float(_sample_timeline(keyed.get("rotate", []), 0.0, ["value"]).get("value", 0.0))
+	return 0.0
+
+
+# The take's deform for a piece `_pelvis_gear_rebind` re-laid, read against the new
+# vertices: a vertex kept as it was keeps its offsets, a rebound one takes none.
+func _pelvis_layout_deform(attachment, values):
+	var layout = pelvis_gear_layouts.get(str(attachment.get("_pelvis_key", "")), {})
+	if layout.empty() or values.empty():
+		return values
+	var result = []
+	var read = 0
+	for entry in layout.map:
+		if entry[2]:
+			for i in range(entry[0] * 2):
+				result.append(float(values[read + i]) if read + i < values.size() else 0.0)
+		else:
+			for _i in range(entry[1] * 2):
+				result.append(0.0)
+		read += entry[0] * 2
+	return result
+
+
+# How long the take's deform of a piece is: a re-laid pelvis piece's take still
+# carries the authored layout.
+func _source_deform_length(attachment):
+	var layout = pelvis_gear_layouts.get(str(attachment.get("_pelvis_key", "")), {})
+	if !layout.empty() and attachment.get("_pelvis_refit", false):
+		return int(layout.length)
+	return _deform_length(attachment)
+
+
+# The hike-up deform of a rebound pelvis piece with a `lift` rule (see
+# PELVIS_GEAR), on its rebound vertices; [] otherwise.
+var pelvis_gear_lifts = {}
+
+func _pelvis_gear_lift(slot_name, attachment):
+	if slot_name != "equip_pelvis" or !attachment.get("_pelvis_refit", false):
+		return []
+	var name = str(attachment.get("_attachment_name", ""))
+	var lift = PELVIS_GEAR.get(name, {}).get("lift", {})
+	if lift.empty():
+		return []
+	var key = str(attachment.get("_pelvis_key", name))
+	if pelvis_gear_lifts.has(key):
+		return pelvis_gear_lifts[key]
+	var vertices = attachment.get("vertices", [])
+	var bone_list = skeleton.get("bones", [])
+	var points = []
+	var worlds = []
+	var read = 0
+	while read < vertices.size():
+		var count = int(vertices[read])
+		var point = Vector2.ZERO
+		var own = []
+		for influence in range(count):
+			var at = read + 1 + influence * 4
+			var world = _raw_setup_world(str(bone_list[int(vertices[at])].get("name", "")))
+			point += Vector2(world[0] * float(vertices[at + 1]) + world[1] * float(vertices[at + 2]) + world[4],
+				world[2] * float(vertices[at + 1]) + world[3] * float(vertices[at + 2]) + world[5]) * float(vertices[at + 3])
+			own.append(world)
+		points.append(point)
+		worlds.append(own)
+		read += 1 + count * 4
+	# the outline's edges: a column's top is where the highest one crosses it
+	var edges = {}
+	var triangles = attachment.get("triangles", [])
+	for t in range(0, triangles.size() - 2, 3):
+		for corner in range(3):
+			var a = int(triangles[t + corner])
+			var b = int(triangles[t + (corner + 1) % 3])
+			var edge = "%d_%d" % [min(a, b), max(a, b)]
+			edges[edge] = edges.get(edge, 0) + 1
+	var outline = []
+	for edge in edges.keys():
+		if edges[edge] == 1:
+			var ends = edge.split("_")
+			outline.append([points[int(ends[0])], points[int(ends[1])]])
+	var left = INF
+	var right = -INF
+	for point in points:
+		left = min(left, point.x)
+		right = max(right, point.x)
+	var middle = (left + right) * 0.5
+	var half = max((right - left) * 0.5, 0.001)
+	var offsets = []
+	for index in range(points.size()):
+		var point = points[index]
+		var top = point.y
+		for edge in outline:
+			var a = edge[0]
+			var b = edge[1]
+			if (a.x - point.x) * (b.x - point.x) > 0.0 or abs(b.x - a.x) < 0.001:
+				continue
+			top = max(top, lerp(a.y, b.y, (point.x - a.x) / (b.x - a.x)))
+		var out = clamp((abs(point.x - middle) / half - float(lift.get("inner", 0.0))) / max(float(lift.get("outer", 1.0)) - float(lift.get("inner", 0.0)), 0.001), 0.0, 1.0)
+		out = out * out * (3.0 - 2.0 * out)
+		var keep = lerp(float(lift.get("centre", 1.0)), float(lift.get("sides", 1.0)), out)
+		var move = Vector2(0.0, (top - point.y) * (1.0 - keep))
+		for world in worlds[index]:
+			var det = world[0] * world[3] - world[1] * world[2]
+			offsets.append((world[3] * move.x - world[1] * move.y) / det)
+			offsets.append((-world[2] * move.x + world[0] * move.y) / det)
+	pelvis_gear_lifts[key] = offsets
+	return offsets
+
+
+# Writes each ANATOMY_OUTFIT_PULLS entry into its take as a one-key deform of the
+# piece.  The export is shared, so a doll reading it after another finds them in
+# place; a deform the artist authored for the same piece is left alone.
+func _install_outfit_pulls():
+	var animations = skeleton.get("animations", {})
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
+	for take in ANATOMY_OUTFIT_PULLS.keys():
+		if !animations.has(take):
+			continue
+		for pull in ANATOMY_OUTFIT_PULLS[take]:
+			for attachment_name in pull.get("attachments", [pull.get("attachment", "")]):
+				var attachment = attachments.get(pull.slot, {}).get(attachment_name, {})
+				if attachment.empty():
+					continue
+				if !animations[take].has("attachments"):
+					animations[take]["attachments"] = {}
+				if !animations[take].attachments.has(SKIN_NAME):
+					animations[take].attachments[SKIN_NAME] = {}
+				var deforms = animations[take].attachments[SKIN_NAME]
+				if !deforms.has(pull.slot):
+					deforms[pull.slot] = {}
+				if deforms[pull.slot].has(attachment_name):
+					continue
+				var spec = pull.duplicate()
+				for key in GUSSET_PULL_TUNING.get(attachment_name, {}).keys():
+					spec[key] = GUSSET_PULL_TUNING[attachment_name][key]
+				var offsets = _pull_offsets(attachment, spec)
+				if !offsets.empty():
+					deforms[pull.slot][attachment_name] = {"deform": [{"vertices": offsets}]}
+
+
+# Deform offsets for a pull (see ANATOMY_OUTFIT_PULLS): how much each vertex takes
+# eases off with its distance from the mesh's lowest point (`radius`), or else
+# above the lower `share` of its height.  A taken vertex gathers towards the
+# middle of what moves (`narrow`), swings by `turn` degrees about `pivot` (from the
+# lowest point) and shifts by `pull`.  A weighted vertex takes the move in each of
+# its bones' own setup frames.
+func _pull_offsets(attachment, spec):
+	var pull = spec.get("pull", Vector2.ZERO)
+	var share = float(spec.get("share", 0.5))
+	var narrow = float(spec.get("narrow", 1.0))
+	var radius = float(spec.get("radius", 0.0))
+	var turn = deg2rad(float(spec.get("turn", 0.0)))
+	var vertices = attachment.get("vertices", [])
+	var weighted = vertices.size() > attachment.get("uvs", []).size()
+	var bone_list = skeleton.get("bones", [])
+	var points = []
+	var influences = []
+	# what leans mostly on a leg - garter straps - is neither the gusset nor moved
+	var on_leg = []
+	var read = 0
+	if weighted:
+		while read < vertices.size():
+			var count = int(vertices[read])
+			read += 1
+			var point = Vector2.ZERO
+			var own = []
+			var leg_weight = 0.0
+			for _influence in range(count):
+				var name = str(bone_list[int(vertices[read])].get("name", ""))
+				var world = _raw_setup_world(name)
+				var bx = float(vertices[read + 1])
+				var by = float(vertices[read + 2])
+				point += Vector2(world[0] * bx + world[1] * by + world[4], world[2] * bx + world[3] * by + world[5]) * float(vertices[read + 3])
+				if LEG_GEAR_OUTLINES.has(name) or LEG_GEAR_FEET.has(name):
+					leg_weight += float(vertices[read + 3])
+				own.append(world)
+				read += 4
+			points.append(point)
+			influences.append(own)
+			on_leg.append(leg_weight >= 0.5)
+	else:
+		for index in range(vertices.size() / 2):
+			points.append(Vector2(float(vertices[index * 2]), float(vertices[index * 2 + 1])))
+	if points.empty():
+		return []
+	var lowest = Vector2(0, INF)
+	var high = -INF
+	for index in range(points.size()):
+		if index < on_leg.size() and on_leg[index]:
+			continue
+		if points[index].y < lowest.y:
+			lowest = points[index]
+		high = max(high, points[index].y)
+	if lowest.y == INF:
+		return []
+	var low = lowest.y
+	var top = low + share * (high - low)
+	var pivot = lowest + spec.get("pivot", Vector2.ZERO)
+	var amounts = []
+	var centre = 0.0
+	var total = 0.0
+	for index in range(points.size()):
+		var point = points[index]
+		var amount = 0.0
+		if index < on_leg.size() and on_leg[index]:
+			amounts.append(0.0)
+			continue
+		if radius > 0.0:
+			amount = clamp(1.0 - point.distance_to(lowest) / radius, 0.0, 1.0)
+		else:
+			amount = clamp((top - point.y) / max(top - low, 0.001), 0.0, 1.0)
+		amount = amount * amount * (3.0 - 2.0 * amount)
+		amounts.append(amount)
+		centre += point.x * amount
+		total += amount
+	centre = centre / total if total > 0.0 else 0.0
+	var offsets = []
+	for index in range(points.size()):
+		var amount = amounts[index]
+		var point = points[index]
+		var gathered = Vector2(centre + (point.x - centre) * lerp(1.0, narrow, amount), point.y)
+		var swung = pivot + (gathered - pivot).rotated(turn * amount)
+		var move = swung + pull * amount - point
+		if !weighted:
+			offsets.append(move.x)
+			offsets.append(move.y)
+			continue
+		for world in influences[index]:
+			var det = world[0] * world[3] - world[1] * world[2]
+			offsets.append((world[3] * move.x - world[1] * move.y) / det)
+			offsets.append((-world[2] * move.x + world[0] * move.y) / det)
+	return offsets
+
+
+# A foot laid in the counterpart shin's frame: on the fitted shin's ankle, keeping
+# its own length, turned so it points the way the counterpart foot does relative
+# to its shin - measured from the ankle to the middle of each foot's mesh.
+func _leg_gear_foot(foot, shins):
+	var outline = _leg_gear_outline(shins[0])
+	var n = leg_gear_alignment.get("%s|%s|%s" % [shins[0], composed.get(outline[0], ""), composed.get(outline[1], "")], [])
+	var local = _raw_local(foot)
+	if n.empty():
+		return local
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
+	var own = attachments.get(outline[0], {}).get(str(composed.get(outline[0], "")), {})
+	var theirs = attachments.get(outline[1], {}).get(str(composed.get(outline[1], "")), {})
+	var own_shape = _foot_angle(own, [foot], shins[0], foot)
+	var their_shape = _foot_angle(theirs, _subtree(shins[2]), shins[1], shins[2])
+	var turn = 0.0
+	var size = 1.0
+	if !own_shape.empty() and !their_shape.empty():
+		turn = their_shape[0] - own_shape[0]
+		# the counterpart foot is the smaller drawing; a stocking foot sized for
+		# the everyday one swallows it
+		size = clamp(1.1 * their_shape[1] / max(own_shape[1], 0.001), 0.85, 1.0)
+	# where the fitted shin puts the everyday ankle
+	var ankle = Vector2(n[0] * local[4] + n[1] * local[5] + n[4], n[2] * local[4] + n[3] * local[5] + n[5])
+	var definition = _bone_definition(foot)
+	var rotation = float(definition.get("rotation", 0.0)) + rad2deg(turn)
+	var rx = deg2rad(rotation + float(definition.get("shearX", 0.0)))
+	var ry = deg2rad(rotation + 90.0 + float(definition.get("shearY", 0.0)))
+	return [cos(rx) * float(definition.get("scaleX", 1.0)) * size, cos(ry) * float(definition.get("scaleY", 1.0)) * size,
+		sin(rx) * float(definition.get("scaleX", 1.0)) * size, sin(ry) * float(definition.get("scaleY", 1.0)) * size,
+		ankle.x, ankle.y]
+
+
+# [angle in `shin`'s setup frame from `ankle_bone`'s origin to the middle of the
+# attachment's vertices weighted mostly to `foot_bones`, their mean distance from
+# that origin], or [] when there are none.
+func _foot_angle(attachment, foot_bones, shin, ankle_bone):
+	var vertices = attachment.get("vertices", [])
+	if vertices.size() <= attachment.get("uvs", []).size():
+		return []
+	var bone_list = skeleton.get("bones", [])
+	var origin = _raw_setup_world(ankle_bone)
+	var total = Vector2.ZERO
+	var reach = 0.0
+	var count = 0
+	var read = 0
+	while read < vertices.size():
+		var influences = int(vertices[read])
+		read += 1
+		var point = Vector2.ZERO
+		var strongest = ""
+		var strongest_weight = -1.0
+		for _influence in range(influences):
+			var name = str(bone_list[int(vertices[read])].get("name", ""))
+			var world = _raw_setup_world(name)
+			var bx = float(vertices[read + 1])
+			var by = float(vertices[read + 2])
+			var weight = float(vertices[read + 3])
+			point += Vector2(world[0] * bx + world[1] * by + world[4], world[2] * bx + world[3] * by + world[5]) * weight
+			if weight > strongest_weight:
+				strongest = name
+				strongest_weight = weight
+			read += 4
+		if strongest in foot_bones:
+			total += point
+			reach += point.distance_to(Vector2(origin[4], origin[5]))
+			count += 1
+	if count == 0:
+		return []
+	var frame = _raw_setup_world(shin)
+	var offset = total / count - Vector2(origin[4], origin[5])
+	var det = frame[0] * frame[3] - frame[1] * frame[2]
+	var local = Vector2((frame[3] * offset.x - frame[1] * offset.y) / det, (-frame[2] * offset.x + frame[0] * offset.y) / det)
+	return [local.angle(), reach / count]
+
+
+func _subtree(root):
+	var result = [root]
+	var index = 0
+	while index < result.size():
+		for definition in skeleton.get("bones", []):
+			if str(definition.get("parent", "")) == result[index]:
+				result.append(str(definition.get("name", "")))
+		index += 1
+	return result
+
+
+# The bone fit gets a stocking onto the leg; this takes it the rest of the way.
+# Every vertex keeps its place across the stocking's own cross-section and is
+# moved to the same place across the leg's, LEG_GEAR_GAP wider than the skin -
+# so the stocking follows the calf and the knee an affine cannot.  Thigh and
+# shin each answer for their share of a vertex's weight; the foot is left as fitted.
+const LEG_GEAR_SLOTS = {"equip_leg_left": ["spine46", "spine47"], "equip_leg_right": ["bone", "bone2"]}
+const LEG_GEAR_GAP = 1.5
+const LEG_GEAR_MAX_SHIFT = 12.0
+var leg_gear_contours = {}
+
+func _leg_gear_contour(slot_name, attachment):
+	if !LEG_GEAR_SLOTS.has(slot_name) or !_anatomy_animation_active() or _anatomy_wearable_parts().empty():
+		return []
+	# a rebound stocking carries the contour in its binds already
+	if attachment.get("_leg_gear_refit", false):
+		return []
+	var segments = LEG_GEAR_SLOTS[slot_name]
+	var key = "%s|%s|%s" % [slot_name, attachment.get("_attachment_name", ""), attachment.get("_leg_gear_refit", false)]
+	for everyday in segments:
+		var outline = _leg_gear_outline(everyday)
+		key += "|%s|%s" % [composed.get(outline[0], ""), composed.get(outline[1], "")]
+	if !leg_gear_contours.has(key):
+		leg_gear_contours[key] = _leg_gear_contour_offsets(attachment, segments)
+	return leg_gear_contours[key]
+
+
+# The stocking's foot skinned the way the counterpart's own foot is: each vertex
+# touching the everyday foot bone takes the weights the counterpart leg mesh has at
+# that spot, so it bends with the take's foot and toes instead of riding the shin
+# rigidly.  `_resolve_attachment` swaps these vertices in while the set is fitted.
+const LEG_GEAR_FOOT = {"equip_leg_left": ["spine48", "ShinL"], "equip_leg_right": ["bone3", "ShinR"]}
+var leg_gear_reskins = {}
+
+func _leg_gear_reskinned(slot_name, attachment):
+	if !LEG_GEAR_FOOT.has(slot_name) or !_anatomy_animation_active() or _anatomy_wearable_parts().empty():
+		return []
+	var foot = LEG_GEAR_FOOT[slot_name][0]
+	var leg_slot = LEG_GEAR_FOOT[slot_name][1]
+	var shin_outline = _leg_gear_outline(LEG_GEAR_FEET[foot][0])
+	var thigh_outline = _leg_gear_outline(LEG_GEAR_SLOTS[slot_name][0])
+	var key = "%s|%s|%s|%s|%s" % [slot_name, attachment.get("_attachment_name", ""), composed.get(leg_slot, ""),
+		composed.get(shin_outline[0], ""), composed.get(thigh_outline[1], "")]
+	if !leg_gear_reskins.has(key):
+		leg_gear_reskins[key] = _leg_gear_reskin(attachment, foot, leg_slot)
+	return leg_gear_reskins[key]
+
+
+func _leg_gear_reskin(attachment, foot, leg_slot):
+	var vertices = attachment.get("vertices", [])
+	var leg = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(leg_slot, {}).get(str(composed.get(leg_slot, "")), {})
+	var leg_vertices = leg.get("vertices", [])
+	if vertices.size() <= attachment.get("uvs", []).size() or leg_vertices.size() <= leg.get("uvs", []).size():
+		return []
+	var bone_list = skeleton.get("bones", [])
+	var shin = LEG_GEAR_FEET[foot][0]
+	var thigh = str(_bone_definition(shin).get("parent", ""))
+	var chain = [thigh, shin, foot]
+	var index_of = {}
+	for index in range(bone_list.size()):
+		index_of[str(bone_list[index].get("name", ""))] = index
+	var worlds = {}
+	# the counterpart shin mesh at the setup pose: where each vertex is and what moves it
+	var leg_points = []
+	var leg_weights = []
+	var read = 0
+	while read < leg_vertices.size():
+		var count = int(leg_vertices[read])
+		read += 1
+		var point = Vector2.ZERO
+		var weights = {}
+		for _influence in range(count):
+			var index = int(leg_vertices[read])
+			if !worlds.has(index):
+				worlds[index] = _raw_setup_world(str(bone_list[index].get("name", "")))
+			var world = worlds[index]
+			var bx = float(leg_vertices[read + 1])
+			var by = float(leg_vertices[read + 2])
+			var weight = float(leg_vertices[read + 3])
+			point += Vector2(world[0] * bx + world[1] * by + world[4], world[2] * bx + world[3] * by + world[5]) * weight
+			weights[index] = weight
+			read += 4
+		leg_points.append(point)
+		leg_weights.append(weights)
+	var triangles = leg.get("triangles", [])
+	# 1. where every stocking vertex ends up at the setup pose: the bone fit ...
+	var placed = []
+	var drawn_points = []
+	var influences = []
+	var foot_weights = []
+	read = 0
+	while read < vertices.size():
+		var count = int(vertices[read])
+		var point = Vector2.ZERO
+		var drawn = Vector2.ZERO
+		var own = []
+		var foot_weight = 0.0
+		for influence in range(count):
+			var at = read + 1 + influence * 4
+			var name = str(bone_list[int(vertices[at])].get("name", ""))
+			var bx = float(vertices[at + 1])
+			var by = float(vertices[at + 2])
+			var weight = float(vertices[at + 3])
+			if name == foot:
+				foot_weight += weight
+			var world = _fitted_setup_world(name)
+			point += Vector2(world[0] * bx + world[1] * by + world[4], world[2] * bx + world[3] * by + world[5]) * weight
+			var raw = _raw_setup_world(name)
+			drawn += Vector2(raw[0] * bx + raw[1] * by + raw[4], raw[2] * bx + raw[3] * by + raw[5]) * weight
+			own.append([world, weight, name])
+		placed.append(point)
+		drawn_points.append(drawn)
+		influences.append(own)
+		foot_weights.append(foot_weight)
+		read += 1 + count * 4
+	# ... then across to the leg's contour ...
+	var stocking_outline = placed.slice(0, int(attachment.get("hull", 0)) - 1)
+	var moves = _leg_gear_contour_moves(placed, influences, [thigh, shin], stocking_outline)
+	for index in range(placed.size()):
+		placed[index] += moves[index]
+	# ... the foot carried onto the counterpart's by their shapes, then fitted across
+	var own_leg_slot = _leg_gear_outline(shin)[0]
+	var own_leg = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(own_leg_slot, {}).get(str(composed.get(own_leg_slot, "")), {})
+	var own_shape = _foot_shape(own_leg, [foot], foot)
+	var their_shape = _foot_shape(leg, _subtree(LEG_GEAR_FEET[foot][2]), LEG_GEAR_FEET[foot][2])
+	if !own_shape.empty() and !their_shape.empty():
+		for index in range(placed.size()):
+			if foot_weights[index] > 0.0:
+				placed[index] = placed[index].linear_interpolate(_carry_shape(drawn_points[index], own_shape, their_shape), foot_weights[index])
+		var ankle = _raw_setup_world(LEG_GEAR_FEET[foot][2])
+		var frame = [their_shape[1].x, their_shape[2].x, their_shape[1].y, their_shape[2].y, ankle[4], ankle[5]]
+		stocking_outline = placed.slice(0, int(attachment.get("hull", 0)) - 1)
+		var leg_outline = leg_points.slice(0, int(leg.get("hull", 0)) - 1)
+		for index in range(placed.size()):
+			if foot_weights[index] <= 0.0:
+				continue
+			var offset = placed[index] - Vector2(frame[4], frame[5])
+			var local = Vector2(offset.dot(their_shape[1]), offset.dot(their_shape[2]))
+			if local.x <= 0.0:
+				continue
+			var across_stocking = _outline_section(stocking_outline, frame, local.x)
+			var across_foot = _outline_section(leg_outline, frame, local.x)
+			if across_stocking.empty() or across_foot.empty() or across_stocking[1] - across_stocking[0] < 1.0:
+				continue
+			var place = (local.y - across_stocking[0]) / (across_stocking[1] - across_stocking[0])
+			var wanted = lerp(across_foot[0] - LEG_GEAR_GAP, across_foot[1] + LEG_GEAR_GAP, place)
+			placed[index] += their_shape[2] * clamp(wanted - local.y, -LEG_GEAR_MAX_SHIFT, LEG_GEAR_MAX_SHIFT) * foot_weights[index]
+	# 2. what moves each vertex.  Over the counterpart's shin mesh - knee, kneecap,
+	# shin, foot - the mesh's own weights, so the stocking bends there as the skin
+	# does; elsewhere its own bones, a pelvis share handed to the thigh.  Either
+	# way bound where it was placed, as Spine binds every vertex.
+	var leg_hull = leg_points.slice(0, int(leg.get("hull", 0)) - 1)
+	var knee_counterpart = LEG_GEAR_FOLLOWS[thigh]
+	var raised_knee = _anatomy_lower_take() in LEG_GEAR_RAISED_TAKES
+	# the thigh's setup frame, and which side of it the shin folds towards
+	var kneecap = [_raw_setup_world(knee_counterpart), _knee_bend_side(LEG_GEAR_FOLLOWS[shin])]
+	var result = []
+	for index in range(placed.size()):
+		var point = placed[index]
+		var weights = {}
+		# The kneecap is the top of the shin mesh, and the stocking's triangles are
+		# too big to end on its rim.  In a raised knee the band just past it is laid
+		# onto the rim and rides the shin, so the row over the kneecap is all shin.
+		var on_shin = foot_weights[index] > 0.0 or _point_on_mesh(point, leg_points, triangles)
+		if !on_shin and raised_knee and _along_bone(point, knee_counterpart) > LEG_GEAR_KNEE_FROM:
+			var nearest = _nearest_on_outline(point, leg_hull)
+			var reach = LEG_GEAR_KNEE_PIT_REACH if _in_knee_pit(point, kneecap) else LEG_GEAR_KNEE_REACH
+			if point.distance_to(nearest) <= reach:
+				point = nearest + (point - nearest).normalized() * LEG_GEAR_GAP
+				on_shin = true
+		if on_shin:
+			weights = _mesh_weights_at(point, leg_points, leg_weights, triangles)
+		if weights.empty():
+			# Off the shin mesh a vertex rides one bone whole: the authored blend
+			# of thigh and shin folds over itself in a raised knee.
+			var side = thigh if _along_bone(point, LEG_GEAR_FOLLOWS[thigh]) < 0.98 else shin
+			if index_of.has(side):
+				weights[index_of[side]] = 1.0
+		result.append(weights.size())
+		for bone_index in weights.keys():
+			var name = str(bone_list[bone_index].get("name", ""))
+			var world = _fitted_setup_world(name) if name in chain else _raw_setup_world(name)
+			var det = world[0] * world[3] - world[1] * world[2]
+			var dx = point.x - world[4]
+			var dy = point.y - world[5]
+			result.append(bone_index)
+			result.append((world[3] * dx - world[1] * dy) / det)
+			result.append((-world[2] * dx + world[0] * dy) / det)
+			result.append(weights[bone_index])
+	return result
+
+
+# The band past the shin mesh's top that is laid onto it in a raised knee: from
+# this far along the thigh, within this many setup units of the mesh.
+const LEG_GEAR_KNEE_FROM = 0.8
+const LEG_GEAR_KNEE_REACH = 50.0
+
+
+# Whether a point lies on the knee-pit side of the thigh, past its middle:
+# kneecap = [the thigh's setup frame, the side (+1 / -1 across) the shin folds to].
+# On that side only the fabric at the kneecap's rim goes with the shin: laying
+# more of it onto the shin bares the thigh at the inside of the bend.
+const LEG_GEAR_KNEE_PIT_FROM = 15.0
+const LEG_GEAR_KNEE_PIT_REACH = 30.0
+
+func _in_knee_pit(point, kneecap):
+	var frame = kneecap[0]
+	var det = frame[0] * frame[3] - frame[1] * frame[2]
+	var dx = point.x - frame[4]
+	var dy = point.y - frame[5]
+	var across = (-frame[2] * dx + frame[0] * dy) / det
+	return across * float(kneecap[1]) > LEG_GEAR_KNEE_PIT_FROM
+
+
+# Which side of the thigh (+1 / -1 across it) the shin folds towards in the
+# running anatomy take, from the shin's own angle at the take's start.
+func _knee_bend_side(shin_bone):
+	var turn = float(_bone_definition(shin_bone).get("rotation", 0.0))
+	for animation_name in animation_states.keys():
+		if bool(animation_states[animation_name]) and _is_anatomy_animation(animation_name):
+			var keyed = skeleton.get("animations", {}).get(animation_name, {}).get("bones", {}).get(shin_bone, {})
+			turn += float(_sample_timeline(keyed.get("rotate", []), 0.0, ["value"]).get("value", 0.0))
+			break
+	return 1.0 if sin(deg2rad(turn)) >= 0.0 else -1.0
+
+
+# The point of a closed outline nearest to `point`.
+func _nearest_on_outline(point, outline):
+	var nearest = point
+	var best = INF
+	for index in range(outline.size()):
+		var on_edge = Geometry.get_closest_point_to_segment_2d(point, outline[index], outline[(index + 1) % outline.size()])
+		if point.distance_to(on_edge) < best:
+			best = point.distance_to(on_edge)
+			nearest = on_edge
+	return nearest
+
+
+# How far along a bone a setup-world point lies, in lengths of the bone.
+func _along_bone(point, bone_name):
+	var frame = _raw_setup_world(bone_name)
+	var axis = Vector2(frame[0], frame[2]).normalized()
+	var length = float(_bone_definition(bone_name).get("length", 1.0))
+	return (point - Vector2(frame[4], frame[5])).dot(axis) / max(length, 0.001)
+
+
+# Whether a point lies on a mesh (with a little slack for a stocking drawn just
+# wider than the skin).
+func _point_on_mesh(point, points, triangles, slack = 0.3):
+	for t in range(0, triangles.size() - 2, 3):
+		var a = points[int(triangles[t])]
+		var b = points[int(triangles[t + 1])]
+		var c = points[int(triangles[t + 2])]
+		var denominator = (b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y)
+		if abs(denominator) < 0.000001:
+			continue
+		var u = ((b.y - c.y) * (point.x - c.x) + (c.x - b.x) * (point.y - c.y)) / denominator
+		var v = ((c.y - a.y) * (point.x - c.x) + (a.x - c.x) * (point.y - c.y)) / denominator
+		if min(u, min(v, 1.0 - u - v)) >= -slack:
+			return true
+	return false
+
+
+# A foot drawing's shape at the setup pose: [centre, the axis from the ankle
+# towards the toes, the axis across, the spread along each], from the vertices
+# weighted mostly to `foot_bones`; [] when there are too few.
+func _foot_shape(attachment, foot_bones, ankle_bone):
+	var vertices = attachment.get("vertices", [])
+	if vertices.size() <= attachment.get("uvs", []).size():
+		return []
+	var bone_list = skeleton.get("bones", [])
+	var cloud = []
+	var read = 0
+	while read < vertices.size():
+		var count = int(vertices[read])
+		read += 1
+		var point = Vector2.ZERO
+		var strongest = ""
+		var strongest_weight = -1.0
+		for _influence in range(count):
+			var name = str(bone_list[int(vertices[read])].get("name", ""))
+			var world = _raw_setup_world(name)
+			var weight = float(vertices[read + 3])
+			point += Vector2(world[0] * float(vertices[read + 1]) + world[1] * float(vertices[read + 2]) + world[4],
+				world[2] * float(vertices[read + 1]) + world[3] * float(vertices[read + 2]) + world[5]) * weight
+			if weight > strongest_weight:
+				strongest = name
+				strongest_weight = weight
+			read += 4
+		if strongest in foot_bones:
+			cloud.append(point)
+	if cloud.size() < 4:
+		return []
+	var centre = Vector2.ZERO
+	for point in cloud:
+		centre += point
+	centre /= cloud.size()
+	# Not the cloud's principal axis: seen from the front a foot is about as wide
+	# as it is long, and the two drawings came out a quarter turn apart.
+	var ankle = _raw_setup_world(ankle_bone)
+	var along = (centre - Vector2(ankle[4], ankle[5])).normalized()
+	var across = Vector2(-along.y, along.x)
+	var spread_along = 0.0
+	var spread_across = 0.0
+	for point in cloud:
+		var d = point - centre
+		spread_along += d.dot(along) * d.dot(along)
+		spread_across += d.dot(across) * d.dot(across)
+	return [centre, along, across, sqrt(spread_along / cloud.size()), sqrt(spread_across / cloud.size())]
+
+
+# A point placed against one foot drawing, moved to the same place against another.
+func _carry_shape(point, from, to):
+	var d = point - from[0]
+	var a = d.dot(from[1]) / max(from[3], 0.001)
+	var b = d.dot(from[2]) / max(from[4], 0.001)
+	return to[0] + to[1] * a * to[3] + to[2] * b * to[4]
+
+
+# A mesh's bone weights at a point: barycentric over the triangle holding it, or
+# the nearest one; the four strongest bones, summing to one.
+func _mesh_weights_at(point, points, weights, triangles):
+	var best = -INF
+	var best_corners = []
+	var best_amounts = []
+	for t in range(0, triangles.size() - 2, 3):
+		var a = points[int(triangles[t])]
+		var b = points[int(triangles[t + 1])]
+		var c = points[int(triangles[t + 2])]
+		var denominator = (b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y)
+		if abs(denominator) < 0.000001:
+			continue
+		var u = ((b.y - c.y) * (point.x - c.x) + (c.x - b.x) * (point.y - c.y)) / denominator
+		var v = ((c.y - a.y) * (point.x - c.x) + (a.x - c.x) * (point.y - c.y)) / denominator
+		var w = 1.0 - u - v
+		var worst = min(u, min(v, w))
+		if worst > best:
+			best = worst
+			best_corners = [int(triangles[t]), int(triangles[t + 1]), int(triangles[t + 2])]
+			best_amounts = [max(u, 0.0), max(v, 0.0), max(w, 0.0)]
+	if best_corners.empty():
+		return {}
+	var sum = best_amounts[0] + best_amounts[1] + best_amounts[2]
+	var mixed = {}
+	for corner in range(3):
+		var amount = best_amounts[corner] / sum if sum > 0.0 else 1.0 / 3.0
+		for index in weights[best_corners[corner]].keys():
+			mixed[index] = float(mixed.get(index, 0.0)) + weights[best_corners[corner]][index] * amount
+	var ranked = mixed.keys()
+	ranked.sort_custom(WeightOrder.new(mixed), "stronger")
+	var kept = {}
+	var total = 0.0
+	for index in ranked.slice(0, min(4, ranked.size()) - 1):
+		kept[index] = mixed[index]
+		total += mixed[index]
+	for index in kept.keys():
+		kept[index] = kept[index] / total
+	return kept
+
+
+class WeightOrder:
+	var weights
+	func _init(by_bone):
+		weights = by_bone
+	func stronger(a, b):
+		return weights[a] > weights[b]
+
+
+# Where `_fit_leg_gear` puts a bone at the setup pose, as [a, b, c, d, x, y].
+func _fitted_setup_world(bone_name):
+	if LEG_GEAR_FOLLOWS.has(bone_name):
+		var n = _leg_gear_fit_for(bone_name)
+		if !n.empty():
+			return _compose_affine(_raw_setup_world(LEG_GEAR_FOLLOWS[bone_name]), n)
+	if LEG_GEAR_FEET.has(bone_name):
+		var f = _leg_gear_fit_for(bone_name)
+		if !f.empty():
+			return _compose_affine(_raw_setup_world(LEG_GEAR_FEET[bone_name][1]), f)
+	return _raw_setup_world(bone_name)
+
+
+func _compose_affine(p, n):
+	return [p[0] * n[0] + p[1] * n[2], p[0] * n[1] + p[1] * n[3], p[2] * n[0] + p[3] * n[2], p[2] * n[1] + p[3] * n[3],
+		p[0] * n[4] + p[1] * n[5] + p[4], p[2] * n[4] + p[3] * n[5] + p[5]]
+
+
+func _leg_gear_contour_offsets(attachment, segments):
+	var vertices = attachment.get("vertices", [])
+	if vertices.size() <= attachment.get("uvs", []).size():
+		return []
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
+	var bone_list = skeleton.get("bones", [])
+	var worlds = {}
+	# each vertex: its fitted setup point, its influences [world, weight, bone]
+	var points = []
+	var influences = []
+	var read = 0
+	while read < vertices.size():
+		var count = int(vertices[read])
+		read += 1
+		var point = Vector2.ZERO
+		var own = []
+		for _influence in range(count):
+			var name = str(bone_list[int(vertices[read])].get("name", ""))
+			if !worlds.has(name):
+				worlds[name] = _fitted_setup_world(name)
+			var world = worlds[name]
+			var bx = float(vertices[read + 1])
+			var by = float(vertices[read + 2])
+			var weight = float(vertices[read + 3])
+			point += Vector2(world[0] * bx + world[1] * by + world[4], world[2] * bx + world[3] * by + world[5]) * weight
+			own.append([world, weight, name])
+			read += 4
+		points.append(point)
+		influences.append(own)
+	var moves = _leg_gear_contour_moves(points, influences, segments, points.slice(0, int(attachment.get("hull", 0)) - 1))
+	var offsets = []
+	for index in range(points.size()):
+		for influence in influences[index]:
+			var world = influence[0]
+			var det = world[0] * world[3] - world[1] * world[2]
+			var move = moves[index]
+			offsets.append((world[3] * move.x - world[1] * move.y) / det)
+			offsets.append((-world[2] * move.x + world[0] * move.y) / det)
+	return offsets
+
+
+# Setup-world moves taking each stocking vertex across to the leg's contour.
+# `influences` per vertex: [[world, weight, bone name], ...].
+func _leg_gear_contour_moves(points, influences, segments, stocking_outline):
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
+	var moves = []
+	for index in range(points.size()):
+		moves.append(Vector2.ZERO)
+	for everyday in segments:
+		var counterpart = LEG_GEAR_FOLLOWS[everyday]
+		var outline = _leg_gear_outline(everyday)
+		var leg = attachments.get(outline[1], {}).get(str(composed.get(outline[1], "")), {})
+		if leg.empty():
+			continue
+		var leg_outline = _setup_outline(leg)
+		var frame = _raw_setup_world(counterpart)
+		var length = float(_bone_definition(counterpart).get("length", 1.0))
+		var det = frame[0] * frame[3] - frame[1] * frame[2]
+		for index in range(points.size()):
+			var share = 0.0
+			for influence in influences[index]:
+				if influence[2] == everyday:
+					share += influence[1]
+			if share <= 0.0:
+				continue
+			var offset = points[index] - Vector2(frame[4], frame[5])
+			var local = Vector2((frame[3] * offset.x - frame[1] * offset.y) / det, (-frame[2] * offset.x + frame[0] * offset.y) / det)
+			# The top of the thigh keeps the bone fit: the cross-sections there run
+			# through the lace and the counterpart's hip, which would tear the band.
+			if everyday == segments[0]:
+				var along = clamp((local.x / length - 0.15) / 0.17, 0.0, 1.0)
+				share *= along * along * (3.0 - 2.0 * along)
+				if share <= 0.0:
+					continue
+			var x = clamp(local.x, 0.05 * length, 0.95 * length)
+			var across_stocking = _outline_section(stocking_outline, frame, x)
+			var across_leg = _outline_section(leg_outline, frame, x)
+			if across_stocking.empty() or across_leg.empty() or across_stocking[1] - across_stocking[0] < 1.0:
+				continue
+			var place = (local.y - across_stocking[0]) / (across_stocking[1] - across_stocking[0])
+			var wanted = lerp(across_leg[0] - LEG_GEAR_GAP, across_leg[1] + LEG_GEAR_GAP, place)
+			var shift = clamp(wanted - local.y, -LEG_GEAR_MAX_SHIFT, LEG_GEAR_MAX_SHIFT)
+			moves[index] += Vector2(frame[1] * shift, frame[3] * shift) * share
+	return moves
+
+
+# bones[name] = parent * local, both as world dicts / [a, b, c, d, x, y].
+func _set_world_from(name, parent, n):
+	var bone = bones[name]
+	bone["a"] = float(parent.a) * n[0] + float(parent.b) * n[2]
+	bone["b"] = float(parent.a) * n[1] + float(parent.b) * n[3]
+	bone["c"] = float(parent.c) * n[0] + float(parent.d) * n[2]
+	bone["d"] = float(parent.c) * n[1] + float(parent.d) * n[3]
+	bone["x"] = float(parent.a) * n[4] + float(parent.b) * n[5] + float(parent.x)
+	bone["y"] = float(parent.c) * n[4] + float(parent.d) * n[5] + float(parent.y)
+
+
+# The counterpart-local transform for `everyday`: x scaled by the length ratio,
+# y = a*y + b*x + c fitted so the everyday leg's cross-sections land on the
+# counterpart's.  Falls back to laying the bone along its counterpart.
+func _leg_gear_alignment(everyday, counterpart):
+	var outline = _leg_gear_outline(everyday)
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
+	var own = attachments.get(outline[0], {}).get(str(composed.get(outline[0], "")), {})
+	var theirs = attachments.get(outline[1], {}).get(str(composed.get(outline[1], "")), {})
+	var own_length = float(_bone_definition(everyday).get("length", 1.0))
+	var their_length = float(_bone_definition(counterpart).get("length", own_length))
+	if own.empty() or theirs.empty() or own_length <= 0.0:
+		return _leg_gear_frame_alignment(everyday, counterpart)
+	var own_outline = _setup_outline(own)
+	var their_outline = _setup_outline(theirs)
+	var own_frame = _raw_setup_world(everyday)
+	var their_frame = _raw_setup_world(counterpart)
+	var rows = []
+	for station in LEG_GEAR_STATIONS:
+		var x = station * own_length
+		var from = _outline_section(own_outline, own_frame, x)
+		var to = _outline_section(their_outline, their_frame, station * their_length)
+		if from.empty() or to.empty():
+			continue
+		# a little wider than the leg, so a calf the affine cannot follow stays covered
+		rows.append([from[0], x, to[0] - LEG_GEAR_MARGIN])
+		rows.append([from[1], x, to[1] + LEG_GEAR_MARGIN])
+	var fit = _least_squares_3(rows)
+	if fit.empty():
+		return _leg_gear_frame_alignment(everyday, counterpart)
+	return [their_length / own_length, 0.0, fit[1], fit[0], 0.0, fit[2]]
+
+
+# An attachment's outline (its first `hull` vertices) at the setup pose, in world.
+func _setup_outline(attachment):
+	var vertices = attachment.get("vertices", [])
+	var count = int(attachment.get("hull", 0))
+	var points = []
+	if vertices.size() == attachment.get("uvs", []).size():
+		for index in range(min(count, vertices.size() / 2)):
+			points.append(Vector2(float(vertices[index * 2]), float(vertices[index * 2 + 1])))
+		return points
+	var bone_list = skeleton.get("bones", [])
+	var read = 0
+	while read < vertices.size() and points.size() < count:
+		var influences = int(vertices[read])
+		read += 1
+		var point = Vector2.ZERO
+		for _influence in range(influences):
+			var world = _raw_setup_world(str(bone_list[int(vertices[read])].get("name", "")))
+			var bx = float(vertices[read + 1])
+			var by = float(vertices[read + 2])
+			var weight = float(vertices[read + 3])
+			point += Vector2(world[0] * bx + world[1] * by + world[4], world[2] * bx + world[3] * by + world[5]) * weight
+			read += 4
+		points.append(point)
+	return points
+
+
+# Where an outline crosses the line x = `x` of a bone's frame: [lowest y, highest y].
+func _outline_section(points, frame, x):
+	var det = frame[0] * frame[3] - frame[1] * frame[2]
+	var local = []
+	for point in points:
+		var dx = point.x - frame[4]
+		var dy = point.y - frame[5]
+		local.append(Vector2((frame[3] * dx - frame[1] * dy) / det, (-frame[2] * dx + frame[0] * dy) / det))
+	var crossings = []
+	for index in range(local.size()):
+		var first = local[index]
+		var second = local[(index + 1) % local.size()]
+		if (first.x - x) * (second.x - x) < 0.0:
+			crossings.append(first.y + (x - first.x) * (second.y - first.y) / (second.x - first.x))
+	if crossings.size() < 2:
+		return []
+	return [crossings.min(), crossings.max()]
+
+
+# [a, b, c] minimising the sum of (a*row[0] + b*row[1] + c - row[2])^2.
+func _least_squares_3(rows):
+	if rows.size() < 4:
+		return []
+	var m = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+	var v = [0.0, 0.0, 0.0]
+	for row in rows:
+		var terms = [row[0], row[1], 1.0]
+		for i in range(3):
+			v[i] += terms[i] * row[2]
+			for j in range(3):
+				m[i][j] += terms[i] * terms[j]
+	var det = _det3(m)
+	if abs(det) < 0.000001:
+		return []
+	var result = []
+	for column in range(3):
+		var swapped = [m[0].duplicate(), m[1].duplicate(), m[2].duplicate()]
+		for row in range(3):
+			swapped[row][column] = v[row]
+		result.append(_det3(swapped) / det)
+	return result
+
+
+func _det3(m):
+	return m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) \
+		- m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]) \
+		+ m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0])
+
+
+# A bone's own setup transform relative to its parent, as [a, b, c, d, x, y].
+func _raw_local(bone_name):
+	var definition = _bone_definition(bone_name)
+	var rotation = float(definition.get("rotation", 0.0))
+	var rx = deg2rad(rotation + float(definition.get("shearX", 0.0)))
+	var ry = deg2rad(rotation + 90.0 + float(definition.get("shearY", 0.0)))
+	return [cos(rx) * float(definition.get("scaleX", 1.0)), cos(ry) * float(definition.get("scaleY", 1.0)),
+		sin(rx) * float(definition.get("scaleX", 1.0)), sin(ry) * float(definition.get("scaleY", 1.0)),
+		float(definition.get("x", 0.0)), float(definition.get("y", 0.0))]
+
+
+# The counterpart-local transform that lays `everyday` along `counterpart` at the
+# setup pose, as [a, b, c, d, x, y].
+func _leg_gear_frame_alignment(everyday, counterpart):
+	var mine = _raw_setup_world(everyday)
+	var theirs = _raw_setup_world(counterpart)
+	var along = Vector2(theirs[0], theirs[2]).normalized()
+	var across = Vector2(theirs[1], theirs[3]).normalized()
+	var own_length = float(_bone_definition(everyday).get("length", 1.0))
+	var their_length = float(_bone_definition(counterpart).get("length", own_length))
+	along *= Vector2(mine[0], mine[2]).length() * (their_length / own_length if own_length > 0.0 else 1.0)
+	across *= Vector2(mine[1], mine[3]).length()
+	var wanted = [along.x, across.x, along.y, across.y, theirs[4], theirs[5]]
+	# inverse(theirs) * wanted
+	var det = theirs[0] * theirs[3] - theirs[1] * theirs[2]
+	var ia = theirs[3] / det
+	var ib = -theirs[1] / det
+	var ic = -theirs[2] / det
+	var id = theirs[0] / det
+	var dx = wanted[4] - theirs[4]
+	var dy = wanted[5] - theirs[5]
+	return [ia * wanted[0] + ib * wanted[2], ia * wanted[1] + ib * wanted[3],
+		ic * wanted[0] + id * wanted[2], ic * wanted[1] + id * wanted[3],
+		ia * dx + ib * dy, ic * dx + id * dy]
+
+
+func _bone_definition(bone_name):
+	for definition in skeleton.get("bones", []):
+		if str(definition.get("name", "")) == bone_name:
+			return definition
+	return {}
+
+
+# A bone's world transform from the export's setup values alone - no modifiers,
+# no IK - as [a, b, c, d, x, y].
+func _raw_setup_world(bone_name):
+	var chain = []
+	var walk = bone_name
+	while walk != "":
+		chain.push_front(walk)
+		walk = str(_bone_definition(walk).get("parent", ""))
+	var m = [1.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+	for name in chain:
+		var definition = _bone_definition(name)
+		var rotation = float(definition.get("rotation", 0.0))
+		var rx = deg2rad(rotation + float(definition.get("shearX", 0.0)))
+		var ry = deg2rad(rotation + 90.0 + float(definition.get("shearY", 0.0)))
+		var la = cos(rx) * float(definition.get("scaleX", 1.0))
+		var lb = cos(ry) * float(definition.get("scaleY", 1.0))
+		var lc = sin(rx) * float(definition.get("scaleX", 1.0))
+		var ld = sin(ry) * float(definition.get("scaleY", 1.0))
+		var lx = float(definition.get("x", 0.0))
+		var ly = float(definition.get("y", 0.0))
+		m = [m[0] * la + m[1] * lc, m[0] * lb + m[1] * ld, m[2] * la + m[3] * lc, m[2] * lb + m[3] * ld,
+			m[0] * lx + m[1] * ly + m[4], m[2] * lx + m[3] * ly + m[5]]
+	return m
 
 
 # Apply after all hierarchy/IK passes so limb sliders cannot erase the offset.
@@ -3548,8 +4881,37 @@ func _rebuild_model():
 # same as choosing nothing - so the level is applied on the way to the model.
 func _worn_selections():
 	var level = GEAR.normalise(undress_level)
-	if _anatomy_animation_active():
-		level = GEAR.NAKED
+	if !_anatomy_animation_active():
+		return _selections_at_level(level)
+	# An anatomy take strips the doll, except for a set it has been fitted to.
+	var wearable = _anatomy_wearable_parts()
+	if wearable.empty():
+		return _selections_at_level(GEAR.NAKED)
+	var result = _selections_at_level(level).duplicate()
+	for group_id in GEAR.WORN_GROUPS:
+		if !(str(result.get(group_id, "")) in wearable):
+			result[group_id] = ""
+	return result
+
+
+# The sets the running anatomy take is fitted to (ANATOMY_OUTFITS); a composed
+# pose goes by the take its lower body comes from.
+func _anatomy_wearable_parts():
+	return ANATOMY_OUTFITS.get(_anatomy_lower_take(), [])
+
+
+# The take the running anatomy pose takes its legs from, or "".
+func _anatomy_lower_take():
+	for animation_name in animation_states.keys():
+		if !bool(animation_states[animation_name]) or !_is_anatomy_animation(animation_name):
+			continue
+		if composed_info.has(animation_name):
+			return str(composed_info[animation_name].get("owners", {}).get("lower", ""))
+		return animation_name
+	return ""
+
+
+func _selections_at_level(level):
 	if level == GEAR.DRESSED:
 		return selections
 	var result = selections.duplicate()
@@ -3673,7 +5035,77 @@ func _draw_ordered_slots():
 	for slot_name in _current_draw_order():
 		if by_name.has(slot_name):
 			result.append(by_name[slot_name])
+	if _leg_gear_split():
+		result = _split_leg_gear(result)
 	return result
+
+
+# A raised leg bends at the knee further than one mesh can follow, and the take
+# draws the shin over the thigh.  A stocking is then drawn as two pieces of the
+# same mesh: the thigh's just over the bare thigh - so the bare shin covers it at
+# the knee, as it covers the leg - and the shin's over the bare shin.
+const LEG_GEAR_PIECES = {
+	"equip_leg_left": [["HipL_up", "HipL_muscle_up"], ["ShinL", "ShinL_muscle"]],
+	"equip_leg_right": [["HipR_up", "HipR_muscle_up"], ["ShinR", "ShinR_muscle"]],
+}
+
+func _leg_gear_split():
+	return _anatomy_animation_active() and !_anatomy_wearable_parts().empty() and _anatomy_lower_take() in LEG_GEAR_RAISED_TAKES
+
+
+func _split_leg_gear(ordered):
+	var result = ordered.duplicate()
+	for gear in LEG_GEAR_PIECES.keys():
+		var original = null
+		for slot in result:
+			if str(slot.get("name", "")) == gear:
+				original = slot
+		if original == null:
+			continue
+		result.erase(original)
+		var pieces = ["thigh", "shin"]
+		for i in range(2):
+			var deepest = -1
+			for index in range(result.size()):
+				if str(result[index].get("name", "")) in LEG_GEAR_PIECES[gear][i]:
+					deepest = index
+			var piece = original.duplicate()
+			piece["_piece"] = pieces[i]
+			result.insert(deepest + 1 if deepest >= 0 else result.size(), piece)
+	return result
+
+
+# The triangles of a stocking piece.  The rebind puts the knee and the kneecap on
+# the shin mesh's weights, so a triangle with no corner on the thigh is the shin's.
+# One with a corner on the thigh bridges the bend and turns inside out in it;
+# drawn with the thigh, under the bare shin, the fold is hidden.
+const LEG_GEAR_THIGH_PIECE_SHARE = 0.5
+func _leg_gear_piece_triangles(slot, attachment, triangles):
+	var thigh = str(LEG_GEAR_SLOTS.get(str(slot.get("name", "")), [""])[0])
+	var vertices = attachment.get("vertices", [])
+	if thigh == "" or vertices.size() <= attachment.get("uvs", []).size():
+		return triangles
+	var bone_list = skeleton.get("bones", [])
+	var leaning = []
+	var read = 0
+	while read < vertices.size():
+		var count = int(vertices[read])
+		var share = 0.0
+		for influence in range(count):
+			var at = read + 1 + influence * 4
+			if str(bone_list[int(vertices[at])].get("name", "")) == thigh:
+				share += float(vertices[at + 3])
+		leaning.append(share)
+		read += 1 + count * 4
+	var want_thigh = str(slot.get("_piece", "")) == "thigh"
+	var kept = []
+	for triangle in triangles:
+		var share = 0.0
+		for corner in triangle:
+			share = max(share, leaning[corner] if corner < leaning.size() else 0.0)
+		if (share >= LEG_GEAR_THIGH_PIECE_SHARE) == want_thigh:
+			kept.append(triangle)
+	return kept
 
 
 # A flat chest draws no breasts, so the nipples a piercing goes through are the
@@ -3702,6 +5134,33 @@ func _current_draw_order():
 		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
 	if composed.has("pregnancy_belly"):
 		order = _apply_draw_order_fixes(order.duplicate(), PREGNANT_DRAW_ORDER_FIXES)
+	if _anatomy_animation_active() and !_anatomy_wearable_parts().empty():
+		order = order.duplicate()
+		for gear in LEG_GEAR_OVER.keys():
+			var deepest = -1
+			for leg in LEG_GEAR_OVER[gear]:
+				deepest = max(deepest, order.find(leg))
+			var at = order.find(gear)
+			if at >= 0 and deepest > at:
+				order.remove(at)
+				order.insert(deepest, gear)
+		if _anatomy_lower_take() in LEG_GEAR_RAISED_TAKES and PELVIS_GEAR.get(str(composed.get("equip_pelvis", "")), {}).get("behind_raised_legs", false):
+			# every leg layer drawn under the piece goes just over it, in its own order;
+			# the piece itself stays over the belly and pelvis overlays
+			var legs = []
+			for gear in LEG_GEAR_OVER.keys():
+				legs.append(gear)
+				legs.append_array(LEG_GEAR_OVER[gear])
+			var piece = order.find("equip_pelvis")
+			var moved = []
+			for index in range(piece):
+				if order[index] in legs:
+					moved.append(order[index])
+			for slot_name in moved:
+				order.erase(slot_name)
+			piece = order.find("equip_pelvis")
+			for index in range(moved.size()):
+				order.insert(piece + 1 + index, moved[index])
 	return order
 
 
@@ -3998,8 +5457,9 @@ func _resolve_attachment(slot):
 	if anatomy_active and bool(animation_states.get("deepthroat", false)) and slot_name in ["ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle"]:
 		return {}
 	# The restriction also applies to animation keys and externally supplied
-	# selections, so neither can bring clothing back during these takes.
-	if anatomy_active and (str(slot_name).begins_with("equip_") or slot_name in ["weapon_belt", "weapon_back"]):
+	# selections, so neither can bring clothing back during these takes - bar a
+	# set the take is fitted to, which is all `_worn_selections` leaves on.
+	if anatomy_active and (slot_name in ["weapon_belt", "weapon_back"] or (str(slot_name).begins_with("equip_") and _anatomy_wearable_parts().empty())):
 		return {}
 	if slot_name in ANATOMY_SLOTS:
 		if !anatomy_active:
@@ -4042,10 +5502,57 @@ func _resolve_attachment(slot):
 	if !attachments.has(slot_name) or !attachments[slot_name].has(attachment_name):
 		push_warning("Doll2Preview: composed attachment `%s/%s` is not in the export" % [slot_name, attachment_name])
 		return {}
+	if anatomy_active and attachment_name in ANATOMY_HIDDEN_PIECES and !_anatomy_wearable_parts().empty():
+		return {}
+	if anatomy_active and POSELESS_GLOVES.has(slot_name) and attachment_name in POSELESS_GLOVES[slot_name] and animation_attachments.has(slot_name.replace("equip_", "")):
+		return {}
 	var result = attachments[slot_name][attachment_name].duplicate()
 	result["_attachment_name"] = attachment_name
 	result["_skin_name"] = SKIN_NAME
+	if anatomy_active and ANATOMY_TRIMMED_PIECES.has(attachment_name):
+		result["triangles"] = _trimmed_triangles(attachment_name, result)
+	var refit = _leg_gear_reskinned(slot_name, result)
+	if !refit.empty():
+		result["vertices"] = refit
+		result["_leg_gear_refit"] = true
+	var pelvis_refit = _pelvis_gear_rebind(slot_name, result)
+	if !pelvis_refit.empty():
+		result["vertices"] = pelvis_refit
+		result["_pelvis_refit"] = true
 	return result
+
+
+# A trimmed piece's triangles (ANATOMY_TRIMMED_PIECES), from its authored vertices.
+var trimmed_triangles = {}
+
+func _trimmed_triangles(attachment_name, attachment):
+	if trimmed_triangles.has(attachment_name):
+		return trimmed_triangles[attachment_name]
+	var cut = float(ANATOMY_TRIMMED_PIECES[attachment_name])
+	var vertices = attachment.get("vertices", [])
+	var bone_list = skeleton.get("bones", [])
+	var below = []
+	if vertices.size() > attachment.get("uvs", []).size():
+		var read = 0
+		while read < vertices.size():
+			var count = int(vertices[read])
+			var y = 0.0
+			for influence in range(count):
+				var at = read + 1 + influence * 4
+				var world = _raw_setup_world(str(bone_list[int(vertices[at])].get("name", "")))
+				y += (world[2] * float(vertices[at + 1]) + world[3] * float(vertices[at + 2]) + world[5]) * float(vertices[at + 3])
+			below.append(y < cut)
+			read += 1 + count * 4
+	else:
+		for index in range(vertices.size() / 2):
+			below.append(float(vertices[index * 2 + 1]) < cut)
+	var kept = []
+	var triangles = attachment.get("triangles", [])
+	for t in range(0, triangles.size() - 2, 3):
+		if below[int(triangles[t])] and below[int(triangles[t + 1])] and below[int(triangles[t + 2])]:
+			kept.append_array([triangles[t], triangles[t + 1], triangles[t + 2]])
+	trimmed_triangles[attachment_name] = kept
+	return kept
 
 
 func _active_emotion_animates_slot(slot_name):
@@ -4146,6 +5653,9 @@ func _add_attachment(slot, attachment, rows = {}, clipping = {}, inset = false):
 	var data = _attachment_geometry(slot, attachment, region, page.size, _attachment_deform(slot, attachment), mod_texture, _pose_for(slot), false, _skinning_rows(slot, rows), rows)
 	if data.empty():
 		return
+	if slot.has("_piece"):
+		data = data.duplicate()
+		data["triangles"] = _leg_gear_piece_triangles(slot, attachment, data.triangles)
 	var polygon = Polygon2D.new()
 	polygon.name = slot.get("name", "Attachment")
 	polygon.texture = mod_texture if mod_texture != null else page.texture
@@ -4271,11 +5781,12 @@ func _reorder_animated_slots():
 func _reorder_mesh_records(records, root, ordered, inset = false):
 	var by_slot = {}
 	for record in records:
-		by_slot[str(record.slot.name)] = record
+		by_slot[str(record.slot.name) + str(record.slot.get("_piece", ""))] = record
 	var clipping = {}
 	var reordered = []
 	for slot in ordered:
 		var name = str(slot.name)
+		var key = name + str(slot.get("_piece", ""))
 		if inset and name == "XRAY":
 			continue
 		var attachment = _xray_attachment(slot) if inset and name == "xray" else _resolve_attachment(slot)
@@ -4283,8 +5794,8 @@ func _reorder_mesh_records(records, root, ordered, inset = false):
 			if clipping.empty():
 				clipping = {"slot": slot, "attachment": attachment}
 			continue
-		if by_slot.has(name):
-			var record = by_slot[name]
+		if by_slot.has(key):
+			var record = by_slot[key]
 			record.clipping = clipping
 			record["clipping_changed"] = true
 			root.move_child(record.polygon, root.get_child_count() - 1)
@@ -4507,7 +6018,9 @@ func _attachment_deform(slot, attachment, active = null):
 		if !skin_timelines.has(slot_name) or !skin_timelines[slot_name].has(attachment_name):
 			continue
 		var timeline = skin_timelines[slot_name][attachment_name].get("deform", [])
-		var sampled = _sample_deform_timeline(timeline, float(animation_times.get(animation_name, 0.0)), _deform_length(attachment))
+		var sampled = _sample_deform_timeline(timeline, float(animation_times.get(animation_name, 0.0)), _source_deform_length(attachment))
+		if attachment.get("_pelvis_refit", false):
+			sampled = _pelvis_layout_deform(attachment, sampled)
 		# `emote_horny` is now an authored static face-mesh deformation rather
 		# than a bone pose. `eyesmove` addresses the same meshes, so applying the
 		# emotion last used to erase the blink completely. Keep the blink aside
@@ -4527,6 +6040,15 @@ func _attachment_deform(slot, attachment, active = null):
 		else:
 			for i in range(min(result.size(), blink_overlay.size())):
 				result[i] += blink_overlay[i]
+	var contour = _leg_gear_contour(slot_name, attachment)
+	if contour.empty():
+		contour = _pelvis_gear_lift(slot_name, attachment)
+	if !contour.empty():
+		if result.empty():
+			result = contour.duplicate()
+		else:
+			for i in range(min(result.size(), contour.size())):
+				result[i] += contour[i]
 	# Bone crossfading cannot affect the current mesh-authored horny take. Ease
 	# every displayed attachment from the deformation visible before the switch
 	# to the new raw sample, both on entry and on exit.

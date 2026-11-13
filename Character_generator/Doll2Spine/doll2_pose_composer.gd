@@ -45,6 +45,16 @@ const TAKE_PENISES = {
 # shows through the belly.  double_pen draws the same penis behind the torso.
 const PENIS_LAYERING = {"sex_missionary": {"penis": ["double_pen", "penis"]}}
 
+# Clothing rides with the body part it dresses.  The handjob takes bring the arm
+# and the shoulder forward and leave their clothing behind - harmless while the
+# takes stripped the doll, a bare arm over its own sleeve once a set stays on.
+const GEAR_RIDES = {
+	"equip_arm_left": ["arm_left", "race_arm_left"],
+	"equip_arm_right": ["arm_right", "race_arm_right"],
+	"equip_shoulder_left": ["shoulder_left", "shoulderl_muscle", "race_shoulder_left"],
+	"equip_shoulder_right": ["shoulder_right", "shoulderr_muscle", "race_shoulder_right"],
+}
+
 const REGION_ROOTS = {
 	"lower": ["spine1"],
 	"head": ["neck"],
@@ -474,6 +484,15 @@ func _merge_draw_order(takes, owners, base, stretch, placed):
 				order.erase(placed_name)
 				order.insert(order.find(anchor) + 1 if anchor != "" else 0, placed_name)
 				inserted[slot_name] = true
+		for gear in GEAR_RIDES.keys():
+			var deepest = -1
+			for body in GEAR_RIDES[gear]:
+				deepest = max(deepest, order.find(body))
+			var at = order.find(gear)
+			if at >= 0 and deepest > at:
+				order.erase(gear)
+				order.insert(deepest, gear)
+				all_moved[gear] = true
 		var key = {"offsets": _encode(order, all_moved)}
 		if time > 0.0:
 			key["time"] = time
