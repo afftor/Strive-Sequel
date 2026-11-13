@@ -123,16 +123,14 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 						silently_hide = true
 						break
 				if show_req_info and !is_silent:
-					reqs_met_text += "\n{color=%s|%s}" % [color, ResourceScripts.descriptions.make_slave_statreq_text(req)]
+					if !reqs_met_text.empty():
+						reqs_met_text += "\n"
+					reqs_met_text += "{color=%s|%s}" % [color, ResourceScripts.descriptions.make_slave_statreq_text(req)]
 			if silently_hide:
 				newnode.hide()
 			elif show_req_info:
 				if !reqs_met:
 					newnode.disabled = true
-				var recap
-				if reqs_met: recap = 'REQUIREMENTSMET'
-				else: recap = 'REQUIREMENTSARENTMET'
-				reqs_met_text = "%s%s" % [tr(recap), reqs_met_text]
 				newnode.set_meta("reqs_met_text", reqs_met_text)
 				newnode.connect("mouse_entered", self, "show_req_info", [newnode])
 				newnode.connect("mouse_exited", self, "try_hide_req_info")

@@ -498,6 +498,8 @@ ma manterrà comunque tutti i tuoi personaggi, oggetti e inventario. Usa questa 
 	MSLMSORTLEVELUP = "Potenziabile",
 	MSLMFOLDLIST = "Comprimi elenco personaggi",
 	MSLMUNFOLDLIST = "Espandi elenco personaggi",
+	MSLMSTRIPVIEW = """Compact list""", # MISSING TRANSLATION
+	MSLMCARDVIEW = """Card view""", # MISSING TRANSLATION
 	MSLMEXPANDEDFACTORS = "Fattori",
 	MSLMEXPANDEDSTATS = "Statistiche di base",
 	MSLMEXPANDEDEQUIPMENT = "Equipaggiato",
@@ -33822,6 +33824,12 @@ Guild orders pay gold and reputation with their guild instead of rank experience
 	SQ_PANEL_TITLE = """Market Commissions""", # MISSING TRANSLATION
 	SQ_PANEL_SUBTITLE = """Open orders from the factions""", # MISSING TRANSLATION
 	SQ_COL_QUEST = """Quest""", # MISSING TRANSLATION
+	SQ_REROLL_QUESTS = """Reroll Quests""", # MISSING TRANSLATION
+	SQ_REROLL_TOOLTIP = """[center]{color=yellow|Reroll Quests}[/center]
+Replace all quests listed on the slave market for %s Token of Recognition. Available once per day. Partial deliveries on these quests are lost.""", # MISSING TRANSLATION
+	SQ_REROLL_USED = """Already used today. Come back tomorrow.""", # MISSING TRANSLATION
+	SQ_REROLL_SHORT_TOKENS = """You need a Token of Recognition.""", # MISSING TRANSLATION
+	SQ_REROLL_NO_QUESTS = """There are no open market quests to reroll.""", # MISSING TRANSLATION
 	SQ_COL_WANTS = """Wants""", # MISSING TRANSLATION
 	SQ_COL_REWARD = """Reward""", # MISSING TRANSLATION
 	SQ_COL_DAYS = """Days""", # MISSING TRANSLATION

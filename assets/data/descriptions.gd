@@ -912,7 +912,7 @@ func make_slave_statreq_text(req):
 		'stat':
 			if req.stat.begins_with('sex_training_'):
 				return "%s: %s." % [tr("CHARINFO_" + req.stat.to_upper()), _sex_training_level_label(req.value)]
-			var stat_name = statdata.statdata[req.stat].name
+			var stat_name = statdata.statdata[req.stat].get('name', tr("STAT" + req.stat.to_upper()))
 			var operant_text = input_handler.operant_translation(req.operant)
 			if req.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
 				return "%s: %s %s" % [stat_name, operant_text, tr(ResourceScripts.descriptions.factor_descripts[int(req.value)])]

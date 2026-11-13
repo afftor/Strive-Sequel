@@ -9,6 +9,8 @@ var active_person
 onready var SlaveModule = get_parent().SlaveModule
 onready var CardContainer = $ScrollContainer/CardContainer
 onready var RowContainer = $ScrollContainer/RowContainer
+onready var StripContainer = $ScrollContainer/StripContainer
+onready var ViewModeButton = $ViewModeButton
 onready var EntryContentTemplate = $ScrollContainer/VBoxContainer/Button
 var SlaveContainer
 onready var LocationsList = $TravelsContainerPanel/TravelsContainer/HBoxContainer
@@ -108,6 +110,13 @@ const SKILL_NO_IMAGE_TEXTURE = preload("res://assets/images/gui/panels/noimage.p
 #buttons, and a unique character - drawn as a sprite, with no doll to put them on
 #- gets this one button over the picture instead.
 const NUDITY_TOGGLE = preload("res://gui_modules/Universal/Scripts/NudityToggle.gd")
+const CARD_LAYOUT_SCENE = preload("res://gui_modules/Mansion/Modules/MansionSlaveCardPortrait.tscn")
+#where MansionSlaveCardPortrait.tscn puts its portrait picture, from the card's top left corner
+const CARD_PORTRAIT_OFFSET = Vector2(46, 48)
+const CARD_PORTRAIT_SIZE = 152.0
+const STRIP_FADE_SHARE = 0.35
+const STRIP_FLASH_TIME = 0.6
+const STRIP_BAR_GAP = 2.0
 const EXPANDED_ANIMATION_TIME = 0.24
 const LIST_FOLD_ANIMATION_TIME = 0.18
 const LIST_FOLDED_HEIGHT = 60.0
@@ -304,6 +313,7 @@ func _ready():
 	#first being the view buttons down the left
 	input_handler.register_btn_source("slave_list_fold_btn", self, "tut_get_list_fold_btn")
 	ListFoldButton.connect('pressed', self, '_toggle_slave_list')
+	ViewModeButton.connect('pressed', self, '_toggle_list_view')
 	apply_default_fold()
 	_setup_sort_menu()
 	build_sort_headers()
@@ -454,7 +464,7 @@ func _on_card_expand_requested(card):
 
 
 func open_expanded_character(card):
-	if !is_instance_valid(card) or card.get_parent() != CardContainer:
+	if !is_instance_valid(card) or card.get_parent() != SlaveContainer or !_is_card_entry(card):
 		return
 	var person = card.get_meta("slave", null)
 	if person == null:
@@ -471,6 +481,13 @@ func open_expanded_character(card):
 	#visible order twice per animation. A visual copy can move while the real slot stays put.
 	_claim_expanded_card_source(card)
 	_create_expanded_card_visual()
+	if _expanded_source_is_strip() and is_instance_valid(expanded_card_visual):
+		var fit = _strip_portrait_fit()
+		expanded_card_visual.rect_pivot_offset = fit.pivot
+		expanded_card_visual.rect_scale = fit.scale
+		ExpandedCharacter.modulate.a = 0.0
+	else:
+		ExpandedCharacter.modulate.a = 1.0
 
 	#Build one section per frame while the geometry is moving. Previously the entire
 	#detail pane landed on the animation's last frame and caused a visible hitch there.
@@ -541,6 +558,7 @@ func _close_expanded_character_immediate():
 	ExpandedTween.remove_all()
 	_restore_expanded_card()
 	ExpandedCharacter.hide()
+	ExpandedCharacter.modulate.a = 1.0
 	ExpandedExtra.hide()
 	ExpandedExtra.modulate.a = 0.0
 	ExpandedBodyPreview.hide()
@@ -564,7 +582,55 @@ func _play_expanded_geometry(target_rect):
 		ExpandedCharacter, "rect_size", ExpandedCharacter.rect_size, target_rect.size,
 		EXPANDED_ANIMATION_TIME, Tween.TRANS_QUAD, Tween.EASE_OUT
 	)
+	if _expanded_source_is_strip() and is_instance_valid(expanded_card_visual):
+		_add_strip_morph(expanded_animation_state == "opening")
 	ExpandedTween.start()
+
+
+func _expanded_source_is_strip():
+	return is_instance_valid(expanded_card) and expanded_card.get_parent() == StripContainer
+
+
+#A strip is far smaller than the card it opens into, so the card grows out of the strip's own
+#portrait: this is the scale and pivot that lay the card's portrait over the strip's.
+func _strip_portrait_fit():
+	var strip_portrait = expanded_card.get_node(CARD_PORTRAIT).get_global_rect()
+	var target = strip_portrait.position - expanded_card.get_global_rect().position
+	var k = strip_portrait.size.x / CARD_PORTRAIT_SIZE
+	return {scale = Vector2(k, k), pivot = (target - CARD_PORTRAIT_OFFSET * k) / (1.0 - k)}
+
+
+#The panel fades over the strip rather than blacking it out on the first frame, and fades off it
+#again on the way back, so the strip seems to turn into the card and back.
+func _add_strip_morph(opening):
+	var fit = _strip_portrait_fit()
+	expanded_card_visual.rect_pivot_offset = fit.pivot
+	var fade = EXPANDED_ANIMATION_TIME * STRIP_FADE_SHARE
+	ExpandedTween.interpolate_property(
+		expanded_card_visual, "rect_scale", expanded_card_visual.rect_scale,
+		Vector2.ONE if opening else fit.scale, EXPANDED_ANIMATION_TIME, Tween.TRANS_QUAD, Tween.EASE_OUT
+	)
+	if opening:
+		ExpandedTween.interpolate_property(
+			ExpandedCharacter, "modulate:a", ExpandedCharacter.modulate.a, 1.0, fade,
+			Tween.TRANS_LINEAR, Tween.EASE_IN
+		)
+	else:
+		ExpandedTween.interpolate_property(
+			ExpandedCharacter, "modulate:a", ExpandedCharacter.modulate.a, 0.0, fade,
+			Tween.TRANS_LINEAR, Tween.EASE_IN, EXPANDED_ANIMATION_TIME - fade
+		)
+
+
+#The compact list is long, so the strip the card went back into lights up for a moment.
+func _flash_strip(entry):
+	if !is_instance_valid(entry) or !entry.has_node("CardLayout"):
+		return
+	var layout = entry.get_node("CardLayout")
+	var rest = Color(1, 1, 1, layout.modulate.a)
+	var flash = layout.create_tween()
+	flash.tween_property(layout, "modulate", rest, STRIP_FLASH_TIME) \
+		.from(Color(1.6, 1.45, 1.05, rest.a)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
 func _on_expanded_animation_finished():
@@ -579,15 +645,18 @@ func _on_expanded_animation_finished():
 		return
 	if expanded_animation_state != "closing":
 		return
+	var flash_entry = expanded_card if _expanded_source_is_strip() else null
 	_restore_expanded_card()
 	ExpandedCharacter.hide()
+	ExpandedCharacter.modulate.a = 1.0
 	ExpandedExtra.hide()
 	ExpandedExtra.modulate.a = 0.0
 	expanded_animation_state = ""
 	_sync_input_listening()
+	_flash_strip(flash_entry)
 	var next_card = expanded_pending_card
 	expanded_pending_card = null
-	if is_instance_valid(next_card) and next_card.get_parent() == CardContainer:
+	if is_instance_valid(next_card) and _is_card_entry(next_card):
 		open_expanded_character(next_card)
 
 
@@ -658,7 +727,9 @@ func _try_reveal_expanded_character():
 #would have clicked next rather than on whoever happens to be beside them in the party roster.
 func _get_expanded_step_cards():
 	var cards = []
-	for card in CardContainer.get_children():
+	if !_is_card_container(SlaveContainer):
+		return cards
+	for card in SlaveContainer.get_children():
 		if !card.has_meta('slave') or !card.visible or card.disabled:
 			continue
 		cards.append(card)
@@ -922,19 +993,32 @@ func _create_expanded_card_visual():
 	expanded_card_visual = null
 	if !is_instance_valid(expanded_card) or !expanded_card.has_node("CardLayout"):
 		return
-	var source_layout = expanded_card.get_node("CardLayout")
-	#Runtime tooltip/action connections are external to CardLayout and are not reliably
-	#remapped by duplicate(). Copy the visual tree without signals, then bind it to the
-	#same person explicitly so the enlarged card remains fully interactive.
-	expanded_card_visual = source_layout.duplicate(14)
-	expanded_card_visual.name = "ExpandedCardVisual"
-	#The source layout delegates input to its outer card button. The expanded copy has no
-	#such parent, so let its root receive double-clicks from the portrait/background.
-	expanded_card_visual.mouse_filter = MOUSE_FILTER_STOP
-	ExpandedCardSlot.add_child(expanded_card_visual)
-	_copy_card_tooltips(source_layout, expanded_card_visual)
-	_connect_expanded_card_actions(expanded_card_visual, expanded_card.get_meta("slave"))
-	_connect_expanded_card_doubleclicks(expanded_card_visual, expanded_card.get_meta("slave"))
+	var person = expanded_card.get_meta("slave")
+	if expanded_card.get_parent() == StripContainer:
+		#A strip shares the card's node names but not its look, so the panel gets a whole card of
+		#its own, named so the card paths reach it from the slot, and filled the way cards are.
+		expanded_card_visual = CARD_LAYOUT_SCENE.instance()
+		expanded_card_visual.name = "CardLayout"
+		expanded_card_visual.mouse_filter = MOUSE_FILTER_STOP
+		ExpandedCardSlot.add_child(expanded_card_visual)
+		if ExpandedCardSlot.has_meta("card_static_signature"):
+			ExpandedCardSlot.remove_meta("card_static_signature")
+		_fill_card_content(ExpandedCardSlot, person)
+		_update_card_action_states(ExpandedCardSlot, person)
+	else:
+		var source_layout = expanded_card.get_node("CardLayout")
+		#Runtime tooltip/action connections are external to CardLayout and are not reliably
+		#remapped by duplicate(). Copy the visual tree without signals, then bind it to the
+		#same person explicitly so the enlarged card remains fully interactive.
+		expanded_card_visual = source_layout.duplicate(14)
+		expanded_card_visual.name = "ExpandedCardVisual"
+		#The source layout delegates input to its outer card button. The expanded copy has no
+		#such parent, so let its root receive double-clicks from the portrait/background.
+		expanded_card_visual.mouse_filter = MOUSE_FILTER_STOP
+		ExpandedCardSlot.add_child(expanded_card_visual)
+		_copy_card_tooltips(source_layout, expanded_card_visual)
+	_connect_expanded_card_actions(expanded_card_visual, person)
+	_connect_expanded_card_doubleclicks(expanded_card_visual, person)
 
 
 func _connect_expanded_card_actions(layout, person):
@@ -1345,6 +1429,8 @@ func set_fold_from_view(folded):
 const FOLD_BUTTON_LEFT = 12.0
 const FOLD_BUTTON_WIDTH = 47.0
 const FOLD_BUTTON_RIGHT_MARGIN = 12.0
+#open, the view switch takes the first slot and the fold control the next
+const FOLD_BUTTON_OPEN_LEFT = 67.0
 
 
 #Folded, the bar is nothing but a handle for opening the list again: sorting a list nobody can
@@ -1355,10 +1441,15 @@ func apply_fold_to_bar():
 	var open = list_fold_state != FOLD_FOLDED
 	SortButton.visible = open
 	$TravelsContainerPanel.visible = open
-	ListFoldButton.margin_left = FOLD_BUTTON_LEFT
+	ViewModeButton.visible = open
+	#the lesson only knows cards, so the switch waits until it is over
+	ViewModeButton.disabled = input_handler.hard_tutorial_active
+	ViewModeButton.modulate.a = 0.5 if ViewModeButton.disabled else 1.0
 	if open:
-		ListFoldButton.margin_right = FOLD_BUTTON_LEFT + FOLD_BUTTON_WIDTH
+		ListFoldButton.margin_left = FOLD_BUTTON_OPEN_LEFT
+		ListFoldButton.margin_right = FOLD_BUTTON_OPEN_LEFT + FOLD_BUTTON_WIDTH
 	else:
+		ListFoldButton.margin_left = FOLD_BUTTON_LEFT
 		ListFoldButton.margin_right = rect_size.x - FOLD_BUTTON_RIGHT_MARGIN
 
 
@@ -1518,11 +1609,13 @@ func unfold_to_person(person):
 
 
 func card_of_person(person):
-	for holder in [CardContainer, RowContainer]:
+	for holder in [SlaveContainer, CardContainer, StripContainer, RowContainer]:
 		if holder == null:
 			continue
 		for card in holder.get_children():
-			if card.get_meta("slave", null) == person:
+			if card.is_queued_for_deletion() or !card.has_meta("slave"):
+				continue
+			if card.get_meta("slave") == person:
 				return card
 	return null
 
@@ -1610,9 +1703,58 @@ func update_buttons():
 
 func _select_slave_container():
 	var use_cards = mode == 'default'
-	CardContainer.visible = use_cards
+	var use_strips = use_cards and strip_view_wanted()
+	CardContainer.visible = use_cards and !use_strips
+	StripContainer.visible = use_strips
 	RowContainer.visible = !use_cards
-	SlaveContainer = CardContainer if use_cards else RowContainer
+	if use_strips:
+		SlaveContainer = StripContainer
+	else:
+		SlaveContainer = CardContainer if use_cards else RowContainer
+	_sync_view_button()
+
+
+#The compact list is kept as a setting. The hard tutorial points at cards, so it always gets them.
+func strip_view_wanted():
+	return input_handler.globalsettings.compact_slave_list and !input_handler.hard_tutorial_active
+
+
+func _is_card_container(container):
+	return container == CardContainer or container == StripContainer
+
+
+#Cards and strips are filled by the same code; only the legacy rows are something else.
+func _is_card_entry(entry):
+	return _is_card_container(entry.get_parent())
+
+
+func _toggle_list_view():
+	if input_handler.hard_tutorial_active:
+		return
+	input_handler.globalsettings.compact_slave_list = SlaveContainer != StripContainer
+	rebuild()
+	$ScrollContainer.scroll_vertical = 0
+	_show_active_entry()
+
+
+#The glyph shows the view a press switches to, the way the fold handle shows where it folds.
+var view_button_shows_strips = null
+
+func _sync_view_button():
+	var strips = SlaveContainer == StripContainer
+	if view_button_shows_strips == strips:
+		return
+	view_button_shows_strips = strips
+	ViewModeButton.get_node("Cards").visible = strips
+	ViewModeButton.get_node("Strips").visible = !strips
+	globals.connecttexttooltip(ViewModeButton, tr("MSLMCARDVIEW" if strips else "MSLMSTRIPVIEW"))
+
+
+func _show_active_entry():
+	yield(get_tree(), "idle_frame")
+	var entry = card_of_person(get_parent().active_person)
+	if entry != null and entry.is_visible_in_tree():
+		$ScrollContainer.ensure_control_visible(entry)
 
 
 func _initialize_entry_templates():
@@ -1639,7 +1781,7 @@ func _ensure_selected_container_entries():
 		mass_service_list.clear()
 	for person_id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[person_id]
-		if SlaveContainer == CardContainer:
+		if _is_card_container(SlaveContainer):
 			_build_card_entry(person, person_id)
 		else:
 			_build_row_entry(person, person_id)
@@ -1875,7 +2017,8 @@ func _update_card_work_type(newbutton, person, job_text, color_key = ""):
 	work_icon.texture = _get_card_work_icon(person, output)
 	work_icon.visible = work_icon.texture != null
 	work_label.text = job_text
-	work_label.hide()
+	#the strip has room to name the work; the card leaves it to the icon and its tooltip
+	work_label.visible = newbutton.get_parent() == StripContainer
 	if color_key == "":
 		color_key = _get_card_job_display(person).color
 	_set_card_work_highlight(newbutton, color_key)
@@ -2134,6 +2277,11 @@ func _update_card_static_content(newbutton, person):
 
 
 func _update_card_button(newbutton, person):
+	_fill_card_content(newbutton, person)
+	_refresh_card_visual(newbutton)
+
+
+func _fill_card_content(newbutton, person):
 	newbutton.get_node(CARD_PORTRAIT).texture = person.get_icon()
 	input_handler.queue_portrait(person) #most of a mansion never had a shot taken at all
 	_update_card_static_content(newbutton, person)
@@ -2143,6 +2291,8 @@ func _update_card_button(newbutton, person):
 	lust_bar.visible = person.has_lust_meter()
 	if lust_bar.visible:
 		_update_card_progress(lust_bar, tr("STATLUST"), person.get_stat('lust'), person.get_stat('lustmax'))
+	if newbutton.get_parent() == StripContainer:
+		_center_strip_bars(newbutton)
 	var job_display = _get_card_job_display(person)
 	newbutton.set_meta("card_job_text", job_display.text)
 	_update_card_work_type(newbutton, person, job_display.text, job_display.color)
@@ -2155,7 +2305,20 @@ func _update_card_button(newbutton, person):
 	_set_card_action_available(card_info, true)
 	_set_card_text_tooltip(card_info, tr("MSMNAME"))
 	_update_card_warnings(newbutton, person)
-	_refresh_card_visual(newbutton)
+
+
+#Two bars or three, the strip keeps them as one block in the middle of its line.
+func _center_strip_bars(newbutton):
+	var bars = []
+	for path in [CARD_HP_BAR, CARD_MP_BAR, CARD_LUST_BAR]:
+		var bar = newbutton.get_node(path)
+		if bar.visible:
+			bars.append(bar)
+	var step = bars[0].rect_size.y + STRIP_BAR_GAP
+	var top = (newbutton.get_node(CARD_PORTRAIT_ROOT).rect_size.y - bars.size() * step + STRIP_BAR_GAP) / 2.0
+	for bar in bars:
+		bar.rect_position.y = top
+		top += step
 
 
 func get_turn_animation_source(person_id):
@@ -2164,7 +2327,9 @@ func get_turn_animation_source(person_id):
 		var portrait_path = CARD_PORTRAIT.trim_prefix("CardLayout/")
 		if expanded_person != null and str(expanded_person.id) == str(person_id) and expanded_card_visual.has_node(portrait_path):
 			return expanded_card_visual.get_node(portrait_path)
-	for card in CardContainer.get_children():
+	if !_is_card_container(SlaveContainer):
+		return null
+	for card in SlaveContainer.get_children():
 		var person = card.get_meta("slave", null)
 		if person == null or str(person.id) != str(person_id) or !card.has_node(CARD_PORTRAIT):
 			continue
@@ -2238,10 +2403,9 @@ func _prepare_rebuild():
 	update_dislocations()
 #	build_locations_list()
 	#LocationsPanel.visible = (get_parent().mansion_state != "sex")
-	input_handler.ClearContainer(CardContainer)
-	input_handler.ClearContainer(RowContainer)
-	CardContainer.set_meta("built_rows_signature", "")
-	RowContainer.set_meta("built_rows_signature", "")
+	for container in [CardContainer, StripContainer, RowContainer]:
+		input_handler.ClearContainer(container)
+		container.set_meta("built_rows_signature", "")
 	mass_rule_list.clear()
 	mass_service_list.clear()
 	_select_slave_container()
@@ -2268,7 +2432,7 @@ func _ensure_selected_container_entries_for_loading(progress_node, progress_star
 	var slice_start = OS.get_ticks_msec()
 	for person_id in character_ids:
 		var person = ResourceScripts.game_party.characters[person_id]
-		if SlaveContainer == CardContainer:
+		if _is_card_container(SlaveContainer):
 			_build_card_entry(person, person_id)
 		else:
 			_build_row_entry(person, person_id)
@@ -2295,7 +2459,7 @@ func _setup_entry_common(newbutton, person, person_id):
 
 
 func _apply_mansion_state_to_entry(person, newbutton):
-	if newbutton.get_parent() == CardContainer:
+	if _is_card_entry(newbutton):
 		return
 	match get_parent().mansion_state:
 		"skill":
@@ -2307,7 +2471,7 @@ func _apply_mansion_state_to_entry(person, newbutton):
 
 
 func _build_card_entry(person, person_id):
-	var newbutton = input_handler.DuplicateContainerTemplate(CardContainer)
+	var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
 	_setup_entry_common(newbutton, person, person_id)
 	newbutton.connect('pressed', self, '_on_card_expand_requested', [newbutton])
 	_setup_card(newbutton, person)
@@ -2350,7 +2514,7 @@ func _build_row_entry(person, person_id):
 
 func update_entry_availability(newbutton, person, refresh_visual = true):
 	var card_inventory = newbutton.get_node(CARD_ACTIONS + "/Inventory")
-	if newbutton.get_parent() == CardContainer:
+	if _is_card_entry(newbutton):
 		newbutton.disabled = person.is_on_quest()
 		card_inventory.disabled = person.is_on_quest()
 		_update_card_action_states(newbutton, person)
@@ -2816,7 +2980,7 @@ func update_button(newbutton, t_mode = mode):
 	if newbutton.name == 'Button':
 		return
 	var person = newbutton.get_meta('slave')
-	if newbutton.get_parent() == CardContainer:
+	if _is_card_entry(newbutton):
 		_update_card_button(newbutton, person)
 		return
 	if person.get_work() == 'learning':
@@ -3069,15 +3233,16 @@ func _find_card_node(root, path):
 #open. Far cheaper than update(), which rebuilds every portrait, bar and strip on the list -
 #and this runs on gestures the player repeats, like moving somebody between beds.
 func refresh_upkeep_warnings():
-	if !is_instance_valid(CardContainer):
-		return
-	for card in CardContainer.get_children():
-		#The container's first child is the template every row is duplicated from, and it never
-		#gets a character. Asking it for one is not free: get_meta with a null default still
-		#prints "does not have any 'meta' values" on every sweep before handing back the null.
-		if !card.has_meta("slave"):
+	for holder in [CardContainer, StripContainer]:
+		if !is_instance_valid(holder):
 			continue
-		_update_card_warnings(card, card.get_meta("slave"))
+		for card in holder.get_children():
+			#The container's first child is the template every row is duplicated from, and it never
+			#gets a character. Asking it for one is not free: get_meta with a null default still
+			#prints "does not have any 'meta' values" on every sweep before handing back the null.
+			if !card.has_meta("slave"):
+				continue
+			_update_card_warnings(card, card.get_meta("slave"))
 	if is_instance_valid(expanded_card_visual) and is_instance_valid(expanded_card):
 		_update_card_warnings(expanded_card_visual, expanded_card.get_meta("slave", null))
 
@@ -3291,7 +3456,7 @@ func get_sort_value(row, key):
 		'name':
 			return person.get_short_name().to_lower()
 		'occupation':
-			if row.get_parent() == CardContainer:
+			if _is_card_entry(row):
 				return str(row.get_meta("card_job_text", "")).to_lower()
 			return row.get_node("job/Label").text.to_lower()
 		'train_available':

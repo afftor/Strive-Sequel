@@ -229,6 +229,8 @@ var globalsettings = {
 
 	
 	grid_inventory = true,
+	#the mansion's character list as one-line strips instead of cards
+	compact_slave_list = false,
 	
 	no_breed_incompatibility = false,
 	turn_based_time_flow = true,

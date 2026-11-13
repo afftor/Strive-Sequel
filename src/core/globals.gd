@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.4'
+const gameversion = '0.16.4a'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 #same rule as the sanitizer
@@ -121,7 +121,7 @@ func _ready():
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
-	if OS.has_feature('editor'):# && false:
+	if OS.has_feature('editor') && false:
 		for loc_path in input_handler.scanfolder(variables.LocalizationFolder):
 			var loc_code = loc_path.replace(variables.LocalizationFolder, '')
 			if loc_code != "en":
@@ -1829,7 +1829,9 @@ func SaveGame(name, spread = false):
 	var config_data = {version = gameversion, time = OS.get_datetime(), master_name = ResourceScripts.game_party.get_master().get_stat('name'), day = ResourceScripts.game_globals.date, hour = ResourceScripts.game_globals.hour, population = ResourceScripts.game_party.characters.size(), gold = ResourceScripts.game_res.money, master_icon = ResourceScripts.game_party.get_master().get_icon(true), preset = ResourceScripts.game_globals.starting_preset}
 	if _save_thread.is_active():
 		_save_thread.wait_to_finish()
-	_save_thread.start(self, "_save_thread_write", [name, savedict, config_data])
+	#serialize() is shallow, so nested dicts are the live ones; the turn that follows an autosave would
+	#write into them while the thread is still encoding (a birth landed in the save, the baby never did)
+	_save_thread.start(self, "_save_thread_write", [name, savedict.duplicate(true), config_data])
 
 func _save_thread_write(args):
 	var name = args[0]

@@ -1151,12 +1151,22 @@ func part_bonus_lines(code, part):
 			continue
 		if value is Array or value is String:
 			continue
-		if value == 0 or !statdata.statdata.has(stat):
+		var found = stat_bonus(stat)
+		if value == 0 or found == null:
 			continue
-		var stat_data = statdata.statdata[stat]
-		var bonus = stat_data.default_bonus
-		lines.append((globals.get_bonus_name_string(bonus, stat_data, value) + globals.make_bonus_value_string(bonus, stat_data, value)).strip_edges())
+		lines.append((globals.get_bonus_name_string(found[1], found[0], value) + globals.make_bonus_value_string(found[1], found[0], value)).strip_edges())
 	return lines
+
+
+#[stat data, bonus type] for a key; one like hpmax_add_part names its bonus in the suffix.
+func stat_bonus(key):
+	if statdata.statdata.has(key):
+		return [statdata.statdata[key], statdata.statdata[key].default_bonus]
+	for suffix in ['add', 'add_part', 'add2', 'add_part2', 'mul', 'mul2', 'set', 'append', 'maxcap', 'mincap']:
+		var stat = key.trim_suffix('_' + suffix)
+		if key.ends_with('_' + suffix) and statdata.statdata.has(stat):
+			return [statdata.statdata[stat], suffix]
+	return null
 
 
 #An item's stats a line each, for the card, as globals.build_desc_for_bonusstats() words them, with the
@@ -1719,12 +1729,13 @@ func stats_text(before, after):
 			continue
 		var now = before.get(code)
 		var then = after.get(code, now)
-		if !statdata.statdata.has(code) or !(then is int or then is float) or (now != null and !(now is int or now is float)):
+		var found = stat_bonus(code)
+		if found == null or !(then is int or then is float) or (now != null and !(now is int or now is float)):
 			continue
-		var data = statdata.statdata[code]
+		var data = found[0]
 		if data.tags.has('hidden'):
 			continue
-		var bonus = data.default_bonus
+		var bonus = found[1]
 		text += globals.get_bonus_name_string(bonus, data, then)
 		text += globals.make_bonus_value_string(bonus, data, now) if now != null else "—"
 		if now == null or !is_equal_approx(float(now), float(then)):

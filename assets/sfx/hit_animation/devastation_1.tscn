@@ -30,27 +30,27 @@ region = Rect2( 1684, 0, 421, 411 )
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 2105, 0, 421, 411 )
+region = Rect2( 0, 411, 421, 411 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 2526, 0, 421, 411 )
+region = Rect2( 421, 411, 421, 411 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 2947, 0, 421, 411 )
+region = Rect2( 842, 411, 421, 411 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 3368, 0, 421, 411 )
+region = Rect2( 1263, 411, 421, 411 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 3789, 0, 421, 411 )
+region = Rect2( 1684, 411, 421, 411 )
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {

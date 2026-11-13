@@ -190,6 +190,10 @@ var character = null
 var undress_level = GEAR.DRESSED
 
 var model = null
+# The sex-scene pose set for `character` - see set_sex_pose - or null for the idle.
+var sex_pose = null
+# The penis types drawn with the animal art; ch_stats.FURRY_PENIS_TYPES.
+const FURRY_PENIS_TYPES = ["feline", "canine"]
 # Pushes the whole set of corner buttons down the frame; see
 # `place_controls_below`, which is the only thing that should set it.
 var controls_offset = 0
@@ -299,6 +303,8 @@ func rebuild(character_to_build):
 		_close_hair_menu()
 		# a face pulled at something that happened to somebody else
 		_stop_emotes()
+		# and a pose is what that somebody was doing
+		sex_pose = null
 	character = character_to_build
 	_apply()
 
@@ -1603,6 +1609,11 @@ func _apply():
 		_make_model()
 	if model == null or character == null:
 		return
+	# The frame is fitted to the standing figure, so a pose comes off for the
+	# measuring and goes back on at the end; spread legs would otherwise rescale it.
+	if model.stop_poses():
+		model.set_partner_penises({})
+		model._reset_animation_states()
 	# Read before the rebuild, compared after it: a top coming off is the moment
 	# the chest is worth a swing.
 	var was_covered = _chest_is_covered()
@@ -1698,6 +1709,8 @@ func _apply():
 	_apply_coverage()
 	model._update_animated_pose()
 	_stand_on_the_node()
+	if sex_pose != null:
+		_apply_sex_pose()
 	_refresh_undress_bar()
 	# Whatever changed about the character - a piece equipped in the inventory, a
 	# status a training lifted - reaches the doll as a rebuild, and the open menu
@@ -1950,7 +1963,67 @@ func set_animated(value):
 	animated = bool(value)
 	if model != null:
 		_apply_idle_animation()
+		if sex_pose != null:
+			_apply_sex_pose()
 		_hold_still()
+
+
+# What the character is doing in the sex scene, as the takes the doll has for it:
+# {base = take, parts = {region: take}, partners = {role: {penis_type, penis_size,
+# skin, strapon}}} - see interaction_doll_pose.gd and doll2_pose_composer.gd.
+# null puts the doll back on its idle.  A rig without the takes stays idle.
+func set_sex_pose(pose):
+	sex_pose = pose
+	if model == null:
+		return
+	if sex_pose != null:
+		_apply_sex_pose()
+	elif model.stop_poses():
+		model.set_partner_penises({})
+		_apply_idle_animation()
+		model._rebuild_model()
+
+
+func _apply_sex_pose():
+	if portrait_mode:
+		return
+	var scales = {}
+	var styles_by_role = {}
+	var partners = sex_pose.get("partners", {})
+	for role in partners.keys():
+		# The art has one size; the three the game carries scale it, as they do the
+		# character's own (`dick` in doll_modifiers.gd).
+		scales[role] = MODIFIERS.step_factor("dick", str(partners[role].get("penis_size", "")))
+		styles_by_role[role] = _partner_penis_style(partners[role])
+	var name = model.compose_pose({"base": sex_pose.get("base", ""), "parts": sex_pose.get("parts", {}), "scales": scales})
+	if name == "":
+		if model.stop_poses():
+			model.set_partner_penises({})
+			_apply_idle_animation()
+			model._rebuild_model()
+		return
+	var styles = {}
+	var roles = model.composed_info[name].slots
+	for slot_name in roles.keys():
+		styles[slot_name] = styles_by_role.get(roles[slot_name], {})
+	var attachments_changed = model.set_partner_penises(styles)
+	if bool(model.animation_states.get(name, false)):
+		if attachments_changed:
+			model._rebuild_model()
+	else:
+		model.play_pose(name)
+	_hold_still()
+
+
+# A partner's penis drawn as theirs: a strap-on as the dildo, a canine or feline
+# one as the animal art, anything else as the plain one in their skin colour.
+func _partner_penis_style(partner):
+	if bool(partner.get("strapon", false)):
+		return {"kind": "falos"}
+	if str(partner.get("penis_type", "")) in FURRY_PENIS_TYPES:
+		return {"kind": "furry"}
+	var skin = str(partner.get("skin", ""))
+	return {"kind": "penis", "colour": COLORS.colour_of("body_color_skin", skin) if skin != "" else null}
 
 
 func _on_doll_settings_changed():
@@ -1963,6 +2036,8 @@ func _on_doll_settings_changed():
 	if model == null:
 		return
 	_apply_idle_animation()
+	if sex_pose != null:
+		_apply_sex_pose()
 	if character != null:
 		_apply_colours()
 

@@ -32,7 +32,7 @@ const EARJUMP_ANIMATION = "earjump"
 const TAILMOVE_ANIMATION = "tailmove"
 # These authored full-body takes use their own anatomical layers. They share
 # the exclusive pose dropdown with idle poses and temporarily hide worn gear.
-const ANATOMY_ANIMATIONS = ["sex1", "sex2", "sex3", "sex4", "sex5", "sex6", "sex7", "sex8", "sex9", "sex10", "sex11", "sex12", "xray"]
+const ANATOMY_ANIMATIONS = ["sex_standing", "sex_missionary", "anal_missionary", "double_pen", "deepthroat", "blowjob", "titjob", "handjob2", "handjob1", "simult_handjob", "handjobside1", "handjobside2", "test_combo", "xray"]
 const ANATOMY_SLOTS = [
 	"ass", "ahole", "ahole1", "HipL", "HipL_muscle", "HipR", "HipR_muscle",
 	"HipL_up", "HipL_muscle_up", "HipR_up", "HipR_muscle_up",
@@ -41,7 +41,7 @@ const ANATOMY_SLOTS = [
 	"penis_minet", "penis_minet2", "penis3", "fingL", "fingR",
 ]
 # The export supplies only one shared version of these layers.
-# ahole1 is the second layer keyed by sex3/sex4 for both bodies; the main
+# ahole1 is the second layer keyed by anal_missionary/double_pen for both bodies; the main
 # ahole slot still resolves to the selected body's own mesh.
 const SHARED_ANATOMY_SLOTS = ["ahole1", "vhole", "penis", "penis2", "penis_minet", "penis_minet2", "penis3"]
 const ANATOMY_ALTERNATIVES = {
@@ -50,7 +50,18 @@ const ANATOMY_ALTERNATIVES = {
 	"penis3": "00_body_nude_female/falos",
 	"penis_minet": "00_body_nude_female/falos_minet",
 }
+# The right hand's penis has no strap-on art, only the plain and the animal one;
+# its plain attachment is named after the left hand's slot.
+const ANATOMY_FURRY_ONLY = {"penis_minet2": "00_body_nude_female/penis_minet"}
 var anatomy_alternatives = {}
+# Poses built from several takes (doll2_pose_composer.gd), registered into the
+# shared skeleton under a name derived from their recipe.
+const COMPOSER = preload("res://Character_generator/Doll2Spine/doll2_pose_composer.gd")
+const COMPOSED_PREFIX = "pose:"
+var pose_composer = null
+var composed_info = {}
+# slot -> the channel colour it had before a partner's was put on it
+var partner_colour_defaults = {}
 # A beastkin's extra rows under the chest are weighted to the smallest breast
 # size's bones, which the titjump take swings along with every other size's, so
 # the rows bounced with a chest they are not part of.  They are skinned from a
@@ -841,6 +852,8 @@ func _load_source():
 	descendants_below = {}
 	subtree_under = {}
 	keyed_bones_of = {}
+	pose_composer = null
+	composed_info = {}
 	emotion_eased_bones = null
 	bone_parents.clear()
 	handle_definitions = contract.HANDLES.duplicate(true)
@@ -2332,12 +2345,16 @@ func _add_anatomy_options(parent):
 func _anatomy_variants(slot_name):
 	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
 	var result = {}
-	if !ANATOMY_ALTERNATIVES.has(slot_name) or !attachments.has(ANATOMY_ALTERNATIVES[slot_name]):
+	if ANATOMY_FURRY_ONLY.has(slot_name):
+		if attachments.has(ANATOMY_FURRY_ONLY[slot_name]):
+			result["penis"] = ANATOMY_FURRY_ONLY[slot_name]
+	elif !ANATOMY_ALTERNATIVES.has(slot_name) or !attachments.has(ANATOMY_ALTERNATIVES[slot_name]):
 		return result
-	var original = "00_body_nude_female/" + str(slot_name)
-	if attachments.has(original):
-		result["penis"] = original
-	result["falos"] = ANATOMY_ALTERNATIVES[slot_name]
+	else:
+		var original = "00_body_nude_female/" + str(slot_name)
+		if attachments.has(original):
+			result["penis"] = original
+		result["falos"] = ANATOMY_ALTERNATIVES[slot_name]
 	var names = attachments.keys()
 	names.sort()
 	for name in names:
@@ -2427,6 +2444,11 @@ func _ordered_active_animations():
 			ordinary.append(animation_name)
 	ordinary.sort()
 	emotions.sort()
+	# Anatomy takes key the mouth and face, so `say` and `eyesmove` must not override them whatever the names sort to.
+	for animation_name in ordinary.duplicate():
+		if _is_anatomy_animation(animation_name):
+			ordinary.erase(animation_name)
+			ordinary.append(animation_name)
 	# Authored reactions are overlays on the pose. Apply them after the idle so
 	# its keys cannot overwrite a moving ear or tail; emotion remains the final
 	# channel wherever it deliberately addresses the same control.
@@ -3547,13 +3569,83 @@ func _worn_selections():
 	return result
 
 
+func _is_anatomy_animation(animation_name):
+	return animation_name in ANATOMY_ANIMATIONS or str(animation_name).begins_with(COMPOSED_PREFIX)
+
+
 func _anatomy_animation_active():
 	if doll_id != "female":
 		return false
-	for animation_name in ANATOMY_ANIMATIONS:
-		if bool(animation_states.get(animation_name, false)):
+	for animation_name in animation_states.keys():
+		if _is_anatomy_animation(animation_name) and bool(animation_states[animation_name]):
 			return true
 	return false
+
+
+# Registers the pose a recipe describes (see doll2_pose_composer.gd) and returns
+# its animation name, or "" when this rig has no such takes.
+func compose_pose(recipe):
+	if skeleton.empty():
+		return ""
+	var name = COMPOSED_PREFIX + str(hash(var2str(recipe)))
+	var animations = skeleton.get("animations", {})
+	if composed_info.has(name) and animations.has(name):
+		return name
+	if pose_composer == null:
+		pose_composer = COMPOSER.new(skeleton)
+	var built = pose_composer.compose(recipe)
+	if built == null:
+		return ""
+	animations[name] = built.animation
+	animation_durations[name] = built.duration
+	composed_info[name] = built
+	return name
+
+
+# Plays a pose in place of whatever pose was running; overlays carry on.
+func play_pose(animation_name):
+	if !skeleton.get("animations", {}).has(animation_name) or bool(animation_states.get(animation_name, false)):
+		return
+	animation_times[animation_name] = 0.0
+	_on_animation_toggled(true, animation_name)
+
+
+func stop_poses():
+	var stopped = false
+	for animation_name in animation_states.keys():
+		if str(animation_name).begins_with(COMPOSED_PREFIX) and animation_states[animation_name]:
+			animation_states[animation_name] = false
+			animation_times[animation_name] = 0.0
+			stopped = true
+	return stopped
+
+
+# How each partner penis is drawn: slot -> {kind = "penis" | "falos" | "furry",
+# colour = Color or null}.  A slot left out goes back to the plain art in its own
+# colour.  True when an attachment changed, which needs a rebuild; a colour does not.
+func set_partner_penises(styles):
+	var changed = false
+	for slot_name in ANATOMY_ALTERNATIVES.keys() + ANATOMY_FURRY_ONLY.keys():
+		var style = styles.get(slot_name, {})
+		var variants = _anatomy_variants(slot_name)
+		var wanted = "penis"
+		if str(style.get("kind", "")) == "falos" and variants.has("falos"):
+			wanted = "falos"
+		elif str(style.get("kind", "")) == "furry":
+			for key in variants.keys():
+				if str(key).ends_with("_f"):
+					wanted = key
+		if _selected_anatomy_variant(slot_name) != wanted:
+			changed = true
+		anatomy_alternatives[slot_name] = wanted
+		var channel = _anatomy_colour_channel(slot_name, "penis")
+		if color_values.has(channel):
+			if !partner_colour_defaults.has(channel):
+				partner_colour_defaults[channel] = color_values[channel]
+			var colour = style.get("colour", null)
+			color_values[channel] = colour if colour != null else partner_colour_defaults[channel]
+			_apply_channel_colour(channel)
+	return changed
 
 
 # Use the selected body's counterpart, including attachment names that do not
@@ -3643,9 +3735,11 @@ func _apply_selected_ear_draw_order(order):
 # on their way forward, and an index would land one slot out.
 func _draw_order_timeline(animation_name):
 	var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
-	# Small/flat chests keep sex7's endpoint order throughout the take.
-	# Filter at runtime so changing size restores the authored keys immediately.
-	if doll_id == "female" and animation_name == "sex7" and str(axis_values.get("tits_size", "")) in ["small", "flat"] and timeline.size() > 2:
+	# Small/flat chests keep titjob's endpoint order throughout the take
+	# (test_combo and a composed pose with titjob's chest carry its keys). Filter
+	# at runtime so changing size restores the authored keys immediately.
+	var titjob_keys = animation_name in ["titjob", "test_combo"] or "titjob" in composed_info.get(animation_name, {}).get("takes", [])
+	if doll_id == "female" and titjob_keys and str(axis_values.get("tits_size", "")) in ["small", "flat"] and timeline.size() > 2:
 		return [timeline[0], timeline[timeline.size() - 1]]
 	return timeline
 
@@ -3800,7 +3894,7 @@ func _match_animated_hands(authored, worn):
 		var attachment_name = str(authored.get(body_slot, ""))
 		if !authored.has(body_slot):
 			# Before a hand timeline's first key, Spine uses the setup attachment,
-			# not the wardrobe's default hand pose. sex8 keys its right palm only
+			# not the wardrobe's default hand pose. handjob2 keys its right palm only
 			# at the end, so its setup handr2 must be race-matched for the full take.
 			var has_hand_timeline = false
 			for animation_name in _ordered_active_animations():
@@ -3901,7 +3995,7 @@ func _resolve_attachment(slot):
 		return helper
 	var anatomy_active = _anatomy_animation_active()
 	# This pose omits the lower-leg layers for every selected body.
-	if anatomy_active and bool(animation_states.get("sex5", false)) and slot_name in ["ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle"]:
+	if anatomy_active and bool(animation_states.get("deepthroat", false)) and slot_name in ["ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle"]:
 		return {}
 	# The restriction also applies to animation keys and externally supplied
 	# selections, so neither can bring clothing back during these takes.
@@ -3940,7 +4034,7 @@ func _resolve_attachment(slot):
 	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
 	# Apply only after animation visibility and authored attachment keys. A
 	# replacement must not materialise a hidden slot or be reset by every key.
-	if ANATOMY_ALTERNATIVES.has(slot_name):
+	if ANATOMY_ALTERNATIVES.has(slot_name) or ANATOMY_FURRY_ONLY.has(slot_name):
 		# The dropdown owns the variant, while the animation owns visibility.
 		var chosen = str(_anatomy_variants(slot_name).get(_selected_anatomy_variant(slot_name), ""))
 		if attachments.get(slot_name, {}).has(chosen):
@@ -4062,8 +4156,8 @@ func _add_attachment(slot, attachment, rows = {}, clipping = {}, inset = false):
 	# shader never runs on it and the art reaches the screen untouched.
 	if composed_unpainted.has(slot.get("name", "")):
 		channel = ""
-	if ANATOMY_ALTERNATIVES.has(str(slot.get("name", ""))):
-		var variant = "falos" if str(attachment.get("_attachment_name", "")) == str(ANATOMY_ALTERNATIVES[str(slot.name)]) else "penis"
+	if ANATOMY_ALTERNATIVES.has(str(slot.get("name", ""))) or ANATOMY_FURRY_ONLY.has(str(slot.get("name", ""))):
+		var variant = "falos" if str(attachment.get("_attachment_name", "")) == str(ANATOMY_ALTERNATIVES.get(str(slot.name), "")) else "penis"
 		if str(attachment.get("_attachment_name", "")).ends_with("_f"):
 			variant = "penis_f"
 		channel = _anatomy_colour_channel(str(slot.name), variant)

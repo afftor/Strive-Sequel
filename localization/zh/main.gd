@@ -491,6 +491,8 @@ TUTORIALINFOQUESTION = """这是你第一次游玩《Strive: Conquest》吗？""
 	MSLMSORTLEVELUP = """可晋升""",
 	MSLMFOLDLIST = """折叠角色列表""",
 	MSLMUNFOLDLIST = """展开角色列表""",
+	MSLMSTRIPVIEW = """Compact list""", # MISSING TRANSLATION
+	MSLMCARDVIEW = """Card view""", # MISSING TRANSLATION
 	MSLMHALFLIST = """仅显示单排角色，保留下方宅邸视野""",
 	MSLMFOLDMENU = """隐藏侧边菜单""",
 	MSLMUNFOLDMENU = """显示侧边菜单""",
@@ -34250,6 +34252,12 @@ you 警告他最好别耍什么花样，随后将他结结实实地绑好扔在�
 	SQ_PANEL_TITLE = """市场委托""",
 	SQ_PANEL_SUBTITLE = """来自各大阵营的开放订单""",
 	SQ_COL_QUEST = """任务""",
+	SQ_REROLL_QUESTS = """Reroll Quests""", # MISSING TRANSLATION
+	SQ_REROLL_TOOLTIP = """[center]{color=yellow|Reroll Quests}[/center]
+Replace all quests listed on the slave market for %s Token of Recognition. Available once per day. Partial deliveries on these quests are lost.""", # MISSING TRANSLATION
+	SQ_REROLL_USED = """Already used today. Come back tomorrow.""", # MISSING TRANSLATION
+	SQ_REROLL_SHORT_TOKENS = """You need a Token of Recognition.""", # MISSING TRANSLATION
+	SQ_REROLL_NO_QUESTS = """There are no open market quests to reroll.""", # MISSING TRANSLATION
 	SQ_COL_WANTS = """需求""",
 	SQ_COL_REWARD = """报酬""",
 	SQ_COL_DAYS = """天数""",
