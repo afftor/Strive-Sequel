@@ -4390,6 +4390,8 @@ func valuecheck(dict):
 			return true
 		'false':
 			return false
+		'censor_mode':
+			return CENSORMODE == dict.check
 		"has_money":
 			if dict.has('check'):
 				return ResourceScripts.game_res.if_has_money(dict['value']) == dict.check
