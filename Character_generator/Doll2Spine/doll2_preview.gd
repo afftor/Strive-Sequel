@@ -32,6 +32,7 @@ const EARJUMP_ANIMATION = "earjump"
 const TAILMOVE_ANIMATION = "tailmove"
 const CUM_ANIMATION = "orgasm"
 const CUM_FACE_ANIMATION = "emote_orgasm"
+const PERSISTENT_SEMEN_SLOTS = ["semen_ahole", "semen_vhole", "semen_body", "semen_face", "semen_lips"]
 const TITHAND_ANIMATIONS = ["tithand1", "tithand2"]
 const PARTNER_HAND_POSES = ["sex_fingers", "sex_fingers_anal"]
 const PARTNER_HAND_SLOTS = ["gg_hand", "gg_hand2", "gg_hand3"]
@@ -45,10 +46,12 @@ const OVERLAY_RULES = preload("res://Character_generator/Doll2Spine/doll2_overla
 var cum_enabled = false
 var cum_visibility_by_animation = {}
 var cum_face_overlay = null
+var semen_residue = {}
+var cum_semen_cleared = false
 var tithand_hand_bones = {}
 const CUM_POSE_SPEED = 1.3
-const CUM_POSE_FAST_DURATION = 3.0
-const CUM_POSE_BRAKE_DURATION = 3.0
+const CUM_POSE_FAST_DURATION = 1.0
+const CUM_POSE_BRAKE_DURATION = 1.0
 const CUM_POSE_HOLD_PHASE = 0.25
 var cum_pose_playback = {}
 # These authored full-body takes use their own anatomical layers. They share
@@ -395,6 +398,7 @@ func _ready():
 
 func _reset_animation_states():
 	cum_enabled = false
+	cum_semen_cleared = false
 	cum_pose_playback.clear()
 	animation_states = {}
 	animation_times = {}
@@ -473,6 +477,8 @@ func _advance_animation_times(delta):
 			animation_times[animation_name] = next
 			changed = next != previous or changed
 	if cum_enabled:
+		var end = CUM_POSE_FAST_DURATION + CUM_POSE_BRAKE_DURATION
+		var was_running = float(cum_pose_playback.get(CUM_ANIMATION, {}).get("elapsed", 0.0)) < end
 		for animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
 			# All semen attachment, alpha and deform tracks share this overlay.
@@ -481,6 +487,8 @@ func _advance_animation_times(delta):
 				animation_times[animation_name] = _cum_pose_time(animation_name, delta, duration)
 			else:
 				animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
+		if was_running and float(cum_pose_playback.get(CUM_ANIMATION, {}).get("elapsed", 0.0)) >= end:
+			_remember_visible_semen()
 		changed = true
 	return changed
 
@@ -489,8 +497,8 @@ func _cum_controls_pose(animation_name):
 	return !_is_emotion_animation(animation_name) and !_is_sex_side_animation(animation_name) and !(animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION, TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION, BLINK_ANIMATION, SAY_ANIMATION]) and _poses_the_skeleton(animation_name)
 
 
-# Use elapsed time rather than accumulating a per-frame speed: a frame crossing
-# either three-second boundary must land at the same phase at every frame rate.
+# Use elapsed time so a frame crossing a phase boundary lands at the same
+# animation position at every frame rate.
 func _cum_pose_time(animation_name, delta, duration):
 	if !cum_pose_playback.has(animation_name):
 		var start = float(animation_times.get(animation_name, 0.0))
@@ -593,16 +601,58 @@ func set_cum(value):
 	var enabled = bool(value) and skeleton.get("animations", {}).has(CUM_ANIMATION) and skeleton.get("animations", {}).has(CUM_FACE_ANIMATION)
 	if enabled == cum_enabled:
 		return
+	if !enabled:
+		_remember_visible_semen()
 	var previous_pose = _sampled_bone_timelines().duplicate(true)
 	var previous_colours = _capture_animated_slot_colours()
 	var previous_deforms = _capture_animated_attachment_deforms()
 	var previous_setup_slots = _active_emotion_setup_slots()
 	cum_enabled = enabled
+	cum_semen_cleared = false
 	cum_pose_playback.clear()
 	for animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
 		animation_times[animation_name] = 0.0
 	_begin_emotion_transition(previous_pose, previous_colours, previous_deforms, previous_setup_slots, true)
 	_rebuild_model()
+
+
+func clear_semen():
+	semen_residue.clear()
+	# Keep the running pose and emotion. Suppress the current emission until
+	# the next activation so it cannot repaint the slots immediately.
+	cum_semen_cleared = cum_enabled
+	_rebuild_model()
+
+
+func _remember_visible_semen():
+	var visible = _cum_visible_slots()
+	if visible.empty():
+		return
+	var current = _animation_attachments()
+	var active = _ordered_active_animations()
+	var skin = skin_map.get(SKIN_NAME, {}).get("attachments", {})
+	for slot in slot_data:
+		var slot_name = str(slot.name)
+		if !(slot_name in PERSISTENT_SEMEN_SLOTS) or !visible.has(slot_name):
+			continue
+		var name = str(current.get(slot_name, ""))
+		var attachment = skin.get(slot_name, {}).get(name, {})
+		if attachment.empty():
+			continue
+		var colour = _animated_slot_colour(slot_name, active)
+		if colour.a <= 0.0:
+			continue
+		var previous = semen_residue.get(slot_name, {})
+		if !previous.empty() and previous.attachment == name and colour.a < previous.colour.a:
+			continue
+		attachment = attachment.duplicate()
+		attachment["_attachment_name"] = name
+		attachment["_skin_name"] = SKIN_NAME
+		semen_residue[slot_name] = {
+			"attachment": name,
+			"colour": colour,
+			"deform": _attachment_deform(slot, attachment, active),
+		}
 
 
 # The face the doll is making: an emotion by its name without the `emote_`
@@ -960,6 +1010,8 @@ func _load_source():
 	emotion_eased_bones = null
 	cum_visibility_by_animation.clear()
 	cum_face_overlay = null
+	semen_residue.clear()
+	cum_semen_cleared = false
 	bone_parents.clear()
 	handle_definitions = contract.HANDLES.duplicate(true)
 	CATALOGUE.use(doll_id)
@@ -2372,6 +2424,10 @@ func _build_interface():
 		cum_toggle.connect("toggled", self, "set_cum")
 		box.add_child(cum_toggle)
 		ui["cum"] = cum_toggle
+		var clear_semen_button = Button.new()
+		clear_semen_button.text = "Clear semen"
+		clear_semen_button.connect("pressed", self, "clear_semen")
+		box.add_child(clear_semen_button)
 	# Small overlays such as `say` remain toggles: they run on top of both
 	# channels and must not replace the selected pose.
 	for animation_name in _sorted_animations():
@@ -2643,7 +2699,7 @@ func _ordered_active_animations():
 
 func _cum_visible_slots():
 	var result = {}
-	if !cum_enabled:
+	if !cum_enabled or cum_semen_cleared:
 		return result
 	for animation_name in _ordered_active_animations():
 		if !_poses_the_skeleton(animation_name) or _is_emotion_animation(animation_name):
@@ -2733,6 +2789,8 @@ func _on_animation_toggled(enabled, animation_name):
 	var is_emotion = _is_emotion_animation(animation_name)
 	var is_side = _is_sex_side_animation(animation_name)
 	var transitions_pose = _poses_the_skeleton(animation_name) and !is_emotion
+	if _cum_controls_pose(animation_name) or is_side:
+		_remember_visible_semen()
 	var previous_pose = _sampled_bone_timelines().duplicate(true) if transitions_pose else {}
 	var previous_emotion_pose = _sampled_bone_timelines().duplicate(true) if is_emotion else {}
 	var previous_emotion_colours = _capture_animated_slot_colours() if is_emotion else {}
@@ -4251,8 +4309,12 @@ func _resolve_attachment(slot):
 	# Enforce visibility before setup, animation or overlay attachments resolve.
 	if slot_name in ["ass", "ass_eq"] and !_ass_animation_active():
 		return {}
-	if str(slot_name).begins_with("semen_") and !_cum_visible_slots().has(slot_name):
-		return {}
+	var is_semen = str(slot_name).begins_with("semen_")
+	var retained_semen = {}
+	if is_semen and !_cum_visible_slots().has(slot_name):
+		retained_semen = semen_residue.get(slot_name, {})
+		if retained_semen.empty():
+			return {}
 	# These are exclusive to the inset, never wardrobe items on the main doll.
 	if slot_name in ["XRAY", "xray"]:
 		return {}
@@ -4263,8 +4325,8 @@ func _resolve_attachment(slot):
 		# Some takes key only alpha and intentionally use the setup hand;
 		# others swap or hide it explicitly. These are not wardrobe selections.
 		attachment_name = str(animation_attachments.get(slot_name, slot.get("attachment", "")))
-	if str(slot_name).begins_with("semen_"):
-		attachment_name = str(animation_attachments.get(slot_name, ""))
+	if is_semen:
+		attachment_name = str(retained_semen.get("attachment", animation_attachments.get(slot_name, "")))
 	# Clipping is skeleton state, not a selectable wardrobe/catalogue part.
 	# Resolve setup and attachment keys even though it has no atlas texture.
 	var source_attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
@@ -4294,7 +4356,7 @@ func _resolve_attachment(slot):
 		attachment_name = str(slot.get("attachment", ""))
 		if !attachment_name.empty() and !(slot_name in SHARED_ANATOMY_SLOTS):
 			attachment_name = str(composed.get(slot_name, ""))
-	if anatomy_active and animation_attachments.has(slot_name):
+	if anatomy_active and retained_semen.empty() and animation_attachments.has(slot_name):
 		attachment_name = str(animation_attachments[slot_name])
 	var emotion_slot = _active_emotion_animates_slot(slot_name)
 	# Emotion art is intentionally absent from the ordinary appearance
@@ -4312,7 +4374,7 @@ func _resolve_attachment(slot):
 				attachment_name = str(slot_attachments.keys()[0])
 	# Only for a slot the doll is already showing: the timeline says which hand to
 	# use, not whether the character has one.
-	if !attachment_name.empty() and animation_attachments.has(slot_name):
+	if !attachment_name.empty() and retained_semen.empty() and animation_attachments.has(slot_name):
 		attachment_name = str(animation_attachments[slot_name])
 	if attachment_name.empty():
 		return {}
@@ -4330,6 +4392,9 @@ func _resolve_attachment(slot):
 	var result = attachments[slot_name][attachment_name].duplicate()
 	result["_attachment_name"] = attachment_name
 	result["_skin_name"] = SKIN_NAME
+	if semen_residue.has(slot_name) and semen_residue[slot_name].attachment == attachment_name:
+		result["_semen_residue"] = semen_residue[slot_name]
+		result["_semen_residue_only"] = !retained_semen.empty()
 	return result
 
 
@@ -4777,6 +4842,10 @@ func _scale_back_hair_mesh(points, slot):
 
 
 func _attachment_deform(slot, attachment, active = null):
+	if attachment.has("_semen_residue"):
+		var residue = attachment["_semen_residue"]
+		if bool(attachment.get("_semen_residue_only", false)) or _animated_slot_colour(str(slot.name), active).a < residue.colour.a:
+			return residue.deform
 	if active == null:
 		active = _ordered_active_animations()
 	var result = []
@@ -4792,7 +4861,10 @@ func _attachment_deform(slot, attachment, active = null):
 		if !skin_timelines.has(slot_name) or !skin_timelines[slot_name].has(attachment_name):
 			continue
 		var timeline = skin_timelines[slot_name][attachment_name].get("deform", [])
-		var sampled = _sample_deform_timeline(timeline, float(animation_times.get(animation_name, 0.0)), _deform_length(attachment))
+		var time = float(animation_times.get(animation_name, 0.0))
+		var sampled = _sample_deform_timeline(timeline, time, _deform_length(attachment))
+		if slot_name == "equip_leg_right" and attachment_name in ["legr_armor1", "legr_armor1_beastkin"]:
+			_match_maid_stocking_motion(sampled, animation_name, skin_name, attachment_name, time)
 		# `emote_horny` is now an authored static face-mesh deformation rather
 		# than a bone pose. `eyesmove` addresses the same meshes, so applying the
 		# emotion last used to erase the blink completely. Keep the blink aside
@@ -4830,6 +4902,32 @@ func _attachment_deform(slot, attachment, active = null):
 				eased[i] = lerp(first_value, second_value, amount)
 			result = eased
 	return result
+
+
+# These takes omit an early key present in double_pen/test_combo. Borrow the
+# right stocking's motion only over the slipping intervals and ease back
+# to the original curves. Composed poses can retime the lower-body region.
+func _match_maid_stocking_motion(sampled, animation_name, skin_name, attachment_name, time):
+	var take = str(composed_info.get(animation_name, {}).get("owners", {}).get("lower", animation_name))
+	if sampled.empty() or !(take in ["anal_missionary", "sex_missionary", "sex_fingers", "sex_fingers_anal"]):
+		return
+	if take != animation_name:
+		var duration = float(animation_durations.get(animation_name, 0.0))
+		if duration <= 0.0:
+			return
+		time *= float(animation_durations.get(take, duration)) / duration
+	var amount = smoothstep(0.0, 0.025, time) * (1.0 - smoothstep(0.105, 0.1333, time))
+	if attachment_name == "legr_armor1_beastkin":
+		amount = max(amount, smoothstep(0.325, 0.39, time) * (1.0 - smoothstep(0.443, 0.5, time)))
+	if amount <= 0.0:
+		return
+	var tracks = _animation_data("double_pen").get("attachments", {}).get(skin_name, {}).get("equip_leg_right", {})
+	var reference = tracks.get(attachment_name, {}).get("deform", [])
+	if reference.empty():
+		return
+	var fitted = _sample_deform_timeline(reference, time, sampled.size())
+	for i in range(sampled.size()):
+		sampled[i] = lerp(float(sampled[i]), float(fitted[i]), amount)
 
 
 func _attachment_deform_key(slot, attachment):
@@ -4924,10 +5022,17 @@ func _expanded_deform_frame(frame, length):
 # breasts blue against a purple torso, which is the mismatch the previous preview
 # tried to patch over.  The art underneath already matches, and player colour now
 # comes from the channel material, so the stale tint has no job left.
-func _attachment_colour(slot, _attachment, active = null):
+func _attachment_colour(slot, attachment, active = null):
 	var colour = _spine_colour(slot.get("color", "FFFFFFFF"))
 	var slot_name = str(slot.get("name", ""))
-	colour *= _animated_slot_colour(slot_name, active)
+	var animated = _animated_slot_colour(slot_name, active)
+	if attachment.has("_semen_residue"):
+		var residue = attachment["_semen_residue"]
+		if bool(attachment.get("_semen_residue_only", false)) or animated.a < residue.colour.a:
+			animated = residue.colour
+	colour *= animated
+	if slot_name in PERSISTENT_SEMEN_SLOTS:
+		colour.a *= 0.5
 	if slot_name == "ass_eq":
 		colour.a *= _animated_slot_colour("ass", active).a
 	colour.a *= _emotion_setup_slot_alpha(slot_name)
@@ -5060,6 +5165,8 @@ func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_
 			return {}
 		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose, rows)
 		points = _align_shin_knee(points, slot, attachment, deform, pose, geometry_cache)
+		if slot.name in ["equip_leg_left", "equip_leg_right"]:
+			points = _fit_split_leg_gear(points, slot, attachment, deform, pose, geometry_cache)
 		if points_only:
 			return {"points": points}
 		var uv_points = PoolVector2Array()
@@ -5173,6 +5280,162 @@ func _compensate_shin_skinning_rows(source_rows):
 		corrected[i][1] *= ratio_y
 		corrected[i][3] *= ratio_y
 	return corrected
+
+
+# Gear on the old leg chain and the split body use different weights. Transfer
+# the visible body's slider displacement at the garment's neutral position.
+# Spine's animation deform and the original clearance remain in the baseline.
+func _fit_split_leg_gear(points, slot, attachment, deform, pose, cache):
+	var legs = float(proportions.get("legs", 1.0))
+	if doll_id != "female" or is_equal_approx(legs, 1.0) or !_anatomy_animation_active():
+		return points
+	if cache == null:
+		cache = {}
+	var side = "L" if slot.name == "equip_leg_left" else "R"
+	var key = "split_gear/" + side
+	if !cache.has(key):
+		cache[key] = _split_leg_motion_field(side, legs, cache)
+	var field = cache[key]
+	if field.empty():
+		return points
+	var baseline = _mesh_points(attachment.vertices, attachment.get("uvs", []).size(), deform, pose, _neutral_leg_rows(pose, legs, cache))
+	var scale = _display_scale()
+	var result = PoolVector2Array(points)
+	for i in range(baseline.size()):
+		var sample = _leg_motion_at(baseline[i], field)
+		# Keep the outfit's own scaling on loose edges away from the leg.
+		var blend = smoothstep(35.0 * scale, 80.0 * scale, float(sample[1]))
+		result[i] = (baseline[i] + sample[0]).linear_interpolate(points[i], blend)
+	return _limit_leg_gear_folds(result, baseline, attachment.triangles)
+
+
+func _limit_leg_gear_folds(points, baseline, triangles):
+	# At thin seams, neighbouring vertices can sample different parts of the
+	# leg. Shorten only the corrections involved in a newly folded triangle.
+	for _pass in range(3):
+		var adjusted = false
+		for i in range(0, triangles.size(), 3):
+			var a = int(triangles[i])
+			var b = int(triangles[i + 1])
+			var c = int(triangles[i + 2])
+			var first = (baseline[b] - baseline[a]).cross(baseline[c] - baseline[a])
+			if abs(first) < 0.5:
+				continue
+			var last = (points[b] - points[a]).cross(points[c] - points[a])
+			if last * first >= 0.0:
+				continue
+			var low = 0.0
+			var high = 1.0
+			for _step in range(7):
+				var middle = (low + high) * 0.5
+				var start = baseline[a].linear_interpolate(points[a], middle)
+				var edge_b = baseline[b].linear_interpolate(points[b], middle) - start
+				var edge_c = baseline[c].linear_interpolate(points[c], middle) - start
+				if edge_b.cross(edge_c) * first >= first * first * 0.08:
+					low = middle
+				else:
+					high = middle
+			for vertex in [a, b, c]:
+				points[vertex] = baseline[vertex].linear_interpolate(points[vertex], low)
+			adjusted = true
+		if !adjusted:
+			break
+	return points
+
+
+func _neutral_leg_rows(pose, legs, cache):
+	# Split legs and their equipment use the main solved pose.
+	var key = "neutral_leg_rows"
+	if pose == bones and cache.has(key):
+		return cache[key]
+	var rows = _pose_table(pose)
+	var factors = MODIFIERS.post_ik_visual_factors({"legs": legs}, contract.CONTRACT_ID)
+	for i in range(bone_names_by_index.size()):
+		var factor = factors.get(bone_names_by_index[i], Vector2.ONE)
+		rows[i][0] /= factor.x
+		rows[i][2] /= factor.x
+		rows[i][1] /= factor.y
+		rows[i][3] /= factor.y
+	if pose == bones:
+		cache[key] = rows
+	return rows
+
+
+func _split_leg_motion_field(side, legs, cache):
+	var parts = {}
+	var hip_name = "Hip" + side
+	var shin_name = "Shin" + side
+	for slot in slot_data:
+		var name = str(slot.name)
+		if name in [hip_name, hip_name + "_up", shin_name]:
+			parts[name] = slot
+	var triangles = []
+	var boundary = []
+	for candidates in [[hip_name, hip_name + "_up"], [shin_name]]:
+		for name in candidates:
+			if !parts.has(name):
+				continue
+			var slot = parts[name]
+			var mesh = _resolve_attachment(slot)
+			if mesh.get("vertices", []).empty() or mesh.get("triangles", []).empty():
+				continue
+			var pose = _pose_for(slot)
+			var deform = _attachment_deform(slot, mesh)
+			var count = mesh.get("uvs", []).size()
+			var neutral = _mesh_points(mesh.vertices, count, deform, pose, _neutral_leg_rows(pose, legs, cache))
+			var drawn = _mesh_points(mesh.vertices, count, deform, pose, _skinning_rows(slot, cache))
+			drawn = _align_shin_knee(drawn, slot, mesh, deform, pose, cache)
+			_append_leg_motion(neutral, drawn, mesh.triangles, triangles, boundary)
+			break
+	return {} if triangles.empty() else {"triangles": triangles, "boundary": boundary}
+
+
+func _append_leg_motion(neutral, drawn, indices, triangles, boundary):
+	var edges = {}
+	for i in range(0, indices.size(), 3):
+		var ia = int(indices[i])
+		var ib = int(indices[i + 1])
+		var ic = int(indices[i + 2])
+		var a = neutral[ia]
+		var b = neutral[ib]
+		var c = neutral[ic]
+		var ab = b - a
+		var ac = c - a
+		var area = ab.cross(ac)
+		if abs(area) > 0.000001:
+			var bounds = Rect2(a, Vector2.ZERO).expand(b).expand(c)
+			triangles.append([bounds, a, ab, ac, 1.0 / area, drawn[ia] - a, drawn[ib] - b, drawn[ic] - c])
+		for pair in [[ia, ib], [ib, ic], [ic, ia]]:
+			var edge = Vector2(min(pair[0], pair[1]), max(pair[0], pair[1]))
+			edges[edge] = edges.get(edge, 0) + 1
+	for edge in edges:
+		if edges[edge] != 1:
+			continue
+		var from = int(edge.x)
+		var to = int(edge.y)
+		var delta = neutral[to] - neutral[from]
+		boundary.append([neutral[from], delta, delta.length_squared(), drawn[from] - neutral[from], drawn[to] - neutral[to]])
+
+
+func _leg_motion_at(point, field):
+	for face in field.triangles:
+		if !face[0].has_point(point):
+			continue
+		var relative = point - face[1]
+		var b = relative.cross(face[3]) * face[4]
+		var c = face[2].cross(relative) * face[4]
+		if b >= 0.0 and c >= 0.0 and b + c <= 1.0:
+			return [face[5] * (1.0 - b - c) + face[6] * b + face[7] * c, 0.0]
+	var distance = INF
+	var motion = Vector2.ZERO
+	for edge in field.boundary:
+		var relative = point - edge[0]
+		var along = clamp(relative.dot(edge[1]) / edge[2], 0.0, 1.0) if edge[2] > 0.000001 else 0.0
+		var gap = (relative - edge[1] * along).length_squared()
+		if gap < distance:
+			distance = gap
+			motion = edge[3].linear_interpolate(edge[4], along)
+	return [motion, sqrt(distance)]
 
 
 # Keep the knee overlap on the same deformation field as the adjoining Hip.

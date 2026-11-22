@@ -277,10 +277,11 @@ const PART_SLOTS = {
 	# set names its hips is the one kept; the other waits for the artist to say
 	# where it belongs.
 	"outfit_playboy": {"equip_pelvis": "pelvis_armor_playboy", "ass_eq": "ass_eq_playboy"},
-	# The second leather set and jacket reuse the first leather set's rear cut.
+	# These sets share the first leather set's rear cut.
 	"outfit_leather": {"ass_eq": "ass_eq_leather"},
 	"outfit_leather2": {"ass_eq": "ass_eq_leather"},
 	"outfit_jacket": {"ass_eq": "ass_eq_leather"},
+	"outfit_smith": {"ass_eq": "ass_eq_leather"},
 	"outfit_latex": {"ass_eq": "ass_eq_latex"},
 	"body_female_beastkin": {
 		# The `torso` slot also carries the two many-nipple overlays, which are

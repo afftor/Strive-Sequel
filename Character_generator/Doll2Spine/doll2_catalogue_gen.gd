@@ -4497,6 +4497,7 @@ const PARTS = {
 		"folders": ["110_armory_set_smith_female"],
 		"group": "outfit",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_arm_left": "arm_armorl_smith",
 			"equip_arm_right": "arm_armorr_smith",
 			"equip_belly": {
@@ -4541,6 +4542,7 @@ const PARTS = {
 		"folders": ["110_armory_set_smith_female"],
 		"group": "outfit_legs",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_leg_left": "legl_armor_smith",
 			"equip_leg_right": "legr_armor_smith",
 			"equip_pelvis": "pelvis_armor_smith",
