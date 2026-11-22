@@ -4776,16 +4776,21 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 	
 	# if size of dicts isn't equal then compare
 	if primary_dict.size() != update_dict.size():
+		# Dictionary.keys() allocates a fresh array. Rebuilding it for every
+		# entry made startup quadratic for large translations, blocking even
+		# standalone scenes before their _ready() could run.
+		var primary_keys = primary_dict.keys()
 		var missing_keys = {} # a pair of previous key and arrays of missing keys after it. Needed to save order
 		var previous_pos = 1
 		var consecutive_key = false
-		for i in primary_dict.keys().size():
-			if not (primary_dict.keys()[i] in update_dict) and i > 0:
+		for i in primary_keys.size():
+			var primary_key = primary_keys[i]
+			if not update_dict.has(primary_key) and i > 0:
 				if consecutive_key:
 					previous_pos += 1
-					missing_keys[primary_dict.keys()[i-previous_pos]].append({"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]})
+					missing_keys[primary_keys[i-previous_pos]].append({"key": primary_key, "text": primary_dict[primary_key]})
 				else:
-					missing_keys[primary_dict.keys()[i-previous_pos]] = [{"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]}]
+					missing_keys[primary_keys[i-previous_pos]] = [{"key": primary_key, "text": primary_dict[primary_key]}]
 				consecutive_key = true
 			else:
 				previous_pos = 1
@@ -4840,7 +4845,7 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 
 			# here `line` holds the last line of a complete entry: comments, blank lines and the
 			# closing brace all reduce to code that ends in neither a quote nor a comma
-			if key in missing_keys.keys() and !inserted_anchors.has(key):
+			if missing_keys.has(key) and !inserted_anchors.has(key):
 				var check_line = code.strip_edges()
 				# last entry of a file may have no trailing comma, add it or nothing gets inserted after it
 				if check_line.ends_with('"') or check_line.ends_with("'"):

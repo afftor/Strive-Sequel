@@ -37,6 +37,10 @@ const GROUP_DEFS = {
 # with the shared channels, because only this rig has them; the two groups draw
 # into slots of their own, so nothing is claimed away from another channel.
 const COLOR_CHANNELS = {
+	# This female-only rear cut replaces and recolours with the lower outfit.
+	"outfit_lower": {"anchor": "outfit", "groups": [], "gear": true, "slots": [
+		"equip_pelvis", "equip_leg_left", "equip_leg_right", "equip_pregnancy_low", "ass_eq",
+	]},
 	# Runtime-selected alternatives share slots but use different paint modes.
 	"anatomy_penis/penis": {"anchor": "body", "groups": []},
 	"anatomy_penis/penis2": {"anchor": "body", "groups": []},
@@ -237,6 +241,10 @@ const OPTION_AXIS_GROUPS = {
 # that collides with `Hand_armorL3` on hand pose 3; the right hand only ships
 # `Hand_armorR3`, so the unnumbered name is the one that matches.
 const EXCLUDE = [
+	# Partner hands belong to sex_side overlays, never the selected body preset.
+	"gg_hand/gg_hand", "gg_hand/gg_hand3", "gg_hand2/gg_hand2", "gg_hand3/gg_hand2",
+	# Authored effect overlays are driven by the Cum channel, not wardrobe.
+	"semen_hole", "semen_body", "semen_lips", "semen_face", "semen1", "semen2",
 	# Selected per slot by the animation viewer, not another body preset.
 	"falos", "falos_minet", "penis_f", "penis_minet_f",
 	# Technical X-ray overlay is rendered only by the preview inset.
@@ -268,7 +276,12 @@ const PART_SLOTS = {
 	# pixels differ.  Only one can be worn, and the one named the way every other
 	# set names its hips is the one kept; the other waits for the artist to say
 	# where it belongs.
-	"outfit_playboy": {"equip_pelvis": "pelvis_armor_playboy"},
+	"outfit_playboy": {"equip_pelvis": "pelvis_armor_playboy", "ass_eq": "ass_eq_playboy"},
+	# The second leather set and jacket reuse the first leather set's rear cut.
+	"outfit_leather": {"ass_eq": "ass_eq_leather"},
+	"outfit_leather2": {"ass_eq": "ass_eq_leather"},
+	"outfit_jacket": {"ass_eq": "ass_eq_leather"},
+	"outfit_latex": {"ass_eq": "ass_eq_latex"},
 	"body_female_beastkin": {
 		# The `torso` slot also carries the two many-nipple overlays, which are
 		# small patches (37 uvs) and not torsos (68).  Letting the extra-nipple
