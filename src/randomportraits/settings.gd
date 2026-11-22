@@ -14,9 +14,6 @@ var minMatch = 2
 # For Race, will abort setting portrait.
 # For Race+Gender, will abort setting portrait.
 # For Race+Gender+Age,  will first try and relax the matching:
-# Adult: Will accept teen, if not enough, wll abort.
-# Teen: Will accept Child.  If still not enough, will accept Adult. Still not enough, abort.
-# Child: Will accept Teen. If still not enough, will abort.
 
 # Base weight all portraits get. Change to 0 to require matching at least 1 attribute.
 var base_weight = 1

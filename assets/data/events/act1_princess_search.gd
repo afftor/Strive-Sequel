@@ -744,7 +744,8 @@ var data = {
 				text = "DIALOGUELEAVE",
 				reqs = [],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
+				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'},
+				{code = 'remove_quest_location', value = 'quest_rebels_backrooms'}],
 			},
 		],
 	},
@@ -968,7 +969,7 @@ var data = {
 			{text = "AIREAMELIAMEET2", reqs = []},
 		],
 		options = [
-			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}, {code = "decision", value = 'amelia_accepted_interrogation_info'}]},
+			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}, {code = "decision", value = 'amelia_accepted_interrogation_info'}, {code = 'remove_quest_location', value = 'quest_rebels_backrooms'}]},
 		]
 	},
 	amelia_ask_location2 = {

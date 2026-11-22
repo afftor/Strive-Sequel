@@ -287,14 +287,7 @@ const MODIFIERS = {
 			{"bone": "spine1", "axis": "y", "op": "mul"},
 		],
 	},
-	# `penis_size` and `balls_size`, the same three sizes the game has carried
-	# since the old doll.  The art is one pair of meshes, so a size is a scale:
-	# the shaft hangs off spine6 and the sack off spine9, and the bones below each
-	# of them inherit, so one bone apiece moves the whole thing.  Uniform rather
-	# than per axis - a bigger one is longer *and* thicker.
-	#
-	# `tune` puts a free slider beside the named picker in the preview panel, so
-	# these three numbers can be found by eye and then written down here.
+	# Scaling spine6 changes the length and thickness of the whole shaft.
 	"dick": {
 		"contract": "doll2_v1",
 		"label": "DOLL2_PREVIEW_DICK_SIZE",
@@ -307,24 +300,6 @@ const MODIFIERS = {
 		},
 		"ops": [
 			{"bone": "spine6"},
-		],
-	},
-	"balls": {
-		"contract": "doll2_v1",
-		"label": "DOLL2_PREVIEW_BALLS_SIZE",
-		"tune": true,
-		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.4, "step": 0.01},
-		"steps": {
-			"default": "average",
-			"order": ["small", "average", "big"],
-			# "" is a body without testicles; a zero scale would be singular, so shrink it out of sight
-			"values": {"": 0.01, "small": 0.85, "average": 1.0, "big": 1.2},
-		},
-		# The two are siblings under spine1, not a chain: scaling one leaves the
-		# other where it was.
-		"ops": [
-			{"bone": "spine9"},
-			{"bone": "spine10"},
 		],
 	},
 }
@@ -441,9 +416,7 @@ const BREAST_MODIFIER_ORDER = ["breast_scale", "breast_height"]
 
 # ---------------------------------------------------------------- layers --
 
-# Hair layers share parts of the same rig, so each slot receives its own solved
-# pose.  Only the authored length controls below are scaled; unrelated bones stay
-# at setup scale and cannot pull another part of the hairstyle out of shape.
+# Slots that share bones can each apply a size to their own copy of the pose.
 
 const LAYER_MODIFIERS = {
 	"hair_length": {
@@ -534,6 +507,22 @@ const LAYER_MODIFIERS = {
 		"slots": ["hairs_assist"],
 		"bones": ["head3", "head7", "head5", "head10", "head15", "head17"],
 		"axis": "y",
+	},
+	# The female rig also weights vhole and vagina2 to spine9 and spine10.
+	# Apply balls_size only when drawing the testicle mesh.
+	"balls": {
+		"contract": "doll2_v1",
+		"label": "DOLL2_PREVIEW_BALLS_SIZE",
+		"tune": true,
+		"range": {"default": 1.0, "minimum": 0.7, "maximum": 1.4, "step": 0.01},
+		"steps": {
+			"default": "average",
+			"order": ["small", "average", "big"],
+			# A body without testicles uses a tiny nonzero scale.
+			"values": {"": 0.01, "small": 0.85, "average": 1.0, "big": 1.2},
+		},
+		"slots": ["testicle"],
+		"bones": ["spine9", "spine10"],
 	},
 }
 

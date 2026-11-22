@@ -478,10 +478,10 @@ func check_lover_possibility(data, char1, char2):
 
 #Which status changes reach the estate's activity log, and what colour the status word is given
 #there. They all share one log entry type, so the colour is the only thing telling a new friendship
-#from a new feud - see the "relationship" entry in EVENT_CONFIG (MansionLogModule.gd).
+#from a new feud - see the "relationship" entry in EVENT_CONFIG (MansionLogModule.gd) and
+#globals.mansion_activity_relationship(), which folds a turn's changes into one row.
 #Sliding back to 'acquaintances' is deliberately absent: a rivalry sits at value <= 25 and lapses
 #the moment it ticks to 26, so logging that pair would let one wavering couple flood the log.
-const RELATIONSHIP_LOG_TYPE = "relationship"
 const RELATIONSHIP_LOG = {
 	friends = "#8fd3f4",
 	lovers = "#f08fb4",
@@ -509,13 +509,19 @@ func change_relationship_status(char1, char2, new_status, forced = false):
 	if RELATIONSHIP_LOG.has(new_status) and f:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
-		var status_word = "[color=%s]%s[/color]" % [
-			RELATIONSHIP_LOG[new_status],
-			tr("RELATIONSHIP" + new_status.to_upper()).to_lower(),
-		]
-		var log_text = tr("LOG_RELATIONSHIP_STATUS") % [ch1.get_short_name(), ch2.get_short_name(), status_word]
-		globals.mansion_activity_log_add(RELATIONSHIP_LOG_TYPE, log_text)
+		var log_text = tr("LOG_RELATIONSHIP_STATUS") % [ch1.get_short_name(), ch2.get_short_name(),
+			relationship_status_word(new_status)]
+		globals.mansion_activity_relationship(log_text, new_status)
 #		globals.manifest(log_text, ch1)
+
+
+#The status as the log names it, in its colour. `suffix` goes inside the colour tag.
+func relationship_status_word(status, suffix = ""):
+	return "[color=%s]%s%s[/color]" % [
+		RELATIONSHIP_LOG.get(status, "#d68fa8"),
+		tr("RELATIONSHIP" + status.to_upper()).to_lower(),
+		suffix,
+	]
 
 func check_relationship_status(char1, char2, status):
 	#chars may be already moved out of the party (i.e. removed slave), so no direct dict access here

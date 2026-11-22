@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/images/iconsitems/cell/neck.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/raceshades/Human_F.png" type="Texture" id=3]
@@ -22,10 +22,11 @@
 [ext_resource path="res://assets/images/iconsitems/cell/booty.png" type="Texture" id=29]
 [ext_resource path="res://assets/images/iconsitems/cell/underwear.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=31]
-[ext_resource path="res://assets/images/gui/inventory/slot_axe.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/gui/inventory/slot_axe_pick.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/gui/inventory/slot_sickle.png" type="Texture" id=34]
 [ext_resource path="res://assets/images/iconsitems/cell/slot_fishing.png" type="Texture" id=36]
 [ext_resource path="res://assets/images/gui/inventory/slot_knife.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/gui/inventory/slot_dishware.png" type="Texture" id=39]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -706,7 +707,7 @@ margin_left = -1.0
 margin_right = 99.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 28 )
+texture = ExtResource( 39 )
 expand = true
 stretch_mode = 6
 

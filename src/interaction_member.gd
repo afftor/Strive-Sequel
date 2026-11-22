@@ -303,6 +303,8 @@ func orgasm(custom_text = null, show_text = true):
 	var vaginatext = ''
 	var anustext = ''
 	orgasms += 1
+	# Let the interaction commit its new pose before the portrait plays the effect.
+	sceneref.call_deferred("_play_orgasm_animation", self, lastaction)
 	
 	
 #	if sceneref.participants.size() == 2 && person.has_profession("master"):
@@ -434,7 +436,7 @@ func orgasm(custom_text = null, show_text = true):
 			else:
 				penistext = tr("INTERACTION_ORGASM_PENIS_SECONDARY_LIMIT")
 			penistext += tr("INTERACTION_ORGASM_PENIS_SECONDARY_RELEASE")
-			penistext = sceneref.decoder(penistext, null, [self])
+			penistext = sceneref.decoder(penistext, [self], [self])
 #	if vaginatext != '' || anustext != '' || penistext != '':
 #		text += vaginatext + " " + anustext + " " + penistext
 	if vaginatext != '':
@@ -455,7 +457,7 @@ func orgasm(custom_text = null, show_text = true):
 		else:
 			temptext = tr("INTERACTION_ORGASM_TAKER_NAME")
 		temptext += tr("INTERACTION_ORGASM_BODY_RELEASE")
-		text += sceneref.decoder(temptext, null, [self])
+		text += sceneref.decoder(temptext, [self], [self])
 
 	if lastaction.scene.code in sceneref.punishcategories && lastaction.takers.has(self):
 		if randf() >= 0.85 || effects.has("entranced"):
@@ -530,7 +532,7 @@ func actioneffect(values, scenedict_ids):
 			consented_actions[scenedict.scene.code] = 1
 
 	for i in scenedict[seek_group+'s']:
-		if i.person.check_trait("undead") && sex_traits.has('omnisexual') == false:
+		if i.person.check_trait("undead") && sex_traits.has('deviant') == false:
 			sens_mod -= 0.5
 			horny_mod -= 0.5
 		for k in i.sex_traits:
@@ -547,7 +549,7 @@ func actioneffect(values, scenedict_ids):
 
 	if values.has('tags'):
 		if values.tags.has('punish'):
-			if (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
+			if (!person.check_trait('masochist') && !person.check_trait('nymphomania')):
 				for i in scenedict.givers:
 					ResourceScripts.game_party.add_relationship_value(person.id, i.person.id, -1)
 					#globals.addrelations(person, i.person, -rand_range(5,10))
@@ -558,7 +560,7 @@ func actioneffect(values, scenedict_ids):
 			else:
 				if person.get_stat('asser') < 35 && randf() < 0.1:
 					actionshad.addtraits.append('Likes it rough')
-				if !person.check_trait('Masochist') && !person.check_trait('Sex-crazed'):
+				if !person.check_trait('masochist') && !person.check_trait('nymphomania'):
 					pass #leftover checks, to fill in later
 #						if values.has('stress') == false:
 #							values.stress = rand_range(2,6)

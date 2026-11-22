@@ -40,6 +40,9 @@ const COLOR_PICKED = Color('f9e181')
 #answered on the faces before the drop rather than after it.
 const COLOR_SWAP = Color('a8552e')
 
+#placed by click or drop; the tutorial waits on it since a drop never emits "pressed"
+signal carried_in
+
 var view = null
 #'sleep' | 'work' | 'build' inside the mansion, 'task' for work at another location -
 #in which case "holder" is a task id rather than a slot code
@@ -235,7 +238,10 @@ func refusal_for(data):
 
 
 func take_carried(data):
-	return view.place_character(kind, holder, data.char_id, char_id, holder_floor)
+	var placed = view.place_character(kind, holder, data.char_id, char_id, holder_floor)
+	if placed:
+		emit_signal("carried_in")
+	return placed
 
 
 func can_drop_data(_position, data):

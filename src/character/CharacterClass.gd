@@ -21,6 +21,7 @@ var is_active = true
 var is_players_character = false
 var is_known_to_player = false #for purpose of private parts
 var npc_reference = null
+var interaction_undress_level = ""
 # Optional metadata copied from an enemy template for dynamic combat impact sounds.
 # Supported values: body, body_wet, cloth, leather, armor, wood, and stone.
 # Null uses the body profile.
@@ -711,8 +712,8 @@ func get_racial_features(race):
 func fill_boosters():
 	xp_module.set_service_boost()
 
-func make_random_portrait():
-	statlist.make_random_portrait()
+func make_random_portrait(keep_if_no_match = false):
+	statlist.make_random_portrait(keep_if_no_match)
 
 func make_relative_of(person, relation, sync_surname = true, sync_age = true):
 	var target = person
@@ -945,11 +946,11 @@ func transfer_trait(tr_code, target, replace_code = ''):
 	target.add_trait(tr_code)
 	return true
 
-#Soul stone: who can take a trait from this character - everyone else at home and not away on a quest.
+#Soul stone: who can take a trait from this character - everyone else where they are (home or a dungeon party), not away on a quest.
 func get_transfer_recipients():
 	var res = []
 	for person in ResourceScripts.game_party.characters.values():
-		if person != self and person.is_free() and !person.is_unavaliable():
+		if person != self and !person.is_on_quest() and person.same_location_with(self) and !person.is_unavaliable():
 			res.push_back(person)
 	return res
 
@@ -1413,9 +1414,9 @@ func can_use_skill(skill):
 		return false
 	return true
 
-#no_combat_support (selfish, hybris vows) leaves support skills usable on the caster only
+#no_combat_support (selfish, hybris vows) leaves support skills usable on the caster only; enemy-targeted ones (devour magic, taunt) aren't support for allies
 func is_support_self_only(skill):
-	return has_status('no_combat_support') and skill.tags.has('support')
+	return has_status('no_combat_support') and skill.tags.has('support') and skill.target != 'enemy'
 
 func can_support_self(skill):
 	if skill.target == 'self':
@@ -1459,6 +1460,12 @@ func get_undress_level():
 
 func set_undress_level(level):
 	xp_module.set_undress_level(level)
+
+
+func get_interaction_undress_level():
+	if interaction_undress_level in xp_module.UNDRESS_LEVELS:
+		return interaction_undress_level
+	return get_undress_level()
 
 func has_work_rule(rule):
 	if !variables.work_rules.has(rule): return false

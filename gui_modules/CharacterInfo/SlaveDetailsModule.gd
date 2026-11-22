@@ -119,7 +119,7 @@ func make_random_portrait():
 	unpress_buttons()
 	person = input_handler.interacted_character
 	if person != null:
-		person.make_random_portrait()
+		person.make_random_portrait(true)
 		gui_controller.slavepanel.BodyModule.update()
 		gui_controller.slavepanel.SummaryModule.show_summary()  
 

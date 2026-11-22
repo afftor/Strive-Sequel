@@ -1260,7 +1260,7 @@ func pulltail(person, counter):
 
 func punish_process(value):
 	var text = ''
-	if person.check_trait("Masochist") && randf() >= 0.8:
+	if person.check_trait("masochist") && randf() >= 0.8:
 		text += tr("DATING_PUNISH_1")
 		value.mood = -value.mood
 

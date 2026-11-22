@@ -129,9 +129,9 @@ func serialize():
 #the turns somebody reaches the end of a road, and it is the only record left of who got where:
 #once a second person arrives in the same turn, the row itself names only their groups. Dropping
 #it would lose the names the per-person rows it replaced used to keep. See
-#globals.mansion_activity_arrival().
+#globals.mansion_activity_arrival(). A folded relationship row is kept for the same reason.
 static func _drop_turn_local_breakdown(entry):
-	if entry is Dictionary and entry.get("type") != "arrival":
+	if entry is Dictionary and !(entry.get("type") in ["arrival", "relationship"]):
 		entry.erase("details")
 		entry.erase("crafted")
 

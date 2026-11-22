@@ -5,11 +5,17 @@ extends Reference
 # nothing listed here keeps the idle.  Every partner whose penis is in the pose is
 # passed along, so the doll draws it as theirs.
 
-# Taking a penis in the vagina or the anus, and the take each one plays.  Missionary
-# itself stands; lotus and on-top read as the legs-up missionary take from the front.
-const VAGINAL = {"missionary": "sex_standing", "lotus": "sex_missionary",
-	"revlotus": "sex_missionary", "ontop": "sex_missionary"}
-const ANAL = ["missionaryanal", "lotusanal", "revlotusanal", "ontopanal"]
+const VAGINAL = {
+	"missionary": "sex_standing",
+	"lotus": "sex_missionary", "revlotus": "sex_missionary", "ontop": "sex_missionary",
+	"doggy": "sex_missionary", "insertinturns": "sex_missionary",
+}
+const ANAL = {
+	"missionaryanal": "sex_standing",
+	"lotusanal": "anal_missionary", "revlotusanal": "anal_missionary", "ontopanal": "anal_missionary",
+	"doggyanal": "anal_missionary", "insertinturnsass": "anal_missionary",
+}
+const FINGERING = {"fingering": "sex_fingers", "assfingering": "sex_fingers_anal"}
 
 
 # `last_action`, the newest action applied in the scene, is shown over the ongoing
@@ -18,6 +24,9 @@ static func pose_for(member, ongoingactions, last_action = null):
 	var roles = {}
 	var hands = []
 	var vaginal_take = "sex_missionary"
+	var anal_take = "anal_missionary"
+	var fingers_take = ""
+	var chest_touch = false
 	var actions = [] + ongoingactions
 	if last_action != null:
 		for action in ongoingactions:
@@ -32,8 +41,13 @@ static func pose_for(member, ongoingactions, last_action = null):
 			if VAGINAL.has(code):
 				if _claim(roles, "vaginal", givers, 0):
 					vaginal_take = VAGINAL[code]
-			elif code in ANAL:
-				_claim(roles, "anal", givers, 0)
+			elif ANAL.has(code):
+				if _claim(roles, "anal", givers, 0):
+					anal_take = ANAL[code]
+			elif FINGERING.has(code) and fingers_take == "" and !givers.empty():
+				fingers_take = FINGERING[code]
+			elif code == "fondletits" and !givers.empty():
+				chest_touch = true
 			# two givers: the first takes the action's first part, the second its
 			# `takerpart2` (startscene sets them up that way)
 			elif code == "doublepen":
@@ -55,17 +69,18 @@ static func pose_for(member, ongoingactions, last_action = null):
 					if !(partner in hands):
 						hands.append(partner)
 
-	var lower = ""
+	# The fingering takes also animate the lower body, so use them when a
+	# penetration take does not already supply that region.
+	var lower = fingers_take
 	if roles.has("vaginal") and roles.has("anal"):
 		lower = "double_pen"
 	elif roles.has("vaginal"):
 		lower = vaginal_take
-		# the standing take's penis carries a deform, and so does titjob's, on the
-		# one slot both need - the legs-up take's moves aside
-		if lower == "sex_standing" and roles.has("tits"):
-			lower = "sex_missionary"
 	elif roles.has("anal"):
-		lower = "anal_missionary"
+		lower = anal_take
+	# Standing and titjob both need the same slot for their mesh deform.
+	if lower == "sex_standing" and roles.has("tits"):
+		lower = "anal_missionary" if roles.has("anal") else "sex_missionary"
 	# Two hands each on a partner at the sides; one hand on the side when the front
 	# of the body is busy, both hands in front when it is all she is doing.
 	var arms = ""
@@ -88,7 +103,8 @@ static func pose_for(member, ongoingactions, last_action = null):
 			base = "blowjob"
 		else:
 			base = arms
-	if base == "":
+	chest_touch = chest_touch and !roles.has("tits")
+	if base == "" and !chest_touch:
 		return null
 	var parts = {}
 	if roles.has("tits") and base != "titjob":
@@ -100,7 +116,7 @@ static func pose_for(member, ongoingactions, last_action = null):
 	var partners = {}
 	for role in roles.keys():
 		partners[role] = _partner(roles[role])
-	return {"base": base, "parts": parts, "partners": partners}
+	return {"base": base, "parts": parts, "partners": partners, "chest_touch": chest_touch}
 
 
 static func _claim(roles, role, members, index):

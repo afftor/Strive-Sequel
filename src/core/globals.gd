@@ -1982,6 +1982,10 @@ func LoadGame(filename):
 	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.1'):
 		if !globals.valuecheck({type = 'location_exists', location = 'quest_mages_xari'}):
 			globals.common_effects([{code = 'make_quest_location', value = 'quest_mages_xari'}])
+	#the interrogation routes moved the search on without clearing the backrooms
+	if (ResourceScripts.game_progress.completed_quests.has('princess_search')
+			or globals.valuecheck({type = 'any_quest_stage', value = 'princess_search', stages = ['stage3', 'stage4', 'stage5']})):
+		declare_location_cleared('quest_rebels_backrooms')
 	#older saves ended erdyna_quest outright on the betrayal/leave routes, locking the catacombs away for good
 	if (ResourceScripts.game_progress.completed_quests.has('erdyna_quest')
 			and !ResourceScripts.game_progress.seen_events.has('act4_3_opened_seal_after_fight')
@@ -2672,6 +2676,43 @@ func mansion_activity_arrival(character, location):
 	entry.details = _arrival_detail_lines(entry.arrivals)
 	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
 		mansion_activity_log_node.update_log_message(entry)
+
+
+#One entry per turn for every relationship that changed status, folded on the stamp like the
+#arrivals: a lone change keeps its own sentence, a second one turns the row into a tally by status
+#with one line per pair behind the fold. The row then names no one, so `details` is kept through a
+#save - see game_globals._drop_turn_local_breakdown().
+func mansion_activity_relationship(line, status):
+	var stamp = mansion_activity_stamp()
+	var entry = _mansion_activity_turn_report('relationship', stamp)
+	#a row written before relationships were folded has no tally to add this one to
+	if entry == null or !entry.has('statuses'):
+		mansion_activity_log_add('relationship', line,
+			{statuses = [{status = status, count = 1}], details = []})
+		return
+	if entry.details.empty():
+		entry.details = [entry.text]
+	entry.details.append(line)
+	var counted = false
+	for record in entry.statuses:
+		if record.status == status:
+			record.count = int(record.count) + 1
+			counted = true
+			break
+	if !counted:
+		entry.statuses.append({status = status, count = 1})
+	entry.text = _relationship_report_text(entry)
+	if mansion_activity_log_node != null && weakref(mansion_activity_log_node).get_ref():
+		mansion_activity_log_node.update_log_message(entry)
+
+
+func _relationship_report_text(entry):
+	var tally = []
+	for record in entry.statuses:
+		tally.append(ResourceScripts.game_party.relationship_status_word(record.status,
+			" ×%d" % int(record.count)))
+	return _report_text("MANSION_ACTIVITY_RELATIONSHIP_REPORT",
+		[entry.details.size(), PoolStringArray(tally).join(", ")])
 
 
 #A cleared location finally leaving the map. The sweep runs inside the turn, where
