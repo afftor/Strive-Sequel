@@ -499,6 +499,8 @@ Windowed and fullscreen each remember their own resolution.""", # MISSING TRANSL
 	MSLMSORTLEVELUP = """Можно повысить""",
 	MSLMFOLDLIST = """Свернуть список персонажей""",
 	MSLMUNFOLDLIST = """Развернуть список персонажей""",
+	MSLMSTRIPVIEW = """Compact list""", # MISSING TRANSLATION
+	MSLMCARDVIEW = """Card view""", # MISSING TRANSLATION
 	MSLMHALFLIST = """Показывать один ряд персонажей, оставляя особняк в поле зрения""", # TO REVIEW
 	MSLMFOLDMENU = """Скрыть боковое меню""", # TO REVIEW
 	MSLMUNFOLDMENU = """Показать боковое меню""", # TO REVIEW
@@ -35897,6 +35899,12 @@ ACT4_ERDYNA_AFTER_LEAVE_HUB_4_SUCCESS = """Эрдина моргает, заст
 	SQ_PANEL_TITLE = """Рыночные заказы""", # TO REVIEW
 	SQ_PANEL_SUBTITLE = """Открытые заказы от фракций""", # TO REVIEW
 	SQ_COL_QUEST = """Задание""", # TO REVIEW
+	SQ_REROLL_QUESTS = """Reroll Quests""", # MISSING TRANSLATION
+	SQ_REROLL_TOOLTIP = """[center]{color=yellow|Reroll Quests}[/center]
+Replace all quests listed on the slave market for %s Token of Recognition. Available once per day. Partial deliveries on these quests are lost.""", # MISSING TRANSLATION
+	SQ_REROLL_USED = """Already used today. Come back tomorrow.""", # MISSING TRANSLATION
+	SQ_REROLL_SHORT_TOKENS = """You need a Token of Recognition.""", # MISSING TRANSLATION
+	SQ_REROLL_NO_QUESTS = """There are no open market quests to reroll.""", # MISSING TRANSLATION
 	SQ_COL_WANTS = """Требования""", # TO REVIEW
 	SQ_COL_REWARD = """Награда""", # TO REVIEW
 	SQ_COL_DAYS = """Дни""", # TO REVIEW

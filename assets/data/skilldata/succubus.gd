@@ -45,7 +45,8 @@ var skills = {
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null}
 			],
 		effects = ['turn_thrall'],
-		cost = {mp = 10, lust = 10},
+		#no lust: without thralls a succubus gains none, and Enthrall is how she gets the first one
+		cost = {mp = 10},
 		charges = 1,
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),

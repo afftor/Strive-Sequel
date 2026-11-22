@@ -432,6 +432,7 @@ func try_rank_up():
 signal tokens_changed
 const TOKEN_ICON = "res://assets/Textures_v2/slave_quests/token_whip.png"
 const RANK_MEDAL = "res://assets/Textures_v2/slave_quests/rank_%s.png"
+const REROLL_COST = 1
 
 func get_tokens():
 	return int(get_progress().get('tokens', 0))
@@ -642,7 +643,32 @@ func rank_unlocks_text():
 
 #--------------lifecycle--------------
 
-func fill_quests():
+func reroll_problem():
+	if get_progress().last_reroll_date == int(ResourceScripts.game_globals.date):
+		return "SQ_REROLL_USED"
+	if get_tokens() < REROLL_COST:
+		return "SQ_REROLL_SHORT_TOKENS"
+	for quest in get_quest_pool().values():
+		if is_quest_open_for_delivery(quest):
+			return ""
+	return "SQ_REROLL_NO_QUESTS"
+
+func reroll_quests():
+	if reroll_problem() != "":
+		return false
+	var progress = get_progress()
+	progress.last_reroll_date = int(ResourceScripts.game_globals.date)
+	progress.tokens = get_tokens() - REROLL_COST
+	var pool = get_quest_pool()
+	for quest_id in pool.keys():
+		if is_quest_open_for_delivery(pool[quest_id]):
+			pool.erase(quest_id)
+	if fill_quests(false) == 0:
+		emit_signal("quests_changed")
+	emit_signal("tokens_changed")
+	return true
+
+func fill_quests(update_boards = true):
 	if ResourceScripts.game_progress == null:
 		return 0
 	var rank_data = get_rank_data()
@@ -659,7 +685,8 @@ func fill_quests():
 			get_quest_pool()[quest.id] = quest
 			have[kind] += 1
 			added += 1
-	_drop_board_slave_quests()
+	if update_boards:
+		_drop_board_slave_quests()
 	added += fill_guild_orders()
 	if added > 0:
 		emit_signal("quests_changed")
@@ -1525,6 +1552,7 @@ func fix_serialization():
 	progress.rank_sales = int(progress.get('rank_sales', 0))
 	progress.next_id = int(progress.get('next_id', 0))
 	progress.tokens = int(progress.get('tokens', 0))
+	progress.last_reroll_date = int(progress.get('last_reroll_date', -1))
 	progress.top_sales = int(progress.get('top_sales', 0))
 	var bought = progress.get('bought', [])
 	progress.bought = bought if bought is Array else []

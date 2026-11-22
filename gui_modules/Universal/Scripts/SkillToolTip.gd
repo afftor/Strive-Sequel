@@ -54,7 +54,7 @@ var tips = {
 }
 
 const COST_ICONS = {
-	mp = "res://assets/images/iconsstats/mp.png",
+	mp = "res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_mana.png",
 	hp = "res://assets/images/iconsstats/hp.png",
 	lust = "res://assets/images/sexicons/lust3.png",
 	money = "res://assets/images/iconsitems/gold.png",

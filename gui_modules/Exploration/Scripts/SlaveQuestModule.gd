@@ -15,6 +15,7 @@ var list
 var details
 var candidates
 var hide_unfit
+onready var reroll_button = $RerollQuests/Button
 
 
 func _ready():
@@ -26,9 +27,13 @@ func _ready():
 	if hide_unfit is BaseButton:
 		hide_unfit.toggle_mode = true
 		hide_unfit.connect("toggled", self, "_on_hide_unfit_toggled")
-	ResourceScripts.slave_quests.connect("quests_changed", self, "_on_quests_changed")
-	ResourceScripts.slave_quests.connect("rank_changed", self, "_on_quests_changed")
-	ResourceScripts.slave_quests.connect("tokens_changed", self, "_on_tokens_changed")
+	var sq = ResourceScripts.slave_quests
+	reroll_button.get_node("Contents/Cost/TokenIcon").texture = sq.token_icon()
+	reroll_button.get_node("Contents/Cost/Amount").text = str(sq.REROLL_COST)
+	reroll_button.connect("pressed", self, "_on_reroll_pressed")
+	sq.connect("quests_changed", self, "_on_quests_changed")
+	sq.connect("rank_changed", self, "_on_quests_changed")
+	sq.connect("tokens_changed", self, "_on_tokens_changed")
 	input_handler.connect("portrait_taken", self, "_on_portrait_taken")
 
 
@@ -54,6 +59,17 @@ func build_rank_header():
 	if rank_node == null:
 		return
 	var sq = ResourceScripts.slave_quests
+	var reroll_problem = sq.reroll_problem()
+	reroll_button.disabled = reroll_problem != ""
+	reroll_button.get_node("Contents").modulate.a = 0.55 if reroll_button.disabled else 1.0
+	var reroll_hint = globals._report_text("SQ_REROLL_TOOLTIP", [sq.REROLL_COST])
+	var tooltip_target = reroll_button
+	reroll_button.mouse_filter = Control.MOUSE_FILTER_STOP
+	if reroll_problem != "":
+		reroll_hint += "\n\n" + tr(reroll_problem)
+		reroll_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tooltip_target = $RerollQuests
+	globals.connecttexttooltip(tooltip_target, reroll_hint, true)
 	var help = _find(rank_node, "Help")
 	if help != null:
 		globals.connecttexttooltip(help, sq.rank_help_text())
@@ -368,6 +384,11 @@ func _on_quests_changed():
 func _on_tokens_changed():
 	if is_visible_in_tree():
 		build_rank_header()
+
+
+func _on_reroll_pressed():
+	if ResourceScripts.slave_quests.reroll_quests():
+		input_handler.PlaySound("money_spend")
 
 
 #--------------choice icons--------------

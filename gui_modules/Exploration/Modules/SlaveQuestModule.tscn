@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/icon hero/icon_hero_unactive.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/icon hero/icon_hero_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/icon hero/icon_hero_active.png" type="Texture" id=29]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=30]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.042, 0.044, 0.038, 1 )
@@ -337,6 +338,51 @@ mouse_filter = 2
 custom_styles/fg = SubResource( 11 )
 custom_styles/bg = SubResource( 7 )
 percent_visible = false
+
+[node name="RerollQuests" type="Control" parent="."]
+margin_left = 520.0
+margin_top = 176.0
+margin_right = 755.0
+margin_bottom = 224.0
+mouse_filter = 0
+
+[node name="Button" type="Button" parent="RerollQuests"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 30 )
+custom_fonts/font = SubResource( 2 )
+
+[node name="Contents" type="HBoxContainer" parent="RerollQuests/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="RerollQuests/Button/Contents"]
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "SQ_REROLL_QUESTS"
+valign = 1
+
+[node name="Cost" type="HBoxContainer" parent="RerollQuests/Button/Contents"]
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="TokenIcon" type="TextureRect" parent="RerollQuests/Button/Contents/Cost"]
+rect_min_size = Vector2( 23, 23 )
+mouse_filter = 2
+size_flags_vertical = 4
+expand = true
+stretch_mode = 5
+
+[node name="Amount" type="Label" parent="RerollQuests/Button/Contents/Cost"]
+mouse_filter = 2
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
+valign = 1
 
 [node name="Empty" type="Label" parent="."]
 visible = false

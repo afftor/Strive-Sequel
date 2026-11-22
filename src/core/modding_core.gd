@@ -504,10 +504,10 @@ func process_json_data_file(filepath : String, tablename : String):
 	process_dir(tablename, 'w_locations', worlddata.locations) #
 #	process_dir(tablename, 'w_locationnames', worlddata.locationnames)
 	process_dir(tablename, 'w_quests', worlddata.questdata) #
-	process_dir(tablename, 'w_dungeons', worlddata.dungeons) #
+	process_dir(tablename, 'w_dungeons', DungeonData.dungeons) #
 	process_dir(tablename, 'w_characters', worlddata.pregen_characters) #
 	
-	process_dir(tablename, 'statlist', Statlist_init.template)
+	process_statlist_dir(tablename)
 	
 	#incomplete
 
@@ -869,8 +869,27 @@ func fix_indexes_dict(dict: Dictionary):
 func process_dir(table_name, dir_name, location_dir):
 	var table = tables[table_name]
 	if !table.has(dir_name): return
-	var dir = table[dir_name]
-	for key in dir.keys(): 
+	apply_dir_patch(table[dir_name], location_dir)
+
+# a stat lives in template_direct or template_dynamic; statdata.direct decides which
+func process_statlist_dir(table_name):
+	var table = tables[table_name]
+	if !table.has('statlist'): return
+	var direct = {}
+	var dynamic = {}
+	for key in table.statlist.keys():
+		var is_dynamic = Statlist_init.template_dynamic.has(key)
+		if statdata.statdata.has(key) and statdata.statdata[key].has('direct'):
+			is_dynamic = !statdata.statdata[key].direct
+		if is_dynamic:
+			dynamic[key] = table.statlist[key]
+		else:
+			direct[key] = table.statlist[key]
+	apply_dir_patch(direct, Statlist_init.template_direct)
+	apply_dir_patch(dynamic, Statlist_init.template_dynamic)
+
+func apply_dir_patch(dir, location_dir):
+	for key in dir.keys():
 		var patch = dir[key]
 		if patch == null:
 			location_dir.erase(key)

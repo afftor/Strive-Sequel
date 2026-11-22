@@ -17,6 +17,7 @@ const VoidSphereEffect = preload("res://src/combat/VoidSphereEffect.gd")
 const SpaceBend = preload("res://src/combat/SpaceBend.gd")
 const SwordUltEffect = preload("res://src/combat/SwordUltEffect.gd")
 const ScreenSlice = preload("res://src/combat/ScreenSlice.gd")
+const TauntWave = preload("res://src/combat/TauntWave.gd")
 const AnimRegistry = preload("res://src/combat/anim_registry.gd")
 
 #The tuning numbers below (cast tables, motion distances, hit reactions, per-skill beats)
@@ -2618,13 +2619,28 @@ func frozen_hit(node, delay):
 	var fighter = node.get('fighter')
 	ice.hit(delay, fighter == null or fighter.hp <= 0 or !fighter.has_status('freeze'))
 
+#sheets now drawn in code, played and timed like the sheets they replaced: the module and the sheet's length
+const DRAWN_SHEETS = {tauntwave = {module = TauntWave, length = 0.633}}
+
+func tauntwave(node, args):
+	args.sprite_name = 'tauntwave'
+	return gfx_animsprite(node, args)
+
+func sheet_time(sprite_name):
+	if DRAWN_SHEETS.has(sprite_name): return DRAWN_SHEETS[sprite_name].length
+	return ResourceScripts.core_animations.get_gfx_sprite_time(sprite_name)
+
+func drawn_sprite(node, sprite_name, speed = 1.0):
+	if node == null or !is_instance_valid(node) or !node.is_inside_tree(): return
+	DRAWN_SHEETS[sprite_name].module.new().play(node, {anim = self, speed = speed})
+
 func gfx_animsprite(node, args):
 	var speed = max(0.01, float(args.speed)) if args.has('speed') else 1.0
 	var duration
 	if args.has('duration'):
 		duration = args.duration / speed
 	else:
-		duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name) / speed
+		duration = sheet_time(args.sprite_name) / speed
 	# Warfare hit sheets use the same cadence as a normal weapon attack: the sheet
 	# appears on the cast weapon's contact frame and hp_update follows HIT_TAIL later.
 	var sync_to_hit = args.has('sync_to_hit') and args.sync_to_hit
@@ -2664,11 +2680,17 @@ func gfx_animsprite(node, args):
 		for hit_node in motion_nodes:
 			if hit_node != null and is_instance_valid(hit_node):
 				play_target_hit_motion(hit_node, hit_motion, duration, shot)
+	var drawn = DRAWN_SHEETS.has(args.sprite_name)
 	if sync_to_hit and shot > 0:
 		var tween = get_tween(node)
-		tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
-			node, args.sprite_name, 0.5, duration, get_flip_for_node(node, args), speed)
+		if drawn:
+			tween.interpolate_callback(self, shot, 'drawn_sprite', node, args.sprite_name, speed)
+		else:
+			tween.interpolate_callback(ResourceScripts.core_animations, shot, 'gfx_sprite',
+				node, args.sprite_name, 0.5, duration, get_flip_for_node(node, args), speed)
 		tween.start()
+	elif drawn:
+		drawn_sprite(node, args.sprite_name, speed)
 	else:
 		fx_sprite(node, args.sprite_name, 0.5, duration,
 			get_flip_for_node(node, args), speed)

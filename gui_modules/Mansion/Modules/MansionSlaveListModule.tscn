@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -63,6 +63,7 @@
 [ext_resource path="res://assets/images/gui/universal/arrowlefthl.png" type="Texture" id=86]
 [ext_resource path="res://assets/images/gui/universal/arrowright.png" type="Texture" id=87]
 [ext_resource path="res://assets/images/gui/universal/arrowrighthl.png" type="Texture" id=88]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveStripLayout.tscn" type="PackedScene" id=89]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -751,9 +752,35 @@ texture_disabled = ExtResource( 36 )
 stretch_mode = 6
 script = ExtResource( 12 )
 
+[node name="StripContainer" type="GridContainer" parent="ScrollContainer"]
+visible = false
+margin_right = 1230.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 1230, 46 )
+size_flags_horizontal = 3
+custom_constants/vseparation = 3
+custom_constants/hseparation = 6
+columns = 2
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/StripContainer"]
+visible = false
+margin_right = 612.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 612, 46 )
+rect_clip_content = true
+mouse_default_cursor_shape = 2
+theme = ExtResource( 10 )
+toggle_mode = true
+stretch_mode = 6
+script = ExtResource( 12 )
+drag_preview_source = NodePath("CardLayout/Margin/Rows/Body/Portrait/Image")
+drag_preview_size = Vector2( 96, 128 )
+
+[node name="CardLayout" parent="ScrollContainer/StripContainer/Button" instance=ExtResource( 89 )]
+
 [node name="TravelsContainerPanel" type="Panel" parent="."]
 anchor_right = 1.0
-margin_left = 225.0
+margin_left = 280.0
 margin_top = 5.0
 margin_bottom = 57.0
 custom_styles/panel = ExtResource( 7 )
@@ -1265,9 +1292,9 @@ margin_bottom = 160.0
 theme = ExtResource( 49 )
 
 [node name="SortButton" type="TextureButton" parent="."]
-margin_left = 67.0
+margin_left = 122.0
 margin_top = 9.0
-margin_right = 266.0
+margin_right = 321.0
 margin_bottom = 52.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 3 )
@@ -1301,9 +1328,9 @@ align = 1
 valign = 1
 
 [node name="ListFoldButton" type="Button" parent="."]
-margin_left = 12.0
+margin_left = 67.0
 margin_top = 9.0
-margin_right = 59.0
+margin_right = 114.0
 margin_bottom = 52.0
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 11 )
@@ -1320,6 +1347,113 @@ custom_fonts/font = ExtResource( 27 )
 text = "^"
 align = 1
 valign = 1
+
+[node name="ViewModeButton" type="Button" parent="."]
+margin_left = 12.0
+margin_top = 9.0
+margin_right = 59.0
+margin_bottom = 52.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 10 )
+
+[node name="Cards" type="Control" parent="ViewModeButton"]
+visible = false
+margin_left = 13.0
+margin_top = 11.0
+margin_right = 34.0
+margin_bottom = 32.0
+mouse_filter = 2
+
+[node name="Strips" type="Control" parent="ViewModeButton"]
+margin_left = 13.0
+margin_top = 11.0
+margin_right = 34.0
+margin_bottom = 32.0
+mouse_filter = 2
+
+[node name="A" type="ColorRect" parent="ViewModeButton/Cards"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 9.0
+margin_bottom = 9.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="B" type="ColorRect" parent="ViewModeButton/Cards"]
+margin_left = 12.0
+margin_top = 0.0
+margin_right = 21.0
+margin_bottom = 9.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="C" type="ColorRect" parent="ViewModeButton/Cards"]
+margin_left = 0.0
+margin_top = 12.0
+margin_right = 9.0
+margin_bottom = 21.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="D" type="ColorRect" parent="ViewModeButton/Cards"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 21.0
+margin_bottom = 21.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="Dot0" type="ColorRect" parent="ViewModeButton/Strips"]
+margin_left = 0.0
+margin_top = 1.0
+margin_right = 5.0
+margin_bottom = 6.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="Line0" type="ColorRect" parent="ViewModeButton/Strips"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 21.0
+margin_bottom = 5.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="Dot1" type="ColorRect" parent="ViewModeButton/Strips"]
+margin_left = 0.0
+margin_top = 8.0
+margin_right = 5.0
+margin_bottom = 13.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="Line1" type="ColorRect" parent="ViewModeButton/Strips"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 21.0
+margin_bottom = 12.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="Dot2" type="ColorRect" parent="ViewModeButton/Strips"]
+margin_left = 0.0
+margin_top = 15.0
+margin_right = 5.0
+margin_bottom = 20.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="Line2" type="ColorRect" parent="ViewModeButton/Strips"]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 21.0
+margin_bottom = 19.0
+mouse_filter = 2
+color = Color( 0.976471, 0.882353, 0.505882, 1 )
 
 [node name="ListFoldTween" type="Tween" parent="."]
 

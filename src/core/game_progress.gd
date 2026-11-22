@@ -116,6 +116,7 @@ var slave_quests = {
 	next_id = 0,
 	quest_pool = {},
 	tokens = 0,
+	last_reroll_date = -1,
 	top_sales = 0,
 	bought = [],
 }

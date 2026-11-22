@@ -5,6 +5,10 @@ onready var parser = ResourceScripts.scriptdict.sexinteraction_parser.new()
 onready var member = ResourceScripts.scriptdict.sexinteraction_member
 onready var sexdict = ResourceScripts.scriptdict.sexinteraction_sexdict.new()
 
+const DOLL_POSE = preload("res://gui_modules/Interaction/Scripts/interaction_doll_pose.gd")
+var doll_member = null #the member the doll shows, re-posed whenever the actions change
+var last_applied_action = null #the newest action dict, continuous or not, until it is stopped
+
 var participants = [] #members
 var givers = [] #members
 var takers = [] #members
@@ -879,6 +883,7 @@ func startsequence(actors):
 	gui_controller.clock.visible = false
 	hidebody()
 	participants.clear()
+	last_applied_action = null
 	sex_minigame_points = 1
 	sex_minigame_orgasm_points_awarded.clear()
 	enthusiasm_all_options_correct = false
@@ -1251,6 +1256,7 @@ func rebuildparticipantslist():
 	get_node("Panel/sceneeffects1").set_bbcode(text)
 
 	#globals.state.actionblacklist = filter
+	_refresh_doll_pose()
 
 	var _all_exhausted = true
 	for _m in participants:
@@ -1746,6 +1752,7 @@ func get_unique_nude_body_image(person):
 	return images.get_sprite(sprite_data.nude.path)
 
 func showbody(i):
+	doll_member = null
 	var nude_image = get_unique_nude_body_image(i.person)
 	if nude_image != null:
 		$Panel/bodyimage.texture = nude_image
@@ -1763,6 +1770,8 @@ func showbody(i):
 		$Panel/BodyDisplay/ragdoll.test_mode = false
 		$Panel/BodyDisplay/ragdoll.rebuild(i.person)
 		$Panel/BodyDisplay/ragdoll.rebuild_cloth(false)
+		doll_member = i
+		_refresh_doll_pose()
 #		$Panel/BodyDisplay/ragdoll.rebuild_underwear()
 	else:
 		$Panel/bodyimage.texture = i.person.get_body_image()
@@ -1775,6 +1784,13 @@ func showbody(i):
 func hidebody():
 	$Panel/bodyimage.visible = false
 	$Panel/BodyDisplay.visible = false
+	doll_member = null
+
+
+func _refresh_doll_pose():
+	if doll_member == null or !$Panel/BodyDisplay.visible or !participants.has(doll_member):
+		return
+	$Panel/BodyDisplay/ragdoll.set_sex_pose(DOLL_POSE.pose_for(doll_member, ongoingactions, last_applied_action))
 
 
 func switchsides(panel, side):
@@ -2196,6 +2212,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 		for i in takers:
 			if scenescript.takerpart != '':
 				i.set_part(scenescript.takerpart, null)
+	last_applied_action = dict
 
 	var x = (givers.size()+takers.size())/2
 
@@ -2740,6 +2757,8 @@ func stopongoingaction(meta, rebuild = false):
 	for act in ongoingactions:
 		if act.id == action.id:
 			ongoingactions.erase(act)
+	if last_applied_action != null && last_applied_action.id == action.id:
+		last_applied_action = null
 	if rebuild == true:
 		rebuildparticipantslist()
 

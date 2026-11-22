@@ -106,6 +106,18 @@ func fix_serialize():
 	statlist.consent = min(get_stat('consent'), 6)
 	if parent.get_ref().is_master():
 		statlist.consent = 100
+	fix_stalled_pregnancy()
+
+
+#Autosaves written while the next turn was already running could catch the countdown at 0 before the
+#birth: tick() never fires again and impregnate_check refuses while a baby is set, so the baby is lost.
+func fix_stalled_pregnancy():
+	if pregnancy.pregnancy_baby == null or pregnancy.pregnancy_duration > 0:
+		return
+	if ResourceScripts.game_party.babies.has(pregnancy.pregnancy_baby):
+		pregnancy.pregnancy_duration = 1
+	else:
+		pregnancy.pregnancy_baby = null
 
 
 func swap_alternate_exterior(): #only on sex change due to current implementation of recreate method

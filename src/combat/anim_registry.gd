@@ -49,6 +49,11 @@ func build(anim_node):
 		add(name, 'particles')
 	for name in images.GFX_sprites:
 		add(name, 'sheet')
+	#a sheet drawn in code keeps its table row (length, key frame) and plays through its method
+	if anim != null:
+		for name in anim.DRAWN_SHEETS:
+			add(name, 'method')
+			codes[name].function = name
 	#a method with the code's name intercepts the generic path; register the ones the data
 	#and the handlers know about, then let has_method settle any other name at play time
 	for name in codes.keys():
@@ -114,7 +119,7 @@ func wants_primary_first(code):
 func is_delivery(code):
 	var kind = kind_of(code)
 	if kind == 'projectile': return true
-	return kind == 'method' and !images.GFX_sprites.has(str(code))
+	return kind == 'method' and !images.GFX_sprites.has(str(code)) and !(anim != null and anim.DRAWN_SHEETS.has(str(code)))
 
 
 #The registry is advisory: start_animation still resolves a code by has_method first and
