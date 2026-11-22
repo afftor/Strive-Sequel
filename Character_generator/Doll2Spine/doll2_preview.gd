@@ -54,8 +54,6 @@ var cum_pose_playback = {}
 # These authored full-body takes use their own anatomical layers. They share
 # the exclusive pose dropdown with idle poses and keep the selected worn gear.
 const ANATOMY_ANIMATIONS = ["sex_standing", "sex_missionary", "anal_missionary", "double_pen", "deepthroat", "blowjob", "titjob", "handjob2", "handjob1", "simult_handjob", "handjobside1", "handjobside2", "test_combo", "xray", "sex_fingers", "sex_fingers_anal"]
-# Only these takes use the rear body mesh and its matching clothing cut.
-const ASS_ANIMATIONS = ["anal_missionary", "double_pen", "sex_missionary", "test_combo", "sex_fingers", "sex_fingers_anal"]
 const ANATOMY_SLOTS = [
 	"ass", "ahole", "ahole1", "HipL", "HipL_muscle", "HipR", "HipR_muscle",
 	"HipL_up", "HipL_muscle_up", "HipR_up", "HipR_muscle_up",
@@ -83,6 +81,9 @@ const COMPOSER = preload("res://Character_generator/Doll2Spine/doll2_pose_compos
 const COMPOSED_PREFIX = "pose:"
 var pose_composer = null
 var composed_info = {}
+var posed_genitals = ""
+var vaginal_opening_mesh = null
+var vaginal_partner_material = null
 # slot -> the channel colour it had before a partner's was put on it
 var partner_colour_defaults = {}
 # A beastkin's extra rows under the chest are weighted to the smallest breast
@@ -280,6 +281,8 @@ var animation_attachments = {}
 var animation_signature = 0
 var animation_attachment_signature = 0
 var animation_times = {}
+# how fast the sex takes play, against their authored speed (the sex scene's slider)
+var pose_speed = 1.0
 var animation_durations = {}
 const POSE_TRANSITION_DURATION = 0.35
 const EMOTION_TRANSITION_DURATION = 0.3
@@ -467,7 +470,8 @@ func _advance_animation_times(delta):
 		if animation_states[animation_name]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
 			var previous = float(animation_times.get(animation_name, 0.0))
-			var next = fmod(previous + delta, duration) if duration > 0.0 else 0.0
+			var step = delta * pose_speed if _is_anatomy_animation(animation_name) or _is_sex_side_animation(animation_name) else delta
+			var next = fmod(previous + step, duration) if duration > 0.0 else 0.0
 			if cum_enabled and (_cum_controls_pose(animation_name) or _is_sex_side_animation(animation_name)) and duration > 0.0:
 				next = _cum_pose_time(animation_name, delta, duration)
 			animation_times[animation_name] = next
@@ -587,10 +591,15 @@ func has_emotion(emotion_name):
 	return animation_states.has(EMOTION_PREFIX + str(emotion_name))
 
 
+func has_cum_animation():
+	var animations = skeleton.get("animations", {})
+	return animations.has(CUM_ANIMATION) and animations.has(CUM_FACE_ANIMATION)
+
+
 # A separate overlay channel: neither the selected pose nor the ordinary
 # emotion is switched off, so both resume unchanged when Cum is disabled.
 func set_cum(value):
-	var enabled = bool(value) and skeleton.get("animations", {}).has(CUM_ANIMATION) and skeleton.get("animations", {}).has(CUM_FACE_ANIMATION)
+	var enabled = bool(value) and has_cum_animation()
 	if enabled == cum_enabled:
 		return
 	var previous_pose = _sampled_bone_timelines().duplicate(true)
@@ -2572,10 +2581,15 @@ func _partner_hands_active():
 
 
 func _partner_hand_pose_active():
-	for animation_name in PARTNER_HAND_POSES:
-		if bool(animation_states.get(animation_name, false)):
+	for animation_name in animation_states:
+		if animation_states[animation_name] and _is_partner_hand_pose(animation_name):
 			return true
 	return false
+
+
+func _is_partner_hand_pose(animation_name):
+	var base = composed_info.get(animation_name, {}).get("owners", {}).get("torso", animation_name)
+	return base in PARTNER_HAND_POSES
 
 
 func _emotion_animations():
@@ -2650,10 +2664,14 @@ func _cum_visible_slots():
 			continue
 		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
-		if !cum_visibility_by_animation.has(animation_name):
-			cum_visibility_by_animation[animation_name] = OVERLAY_RULES.cum_slots(skeleton, animation_name)
-		for slot_name in cum_visibility_by_animation[animation_name].keys():
-			result[slot_name] = true
+		var pose = composed_info.get(animation_name, {})
+		var standing_anal = "anal" in pose.get("slots", {}).values()
+		for take in pose.get("takes", [animation_name]):
+			var effect_take = "anal_missionary" if take == "sex_standing" and standing_anal else take
+			if !cum_visibility_by_animation.has(effect_take):
+				cum_visibility_by_animation[effect_take] = OVERLAY_RULES.cum_slots(skeleton, effect_take)
+			for slot_name in cum_visibility_by_animation[effect_take].keys():
+				result[slot_name] = true
 	return result
 
 
@@ -3413,9 +3431,7 @@ func _sorted_modifiers():
 	for modifier_id in MODIFIERS.BREAST_MODIFIER_ORDER:
 		result.erase(modifier_id)
 	result.sort()
-	# The hair lengths sit apart from the build sliders: they are per layer rather
-	# than per bone, and reading them next to each other is what makes them
-	# legible as four independent lengths.
+	# Keep the controls for individual mesh layers together.
 	var ordered = (
 		MODIFIERS.LAYER_MODIFIERS.keys()
 		+ result
@@ -3693,7 +3709,7 @@ func _rebuild_model():
 	var authored_animation_attachments = _animation_attachments()
 	animation_signature = _animation_signature().hash()
 	animation_attachment_signature = authored_animation_attachments.hash()
-	var worn = _worn_selections()
+	var worn = _worn_selections(_shows_posed_genitals(authored_animation_attachments))
 	composed = CATALOGUE.compose(worn, axis_values, hidden_slots)
 	_apply_say_lips(worn)
 	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
@@ -3752,6 +3768,7 @@ func _rebuild_model():
 		# The end slot is inclusive, even when it has no visible attachment.
 		if !clipping.empty() and str(slot.name) == str(clipping.attachment.get("end", "")):
 			clipping = {}
+	_bind_vaginal_opening_clip()
 	_rebuild_xray(rows)
 	# The screens all re-pose straight after a rebuild and would have caught this
 	# on that call; the preview's own rebuilds do not, so a layer that has only
@@ -3770,27 +3787,42 @@ func _rebuild_model():
 	# print("Doll2Preview: created %d mesh slots from %d Spine slots." % [rendered_meshes, slot_data.size()])
 
 
+# The legs-up takes key the rear mesh. The standing take exposes the lower
+# body with the ordinary pelvis, including when composed with other takes.
+func _shows_posed_genitals(authored_attachments):
+	if posed_genitals.empty():
+		return false
+	if !str(authored_attachments.get("ass", "")).empty():
+		return true
+	for animation_name in animation_states:
+		if !animation_states[animation_name]:
+			continue
+		var owners = composed_info.get(animation_name, {}).get("owners", {})
+		if owners.get("lower", animation_name) == "sex_standing":
+			return true
+	return false
+
+
 # What the doll actually has on, once the undress buttons have had their say.
 # The dropdowns go on showing what was picked - stripping a character is not the
 # same as choosing nothing - so the level is applied on the way to the model.
-func _worn_selections():
+func _worn_selections(show_posed_genitals):
 	var level = GEAR.normalise(undress_level)
-	if level == GEAR.DRESSED:
+	if level == GEAR.DRESSED and !show_posed_genitals:
 		return selections
 	var result = selections.duplicate()
-	if level == GEAR.NAKED:
-		for group_id in GEAR.WORN_GROUPS:
-			result[group_id] = ""
-		return result
-	if level == GEAR.UNDERWEAR:
-		# what a character with an empty underwear slot is given
-		result["outfit"] = GEAR.default_underwear(doll_id)
-		return result
-	# `bare` keeps the set that is picked instead of the character's underwear, so
-	# any set can be looked at with its covering pieces taken off - which is the
-	# question this level is here to answer.  The weapons go with the clothes.
-	result["weapon_belt"] = ""
-	result["weapon_back"] = ""
+	if show_posed_genitals:
+		result["genitals"] = posed_genitals
+	match level:
+		GEAR.NAKED:
+			for group_id in GEAR.WORN_GROUPS:
+				result[group_id] = ""
+		GEAR.UNDERWEAR:
+			result["outfit"] = GEAR.default_underwear(doll_id)
+		GEAR.BARE:
+			# The selected cut stays on, with its covering slots hidden.
+			result["weapon_belt"] = ""
+			result["weapon_back"] = ""
 	return result
 
 
@@ -3803,15 +3835,6 @@ func _anatomy_animation_active():
 		return false
 	for animation_name in animation_states.keys():
 		if _is_anatomy_animation(animation_name) and bool(animation_states[animation_name]):
-			return true
-	return false
-
-
-func _ass_animation_active():
-	if doll_id != "female":
-		return false
-	for animation_name in ASS_ANIMATIONS:
-		if bool(animation_states.get(animation_name, false)):
 			return true
 	return false
 
@@ -3844,10 +3867,21 @@ func play_pose(animation_name):
 	_on_animation_toggled(true, animation_name)
 
 
-func stop_poses():
+func set_chest_touch(enabled):
+	if enabled:
+		play_pose("tithand2")
+	else:
+		var active = _tithand_take()
+		if !active.empty():
+			_on_animation_toggled(false, active)
+
+
+func stop_poses(include_side = false):
 	var stopped = false
 	for animation_name in animation_states.keys():
-		if str(animation_name).begins_with(COMPOSED_PREFIX) and animation_states[animation_name]:
+		if !animation_states[animation_name]:
+			continue
+		if str(animation_name).begins_with(COMPOSED_PREFIX) or (include_side and _is_sex_side_animation(animation_name)):
 			animation_states[animation_name] = false
 			animation_times[animation_name] = 0.0
 			stopped = true
@@ -3935,9 +3969,14 @@ func _current_draw_order():
 		# on a copy: the catalogue's order is the one every doll on the rig reads
 		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
 	if composed.has("pregnancy_belly"):
-		order = _apply_draw_order_fixes(order.duplicate(), PREGNANT_DRAW_ORDER_FIXES)
-	var handjob_active = bool(animation_states.get("handjob1", false)) or bool(animation_states.get("handjob2", false))
-	if handjob_active and !_tithand_take().empty() and order.has("semen_pm2"):
+		for fix in PREGNANT_DRAW_ORDER_FIXES:
+			if order.find(fix.slot) < order.find(fix.after):
+				order = _apply_draw_order_fixes(order, [fix])
+	if !posed_genitals.empty() and composed.has("dick") and str(selections.get("genitals", "")).empty():
+		var covering_slot = "equip_pregnancy_low" if composed.has("equip_pregnancy_low") else "equip_pelvis"
+		if order.find("dick") < order.find(covering_slot):
+			order = _apply_draw_order_fixes(order, [{"slot": "dick", "after": covering_slot}])
+	if !_tithand_take().empty() and _front_handjob_active() and order.has("semen_pm2"):
 		for slot_name in TITHAND_DRAW_ORDER:
 			order.erase(slot_name)
 		var insertion = order.find("semen_pm2") + 1
@@ -3945,6 +3984,16 @@ func _current_draw_order():
 			order.insert(insertion, slot_name)
 			insertion += 1
 	return order
+
+
+func _front_handjob_active():
+	for animation_name in animation_states:
+		if !animation_states[animation_name]:
+			continue
+		var takes = composed_info.get(animation_name, {}).get("takes", [animation_name])
+		if "handjob1" in takes or "handjob2" in takes:
+			return true
+	return false
 
 
 func _apply_selected_ear_draw_order(order):
@@ -4097,7 +4146,7 @@ func _animation_attachments():
 		# The tithand take hides gg_hand when played alone. In a combination,
 		# the main pose owns that hand and the overlay adds gg_hand2/gg_hand3.
 		var preserve_fingers_hand = tithand_overlay and fingers_active
-		if tithand_overlay or animation_name in PARTNER_HAND_POSES:
+		if tithand_overlay or _is_partner_hand_pose(animation_name):
 			# Alpha-only hand tracks use this take's setup cut, not a hand
 			# attachment left behind by the independently running base pose.
 			for slot in slot_data:
@@ -4249,8 +4298,6 @@ func _update_bone_nodes():
 func _resolve_attachment(slot):
 	var slot_name = slot.get("name", "")
 	# Enforce visibility before setup, animation or overlay attachments resolve.
-	if slot_name in ["ass", "ass_eq"] and !_ass_animation_active():
-		return {}
 	if str(slot_name).begins_with("semen_") and !_cum_visible_slots().has(slot_name):
 		return {}
 	# These are exclusive to the inset, never wardrobe items on the main doll.
@@ -4278,11 +4325,8 @@ func _resolve_attachment(slot):
 	# The rear clothing cut belongs only to the alternate ass mesh. Keep the
 	# selected outfit (not the export's setup item), and never leave it floating
 	# in ordinary poses or after an attachment key hides the body underneath.
-	if slot_name == "ass_eq":
-		if !anatomy_active or str(composed.get("ass", "")).empty():
-			return {}
-		if animation_attachments.has("ass") and str(animation_attachments["ass"]).empty():
-			return {}
+	if slot_name == "ass_eq" and (!anatomy_active or str(animation_attachments.get("ass", "")).empty()):
+		return {}
 	# This pose omits the lower-leg layers for every selected body.
 	if anatomy_active and bool(animation_states.get("deepthroat", false)) and slot_name in ["ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle"]:
 		return {}
@@ -4521,8 +4565,52 @@ func _update_mesh_geometry():
 			else:
 				record.polygon.polygon = points
 		record.polygon.color = _attachment_colour(record.slot, record.attachment, active)
+	_update_vaginal_opening_clip()
 	_update_xray_pivot(aperture)
 	_update_xray_view()
+
+
+# The vaginal partner is drawn over the shadow and under the foreground mesh.
+# Clip at the top of the animated opening to keep the tip under the body above it.
+func _bind_vaginal_opening_clip():
+	vaginal_opening_mesh = null
+	vaginal_partner_material = null
+	if str(animation_attachments.get("vhole", "")).empty():
+		return
+	var partner_slot = _vaginal_partner_slot()
+	if partner_slot.empty():
+		return
+	for record in mesh_records:
+		if record.slot.name == "vhole":
+			vaginal_opening_mesh = record.polygon
+		elif record.slot.name == partner_slot:
+			vaginal_partner_material = record.polygon.material
+	_update_vaginal_opening_clip()
+
+
+func _vaginal_partner_slot():
+	for animation_name in animation_states:
+		if !animation_states[animation_name]:
+			continue
+		var composed_slots = composed_info.get(animation_name, {}).get("slots", {})
+		for slot_name in composed_slots:
+			if composed_slots[slot_name] == "vaginal":
+				return slot_name
+		var authored_slots = COMPOSER.TAKE_PENISES.get(animation_name, {})
+		for slot_name in authored_slots:
+			if authored_slots[slot_name][0] == "vaginal":
+				return slot_name
+	return ""
+
+
+func _update_vaginal_opening_clip():
+	if vaginal_opening_mesh == null or vaginal_partner_material == null:
+		return
+	var top = INF
+	for point in vaginal_opening_mesh.polygon:
+		top = min(top, point.y)
+	if top < INF:
+		vaginal_partner_material.set_shader_param("opening_clip_y", top)
 
 
 func set_xray(enabled):

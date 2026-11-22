@@ -2297,8 +2297,11 @@ func translate(text, number = -1):
 	return text
 
 
-func make_random_portrait():
-	statlist.icon_image = ResourceScripts.rnd_main.setrandom(parent.get_ref()) 
+func make_random_portrait(keep_if_no_match = false):
+	var portrait = ResourceScripts.rnd_main.setrandom(parent.get_ref())
+	if portrait == null and keep_if_no_match:
+		return
+	statlist.icon_image = portrait
 	if statlist != null && statlist.icon_image != null && !statlist.icon_image.empty(): # this if sets the matching body image
 		statlist.dynamic_portrait = false
 		var fullImagePath = statlist.icon_image.replacen(input_handler.globalsettings.portrait_folder, input_handler.globalsettings.body_folder)

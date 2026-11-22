@@ -188,10 +188,15 @@ var character = null
 # is what the screens call, still speaks in dressed-or-not and lands on `dressed`
 # or `bare` - the level the old doll had when it stripped somebody.
 var undress_level = GEAR.DRESSED
+var preview_outfit = null # {part, level} while an interaction outfit is being tested
 
 var model = null
 # The sex-scene pose set for `character` - see set_sex_pose - or null for the idle.
 var sex_pose = null
+# how fast that pose plays; see set_sex_pose_speed
+var sex_pose_speed = 1.0
+# false while the sex scene redraws a chest it has already seen swing
+var rebuild_jiggle = true
 # The penis types drawn with the animal art; ch_stats.FURRY_PENIS_TYPES.
 const FURRY_PENIS_TYPES = ["feline", "canine"]
 # Pushes the whole set of corner buttons down the frame; see
@@ -279,6 +284,7 @@ func _make_model():
 	model.handle_buttons.clear()
 	model.handles_visible = false
 	model.set_process_unhandled_input(false)
+	model.pose_speed = sex_pose_speed
 	_apply_idle_animation()
 	_hold_still()
 
@@ -290,7 +296,7 @@ func _dolls_switched_off():
 
 # --- the old doll's API -------------------------------------------------------
 
-func rebuild(character_to_build):
+func rebuild(character_to_build, clothing_level = null, outfit_override = null):
 	# A different character is a fresh look at a fresh doll: whatever the player
 	# zoomed into or dragged off-frame on the last one is not where they want to
 	# start on this one.
@@ -306,7 +312,21 @@ func rebuild(character_to_build):
 		# and a pose is what that somebody was doing
 		sex_pose = null
 	character = character_to_build
+	preview_outfit = outfit_override
+	if clothing_level != null:
+		undress_level = GEAR.normalise(clothing_level)
 	_apply()
+
+
+func set_preview_outfit(part_id):
+	var current = preview_outfit.part if preview_outfit != null else null
+	if current == part_id:
+		return
+	preview_outfit = null if part_id == null else {
+		"part": part_id,
+		"level": GEAR.NAKED if part_id == "" else GEAR.DRESSED,
+	}
+	_apply(true)
 
 
 func rebuild_cloth(value):
@@ -334,7 +354,11 @@ func _remembered_undress_level(for_character):
 # The four steps, for the screens and for the doll's own corner buttons.
 func set_undress_level(level):
 	var wanted = GEAR.normalise(level)
-	if wanted == undress_level:
+	if wanted == _appearance_undress_level():
+		return
+	if preview_outfit != null:
+		preview_outfit.level = wanted
+		_apply(true)
 		return
 	if undress_is_a_rule and wanted != GEAR.DRESSED and !nudity_allowed():
 		_refresh_undress_bar()
@@ -342,7 +366,7 @@ func set_undress_level(level):
 	undress_level = wanted
 	if undress_is_a_rule:
 		_write_undress_rule()
-	_apply()
+	_apply(true)
 	emit_signal("undress_level_changed", undress_level)
 
 
@@ -1357,18 +1381,19 @@ func _refresh_undress_bar():
 	if !bar_visible:
 		_close_hair_menu()
 	var offered = _levels_that_differ()
+	var current_level = _appearance_undress_level()
 	# a level the character has no picture of its own for shows the next one down
 	var shown = ""
 	for level in GEAR.LEVELS:
 		if level in offered:
 			shown = level
-		if level == undress_level:
+		if level == current_level:
 			break
 	if shown == "":
 		# the level in hand is not offered because it looks like the next one down,
 		# so that is the button to light: a character with no clothes on shows the
 		# same picture dressed as in their underwear
-		shown = offered.front() if !offered.empty() else undress_level
+		shown = offered.front() if !offered.empty() else current_level
 	var barred = undress_is_a_rule and !nudity_allowed()
 	for level in _undress_buttons.keys():
 		if level == "hair":
@@ -1418,7 +1443,7 @@ func _rule_tooltip(button, stand_clear_of = null):
 # the same bare as naked.  The more dressed of the two is the one that goes -
 # what the button promises is what is missing from it.
 func _levels_that_differ():
-	if model == null or character == null:
+	if preview_outfit != null or model == null or character == null:
 		return GEAR.LEVELS
 	var equipment = _equipment()
 	var pictures = {}
@@ -1580,6 +1605,10 @@ func stop_tits_jiggle():
 	pass
 
 
+func is_chest_swinging():
+	return model != null and bool(model.animation_states.get(model.TITJUMP_ANIMATION, false))
+
+
 func tits_interaction(position = Vector2.ZERO):
 	if model == null or model.scale.x == 0.0:
 		return false
@@ -1603,17 +1632,12 @@ func get_tits_outline():
 
 # --- driving the doll ---------------------------------------------------------
 
-func _apply():
+func _apply(keep_pose = false):
 	# dolls switched back on since this one was made: the rig is built now
 	if model == null and character != null and !_dolls_switched_off():
 		_make_model()
 	if model == null or character == null:
 		return
-	# The frame is fitted to the standing figure, so a pose comes off for the
-	# measuring and goes back on at the end; spread legs would otherwise rescale it.
-	if model.stop_poses():
-		model.set_partner_penises({})
-		model._reset_animation_states()
 	# Read before the rebuild, compared after it: a top coming off is the moment
 	# the chest is worth a swing.
 	var was_covered = _chest_is_covered()
@@ -1621,10 +1645,15 @@ func _apply():
 	for stat in STATS:
 		stats[stat] = _stat(stat)
 	stats["equipment"] = _equipment()
-	stats["undress"] = undress_level
 	stats["beast"] = _beast()
 
 	var doll_id = _doll_id(stats)
+	keep_pose = keep_pose and doll_id == model.doll_id and (model._anatomy_animation_active() or !model._tithand_take().empty() or model.cum_enabled)
+	# Fit a new figure standing. Clothing changes during a pose keep the current
+	# framing and playback so the doll continues moving at the same phase.
+	if !keep_pose and model.stop_poses(true):
+		model.set_partner_penises({})
+		model._reset_animation_states()
 	# a different sex is a different export, not only a different part list: the
 	# skeletons share neither their bones nor their parts, so the model has to be
 	# swapped rather than pointed at another catalogue
@@ -1634,8 +1663,20 @@ func _apply():
 		model.handles_visible = false
 		_apply_idle_animation()
 	CATALOGUE.use(doll_id)
+	if preview_outfit != null and preview_outfit.part != "" and !(preview_outfit.part in CATALOGUE.parts("outfit")):
+		preview_outfit = null
+	stats["undress"] = _appearance_undress_level()
 	model.selections = CATALOGUE.default_selections()
+	model.posed_genitals = ""
+	if str(stats.sex) == "futa":
+		var part_id = CHARACTER_MAP.resolve("penis_type", str(stats.penis_type), stats)
+		if part_id in CATALOGUE.parts("genitals"):
+			model.posed_genitals = part_id
 	var wanted = CHARACTER_MAP.selections_for(stats, doll_id)
+	if preview_outfit != null and stats.undress == GEAR.DRESSED:
+		wanted["outfit"] = preview_outfit.part
+		wanted["outfit_legs"] = ""
+		wanted["outfit_hands"] = ""
 	for group_id in wanted.keys():
 		var part_id = str(wanted[group_id])
 		if part_id.empty() or part_id in CATALOGUE.parts(group_id):
@@ -1677,7 +1718,7 @@ func _apply():
 		model.axis_values["legs"] = "orc" if str(stats.get("race", "")) in ORC_LEGS else "default"
 	# what the level wears is already in the selections; this is what it wears but
 	# does not show, which is what makes a bare character bare
-	model.hidden_slots = GEAR.hidden_slots(undress_level)
+	model.hidden_slots = GEAR.hidden_slots(stats.undress)
 	# The extra rows under a beastkin's chest are nipples alone until they are
 	# developed into breasts.  A top covers both by draw order - see
 	# DRAW_ORDER_FIXES in doll2_overrides.gd.
@@ -1708,9 +1749,10 @@ func _apply():
 	model._rebuild_model()
 	_apply_coverage()
 	model._update_animated_pose()
-	_stand_on_the_node()
-	if sex_pose != null:
-		_apply_sex_pose()
+	if !keep_pose:
+		_stand_on_the_node()
+		if sex_pose != null:
+			_apply_sex_pose()
 	_refresh_undress_bar()
 	# Whatever changed about the character - a piece equipped in the inventory, a
 	# status a training lifted - reaches the doll as a rebuild, and the open menu
@@ -1718,9 +1760,15 @@ func _apply():
 	_refresh_open_menu()
 	# Not on the first build - a doll that opens dressed has gone from nothing to
 	# covered, which is not a change anyone watched happen.
-	if _applied_frame >= 0 and _chest_is_covered() != was_covered:
+	if rebuild_jiggle and _applied_frame >= 0 and _chest_is_covered() != was_covered:
 		jiggle_tits()
 	_applied_frame = Engine.get_frames_drawn()
+
+
+func _appearance_undress_level():
+	if preview_outfit == null:
+		return undress_level
+	return preview_outfit.level
 
 
 # The colour a worn item dictates for one channel, or `null` when nothing worn
@@ -1735,7 +1783,7 @@ func _gear_colour(channel_id):
 	# group: the channel and the group are not the same word - the `tail` channel
 	# paints the `tails` group - and the part is what both agree on.
 	var worn = {}
-	for group_id in GEAR.selections_for(equipment, undress_level, model.doll_id).values():
+	for group_id in GEAR.selections_for(equipment, _appearance_undress_level(), model.doll_id).values():
 		worn[str(group_id)] = true
 	for slot_name in equipment.keys():
 		var item_id = str(equipment[slot_name])
@@ -1970,48 +2018,54 @@ func set_animated(value):
 
 # What the character is doing in the sex scene, as the takes the doll has for it:
 # {base = take, parts = {region: take}, partners = {role: {penis_type, penis_size,
-# skin, strapon}}} - see interaction_doll_pose.gd and doll2_pose_composer.gd.
+# skin, strapon}}, chest_touch = bool} - see interaction_doll_pose.gd.
 # null puts the doll back on its idle.  A rig without the takes stays idle.
 func set_sex_pose(pose):
 	sex_pose = pose
-	if model == null:
-		return
-	if sex_pose != null:
+	if model != null:
 		_apply_sex_pose()
-	elif model.stop_poses():
-		model.set_partner_penises({})
-		_apply_idle_animation()
-		model._rebuild_model()
+
+
+# 1.0 plays the sex takes as authored; the idle and the blink keep their own pace.
+func set_sex_pose_speed(speed):
+	sex_pose_speed = speed
+	if model != null:
+		model.pose_speed = speed
 
 
 func _apply_sex_pose():
 	if portrait_mode:
 		return
+	var pose = sex_pose if sex_pose != null else {}
 	var scales = {}
 	var styles_by_role = {}
-	var partners = sex_pose.get("partners", {})
+	var partners = pose.get("partners", {})
 	for role in partners.keys():
 		# The art has one size; the three the game carries scale it, as they do the
 		# character's own (`dick` in doll_modifiers.gd).
 		scales[role] = MODIFIERS.step_factor("dick", str(partners[role].get("penis_size", "")))
 		styles_by_role[role] = _partner_penis_style(partners[role])
-	var name = model.compose_pose({"base": sex_pose.get("base", ""), "parts": sex_pose.get("parts", {}), "scales": scales})
+	var base = str(pose.get("base", ""))
+	var recipe = {"base": base, "parts": pose.get("parts", {}), "scales": scales}
+	if base == "sex_standing" and partners.has("anal"):
+		recipe["standing_role"] = "anal"
+	var name = "" if base.empty() else model.compose_pose(recipe)
 	if name == "":
 		if model.stop_poses():
 			model.set_partner_penises({})
 			_apply_idle_animation()
 			model._rebuild_model()
-		return
-	var styles = {}
-	var roles = model.composed_info[name].slots
-	for slot_name in roles.keys():
-		styles[slot_name] = styles_by_role.get(roles[slot_name], {})
-	var attachments_changed = model.set_partner_penises(styles)
-	if bool(model.animation_states.get(name, false)):
-		if attachments_changed:
-			model._rebuild_model()
 	else:
-		model.play_pose(name)
+		var styles = {}
+		var roles = model.composed_info[name].slots
+		for slot_name in roles.keys():
+			styles[slot_name] = styles_by_role.get(roles[slot_name], {})
+		var attachments_changed = model.set_partner_penises(styles)
+		if !bool(model.animation_states.get(name, false)):
+			model.play_pose(name)
+		elif attachments_changed:
+			model._rebuild_model()
+	model.set_chest_touch(bool(pose.get("chest_touch", false)))
 	_hold_still()
 
 

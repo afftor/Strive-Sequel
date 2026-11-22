@@ -31,6 +31,7 @@ uniform vec4 recolor2 : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float paint_flat = 0.0;
 uniform float gradient_top = 0.0;
 uniform float gradient_span = 0.0;
+uniform float opening_clip_y = -100000.0;
 
 uniform vec3 zone_hues = vec3(0.83, 0.25, 0.43);
 uniform vec3 zone_distance = vec3(0.042, 0.042, 0.072);
@@ -65,6 +66,7 @@ const float NEUTRAL_LIGHTNESS = 0.5;
 
 varying vec4 modulate;
 varying float gradient_mix;
+varying float vertex_y;
 
 
 vec3 rgb_to_hsl(vec3 color) {
@@ -142,10 +144,14 @@ float hue_gap(float first, float second) {
 void vertex() {
 	modulate = COLOR;
 	gradient_mix = gradient_span > 0.0 ? clamp((VERTEX.y - gradient_top) / gradient_span, 0.0, 1.0) : 0.0;
+	vertex_y = VERTEX.y;
 }
 
 
 void fragment() {
+	if (vertex_y < opening_clip_y) {
+		discard;
+	}
 	vec4 texel = texture(TEXTURE, UV);
 	vec3 rgb = texel.rgb;
 	float applied = 0.0;

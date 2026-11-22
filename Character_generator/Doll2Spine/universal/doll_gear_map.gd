@@ -77,7 +77,7 @@ const EXTRAS_BY_LEVEL = {
 # whole difference between `bare` and `naked`.  A set that has nothing but these
 # leaves the two levels looking alike, and the doll then offers only one of them.
 const MODESTY_SLOTS = [
-	"equip_torso", "equip_breasts", "equip_pelvis", "equip_belly",
+	"equip_torso", "equip_breasts", "equip_pelvis", "equip_belly", "ass_eq",
 	"equip_pregnancy_low", "equip_pregnancy_up",
 ]
 

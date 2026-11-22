@@ -16,6 +16,9 @@ const COMPACT_INSET = 3.0
 #the mark that says what a busy portrait is busy with, at the size a 44px cell can carry
 const COMPACT_MARK = Vector2(18, 18)
 
+#lifted by click or drag start; the tutorial waits on it since a drag never emits "pressed"
+signal lifted
+
 var view = null
 var char_id = null
 #A cell in the lower strip stands for somebody already at work: it wears what they are doing,
@@ -96,7 +99,8 @@ func is_blocked():
 #there, and clicking them again sets them back down where they were. Both gestures go
 #through the screen's carrying protocol, so they lift and refuse in exactly the same cases.
 func on_pressed():
-	view.begin_carry_click(self)
+	if view.begin_carry_click(self):
+		emit_signal("lifted")
 
 
 func refresh():
@@ -202,4 +206,7 @@ func carry_texture():
 
 
 func get_drag_data(_position):
-	return view.begin_carry_drag(self)
+	var data = view.begin_carry_drag(self)
+	if data != null:
+		emit_signal("lifted")
+	return data

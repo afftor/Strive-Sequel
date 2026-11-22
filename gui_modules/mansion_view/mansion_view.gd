@@ -119,16 +119,17 @@ func _ready():
 #than a reference. A search that comes up empty answers null, which the tutorial reads as
 #"not built yet" and retries on the next frame - that is how a step can point at a builder's
 #place that only appears once the scaffolding is paid for.
+#The carry steps listen for the carry itself rather than "pressed", so a drag works like a click.
 func register_tutorial_buttons():
 	input_handler.register_btn_source('mansion_tut_slot', self, 'tut_get_slot')
-	input_handler.register_btn_source('mansion_build_place', self, 'tut_get_build_place')
-	input_handler.register_btn_source('mansion_work_place', self, 'tut_get_work_place')
-	input_handler.register_btn_source('mansion_rest_daisy', self, 'tut_get_rest_daisy')
-	input_handler.register_btn_source('mansion_rest_master', self, 'tut_get_rest_master')
-	input_handler.register_btn_source('mansion_rest_servant', self, 'tut_get_rest_servant')
-	input_handler.register_btn_source('mansion_garden_place', self, 'tut_get_garden_place')
+	input_handler.register_btn_source('mansion_build_place', self, 'tut_get_build_place', null, null, 'carried_in')
+	input_handler.register_btn_source('mansion_work_place', self, 'tut_get_work_place', null, null, 'carried_in')
+	input_handler.register_btn_source('mansion_rest_daisy', self, 'tut_get_rest_daisy', null, null, 'lifted')
+	input_handler.register_btn_source('mansion_rest_master', self, 'tut_get_rest_master', null, null, 'lifted')
+	input_handler.register_btn_source('mansion_rest_servant', self, 'tut_get_rest_servant', null, null, 'lifted')
+	input_handler.register_btn_source('mansion_garden_place', self, 'tut_get_garden_place', null, null, 'carried_in')
 	input_handler.register_btn_source('mansion_store_slot', self, 'tut_get_store_slot')
-	input_handler.register_btn_source('mansion_bed_place', self, 'tut_get_bed_place')
+	input_handler.register_btn_source('mansion_bed_place', self, 'tut_get_bed_place', null, null, 'carried_in')
 
 
 func tut_get_slot():
@@ -534,6 +535,8 @@ func layout_view():
 		return
 	$Background.visible = false
 	place_child($GridViewport, Rect2(Vector2.ZERO, rect_size))
+	#full screen here, so the clip hides nothing, and a clip stops light scissoring (+70-80% lantern cost)
+	$GridViewport.rect_clip_content = false
 	$ExpelZone.visible = false
 	lay_out_hud()
 	if grid.view != null:

@@ -44,7 +44,7 @@ func givereffect(member):
 #Disabling until something is decided about tools
 func takereffect(member):
 	var effects = {lust = 0, sens = 0}
-	if member.person.check_trait("Masochist"):
+	if member.person.check_trait("masochist"):
 		effects.stress = 0
 	return effects
 

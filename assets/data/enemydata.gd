@@ -5137,12 +5137,20 @@ func power_place_claim():
 		prompt = tr('POWER_PLACE_CLAIM_PROMPT').replace('{trait}', tr(Traitdata.traits[code].name))
 	input_handler.ShowSlaveSelectPanel(self, 'power_place_claimed', reqs, false, null, prompt)
 
-#a full slot asks which trait gives way before anything is given; keeping it leaves the power waiting
+#a full slot asks which trait gives way before anything is given; keeping it gives the power up
 func power_place_claimed(person):
 	if power_place_offer() == '':
 		power_place_take('', person)
 		return
-	input_handler.get_spec_node(input_handler.NODE_TRAIT_REPLACE, null, true, false).ask_first(person, power_place_offer(), self, 'power_place_take', [person])
+	input_handler.get_spec_node(input_handler.NODE_TRAIT_REPLACE, null, true, false).ask_first(person, power_place_offer(), self, 'power_place_take', [person], 'power_place_declined')
+
+#the ring is spent either way: left standing, coming back would start another fight
+func power_place_declined(person):
+	var dict = meditation_scene(tr('POWER_PLACE_DECLINED'))
+	dict.image = 'energy_control'
+	dict.common_effects.append({code = 'clear_subroom'})
+	dict.options.append({code = 'close', reqs = [], text = 'DIALOGUELEAVE'})
+	input_handler.interactive_message_follow(dict, 'direct', {set_active_character = person.id, scene_characters_add = [person.id]})
 
 func power_place_take(old_code, person):
 	var code = power_place_offer()
@@ -5269,14 +5277,15 @@ func freya_item(code):
 		dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_curse'}]
 	else:
 		match item.code:
+			#the two key names are swapped: _CLOTHMAGICC holds the blessing text, _CLOTH the mana one
 			'cloth':
-				dict.text += tr('FREYA_ITEM_CLOTH')
+				dict.text += tr('FREYA_ITEM_CLOTHMAGICC')
 				dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_bless', override = {duration = 4}}]
 			'clothsilk':
-				dict.text += tr('FREYA_ITEM_CLOTH')
+				dict.text += tr('FREYA_ITEM_CLOTHMAGICC')
 				dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_bless', override = {duration = 8}}]
 			'clothmagic':
-				dict.text += tr('FREYA_ITEM_CLOTHMAGICC')
+				dict.text += tr('FREYA_ITEM_CLOTH')
 				dict.common_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'mp', value = 999}]
 			'clothethereal':
 				dict.text += tr('FREYA_ITEM_CLOTHETHERIAL')

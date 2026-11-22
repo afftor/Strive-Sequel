@@ -19,7 +19,7 @@ var horns
 var heights
 
 #add missing custom races here.
-var portrait_races = ['Human','Elf','TribalElf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny', 'Slime', 'Scylla', 'Nereid', 'Harpy', 'Gnome', 'Goblin', 'Fairy', 'Dragonkin', 'Kobold', 'Dwarf', 'Dryad', 'Demon', 'Seraph', 'Taurus', 'Centaur', 'Lamia', 'Arachna', 'BeastkinTanuki', 'HalfkinTanuki']
+var portrait_races = ['Human','Elf','TribalElf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny', 'Slime', 'Scylla', 'Nereid', 'Harpy', 'Gnome', 'Goblin', 'Fairy', 'Dragonkin', 'Kobold', 'Dwarf', 'Dryad', 'Demon', 'Seraph', 'Taurus', 'Centaur', 'Lamia', 'Arachna', 'BeastkinTanuki', 'HalfkinTanuki', 'Ratkin']
 
 
 func _init(_file):
@@ -55,13 +55,11 @@ func _init(_file):
 		genders.append('female')
 
 	#age scan
-	var all_ages = ['child','teen','adult','mature']
+	var all_ages = ['teen','adult','mature']
 	ages = []
 	for age in all_ages:
 		if file.findn(age) >= 0:
 			ages.append(age)
-	if !ages.has('child') && file.findn('loli') >= 0:
-		ages.append('child')
 	# If no matches, assume adult.
 	if ages.size() == 0:
 		ages.append('adult')
@@ -105,7 +103,8 @@ func _init(_file):
 		for i in titSizes.count('masculine'):
 			titSizes.erase('masculine')
 	if file.findn('TitsM') >= 0: titSizes.append('average')
-	if file.findn('(TitsB|TitsL)') >= 0: titSizes.append('big')
+	filterRegex.compile('(?i:tits(b|l|big|large))(?![a-z])') #bounded, or smalltitsblack reads as TitsB
+	if filterRegex.search(file): titSizes.append('big')
 	if file.findn('TitsH') >= 0: titSizes.append('huge')
 
 	#ass size scan
@@ -121,7 +120,8 @@ func _init(_file):
 		for i in assSizes.count('masculine'):
 			assSizes.erase('masculine')
 	if file.findn('AssM') >= 0: assSizes.append('average')
-	if file.findn('(AssB|AssL)') >= 0: assSizes.append('big')
+	filterRegex.compile('(?i:ass(b|l|big|large))(?![a-z])')
+	if filterRegex.search(file): assSizes.append('big')
 	if file.findn('AssH') >= 0: assSizes.append('huge')
 	
 	#penis size scan

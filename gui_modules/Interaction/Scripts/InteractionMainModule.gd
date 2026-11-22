@@ -6,8 +6,13 @@ onready var member = ResourceScripts.scriptdict.sexinteraction_member
 onready var sexdict = ResourceScripts.scriptdict.sexinteraction_sexdict.new()
 
 const DOLL_POSE = preload("res://gui_modules/Interaction/Scripts/interaction_doll_pose.gd")
+const DOLL_CATALOGUE = preload("res://Character_generator/Doll2Spine/doll2_catalogue.gd")
 var doll_member = null #the member the doll shows, re-posed whenever the actions change
+var jiggle_seen = {} #members whose chest already swung on screen this scene
+var shown_member = null #whoever the portrait shows
+var portrait_pinned = false #the pin keeps shown_member there
 var last_applied_action = null #the newest action dict, continuous or not, until it is stopped
+var test_outfits = {}
 
 var participants = [] #members
 var givers = [] #members
@@ -39,6 +44,7 @@ const ACTION_CATEGORY_TOOLTIPS = {
 	"SM": {name = "INTERACTION_CATEGORY_SM", description = "INTERACTION_CATEGORY_SM_TOOLTIP"},
 	"humiliation": {name = "INTERACTION_CATEGORY_HUMILIATION", description = "INTERACTION_CATEGORY_HUMILIATION_TOOLTIP"},
 	"other": {name = "INTERACTION_CATEGORY_OTHER", description = "INTERACTION_CATEGORY_OTHER_TOOLTIP"},
+	"test": {name = "INTERACTION_TEST_CATEGORY", description = "INTERACTION_TEST_CATEGORY_TOOLTIP"},
 }
 
 var secondactorcounter = {}
@@ -105,8 +111,12 @@ func _ready():
 	$Panel/stopbutton.text = tr("INTERACTION_STOP")
 	$Panel/blacklist.text = tr("INTERACTION_ACTION_VIS")
 	$Panel/aiallow.text = tr("INTERACTION_ONLY_WATCH")
-	$Panel/givetakepanel/Label.text = tr("INTERACTION_ACTORS")
-	$Panel/givetakepanel/Label2.text = tr("INTERACTION_RECEIVERS")
+	$Panel/RoleStrip/Givers/Label.text = tr("INTERACTION_ACTORS")
+	$Panel/RoleStrip/Takers/Label.text = tr("INTERACTION_RECEIVERS")
+	$Panel/RoleStrip/Divider/Swap.connect("pressed", self, "_on_swap_sides_pressed")
+	globals.connecttexttooltip($Panel/RoleStrip/Divider/Swap, tr("INTERACTION_SWAP_SIDES"))
+	$Panel/PinPortrait.connect("toggled", self, "_on_pin_portrait_toggled")
+	globals.connecttexttooltip($Panel/PinPortrait, tr("INTERACTION_PIN_PORTRAIT"))
 	$Control/Panel/finishbutton.text = tr("INTERACTION_FINISH")
 	$blacklist/closeblacklist.text = tr("DIALOGUECLOSE")
 	$blacklist/RichTextLabel.bbcode_text = tr("INTERACTION_HIDE_ACTIONS_HINT")
@@ -129,8 +139,18 @@ func _ready():
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Deny.connect('pressed', self, "OrgasmDenialDeny")
 	$EnthusiasmSelect/MarkWrongButton.connect("pressed", self, "EnthusiasmMarkWrong")
 	$EnthusiasmSelect/AllCorrectButton.connect("pressed", self, "EnthusiasmAllCorrect")
+	$Panel/BodyDisplay/AnimSpeed/Slider.connect("value_changed", self, "_on_anim_speed_changed")
+	globals.connecttexttooltip($Panel/BodyDisplay/AnimSpeed/Slider, tr("INTERACTION_ANIM_SPEED_TOOLTIP"))
+	_on_anim_speed_changed($Panel/BodyDisplay/AnimSpeed/Slider.value)
+	$Panel/BodyDisplay/ragdoll.connect("undress_level_changed", self, "_on_doll_undress_level_changed")
+	$Panel/HBoxContainer/test.text = tr("INTERACTION_TEST_CATEGORY")
+	$Panel/TestControls/OutfitLabel.text = tr("DOLL2_PREVIEW_OUTFIT")
+	$Panel/TestControls/Outfit.connect("item_selected", self, "_on_test_outfit_selected")
+	$Panel/TestControls/Orgasm.text = tr("INTERACTION_TEST_TRIGGER_ORGASM")
+	$Panel/TestControls/Orgasm.connect("pressed", self, "_on_test_orgasm_pressed")
+	$OrgasmPlayback.connect("timeout", self, "_stop_orgasm_animation")
 	
-	var i = 4
+	var i = TEST_MALES + TEST_FUTAS + TEST_FEMALES
 	if input_handler.CurrentScene == null:
 		modding_core.handle_test_mode()
 		gui_controller.sex_panel = self
@@ -145,8 +165,8 @@ func _ready():
 		sex_minigame_points = 10
 		changecategory('caress')
 		clearstate()
-	
 		rebuildparticipantslist()
+	$Panel/HBoxContainer/test.visible = modding_core.test_mode_enabled
 	
 	# the old paperdoll was cropped by a Light2D mask over its own viewport; the new
 	# doll is a Control that clips itself, so there is nothing here to set
@@ -489,7 +509,7 @@ func EnthusiasmChoose(choice_idx):
 		var charspeech = characterspeech(action_ref)
 		if charspeech.text != '':
 			$Panel/sceneeffects.bbcode_text += '\n' + charspeech.character.name + ': ' + decoder(charspeech.text, [charspeech.character], [charspeech.partner])
-		_record_late_enthusiasm_orgasm(orgasm_member, action_ref)
+		_record_out_of_turn_orgasm(orgasm_member, action_ref)
 		if $Panel/sceneeffects.bbcode_text.length() > 0 && !$Panel/sceneeffects.bbcode_text.ends_with("\n"):
 			$Panel/sceneeffects.bbcode_text += "\n"
 		for line in improvement_lines:
@@ -714,14 +734,14 @@ func _ensure_late_enthusiasm_impregnation(member):
 			if impregnationcheck(member.person, giver.person):
 				globals.impregnate(member.person, giver.person)
 
-func _record_late_enthusiasm_orgasm(member, action_ref):
-	if enthusiasm_pending_scene == null:
+func _record_out_of_turn_orgasm(member, action_ref):
+	_award_first_orgasm_points(member)
+	if action_ref == null or action_ref.scene == null:
 		return
 	var scenescript = action_ref.scene
 	var action_givers = action_ref.givers
 	var action_takers = action_ref.takers
 	var consents = action_ref.consents
-	_award_first_orgasm_points(member)
 	member.orgasm_actions.append(scenescript.code)
 	if member.effects.has("aphrodisiac") && !scenescript.code in member.aphrodisiac_orgasms:
 		member.aphrodisiac_orgasms.append(scenescript.code)
@@ -733,7 +753,7 @@ func _record_late_enthusiasm_orgasm(member, action_ref):
 			watcher.seen_orgasms.append(member)
 	if action_takers.has(member):
 		for giver in action_givers:
-			if giver.person.check_trait("undead") || giver.person.check_trait("animal"):
+			if giver.person.check_trait("undead") || giver.person.get_stat('unique') in ['dog','horse']:
 				member.deviant_orgasms += 1
 			if member.person.get_stat('body_shape') != giver.person.get_stat('body_shape'):
 				member.diff_body_orgasm += 1
@@ -764,7 +784,7 @@ func _record_late_enthusiasm_orgasm(member, action_ref):
 		for taker in action_takers:
 			if scenescript.givertags.has("dom"):
 				member.dominant += 1
-			if taker.person.check_trait("undead") || taker.person.check_trait("animal"):
+			if taker.person.check_trait("undead") || taker.person.get_stat('unique') in ['dog','horse']:
 				member.deviant_orgasms += 1
 			if member.person.get_stat('body_shape') != taker.person.get_stat('body_shape'):
 				member.diff_body_orgasm += 1
@@ -825,30 +845,42 @@ func _input(event):
 	if event.scancode in dict:
 		var key = dict[event.scancode]
 		if event.is_action_pressed(str(key)) == true && participants.size() >= key:
-			if !givers.has(participants[key-1]) && !takers.has(participants[key-1]):
-				$Panel/givetakepanel/givercontainer.get_child(key).emit_signal("pressed")
+			var picked = participants[key-1]
+			if !givers.has(picked) && !takers.has(picked):
+				_on_charlist_row_pressed(picked)
 			else:
-				$Panel/givetakepanel/receivercontainer.get_child(key).emit_signal("pressed")
+				switchsides(picked, 'take')
 	if event.is_action_pressed("F") && $Panel/passbutton.disabled == false && !$Control.is_visible():
 		_on_passbutton_pressed()
 
 # var dummycounter = 0
 
 var test_dummy_ids = []
+# the standalone test scene: men first, then futas, then women, all at full consent
+const TEST_MALES = 2
+const TEST_FUTAS = 1
+const TEST_FEMALES = 3
+const TEST_CONSENT = 6
+# and every penis among them the middle size
+const TEST_PENIS_SIZE = 'average'
 
 func createtestdummy(type = 'normal'):
 	var person = ResourceScripts.scriptdict.class_slave.new("local_recruit")
 	
-	if participants.size() == 0:
+	if participants.size() < TEST_MALES:
 		person.create('random', 'male', 'random')
+	elif participants.size() < TEST_MALES + TEST_FUTAS:
+		person.create('random', 'futa', 'random')
 	else:
 		person.create('random', 'female', 'random')
+	if person.get_stat('penis_size') != '':
+		person.set_stat('penis_size', TEST_PENIS_SIZE)
 	var newmember = member.new()
 	newmember.sceneref = self
 	#bad solution. need replacing
 	person.set_stat('vaginal_virgin_lost', null)
 	person.is_players_character = true
-	person.set_stat('consent', globals.rng.randi_range(2,5))
+	person.set_stat('consent', TEST_CONSENT)
 	for i in Statlist_init.sex_skills:
 		person.add_stat(i, 100)
 	_add_max_test_masteries(person)
@@ -857,7 +889,7 @@ func createtestdummy(type = 'normal'):
 		#globals.connectrelatives(participants[0].person, person, 'father')
 
 	newmember.setup_person(person, true)
-	newmember.consent = round(rand_range(0,3))
+	newmember.consent = TEST_CONSENT
 	#dummycounter += 1
 
 #	if person.consent == false && person.professions.has("master"):
@@ -882,8 +914,13 @@ func startsequence(actors):
 	set_process_input(true)
 	gui_controller.clock.visible = false
 	hidebody()
+	test_outfits.clear()
+	$Panel/HBoxContainer/test.visible = modding_core.test_mode_enabled
 	participants.clear()
 	last_applied_action = null
+	jiggle_seen.clear()
+	portrait_pinned = false
+	$Panel/PinPortrait.pressed = false
 	sex_minigame_points = 1
 	sex_minigame_orgasm_points_awarded.clear()
 	enthusiasm_all_options_correct = false
@@ -907,7 +944,7 @@ func startsequence(actors):
 #					person.sexexp.watchers[i.id] = 1
 		newmember.setup_person(person)
 		participants.append(newmember)
-		if person.check_trait("Sex-crazed"):
+		if person.check_trait("nymphomania"):
 			newmember.effects.append("sexcrazed")
 	$Panel/aiallow.pressed = aiobserve
 	var temparray = []
@@ -941,11 +978,119 @@ func clearstate():
 		givers.append(participants[0])
 
 func changecategory(name):
+	if name == "test" and !modding_core.test_mode_enabled:
+		return
 	selectedcategory = name
 	for i in get_node("Panel/HBoxContainer").get_children():
 		if i.get_name() != name: i.set_pressed(false)
 		else: i.set_pressed(true)
+	var testing = name == "test"
+	$Panel/GridContainer.visible = !testing
+	$Panel/TestControls.visible = testing
+	_refresh_test_controls()
 	rebuildparticipantslist()
+
+
+func _test_preview_model():
+	if !modding_core.test_mode_enabled or doll_member == null or !$Panel/BodyDisplay.visible:
+		return null
+	return $Panel/BodyDisplay/ragdoll.model
+
+
+func _refresh_test_controls():
+	if !$Panel/TestControls.visible:
+		return
+	var model = _test_preview_model()
+	var outfit = $Panel/TestControls/Outfit
+	outfit.clear()
+	outfit.add_item(tr("INTERACTION_TEST_EQUIPPED_OUTFIT"))
+	outfit.disabled = model == null
+	outfit.select(0)
+	if model != null:
+		outfit.add_item(tr("DOLL2_PREVIEW_NONE"))
+		outfit.set_item_metadata(1, "")
+		DOLL_CATALOGUE.use(model.doll_id)
+		var preview = $Panel/BodyDisplay/ragdoll.preview_outfit
+		var current = preview.part if preview != null else null
+		for part_id in DOLL_CATALOGUE.parts("outfit"):
+			var index = outfit.get_item_count()
+			outfit.add_item(tr(DOLL_CATALOGUE.display(part_id)))
+			outfit.set_item_metadata(index, part_id)
+			if part_id == current:
+				outfit.select(index)
+		if current == "":
+			outfit.select(1)
+	_refresh_test_orgasm_control()
+
+
+func _refresh_test_orgasm_control():
+	if !$Panel/TestControls.visible:
+		return
+	var target = _test_orgasm_target()
+	$Panel/TestControls/Orgasm.disabled = target == null or target.orgasm_on_hold
+	var hint = ""
+	var model = _test_preview_model()
+	if target == null:
+		hint = tr("INTERACTION_TEST_SELECT_PARTICIPANT")
+	elif target.orgasm_on_hold:
+		hint = tr("INTERACTION_TEST_ORGASM_ON_HOLD")
+	elif model == null:
+		hint = tr("INTERACTION_TEST_NO_DOLL")
+	elif !model.has_cum_animation():
+		hint = tr("INTERACTION_TEST_NO_ORGASM")
+	$Panel/TestControls/Hint.text = hint
+	$Panel/TestControls/Hint.visible = hint != ""
+
+
+func _test_orgasm_target():
+	if modding_core.test_mode_enabled and shown_member in participants:
+		return shown_member
+	return null
+
+
+func _on_test_outfit_selected(index):
+	if !$Panel/TestControls.visible or _test_preview_model() == null:
+		return
+	var part_id = $Panel/TestControls/Outfit.get_item_metadata(index)
+	var doll = $Panel/BodyDisplay/ragdoll
+	doll.set_preview_outfit(part_id)
+	if doll.preview_outfit == null:
+		test_outfits.erase(doll_member)
+	else:
+		test_outfits[doll_member] = doll.preview_outfit
+
+
+func _on_test_orgasm_pressed():
+	var target = _test_orgasm_target()
+	if !$Panel/TestControls.visible or $Control.visible or target == null or target.orgasm_on_hold:
+		return
+	var action_ref = target.get_lastaction_ref_dict()
+	target.orgasm()
+	_record_out_of_turn_orgasm(target, action_ref)
+	rebuildparticipantslist()
+
+
+func _play_orgasm_animation(orgasming_member, action):
+	if !is_visible_in_tree() or $Control.visible or !participants.has(orgasming_member):
+		return
+	if doll_member == null or !$Panel/BodyDisplay.visible or !participants.has(doll_member):
+		return
+	if doll_member != orgasming_member and !(doll_member in action.givers or doll_member in action.takers):
+		return
+	var model = $Panel/BodyDisplay/ragdoll.model
+	if model == null or !model.has_cum_animation():
+		return
+	model.set_cum(false)
+	model.set_cum(true)
+	$OrgasmPlayback.start(model.CUM_POSE_FAST_DURATION + model.CUM_POSE_BRAKE_DURATION)
+
+
+func _stop_orgasm_animation():
+	$OrgasmPlayback.stop()
+	var model = $Panel/BodyDisplay/ragdoll.model
+	if model != null:
+		model.set_cum(false)
+
 
 func _update_character_resource_bars(node, member):
 	var container = node.get_node("Panel/HBoxContainer")
@@ -993,7 +1138,7 @@ func rebuildparticipantslist():
 			givers.erase(_m)
 	if selectmode == 'ai':
 		clearstate()
-	for i in get_node("Panel/CharList/ScrollContainer/VBoxContainer").get_children() + get_node("Panel/GridContainer/GridContainer").get_children() + get_node("Panel/givetakepanel/givercontainer").get_children() + get_node("Panel/givetakepanel/receivercontainer").get_children() + $Panel/GridContainer2/GridContainer.get_children():
+	for i in get_node("Panel/CharList/ScrollContainer/VBoxContainer").get_children() + get_node("Panel/GridContainer/GridContainer").get_children() + $Panel/GridContainer2/GridContainer.get_children():
 		if !i.get_name() in ['VBoxContainerMain', 'Button']:
 			i.visible = false
 			i.queue_free()
@@ -1016,7 +1161,11 @@ func rebuildparticipantslist():
 		_update_character_resource_bars(newnode, i)
 		newnode.get_node("arousal").value = i.sens
 		globals.connecttexttooltip(newnode.get_node("arousal"), i.person.translate(tr("TOOLTIPAROUSAL")))
-		newnode.get_node("Panel").connect("mouse_entered", self, 'showbody', [i])
+		newnode.get_node("Panel").connect("mouse_entered", self, '_on_member_hovered', [i])
+		newnode.get_node("Panel").pressed = givers.has(i) || takers.has(i)
+		newnode.get_node("Panel").connect("pressed", self, "_on_charlist_row_pressed", [i])
+		newnode.get_node("Panel/giver_mark").visible = givers.has(i)
+		newnode.get_node("Panel/taker_mark").visible = takers.has(i)
 		newnode.get_node("Panel/items").connect("pressed", self, "open_item_list", [i])
 
 		if i.request != null:
@@ -1052,24 +1201,7 @@ func rebuildparticipantslist():
 			train_btn.visible = true
 			globals.connecttexttooltip(train_btn, tr(enthusiasm_pending_data.btn_text))
 			train_btn.connect("pressed", self, "EnthusiasmInitiate")
-		newnode = get_node("Panel/givetakepanel/givercontainer/Button").duplicate()
-		get_node("Panel/givetakepanel/givercontainer").add_child(newnode)
-		if givers.find(i) >= 0:
-			newnode.set_pressed(true)
-		newnode.visible = true
-		newnode.get_node('icon').texture = i.person.get_icon_small()
-		newnode.get_node("Label").text = i.person.get_short_name()
-		newnode.set_meta("person", i)
-		newnode.connect("pressed",self,'switchsides',[newnode, 'give'])
-		newnode = get_node("Panel/givetakepanel/receivercontainer/Button").duplicate()
-		get_node("Panel/givetakepanel/receivercontainer").add_child(newnode)
-		if takers.find(i) >= 0:
-			newnode.set_pressed(true)
-		newnode.visible = true
-		newnode.get_node("Label").text = i.person.translate('[name]')
-		newnode.set_meta("person", i)
-		newnode.get_node('icon').texture = i.person.get_icon_small()
-		newnode.connect("pressed",self,'switchsides',[newnode, 'take'])
+	_rebuild_role_strip()
 
 	var text = ''
 
@@ -1239,7 +1371,8 @@ func rebuildparticipantslist():
 		text = text.substr(0, text.length() -2)+ '. '
 	text += "\n\n"
 	for i in ongoingactions:
-		text += decoder(i.scene.getongoingname(i.givers,i.takers), i.givers, i.takers) + ' [url='+str(ongoingactions.find(i))+']' + tr("INTERACTION_INTERRUPT") + '[/url]\n'
+		var ongoing_index = str(ongoingactions.find(i))
+		text += '[url=restore_' + ongoing_index + ']' + decoder(i.scene.getongoingname(i.givers,i.takers), i.givers, i.takers) + '[/url] [url=' + ongoing_index + ']' + tr("INTERACTION_INTERRUPT") + '[/url]\n'
 
 	if givers.size() == 0 && selectmode != 'ai':
 		get_node("Panel/passbutton").set_disabled(true)
@@ -1257,6 +1390,7 @@ func rebuildparticipantslist():
 
 	#globals.state.actionblacklist = filter
 	_refresh_doll_pose()
+	_refresh_test_orgasm_control()
 
 	var _all_exhausted = true
 	for _m in participants:
@@ -1598,11 +1732,11 @@ func generaterequest(member):
 		rval.erase('fuckgive')
 	if member.person.get_stat('vagina') == '':
 		rval.erase('pussy')
-	if member.person.check_trait('Dominant'):
+	if member.person.check_trait('dominant'):
 		rval.erase('humiliate')
-	if !member.person.check_trait('Likes it rough') && !member.person.check_trait('Masochist'):
+	if !member.person.check_trait('masochist'):
 		rval.erase('punish')
-	if member.person.check_trait('Monogamous') || participants.size() == 2 || (!member.person.check_trait('Fickle') && member.lewd < 50):
+	if member.person.check_trait('monogamous') || participants.size() == 2 || (!member.person.check_trait('group') && member.lewd < 50):
 		rval.erase('group')
 
 
@@ -1752,14 +1886,15 @@ func get_unique_nude_body_image(person):
 	return images.get_sprite(sprite_data.nude.path)
 
 func showbody(i):
-	doll_member = null
-	var nude_image = get_unique_nude_body_image(i.person)
-	if nude_image != null:
-		$Panel/bodyimage.texture = nude_image
-		$Panel/bodyimage.visible = true
-		$Panel/BodyDisplay.visible = false
+	if portrait_pinned && shown_member != null && i != shown_member:
 		return
-	var stored_image = i.person.get_stored_body_image()
+	if shown_member != i:
+		_stop_orgasm_animation()
+	shown_member = i
+	doll_member = null
+	var stored_image = get_unique_nude_body_image(i.person)
+	if stored_image == null:
+		stored_image = i.person.get_stored_body_image()
 	if stored_image != null:
 		$Panel/bodyimage.texture = stored_image
 		$Panel/bodyimage.visible = true
@@ -1767,34 +1902,82 @@ func showbody(i):
 	elif !input_handler.globalsettings.disable_paperdoll:
 		$Panel/bodyimage.visible = false
 		$Panel/BodyDisplay.visible = true
-		$Panel/BodyDisplay/ragdoll.test_mode = false
-		$Panel/BodyDisplay/ragdoll.rebuild(i.person)
-		$Panel/BodyDisplay/ragdoll.rebuild_cloth(false)
+		var doll = $Panel/BodyDisplay/ragdoll
+		doll.test_mode = false
+		doll.rebuild_jiggle = !jiggle_seen.has(i)
+		var outfit_override = test_outfits.get(i) if modding_core.test_mode_enabled else null
+		doll.rebuild(i.person, i.person.get_interaction_undress_level(), outfit_override)
+		doll.rebuild_jiggle = true
+		if doll.is_chest_swinging():
+			jiggle_seen[i] = true
 		doll_member = i
 		_refresh_doll_pose()
-#		$Panel/BodyDisplay/ragdoll.rebuild_underwear()
 	else:
 		$Panel/bodyimage.texture = i.person.get_body_image()
 		$Panel/bodyimage.visible = true
 		$Panel/BodyDisplay.visible = false
+	_refresh_test_controls()
 #	if i.person.get_body_image() != null:
 #		$Panel/bodyimage.visible = true
 #		$Panel/bodyimage.texture = i.person.get_body_image()
 
+# A hover rebuilt the whole doll, so it skips the one already shown and anyone while pinned.
+func _on_member_hovered(member):
+	if member == shown_member || (portrait_pinned && shown_member != null):
+		return
+	showbody(member)
+
+
 func hidebody():
+	_stop_orgasm_animation()
 	$Panel/bodyimage.visible = false
 	$Panel/BodyDisplay.visible = false
 	doll_member = null
+	shown_member = null
+	_refresh_test_controls()
 
 
 func _refresh_doll_pose():
 	if doll_member == null or !$Panel/BodyDisplay.visible or !participants.has(doll_member):
 		return
-	$Panel/BodyDisplay/ragdoll.set_sex_pose(DOLL_POSE.pose_for(doll_member, ongoingactions, last_applied_action))
+	var doll = $Panel/BodyDisplay/ragdoll
+	doll.set_sex_pose(DOLL_POSE.pose_for(doll_member, ongoingactions, last_applied_action))
+	if !$OrgasmPlayback.is_stopped() and doll.model != null:
+		doll.model.set_cum(true)
 
 
-func switchsides(panel, side):
-	var person = panel.get_meta('person') #member, not charclass!
+# The doll turns to whoever the action gives a new pose: a taker before a giver,
+# and anyone before a man, whose doll has no sex takes.
+func _show_new_pose_member(dict):
+	var others = []
+	for action in ongoingactions:
+		if action.id != dict.id:
+			others.append(action)
+	var fallback = null
+	for member in dict.takers + dict.givers:
+		var pose = DOLL_POSE.pose_for(member, others, dict)
+		if pose == null or var2str(pose) == var2str(DOLL_POSE.pose_for(member, others)):
+			continue
+		if member.person.get_stat('sex') != 'male':
+			showbody(member)
+			return
+		if fallback == null:
+			fallback = member
+	if fallback != null:
+		showbody(fallback)
+
+
+func _on_anim_speed_changed(value):
+	$Panel/BodyDisplay/AnimSpeed/Label.text = tr("INTERACTION_ANIM_SPEED") + " x%.2f" % value
+	$Panel/BodyDisplay/ragdoll.set_sex_pose_speed(value)
+
+
+func _on_doll_undress_level_changed(level):
+	if doll_member != null:
+		doll_member.person.interaction_undress_level = level
+
+
+func switchsides(person, side): #member, not charclass!
 	givers.erase(person)
 	takers.erase(person)
 	if person.role == side:
@@ -1813,6 +1996,98 @@ func switchsides(panel, side):
 	elif person.role == 'take':
 		takers.append(person)
 	rebuildparticipantslist()
+
+# First one in acts, the second receives, everyone after acts while someone receives.
+func _on_charlist_row_pressed(person):
+	if givers.has(person) || takers.has(person):
+		_remove_from_scene(person)
+		return
+	var side = 'take' if givers.size() > 0 && takers.empty() else 'give'
+	if side == 'give' && person.actions_remaining <= 0:
+		side = 'take'
+	switchsides(person, side)
+
+
+func _on_role_slot_pressed(person):
+	if givers.has(person):
+		switchsides(person, 'take')
+	elif person.actions_remaining <= 0:
+		$Panel/sceneeffects.bbcode_text += '\n[color=gray]' + person.name + ': ' + tr("INTERACTION_NO_ACTIONS_LEFT") + '[/color]'
+	else:
+		switchsides(person, 'give')
+
+
+func _on_role_slot_input(event, person):
+	if event is InputEventMouseButton && event.pressed && event.button_index == BUTTON_RIGHT:
+		_remove_from_scene(person)
+
+
+func _remove_from_scene(person):
+	givers.erase(person)
+	takers.erase(person)
+	person.role = 'none'
+	rebuildparticipantslist()
+
+
+# A receiver with no actions left stays a receiver.
+func _on_swap_sides_pressed():
+	var old_givers = givers.duplicate()
+	var old_takers = takers.duplicate()
+	givers.clear()
+	takers.clear()
+	for person in old_takers:
+		if person.actions_remaining > 0:
+			person.role = 'give'
+			givers.append(person)
+		else:
+			person.role = 'take'
+			takers.append(person)
+			$Panel/sceneeffects.bbcode_text += '\n[color=gray]' + person.name + ': ' + tr("INTERACTION_NO_ACTIONS_LEFT") + '[/color]'
+	for person in old_givers:
+		person.role = 'take'
+		takers.append(person)
+	rebuildparticipantslist()
+
+
+func _on_pin_portrait_toggled(pressed):
+	portrait_pinned = pressed
+
+
+func _rebuild_role_strip():
+	for side in [["Givers", givers], ["Takers", takers]]:
+		var box = get_node("Panel/RoleStrip/" + side[0] + "/Slots")
+		input_handler.ClearContainer(box, ['Button', 'Empty'])
+		box.get_node("Empty").visible = side[1].empty()
+		for person in side[1]:
+			var slot = input_handler.DuplicateContainerTemplate(box, 'Button')
+			slot.texture_normal = person.person.get_icon_small()
+			slot.connect("pressed", self, "_on_role_slot_pressed", [person])
+			slot.connect("mouse_entered", self, "_on_member_hovered", [person])
+			slot.connect("gui_input", self, "_on_role_slot_input", [person])
+			globals.connecttexttooltip(slot, person.person.get_short_name() + "\n" + tr("INTERACTION_STRIP_SLOT_HINT"))
+
+
+func _restore_ongoing_sides(index):
+	if index < 0 || index >= ongoingactions.size():
+		return
+	var action = ongoingactions[index]
+	givers.clear()
+	takers.clear()
+	for person in participants:
+		person.role = 'none'
+	for person in action.givers:
+		person.role = 'give'
+		givers.append(person)
+	for person in action.takers:
+		person.role = 'take'
+		takers.append(person)
+	if categories.has(action.scene.category):
+		changecategory(action.scene.category)
+	else:
+		rebuildparticipantslist()
+	if !action.takers.empty():
+		showbody(action.takers[0])
+
 
 func startscene(scenescript, cont = false, pretext = ''):
 	var textdict = {mainevent = pretext, repeats = '', orgasms = '', speech = ''}
@@ -2213,6 +2488,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 			if scenescript.takerpart != '':
 				i.set_part(scenescript.takerpart, null)
 	last_applied_action = dict
+	_show_new_pose_member(dict)
 
 	var x = (givers.size()+takers.size())/2
 
@@ -2365,7 +2641,7 @@ func characterspeech(scene):
 
 	if character.person.check_trait('Mute'):
 		dict.mute = [speechdict.mute, 1]
-	if character.person.check_trait('Sex-crazed'):
+	if character.person.check_trait('nymphomania'):
 		dict.sexcrazed = [speechdict.sexcrazed, 1]
 	if character.sex_traits.has('anal'):
 		dict.enjoysanal = [speechdict.enjoysanal, 1]
@@ -2409,11 +2685,11 @@ func characterspeech(scene):
 		dict.vagina = [speechdict.vagina, 1]
 	if scene.scene.code in ['missionaryanal', 'doggyanal', 'lotusanal','revlotusanal', 'inserttaila', 'insertinturnsass'] && partnerside == 'givers':
 		dict.anal = [speechdict.anal, 1]
-	if (!character.person.check_trait('Lesbian') && !character.sex_traits.has("bisexual")) && character.sex != 'male' && partner.sex != 'male' && partnerside == 'givers':
+	if !character.sex_traits.has("bisexual") && character.sex != 'male' && partner.sex != 'male' && partnerside == 'givers':
 		dict.nonlesbian = [speechdict.nonlesbian, 1]
-	if scene.scene.get("takertags") && scene.scene.takertags.has("pain") && partnerside == 'givers' && !character.person.check_trait('Likes it rough') && !character.person.check_trait("Masochist"):
+	if scene.scene.get("takertags") && scene.scene.takertags.has("pain") && partnerside == 'givers' && !character.person.check_trait("masochist"):
 		dict.pain = [speechdict.pain, 2.5]
-	if scene.scene.get("takertags") && scene.scene.takertags.has("pain") && partnerside == 'givers' && (character.person.check_trait('Likes it rough') || character.person.check_trait("Masochist")) && !character.effects.has('resist'):
+	if scene.scene.get("takertags") && scene.scene.takertags.has("pain") && partnerside == 'givers' && character.person.check_trait("masochist") && !character.effects.has('resist'):
 		dict.painlike = [speechdict.painlike, 2.5]
 
 	if character.person_sexexp.sexexp_actions.get(scene.scene.code, 0) == 1:
@@ -2436,7 +2712,7 @@ func characterspeech(scene):
 	return show_charcter_speech(character, partner, text)
 
 func show_charcter_speech(character, partner, text):
-	if partner.person.has_profession("master") || character.person.check_trait("Monogamous"):
+	if partner.person.has_profession("master") || character.person.check_trait("monogamous"):
 		text = text.replace('[name2]', character.person.get_stat('masternoun'))
 	else:
 		text = text.replace('[name2]', partner.name)
@@ -2722,6 +2998,9 @@ func decoder(text, tempgivers, temptakers):
 
 
 func _on_sceneeffects1_meta_clicked( meta ):
+	if str(meta).begins_with("restore_"):
+		_restore_ongoing_sides(int(str(meta).substr(8)))
+		return
 	stopongoingaction(meta, true)
 
 func stopongoingaction(meta, rebuild = false):
@@ -2782,6 +3061,11 @@ func _on_stopbutton_pressed():
 	endencounter()
 
 func endencounter():
+	_stop_orgasm_animation()
+	if !test_outfits.empty():
+		test_outfits.clear()
+		$Panel/BodyDisplay/ragdoll.set_preview_outfit(null)
+		_refresh_test_controls()
 	for id in test_dummy_ids:
 		ResourceScripts.game_party.characters.erase(id)
 		ResourceScripts.game_party.character_order.erase(id)
@@ -2981,11 +3265,11 @@ func askslaveforaction(chosen):
 				continue
 			debug += i.name
 			var value = 10
-			if chosen.person.check_trait("Monogamous") && !i.person.has_profession('master'):
+			if chosen.person.check_trait("monogamous") && !i.person.has_profession('master'):
 				value = 0
-			elif chosen.person.check_trait("Fickle") || chosen.person.check_trait('Slutty'):
+			elif chosen.person.check_trait("group"):
 				value = 25
-			if chosen.person.check_trait('Devoted') && i.person.has_profession("master"):
+			if chosen.person.check_trait('devoted') && i.person.has_profession("master"):
 				value += 50
 
 			if i.npc == true && chosen.npc == true:
@@ -2997,9 +3281,7 @@ func askslaveforaction(chosen):
 				value += (chosen.person_sexexp.sexexp_watchers[i.id]-1)*2
 			if chosen.person_sexexp.sexexp_partners.has(i.id):
 				value += chosen.person_sexexp.sexexp_partners[i.id]/0.2
-			if isencountersamesex([chosen], [i], chosen) && !chosen.person.check_trait('Bisexual') && !chosen.person.check_trait('Homosexual'):
-				value = max(value/5,1)
-			elif isencountersamesex([chosen], [i], chosen) == false && chosen.person.check_trait('Homosexual'):
+			if isencountersamesex([chosen], [i], chosen) && !chosen.person.check_trait('bisexual'):
 				value = max(value/5,1)
 			debug += " - " + str(value) + '\n'
 			value = min(value, 120)
@@ -3012,7 +3294,7 @@ func askslaveforaction(chosen):
 	debug += '\nChosing dom: \n'
 	var dom = [['giver',40],['taker', 10]]
 
-	if target.sex != chosen.sex && chosen.sex == 'female' && (chosen.person.get_stat('asser') < 75 || !chosen.person.check_trait("Dominant")):
+	if target.sex != chosen.sex && chosen.sex == 'female' && (chosen.person.get_stat('asser') < 75 || !chosen.person.check_trait("dominant")):
 		dom[0][1] = 0
 
 	if chosen.person.get_stat('asser') >= 75:
@@ -3028,7 +3310,7 @@ func askslaveforaction(chosen):
 	var grouptarget = [target]
 
 	if participants.size() >= 3:
-		if randf() >= 0.5 && !chosen.person.check_trait("Monogamous"):
+		if randf() >= 0.5 && !chosen.person.check_trait("monogamous"):
 			group = true
 	var freeparticipants = []
 
@@ -3044,12 +3326,10 @@ func askslaveforaction(chosen):
 			var targetgroup
 			var newparticipant = freeparticipants[randi()%freeparticipants.size()]
 			var samesex = isencountersamesex([newparticipant], [chosen], chosen)
-			if chosen.person.check_trait("Bisexual"):
+			if chosen.person.check_trait("bisexual"):
 				targetgroup = 'any'
-			elif (chosen.person.check_trait("Homosexual") && samesex) || !samesex:
+			elif !samesex:
 				targetgroup = 'target'
-			elif chosen.person.check_trait("Homosexual"):
-				targetgroup = 'any'
 			else:
 				targetgroup = 'chosen'
 			if (targetgroup == 'any' && randf() >= 0.5) || targetgroup == 'chosen':
@@ -3109,7 +3389,6 @@ func _ai_assign_sides(action, dom, groupchosen, grouptarget):
 #[[action, weight], ...] the chosen would start with these sides; red actions are left out, yellow ones weigh half
 func _ai_rate_actions(chosen, dom, groupchosen, grouptarget, desire_only = false):
 	var target = grouptarget[0]
-	var chosenpos = ''
 	var actions = []
 	for i in categories:
 		for j in categories[i]:
@@ -3136,19 +3415,18 @@ func _ai_rate_actions(chosen, dom, groupchosen, grouptarget, desire_only = false
 			if i in ['caress','fucking']:
 				value += 10
 
-			if !chosen.person.check_trait("Enjoys Anal") && j.code in analcategories:
-				if chosenpos == 'giver' && !takercategories.has(j.code):
-					value -= 5
-				elif chosenpos == 'taker' && takercategories.has(j.code):
-					value -= 5
+			#givers/takers are this action's real sides, the takercategories swap already applied
+			var own_tags = j.givertags if givers.has(chosen) else j.takertags
+			if !chosen.person.check_trait("anal") && own_tags.has('anal'):
+				value -= 5
 
-			if chosen.person.check_trait('Masochist') && j.code in punishcategories && chosenpos == 'taker':
+			if chosen.person.check_trait('masochist') && takers.has(chosen) && j.takertags.has('punish'):
 				value *= 2.5
-			if chosen.person.check_trait('Dominant') && j.code in punishcategories && chosenpos == 'giver':
+			if chosen.person.check_trait('sadist') && givers.has(chosen) && j.takertags.has('punish'):
 				value *= 2.5
 			if chosen.person.get_stat('penis_size') == 'none' && dom == 'giver' && j.code == 'strapon':
 				value *= 10
-			if chosen.person.check_trait("Pervert") && ((givers.has(chosen) && j.giverconsent == 'advanced') || (takers.has(chosen) && j.takerconsent == 'advanced')):
+			if chosen.person.check_trait("shameless") && ((givers.has(chosen) && j.giverconsent == 'advanced') || (takers.has(chosen) && j.takerconsent == 'advanced')):
 				value += 15
 
 			if chosen.person.get_stat('vaginal_virgin') == true && j.category == 'fucking' && !j.code in analcategories:
@@ -3450,7 +3728,7 @@ func record_actions(scenescript, consents):
 				p.punish_actions.append(scenescript.code)
 			for t in takers:
 				if t.orgasm:
-					if p.person.check_trait("undead") || p.person.check_trait("animal"):
+					if p.person.check_trait("undead") || p.person.get_stat('unique') in ['dog','horse']:
 						t.deviant_orgasms += 1
 					if t.person.get_stat('body_shape') != p.person.get_stat('body_shape'):
 						t.diff_body_orgasm += 1
@@ -3483,7 +3761,7 @@ func record_actions(scenescript, consents):
 				if g.orgasm:
 					if scenescript.givertags.has("dom"):
 						g.dominant += 1
-					if p.person.check_trait("undead") || p.person.check_trait("animal"):
+					if p.person.check_trait("undead") || p.person.get_stat('unique') in ['dog','horse']:
 						g.deviant_orgasms += 1
 					if g.person.get_stat('body_shape') != p.person.get_stat('body_shape'):
 						g.diff_body_orgasm += 1

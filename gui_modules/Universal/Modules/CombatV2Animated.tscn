@@ -1016,6 +1016,84 @@ mouse_filter = 2
 texture = ExtResource( 15 )
 stretch_mode = 6
 
+[node name="FastForward" type="CheckBox" parent="."]
+margin_left = 31.0
+margin_top = 880.0
+margin_right = 331.0
+margin_bottom = 930.0
+theme = ExtResource( 79 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 80 )
+text = "OPTFASTCOMBAT"
+
+[node name="Menu" type="TextureRect" parent="."]
+margin_left = 31.0
+margin_top = 943.059
+margin_right = 227.0
+margin_bottom = 1050.06
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="TextureButton" parent="Menu"]
+margin_top = 16.0064
+margin_right = 90.0
+margin_bottom = 106.006
+toggle_mode = true
+texture_normal = ExtResource( 43 )
+texture_pressed = ExtResource( 44 )
+texture_hover = ExtResource( 41 )
+texture_disabled = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Run" type="TextureButton" parent="Menu"]
+margin_left = 90.0
+margin_top = 16.0064
+margin_right = 180.0
+margin_bottom = 106.006
+texture_normal = ExtResource( 45 )
+texture_pressed = ExtResource( 42 )
+texture_hover = ExtResource( 40 )
+texture_disabled = ExtResource( 4 )
+
+[node name="Button" type="TextureButton" parent="."]
+margin_left = 1403.71
+margin_top = 902.0
+margin_right = 1486.71
+margin_bottom = 984.0
+texture_normal = ExtResource( 73 )
+texture_pressed = ExtResource( 72 )
+texture_hover = ExtResource( 70 )
+texture_disabled = ExtResource( 71 )
+expand = true
+stretch_mode = 5
+
+[node name="StatsPanelLeft" parent="." instance=ExtResource( 68 )]
+visible = false
+margin_left = 100.0
+margin_top = 845.0
+margin_right = 409.0
+margin_bottom = 1039.0
+
+[node name="StatsPanelRight" parent="." instance=ExtResource( 68 )]
+visible = false
+margin_left = 1514.0
+margin_top = 845.0
+margin_right = 1823.0
+margin_bottom = 1039.0
+
+[node name="StatsPanel_v2" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 613.0
+margin_top = 136.0
+margin_right = 1307.0
+margin_bottom = 640.0
+
 [node name="SkillPanel" type="GridContainer" parent="." groups=["hide_stranger", "hide_traveler"]]
 margin_left = 511.0
 margin_top = 861.0
@@ -1156,84 +1234,6 @@ custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "1"
-
-[node name="FastForward" type="CheckBox" parent="."]
-margin_left = 31.0
-margin_top = 880.0
-margin_right = 331.0
-margin_bottom = 930.0
-theme = ExtResource( 79 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 80 )
-text = "OPTFASTCOMBAT"
-
-[node name="Menu" type="TextureRect" parent="."]
-margin_left = 31.0
-margin_top = 943.059
-margin_right = 227.0
-margin_bottom = 1050.06
-texture = ExtResource( 39 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Items" type="TextureButton" parent="Menu"]
-margin_top = 16.0064
-margin_right = 90.0
-margin_bottom = 106.006
-toggle_mode = true
-texture_normal = ExtResource( 43 )
-texture_pressed = ExtResource( 44 )
-texture_hover = ExtResource( 41 )
-texture_disabled = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Run" type="TextureButton" parent="Menu"]
-margin_left = 90.0
-margin_top = 16.0064
-margin_right = 180.0
-margin_bottom = 106.006
-texture_normal = ExtResource( 45 )
-texture_pressed = ExtResource( 42 )
-texture_hover = ExtResource( 40 )
-texture_disabled = ExtResource( 4 )
-
-[node name="Button" type="TextureButton" parent="."]
-margin_left = 1403.71
-margin_top = 902.0
-margin_right = 1486.71
-margin_bottom = 984.0
-texture_normal = ExtResource( 73 )
-texture_pressed = ExtResource( 72 )
-texture_hover = ExtResource( 70 )
-texture_disabled = ExtResource( 71 )
-expand = true
-stretch_mode = 5
-
-[node name="StatsPanelLeft" parent="." instance=ExtResource( 68 )]
-visible = false
-margin_left = 100.0
-margin_top = 845.0
-margin_right = 409.0
-margin_bottom = 1039.0
-
-[node name="StatsPanelRight" parent="." instance=ExtResource( 68 )]
-visible = false
-margin_left = 1514.0
-margin_top = 845.0
-margin_right = 1823.0
-margin_bottom = 1039.0
-
-[node name="StatsPanel_v2" parent="." instance=ExtResource( 2 )]
-visible = false
-margin_left = 613.0
-margin_top = 136.0
-margin_right = 1307.0
-margin_bottom = 640.0
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 margin_left = 435.0

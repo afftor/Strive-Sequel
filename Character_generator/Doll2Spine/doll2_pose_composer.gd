@@ -29,7 +29,7 @@ const TAKE_PENISES = {
 	"sex_standing": {"penis": ["vaginal", "lower"]},
 	"sex_missionary": {"penis": ["vaginal", "lower"]},
 	"anal_missionary": {"penis": ["anal", "lower"]},
-	"double_pen": {"penis": ["vaginal", "lower"], "penis2": ["anal", "lower"]},
+	"double_pen": {"penis": ["anal", "lower"], "penis2": ["vaginal", "lower"]},
 	"blowjob": {"penis3": ["mouth", "head"]},
 	"titjob": {"penis": ["tits", "chest"]},
 	"handjob1": {"penis": ["hand", "arms"]},
@@ -38,12 +38,6 @@ const TAKE_PENISES = {
 	"handjobside1": {"penis_minet": ["hand_left", "arms"]},
 	"handjobside2": {"penis_minet2": ["hand_right", "arms"]},
 }
-
-# A penis drawn where another take draws its counterpart: sex_missionary layers its
-# penis over the belly and hides the inserted part under the front of the vulva
-# alone, so anything longer than the authored one - a big partner, the animal art -
-# shows through the belly.  double_pen draws the same penis behind the torso.
-const PENIS_LAYERING = {"sex_missionary": {"penis": ["double_pen", "penis"]}}
 
 const REGION_ROOTS = {
 	"lower": ["spine1"],
@@ -136,7 +130,7 @@ func _classify_slots():
 		slot_region[slot_name] = best
 
 
-# recipe: {base = take, parts = {region: take}, scales = {role: factor}}
+# recipe: {base = take, parts = {region: take}, scales = {role: factor}, standing_role = role}
 # Returns {animation, duration, slots = {slot: role}} or null when the base is missing.
 func compose(recipe):
 	var base = str(recipe.get("base", ""))
@@ -180,7 +174,12 @@ func compose(recipe):
 			if _slot_owner(slot_name, owners, base) == take:
 				result.attachments.default[slot_name] = _stretch(deforms[slot_name], factor)
 
-	var placed = _place_penises(takes, owners, base, stretch, duration, result, recipe.get("scales", {}))
+	var placed = _place_penises(takes, owners, base, stretch, duration, result, recipe)
+	# The export has a visible setup attachment in penis3. Hide all unused
+	# partner slots so it cannot appear in a pose without a partner in that slot.
+	for slot_name in PENIS_CHAINS.keys():
+		if !placed.has(slot_name):
+			result.slots[slot_name] = {"attachment": [{}]}
 	var draw = _merge_draw_order(takes, owners, base, stretch, placed)
 	if !draw.empty():
 		result["drawOrder"] = draw
@@ -199,7 +198,9 @@ func _slot_owner(slot_name, owners, base):
 
 # --- penises ------------------------------------------------------------------
 
-func _place_penises(takes, owners, base, stretch, duration, result, scales):
+func _place_penises(takes, owners, base, stretch, duration, result, recipe):
+	var scales = recipe.get("scales", {})
+	var standing_role = recipe.get("standing_role", "vaginal")
 	var claims = []
 	for take in takes:
 		var listed = TAKE_PENISES.get(take, {})
@@ -207,7 +208,8 @@ func _place_penises(takes, owners, base, stretch, duration, result, scales):
 			if owners.get(listed[slot_name][1], base) != take:
 				continue
 			var deformed = animations[take].get("attachments", {}).get("default", {}).has(slot_name)
-			claims.append({"take": take, "slot": slot_name, "role": listed[slot_name][0],
+			var role = standing_role if take == "sex_standing" else listed[slot_name][0]
+			claims.append({"take": take, "slot": slot_name, "role": role,
 				"fixed": deformed or !(slot_name in FRONT_SLOTS)})
 	var taken = {}
 	# deformed ones first, then the movable ones that can stay where they are,
@@ -405,33 +407,18 @@ func _merge_draw_order(takes, owners, base, stretch, placed):
 	times.sort()
 	var renames = {}
 	var penis_sources = {}
-	var borrowed = []
 	for take in takes:
 		renames[take] = {}
 		penis_sources[take] = []
 	for target in placed.keys():
 		var take = placed[target][0]
 		var source = placed[target][1]
-		var layering = PENIS_LAYERING.get(take, {}).get(source, [])
-		if layering.size() == 2 and animations.has(layering[0]):
-			borrowed.append([layering[0], layering[1], target])
-			continue
 		renames[take][source] = target
 		penis_sources[take].append(source)
 	var keys = []
 	for time in times:
 		var plans = []
 		var all_moved = {}
-		# A borrowed placement anchors on a neighbour the other take left where it
-		# was; the slots that take moved are somewhere else in this pose.
-		for entry in borrowed:
-			var offsets = _offsets_at(animations[entry[0]].get("drawOrder", []), time)
-			var skip = {}
-			for offset in offsets:
-				skip[str(offset.get("slot", ""))] = true
-			skip.erase(entry[1])
-			all_moved[entry[2]] = true
-			plans.append([_apply_offsets(offsets), {entry[1]: true}, {entry[1]: entry[2]}, skip])
 		for take in takes:
 			var offsets = _offsets_at(animations[take].get("drawOrder", []), time / stretch[take])
 			var full = _apply_offsets(offsets)
@@ -444,7 +431,7 @@ func _merge_draw_order(takes, owners, base, stretch, placed):
 				moved[slot_name] = true
 			for slot_name in moved.keys():
 				all_moved[renames[take].get(slot_name, slot_name)] = true
-			plans.append([full, moved, renames[take], {}])
+			plans.append([full, moved, renames[take]])
 		var order = []
 		for slot_name in setup_slots:
 			if !all_moved.has(slot_name):
@@ -453,7 +440,6 @@ func _merge_draw_order(takes, owners, base, stretch, placed):
 			var full = plan[0]
 			var own = plan[1]
 			var rename = plan[2]
-			var skip = plan[3]
 			var inserted = {}
 			for index in range(full.size()):
 				var slot_name = full[index]
@@ -467,7 +453,9 @@ func _merge_draw_order(takes, owners, base, stretch, placed):
 							anchor = rename.get(neighbour, neighbour)
 							break
 						continue
-					if !all_moved.has(neighbour) and !skip.has(neighbour) and neighbour in order:
+					# An unclaimed partner slot stays at its setup position.
+					# Find another anchor to preserve the take's visible order.
+					if !PENIS_CHAINS.has(neighbour) and !all_moved.has(neighbour) and neighbour in order:
 						anchor = neighbour
 						break
 				var placed_name = rename.get(slot_name, slot_name)

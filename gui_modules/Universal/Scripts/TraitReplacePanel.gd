@@ -47,9 +47,12 @@ func offer(t_person, code):
 
 
 #The same choice, put before the skill or item that brings the trait is paid for (ch_skills.ask_offered_trait_first):
-#a pick calls obj.method(old_code, args...), keeping the current trait calls nothing and nothing is spent.
-func ask_first(t_person, code, obj, method, args = []):
-	queue.append({id = t_person.id, trait = code, callback = [obj, method, args]})
+#a pick calls obj.method(old_code, args...), keeping the current trait calls obj.keep_method(args...) if given.
+func ask_first(t_person, code, obj, method, args = [], keep_method = ''):
+	var rec = {id = t_person.id, trait = code, callback = [obj, method, args]}
+	if keep_method != '':
+		rec.keep_callback = [obj, keep_method, args]
+	queue.append(rec)
 	if is_set_up and !visible:
 		show_next()
 
@@ -231,7 +234,16 @@ func replace():
 func keep():
 	if person == null:
 		return
-	show_next()
+	if !current.has('keep_callback'):
+		show_next()
+		return
+	var cb = current.keep_callback
+	current = {}
+	person = null
+	hide()
+	cb[0].callv(cb[1], cb[2])
+	if !visible:
+		show_next()
 
 
 #While a choice is up, keys and right clicks wait: they would reach the screen under it.

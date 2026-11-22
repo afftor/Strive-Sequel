@@ -92,7 +92,8 @@ const EVENT_CONFIG = {
 	},
 	#Who the household has taken to and who it cannot stand - one entry for the lot. The icon is
 	#deliberately neutral, two people and nothing said about how they feel; which way it went is
-	#carried by the coloured status word, see RELATIONSHIP_LOG in game_party.gd.
+	#carried by the coloured status word, see RELATIONSHIP_LOG in game_party.gd. A turn's changes
+	#fold into one row, a line per pair behind it - see globals.mansion_activity_relationship().
 	"relationship": {
 		label = "MANSION_ACTIVITY_TYPE_RELATIONSHIP",
 		icon = preload("res://assets/Textures_v2/MANSION/icon_relationship_small.png"),
@@ -450,7 +451,14 @@ func _trim_entries():
 		oldest.queue_free()
 
 
+#A one-shot connection rather than a yield: the panel can leave the tree or be freed before the frame ends.
 func _scroll_to_latest():
-	yield(get_tree(), "idle_frame")
+	if !is_inside_tree():
+		return
+	if !get_tree().is_connected("idle_frame", self, "_apply_scroll_to_latest"):
+		get_tree().connect("idle_frame", self, "_apply_scroll_to_latest", [], CONNECT_ONESHOT)
+
+
+func _apply_scroll_to_latest():
 	if is_instance_valid(scroll):
 		scroll.scroll_vertical = 0
