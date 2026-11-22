@@ -30,9 +30,32 @@ const ANIMATION_LABELS = {
 const TITJUMP_ANIMATION = "titjump"
 const EARJUMP_ANIMATION = "earjump"
 const TAILMOVE_ANIMATION = "tailmove"
+const CUM_ANIMATION = "orgasm"
+const CUM_FACE_ANIMATION = "emote_orgasm"
+const TITHAND_ANIMATIONS = ["tithand1", "tithand2"]
+const PARTNER_HAND_POSES = ["sex_fingers", "sex_fingers_anal"]
+const PARTNER_HAND_SLOTS = ["gg_hand", "gg_hand2", "gg_hand3"]
+# Spine lists the frontmost slot first. The renderer traverses back to front.
+const TITHAND_DRAW_ORDER = [
+	"gg_hand", "gg_hand2", "gg_hand3",
+	"hand_left", "fingL", "equip_hand_left", "arm_left", "race_arm_left", "equip_arm_left",
+	"hand_right", "fingR", "equip_hand_right", "arm_right", "race_arm_right", "equip_arm_right",
+]
+const OVERLAY_RULES = preload("res://Character_generator/Doll2Spine/doll2_overlay_rules.gd")
+var cum_enabled = false
+var cum_visibility_by_animation = {}
+var cum_face_overlay = null
+var tithand_hand_bones = {}
+const CUM_POSE_SPEED = 1.3
+const CUM_POSE_FAST_DURATION = 3.0
+const CUM_POSE_BRAKE_DURATION = 3.0
+const CUM_POSE_HOLD_PHASE = 0.25
+var cum_pose_playback = {}
 # These authored full-body takes use their own anatomical layers. They share
-# the exclusive pose dropdown with idle poses and temporarily hide worn gear.
-const ANATOMY_ANIMATIONS = ["sex1", "sex2", "sex3", "sex4", "sex5", "sex6", "sex7", "sex8", "sex9", "sex10", "sex11", "sex12", "xray"]
+# the exclusive pose dropdown with idle poses and keep the selected worn gear.
+const ANATOMY_ANIMATIONS = ["sex_standing", "sex_missionary", "anal_missionary", "double_pen", "deepthroat", "blowjob", "titjob", "handjob2", "handjob1", "simult_handjob", "handjobside1", "handjobside2", "test_combo", "xray", "sex_fingers", "sex_fingers_anal"]
+# Only these takes use the rear body mesh and its matching clothing cut.
+const ASS_ANIMATIONS = ["anal_missionary", "double_pen", "sex_missionary", "test_combo", "sex_fingers", "sex_fingers_anal"]
 const ANATOMY_SLOTS = [
 	"ass", "ahole", "ahole1", "HipL", "HipL_muscle", "HipR", "HipR_muscle",
 	"HipL_up", "HipL_muscle_up", "HipR_up", "HipR_muscle_up",
@@ -41,7 +64,7 @@ const ANATOMY_SLOTS = [
 	"penis_minet", "penis_minet2", "penis3", "fingL", "fingR",
 ]
 # The export supplies only one shared version of these layers.
-# ahole1 is the second layer keyed by sex3/sex4 for both bodies; the main
+# ahole1 is the second layer keyed by anal_missionary/double_pen for both bodies; the main
 # ahole slot still resolves to the selected body's own mesh.
 const SHARED_ANATOMY_SLOTS = ["ahole1", "vhole", "penis", "penis2", "penis_minet", "penis_minet2", "penis3"]
 const ANATOMY_ALTERNATIVES = {
@@ -50,7 +73,18 @@ const ANATOMY_ALTERNATIVES = {
 	"penis3": "00_body_nude_female/falos",
 	"penis_minet": "00_body_nude_female/falos_minet",
 }
+# The right hand's penis has no strap-on art, only the plain and the animal one;
+# its plain attachment is named after the left hand's slot.
+const ANATOMY_FURRY_ONLY = {"penis_minet2": "00_body_nude_female/penis_minet"}
 var anatomy_alternatives = {}
+# Poses built from several takes (doll2_pose_composer.gd), registered into the
+# shared skeleton under a name derived from their recipe.
+const COMPOSER = preload("res://Character_generator/Doll2Spine/doll2_pose_composer.gd")
+const COMPOSED_PREFIX = "pose:"
+var pose_composer = null
+var composed_info = {}
+# slot -> the channel colour it had before a partner's was put on it
+var partner_colour_defaults = {}
 # A beastkin's extra rows under the chest are weighted to the smallest breast
 # size's bones, which the titjump take swings along with every other size's, so
 # the rows bounced with a chest they are not part of.  They are skinned from a
@@ -276,6 +310,7 @@ var emotion_transition_sample = {}
 var emotion_transition_sample_key = ""
 var emotion_colour_from = {}
 var emotion_deform_from = {}
+var emotion_transition_bone_mask = null
 var emotion_setup_slots_from = []
 var emotion_setup_slots_to = []
 var bone_setup_sample = {}
@@ -359,6 +394,8 @@ func _ready():
 	set_process(true)
 
 func _reset_animation_states():
+	cum_enabled = false
+	cum_pose_playback.clear()
 	animation_states = {}
 	animation_times = {}
 	pose_transition_from = {}
@@ -371,6 +408,7 @@ func _reset_animation_states():
 	emotion_transition_sample_key = ""
 	emotion_colour_from = {}
 	emotion_deform_from = {}
+	emotion_transition_bone_mask = null
 	emotion_setup_slots_from = []
 	emotion_setup_slots_to = []
 	var default_animation = str(DOLLS.doll(doll_id).get("default_animation", ""))
@@ -402,13 +440,7 @@ func _process(delta):
 	pose_changed = _advance_titjump(delta) or pose_changed
 	if _advance_pose_offsets(delta):
 		pose_changed = true
-	for animation_name in animation_states.keys():
-		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
-			continue
-		if animation_states[animation_name]:
-			var duration = float(animation_durations.get(animation_name, 0.0))
-			animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
-			pose_changed = true
+	pose_changed = _advance_animation_times(delta) or pose_changed
 	if pose_changed:
 		# An order-only key reuses meshes; attachment changes still rebuild them.
 		if _animation_signature().hash() != animation_signature:
@@ -423,6 +455,70 @@ func _process(delta):
 				_rebuild_model()
 		else:
 			_update_animated_pose()
+
+
+func _advance_animation_times(delta):
+	var changed = false
+	for animation_name in animation_states.keys():
+		if animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
+			continue
+		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
+			continue
+		if animation_states[animation_name]:
+			var duration = float(animation_durations.get(animation_name, 0.0))
+			var previous = float(animation_times.get(animation_name, 0.0))
+			var next = fmod(previous + delta, duration) if duration > 0.0 else 0.0
+			if cum_enabled and (_cum_controls_pose(animation_name) or _is_sex_side_animation(animation_name)) and duration > 0.0:
+				next = _cum_pose_time(animation_name, delta, duration)
+			animation_times[animation_name] = next
+			changed = next != previous or changed
+	if cum_enabled:
+		for animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
+			var duration = float(animation_durations.get(animation_name, 0.0))
+			# All semen attachment, alpha and deform tracks share this overlay.
+			# Brake and hold it with the pose instead of leaving it looping.
+			if animation_name == CUM_ANIMATION and duration > 0.0:
+				animation_times[animation_name] = _cum_pose_time(animation_name, delta, duration)
+			else:
+				animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
+		changed = true
+	return changed
+
+
+func _cum_controls_pose(animation_name):
+	return !_is_emotion_animation(animation_name) and !_is_sex_side_animation(animation_name) and !(animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION, TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION, BLINK_ANIMATION, SAY_ANIMATION]) and _poses_the_skeleton(animation_name)
+
+
+# Use elapsed time rather than accumulating a per-frame speed: a frame crossing
+# either three-second boundary must land at the same phase at every frame rate.
+func _cum_pose_time(animation_name, delta, duration):
+	if !cum_pose_playback.has(animation_name):
+		var start = float(animation_times.get(animation_name, 0.0))
+		var brake_start = start + CUM_POSE_SPEED * CUM_POSE_FAST_DURATION
+		var hold = duration * CUM_POSE_HOLD_PHASE
+		var ideal_stop = brake_start + CUM_POSE_SPEED * CUM_POSE_BRAKE_DURATION * 0.5
+		var stop = hold + round((ideal_stop - hold) / duration) * duration
+		if stop <= brake_start:
+			stop += duration * (floor((brake_start - stop) / duration) + 1.0)
+		cum_pose_playback[animation_name] = {"start": start, "elapsed": 0.0, "distance": stop - brake_start}
+	var state = cum_pose_playback[animation_name]
+	state.elapsed = min(CUM_POSE_FAST_DURATION + CUM_POSE_BRAKE_DURATION, float(state.elapsed) + max(0.0, delta))
+	var elapsed = float(state.elapsed)
+	if elapsed <= CUM_POSE_FAST_DURATION:
+		return fmod(float(state.start) + CUM_POSE_SPEED * elapsed, duration)
+	if elapsed >= CUM_POSE_FAST_DURATION + CUM_POSE_BRAKE_DURATION:
+		return duration * CUM_POSE_HOLD_PHASE
+	var amount = (elapsed - CUM_POSE_FAST_DURATION) / CUM_POSE_BRAKE_DURATION
+	var distance = float(state.distance)
+	# Align the stop to a forward 25% phase, close to a linear brake's travel.
+	# Its power curve starts at 130% and reaches zero speed without a final snap.
+	var exponent = CUM_POSE_SPEED * CUM_POSE_BRAKE_DURATION / distance
+	var progress = 1.0 - pow(1.0 - amount, exponent)
+	if exponent <= 1.0:
+		# A very long cycle can put the next 25% phase beyond the brake's normal
+		# travel. A forward Hermite catch-up still arrives continuously at rest.
+		progress = (-2.0 * amount + 3.0) * amount * amount + exponent * amount * (amount - 1.0) * (amount - 1.0)
+	return fmod(float(state.start) + CUM_POSE_SPEED * CUM_POSE_FAST_DURATION + distance * progress, duration)
 
 
 # The authored breast take is an overlay and runs once. It is kept out of the
@@ -489,6 +585,24 @@ func _advance_one_shot(animation_name, delta):
 # Whether this rig carries the named emotion at all.
 func has_emotion(emotion_name):
 	return animation_states.has(EMOTION_PREFIX + str(emotion_name))
+
+
+# A separate overlay channel: neither the selected pose nor the ordinary
+# emotion is switched off, so both resume unchanged when Cum is disabled.
+func set_cum(value):
+	var enabled = bool(value) and skeleton.get("animations", {}).has(CUM_ANIMATION) and skeleton.get("animations", {}).has(CUM_FACE_ANIMATION)
+	if enabled == cum_enabled:
+		return
+	var previous_pose = _sampled_bone_timelines().duplicate(true)
+	var previous_colours = _capture_animated_slot_colours()
+	var previous_deforms = _capture_animated_attachment_deforms()
+	var previous_setup_slots = _active_emotion_setup_slots()
+	cum_enabled = enabled
+	cum_pose_playback.clear()
+	for animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
+		animation_times[animation_name] = 0.0
+	_begin_emotion_transition(previous_pose, previous_colours, previous_deforms, previous_setup_slots, true)
+	_rebuild_model()
 
 
 # The face the doll is making: an emotion by its name without the `emote_`
@@ -841,7 +955,11 @@ func _load_source():
 	descendants_below = {}
 	subtree_under = {}
 	keyed_bones_of = {}
+	pose_composer = null
+	composed_info = {}
 	emotion_eased_bones = null
+	cum_visibility_by_animation.clear()
+	cum_face_overlay = null
 	bone_parents.clear()
 	handle_definitions = contract.HANDLES.duplicate(true)
 	CATALOGUE.use(doll_id)
@@ -855,6 +973,11 @@ func _load_source():
 	if shared.empty():
 		return
 	skeleton = shared.skeleton
+	tithand_hand_bones.clear()
+	for definition in skeleton.get("bones", []):
+		var name = str(definition.get("name", ""))
+		if name in ["bone37", "bone54"] or tithand_hand_bones.has(definition.get("parent", "")):
+			tithand_hand_bones[name] = true
 	bone_names_by_index = []
 	for definition in skeleton.get("bones", []):
 		bone_names_by_index.append(definition.get("name", ""))
@@ -1105,6 +1228,13 @@ func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
 	_apply_beastkin_mouth_offset()
 
 
+func _tithand_take():
+	for take in TITHAND_ANIMATIONS:
+		if bool(animation_states.get(take, false)):
+			return take
+	return ""
+
+
 # Apply after all hierarchy/IK passes so limb sliders cannot erase the offset.
 # Spine's world Y points up. Moving the root once also moves lips2/lips3 and
 # every closed/open/emotion mouth skinned to them, without changing the export.
@@ -1315,10 +1445,16 @@ func _sampled_bone_timelines():
 	# Smoothstep keeps both ends of the short transition from arriving with a
 	# visible jerk while retaining the requested quarter-second duration.
 	amount = amount * amount * (3.0 - 2.0 * amount)
+	var tithand_active = !_tithand_take().empty()
 	for name in names.keys():
 		var setup = bone_setup_sample.get(name, [0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0])
 		var first = pose_transition_from.get(name, setup)
 		var second = target.get(name, setup)
+		# The newly displayed hands start in the authored pose instead of
+		# sliding into view from their offstage setup position.
+		if tithand_active and tithand_hand_bones.has(name):
+			pose_transition_sample[name] = second
+			continue
 		pose_transition_sample[name] = [
 			lerp(float(first[0]), float(second[0]), amount),
 			lerp(float(first[1]), float(second[1]), amount),
@@ -1348,7 +1484,7 @@ func _emotion_bone_sample(target):
 		names[name] = true
 	var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
 	amount = amount * amount * (3.0 - 2.0 * amount)
-	var eased = _emotion_eased_bones()
+	var eased = emotion_transition_bone_mask if emotion_transition_bone_mask != null else _emotion_eased_bones()
 	for name in names.keys():
 		# a bone no emotion keys is nobody's to ease: it is the pose's own, and
 		# holding it back is what stalled the idle for the length of the fade
@@ -1382,7 +1518,7 @@ func _emotion_eased_bones():
 	for animation_name in animations.keys():
 		if !_is_emotion_animation(animation_name):
 			continue
-		for bone_name in animations[animation_name].get("bones", {}).keys():
+		for bone_name in _animation_data(animation_name).get("bones", {}).keys():
 			emotion_eased_bones[bone_name] = true
 	return emotion_eased_bones
 
@@ -1407,7 +1543,7 @@ func _sample_current_bone_timelines():
 	if key == "":
 		return bone_sample
 	for animation_name in active:
-		var animation = skeleton.get("animations", {}).get(animation_name, {})
+		var animation = _animation_data(animation_name)
 		var bone_timelines = animation.get("bones", {})
 		var time = float(animation_times.get(animation_name, 0.0))
 		for keyed in _keyed_bones(animation_name, bone_timelines):
@@ -2223,14 +2359,24 @@ func _build_interface():
 	title.text = _text("DOLL2_PREVIEW_TITLE")
 	box.add_child(title)
 	_add_doll_select(box)
-	# Poses and emotions are two independent animation channels.  Each channel is
+	# Poses, sex_side and emotions are independent animation channels. Each is
 	# exclusive inside itself, so a dropdown describes it better than a row of
 	# checkboxes that can appear to allow impossible combinations.
 	_add_animation_select(box, "Poses", _pose_animations(), "pose", false)
+	_add_animation_select(box, "sex_side", _sex_side_animations(), "sex_side", true)
 	_add_animation_select(box, "Emotions", _emotion_animations(), "emotion", true)
+	if skeleton.get("animations", {}).has(CUM_ANIMATION) and skeleton.get("animations", {}).has(CUM_FACE_ANIMATION):
+		var cum_toggle = CheckButton.new()
+		cum_toggle.text = "Cum"
+		cum_toggle.pressed = cum_enabled
+		cum_toggle.connect("toggled", self, "set_cum")
+		box.add_child(cum_toggle)
+		ui["cum"] = cum_toggle
 	# Small overlays such as `say` remain toggles: they run on top of both
 	# channels and must not replace the selected pose.
 	for animation_name in _sorted_animations():
+		if animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
+			continue
 		if animation_name in [BLINK_ANIMATION, TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
 			continue
 		if _is_emotion_animation(animation_name) or _poses_the_skeleton(animation_name):
@@ -2332,12 +2478,16 @@ func _add_anatomy_options(parent):
 func _anatomy_variants(slot_name):
 	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
 	var result = {}
-	if !ANATOMY_ALTERNATIVES.has(slot_name) or !attachments.has(ANATOMY_ALTERNATIVES[slot_name]):
+	if ANATOMY_FURRY_ONLY.has(slot_name):
+		if attachments.has(ANATOMY_FURRY_ONLY[slot_name]):
+			result["penis"] = ANATOMY_FURRY_ONLY[slot_name]
+	elif !ANATOMY_ALTERNATIVES.has(slot_name) or !attachments.has(ANATOMY_ALTERNATIVES[slot_name]):
 		return result
-	var original = "00_body_nude_female/" + str(slot_name)
-	if attachments.has(original):
-		result["penis"] = original
-	result["falos"] = ANATOMY_ALTERNATIVES[slot_name]
+	else:
+		var original = "00_body_nude_female/" + str(slot_name)
+		if attachments.has(original):
+			result["penis"] = original
+		result["falos"] = ANATOMY_ALTERNATIVES[slot_name]
 	var names = attachments.keys()
 	names.sort()
 	for name in names:
@@ -2387,17 +2537,51 @@ func _sorted_axes():
 
 # Does this animation move bones, or is it only an overlay on top of a pose?
 func _poses_the_skeleton(animation_name):
-	return !skeleton.get("animations", {}).get(animation_name, {}).get("bones", {}).empty()
+	return !_animation_data(animation_name).get("bones", {}).empty()
+
+
+# All animation consumers see the same scoped face overlay: filtering only
+# attachments would still let lower-level colour/deform passes change the mouth.
+func _animation_data(animation_name):
+	var animation = skeleton.get("animations", {}).get(animation_name, {})
+	if animation_name != CUM_FACE_ANIMATION:
+		return animation
+	if cum_face_overlay == null:
+		cum_face_overlay = OVERLAY_RULES.cum_face(animation)
+	return cum_face_overlay
 
 
 func _is_emotion_animation(animation_name):
 	return str(animation_name).begins_with(EMOTION_PREFIX)
 
 
+func _is_sex_side_animation(animation_name):
+	return animation_name in TITHAND_ANIMATIONS
+
+
+func _sex_side_animations():
+	var result = []
+	for animation_name in TITHAND_ANIMATIONS:
+		if !skeleton.get("animations", {}).get(animation_name, {}).empty():
+			result.append(animation_name)
+	return result
+
+
+func _partner_hands_active():
+	return !_tithand_take().empty() or _partner_hand_pose_active()
+
+
+func _partner_hand_pose_active():
+	for animation_name in PARTNER_HAND_POSES:
+		if bool(animation_states.get(animation_name, false)):
+			return true
+	return false
+
+
 func _emotion_animations():
 	var result = []
 	for animation_name in _sorted_animations():
-		if _is_emotion_animation(animation_name):
+		if _is_emotion_animation(animation_name) and animation_name != CUM_FACE_ANIMATION:
 			result.append(animation_name)
 	return result
 
@@ -2405,7 +2589,9 @@ func _emotion_animations():
 func _pose_animations():
 	var result = []
 	for animation_name in _sorted_animations():
-		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
+		if animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION, TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
+			continue
+		if _is_sex_side_animation(animation_name):
 			continue
 		if !_is_emotion_animation(animation_name) and _poses_the_skeleton(animation_name):
 			result.append(animation_name)
@@ -2418,15 +2604,29 @@ func _pose_animations():
 func _ordered_active_animations():
 	var ordinary = []
 	var emotions = []
+	var side = []
 	for animation_name in animation_states.keys():
+		if animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
+			continue # reserved for the independent Cum channel
 		if !animation_states[animation_name]:
 			continue
 		if _is_emotion_animation(animation_name):
 			emotions.append(animation_name)
+		elif _is_sex_side_animation(animation_name):
+			side.append(animation_name)
 		else:
 			ordinary.append(animation_name)
 	ordinary.sort()
 	emotions.sort()
+	# Anatomy takes key the mouth and face, so `say` and `eyesmove` must not override them whatever the names sort to.
+	for animation_name in ordinary.duplicate():
+		if _is_anatomy_animation(animation_name):
+			ordinary.erase(animation_name)
+			ordinary.append(animation_name)
+	# Independent sex_side channel owns its authored keys over the base pose.
+	# Emotions and the scoped Cum overlay retain their existing higher priority.
+	side.sort()
+	ordinary.append_array(side)
 	# Authored reactions are overlays on the pose. Apply them after the idle so
 	# its keys cannot overwrite a moving ear or tail; emotion remains the final
 	# channel wherever it deliberately addresses the same control.
@@ -2435,7 +2635,26 @@ func _ordered_active_animations():
 			ordinary.erase(overlay)
 			ordinary.append(overlay)
 	ordinary.append_array(emotions)
+	if cum_enabled:
+		ordinary.append(CUM_ANIMATION)
+		ordinary.append(CUM_FACE_ANIMATION)
 	return ordinary
+
+
+func _cum_visible_slots():
+	var result = {}
+	if !cum_enabled:
+		return result
+	for animation_name in _ordered_active_animations():
+		if !_poses_the_skeleton(animation_name) or _is_emotion_animation(animation_name):
+			continue
+		if animation_name in [TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION]:
+			continue
+		if !cum_visibility_by_animation.has(animation_name):
+			cum_visibility_by_animation[animation_name] = OVERLAY_RULES.cum_slots(skeleton, animation_name)
+		for slot_name in cum_visibility_by_animation[animation_name].keys():
+			result[slot_name] = true
+	return result
 
 
 func _sorted_animations():
@@ -2488,6 +2707,8 @@ func _add_animation_select(parent, label_text, animation_names, channel, allow_n
 
 func _on_animation_selected(_item_index, channel, select):
 	var animation_names = _emotion_animations() if channel == "emotion" else _pose_animations()
+	if channel == "sex_side":
+		animation_names = _sex_side_animations()
 	var selected = str(select.get_item_metadata(select.selected))
 	var active = ""
 	for animation_name in animation_names:
@@ -2503,12 +2724,14 @@ func _on_animation_selected(_item_index, channel, select):
 		_on_animation_toggled(true, selected)
 
 
-# A pose is exclusive: two of them at once are two sets of keys on the same
+# A pose is exclusive inside its channel: two of them are two sets of keys on the same
 # bones, and the doll ends up in whichever the loop reached last rather than in
 # either.  Overlays are not - `eyesmove` only swaps attachments and has no bone
 # timeline of its own, so it rides along with any pose.
 func _on_animation_toggled(enabled, animation_name):
+	var previous_tithand = _tithand_take()
 	var is_emotion = _is_emotion_animation(animation_name)
+	var is_side = _is_sex_side_animation(animation_name)
 	var transitions_pose = _poses_the_skeleton(animation_name) and !is_emotion
 	var previous_pose = _sampled_bone_timelines().duplicate(true) if transitions_pose else {}
 	var previous_emotion_pose = _sampled_bone_timelines().duplicate(true) if is_emotion else {}
@@ -2516,6 +2739,10 @@ func _on_animation_toggled(enabled, animation_name):
 	var previous_emotion_deforms = _capture_animated_attachment_deforms() if is_emotion else {}
 	var previous_setup_slots = _active_emotion_setup_slots() if is_emotion else []
 	animation_states[animation_name] = enabled
+	if cum_enabled and _cum_controls_pose(animation_name):
+		cum_pose_playback.clear()
+	elif is_side:
+		cum_pose_playback.erase(animation_name)
 	if !enabled:
 		animation_times[animation_name] = 0.0
 	elif is_emotion or _poses_the_skeleton(animation_name):
@@ -2524,25 +2751,20 @@ func _on_animation_toggled(enabled, animation_name):
 				continue
 			if is_emotion != _is_emotion_animation(other_name):
 				continue
+			if is_side != _is_sex_side_animation(other_name):
+				continue
 			if !is_emotion and !_poses_the_skeleton(other_name):
 				continue
 			animation_states[other_name] = false
 			animation_times[other_name] = 0.0
+			cum_pose_playback.erase(other_name)
 			var toggle = ui.get("animation_" + other_name, null)
 			if is_instance_valid(toggle):
 				toggle.set_block_signals(true)
 				toggle.pressed = false
 				toggle.set_block_signals(false)
 	if is_emotion:
-		bone_sample_key = ""
-		emotion_transition_from = previous_emotion_pose
-		emotion_colour_from = previous_emotion_colours
-		emotion_deform_from = previous_emotion_deforms
-		emotion_setup_slots_from = previous_setup_slots
-		emotion_setup_slots_to = _active_emotion_setup_slots()
-		emotion_transition_elapsed = 0.0
-		emotion_transition_sample = {}
-		emotion_transition_sample_key = ""
+		_begin_emotion_transition(previous_emotion_pose, previous_emotion_colours, previous_emotion_deforms, previous_setup_slots)
 	elif transitions_pose:
 		bone_sample_key = ""
 		pose_transition_from = previous_pose
@@ -2551,7 +2773,34 @@ func _on_animation_toggled(enabled, animation_name):
 		pose_transition_sample_key = ""
 	# An authored pose brings its own hands and its own draw order, so turning one
 	# on or off is a rebuild, not a re-pose.
+	if previous_tithand != _tithand_take():
+		_solve_pose()
 	_rebuild_model()
+
+
+func _begin_emotion_transition(previous_pose, previous_colours, previous_deforms, previous_setup_slots, cum_only = false):
+	bone_sample_key = ""
+	emotion_transition_from = previous_pose
+	emotion_colour_from = previous_colours
+	emotion_deform_from = previous_deforms
+	emotion_transition_bone_mask = null
+	if cum_only:
+		# A Cum toggle must not even crossfade unrelated mouth channels: they
+		# continue sampling the live pose throughout the eyes/blush transition.
+		emotion_transition_bone_mask = _animation_data(CUM_FACE_ANIMATION).get("bones", {})
+		emotion_colour_from = {}
+		if previous_colours.has("blush"):
+			emotion_colour_from["blush"] = previous_colours.blush
+		emotion_deform_from = {}
+		for key in previous_deforms.keys():
+			var fields = str(key).split("|")
+			if fields.size() > 1 and fields[1] == "blush":
+				emotion_deform_from[key] = previous_deforms[key]
+	emotion_setup_slots_from = previous_setup_slots
+	emotion_setup_slots_to = _active_emotion_setup_slots()
+	emotion_transition_elapsed = 0.0
+	emotion_transition_sample = {}
+	emotion_transition_sample_key = ""
 
 
 func _on_handles_toggled(enabled):
@@ -3526,8 +3775,6 @@ func _rebuild_model():
 # same as choosing nothing - so the level is applied on the way to the model.
 func _worn_selections():
 	var level = GEAR.normalise(undress_level)
-	if _anatomy_animation_active():
-		level = GEAR.NAKED
 	if level == GEAR.DRESSED:
 		return selections
 	var result = selections.duplicate()
@@ -3547,13 +3794,92 @@ func _worn_selections():
 	return result
 
 
+func _is_anatomy_animation(animation_name):
+	return animation_name in ANATOMY_ANIMATIONS or str(animation_name).begins_with(COMPOSED_PREFIX)
+
+
 func _anatomy_animation_active():
 	if doll_id != "female":
 		return false
-	for animation_name in ANATOMY_ANIMATIONS:
+	for animation_name in animation_states.keys():
+		if _is_anatomy_animation(animation_name) and bool(animation_states[animation_name]):
+			return true
+	return false
+
+
+func _ass_animation_active():
+	if doll_id != "female":
+		return false
+	for animation_name in ASS_ANIMATIONS:
 		if bool(animation_states.get(animation_name, false)):
 			return true
 	return false
+
+
+# Registers the pose a recipe describes (see doll2_pose_composer.gd) and returns
+# its animation name, or "" when this rig has no such takes.
+func compose_pose(recipe):
+	if skeleton.empty():
+		return ""
+	var name = COMPOSED_PREFIX + str(hash(var2str(recipe)))
+	var animations = skeleton.get("animations", {})
+	if composed_info.has(name) and animations.has(name):
+		return name
+	if pose_composer == null:
+		pose_composer = COMPOSER.new(skeleton)
+	var built = pose_composer.compose(recipe)
+	if built == null:
+		return ""
+	animations[name] = built.animation
+	animation_durations[name] = built.duration
+	composed_info[name] = built
+	return name
+
+
+# Plays a pose in place of whatever pose was running; overlays carry on.
+func play_pose(animation_name):
+	if !skeleton.get("animations", {}).has(animation_name) or bool(animation_states.get(animation_name, false)):
+		return
+	animation_times[animation_name] = 0.0
+	_on_animation_toggled(true, animation_name)
+
+
+func stop_poses():
+	var stopped = false
+	for animation_name in animation_states.keys():
+		if str(animation_name).begins_with(COMPOSED_PREFIX) and animation_states[animation_name]:
+			animation_states[animation_name] = false
+			animation_times[animation_name] = 0.0
+			stopped = true
+	return stopped
+
+
+# How each partner penis is drawn: slot -> {kind = "penis" | "falos" | "furry",
+# colour = Color or null}.  A slot left out goes back to the plain art in its own
+# colour.  True when an attachment changed, which needs a rebuild; a colour does not.
+func set_partner_penises(styles):
+	var changed = false
+	for slot_name in ANATOMY_ALTERNATIVES.keys() + ANATOMY_FURRY_ONLY.keys():
+		var style = styles.get(slot_name, {})
+		var variants = _anatomy_variants(slot_name)
+		var wanted = "penis"
+		if str(style.get("kind", "")) == "falos" and variants.has("falos"):
+			wanted = "falos"
+		elif str(style.get("kind", "")) == "furry":
+			for key in variants.keys():
+				if str(key).ends_with("_f"):
+					wanted = key
+		if _selected_anatomy_variant(slot_name) != wanted:
+			changed = true
+		anatomy_alternatives[slot_name] = wanted
+		var channel = _anatomy_colour_channel(slot_name, "penis")
+		if color_values.has(channel):
+			if !partner_colour_defaults.has(channel):
+				partner_colour_defaults[channel] = color_values[channel]
+			var colour = style.get("colour", null)
+			color_values[channel] = colour if colour != null else partner_colour_defaults[channel]
+			_apply_channel_colour(channel)
+	return changed
 
 
 # Use the selected body's counterpart, including attachment names that do not
@@ -3610,6 +3936,14 @@ func _current_draw_order():
 		order = _apply_draw_order_fixes(order.duplicate(), FLAT_CHEST_DRAW_ORDER_FIXES)
 	if composed.has("pregnancy_belly"):
 		order = _apply_draw_order_fixes(order.duplicate(), PREGNANT_DRAW_ORDER_FIXES)
+	var handjob_active = bool(animation_states.get("handjob1", false)) or bool(animation_states.get("handjob2", false))
+	if handjob_active and !_tithand_take().empty() and order.has("semen_pm2"):
+		for slot_name in TITHAND_DRAW_ORDER:
+			order.erase(slot_name)
+		var insertion = order.find("semen_pm2") + 1
+		for slot_name in TITHAND_DRAW_ORDER:
+			order.insert(insertion, slot_name)
+			insertion += 1
 	return order
 
 
@@ -3642,10 +3976,16 @@ func _apply_selected_ear_draw_order(order):
 # instead of being carried through the shuffle - the arms cross the tattoo slot
 # on their way forward, and an index would land one slot out.
 func _draw_order_timeline(animation_name):
-	var timeline = skeleton.get("animations", {}).get(animation_name, {}).get("drawOrder", [])
-	# Small/flat chests keep sex7's endpoint order throughout the take.
-	# Filter at runtime so changing size restores the authored keys immediately.
-	if doll_id == "female" and animation_name == "sex7" and str(axis_values.get("tits_size", "")) in ["small", "flat"] and timeline.size() > 2:
+	# Keep the base take's draw order. The tithand/handjob rule above moves
+	# just the hand and arm slots that need to cross in that combination.
+	if _is_sex_side_animation(animation_name):
+		return []
+	var timeline = _animation_data(animation_name).get("drawOrder", [])
+	# Small/flat chests keep titjob's endpoint order throughout the take
+	# (test_combo and a composed pose with titjob's chest carry its keys). Filter
+	# at runtime so changing size restores the authored keys immediately.
+	var titjob_keys = animation_name in ["titjob", "test_combo"] or "titjob" in composed_info.get(animation_name, {}).get("takes", [])
+	if doll_id == "female" and titjob_keys and str(axis_values.get("tits_size", "")) in ["small", "flat"] and timeline.size() > 2:
 		return [timeline[0], timeline[timeline.size() - 1]]
 	return timeline
 
@@ -3750,10 +4090,28 @@ func _apply_draw_order_fixes(order, fixes = null):
 # one pose's hands on another pose's arms.
 func _animation_attachments():
 	var result = {}
+	var cum_slots = _cum_visible_slots()
+	var fingers_active = _partner_hand_pose_active()
 	for animation_name in _ordered_active_animations():
-		var timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {})
+		var tithand_overlay = _is_sex_side_animation(animation_name)
+		# The tithand take hides gg_hand when played alone. In a combination,
+		# the main pose owns that hand and the overlay adds gg_hand2/gg_hand3.
+		var preserve_fingers_hand = tithand_overlay and fingers_active
+		if tithand_overlay or animation_name in PARTNER_HAND_POSES:
+			# Alpha-only hand tracks use this take's setup cut, not a hand
+			# attachment left behind by the independently running base pose.
+			for slot in slot_data:
+				var slot_name = str(slot.name)
+				if slot_name in PARTNER_HAND_SLOTS and !(preserve_fingers_hand and slot_name == "gg_hand"):
+					result[slot_name] = str(slot.get("attachment", ""))
+		var timelines = _animation_data(animation_name).get("slots", {})
 		var time = float(animation_times.get(animation_name, 0.0))
 		for slot_name in timelines.keys():
+			if preserve_fingers_hand and slot_name == "gg_hand":
+				continue
+			if str(slot_name).begins_with("semen_") and !cum_slots.has(slot_name):
+				result[slot_name] = ""
+				continue
 			var keys = timelines[slot_name].get("attachment", [])
 			var value = null
 			var found = false
@@ -3762,6 +4120,10 @@ func _animation_attachments():
 					value = key.get("name", null)
 					found = true
 			if found:
+				# These takes hide setup leg gear in Spine, but the selected outfit
+				# owns it here. Ignore only hide keys, preserving explicit swaps.
+				if animation_name in ["anal_missionary", "double_pen", "sex_missionary", "test_combo"] and slot_name in ["equip_leg_left", "equip_leg_right"] and (value == null or str(value).empty()):
+					continue
 				# A missing/null name is an explicit hide key, not an absent track.
 				result[slot_name] = str(value) if value != null else ""
 	return result
@@ -3800,11 +4162,11 @@ func _match_animated_hands(authored, worn):
 		var attachment_name = str(authored.get(body_slot, ""))
 		if !authored.has(body_slot):
 			# Before a hand timeline's first key, Spine uses the setup attachment,
-			# not the wardrobe's default hand pose. sex8 keys its right palm only
+			# not the wardrobe's default hand pose. handjob2 keys its right palm only
 			# at the end, so its setup handr2 must be race-matched for the full take.
 			var has_hand_timeline = false
 			for animation_name in _ordered_active_animations():
-				var frames = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).get(body_slot, {}).get("attachment", [])
+				var frames = _animation_data(animation_name).get("slots", {}).get(body_slot, {}).get("attachment", [])
 				if !frames.empty():
 					has_hand_timeline = true
 					break
@@ -3886,10 +4248,23 @@ func _update_bone_nodes():
 # the catalogue already decided which attachment every slot holds.
 func _resolve_attachment(slot):
 	var slot_name = slot.get("name", "")
+	# Enforce visibility before setup, animation or overlay attachments resolve.
+	if slot_name in ["ass", "ass_eq"] and !_ass_animation_active():
+		return {}
+	if str(slot_name).begins_with("semen_") and !_cum_visible_slots().has(slot_name):
+		return {}
 	# These are exclusive to the inset, never wardrobe items on the main doll.
 	if slot_name in ["XRAY", "xray"]:
 		return {}
 	var attachment_name = str(composed.get(slot_name, ""))
+	if slot_name in PARTNER_HAND_SLOTS:
+		if !_partner_hands_active():
+			return {}
+		# Some takes key only alpha and intentionally use the setup hand;
+		# others swap or hide it explicitly. These are not wardrobe selections.
+		attachment_name = str(animation_attachments.get(slot_name, slot.get("attachment", "")))
+	if str(slot_name).begins_with("semen_"):
+		attachment_name = str(animation_attachments.get(slot_name, ""))
 	# Clipping is skeleton state, not a selectable wardrobe/catalogue part.
 	# Resolve setup and attachment keys even though it has no atlas texture.
 	var source_attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
@@ -3900,12 +4275,16 @@ func _resolve_attachment(slot):
 		helper["_skin_name"] = SKIN_NAME
 		return helper
 	var anatomy_active = _anatomy_animation_active()
+	# The rear clothing cut belongs only to the alternate ass mesh. Keep the
+	# selected outfit (not the export's setup item), and never leave it floating
+	# in ordinary poses or after an attachment key hides the body underneath.
+	if slot_name == "ass_eq":
+		if !anatomy_active or str(composed.get("ass", "")).empty():
+			return {}
+		if animation_attachments.has("ass") and str(animation_attachments["ass"]).empty():
+			return {}
 	# This pose omits the lower-leg layers for every selected body.
-	if anatomy_active and bool(animation_states.get("sex5", false)) and slot_name in ["ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle"]:
-		return {}
-	# The restriction also applies to animation keys and externally supplied
-	# selections, so neither can bring clothing back during these takes.
-	if anatomy_active and (str(slot_name).begins_with("equip_") or slot_name in ["weapon_belt", "weapon_back"]):
+	if anatomy_active and bool(animation_states.get("deepthroat", false)) and slot_name in ["ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle"]:
 		return {}
 	if slot_name in ANATOMY_SLOTS:
 		if !anatomy_active:
@@ -3940,7 +4319,7 @@ func _resolve_attachment(slot):
 	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
 	# Apply only after animation visibility and authored attachment keys. A
 	# replacement must not materialise a hidden slot or be reset by every key.
-	if ANATOMY_ALTERNATIVES.has(slot_name):
+	if ANATOMY_ALTERNATIVES.has(slot_name) or ANATOMY_FURRY_ONLY.has(slot_name):
 		# The dropdown owns the variant, while the animation owns visibility.
 		var chosen = str(_anatomy_variants(slot_name).get(_selected_anatomy_variant(slot_name), ""))
 		if attachments.get(slot_name, {}).has(chosen):
@@ -3958,7 +4337,7 @@ func _active_emotion_animates_slot(slot_name):
 	for animation_name in _ordered_active_animations():
 		if !_is_emotion_animation(animation_name):
 			continue
-		if skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).has(slot_name):
+		if _animation_data(animation_name).get("slots", {}).has(slot_name):
 			return true
 		if slot_name in EMOTION_SETUP_SLOTS.get(animation_name, []):
 			return true
@@ -3978,7 +4357,7 @@ func _active_emotion_setup_slots():
 			if !(slot_name in result):
 				result.append(slot_name)
 		# An emotion's own RGBA key for the slot counts as on (embarrassment and shy fade the blush in).
-		for slot_name in skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).keys():
+		for slot_name in _animation_data(animation_name).get("slots", {}).keys():
 			if _is_emotion_setup_slot(slot_name) and !(slot_name in result) and _emotion_slot_shows(animation_name, slot_name):
 				result.append(slot_name)
 	return result
@@ -3986,7 +4365,7 @@ func _active_emotion_setup_slots():
 
 # Keys that only hide the slot (joy, angry, surprise) do not count as showing it.
 func _emotion_slot_shows(animation_name, slot_name):
-	var timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).get(slot_name, {})
+	var timelines = _animation_data(animation_name).get("slots", {}).get(slot_name, {})
 	var frames = timelines.get("rgba", [])
 	if frames.empty():
 		return true
@@ -4000,7 +4379,7 @@ func _active_emotion_keys_slot(slot_name):
 	for animation_name in _ordered_active_animations():
 		if !_is_emotion_animation(animation_name):
 			continue
-		if skeleton.get("animations", {}).get(animation_name, {}).get("slots", {}).has(slot_name):
+		if _animation_data(animation_name).get("slots", {}).has(slot_name):
 			return true
 	return false
 
@@ -4062,8 +4441,8 @@ func _add_attachment(slot, attachment, rows = {}, clipping = {}, inset = false):
 	# shader never runs on it and the art reaches the screen untouched.
 	if composed_unpainted.has(slot.get("name", "")):
 		channel = ""
-	if ANATOMY_ALTERNATIVES.has(str(slot.get("name", ""))):
-		var variant = "falos" if str(attachment.get("_attachment_name", "")) == str(ANATOMY_ALTERNATIVES[str(slot.name)]) else "penis"
+	if ANATOMY_ALTERNATIVES.has(str(slot.get("name", ""))) or ANATOMY_FURRY_ONLY.has(str(slot.get("name", ""))):
+		var variant = "falos" if str(attachment.get("_attachment_name", "")) == str(ANATOMY_ALTERNATIVES.get(str(slot.name), "")) else "penis"
 		if str(attachment.get("_attachment_name", "")).ends_with("_f"):
 			variant = "penis_f"
 		channel = _anatomy_colour_channel(str(slot.name), variant)
@@ -4337,11 +4716,11 @@ func _set_polygon_geometry(polygon, data):
 	polygon.visible = !data.triangles.empty()
 
 
-# Both human and beastkin ass attachments belong to the same slot. Scale the
+# Human/beastkin ass attachments and their clothing share the scale. Scale the
 # freshly skinned mesh about its centre, preserving the authored pose and UVs.
 # Legs has asymmetric limits; map each half to -15% / +25% mesh scale.
 func _apply_mesh_size_modifiers(points, slot):
-	if str(slot.get("name", "")) != "ass":
+	if !(str(slot.get("name", "")) in ["ass", "ass_eq"]):
 		return _scale_back_hair_mesh(points, slot)
 	if points.empty():
 		return points
@@ -4406,7 +4785,7 @@ func _attachment_deform(slot, attachment, active = null):
 	var slot_name = slot.get("name", "")
 	var attachment_name = attachment.get("_attachment_name", "")
 	for animation_name in active:
-		var attachment_timelines = skeleton.get("animations", {}).get(animation_name, {}).get("attachments", {})
+		var attachment_timelines = _animation_data(animation_name).get("attachments", {})
 		if !attachment_timelines.has(skin_name):
 			continue
 		var skin_timelines = attachment_timelines[skin_name]
@@ -4422,7 +4801,7 @@ func _attachment_deform(slot, attachment, active = null):
 		if animation_name == BLINK_ANIMATION:
 			blink_overlay = sampled
 			continue
-		if result.empty() or _is_emotion_animation(animation_name):
+		if result.empty() or _is_emotion_animation(animation_name) or _is_sex_side_animation(animation_name) or animation_name == CUM_ANIMATION:
 			result = sampled
 		else:
 			for i in range(min(result.size(), sampled.size())):
@@ -4549,6 +4928,8 @@ func _attachment_colour(slot, _attachment, active = null):
 	var colour = _spine_colour(slot.get("color", "FFFFFFFF"))
 	var slot_name = str(slot.get("name", ""))
 	colour *= _animated_slot_colour(slot_name, active)
+	if slot_name == "ass_eq":
+		colour.a *= _animated_slot_colour("ass", active).a
 	colour.a *= _emotion_setup_slot_alpha(slot_name)
 	if _is_muscle_slot(slot_name):
 		colour.a *= clamp(float(proportions.get("muscle_alpha", 30.0)) / 100.0, 0.0, 1.0)
@@ -4565,12 +4946,17 @@ func _animated_slot_colour(slot_name, active = null):
 		active = _ordered_active_animations()
 	var result = Color(1, 1, 1, 1)
 	for animation_name in active:
-		var slot_timelines = skeleton.get("animations", {}).get(animation_name, {}).get("slots", {})
+		var slot_timelines = _animation_data(animation_name).get("slots", {})
 		if !slot_timelines.has(slot_name):
 			continue
 		var frames = slot_timelines[slot_name].get("rgba", [])
 		if !frames.empty():
 			result = _sample_rgba_timeline(frames, float(animation_times.get(animation_name, 0.0)))
+		elif animation_name == CUM_FACE_ANIMATION and slot_timelines[slot_name].has("attachment"):
+			# This face authors attachment keys, not RGBA. Lower-channel hide
+			# keys (say, a pose, or another emotion) must not erase its mouth
+			# and blush even though the higher channel uses setup-white alpha.
+			result = Color(1, 1, 1, 1)
 	if emotion_transition_elapsed < EMOTION_TRANSITION_DURATION and emotion_colour_from.has(slot_name):
 		var amount = clamp(emotion_transition_elapsed / EMOTION_TRANSITION_DURATION, 0.0, 1.0)
 		amount = amount * amount * (3.0 - 2.0 * amount)

@@ -9,12 +9,12 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 782,
-	"bone_count": 309,
+	"attachment_count": 804,
+	"bone_count": 360,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "2M21rj+7MM8",
-	"slot_count": 112,
+	"skeleton_hash": "gZc+BoG3PoE",
+	"slot_count": 126,
 	"spine_version": "4.2.43",
 }
 
@@ -48,6 +48,7 @@ const SLOT_ORDER = [
 	"race_shoulder_right",
 	"equip_shoulder_right",
 	"ass",
+	"ass_eq",
 	"ahole",
 	"torso",
 	"equip_collar",
@@ -77,6 +78,7 @@ const SLOT_ORDER = [
 	"HipL_muscle_up",
 	"vagina2",
 	"vhole",
+	"semen_vhole",
 	"belly_muscle",
 	"equip_torso",
 	"breasts_beastkin_many",
@@ -102,6 +104,7 @@ const SLOT_ORDER = [
 	"piercing_nipple_1_0",
 	"race_torso",
 	"equip_breasts",
+	"semen_body",
 	"hairs_assist",
 	"head_skull",
 	"head",
@@ -118,19 +121,30 @@ const SLOT_ORDER = [
 	"noses",
 	"freckles",
 	"blush",
+	"semen_lips",
+	"semen_face",
 	"hairs_fringe",
 	"equip_masks",
 	"equip_head",
 	"horns",
 	"penis",
+	"semen_p1",
 	"ahole1",
+	"semen_ahole",
 	"vagina2_muscle",
 	"penis2",
+	"semen_p2",
 	"penis_minet2",
+	"semen_pm2",
+	"gg_hand",
+	"gg_hand2",
+	"gg_hand3",
 	"minet",
 	"penis_minet",
+	"semen_pm1",
 	"minet2",
 	"penis3",
+	"semen_p3",
 ]
 
 const DRAW_ORDER = [
@@ -163,6 +177,7 @@ const DRAW_ORDER = [
 	"race_shoulder_right",
 	"equip_shoulder_right",
 	"ass",
+	"ass_eq",
 	"ahole",
 	"torso",
 	"equip_collar",
@@ -192,6 +207,7 @@ const DRAW_ORDER = [
 	"HipL_muscle_up",
 	"vagina2",
 	"vhole",
+	"semen_vhole",
 	"belly_muscle",
 	"tatoos",
 	"race_torso_lower",
@@ -217,6 +233,7 @@ const DRAW_ORDER = [
 	"breast_nipples",
 	"piercing_nipple_1_0",
 	"equip_breasts",
+	"semen_body",
 	"hairs_assist",
 	"head_skull",
 	"head",
@@ -233,19 +250,30 @@ const DRAW_ORDER = [
 	"noses",
 	"freckles",
 	"blush",
+	"semen_lips",
+	"semen_face",
 	"hairs_fringe",
 	"equip_masks",
 	"equip_head",
 	"horns",
 	"penis",
+	"semen_p1",
 	"ahole1",
+	"semen_ahole",
 	"vagina2_muscle",
 	"penis2",
+	"semen_p2",
 	"penis_minet2",
+	"semen_pm2",
+	"gg_hand",
+	"gg_hand2",
+	"gg_hand3",
 	"minet",
 	"penis_minet",
+	"semen_pm1",
 	"minet2",
 	"penis3",
+	"semen_p3",
 ]
 
 const DRAW_ORDER_FIXES = [
@@ -457,6 +485,18 @@ const COLOR_CHANNELS = {
 		"zone_defaults": [],
 		"zones": false,
 	},
+	"anatomy_penis/penis_minet2": {
+		"anchor": "body",
+		"coverage": false,
+		"coverage_alternate": false,
+		"coverage_alternate_2": false,
+		"flat": false,
+		"gear": false,
+		"slots": [],
+		"two_tone": false,
+		"zone_defaults": [],
+		"zones": false,
+	},
 	"anatomy_penis_f/penis": {
 		"anchor": "body",
 		"coverage": false,
@@ -494,6 +534,18 @@ const COLOR_CHANNELS = {
 		"zones": false,
 	},
 	"anatomy_penis_f/penis_minet": {
+		"anchor": "body",
+		"coverage": false,
+		"coverage_alternate": false,
+		"coverage_alternate_2": false,
+		"flat": false,
+		"gear": false,
+		"slots": [],
+		"two_tone": false,
+		"zone_defaults": [],
+		"zones": false,
+	},
+	"anatomy_penis_f/penis_minet2": {
 		"anchor": "body",
 		"coverage": false,
 		"coverage_alternate": false,
@@ -710,7 +762,7 @@ const COLOR_CHANNELS = {
 		"coverage_alternate_2": false,
 		"flat": false,
 		"gear": true,
-		"slots": ["equip_leg_left", "equip_leg_right", "equip_pelvis", "equip_pregnancy_low"],
+		"slots": ["ass_eq", "equip_leg_left", "equip_leg_right", "equip_pelvis", "equip_pregnancy_low"],
 		"two_tone": false,
 		"zone_defaults": [],
 		"zones": true,
@@ -919,6 +971,7 @@ const SLOT_COLORS = {
 	"arm_left": "skin_alternate",
 	"arm_right": "skin_alternate",
 	"ass": "skin",
+	"ass_eq": "outfit_lower",
 	"beastkin_pregnancy_nipple": "nipples",
 	"beastkin_torso_many_nipples": "nipples",
 	"belly": "skin",
@@ -1446,6 +1499,7 @@ const GROUPS = {
 			"outfit_waitress",
 		],
 		"slots": [
+			"ass_eq",
 			"equip_arm_left",
 			"equip_arm_right",
 			"equip_back",
@@ -1504,7 +1558,7 @@ const GROUPS = {
 			"outfit_underwear2_legs",
 			"outfit_waitress_legs",
 		],
-		"slots": ["equip_leg_left", "equip_leg_right", "equip_pelvis", "equip_pregnancy_low"],
+		"slots": ["ass_eq", "equip_leg_left", "equip_leg_right", "equip_pelvis", "equip_pregnancy_low"],
 	},
 	"piercing_belly": {
 		"default": "",
@@ -3545,6 +3599,7 @@ const PARTS = {
 		"folders": ["107_armory_set_jacket_female"],
 		"group": "outfit",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_belly": {
 				"axis": "pregnancy",
 				"options": {
@@ -3587,6 +3642,7 @@ const PARTS = {
 		"folders": ["107_armory_set_jacket_female"],
 		"group": "outfit_legs",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_leg_left": "legl_armor_jacket",
 			"equip_leg_right": "legr_armor_jacket",
 			"equip_pelvis": "pelvis_armor_jacket",
@@ -3605,6 +3661,7 @@ const PARTS = {
 		"folders": ["108_armory_set_latex_female"],
 		"group": "outfit",
 		"slots": {
+			"ass_eq": "108_armory_set_latex_female/ass_eq_latex",
 			"equip_arm_left": "arm_armorl_latex",
 			"equip_arm_right": "arm_armorr_latex",
 			"equip_belly": {
@@ -3702,6 +3759,7 @@ const PARTS = {
 		"folders": ["108_armory_set_latex_female"],
 		"group": "outfit_legs",
 		"slots": {
+			"ass_eq": "108_armory_set_latex_female/ass_eq_latex",
 			"equip_leg_left": {
 				"axis": "body_fit",
 				"options": {
@@ -3731,6 +3789,7 @@ const PARTS = {
 		"folders": ["102_armory_set_leather_female"],
 		"group": "outfit",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_arm_left": "arm_armorl_leather",
 			"equip_arm_right": "arm_armorr_leather",
 			"equip_back": "equip_back",
@@ -3789,6 +3848,7 @@ const PARTS = {
 		"folders": ["102_armory_set_leather2_female"],
 		"group": "outfit",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_arm_left": "arm_armorl_leather2",
 			"equip_arm_right": "arm_armorr_leather2",
 			"equip_back": "raincoat_leather2",
@@ -3849,6 +3909,7 @@ const PARTS = {
 		"folders": ["102_armory_set_leather2_female"],
 		"group": "outfit_legs",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_leg_left": {
 				"axis": "body_fit",
 				"options": {
@@ -3879,6 +3940,7 @@ const PARTS = {
 		"folders": ["102_armory_set_leather_female"],
 		"group": "outfit_legs",
 		"slots": {
+			"ass_eq": "102_armory_set_leather_female/ass_eq_leather",
 			"equip_leg_left": {
 				"axis": "body_fit",
 				"options": {
@@ -4249,6 +4311,7 @@ const PARTS = {
 		"folders": ["112_armory_set_playboy_female"],
 		"group": "outfit",
 		"slots": {
+			"ass_eq": "112_armory_set_playboy_female/ass_eq_playboy",
 			"equip_arm_left": "arml1_armorl_playboy",
 			"equip_arm_right": "armr1_armorr_playboy",
 			"equip_belly": {
@@ -4347,6 +4410,7 @@ const PARTS = {
 		"folders": ["112_armory_set_playboy_female"],
 		"group": "outfit_legs",
 		"slots": {
+			"ass_eq": "112_armory_set_playboy_female/ass_eq_playboy",
 			"equip_leg_left": {
 				"axis": "body_fit",
 				"options": {
