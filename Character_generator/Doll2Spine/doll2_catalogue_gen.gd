@@ -9,11 +9,11 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 804,
+	"attachment_count": 807,
 	"bone_count": 360,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "gZc+BoG3PoE",
+	"skeleton_hash": "H/qJn3O1btE",
 	"slot_count": 126,
 	"spine_version": "4.2.43",
 }
@@ -1450,7 +1450,7 @@ const GROUPS = {
 		"label": "DOLL2_PREVIEW_MASK",
 		"optional": true,
 		"order": 25,
-		"parts": ["facemask1", "facemask2"],
+		"parts": ["facemask1", "facemask2", "glasses1", "glasses2", "glasses3"],
 		"slots": ["equip_masks"],
 	},
 	"nose": {
@@ -2621,6 +2621,27 @@ const PARTS = {
 		"group": "mask",
 		"slots": {
 			"equip_masks": "facemask2",
+		},
+	},
+	"glasses1": {
+		"folders": [""],
+		"group": "mask",
+		"slots": {
+			"equip_masks": "glasses1",
+		},
+	},
+	"glasses2": {
+		"folders": [""],
+		"group": "mask",
+		"slots": {
+			"equip_masks": "glasses2",
+		},
+	},
+	"glasses3": {
+		"folders": [""],
+		"group": "mask",
+		"slots": {
+			"equip_masks": "glasses3",
 		},
 	},
 	"hair_armor_maid": {

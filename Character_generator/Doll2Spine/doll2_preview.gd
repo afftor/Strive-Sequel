@@ -207,6 +207,7 @@ var spine_colours = {}
 var setup_pose = {}
 var setup_pose_names = []
 var setup_pose_ready = false
+var flat_chest_edge_weights = {}
 var setup_pose_butt = 1.0
 var setup_pose_shoulders = 1.0
 # Walks of the skeleton that depend on it alone, kept by the bones they start from:
@@ -288,6 +289,9 @@ var animation_attachment_signature = 0
 var animation_times = {}
 # how fast the sex takes play, against their authored speed (the sex scene's slider)
 var pose_speed = 1.0
+var pose_start_ramps = {}
+const POSE_START_RAMP_DURATION = 0.4
+const POSE_START_RAMP_RATE = 0.0
 var animation_durations = {}
 const POSE_TRANSITION_DURATION = 0.35
 const EMOTION_TRANSITION_DURATION = 0.3
@@ -407,6 +411,7 @@ func _reset_animation_states():
 	cum_pose_playback.clear()
 	animation_states = {}
 	animation_times = {}
+	pose_start_ramps.clear()
 	pose_transition_from = {}
 	pose_transition_elapsed = POSE_TRANSITION_DURATION
 	pose_transition_sample = {}
@@ -476,7 +481,8 @@ func _advance_animation_times(delta):
 		if animation_states[animation_name]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
 			var previous = float(animation_times.get(animation_name, 0.0))
-			var step = delta * pose_speed if _is_anatomy_animation(animation_name) or _is_sex_side_animation(animation_name) else delta
+			var rate = pose_speed if _is_anatomy_animation(animation_name) or _is_sex_side_animation(animation_name) else 1.0
+			var step = _pose_start_delta(animation_name, delta) * rate
 			var next = fmod(previous + step, duration) if duration > 0.0 else 0.0
 			if cum_enabled and (_cum_controls_pose(animation_name) or _is_sex_side_animation(animation_name)) and duration > 0.0:
 				next = _cum_pose_time(animation_name, delta, duration)
@@ -497,6 +503,41 @@ func _advance_animation_times(delta):
 			_remember_visible_semen()
 		changed = true
 	return changed
+
+
+func _pose_has_partner_attachment(animation_name):
+	var timelines = _animation_data(animation_name).get("slots", {})
+	for slot_name in timelines:
+		var is_hand = str(slot_name).begins_with("gg_hand")
+		if !is_hand and !str(slot_name).begins_with("penis"):
+			continue
+		var keys = timelines[slot_name].get("attachment", [])
+		for key in keys:
+			if key.get("name") != null and !str(key.name).empty():
+				return true
+		# A keyed slot can show its setup cut before the first attachment key.
+		var can_show_setup = (_is_sex_side_animation(animation_name) or _is_partner_hand_pose(animation_name)) if is_hand else _is_anatomy_animation(animation_name)
+		if can_show_setup and (keys.empty() or float(keys[0].get("time", 0.0)) > 0.0):
+			for slot in slot_data:
+				if slot.name == slot_name and !str(slot.get("attachment", "")).empty():
+					return true
+	return false
+
+
+func _pose_start_delta(animation_name, delta):
+	if !pose_start_ramps.has(animation_name):
+		return delta
+	var elapsed = float(pose_start_ramps[animation_name])
+	var ramp_step = min(delta, POSE_START_RAMP_DURATION - elapsed)
+	var finish = elapsed + ramp_step
+	if finish >= POSE_START_RAMP_DURATION:
+		pose_start_ramps.erase(animation_name)
+	else:
+		pose_start_ramps[animation_name] = finish
+	# Integrate the linear ramp over the part of the frame inside it.
+	# It runs once per activation, independently of frame rate or loops.
+	var midpoint = (elapsed + ramp_step * 0.5) / POSE_START_RAMP_DURATION
+	return delta - ramp_step * (1.0 - POSE_START_RAMP_RATE) * (1.0 - midpoint)
 
 
 func _cum_controls_pose(animation_name):
@@ -1320,6 +1361,7 @@ func _setup_bones():
 	var shoulders = float(proportions.get("shoulders", 1.0))
 	if setup_pose_ready and setup_pose_butt == butt and setup_pose_shoulders == shoulders:
 		return
+	flat_chest_edge_weights.clear()
 	bones.clear()
 	post_ik_visual_scales.clear()
 	applying_post_ik_visual_scales = false
@@ -2816,6 +2858,10 @@ func _on_animation_toggled(enabled, animation_name):
 	var previous_emotion_colours = _capture_animated_slot_colours() if is_emotion else {}
 	var previous_emotion_deforms = _capture_animated_attachment_deforms() if is_emotion else {}
 	var previous_setup_slots = _active_emotion_setup_slots() if is_emotion else []
+	if !enabled:
+		pose_start_ramps.erase(animation_name)
+	elif !bool(animation_states.get(animation_name, false)) and _pose_has_partner_attachment(animation_name):
+		pose_start_ramps[animation_name] = 0.0
 	animation_states[animation_name] = enabled
 	if cum_enabled and _cum_controls_pose(animation_name):
 		cum_pose_playback.clear()
@@ -2835,6 +2881,7 @@ func _on_animation_toggled(enabled, animation_name):
 				continue
 			animation_states[other_name] = false
 			animation_times[other_name] = 0.0
+			pose_start_ramps.erase(other_name)
 			cum_pose_playback.erase(other_name)
 			var toggle = ui.get("animation_" + other_name, null)
 			if is_instance_valid(toggle):
@@ -3955,6 +4002,7 @@ func stop_poses(include_side = false):
 		if str(animation_name).begins_with(COMPOSED_PREFIX) or (include_side and _is_sex_side_animation(animation_name)):
 			animation_states[animation_name] = false
 			animation_times[animation_name] = 0.0
+			pose_start_ramps.erase(animation_name)
 			stopped = true
 	return stopped
 
@@ -5134,8 +5182,6 @@ func _attachment_colour(slot, attachment, active = null):
 		if bool(attachment.get("_semen_residue_only", false)) or animated.a < residue.colour.a:
 			animated = residue.colour
 	colour *= animated
-	if slot_name in PERSISTENT_SEMEN_SLOTS:
-		colour.a *= 0.5
 	if slot_name == "ass_eq":
 		colour.a *= _animated_slot_colour("ass", active).a
 	colour.a *= _emotion_setup_slot_alpha(slot_name)
@@ -5268,6 +5314,8 @@ func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_
 			return {}
 		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose, rows)
 		points = _align_shin_knee(points, slot, attachment, deform, pose, geometry_cache)
+		if slot.name == "equip_breasts" and doll_id == "female" and chest_is_flat():
+			points = _fit_flat_chest_edges(points, attachment, deform, pose, rows, geometry_cache)
 		if slot.name in ["equip_leg_left", "equip_leg_right"]:
 			points = _fit_split_leg_gear(points, slot, attachment, deform, pose, geometry_cache)
 		if points_only:
@@ -5351,18 +5399,79 @@ func _pose_table(pose):
 # the ordinary pose's under "", a layer pose's under its slot.
 func _skinning_rows(slot, rows):
 	var pose = _pose_for(slot)
-	var key = "" if pose == bones else str(slot.get("name", ""))
+	var slot_name = str(slot.get("name", ""))
+	var key = "" if pose == bones else slot_name
 	if !rows.has(key):
 		rows[key] = _pose_table(pose)
 	# All attachments in Shin slots, including orc/beastkin and muscle overlays,
 	# share a mesh-only correction. The skeleton and all other meshes keep the
 	# full Legs factor. Cache separately so correction never leaks into Hip/ass.
-	if str(slot.get("name", "")).to_lower().begins_with("shin"):
+	if slot_name.to_lower().begins_with("shin"):
 		var corrected_key = "shin_mesh/" + key
 		if !rows.has(corrected_key):
 			rows[corrected_key] = _compensate_shin_skinning_rows(rows[key])
 		return rows[corrected_key]
 	return rows[key]
+
+
+# Build a reference for the garment edges only: carry breast weights with their
+# torso parent, without changing the bones or the animated garment interior.
+func _fit_flat_chest_edges(points, attachment, deform, pose, rows, cache):
+	var hull = int(attachment.get("hull", 0))
+	if hull < 3 or hull > points.size():
+		return points
+	var name = str(attachment.get("_attachment_name", ""))
+	if !flat_chest_edge_weights.has(name):
+		var rest = _mesh_points(attachment.vertices, attachment.uvs.size(), [], setup_pose)
+		var scale = _display_scale()
+		var weights = PoolRealArray()
+		for i in range(rest.size()):
+			if i < hull:
+				weights.append(1.0)
+				continue
+			var depth = INF
+			for j in range(hull):
+				var start = rest[j]
+				var segment = rest[(j + 1) % hull] - start
+				var length_squared = segment.length_squared()
+				var along = clamp((rest[i] - start).dot(segment) / length_squared, 0.0, 1.0) if length_squared > 0.0 else 0.0
+				depth = min(depth, rest[i].distance_squared_to(start + segment * along))
+			# Blend out over a thin band, keeping the original dynamics inside it.
+			weights.append(1.0 - smoothstep(3.0, 26.0, sqrt(depth) / scale))
+		flat_chest_edge_weights[name] = weights
+	if cache == null:
+		cache = {}
+	if !cache.has("flat_chest_rows"):
+		cache["flat_chest_rows"] = _flat_chest_gear_rows(pose, _pose_table(pose) if rows == null else rows)
+	var anchored = _mesh_points(attachment.vertices, attachment.uvs.size(), deform, pose, cache["flat_chest_rows"])
+	var weights = flat_chest_edge_weights[name]
+	var result = PoolVector2Array()
+	for i in range(points.size()):
+		result.append(points[i].linear_interpolate(anchored[i], weights[i]))
+	return _limit_mesh_folds(result, anchored, attachment.triangles)
+
+
+func _flat_chest_gear_rows(pose, source_rows):
+	var corrected = source_rows.duplicate()
+	var torso_motion = {}
+	for name in setup_pose_names:
+		if !name.begins_with("nipple"):
+			continue
+		var setup = setup_pose[name]
+		var anchor = str(setup.parent_name)
+		while anchor.begins_with("nipple"):
+			anchor = str(setup_pose[anchor].parent_name)
+		if !pose.has(anchor):
+			continue
+		if !torso_motion.has(anchor):
+			torso_motion[anchor] = _bone_transform(pose[anchor]) * _bone_transform(setup_pose[anchor]).affine_inverse()
+		var fitted = torso_motion[anchor] * _bone_transform(setup)
+		corrected[int(setup.index)] = [fitted.x.x, fitted.y.x, fitted.x.y, fitted.y.y, fitted.origin.x, fitted.origin.y]
+	return corrected
+
+
+func _bone_transform(bone):
+	return Transform2D(Vector2(bone.a, bone.c), Vector2(bone.b, bone.d), Vector2(bone.x, bone.y))
 
 
 func _compensate_shin_skinning_rows(source_rows):
@@ -5409,12 +5518,12 @@ func _fit_split_leg_gear(points, slot, attachment, deform, pose, cache):
 		# Keep the outfit's own scaling on loose edges away from the leg.
 		var blend = smoothstep(35.0 * scale, 80.0 * scale, float(sample[1]))
 		result[i] = (baseline[i] + sample[0]).linear_interpolate(points[i], blend)
-	return _limit_leg_gear_folds(result, baseline, attachment.triangles)
+	return _limit_mesh_folds(result, baseline, attachment.triangles)
 
 
-func _limit_leg_gear_folds(points, baseline, triangles):
-	# At thin seams, neighbouring vertices can sample different parts of the
-	# leg. Shorten only the corrections involved in a newly folded triangle.
+func _limit_mesh_folds(points, baseline, triangles):
+	# At thin seams, neighbouring vertices may move in different directions.
+	# Shorten only the corrections involved in a newly folded triangle.
 	for _pass in range(3):
 		var adjusted = false
 		for i in range(0, triangles.size(), 3):
