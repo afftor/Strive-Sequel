@@ -32,6 +32,7 @@ const EARJUMP_ANIMATION = "earjump"
 const TAILMOVE_ANIMATION = "tailmove"
 const CUM_ANIMATION = "orgasm"
 const CUM_FACE_ANIMATION = "emote_orgasm"
+const MISSIONARY_CUM_RESIDUE = "00_semen/semen_hole2"
 const PERSISTENT_SEMEN_SLOTS = ["semen_ahole", "semen_vhole", "semen_body", "semen_face", "semen_lips"]
 const TITHAND_ANIMATIONS = ["tithand1", "tithand2"]
 const PARTNER_HAND_POSES = ["sex_fingers", "sex_fingers_anal"]
@@ -500,7 +501,7 @@ func _advance_animation_times(delta):
 			else:
 				animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
 		if was_running and float(cum_pose_playback.get(CUM_ANIMATION, {}).get("elapsed", 0.0)) >= end:
-			_remember_visible_semen()
+			_remember_visible_semen(_has_missionary_lower_take())
 		changed = true
 	return changed
 
@@ -676,7 +677,14 @@ func clear_semen():
 	_rebuild_model()
 
 
-func _remember_visible_semen():
+func _has_missionary_lower_take():
+	for animation_name in animation_states:
+		if animation_states[animation_name] and composed_info.get(animation_name, {}).get("owners", {}).get("lower", animation_name) == "sex_missionary":
+			return true
+	return false
+
+
+func _remember_visible_semen(missionary_finish = false):
 	var visible = _cum_visible_slots()
 	if visible.empty():
 		return
@@ -688,13 +696,19 @@ func _remember_visible_semen():
 		if !(slot_name in PERSISTENT_SEMEN_SLOTS) or !visible.has(slot_name):
 			continue
 		var name = str(current.get(slot_name, ""))
-		var attachment = skin.get(slot_name, {}).get(name, {})
+		var slot_attachments = skin.get(slot_name, {})
+		var replace_vhole = missionary_finish and slot_name == "semen_vhole" and slot_attachments.has(MISSIONARY_CUM_RESIDUE)
+		if replace_vhole:
+			name = MISSIONARY_CUM_RESIDUE
+		var attachment = slot_attachments.get(name, {})
 		if attachment.empty():
 			continue
 		var colour = _animated_slot_colour(slot_name, active)
 		if colour.a <= 0.0:
 			continue
 		var previous = semen_residue.get(slot_name, {})
+		if replace_vhole:
+			cum_pose_playback[CUM_ANIMATION]["missionary_residue"] = true
 		if !previous.empty() and previous.attachment == name and colour.a < previous.colour.a:
 			continue
 		attachment = attachment.duplicate()
@@ -2772,6 +2786,10 @@ func _cum_visible_slots():
 				cum_visibility_by_animation[effect_take] = OVERLAY_RULES.cum_slots(skeleton, effect_take)
 			for slot_name in cum_visibility_by_animation[effect_take].keys():
 				result[slot_name] = true
+	# On the held frame, render the saved missionary cut rather than issuing
+	# the original emitter again. It then carries over through the usual residue path.
+	if bool(cum_pose_playback.get(CUM_ANIMATION, {}).get("missionary_residue", false)):
+		result.erase("semen_vhole")
 	return result
 
 
@@ -4499,10 +4517,29 @@ func _resolve_attachment(slot):
 	var result = attachments[slot_name][attachment_name].duplicate()
 	result["_attachment_name"] = attachment_name
 	result["_skin_name"] = SKIN_NAME
+	if slot_name == "semen_vhole" and attachment_name == MISSIONARY_CUM_RESIDUE:
+		_bind_missionary_residue_to_spine(result)
 	if semen_residue.has(slot_name) and semen_residue[slot_name].attachment == attachment_name:
 		result["_semen_residue"] = semen_residue[slot_name]
 		result["_semen_residue_only"] = !retained_semen.empty()
 	return result
+
+
+func _bind_missionary_residue_to_spine(attachment):
+	var vertices = attachment.get("vertices", [])
+	# Respect future exports that already supply bone weights.
+	if vertices.empty() or vertices.size() != attachment.get("uvs", []).size():
+		return
+	if !setup_pose.has("root") or !setup_pose.has("spine1"):
+		return
+	# Keep the exported setup position, but let spine1 move all ten vertices.
+	var spine = setup_pose["spine1"]
+	var root_to_spine = _bone_transform(spine).affine_inverse() * _bone_transform(setup_pose["root"])
+	var weighted = []
+	for i in range(0, vertices.size(), 2):
+		var point = root_to_spine.xform(Vector2(float(vertices[i]), float(vertices[i + 1])))
+		weighted.append_array([1, spine.index, point.x, point.y, 1.0])
+	attachment["vertices"] = weighted
 
 
 func _active_emotion_animates_slot(slot_name):
