@@ -34,7 +34,14 @@ const CUM_ANIMATION = "orgasm"
 const CUM_FACE_ANIMATION = "emote_orgasm"
 const MISSIONARY_CUM_RESIDUE = "00_semen/semen_hole2"
 const PERSISTENT_SEMEN_SLOTS = ["semen_ahole", "semen_vhole", "semen_body", "semen_face", "semen_lips"]
+const UNDERWEAR_STOCKINGS = ["legl_underwear2", "legl_underwear2_beastkin", "legr_armor_underwear2", "legr_armor_underwear2_beastkin"]
 const TITHAND_ANIMATIONS = ["tithand1", "tithand2"]
+const HAND_GRIP_TAKES = {
+	"handjobside1": {"bone8": "hand_l"},
+	"handjobside2": {"bone16": "hand_r"},
+	"simult_handjob": {"bone8": "hand_l", "bone16": "hand_r"},
+}
+var hand_grip_offsets = {}
 const PARTNER_HAND_POSES = ["sex_fingers", "sex_fingers_anal"]
 const PARTNER_HAND_SLOTS = ["gg_hand", "gg_hand2", "gg_hand3"]
 # Spine lists the frontmost slot first. The renderer traverses back to front.
@@ -490,8 +497,7 @@ func _advance_animation_times(delta):
 			animation_times[animation_name] = next
 			changed = next != previous or changed
 	if cum_enabled:
-		var end = CUM_POSE_FAST_DURATION + CUM_POSE_BRAKE_DURATION
-		var was_running = float(cum_pose_playback.get(CUM_ANIMATION, {}).get("elapsed", 0.0)) < end
+		var was_running = !_cum_has_finished()
 		for animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION]:
 			var duration = float(animation_durations.get(animation_name, 0.0))
 			# All semen attachment, alpha and deform tracks share this overlay.
@@ -500,7 +506,7 @@ func _advance_animation_times(delta):
 				animation_times[animation_name] = _cum_pose_time(animation_name, delta, duration)
 			else:
 				animation_times[animation_name] = fmod(float(animation_times.get(animation_name, 0.0)) + delta, duration) if duration > 0.0 else 0.0
-		if was_running and float(cum_pose_playback.get(CUM_ANIMATION, {}).get("elapsed", 0.0)) >= end:
+		if was_running and _cum_has_finished():
 			_remember_visible_semen(_has_missionary_lower_take())
 		changed = true
 	return changed
@@ -543,6 +549,10 @@ func _pose_start_delta(animation_name, delta):
 
 func _cum_controls_pose(animation_name):
 	return !_is_emotion_animation(animation_name) and !_is_sex_side_animation(animation_name) and !(animation_name in [CUM_ANIMATION, CUM_FACE_ANIMATION, TITJUMP_ANIMATION, EARJUMP_ANIMATION, TAILMOVE_ANIMATION, BLINK_ANIMATION, SAY_ANIMATION]) and _poses_the_skeleton(animation_name)
+
+
+func _cum_has_finished():
+	return float(cum_pose_playback.get(CUM_ANIMATION, {}).get("elapsed", 0.0)) >= CUM_POSE_FAST_DURATION + CUM_POSE_BRAKE_DURATION
 
 
 # Use elapsed time so a frame crossing a phase boundary lands at the same
@@ -674,6 +684,41 @@ func clear_semen():
 	# Keep the running pose and emotion. Suppress the current emission until
 	# the next activation so it cannot repaint the slots immediately.
 	cum_semen_cleared = cum_enabled
+	_rebuild_model()
+
+
+# A game view can be reused for another character while this one is hidden.
+# Keep the emission clock separate from its residue: the clock only makes
+# sense if the character comes back in the same pose.
+func capture_cum_effect():
+	_remember_visible_semen()
+	var state = {}
+	if !semen_residue.empty():
+		state["residue"] = semen_residue.duplicate(true)
+	if cum_enabled:
+		var times = {}
+		for name in cum_pose_playback:
+			times[name] = float(animation_times.get(name, 0.0))
+		times[CUM_FACE_ANIMATION] = float(animation_times.get(CUM_FACE_ANIMATION, 0.0))
+		state["playback"] = cum_pose_playback.duplicate(true)
+		state["times"] = times
+		state["cleared"] = cum_semen_cleared
+	return state
+
+
+func restore_cum_effect(state, same_pose):
+	if !has_cum_animation() or state.empty():
+		return
+	semen_residue = state.get("residue", {}).duplicate(true)
+	if same_pose and state.has("playback"):
+		cum_enabled = true
+		cum_semen_cleared = bool(state.get("cleared", false))
+		cum_pose_playback = state.playback.duplicate(true)
+		for name in state.times:
+			if name in [CUM_ANIMATION, CUM_FACE_ANIMATION] or bool(animation_states.get(name, false)):
+				animation_times[name] = state.times[name]
+		pose_transition_elapsed = POSE_TRANSITION_DURATION
+		bone_sample_key = ""
 	_rebuild_model()
 
 
@@ -1334,6 +1379,7 @@ func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
 	# The timelines and the modifiers write the bones' own values, and the modifier
 	# pass re-derives the skeleton from them once, after both.
 	var keyed = _apply_active_bone_timelines()
+	var authored_grips = _authored_hand_grips()
 	_apply_bone_modifiers(layer_factors, layer_turns, keyed)
 	_apply_pushables()
 	_apply_native_handle_targets()
@@ -1343,7 +1389,65 @@ func _build_bone_transforms(layer_factors = {}, layer_turns = {}):
 		_apply_ik_constraint(constraint)
 	_apply_hand_handles()
 	_apply_post_ik_visual_scales()
+	_apply_hand_grip_offsets(authored_grips)
 	_apply_beastkin_mouth_offset()
+
+
+func _authored_hand_grips():
+	var grips = {}
+	if doll_id != "female":
+		return grips
+	var authored_world = {}
+	for name in animation_states:
+		if !animation_states[name]:
+			continue
+		var take = composed_info.get(name, {}).get("owners", {}).get("arms", name)
+		var anchors = HAND_GRIP_TAKES.get(take, {})
+		for anchor in anchors:
+			var hand = anchors[anchor]
+			if !bones.has(anchor) or !bones.has(hand):
+				continue
+			# Track the middle of the palm, so a length change moves the grip
+			# even if the wrist itself stays put. Ignore visual thickness.
+			var palm = Vector2(float(bones[hand].definition.get("length", 0.0)) * 0.5, 0.0)
+			grips[anchor] = [hand, palm, _authored_bone_transform(hand, authored_world).xform(palm)]
+	return grips
+
+
+# At this point the blended animation has set local transforms, but the
+# proportions have not touched them. Only walk the ancestor chains we need.
+func _authored_bone_transform(name, cache):
+	if !cache.has(name):
+		var bone = bones[name]
+		var angle_x = deg2rad(float(bone.local_rotation) + float(bone.local_shear_x))
+		var angle_y = deg2rad(float(bone.local_rotation) + 90.0 + float(bone.local_shear_y))
+		var local = Transform2D(
+			Vector2(cos(angle_x), sin(angle_x)) * float(bone.local_scale_x),
+			Vector2(cos(angle_y), sin(angle_y)) * float(bone.local_scale_y),
+			Vector2(float(bone.local_x), float(bone.local_y)))
+		if !str(bone.parent_name).empty():
+			local = _authored_bone_transform(bone.parent_name, cache) * local
+		cache[name] = local
+	return cache[name]
+
+
+func _apply_hand_grip_offsets(grips):
+	var moved = []
+	for name in grips:
+		var grip = grips[name]
+		var hand = _bone_transform(bones[grip[0]])
+		var offset = hand.xform(grip[1]) - grip[2]
+		var role = "hand_left" if grip[0] == "hand_l" else "hand_right"
+		offset += hand.basis_xform(hand_grip_offsets.get(role, Vector2.ZERO))
+		if offset.length_squared() <= 0.000001:
+			continue
+		var bone = bones[name]
+		var position = _world_to_bone_parent(name, Vector2(bone.x, bone.y) + offset)
+		_set_bone_world(name, position.x, position.y, bone.local_rotation,
+			bone.local_scale_x, bone.local_scale_y, bone.local_shear_x, bone.local_shear_y)
+		moved.append(name)
+	if !moved.empty():
+		_update_ik_descendants(moved)
 
 
 func _tithand_take():
@@ -2773,6 +2877,7 @@ func _cum_visible_slots():
 	var result = {}
 	if !cum_enabled or cum_semen_cleared:
 		return result
+	var finished = _cum_has_finished()
 	for animation_name in _ordered_active_animations():
 		if !_poses_the_skeleton(animation_name) or _is_emotion_animation(animation_name):
 			continue
@@ -2786,6 +2891,9 @@ func _cum_visible_slots():
 				cum_visibility_by_animation[effect_take] = OVERLAY_RULES.cum_slots(skeleton, effect_take)
 			for slot_name in cum_visibility_by_animation[effect_take].keys():
 				result[slot_name] = true
+			if finished:
+				for slot_name in OVERLAY_RULES.cum_finish_slots(effect_take):
+					result[slot_name] = true
 	# On the held frame, render the saved missionary cut rather than issuing
 	# the original emitter again. It then carries over through the usual residue path.
 	if bool(cum_pose_playback.get(CUM_ANIMATION, {}).get("missionary_residue", false)):
@@ -5351,10 +5459,14 @@ func _attachment_geometry(slot, attachment, region, page_size, deform = [], mod_
 			return {}
 		var points = _mesh_points(raw_vertices, attachment.get("uvs", []).size(), deform, pose, rows)
 		points = _align_shin_knee(points, slot, attachment, deform, pose, geometry_cache)
-		if slot.name == "equip_breasts" and doll_id == "female" and chest_is_flat():
-			points = _fit_flat_chest_edges(points, attachment, deform, pose, rows, geometry_cache)
+		var name = str(attachment.get("_attachment_name", ""))
+		if slot.name == "equip_breasts" and doll_id == "female":
+			if chest_is_flat() or name == "tits_slave_small":
+				points = _fit_chest_edges(points, attachment, deform, pose, rows, geometry_cache, !chest_is_flat())
 		if slot.name in ["equip_leg_left", "equip_leg_right"]:
 			points = _fit_split_leg_gear(points, slot, attachment, deform, pose, geometry_cache)
+			if name in UNDERWEAR_STOCKINGS:
+				points = _fit_underwear_knee(points, slot, attachment, pose, geometry_cache)
 		if points_only:
 			return {"points": points}
 		var uv_points = PoolVector2Array()
@@ -5453,16 +5565,31 @@ func _skinning_rows(slot, rows):
 
 # Build a reference for the garment edges only: carry breast weights with their
 # torso parent, without changing the bones or the animated garment interior.
-func _fit_flat_chest_edges(points, attachment, deform, pose, rows, cache):
+func _fit_chest_edges(points, attachment, deform, pose, rows, cache, sides_only):
 	var hull = int(attachment.get("hull", 0))
 	if hull < 3 or hull > points.size():
 		return points
 	var name = str(attachment.get("_attachment_name", ""))
+	if sides_only:
+		name += "/side_seams"
 	if !flat_chest_edge_weights.has(name):
 		var rest = _mesh_points(attachment.vertices, attachment.uvs.size(), [], setup_pose)
 		var scale = _display_scale()
 		var weights = PoolRealArray()
+		var left = INF
+		var right = -INF
+		if sides_only:
+			for i in range(hull):
+				left = min(left, rest[i].x)
+				right = max(right, rest[i].x)
+		var centre = (left + right) * 0.5 if sides_only else 0.0
+		var half_width = (right - left) * 0.5 if sides_only else 0.0
 		for i in range(rest.size()):
+			# On Small only the side seams hug the torso. Keep the cups and
+			# their authored lower hem moving with the breast.
+			if sides_only:
+				weights.append(smoothstep(0.65, 0.91, abs(rest[i].x - centre) / max(half_width, 1.0)))
+				continue
 			if i < hull:
 				weights.append(1.0)
 				continue
@@ -5480,7 +5607,7 @@ func _fit_flat_chest_edges(points, attachment, deform, pose, rows, cache):
 		cache = {}
 	if !cache.has("flat_chest_rows"):
 		cache["flat_chest_rows"] = _flat_chest_gear_rows(pose, _pose_table(pose) if rows == null else rows)
-	var anchored = _mesh_points(attachment.vertices, attachment.uvs.size(), deform, pose, cache["flat_chest_rows"])
+	var anchored = _mesh_points(attachment.vertices, attachment.uvs.size(), [] if sides_only else deform, pose, cache["flat_chest_rows"])
 	var weights = flat_chest_edge_weights[name]
 	var result = PoolVector2Array()
 	for i in range(points.size()):
@@ -5556,6 +5683,92 @@ func _fit_split_leg_gear(points, slot, attachment, deform, pose, cache):
 		var blend = smoothstep(35.0 * scale, 80.0 * scale, float(sample[1]))
 		result[i] = (baseline[i] + sample[0]).linear_interpolate(points[i], blend)
 	return _limit_mesh_folds(result, baseline, attachment.triangles)
+
+
+func _fit_underwear_knee(points, slot, attachment, pose, cache):
+	if doll_id != "female" or !_anatomy_animation_active():
+		return points
+	var side = "L" if slot.name == "equip_leg_left" else "R"
+	var knee = pose.get("spine136" if side == "L" else "spine129", {})
+	var hull = int(attachment.get("hull", 0))
+	if knee.empty() or hull < 3 or hull > points.size():
+		return points
+	if cache == null:
+		cache = {}
+	var key = "split_gear/" + side
+	if !cache.has(key):
+		cache[key] = _split_leg_motion_field(side, float(proportions.get("legs", 1.0)), cache)
+	var boundary = cache[key].get("boundary", [])
+	if boundary.empty():
+		return points
+	var scale = _display_scale()
+	var joint = _world_point(knee, Vector2.ZERO, scale)
+	var contour = PoolVector2Array()
+	for i in range(hull):
+		contour.append(points[i])
+	var edge_pushes = PoolVector2Array()
+	edge_pushes.resize(hull)
+	var needs_fit = false
+	var radius = 60.0 * scale
+	var minimum_gap = 0.25 * scale
+	var maximum_gap = 18.0 * scale
+	for edge in boundary:
+		var start = edge[0] + edge[3]
+		var end = edge[0] + edge[1] + edge[4]
+		if joint.distance_to(Geometry.get_closest_point_to_segment_2d(joint, start, end)) > radius:
+			continue
+		var steps = max(1, int(ceil(start.distance_to(end) / (5.0 * scale))))
+		for i in range(steps + 1):
+			var sample = start.linear_interpolate(end, float(i) / steps)
+			if sample.distance_to(joint) > radius or Geometry.is_point_in_polygon(sample, contour):
+				continue
+			var nearest = Vector2.ZERO
+			var distance = INF
+			var seam = 0
+			for j in range(hull):
+				var point = Geometry.get_closest_point_to_segment_2d(sample, contour[j], contour[(j + 1) % hull])
+				var gap = sample.distance_squared_to(point)
+				if gap < distance:
+					distance = gap
+					nearest = point
+					seam = j
+			# Follow only near misses at the knee, not the intentional
+			# upper seam of the stocking or geometry on the other leg.
+			if distance > minimum_gap * minimum_gap and distance < maximum_gap * maximum_gap:
+				var other = (seam + 1) % hull
+				var length = contour[seam].distance_to(contour[other])
+				var t = clamp(contour[seam].distance_to(nearest) / length, 0.0, 1.0) if length > 0.0001 else 0.0
+				var a = 1.0 - t
+				# Move the endpoints of the segment that actually missed the
+				# skin, even when a long edge has no vertex near the crease.
+				var push = (sample - nearest) * 1.23 / (a * a + t * t)
+				for endpoint in [[seam, a], [other, t]]:
+					var index = endpoint[0]
+					var candidate = push * endpoint[1]
+					if candidate.length_squared() > maximum_gap * maximum_gap:
+						candidate = candidate.normalized() * maximum_gap
+					if candidate.length_squared() > edge_pushes[index].length_squared():
+						edge_pushes[index] = candidate
+						needs_fit = true
+	if !needs_fit:
+		return points
+	var result = PoolVector2Array()
+	for i in range(points.size()):
+		var vertex = points[i]
+		var push = Vector2.ZERO
+		if i < hull:
+			push = edge_pushes[i]
+		else:
+			for j in range(hull):
+				if edge_pushes[j] == Vector2.ZERO:
+					continue
+				var fade = 1.0 - smoothstep(6.0, 42.0, vertex.distance_to(contour[j]) / scale)
+				var candidate = edge_pushes[j] * fade
+				if candidate.length_squared() > push.length_squared():
+					push = candidate
+		var knee_weight = 1.0 - smoothstep(65.0, 125.0, vertex.distance_to(joint) / scale)
+		result.append(vertex + push * knee_weight)
+	return _limit_mesh_folds(result, points, attachment.triangles)
 
 
 func _limit_mesh_folds(points, baseline, triangles):

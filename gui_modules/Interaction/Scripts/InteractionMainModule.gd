@@ -13,6 +13,9 @@ var shown_member = null #whoever the portrait shows
 var portrait_pinned = false #the pin keeps shown_member there
 var last_applied_action = null #the newest action dict, continuous or not, until it is stopped
 var test_outfits = {}
+var doll_effect_by_character = {} # CharacterClass.id -> visual state, for this encounter
+var grip_offsets_by_pair = {} # shown character ID -> partner ID -> palm-local Vector2
+const GRIP_ROLES = ["hand_left", "hand_right"]
 
 var participants = [] #members
 var givers = [] #members
@@ -142,13 +145,15 @@ func _ready():
 	$Panel/BodyDisplay/AnimSpeed/Slider.connect("value_changed", self, "_on_anim_speed_changed")
 	globals.connecttexttooltip($Panel/BodyDisplay/AnimSpeed/Slider, tr("INTERACTION_ANIM_SPEED_TOOLTIP"))
 	_on_anim_speed_changed($Panel/BodyDisplay/AnimSpeed/Slider.value)
+	_setup_grip_controls()
 	$Panel/BodyDisplay/ragdoll.connect("undress_level_changed", self, "_on_doll_undress_level_changed")
 	$Panel/HBoxContainer/test.text = tr("INTERACTION_TEST_CATEGORY")
 	$Panel/TestControls/OutfitLabel.text = tr("DOLL2_PREVIEW_OUTFIT")
 	$Panel/TestControls/Outfit.connect("item_selected", self, "_on_test_outfit_selected")
 	$Panel/TestControls/Orgasm.text = tr("INTERACTION_TEST_TRIGGER_ORGASM")
 	$Panel/TestControls/Orgasm.connect("pressed", self, "_on_test_orgasm_pressed")
-	$OrgasmPlayback.connect("timeout", self, "_stop_orgasm_animation")
+	$Panel/TestControls/ClearSemen.text = tr("INTERACTION_TEST_CLEAR_SEMEN")
+	$Panel/TestControls/ClearSemen.connect("pressed", self, "_on_test_clear_semen_pressed")
 	
 	var i = TEST_MALES + TEST_FUTAS + TEST_FEMALES
 	if input_handler.CurrentScene == null:
@@ -914,6 +919,8 @@ func startsequence(actors):
 	set_process_input(true)
 	gui_controller.clock.visible = false
 	hidebody()
+	doll_effect_by_character.clear()
+	grip_offsets_by_pair.clear()
 	test_outfits.clear()
 	$Panel/HBoxContainer/test.visible = modding_core.test_mode_enabled
 	participants.clear()
@@ -1030,6 +1037,7 @@ func _refresh_test_orgasm_control():
 	$Panel/TestControls/Orgasm.disabled = target == null or target.orgasm_on_hold
 	var hint = ""
 	var model = _test_preview_model()
+	$Panel/TestControls/ClearSemen.disabled = model == null or !model.has_cum_animation()
 	if target == null:
 		hint = tr("INTERACTION_TEST_SELECT_PARTICIPANT")
 	elif target.orgasm_on_hold:
@@ -1070,26 +1078,60 @@ func _on_test_orgasm_pressed():
 	rebuildparticipantslist()
 
 
+func _on_test_clear_semen_pressed():
+	if !$Panel/TestControls.visible:
+		return
+	var model = _test_preview_model()
+	if model != null:
+		model.clear_semen()
+		doll_effect_by_character.erase(doll_member.person.id)
+
+
 func _play_orgasm_animation(orgasming_member, action):
 	if !is_visible_in_tree() or $Control.visible or !participants.has(orgasming_member):
 		return
 	if doll_member == null or !$Panel/BodyDisplay.visible or !participants.has(doll_member):
 		return
-	if doll_member != orgasming_member and !(doll_member in action.givers or doll_member in action.takers):
+	if doll_member != orgasming_member and (action == null or !(doll_member in action.givers or doll_member in action.takers)):
 		return
 	var model = $Panel/BodyDisplay/ragdoll.model
 	if model == null or !model.has_cum_animation():
 		return
 	model.set_cum(false)
 	model.set_cum(true)
-	$OrgasmPlayback.start(model.CUM_POSE_FAST_DURATION + model.CUM_POSE_BRAKE_DURATION)
+	# Doll2 owns the completion frame and holds it until the pose changes.
 
 
 func _stop_orgasm_animation():
-	$OrgasmPlayback.stop()
 	var model = $Panel/BodyDisplay/ragdoll.model
 	if model != null:
 		model.set_cum(false)
+
+
+# Key the effect by the character rather than the encounter's member wrapper.
+func _save_displayed_doll_effect():
+	var doll = $Panel/BodyDisplay/ragdoll
+	var model = doll.model
+	if model == null:
+		return
+	if doll_member != null and model.has_cum_animation():
+		var id = doll_member.person.id
+		var effect = model.capture_cum_effect()
+		if effect.empty():
+			doll_effect_by_character.erase(id)
+		else:
+			doll_effect_by_character[id] = {"effect": effect, "pose": var2str(doll.sex_pose)}
+	_stop_orgasm_animation()
+	model.semen_residue.clear()
+
+
+func _restore_displayed_doll_effect():
+	var doll = $Panel/BodyDisplay/ragdoll
+	if doll.model == null or doll_member == null:
+		return
+	var saved = doll_effect_by_character.get(doll_member.person.id, {})
+	if !saved.empty():
+		doll.model.restore_cum_effect(saved.effect, saved.pose == var2str(doll.sex_pose))
 
 
 func _update_character_resource_bars(node, member):
@@ -1888,30 +1930,34 @@ func get_unique_nude_body_image(person):
 func showbody(i):
 	if portrait_pinned && shown_member != null && i != shown_member:
 		return
-	if shown_member != i:
-		_stop_orgasm_animation()
-	shown_member = i
-	doll_member = null
 	var stored_image = get_unique_nude_body_image(i.person)
 	if stored_image == null:
 		stored_image = i.person.get_stored_body_image()
+	var use_doll = stored_image == null and !input_handler.globalsettings.disable_paperdoll
+	var same_doll = use_doll and doll_member == i
+	if !same_doll:
+		_save_displayed_doll_effect()
+	shown_member = i
+	doll_member = null
 	if stored_image != null:
 		$Panel/bodyimage.texture = stored_image
 		$Panel/bodyimage.visible = true
 		$Panel/BodyDisplay.visible = false
-	elif !input_handler.globalsettings.disable_paperdoll:
+	elif use_doll:
 		$Panel/bodyimage.visible = false
 		$Panel/BodyDisplay.visible = true
 		var doll = $Panel/BodyDisplay/ragdoll
 		doll.test_mode = false
 		doll.rebuild_jiggle = !jiggle_seen.has(i)
 		var outfit_override = test_outfits.get(i) if modding_core.test_mode_enabled else null
-		doll.rebuild(i.person, i.person.get_interaction_undress_level(), outfit_override)
+		doll.rebuild(i.person, i.person.get_interaction_undress_level(), outfit_override, same_doll)
 		doll.rebuild_jiggle = true
 		if doll.is_chest_swinging():
 			jiggle_seen[i] = true
 		doll_member = i
 		_refresh_doll_pose()
+		if !same_doll:
+			_restore_displayed_doll_effect()
 	else:
 		$Panel/bodyimage.texture = i.person.get_body_image()
 		$Panel/bodyimage.visible = true
@@ -1929,7 +1975,7 @@ func _on_member_hovered(member):
 
 
 func hidebody():
-	_stop_orgasm_animation()
+	_save_displayed_doll_effect()
 	$Panel/bodyimage.visible = false
 	$Panel/BodyDisplay.visible = false
 	doll_member = null
@@ -1941,9 +1987,106 @@ func _refresh_doll_pose():
 	if doll_member == null or !$Panel/BodyDisplay.visible or !participants.has(doll_member):
 		return
 	var doll = $Panel/BodyDisplay/ragdoll
-	doll.set_sex_pose(DOLL_POSE.pose_for(doll_member, ongoingactions, last_applied_action))
-	if !$OrgasmPlayback.is_stopped() and doll.model != null:
-		doll.model.set_cum(true)
+	var pose = DOLL_POSE.pose_for(doll_member, ongoingactions, last_applied_action)
+	if var2str(pose) != var2str(doll.sex_pose):
+		_stop_orgasm_animation()
+	doll.set_sex_pose(pose, _grip_offsets_for_pose(pose))
+	_refresh_grip_controls()
+
+
+func _setup_grip_controls():
+	var panel = $Panel/BodyDisplay/GripOffset
+	panel.get_node("Label").text = tr("INTERACTION_GRIP_OFFSET")
+	panel.get_node("Reset").text = tr("INTERACTION_GRIP_RESET")
+	globals.connecttexttooltip(panel.get_node("Axes/X"), tr("INTERACTION_GRIP_X"))
+	globals.connecttexttooltip(panel.get_node("Axes/Y"), tr("INTERACTION_GRIP_Y"))
+	panel.get_node("Partner").connect("item_selected", self, "_show_grip_offset")
+	panel.get_node("Axes/X").connect("value_changed", self, "_on_grip_offset_changed")
+	panel.get_node("Axes/Y").connect("value_changed", self, "_on_grip_offset_changed")
+	panel.get_node("Reset").connect("pressed", self, "_on_grip_offset_reset")
+
+
+func _grip_offsets_for_pose(pose):
+	var result = {}
+	if doll_member == null or pose == null:
+		return result
+	var saved = grip_offsets_by_pair.get(doll_member.person.id, {})
+	var partners = pose.get("partners", {})
+	for role in GRIP_ROLES:
+		var partner_id = partners.get(role, {}).get("id", null)
+		if saved.has(partner_id):
+			result[role] = saved[partner_id]
+	return result
+
+
+func _refresh_grip_controls():
+	var panel = $Panel/BodyDisplay/GripOffset
+	var doll = $Panel/BodyDisplay/ragdoll
+	var select = panel.get_node("Partner")
+	var selected_id = select.get_item_metadata(select.selected) if select.selected >= 0 else null
+	select.clear()
+	if doll_member != null and doll.model != null and doll.model.doll_id == "female" and doll.sex_pose != null:
+		var partners = doll.sex_pose.get("partners", {})
+		for role in GRIP_ROLES:
+			var id = partners.get(role, {}).get("id", null)
+			if id == null:
+				continue
+			for participant in participants:
+				if participant.person.id == id:
+					select.add_item(str(participant.name))
+					var index = select.get_item_count() - 1
+					select.set_item_metadata(index, id)
+					if id == selected_id:
+						select.select(index)
+					break
+	panel.visible = select.get_item_count() > 0
+	if panel.visible:
+		if select.selected < 0:
+			select.select(0)
+		_show_grip_offset(select.selected)
+
+
+func _show_grip_offset(index):
+	var panel = $Panel/BodyDisplay/GripOffset
+	if doll_member == null or index < 0:
+		return
+	var id = panel.get_node("Partner").get_item_metadata(index)
+	var saved = grip_offsets_by_pair.get(doll_member.person.id, {}).get(id, Vector2.ZERO)
+	for axis in ["X", "Y"]:
+		var control = panel.get_node("Axes/" + axis)
+		control.set_block_signals(true)
+		control.value = saved.x if axis == "X" else saved.y
+		control.set_block_signals(false)
+
+
+func _on_grip_offset_changed(_value):
+	var axes = $Panel/BodyDisplay/GripOffset/Axes
+	_save_grip_offset(Vector2(axes.get_node("X").value, axes.get_node("Y").value))
+
+
+func _on_grip_offset_reset():
+	_save_grip_offset(Vector2.ZERO)
+	_show_grip_offset($Panel/BodyDisplay/GripOffset/Partner.selected)
+
+
+func _save_grip_offset(offset):
+	var panel = $Panel/BodyDisplay/GripOffset
+	var select = panel.get_node("Partner")
+	if doll_member == null or !panel.visible or select.selected < 0:
+		return
+	var id = select.get_item_metadata(select.selected)
+	var owner = doll_member.person.id
+	var saved = grip_offsets_by_pair.get(owner, {})
+	if offset == Vector2.ZERO:
+		saved.erase(id)
+	else:
+		saved[id] = offset
+	if saved.empty():
+		grip_offsets_by_pair.erase(owner)
+	else:
+		grip_offsets_by_pair[owner] = saved
+	var doll = $Panel/BodyDisplay/ragdoll
+	doll.set_sex_grip_offsets(_grip_offsets_for_pose(doll.sex_pose))
 
 
 # The doll turns to whoever the action gives a new pose: a taker before a giver,
@@ -3062,6 +3205,12 @@ func _on_stopbutton_pressed():
 
 func endencounter():
 	_stop_orgasm_animation()
+	var model = $Panel/BodyDisplay/ragdoll.model
+	if model != null and !model.semen_residue.empty():
+		model.clear_semen()
+	doll_effect_by_character.clear()
+	grip_offsets_by_pair.clear()
+	$Panel/BodyDisplay/ragdoll.set_sex_grip_offsets({})
 	if !test_outfits.empty():
 		test_outfits.clear()
 		$Panel/BodyDisplay/ragdoll.set_preview_outfit(null)

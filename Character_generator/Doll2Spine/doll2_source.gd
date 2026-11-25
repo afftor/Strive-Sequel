@@ -25,6 +25,10 @@ extends Reference
 
 const DOLLS = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
 
+const PLAYBOY_COLLAR = "collar_playboy"
+const COLLAR_SLOT = "equip_collar"
+const FRECKLES_REGION = "11_freckles/f2"
+
 const LOADED = {}
 const LOADED_SIGNATURES = {}
 
@@ -37,6 +41,8 @@ static func of(doll_id):
 	var key = str(doll_id)
 	var source = DOLLS.doll(key)
 	var signature = _source_signature(source)
+	if key == "male":
+		signature = [signature, _source_signature(DOLLS.doll("female"))].hash()
 	if LOADED.has(key) and LOADED_SIGNATURES.get(key, -1) == signature:
 		return LOADED[key]
 	# Spine exports are replaced while the editor stays open. Drop the parsed
@@ -61,11 +67,106 @@ static func of(doll_id):
 	for skin in skeleton.get("skins", []):
 		built.skin_map[skin.get("name", "")] = skin
 	_read_atlas(source, built)
+	if key == "male":
+		_share_female_accessories(built)
 	for animation_name in skeleton.get("animations", {}).keys():
 		built.animation_durations[animation_name] = _animation_duration(skeleton, animation_name)
 	LOADED[key] = built
 	LOADED_SIGNATURES[key] = signature
 	return built
+
+
+static func _share_female_accessories(built):
+	var donor = of("female")
+	if donor.empty():
+		return
+	# An older male export may carry stale bounds for the shared PNG. Keep
+	# the head-weighted male mesh, but read the region from the owning atlas.
+	if str(built.atlas.get(FRECKLES_REGION, {}).get("page", "")).begins_with("Doll2_spine4.2_female"):
+		_share_region(donor, built, FRECKLES_REGION)
+
+	var collars = built.skin_map.get("default", {}).get("attachments", {}).get(COLLAR_SLOT, {})
+	if collars.empty() or collars.has(PLAYBOY_COLLAR):
+		return
+	var target_bones = built.skeleton.get("bones", [])
+	var neck_index = -1
+	for index in range(target_bones.size()):
+		if target_bones[index].get("name", "") == "neck":
+			neck_index = index
+			break
+	if neck_index == -1:
+		return
+	var bow = donor.skin_map.get("default", {}).get("attachments", {}).get(COLLAR_SLOT, {}).get(PLAYBOY_COLLAR, {})
+	if bow.get("type", "") != "mesh":
+		return
+	var rebound = _bind_bow_to_neck(donor.skeleton.get("bones", []), bow, neck_index)
+	if !rebound.empty() and _share_region(donor, built, str(bow.get("path", PLAYBOY_COLLAR))):
+		collars[PLAYBOY_COLLAR] = rebound
+
+
+static func _share_region(donor, built, path):
+	if !donor.atlas.has(path):
+		return false
+	var region = donor.atlas[path]
+	var page = donor.pages.get(region.page, {})
+	if page.get("texture") == null:
+		return false
+	built.atlas[path] = region
+	built.pages[region.page] = page
+	return true
+
+
+static func _bind_bow_to_neck(donor_bones, bow, neck_index):
+	# The rigs share the neck's setup frame, not the collarbone layout.
+	# Bake the shape in that frame rather than copying female weight indices.
+	var definitions = {}
+	for definition in donor_bones:
+		definitions[definition.name] = definition
+	if !definitions.has("neck"):
+		return {}
+	var transforms = {}
+	var neck_inverse = _setup_transform("neck", definitions, transforms).affine_inverse()
+	var original = bow.get("vertices", [])
+	var uv_count = bow.get("uvs", []).size()
+	if uv_count == 0 or original.size() <= uv_count:
+		return {}
+	var vertices = []
+	var cursor = 0
+	while cursor < original.size():
+		var influences = int(original[cursor])
+		cursor += 1
+		if influences <= 0 or cursor + influences * 4 > original.size():
+			return {}
+		var point = Vector2.ZERO
+		for _index in range(influences):
+			var bone_index = int(original[cursor])
+			if bone_index < 0 or bone_index >= donor_bones.size():
+				return {}
+			var transform = _setup_transform(donor_bones[bone_index].name, definitions, transforms)
+			var local = Vector2(original[cursor + 1], original[cursor + 2])
+			point += transform.xform(local) * float(original[cursor + 3])
+			cursor += 4
+		point = neck_inverse.xform(point)
+		vertices.append_array([1, neck_index, point.x, point.y, 1.0])
+	if vertices.size() != (uv_count / 2) * 5:
+		return {}
+	var attachment = bow.duplicate()
+	attachment["vertices"] = vertices
+	return attachment
+
+
+static func _setup_transform(name, definitions, transforms):
+	if !transforms.has(name):
+		var bone = definitions[name]
+		var rotation = float(bone.get("rotation", 0.0))
+		var x_axis = Vector2.RIGHT.rotated(deg2rad(rotation + float(bone.get("shearX", 0.0)))) * float(bone.get("scaleX", 1.0))
+		var y_axis = Vector2.DOWN.rotated(deg2rad(rotation + float(bone.get("shearY", 0.0)))) * float(bone.get("scaleY", 1.0))
+		var transform = Transform2D(x_axis, y_axis, Vector2(bone.get("x", 0.0), bone.get("y", 0.0)))
+		var parent = str(bone.get("parent", ""))
+		if !parent.empty():
+			transform = _setup_transform(parent, definitions, transforms) * transform
+		transforms[name] = transform
+	return transforms[name]
 
 
 # Whether a rig has been read already - the preview panel says so out loud when

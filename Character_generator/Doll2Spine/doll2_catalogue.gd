@@ -11,6 +11,7 @@ extends Reference
 
 const DOLLS = preload("res://Character_generator/Doll2Spine/doll2_dolls.gd")
 const MODS = preload("res://Character_generator/Doll2Spine/doll2_mods.gd")
+const SOURCE = preload("res://Character_generator/Doll2Spine/doll2_source.gd")
 
 # Which doll every call below reads.  There is one generated catalogue per
 # skeleton and they are not interchangeable, so switching doll drops the merged
@@ -52,15 +53,16 @@ static func _merge():
 	_MERGED.group_parts = {}
 	for group_id in _gen().GROUPS.keys():
 		_MERGED.group_parts[group_id] = _gen().GROUPS[group_id].parts.duplicate()
+	_add_shared_collar()
 
 	var collected = MODS.collect()
 	_MERGED.problems = collected.problems
 	_MERGED.sources = collected.sources
 	if collected.parts.empty():
 		return
-	var resolved = MODS.resolve(_gen().PARTS, collected.parts)
+	var resolved = MODS.resolve(_MERGED.parts, collected.parts)
 	_MERGED.problems += resolved.problems
-	MODS.validate(resolved.parts, resolved.textures, _gen().SLOT_ORDER, _MERGED.problems, _gen().GROUP_ORDER, _gen().PARTS.keys())
+	MODS.validate(resolved.parts, resolved.textures, _gen().SLOT_ORDER, _MERGED.problems, _gen().GROUP_ORDER, _MERGED.parts.keys())
 	_MERGED.textures = resolved.textures
 
 	var ids = resolved.parts.keys()
@@ -79,6 +81,18 @@ static func _merge():
 		_MERGED.group_parts[group_id].sort()
 	for problem in _MERGED.problems:
 		push_warning("Doll2 mods: " + problem)
+
+
+static func _add_shared_collar():
+	var part_id = SOURCE.PLAYBOY_COLLAR
+	if _ACTIVE.id != "male" or _MERGED.parts.has(part_id) or !_MERGED.group_parts.has("collar"):
+		return
+	var attachments = SOURCE.of("male").get("skin_map", {}).get("default", {}).get("attachments", {})
+	var part = DOLLS.doll("female").catalogue.PARTS.get(part_id, {})
+	if !part.empty() and attachments.get(SOURCE.COLLAR_SLOT, {}).has(part_id):
+		_MERGED.parts[part_id] = part
+		_MERGED.group_parts["collar"].append(part_id)
+		_MERGED.group_parts["collar"].sort()
 
 
 # Re-reads mod definitions, so a mod can be edited and picked up without
