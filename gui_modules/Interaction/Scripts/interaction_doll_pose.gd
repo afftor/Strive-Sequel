@@ -131,6 +131,7 @@ static func _partner(partner):
 	var person = partner.person
 	var size = str(person.get_stat('penis_size'))
 	return {
+		"id": person.id,
 		"penis_type": str(person.get_stat('penis_type')),
 		"penis_size": size,
 		"skin": str(person.get_stat('body_color_skin')),

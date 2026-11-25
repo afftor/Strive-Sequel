@@ -193,6 +193,7 @@ var preview_outfit = null # {part, level} while an interaction outfit is being t
 var model = null
 # The sex-scene pose set for `character` - see set_sex_pose - or null for the idle.
 var sex_pose = null
+var sex_grip_offsets = {}
 # how fast that pose plays; see set_sex_pose_speed
 var sex_pose_speed = 1.0
 # false while the sex scene redraws a chest it has already seen swing
@@ -274,6 +275,7 @@ func _make_model():
 	model = MODEL.instance()
 	# said before the model enters the tree, so its editor panel is never built
 	model.interface_enabled = false
+	model.hand_grip_offsets = sex_grip_offsets
 	# the frame is the first child, so the authored controls still draw over it
 	_frame.add_child(model)
 	# the preview carries an editor panel and drag handles; in the game the doll
@@ -296,11 +298,12 @@ func _dolls_switched_off():
 
 # --- the old doll's API -------------------------------------------------------
 
-func rebuild(character_to_build, clothing_level = null, outfit_override = null):
+func rebuild(character_to_build, clothing_level = null, outfit_override = null, keep_pose = false):
 	# A different character is a fresh look at a fresh doll: whatever the player
 	# zoomed into or dragged off-frame on the last one is not where they want to
 	# start on this one.
 	if character_to_build != character:
+		keep_pose = false
 		view_zoom = 1.0
 		view_pan = Vector2.ZERO
 		# how much of themselves the character was left showing is theirs rather than
@@ -311,11 +314,12 @@ func rebuild(character_to_build, clothing_level = null, outfit_override = null):
 		_stop_emotes()
 		# and a pose is what that somebody was doing
 		sex_pose = null
+		_store_sex_grip_offsets({})
 	character = character_to_build
 	preview_outfit = outfit_override
 	if clothing_level != null:
 		undress_level = GEAR.normalise(clothing_level)
-	_apply()
+	_apply(keep_pose)
 
 
 func set_preview_outfit(part_id):
@@ -2020,10 +2024,29 @@ func set_animated(value):
 # {base = take, parts = {region: take}, partners = {role: {penis_type, penis_size,
 # skin, strapon}}, chest_touch = bool} - see interaction_doll_pose.gd.
 # null puts the doll back on its idle.  A rig without the takes stays idle.
-func set_sex_pose(pose):
+func set_sex_pose(pose, grip_offsets = {}):
 	sex_pose = pose
+	var grip_changed = _store_sex_grip_offsets(grip_offsets)
 	if model != null:
 		_apply_sex_pose()
+		if grip_changed:
+			model._update_animated_pose()
+
+
+func set_sex_grip_offsets(offsets):
+	if _store_sex_grip_offsets(offsets) and model != null:
+		model._update_animated_pose()
+
+
+func _store_sex_grip_offsets(offsets):
+	var changed = false
+	for role in ["hand_left", "hand_right"]:
+		if sex_grip_offsets.get(role, Vector2.ZERO) != offsets.get(role, Vector2.ZERO):
+			changed = true
+	sex_grip_offsets = offsets.duplicate()
+	if model != null:
+		model.hand_grip_offsets = sex_grip_offsets
+	return changed
 
 
 # 1.0 plays the sex takes as authored; the idle and the blink keep their own pace.

@@ -7,7 +7,7 @@ const CUM_SLOT_RULES = {
 	"deepthroat": {"only": ["semen_lips"]},
 	"double_pen": {"only": ["semen_ahole", "semen_vhole"]},
 	"handjob1": {"remove": ["semen_ahole", "semen_vhole"]},
-	"titjob": {"remove": ["semen_ahole", "semen_vhole"]},
+	"titjob": {"remove": ["semen_ahole", "semen_vhole"], "finish_add": ["semen_body"]},
 	"handjobside1": {"only": ["semen_face", "semen_pm2"]},
 	"handjobside2": {"only": ["semen_face", "semen_pm1"]},
 	"sex_missionary": {"only": ["semen_vhole"]},
@@ -36,6 +36,10 @@ static func cum_slots(skeleton, animation_name):
 	for slot_name in rule.get("add", []):
 		result[slot_name] = true
 	return result
+
+
+static func cum_finish_slots(animation_name):
+	return CUM_SLOT_RULES.get(animation_name, {}).get("finish_add", [])
 
 
 # The Cum face owns eyes (including their pupils) and blush, never the mouth,

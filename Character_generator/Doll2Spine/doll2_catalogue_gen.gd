@@ -9,11 +9,11 @@ const SCHEMA_VERSION = 2
 
 const SOURCE = {
 	"atlas": "Doll2_spine4.2_female.atlas",
-	"attachment_count": 807,
+	"attachment_count": 808,
 	"bone_count": 360,
 	"contract": "doll2_v1",
 	"skeleton": "Doll2_spine4.2_female.json",
-	"skeleton_hash": "H/qJn3O1btE",
+	"skeleton_hash": "VWJ/ROwrJoM",
 	"slot_count": 126,
 	"spine_version": "4.2.43",
 }

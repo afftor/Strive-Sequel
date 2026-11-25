@@ -244,7 +244,7 @@ const EXCLUDE = [
 	# Partner hands belong to sex_side overlays, never the selected body preset.
 	"gg_hand/gg_hand", "gg_hand/gg_hand3", "gg_hand2/gg_hand2", "gg_hand3/gg_hand2",
 	# Authored effect overlays are driven by the Cum channel, not wardrobe.
-	"semen_hole", "semen_body", "semen_lips", "semen_face", "semen1", "semen2",
+	"semen_hole", "semen_hole2", "semen_body", "semen_lips", "semen_face", "semen1", "semen2",
 	# Selected per slot by the animation viewer, not another body preset.
 	"falos", "falos_minet", "penis_f", "penis_minet_f",
 	# Technical X-ray overlay is rendered only by the preview inset.
