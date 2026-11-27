@@ -3700,37 +3700,39 @@ func common_effects(effects, from_event = false):
 						if !ResourceScripts.game_progress.decisions.has(recruited_decision):
 							ResourceScripts.game_progress.decisions.append(recruited_decision)
 			'add_timed_event':
-				if i.has('skip_existing') and i.skip_existing and ResourceScripts.game_progress.timed_event_exists(i.value):
-					continue
-				var newevent = {reqs = [], code = i.value}
-				for k in i.args:
-					match k.type:
-						'add_to_date':
-							var newreq = [{type = 'date', operant = 'eq', value = ResourceScripts.game_globals.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
-							newevent.reqs += newreq
-						'fixed_date':
-							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
-							newevent.reqs += newreq
-						'add_to_hour':
-							#the day used to roll over when the CURRENT hour was the last of the
-							#day rather than when the sum actually ran past it. Anything landing
-							#more than one turn ahead was therefore dated to an hour of today
-							#that had already gone by - a schedule the tick could never match.
-							#Every use in the data today asks for a single hour, which is the one
-							#case the old arithmetic got right, so this only ever mattered to
-							#whoever wrote the next one
-							var date = ResourceScripts.game_globals.date
-							var hour = int(ResourceScripts.game_globals.hour) + int(round(rand_range(k.hour[0], k.hour[1])))
-							while hour > variables.HoursPerDay:
-								hour -= variables.HoursPerDay
-								date += 1
-							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
-							newevent.reqs += newreq
-						'action_to_date':
-							var newreq = [{type = 'date', operant = 'eq', value = ResourceScripts.game_globals.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
-							newevent.action = k.action
-							newevent.reqs += newreq
-				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
+				if scenedata.scenedict.has(i.value):
+					if i.has('skip_existing') and i.skip_existing and ResourceScripts.game_progress.timed_event_exists(i.value):
+						pass #to get rid of unsafe continue inside match
+					else:
+						var newevent = {reqs = [], code = i.value}
+						for k in i.args:
+							match k.type:
+								'add_to_date':
+									var newreq = [{type = 'date', operant = 'eq', value = ResourceScripts.game_globals.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
+									newevent.reqs += newreq
+								'fixed_date':
+									var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
+									newevent.reqs += newreq
+								'add_to_hour':
+									#the day used to roll over when the CURRENT hour was the last of the
+									#day rather than when the sum actually ran past it. Anything landing
+									#more than one turn ahead was therefore dated to an hour of today
+									#that had already gone by - a schedule the tick could never match.
+									#Every use in the data today asks for a single hour, which is the one
+									#case the old arithmetic got right, so this only ever mattered to
+									#whoever wrote the next one
+									var date = ResourceScripts.game_globals.date
+									var hour = int(ResourceScripts.game_globals.hour) + int(round(rand_range(k.hour[0], k.hour[1])))
+									while hour > variables.HoursPerDay:
+										hour -= variables.HoursPerDay
+										date += 1
+									var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
+									newevent.reqs += newreq
+								'action_to_date':
+									var newreq = [{type = 'date', operant = 'eq', value = ResourceScripts.game_globals.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
+									newevent.action = k.action
+									newevent.reqs += newreq
+						ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'remove_timed_events':
 				var array = []
 				for k in ResourceScripts.game_progress.stored_events.timed_events:
@@ -4216,10 +4218,12 @@ func common_effects(effects, from_event = false):
 			'hide_dialogue':
 				gui_controller.dialogue.hide_dialogue()
 			'plan_mansion_event':
-				if !ResourceScripts.game_progress.planned_mansion_events.has(i.value):
-					ResourceScripts.game_progress.planned_mansion_events.append(i.value)
+				if scenedata.scenedict.has(i.value):
+					if !ResourceScripts.game_progress.planned_mansion_events.has(i.value):
+						ResourceScripts.game_progress.planned_mansion_events.append(i.value)
 			'plan_loc_event':
-				ResourceScripts.game_progress.plan_loc_event(i.loc, i.event)
+				if scenedata.scenedict.has(i.event):
+					ResourceScripts.game_progress.plan_loc_event(i.loc, i.event)
 			'add_special_task_for_location':
 				#the story wants the place again, so it stops waiting to be removed
 				ResourceScripts.game_world.revive_location(
