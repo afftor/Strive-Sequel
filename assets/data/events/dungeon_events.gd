@@ -54,7 +54,12 @@ var data = {
 						reqs = [
 
 						],
-						text = "DIALOGUECANCEL"
+						text = "DIALOGUECANCEL",
+						bonus_effects = [
+							{
+								code = "leave_subroom"
+							}
+						]
 					}
 				]
 			},
@@ -128,7 +133,12 @@ var data = {
 						reqs = [
 
 						],
-						text = "DIALOGUECANCEL"
+						text = "DIALOGUECANCEL",
+						bonus_effects = [
+							{
+								code = "leave_subroom"
+							}
+						]
 					}
 				]
 			}
@@ -215,7 +225,12 @@ var data = {
 						reqs = [
 
 						],
-						text = "DIALOGUECANCEL"
+						text = "DIALOGUECANCEL",
+						bonus_effects = [
+							{
+								code = "leave_subroom"
+							}
+						]
 					}
 				]
 			},
@@ -289,7 +304,12 @@ var data = {
 						reqs = [
 
 						],
-						text = "DIALOGUECANCEL"
+						text = "DIALOGUECANCEL",
+						bonus_effects = [
+							{
+								code = "leave_subroom"
+							}
+						]
 					}
 				]
 			}
@@ -368,7 +388,12 @@ var data = {
 				reqs = [
 
 				],
-				text = "DIALOGUECANCEL"
+				text = "DIALOGUECANCEL",
+				bonus_effects = [
+					{
+						code = "leave_subroom"
+					}
+				]
 			}
 		]
 	},
@@ -453,7 +478,12 @@ var data = {
 						reqs = [
 
 						],
-						text = "DIALOGUECANCEL"
+						text = "DIALOGUECANCEL",
+						bonus_effects = [
+							{
+								code = "leave_subroom"
+							}
+						]
 					}
 				]
 			},
@@ -518,7 +548,12 @@ var data = {
 						reqs = [
 
 						],
-						text = "DIALOGUECANCEL"
+						text = "DIALOGUECANCEL",
+						bonus_effects = [
+							{
+								code = "leave_subroom"
+							}
+						]
 					}
 				]
 			}
@@ -624,7 +659,12 @@ var data = {
 				reqs = [
 
 				],
-				text = "DIALOGUECANCEL"
+				text = "DIALOGUECANCEL",
+				bonus_effects = [
+					{
+						code = "leave_subroom"
+					}
+				]
 			}
 		]
 	},
@@ -701,7 +741,12 @@ var data = {
 				reqs = [
 
 				],
-				text = "DIALOGUECANCEL"
+				text = "DIALOGUECANCEL",
+				bonus_effects = [
+					{
+						code = "leave_subroom"
+					}
+				]
 			}
 		]
 	},

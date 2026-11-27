@@ -122,6 +122,7 @@ var common_effect_codes = {
 	"add_stamina": true,
 	"clear_subroom": true,
 	"unlock_subroom": true,
+	"leave_subroom": true,
 	"unlock_combat": true,
 	"deny_combat": true,
 	"add_subroom_res": true,

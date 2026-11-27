@@ -62,7 +62,10 @@ var setup_index = {}
 
 func _init(skeleton_data):
 	skeleton = skeleton_data
-	animations = skeleton.get("animations", {})
+	animations = skeleton.get("animations", {}).duplicate()
+	# Reuse the raised arms without claiming the props held in the original take.
+	if animations.has("simult_handjob"):
+		animations["arms_up"] = animations["simult_handjob"]
 	var parents = {}
 	for definition in skeleton.get("bones", []):
 		parents[str(definition.get("name", ""))] = str(definition.get("parent", ""))
@@ -130,7 +133,8 @@ func _classify_slots():
 		slot_region[slot_name] = best
 
 
-# recipe: {base = take, parts = {region: take}, scales = {role: factor}, standing_role = role}
+# recipe: {base = take, parts = {region: take}, scales = {role: factor},
+# partner_roles = [role], standing_role = role}
 # Returns {animation, duration, slots = {slot: role}} or null when the base is missing.
 func compose(recipe):
 	var base = str(recipe.get("base", ""))
@@ -200,6 +204,7 @@ func _slot_owner(slot_name, owners, base):
 
 func _place_penises(takes, owners, base, stretch, duration, result, recipe):
 	var scales = recipe.get("scales", {})
+	var partner_roles = recipe.get("partner_roles", null)
 	var standing_role = recipe.get("standing_role", "vaginal")
 	var claims = []
 	for take in takes:
@@ -207,8 +212,10 @@ func _place_penises(takes, owners, base, stretch, duration, result, recipe):
 		for slot_name in listed.keys():
 			if owners.get(listed[slot_name][1], base) != take:
 				continue
-			var deformed = animations[take].get("attachments", {}).get("default", {}).has(slot_name)
 			var role = standing_role if take == "sex_standing" else listed[slot_name][0]
+			if partner_roles != null and !(role in partner_roles):
+				continue
+			var deformed = animations[take].get("attachments", {}).get("default", {}).has(slot_name)
 			claims.append({"take": take, "slot": slot_name, "role": role,
 				"fixed": deformed or !(slot_name in FRONT_SLOTS)})
 	var taken = {}

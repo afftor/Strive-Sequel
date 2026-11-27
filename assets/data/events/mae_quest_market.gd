@@ -534,7 +534,7 @@ var data = {
 				reqs = [], 
 				dialogue_argument = 3, 
 				type = "next_dialogue",
-				bonus_effecs = [
+				bonus_effects = [
 					{code = "dialogue_counter", name = "mae_perverted_actions", op = "+"},
 					{code = 'decision', value = 'MaeEndorse'}
 				]

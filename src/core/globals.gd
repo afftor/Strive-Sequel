@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.16.4a'
+const gameversion = '0.16.5'
 #pure data script, no autoloads of its own - see its header
 const SaveSanitizer = preload("res://src/core/save_sanitizer.gd")
 #same rule as the sanitizer
@@ -4322,6 +4322,9 @@ func common_effects(effects, from_event = false):
 			'unlock_subroom':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.unlock_subroom()
+			'leave_subroom':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.leave_subroom()
 			'unlock_combat':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.unlock_combat()

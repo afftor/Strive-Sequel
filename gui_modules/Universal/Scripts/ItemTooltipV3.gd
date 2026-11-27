@@ -250,7 +250,7 @@ func geartemplete_tooltip(data):
 	iconnode.texture = item.icon
 	if item.get('partcolororder') != null:
 #		input_handler.itemshadeimage(iconnode, item)
-		iconnode.material = load("res://assets/ItemShader.tres").duplicate()
+		iconnode.material = preload("res://assets/ItemShader.tres").duplicate()
 		$LowPanel/HBoxContainer/HoldShift.text = tr('INFOHOLDSHIFT')
 		$LowPanel/HBoxContainer/HoldShift.visible = true
 #		text += "\n\n{color=yellow|Hold shift for details}"

@@ -266,7 +266,7 @@ func rebuild_recipe_list():
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.materials[k])
 		elif i.crafttype == 'modular':
-			newbutton.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
+			newbutton.get_node("icon").material = preload("res://assets/ItemShader.tres").duplicate()
 			for k in item.parts:
 				var newnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var partdata = Items.Parts[k]
@@ -325,7 +325,7 @@ func rebuild_scheldue():
 			in_store = ResourceScripts.game_res.get_item_amount(recipe_data.resultitem)
 		newnode.get_node("icon").texture = item_data.icon
 		if recipe_data.crafttype == 'modular':
-			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
+			newnode.get_node("icon").material = preload("res://assets/ItemShader.tres").duplicate()
 		if pdata.has('repeat'):
 			newnode.get_node("Label").text = tr(item_data.name) + ": " + str(pdata.repeat)
 		elif pdata.has('continuous'):
@@ -824,7 +824,7 @@ func build_num_select():
 		$NumberSelect2/VBoxContainer/icon.texture = itemdata.icon
 		$NumberSelect2/VBoxContainer/name.text = tr(itemdata.name)
 		if item_data.crafttype == 'modular':
-			$NumberSelect2/VBoxContainer/icon.material = load("res://assets/ItemShader.tres").duplicate()
+			$NumberSelect2/VBoxContainer/icon.material = preload("res://assets/ItemShader.tres").duplicate()
 		else:
 			$NumberSelect2/VBoxContainer/icon.material = null
 	$NumberSelect2/VBoxContainer/HBoxContainer1/pt2/Amount.text = str(repeats)

@@ -397,7 +397,7 @@ var scenedict = {
 		image = 'armory',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'leave_subroom'}]}
 		]
 	},
 	dungeon_find_armory_medium = {
@@ -438,7 +438,7 @@ var scenedict = {
 		image = 'chest',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.2]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'leave_subroom'}]}
 		]
 	},
 	dungeon_find_chest_medium = {
@@ -447,7 +447,7 @@ var scenedict = {
 		image = 'chest',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5],['medium_chest_map', 0.1]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'leave_subroom'}]}
 		]
 	},
 	quest_accept = {
@@ -607,7 +607,7 @@ var scenedict = {
 	common_effects = [],
 	options = [
 	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION"), bonus_effects = [{code = 'clear_subroom', optional = true}]},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}
 	]
 	},
 	event_dungeon_prisoner_free = {
@@ -673,7 +673,7 @@ var scenedict = {
 			image = 'goblin_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}, {code = 'clear_subroom', optional = true}]},
-				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = [{code = 'leave_subroom'}]}
 				]
 			
 #			{reqs = [],
@@ -696,7 +696,7 @@ var scenedict = {
 			tags = [],
 			image = 'goblin_encounter',
 			options = [
-				{code = 'leave', reqs = [], text = tr("DIALOGUECLOSE")}
+				{code = 'leave', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'leave_subroom'}]}
 				]
 			
 #			{reqs = [],
@@ -718,7 +718,7 @@ var scenedict = {
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
 		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = [{code = 'leave_subroom'}]}
 		]
 	},
 	event_goblin_kill = {
@@ -772,7 +772,7 @@ var scenedict = {
 			image = 'fairy_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}, {code = 'clear_subroom', optional = true}]},
-				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = []}
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = [{code = 'leave_subroom'}]}
 				]
 			
 #			{reqs = [],
@@ -803,7 +803,7 @@ var scenedict = {
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
 		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = []}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = [{code = 'leave_subroom'}]}
 		]
 	},
 	event_fairy_leave = {
@@ -1769,7 +1769,7 @@ var scenedict = {
 		text = tr(""),
 		tags = ['location_resource_info'],
 		image = 'chest', 
-		options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},]
+		options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'leave_subroom'}]},]
 	},
 	
 	
@@ -1779,7 +1779,7 @@ var scenedict = {
 		image = 'celena_shrine',
 		options = [
 		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	celena_shrine_approach = {
 		text = tr("DIALOGUESHRINECELENA"),
@@ -1788,7 +1788,7 @@ var scenedict = {
 		image = 'celena_shrine',
 		options = [
 		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	erebus_shrine_find = {
 		text = tr("DIALOGUESHRINEEREBUS"),
@@ -1796,7 +1796,7 @@ var scenedict = {
 		image = 'erebus_shrine',
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	erebus_shrine_approach = {
 		text = tr("DIALOGUESHRINEEREBUS"),
@@ -1805,7 +1805,7 @@ var scenedict = {
 		image = 'erebus_shrine',
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	freya_shrine_find = {
 		text = tr("DIALOGUESHRINEFREYA"),
@@ -1813,7 +1813,7 @@ var scenedict = {
 		image = 'freya_shrine',
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	freya_shrine_approach = {
 		text = tr("DIALOGUESHRINEFREYA"),
@@ -1822,7 +1822,7 @@ var scenedict = {
 		image = 'freya_shrine',
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	hybris_shrine_find = {
 		text = tr("DIALOGUESHRINEHYBRIS"),
@@ -1830,7 +1830,7 @@ var scenedict = {
 		image = 'hybris_shrine',
 		options = [
 		{code = 'hybris_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	hybris_shrine_approach = {
 		text = tr("DIALOGUESHRINEHYBRIS"),
@@ -1839,7 +1839,7 @@ var scenedict = {
 		image = 'hybris_shrine',
 		options = [
 		{code = 'hybris_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 #	hybris_character_loyalty = {
 #		text = tr("HYBRIS_ALTAR_CHAR_RESULT1"),
@@ -1869,7 +1869,7 @@ var scenedict = {
 		image = 'spring',
 		options = [
 		{code = 'meditation_shrine_approach', select_person = true, reqs = [], text = tr("STRANGE_SPOT_STEP")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	#nobody is picked here: stepping closer shows what the ring offers (Enemydata.power_place_enter), and who
 	#takes it is chosen after its fight
@@ -1879,7 +1879,7 @@ var scenedict = {
 		shrine = 'power_place_spot',
 		image = 'spring',
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	meditation_shrine_approach = {
 		text = tr("MEDITATION_SPOT_PERSON"),
@@ -1888,7 +1888,7 @@ var scenedict = {
 		image = 'spring',
 		options = [
 		{code = 'meditation_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'leave_subroom'}]}]
 	},
 	meditation_faith_accept = {
 		text = tr("MEDITATION_ACCEPTED"),
@@ -1939,7 +1939,7 @@ var scenedict = {
 		options = [
 			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
 			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
-			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL", bonus_effects = [{code = 'leave_subroom'}]}
 		]
 		},{
 		reqs = [],
@@ -1949,7 +1949,7 @@ var scenedict = {
 		options = [
 			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL_OPTION"), dialogue_argument = 1},
 			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
-			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL", bonus_effects = [{code = 'leave_subroom'}]}
 		]
 		}]},
 	spring_heal = {
@@ -1989,7 +1989,7 @@ var scenedict = {
 			common_effects = [],
 			tags = [''],
 			options = [
-				{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = []},
+				{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [{code = 'leave_subroom'}]},
 				],
 
 			}
@@ -2032,7 +2032,7 @@ var scenedict = {
 		options = [
 			{code = 'fountain_stamina', reqs = [], text = tr("FOUNTAINSTAMINAOPTION"), dialogue_argument = 1},
 			{code = 'fountain_mana', reqs = [], text = tr("FOUNTAINMANAOPTION"), dialogue_argument = 2},
-			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL", bonus_effects = [{code = 'leave_subroom'}]}
 		]
 	},
 	

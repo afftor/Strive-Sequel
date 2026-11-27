@@ -450,7 +450,7 @@ func substractitemcost():
 		ResourceScripts.game_res.materials[parts[i]] -= itemtemplate.parts[i]
 
 func set_icon(node):
-	var icon_texture = input_handler.loadimage(icon)
+	var icon_texture = input_handler.loadimage(icon, 'icons')
 	if node.get_class() == "TextureButton":
 		node.texture_normal = icon_texture
 	else:
@@ -463,7 +463,7 @@ func set_icon(node):
 		par.material = load("res://assets/sfx/item_glow_enchanted.tres")
 	node.material = null
 	if parts.size() > 0:
-		var shader = load("res://assets/ItemShader.tres").duplicate()
+		var shader = preload("res://assets/ItemShader.tres").duplicate()
 		if node.material != shader: #technically always
 			node.material = shader
 		for i in parts:
@@ -478,7 +478,7 @@ func color_ragdoll_parts(ragdoll_root):
 		var node = ragdoll_root.get_node(path)
 		node.material = null
 		if parts.size() > 0:
-			var shader = load("res://assets/ItemShader.tres").duplicate()
+			var shader = preload("res://assets/ItemShader.tres").duplicate()
 			if node.material != shader:
 				node.material = shader
 			else:

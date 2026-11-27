@@ -22,6 +22,9 @@ func build_for_person(person_id, person_node, add_return = false, only_check = f
 	for skill_id in person.get_combat_skills() + person.get_explore_skills():
 		if skill_id == "teleport":#hardcoded separately
 			continue
+		#can_cast runs this per character on every location refresh
+		if Skilldata.tag_ruled_out(skill_id, 'exploration'):
+			continue
 		var skill = Skilldata.get_template(skill_id, person)
 		if !skill.tags.has('exploration'):
 			continue

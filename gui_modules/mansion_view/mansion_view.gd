@@ -25,6 +25,8 @@ signal place_changed(code)
 #What the plan is arranging - work or beds. Embedded, the buttons for it live in the mansion's
 #left-hand column rather than on the plan itself, so they have to hear about it.
 signal mode_changed(value)
+#after any change on the plan (worker placed, room built or upgraded) - the task panel listens
+signal people_refreshed
 
 export var embedded = false
 
@@ -1762,6 +1764,7 @@ func refresh_people():
 	update_counters()
 	if card.visible:
 		card.rebuild()
+	emit_signal("people_refreshed")
 
 
 func update_counters():

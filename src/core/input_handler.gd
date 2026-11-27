@@ -1115,7 +1115,7 @@ func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = f
 #Item shading function
 
 func itemshadeimage(node, item):
-	var shader = load("res://assets/ItemShader.tres").duplicate()
+	var shader = preload("res://assets/ItemShader.tres").duplicate()
 	var icon
 	var is_template = false
 	if typeof(item.icon) == TYPE_STRING:
@@ -1748,12 +1748,18 @@ func combat_defeat():
 func character_boss_defeat():
 	interactive_message('character_boss_defeat', 'character_event', {})
 
+#Godot drops a texture once nothing shows it, and throwaway skill templates (get_template) used to
+#read the same icon from disk again for every character - ~1.5 ms a read against ~0.01 ms here
+var icon_cache = {}
+
 func loadimage(path, type = ""):
 	#var file = File.new()
 	if typeof(path) == TYPE_OBJECT:
 		return path
 	if path == null || path == '':
 		return null
+	if type == 'icons' and icon_cache.has(path):
+		return icon_cache[path]
 	#indexed image check
 	if type != "":
 		var lib = images.get(type)
@@ -1765,7 +1771,11 @@ func loadimage(path, type = ""):
 				return res
 	#indexed resource check
 	if ResourceLoader.exists(path):
-		return load(path)
+		var res = load(path)
+		#the size cap keeps art passed in by mistake out of a session-long cache
+		if type == 'icons' and res is Texture and res.get_width() <= 512 and res.get_height() <= 512:
+			icon_cache[path] = res
+		return res
 	#custom path loader
 	return load_image_from_path(path)
 

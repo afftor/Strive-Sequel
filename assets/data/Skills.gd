@@ -2429,6 +2429,23 @@ var masteries = {
 }
 
 
+#true when nothing get_template does can give the skill this tag - lets a tag filter skip the
+#~0.6 ms template build; template_reqs and caster reqs are ignored, so it errs towards false
+func tag_ruled_out(id, tag):
+	var data = Skilllist[id]
+	if data.tags.has(tag) or data.get('ability_type') == tag or data.get('damage_type') == tag:
+		return false
+	for line in data.get('variations', []) + global_variations:
+		if line.has('replace') or line.get('add', {}).has('tags'):
+			return false
+		var changes = line.get('set', {})
+		if changes.has('tags') or changes.get('ability_type') == tag or changes.get('damage_type') == tag:
+			return false
+		if line.get('append', {}).get('tags') == tag:
+			return false
+	return true
+
+
 func get_template(id, caster):
 	var tres = Skilllist[id].duplicate(true)
 	#process global variations

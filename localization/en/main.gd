@@ -3163,6 +3163,7 @@ Predicted task shows which job the character will perform next. Materials are al
 	MANSION_ACTIVITY_AUTOBUY = "%s came back from the market with %s, for %d gold.",
 	MANSION_ACTIVITY_RITES_PREPARED = "The Ritual Room's preparation is complete: a flesh rite can be performed.",
 	MANSION_ACTIVITY_SLEPTROUGH = "Had no place to sleep at: %s.",
+	MANSION_ACTIVITY_SLEPTROUGH_REPORT = "[color=#e8963c]%d[/color] of the household had no place to sleep.",
 	MANSION_ACTIVITY_NOBED_ESCAPE = "Ran away for want of a bed: %s.",
 	MANSION_ACTIVITY_NOBED_BREAKDOWN = "Broke down for want of a bed: %s.",
 	MANSION_ACTIVITY_CRAFT_COMPLETE = "%s finished crafting %s.",

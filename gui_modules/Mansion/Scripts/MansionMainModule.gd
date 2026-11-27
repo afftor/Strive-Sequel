@@ -220,6 +220,7 @@ func _ready():
 	mode_tab("ModeBeds").connect('pressed', self, 'set_rooms_mode', ['sleep'])
 	RoomsModule.connect('mode_changed', self, 'sync_view_mode_buttons')
 	RoomsModule.connect('place_changed', self, 'on_place_changed')
+	RoomsModule.connect('people_refreshed', TaskModule, 'update_progresses')
 	SlaveListModule.connect('fold_changed', self, 'on_list_fold_changed')
 	sync_view_mode_buttons(RoomsModule.mode)
 	sync_local_tasks_button(RoomsModule.place)
@@ -987,22 +988,17 @@ func rebuild_task_info():
 			break
 	if ResourceScripts.game_res.tasks_progresses.empty() && !char_on_quest:
 		TaskModule.visible = false
-		if TaskModule.is_visible():
-			ResourceScripts.core_animations.FadeAnimation(TaskModule, 0.3)
 		return
+	#decided once: hide-then-show inside the loop replayed the fade-in on every rebuild
+	var has_work = char_on_quest
 	for id in ResourceScripts.game_res.tasks_progresses:
 		var i = ResourceScripts.game_res.tasks_progresses[id]
-		if !i.has('workers'):
-			continue
-		if !i.workers.empty() || char_on_quest:
-			if !TaskModule.is_visible():
-				ResourceScripts.core_animations.UnfadeAnimation(TaskModule, 0.3)
-			TaskModule.visible = true
+		if i.has('workers') and !i.workers.empty():
+			has_work = true
 			break
-		else:
-			TaskModule.visible = false
-			if TaskModule.is_visible():
-				ResourceScripts.core_animations.FadeAnimation(TaskModule, 0.3)
+	if has_work and !TaskModule.visible:
+		ResourceScripts.core_animations.UnfadeAnimation(TaskModule, 0.3)
+	TaskModule.visible = has_work
 	TaskModule.show_task_info()
 
 ### State Managers ###

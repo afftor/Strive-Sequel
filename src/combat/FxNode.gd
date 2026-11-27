@@ -217,6 +217,25 @@ func _draw_warm_up(layer):
 	layer.draw_rect(Rect2(0, 0, 1, 1), Color(1, 1, 1, 0))
 
 
+#one such dot per shader and per blend for a moment, then gone - otherwise each compiles in the middle of its
+#first cast (a tempest on a cold driver cache held one frame for 360 ms). A bake viewport compiles a variant of its
+#own, so `bake_shaders` and the plain bake painter get their dot in one as well
+func warm_up_shaders(host, kit, shaders, blends, bake_shaders = []):
+	use_kit(kit)
+	for shader in shaders:
+		add_layer(0, -1, '_draw_warm_up', shader)
+	for mode in blends:
+		add_layer(0, mode, '_draw_warm_up')
+	#one viewport each, as every bake has: sharing one left a shader cold in the game. null is the plain painter
+	for shader in (bake_shaders + [null] if !bake_shaders.empty() else []):
+		var vp = bake_viewport(Vector2(4, 4))
+		if shader != null: add_layer(0, -1, '_draw_warm_up', shader, vp)
+		else: add_layer(0, CanvasItemMaterial.BLEND_MODE_ADD, '_draw_warm_up', null, vp)
+		add_child(vp)
+	host.add_child(self)
+	host.get_tree().create_timer(0.5).connect('timeout', self, 'queue_free')
+
+
 #--- textures drawn once off screen: a viewport draws it, the next frames read it back ------------------------------
 
 #queues a texture unless it is baked or queued already. `draw` paints it; `prepare`, if given, lays out its geometry
@@ -248,7 +267,7 @@ func bake_step():
 		return
 
 
-func start_bake(job):
+static func bake_viewport(size):
 	#every flag set after the size would allocate the render target again
 	var vp = Viewport.new()
 	vp.usage = Viewport.USAGE_2D
@@ -257,7 +276,12 @@ func start_bake(job):
 	vp.render_target_v_flip = true
 	vp.render_target_update_mode = Viewport.UPDATE_ONCE
 	vp.gui_disable_input = true
-	vp.size = job.size
+	vp.size = size
+	return vp
+
+
+func start_bake(job):
+	var vp = bake_viewport(job.size)
 	var painter = Node2D.new()
 	if job.shader != null:
 		var material_ = ShaderMaterial.new()

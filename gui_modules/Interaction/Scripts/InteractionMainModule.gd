@@ -2021,6 +2021,9 @@ func _grip_offsets_for_pose(pose):
 
 func _refresh_grip_controls():
 	var panel = $Panel/BodyDisplay/GripOffset
+	if !modding_core.test_mode_enabled:
+		panel.hide()
+		return
 	var doll = $Panel/BodyDisplay/ragdoll
 	var select = panel.get_node("Partner")
 	var selected_id = select.get_item_metadata(select.selected) if select.selected >= 0 else null

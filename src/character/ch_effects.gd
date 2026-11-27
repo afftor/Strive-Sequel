@@ -258,10 +258,20 @@ func has_status(status):
 		if eff.has_status(status):
 			return true
 	for st in effects_temp_real.values():
+		#get_active_effects checks every effect's conditions - ~90% of a call - and only a tagged effect can answer yes
+		if !stack_has_tag(st, status):
+			continue
 		for id in st.get_active_effects().keys():
 			var eff = effects_pool.get_effect_by_id(id)
 			if eff.has_status(status):
 				return true
+	return false
+
+
+func stack_has_tag(st, status):
+	for id in st.effects:
+		if effects_pool.get_effect_by_id(id).template.tags.has(status):
+			return true
 	return false
 
 

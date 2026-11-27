@@ -4246,6 +4246,13 @@ const PREGNANT_DRAW_ORDER_FIXES = [
 	{"slot": "testicle", "after": "pregnancy_belly"},
 ]
 
+const ARM_GEAR_LAYERS = {
+	"equip_arm_left": ["arm_left", "race_arm_left"],
+	"equip_arm_right": ["arm_right", "race_arm_right"],
+	"equip_shoulder_left": ["shoulder_left", "shoulderl_muscle", "race_shoulder_left"],
+	"equip_shoulder_right": ["shoulder_right", "shoulderr_muscle", "race_shoulder_right"],
+}
+
 
 # The order to draw in: the catalogue's, unless a running animation reorders the
 # slots itself.  An authored pose does that - the doll folds its arms in front of
@@ -4273,9 +4280,29 @@ func _current_draw_order():
 		for slot_name in TITHAND_DRAW_ORDER:
 			order.insert(insertion, slot_name)
 			insertion += 1
+	if doll_id == "female" and !animated.empty():
+		_keep_arm_gear_over_skin(order)
 	if _has_animal_lower_body():
 		order = _apply_animal_back_draw_order(order)
 	return order
+
+
+# Handjob keys can bring the arm forward while leaving its sleeve behind.
+func _keep_arm_gear_over_skin(order):
+	for gear_slot in ARM_GEAR_LAYERS:
+		if !composed.has(gear_slot):
+			continue
+		var front = order.find(gear_slot)
+		var anchor = ""
+		for skin_slot in ARM_GEAR_LAYERS[gear_slot]:
+			if part_hidden_slots.has(skin_slot) or str(animation_attachments.get(skin_slot, composed.get(skin_slot, ""))).empty():
+				continue
+			var index = order.find(skin_slot)
+			if index > front:
+				front = index
+				anchor = skin_slot
+		if !anchor.empty():
+			_apply_draw_order_fixes(order, [{"slot": gear_slot, "after": anchor}])
 
 
 func _apply_animal_back_draw_order(order):

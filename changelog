@@ -1,3 +1,63 @@
+0.16.5
+Sex scenes now show animated poses on the female paperdoll
+Sex scene interface reworked
+Slave market quests can be rerolled for a Token of Recognition
+
+Sex scenes:
+	The female paperdoll plays animations matching the current actions: vaginal and anal sex, double penetration, blowjob, deepthroat, titjob, handjobs with one or two partners, fingering; several actions at once combine into one pose
+	Partners' penises are drawn to match them
+	Orgasms play a cum animation on the paperdoll
+	New animation speed slider under the portrait
+	The portrait switches to whoever gets a new pose from the latest action
+	The undress level picked for a character in the sex scene is remembered
+
+Sex scene interface:
+	The Actors/Receivers panel is replaced by a larger portrait; actions moved next to the character list
+	Characters are picked by clicking their row: the first one acts, the second receives, later ones act; picked characters show in a strip above the actions (left click moves them to the other side, right click removes them)
+	New button to swap actors and receivers
+	A lock button that keeps the current character in the portrait
+	Clicking an ongoing action restores its participants
+
+Mansion:
+	New compact character list, one line per character; toggled next to the collapse button
+	Relationship changes from one turn are folded into a single activity log entry with a line per pair
+	Mansion tutorial steps now accept dragging characters as well as clicking
+	Improved performance of the mansion lantern lighting which should fix some fps issues
+
+Slave market:
+	New Reroll Quests button: replaces all open market quests for 1 Token of Recognition, once per day; partial deliveries on them are lost
+
+Balance:
+	Nature's Gift charges are now Earth mastery x0.66 instead of Earth mastery +0.66
+	Selfish and the Adept of Hybris vows no longer block support abilities that target enemies, such as Devour Magic and Taunt
+	Soul Stone can pass a trait to anyone in the same place, including a dungeon party, not only at the mansion
+	Keeping your current trait at a place of power now gives the power up and uses up the ring, instead of leaving it to be fought for again
+	Masochist now works in punishment, groveling and rough sex actions; Nymphomania now prevents relationship loss from rough sex actions
+	The Deviant sex trait now removes the penalty for sex with undead
+
+Text:
+	"Service" is now called "Non-sex Service" in stat, trait, personality and faith descriptions, to tell it apart from Sex Service
+	Bawdy description now correctly says Sex Service +25%
+	Charm factor bonus description now lists Non-sex Service +25% and Persuasion Max. Charges +1
+
+Fixes:
+	Fixed challenge rooms costing 1 or 0 stamina after leaving a dungeon chest, shrine, spring, resource spot or locked door without using it
+	Fixed endorsing Mae at the end of her market search not counting toward her choices
+	Fixed the rebels' backrooms staying on the map after the interrogation routes of the princess search; old saves are fixed on load
+	Fixed Freya's shrine showing the wrong text for cloth offerings
+	Fixed Lilia's first meeting showing no text when the main character is neither a fairy nor tiny or petite
+	Fixed babies being lost when an autosave ran while the next turn was already starting; stuck pregnancies are fixed on load
+	Fixed some orgasm lines in sex scenes missing the character's name
+	Fixed the random portrait button removing the portrait when no matching one is found
+	Fixed random portraits misreading some file names as big breasts or butts; Ratkin now get random portraits
+	Fixed an error showing some stat requirements in character selection; the selection tooltip no longer starts with "Requirements met"
+	The workshop now shows item bonuses that were missing from part and stat lists, such as Health from parts
+	Tool slots in the inventory now show the Axe&Pick and Dishware icons
+	Fixed an error in the mansion activity log when it closed right after a new entry
+	The combat skill panel now draws above the side stat panels
+	Taunt's wave is now drawn in code, and wide combat animation sheets were re-cut so they load on GPUs limited to 4096 px textures
+	Fixed mod data for dungeons (w_dungeons) and character stats (statlist) not being applied
+
 0.16.4a
 Enthrall now costs 0 mana
 0.16.4

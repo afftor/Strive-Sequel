@@ -2069,7 +2069,7 @@ func _apply_sex_pose():
 		scales[role] = MODIFIERS.step_factor("dick", str(partners[role].get("penis_size", "")))
 		styles_by_role[role] = _partner_penis_style(partners[role])
 	var base = str(pose.get("base", ""))
-	var recipe = {"base": base, "parts": pose.get("parts", {}), "scales": scales}
+	var recipe = {"base": base, "parts": pose.get("parts", {}), "scales": scales, "partner_roles": partners.keys()}
 	if base == "sex_standing" and partners.has("anal"):
 		recipe["standing_role"] = "anal"
 	var name = "" if base.empty() else model.compose_pose(recipe)

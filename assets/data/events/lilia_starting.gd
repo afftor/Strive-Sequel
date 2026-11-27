@@ -24,7 +24,7 @@ var data = {
 		text = [
 			{text = "LILIA_STARTING_1_FAIRY", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "Fairy"}]}]},
 			{text = "LILIA_STARTING_1_SMALL", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "Fairy"}, {code = 'stat', stat = 'height', operant = 'in', value = ['tiny','petite']}]}]},
-			{text = "LILIA_STARTING_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "Fairy"}, {code = 'stat', stat = 'height', operant = 'not_in', value = ['tiny','petite']}]}]}
+			{text = "LILIA_STARTING_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "Fairy"}, {code = 'is_shortstack', check = false}]}]}
 		],
 		common_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage2'},{code = 'update_location'}],
 		options = [ {

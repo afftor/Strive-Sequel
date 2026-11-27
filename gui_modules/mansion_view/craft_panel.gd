@@ -751,7 +751,7 @@ func build_recipe_row(list, data, queued):
 	row.set_meta("recipe", data.code)
 	var icon = row.get_node("Quality/Item")
 	icon.texture = stock_icon(data.resultitem)
-	icon.material = load("res://assets/ItemShader.tres").duplicate() if data.crafttype == 'modular' else null
+	icon.material = preload("res://assets/ItemShader.tres").duplicate() if data.crafttype == 'modular' else null
 	if data.resultitemtype == 'material':
 		globals.connectmaterialtooltip(icon, Items.materiallist[data.resultitem], '', null, item_tooltip_node())
 	else:
@@ -973,7 +973,7 @@ func build_recipe_card(card, data):
 		else:
 			icon.texture = stock_icon(data.resultitem)
 			if data.crafttype == 'modular':
-				icon.material = load("res://assets/ItemShader.tres").duplicate()
+				icon.material = preload("res://assets/ItemShader.tres").duplicate()
 			globals.connecttempitemtooltip(icon, item, 'geartemplate', item_tooltip_node())
 			if item.get('basestats', null) is Dictionary:
 				stats = item.basestats

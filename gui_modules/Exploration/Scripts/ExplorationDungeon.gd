@@ -971,6 +971,19 @@ func get_scouting_range():
 	return 1
 
 
+#true while a room or subroom activation is still being processed (double clicks land here).
+#A subroom cache with no event on screen or queued was left by an exit option without leave_subroom
+func is_activation_pending():
+	if active_subroom != null:
+		if input_handler.event_is_active or !input_handler.dialogue_array.empty():
+			return true
+		print("stale subroom cache dropped: room %s, subroom %s" % [str(selected_room), str(active_subroom)])
+		active_subroom = null
+		selected_room = null
+		return false
+	return selected_room != null
+
+
 func room_pressed(room_id, room_node):
 	if is_in_use_state():
 		#process cast on room
@@ -980,14 +993,14 @@ func room_pressed(room_id, room_node):
 		#room skills resolve the fight right away, so the room must be enterable
 		if data.challenge != null: return
 		if !ResourceScripts.game_world.can_enter_room(room_id): return
-		if selected_room != null: return
+		if is_activation_pending(): return
 		if get_current_stamina() < data.stamina_cost:
 			input_handler.SystemMessage(tr("NO_STAMINA_LABEL"))
 			return
 		use_skill_on_room(use_state.caster, room_id, room_node, use_state.entity)
 		return
 	reset_active_location()
-	if selected_room != null and active_subroom == null:
+	if is_activation_pending():
 		return
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage(tr("SELECT_CHAR_BEFORE_ADV"))
@@ -1180,6 +1193,8 @@ func move_to_room(room_id = null):
 
 func subroom_pressed(room_id, subroom_id):
 	reset_active_location()
+	if is_activation_pending():
+		return
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage(tr("SELECT_CHAR_BEFORE_ADV"))
 		return
@@ -1288,6 +1303,14 @@ func unlock_subroom():
 	active_subroom = null
 	selected_room = null
 	subroom_pressed(t1, t2)
+
+
+#the subroom stays on the map as it is - only the cache of its closed event is let go
+func leave_subroom():
+	if active_subroom == null:
+		return
+	active_subroom = null
+	selected_room = null
 
 
 func unlock_combat():

@@ -2556,5 +2556,5 @@ func get_status_desc_id(status):
 func ready_status_desc(status):
 	return {
 		text = tr(status_desc[status].text),
-		icon = load(status_desc[status].icon)#should here be input_handler.loadimage()?
+		icon = input_handler.loadimage(status_desc[status].icon, 'icons') #cached: every get_template of a status skill asks
 	}

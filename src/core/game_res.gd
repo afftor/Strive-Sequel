@@ -495,8 +495,8 @@ func slept_rough(char_id):
 	return slept_rough_ids.has(char_id)
 
 
-#One line for the whole household rather than one per sleeper: a player who is twelve beds short
-#does not need twelve lines saying the same thing.
+#One row for the whole household rather than one per sleeper: a player who is twelve beds short
+#does not need twelve lines saying the same thing. Two or more fold their names behind the row.
 func announce_slept_rough():
 	if slept_rough_ids.empty():
 		return
@@ -507,8 +507,12 @@ func announce_slept_rough():
 			names.append(person.get_short_name())
 	if names.empty():
 		return
-	globals.mansion_activity_log_add('population', tr("MANSION_ACTIVITY_SLEPTROUGH") % [
-		PoolStringArray(names).join(", ")])
+	if names.size() == 1:
+		globals.mansion_activity_log_add('population', tr("MANSION_ACTIVITY_SLEPTROUGH") % [names[0]])
+		return
+	globals.mansion_activity_log_add('population',
+		globals._report_text("MANSION_ACTIVITY_SLEPTROUGH_REPORT", [names.size()]),
+		{details = names})
 
 
 #Every bedless night may come to a breakdown or an escape (variables.unhoused_night_*). Asked afresh,
@@ -3036,6 +3040,8 @@ func materials_set(value):
 				#logupdate(text)
 	materials = value
 	oldmaterials = materials.duplicate()
+	#outside writes (materials[x] -= n) land here; the mansion task panel prints stock counts
+	globals.emit_signal("update_clock")
 
 
 func remove_item(itemcode, number):
@@ -3072,6 +3078,7 @@ func set_material(material, operant, value):
 			materials[material] /= value
 		'=':
 			materials[material] = value
+	globals.emit_signal("update_clock")
 
 
 func get_food():

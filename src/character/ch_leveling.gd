@@ -362,6 +362,10 @@ func find_worktask(task = work):
 func assign_to_task(task):
 	if task == work:
 		return
+	#remove_from_task() will not take anybody off the road, so the new work would land on top of the
+	#journey - and only work == 'travel' moves a traveller along
+	if work == 'travel':
+		return
 	var tdata = find_worktask(task)
 	if tdata.has('max_workers') and tdata.max_workers <= tdata.workers.size():
 		return
@@ -390,6 +394,18 @@ func remove_from_task(travel = false):
 	else:
 		print("error - %s is not in it's worktask's workers" % parent.get_ref().id)
 	work = ''
+
+
+#Somebody on the road whose work was replaced on the way: nothing else moves them along, so put
+#them back on the road. Mends saves where it already happened.
+func resume_stranded_travel():
+	if work == 'travel' or work == 'disabled' or is_on_quest:
+		return
+	print("error - %s was on the road with work '%s', travel resumed" % [parent.get_ref().id, work])
+	var task = find_worktask()
+	if task != null:
+		task.workers.erase(parent.get_ref().id)
+	work = 'travel'
 
 
 func return_to_task():
@@ -459,8 +475,7 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	# for  req in quest_taken.requirements:
 	# 	if req.has("work_time"):
 	quest_time_init = int(work_time)
-	gui_controller.mansion.TaskModule.show()
-	gui_controller.mansion.TaskModule.show_resources_info()
+	gui_controller.mansion.TaskModule.update_progresses()
 
 
 func assign_to_learning(learning_type):

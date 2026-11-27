@@ -18,6 +18,7 @@ tree on 2026-08-19; anything that could not be verified was left out rather than
 
 ## Workflow
 
+- Save deliverables locally and share absolute `sandbox:` links. Upload files to ChatGPT Library or another online service only when the user explicitly requests an upload.
 - Use PowerShell on Windows; the Bash tool is available for POSIX scripts and takes its own syntax.
 - Prefer `rg` for searching files and text.
 - Inspect nearby code, scenes and data definitions before editing.

@@ -36,6 +36,8 @@ var current_turn_info = {}
 var acted_chars = []
 var last_order_id = -1
 const turn_order_step = 54
+const DISABLED_ICON_MATERIAL = preload("res://assets/sfx/bw_shader.tres")
+const AURA_ICON_MATERIAL = preload("res://assets/book_shader.tres")
 var fightover = false
 
 var playergroup = {} #pos:hid
@@ -1867,18 +1869,29 @@ func ClearSkillPanel():
 	input_handler.ClearContainer($SkillPanel)
 
 
-func setup_skill_button(newbutton, skill_id):
+#the statuses that grey a skill out, read once per panel: each has_status walks every trait and effect, and a full row
+#used to ask ~130 times, half of the ~100 ms a turn start spent here
+func skill_blocks():
+	var res = {}
+	for status in ['silence', 'disarm', 'no_combat_skills', 'no_combat_spells', 'no_combat_attack']:
+		res[status] = activecharacter.has_status(status)
+	return res
+
+
+func setup_skill_button(newbutton, skill_id, blocks = null):
+	if blocks == null:
+		blocks = skill_blocks()
 	var skill = Skilldata.get_template_combat(skill_id, activecharacter)
 	newbutton.get_node("Icon").texture = skill.icon
 	newbutton.set_meta('skill', skill.code)
 	
 	if skill.tags.has('aura_active'):
-		newbutton.get_node("Icon").material = load("res://assets/book_shader.tres")
+		newbutton.get_node("Icon").material = AURA_ICON_MATERIAL
 	if skill.has('container'):
 		newbutton.connect('pressed', self, 'SelectContainer', [newbutton])
 		for id in skill.container:
 			var nbutton = input_handler.DuplicateContainerTemplate(newbutton.get_node('popup'))
-			setup_skill_button(nbutton, id)
+			setup_skill_button(nbutton, id, blocks)
 			nbutton.set_meta('display_only', true)
 		globals.connecttexttooltip(newbutton, tr(skill.descript))
 		return
@@ -1888,10 +1901,10 @@ func setup_skill_button(newbutton, skill_id):
 	if !activecharacter.check_cost(skill.cost):
 #			newbutton.get_node("Icon").modulate = Color(0,0,1)
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
 	if activecharacter.skills.combat_cooldowns.has(skill.code):
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
 		newbutton.get_node("cooldown").visible = true
 		newbutton.get_node("cooldown").text = str(activecharacter.skills.combat_cooldowns[skill.code])
 		newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.magenta)
@@ -1903,40 +1916,41 @@ func setup_skill_button(newbutton, skill_id):
 		newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
 		if leftcharges <= 0:
 			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
 			newbutton.get_node("cooldown").visible = true
 			newbutton.get_node("cooldown").text = str(activecharacter.skills.daily_cooldowns[skill.code])
 			newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.red)
 	if !activecharacter.checkreqs(skill.reqs):
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('disable_immunity'):
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
+	if blocks.silence and skill.ability_type == 'spell' and !skill.tags.has('disable_immunity'):
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('disable_immunity'):
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
+	if blocks.disarm and skill.ability_type == 'skill' and !skill.tags.has('disable_immunity'):
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('no_combat_skills') and skill.ability_type == 'skill':
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
+	if blocks.no_combat_skills and skill.ability_type == 'skill':
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('no_combat_spells') and skill.ability_type == 'spell':
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
+	if blocks.no_combat_spells and skill.ability_type == 'spell':
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.is_support_self_only(skill) and !activecharacter.can_support_self(skill):
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
+	#is_support_self_only asks a status too, and it can only hold back a support skill
+	if skill.tags.has('support') and activecharacter.is_support_self_only(skill) and !activecharacter.can_support_self(skill):
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-	if activecharacter.has_status('no_combat_attack') and skill.tags.has('damage'):
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
+	if blocks.no_combat_attack and skill.tags.has('damage'):
 		newbutton.disabled = true
-		newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+		newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
 #			if !activecharacter.check_cost(skill.cost):
 #				newbutton.disabled = true
 #				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 	#there definetely should be catalyst check, but i'd seen no one, so added a new
-	if !activecharacter.has_status('ignore_catalysts_for_%s' % skill.code):
+	if !skill.catalysts.empty() and !activecharacter.has_status('ignore_catalysts_for_%s' % skill.code):
 		for res in skill.catalysts:
 			if ResourceScripts.game_res.materials[res] < skill.catalysts[res]:
 				newbutton.disabled = true
-				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+				newbutton.get_node("Icon").material = DISABLED_ICON_MATERIAL
 	
 	globals.connectskilltooltip(newbutton, skill_id, activecharacter)
 	newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
@@ -1951,12 +1965,13 @@ func RebuildSkillPanel():
 	var src = activecharacter.skills.combat_skill_panel
 	var row_offset = activecharacter.skills.get_combat_panel_row_offset()
 	var row_size = variables.combat_panel_row_size
+	var blocks = skill_blocks()
 	for i in range(1, row_size + 1):
 		var pos = row_offset + i
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [pos])
 		if src.has(pos):
-			setup_skill_button(newbutton, src[pos])
+			setup_skill_button(newbutton, src[pos], blocks)
 	update_skill_panel_row_display()
 
 

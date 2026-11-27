@@ -1295,6 +1295,9 @@ var data = {
 					},
 					{
 						code = "set_completed_active_location"
+					},
+					{
+						code = "leave_subroom"
 					}
 #					{
 #						code = "remove_quest_location",
@@ -1408,6 +1411,9 @@ var data = {
 					},
 					{
 						code = "set_completed_active_location"
+					},
+					{
+						code = "leave_subroom"
 					}
 #					{
 #						code = "remove_quest_location",

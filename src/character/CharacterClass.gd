@@ -2581,6 +2581,8 @@ func tick(): #work ticks are not here - as they are called in tasks order, not i
 	statlist.tick()
 	enthrall.tick()
 	skills.turn_tick()
+	if travel.location == 'travel':
+		xp_module.resume_stranded_travel()
 	if get_work() == 'travel':
 		#fatigue -= 1
 		travel.tick()

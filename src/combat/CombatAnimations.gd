@@ -17,6 +17,7 @@ const VoidSphereEffect = preload("res://src/combat/VoidSphereEffect.gd")
 const SpaceBend = preload("res://src/combat/SpaceBend.gd")
 const SwordUltEffect = preload("res://src/combat/SwordUltEffect.gd")
 const ScreenSlice = preload("res://src/combat/ScreenSlice.gd")
+const ScreenGlare = preload("res://src/combat/ScreenGlare.gd")
 const TauntWave = preload("res://src/combat/TauntWave.gd")
 const AnimRegistry = preload("res://src/combat/anim_registry.gd")
 
@@ -2551,6 +2552,15 @@ func warm_up_statuses():
 	SpaceBend.new().warm_up(self, get_fx_kit())
 	#and the sword's broken picture
 	ScreenSlice.new().warm_up(self, get_fx_kit())
+	#every other effect shader, built now instead of at its first cast
+	var kit = get_fx_kit()
+	HyperboreaEffect.equip(kit)
+	StormCloud.equip(kit)
+	if supernova_shared == null: supernova_shared = SupernovaEffect.make_shared()
+	ScreenGlare.equip(supernova_shared)
+	FxNode.new().warm_up_shaders(self, kit, [kit.cover, kit.desat, kit.aurora, kit.snow, kit.snow_gold, kit.storm_cloud,
+		kit.storm_cloud_lit], [CanvasItemMaterial.BLEND_MODE_ADD, CanvasItemMaterial.BLEND_MODE_MUL], [kit.mist, kit.storm_bake, kit.storm_wobble])
+	FxNode.new().warm_up_shaders(self, supernova_shared, [supernova_shared.ball_shader, supernova_shared.glare_screen], [])
 
 func hit_pending(node):
 	for time in animations_queue:

@@ -8,9 +8,19 @@ func _ready():
 	$Button/Label.text = tr("TASKINFORESOURCES")
 	globals.connect("hour_tick", self, "update_progresses")
 	globals.connect("task_removed", self, "update_progresses")
+	#gold spent or earned anywhere: the service card prints the purse
+	globals.connect("update_clock", self, "update_progresses")
+	get_parent().connect("visibility_changed", self, "on_mansion_visibility_changed")
 
 
 var refresh_queued = false
+#asked for while the mansion was hidden behind a town or a dungeon, spent on the way back
+var refresh_owed = false
+
+
+#gui_controller calls update() when a window over the mansion closes; CanvasItem's only redraws
+func update():
+	update_progresses()
 
 
 #same burst as the slave list: task_removed fires once per deleted task, and each one
@@ -26,10 +36,22 @@ func update_progresses():
 
 
 func flush_queued_refresh():
+	#a rebuild already ran this frame (show_task_info clears the flag)
+	if !refresh_queued:
+		return
 	refresh_queued = false
 	if _turn_production_layout_locked():
 		return
-	show_task_info()
+	if !get_parent().is_visible_in_tree():
+		refresh_owed = true
+		return
+	#the parent also decides visibility: the first worker on a task brings the panel out
+	get_parent().rebuild_task_info()
+
+
+func on_mansion_visibility_changed():
+	if refresh_owed and get_parent().is_visible_in_tree():
+		update_progresses()
 
 
 func _turn_production_layout_locked():
@@ -38,6 +60,8 @@ func _turn_production_layout_locked():
 
 
 func show_task_info():
+	refresh_queued = false
+	refresh_owed = false
 	input_handler.ClearContainer(TaskContainer)
 	show_resources_info()
 
@@ -276,7 +300,7 @@ func show_resources_info():
 				_set_inventory_amount(newtask, ResourceScripts.game_res.get_item_amount(recipe_data.resultitem))
 			newtask.get_node("Task/TaskIcon").texture = item_data.icon
 			if recipe_data.crafttype == 'modular':
-				newtask.get_node("Task/TaskIcon").material = load("res://assets/ItemShader.tres").duplicate()
+				newtask.get_node("Task/TaskIcon").material = preload("res://assets/ItemShader.tres").duplicate()
 	#quests
 	for ch in ResourceScripts.game_party.characters.values():
 		if ch.is_on_quest():

@@ -1086,7 +1086,7 @@ func build_predicted(root):
 				item_data = Items.itemlist[recipe_data.resultitem]
 			root.get_node('icon').texture = item_data.icon
 			if recipe_data.crafttype == 'modular':
-				root.get_node('icon').material = load("res://assets/ItemShader.tres").duplicate()
+				root.get_node('icon').material = preload("res://assets/ItemShader.tres").duplicate()
 			else:
 				root.get_node('icon').material = null
 	root.get_node('icon').visible = true

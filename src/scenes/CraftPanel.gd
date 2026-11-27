@@ -76,7 +76,7 @@ func rebuild_scheldue():
 		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
 		newnode.get_node("icon").texture = item.icon
 		if item.type == 'gear' && item.crafttype == 'modular':
-			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
+			newnode.get_node("icon").material = preload("res://assets/ItemShader.tres").duplicate()
 		newnode.get_node("Label").text = item.name + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
 		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
 		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
@@ -154,7 +154,7 @@ func rebuild_recipe_list():
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.materials[k])
 		elif i.crafttype == 'modular':
-			newbutton.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
+			newbutton.get_node("icon").material = preload("res://assets/ItemShader.tres").duplicate()
 			for k in item.parts:
 				var newnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var partdata = Items.Parts[k]
