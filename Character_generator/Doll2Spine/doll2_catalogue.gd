@@ -255,6 +255,19 @@ static func _nearest_option(definition, options, wanted, slot_name):
 	return ""
 
 
+# Parts that replace a body region hide its slots even when an animation has
+# an attachment key there. Keep the setup and the renderer on the same list.
+static func hidden_by_parts(selections):
+	var result = {}
+	for group_id in _gen().GROUP_ORDER:
+		var part_id = str(selections.get(group_id, ""))
+		if part_id.empty():
+			continue
+		for slot_name in part(part_id).get("hides", []):
+			result[slot_name] = true
+	return result
+
+
 # Selections plus axis values -> {slot name: attachment name}.
 # Groups are applied in GROUP_ORDER, so a later group (an outfit) may replace a
 # slot an earlier one (the body) filled.  A part that declares a slot but has no
@@ -318,12 +331,8 @@ static func compose(selections, axis_values, hidden_slots = []):
 	# A part can replace another one rather than sit on top of it: an animal lower
 	# body takes the place of the legs, so those slots are cleared after everything
 	# has been composed - the old doll hid its `l_body` node group for exactly this.
-	for group_id in _gen().GROUP_ORDER:
-		var part_id = str(selections.get(group_id, ""))
-		if part_id.empty():
-			continue
-		for slot_name in part(part_id).get("hides", []):
-			result.erase(slot_name)
+	for slot_name in hidden_by_parts(selections):
+		result.erase(slot_name)
 	# Beastkin palms have their own silhouette and must stay visible as authored.
 	# Human gloves were cut around the human hands and otherwise cover or clip the
 	# Beastkin claws.  This rule lives after every outfit layer so neither a full

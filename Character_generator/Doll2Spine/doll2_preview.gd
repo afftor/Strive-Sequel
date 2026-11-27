@@ -138,6 +138,12 @@ const HAIR_BACK_MESH_SCALE_PARTS = [
 	"hair_back_wawe", "hair_back_straight", "hair_back_bobcut",
 ]
 const HAIR_BACK_MESH_SLOT = "hairs_back"
+const ANIMAL_LOWER_BODIES = ["arachna_body", "scylla_body", "lamia_body", "kentaur_body"]
+const ANIMAL_BACK_HEM_START = 115.0
+const ANIMAL_BACK_HEM_CENTRE = 65.0
+const ANIMAL_BACK_HEM_SHOULDER = 60.0
+const ANIMAL_BACK_HEM_WIDTH = 235.0
+const ANIMAL_BACK_HEM_DROP = 220.0
 
 # `say` fades the closed and open mouth slots against one another.  The ordinary
 # open mouth is the setup attachment, while an orc needs the matching cut added
@@ -164,6 +170,7 @@ var skin_map = {}
 var selections = CATALOGUE.default_selections()
 var axis_values = CATALOGUE.default_axes()
 var composed = {}
+var part_hidden_slots = {}
 # Slots a mod paints with its own image instead of the atlas.  Empty without mods.
 var composed_textures = {}
 # Slots drawn by a part that is not recoloured - see UNPAINTED_PARTS.
@@ -3943,6 +3950,7 @@ func _rebuild_model():
 	animation_signature = _animation_signature().hash()
 	animation_attachment_signature = authored_animation_attachments.hash()
 	var worn = _worn_selections(_shows_posed_genitals(authored_animation_attachments))
+	part_hidden_slots = CATALOGUE.hidden_by_parts(worn)
 	composed = CATALOGUE.compose(worn, axis_values, hidden_slots)
 	_apply_say_lips(worn)
 	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
@@ -4228,6 +4236,35 @@ func _current_draw_order():
 		for slot_name in TITHAND_DRAW_ORDER:
 			order.insert(insertion, slot_name)
 			insertion += 1
+	if _has_animal_lower_body():
+		order = _apply_animal_back_draw_order(order)
+	return order
+
+
+func _apply_animal_back_draw_order(order):
+	var lower = "animal_body"
+	if composed.has("animal_frontbody") and order.has("animal_frontbody"):
+		# The spider's extra lower-body layer also belongs behind the cape/hair.
+		_apply_draw_order_fixes(order, [{"slot": "animal_frontbody", "after": lower}])
+		lower = "animal_frontbody"
+	var rear_slots = ["equip_back"]
+	var hair = str(animation_attachments.get(HAIR_BACK_MESH_SLOT, composed.get(HAIR_BACK_MESH_SLOT, "")))
+	if _is_verylong_back_hair(hair):
+		rear_slots.push_front(HAIR_BACK_MESH_SLOT)
+	var first_human = order.size()
+	for slot in ["torso", "pelvis", "head", "arm_left", "arm_right", "hand_left", "hand_right", "shoulder_left", "shoulder_right"]:
+		var index = order.find(slot)
+		if index >= 0:
+			first_human = min(first_human, index)
+	for slot in rear_slots:
+		var index = order.find(slot)
+		if index >= 0 and (index <= order.find(lower) or index >= first_human):
+			# Reinsert the pair only when a key moves it outside its proper
+			# interval. Otherwise retain the authored order of the back gear.
+			var fixes = []
+			for i in range(rear_slots.size() - 1, -1, -1):
+				fixes.append({"slot": rear_slots[i], "after": lower})
+			return _apply_draw_order_fixes(order, fixes)
 	return order
 
 
@@ -4543,6 +4580,8 @@ func _update_bone_nodes():
 func _resolve_attachment(slot):
 	var slot_name = slot.get("name", "")
 	# Enforce visibility before setup, animation or overlay attachments resolve.
+	if part_hidden_slots.has(slot_name):
+		return {}
 	if slot_name in ["ass", "ass_eq"] and !_ass_animation_active():
 		return {}
 	var is_semen = str(slot_name).begins_with("semen_")
@@ -4609,6 +4648,9 @@ func _resolve_attachment(slot):
 	# use, not whether the character has one.
 	if !attachment_name.empty() and retained_semen.empty() and animation_attachments.has(slot_name):
 		attachment_name = str(animation_attachments[slot_name])
+	# The waitress piece in the cape slot is the back of the skirt.
+	if slot_name == "equip_back" and attachment_name.get_file() == "waitress_back" and _has_animal_lower_body():
+		return {}
 	if attachment_name.empty():
 		return {}
 	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {})
@@ -4766,7 +4808,7 @@ func _add_attachment(slot, attachment, rows = {}, clipping = {}, inset = false):
 	# Coverage needs the mesh's own place on the art canvas, so those meshes get
 	# their own material instead of sharing the channel's.
 	polygon.material = _mesh_material(channel, region, page.size, slot.get("name", ""))
-	var points = _apply_mesh_size_modifiers(data.points, slot)
+	var points = _apply_mesh_size_modifiers(data.points, slot, attachment)
 	_track_gradient_bounds(channel, points)
 	var displayed = {"points": points, "uvs": data.uvs, "triangles": data.triangles}
 	if !clipping.empty():
@@ -4823,7 +4865,7 @@ func _update_mesh_geometry():
 		var deform = _attachment_deform(record.slot, record.attachment, active)
 		var data = _attachment_geometry(record.slot, record.attachment, record.region, record.page_size, deform, null, _pose_for(record.slot), true, _skinning_rows(record.slot, rows), rows)
 		if !data.empty():
-			var points = _apply_mesh_size_modifiers(data.points, record.slot)
+			var points = _apply_mesh_size_modifiers(data.points, record.slot, record.attachment)
 			var displayed = {"points": points, "uvs": record.uvs, "triangles": record.triangles}
 			if !record.clipping.empty():
 				var key = str(record.clipping.slot.name)
@@ -5080,9 +5122,10 @@ func _set_polygon_geometry(polygon, data):
 # Human/beastkin ass attachments and their clothing share the scale. Scale the
 # freshly skinned mesh about its centre, preserving the authored pose and UVs.
 # Legs has asymmetric limits; map each half to -15% / +25% mesh scale.
-func _apply_mesh_size_modifiers(points, slot):
+func _apply_mesh_size_modifiers(points, slot, attachment):
 	if !(str(slot.get("name", "")) in ["ass", "ass_eq"]):
-		return _scale_back_hair_mesh(points, slot)
+		points = _scale_back_hair_mesh(points, slot)
+		return _tuck_animal_back_hem(points, slot, attachment)
 	if points.empty():
 		return points
 	var limits = MODIFIERS.MODIFIERS["legs"].range
@@ -5106,6 +5149,53 @@ func _apply_mesh_size_modifiers(points, slot):
 	for i in range(points.size()):
 		scaled[i] = pivot + (points[i] - pivot) * factor
 	return scaled
+
+
+func _has_animal_lower_body():
+	return composed.get("animal_body", "") in ANIMAL_LOWER_BODIES
+
+
+func _is_verylong_back_hair(attachment_name):
+	return attachment_name.get_file() in ["hair_back_verylong1", "hair_back_verylong_wave"]
+
+
+# Keep the upper mesh and its UVs. Compress only the hanging part into a hem
+# that is high at the middle of the waist and drops towards either flank.
+# Do the fit in the posed waist frame, so it follows twists and height changes.
+func _tuck_animal_back_hem(points, slot, attachment):
+	var slot_name = str(slot.get("name", ""))
+	var key = str(attachment.get("_attachment_name", ""))
+	if slot_name != "equip_back" and !(slot_name == HAIR_BACK_MESH_SLOT and _is_verylong_back_hair(key)):
+		return points
+	if points.empty() or !_has_animal_lower_body():
+		return points
+	var pose = _pose_for(slot)
+	if !pose.has("spine1"):
+		return points
+	var bone = pose["spine1"]
+	var scale = _display_scale()
+	var waist = Transform2D(Vector2(bone.a, -bone.c) * scale, Vector2(bone.b, -bone.d) * scale, Vector2(bone.x, -bone.y) * scale)
+	var to_waist = waist.affine_inverse()
+	var lower = ANIMAL_BACK_HEM_START
+	var local = PoolVector2Array()
+	for point in points:
+		var p = to_waist.xform(point)
+		lower = min(lower, p.x)
+		local.append(p)
+	if lower >= ANIMAL_BACK_HEM_CENTRE:
+		return points
+	var fitted = PoolVector2Array()
+	fitted.resize(points.size())
+	for i in range(points.size()):
+		var p = local[i]
+		var flank = clamp(inverse_lerp(ANIMAL_BACK_HEM_SHOULDER, ANIMAL_BACK_HEM_WIDTH, abs(p.y)), 0.0, 1.0)
+		var hem = ANIMAL_BACK_HEM_CENTRE - ANIMAL_BACK_HEM_DROP * flank * flank
+		if p.x < ANIMAL_BACK_HEM_START and lower < hem:
+			p.x = lerp(hem, ANIMAL_BACK_HEM_START, inverse_lerp(lower, ANIMAL_BACK_HEM_START, p.x))
+			fitted[i] = waist.xform(p)
+		else:
+			fitted[i] = points[i]
+	return fitted
 
 
 # Extra world-axis scale for the three broad back-hair meshes.  Bone length is
