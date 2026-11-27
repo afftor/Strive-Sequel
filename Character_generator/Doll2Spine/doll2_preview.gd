@@ -78,6 +78,12 @@ const ANATOMY_SLOTS = [
 # ahole1 is the second layer keyed by anal_missionary/double_pen for both bodies; the main
 # ahole slot still resolves to the selected body's own mesh.
 const SHARED_ANATOMY_SLOTS = ["ahole1", "vhole", "penis", "penis2", "penis_minet", "penis_minet2", "penis3"]
+# The two standalone previews not described by the gameplay composition table.
+# In test_combo the first slot is the chest cut; the other two are pelvic.
+const CENTAUR_LOWER_PREVIEW_SLOTS = {"test_combo": ["penis2", "penis3"], "xray": ["penis"]}
+const PARTNER_FRONT_EFFECT_SLOTS = {"penis": "semen_p1", "penis2": "semen_p2", "penis3": "semen_p3"}
+const BLOWJOB_MIXED_HAND_TAKES = ["handjobside1", "handjobside2", "simult_handjob"]
+const BLOWJOB_MOUTH_MASK = "minet2"
 const ANATOMY_ALTERNATIVES = {
 	"penis": "00_body_nude_female/falos",
 	"penis2": "00_body_nude_female/falos",
@@ -144,6 +150,8 @@ const ANIMAL_BACK_HEM_CENTRE = 65.0
 const ANIMAL_BACK_HEM_SHOULDER = 60.0
 const ANIMAL_BACK_HEM_WIDTH = 235.0
 const ANIMAL_BACK_HEM_DROP = 220.0
+const ANIMAL_BACK_HAIR_LENGTH_SCALE = 1.10
+const ANIMAL_BACK_HAIR_MOTION_SCALE = 1.0 / 3.0
 
 # `say` fades the closed and open mouth slots against one another.  The ordinary
 # open mouth is the setup attachment, while an orc needs the matching cut added
@@ -171,6 +179,9 @@ var selections = CATALOGUE.default_selections()
 var axis_values = CATALOGUE.default_axes()
 var composed = {}
 var part_hidden_slots = {}
+var mixed_blowjob_clipping = {}
+var animal_back_hair_rest_key = []
+var animal_back_hair_rest = PoolVector2Array()
 # Slots a mod paints with its own image instead of the atlas.  Empty without mods.
 var composed_textures = {}
 # Slots drawn by a part that is not recoloured - see UNPAINTED_PARTS.
@@ -745,7 +756,7 @@ func _remember_visible_semen(missionary_finish = false):
 	var skin = skin_map.get(SKIN_NAME, {}).get("attachments", {})
 	for slot in slot_data:
 		var slot_name = str(slot.name)
-		if !(slot_name in PERSISTENT_SEMEN_SLOTS) or !visible.has(slot_name):
+		if !(slot_name in PERSISTENT_SEMEN_SLOTS) or !visible.has(slot_name) or part_hidden_slots.has(slot_name):
 			continue
 		var name = str(current.get(slot_name, ""))
 		var slot_attachments = skin.get(slot_name, {})
@@ -1120,6 +1131,8 @@ func _load_source():
 	_find_compensated_bones()
 	# a new rig, or the same one read again: nothing kept from the last skeleton holds
 	setup_pose_ready = false
+	animal_back_hair_rest_key.clear()
+	animal_back_hair_rest = PoolVector2Array()
 	descendants_below = {}
 	subtree_under = {}
 	keyed_bones_of = {}
@@ -3951,10 +3964,13 @@ func _rebuild_model():
 	animation_attachment_signature = authored_animation_attachments.hash()
 	var worn = _worn_selections(_shows_posed_genitals(authored_animation_attachments))
 	part_hidden_slots = CATALOGUE.hidden_by_parts(worn)
+	if str(worn.get("animal_body", "")) == "kentaur_body":
+		_hide_centaur_lower_partner_slots()
 	composed = CATALOGUE.compose(worn, axis_values, hidden_slots)
 	_apply_say_lips(worn)
 	animation_attachments = _match_animated_hands(authored_animation_attachments, worn)
 	animation_attachments = _match_animated_body(animation_attachments)
+	mixed_blowjob_clipping = _mixed_blowjob_clips()
 	composed_textures = CATALOGUE.compose_textures(worn)
 	composed_unpainted = CATALOGUE.unpainted_slots(worn)
 	# A stripped character keeps the pieces of the set that are not there for
@@ -4065,6 +4081,27 @@ func _worn_selections(show_posed_genitals):
 			result["weapon_belt"] = ""
 			result["weapon_back"] = ""
 	return result
+
+
+func _hide_centaur_lower_partner_slots():
+	for animation_name in _ordered_active_animations():
+		var lower_slots = []
+		if composed_info.has(animation_name):
+			# A mixed pose may move a partner to a different free front slot.
+			var roles = composed_info[animation_name].get("slots", {})
+			for slot_name in roles:
+				if roles[slot_name] in ["vaginal", "anal"]:
+					lower_slots.append(slot_name)
+		else:
+			lower_slots = CENTAUR_LOWER_PREVIEW_SLOTS.get(animation_name, []).duplicate()
+			var authored = COMPOSER.TAKE_PENISES.get(animation_name, {})
+			for slot_name in authored:
+				if authored[slot_name][1] == "lower":
+					lower_slots.append(slot_name)
+		for slot_name in lower_slots:
+			part_hidden_slots[slot_name] = true
+			if PARTNER_FRONT_EFFECT_SLOTS.has(slot_name):
+				part_hidden_slots[PARTNER_FRONT_EFFECT_SLOTS[slot_name]] = true
 
 
 func _is_anatomy_animation(animation_name):
@@ -4575,12 +4612,54 @@ func _update_bone_nodes():
 		node.scale = Vector2(float(solved.local_scale_x), float(solved.local_scale_y))
 
 
+# In a mixed pose the arms take can move the setup minet mask beyond its end
+# slot. Bind the mouth mask to the mouth partner instead of letting either
+# Spine range clip unrelated slots in the composed draw order.
+func _mixed_blowjob_clips():
+	for animation_name in animation_states:
+		if !animation_states[animation_name] or !composed_info.has(animation_name):
+			continue
+		var recipe = composed_info[animation_name]
+		var owners = recipe.get("owners", {})
+		if owners.get("head", "") != "blowjob" or !(owners.get("arms", "") in BLOWJOB_MIXED_HAND_TAKES):
+			continue
+		var roles = recipe.get("slots", {})
+		for target in roles:
+			if roles[target] != "mouth":
+				continue
+			for slot in slot_data:
+				if slot.name != BLOWJOB_MOUTH_MASK:
+					continue
+				var attachment = _mask_attachment(slot.name, BLOWJOB_MOUTH_MASK)
+				if attachment.empty():
+					return {}
+				var clip = {"slot": slot, "attachment": attachment}
+				var result = {target: clip}
+				if PARTNER_FRONT_EFFECT_SLOTS.has(target):
+					result[PARTNER_FRONT_EFFECT_SLOTS[target]] = clip
+				return result
+	return {}
+
+
+func _mask_attachment(slot_name, name):
+	var attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
+	var source = attachments.get(name, {})
+	if source.get("type", "") != "clipping":
+		return {}
+	var result = source.duplicate()
+	result["_attachment_name"] = name
+	result["_skin_name"] = SKIN_NAME
+	return result
+
+
 # The export is a single flattened skin, so there is no skin stack to search:
 # the catalogue already decided which attachment every slot holds.
 func _resolve_attachment(slot):
 	var slot_name = slot.get("name", "")
 	# Enforce visibility before setup, animation or overlay attachments resolve.
 	if part_hidden_slots.has(slot_name):
+		return {}
+	if !mixed_blowjob_clipping.empty() and slot_name in ["minet", BLOWJOB_MOUTH_MASK]:
 		return {}
 	if slot_name in ["ass", "ass_eq"] and !_ass_animation_active():
 		return {}
@@ -4604,12 +4683,9 @@ func _resolve_attachment(slot):
 		attachment_name = str(retained_semen.get("attachment", animation_attachments.get(slot_name, "")))
 	# Clipping is skeleton state, not a selectable wardrobe/catalogue part.
 	# Resolve setup and attachment keys even though it has no atlas texture.
-	var source_attachments = skin_map.get(SKIN_NAME, {}).get("attachments", {}).get(slot_name, {})
 	var helper_name = str(animation_attachments.get(slot_name, slot.get("attachment", "")))
-	if source_attachments.get(helper_name, {}).get("type", "") == "clipping":
-		var helper = source_attachments[helper_name].duplicate()
-		helper["_attachment_name"] = helper_name
-		helper["_skin_name"] = SKIN_NAME
+	var helper = _mask_attachment(slot_name, helper_name)
+	if !helper.empty():
 		return helper
 	var anatomy_active = _anatomy_animation_active()
 	# The rear clothing cut belongs only to the alternate ass mesh. Keep the
@@ -4767,6 +4843,7 @@ func _emotion_setup_slot_alpha(slot_name):
 
 
 func _add_attachment(slot, attachment, rows = {}, clipping = {}, inset = false):
+	clipping = mixed_blowjob_clipping.get(slot.name, clipping)
 	var attachment_type = attachment.get("type", "region")
 	if attachment_type == "clipping" or attachment_type == "path" or attachment_type == "point":
 		return
@@ -4973,7 +5050,7 @@ func _reorder_mesh_records(records, root, ordered, inset = false):
 			continue
 		if by_slot.has(name):
 			var record = by_slot[name]
-			record.clipping = clipping
+			record.clipping = mixed_blowjob_clipping.get(name, clipping)
 			record["clipping_changed"] = true
 			root.move_child(record.polygon, root.get_child_count() - 1)
 			reordered.append(record)
@@ -5009,7 +5086,7 @@ func _rebuild_xray(rows):
 	xray_root = null
 	xray_records.clear()
 	xray_mask = {}
-	if !xray_enabled:
+	if !xray_enabled or part_hidden_slots.has("xray"):
 		return
 	for slot in slot_data:
 		if str(slot.name) == "XRAY":
@@ -5165,16 +5242,38 @@ func _is_verylong_back_hair(attachment_name):
 func _tuck_animal_back_hem(points, slot, attachment):
 	var slot_name = str(slot.get("name", ""))
 	var key = str(attachment.get("_attachment_name", ""))
-	if slot_name != "equip_back" and !(slot_name == HAIR_BACK_MESH_SLOT and _is_verylong_back_hair(key)):
+	var verylong_hair = slot_name == HAIR_BACK_MESH_SLOT and _is_verylong_back_hair(key)
+	if slot_name != "equip_back" and !verylong_hair:
 		return points
 	if points.empty() or !_has_animal_lower_body():
 		return points
 	var pose = _pose_for(slot)
 	if !pose.has("spine1"):
 		return points
+	var waist = _animal_waist_frame(pose)
+	var local = _animal_local_hem(points, waist, verylong_hair)
+	var rest = _animal_hair_hem_rest(slot, attachment) if verylong_hair else PoolVector2Array()
+	var damp = rest.size() == local.size()
+	var fitted = PoolVector2Array()
+	fitted.resize(local.size())
+	for i in range(local.size()):
+		var p = local[i]
+		if damp:
+			# Full damping below the waist, fading out into the untucked hair.
+			# Both meshes are in waist space, so body motion is not attenuated.
+			var weight = 1.0 - smoothstep(ANIMAL_BACK_HEM_CENTRE, ANIMAL_BACK_HEM_START, rest[i].x)
+			p = rest[i].linear_interpolate(p, lerp(1.0, ANIMAL_BACK_HAIR_MOTION_SCALE, weight))
+		fitted[i] = waist.xform(p)
+	return fitted
+
+
+func _animal_waist_frame(pose):
 	var bone = pose["spine1"]
 	var scale = _display_scale()
-	var waist = Transform2D(Vector2(bone.a, -bone.c) * scale, Vector2(bone.b, -bone.d) * scale, Vector2(bone.x, -bone.y) * scale)
+	return Transform2D(Vector2(bone.a, -bone.c) * scale, Vector2(bone.b, -bone.d) * scale, Vector2(bone.x, -bone.y) * scale)
+
+
+func _animal_local_hem(points, waist, verylong_hair):
 	var to_waist = waist.affine_inverse()
 	var lower = ANIMAL_BACK_HEM_START
 	var local = PoolVector2Array()
@@ -5183,19 +5282,41 @@ func _tuck_animal_back_hem(points, slot, attachment):
 		lower = min(lower, p.x)
 		local.append(p)
 	if lower >= ANIMAL_BACK_HEM_CENTRE:
-		return points
-	var fitted = PoolVector2Array()
-	fitted.resize(points.size())
-	for i in range(points.size()):
+		return local
+	for i in range(local.size()):
 		var p = local[i]
 		var flank = clamp(inverse_lerp(ANIMAL_BACK_HEM_SHOULDER, ANIMAL_BACK_HEM_WIDTH, abs(p.y)), 0.0, 1.0)
 		var hem = ANIMAL_BACK_HEM_CENTRE - ANIMAL_BACK_HEM_DROP * flank * flank
 		if p.x < ANIMAL_BACK_HEM_START and lower < hem:
 			p.x = lerp(hem, ANIMAL_BACK_HEM_START, inverse_lerp(lower, ANIMAL_BACK_HEM_START, p.x))
-			fitted[i] = waist.xform(p)
-		else:
-			fitted[i] = points[i]
-	return fitted
+		# Grow only the hanging length from the already-fitted waist line.
+		if verylong_hair and p.x < ANIMAL_BACK_HEM_CENTRE:
+			p.x = lerp(ANIMAL_BACK_HEM_CENTRE, p.x, ANIMAL_BACK_HAIR_LENGTH_SCALE)
+		local[i] = p
+	return local
+
+
+# A neutral reference already wearing the same height and hair-length modifiers.
+# Cache it per shape instead of solving another rig on every animated frame.
+func _animal_hair_hem_rest(slot, attachment):
+	var key = [str(attachment.get("_attachment_name", "")), height_tier, hash(proportions), hash(selections)]
+	if key == animal_back_hair_rest_key:
+		return animal_back_hair_rest
+	if !setup_pose.has("spine1"):
+		return PoolVector2Array()
+	var animated_bones = bones
+	var animated_offsets = pose_offsets
+	bones = setup_pose.duplicate(true)
+	pose_offsets = {}
+	var layers = MODIFIERS.layer_factors(proportions, _bone_parents(), contract.CONTRACT_ID, selections)
+	var turns = MODIFIERS.layer_turns(slot.name, proportions, selections, contract.CONTRACT_ID)
+	_apply_bone_modifiers(layers.get(slot.name, {}), turns)
+	var rest_points = _mesh_points(attachment.vertices, attachment.uvs.size(), [], bones)
+	animal_back_hair_rest = _animal_local_hem(rest_points, _animal_waist_frame(bones), true)
+	animal_back_hair_rest_key = key
+	bones = animated_bones
+	pose_offsets = animated_offsets
+	return animal_back_hair_rest
 
 
 # Extra world-axis scale for the three broad back-hair meshes.  Bone length is

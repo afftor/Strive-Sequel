@@ -265,6 +265,12 @@ static func hidden_by_parts(selections):
 			continue
 		for slot_name in part(part_id).get("hides", []):
 			result[slot_name] = true
+	# Maidu has a legacy full belly layer alongside its split maternity top.
+	# An animal lower body needs only the upper piece, never the full layer.
+	if str(selections.get("outfit", "")) == "outfit_maid":
+		var lower = part(str(selections.get("animal_body", "")))
+		if lower.get("hides", []).has("equip_pregnancy_low"):
+			result["equip_belly"] = true
 	return result
 
 

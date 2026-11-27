@@ -275,19 +275,17 @@ const SLOT_AXES = {
 # scylla's tentacles stand where the legs would, and leaving the legs on draws
 # them through the animal.  The leg armour goes with them - there is nothing left
 # to wear it.
-# An animal lower body replaces the human one from the waist down, genitals
-# included: the horse half of a centaur has no place to hang a human cock, and
-# the art draws none, so the human ones are cleared with the legs however
-# undressed the character is.
+# Genital layers are a separate race choice: Arachna still uses the human pelvis.
 const HIDDEN_BY_ANIMAL_BODY = [
 	"leg_left", "leg_right", "equip_leg_left", "equip_leg_right",
 	"equip_pelvis", "equip_pregnancy_low", "ass", "ass_eq",
-	"race_leg_left", "race_leg_right", "dick", "testicle",
+	"race_leg_left", "race_leg_right",
 	"legl_muscle", "legr_muscle",
 	"HipL", "HipR", "HipL_up", "HipR_up",
 	"HipL_muscle", "HipR_muscle", "HipL_muscle_up", "HipR_muscle_up",
 	"ShinL", "ShinR", "ShinL_muscle", "ShinR_muscle",
 ]
+const HIDDEN_ANIMAL_SETUP_GENITALS = ["dick", "testicle"]
 
 # A harpy's wings replace the visible human arms all the way through the
 # shoulder.  Muscle overlays belong to the same human shoulder cut and must go
@@ -300,11 +298,13 @@ const HIDDEN_BY_WING_ARMS = ["arm_left", "arm_right", "hand_left", "hand_right",
 
 const PART_HIDES = {
 	"wings_harpia": HIDDEN_BY_WING_ARMS,
-	"kentaur_body": HIDDEN_BY_ANIMAL_BODY,
-	"lamia_body": HIDDEN_BY_ANIMAL_BODY,
-	"scylla_body": HIDDEN_BY_ANIMAL_BODY,
-	# the spider keeps its own pelvis as well, so the human one goes too
-	"arachna_body": HIDDEN_BY_ANIMAL_BODY + ["pelvis", "race_pelvis"],
+	"kentaur_body": HIDDEN_BY_ANIMAL_BODY + HIDDEN_ANIMAL_SETUP_GENITALS + [
+		"pelvis", "race_pelvis", "tatoos", "vagina", "vagina2", "vagina2_muscle",
+		"vhole", "ahole", "ahole1", "semen_vhole", "semen_ahole", "xray",
+	],
+	"lamia_body": HIDDEN_BY_ANIMAL_BODY + HIDDEN_ANIMAL_SETUP_GENITALS,
+	"scylla_body": HIDDEN_BY_ANIMAL_BODY + HIDDEN_ANIMAL_SETUP_GENITALS,
+	"arachna_body": HIDDEN_BY_ANIMAL_BODY,
 }
 
 # Tables that belong to one doll or the other and have no shared content.  They
