@@ -1698,13 +1698,6 @@ var data = {
 				remove_after_first_use = true
 			},
 			{
-				code = "act4_erdyna_flirt_result",
-				text = "ACT4_ERDYNA_AFTER_LEAVE_OPTION_FLIRT",
-				reqs = [],
-				type = "next_dialogue",
-				remove_after_first_use = true
-			},
-			{
 				code = "act4_erdyna_campfire_nonflirt",
 				text = "ACT4_ERDYNA_AFTER_LEAVE_OPTION_REST",
 				reqs = [],
@@ -1725,40 +1718,6 @@ var data = {
 				{code = "plan_loc_event", loc = "empire_capital", event = "erdyna_capital_return_1"},
 				{code = "update_city"}
 			]}
-		]
-	},
-	act4_erdyna_flirt_result = {
-		variations = [
-			{
-				reqs = [{type = "master_check", value = [{code = "stat", stat = "sexuals_factor", operant = "gte", value = 5}]}],
-				image = null,
-				character = "$erdyna",
-				tags = ["dialogue_scene", "master_translate", "act4_erdyna"],
-				text = "ACT4_ERDYNA_AFTER_LEAVE_HUB_4_SUCCESS",
-				options = [
-					{
-						code = "erdyna_campfire_1",
-						text = "DIALOGUECONTINUE",
-						reqs = [],
-						type = "next_dialogue"
-					}
-				]
-			},
-			{
-				reqs = [{type = "master_check", value = [{code = "stat", stat = "sexuals_factor", operant = "lt", value = 5}]}],
-				image = null,
-				character = "$erdyna",
-				tags = ["dialogue_scene", "master_translate", "act4_erdyna"],
-				text = "ACT4_ERDYNA_AFTER_LEAVE_HUB_4_FAIL",
-				options = [
-					{
-						code = "act4_erdyna_after_leave_hub",
-						text = "DIALOGUECONTINUE",
-						reqs = [],
-						type = "next_dialogue"
-					}
-				]
-			}
 		]
 	},
 	act4_erdyna_melchor_archives_1 = {
